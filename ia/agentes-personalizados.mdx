@@ -1,0 +1,109 @@
+---
+title: "Agentes personalizados"
+description: "Construye agentes de IA a la medida de un proceso específico de tu negocio."
+icon: "wand-magic-sparkles"
+---
+
+El [agente conversacional](/ia/agente-conversacional) resuelve el caso general: responder, calificar y agendar. Cuando necesitas algo más específico, construyes un agente propio.
+
+Un agente personalizado tiene sus propias instrucciones, su propia base de conocimiento y sus propias reglas. Puede ejecutar varios pasos y realizar acciones dentro del CRM.
+
+## Cuándo vale la pena
+
+<CardGroup cols={2}>
+  <Card title="Sí tiene sentido" icon="circle-check">
+    - Un proceso con reglas propias, distinto del resto
+    - Varias líneas de negocio con información que no debe mezclarse
+    - Un flujo de calificación con criterios específicos
+    - Atención en un idioma distinto
+    - Soporte técnico con documentación propia
+  </Card>
+
+  <Card title="No hace falta" icon="circle-xmark">
+    - Solo quieres cambiar el tono o la longitud
+    - Agregar información nueva a lo que ya responde
+    - Ajustar cuándo transfiere a un humano
+
+    Todo eso se resuelve editando el agente que ya tienes.
+  </Card>
+</CardGroup>
+
+<Warning>
+  No crees un agente por cada situación. Cinco agentes que se solapan son mucho más difíciles de mantener que uno bien entrenado, y cuando algo falla no sabes cuál respondió.
+</Warning>
+
+## Constrúyelo
+
+<Steps>
+  <Step title="Define su trabajo en una frase">
+    Si no puedes explicar en una frase qué hace este agente y no otro, todavía no está claro qué necesitas.
+
+    ```text
+    Este agente atiende solo consultas de garantía de productos ya comprados.
+    ```
+  </Step>
+  <Step title="Delimita su alcance">
+    Tan importante como lo que hace es lo que **no** le corresponde:
+
+    ```text
+    No atiendes ventas nuevas ni consultas de precio.
+    Si la persona pregunta por algo distinto a garantías,
+    transfiere a un humano sin intentar responder.
+    ```
+  </Step>
+  <Step title="Carga solo su conocimiento">
+    Dale únicamente la información de su ámbito. Un agente con toda la información del negocio pierde precisión.
+  </Step>
+  <Step title="Define las acciones que puede ejecutar">
+    Agendar, etiquetar, mover una oportunidad, crear una tarea, disparar un flujo.
+
+    <Tip>
+      Empieza con pocas acciones. Es más fácil agregar una capacidad cuando la echas de menos que diagnosticar un agente que hace demasiadas cosas.
+    </Tip>
+  </Step>
+  <Step title="Establece cuándo entrega a un humano">
+    Con las mismas reglas que el agente general: molestia, queja, algo fuera de su conocimiento, o petición expresa.
+  </Step>
+  <Step title="Decide cuándo se activa">
+    Por canal, por etiqueta del contacto, por etapa del pipeline o desde un flujo.
+
+    <Warning>
+      Si dos agentes pueden activarse en la misma conversación, vas a tener respuestas cruzadas. Define condiciones que no se solapen.
+    </Warning>
+  </Step>
+  <Step title="Pruébalo en modo sugerencia">
+    Una semana redactando sin enviar, igual que con el agente general.
+  </Step>
+</Steps>
+
+## Errores frecuentes
+
+<AccordionGroup>
+  <Accordion title="Dos agentes responden lo mismo">
+    Sus condiciones de activación se solapan. Revisa que cada uno tenga un disparador claramente distinto.
+  </Accordion>
+
+  <Accordion title="Responde fuera de su ámbito">
+    Falta delimitar el alcance. Escribe explícitamente qué temas no le corresponden y qué hacer con ellos.
+  </Accordion>
+
+  <Accordion title="Ejecuta acciones que no debería">
+    Quita capacidades hasta dejar solo las imprescindibles.
+  </Accordion>
+
+  <Accordion title="Se contradice con el agente general">
+    Ambos tienen información de lo mismo y no coincide. Mantén una sola fuente por tema.
+  </Accordion>
+</AccordionGroup>
+
+## Mantenimiento
+
+Cada agente que creas es algo que hay que revisar y actualizar. Antes de crear uno nuevo, pregúntate si tu equipo va a poder mantenerlo.
+
+Revisa las conversaciones reales de cada agente una vez por semana, igual que con el general.
+
+## Siguiente paso
+
+<Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+  Conecta tus agentes con el resto de tu operación.
+</Card>
