@@ -1,0 +1,135 @@
+---
+title: "Tu primera automatización"
+description: "Construye paso a paso el flujo que responde y da seguimiento a cada lead nuevo."
+icon: "wand-magic-sparkles"
+---
+
+Vamos a construir juntos la automatización más rentable que puede tener un negocio: la que responde de inmediato a cada lead nuevo y no lo suelta hasta que contesta.
+
+Toma unos 20 minutos y empieza a trabajar el mismo día.
+
+## Por qué esta y no otra
+
+- La velocidad de respuesta decide quién se queda con el cliente. Responder en minutos en vez de horas cambia por completo el resultado.
+- Muy pocas ventas se cierran en el primer contacto. Casi todo se cierra en el seguimiento, y el seguimiento manual sencillamente no ocurre cuando el día se llena.
+
+## Constrúyela
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo** y pulsa **Crear flujo desde cero**.
+
+    Ponle un nombre que se entienda dentro de seis meses. `Seguimiento leads nuevos - web` es mejor que `Flujo 1`.
+  </Step>
+  <Step title="Agrega el disparador">
+    Elige el que corresponda a cómo te llegan los leads:
+
+    - **Formulario enviado**: para leads de tu web o tus anuncios
+    - **Mensaje entrante**: para quienes escriben por WhatsApp o redes
+    - **Etiqueta agregada**: útil si marcas los leads manualmente
+
+    Puedes agregar varios disparadores al mismo flujo.
+  </Step>
+  <Step title="Respuesta inmediata">
+    Agrega una acción de envío de mensaje. Escribe algo humano y concreto:
+
+    ```text
+    Hola {{contact.first_name}}, gracias por escribirnos.
+    Soy del equipo de [tu negocio] y te voy a ayudar personalmente.
+    Para orientarte mejor, cuéntame: ¿qué estás buscando exactamente?
+    ```
+
+    <Tip>
+      Termina siempre con una pregunta. Un mensaje que pide respuesta convierte muchísimo más que uno que solo informa.
+    </Tip>
+  </Step>
+  <Step title="Notifica a tu equipo">
+    Agrega una **notificación interna** con el nombre, el teléfono y el origen del lead, para que quien lo atienda no tenga que buscarlo.
+  </Step>
+  <Step title="Agrega la primera espera">
+    Agrega una **espera** de 24 horas.
+
+    En su configuración, activa la opción de continuar solo si el contacto **no ha respondido**. Esto evita que le sigas escribiendo a alguien que ya está conversando contigo.
+  </Step>
+  <Step title="Segundo mensaje">
+    ```text
+    Hola {{contact.first_name}}, te escribí ayer y quizá se te pasó.
+    Sigo disponible para ayudarte. ¿Te viene mejor que hablemos por aquí
+    o prefieres que te llame?
+    ```
+
+    Dar dos opciones fáciles de responder funciona mejor que insistir con la misma pregunta.
+  </Step>
+  <Step title="Segunda espera y último mensaje">
+    Otra espera, de 3 días, con la misma condición. Luego un cierre sin presión:
+
+    ```text
+    Hola {{contact.first_name}}, no quiero seguir escribiéndote si ahora
+    no es el momento. Dejo la puerta abierta: cuando lo necesites,
+    aquí estamos. ¡Éxitos!
+    ```
+
+    <Tip>
+      Este mensaje de despedida suele generar más respuestas que los dos anteriores. Quita la presión y muchas personas contestan justamente ahí.
+    </Tip>
+  </Step>
+  <Step title="Etiqueta el resultado">
+    Al final, aplica una etiqueta como `sin-respuesta-3-intentos`. Así puedes armar una lista inteligente y trabajarlos después en una campaña de reactivación.
+  </Step>
+  <Step title="Publica el flujo">
+    Cambia el estado de **Borrador** a **Publicado**.
+
+    <Warning>
+      Un flujo en borrador no se ejecuta nunca. Es el motivo número uno de "construí la automatización y no pasó nada".
+    </Warning>
+  </Step>
+</Steps>
+
+## Pruébala antes de confiar en ella
+
+<Steps>
+  <Step title="Créate un contacto de prueba">
+    Usa tu propio teléfono y un correo al que tengas acceso.
+  </Step>
+  <Step title="Dispara el flujo de verdad">
+    Llena tu propio formulario o escribe al WhatsApp del negocio desde otro número.
+  </Step>
+  <Step title="Confirma que llegó el primer mensaje">
+    Debe llegar en segundos. Si no, revisa el historial de ejecución del flujo, que te dice exactamente en qué paso se detuvo.
+  </Step>
+  <Step title="Comprueba que se detiene al responder">
+    Responde al mensaje y verifica en el historial que el flujo se haya detenido para ese contacto.
+
+    Esta prueba es la más importante. Un flujo que sigue enviando mensajes a alguien que ya contestó hace que tu negocio se vea descuidado.
+  </Step>
+</Steps>
+
+## Errores comunes
+
+<AccordionGroup>
+  <Accordion title="El flujo no se ejecuta">
+    Revisa en este orden: que esté publicado y no en borrador, que el disparador coincida con lo que hizo el contacto, y que el contacto cumpla las condiciones de entrada.
+  </Accordion>
+
+  <Accordion title="Llegan mensajes a quien ya respondió">
+    Falta la condición de no respuesta en las esperas.
+  </Accordion>
+
+  <Accordion title="Los mensajes salen de madrugada">
+    Revisa la zona horaria de tu cuenta y agrega una ventana de horario permitido en las acciones de envío.
+  </Accordion>
+
+  <Accordion title="El nombre sale vacío o como texto crudo">
+    La variable está mal escrita o el contacto no tiene ese dato. Configura un valor de reemplazo.
+  </Accordion>
+
+  <Accordion title="Un contacto entró al flujo dos veces">
+    Ajusta la configuración de reingreso para que un mismo contacto no pueda entrar más de una vez.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Checklist de los primeros 7 días" icon="list-check" href="/primeros-pasos/checklist-primeros-dias">
+  Qué hacer cada día de tu primera semana en Chateea.
+</Card>
