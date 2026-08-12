@@ -1,0 +1,125 @@
+---
+title: "Variables y campos personalizados"
+description: "Personaliza mensajes a escala sin que salgan errores delante del cliente."
+icon: "code"
+---
+
+Una variable es un hueco que se rellena solo con el dato de cada contacto. Escribes el mensaje una vez y cada persona lo recibe con su nombre, su fecha de cita o su servicio.
+
+Bien usadas, un envío masivo se siente personal. Mal usadas, tu cliente recibe un mensaje con código en crudo y tu negocio se ve descuidado.
+
+## Cómo se escriben
+
+Se insertan entre llaves dobles:
+
+```text
+Hola {{contact.first_name}}, tu cita en {{location.name}}
+quedó confirmada.
+```
+
+<Tip>
+  **Nunca las escribas a mano.** Usa el selector de variables del editor. Un espacio de más, una llave faltante o un nombre de campo mal escrito hace que salga el texto literal en vez del dato.
+</Tip>
+
+## Las más usadas
+
+| Categoría | Para qué |
+| --- | --- |
+| Datos del contacto | Nombre, apellido, teléfono, correo |
+| Datos del negocio | Nombre, dirección, teléfono, sitio web |
+| Cita | Fecha, hora, servicio, responsable |
+| Factura | Monto, vencimiento, enlace de pago |
+| Usuario asignado | Nombre de quien atiende al contacto |
+| Campos personalizados | Cualquier dato propio de tu negocio |
+
+## El valor de reemplazo
+
+Esta es la parte que casi todo el mundo olvida y la que provoca los mensajes vergüenza.
+
+Si un contacto no tiene nombre registrado y tu mensaje empieza con la variable de nombre, el cliente recibe:
+
+```text
+Hola , tu cita quedó confirmada.
+```
+
+Por eso toda variable debe llevar un **valor de reemplazo**: lo que se muestra cuando el dato está vacío.
+
+<CardGroup cols={2}>
+  <Card title="Sin valor de reemplazo" icon="circle-xmark">
+    `Hola {{nombre}}` → _"Hola ,"_
+  </Card>
+
+  <Card title="Con valor de reemplazo" icon="circle-check">
+    `Hola {{nombre | ""}}` → _"Hola,"_
+  </Card>
+</CardGroup>
+
+<Warning>
+  Configúralo en **todas** las variables de mensajes masivos. En una base de miles de contactos siempre hay datos incompletos, y esos son justo los mensajes que se ven mal.
+</Warning>
+
+## Excepción importante: plantillas de WhatsApp
+
+Las plantillas de WhatsApp **no** usan variables con nombre. Usan variables numeradas: `{{1}}`, `{{2}}`, `{{3}}`.
+
+```text
+Hola {{1}}, tu cita en {{2}} es el {{3}} a las {{4}}.
+```
+
+Si usas campos con nombre en una plantilla, Meta la rechaza o el mensaje sale ilegible. Ver [Plantillas de WhatsApp](/whatsapp/plantillas).
+
+## Campos personalizados
+
+Cuando un dato no existe por defecto, lo creas en **Configuración → Campos personalizados**.
+
+### Tipos disponibles
+
+| Tipo | Útil para |
+| --- | --- |
+| Texto | Datos libres cortos |
+| Número | Cantidades, presupuestos |
+| Fecha | Vencimientos, aniversarios |
+| Selección | Opciones cerradas |
+| Casilla | Sí o no |
+| Archivo | Documentos del cliente |
+
+<Tip>
+  Prefiere **selección** sobre **texto** siempre que puedas. Un campo de texto libre termina con "Toyota", "toyota", "TOYOTA" y "toyot" — y ninguna lista inteligente los agrupa. Un campo de selección mantiene los datos limpios solos.
+</Tip>
+
+### Ejemplos por negocio
+
+- **Taller:** marca, modelo, placa, último kilometraje
+- **Clínica:** seguro médico, alergias, última visita
+- **Inmobiliaria:** presupuesto, zona, habitaciones
+- **Salón:** tipo de cabello, estilista preferido
+- **Gimnasio:** plan, fecha de renovación, objetivo
+
+## Dónde se usan
+
+Además de mensajes, los campos personalizados alimentan:
+
+- **Listas inteligentes**, para segmentar por cualquier criterio
+- **Condiciones de flujos**, para bifurcar según el dato
+- **Formularios**, para capturarlos desde el inicio
+- **Reportes**, para analizar por segmento
+
+## Prueba siempre antes de enviar
+
+<Steps>
+  <Step title="Envíate el mensaje a ti mismo">
+    Con un contacto de prueba **completo** y otro **incompleto**, para ver ambos casos.
+  </Step>
+  <Step title="Revisa que no quede texto en crudo">
+    Si ves llaves en el mensaje recibido, la variable está mal escrita.
+  </Step>
+  <Step title="Comprueba la puntuación">
+    "Hola , ¿cómo estás?" delata que falta un valor de reemplazo.
+  </Step>
+</Steps>
+
+## Siguiente paso
+
+<Card title="Telefonía y SMS" icon="phone" href="/telefonia/introduccion">
+  Números, llamadas y rastreo de campañas.
+</Card>
