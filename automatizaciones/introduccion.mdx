@@ -1,0 +1,112 @@
+---
+title: "Cómo funcionan los flujos"
+description: "Disparadores, acciones y condiciones: la lógica detrás de toda automatización."
+icon: "diagram-project"
+---
+
+Las automatizaciones son el cerebro de Chateea. Son lo que convierte la plataforma en un sistema en lugar de una colección de herramientas.
+
+Toda automatización responde a la misma estructura: **cuando pasa esto, haz aquello**.
+
+## Las tres piezas
+
+<CardGroup cols={3}>
+  <Card title="Disparador" icon="bolt">
+    El evento que arranca el flujo. Toda automatización empieza con uno.
+  </Card>
+
+  <Card title="Acción" icon="play">
+    Lo que el sistema hace: enviar, etiquetar, asignar, mover, esperar.
+  </Card>
+
+  <Card title="Condición" icon="code-branch">
+    Bifurca el camino según lo que sea cierto del contacto en ese momento.
+  </Card>
+</CardGroup>
+
+## Disparadores más usados
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| Formulario enviado | Alguien completa un formulario |
+| Mensaje entrante | Llega un mensaje por cualquier canal |
+| Cita agendada | Se reserva una cita |
+| Cita completada | Termina una cita |
+| Factura pagada | Entra un pago |
+| Etiqueta agregada | Se aplica una etiqueta al contacto |
+| Cambio de etapa | Una oportunidad avanza en el pipeline |
+| Llamada perdida | No se contesta una llamada |
+| Cumpleaños | Coincide la fecha del contacto |
+| Contacto creado | Entra alguien nuevo a la base |
+
+<Tip>
+  Un mismo flujo puede tener varios disparadores. Si tus leads llegan por formulario web y por WhatsApp, no hagas dos flujos: pon los dos disparadores en el mismo.
+</Tip>
+
+## Acciones más usadas
+
+- **Enviar mensaje** por WhatsApp, SMS, correo o redes
+- **Esperar** un tiempo determinado, o hasta que ocurra algo
+- **Agregar o quitar etiqueta**
+- **Asignar a un usuario**
+- **Crear tarea** con fecha de vencimiento
+- **Mover en el pipeline**
+- **Notificación interna** al equipo
+- **Actualizar un campo** del contacto
+- **Enviar a otro flujo**
+
+## La acción de espera
+
+Es la más importante y la que más se configura mal.
+
+Una espera no solo detiene el flujo un tiempo: puede tener **condiciones de salida**. La más valiosa es _continuar solo si el contacto no ha respondido_.
+
+<Warning>
+  Sin esa condición, tu flujo le sigue escribiendo a alguien que ya está conversando contigo. El cliente recibe "¿sigues interesado?" justo después de haberte dicho que sí. Es el error que más daña la percepción de un negocio automatizado.
+</Warning>
+
+## Condiciones y bifurcaciones
+
+Una condición divide el flujo en dos caminos según algo que sea cierto o falso del contacto.
+
+Ejemplo: tras enviar una cotización, esperas tres días y preguntas _¿tiene la etiqueta "cliente"?_ Si sí, va por la rama de bienvenida. Si no, va por la rama de seguimiento.
+
+<Tip>
+  Empieza con flujos lineales, sin bifurcaciones. Cuando el flujo simple ya funcione y entiendas dónde se atascan los contactos, agrega las ramas. Un flujo con seis bifurcaciones desde el día uno es imposible de depurar.
+</Tip>
+
+## Reglas de oro
+
+<AccordionGroup>
+  <Accordion title="Publícalo o no se ejecuta">
+    Un flujo en borrador nunca corre. Es la causa número uno de "construí la automatización y no pasó nada".
+  </Accordion>
+
+  <Accordion title="Ponle un nombre que se entienda en seis meses">
+    `Seguimiento leads web - 3 toques` es mejor que `Flujo 1`. Cuando tengas veinte flujos, vas a agradecerlo.
+  </Accordion>
+
+  <Accordion title="Configura el reingreso">
+    Decide si un mismo contacto puede entrar varias veces. Para seguimiento de leads casi siempre la respuesta es no.
+  </Accordion>
+
+  <Accordion title="Respeta el horario">
+    Agrega ventanas de envío permitido. Un mensaje automático a las 3 de la mañana genera bloqueos y bajas.
+  </Accordion>
+
+  <Accordion title="Pruébalo con tu propio número antes de publicar">
+    Siempre. Sin excepción.
+  </Accordion>
+</AccordionGroup>
+
+## El historial de ejecución
+
+Cada flujo guarda un registro de qué contactos entraron, en qué paso está cada uno y dónde se detuvieron.
+
+Es tu herramienta de diagnóstico principal: cuando algo no funciona, el historial te dice exactamente en qué paso se rompió, sin adivinar.
+
+## Siguiente paso
+
+<Card title="Flujos esenciales" icon="list-check" href="/automatizaciones/flujos-esenciales">
+  Los seis flujos que todo negocio debería tener funcionando.
+</Card>
