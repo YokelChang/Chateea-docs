@@ -1,0 +1,127 @@
+---
+title: "Dominios y correo"
+description: "Conecta tu propio dominio a tus páginas y asegúrate de que tus correos lleguen."
+icon: "globe"
+---
+
+Un dominio propio hace dos cosas: da credibilidad a tus páginas y, sobre todo, **determina si tus correos llegan a la bandeja principal o al spam**.
+
+La segunda es la que más dinero mueve y la que más se descuida.
+
+## Qué son los registros DNS
+
+Si no vienes del mundo técnico, esta analogía ayuda: el DNS es la guía telefónica de internet. Cuando alguien escribe tu dominio, el DNS le dice al navegador **dónde** está tu sitio.
+
+Tú no cambias tu dominio de lugar: cambias la dirección que aparece en la guía.
+
+| Registro | Para qué sirve |
+| --- | --- |
+| **A** | Apunta tu dominio a un servidor |
+| **CNAME** | Apunta un subdominio a otra dirección |
+| **MX** | Indica quién recibe el correo de tu dominio |
+| **TXT / SPF** | Autoriza quién puede enviar correo en tu nombre |
+| **DKIM** | Firma tus correos para probar que son legítimos |
+| **DMARC** | Le dice al receptor qué hacer si algo no cuadra |
+
+<Note>
+  Los tres últimos son los de entregabilidad. Sin ellos, los proveedores de correo desconfían de tus mensajes y una buena parte termina en spam.
+</Note>
+
+## Conecta tu dominio a las páginas
+
+<Steps>
+  <Step title="Decide qué dirección vas a usar">
+    Tu dominio principal (`tunegocio.com`) o un subdominio (`citas.tunegocio.com`).
+
+    <Tip>
+      Si ya tienes un sitio web en otro lado y no quieres tocarlo, usa un subdominio. Así tus embudos y páginas de reserva viven en Chateea sin afectar tu sitio actual.
+    </Tip>
+  </Step>
+  <Step title="Agrégalo en Chateea">
+    En **Configuración → Dominios**, agrega el dominio. La plataforma te muestra los registros que debes crear.
+  </Step>
+  <Step title="Créalos en tu proveedor de dominio">
+    Entra al panel donde compraste el dominio y copia los registros **exactamente** como aparecen.
+
+    <Warning>
+      Copia y pega, nunca escribas a mano. Un espacio de más al inicio o al final es la causa más frecuente de que la verificación falle, y es invisible a simple vista.
+    </Warning>
+  </Step>
+  <Step title="Espera la propagación">
+    Normalmente menos de una hora, aunque puede tardar hasta 48. Mientras tanto puedes seguir trabajando en otras cosas.
+  </Step>
+  <Step title="Asigna las páginas">
+    Define qué embudo o sitio se muestra en cada dirección.
+  </Step>
+</Steps>
+
+## Configura el correo para que llegue
+
+Este paso no es opcional si vas a enviar campañas o mensajes automatizados.
+
+<Steps>
+  <Step title="Agrega tu dominio de envío">
+    En **Configuración → Correo → Dominios**.
+  </Step>
+  <Step title="Crea los registros de autenticación">
+    SPF, DKIM y DMARC. Son los que le prueban al receptor que tus correos son legítimos.
+  </Step>
+  <Step title="Verifica">
+    Debe aparecer un indicador verde. Si sigue pendiente tras 48 horas, revisa espacios sobrantes en los registros.
+  </Step>
+  <Step title="Envíate una prueba">
+    A una cuenta personal. Revisa si llegó a la bandeja principal o a spam, y cómo se ve el remitente.
+  </Step>
+</Steps>
+
+## Cuida tu reputación de envío
+
+Un dominio quemado no se arregla fácil, y afecta incluso a tus correos normales de trabajo.
+
+<AccordionGroup>
+  <Accordion title="Empieza con volumen bajo">
+    Un dominio nuevo que envía cinco mil correos el primer día se marca como sospechoso de inmediato. Sube gradualmente durante dos o tres semanas.
+  </Accordion>
+
+  <Accordion title="Escríbele primero a quien te conoce">
+    Clientes activos y personas que interactuaron contigo hace poco. Casi nunca marcan spam.
+  </Accordion>
+
+  <Accordion title="Limpia los correos que rebotan">
+    Seguir enviando a direcciones inexistentes deteriora tu reputación rápido.
+  </Accordion>
+
+  <Accordion title="Respeta siempre las bajas">
+    Quien pidió no recibir más correos debe salir de todas tus listas, sin excepción.
+  </Accordion>
+
+  <Accordion title="Separa el correo transaccional del promocional">
+    Si haces contacto en frío, usa un dominio distinto del principal. Así proteges la reputación del dominio con el que le escribes a tus clientes reales.
+  </Accordion>
+</AccordionGroup>
+
+## Problemas frecuentes
+
+<AccordionGroup>
+  <Accordion title="El dominio no verifica">
+    Espacios sobrantes al copiar, registro creado en el sitio equivocado, o duplicado de un registro que ya existía.
+  </Accordion>
+
+  <Accordion title="La página no carga tras conectar el dominio">
+    Suele ser propagación pendiente. Espera unas horas antes de cambiar nada.
+  </Accordion>
+
+  <Accordion title="Mis correos llegan a spam">
+    Revisa que SPF, DKIM y DMARC estén verificados. Si lo están, el problema es de reputación: baja el volumen y escribe solo a contactos activos durante unas semanas.
+  </Accordion>
+
+  <Accordion title="Conecté el dominio y se cayó mi correo de trabajo">
+    Modificaste los registros MX. Restaura los de tu proveedor de correo: para enviar desde Chateea solo hacen falta los de autenticación, no los MX.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Portal del cliente" icon="user-lock" href="/portal-cliente/introduccion">
+  Un espacio propio para que tus clientes gestionen lo suyo.
+</Card>
