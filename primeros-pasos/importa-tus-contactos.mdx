@@ -1,0 +1,150 @@
+---
+title: "Importa tus contactos"
+description: "Trae tu base de clientes a Chateea sin perder datos ni ensuciar tus reportes."
+icon: "users"
+---
+
+Tu base de clientes actual es probablemente el activo más valioso que tienes. Esta guía te explica cómo traerla completa y, sobre todo, cómo evitar los errores que después son muy caros de deshacer.
+
+<Warning>
+  **Lee la sección de origen antes de importar.** Es el único paso de esta guía que no se arregla fácilmente después. Si importas miles de contactos sin marcar de dónde vienen, pierdes la capacidad de medir qué canal genera tus ventas, y recuperarla implica revisar contacto por contacto.
+</Warning>
+
+## Prepara tu archivo
+
+Chateea importa archivos en formato **CSV**. Si tienes los datos en Excel o Google Sheets, expórtalos como CSV antes de empezar.
+
+### Estructura recomendada
+
+| Columna | Obligatoria | Notas |
+| --- | --- | --- |
+| Nombre | Recomendada | Nombre de pila, separado del apellido |
+| Apellido | Recomendada | Permite personalizar mejor los mensajes |
+| Teléfono | Sí\* | Con código de país |
+| Correo | Sí\* | Una sola dirección por celda |
+| Etiquetas | Muy recomendada | Separadas por comas |
+| Origen | Muy recomendada | De dónde vino este contacto |
+| Empresa | Opcional | Útil en ventas B2B |
+| Ciudad y País | Opcional | Para segmentar por zona |
+
+\*Necesitas al menos teléfono **o** correo. Un contacto sin ninguno de los dos no se puede contactar y solo ocupa espacio.
+
+### Formato de teléfonos
+
+Este detalle rompe más importaciones que cualquier otro. Los teléfonos deben incluir el **código de país** con el signo de más.
+
+<CodeGroup>
+
+```text Correcto
++18095551234
++525512345678
++573001234567
+```
+
+```text Incorrecto
+809-555-1234
+(809) 555 1234
+8095551234
+```
+
+</CodeGroup>
+
+<Warning>
+  Excel tiende a borrar el signo de más y a convertir los teléfonos largos en notación científica. Antes de exportar, selecciona la columna de teléfonos y dale formato de **texto**.
+</Warning>
+
+### Limpia antes de importar
+
+- Elimina filas duplicadas
+- Borra contactos sin teléfono ni correo
+- Quita espacios al inicio y al final de las celdas
+- Unifica mayúsculas en nombres
+- Revisa correos evidentemente inválidos
+
+## Marca el origen de cada contacto
+
+Esta es la parte que casi todo el mundo se salta y luego lamenta.
+
+Cada contacto que importes debe llevar una marca de **de dónde vino**. Sin eso, dentro de tres meses vas a ver un reporte que dice que tienes miles de contactos y ninguna forma de saber cuáles vinieron de Instagram, cuáles de una feria y cuáles de una base antigua.
+
+```text
+importacion-2026-08-clientes-antiguos
+importacion-2026-08-feria-santo-domingo
+importacion-2026-08-base-instagram
+```
+
+<Tip>
+  Incluye la fecha en el nombre de la etiqueta. Cuando tengas cinco importaciones acumuladas, vas a agradecer poder distinguirlas de un vistazo.
+</Tip>
+
+## Realiza la importación
+
+<Steps>
+  <Step title="Abre el importador">
+    Ve a **Contactos** y pulsa **Importar**.
+  </Step>
+  <Step title="Sube el archivo CSV">
+    Arrastra el archivo o selecciónalo desde tu computadora.
+  </Step>
+  <Step title="Empareja las columnas">
+    Chateea te muestra cada columna de tu archivo junto a un menú para indicar a qué campo corresponde.
+
+    Si una columna no tiene un campo equivalente, puedes crear un **campo personalizado** en ese momento en vez de descartar el dato.
+  </Step>
+  <Step title="Define cómo tratar los duplicados">
+    - **Actualizar**: completa los datos que faltan y conserva lo que ya tenías
+    - **Omitir**: deja el contacto existente intacto
+    - **Crear de todos modos**: rara vez es lo que quieres, genera duplicados
+
+    En la mayoría de los casos, **Actualizar** es la opción correcta.
+  </Step>
+  <Step title="Aplica etiquetas a toda la importación">
+    Agrega aquí la etiqueta de origen que definiste.
+  </Step>
+  <Step title="Haz una prueba con 10 contactos primero">
+    Antes de importar miles de registros, crea un archivo con 10 y procésalo.
+
+    Si algo quedó mal, corregir diez contactos toma un minuto. Corregir cinco mil, no.
+  </Step>
+  <Step title="Importa el archivo completo">
+    Con la prueba validada, sube el archivo definitivo.
+  </Step>
+</Steps>
+
+## Después de importar
+
+<AccordionGroup>
+  <Accordion title="Revisa el reporte de la importación">
+    Chateea te indica cuántos contactos se crearon, cuántos se actualizaron y cuántos fallaron. Descarga el archivo de errores, corrígelo y vuelve a subir solo esas filas.
+  </Accordion>
+
+  <Accordion title="Verifica una muestra al azar">
+    Abre cinco o seis contactos de distintas partes del archivo y confirma que quedaron como esperabas.
+  </Accordion>
+
+  <Accordion title="Crea una lista inteligente con la etiqueta de importación">
+    Así puedes trabajar ese grupo por separado y compararlo con otros orígenes.
+  </Accordion>
+</AccordionGroup>
+
+## Antes de escribirles
+
+<Warning>
+  Importar contactos no es lo mismo que tener permiso para escribirles.
+
+  Enviar campañas masivas a personas que nunca aceptaron recibir tus mensajes daña la reputación de tu dominio, dispara reportes de spam y puede provocar la suspensión de tu número de WhatsApp.
+
+  Escríbele primero a quienes ya tuvieron una relación real con tu negocio, y empieza con volúmenes bajos.
+</Warning>
+
+```text
+Hola, te escribimos de [tu negocio]. Eres cliente nuestro desde hace un
+tiempo y queremos mantenerte al tanto de novedades y promociones.
+Si prefieres no recibir estos mensajes, responde BAJA y no volvemos a escribirte.
+```
+
+## Siguiente paso
+
+<Card title="Invita a tu equipo" icon="user-plus" href="/primeros-pasos/invita-a-tu-equipo">
+  Define quién entra, qué puede ver y qué puede hacer.
+</Card>

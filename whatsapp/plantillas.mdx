@@ -1,0 +1,160 @@
+---
+title: "Plantillas de WhatsApp"
+description: "Cómo crearlas, qué variables usar y cómo lograr que Meta las apruebe a la primera."
+icon: "file-lines"
+---
+
+Las plantillas son los únicos mensajes que puedes enviar fuera de la [ventana de 24 horas](/whatsapp/introduccion). Cada plantilla debe ser aprobada por Meta antes de poder usarse.
+
+## La regla de las variables
+
+<Warning>
+  **Las plantillas de WhatsApp usan variables numeradas, no campos con nombre.**
+
+  Se escribe `{{1}}`, `{{2}}`, `{{3}}`. **No** se escribe el nombre del campo entre llaves.
+
+  Este es, con diferencia, el error más frecuente al crear plantillas. Si usas campos con nombre, Meta rechaza la plantilla o el mensaje sale con el texto de la variable en crudo, y tu cliente recibe algo ilegible.
+</Warning>
+
+<CodeGroup>
+
+```text Correcto
+Hola {{1}}, te recordamos tu cita en {{2}} para el {{3}} a las {{4}}.
+Si necesitas reprogramar, responde a este mensaje.
+```
+
+```text Incorrecto
+Hola {{contact.first_name}}, te recordamos tu cita en {{location.name}}
+para el {{appointment.date}}.
+```
+
+</CodeGroup>
+
+Al momento de usar la plantilla en una automatización o campaña, asignas cada número al dato que corresponde: `{{1}}` al nombre del contacto, `{{2}}` al nombre del negocio, y así.
+
+<Note>
+  Dentro de la ventana de 24 horas sí puedes usar campos con nombre, porque son mensajes libres y no pasan por Meta. La restricción aplica únicamente a las plantillas.
+</Note>
+
+## Crea una plantilla
+
+<Steps>
+  <Step title="Abre el gestor de plantillas">
+    Ve a **Configuración → WhatsApp → Plantillas** y pulsa **Crear plantilla**.
+  </Step>
+  <Step title="Ponle nombre y elige idioma">
+    El nombre es interno. Usa algo descriptivo como `recordatorio_cita_24h`.
+  </Step>
+  <Step title="Elige la categoría">
+    | Categoría | Para qué |
+    | --- | --- |
+    | Utilidad | Confirmaciones, recordatorios, actualizaciones de pedido, facturas |
+    | Marketing | Promociones, novedades, reactivación |
+    | Autenticación | Códigos de verificación |
+
+    <Warning>
+      Elegir mal la categoría es motivo de rechazo. En caso de duda, si el mensaje vende algo, es marketing.
+    </Warning>
+  </Step>
+  <Step title="Escribe el cuerpo">
+    Usa variables numeradas. Mantén el mensaje claro y con contexto suficiente para que se entienda quién escribe y por qué.
+  </Step>
+  <Step title="Agrega botones (opcional)">
+    Botones de respuesta rápida ("Confirmar", "Reprogramar") o de enlace. Aumentan mucho la tasa de respuesta.
+  </Step>
+  <Step title="Envíala a aprobación">
+    Meta suele responder en minutos, a veces en algunas horas.
+  </Step>
+</Steps>
+
+## Cómo lograr que la aprueben
+
+<AccordionGroup>
+  <Accordion title="Da contexto de quién escribe">
+    Meta rechaza mensajes que parecen salir de la nada. Menciona el nombre de tu negocio en el cuerpo.
+  </Accordion>
+
+  <Accordion title="Escribe con ortografía y puntuación correctas">
+    Los errores y el exceso de mayúsculas o exclamaciones se leen como spam.
+  </Accordion>
+
+  <Accordion title="No prometas resultados">
+    Nada de "gana dinero", "resultados garantizados" u "oferta que no puedes rechazar".
+  </Accordion>
+
+  <Accordion title="No pidas datos sensibles">
+    Contraseñas, números de tarjeta o documentos de identidad son rechazo inmediato.
+  </Accordion>
+
+  <Accordion title="No empieces ni termines con una variable">
+    Una plantilla que arranca con una variable a secas suele rechazarse porque Meta no puede evaluar el contexto.
+  </Accordion>
+
+  <Accordion title="Incluye salida en las de marketing">
+    Una línea de baja clara mejora la aprobación y protege la calidad de tu número.
+  </Accordion>
+</AccordionGroup>
+
+## Plantillas que todo negocio necesita
+
+### Recordatorio de cita · Utilidad
+
+```text
+Hola {{1}}, te recordamos tu cita en {{2}} mañana {{3}} a las {{4}}.
+Si necesitas reprogramar, responde a este mensaje y te ayudamos.
+```
+
+### Confirmación de cita · Utilidad
+
+```text
+Hola {{1}}, tu cita en {{2}} quedó confirmada para el {{3}} a las {{4}}.
+Te esperamos. Si surge algo, escríbenos por aquí.
+```
+
+### Seguimiento a lead sin respuesta · Marketing
+
+```text
+Hola {{1}}, te escribimos de {{2}} hace unos días sobre tu consulta
+y no queremos dejarte sin respuesta. ¿Sigues interesado?
+Estamos para ayudarte cuando lo necesites.
+```
+
+### Reactivación de cliente · Marketing
+
+```text
+Hola {{1}}, te saludamos de {{2}}. Ha pasado un tiempo desde tu última
+visita y queríamos saber cómo estás. Si quieres agendar, responde por aquí.
+Si prefieres no recibir estos mensajes, responde BAJA.
+```
+
+### Solicitud de reseña · Utilidad
+
+```text
+Hola {{1}}, gracias por confiar en {{2}}.
+Si tuviste una buena experiencia, nos ayudaría muchísimo que nos dejaras
+tu opinión aquí: {{3}}
+```
+
+## Si te rechazan una plantilla
+
+<Steps>
+  <Step title="Lee el motivo">
+    Meta indica la razón del rechazo en la lista de plantillas.
+  </Step>
+  <Step title="Corrige lo señalado">
+    Los motivos más comunes: categoría equivocada, uso de campos con nombre, lenguaje promocional en una plantilla de utilidad, o falta de contexto.
+  </Step>
+  <Step title="Vuelve a enviarla">
+    Puedes editar y reenviar. No hay penalización por corregir y reintentar.
+  </Step>
+</Steps>
+
+<Warning>
+  Lo que sí penaliza es enviar muchas plantillas mal hechas seguidas. Si te rechazan tres o cuatro, detente y revisa el patrón antes de seguir enviando.
+</Warning>
+
+## Siguiente paso
+
+<Card title="Solución de problemas" icon="wrench" href="/whatsapp/solucion-de-problemas">
+  Qué revisar cuando los mensajes no salen o no entran.
+</Card>
