@@ -1,0 +1,143 @@
+---
+title: "La ficha del contacto"
+description: "Tu base de datos central y todo lo que guarda de cada cliente."
+icon: "address-book"
+---
+
+Los contactos son el centro de Chateea. Todo lo demás —conversaciones, citas, pagos, automatizaciones— cuelga de aquí.
+
+La diferencia con una hoja de cálculo es que la ficha no guarda solo datos: guarda **la historia completa** de la relación. Cada mensaje, cada llamada con su grabación, cada formulario, cada página visitada, cada compra.
+
+<Info>
+  Esto es lo que responde a la pregunta que casi ningún negocio puede contestar: _"¿quién es este cliente y qué ha pasado con él?"_. En Chateea son dos clics.
+</Info>
+
+## Qué contiene una ficha
+
+<CardGroup cols={2}>
+  <Card title="Datos básicos" icon="user">
+    Nombre, teléfono, correo, dirección, empresa. Lo mínimo para poder contactarlo.
+  </Card>
+
+  <Card title="Línea de tiempo" icon="clock-rotate-left">
+    Todo lo que ha pasado, en orden cronológico: mensajes, llamadas, citas, pagos, cambios de etapa.
+  </Card>
+
+  <Card title="Etiquetas" icon="tag">
+    Cómo lo clasificas: origen, interés, estado, nicho.
+  </Card>
+
+  <Card title="Campos personalizados" icon="list">
+    Los datos propios de tu negocio que no existen por defecto.
+  </Card>
+
+  <Card title="Oportunidades" icon="bars-progress">
+    Los negocios abiertos con esa persona y en qué etapa están.
+  </Card>
+
+  <Card title="Citas y pagos" icon="calendar-check">
+    Su historial de reservas y facturación.
+  </Card>
+</CardGroup>
+
+## De dónde salen los contactos
+
+Se crean automáticamente cuando alguien:
+
+- Escribe por cualquier canal conectado
+- Llena un formulario, encuesta o cuestionario
+- Agenda una cita
+- Compra o paga una factura
+- Llama a un número rastreado
+- Entra por una importación de CSV
+
+<Tip>
+  No crees contactos a mano salvo excepciones. Si tienes que hacerlo con frecuencia, significa que falta conectar un canal o poner un formulario en algún punto de entrada.
+</Tip>
+
+## Etiquetas
+
+Las etiquetas son tu herramienta principal de segmentación. Un contacto puede tener todas las que necesites.
+
+### Cómo nombrarlas para no perder el control
+
+El problema no es crear etiquetas: es que en seis meses tengas trescientas y nadie sepa cuál usar. Usa **prefijos por categoría**:
+
+```text
+origen-instagram
+origen-referido
+origen-anuncio-meta
+
+interes-corte
+interes-color
+interes-tratamiento
+
+estado-cliente-activo
+estado-lead-frio
+estado-no-contactar
+```
+
+<Warning>
+  Define las etiquetas **antes** de empezar a usarlas y escríbelas en un documento que tu equipo pueda consultar. Sin eso, terminas con `cliente`, `Cliente`, `clientes` y `cliente-activo` significando lo mismo, y ninguna lista inteligente funciona bien.
+</Warning>
+
+### Etiquetas que todo negocio necesita
+
+| Categoría | Ejemplos |
+| --- | --- |
+| Origen | De dónde vino el contacto |
+| Interés | Qué producto o servicio busca |
+| Estado | Lead, cliente activo, cliente inactivo |
+| Comportamiento | No responde, pidió no ser contactado |
+| Ciclo | Primera compra, recurrente, referido |
+
+## Campos personalizados
+
+Cuando un dato no cabe en los campos estándar, creas uno propio en **Configuración → Campos personalizados**.
+
+Ejemplos según el negocio:
+
+- **Clínica dental:** última limpieza, seguro médico
+- **Taller:** marca y modelo del vehículo, placa, kilometraje
+- **Inmobiliaria:** presupuesto, zona de interés, número de habitaciones
+- **Salón:** tipo de cabello, alergias a productos, estilista preferido
+
+<Tip>
+  Los campos personalizados se usan en mensajes, condiciones de flujos y listas inteligentes. Un campo bien definido te permite escribir "tu Toyota Corolla está listo" en vez de "su vehículo está listo".
+</Tip>
+
+## Contactos duplicados
+
+Se generan cuando la misma persona entra por dos vías con datos distintos: escribió por WhatsApp con un número y llenó un formulario con otro correo.
+
+Puedes **fusionar** los contactos desde la ficha. El historial de ambos se une en una sola línea de tiempo y no se pierde nada.
+
+<Tip>
+  Para prevenirlos, define un identificador único en tus formularios. El teléfono con código de país suele ser el más confiable, porque la gente tiene un solo número pero varios correos.
+</Tip>
+
+## Higiene de la base
+
+<AccordionGroup>
+  <Accordion title="Revisa los contactos sin datos de contacto">
+    Alguien sin teléfono ni correo no se puede contactar. Ocupa espacio y distorsiona tus reportes.
+  </Accordion>
+
+  <Accordion title="Marca a quienes pidieron no ser contactados">
+    Con una etiqueta clara y excluida de todas tus campañas. Escribirle a alguien que pidió no recibir mensajes daña tu reputación de envío.
+  </Accordion>
+
+  <Accordion title="Verifica que el origen esté siempre marcado">
+    Un contacto sin origen es un contacto que no puedes atribuir. Ver [Importa tus contactos](/primeros-pasos/importa-tus-contactos).
+  </Accordion>
+
+  <Accordion title="Fusiona duplicados una vez al mes">
+    Antes de que se acumulen y sean cientos.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Listas inteligentes" icon="filter" href="/contactos/listas-inteligentes">
+  Segmentos que se actualizan solos y disparan automatizaciones.
+</Card>
