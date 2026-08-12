@@ -1,0 +1,117 @@
+---
+title: "Solución de problemas de flujos"
+description: "Qué revisar cuando una automatización no hace lo que esperabas."
+icon: "wrench"
+---
+
+Antes de tocar nada, abre el **historial de ejecución** del flujo. Te dice qué contactos entraron, en qué paso está cada uno y dónde se detuvieron. Casi siempre la respuesta está ahí.
+
+## El flujo no se ejecuta
+
+Revisa en este orden exacto:
+
+<Steps>
+  <Step title="¿Está publicado?">
+    Si dice **Borrador**, no corre. Es la causa número uno.
+  </Step>
+  <Step title="¿El disparador coincide con lo que realmente pasó?">
+    Un flujo con disparador "formulario enviado" no se activa si el contacto escribió por WhatsApp. Confirma que estás probando el evento correcto.
+  </Step>
+  <Step title="¿El contacto cumple las condiciones de entrada?">
+    Si el flujo exige una etiqueta y el contacto no la tiene, no entra.
+  </Step>
+  <Step title="¿Ya había entrado antes?">
+    Si el reingreso está bloqueado y ese contacto ya pasó por el flujo, no vuelve a entrar. Prueba con un contacto nuevo.
+  </Step>
+</Steps>
+
+## Se ejecuta pero no llega el mensaje
+
+| Causa | Cómo confirmarlo |
+| --- | --- |
+| Pasó la ventana de 24 horas de WhatsApp | Revisa cuándo escribió el cliente por última vez |
+| La plantilla no está aprobada | Míralo en el gestor de plantillas |
+| No hay método de pago activo | Revisa **Configuración → Facturación** |
+| El dominio de correo no está verificado | Los correos van a spam o no salen |
+| El contacto se dio de baja | Aparece marcado en su ficha |
+| El cliente bloqueó tu número | No hay forma de verlo, pero explica el silencio total |
+
+## Le llegan mensajes a quien ya respondió
+
+Falta la **condición de no respuesta** en las esperas.
+
+Abre cada acción de espera del flujo y activa la opción de continuar solo si el contacto no ha respondido. Es el ajuste que más protege la percepción de tu negocio.
+
+<Warning>
+  Si tu agente de IA está activo en el mismo canal, agrega también una acción que saque al contacto del flujo cuando la conversación se asigne a un humano. Si no, el cliente recibe mensajes automáticos mientras conversa con una persona real.
+</Warning>
+
+## Los mensajes salen a deshora
+
+<AccordionGroup>
+  <Accordion title="Revisa la zona horaria de la cuenta">
+    En **Configuración → Perfil del negocio**. Si está mal, todo el sistema calcula mal.
+  </Accordion>
+
+  <Accordion title="Agrega ventanas de horario permitido">
+    En cada acción de envío. El mensaje espera hasta la próxima hora hábil en vez de salir de madrugada.
+  </Accordion>
+
+  <Accordion title="Cuidado con las esperas de días exactos">
+    Una espera de "3 días" desde un disparador de las 11 de la noche entrega a las 11 de la noche. Usa ventanas de horario para corregirlo.
+  </Accordion>
+</AccordionGroup>
+
+## Las variables salen vacías o en crudo
+
+<AccordionGroup>
+  <Accordion title="En un mensaje libre">
+    El contacto no tiene ese dato. Configura un valor de reemplazo en la variable, por ejemplo que use "hola" cuando no haya nombre.
+  </Accordion>
+
+  <Accordion title="En una plantilla de WhatsApp">
+    Estás usando campos con nombre en vez de variables numeradas. Ver [Plantillas de WhatsApp](/whatsapp/plantillas).
+  </Accordion>
+
+  <Accordion title="La variable está mal escrita">
+    Un espacio de más o una llave faltante hace que salga como texto literal. Cópiala del selector en vez de escribirla a mano.
+  </Accordion>
+</AccordionGroup>
+
+## Un contacto entró dos veces
+
+Ajusta la configuración de **reingreso** del flujo. Para seguimiento de leads casi siempre debe estar bloqueado.
+
+Si el problema es que existen dos fichas de la misma persona, fusiona los contactos desde la ficha del contacto.
+
+## El flujo se quedó atascado
+
+Si el historial muestra contactos detenidos en un mismo paso durante días:
+
+- **En una espera:** revisa si la condición de salida nunca se cumple. Una espera "hasta que pague" sobre un contacto que nunca va a pagar se queda ahí para siempre. Ponle un límite de tiempo.
+- **En una condición:** verifica que ambas ramas tengan continuación. Una rama vacía deja al contacto colgado.
+- **En un envío:** revisa saldo, plantillas y ventana de 24 horas.
+
+## Buenas prácticas para evitar problemas
+
+<AccordionGroup>
+  <Accordion title="Un cambio a la vez">
+    Si modificas cinco cosas y algo empeora, no sabes cuál fue.
+  </Accordion>
+
+  <Accordion title="Prueba siempre con tu propio número">
+    Incluyendo la prueba de que el flujo se detiene cuando el contacto responde.
+  </Accordion>
+
+  <Accordion title="Revisa el historial una vez por semana">
+    Los flujos se rompen en silencio. Nadie te avisa que dejaron de funcionar.
+  </Accordion>
+
+  <Accordion title="Documenta qué hace cada flujo">
+    Un nombre descriptivo y una nota interna. En seis meses no vas a recordar por qué existe.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Sigue sin funcionar?
+
+Escríbenos por WhatsApp al **\+1 829-580-7071** con el nombre del flujo, qué esperabas que pasara y una captura del historial de ejecución.

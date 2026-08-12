@@ -1,0 +1,205 @@
+---
+title: "El agente conversacional"
+description: "Entrena la IA que responde tus mensajes para que suene a tu marca y cierre citas."
+icon: "comments"
+---
+
+Un bot genérico suena genérico. Un agente bien entrenado suena como tu negocio. La diferencia está casi toda en cómo lo configuras.
+
+## Configúralo
+
+<Steps>
+  <Step title="Crea el agente">
+    Ve a **Automatización → Agentes de IA** y pulsa **Crear agente**.
+  </Step>
+  <Step title="Define quién es">
+    Dale un nombre y describe su papel en una o dos frases:
+
+    ```text
+    Eres el asistente de [tu negocio], una barbería en Santo Domingo.
+    Atiendes a clientes que escriben para preguntar precios, horarios
+    y agendar citas.
+    ```
+  </Step>
+  <Step title="Define su tono">
+    Sé específico. "Profesional" no dice nada; esto sí:
+
+    ```text
+    Hablas en español neutro latinoamericano, con trato de tú.
+    Eres cálido y directo, sin sonar acartonado.
+    Respuestas cortas, de dos o tres líneas máximo.
+    Usas emojis con moderación, nunca más de uno por mensaje.
+    Nunca dices "estimado cliente" ni "quedamos a la orden".
+    ```
+  </Step>
+  <Step title="Dale su objetivo">
+    ```text
+    Tu objetivo es que la persona agende una cita.
+    Responde su pregunta primero, y luego invítala a agendar.
+    No insistas más de dos veces.
+    ```
+  </Step>
+  <Step title="Carga su base de conocimiento">
+    Todo lo que necesita saber: servicios, precios, horarios, dirección, formas de pago, políticas.
+  </Step>
+  <Step title="Define sus límites">
+    Qué **no** debe hacer. Esta parte es tan importante como el resto.
+  </Step>
+  <Step title="Actívalo en modo sugerencia">
+    Redacta pero no envía. Déjalo así al menos una semana.
+  </Step>
+</Steps>
+
+## La base de conocimiento
+
+Es de donde el agente saca sus respuestas. Cuanto más completa, menos inventa.
+
+| Contenido | Por qué |
+| --- | --- |
+| Servicios y qué incluye cada uno | Es lo que más preguntan |
+| Precios o rangos | Si no los tiene, se los inventa o evade |
+| Horarios y días de atención | Evita prometer citas imposibles |
+| Dirección y cómo llegar | Con referencias, no solo la calle |
+| Formas de pago | Pregunta constante |
+| Política de cancelación | Evita conflictos |
+| Tiempos de entrega o duración | Gestiona expectativas |
+| Preguntas frecuentes reales | Sácalas de tus conversaciones pasadas |
+
+<Tip>
+  La mejor fuente para tu base de conocimiento son tus propias conversaciones. Abre la bandeja, revisa el último mes y anota las veinte preguntas que más se repiten. Esas son las que tu agente debe dominar.
+</Tip>
+
+## Los límites
+
+Escribe explícitamente lo que no debe hacer. Sin esto, un agente rellena los huecos inventando.
+
+```text
+Nunca inventes precios, servicios ni promociones que no estén
+en tu base de conocimiento. Si no sabes algo, dilo con honestidad
+y ofrece conectar con una persona del equipo.
+
+Nunca prometas resultados ni des garantías.
+
+Nunca des asesoría médica, legal ni financiera.
+
+Si la persona está molesta o presenta una queja, no intentes
+resolverla: discúlpate y transfiere a un humano de inmediato.
+
+Nunca discutas con el cliente ni cuestiones lo que dice.
+```
+
+<Warning>
+  El daño más caro que puede causar un agente mal configurado es **inventar un precio**. El cliente llega esperando pagar lo que le dijo la IA, y tú quedas en la posición incómoda de desdecirlo. Carga siempre los precios reales o instrúyelo explícitamente para que remita a una persona.
+</Warning>
+
+## Cómo debe pedir los datos
+
+Esta es la diferencia entre un agente que convierte y uno que espanta.
+
+<CardGroup cols={2}>
+  <Card title="Mal" icon="circle-xmark">
+    ```text
+    Para agendar necesito:
+    - Nombre completo
+    - Correo
+    - Teléfono
+    - Fecha preferida
+    - Servicio de interés
+    ```
+
+    Se siente como un formulario. La gente abandona.
+  </Card>
+
+  <Card title="Bien" icon="circle-check">
+    ```text
+    Perfecto, te agendo. ¿Cómo te llamas?
+    ```
+
+    _(espera respuesta)_
+
+    ```text
+    Un gusto, Ana. ¿Qué día te viene mejor?
+    ```
+
+    Se siente como una conversación.
+  </Card>
+</CardGroup>
+
+Instrúyelo así:
+
+```text
+Pide los datos uno a la vez, conversando.
+Nunca pidas varios datos en el mismo mensaje.
+Nunca presentes una lista de campos a llenar.
+```
+
+## Entrega a un humano
+
+```text
+Transfiere a un humano cuando:
+- La persona exprese molestia, queja o reclamo
+- Pida un descuento o condiciones especiales
+- Pregunte algo que no está en tu base de conocimiento
+- Pida hablar con una persona
+- La conversación lleve más de seis intercambios sin avanzar
+
+Al transferir, di: "Te conecto con alguien del equipo que
+te ayuda enseguida" y no sigas respondiendo.
+```
+
+<Note>
+  Configura también una notificación interna al transferir, para que tu equipo se entere en el momento y no horas después.
+</Note>
+
+## Ajústalo cada semana
+
+<Steps>
+  <Step title="Lee las conversaciones reales">
+    No las de prueba. Las reales, con clientes reales.
+  </Step>
+  <Step title="Busca tres cosas">
+    - Preguntas que no supo responder, para agregarlas a la base de conocimiento
+    - Respuestas que no suenan a tu marca, para ajustar el tono
+    - Momentos donde debió transferir y no lo hizo, para afinar las reglas
+  </Step>
+  <Step title="Haz un cambio a la vez">
+    Si cambias cinco cosas de golpe y algo empeora, no sabes cuál fue.
+  </Step>
+  <Step title="Prueba antes de publicar">
+    Escríbele tú mismo desde otro número y comprueba el cambio.
+  </Step>
+</Steps>
+
+## Problemas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Responde muy largo">
+    Agrega un límite explícito de longitud. "Máximo tres líneas por respuesta" funciona mejor que "sé breve".
+  </Accordion>
+
+  <Accordion title="Suena robótico o acartonado">
+    Casi siempre falta especificidad en el tono. Escribe ejemplos concretos de frases que sí diría y frases que nunca diría.
+  </Accordion>
+
+  <Accordion title="Inventa información">
+    Su base de conocimiento tiene huecos. Identifica qué inventó y agrégalo. Refuerza además la instrucción de admitir cuando no sabe.
+  </Accordion>
+
+  <Accordion title="No agenda, solo conversa">
+    Falta objetivo explícito. Dile que su meta es la cita y que debe invitar a agendar tras responder la consulta.
+  </Accordion>
+
+  <Accordion title="Sigue respondiendo después de transferir">
+    Agrega la instrucción de detenerse tras la transferencia, y configura la automatización para sacar al contacto del flujo de IA al asignarlo a un humano.
+  </Accordion>
+
+  <Accordion title="Responde en otro idioma">
+    Especifica el idioma en sus instrucciones y añade que debe responder siempre en el idioma en que le escriben.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Voz IA" icon="phone" href="/ia/voz-ia">
+  La recepcionista que contesta el teléfono a cualquier hora.
+</Card>
