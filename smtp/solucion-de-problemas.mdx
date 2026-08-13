@@ -1,0 +1,144 @@
+---
+title: "Solucionar problemas de entrega SMTP"
+description: "Por qué no salen tus correos y cómo arreglarlo, empezando por la causa más frecuente."
+icon: "wrench"
+---
+
+## La causa número uno
+
+Si tus correos no se entregan, lo primero que debes revisar es esto:
+
+<Warning>
+  **La dirección del remitente no coincide con la dirección verificada en tu proveedor SMTP.**
+
+  Tu proveedor solo permite enviar desde la dirección con la que te autenticaste. Si configuraste el SMTP con `contacto@tunegocio.com` pero un flujo, un calendario o un usuario envía desde `ventas@tunegocio.com`, el envío se rechaza.
+</Warning>
+
+Lo confuso es que la configuración se ve correcta: el correo de prueba funcionó, la conexión aparece activa. El problema está en que **otra parte de la plataforma está enviando desde una dirección distinta**.
+
+### Dónde se esconden las direcciones que no coinciden
+
+Revisa estos cuatro lugares, que son los que suelen tener una dirección propia configurada:
+
+| Lugar | Qué revisar |
+| --- | --- |
+| Acciones de correo en tus flujos | Cada acción puede tener su propio remitente |
+| Confirmaciones y recordatorios de calendario | Suelen heredar el correo del dueño del calendario |
+| Usuarios del equipo | Cada usuario puede enviar desde su propia dirección |
+| Correos de facturas y presupuestos | Pueden tener un remitente distinto configurado |
+
+<Tip>
+  La solución suele ser una de dos: unificar todo para que envíe desde la dirección autenticada, o verificar la dirección adicional como alias en tu cuenta de Google.
+</Tip>
+
+## Diagnóstico por síntoma
+
+| Síntoma | Causa probable | Solución |
+| --- | --- | --- |
+| Nada sale, error de autenticación | Contraseña de aplicación incorrecta o revocada | Genera una nueva y actualízala |
+| El correo de prueba funciona, los automáticos no | Remitente distinto al verificado | Unifica las direcciones de envío |
+| Funcionaba y dejó de funcionar de golpe | Contraseña de la cuenta cambiada, o límite diario alcanzado | Regenera la contraseña de aplicación o espera 24 horas |
+| Llegan pero a la carpeta de spam | Falta autenticación del dominio | Verifica SPF, DKIM y DMARC |
+| Solo fallan los envíos masivos | Límite diario de Google superado | Usa el envío predeterminado para campañas |
+| No conecta con el servidor | Puerto bloqueado | Prueba 465 con SSL en vez de 587 con TLS |
+| Aparece un remitente que no reconozco | Un flujo o calendario con dirección propia | Revisa la tabla de arriba |
+
+## Error de autenticación
+
+<AccordionGroup>
+  <Accordion title="¿Estás usando la contraseña de aplicación?">
+    La contraseña normal de tu cuenta de Google **no funciona** para SMTP. Necesitas una contraseña de aplicación de 16 caracteres. Ver [Usar Gmail como proveedor SMTP](/smtp/gmail-google-workspace).
+  </Accordion>
+
+  <Accordion title="¿Copiaste espacios de más?">
+    Un espacio al inicio o al final es invisible y rompe la autenticación. Borra el campo y vuelve a pegarla con cuidado.
+  </Accordion>
+
+  <Accordion title="¿Cambiaste la contraseña de tu cuenta de Google?">
+    Al cambiar la contraseña principal, Google **revoca todas las contraseñas de aplicación**. Hay que generar una nueva y actualizarla.
+  </Accordion>
+
+  <Accordion title="¿Pusiste la dirección completa como usuario?">
+    Debe incluir el dominio: `contacto@tunegocio.com`, no solo `contacto`.
+  </Accordion>
+
+  <Accordion title="¿Sigue activa la verificación en dos pasos?">
+    Si se desactivó, las contraseñas de aplicación dejan de existir.
+  </Accordion>
+</AccordionGroup>
+
+## Los correos llegan a spam
+
+Que el envío salga no garantiza que llegue a la bandeja principal. Son dos problemas distintos.
+
+<Steps>
+  <Step title="Verifica la autenticación de tu dominio">
+    SPF, DKIM y DMARC deben estar configurados y verificados. Ver [Dominios y correo](/dominios/introduccion).
+  </Step>
+  <Step title="Revisa el contenido del mensaje">
+    Exceso de mayúsculas, signos de exclamación y palabras típicas de promoción agresiva disparan los filtros.
+  </Step>
+  <Step title="Revisa la proporción de imagen y texto">
+    Un correo que es solo una imagen grande sin texto se marca como sospechoso.
+  </Step>
+  <Step title="Comprueba a quién estás escribiendo">
+    Si envías a contactos antiguos que no interactúan hace años, la tasa de rebote y de no apertura daña tu reputación.
+  </Step>
+  <Step title="Baja el volumen unas semanas">
+    Escribe solo a contactos activos hasta que la reputación se recupere.
+  </Step>
+</Steps>
+
+## Límite diario alcanzado
+
+Google bloquea el envío temporalmente cuando superas la cuota, normalmente durante unas 24 horas.
+
+<Warning>
+  El bloqueo afecta a **toda** tu cuenta de Google, no solo a Chateea. Tu correo de trabajo normal también deja de enviar. Por eso no conviene usar Gmail como proveedor SMTP para campañas masivas.
+</Warning>
+
+Qué hacer:
+
+- Espera a que se levante el bloqueo
+- Pasa las campañas al envío predeterminado y deja el SMTP de Google solo para correos individuales
+- Recuerda que el límite cuenta **destinatarios**, no mensajes: un correo a 50 personas consume 50
+
+## Lista de verificación
+
+Cuando algo falle, recórrela en este orden:
+
+<AccordionGroup>
+  <Accordion title="1. ¿El correo de prueba funciona?">
+    Si no, el problema es de conexión o autenticación. Si sí, el problema está en alguna dirección de envío que no coincide.
+  </Accordion>
+
+  <Accordion title="2. ¿La verificación en dos pasos sigue activa?">
+    Y la contraseña de aplicación sigue vigente.
+  </Accordion>
+
+  <Accordion title="3. ¿Todas las direcciones de envío coinciden con la verificada?">
+    Flujos, calendarios, usuarios, facturas.
+  </Accordion>
+
+  <Accordion title="4. ¿El dominio está autenticado?">
+    SPF, DKIM y DMARC en verde.
+  </Accordion>
+
+  <Accordion title="5. ¿Superaste el límite diario?">
+    Revisa cuántos destinatarios acumulaste hoy.
+  </Accordion>
+
+  <Accordion title="6. ¿El puerto está bloqueado?">
+    Prueba el puerto alternativo.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Sigue sin funcionar?
+
+Escríbenos por WhatsApp al **\+1 829-580-7071** con esta información:
+
+- Qué dirección configuraste como remitente
+- Si el correo de prueba funciona o no
+- El mensaje de error exacto, si aparece
+- Desde dónde salió el correo que falló (un flujo, un calendario, una factura)
+- Hora aproximada del intento

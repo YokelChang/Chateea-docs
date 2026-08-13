@@ -1,0 +1,136 @@
+---
+title: "Usar Gmail o Google Workspace como proveedor SMTP"
+description: "Configura tu cuenta de Google para enviar los correos de Chateea desde tu propia dirección."
+icon: "google"
+---
+
+SMTP es el protocolo que se encarga de **enviar** correo. Cuando configuras un proveedor SMTP propio, los correos de Chateea salen a través de tu cuenta de Google en vez de la infraestructura de envío predeterminada.
+
+## ¿Te conviene?
+
+|  | Envío predeterminado | SMTP propio con Google |
+| --- | --- | --- |
+| **Configuración** | Ya funciona, solo verificas tu dominio | Requiere configurar la cuenta de Google |
+| **Volumen** | Alto, pensado para campañas masivas | Limitado por las cuotas diarias de Google |
+| **Reputación de envío** | Compartida y gestionada | La de tu propia cuenta de Google |
+| **Copia en Enviados** | No queda en tu Gmail | Cada correo queda en tu carpeta de Enviados |
+| **Ideal para** | Campañas, boletines, automatizaciones masivas | Correos uno a uno y transaccionales de bajo volumen |
+
+<Warning>
+  **No uses Gmail para campañas masivas.** Las cuentas de Google tienen límites diarios de envío pensados para correspondencia normal, no para marketing. Superarlos puede provocar la suspensión temporal del envío en tu cuenta de Google, lo que afecta también a tu correo de trabajo.
+
+  Para campañas, usa el envío predeterminado con tu [dominio verificado](/dominios/introduccion).
+</Warning>
+
+## Requisito previo: verificación en dos pasos
+
+Google no permite que aplicaciones externas se conecten con la contraseña normal de tu cuenta. Necesitas una **contraseña de aplicación**, y esa opción **solo aparece si tienes activada la verificación en dos pasos**.
+
+<Steps>
+  <Step title="Entra a la seguridad de tu cuenta de Google">
+    Desde la gestión de tu Cuenta de Google, sección **Seguridad**.
+  </Step>
+  <Step title="Activa la verificación en dos pasos">
+    Sigue el asistente. Vas a necesitar un teléfono para recibir el código.
+  </Step>
+  <Step title="Confírmalo antes de continuar">
+    Si la verificación en dos pasos no está activa, el menú de contraseñas de aplicación simplemente no existe. Es la causa número uno de "no encuentro esa opción".
+  </Step>
+</Steps>
+
+<Note>
+  En **Google Workspace**, el administrador puede tener desactivadas las contraseñas de aplicación para toda la organización. Si eres usuario y no ves la opción aunque tengas la verificación en dos pasos activa, habla con tu administrador.
+</Note>
+
+## Genera la contraseña de aplicación
+
+<Steps>
+  <Step title="Busca “contraseñas de aplicación”">
+    En la sección de seguridad de tu Cuenta de Google.
+  </Step>
+  <Step title="Crea una nueva">
+    Pónle un nombre que reconozcas más adelante, por ejemplo `Chateea`.
+  </Step>
+  <Step title="Copia la contraseña generada">
+    Google muestra una clave de **16 caracteres**, normalmente agrupada en cuatro bloques de cuatro.
+
+    <Warning>
+      **Se muestra una sola vez.** Cópiala en ese momento. Si la pierdes, hay que generar otra.
+    </Warning>
+  </Step>
+</Steps>
+
+<Tip>
+  Al pegarla en Chateea puedes escribirla con o sin espacios: ambos formatos funcionan. Lo que **no** debe llevar son espacios al inicio o al final, que es lo que suele colarse al copiar.
+</Tip>
+
+## Configura Chateea
+
+Ve a **Configuración → Correo → Servicios de correo** y agrega un proveedor SMTP con estos valores:
+
+| Campo | Valor |
+| --- | --- |
+| **Servidor SMTP** | `smtp.gmail.com` |
+| **Puerto** | `587` con TLS, o `465` con SSL |
+| **Cifrado** | TLS para el puerto 587, SSL para el 465 |
+| **Usuario** | Tu dirección de correo **completa**, incluido el dominio |
+| **Contraseña** | La contraseña de aplicación de 16 caracteres |
+| **Correo del remitente** | La misma dirección del usuario |
+| **Nombre del remitente** | El nombre de tu negocio, como quieres que aparezca |
+
+<Warning>
+  En el campo de usuario va la dirección **completa**. `contacto` no funciona; `contacto@tunegocio.com` sí.
+</Warning>
+
+<Note>
+  Si el puerto 587 no conecta, prueba el 465 con SSL. Algunas redes y servidores bloquean uno de los dos.
+</Note>
+
+## Verifica que funcione
+
+<Steps>
+  <Step title="Envía un correo de prueba">
+    Desde la propia pantalla de configuración, a una dirección personal a la que tengas acceso.
+  </Step>
+  <Step title="Revisa el remitente">
+    Debe aparecer tu dirección y el nombre de tu negocio, no una dirección genérica.
+  </Step>
+  <Step title="Revisa si llegó a spam">
+    Si cayó en spam, revisa la autenticación de tu dominio. Ver [Dominios y correo](/dominios/introduccion).
+  </Step>
+  <Step title="Comprueba tu carpeta de Enviados">
+    Con SMTP de Google, el correo queda registrado ahí. Es una buena señal de que el envío salió realmente por tu cuenta.
+  </Step>
+</Steps>
+
+## Límites de envío
+
+Google aplica cuotas diarias que varían según el tipo de cuenta y pueden cambiar con el tiempo. A grandes rasgos, una cuenta gratuita de Gmail tiene un límite bastante bajo, y las cuentas de Google Workspace uno mayor.
+
+<Warning>
+  Consulta las cuotas vigentes en la documentación de Google antes de planificar tus envíos. Al superar el límite, Google bloquea el envío temporalmente, normalmente durante unas 24 horas, y eso afecta a **toda** tu cuenta de correo, no solo a Chateea.
+</Warning>
+
+El límite cuenta destinatarios, no mensajes: un correo enviado a 50 personas consume 50.
+
+## Cuándo usar cada cosa
+
+<CardGroup cols={2}>
+  <Card title="SMTP de Google" icon="envelope">
+    Correos uno a uno, respuestas desde la bandeja, confirmaciones y notificaciones de bajo volumen.
+  </Card>
+
+  <Card title="Envío predeterminado" icon="paper-plane">
+    Campañas, boletines, secuencias de automatización y cualquier envío a decenas o cientos de personas.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Puedes usar ambos: SMTP de Google para lo transaccional y el envío predeterminado para lo masivo. Es la configuración más robusta.
+</Tip>
+
+## Siguiente paso
+
+<Card title="Solucionar problemas de entrega SMTP" icon="wrench" href="/smtp/solucion-de-problemas">
+  Qué hacer cuando los correos no llegan.
+</Card>
