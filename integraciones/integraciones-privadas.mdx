@@ -1,0 +1,152 @@
+---
+title: "Integraciones privadas"
+description: "Conecta Chateea con tus propios sistemas mediante tokens con permisos controlados."
+icon: "key"
+---
+
+<Note>
+  **Disponible en los planes Pro y Business.** Si estás en Starter y necesitas esta función, escríbenos y te ayudamos a evaluar el cambio de plan.
+</Note>
+
+Una integración privada es una conexión que tú creas entre Chateea y un sistema propio: tu aplicación interna, un script, una herramienta de automatización o un desarrollo a la medida.
+
+Se llama **privada** porque existe solo para tu cuenta. No se publica, no la usa nadie más y no pasa por ningún proceso de revisión.
+
+## Reemplaza a las claves de API tradicionales
+
+Si ya trabajaste antes con claves de API, este es el modelo que las sustituye, y la diferencia importa.
+
+<CardGroup cols={2}>
+  <Card title="Clave de API tradicional" icon="triangle-exclamation">
+    Una sola clave con acceso **a todo**. Si se filtra, quien la tenga puede leer tus contactos, enviar mensajes y borrar información.
+
+    No se puede limitar ni saber quién la está usando.
+  </Card>
+
+  <Card title="Integración privada" icon="shield-check">
+    Un token con **permisos específicos**. Le das únicamente los accesos que ese sistema necesita.
+
+    Puedes tener varias, revocar una sin afectar al resto y saber qué hace cada una.
+  </Card>
+</CardGroup>
+
+<Warning>
+  El principio que debe guiar toda integración privada: **da el mínimo permiso que haga funcionar la tarea**.
+
+  Si tu sistema solo necesita leer contactos, no le des permiso de escritura ni de eliminación. El día que ese token se filtre, el daño queda limitado a lo que autorizaste.
+</Warning>
+
+## Para qué sirve
+
+Casos típicos:
+
+- **Sincronizar con tu sistema propio**: llevar contactos o ventas de Chateea a tu software de gestión
+- **Conectar herramientas sin integración directa**: cuando no existe una conexión nativa
+- **Alimentar reportes externos**: extraer datos hacia tu propio panel o tu hoja de cálculo
+- **Automatizaciones a la medida**: procesos específicos de tu negocio que los flujos no cubren
+- **Aplicaciones internas**: un panel propio que consulte o registre información
+
+<Note>
+  Antes de construir una integración privada, revisa si lo que necesitas ya se resuelve con una [automatización](/automatizaciones/introduccion) o una [integración existente](/integraciones/introduccion). Suele ser el caso, y no requiere mantenimiento técnico.
+</Note>
+
+## Créala
+
+<Steps>
+  <Step title="Entra a la configuración">
+    Ve a **Configuración → Integraciones privadas** y crea una nueva.
+  </Step>
+  <Step title="Nombra por sistema, no por persona">
+    `Sincronización con sistema contable` es mejor que `Integración de Juan`.
+
+    Dentro de un año vas a necesitar saber qué se rompe si revocas ese token, y el nombre de una persona no te lo dice.
+  </Step>
+  <Step title="Selecciona los permisos">
+    Marca únicamente los que ese sistema necesita. Los permisos se agrupan por área: contactos, conversaciones, calendarios, oportunidades, pagos, formularios y demás.
+
+    Cada área distingue entre **lectura** y **escritura**. Si el sistema solo consulta, no le des escritura.
+  </Step>
+  <Step title="Genera el token">
+    <Warning>
+      **El token se muestra una sola vez.** Cópialo y guárdalo en un lugar seguro en ese momento.
+
+      Si lo pierdes, no se puede recuperar: hay que generar uno nuevo y actualizar el sistema que lo usaba.
+    </Warning>
+  </Step>
+  <Step title="Configúralo en tu sistema">
+    El token se envía como credencial de autorización en cada petición.
+  </Step>
+  <Step title="Prueba con una operación de lectura">
+    Antes de escribir o modificar nada, confirma que puedes leer. Así verificas la conexión sin arriesgar datos.
+  </Step>
+</Steps>
+
+## Guarda el token de forma segura
+
+Un token de integración privada es equivalente a una contraseña de tu cuenta, con los permisos que le hayas dado.
+
+<AccordionGroup>
+  <Accordion title="Nunca lo pongas en código público">
+    Ni en un repositorio, ni en el código de tu sitio web, ni en nada que se ejecute en el navegador del usuario. Cualquiera puede leerlo ahí.
+  </Accordion>
+
+  <Accordion title="Nunca lo compartas por mensaje o correo">
+    Si necesitas dárselo a un desarrollador, usa un gestor de contraseñas, no WhatsApp.
+  </Accordion>
+
+  <Accordion title="Guárdalo como variable de entorno">
+    En el servidor que lo usa, nunca escrito directamente en el archivo del programa.
+  </Accordion>
+
+  <Accordion title="Un token por sistema">
+    No reutilices el mismo token en varios lugares. Si tienes que revocarlo, quieres que caiga una sola cosa.
+  </Accordion>
+</AccordionGroup>
+
+## Revócalo cuando corresponda
+
+Revocar un token lo desactiva de inmediato y de forma permanente.
+
+Hazlo cuando:
+
+- Un desarrollador o proveedor externo deja de trabajar contigo
+- Sospechas que el token pudo filtrarse
+- El sistema que lo usaba ya no está en operación
+- Cambias de herramienta
+
+<Warning>
+  Al revocar, **todo lo que dependa de ese token deja de funcionar en el momento**. Si una sincronización corre en segundo plano, se detiene sin avisar a nadie.
+
+  Antes de revocar, confirma qué sistemas lo están usando.
+</Warning>
+
+## Buenas prácticas
+
+- **Documenta cada integración**: qué sistema la usa, quién la mantiene y qué hace. Un token sin dueño conocido es un riesgo.
+- **Revisa la lista cada seis meses** y revoca lo que ya no se usa.
+- **Empieza en un entorno de prueba** si vas a escribir o modificar datos.
+- **Cuidado con las operaciones masivas**: un error en un script con permiso de escritura puede modificar miles de contactos en segundos.
+
+## Si algo no funciona
+
+<AccordionGroup>
+  <Accordion title="Error de autorización">
+    El token está mal copiado, fue revocado, o le falta el permiso para esa operación específica.
+  </Accordion>
+
+  <Accordion title="Funciona para leer pero no para escribir">
+    Falta el permiso de escritura en esa área. Los permisos de lectura y escritura son independientes.
+  </Accordion>
+
+  <Accordion title="Dejó de funcionar de golpe">
+    Revisa si alguien revocó el token, o si la cuenta cambió a un plan que no incluye esta función.
+  </Accordion>
+
+  <Accordion title="Recibo errores por exceso de peticiones">
+    Hay límites de frecuencia. Espacia las peticiones o procesa en lotes en vez de una por una.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Esta función requiere conocimientos técnicos. Si no tienes un desarrollador, escríbenos por WhatsApp al **\+1 829-580-7071** y evaluamos si lo que necesitas se puede resolver con una automatización o una integración existente, que casi siempre es más simple y no requiere mantenimiento.
