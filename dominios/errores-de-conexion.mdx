@@ -1,0 +1,242 @@
+---
+title: "Solucionar errores de conexión de dominio"
+description: "Qué significa cada error de verificación DNS y cómo resolverlo paso a paso."
+icon: "triangle-exclamation"
+---
+
+Conectar un dominio suele tomar unos minutos. Cuando no funciona, casi siempre es por una de estas tres razones: hay **registros DNS que se contradicen**, los **valores no coinciden** con los que pide la plataforma, o el dominio **ya está conectado** en otro lugar.
+
+Esta guía recorre cada error, qué significa y cómo resolverlo.
+
+<Note>
+  La mayoría de los cambios de DNS empiezan a surtir efecto en cuestión de minutos, aunque la propagación completa puede tardar hasta 48 horas.
+</Note>
+
+## Identifica tu error
+
+| Mensaje que ves | Qué significa | Dónde resolverlo |
+| --- | --- | --- |
+| Conflicto de registro A. Se encontraron varios registros A | Tu dominio apunta a más de una dirección IPv4 | [Varios registros A](#varios-registros-a) |
+| Conflicto de registro AAAA. Elimina todos los registros AAAA | Existe un registro IPv6 donde solo se esperan IPv4 | [Registros AAAA](#registros-aaaa) |
+| Los registros CAA bloquean la emisión | Tu dominio no autoriza a la entidad que emite el certificado SSL | [Registros CAA](#registros-caa) |
+| No se encontró un registro CNAME o A apuntando a… | Falta el registro, o el valor no coincide | [Los registros no coinciden](#los-registros-no-coinciden) |
+| El dominio ya está en uso | Está conectado a otra cuenta o espacio de trabajo | [Dominio conectado en otro lugar](#dominio-conectado-en-otro-lugar) |
+
+---
+
+## Varios registros A
+
+Un **registro A** conecta tu dominio con una dirección IPv4 concreta: le dice a internet en qué servidor vive tu sitio.
+
+Si existen varios registros A para el mismo dominio raíz, los proveedores de DNS no saben cuál servidor debe responder. El resultado son fallos de verificación o problemas para cargar el sitio.
+
+### Cómo solucionarlo
+
+<Steps>
+  <Step title="Entra al panel DNS de tu proveedor">
+    Donde compraste el dominio o donde gestiones su DNS.
+  </Step>
+  <Step title="Busca todos los registros A">
+    Revisa tres lugares donde suelen esconderse:
+
+    - El host `@`
+    - Tu dominio raíz
+    - Subdominios que apunten a direcciones IP distintas
+  </Step>
+  <Step title="Elimina los duplicados y los conflictivos">
+    Deja únicamente el registro A con el valor que te indica Chateea.
+  </Step>
+  <Step title="Guarda y espera unos minutos">
+    Luego reintenta la verificación.
+  </Step>
+</Steps>
+
+---
+
+## Registros AAAA
+
+Un **registro AAAA** hace lo mismo que un registro A, pero para direcciones IPv6.
+
+Si existe un registro AAAA cuando el sistema solo espera IPv4, la conexión falla.
+
+### Cómo solucionarlo
+
+<Steps>
+  <Step title="Abre tu panel DNS">
+    Y localiza los registros etiquetados como `AAAA` o `IPv6`.
+  </Step>
+  <Step title="Elimina el registro AAAA conflictivo">
+    Si tu configuración solo usa IPv4, no lo necesitas.
+  </Step>
+  <Step title="Guarda y reintenta a los pocos minutos">
+  </Step>
+</Steps>
+
+<Warning>
+  **Si usas Cloudflare:** a veces Cloudflare muestra resultados de IPv6 aunque no exista ningún registro AAAA visible, por cómo funciona su proxy.
+
+  Antes de cambiar nada, confirma directamente en tu lista de registros DNS si realmente existe un registro AAAA. Si no lo hay, el problema no está ahí y borrar cosas al azar solo empeora la situación.
+</Warning>
+
+---
+
+## Registros CAA
+
+Un **registro CAA** define qué autoridades de certificación tienen permiso para emitir certificados SSL para tu dominio. Es una medida de seguridad: impide que cualquiera emita un certificado a tu nombre.
+
+El problema aparece cuando tu registro CAA existente **no autoriza** a la entidad que necesita emitir el certificado de tu sitio. Sin ese permiso, el SSL no se genera.
+
+### Solución recomendada
+
+<Steps>
+  <Step title="Abre tu configuración DNS">
+  </Step>
+  <Step title="Localiza el registro CAA">
+  </Step>
+  <Step title="Elimina el registro CAA conflictivo">
+    Al no haber restricción, cualquier autoridad puede emitir el certificado y la verificación avanza.
+  </Step>
+  <Step title="Guarda y reintenta la verificación">
+  </Step>
+</Steps>
+
+### Opción avanzada
+
+Si prefieres **conservar** tus restricciones CAA en vez de eliminarlas, puedes autorizar únicamente a la entidad que hace falta agregando este valor a tu registro CAA:
+
+```text
+pki.goog
+```
+
+Así se emite el certificado SSL sin renunciar al resto de tus restricciones de seguridad.
+
+<Tip>
+  La opción avanzada es la correcta si configuraste los registros CAA a propósito. Si nunca los tocaste y aparecieron por defecto, eliminarlos es más simple y no pierdes nada.
+</Tip>
+
+---
+
+## Los registros no coinciden
+
+Este error aparece cuando la plataforma no encuentra los registros que espera, o los encuentra con valores distintos.
+
+Las causas habituales:
+
+- Valores mal copiados
+- Registros que faltan
+- Registros que se contradicen entre sí
+- Propagación de DNS todavía en curso
+- Configuraciones antiguas guardadas en caché
+
+### Cómo solucionarlo
+
+<Steps>
+  <Step title="Verifica tus registros con una herramienta de consulta DNS">
+    Sirve para confirmar que tus registros son visibles públicamente, no solo dentro del panel de tu proveedor. Comprueba tres cosas:
+
+    - Que el registro A apunte a la dirección IP correcta
+    - Que los registros CNAME apunten al destino correcto
+    - Que no existan registros que se contradigan
+  </Step>
+  <Step title="Elimina los conflictos">
+    - Registros A duplicados, si solo hace falta uno
+    - Registros AAAA, si solo usas IPv4
+    - Entradas CNAME que choquen entre sí
+  </Step>
+  <Step title="Guarda, espera unos minutos y reintenta">
+  </Step>
+</Steps>
+
+<Warning>
+  **Si usas GoDaddy:** un dominio con el aparcamiento activado no se conecta correctamente, aunque los registros parezcan bien.
+
+  Entra a la configuración de tu dominio, **desactiva el aparcamiento**, guarda y reintenta la verificación.
+</Warning>
+
+<Tip>
+  El error más común de todos es el más tonto: copiar un valor con un espacio de más al inicio o al final. Es invisible en pantalla. Borra el campo por completo y vuelve a pegarlo.
+</Tip>
+
+---
+
+## Dominio conectado en otro lugar
+
+A veces el dominio ya está conectado a otra cuenta o a otro espacio de trabajo, y no puede estar en dos sitios a la vez.
+
+Tienes dos caminos:
+
+<CardGroup cols={2}>
+  <Card title="Desconéctalo tú" icon="unlink">
+    Entra a la cuenta anterior y libera el dominio desde ahí. Es lo más rápido si tienes acceso.
+  </Card>
+
+  <Card title="Escríbenos" icon="headset">
+    Si no tienes acceso a esa cuenta, nuestro equipo te ayuda a liberar la conexión.
+  </Card>
+</CardGroup>
+
+---
+
+## Sobre la propagación del DNS
+
+Los cambios de DNS no son instantáneos, y esto genera mucha confusión innecesaria.
+
+| Qué esperar | Detalle |
+| --- | --- |
+| Tiempo habitual | La mayoría de los cambios se reflejan en minutos |
+| Tiempo máximo | La propagación global puede tardar hasta 48 horas |
+| Caché del navegador | Puede seguir mostrándote resultados viejos aunque el cambio ya esté hecho |
+| Modo incógnito | Ayuda a comprobar el comportamiento real, sin caché |
+| Herramienta de consulta DNS | La forma más fiable de confirmar si el cambio ya se propagó |
+
+<Warning>
+  No hagas cambios sobre cambios. Si modificaste un registro hace cinco minutos y aún no verifica, **espera** antes de tocar otra cosa. Encadenar modificaciones hace imposible saber cuál era el problema real.
+</Warning>
+
+---
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Actualicé el DNS y mi dominio sigue sin verificarse">
+    Lo más probable es que la propagación siga en curso. Espera unos minutos y reintenta.
+  </Accordion>
+
+  <Accordion title="¿Qué es un registro A?">
+    Conecta tu dominio con una dirección de servidor IPv4.
+  </Accordion>
+
+  <Accordion title="¿Qué es un registro AAAA?">
+    Hace lo mismo que un registro A, pero con una dirección IPv6.
+  </Accordion>
+
+  <Accordion title="¿Puedo conservar mis registros CAA?">
+    Sí. En vez de eliminarlos, puedes modificarlos para autorizar la entidad necesaria. Ver la opción avanzada más arriba.
+  </Accordion>
+
+  <Accordion title="¿Por qué Cloudflare me sigue mostrando IPv6?">
+    Por el comportamiento de su proxy, que puede mostrar enrutamiento IPv6 aunque no exista un registro AAAA visible. Verifica directamente en tu lista de registros.
+  </Accordion>
+
+  <Accordion title="¿Cuánto tardan los cambios de DNS?">
+    Normalmente minutos. La propagación global completa puede llegar a 48 horas.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## ¿Sigue sin conectar?
+
+Si corregiste los registros, esperaste la propagación y el dominio sigue sin verificar, escríbenos por WhatsApp al **\+1 829-580-7071** con esta información:
+
+- El dominio exacto
+- Qué mensaje de error aparece
+- Quién es tu proveedor de DNS
+- Qué registros tienes configurados ahora
+- Cuándo hiciste el último cambio
+
+De lunes a viernes de 9:00am a 9:00pm y sábados de 9:00am a 1:00pm (hora de República Dominicana).
+
+<Card title="Volver a Dominios y correo" icon="globe" href="/dominios/introduccion">
+  Configuración de dominio, correo y entregabilidad.
+</Card>
