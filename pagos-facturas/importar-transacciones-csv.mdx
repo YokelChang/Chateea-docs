@@ -1,0 +1,80 @@
+---
+title: "Importar archivo CSV de transacciones: formatos de campo"
+description: "Sube grandes volúmenes de registros de pago con el formato correcto y sin errores."
+icon: "file-csv"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Importar transacciones mediante CSV te permite subir rápidamente grandes volúmenes de registros de pago. Usar el formato correcto asegura que los datos se procesen bien y evita los errores de importación más comunes.
+
+## Requisitos de formato CSV
+
+| Requisito | Detalle |
+| --- | --- |
+| **Extensión** | El archivo debe guardarse en formato `.csv` |
+| **Encabezados** | Deben coincidir **exactamente** con los nombres de campo requeridos |
+| **Filas** | Cada fila representa una transacción |
+| **Datos obligatorios** | Todos los campos obligatorios deben tener datos válidos |
+| **Limpieza** | Evita espacios de más, símbolos o formatos no compatibles |
+
+## Campos de la transacción
+
+Cada columna representa una parte de la transacción. Esta es la estructura completa, con su descripción y un ejemplo:
+
+| Columna | Descripción | Ejemplo |
+| --- | --- | --- |
+| **Customer First Name** | Nombre del cliente | John |
+| **Customer Last Name** | Apellido del cliente | Doe |
+| **Customer Email** | Correo del cliente | [john.doe@example.com](mailto:john.doe@example.com) |
+| **Customer Phone** | Teléfono (incluye código de país si lo tienes) | \+14155552671 |
+| **Currency** | Código ISO de la moneda | USD |
+| **Late Fees** | Cargo adicional por pago tardío, si aplica | 2.00 |
+| **Tip Amount** | Propina incluida en la transacción | 5.00 |
+| **Amount Paid** | Importe final pagado (puede ser Subtotal − Descuento \+ Impuesto \+ Propina \+ Cargos) | 105.00 |
+| **Transaction Date** | Fecha en formato `DD/MM/YYYY` | 25/01/2025 |
+| **Transaction Time** | Hora en formato `HH:MM` (12 horas) | 12:30 PM |
+| **Payment Method** | Método usado: Credit Card, PayPal, Cash, ACH | Credit Card |
+| **Payment Provider** | Pasarela o proveedor que procesó el pago | Stripe |
+| **Address Line 1** | Línea 1 de la dirección del comprador | 4034 Granville Lane |
+| **City** | Ciudad | Secaucus |
+| **State** | Estado o provincia | New Jersey |
+| **Country** | País (ISO de 2 letras o nombre completo) | United States |
+| **Postal Code** | Código postal | 07094 |
+
+<Note>
+  Puedes incluir campos opcionales como impuestos, descuentos, propinas y detalles del artículo para dar información más detallada de cada transacción.
+</Note>
+
+## Errores comunes al subir
+
+- Nombres de columna incorrectos
+- Campos obligatorios vacíos
+- Formatos de fecha no válidos
+- Símbolos o espacios de más
+
+<Tip>
+  El fallo número uno es el encabezado que no coincide **exactamente**. Antes de subir, compara tus encabezados con la columna de la tabla de arriba, carácter por carácter.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿En qué formato deben estar las fechas?">
+    Usa un formato consistente, como `DD/MM/AAAA` o `MM/DD/AAAA`, según la configuración de tu sistema.
+  </Accordion>
+
+  <Accordion title="¿Puedo actualizar transacciones existentes con CSV?">
+    Depende del comportamiento del sistema. Normalmente, la importación crea registros nuevos salvo que se indique lo contrario.
+  </Accordion>
+</AccordionGroup>
+
+## Si no puedes cargar el archivo
+
+Revisa el formato comparando tu archivo con la estructura de ejemplo de la tabla, o contacta al servicio de asistencia.
+
+<Card title="Importación masiva de facturas mediante CSV" icon="file-invoice" href="/pagos-facturas/importar-facturas-csv">
+  La guía equivalente para facturas.
+</Card>

@@ -1,0 +1,110 @@
+---
+title: "Cómo gestionar los reembolsos dentro del CRM"
+description: "Emite reembolsos totales o parciales de cualquier proveedor, desde un solo lugar."
+icon: "rotate-left"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+La función de reembolsos te permite emitir reembolsos totales o parciales de transacciones hechas con distintos proveedores de pago, desde una sola plataforma. Admite pagos con tarjeta, Google Pay y Apple Pay.
+
+<Info>
+  Lo práctico: no tienes que entrar al panel de Stripe, de PayPal o del proveedor que sea para devolver un cobro. Lo haces desde la misma pantalla donde ves la transacción.
+</Info>
+
+## Qué permite
+
+- Procesar reembolsos totales o parciales, con flexibilidad para resolver con el cliente
+- Dar seguimiento a los intentos de reembolso, exitosos y fallidos, desde los detalles de la transacción
+- Gestionar reembolsos de varios proveedores y métodos de pago desde un lugar central, reduciendo el trabajo manual
+
+<Note>
+  Por ahora, esta función **no admite permisos específicos de usuario** para procesar reembolsos, aunque está previsto implementarlo.
+</Note>
+
+## Casos de uso
+
+| Caso | Cómo ayuda el reembolso |
+| --- | --- |
+| **Disputas con clientes** | Procesar reembolsos rápido mejora la satisfacción y la confianza en la marca |
+| **Errores de facturación** | Si se cobró de más o dos veces, se corrige al momento |
+| **Cancelación de pedidos** | Devolución eficiente cuando el cliente cancela |
+| **Devoluciones y cambios** | Reembolsar la compra original y facilitar una nueva transacción |
+| **Descuentos y promociones** | Reembolso parcial si un descuento no se aplicó bien |
+
+## Proveedores de pago admitidos
+
+La acción de reembolso está disponible para **Stripe, Authorize.net, NMI y PayPal**.
+
+<Warning>
+  No hay opción, por ahora, de reembolsar las transacciones recurrentes posteriores de una suscripción.
+</Warning>
+
+## Pasos para emitir un reembolso
+
+Ve a **Pagos → Transacciones**, haz clic en los tres puntos junto al pago que quieres reembolsar, y pulsa **Reembolsar**.
+
+### Reembolso completo
+
+Si eliges reembolso completo, la ventana **precarga automáticamente** el importe total de la transacción. Solo confirmas.
+
+### Reembolso parcial
+
+Puedes editar el importe precargado a **cualquier cantidad menor** que el total, para devolver solo una parte.
+
+<Info>
+  **Ejemplo real:** en el detalle de una transacción de \$20, puedes emitir un reembolso de \$10 con una nota como "Reembolso del 50% de la suscripción a petición". El sistema registra ese reembolso parcial con su fecha, importe, nota y estado.
+</Info>
+
+<Tip>
+  Lo que escribas en **Notas** es para tu registro y aparece en la columna de notas del detalle del reembolso. Úsalo siempre: dentro de tres meses, "reembolso 50% a petición" te dirá qué pasó sin tener que reconstruirlo.
+</Tip>
+
+### Casos de uso del reembolso parcial
+
+| Caso | Para qué |
+| --- | --- |
+| **Errores de precio** | Devolver la diferencia entre el precio cobrado y el correcto |
+| **Descuento posterior a la compra** | Aplicar un descuento o promoción después de la transacción |
+| **Resolución intermedia** | Un acuerdo entre el cliente y el negocio cuando no está del todo satisfecho |
+| **Devolución parcial** | Devolver el valor de los artículos devueltos, sin tocar el resto del pedido |
+| **Daños o faltantes** | Compensar por artículos dañados o perdidos |
+| **Costos de envío** | Cubrir gastos de envío ante un problema o retraso, como gesto de buena voluntad |
+
+## Dónde se registran los reembolsos
+
+Todos los intentos, exitosos y fallidos, quedan en la **página de detalles de la transacción**. Así mantienes el control de los importes reembolsados de cada transacción.
+
+<Tip>
+  Para encontrar rápido lo reembolsado, usa el filtro **Estado → Reembolsado** en la tabla de Transacciones.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="No puedo procesar reembolsos con Authorize.net; da error de criterios para emitir un crédito">
+    Suele deberse a que el reembolso no cumple los criterios del proveedor. Authorize.net solo permite reembolsar transacciones **después de 24 horas** del cobro. La posibilidad de reembolsar transacciones antiguas depende de las políticas y límites de tiempo del proveedor. Consulta sus lineamientos o a su soporte.
+  </Accordion>
+
+  <Accordion title="¿Puedo hacer varios reembolsos parciales de una misma transacción?">
+    Sí, siempre que la suma acumulada no supere el importe original de la transacción.
+  </Accordion>
+
+  <Accordion title="¿Se admiten transacciones de Google Pay y Apple Pay?">
+    Sí. Se reembolsan igual que los pagos con tarjeta; el importe vuelve a la cuenta bancaria asociada a la tarjeta o a la cuenta de Google/Apple.
+  </Accordion>
+
+  <Accordion title="¿Cuánto tarda en reflejarse el reembolso?">
+    Depende del proveedor y del banco del cliente. Suele tardar de **cuatro a seis días hábiles**.
+  </Accordion>
+
+  <Accordion title="¿Hay un límite de reembolsos diarios?">
+    Normalmente no hay un límite fijo, pero conviene confirmarlo con tu proveedor de pagos.
+  </Accordion>
+
+  <Accordion title="¿Hay permisos de usuario para reembolsos?">
+    Por ahora no. La mejor forma de identificar reembolsos es revisar el detalle de la transacción o filtrar la tabla de Transacciones.
+  </Accordion>
+</AccordionGroup>
