@@ -1,0 +1,125 @@
+---
+title: "Configurar proveedores de pago por canal"
+description: "Asigna un proveedor distinto a cada canal de venta y controla cómo se enrutan los cobros."
+icon: "shuffle"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Este artículo explica cómo funcionan los proveedores de pago en los distintos canales, qué opciones son compatibles hoy, cuáles están previstas y cómo la configuración de proveedor **predeterminado** y **preferido** afecta al proceso de pago.
+
+## Descripción general
+
+Configurar los proveedores por canal te permite asignar procesadores específicos a diferentes áreas de tu negocio: embudos, formularios, tiendas y facturas. En lugar de depender de un único proveedor predeterminado global, el cobro se enruta según **el origen de la transacción**.
+
+<Info>
+  Caso típico en LATAM: cobras con un proveedor local en tu tienda y en los formularios de pedido, porque es el que tus clientes reconocen, y dejas otro proveedor para las facturas de clientes corporativos. Antes eso obligaba a cambiar el predeterminado a mano; ahora convive en la misma cuenta.
+</Info>
+
+### Principales ventajas
+
+| Ventaja | Qué te permite |
+| --- | --- |
+| **Mayor flexibilidad** | Usar proveedores distintos para experiencias de venta distintas |
+| **Optimización** | Enrutar pagos según comisiones, regiones o fortalezas del proveedor |
+| **Pruebas más seguras** | Experimentar con un proveedor nuevo en modo de prueba sin tocar lo que ya está vendiendo |
+| **Configuración más sencilla** | No tener que cambiar constantemente el proveedor predeterminado de la cuenta |
+
+## Canales compatibles
+
+Los canales que admiten configuración propia de proveedor son:
+
+| Canal | Descripción |
+| --- | --- |
+| **Embudo de ventas (formulario de pedido de un paso)** | Checkout en una sola pantalla |
+| **Embudo de ventas (formulario de pedido de dos pasos)** | Checkout dividido en dos pasos |
+| **Formularios** | Formularios con cobro integrado |
+| **Tiendas** | Comercio electrónico |
+| **Calendarios** | Reservas con pago o depósito |
+| **Facturas** | Cobro de facturas emitidas |
+| **Pago automático de facturas** | Cargos automáticos de plantillas recurrentes |
+| **Enlaces de pago** | Cobro por enlace compartible |
+| **Cursos** | Venta de cursos y contenido protegido |
+| **Comunidades** | Accesos y membresías |
+| **Encuestas** | Encuestas con cobro |
+
+## Cómo funciona la selección de proveedores
+
+La elección del proveedor al finalizar la compra sigue un conjunto sencillo de reglas:
+
+- **Prioridad del proveedor.** La configuración a nivel de canal **anula** el proveedor predeterminado global. Si un canal no tiene proveedor configurado, se usa el predeterminado. Solo se pueden seleccionar proveedores ya conectados.
+- **Combinaciones compatibles.** Puedes usar **PayPal junto con otro proveedor** (por ejemplo, Stripe o NMI). No se admiten dos proveedores distintos de PayPal a la vez (por ejemplo, Stripe \+ NMI).
+- **Edición de proveedores.** Puedes eliminar cualquier proveedor seleccionado. PayPal se agrega o se elimina junto con otro proveedor, pero **no se puede reemplazar directamente** por otro: primero hay que eliminarlo.
+
+## Modo en vivo vs. modo de prueba
+
+Separar la configuración de producción de la de prueba te permite experimentar sin afectar transacciones reales.
+
+| Modo | Para qué sirve |
+| --- | --- |
+| **En vivo** | Transacciones con clientes reales |
+| **De prueba** | Probar los flujos de pago sin procesar dinero real |
+
+<Note>
+  Cada modo puede tener **proveedores distintos asignados por canal**. Configurar el modo de prueba no cambia lo que ocurre en vivo, y viceversa.
+</Note>
+
+## Cómo configurar los proveedores por canal
+
+<Steps>
+  <Step title="Dirígete a Pagos">
+    Desde el menú lateral de tu subcuenta.
+  </Step>
+  <Step title="Haz clic en Integraciones">
+    Es la pestaña superior derecha de la sección de pagos.
+  </Step>
+  <Step title="Haz clic en Configurar proveedores">
+    Se abre la vista **Gestionar configuraciones de proveedor**, con la lista de canales.
+  </Step>
+  <Step title="Cambia entre modo en vivo y modo de prueba">
+    Según lo que vayas a configurar.
+  </Step>
+  <Step title="Selecciona el proveedor preferido para cada canal">
+    - **Agregar un proveedor:** haz clic en el signo **\+** junto al canal y elige uno de los proveedores conectados en el menú desplegable. Puedes agregar PayPal más un proveedor adicional. El desplegable solo muestra los proveedores ya conectados en la subcuenta.
+    - **Eliminar un proveedor:** haz clic en la **X** junto al proveedor y confirma la eliminación.
+    - **Restablecer un proveedor:** al restablecerlo se elimina la configuración personalizada y el canal vuelve al proveedor predeterminado global.
+  </Step>
+</Steps>
+
+<Warning>
+  Si vas a probar un proveedor nuevo, hazlo en **modo de prueba** y en un solo canal. Cambiar el proveedor de todos los canales a la vez, en vivo, es la forma más rápida de romper cobros que ya estaban funcionando.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué sucede si se desconecta un proveedor preferido?">
+    Si un proveedor usado a nivel de canal se desconecta desde la página de integraciones, el sistema vuelve automáticamente al proveedor predeterminado. Si lo vuelves a conectar más tarde, deberás seleccionarlo de nuevo como preferido para ese canal.
+  </Accordion>
+
+  <Accordion title="¿Puedo configurar los proveedores con mayor detalle, por tienda o embudo?">
+    Todavía no. Actualmente la configuración se realiza a nivel de canal. Se prevé un control más granular (por tienda, embudo o activo) en futuras actualizaciones.
+  </Accordion>
+
+  <Accordion title="¿Puedo eliminar todos los proveedores de un canal para desactivar los pagos?">
+    No. Si se eliminan todos, el sistema restablece el canal al proveedor predeterminado global para evitar la pérdida accidental de la funcionalidad de pago. Los pagos solo se ocultan cuando no hay ningún proveedor conectado.
+  </Accordion>
+
+  <Accordion title="¿Cuántos proveedores puedo usar al finalizar la compra?">
+    PayPal y un proveedor adicional (por ejemplo, Stripe o NMI). No se admite el uso simultáneo de varios proveedores que no sean PayPal.
+  </Accordion>
+
+  <Accordion title="¿Cómo afecta el proveedor predeterminado a la configuración del canal?">
+    Actúa como respaldo. Si hay proveedor configurado a nivel de canal, este anula al predeterminado; si no lo hay, se usa el predeterminado.
+  </Accordion>
+
+  <Accordion title="¿Qué opciones de pago verán los clientes al finalizar la compra?">
+    Si tienes configurados un proveedor predeterminado y PayPal, verán ambas opciones. Si PayPal no está configurado, solo se muestra el predeterminado.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Configurar los proveedores de pago" icon="plug-circle-check" href="/pagos-facturas/configurar-proveedores-pago">
+  Conecta primero el proveedor: sin conexión activa no aparece en el desplegable de canales.
+</Card>
