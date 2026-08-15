@@ -1,0 +1,177 @@
+---
+title: "Acción de enviar correo en flujos de empresa y objetos personalizados"
+description: "Envía correos automáticos a los contactos asociados sin crear flujos aparte."
+icon: "envelope"
+---
+
+<Note>
+  **Función disponible en Labs.** Debes activarla antes de que la acción aparezca en tus flujos.
+</Note>
+
+Los flujos de empresa y de objetos personalizados trabajan sobre registros que tienen contactos relacionados. Hasta ahora, para enviarles un correo había que construir flujos adicionales basados en contactos o encadenar pasos extra.
+
+La acción **Enviar correo** elimina ese rodeo: el correo sale directamente desde el flujo de empresa u objeto personalizado hacia los contactos asociados, y tú eliges exactamente cuáles.
+
+## Qué te ahorra
+
+| Antes | Con esta acción |
+| --- | --- |
+| Un flujo de empresa más un flujo de contactos encadenado | Un solo flujo |
+| Pasos intermedios para pasar del registro al contacto | Selección directa del destinatario |
+| Riesgo de correos duplicados al cruzar asociaciones | Duplicados evitados automáticamente |
+
+Casos donde encaja bien:
+
+- Correo de bienvenida al crear una empresa nueva
+- Recordatorio de renovación antes de que venza un contrato o una membresía
+- Aviso a las partes interesadas cuando un proyecto alcanza un hito
+- Actualización al completarse un pedido o un servicio
+- Solicitud de aprobación a alguien del equipo interno
+- Seguimiento cuando un registro llega a una etapa determinada
+
+## Configúrala
+
+<Steps>
+  <Step title="Activa la función en Labs">
+    Ve a **Configuración → Labs**, busca la acción de correo en flujos de empresa y objetos personalizados, y actívala.
+
+    <Warning>
+      Sin este paso, la acción sencillamente no aparece en el constructor de flujos. Es la causa número uno de "no encuentro esa opción".
+    </Warning>
+  </Step>
+  <Step title="Abre o crea tu flujo">
+    En **Automatización → Flujos de trabajo**, crea un flujo de empresa u objeto personalizado, o abre uno existente.
+  </Step>
+  <Step title="Agrega la acción">
+    Pulsa **\+ Agregar** y selecciona **Enviar correo** dentro de las acciones de comunicación. También puedes buscarla por nombre.
+  </Step>
+  <Step title="Elige los destinatarios">
+    Desde el desplegable de destinatarios. Las opciones disponibles:
+
+    | Opción | Disponible en |
+    | --- | --- |
+    | Todos los contactos asociados | Flujos de empresa y de objetos personalizados |
+    | Contacto asociado más reciente | Solo objetos personalizados |
+    | Contacto asociado más antiguo | Solo objetos personalizados |
+  </Step>
+  <Step title="Filtra con etiquetas de asociación (opcional)">
+    Las etiquetas de asociación te permiten llegar solo a ciertos tipos de contacto relacionado, en vez de a todos.
+
+    Por ejemplo, en lugar de escribirle a cada contacto de la empresa, limitas el envío a los que tengan el tipo de relación que te interesa.
+
+    <Note>
+      Si no seleccionas ninguna etiqueta, el correo se envía según la opción de destinatario del paso anterior, sin filtro adicional.
+    </Note>
+  </Step>
+  <Step title="Configura los datos del correo">
+    Nombre del remitente, correo del remitente, asunto, y copia o copia oculta si hacen falta.
+
+    <Tip>
+      Si dejas en blanco el nombre o el correo del remitente, el sistema usa los valores predeterminados de tu cuenta. Es una red de seguridad útil, pero conviene revisarlos: el valor por defecto puede no ser el que quieres que vea ese destinatario en concreto.
+    </Tip>
+  </Step>
+  <Step title="Redacta el correo">
+    Con el editor integrado, que ofrece lo mismo que el resto de acciones de correo: texto enriquecido, tokens de personalización, campos personalizados y archivos adjuntos cuando estén disponibles.
+  </Step>
+  <Step title="Guarda y publica">
+    Pulsa **Guardar acción** y luego **publica el flujo**.
+
+    <Warning>
+      Un flujo en borrador no se ejecuta nunca.
+    </Warning>
+  </Step>
+</Steps>
+
+## Cómo se comporta al ejecutarse
+
+Entender esto evita sorpresas:
+
+| Comportamiento | Detalle |
+| --- | --- |
+| **Dominio de envío** | Se usa el dominio de correo masivo configurado en tu cuenta |
+| **Horario** | La entrega respeta la zona horaria de tu cuenta |
+| **Remitente vacío** | Se aplican los valores predeterminados de la cuenta |
+| **Contacto en varias etiquetas** | Recibe **un solo correo**; los duplicados se evitan solos |
+| **Ningún contacto coincide** | No se envía nada y el flujo continúa con la siguiente acción, sin error |
+
+<Warning>
+  Ese último punto merece atención. Si ningún contacto asociado cumple tus criterios, **el flujo sigue adelante en silencio**. No falla, no avisa, simplemente no envía.
+
+  Si esperabas que un correo saliera y no llegó nunca, revisa primero si había contactos que coincidieran.
+</Warning>
+
+## Antes de pedir ayuda
+
+Recorre esta lista, que resuelve la mayoría de los casos:
+
+<AccordionGroup>
+  <Accordion title="1. ¿La función está activada en Labs?">
+    Sin esto la acción ni siquiera aparece.
+  </Accordion>
+
+  <Accordion title="2. ¿El flujo está publicado y activo?">
+    No en borrador.
+  </Accordion>
+
+  <Accordion title="3. ¿Existen contactos asociados al registro?">
+    Si el registro no tiene contactos relacionados, no hay a quién escribirle.
+  </Accordion>
+
+  <Accordion title="4. ¿La opción de destinatario es la correcta?">
+    Revisa si elegiste todos los contactos o uno específico.
+  </Accordion>
+
+  <Accordion title="5. ¿Las etiquetas de asociación coinciden con contactos reales?">
+    Un filtro demasiado estrecho deja el envío en cero.
+  </Accordion>
+
+  <Accordion title="6. ¿Tu dominio de envío masivo está configurado?">
+    Ver [Dominios y correo](/dominios/introduccion).
+  </Accordion>
+
+  <Accordion title="7. ¿El nombre y correo del remitente son válidos?">
+    O están correctamente configurados los valores por defecto de la cuenta.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Si tras revisar todo esto el problema persiste, reúne capturas de la configuración del flujo, de los ajustes de destinatario, de las etiquetas de asociación y de la acción de correo. Con eso el diagnóstico es mucho más rápido.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que activar algo antes de usarla?">
+    Sí. Está disponible a través de Labs y debes habilitarla para que aparezca en tus flujos.
+  </Accordion>
+
+  <Accordion title="¿Dónde encuentro la acción?">
+    Dentro del flujo, pulsa **\+ Agregar** y busca **Enviar correo** en la categoría de comunicación.
+  </Accordion>
+
+  <Accordion title="¿En qué se diferencian “todos los contactos asociados” y las etiquetas?">
+    La primera opción envía a todos los contactos relacionados con el registro. Las etiquetas actúan como un filtro adicional sobre esa selección.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si un contacto coincide con varias etiquetas?">
+    Recibe un único correo. Los duplicados se evitan automáticamente.
+  </Accordion>
+
+  <Accordion title="¿Puedo elegir qué contacto asociado recibe el correo?">
+    En flujos de objetos personalizados puedes enviar a todos, al contacto asociado más antiguo o al más reciente. Los flujos de empresa envían según la configuración de destinatarios seleccionada.
+  </Accordion>
+
+  <Accordion title="¿Puedo personalizar estos correos?">
+    Sí. El editor admite tokens de personalización, campos personalizados y las mismas capacidades de formato que el resto de acciones de correo.
+  </Accordion>
+
+  <Accordion title="¿Qué dominio de envío se usa?">
+    El dominio de correo masivo configurado en tu cuenta. Verifica que esté bien configurado para asegurar la entrega.
+  </Accordion>
+</AccordionGroup>
+
+## Siguiente paso
+
+<Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+  Disparadores, acciones y condiciones.
+</Card>
