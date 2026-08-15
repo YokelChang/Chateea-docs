@@ -1,0 +1,107 @@
+---
+title: "Importación masiva de facturas mediante CSV: guía de configuración y formato"
+description: "Añade muchas facturas de una vez con el formato correcto, en lugar de crearlas a mano."
+icon: "file-csv"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Importar facturas mediante CSV te permite añadir varias de una sola vez, en lugar de crearlas manualmente. Ahorra tiempo, mantiene la precisión y organiza tus registros de facturación. Con el formato correcto, las facturas se cargan sin errores.
+
+## Lo que necesitas antes de subir
+
+El sistema exige nombres de columna exactos y datos válidos. Incluso errores pequeños —encabezados mal escritos o valores faltantes— hacen que la importación falle.
+
+### Campos obligatorios
+
+Deben incluirse **exactamente** como se indican, y cada fila debe tener datos válidos en ellos:
+
+| Campo | Qué contiene |
+| --- | --- |
+| **Número de factura** | Identificador de la factura |
+| **Nombre de la factura** | Título de la factura |
+| **Nombre del cliente** | A quién se factura |
+| **Correo del cliente** | Correo del cliente |
+| **Fecha de asunto** | Fecha de emisión |
+| **Fecha de vencimiento** | Cuándo vence |
+| **Divisa** | Moneda de la factura |
+| **Nombre del artículo** | Concepto facturado |
+| **Tasa por artículo** | Precio del artículo |
+
+<Note>
+  Hay campos **opcionales** —útiles para un mejor seguimiento e informes— que puedes dejar en blanco si no los necesitas.
+</Note>
+
+## Ejemplo de formato CSV
+
+Un ejemplo sencillo con el formato correcto:
+
+```text
+*InvoiceNo,*InvoiceName,*CustomerName,*CustomerEmail,*IssueDate,*DueDate,*Currency,*ItemName,*ItemRate
+INV001,Web Design,John Doe,john@email.com,03/06/2025,10/06/2025,USD,Landing Page,500
+```
+
+<Tip>
+  El asterisco `*` en los encabezados marca los campos obligatorios. Mantén los nombres de columna tal cual: es lo que el sistema busca para mapear cada dato.
+</Tip>
+
+## Cómo importar facturas
+
+<Steps>
+  <Step title="Abre la sección Facturas">
+    Haz clic en **Nuevo** y selecciona **Importar facturas desde CSV**.
+  </Step>
+  <Step title="Sube tu archivo">
+    Haz clic para seleccionarlo, o arrástralo y suéltalo en el área de carga.
+  </Step>
+  <Step title="Verifica y mapea los campos">
+    Revisa cómo coinciden las columnas de tu CSV con los campos del sistema. Confirma que todo quedó bien mapeado.
+  </Step>
+  <Step title="Corrige errores, si los hay">
+    Si aparecen, actualiza tu CSV y vuélvelo a subir hasta resolver todos los problemas.
+  </Step>
+  <Step title="Finaliza la importación">
+    Cuando todo esté correcto, complétala. Tus facturas se crean y quedan disponibles.
+  </Step>
+</Steps>
+
+## Errores comunes que se deben evitar
+
+La mayoría de los fallos vienen de cosas sencillas:
+
+- Nombres de columna incorrectos
+- Campos obligatorios faltantes
+- Formatos de fecha no válidos
+- Números de factura duplicados
+
+Revisa bien tu archivo antes de subirlo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo añadir varios artículos a una misma factura?">
+    Sí. Usa el mismo número de factura en varias filas para incluir varios artículos.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si faltan datos obligatorios?">
+    La importación falla y deberás corregir el archivo antes de intentarlo de nuevo.
+  </Accordion>
+
+  <Accordion title="¿Puedo actualizar facturas existentes con un CSV?">
+    No. Este proceso solo crea facturas nuevas.
+  </Accordion>
+
+  <Accordion title="¿Necesito incluir los campos opcionales?">
+    No. Los campos opcionales pueden dejarse en blanco.
+  </Accordion>
+</AccordionGroup>
+
+## Si la importación no funciona
+
+Revisa los nombres de las columnas, los campos obligatorios y los formatos de fecha. Si el problema persiste, contacta al servicio de asistencia.
+
+<Card title="Importar archivo CSV de transacciones" icon="file-csv" href="/pagos-facturas/importar-transacciones-csv">
+  La guía equivalente para registros de pago.
+</Card>
