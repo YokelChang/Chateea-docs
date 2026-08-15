@@ -1,0 +1,160 @@
+---
+title: "Configurar los proveedores de pago para que comiencen a aceptar pagos"
+description: "Conecta tu procesador, define métodos y modos, y empieza a cobrar sin fricción."
+icon: "plug-circle-check"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Conectar un proveedor de pagos es lo que convierte a Chateea en un canal de cobro: a partir de ese momento puedes recibir dinero de tus clientes de forma segura con tarjetas, billeteras electrónicas y transferencias bancarias. Esta guía cubre los pasos esenciales para conectar el proveedor, configurar los ajustes de pago y empezar a procesar transacciones.
+
+<Info>
+  Es el paso que desbloquea todo lo demás: facturas, presupuestos, enlaces de pago, formularios de pedido, cursos y reservas con depósito. Sin proveedor conectado, esas funciones existen pero no cobran.
+</Info>
+
+## Qué es la integración de un proveedor de pagos
+
+Es el vínculo entre tu cuenta de Chateea y un servicio de procesamiento de pagos. Una vez conectado, gestionas desde Chateea las transacciones y los métodos de pago disponibles, y el procesamiento del dinero ocurre de forma segura del lado del proveedor.
+
+### Beneficios clave
+
+| Beneficio | Qué significa en la práctica |
+| --- | --- |
+| **Acepta pagos fácilmente** | Empiezas a cobrar sin montar nada manualmente |
+| **Múltiples opciones de pago** | Tarjetas, billeteras electrónicas y más, según el proveedor |
+| **Prueba antes del lanzamiento** | Validas toda la configuración con el modo de prueba |
+| **Control centralizado** | Todos los ajustes de pago viven en un solo lugar |
+| **Configuración escalable** | Agregas o cambias de proveedor cuando el negocio lo pida |
+
+## Elige tu proveedor de pago
+
+El proveedor correcto es el que encaja con tu país, tu moneda y la forma en que te pagan tus clientes. Antes de decidir, compara:
+
+| Criterio | Qué revisar |
+| --- | --- |
+| **Países y monedas** | Que soporte el país de tu cuenta y la moneda en que vendes |
+| **Métodos de pago** | Tarjetas, billeteras, efectivo, transferencias |
+| **Tarifas y plazos de pago** | Comisión por transacción y cuántos días tarda el dinero en llegarte |
+| **Funciones** | Si necesitas suscripciones y reembolsos, confirma que los soporte |
+
+<Tip>
+  En Latinoamérica no siempre gana el proveedor más barato: gana el que tus clientes reconocen al momento de pagar. Un procesador con menor comisión pero desconocido en tu país puede costarte más en ventas abandonadas de lo que te ahorra en tarifas.
+</Tip>
+
+## Recopila las credenciales necesarias
+
+Algunos proveedores se conectan con un simple inicio de sesión; otros piden credenciales manuales. Ten a mano, según el caso:
+
+- Claves API (de prueba y de producción)
+- Claves de seguridad o de webhook
+- ID de comerciante o de cuenta
+
+<Warning>
+  Reúne todo **antes** de iniciar la conexión. Empezar y abandonar el proceso a medias es la causa más común de integraciones que quedan a medio conectar y luego fallan al cobrar.
+</Warning>
+
+## Conecta tu proveedor de pagos
+
+<Steps>
+  <Step title="Ve a Pagos">
+    Desde el menú lateral de tu cuenta.
+  </Step>
+  <Step title="Abre la pestaña Integraciones">
+    Ahí aparece la lista de proveedores disponibles y los que ya tienes conectados.
+  </Step>
+  <Step title="Selecciona tu proveedor">
+    Elige el que vas a usar y pulsa **Conectar**.
+  </Step>
+  <Step title="Introduce las credenciales o autoriza el acceso">
+    Según el proveedor, pegarás las claves o completarás una autorización por inicio de sesión.
+  </Step>
+  <Step title="Guarda la conexión">
+    Una vez conectada, tu cuenta queda lista para procesar pagos.
+  </Step>
+</Steps>
+
+## Configura métodos y modalidades de pago
+
+Conectar no es lo mismo que configurar. Después de la conexión, define cómo se aceptan los pagos:
+
+<Steps>
+  <Step title="Abre la configuración del proveedor conectado">
+    Desde la misma pestaña de integraciones.
+  </Step>
+  <Step title="Selecciona Gestionar métodos de pago">
+    Aquí controlas qué opciones ve el cliente al pagar.
+  </Step>
+  <Step title="Elige el canal correspondiente">
+    Cuenta o ubicación, según cómo tengas organizado tu negocio.
+  </Step>
+  <Step title="Establece el modo">
+    **Prueba** para validar, **Real** para cobrar dinero de verdad.
+  </Step>
+  <Step title="Habilita o deshabilita métodos de pago">
+    Deja activos solo los que quieres ofrecer.
+  </Step>
+</Steps>
+
+## Pruebas previas al lanzamiento
+
+Probar antes evita el peor escenario: descubrir que los cobros no funcionan cuando ya tienes clientes intentando pagar.
+
+<Steps>
+  <Step title="Habilita el modo de prueba">
+    Ninguna transacción de esta etapa mueve dinero real.
+  </Step>
+  <Step title="Ejecuta transacciones de ejemplo">
+    Recorre el mismo camino que hará tu cliente: enlace de pago, formulario de pedido o factura.
+  </Step>
+  <Step title="Confirma que el procesamiento fue correcto">
+    Revisa que la transacción aparezca registrada y con el estado esperado.
+  </Step>
+  <Step title="Cambia al modo en vivo">
+    Solo cuando todo el recorrido funcione de principio a fin.
+  </Step>
+</Steps>
+
+<Warning>
+  Recuerda volver al **modo en vivo** al terminar. Una cuenta que quedó en modo de prueba acepta pagos que nunca se cobran: el cliente cree que pagó y tú no recibes nada.
+</Warning>
+
+## Configuración específica del proveedor
+
+Cada proveedor puede tener requisitos propios (verificación de identidad, montos mínimos, activación de funciones especiales). Consulta la guía de configuración del proveedor que elegiste para las instrucciones detalladas y los ajustes avanzados.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Todos los proveedores requieren claves API?">
+    No. Algunos usan una conexión basada en inicio de sesión y otros requieren credenciales manuales.
+  </Accordion>
+
+  <Accordion title="¿Puedo conectar más de un proveedor de pagos?">
+    Sí. Se pueden conectar y gestionar varios proveedores.
+  </Accordion>
+
+  <Accordion title="¿Qué es el modo de prueba?">
+    Un modo que te permite simular transacciones sin procesar pagos reales.
+  </Accordion>
+
+  <Accordion title="¿Por qué no se procesan los pagos?">
+    Verifica la conexión con el proveedor, revisa las credenciales y asegúrate de que el modo en vivo esté habilitado.
+  </Accordion>
+</AccordionGroup>
+
+## Si algo no funciona
+
+Antes de escribir a soporte, revisa esta lista corta:
+
+- Que las credenciales estén ingresadas correctamente
+- Que tu cuenta con el proveedor esté activa y verificada
+- Que esté seleccionado el modo correcto (prueba o en vivo)
+- Que los métodos de pago que esperas estén habilitados
+
+Si el problema persiste, escríbenos por WhatsApp al **\+1 829-580-7071**, de lunes a viernes de 9:00am a 9:00pm y sábados de 9:00am a 1:00pm (hora de República Dominicana).
+
+<Card title="Configurar proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
+  Asigna proveedores distintos a embudos, formularios, tiendas, facturas y calendarios.
+</Card>
