@@ -1,0 +1,117 @@
+---
+title: "Automatización de la asignación y el estado de los bots de IA mediante flujos de trabajo"
+description: "Asigna bots y controla su estado automáticamente según activadores y condiciones."
+icon: "shuffle"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Asignar el bot correcto al contacto correcto garantiza conversaciones relevantes. La acción **Actualizar bot de IA conversacional y estado** funciona dentro de los flujos de trabajo para asignar bots automáticamente y gestionar su disponibilidad.
+
+Esto permite comunicación personalizada basada en eventos: una respuesta, una etiqueta, un pago.
+
+## Beneficios clave
+
+| Beneficio | Detalle |
+| --- | --- |
+| **Asignación automatizada** | Asigna bots sin intervención manual |
+| **Experiencias personalizadas** | Adapta el bot al comportamiento o la etapa del contacto |
+| **Optimización por canal** | Dirige cada conversación al bot adecuado |
+| **Mayor eficiencia** | Menos gestión manual de conversaciones |
+| **Automatización escalable** | Maneja grandes volúmenes sin problemas |
+
+## Detalles de la acción
+
+| Ajuste | Qué hace |
+| --- | --- |
+| **Nombre de la acción** | Identificador dentro del flujo |
+| **Asignación de bot** | Selecciona un bot específico o mantén el actual |
+| **Control de estado** | Establece el bot en Activo o Inactivo |
+| **Mantener igual** | Deja el bot actual sin cambios |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Agrega la acción al flujo">
+    Abre tu flujo, pulsa para añadir una acción nueva y selecciona **Actualizar bot de IA conversacional y estado**.
+  </Step>
+  <Step title="Configura los ajustes">
+    Introduce o confirma el nombre de la acción y localiza los campos de asignación y estado.
+  </Step>
+  <Step title="Elige la asignación de bot">
+    Selecciona un bot específico de la lista, o elige **Mantener igual** para conservar el actual.
+  </Step>
+  <Step title="Establece el estado">
+    **Activo** para habilitarlo, **Inactivo** para desactivarlo.
+  </Step>
+  <Step title="Guarda y publica">
+    El flujo debe estar publicado para que la automatización corra.
+  </Step>
+</Steps>
+
+## Dónde ver el bot asignado
+
+Abre el registro del contacto, ve a la vista de conversación y ahí aparecen el bot asignado y su estado.
+
+## Ejemplos prácticos
+
+<AccordionGroup>
+  <Accordion title="Asignar un bot según el canal">
+    Distintos canales pueden requerir bots distintos para responder bien.
+
+    - Disparador: el contacto responde por un canal
+    - Asigna el bot específico de ese canal
+    - Estado: Activo
+  </Accordion>
+
+  <Accordion title="Asignar bot según etiquetas">
+    Las etiquetas segmentan a los contactos para interacciones más personalizadas.
+
+    - Disparador: se agrega una etiqueta
+    - Asigna el bot relevante
+    - Estado: Activo
+  </Accordion>
+
+  <Accordion title="Activar el bot después del pago">
+    Así solo los contactos cualificados reciben cierta interacción.
+
+    - Disparador: evento de pago
+    - Asigna un bot de ventas o de incorporación
+    - Estado: Activo
+  </Accordion>
+</AccordionGroup>
+
+## Notas clave
+
+<Warning>
+  **El bot debe dar soporte al canal al que lo asignas.** Si no lo soporta, quedará asignado pero no responderá, y el síntoma parece un fallo del bot cuando es un problema de asignación.
+</Warning>
+
+- La acción se ejecuta **inmediatamente** al activarse; no espera a que la conversación termine
+- Puedes asignar distintos bots de forma dinámica desde varios flujos
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué hace la opción Mantener igual?">
+    Deja sin cambios el bot que ya esté asignado.
+  </Accordion>
+
+  <Accordion title="¿Puedo asignar bots distintos a canales distintos?">
+    Sí. Los flujos pueden asignar según activadores específicos de cada canal.
+  </Accordion>
+
+  <Accordion title="¿Por qué mi bot no responde?">
+    Comprueba que esté en estado Activo y que sea compatible con el canal seleccionado.
+  </Accordion>
+
+  <Accordion title="¿Pueden cambiar solas las asignaciones?">
+    Sí. Los flujos actualizan los bots dinámicamente según las condiciones.
+  </Accordion>
+
+  <Accordion title="¿Esto afecta a las conversaciones existentes?">
+    Se aplica de inmediato al contacto, para sus interacciones futuras.
+  </Accordion>
+</AccordionGroup>

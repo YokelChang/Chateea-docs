@@ -1,0 +1,148 @@
+---
+title: "Automatización de la reserva de citas mediante IA y configuración del flujo de trabajo"
+description: "Configura la acción de reserva de citas para que la IA agende sin intervención manual."
+icon: "calendar-check"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+La reserva de citas mediante IA permite automatizar la programación a través de conversaciones. Un bot interactúa con tus contactos, sugiere franjas disponibles, gestiona las respuestas y confirma la reserva directamente en tu calendario.
+
+Es especialmente útil para negocios que dependen de citas: garantiza respuestas más rápidas, comunicación constante y mayor eficiencia sin intervención humana.
+
+## Beneficios clave
+
+| Beneficio | Qué aporta |
+| --- | --- |
+| **Programación automatizada** | Elimina la coordinación manual reservando desde la conversación |
+| **Mejores conversiones** | Guía al contacto hacia la reserva con respuestas estructuradas |
+| **Eficiencia de tiempo** | Absorbe la tarea repetitiva de agendar |
+| **Comunicación coherente** | Mantiene un tono uniforme en todas las interacciones |
+| **Soporte multicanal** | Interactúa por el canal donde el contacto está activo |
+
+## Configuración del calendario
+
+El calendario que elijas determina dónde se reservan las citas y cómo se gestiona la disponibilidad.
+
+- Se usa para obtener los horarios disponibles
+- La IA sugiere esas franjas al contacto durante la conversación
+- Al elegir una, la cita se reserva automáticamente
+
+<Warning>
+  **No se admiten calendarios recurrentes.** Usa calendarios estándar para que la disponibilidad se lea correctamente.
+</Warning>
+
+## Personalidad e instrucciones adicionales
+
+Personalizar el tono alinea las conversaciones con la voz de tu marca y mejora la interacción.
+
+- Define cómo se comunica el bot: formal, informal, amistoso
+- Agrega instrucciones que guíen sus respuestas
+- Haz que la conversación se sienta natural y relevante
+- Asegúrate de que el foco se mantenga en reservar la cita
+
+## Límite máximo de mensajes
+
+Controla cuántos intentos hace la IA antes de detener el proceso.
+
+| Parámetro | Valor |
+| --- | --- |
+| **Mínimo** | 5 mensajes |
+| **Máximo** | 25 mensajes |
+| **Recomendado** | 15 mensajes |
+
+Si se alcanza el límite sin éxito, el contacto pasa a la ruta **Cita no reservada**.
+
+## Valor y unidad de tiempo de espera
+
+Determina cuánto espera la IA una respuesta antes de finalizar o redirigir la conversación.
+
+- Establece el tiempo de espera para la respuesta del contacto
+- Si no responde, pasa a la ruta **Tiempo de espera agotado**
+- Se configura en distintas unidades: minutos, horas, etc.
+
+<Tip>
+  **Consejo de optimización:** coloca una acción de seguimiento en la ruta de tiempo de espera para volver a contactar y continuar con el intento de reserva. Es donde se recuperan las citas que de otro modo se pierden.
+</Tip>
+
+## Selección de canales
+
+El bot opera **únicamente** en el canal que selecciones. Los compatibles son:
+
+- SMS
+- WhatsApp
+- Facebook
+- Instagram
+
+## Control de mensajes de confirmación
+
+Por defecto, la IA envía un mensaje de confirmación después de reservar. Por ejemplo:
+
+```text
+Tienes una reserva para el 12 de agosto a las 18:00
+```
+
+Al habilitar esta configuración, impides que la IA lo envíe automáticamente.
+
+<Warning>
+  Si desactivas el mensaje de confirmación, **agrega uno más adelante en el flujo de trabajo**. De lo contrario el contacto reserva y no recibe ninguna señal de que quedó confirmado.
+</Warning>
+
+## Cómo configurar la acción
+
+<Steps>
+  <Step title="Agrega la acción de IA de reserva de citas a tu flujo">
+  </Step>
+  <Step title="Selecciona el calendario">
+    Recuerda: no recurrente.
+  </Step>
+  <Step title="Define la personalidad y las instrucciones">
+  </Step>
+  <Step title="Establece el límite máximo de mensajes">
+  </Step>
+  <Step title="Configura el valor y la unidad de tiempo de espera">
+  </Step>
+  <Step title="Elige el canal de comunicación">
+  </Step>
+  <Step title="Decide si habilitas o deshabilitas el mensaje de confirmación">
+  </Step>
+  <Step title="Guarda y publica el flujo de trabajo">
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar calendarios recurrentes?">
+    No. Usa calendarios estándar para obtener disponibilidad precisa.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si la IA no logra reservar?">
+    Al alcanzar el límite de mensajes, el contacto se redirige a la ruta **Cita no reservada**.
+  </Accordion>
+
+  <Accordion title="¿Puede continuar después de un tiempo de espera agotado?">
+    Sí. Configura acciones de seguimiento para volver a contactar tras el tiempo de espera.
+  </Accordion>
+
+  <Accordion title="¿Qué canales son compatibles?">
+    SMS, WhatsApp, Facebook e Instagram.
+  </Accordion>
+
+  <Accordion title="¿Puedo personalizar el tono y las respuestas?">
+    Sí, con la personalidad y las instrucciones adicionales.
+  </Accordion>
+
+  <Accordion title="¿Qué ocurre si desactivo el mensaje de confirmación?">
+    Debes agregar un paso de confirmación más adelante en el flujo para notificar al contacto.
+  </Accordion>
+</AccordionGroup>
+
+## Si necesitas ayuda
+
+1. Revisa la configuración del flujo y del calendario
+2. Prueba el bot para confirmar que responde correctamente
+3. Revisa las conversaciones para detectar dónde se pierde el seguimiento
+4. Ajusta las indicaciones para mejorar el éxito de las reservas
