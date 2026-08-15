@@ -1,0 +1,129 @@
+---
+title: "Gestionar suscripciones: estado, seguimiento y resumen"
+description: "Controla tus ingresos recurrentes desde un solo panel y aprende a leer cada estado."
+icon: "arrows-rotate"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Gestionar bien las suscripciones te permite controlar los ingresos recurrentes, la actividad de tus clientes y el estado de los pagos. Esta guía explica cómo funciona la sección de suscripciones, qué información encuentras y cómo interpretar cada estado.
+
+## Qué es la sección de suscripciones
+
+Es una vista centralizada de todos los pagos recurrentes generados mediante formularios de pedido. Desde ahí supervisas las suscripciones activas, das seguimiento a los pagos y entiendes el ciclo de vida de cada una.
+
+Esa visibilidad te asegura un seguimiento preciso de los ingresos y de la relación con el cliente, sin revisar transacción por transacción.
+
+## Cómo acceder
+
+Ve a **Pagos** y haz clic en **Suscripciones** para abrir el panel.
+
+## Qué aparece en la página
+
+La página muestra todas las suscripciones creadas a través de los formularios de pedido compatibles, con los datos clave para seguir su rendimiento y estado:
+
+| Columna | Qué muestra |
+| --- | --- |
+| **Proveedor de pago e ID** | Qué proveedor la procesa y su identificador |
+| **Datos del cliente** | Quién está suscrito |
+| **Fuente de creación** | De dónde nació la suscripción |
+| **Fecha de creación** | Cuándo se creó |
+| **Importe** | Cuánto se cobra |
+| **Estado actual** | En qué punto de su ciclo está |
+
+Así sigues varias suscripciones de un vistazo.
+
+## Qué incluye el detalle de cada suscripción
+
+Cada registro guarda información más a fondo sobre su actividad e historial:
+
+- Información del proveedor de pagos
+- Fuente de creación de la suscripción
+- Historial de transacciones (para proveedores compatibles)
+
+Con esto sigues cómo evoluciona una suscripción en el tiempo, incluidas renovaciones y actualizaciones.
+
+## Los estados de suscripción
+
+El estado indica en qué punto está el pago recurrente de un cliente. Se agrupan para simplificar el seguimiento entre distintos proveedores.
+
+| Estado | Qué significa |
+| --- | --- |
+| **Prueba** | Está en su período de prueba |
+| **Activo** | Activa y facturando con normalidad |
+| **Cancelado** | Fue cancelada |
+| **Suspendida** | Pausada temporalmente |
+| **Fallido** | El intento de pago inicial falló |
+| **Incompleto** | Se inició la configuración pero no se completó |
+| **Impagado** | El pago está pendiente, sin completarse |
+| **Caducado** | La suscripción terminó |
+
+<Tip>
+  Los estados que exigen acción tuya son **Fallido**, **Impagado** y **Suspendida**: cada uno es un ingreso recurrente en riesgo. Revisar la página filtrando por ellos es la forma más rápida de saber a quién contactar hoy.
+</Tip>
+
+## Sincronización del estado
+
+Los datos pueden sincronizarse distinto según cómo se creó la suscripción:
+
+- Con ciertos proveedores, se mantiene al día en **tiempo real** — cancelaciones y pagos incluidos
+- En otros casos, las actualizaciones y el seguimiento de pagos futuros pueden ser **limitados**
+- Aun sin sincronización completa, **se siguen creando registros** para fines de seguimiento
+
+Así siempre tienes un registro de la actividad, aunque algunas actualizaciones requieran verificación externa.
+
+## Qué pasa con un pago fallido
+
+<Warning>
+  Si una suscripción falla en el **intento de pago inicial**:
+
+  - **No aparece** en la lista de suscripciones
+  - El **registro del cliente sí se crea**
+
+  Esto te permite darle seguimiento manual o volver a contactar a la persona. Si esperabas ver una suscripción y no está, revisa si el primer cobro falló: el contacto estará en tu CRM aunque la suscripción no figure aquí.
+</Warning>
+
+## Qué NO se incluye en esta página
+
+La página se centra solo en fuentes de suscripción específicas. Quedan fuera:
+
+| No aparece aquí | Dónde vive |
+| --- | --- |
+| Plantillas recurrentes creadas en Facturas | Sección de facturas |
+| Suscripciones de productos de membresía | Gestión de membresías |
+
+Tenerlo claro evita confusiones al rastrear tus datos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no veo mi suscripción tras un pago fallido?">
+    Las suscripciones solo se crean tras un pago inicial exitoso. Los intentos fallidos no aparecen en la lista, pero el registro del cliente sí se genera.
+  </Accordion>
+
+  <Accordion title="¿Puedo seguir los pagos futuros de todas las suscripciones?">
+    Depende de cómo se creó cada una. Algunos proveedores ofrecen seguimiento completo; otros, visibilidad limitada.
+  </Accordion>
+
+  <Accordion title="¿Los estados se actualizan solos?">
+    En muchos casos sí, pero depende del proveedor de pagos y de cómo se creó la suscripción.
+  </Accordion>
+
+  <Accordion title="¿Puedo gestionar o cancelar desde esta página?">
+    Las capacidades varían. Algunas acciones pueden requerir gestionarse desde la configuración de pago original.
+  </Accordion>
+</AccordionGroup>
+
+## Continúa
+
+<CardGroup cols={2}>
+  <Card title="Cobra desde Chateea" icon="credit-card" href="/pagos/introduccion">
+    Facturas, presupuestos, enlaces de pago y suscripciones.
+  </Card>
+
+  <Card title="Enlaces de pago" icon="link" href="/comercio/enlaces-de-pago">
+    Cobro directo por un solo enlace.
+  </Card>
+</CardGroup>
