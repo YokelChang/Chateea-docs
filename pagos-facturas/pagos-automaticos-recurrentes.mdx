@@ -69,6 +69,23 @@ Si no se realiza el cargo a la tarjeta seleccionada, se notifica al usuario del 
   Al programar la plantilla, se autoriza el cargo mínimo a cualquier tarjeta nueva seleccionada en la moneda correspondiente. Cualquier tarjeta agregada correctamente **se guarda para usos futuros** del usuario de la ubicación.
 </Note>
 
+## Reintentos de pagos fallidos
+
+Tras el fallo inicial, el sistema vuelve a intentar el cobro **hasta dos veces**, con un intervalo de **24 horas** entre cada intento.
+
+| Momento | Qué ocurre |
+| --- | --- |
+| Intento inicial | Se cobra en la fecha de vencimiento |
+| Reintento 1 | 24 horas después del fallo |
+| Reintento 2 | 24 horas después del reintento anterior |
+| Después del reintento 2 | No hay más intentos automáticos en ese ciclo de facturación |
+
+Si todos los intentos fallan, el cliente deberá completar el pago manualmente. Si actualiza su tarjeta y el pago se completa con éxito, **esa tarjeta se usará para los cargos futuros**.
+
+<Warning>
+  Un cobro que agota los tres intentos deja de ser un problema técnico y pasa a ser un problema comercial: nadie va a insistir por ti. Configura un flujo de trabajo que te avise cuando una factura recurrente quede impaga, para retomar la conversación con el cliente el mismo día.
+</Warning>
+
 ## Cómo cancelar los pagos automáticos
 
 <Steps>
@@ -104,6 +121,14 @@ Sí se puede. Desde el editor, usa **Gestionar pagos automáticos**: se abre la 
 
   <Accordion title="¿Puedo desactivar el pago automático después?">
     Sí, desde **Gestionar pagos automáticos**. Aplica a partir del próximo cobro.
+  </Accordion>
+
+  <Accordion title="¿Desactivar el pago automático cancela la factura?">
+    No. Solo detiene los cargos automáticos. La factura sigue existiendo y puede pagarse manualmente. Tampoco afecta a las transacciones anteriores.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si el cliente actualiza su tarjeta después de un pago fallido?">
+    La nueva tarjeta se usará para los futuros pagos automáticos una vez que el pago se haya completado con éxito.
   </Accordion>
 </AccordionGroup>
 
