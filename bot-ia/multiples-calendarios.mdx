@@ -1,0 +1,141 @@
+---
+title: "IA conversacional: Compatibilidad con múltiples calendarios para la reserva de citas"
+description: "Deja que el bot elija el calendario correcto según lo que el cliente quiere reservar."
+icon: "calendar-days"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Esta función permite que tu bot de reserva de citas dirija cada solicitud al **calendario correcto** según la intención del cliente. En vez de limitar el bot a un solo calendario, configuras varios —cada uno representando un servicio, departamento o especialista— y la IA decide automáticamente cuál usar.
+
+Se configura en **IA conversacional → Objetivo del bot de reserva de citas**, al crear o editar un flujo de reserva.
+
+<Info>
+  El caso que lo explica: una clínica con cardiología, neurología y fisioterapia. Un solo bot atiende las tres. Cuando el paciente escribe "quiero ver a un neurólogo por mis migrañas", la IA identifica el calendario de Neurología y ofrece sus horarios — sin que tú armes un bot por especialidad.
+</Info>
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Detección inteligente** | La IA relaciona la solicitud con el calendario más adecuado por nombre, descripción y palabras clave |
+| **Reservas multidisciplina** | Varios equipos o servicios dentro de un solo bot |
+| **Calendario alternativo** | Ninguna reserva se pierde, aunque no haya coincidencia clara |
+| **Flujos intactos** | Sigue soportando cancelar, reprogramar y la automatización posterior a la reserva |
+| **Seguimiento transparente** | Ves al instante qué calendario se usó en cada cita |
+
+## Cómo funciona la detección
+
+La IA dirige la cita al calendario correcto usando los **nombres, descripciones y palabras clave** de los calendarios que configuraste.
+
+| El cliente escribe | La IA detecta | Ofrece horarios de |
+| --- | --- | --- |
+| "Quiero ver a un neurólogo por mis migrañas" | Intención: neurología | Calendario de Neurología |
+| "Necesito una limpieza dental" | Intención: odontología | Calendario de Odontología |
+| "Me duele la espalda desde el gimnasio" | Intención: fisioterapia | Calendario de Fisioterapia |
+
+## El calendario alternativo
+
+Actúa como red de seguridad: cuando **ningún** calendario configurado coincide con el mensaje, la cita se reserva ahí. Así ninguna solicitud queda sin registrar.
+
+- Selecciona uno de tus calendarios como alternativo
+- Si ninguna intención coincide, la cita cae automáticamente en él
+- Puedes desactivarlo si prefieres no tener calendario alternativo
+
+<Tip>
+  Elige como alternativo tu calendario más general — una "consulta general" o "recepción". Así, una solicitud ambigua igual termina en una agenda que alguien revisa, no en el vacío.
+</Tip>
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Ve a Objetivo del bot de reserva de citas">
+    En **Agentes de IA → IA conversacional → Objetivos del bot**, selecciona **Reserva de citas**.
+  </Step>
+  <Step title="Elige Múltiples calendarios">
+    En la parte superior de la ventana de configuración.
+  </Step>
+  <Step title="Selecciona los calendarios a incluir">
+    En **Selección de calendario**. El nombre y la descripción de cada uno se traen automáticamente.
+  </Step>
+  <Step title="Agrega palabras clave y descripciones adicionales (opcional)">
+    Solo si el calendario **no** tiene un nombre y una descripción detallados en sus propios ajustes. Si ya los tiene, no necesitas escribir nada aquí.
+  </Step>
+  <Step title="Configura el calendario alternativo">
+    Para las solicitudes sin coincidencia. Puedes dejarlo sin marcar si no quieres alternativo.
+  </Step>
+  <Step title="Define la indicación de la IA">
+    En **Configuración de IA**. Por ejemplo: "¿Qué tipo de consulta te gustaría reservar?".
+
+    <Warning>
+      Los detalles de los calendarios sirven **solo para que la IA clasifique la intención** — el bot no puede responder preguntas a partir de ellos. Si quieres que el bot explique qué tipo de cita conviene y por qué, duplica esa información en la indicación, encima de "Reservar cita".
+    </Warning>
+  </Step>
+  <Step title="Revisa las opciones avanzadas">
+    | Opción | Qué hace |
+    | --- | --- |
+    | Pausar el bot tras reservar | Deja de responder una vez agendada |
+    | Disparar flujos tras reservar | Activa automatizaciones post-reserva |
+    | Transferir a un empleado tras la cita | Pasa la conversación a una persona |
+    | Permitir cancelar | El bot puede cancelar la cita |
+    | Permitir reprogramar | El bot puede reprogramarla |
+  </Step>
+  <Step title="Guarda">
+    Desde ese momento el bot detecta la intención y reserva en el calendario correcto según el contexto.
+  </Step>
+</Steps>
+
+## Consejos para la indicación y las palabras clave
+
+Un buen enrutamiento depende de indicaciones y palabras clave bien diseñadas:
+
+- Usa palabras clave por servicio: "dentista", "revisión de la vista", "consulta"
+- Escribe las descripciones de los calendarios en lenguaje sencillo, para que la IA entienda el contexto
+- Incluye frases alternativas de la misma intención: "necesito un doctor para los ojos" → Oftalmología
+- Mantén la indicación corta: "¿Qué servicio quieres reservar?" funciona mejor que una frase larga
+
+## Dónde ver el calendario usado
+
+Una vez creada la cita, tanto la conversación como el panel de detalles muestran qué calendario se usó:
+
+- Abre el hilo para ver el mensaje de confirmación de la IA y el horario
+- Haz clic en **Ver cita** para abrir los detalles
+- El nombre del calendario asignado (por ejemplo, Neurología) aparece en el campo **Calendario**
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar modo de calendario único y múltiple?">
+    Sí. Calendario único es ideal para un solo servicio; múltiples calendarios, para negocios con varios servicios.
+  </Accordion>
+
+  <Accordion title="¿Cuántos calendarios puedo agregar?">
+    Varios, pero conviene mantener la lista concisa para que la IA acierte con más precisión.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si la IA no identifica el calendario correcto?">
+    El calendario alternativo gestiona esos casos, de modo que toda solicitud termina en una cita reservada.
+  </Accordion>
+
+  <Accordion title="¿Mis flujos existentes seguirán activándose?">
+    Sí. Notificaciones, recordatorios y flujos posteriores a la reserva siguen funcionando igual.
+  </Accordion>
+
+  <Accordion title="¿Sirve para llamadas con Voz IA?">
+    Todavía no. Por ahora aplica solo a la IA conversacional (chat). La integración con Voz IA está prevista para una actualización futura.
+  </Accordion>
+</AccordionGroup>
+
+## Continúa
+
+<CardGroup cols={2}>
+  <Card title="Reserva de citas mediante IA" icon="calendar-check" href="/bot-ia/reserva-de-citas">
+    La configuración base del objetivo de reserva.
+  </Card>
+
+  <Card title="Crea tu calendario" icon="calendar" href="/calendarios/introduccion">
+    Cómo preparar cada calendario que la IA va a usar.
+  </Card>
+</CardGroup>
