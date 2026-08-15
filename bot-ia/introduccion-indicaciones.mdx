@@ -1,0 +1,273 @@
+---
+title: "Introducción a las indicaciones para IA"
+description: "Cómo escribir instrucciones que hacen la diferencia entre un bot genérico y uno que vende."
+icon: "pen-to-square"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Con una indicación simple puedes lograr que tu bot funcione. Con una indicación bien escrita puedes lograr que potencie a tu equipo, fortalezca la relación con tus clientes e impulse tu negocio.
+
+La diferencia está enteramente en cuánta información le das y en qué tan bien redactada está.
+
+## Los tres elementos de una indicación
+
+Toda indicación efectiva contiene estas tres partes. Puedes usarlas para instruir al modelo con mucha más precisión.
+
+| Elemento | Qué define |
+| --- | --- |
+| **Rol** | La personalidad, el contexto y el flujo de interacción. Es la base de la coherencia |
+| **Tarea** | La instrucción concreta que quieres que ejecute. Una tarea vaga produce resultados vagos |
+| **Directrices** | Los límites que el bot debe respetar. Funcionan como hoja de ruta hacia el resultado deseado |
+
+## Rol: interacción y flujo
+
+Es la personalidad y el contexto que orientan al modelo. Definirlo bien es lo que hace que las respuestas sean coherentes y relevantes.
+
+<CardGroup cols={2}>
+  <Card title="Peor" icon="circle-xmark">
+    ```text
+    Eres vendedor de {{ai.business_name}},
+    debes atender a los clientes y ayudarles
+    a reservar citas. Compórtate como un ser
+    humano. Estás hablando con {{contact.name}}.
+    ```
+  </Card>
+
+  <Card title="Mejor" icon="circle-check">
+    ```text
+    - Trabajas para {{ai.business_name}}. Tu objetivo
+    es ayudar a los clientes, calificarlos según sus
+    respuestas a las preguntas del guion y, si
+    califican, ayudarlos a reservar una cita.
+    
+    - Mantén siempre la apariencia de un asistente
+    humano. No reveles ni insinúes que eres un
+    asistente de IA a menos que te lo pregunten.
+    Usa lenguaje coloquial y frases como "Genial",
+    "Entendido" o "Perfecto" en lugar de disculpas
+    formales.
+    
+    - Reconoce la información del usuario repitiéndola
+    al principio para mayor claridad. Después usa
+    transiciones variadas, sin repetir sus palabras
+    exactas.
+    
+    - Mantén una actitud profesional pero informal.
+    Usa puntos en lugar de signos de exclamación.
+    
+    - Estás hablando con {{contact.name}}. Usa su
+    nombre solo al principio y al final, para evitar
+    redundancia.
+    ```
+  </Card>
+</CardGroup>
+
+<Tip>
+  Fíjate en la diferencia real: la versión mejor no es más larga por gusto. Cada línea elimina una decisión que el modelo tendría que tomar por su cuenta.
+</Tip>
+
+## Tarea: instrucciones y objetivos
+
+Es lo que quieres que haga, paso a paso. Una indicación ambigua hace que el bot se desvíe o produzca algo que no esperabas.
+
+<CardGroup cols={2}>
+  <Card title="Peor" icon="circle-xmark">
+    ```text
+    Debes calificar a los clientes haciéndoles
+    preguntas y luego pedirles que reserven una
+    cita. Si no están interesados, recopila sus
+    datos.
+    ```
+  </Card>
+
+  <Card title="Mejor" icon="circle-check">
+    ```text
+    Guion de conversación:
+    
+    - Empieza preguntando algo como "¿Qué tipo de
+    solución buscas?". Si no está interesado, pídele
+    amablemente su correo y ofrécele mantenerte en
+    contacto para futuras oportunidades.
+    
+    - Si responde positivamente, pregunta por su
+    situación actual.
+    
+    - Cuando haya respondido positivamente a todas
+    las preguntas, propón agendar una llamada con
+    el equipo.
+    
+    - Antes de sugerir la cita, pídele su correo si
+    aún no lo tienes.
+    
+    - Ayúdalo a agendar. Una vez agendada, agradécele
+    y cierra la conversación de forma positiva.
+    ```
+  </Card>
+</CardGroup>
+
+## Directrices: los límites
+
+Son las reglas que el bot no debe cruzar. También puedes incluirlas dentro del rol o de las instrucciones.
+
+<CardGroup cols={2}>
+  <Card title="Peor" icon="circle-xmark">
+    ```text
+    Responde de forma concisa. Haz todas las
+    preguntas del guion y luego pídeles que
+    reserven una cita.
+    ```
+  </Card>
+
+  <Card title="Mejor" icon="circle-check">
+    ```text
+    - Responde de forma breve y directa, con un
+    límite de 20 palabras.
+    
+    - Espera siempre la respuesta del usuario antes
+    de hacer la siguiente pregunta del guion.
+    
+    - Solo permite que reserven una cita si
+    respondieron afirmativamente a las preguntas
+    del guion.
+    ```
+  </Card>
+</CardGroup>
+
+## Tres prácticas que mejoran cualquier indicación
+
+### 1. Repetición
+
+Reiterar las partes cruciales guía al modelo a responder de forma más consistente. Es especialmente efectivo para reforzar el cumplimiento de las reglas esenciales.
+
+Si quieres que tu bot siga un guion de ventas, menciónalo en varios lugares:
+
+En el **rol**:
+
+```text
+Tu objetivo es calificarlos según las respuestas
+que den a las preguntas del guion.
+```
+
+En las **directrices**:
+
+```text
+- Espera siempre la respuesta antes de hacer la
+siguiente pregunta del guion.
+- Solo permite reservar si responden positivamente
+a las preguntas del guion.
+```
+
+### 2. Ejemplos
+
+A veces describir una tarea es más difícil que simplemente mostrarla. Los ejemplos mejoran muchísimo la comprensión del modelo, sobre todo cuando quieres replicar un estilo o un tono que cuesta explicar con palabras.
+
+```text
+EJEMPLOS DE QUÉ DECIR Y QUÉ NO DECIR:
+
+- Evitar: No entendí tu respuesta.
+- Usar: Perdón, ¿me lo repites?
+
+- Evitar: Pido disculpas por la confusión.
+- Usar: Disculpa si no me expliqué bien.
+
+- Evitar: Entiendo su preocupación, pero le aseguro
+  que nuestro equipo está altamente capacitado.
+- Usar: Sí, es normal que te preocupe. Créeme que
+  el equipo sabe muy bien lo que hace.
+```
+
+### 3. Mejora iterativa
+
+Escribir buenas indicaciones es, sobre todo, un proceso de prueba y ajuste. Antes de poner tu bot a producción, pruébalo, ajústalo y refínalo.
+
+<Warning>
+  Cuidado con las muestras pequeñas. Tres conversaciones buenas no prueban que un cambio funcionó — pueden ser casualidad. Prueba lo suficiente antes de concluir que una modificación mejoró algo.
+</Warning>
+
+Cuantas más vueltas des a este ciclo, mejor será tu bot y mejor serás tú escribiendo indicaciones.
+
+## Indicaciones avanzadas
+
+### Información estática
+
+Puedes incluir contexto sobre tu negocio, tus ofertas y tus servicios dentro de la propia indicación, para que el bot lo tenga disponible siempre.
+
+<Warning>
+  **Mantén el contexto entre 100 y 200 palabras.**
+
+  Si crece demasiado frente al resto de la indicación, las instrucciones pierden peso: la atención del modelo se va al contexto y deja de seguir tus reglas.
+</Warning>
+
+### Delimitadores
+
+Son caracteres especiales que separan y enfatizan partes del texto, para que el modelo distinga el contexto de las instrucciones.
+
+| Uso | Caracteres |
+| --- | --- |
+| **Énfasis** | `#` · `>` · `<` |
+| **Delimitación** | `""` · `'''` · `<> </>` |
+
+Ejemplo, agregando información de tu oferta:
+
+<CardGroup cols={2}>
+  <Card title="Peor" icon="circle-xmark">
+    El texto de la oferta pegado directamente, sin separación. El modelo no distingue dónde termina tu instrucción y dónde empieza el material de referencia.
+  </Card>
+
+  <Card title="Mejor" icon="circle-check">
+    ```text
+    # Oferta:
+    <oferta>
+    [aquí el texto de tu oferta]
+    </oferta>
+    ```
+  </Card>
+</CardGroup>
+
+### Contexto de la conversación
+
+Para casos específicos, explica **por qué** y **en qué situación** el bot está hablando con esa persona. Contextualizar mejora mucho la precisión de las respuestas.
+
+<CardGroup cols={2}>
+  <Card title="Peor" icon="circle-xmark">
+    ```text
+    Debes asumir el rol de un chatbot de
+    atención al cliente.
+    ```
+  </Card>
+
+  <Card title="Mejor" icon="circle-check">
+    ```text
+    Un cliente se está comunicando con nosotros
+    porque algo salió mal con su pedido.
+    
+    Debes actuar como un agente amable, encargado
+    de entender con claridad qué ocurrió. Pregúntale.
+    ```
+  </Card>
+</CardGroup>
+
+### Estilos de escritura
+
+Elige el que corresponda a tu negocio:
+
+Analítico · Conversacional · Creativo · Descriptivo · Informativo · Instructivo · Persuasivo · Técnico
+
+### Tono
+
+Autoritario · Clínico · Seguro · Empático · Formal · Amigable · Humorístico · Informal · Optimista · Juguetón · Serio · Comprensivo · Cálido
+
+<Tip>
+  Combina uno de cada lista y sé explícito. "Conversacional y cálido" produce un bot muy distinto de "técnico y clínico", aunque el resto de la indicación sea idéntico.
+</Tip>
+
+## Prueba antes de publicar
+
+Usa el modo de prueba del bot para iterar tus indicaciones hasta que se comporte exactamente como quieres, **antes** de ponerlo frente a clientes reales.
+
+<Card title="El agente conversacional" icon="comments" href="/ia/agente-conversacional">
+  Configuración, base de conocimiento y entrega a humano.
+</Card>
