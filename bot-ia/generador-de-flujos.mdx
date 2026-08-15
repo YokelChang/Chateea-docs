@@ -1,0 +1,182 @@
+---
+title: "Generador de flujos de IA para conversaciones"
+description: "Diseña la lógica de tu bot en un lienzo visual, paso a paso y rama por rama."
+icon: "diagram-project"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+El generador basado en flujos es una de las formas de crear tu bot: una interfaz visual completa para definir la lógica de la conversación, paso a paso.
+
+Se parece al generador de flujos de trabajo de automatización, pero funciona distinto. Sabes que estás en el correcto porque dice **"Volver a IA de conversación"** y **"Bot de prueba"** en lugar de "Flujo de trabajo".
+
+<Info>
+  La diferencia de fondo frente al bot por indicaciones: en vez de escribir un solo texto que gobierna todo, dibujas el recorrido. Cada objetivo es un nodo, cada bifurcación una rama. Ideal cuando la conversación tiene caminos distintos que un solo prompt confundiría.
+</Info>
+
+## Cómo acceder
+
+Ve a **Agentes de IA → IA conversacional → Crear bot → Crear nuevo bot (Creador basado en flujo)**.
+
+## Configuración del bot
+
+En la pestaña de configuración:
+
+- Nombra el bot
+- Pon el estado en piloto automático
+- Selecciona o deselecciona los canales (SMS, Instagram, Facebook, etc.)
+- Establece el máximo de mensajes en algo alto, como **100**, ya que este flujo maneja conversaciones largas
+- Guarda
+
+## Objetivos del bot
+
+Los objetivos principales (personalidad, intención) son una **indicación global** que forma parte de cada acción del flujo.
+
+- Define el tono con una o más palabras clave (por ejemplo: amigable y seguro)
+- Describe la personalidad con frases y campos de combinación: `Eres un bot para {{ai.business_name}}.`
+- Describe la intención: `Tu objetivo es ayudar a los usuarios a elegir un objetivo como {{ai.goals}} y reservar una cita.`
+- Agrega información adicional y contexto del negocio, con ejemplos explícitos de cómo comunicar (evita: "¿En qué puedo ayudarte hoy?"; usa: "Hola, ¿cómo estás?")
+
+Condiciones únicas:
+
+| Condición | Qué hace |
+| --- | --- |
+| **Detener bot** | Si el contacto usa lenguaje vulgar o dice "detente", el flujo se detiene de inmediato, sin importar en qué etapa esté |
+| **Transferencia a un humano** | Cuando el bot no sabe la respuesta o se lo piden, se detiene y notifica a una persona |
+| **Seguimiento automático** | Próximamente |
+
+Y las opciones de cita: permitir **cancelar** y permitir **reprogramar**. Guarda los objetivos.
+
+## El lienzo del flujo
+
+Desde **Objetivos del bot**, pulsa **Iniciar Flow Builder**.
+
+<Warning>
+  Donde el flujo tiene nodos **\[END\]**, eso marca el fin de los **objetivos**, no del chat. La conversación continúa; el contacto simplemente se queda en ese punto sin un objetivo activo.
+</Warning>
+
+El disparador por defecto es **Chat iniciado**, y es la única forma de arrancar el flujo.
+
+## Acciones de IA
+
+Pulsa el **\+** para elegir una acción. Están las mismas del generador de flujos de trabajo más las nuevas acciones de IA.
+
+<Warning>
+  Dos acciones —**Capturar información** y **Reservar cita**— **se repiten en bucle** de forma autónoma hasta lograr su objetivo o hasta encontrar un criterio de salida claro. El resto se ejecutan una sola vez.
+</Warning>
+
+### Capturar información (calificar)
+
+| Campo | Para qué |
+| --- | --- |
+| **Describe el objetivo** | La instrucción de este objetivo (máx. 500 caracteres). Ej: "determinar el nombre del usuario" |
+| **Actualizar campo de contacto** (opcional) | El campo donde guardar el dato. Ej: Nombre |
+| **Instrucciones adicionales** | Apoyo al objetivo. Ej: avisar que no se puede avanzar si el presupuesto es menor a \$5,000, sin revelar esa cifra |
+| **Ejemplo de respuesta** | Formato exacto. Ej: "Especifica moneda USD: \$#,###" |
+| **Omitir si el campo ya está lleno** | Si el campo del contacto ya tiene valor, el objetivo se da por cumplido y se salta |
+| **Intentos máximos** | Tras X mensajes del bot intentando cumplirlo, se rinde y pasa al siguiente |
+| **No continuar si no se cumple** | Termina la conversación con un mensaje de cierre |
+| **Agregar etiqueta** | Una o más etiquetas como último paso. Ej: `[AI qualified]` |
+
+### Reservar cita
+
+Se repite en bucle hasta reservar, salvo criterio de salida claro ("no quiero reservar").
+
+- **Indicación de reserva:** cómo animar al usuario a agendar
+- **Selecciona calendario:** del desplegable
+- Dos ramas de salida: **Cita reservada** (éxito) y **Cita no reservada** (fallo)
+
+### Finalizar conversación
+
+<Warning>
+  Por defecto, al llegar a un nodo \[END\] el contacto se queda ahí y cualquier interacción sigue en ese contexto. Esta acción **termina la conversación de forma definitiva**: no continúa.
+</Warning>
+
+- **Mensaje de cierre personalizado:** literal, la IA no lo modifica
+- **Reactivar después:** con valor y unidad de tiempo (ej: horas)
+
+### Divisor de IA (AI Splitter)
+
+<Note>
+  No envía mensajes ni recopila información. **Solo analiza** lo ya recopilado para decidir la rama.
+</Note>
+
+- **Descripción:** la lógica de bifurcación. Ej: "¿Qué tipo de auto tiene el contacto?"
+- **Ninguna condición cumplida:** rama por defecto, por si nada califica
+- **Ramas:** las opciones entre las que la IA elige
+
+### Mensaje de IA
+
+Se ejecuta una sola vez.
+
+- **Indicación del mensaje:** qué tipo de mensaje escribirá la IA usando el contexto. Ej: "Dile al usuario que somos el mejor proveedor"
+- **Esperar respuesta:** si se marca, el flujo no avanza hasta recibir contestación
+
+### Mensaje personalizado
+
+Se ejecuta una sola vez.
+
+- **Mensaje:** literal, se entrega tal cual, sin modificación
+- **Esperar respuesta:** igual que arriba
+
+### Bot de transferencia
+
+<Warning>
+  Transfiere el contacto a otro bot y **sale de este flujo**; no regresa a menos que otra acción de transferencia lo devuelva. Ideal cuando tienes varias rutas parecidas pero con diferencias cruciales que confundirían a un solo bot.
+</Warning>
+
+- **Selecciona el bot destino** del desplegable. Ej: Seguro de Auto California, Nevada, Texas
+
+### Continuar la conversación
+
+Por defecto, en un nodo \[END\] el contacto se queda charlando sin objetivo. Esta acción le da instrucciones de cómo seguir conversando si el usuario quiere.
+
+- **Instrucciones adicionales:** cómo continuar el chat
+
+## Activadores de IA
+
+El disparador **Iniciar chat** es el único que arranca el flujo. Los **personalizados** no pueden iniciarlo.
+
+### Disparador personalizado
+
+<Warning>
+  Puedes tener **hasta 3** disparadores personalizados.
+</Warning>
+
+| Campo | Qué hace |
+| --- | --- |
+| **Elegir disparador** | Uno prearmado (ej: "Reservar otra cita") o creado por ti |
+| **Condición** | En palabras, cuándo se activa. Ej: "El usuario quiere conocer nuestras políticas" |
+| **Prioridad** | De 1 a 10; el número más alto gana si varios podrían dispararse a la vez |
+| **Sensibilidad** | Controla si se activa a mitad del flujo |
+
+**La sensibilidad, en detalle:**
+
+| Nivel | Comportamiento |
+| --- | --- |
+| **Baja** | La IA rara vez rompe el flujo actual para ir al disparador |
+| **Media** | La IA decide si romper el flujo |
+| **Alta** | La IA casi siempre rompe el flujo y va al disparador personalizado |
+
+### Disparadores \+ If/Else (crear un enrutador)
+
+Puedes combinar un If/Else con los disparadores personalizados para armar un router: rediriges cada disparador hacia el condicional y configuras una ruta por cada uno.
+
+- Rama **Chat iniciado:** el camino si se disparó el disparador por defecto
+- Rama **Disparador personalizado 1 / 2 / 3:** un camino por cada disparador
+
+### Cambiar la ruta de un disparador
+
+<Steps>
+  <Step title="Pulsa el icono de romper enlace">
+    En la parte inferior del disparador personalizado.
+  </Step>
+  <Step title="Elimina la ruta">
+    En la ventana, pulsa **Eliminar ruta**.
+  </Step>
+  <Step title="Elige el nuevo destino">
+    Haz clic en la acción a la que quieres que vaya (las opciones válidas se resaltan en verde).
+  </Step>
+</Steps>

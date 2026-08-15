@@ -1,0 +1,123 @@
+---
+title: "condiciones-de-parada"
+description: "Configura cuándo el bot debe dejar de responder para cerrar la conversación con naturalidad."
+icon: "hand"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+La función **Detener bot** pausa automáticamente las respuestas cuando se cumplen ciertas condiciones durante la conversación.
+
+Así las interacciones terminan de forma natural y evitas respuestas repetitivas o innecesarias después de que la conversación ya concluyó.
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Conversaciones más inteligentes** | Evita respuestas innecesarias o repetidas |
+| **Mejor experiencia** | Cierra el intercambio de forma natural y respetuosa |
+| **Control de automatización** | Defines exactamente cuándo detener las respuestas |
+| **Activadores flexibles** | Usa frases o condiciones basadas en comportamiento |
+| **Opciones de reactivación** | Reanuda la automatización tras un tiempo definido |
+
+## Dónde se configura
+
+Pulsa el botón **Detener bot** dentro del área de acciones para abrir la configuración.
+
+## Cómo configurar las condiciones
+
+<Steps>
+  <Step title="Habilita el escenario">
+    Activa el interruptor de escenario y confirma que quedó activo.
+  </Step>
+  <Step title="Nombra el escenario">
+    Por ejemplo: **Detección de despedida**.
+  </Step>
+  <Step title="Define la condición desencadenante">
+    Por ejemplo: que el cliente finalice la conversación.
+  </Step>
+  <Step title="Agrega frases de ejemplo">
+    Varias variaciones de la misma intención:
+
+    ```text
+    Adiós
+    Gracias, que tengas buen día
+    Hasta luego
+    Listo, eso era todo
+    ```
+  </Step>
+  <Step title="Escribe el mensaje final">
+    Por ejemplo:
+
+    ```text
+    Gracias por tu tiempo. Cualquier cosa,
+    aquí estamos.
+    ```
+
+    <Warning>
+      Si no defines un mensaje final, la conversación termina de golpe y al cliente le resulta poco natural.
+    </Warning>
+  </Step>
+  <Step title="Configura el temporizador de reactivación (opcional)">
+    Habilítalo y establece la duración si quieres que las respuestas se reanuden después.
+  </Step>
+  <Step title="Guarda y prueba">
+  </Step>
+</Steps>
+
+## Qué observar al probar
+
+Durante una interacción real, confirma que:
+
+- La frase desencadenante **impide** nuevas respuestas
+- El mensaje final se envía
+- El estado cambia a inactivo
+- Se aplican las etiquetas, si las configuraste
+
+## Mejores prácticas
+
+<AccordionGroup>
+  <Accordion title="Usa frases específicas y realistas">
+    Las que tus clientes realmente escriben, no las que suenan bien en teoría.
+  </Accordion>
+
+  <Accordion title="Agrega varias variaciones de la misma intención">
+    "Adiós", "hasta luego", "gracias, eso era todo" son la misma señal escrita de tres formas.
+  </Accordion>
+
+  <Accordion title="Evita condiciones demasiado amplias">
+    Una condición muy general detiene el bot cuando la conversación aún debía continuar.
+  </Accordion>
+
+  <Accordion title="Incluye siempre un mensaje final">
+  </Accordion>
+
+  <Accordion title="Prueba los escenarios antes de usarlos en real">
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa cuando se activa una condición de parada?">
+    El sistema envía el mensaje final y deja de responder a ese contacto.
+  </Accordion>
+
+  <Accordion title="¿Puede reiniciarse el bot después de detenerse?">
+    Sí, si habilitaste el temporizador de reactivación las respuestas se reanudan tras el tiempo establecido.
+  </Accordion>
+
+  <Accordion title="¿Qué ocurre si no pongo mensaje final?">
+    La conversación puede terminar abruptamente, lo que resulta poco natural.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar varias condiciones de parada?">
+    Sí. Puedes crear varios escenarios con distintos desencadenantes.
+  </Accordion>
+
+  <Accordion title="¿Esto afecta a todos los contactos?">
+    No. El comportamiento de parada solo se aplica cuando se cumple la condición para un contacto específico.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,123 @@
+---
+title: "Guarda y reutiliza las configuraciones del bot de IA conversacional"
+description: "Clona un bot completo en una instantánea y replícalo en otras cuentas sin reconstruir nada."
+icon: "copy"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Las instantáneas de bots te permiten guardar un bot ya configurado —con sus mensajes, acciones, ajustes y datos de entrenamiento— dentro de una instantánea de cuenta, para reutilizarlo en otras cuentas.
+
+Es útil cuando tienes una configuración probada que quieres implementar una y otra vez sin reconstruir desde cero las indicaciones, las acciones y el entrenamiento.
+
+<Info>
+  Para una agencia, esto es lo que hace escalable el trabajo: armas tu bot perfecto una vez, lo guardas en instantánea y lo despliegas en cada cliente nuevo con la misma calidad, en minutos en vez de horas.
+</Info>
+
+## Qué clona
+
+La instantánea copia el bot completo:
+
+- Indicaciones
+- Acciones
+- Configuraciones
+- URL del rastreador web de entrenamiento
+- Respuestas personalizadas / preguntas frecuentes
+
+Así cada bot importado empieza con la misma estructura, lógica y entrenamiento que el original.
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Captura completa** | Configuración, indicaciones, acciones y detalles relacionados |
+| **Cuentas más rápidas** | No reconstruyes el mismo bot en cada cuenta |
+| **Experiencia coherente** | Mismo tono, instrucciones y lógica en todas |
+| **Entrenamiento incluido** | URL del rastreador web y respuestas personalizadas |
+| **Compatibilidad con bot principal** | Si la cuenta destino no tiene uno, el importado se asigna como principal |
+| **Importación flexible** | Decides si sobrescribir u omitir cuando hay conflicto de nombres |
+
+## Cómo crear una instantánea con bots
+
+<Warning>
+  Antes de crearla, asegúrate de que la cuenta de **origen** contenga la configuración, las indicaciones, las acciones y el entrenamiento que quieres reutilizar.
+</Warning>
+
+<Steps>
+  <Step title="Entra a Instantáneas de la cuenta">
+    Desde el menú de navegación izquierdo.
+  </Step>
+  <Step title="Pulsa Crear nueva instantánea">
+  </Step>
+  <Step title="Ponle un nombre descriptivo">
+  </Step>
+  <Step title="Selecciona la cuenta de origen">
+    En el desplegable, la que contiene el bot que quieres incluir. Pulsa **Siguiente**.
+  </Step>
+  <Step title="Avanza y revisa los recursos">
+    Continúa por el flujo de creación revisando lo seleccionado.
+  </Step>
+  <Step title="Localiza la sección de IA conversacional">
+    Revisa los bots y sus datos incluidos: nombres, configuraciones, acciones, indicaciones, URL del rastreador y respuestas personalizadas.
+  </Step>
+  <Step title="Pulsa Crear instantánea">
+    Para terminar.
+  </Step>
+</Steps>
+
+## Comportamiento al importar
+
+### Asignación automática de bot principal
+
+Si la cuenta destino **no** tiene un bot principal, el importado se asigna automáticamente como tal. Si ya tiene uno, puedes revisarlo y cambiarlo manualmente después.
+
+### Manejo de conflictos
+
+Si ya existe un bot con el mismo nombre en el destino, se te ofrecen dos opciones:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Sobrescribir** | Reemplaza el bot existente por el de la instantánea |
+| **Omitir** | Conserva el existente y no importa el de la instantánea |
+
+### Qué se incluye
+
+Estructura completa del bot, acciones, mapeos de indicación y respuesta, configuraciones, URL del rastreador web y respuestas personalizadas / preguntas frecuentes creadas en el entrenamiento.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si ya existe un bot con el mismo nombre?">
+    Al importar, eliges sobrescribir el existente u omitir el de la instantánea.
+  </Accordion>
+
+  <Accordion title="¿Se conservan mis indicaciones y la lógica de acciones?">
+    Sí. La instantánea preserva indicaciones, acciones, configuraciones y lógica del bot.
+  </Accordion>
+
+  <Accordion title="¿Incluye datos de entrenamiento como FAQ y URL del rastreador?">
+    Sí. El entrenamiento, incluidas las URL del rastreador web y las respuestas personalizadas, va incluido.
+  </Accordion>
+
+  <Accordion title="¿El bot importado se vuelve principal automáticamente?">
+    Solo si la cuenta destino no tiene ya un bot principal.
+  </Accordion>
+
+  <Accordion title="¿Puedo cambiar el bot principal después de importar?">
+    Sí, manualmente desde la configuración del bot.
+  </Accordion>
+
+  <Accordion title="¿Puedo editar una instantánea después de crearla?">
+    No. Las instantáneas no se editan. Si actualizas el bot original, crea una instantánea nueva para capturar la configuración más reciente.
+  </Accordion>
+
+  <Accordion title="¿Debo probar el bot después de importar?">
+    Sí. Prueba siempre el bot importado en la cuenta destino para confirmar que indicaciones, acciones, entrenamiento y configuración funcionan como esperas.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Nueva experiencia de gestión de canales" icon="diagram-next" href="/bot-ia/nueva-gestion-canales">
+  Cómo se comportan los bots y sus canales al instalar una instantánea.
+</Card>

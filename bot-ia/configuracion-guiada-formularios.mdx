@@ -1,0 +1,130 @@
+---
+title: "Configuración guiada basada en formularios para IA conversacional"
+description: "Crea un bot completo llenando un formulario, sin escribir una sola indicación."
+icon: "clipboard-list"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Esta guía configura la IA conversacional mediante el método de **formulario guiado**. Con él creas bots sin escribir indicaciones: completas un formulario, defines tus objetivos y el sistema se encarga de la lógica.
+
+El bot de formulario guiado es una opción de configuración sencilla que elimina la necesidad de diseñar indicaciones a mano. En su lugar, te guía con un formulario estructurado: defines objetivos clave —recopilar datos, responder preguntas frecuentes— y el sistema arma solo un flujo de conversación lógico.
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Configuración más sencilla** | Llenas campos guiados en vez de redactar indicaciones desde cero |
+| **Conversaciones estructuradas** | Defines objetivos y preguntas: el bot sabe qué recopilar y qué lograr |
+| **Mayor coherencia** | Comportamiento uniforme con campos claros, mensajes alternativos e instrucciones |
+| **Mejor calificación** | Preguntas específicas sobre necesidad, urgencia, presupuesto o disponibilidad |
+| **Automatización por acciones** | Recopilar datos, disparar flujos o empujar hacia la reserva |
+| **Actualizaciones simples** | Editas objetivos, preguntas o acciones cuando cambia tu proceso |
+| **Menos complejidad** | Das instrucciones claras sin dominar técnicas avanzadas de indicaciones |
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Inicia una conversación con IA">
+    En **Agentes de IA → IA conversacional**, pulsa **\+ Crear bot** arriba a la derecha.
+  </Step>
+  <Step title="Selecciona Configuración guiada basada en formularios">
+    Como método de configuración.
+  </Step>
+  <Step title="Selecciona el tipo de bot">
+    **Preguntas y respuestas generales** o **Reserva de citas**. Pulsa Continuar.
+  </Step>
+  <Step title="Selecciona la voz de marca">
+    Elige una del desplegable o crea una nueva antes de continuar. Puedes pulsar **Editar** para ajustarla.
+  </Step>
+  <Step title="Configura los ajustes del bot">
+    | Ajuste | Qué define |
+    | --- | --- |
+    | **Nombre del bot** | Un identificador reconocible |
+    | **Canales preferidos** | Dónde responde: Instagram, Facebook, SMS y demás conectados |
+    | **Mensaje inicial** | El primer mensaje del bot. Si lo dejas vacío, usa un saludo genérico |
+    | **Bot principal** | Actívalo si debe responder los mensajes entrantes como principal (con sus canales asignados) |
+    | **Tiempo de espera antes de responder** | Cuánto espera antes de contestar. Ej: 2 segundos |
+
+    Pulsa **Siguiente**.
+  </Step>
+  <Step title="Define la recopilación de información">
+    Elige qué datos recoger: **Nombre, Correo, Teléfono, Dirección** y **Ciudad**.
+  </Step>
+  <Step title="Agrega preguntas y objetivos personalizados">
+    Todos los objetivos que quieras que cumpla. Activa **Omitir si ya está completado** para no volver a pedir datos existentes.
+
+    Casos comunes: pedir nombre, correo y teléfono; calificar con preguntas de sí/no; ofrecer un enlace para agendar.
+  </Step>
+  <Step title="Configura los detalles de cita">
+    Activa **Reserva de citas** y elige el calendario. Opcionalmente, selecciona flujos en **Disparar flujos tras la reserva**.
+
+    Con los interruptores secundarios decides si el bot puede **cancelar** y **reprogramar** citas existentes.
+  </Step>
+  <Step title="Ajusta las notificaciones por correo">
+    Activa **Recibir notificación si el bot no sabe la respuesta** y elige a quién le llega.
+  </Step>
+  <Step title="Habilita el resumen de conversación">
+    Para generar un resumen cuando la conversación queda inactiva. Configura el **tiempo de inactividad** y el **mínimo de mensajes**. También puedes disparar un flujo, guardar el resumen en un campo o recibirlo por correo.
+  </Step>
+  <Step title="Guarda el bot">
+    Tras configurar los objetivos, pulsa **Guardar**.
+  </Step>
+  <Step title="Define el estado">
+    Aparece el aviso de bot creado. Su estado inicial es **Apagado** — aún no responde.
+
+    | Estado | Comportamiento |
+    | --- | --- |
+    | **Apagado** | La IA no responde |
+    | **Sugerente** | Propone respuestas en el chat para que alguien las revise y envíe |
+    | **Piloto automático** | Responde solo, según sus datos |
+
+    Desde aquí también puedes **probar el bot**, ir a **ajustes avanzados** o **guardar y cerrar**.
+  </Step>
+</Steps>
+
+## Instrucciones adicionales
+
+Sirven para dar contexto extra y límites, de modo que el bot siga tus procesos y maneje bien los casos raros.
+
+<Info>
+  **Límite: hasta 2,000 caracteres** (antes 1,200).
+</Info>
+
+Buenas prácticas:
+
+- Define el rol y los límites del bot
+- Usa reglas claras de qué hacer y qué no en escenarios delicados
+- Viñetas concisas; lo crítico primero
+
+Dónde encontrarlas: en **IA conversacional**, pulsa **Editar** sobre el bot, localiza **Instrucciones adicionales**, escribe y guarda.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo alternar entre formulario guiado y bot por indicaciones?">
+    Sí. En la pantalla de creación, pulsa la flecha del desplegable junto a **Crear bot** para elegir el método.
+  </Accordion>
+
+  <Accordion title="¿Puedo editar el bot después de crearlo?">
+    Sí. Ábrelo desde el administrador de bots y pulsa **Editar**.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si el usuario no responde una pregunta?">
+    El bot reintenta, avanza o termina la conversación, según cómo configuraste cada objetivo.
+  </Accordion>
+
+  <Accordion title="¿Puedo duplicar un bot?">
+    Sí. Usa **Duplicar** en el menú del bot para reutilizar una configuración.
+  </Accordion>
+
+  <Accordion title="¿Funciona en Instagram o WhatsApp?">
+    Sí, siempre que esos canales estén integrados en tu configuración.
+  </Accordion>
+
+  <Accordion title="¿Cuándo arranca el flujo si configuro un mensaje inicial?">
+    Si defines un mensaje inicial, el bot lo envía primero y espera la siguiente respuesta del contacto antes de arrancar los objetivos. Si lo dejas vacío, el flujo empieza de inmediato con el primer mensaje.
+  </Accordion>
+</AccordionGroup>
