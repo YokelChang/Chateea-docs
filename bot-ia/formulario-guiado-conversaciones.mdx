@@ -1,0 +1,105 @@
+---
+title: "Configuración guiada de formularios para conversaciones con IA"
+description: "El enfoque por objetivos: dile al bot qué recopilar y qué hacer, sin ingeniería de indicaciones."
+icon: "list-check"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+El bot de formularios guiados facilita crear conversaciones con IA **sin escribir instrucciones complejas**. En lugar de diseñar la lógica de las indicaciones a mano, defines qué información quieres recopilar y qué acciones debe realizar el bot.
+
+Es ideal para captación de leads, reserva de citas, calificación de clientes y flujos de soporte donde la coherencia y la velocidad importan.
+
+<Info>
+  Este artículo cubre el **enfoque** del formulario guiado — la idea de configurar por objetivos en vez de por indicaciones. Para el paso a paso pantalla por pantalla, ve a [Configuración guiada basada en formularios](/bot-ia/configuracion-guiada-formularios).
+</Info>
+
+## Por qué usarlo
+
+La configuración tradicional suele exigir escribir instrucciones detalladas, lo que resulta laborioso e inconsistente. El formulario guiado elimina esa complejidad: te enfocas solo en la información a recopilar y en las acciones a ejecutar.
+
+| Te ayuda a… |  |
+| --- | --- |
+| Crear bots en minutos | Mantener calidad constante |
+| Armar conversaciones estructuradas | Reducir errores de configuración |
+| Recopilar datos automáticamente | Eliminar la redacción de indicaciones |
+
+Casos de uso comunes: calificación de leads, reserva de citas, admisión de soporte, solicitudes de servicio y recopilación de datos de contacto.
+
+## Crea el bot
+
+<Steps>
+  <Step title="Abre el administrador de bots">
+    Y empieza a crear uno nuevo. En el menú **Crear bot**, elige la opción de **Formulario guiado** en lugar de la tradicional por indicaciones.
+  </Step>
+  <Step title="Configura los ajustes básicos">
+    - **Nombre del bot**
+    - **Canales preferidos**
+    - **Tiempo de espera**
+    - **Mensaje de saludo inicial** — la primera respuesta que reciben los clientes; marca el tono de la interacción
+  </Step>
+  <Step title="Define objetivos y preguntas">
+    Los objetivos controlan qué información recopila el bot. Puede recoger nombre, correo, teléfono, dirección y preguntas personalizadas.
+
+    Los objetivos personalizados se redactan en lenguaje sencillo:
+
+    ```text
+    Solicita al usuario su nombre
+    Solicita al usuario su correo electrónico
+    Solicita al usuario su número de teléfono
+    ¿Qué problema estás experimentando?
+    ```
+
+    El bot sigue la secuencia **exactamente** como la configuraste. Además puedes reordenar objetivos, agregar preguntas, mapear respuestas a campos de contacto y omitir preguntas si el campo ya está lleno.
+  </Step>
+  <Step title="Configura las acciones del bot">
+    Elige qué hace tras recopilar la información:
+
+    - Reserva de citas
+    - Disparadores de flujo de trabajo
+    - Actualizaciones de contacto
+    - Pasos de automatización adicionales
+  </Step>
+  <Step title="Revisión final e instrucciones adicionales">
+    Revisa todo antes de publicar. Las instrucciones adicionales dan contexto extra o ajustan el comportamiento, sin perder la sencillez de la configuración guiada.
+  </Step>
+</Steps>
+
+## Notas importantes
+
+- Está diseñado para conversaciones estructuradas
+- Los objetivos se siguen en el orden exacto configurado
+- Las preguntas se pueden reordenar en cualquier momento
+- Los campos de contacto se mapean automáticamente
+- La información de contacto existente se puede omitir
+- Las acciones adicionales varían según la disponibilidad de cada función
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito escribir indicaciones?">
+    No. El formulario guiado elimina la necesidad de escribir instrucciones complejas.
+  </Accordion>
+
+  <Accordion title="¿Puedo recopilar información de contacto automáticamente?">
+    Sí: nombre, correo, teléfono y otros datos personalizados.
+  </Accordion>
+
+  <Accordion title="¿Puedo agregar mis propias preguntas?">
+    Sí. Puedes añadir objetivos y preguntas en cualquier momento.
+  </Accordion>
+
+  <Accordion title="¿Puedo reordenar el flujo?">
+    Sí, con los controles de reordenación.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si un campo ya tiene información?">
+    Activa "Omitir si ya está completado" para que el bot no vuelva a preguntar.
+  </Accordion>
+
+  <Accordion title="¿Puede disparar flujos o citas?">
+    Sí. Admite reserva de citas y automatización de flujos.
+  </Accordion>
+</AccordionGroup>
