@@ -1,0 +1,129 @@
+---
+title: "Cómo crear facturas recurrentes"
+description: "Programa una plantilla que emite y cobra facturas solas, a la frecuencia que definas."
+icon: "file-invoice"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Las facturas recurrentes te permiten emitir cobros a intervalos definidos sin crear cada factura a mano. Configuras una plantilla con su frecuencia, su cliente y su importe, y el sistema se encarga de enviarlas.
+
+<Warning>
+  Recomendamos usar **Stripe Connect** con las facturas. Si no lo usas, los pagos deberán registrarse manualmente.
+</Warning>
+
+## Cómo crear una factura recurrente
+
+<Steps>
+  <Step title="Abre la pestaña Facturas">
+    En la sección de **Pagos**.
+  </Step>
+  <Step title="Crea una nueva plantilla recurrente">
+    Pulsa **Nuevo** en la página de Todas las facturas o Plantillas recurrentes, y elige **Nueva plantilla recurrente** — envía una factura al cliente a intervalos programados.
+  </Step>
+</Steps>
+
+## Comprende la configuración de frecuencia
+
+Aquí está el corazón de la función. La frecuencia decide cuándo vence cada factura y cuándo se envía. Esta tabla recoge los casos del artículo original, con la configuración y su resultado:
+
+| Configuración | Resultado |
+| --- | --- |
+| **Diaria**, cada 2 días · inicio 5 jul · sin fin | 1.ª factura vence el 5 jul · 2.ª el 7 jul · la generación nunca se detiene automáticamente |
+| **Diaria**, cada 2 días · inicio 5 jul · fin "por" 13 jul | 1.ª el 5 jul · 2.ª el 7 jul · siguientes los días 9, 11 y 13 de julio |
+| **Diaria**, cada 2 días · inicio 5 jul · fin "por" 12 jul | 1.ª el 5 jul · 2.ª el 7 jul · siguientes los días 9 y 11 · **ninguna** el 12 de julio |
+| **Semanal**, lunes, cada 2 semanas · inicio 5 jul · sin fin · enviar 2 días antes | 1.ª vence el 18 jul, se envía el 16 jul · 2.ª vence el 1 ago, se envía el 30 jul |
+| **Mensual**, en fecha, el 2 · cada 2 meses · inicio 6 jul · fin tras 3 apariciones · enviar 0 días antes | 1.ª vence el 2 sep (se envía el mismo día) · 2.ª el 2 nov · termina tras enviar 3 facturas |
+| **Mensual**, primer lunes · cada 1 mes · inicio 1 ago · fin "por" 31 dic · enviar 1 día antes | 1.ª vence el 1 ago (es el primer lunes) · se envían 1 día antes · la última vence el 5 dic (primer lunes de diciembre) · ninguna después |
+| **Anual**, último de diciembre · cada 1 año · inicio 1 ago · fin tras 5 apariciones | Envía una factura el 31 dic de cada año · termina tras 5 facturas |
+
+<Tip>
+  Los dos parámetros que más confunden son **"enviar X días antes"** y la fecha de fin. El primero adelanta el envío respecto al vencimiento; la fecha de fin "por" una fecha **incluye** esa fecha solo si cae en el ciclo, como muestra el caso del 12 vs. 13 de julio.
+</Tip>
+
+## Estados y acciones en las plantillas recurrentes
+
+Qué puedes hacer con una plantilla depende de su estado. Esta tabla lo resume:
+
+| Acción / Estado | Borrador | Activa | Programada | Cancelada | Completada |
+| --- | --- | --- | --- | --- | --- |
+| **Editar** | Sí | No | No | No | No |
+| **Ver** | No | Sí | Sí | Sí | Sí |
+| **Eliminar** | Sí | No | Sí | No\* | No\* |
+| **Finalizar** | N/A | Sí | Sí | N/A | N/A |
+
+<Warning>
+  **\*** Las facturas **canceladas** y **completadas** solo se pueden eliminar si **no se ha enviado ninguna factura** al cliente. Las plantillas recurrentes eliminadas no se muestran en la vista de lista.
+</Warning>
+
+## Ver las facturas enviadas y su estado de pago
+
+Pulsa **Detalles** en una plantilla para abrir el panel con las facturas enviadas y su estado. Cada factura puede estar en uno de cuatro estados:
+
+| Estado | Qué significa |
+| --- | --- |
+| **Enviada** | Se envió correctamente al cliente |
+| **Vencida** | Se envió a tiempo pero el cliente aún no la ha pagado |
+| **Pagada** | El cliente pagó la factura |
+| **No enviada** | Hubo un error de sistema al entregarla; hay que reenviarla |
+
+Los estados también pueden consultarse dentro del generador de facturas una vez que la plantilla está **Programada**.
+
+## Notificaciones de pago
+
+Estas son las notificaciones predeterminadas que se envían según el evento. Puedes crear más con activadores de factura en los flujos de trabajo (estado enviada o pagada):
+
+| Caso | Quién recibe el correo |
+| --- | --- |
+| Pago de factura realizado con éxito | Receptor |
+| El pago de la factura falló | Receptor |
+| Factura recibida | Receptor |
+| Pago de factura realizado con éxito | Remitente |
+| El pago de la factura falló | Remitente |
+
+## Cómo dejar de emitir facturas futuras
+
+Las facturas recurrentes activas o programadas se pueden detener para que no se envíen más:
+
+<Steps>
+  <Step title="Abre el menú Acciones">
+    En la lista de plantillas recurrentes, en la fila que quieras detener.
+  </Step>
+  <Step title="Selecciona Finalizar">
+    Y confirma con **Sí, finalizar factura**.
+
+    Esto finaliza la plantilla con efecto en la fecha indicada; no se crean ni envían facturas futuras.
+  </Step>
+</Steps>
+
+También puedes finalizarla desde el propio generador de facturas, con la opción **Finalizar factura recurrente**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo cambiar el precio, el descuento o los impuestos después de programar?">
+    No. Una vez programada la factura recurrente, no puedes cambiar precio, descuento ni impuestos. Puedes editar y reenviar una factura individual en casos específicos, pero no modificar la automatización.
+  </Accordion>
+
+  <Accordion title="¿Puedo cambiar la frecuencia después de programar?">
+    No. La configuración de frecuencia no se puede cambiar una vez programada la plantilla.
+  </Accordion>
+
+  <Accordion title="¿Qué productos puedo agregar a una factura recurrente?">
+    Solo productos de **compra única**, no suscripciones. Para productos recurrentes, la frecuencia debe definirse en la configuración de frecuencia de la factura.
+  </Accordion>
+
+  <Accordion title="¿Qué muestra la vista de lista?">
+    Las plantillas recurrentes creadas por el usuario, que a su vez crean y envían facturas individuales al cliente según la frecuencia definida en cada una.
+  </Accordion>
+
+  <Accordion title="¿Cómo me notifican cuando pagan una factura?">
+    Con las notificaciones predeterminadas de la tabla anterior, y las que tú agregues mediante activadores de factura en los flujos de trabajo.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Pagos automáticos en plantillas recurrentes" icon="credit-card" href="/pagos-facturas/pagos-automaticos-recurrentes">
+  Haz que estas facturas se cobren solas en cada vencimiento.
+</Card>
