@@ -1,0 +1,112 @@
+---
+title: "Pagos automáticos en plantillas recurrentes"
+description: "Cobra las facturas recurrentes solo, sin esperar a que el cliente pague."
+icon: "credit-card"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Gestionar los pagos de los clientes puede volverse complicado, sobre todo con facturas recurrentes. El pago automático resuelve eso: deduce el importe de la factura de la tarjeta del cliente **en la fecha de vencimiento**, sin esperar a que haga nada.
+
+<Info>
+  Para un negocio con cobros mensuales, esto es la diferencia entre perseguir pagos y recibirlos solos. La factura se genera y se cobra sola; tú solo revisas que todo entró.
+</Info>
+
+## Qué significa el pago automático
+
+Significa que no tienes que esperar a que el cliente pague a tiempo. La configuración deduce el importe en la fecha de vencimiento usando su tarjeta de crédito.
+
+La tarjeta con la que se cobra puede definirse de dos formas:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Tarjeta del cliente** | Cobra con la misma tarjeta que usó en el primer pago de la plantilla recurrente |
+| **Tarjeta guardada** | Si el cliente tiene tarjetas guardadas, se usa una de ellas para cobrar en cada vencimiento |
+| **Tarjeta nueva** | Ingresas los datos de una tarjeta nueva para cobrar en ese medio cuando venza una factura de la plantilla |
+
+## Cómo cobrar automáticamente al cliente
+
+Los pagos automáticos se habilitan en la plantilla recurrente al programarla.
+
+<Steps>
+  <Step title="Abre la programación de la factura">
+    En la plantilla recurrente, en la ventana **Programar factura**.
+  </Step>
+  <Step title="Activa el pago automático">
+    Enciende el interruptor **Habilitar pago automático**.
+  </Step>
+  <Step title="Confirma el importe a pagar">
+    Verifica el monto que se cobrará.
+  </Step>
+  <Step title="Elige la tarjeta">
+    Tarjeta del cliente, tarjeta guardada o tarjeta nueva.
+  </Step>
+  <Step title="Programa">
+    Pulsa **Programar** para guardar la plantilla con el pago automático activo.
+  </Step>
+</Steps>
+
+## Qué significa "Tarjeta del cliente"
+
+Permite cobrar al cliente con la tarjeta que usó para el **primer pago** de la plantilla recurrente. Se aplica a partir de la **siguiente** factura, sin importar cuál se pague (puede ser la primera, la segunda o la enésima).
+
+<Info>
+  **Ejemplo:** si el cliente paga por primera vez en la cuarta factura, sin haber pagado las tres anteriores, el pago automático con esa tarjeta comenzaría a partir de la **quinta** aparición de la plantilla recurrente (si existe).
+</Info>
+
+## Cómo recibirás las notificaciones
+
+- Se envía una notificación al usuario local y al cliente final en cada **éxito o fracaso** de una factura secundaria de la plantilla
+- El cliente final también recibe un aviso **antes** de cada cargo automático, con "x" días de antelación según la frecuencia de confirmación establecida
+
+## Qué pasa si falla el pago automático
+
+Si no se realiza el cargo a la tarjeta seleccionada, se notifica al usuario del establecimiento y al cliente final.
+
+<Note>
+  Al programar la plantilla, se autoriza el cargo mínimo a cualquier tarjeta nueva seleccionada en la moneda correspondiente. Cualquier tarjeta agregada correctamente **se guarda para usos futuros** del usuario de la ubicación.
+</Note>
+
+## Cómo cancelar los pagos automáticos
+
+<Steps>
+  <Step title="Abre Gestionar pagos automáticos">
+    En el generador de facturas, en el menú de opciones, elige **Gestionar pagos automáticos**.
+  </Step>
+  <Step title="Desactiva el interruptor">
+    Se abre la ventana con el interruptor activado y la opción de pago seleccionada. Desactívalo para deshabilitar los pagos automáticos **a partir de la próxima vez**.
+  </Step>
+  <Step title="Actualiza">
+    Guarda el cambio.
+  </Step>
+</Steps>
+
+## Activarlos en una plantilla recurrente existente
+
+Sí se puede. Desde el editor, usa **Gestionar pagos automáticos**: se abre la ventana con la opción desactivada, y puedes activarla y elegir la tarjeta (guardada o nueva).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Desde qué factura empieza a cobrar la tarjeta del cliente?">
+    Desde la siguiente a la del primer pago, sin importar cuál se haya pagado.
+  </Accordion>
+
+  <Accordion title="¿El cliente sabe antes de que le cobren?">
+    Sí. Recibe un aviso con los días de antelación que definas en la frecuencia de confirmación.
+  </Accordion>
+
+  <Accordion title="¿La tarjeta nueva queda guardada?">
+    Sí. Cualquier tarjeta agregada correctamente se guarda para usos futuros.
+  </Accordion>
+
+  <Accordion title="¿Puedo desactivar el pago automático después?">
+    Sí, desde **Gestionar pagos automáticos**. Aplica a partir del próximo cobro.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Cómo crear facturas recurrentes" icon="file-invoice" href="/pagos-facturas/facturas-recurrentes">
+  Configura la plantilla y la frecuencia sobre la que corren estos cobros.
+</Card>
