@@ -1,0 +1,124 @@
+---
+title: "Configuración de transferencia humana para conversaciones con IA"
+description: "Haz que el bot escale a una persona real cuando la conversación lo necesita."
+icon: "user-check"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+La transferencia humana permite que tu bot de IA pase automáticamente una conversación a una persona cuando ya no puede brindar la asistencia adecuada. En vez de dejar que el bot siga lidiando con preguntas sin respuesta o errores repetidos, la conversación se asigna al miembro del equipo correcto.
+
+Se puede activar en tres momentos:
+
+- Un cliente solicita hablar con un humano
+- El bot carece de información suficiente
+- El bot no logra resolver el problema tras varios intentos
+
+## Por qué usarla
+
+| Beneficio | Detalle |
+| --- | --- |
+| **Escala lo complejo** | Deriva automáticamente las conversaciones difíciles |
+| **Mejor satisfacción** | El cliente llega a una persona cuando la necesita |
+| **Menos frustración** | Evita el bucle de un bot que no entiende |
+| **Transiciones suaves** | El paso de IA a humano se siente natural |
+| **Nada se pierde** | Las conversaciones importantes no quedan sin atender |
+
+Es especialmente útil en soporte, reserva de citas, consultas de ventas, gestión de escalamientos y empresas de servicios.
+
+## Los tres escenarios
+
+En **Objetivos del bot → Transferencia humana**, selecciona el escenario a configurar en el panel izquierdo.
+
+<AccordionGroup>
+  <Accordion title="Solicitado por un humano">
+    Se activa cuando el cliente pide directamente hablar con una persona. Agregas **frases de ejemplo** que disparan la transferencia:
+
+    ```text
+    Quiero hablar con un humano
+    Conéctame con una persona
+    Quiero hablar con el gerente
+    ```
+  </Accordion>
+
+  <Accordion title="Falta de información">
+    Se activa cuando el bot no encuentra información suficiente para responder correctamente. **No requiere frases de ejemplo.**
+  </Accordion>
+
+  <Accordion title="No se pudo resolver el problema">
+    Se activa después de que el bot intenta sin éxito resolver el mismo problema varias veces.
+
+    **Reintentos máximos: 2.** No requiere frases de ejemplo.
+  </Accordion>
+</AccordionGroup>
+
+## Acciones posteriores a la transferencia
+
+Una vez configurado el disparador, defines qué pasa cuando la transferencia ocurre.
+
+<Steps>
+  <Step title="Asigna la conversación a un usuario">
+    Elige quién recibe la conversación. Tienes dos comportamientos:
+
+    | Opción | Efecto |
+    | --- | --- |
+    | Asignar a un usuario seleccionado | La recibe esa persona |
+    | Mantener el usuario actual | Se queda con quien ya la tenía |
+  </Step>
+  <Step title="Personaliza el mensaje final">
+    Lo que envía el bot justo antes de transferir:
+
+    ```text
+    ¡Claro! Voy a transferir tu solicitud a un agente.
+    Alguien del equipo te atenderá en breve.
+    ```
+  </Step>
+  <Step title="Agrega etiquetas y acciones adicionales">
+    Opcionalmente puedes:
+
+    - Agregar etiquetas personalizadas (por defecto: `human handover`)
+    - Crear tareas
+    - Pausar el bot temporalmente
+  </Step>
+</Steps>
+
+## Notas importantes
+
+<Warning>
+  Puedes configurar **hasta 3 acciones de transferencia humana por bot**.
+</Warning>
+
+- La duración de la pausa del bot es personalizable
+- Las notificaciones de tareas dependen de la configuración de notificaciones de cada usuario
+- La transferencia solo se activa cuando se disparan los escenarios habilitados
+- Las conversaciones **permanecen asignadas** hasta que se reasignan manualmente o se resuelven
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa después de activarse la transferencia?">
+    La conversación se asigna al usuario seleccionado, se envía el mensaje final y el bot puede pausarse durante el tiempo que definas.
+  </Accordion>
+
+  <Accordion title="¿Puedo personalizar las frases de activación?">
+    Sí, para el escenario "Solicitado por un humano".
+  </Accordion>
+
+  <Accordion title="¿Crea tareas automáticamente?">
+    Sí, si habilitas la opción **Crear tarea**.
+  </Accordion>
+
+  <Accordion title="¿Puedo asignar a un usuario específico?">
+    Sí. Las conversaciones se dirigen directamente al usuario que elijas.
+  </Accordion>
+
+  <Accordion title="¿El bot deja de responder permanentemente?">
+    No. Configuras cuánto tiempo permanece inactivo antes de reactivarse.
+  </Accordion>
+
+  <Accordion title="¿Se pueden agregar etiquetas automáticamente?">
+    Sí, después de que la transferencia se active.
+  </Accordion>
+</AccordionGroup>

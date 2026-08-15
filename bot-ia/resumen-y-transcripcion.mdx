@@ -1,0 +1,149 @@
+---
+title: "Resumen y transcripción de la IA conversacional"
+description: "Genera resúmenes automáticos de cada conversación y dispara acciones a partir de ellos."
+icon: "file-lines"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Los resúmenes y transcripciones capturan automáticamente la información clave y el registro completo de mensajes de cada conversación. Así revisas resultados, monitoreas la participación y automatizas acciones **sin leer cada mensaje a mano**.
+
+<Info>
+  La diferencia práctica: en vez de abrir una conversación de cuarenta mensajes para entender qué pasó, lees tres líneas de resumen. Multiplicado por cientos de conversaciones, es la diferencia entre supervisar tu operación y ahogarte en ella.
+</Info>
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Información rápida** | Entiendes el resultado de la conversación al instante |
+| **Listo para automatizar** | Dispara flujos a partir del resumen |
+| **Mejor seguimiento** | Supervisas interacciones entre sesiones |
+| **Datos centralizados** | El resumen se guarda junto al registro del contacto |
+
+## Habilita el resumen
+
+<Steps>
+  <Step title="Localiza la sección Resumen de la conversación">
+    Y activa el interruptor.
+  </Step>
+  <Step title="Establece el tiempo de inactividad">
+    Cuánto espera el sistema sin mensajes antes de generar el resumen. Por ejemplo, 15 minutos.
+  </Step>
+  <Step title="Establece el mínimo de mensajes">
+    Por ejemplo, 3. Si la conversación tiene menos, no se genera resumen — evita resumir intercambios triviales.
+  </Step>
+  <Step title="Habilita las opciones que quieras">
+    Guardar en un campo de contacto o disparar flujos de trabajo.
+  </Step>
+  <Step title="Guarda">
+  </Step>
+</Steps>
+
+## Cuándo se genera un resumen
+
+| Disparador | Momento |
+| --- | --- |
+| **Inactividad** | Tras el tiempo sin mensajes que definiste |
+| **Bot en reposo (instantáneo)** | De inmediato cuando la conversación termina por: límite de mensajes alcanzado, intervención manual o automatizada, condiciones de parada, o transferencia e inactividad |
+
+## Guardar en el registro del contacto
+
+- Habilita la opción de guardar en un campo de contacto
+- Selecciona el campo donde se almacenará
+
+<Warning>
+  **Cada resumen nuevo reemplaza al anterior.** Si necesitas conservar el historial completo, usa la transcripción en un flujo antes de que se sobrescriba.
+</Warning>
+
+## Automatizar a partir del resumen
+
+Los resúmenes pueden disparar flujos para seguimiento y acciones:
+
+<Steps>
+  <Step title="Abre tu creador de flujos">
+  </Step>
+  <Step title="Selecciona una acción">
+    Busca y elige **Resumen** o **Transcripción**.
+  </Step>
+  <Step title="Inserta la variable en el flujo">
+    Puedes usar `Resumen de la conversación` y `Transcripción de la conversación`.
+  </Step>
+  <Step title="Guarda y publica">
+  </Step>
+</Steps>
+
+Con esos datos puedes actualizar la ficha del contacto, generar información útil o disparar automatizaciones.
+
+## Notificaciones por correo
+
+Manténte al tanto cuando se generen resúmenes:
+
+- Habilita las notificaciones por correo
+- Elige destinatarios: usuarios administradores, usuarios asignados o direcciones específicas
+- Guarda
+
+## Reglas de comportamiento
+
+<AccordionGroup>
+  <Accordion title="Se generan por sesión">
+    Cada resumen cubre una sesión de conversación.
+  </Accordion>
+
+  <Accordion title="Cada nuevo resumen reemplaza al anterior">
+    En el campo de contacto solo queda el más reciente.
+  </Accordion>
+
+  <Accordion title="Solo incluye mensajes posteriores a la activación">
+    Lo anterior a activar la función no se resume.
+  </Accordion>
+
+  <Accordion title="Los mensajes durante periodos deshabilitados se ignoran">
+  </Accordion>
+
+  <Accordion title="Incluye entrantes y salientes">
+    Ambos lados de la conversación.
+  </Accordion>
+
+  <Accordion title="Cada resumen abarca desde el último resumen">
+    No repite lo ya resumido.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuándo se crea un resumen?">
+    Tras un periodo de inactividad, o al instante cuando ciertas condiciones terminan la conversación.
+  </Accordion>
+
+  <Accordion title="¿Incluye todos los mensajes anteriores?">
+    No. Solo los posteriores a activar la función o al último resumen.
+  </Accordion>
+
+  <Accordion title="¿Pueden activar automatización?">
+    Sí. Los flujos pueden dispararse cuando se genera un resumen.
+  </Accordion>
+
+  <Accordion title="¿Puedo guardarlos para después?">
+    Sí, en un campo de contacto seleccionado.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si no hay suficientes mensajes?">
+    No se genera resumen si no se cumple el mínimo.
+  </Accordion>
+</AccordionGroup>
+
+## Si algo no funciona
+
+| Síntoma | Solución |
+| --- | --- |
+| No aparece el resumen | Activa la opción y confirma inactividad y mínimo de mensajes |
+| Faltan mensajes | Solo se incluyen los enviados tras activar la función |
+| El flujo no se activa | Selecciona un flujo publicado |
+| No se guarda en el contacto | Activa "Guardar en campo personalizado" y elige el campo |
+| No llegan alertas por correo | Selecciona al menos un destinatario |
+
+Si aún así no funciona, prueba con una conversación nueva.
