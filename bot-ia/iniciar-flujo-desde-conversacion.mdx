@@ -1,0 +1,118 @@
+---
+title: "Cómo iniciar un flujo de trabajo a partir de conversaciones con IA (Guía de objetivos del bot)"
+description: "Haz que la IA dispare automatizaciones según la intención del cliente."
+icon: "bolt"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+La función **Activar un flujo de trabajo** permite que la IA inicie automáticamente un flujo predefinido cuando detecta una condición concreta durante la conversación.
+
+Conecta la intención del usuario con tus procesos internos, reduciendo el esfuerzo manual y acelerando la respuesta.
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Automatización** | Ejecuta acciones sin intervención manual |
+| **Respuestas más rápidas** | Dispara el flujo al instante, según la intención |
+| **Mayor precisión** | Reduce el error humano en tareas repetitivas |
+| **Procesos escalables** | Gestiona muchas interacciones a la vez |
+| **Mejor experiencia** | Acciones oportunas y relevantes para el cliente |
+
+## Dónde se configura
+
+En la pestaña **Objetivos del bot**, dentro de la sección **Configura tus acciones**.
+
+Antes de empezar, asegúrate de que tu bot esté creado y con un nombre claro, para poder identificarlo cuando manejes varios.
+
+## Configura el activador
+
+<Steps>
+  <Step title="Abre el bot y ve a Objetivos del bot">
+  </Step>
+  <Step title="Pulsa Activar un flujo de trabajo">
+    Dentro de **Configura tus acciones**. Se abre la ventana de configuración.
+  </Step>
+  <Step title="Introduce un nombre de acción claro">
+  </Step>
+  <Step title="Selecciona un flujo de trabajo publicado">
+    <Warning>
+      Solo puedes seleccionar flujos que ya estén **publicados**. Un flujo en borrador no aparece en la lista.
+    </Warning>
+  </Step>
+  <Step title="Define la condición desencadenante">
+    Descríbela en lenguaje natural y sencillo:
+
+    ```text
+    El cliente desea concertar una cita
+    ```
+
+    ```text
+    El cliente desea adquirir una suscripción
+    ```
+
+    Esto ayuda a la IA a relacionar conversaciones reales con el flujo correcto.
+  </Step>
+  <Step title="Guarda">
+  </Step>
+</Steps>
+
+## Mejores prácticas
+
+<AccordionGroup>
+  <Accordion title="Escribe las condiciones en lenguaje natural">
+    Tal como lo diría una persona, no como una regla técnica.
+  </Accordion>
+
+  <Accordion title="Alinea las indicaciones con las condiciones">
+    Para que los usuarios lleguen a activarlas de forma natural durante la conversación.
+  </Accordion>
+
+  <Accordion title="Evita condiciones duplicadas en el mismo bot">
+    Dos condiciones parecidas generan comportamiento impredecible.
+  </Accordion>
+
+  <Accordion title="Máximo 5 activadores por bot">
+    Más que eso complica el diagnóstico cuando algo falla.
+  </Accordion>
+
+  <Accordion title="Verifica que los flujos estén publicados antes de seleccionarlos">
+  </Accordion>
+</AccordionGroup>
+
+## La regla de los 20 mensajes
+
+<Warning>
+  Un mismo escenario de activación **se ejecuta una vez cada 20 mensajes**.
+
+  Una vez que el bot disparó ese escenario, no puede volver a activarse durante los siguientes 20 mensajes. Esto existe para evitar que se reactive con cada mensaje nuevo.
+
+  Tenlo en cuenta al probar: si repites la misma intención y el flujo no vuelve a dispararse, probablemente sea esto y no un error de configuración.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si varios activadores coinciden con la misma condición?">
+    El sistema decide cuál ejecutar según el contexto y la prioridad.
+  </Accordion>
+
+  <Accordion title="¿Puede activarse por mensajes del bot y del usuario?">
+    Sí, los activadores pueden dispararse desde cualquiera de los dos lados de la conversación.
+  </Accordion>
+
+  <Accordion title="¿Por qué no se activa mi flujo?">
+    Verifica que el flujo esté publicado y que la condición esté claramente definida.
+  </Accordion>
+
+  <Accordion title="¿Cuántos activadores puedo agregar?">
+    Hasta 5 por bot.
+  </Accordion>
+
+  <Accordion title="¿Puedo editar un activador después de guardarlo?">
+    Sí, puedes reabrir la configuración y actualizarlo cuando quieras.
+  </Accordion>
+</AccordionGroup>
