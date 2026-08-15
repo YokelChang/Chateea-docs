@@ -1,0 +1,142 @@
+---
+title: "Configurar facturas recurrentes automáticas paso a paso"
+description: "Automatiza el envío y el cobro de tus facturas recurrentes desde un flujo de trabajo."
+icon: "arrows-rotate"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Automatizar las facturas recurrentes te ayuda a optimizar la facturación, reducir el trabajo manual y garantizar pagos constantes de tus clientes. Mediante la **automatización del flujo de trabajo** puedes enviar facturas según un calendario, controlar la frecuencia de facturación y habilitar los pagos automáticos para una experiencia sin fricción.
+
+<Info>
+  La diferencia con crear una factura recurrente a mano es el disparador: aquí la facturación arranca sola cuando ocurre algo en tu CRM —se crea un contacto, se gana una oportunidad, se firma un contrato— en vez de depender de que alguien se acuerde de configurarla.
+</Info>
+
+## ¿Qué son las facturas recurrentes en los flujos de trabajo?
+
+Las facturas recurrentes permiten enviar facturas automáticamente a tus clientes a intervalos predefinidos. Una vez configuradas, las facturas se generan y se entregan sin intervención manual, lo que ayuda a mantener un flujo de caja constante y a reducir los impagos.
+
+Es ideal para **suscripciones, contratos de servicios recurrentes, membresías y facturación a plazos**.
+
+## Beneficios clave
+
+| Beneficio | Qué aporta |
+| --- | --- |
+| **Ahorro de tiempo** | Elimina la facturación manual y el seguimiento |
+| **Facturación flexible** | Admite horarios diarios, semanales, mensuales y anuales |
+| **Pagos automatizados** | Cobra a los clientes automáticamente después del pago inicial |
+| **Coherencia** | Evita facturas perdidas o duplicadas |
+| **Escalabilidad** | Gestiona fácilmente la facturación de múltiples clientes |
+
+## Requisitos previos
+
+Antes de configurar las facturas recurrentes, asegúrate de lo siguiente:
+
+- Existe al menos una **plantilla de factura** creada
+- Hay un **método de pago** configurado y activo
+- Los registros de clientes incluyen **detalles de facturación válidos**
+
+<Warning>
+  Si el contacto no tiene correo o los datos de facturación están incompletos, el flujo se ejecutará igual pero la factura no llegará a su destino. Revisa la calidad de tus contactos antes de publicar la automatización.
+</Warning>
+
+## Cómo configurar facturas recurrentes en flujos de trabajo
+
+<Steps>
+  <Step title="Abre la lista de flujos de trabajo">
+    Ve a **Automatizaciones → Flujos de trabajo** y haz clic en **Crear flujo de trabajo** para comenzar una nueva automatización.
+  </Step>
+  <Step title="Agrega el activador">
+    Haz clic en **Agregar nuevo activador** y selecciona la condición que iniciará el flujo (por ejemplo, cuando se crea o se actualiza un contacto).
+  </Step>
+  <Step title="Añade la acción Enviar factura recurrente">
+    En el menú de acciones, busca **Enviar factura recurrente** y selecciónala para agregarla a tu flujo de trabajo.
+  </Step>
+  <Step title="Configura la acción">
+    Completa el panel de configuración:
+
+    - Selecciona el **remitente** de la factura
+    - Selecciona una **plantilla de factura**
+    - Elige el **modo de prueba** o el **modo en vivo**
+    - Establece la **fecha de inicio** (fecha fija o basada en el activador)
+    - Define **cuándo debe finalizar** la facturación
+    - Selecciona la **frecuencia** (diaria, semanal, mensual o anual)
+    - Establece las **reglas de intervalo** (por ejemplo, cada X días)
+    - Habilita el **pago automático** si lo necesitas
+  </Step>
+  <Step title="Guarda la acción">
+    Haz clic en **Guardar acción** cuando hayas terminado y publica el flujo cuando esté probado.
+  </Step>
+</Steps>
+
+## Explicación de la configuración
+
+### Fecha de inicio
+
+Determina cuándo comienza la facturación. Puede empezar inmediatamente al ejecutarse el flujo de trabajo, o puedes elegir una **fecha fija**.
+
+### Reglas finales
+
+Controlan cuándo se detiene la facturación. Puedes dejar que se ejecute indefinidamente o detenerla después de un número determinado de ciclos.
+
+### Frecuencia de facturación
+
+Elige con qué frecuencia se envían las facturas:
+
+| Frecuencia | Caso típico |
+| --- | --- |
+| **Diaria** | Servicios por consumo o pruebas de configuración |
+| **Semanal** | Servicios operativos con entrega continua |
+| **Mensual** | Suscripciones, iguala y membresías |
+| **Anual** | Planes con descuento por pago adelantado |
+
+Cada opción admite personalización adicional según tus necesidades de facturación.
+
+### Pago automático
+
+Cuando está habilitado, los pagos se cobran automáticamente **después de la primera transacción exitosa**. Esto reduce los seguimientos manuales y mejora la regularidad de los pagos.
+
+## Mejores prácticas
+
+- **Prueba los flujos de trabajo antes de activarlos**
+- Utiliza **nombres claros** para las acciones y las plantillas
+- **Verifica la configuración de pago** antes de habilitar el pago automático
+- **Supervisa el primer ciclo** de facturación para asegurarte de que todo funciona correctamente
+
+<Tip>
+  Usa el modo de prueba con un contacto tuyo antes de publicar. Es la única forma barata de descubrir que la plantilla tenía el impuesto mal o que la fecha de vencimiento no cuadraba.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se pueden automatizar las facturas sin pago automático?">
+    Sí. Las facturas se pueden enviar automáticamente aunque los clientes paguen de forma manual.
+  </Accordion>
+
+  <Accordion title="¿Qué ocurre si falla el pago automático?">
+    La factura sigue impagada y puedes iniciar acciones de seguimiento para notificar al cliente.
+  </Accordion>
+
+  <Accordion title="¿Puedo cambiar la frecuencia de facturación más adelante?">
+    Sí. Puedes editar el flujo de trabajo y actualizar la configuración de frecuencia en cualquier momento.
+  </Accordion>
+
+  <Accordion title="¿Se detendrán las facturas automáticamente?">
+    Solo si defines una condición de finalización. De lo contrario, la facturación continuará hasta que la detengas manualmente.
+  </Accordion>
+
+  <Accordion title="¿Pueden diferentes clientes recibir diferentes plantillas de factura?">
+    Sí. Puedes usar condiciones dentro del flujo de trabajo para enviar plantillas distintas según los datos del cliente.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si necesitas ayuda para configurar facturas recurrentes o para resolver problemas de automatización, escríbenos por WhatsApp al **\+1 829-580-7071** con el nombre del flujo y qué esperabas que pasara.
+
+<Card title="Pagos automáticos en plantillas recurrentes" icon="credit-card" href="/pagos-facturas/pagos-automaticos-recurrentes">
+  Configura el cobro automático para que la factura no solo salga sola, sino que también se pague sola.
+</Card>
