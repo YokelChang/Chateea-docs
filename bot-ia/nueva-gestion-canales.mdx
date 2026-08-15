@@ -1,0 +1,133 @@
+---
+title: "Nueva experiencia de gestión de canales"
+description: "Asigna bots directamente a los canales, sin depender de un bot principal ni de flujos."
+icon: "diagram-next"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Se rediseñó la forma en que los bots de IA conversacional se asignan a los canales. Este artículo explica cómo funcionaba antes, qué cambia y qué debes hacer después de la migración.
+
+<Info>
+  El cambio de fondo en una frase: **desapareció el concepto de "bot principal"**. Ahora cada bot responde de forma independiente según los canales y filtros que le asignes, sin necesidad de flujos de trabajo para el enrutamiento básico.
+</Info>
+
+## Antes y ahora
+
+|  | Experiencia anterior | Nueva experiencia |
+| --- | --- | --- |
+| **Quién respondía solo** | Solo el bot principal, en sus canales asignados | Cualquier bot, según su asignación de canal |
+| **Bots no principales** | Necesitaban un flujo de trabajo para responder | Responden directo por asignación de canal |
+| **Enrutamiento** | Por flujos de trabajo | Por configuración del bot |
+| **Bot principal** | Obligatorio | Ya no existe |
+
+En la experiencia anterior, para que un bot **no principal** respondiera, tenías que crear un flujo, usar la acción de actualizar bot y estado, asignar el bot y configurar los disparadores. Todo ese rodeo desaparece.
+
+## Asigna bots directamente a los canales
+
+Ahora asignas canales directamente a cualquier bot:
+
+| Bot | Canal | Resultado |
+| --- | --- | --- |
+| **Bot A** | WhatsApp | Atiende lo que entra por WhatsApp |
+| **Bot B** | Facebook | Atiende lo que entra por Facebook |
+
+No hace falta designar un bot principal. Puedes crear varios bots y darle a cada uno su propio conjunto de canales.
+
+### Reglas de enrutamiento más finas
+
+Además del canal, puedes aplicar filtros:
+
+- Tiene etiqueta
+- No tiene etiqueta
+- Número de teléfono específico
+- Otras condiciones propias del canal
+
+Así diriges la conversación al bot correcto sin depender de flujos.
+
+## Lógica de asignación
+
+Para evitar conflictos, la asignación sigue dos reglas:
+
+<AccordionGroup>
+  <Accordion title="Regla 1: no se permiten configuraciones duplicadas">
+    Dos bots no pueden tener exactamente la misma configuración de canal.
+  </Accordion>
+
+  <Accordion title="Regla 2: lo más específico tiene prioridad">
+    Cuando varias asignaciones podrían coincidir con una conversación, gana la más específica.
+  </Accordion>
+</AccordionGroup>
+
+**Cómo se resuelve en la práctica:**
+
+| Configuración | Entra un mensaje… | Responde |
+| --- | --- | --- |
+| Bot A → todo el chat en vivo<br />Bot B → chat en vivo del Widget B | …desde el Widget B | **Bot B** (más específico) |
+| Bot A → Facebook<br />Bot B → Facebook \+ etiqueta VVIP | …de un contacto con etiqueta VVIP | **Bot B** |
+| Bot A → Facebook<br />Bot B → Facebook \+ etiqueta VVIP | …de un contacto sin esa etiqueta | **Bot A** |
+
+## Asignación por flujo de trabajo
+
+La acción **Actualizar bot de IA conversacional y estado** sigue existiendo, pero ahora funciona distinto: es **independiente del canal**.
+
+Cuando se ejecuta:
+
+- El bot seleccionado se asigna a ese contacto
+- Responderá al mensaje entrante **por cualquier canal** de ese contacto
+- No necesitas asignarle ningún canal
+- Responde de inmediato, sin importar el canal
+
+La asignación depende de la ejecución del flujo, no de los canales.
+
+<Warning>
+  **Si quieres que un bot se active únicamente por flujo de trabajo, no le asignes ningún canal.**
+
+  Si le asignas canales, empezará a responder también por enrutamiento de canal, y eso puede saltarse el comportamiento por flujo que tenías pensado.
+</Warning>
+
+## Cuál usar
+
+| Usa asignación de canal cuando… | Usa asignación por flujo cuando… |
+| --- | --- |
+| Quieres que un bot responda automáticamente en canales específicos | Quieres que un bot se active solo tras cumplirse una condición del flujo |
+
+## Qué pasa después de la migración
+
+<AccordionGroup>
+  <Accordion title="Bot principal existente">
+    Sus canales asignados **se conservan**, para mantener el comportamiento que ya tenías.
+  </Accordion>
+
+  <Accordion title="Bots no principales existentes">
+    Se les **eliminan** las asignaciones de canal. Si quieres que respondan por enrutamiento, vuelve a configurarlas con la nueva experiencia.
+  </Accordion>
+
+  <Accordion title="Migración por instantánea (snapshot)">
+    Todos los bots se migran **desactivados** y **sin** asignaciones de canal. Deberás reconfigurarlas tras instalar la instantánea.
+  </Accordion>
+
+  <Accordion title="Excepción: subcuenta con un solo bot">
+    Se conservan tanto el modo de funcionamiento como las asignaciones de canal existentes. En configuraciones de un solo bot, nada cambia.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  Si administras plantillas o instantáneas, esta es la parte que más sorprende: tras instalar una, **todos los bots quedan apagados y sin canales**. Es intencional — pero significa que debes reconfigurarlos antes de que atiendan nada.
+</Warning>
+
+## Comportamiento del bot de transferencia
+
+La transferencia entre bots sigue funcionando con el nuevo sistema. Cuando ocurre una transferencia:
+
+- Aplica **solo a ese contacto**
+- Aplica **solo al canal** donde se da la conversación
+- El bot de destino **no necesita** tener ese canal asignado globalmente
+
+Por eso un bot puede responder bien tras una transferencia aunque no tenga canales configurados, y los flujos de transferencia siguen funcionando sin configurar canales adicionales.
+
+<Card title="Transferencia de acción del bot" icon="arrow-right-arrow-left" href="/bot-ia/transferir-accion-bot">
+  Cómo pasar una conversación de un bot a otro.
+</Card>
