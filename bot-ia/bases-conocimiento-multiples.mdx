@@ -1,0 +1,180 @@
+---
+title: "Introducción a las bases de conocimiento múltiples en la IA conversacional"
+description: "Crea bases de conocimiento separadas y entrena cada bot solo con lo que le corresponde."
+icon: "books"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Una base de conocimiento es el material con el que tu bot aprende: las preguntas frecuentes, los enlaces y la información de tu negocio que usa para responder.
+
+Con las **bases de conocimiento múltiples** puedes crear y administrar bases separadas para cada bot de IA. Es una mejora significativa frente al modelo anterior, donde todos los bots dependían de una sola base compartida: ahora organizas el contenido con más eficiencia y entrenas a cada bot **solo con lo que le corresponde**, lo que produce respuestas más precisas y relevantes.
+
+<Info>
+  La diferencia práctica es fácil de ver: antes, tu bot de soporte y tu bot de ventas leían el mismo material y podían mezclar información. Ahora cada uno estudia únicamente su propio manual.
+</Info>
+
+## Por qué usar varias bases de conocimiento
+
+El ejemplo clásico. Supongamos esta configuración:
+
+| Recurso | Elementos |
+| --- | --- |
+| **Bases de conocimiento** | A, B y C |
+| **Agentes de IA** | Jane y Parker |
+
+Con esta función puedes repartirlas así:
+
+| Agente | Bases asignadas | Resultado |
+| --- | --- | --- |
+| **Jane** | A y B | Se entrena únicamente con esas dos |
+| **Parker** | C | Se entrena exclusivamente con esa |
+
+Cada bot atiende casos de uso o clientes distintos **de forma independiente**, sin contaminarse con información del otro.
+
+### Casos reales donde esto cambia la operación
+
+<AccordionGroup>
+  <Accordion title="Clínica con varias especialidades">
+    Una base para odontología, otra para dermatología. El bot de citas dentales nunca responde con precios de tratamientos de piel, y viceversa.
+  </Accordion>
+
+  <Accordion title="Negocio con varias marcas o sucursales">
+    Cada marca tiene su base con sus horarios, direcciones y promociones. Un solo error de sucursal en una dirección le cuesta un cliente presencial; separar las bases lo elimina de raíz.
+  </Accordion>
+
+  <Accordion title="Ventas y soporte separados">
+    El bot de ventas se entrena con ofertas, precios y objeciones. El de soporte, con guías de uso y solución de problemas. Ninguno improvisa en el terreno del otro.
+  </Accordion>
+
+  <Accordion title="Agencias que gestionan varios clientes">
+    Cada cliente tiene su base independiente. La información de un negocio jamás aparece en las conversaciones de otro — que es exactamente el tipo de error que destruye la confianza en una agencia.
+  </Accordion>
+</AccordionGroup>
+
+## Los límites que debes conocer
+
+| Límite | Valor |
+| --- | --- |
+| Bases de conocimiento en total | **Hasta 15** |
+| Bases asignadas a un mismo bot | **Hasta 7** |
+| Métodos de entrenamiento | Por URL y por preguntas frecuentes |
+| Subida de archivos | Próximamente |
+| Bases múltiples en bots de flujo de trabajo | Próximamente |
+
+<Warning>
+  **Tu base de conocimiento existente no se puede eliminar.** Los bots de flujo de trabajo la utilizan por defecto, así que permanece aunque crees bases nuevas.
+
+  El soporte de bases múltiples para bots de flujo de trabajo se lanzará próximamente; mientras tanto, esos bots siguen usando la base original.
+</Warning>
+
+## Cómo configurar y usar varias bases de conocimiento
+
+<Steps>
+  <Step title="Accede a la sección de la base de conocimientos">
+    En la barra de navegación izquierda encontrarás la opción **Base de conocimientos**. Esta sección reúne todas tus bases en un solo lugar.
+  </Step>
+  <Step title="Crea una nueva base de conocimientos">
+    1. Haz clic en **Crear base de conocimientos**
+    2. Escribe un nombre — es para tu referencia interna, el cliente nunca lo ve
+    3. Haz clic en **Guardar y continuar**
+
+    <Tip>
+      Nombra por contenido, no por bot: `Precios y servicios - Sucursal Norte` te dirá qué contiene dentro de seis meses; `Base de Jane` no. Un mismo bot puede cambiar de bases, pero el contenido es el contenido.
+    </Tip>
+  </Step>
+  <Step title="Entrena la base de conocimientos">
+    Una vez creada, tienes dos formas de entrenarla:
+
+    | Método | Cómo funciona | Ideal para |
+    | --- | --- | --- |
+    | **Mediante URL** | Agregas enlaces relevantes y el bot aprende de su contenido | Páginas de servicios, precios publicados, políticas |
+    | **Mediante preguntas frecuentes** | Introduces manualmente preguntas y respuestas | Lo que tus clientes preguntan por chat y no está escrito en ninguna web |
+
+    El proceso de entrenamiento es el mismo que ya conoces de la versión anterior.
+
+    <Note>
+      La opción de **subir archivos** para el entrenamiento se habilitará próximamente.
+    </Note>
+
+    <Tip>
+      Las preguntas frecuentes suelen rendir más que las URL, porque tú controlas la redacción exacta de la respuesta. Usa las URL para volumen y las FAQ para las veinte preguntas que definen tu venta.
+    </Tip>
+  </Step>
+  <Step title="Adjunta las bases de conocimiento a un bot de IA">
+    1. Dirígete a la sección de **bots de IA para conversaciones**
+    2. Entra al **entrenamiento del bot** y abre el menú desplegable de **Base de conocimientos**
+    3. Selecciona **hasta 7 bases** para entrenar a ese bot
+
+    <Warning>
+      Que puedas asignar siete no significa que debas. Cada base extra es más material donde el bot puede encontrar una respuesta equivocada para el contexto. Asigna las mínimas que cubran su trabajo — normalmente una o dos.
+    </Warning>
+  </Step>
+  <Step title="Visualiza y gestiona las bases asignadas">
+    - Las bases asignadas aparecen como **pestañas** dentro de la configuración del bot, para consultarlas y editarlas sin salir de ahí
+    - También puedes crear una base nueva sobre la marcha con **Crear nueva**, sin abandonar la configuración del bot
+  </Step>
+</Steps>
+
+## Cómo repartir el contenido sin duplicarlo
+
+El error más común al adoptar bases múltiples es copiar la misma información en varias bases. Eso crea el problema que la función viene a resolver: cuando actualizas un precio en una base y olvidas la otra, el bot responde distinto según el día.
+
+| Regla | Qué significa |
+| --- | --- |
+| **Un tema, una base** | Cada dato vive en un solo lugar. Si dos bots lo necesitan, asigna la misma base a ambos — para eso existe la asignación múltiple |
+| **Lo común, en una base compartida** | Horarios, dirección y políticas generales en una base que asignes a todos tus bots |
+| **Lo específico, en su propia base** | Precios de cada línea, procedimientos de cada área |
+| **Revisa al actualizar** | Cuando cambie algo del negocio, pregúntate en qué única base vive ese dato y actualízalo ahí |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuántas bases de conocimiento puedo crear?">
+    Hasta 15 en total.
+  </Accordion>
+
+  <Accordion title="¿Cuántas puedo asignar a un mismo bot?">
+    Hasta 7 por bot.
+  </Accordion>
+
+  <Accordion title="¿Puedo asignar la misma base a varios bots?">
+    Sí, y es la forma correcta de compartir información común sin duplicarla.
+  </Accordion>
+
+  <Accordion title="¿Por qué no puedo eliminar mi base original?">
+    Porque los bots de flujo de trabajo la usan por defecto. Cuando llegue el soporte de bases múltiples para esos bots, ese comportamiento cambiará.
+  </Accordion>
+
+  <Accordion title="¿Puedo entrenar con archivos PDF o documentos?">
+    Todavía no. La subida de archivos se habilitará próximamente; por ahora el entrenamiento es por URL y por preguntas frecuentes.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si dos bases asignadas al mismo bot se contradicen?">
+    El bot puede responder con cualquiera de las dos versiones. Por eso la regla de un tema, una base: elimina el duplicado y deja una sola fuente por dato.
+  </Accordion>
+
+  <Accordion title="¿Crear una base nueva afecta a los bots existentes?">
+    No. Una base recién creada no hace nada hasta que la asignas a un bot.
+  </Accordion>
+</AccordionGroup>
+
+## Notas finales
+
+Esta función te da control detallado sobre cómo se entrena y responde cada bot, mejorando la precisión, la relevancia y la capacidad de gestión entre casos de uso distintos.
+
+Si gestionas bots para varias empresas, marcas o departamentos, las bases de conocimiento múltiples cambian por completo la forma de operar: cada agente domina su terreno y ninguno improvisa fuera de él.
+
+## Continúa
+
+<CardGroup cols={2}>
+  <Card title="Guía de configuración de objetivos" icon="sliders" href="/bot-ia/configuracion-objetivos">
+    Dónde vive el entrenamiento del bot y sus tres pestañas.
+  </Card>
+
+  <Card title="Detalles del mensaje de IA" icon="magnifying-glass-chart" href="/bot-ia/detalles-mensaje-ia">
+    Verifica qué base usó el bot en cada respuesta y edítala al momento.
+  </Card>
+</CardGroup>
