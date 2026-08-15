@@ -1,0 +1,264 @@
+---
+title: "Importar datos desde HubSpot"
+description: "Migra contactos, oportunidades, campos personalizados y pipelines desde HubSpot."
+icon: "file-import"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+<Warning>
+  **El importador de HubSpot está en fase beta** y solo está disponible para algunas cuentas. Si no ves la opción **Importar desde HubSpot**, es porque todavía no está habilitada para la tuya.
+</Warning>
+
+El importador te permite traer tus datos de HubSpot sin reconstruir la configuración a mano. Conectas HubSpot, eliges qué transferir y lanzas la importación desde la propia plataforma.
+
+Migra contactos, oportunidades, campos personalizados, pipelines, etapas, carpetas, notas y tareas. Al terminar, genera un informe con lo que entró bien, lo que falló y lo que conviene revisar.
+
+## Qué ganas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Migración más rápida** | Importas directo, sin depender de exportaciones manuales en CSV |
+| **Estructura preservada** | Los negocios entran como oportunidades, con sus pipelines y etapas |
+| **Continuidad de datos** | Las propiedades de HubSpot se convierten en campos personalizados |
+| **Informes transparentes** | Totales, aciertos, errores, advertencias y mensajes registro por registro |
+
+## Antes de comenzar
+
+Estos cinco preparativos evitan la mayoría de los problemas:
+
+<AccordionGroup>
+  <Accordion title="1. Usa una cuenta limpia">
+    Importar a una cuenta sin información creada manualmente hace mucho más fácil revisar errores y detectar duplicados.
+  </Accordion>
+
+  <Accordion title="2. Activa Permitir duplicados">
+    En **Contactos** y en **Oportunidades**, antes de empezar.
+
+    <Warning>
+      Dejar el bloqueo de duplicados activado provoca **muchos errores evitables** durante la importación. Puedes volver a activarlo cuando termines.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="3. Ten en cuenta que corre en segundo plano">
+    Puedes cerrar la ventana y volver más tarde a revisar el progreso.
+  </Accordion>
+
+  <Accordion title="4. Usa inglés como idioma de la cuenta">
+    Es lo recomendado durante el proceso de importación.
+  </Accordion>
+
+  <Accordion title="5. Prueba primero en una ubicación que no sea de producción">
+    Antes de importar a una cuenta que estés usando activamente.
+  </Accordion>
+</AccordionGroup>
+
+## Limitaciones y consideraciones
+
+Léelas antes de empezar. Varias explican errores que de otro modo parecen inexplicables.
+
+| Área | Qué debes saber |
+| --- | --- |
+| **Oportunidades y pipelines** | Se importan los pipelines con sus etapas. Una oportunidad puede asociarse hasta con 10 contactos adicionales |
+| **Campos personalizados** | Se asignan por clave de campo. Si ya existe una clave en conflicto, la importación falla para ese campo. Los campos calculados de HubSpot llegan como texto de una sola línea |
+| **Archivos y adjuntos** | Se admiten en Contactos y Oportunidades |
+| **Contactos** | Si eliminas un contacto importado y vuelves a ejecutar el importador, se importa de nuevo. Si después restauras el eliminado, pueden aparecer duplicados |
+| **Notas** | Una nota solo puede asociarse a un registro de cada tipo de objeto: un contacto, una oportunidad y una empresa |
+| **Tareas** | No se admiten tareas recurrentes. Una tarea puede asociarse hasta con 10 registros de cada tipo de objeto |
+| **Asociaciones** | Algunas pueden no importarse por limitaciones de plataforma. **Valida las asociaciones críticas después de migrar** |
+
+## Qué puedes importar
+
+| Tipo de migración | Qué hace |
+| --- | --- |
+| **Contactos** | Importa los registros de contacto de HubSpot |
+| **Oportunidades** | Importa los negocios de HubSpot como oportunidades |
+| **Campos personalizados** | Convierte las propiedades de contacto y de negocio en campos personalizados |
+| **Pipelines y etapas** | Conserva la estructura completa del pipeline, incluidas sus etapas |
+| **Carpetas personalizadas** | Mantiene la organización de carpetas de los datos compatibles |
+| **Tareas** | Trae tus recordatorios y pendientes |
+| **Notas** | Importa las notas asociadas a tus registros |
+
+<Note>
+  Otros objetos de HubSpot —empresas, tickets, proyectos, flujos de trabajo— **todavía no están incluidos**. Están previstos para más adelante.
+</Note>
+
+## Paso a paso
+
+<Steps>
+  <Step title="Abre Importar datos">
+    Desde **Contactos** u **Oportunidades**, abre el menú **Importar** en la parte superior derecha y selecciona **Importar datos**.
+  </Step>
+  <Step title="Selecciona la importación de HubSpot">
+    Pulsa **Conectar HubSpot** en la tarjeta correspondiente.
+  </Step>
+  <Step title="Autentica tu cuenta de HubSpot">
+    Inicia sesión y completa la autenticación.
+  </Step>
+  <Step title="Revisa los consejos rápidos">
+    Se abre el asistente en la página de inicio, con un video y tres recomendaciones:
+
+    - Elimina duplicados en HubSpot antes de importar
+    - Haz una copia de seguridad de tus datos actuales
+    - Revisa la asignación de campos antes de lanzar
+
+    Pulsa **Continuar**.
+  </Step>
+  <Step title="Elige qué importar">
+    | Objeto | Qué trae |
+    | --- | --- |
+    | **Contactos** | Personas a las que haces seguimiento: leads, clientes, prospectos |
+    | **Tareas** | Pendientes, seguimientos y recordatorios vinculados a tus registros |
+    | **Negocios** | Valor y estado del pipeline. Entran como **oportunidades** |
+
+    <Note>
+      Para importar negocios hacen falta contactos. Al marcar negocios, los contactos se seleccionan automáticamente.
+    </Note>
+
+    Marca las casillas y pulsa **Continuar**.
+  </Step>
+  <Step title="Revisa qué se incluye">
+    El asistente agrega solo los datos relacionados necesarios para que tus registros lleguen completos y conectados:
+
+    - **Contactos:** todas las propiedades, estándar y personalizadas
+    - **Tareas:** sus asociaciones
+    - **Negocios:** todas las propiedades más los pipelines
+
+    Las etapas se importan junto con los pipelines: no tienes que recrearlas.
+
+    <Warning>
+      **Dos cosas críticas sobre los campos personalizados:**
+
+      1. **Colisión de claves.** Se asignan por clave interna. Si ya existe un campo con la misma clave en tu cuenta, la importación falla para ese campo. Renómbralo o elimínalo antes de importar.
+      2. **Nombre y etiqueta que no coinciden.** Si en HubSpot el nombre interno y la etiqueta visible de un campo son distintos, pueden surgir problemas. Alinéalos antes de importar y te ahorras sorpresas.
+    </Warning>
+
+    Pulsa **Continuar**.
+  </Step>
+  <Step title="Confirma el recuento de registros">
+    Antes de arrancar, el asistente muestra una tabla con tres columnas:
+
+    | Columna | Qué indica |
+    | --- | --- |
+    | **Datos de HubSpot** | Qué contiene HubSpot |
+    | **Importado como** | En qué se convierte dentro de tu cuenta |
+    | **Registros encontrados** | Cuántos se van a importar |
+
+    <Note>
+      El número de campos personalizados puede no coincidir con el que ves en HubSpot. El asistente solo cuenta los campos que puede asignar e importar, así que una diferencia pequeña es normal.
+    </Note>
+
+    Opcionalmente, usa el icono de lápiz junto a las propiedades de contacto o de negocio para elegir cuáles incluir.
+
+    Pulsa **Confirmar e iniciar importación** y confirma en el cuadro de diálogo.
+  </Step>
+  <Step title="La importación arranca">
+    Verás una confirmación arriba y, debajo, la tabla de historial con el porcentaje de progreso.
+
+    Puedes cerrar o salir de la página: la importación sigue corriendo. Vuelve cuando quieras a comprobar el avance.
+  </Step>
+  <Step title="Abre los detalles de importación">
+    Pulsa el icono del ojo en la columna **Acciones** de la fila que quieras revisar.
+
+    Las cuatro tarjetas superiores te dan las cifras principales:
+
+    | Tarjeta | Qué muestra |
+    | --- | --- |
+    | **Registros totales** | Todo lo que tocó la importación |
+    | **Éxito** | Los que entraron bien, con su tasa de acierto |
+    | **Errores** | Los que no se importaron |
+    | **Importados con advertencias** | Entraron, pero conviene revisarlos |
+
+    La **vista de objeto** resume cada tipo: cuántos completaron, cuántos fallaron y su estado general.
+  </Step>
+  <Step title="Revisa registro por registro">
+    Cambia a la pestaña **Vista de registro** para verlos fila por fila, con dos filtros:
+
+    - **Objetos:** Contactos, Contactos con campo personalizado, Oportunidades y demás
+    - **Estado:** Éxito, Error o Importado con advertencias
+  </Step>
+  <Step title="Corrige los errores">
+    Filtra por **Error** para ver todo lo que falló. Cada fila indica qué objeto falló, por qué, y el **ID del registro de HubSpot** para que puedas localizarlo allá.
+
+    Pulsa **Descargar** abajo a la izquierda para exportar la lista completa de errores en CSV. Es la forma práctica de corregir en HubSpot y volver a ejecutar.
+  </Step>
+</Steps>
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="El botón Verificar y conectar da error">
+    Comprueba dos cosas:
+
+    1. Que tu clave de servicio empiece por `pat-`
+    2. Que tenga adjuntos los **cuatro ámbitos de solo lectura**:
+
+    ```text
+    crm.objects.contacts.read
+    crm.objects.deals.read
+    crm.schemas.contacts.read
+    crm.schemas.deals.read
+    ```
+
+    Si aún así falla, genera una clave nueva en HubSpot e inténtalo otra vez.
+  </Accordion>
+
+  <Accordion title="Los registros encontrados son menos que en HubSpot">
+    Es normal. El recuento solo incluye los campos que la importación puede asignar y transferir; algunos tipos no compatibles quedan excluidos.
+
+    Los registros que no aparecen en el conteo son justamente los que la importación omitiría de todos modos.
+  </Accordion>
+
+  <Accordion title="Error: no se pudo importar el contacto con ID de HubSpot...">
+    El mensaje te dice exactamente qué contacto falló. Las tres causas habituales:
+
+    **Archivo adjunto en un campo.** La importación de archivos aún no es compatible; cualquier contacto o negocio con un adjunto genera error. Solución: descarga el archivo desde HubSpot, quita el adjunto del campo, vuelve a ejecutar y readjúntalo manualmente después.
+
+    **Colisión de claves de campo personalizado.** Ya existe un campo con la misma clave interna en el destino. Renómbralo o elimínalo antes de importar.
+
+    **Nombre y etiqueta que no coinciden.** Cuando difieren en HubSpot, el importador puede confundirse sobre cuál usar. Alinéalos antes de importar.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo volver a importar o continuar donde quedé?">
+    Sí. Lanza una importación nueva desde la página de Importar datos. Cada ejecución queda registrada por separado en el historial, así que puedes comparar intentos y consultar el CSV de errores del anterior antes de reintentar.
+  </Accordion>
+
+  <Accordion title="¿La importación sobrescribe registros existentes?">
+    Por defecto no. Los registros importados se agregan junto a los que ya tienes.
+
+    Por eso recomendamos importar a una cuenta limpia y mantener **Permitir duplicados** activado durante el proceso.
+  </Accordion>
+
+  <Accordion title="¿Dónde veo la lista completa de errores?">
+    Abre los detalles de importación desde cualquier fila, cambia a **Vista de registro**, filtra por **Error** y pulsa **Descargar** para exportarla en CSV.
+  </Accordion>
+</AccordionGroup>
+
+## Después de importar
+
+<Warning>
+  Dos tareas que no debes saltarte:
+
+  1. **Valida las asociaciones críticas.** Algunas pueden no haberse importado, y es mejor descubrirlo tú que un cliente.
+  2. **Marca el origen de los contactos importados.** Sin eso, tus reportes de atribución no podrán distinguirlos del resto. Ver [Importa tus contactos](/primeros-pasos/importa-tus-contactos).
+</Warning>
+
+Cuando termines de revisar, vuelve a activar el bloqueo de duplicados en Contactos y Oportunidades.
+
+## Continúa
+
+<CardGroup cols={2}>
+  <Card title="La ficha del contacto" icon="address-book" href="/contactos/introduccion">
+    Etiquetas, campos personalizados e higiene de base.
+  </Card>
+
+  <Card title="Pipelines y oportunidades" icon="bars-progress" href="/contactos/pipelines">
+    Revisa que tus etapas migradas tengan sentido.
+  </Card>
+</CardGroup>
