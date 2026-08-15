@@ -1,0 +1,138 @@
+---
+title: "Usando Apple Pay y Google Pay"
+description: "Ofrece pagos con un toque en tus formularios de pedido, a través de Stripe."
+icon: "wallet"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Aceptar Apple Pay y Google Pay en tu formulario de pedido es una excelente forma de mejorar la experiencia de compra: ofrecen comodidad, seguridad y una rapidez que los métodos tradicionales no pueden igualar.
+
+<Warning>
+  **Requisitos base, antes de nada:**
+
+  - Esta función solo se ofrece a través de **Stripe Connect**
+  - Solo funciona con la **versión 2 de embudos**
+
+  Si usas PayPal como proveedor en lugar de Stripe, no puedes ofrecer Apple Pay ni Google Pay.
+</Warning>
+
+## Cómo se usan en el CRM
+
+Stripe permite añadir Apple Pay y Google Pay como opciones en la pestaña **Otros** de los formularios de pedido de uno y dos pasos. Las ventas adicionales (bumps y upsells) también funcionan con ellos.
+
+Al habilitar esta opción, las subcuentas pueden activar Apple Pay y Google Pay como método de pago, además del método predeterminado de tarjeta de crédito y PayPal.
+
+<Note>
+  **PayPal solo aparece si está habilitado** en **Pagos → Integraciones**.
+</Note>
+
+### Qué ve tu cliente
+
+Tus clientes verán Apple Pay y Google Pay según **dos condiciones**, y ambas deben cumplirse:
+
+| Condición | Detalle |
+| --- | --- |
+| **Ubicación y navegador** | Según su región geográfica y el navegador que usen |
+| **Método de pago asociado** | Que tengan una tarjeta registrada en su cuenta de Google o de Apple |
+
+Solo si se cumplen ambas, Google Pay o Apple Pay aparecen como opción, junto a la tarjeta de crédito predeterminada.
+
+### Navegadores compatibles
+
+| Navegador | Plataforma |
+| --- | --- |
+| Chrome | Escritorio |
+| Chrome | Android |
+| Safari | macOS |
+| Safari | iOS |
+| Microsoft Edge | Windows |
+
+Para los países y regiones compatibles, consulta la documentación oficial de [Apple Pay](https://support.apple.com/en-in/HT207957) y de [Google Pay](https://support.google.com/googlepay/answer/12429287).
+
+## Cómo activar Apple Pay y Google Pay
+
+El requisito principal es usar **Stripe Connect** en la página **Pagos → Integraciones**. Si conectas Stripe mediante sus APIs, usa Stripe Connect para poder habilitar esta función.
+
+<Steps>
+  <Step title="Conecta tu cuenta de Stripe">
+    En **Pagos → Integraciones**, mediante Stripe Connect.
+  </Step>
+  <Step title="Activa el interruptor">
+    Una vez conectada, aparece un interruptor **Habilitar Google Pay y Apple Pay** en la tarjeta de conexión de Stripe. Actívalo.
+  </Step>
+  <Step title="Verifica el modo de Stripe">
+    La tarjeta muestra el estado de los modos en vivo y de prueba. El interruptor debe activarse **mientras Stripe está conectado** a la ubicación.
+  </Step>
+</Steps>
+
+## Solución de problemas con Apple Pay
+
+<AccordionGroup>
+  <Accordion title="El interruptor debe activarse con Stripe conectado">
+    Enciende Apple Pay y Google Pay mientras Stripe está conectado a la ubicación.
+  </Accordion>
+
+  <Accordion title="Confirma que Apple Pay esté disponible en tu país">
+    Consulta la lista de [países compatibles de Stripe](https://stripe.com/docs/connect/payment-method-available-countries#apple-pay).
+  </Accordion>
+
+  <Accordion title="Registra el dominio con Stripe">
+    El dominio donde se aloja el embudo debe estar registrado con Stripe. Es un requisito adicional de Apple Pay y, en condiciones normales, ocurre automáticamente al encender el interruptor.
+
+    - Revisa en tu panel de Stripe si el dominio figura en la sección **Web Domains**
+    - Si no aparece, agrégalo manualmente con **Add New Domain** (solución rápida; si no se registra solo al activar el interruptor, conviene abrir un ticket)
+  </Accordion>
+
+  <Accordion title="Verifica los requisitos del navegador o dispositivo">
+    El cliente debe estar en Safari, desde iOS 10 o macOS Sierra en adelante. Consulta la lista de dispositivos compatibles y de bancos participantes en el soporte de Apple.
+  </Accordion>
+</AccordionGroup>
+
+## Solución de problemas con Google Pay
+
+<AccordionGroup>
+  <Accordion title="El interruptor debe activarse con Stripe conectado">
+    Igual que con Apple Pay: enciéndelo mientras Stripe está conectado a la ubicación.
+  </Accordion>
+
+  <Accordion title="Confirma que Google Pay esté disponible en tu país">
+    Consulta la lista de [países compatibles de Stripe](https://stripe.com/docs/connect/payment-method-available-countries#google-pay).
+  </Accordion>
+
+  <Accordion title="El cliente debe usar Chrome o Safari">
+  </Accordion>
+
+  <Accordion title="El cliente debe tener una tarjeta válida en Google Pay">
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué cambia en mis reportes de transacciones y pedidos?">
+    Nada. Stripe trata los pagos con Apple Pay y Google Pay como pagos con tarjeta. Todos los pedidos hechos con ellos se reflejan en la página de Pedidos, Transacciones y Suscripciones.
+  </Accordion>
+
+  <Accordion title="¿Hay diferencia de precio de Stripe entre tarjeta y Apple/Google Pay?">
+    No. El costo es el mismo que el de una transacción con tarjeta de crédito.
+  </Accordion>
+
+  <Accordion title="Uso PayPal en lugar de Stripe. ¿Puedo ofrecer Apple Pay y Google Pay?">
+    No. Solo se pueden ofrecer a través de **Stripe Connect** en la versión 2 de embudos.
+  </Accordion>
+
+  <Accordion title="¿Puedo habilitar otros métodos como redirecciones bancarias o ACH?">
+    Por ahora, mediante Stripe solo se pueden habilitar Apple Pay y Google Pay. La compatibilidad con otros métodos de pago se irá ampliando.
+  </Accordion>
+
+  <Accordion title="¿Cómo desactivo estos métodos después de haberlos activado?">
+    Al desactivar Apple Pay y Google Pay en la tarjeta de conexión de Stripe (en la página de Integraciones), se desactiva la pestaña **Otros métodos de pago** en el formulario de pedido.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Integración de pagos con Stripe" icon="stripe" href="/comercio/integracion-stripe">
+  Conecta Stripe Connect, requisito para esta función.
+</Card>
