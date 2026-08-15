@@ -1,0 +1,80 @@
+---
+title: "Importar archivo CSV de pedidos: formatos de campo"
+description: "Sube pedidos en lote con el formato correcto, incluidos los de varios artículos."
+icon: "file-csv"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Importar pedidos mediante CSV te permite cargar varios pedidos de una sola vez. Esta guía te lleva por la preparación y la carga del archivo, con el formato y las reglas necesarias para que la importación salga bien.
+
+## Requisitos del archivo
+
+| Requisito | Detalle |
+| --- | --- |
+| **Extensión** | El archivo debe estar en formato `.csv` |
+| **Encabezados** | Deben coincidir **exactamente** con los del archivo de ejemplo |
+| **Una fila por artículo** | Cada fila representa un único artículo del pedido |
+| **Campos obligatorios** | Deben estar todos rellenos para evitar errores |
+
+<Warning>
+  **La regla que más se malinterpreta — pedidos con varios artículos:** si un pedido tiene varios artículos, cada artículo va en su **propia fila**, y **todos los campos del pedido se repiten** en cada una (mismo cliente, misma fecha, mismo total).
+
+  Es lo que agrupa las filas en un solo pedido. Si no repites los datos del pedido, el sistema los trata como pedidos distintos.
+</Warning>
+
+## Descripciones y ejemplos de columnas
+
+Cada columna representa una parte del pedido. Esta es la estructura completa, con su descripción y un ejemplo:
+
+| Columna | Descripción | Ejemplo |
+| --- | --- | --- |
+| **Nombre del cliente** | Nombre del cliente | Jane |
+| **Apellido del cliente** | Apellido del cliente | Smith |
+| **Correo del cliente** | Dirección de correo del cliente | [jane.smith@example.com](mailto:jane.smith@example.com) |
+| **Teléfono del cliente** | Teléfono (incluye código de país si lo tienes) | \+14155552671 |
+| **Divisa** | Moneda del pedido (código ISO) | USD |
+| **Total parcial** | Coste del pedido antes de impuestos, descuentos y envío | 120.00 |
+| **Descuento** | Descuento aplicado al pedido | 10.00 |
+| **Importe total del impuesto** | Total de impuesto cobrado | 8.40 |
+| **Cantidad** | Importe final pagado (Subtotal − Descuento \+ Impuestos) | 118.40 |
+| **Fecha del pedido** | Fecha en formato `DD/MM/AAAA` | 25/01/2025 |
+| **Hora del pedido** | Hora en formato 24 h `HH:MM` | 00:45 |
+| **Método de pago** | Tarjeta de crédito, PayPal, efectivo, ACH | Tarjeta de crédito |
+| **Proveedor de pagos** | Pasarela o proveedor que procesó la transacción | Stripe |
+| **Nombre del artículo de línea** | Nombre del artículo individual del pedido | Camiseta azul |
+| **Cantidad de artículo** | Cantidad de cada artículo | 2 |
+| **Precio del artículo** | Precio por unidad, antes de impuestos y descuentos | 25.00 |
+| **Dirección Línea 1** | Línea 1 de la dirección del comprador | Calle principal 123 |
+| **Ciudad** | Ciudad de la dirección | San Francisco |
+| **Estado** | Estado o provincia | California |
+| **País** | País del comprador (nombre completo o ISO de 2 letras) | US |
+| **Código Postal** | Código postal de la dirección | 94105 |
+
+## Errores comunes que debes evitar
+
+| Error | Cómo evitarlo |
+| --- | --- |
+| **Fecha u hora incorrecta o faltante** | Respeta `DD/MM/AAAA` y `HH:MM` en 24 horas |
+| **Moneda mal escrita** | Usa el ISO de 3 letras: `USD`, no `$` |
+| **Correo o teléfono inválido** | Revisa el formato de ambos |
+| **Artículos no agrupados** | Repite los datos del pedido en cada fila de artículo |
+| **Discrepancia de importe** | Verifica que `Cantidad = Subtotal − Descuento + Impuesto` |
+
+<Tip>
+  Antes de subir, abre tu CSV y toma un pedido de varios artículos como prueba: confirma que todas sus filas comparten cliente, fecha y totales idénticos, y que solo cambian el nombre, la cantidad y el precio del artículo. Si eso está bien, el resto suele estarlo.
+</Tip>
+
+## Continúa
+
+<CardGroup cols={2}>
+  <Card title="Importar CSV de transacciones" icon="file-csv" href="/pagos-facturas/importar-transacciones-csv">
+    La guía equivalente para registros de pago.
+  </Card>
+
+  <Card title="Importar facturas por CSV" icon="file-invoice" href="/pagos-facturas/importar-facturas-csv">
+    La guía equivalente para facturas.
+  </Card>
+</CardGroup>
