@@ -1,0 +1,36 @@
+---
+title: "21612: Error 21612: No se permite enviar mensajes a {{to_country}} con números de teléfono de {{from_country}}. Utilice un número local."
+sidebarTitle: "21612: Error 21612: No se permite enviar mensajes a {{to_country}} con números de teléfono de {{from_country}}. Utilice un número local."
+description: "ERROR 21612: no se permite la combinación de país de destino y país del número de origen. Descripción, posibles causas (formato E.164, falta de conectividad, restricciones del remitente) y posibles soluciones."
+icon: "globe-lock"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo original modificado el miércoles, 20 de mayo de 2026 a las 8:10 a. m.
+</Info>
+
+# ERROR: 21612
+
+## Descripción
+
+Error 21612: No se permite enviar mensajes a `{{to_country}}` con números de teléfono de `{{from_country}}`. Utilice un número local.
+
+<Note>
+  `{{to_country}}` y `{{from_country}}` son variables: al recibir el error, la plataforma las sustituye por el país de destino y por el país del número desde el que está enviando.
+</Note>
+
+## Posibles causas
+
+**Formato de números:** Es posible que el formato que utilizó para el número de "Para" o "De" no sea compatible con el [formato E.164](https://www.twilio.com/docs/glossary/what-e164). LeadConnector estandariza los números utilizando el formato E.164. Si LeadConnector modificó el número de "Para" o "De" de este mensaje de forma inesperada, intente reenviar el mensaje con direcciones formateadas según el formato E.164.
+
+**Destinos donde LeadConnector no tiene conectividad:** Es posible que LeadConnector aún no tenga servicio con el operador al que intenta conectarse. Póngase en contacto con el servicio de asistencia.
+
+**Restricciones de identificación del remitente en el país de destino:** Muchos países limitan los números, códigos cortos y/o remitentes alfanuméricos que se pueden usar en esa región. Consulte las [directrices de SMS para la región de destino](https://www.twilio.com/en-us/guidelines/sms).
+
+## Posibles soluciones
+
+1. Consulta la documentación adjunta para cada causa. También puedes intentar enviar el mensaje de nuevo con una combinación diferente de "Para" y "De".
+2. Usa un número de teléfono local de `{{to_country}}` para enviar mensajes.
+3. Compra o configura un número con capacidad internacional.
+
+Referencia del proveedor: [https://www.twilio.com/docs/api/errors/21612#error-21612](https://www.twilio.com/docs/api/errors/21612#error-21612)
