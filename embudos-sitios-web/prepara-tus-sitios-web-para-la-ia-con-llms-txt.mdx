@@ -1,0 +1,292 @@
+---
+title: "Prepara tus sitios web para la IA con llms.txt"
+description: "Crea, edita y publica un archivo llms.txt por dominio conectado para guiar a los rastreadores de IA, mejorar la visibilidad AEO/GEO y superar las auditorías de navegación automatizada."
+icon: "robot"
+---
+
+<Info>
+  Documentado el 15 de agosto de 2026.
+</Info>
+
+Embudos y sitios web te permite crear, editar y servir un archivo `llms.txt` personalizado **para cada dominio conectado**. Este archivo ayuda a los rastreadores de IA, a los modelos de lenguaje y a los agentes de búsqueda a comprender la estructura de tu sitio web, al mismo tiempo que te permite superar las auditorías automatizadas de “navegación de agentes”.
+
+## Tabla de contenido
+
+- ¿Qué es un archivo llms.txt?
+- Cómo llms.txt ayuda a PageSpeed y a las auditorías de IA
+- llms.txt frente a robots.txt y al mapa del sitio XML
+- Así luce un buen archivo llms.txt
+- Anatomía del archivo, línea por línea
+- Cómo configurar llms.txt para tu dominio
+- Cómo ver tu archivo llms.txt
+- Plantillas por tipo de negocio
+- Lista de verificación antes de publicar
+- Preguntas frecuentes
+
+## ¿Qué es un archivo llms.txt?
+
+Un archivo `llms.txt` funciona de forma similar a un archivo `robots.txt`, pero está diseñado específicamente para **agentes de IA y modelos de lenguaje grandes**. Se ubica en el directorio raíz de tu sitio —es decir, en `tudominio.com/llms.txt`— y ofrece un resumen en formato Markdown de tu sitio web, sus páginas principales y la información clave, para mejorar la visibilidad en las búsquedas de IA (AEO/GEO) y cumplir con las comprobaciones de navegación de agentes.
+
+<Warning>
+  Cada dominio conectado a tu cuenta requiere **su propia configuración independiente** del archivo `llms.txt`. Una vez guardado, el archivo se publica al instante y se sirve públicamente en `tudominio.com/llms.txt`. El contenido debe estar en **Markdown válido** para que los rastreadores de IA lo analicen correctamente.
+</Warning>
+
+## Cómo llms.txt ayuda a PageSpeed y a las auditorías de IA
+
+Las auditorías basadas en IA pueden comprobar si un sitio web publica un archivo `llms.txt` en la raíz de su dominio. Añadir este archivo permite que las auditorías compatibles lo localicen y proporciona a los agentes de IA una guía estructurada del contenido del sitio.
+
+<Steps>
+  <Step title="Supera las auditorías de navegación automatizada">
+    Las herramientas de análisis de rendimiento incluyen una categoría de auditoría de navegación automatizada que busca específicamente la presencia y el formato Markdown válido del archivo `llms.txt` en la raíz de tu dominio. Tenerlo publicado permite que tu sitio supere estas comprobaciones.
+  </Step>
+  <Step title="Reduce la sobrecarga de rastreo y el uso de tokens">
+    En lugar de obligar a los agentes de IA a analizar páginas HTML extensas y con mucho código, `llms.txt` les entrega un mapa del sitio ligero en texto plano. Esto ahorra recursos de cómputo, ancho de banda y contexto de procesamiento.
+  </Step>
+  <Step title="Mejora la visibilidad en las búsquedas con IA (AEO/GEO)">
+    Sirve como guía clara para los modelos de lenguaje, dirigiendo a los agentes directamente a tu contenido principal para que tu marca pueda ser indexada y citada con precisión en los motores de búsqueda con IA.
+  </Step>
+</Steps>
+
+<Note>
+  **AEO** (Answer Engine Optimization) y **GEO** (Generative Engine Optimization) son las disciplinas que buscan que tu marca aparezca correctamente citada dentro de respuestas generadas por IA, del mismo modo que el SEO clásico busca posiciones en los resultados tradicionales.
+</Note>
+
+## llms.txt frente a robots.txt y al mapa del sitio XML
+
+Los tres archivos conviven y cumplen funciones distintas. No se reemplazan entre sí:
+
+| Característica | `llms.txt` | `robots.txt` | `sitemap.xml` |
+| :-- | :-- | :-- | :-- |
+| **A quién habla** | Agentes de IA y modelos de lenguaje | Rastreadores de motores de búsqueda | Motores de búsqueda |
+| **Qué comunica** | Un resumen curado del sitio y sus páginas clave | Qué rutas se pueden o no rastrear | La lista completa de URL disponibles |
+| **Formato** | Markdown | Texto plano con directivas | XML |
+| **Ubicación** | `tudominio.com/llms.txt` | `tudominio.com/robots.txt` | `tudominio.com/sitemap.xml` |
+| **Se actualiza** | Manualmente, cuando cambia el contenido importante | Manualmente | Automáticamente en la mayoría de casos |
+| **Es selectivo** | Sí: tú eliges qué destacar | No: define permisos, no prioridades | No: lista todo |
+
+<Tip>
+  La ventaja competitiva del `llms.txt` es justamente que **tú curas** el contenido. Un mapa del sitio muestra todo por igual; el `llms.txt` te deja decir “esto es lo importante de mi negocio” con tus propias palabras.
+</Tip>
+
+## Así luce un buen archivo llms.txt
+
+Un archivo útil debe estar escrito en Markdown y explicar brevemente el propósito del sitio, además de dirigir a los agentes de IA a una lista seleccionada de páginas precisas y de acceso público. Los encabezados claros, los enlaces descriptivos y las explicaciones concisas facilitan la comprensión del archivo.
+
+Utiliza un encabezado único con `#` para el nombre de tu sitio, un breve resumen en formato de cita y subencabezados con `##` para organizar los enlaces clave con descripciones concisas. También puedes incluir una sección opcional para las páginas de menor prioridad.
+
+Usa la siguiente estructura Markdown como punto de partida:
+
+```markdown llms.txt
+# Clínica Dental Sonrisa Viva
+
+> Clínica dental en Santo Domingo especializada en odontología preventiva,
+> ortodoncia invisible y estética dental, con agenda en línea y planes de pago.
+
+## Páginas principales
+
+- [Servicios](https://sonrisaviva.do/servicios): Listado completo de tratamientos, con duración aproximada y preparación previa.
+- [Precios y planes](https://sonrisaviva.do/precios): Tarifas por tratamiento y opciones de financiamiento disponibles.
+- [Agenda tu cita](https://sonrisaviva.do/agenda): Calendario en línea para reservar consulta de evaluación.
+- [Contacto](https://sonrisaviva.do/contacto): Dirección, teléfono, WhatsApp y horarios de atención.
+
+## Recursos
+
+- [Preguntas frecuentes](https://sonrisaviva.do/faq): Dudas comunes sobre tratamientos, seguros y post-operatorio.
+- [Blog](https://sonrisaviva.do/blog): Artículos educativos sobre salud bucal escritos por el equipo clínico.
+- [Casos de éxito](https://sonrisaviva.do/casos): Resultados reales de pacientes, con su autorización.
+
+## Opcional
+
+- [Sobre nosotros](https://sonrisaviva.do/nosotros): Historia de la clínica y perfil profesional del equipo.
+- [Trabaja con nosotros](https://sonrisaviva.do/empleos): Vacantes abiertas.
+```
+
+<Note>
+  Puedes consultar ejemplos públicos en [directory.llmstxt.cloud](https://directory.llmstxt.cloud/) o revisar la especificación oficial en [llmstxt.org](https://llmstxt.org/).
+</Note>
+
+## Anatomía del archivo, línea por línea
+
+| Elemento | Sintaxis | Para qué sirve | Recomendación |
+| :-- | :-- | :-- | :-- |
+| **Título del sitio** | `# Nombre` | Identifica la marca. Debe ser el único encabezado de nivel 1. | Usa el nombre comercial exacto, sin eslogan. |
+| **Resumen** | `> Descripción` | Explica en una o dos frases qué hace el negocio y a quién sirve. | Incluye ciudad o país si el negocio es local. |
+| **Secciones** | `## Nombre de la sección` | Agrupa los enlaces por tema. | Entre dos y cuatro secciones; más de eso diluye el mensaje. |
+| **Enlaces** | `- [Texto](URL): Descripción` | Dirige al agente a una página concreta y le dice qué encontrará. | URL absolutas, siempre con `https://`. |
+| **Descripciones** | Texto después de los dos puntos | Da contexto sin obligar a rastrear la página. | Una línea, concreta, sin lenguaje publicitario. |
+| **Sección opcional** | `## Opcional` | Agrupa páginas de menor prioridad. | Útil para avisos legales, prensa o vacantes. |
+
+<Warning>
+  Enlaza únicamente páginas **públicas y publicadas**. Si incluyes una URL en borrador, protegida por contraseña o que devuelve error 404, el agente la interpreta como información rota y pierde confianza en el resto del archivo.
+</Warning>
+
+## Cómo configurar llms.txt para tu dominio
+
+Sigue estos pasos para agregar o editar el archivo `llms.txt` de cualquier dominio conectado a tus embudos o sitios web:
+
+<Steps>
+  <Step title="Abre la configuración de dominios">
+    En tu panel de control, ve a **Configuración → Dominios y redirecciones de URL**.
+  </Step>
+  <Step title="Localiza el dominio">
+    Busca el dominio que deseas configurar y haz clic en **Administrar**.
+  </Step>
+  <Step title="Abre la edición del producto conectado">
+    Selecciona el icono de **tres puntos** junto al producto conectado deseado y haz clic en **Editar**.
+  </Step>
+  <Step title="Pega tu contenido Markdown">
+    Desplázate hacia abajo hasta la sección **llms.txt** del panel de configuración. Introduce o pega el contenido Markdown formateado en el área de texto.
+  </Step>
+  <Step title="Guarda para publicar">
+    Haz clic en **Guardar** para publicar tu archivo instantáneamente en `tudominio.com/llms.txt`.
+  </Step>
+</Steps>
+
+<Note>
+  📸 _Espacio para captura: pantalla **Dominios y redirecciones de URL**, menú de tres puntos con la opción Editar y ventana **Edit Domain** con el área de texto de llms.txt._
+</Note>
+
+## Cómo ver tu archivo llms.txt
+
+Abrir el archivo público confirma que el contenido se guardó en el dominio correcto y que está disponible para los rastreadores y agentes de IA compatibles.
+
+| Caso | URL a abrir en el navegador |
+| :-- | :-- |
+| **Dominio principal** | `https://tudominio.com/llms.txt` |
+| **Subdominio** | `https://ofertas.tudominio.com/llms.txt` |
+
+<Tip>
+  Si el navegador te descarga el archivo en lugar de mostrarlo, no es un error: el contenido es texto plano. Ábrelo con cualquier editor de texto para verificar que se guardó completo.
+</Tip>
+
+## Plantillas por tipo de negocio
+
+Usa estas estructuras como base y sustituye los enlaces por los tuyos:
+
+<AccordionGroup>
+  <Accordion title="Agencia de servicios">
+    ```markdown
+    # Nombre de la Agencia
+    
+    > Agencia de marketing digital que ayuda a negocios locales a generar
+    > clientes potenciales mediante campañas pagadas y automatización.
+    
+    ## Páginas principales
+    
+    - [Servicios](https://ejemplo.com/servicios): Detalle de cada servicio y qué incluye.
+    - [Casos de estudio](https://ejemplo.com/casos): Resultados medibles por cliente e industria.
+    - [Agenda una consultoría](https://ejemplo.com/agenda): Calendario para reservar una llamada de diagnóstico.
+    
+    ## Recursos
+    
+    - [Blog](https://ejemplo.com/blog): Guías prácticas de adquisición de clientes.
+    - [Preguntas frecuentes](https://ejemplo.com/faq): Modelo de trabajo, plazos y forma de contratación.
+    ```
+  </Accordion>
+
+  <Accordion title="Tienda en línea">
+    ```markdown
+    # Nombre de la Tienda
+    
+    > Tienda en línea de café de especialidad tostado en origen,
+    > con envíos a todo el país y suscripciones mensuales.
+    
+    ## Páginas principales
+    
+    - [Catálogo](https://ejemplo.com/tienda): Todos los productos disponibles con precios actualizados.
+    - [Suscripciones](https://ejemplo.com/suscripciones): Planes mensuales y cómo funcionan.
+    - [Envíos y devoluciones](https://ejemplo.com/envios): Cobertura, plazos y política de devolución.
+    
+    ## Recursos
+    
+    - [Guía de preparación](https://ejemplo.com/guia): Métodos de extracción paso a paso.
+    - [Contacto](https://ejemplo.com/contacto): Atención al cliente y horarios.
+    ```
+  </Accordion>
+
+  <Accordion title="Profesional independiente o consultor">
+    ```markdown
+    # Nombre del Profesional
+    
+    > Consultoría en finanzas personales para profesionales jóvenes:
+    > presupuesto, deuda e inversión inicial.
+    
+    ## Páginas principales
+    
+    - [Cómo trabajo](https://ejemplo.com/metodo): Etapas del acompañamiento y qué esperar.
+    - [Tarifas](https://ejemplo.com/tarifas): Paquetes disponibles y qué incluye cada uno.
+    - [Agenda](https://ejemplo.com/agenda): Reserva de primera sesión.
+    
+    ## Opcional
+    
+    - [Testimonios](https://ejemplo.com/testimonios): Experiencias de clientes anteriores.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Lista de verificación antes de publicar
+
+| Verificación | Por qué importa |
+| :-- | :-- |
+| El archivo empieza con un único `#` | Un segundo encabezado de nivel 1 confunde el análisis del archivo. |
+| Hay un resumen en formato de cita (`>`) | Es la primera señal de contexto que lee el agente. |
+| Todas las URL son absolutas y usan `https://` | Las rutas relativas no se resuelven fuera del sitio. |
+| Cada enlace tiene una descripción de una línea | Sin descripción, el agente debe rastrear la página para entenderla. |
+| Ninguna página enlazada está en borrador | Los enlaces rotos restan credibilidad al archivo completo. |
+| El Markdown es válido | Un formato inválido puede hacer fallar la auditoría automatizada. |
+| Cada dominio y subdominio tiene el suyo | La configuración no se hereda entre dominios. |
+| Está agendada una revisión periódica | El archivo no se actualiza solo cuando cambia el sitio. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La IA de la plataforma también genera archivos llms.txt?">
+    Sí. Desde el estudio de IA basta con indicárselo y generará el contenido del `llms.txt` por ti. Revisa siempre el resultado antes de guardarlo, sobre todo los enlaces.
+  </Accordion>
+
+  <Accordion title="¿El archivo llms.txt reemplaza mi mapa del sitio XML?">
+    No. Un mapa del sitio XML ayuda a los motores de búsqueda a descubrir las URL, mientras que `llms.txt` proporciona a los sistemas de IA compatibles un resumen seleccionado del sitio y sus enlaces clave. Ambos archivos se pueden usar conjuntamente.
+  </Accordion>
+
+  <Accordion title="¿Añadir el archivo llms.txt garantiza que mi sitio aparezca en los resultados generados por IA?">
+    No. El archivo puede ayudar a los sistemas de IA compatibles a comprender el sitio, pero cada plataforma externa controla su propio comportamiento de rastreo, indexación, citación y clasificación.
+  </Accordion>
+
+  <Accordion title="¿Cada dominio necesita su propio archivo?">
+    Sí. Cada dominio o subdominio conectado se configura por separado.
+  </Accordion>
+
+  <Accordion title="¿Se añaden automáticamente las páginas web nuevas?">
+    No. El archivo contiene exactamente el Markdown que introdujiste en la configuración del dominio. Revísalo y actualízalo cuando cambien páginas o URL importantes.
+  </Accordion>
+
+  <Accordion title="¿Con qué frecuencia debo actualizar el archivo?">
+    Revísalo cada vez que se publique, se elimine, se renombre o se mueva a una nueva URL algún contenido importante. Una revisión trimestral suele ser suficiente para sitios estables.
+  </Accordion>
+
+  <Accordion title="¿Cuántos enlaces debería incluir?">
+    Entre 5 y 15 enlaces funcionan bien en la mayoría de sitios. La gracia del archivo está en la curaduría: si listas cincuenta URL, dejas de estar priorizando y vuelves a tener un mapa del sitio.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar el archivo para impedir que la IA lea mi sitio?">
+    No es su propósito. El `llms.txt` orienta y prioriza contenido; los permisos de rastreo se gestionan con `robots.txt` y con la configuración de tu dominio.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Generador de marcado Schema" icon="code" href="/embudos-sitios-web/embudos-y-sitios-web-generador-de-marcado-schema">
+    Complementa el llms.txt con datos estructurados JSON-LD por página.
+  </Card>
+
+  <Card title="Migración de dominios existentes" icon="right-left" href="/embudos-sitios-web/migracion-de-dominios-existentes">
+    Conecta primero el dominio para poder configurar su archivo llms.txt.
+  </Card>
+</CardGroup>
+
+## ¿Necesitas ayuda?
+
+Si el archivo no aparece en `tudominio.com/llms.txt`, revisa que lo hayas guardado en el dominio correcto —no en otro de la lista— y que el contenido sea Markdown válido. Recuerda que cada dominio y subdominio se configura por separado.
+
+Si el problema persiste, ponte en contacto con el administrador de tu cuenta o con el equipo de soporte para obtener ayuda. Ellos te guiarán en la configuración y se asegurarán de que todo funcione correctamente.
