@@ -1,0 +1,156 @@
+---
+title: "Directrices actualizadas sobre mensajería para EE. UU. y Canadá."
+sidebarTitle: "Directrices actualizadas sobre mensajería para EE. UU. y Canadá."
+description: "Cuándo se exige registro A2P y cuándo basta la verificación de identidad según la ruta del mensaje, con los errores 30034, 1002 y 21612 y la excepción del Reino Unido."
+icon: "route"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+## ¡Buenas noticias!
+
+Hemos simplificado los requisitos A2P (de aplicación a persona) para que la mensajería en Estados Unidos y Canadá sea más coherente, fiable y cumpla con la normativa, sin dejar de facilitarle las cosas.
+
+## Información general
+
+Esta guía explica los requisitos de mensajería y los códigos de error relacionados con el registro A2P (de aplicación a persona) y la verificación de identidad, tanto para **rutas nacionales como internacionales**. Comprender estas reglas ayuda a garantizar que los mensajes se entreguen correctamente y a evitar problemas de cumplimiento.
+
+| Ruta del mensaje | ¿Requiere registro A2P? | ¿Requiere verificación de identidad? | Error si no cumple |
+| --- | --- | --- | --- |
+| **Nacional** (EE. UU. → EE. UU., EE. UU. ↔ Canadá, Canadá → Puerto Rico) | Sí, obligatorio | — | `30034` |
+| **CA → CA** con números adquiridos **antes** del 26 de marzo de 2025 | No | No | — |
+| **CA → CA** con números adquiridos **a partir** del 26 de marzo de 2025 | Opcional | Sí, si no completó el registro A2P | — |
+| **Internacional** (EE. UU./Canadá → otros países) | No | Sí | `1002` |
+| **EE. UU. → Reino Unido** | No aplica | No aplica | `21612` (ruta no permitida) |
+
+**Cómo leer esta tabla:** es el resumen operativo de todo el artículo. Localice primero su ruta en la columna izquierda y las dos columnas centrales le dirán qué debe tener activo. La última columna es el error exacto que verá si le falta ese requisito, lo que le permite diagnosticar un fallo sin abrir un ticket.
+
+**Ejemplo:** una agencia con número de Miami que escribe a un cliente en Bogotá está en la cuarta fila: no necesita A2P, pero sí verificación de identidad. Si le aparece el error `1002`, ya sabe que el problema no es su registro A2P sino la verificación de Persona.
+
+## 1. Mensajería nacional (dentro de EE. UU. y Canadá)
+
+Al enviar mensajes dentro de los Estados Unidos, Canadá o Puerto Rico, el registro A2P (_Application-to-Person_) es **obligatorio**.
+
+### ¿Qué significa esto?
+
+Cualquier mensaje enviado entre números nacionales —como EE. UU. → EE. UU., EE. UU. → Canadá o Canadá → EE. UU./Puerto Rico— debe originarse desde un número A2P registrado. Este requisito garantiza el cumplimiento de las regulaciones de los operadores destinadas a prevenir el spam y los mensajes no autorizados.
+
+<Warning>
+  **Si falta el registro A2P**, los mensajes enviados sin registro fallarán y devolverán el siguiente error:
+
+  `Error 30034`: El número no cumple con el protocolo A2P. Regístrese en A2P.
+</Warning>
+
+### Escenarios de ejemplo
+
+| Escenario | Resultado |
+| --- | --- |
+| Mensaje de un número de empresa estadounidense a un cliente estadounidense | Se requiere A2P |
+| Mensaje de un número estadounidense a un número canadiense (o viceversa) | Se requiere A2P |
+
+**Cómo leer esta tabla:** ambos escenarios se consideran tráfico nacional para efectos de esta norma, aunque crucen la frontera entre EE. UU. y Canadá. La regla no depende del país del destinatario, sino de que ambos extremos estén dentro de Norteamérica.
+
+**Ejemplo:** una empresa de Toronto que escribe a un prospecto de Nueva York necesita A2P, exactamente igual que si escribiera a un prospecto de Montreal desde un número estadounidense.
+
+### Regla para mensajería CA → CA
+
+| Fecha de adquisición del número | Registro A2P | Verificación de identidad |
+| --- | --- | --- |
+| **Antes del 26 de marzo de 2025** | No se requiere registro A2P; el envío de mensajes continúa como de costumbre. | No aplica |
+| **A partir del 26 de marzo de 2025** | Los mensajes se pueden enviar con o sin registro A2P. | Si no ha completado el registro A2P, solo necesita completar la verificación de identidad. |
+
+**Cómo leer esta tabla:** la fecha de compra del número es la que determina el régimen aplicable, no la fecha de envío del mensaje. Los números antiguos quedan protegidos por antigüedad.
+
+**Ejemplo:** una agencia canadiense con dos números —uno comprado en enero de 2025 y otro en mayo de 2025— opera bajo dos reglas distintas dentro de la misma cuenta: el primero envía sin requisitos, el segundo exige A2P o verificación de Persona.
+
+<Note>
+  **En resumen:** todas las rutas de mensajería nacionales requieren un registro A2P aprobado para una entrega adecuada, excepto **CA → CA**, donde los números antiguos están exentos y los números nuevos requieren un registro A2P o una verificación de Persona.
+</Note>
+
+## 2. Mensajería internacional (desde EE. UU. o Canadá a otros países)
+
+Para los mensajes enviados desde EE. UU. o Canadá a destinos internacionales, **no se requiere el registro A2P**. Solo se necesita la verificación de identidad para que estos mensajes se entreguen correctamente.
+
+### Qué significa esto
+
+La mensajería internacional se basa en la identidad verificada del remitente, en lugar del registro A2P. La verificación de la identidad confirma que los datos del remitente han sido autenticados y aprobados.
+
+### Comportamiento del mensaje
+
+| Situación del remitente | Comportamiento |
+| --- | --- |
+| Identidad verificada | El mensaje se entregará con normalidad. En este caso, no se requeriría la verificación A2P. |
+| Sin registro A2P ni verificación de identidad | El sistema bloqueará el mensaje y devolverá el error `1002`. |
+
+<Warning>
+  `Error 1002`: Mensaje bloqueado. Se requiere verificación A2P o de identidad.
+</Warning>
+
+### ¿Recibe el error 1002? Así se soluciona
+
+Si la verificación de Persona no se activó al momento de comprar su número de teléfono, puede activarla manualmente siguiendo estos pasos:
+
+<Steps>
+  <Step title="Ir a Agentes de IA">
+    Abra la sección de agentes de IA en su subcuenta.
+  </Step>
+  <Step title="Seleccionar IA de voz">
+    Elija el apartado de IA de voz.
+  </Step>
+  <Step title="Habilitar llamadas salientes">
+    Haga clic en **Habilitar llamadas salientes**.
+  </Step>
+  <Step title="Activar la verificación de Persona">
+    Habilite la casilla de verificación de Persona para activar la verificación. Una vez aprobada, la mensajería se reanudará con normalidad.
+  </Step>
+</Steps>
+
+### Ejemplos de escenarios
+
+| Escenario | Resultado |
+| --- | --- |
+| Enviar desde un número de EE. UU. a un cliente en Francia | Permitido (solo se requiere verificación de identidad) |
+| Enviar desde un número canadiense a un cliente en Australia | Permitido (solo se requiere verificación de identidad) |
+| Envío sin verificación de identidad | Bloqueado con error `1002` |
+
+**Cómo leer esta tabla:** las dos primeras filas muestran que el destino internacional no cambia el requisito, sea cual sea el país. La tercera confirma que lo único que bloquea el envío es la ausencia de verificación, no el registro A2P.
+
+**Ejemplo:** si su número estadounidense entrega correctamente en Francia pero falla con `1002` hacia Australia, el problema no está en la ruta sino en el número que está usando para ese envío: revíselo en la verificación de Persona.
+
+Básicamente, los mensajes internacionales provenientes de números de EE. UU. y Canadá solo requieren **verificación de Persona**, no A2P.
+
+## 3. Excepción: mensajes dirigidos al Reino Unido
+
+El Reino Unido constituye un caso especial en lo que respecta a las normas de enrutamiento internacional.
+
+No se permiten mensajes de EE. UU. al Reino Unido y fallarán automáticamente. El sistema devuelve el siguiente error cuando se intenta esta ruta:
+
+<Warning>
+  `Error 21612`: No se puede enviar el mensaje con la combinación actual de parámetros «Para» y/o «Desde».
+</Warning>
+
+Sin embargo, sí se permiten los mensajes **entre usuarios del Reino Unido**.
+
+| Ruta | ¿Permitida? |
+| --- | --- |
+| EE. UU. → Reino Unido | No. Falla automáticamente con el error `21612`. |
+| Reino Unido → Reino Unido | Sí. |
+
+**Cómo leer esta tabla:** no se trata de un requisito que usted pueda cumplir, sino de una ruta cerrada. Ningún registro ni verificación habilita el envío desde EE. UU. hacia el Reino Unido.
+
+**Ejemplo:** si necesita comunicarse por SMS con contactos en el Reino Unido, la vía es adquirir un número británico y enviar desde él; reintentar desde su número estadounidense seguirá devolviendo `21612`.
+
+## 4. Conclusiones clave
+
+| Caso | Requisito o resultado |
+| --- | --- |
+| **Nacional (EE. UU./Canadá/Puerto Rico)** | Siempre requiere registro A2P. |
+| **Internacional (EE. UU./Canadá → otros países)** | Requiere únicamente verificación de identidad. |
+| **Sin A2P ni Persona** | Los mensajes se bloquean con el error `1002`. |
+| **EE. UU. → Reino Unido** | No compatible; se devuelve el error `21612`. |
+
+**Cómo leer esta tabla:** es la versión corta que conviene tener a mano al configurar una subcuenta nueva. Si solo recuerda una línea, que sea la primera: todo lo que se queda dentro de Norteamérica exige A2P.
+
+**Ejemplo:** al dar de alta un cliente que venderá en EE. UU. y en España, planifique dos cosas distintas desde el inicio: el registro A2P para su tráfico estadounidense y la verificación de Persona para su tráfico español.
