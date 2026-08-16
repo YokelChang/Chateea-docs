@@ -1,0 +1,442 @@
+---
+title: "¿Cómo utilizar la acción premium de formato de números?"
+sidebarTitle: "¿Cómo utilizar la acción premium de formato de números?"
+description: "La acción premium Number Formatter reúne cinco funciones: texto a número, formato de número, formato de número de teléfono, formato de moneda y número aleatorio."
+icon: "hashtag"
+---
+
+## ¿Cómo utilizar la acción premium de formato de números?
+
+<Info>
+  **Documentado el 16 de agosto de 2026.**
+
+  Artículo original modificado el martes, 2 de mayo de 2023 a las 9:53 a. m.
+</Info>
+
+Presentamos la acción premium **Number Formatter**, una herramienta increíblemente útil que te permite formatear y manipular números según tus necesidades específicas. Esta acción te permite convertir, reformatear o generar números en diversos formatos.
+
+### Temas tratados en este artículo
+
+- ¿Qué es la acción de flujo de trabajo Premium Number Formatter?
+- ¿Cuáles son algunos buenos casos de uso para cada tipo de acción de formateador de números?
+- ¿Cuáles son algunos de los beneficios generales de esta función?
+- ¿Cómo utilizar la acción premium de formato de números?
+- Preguntas frecuentes
+
+---
+
+## ¿Qué es la acción de flujo de trabajo Premium Number Formatter?
+
+La acción premium Number Formatter abarca cinco funciones esenciales: **texto a número**, **formato de número**, **formato de número de teléfono**, **formato de moneda** y **número aleatorio**. Algunas de sus capacidades incluyen:
+
+- Convertir texto a número (por ejemplo, "\$12,345.67" a 12345.67) para facilitar la comparación en condiciones If/Else con operadores numéricos.
+- Formatear las monedas según sus respectivas configuraciones regionales antes de enviar correos electrónicos o SMS a los contactos, garantizando así una apariencia profesional.
+- Formatear los números de teléfono de Estados Unidos como números internacionales (por ejemplo, añadiendo el código de país "\+1") antes de almacenarlos o enviarlos por correo electrónico, SMS, Slack o un webhook personalizado a otra plataforma.
+
+---
+
+## ¿Cuáles son algunos buenos casos de uso para cada tipo de acción de formateador de números?
+
+<AccordionGroup>
+  <Accordion title="Texto a número">
+    <div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", margin: "0.75rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem", minWidth: "560px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "11px 14px", color: "#3add8f", textAlign: "left" }}>Escenario</th>
+        <th style={{ padding: "11px 14px", color: "#ffffff", textAlign: "left" }}>Cómo ayuda la función</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", fontWeight: "600" }}>Cálculo del valor del pedido en comercio electrónico</td>
+        <td style={{ padding: "9px 14px" }}>Una tienda en línea recibe los datos del pedido en formato de texto, como "3 artículos a $12.50 cada uno". La conversión de texto a número extrae los valores numéricos y permite calcular el valor total del pedido.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Análisis de datos de ventas</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Una empresa recibe datos de ventas en formato de texto, como "Ingresos: $10,500.00". La función los transforma en un valor numérico para facilitar su análisis y comparación.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Importación de datos de informes financieros</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Una empresa importa datos financieros desde una hoja de cálculo con valores como "€2.500,00". La función los transforma para una integración perfecta en las funciones de informes del CRM.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Análisis de respuestas de encuestas</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Una empresa de marketing recopila datos de encuestas con respuestas en texto, como "Gasté 150 libras el mes pasado". La función los transforma para su posterior análisis y segmentación de clientes.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Procesamiento de datos de redes sociales</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Una marca extrae datos numéricos de publicaciones en redes sociales, como "¡Llegamos a 10K seguidores!". Texto a número convierte esos datos en valores numéricos para seguimiento e informes.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </Accordion>
+
+  <Accordion title="Número de formato (Format Number)">
+    - **Informes de ventas internacionales:** una empresa multinacional necesita presentar los datos de ventas en formatos específicos de cada región para que sus equipos internacionales los comprendan mejor.
+    - **Facturas personalizadas:** un negocio genera facturas con el formato numérico propio de cada región, adaptándose a las preferencias de sus clientes internacionales.
+    - **Exportación de datos:** una empresa exporta datos de su CRM para compartirlos con un socio de otro país y necesita convertir los formatos numéricos a las convenciones locales.
+    - **Informes para clientes:** una agencia de marketing prepara informes para clientes de distintos países ajustando el formato numérico a las preferencias locales.
+    - **Actualización de precios de productos:** una tienda de comercio electrónico actualiza los precios de su web para admitir distintos formatos numéricos según la ubicación del cliente.
+  </Accordion>
+
+  <Accordion title="Formato de número de teléfono (Format Phone Number)">
+    - **Campañas de SMS marketing:** una empresa estandariza los números de teléfono recopilados en un formato coherente para campañas de SMS más efectivas.
+    - **Llamadas internacionales:** un equipo de atención al cliente formatea los números para incluir el código de país y garantizar la conexión con clientes internacionales.
+    - **Validación de datos:** un negocio verifica y corrige el formato de los teléfonos de su CRM para mejorar la precisión de los datos y reducir errores de comunicación.
+    - **Comunicación personalizada:** un equipo de ventas ajusta el formato del teléfono a la región del cliente para que la comunicación sea más cercana.
+    - **Gestión de clientes potenciales:** una empresa de generación de leads formatea los teléfonos para garantizar el enrutamiento y la asignación correctos a los agentes de ventas.
+  </Accordion>
+
+  <Accordion title="Formato de moneda (Format Currency)">
+    - **Visualización de precios personalizada:** una tienda muestra los precios en el formato de moneda local según la ubicación del cliente, para una mejor experiencia de compra.
+    - **Facturación:** un negocio genera facturas con los valores de moneda formateados según el país del cliente, garantizando claridad y profesionalidad.
+    - **Informes financieros:** una empresa prepara informes para partes interesadas de varios países formateando los valores según las expectativas locales.
+    - **Materiales de marketing:** una agencia crea contenido promocional con formato de moneda específico de cada región para atraer a públicos internacionales.
+    - **Gestión de presupuestos:** un jefe de proyecto convierte los valores de moneda de su presupuesto a un formato estandarizado para facilitar la comparación y el análisis.
+  </Accordion>
+
+  <Accordion title="Número aleatorio (Random Number)">
+    - **Códigos de descuento únicos:** un minorista en línea genera códigos de descuento aleatorios para una promoción por tiempo limitado.
+    - **Sorteos tipo lotería:** una empresa realiza un sorteo en el que a los clientes se les asignan números aleatorios y los ganadores se eligen mediante un sorteo numérico.
+    - **Recomendaciones de producto aleatorizadas:** un servicio de cajas por suscripción usa números aleatorios para seleccionar los artículos que incluirá en las cajas personalizadas de sus clientes.
+    - **Pruebas A/B:** una empresa usa números aleatorios para asignar a los visitantes a distintas versiones de su web, garantizando una distribución justa e imparcial entre los grupos de prueba.
+    - **Asignación de tickets de soporte:** un equipo de soporte asigna los tickets entrantes a los agentes según números aleatorios, repartiendo la carga de trabajo de forma equilibrada.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## ¿Cuáles son algunos de los beneficios generales de esta función?
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Beneficio</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>En qué consiste</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Coherencia de datos</td>
+        <td style={{ padding: "10px 16px" }}>Estandariza los formatos numéricos en todo el CRM, garantizando coherencia y reduciendo la probabilidad de errores o malentendidos.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Mejor segmentación de clientes</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Ayuda a limpiar y transformar los datos numéricos, lo que facilita segmentar clientes con información precisa y coherente, como sus patrones de gasto.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Internacionalización mejorada</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Permite formatear números, monedas y teléfonos según estándares regionales, para que el contenido sea comprensible y accesible a una audiencia global.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Personalización reforzada</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Al formatear monedas u otros datos numéricos según las preferencias o la configuración regional del usuario, ofreces una experiencia más personalizada.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Flujos de trabajo optimizados</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Automatiza las tareas de formateo dentro del CRM, ahorrando tiempo y esfuerzo y reduciendo el trabajo manual.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Informes y analítica precisos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Con datos numéricos coherentes y bien formateados, las capacidades de informes y análisis del CRM son más precisas y fiables.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Importación y exportación eficientes</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Ayuda a convertir los datos numéricos a un formato coherente al importar o exportar desde el CRM, reduciendo errores en la integración con otros sistemas.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Mayor capacidad de automatización</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Permite formatear números de forma dinámica dentro de los flujos de trabajo, habilitando automatizaciones más sofisticadas y adaptables.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Generación de contenido dinámico</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Con la función de número aleatorio puedes crear contenido único para promociones o descuentos, añadiendo un componente de exclusividad.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Validación de datos mejorada</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Ayuda a validar y corregir datos numéricos, como teléfonos o valores de moneda, para que el CRM contenga información precisa.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## ¿Cómo utilizar la acción premium de formato de números?
+
+Dentro de un flujo de trabajo, añade la acción **Number Formatter**, que aparece en el bloque **LC - Premium Actions** junto a Google Sheets, Slack, Custom Webhook, Create/Update Contact y Date/Time Formatter.
+
+<Note>
+  **Imagen próximamente.** Captura del panel _Actions_ con el bloque **LC - Premium Actions** y la fila **Number Formatter** resaltada, y del panel **Number Formatter** ("Format and generate Numeric fields") con el desplegable _ACTION TYPE_ abierto mostrando Text to Number, Format Number, Format Phone Number, Format Currency y Random Number.
+</Note>
+
+### Texto a número
+
+En la acción Number Formatter, elige la opción **Text to Number** en el desplegable Action Type. Ejemplo de la interfaz: _"\$ 12,345.67" to 12345.67_.
+
+<Steps>
+  <Step title="a. Select Field">
+    Elige un campo adecuado para la conversión de texto a número entre campos de contacto, campos personalizados, valores personalizados o el Inbound Webhook Trigger. El selector muestra las ramas Contact, User, Message, Account, Attribution, Custom Fields y Custom Values.
+  </Step>
+  <Step title="b. Input Decimal Mark">
+    Define el carácter que usa la entrada para denotar la parte decimal del número: **Comma (123,45)** o **Period (123.45)**.
+  </Step>
+  <Step title="c. Output">
+    Usa el resultado en acciones posteriores de tu flujo de trabajo con la variable:
+
+    ```text
+    {{number_formatter.1.result}}
+    ```
+  </Step>
+</Steps>
+
+### Número de formato
+
+En la acción Number Formatter, elige la opción **Format Number** en el desplegable Action Type. Ejemplo de la interfaz: _12345.67 to "12 345,67"_.
+
+<Steps>
+  <Step title="a. Select Field">
+    Elige un campo adecuado para el formateo numérico entre campos de contacto, campos personalizados, valores personalizados o el Inbound Webhook Trigger.
+  </Step>
+  <Step title="b. Input Decimal Mark">
+    Define el carácter que denota la parte decimal: Comma (123,45) o Period (123.45).
+  </Step>
+  <Step title="c. To Format">
+    Selecciona el formato requerido de la lista.
+
+    <div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", margin: "0.75rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem", minWidth: "520px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "11px 14px", color: "#3add8f", textAlign: "left" }}>Opción de TO FORMAT</th>
+        <th style={{ padding: "11px 14px", color: "#ffffff", textAlign: "left" }}>Resultado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Comma for grouping & period for decimal</td>
+        <td style={{ padding: "9px 14px" }}>1,234,567.89</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Period for grouping & comma for decimal</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>1.234.567,89</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Space for grouping & comma for decimal</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>1 234 567,89</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Space for grouping & period for decimal</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>1 234 567.89</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    **Cómo leer esta tabla:** la columna izquierda es la opción literal que aparece en el desplegable y la derecha, cómo quedará el número. Ejemplo: para un cliente en España elegirías la segunda fila; para uno en Estados Unidos, la primera.
+  </Step>
+  <Step title="d. Output">
+    Usa el resultado en acciones posteriores con `{{number_formatter.1.result}}`.
+  </Step>
+</Steps>
+
+### Formato de número de teléfono
+
+En la acción Number Formatter, elige la opción **Format Phone Number** en el desplegable Action Type. Ejemplo de la interfaz: _1234567890 to "(123) 456-7890"_.
+
+<Warning>
+  **Tenga en cuenta:** si eliges el tipo de acción Format Phone Number, solo podrás seleccionar campos relacionados con números de teléfono —por ejemplo Contact \> Phone (raw format), User \> Phone (raw format), Message \> Message Body o Account \> Phone (raw format)—.
+</Warning>
+
+<Steps>
+  <Step title="a. Select Field">
+    Elige un campo adecuado para el formateo de teléfono entre campos de contacto, campos personalizados, valores personalizados o el Inbound Webhook Trigger.
+  </Step>
+  <Step title="b. To Format">
+    Selecciona el formato requerido de la lista.
+
+    <div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", margin: "0.75rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem", minWidth: "560px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "11px 14px", color: "#3add8f", textAlign: "left" }}>Formato</th>
+        <th style={{ padding: "11px 14px", color: "#ffffff", textAlign: "left" }}>Ejemplo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>E164</td>
+        <td style={{ padding: "9px 14px" }}>+15413134664</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>International</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>+1 541-313-4664</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>International, no country code</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>541-313-4664</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>International, no hyphens</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>+1 541 313 4664</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>International, no symbols</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>15413134664</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>National</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>(541) 313-4664</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>National, no parenthesis</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>541 313-4664</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>National, no symbols</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>5413134664</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>RFC3966</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>tel:+1-541-313-4664</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>RFC3966, no tel:</td>
+        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>+1-541-313-4664</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    **Ejemplo:** si guardas los teléfonos en formato nacional y necesitas enviarlos a una plataforma que exige E164, selecciona esa primera fila y el número saldrá como `+15413134664`.
+  </Step>
+  <Step title="c. Country Code">
+    Selecciona el código de país requerido de la lista en **PHONE NUMBER COUNTRY CODE** (Afghanistan, Aland Islands, Albania, Algeria, American Samoa, AndorrA, Angola…).
+  </Step>
+  <Step title="d. Output">
+    Usa el resultado en acciones posteriores con `{{number_formatter.1.result}}`.
+  </Step>
+</Steps>
+
+### Formato de moneda
+
+En la acción Number Formatter, elige la opción **Format Currency** en el desplegable Action Type. Ejemplo de la interfaz: _12345.67 to "R\$ 12.345,67"_.
+
+<Steps>
+  <Step title="a. Select Field">
+    Elige un campo adecuado para el formateo de moneda entre campos de contacto, campos personalizados, valores personalizados o el Inbound Webhook Trigger.
+  </Step>
+  <Step title="b. Currency">
+    Selecciona el formato de moneda requerido de la lista (AndorrA (€), Angola (Kz), Anguilla ($$), Antarctica ($$), Antigua and Barbuda ($$), Argentina ($$), Armenia (֏)…).
+  </Step>
+  <Step title="c. Currency Locale">
+    Selecciona el formato de configuración regional requerido de la lista (UK (en-GB), Ukraine (uk-UA), United Arab Emirates (ar-AE), United States (en-US), United States Minor Outlying Islands (en-UM), Uruguay (es-UY), Uzbekistan (uz-UZ)…).
+
+    <Warning>
+      **Tenga en cuenta:** la configuración regional de moneda (currency locale) se refiere a los ajustes y convenciones regionales que se usan para mostrar los valores monetarios, teniendo en cuenta el formato local _(texto cortado en la fuente)_.
+
+      Por ejemplo, la configuración regional de Estados Unidos usa el símbolo del dólar (\$) y formatea los valores con una coma como _(texto cortado en la fuente)_.
+
+      Usar la configuración regional correcta garantiza que tus clientes o usuarios puedan entender e interpretar fácilmente los valores monetarios, tal como _(texto cortado en la fuente)_.
+    </Warning>
+  </Step>
+  <Step title="d. Output">
+    Usa el resultado en acciones posteriores con `{{number_formatter.1.result}}`.
+  </Step>
+</Steps>
+
+### Número aleatorio
+
+En la acción Number Formatter, elige la opción **Random Number** en el desplegable Action Type. Ejemplo de la interfaz: _52_.
+
+<Steps>
+  <Step title="a. Especifica el rango inferior y el rango superior">
+    Completa los campos **LOWER RANGE** y **UPPER RANGE** (en la captura de la fuente aparecen con los valores 0 y 100).
+
+    <Warning>
+      **Tenga en cuenta:** el rango inferior y el rango superior del tipo de acción Número aleatorio son los parámetros que definen los valores mínimo y máximo, res _(texto cortado en la fuente)_.
+
+      Por ejemplo, si estableces el rango inferior en 1 y el rango superior en 100, la acción de número aleatorio generará un número aleatorio ent _(texto cortado en la fuente)_.
+    </Warning>
+  </Step>
+  <Step title="b. Especifica los puntos decimales">
+    Completa el campo **DECIMAL POINTS** (en la captura aparece con el valor 0).
+  </Step>
+  <Step title="c. Output">
+    Usa el número aleatorio generado en acciones posteriores con `{{number_formatter.1.result}}`.
+  </Step>
+</Steps>
+
+<Warning>
+  **Tenga en cuenta:** al seleccionar campos, asegúrate de que sean adecuados para la operación de formateo elegida, para evitar errores o resultados inesperados.
+</Warning>
+
+---
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="P: ¿Puedo usar la acción premium Number Formatter para formatear números de API externas?">
+    ¡Por supuesto! El Inbound Webhook Trigger puede recuperar números de API externas y formatearlos en consecuencia.
+  </Accordion>
+
+  <Accordion title="P: ¿Puedo aplicar varias operaciones de formato dentro del mismo flujo de trabajo?">
+    Puedes usar varias instancias de la acción premium Number Formatter en un mismo flujo de trabajo para realizar distintas operaciones de formateo.
+  </Accordion>
+
+  <Accordion title="P: ¿Cómo garantiza la función de números aleatorios la unicidad de los números generados?">
+    La función de número aleatorio genera números dentro de un rango especificado y, aunque no garantiza una unicidad absoluta, las probabilidades de generar el mismo número varias veces disminuyen a medida que el rango aumenta. Para reforzar la unicidad, puedes implementar comprobaciones adicionales en tus flujos de trabajo que registren los números generados previamente y eviten duplicados. Esta combinación de un rango amplio y un seguimiento adecuado minimiza la probabilidad de números aleatorios no únicos.
+  </Accordion>
+
+  <Accordion title="P: ¿Se pueden formatear los valores de fecha utilizando la acción premium Formatter de números?">
+    La acción premium Number Formatter está diseñada específicamente para formatear números. Para valores de fecha, considera usar una acción o herramienta dedicada de formateo de fechas.
+  </Accordion>
+
+  <Accordion title="P: ¿Puedo usar la acción premium Formatter de números para dar formato a números en idiomas que utilizan sistemas de numeración distintos del arábigo?">
+    La acción premium Number Formatter admite el formateo de números usando el sistema de numeración arábigo (0-9). Formatear números en idiomas con sistemas de numeración no arábigos requeriría una herramienta especializada o una implementación personalizada.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Formateo de fecha y hora" icon="clock" href="/flujo-de-trabajo/accion-premium-formateo-de-fecha-y-hora">
+    La acción hermana para fechas, horas y comparaciones entre fechas.
+  </Card>
+
+  <Card title="Disparador: Pago recibido" icon="credit-card" href="/flujo-de-trabajo/disparador-de-flujo-de-trabajo-pago-recibido">
+    Da formato de moneda al importe recibido antes de comunicarlo al cliente.
+  </Card>
+</CardGroup>

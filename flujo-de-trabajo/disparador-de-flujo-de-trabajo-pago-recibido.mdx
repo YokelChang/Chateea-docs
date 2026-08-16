@@ -1,0 +1,468 @@
+---
+title: "Disparador de flujo de trabajo: Pago recibido"
+sidebarTitle: "Disparador de flujo de trabajo: Pago recibido"
+description: 'El activador "Pago recibido" captura de forma centralizada todos los pagos entrantes en el CRM —compras únicas, suscripciones y facturas— y se personaliza con filtros de fuente, tipo de transacción y estado.'
+icon: "credit-card"
+---
+
+## Disparador de flujo de trabajo: Pago recibido
+
+<Info>
+  **Documentado el 16 de agosto de 2026.**
+
+  Artículo original modificado el martes, 2 de mayo de 2023 a las 5:59 a. m.
+</Info>
+
+El activador de **Pago Recibido** está diseñado para funcionar como un mecanismo centralizado que registra todos los pagos entrantes en el CRM, incluyendo compras únicas, cargos de suscripción, facturas y más. Se puede personalizar con filtros, como el tipo de origen y el estado de la transacción, para casos de uso específicos. Este activador ayuda a las empresas a automatizar tareas, optimizar procesos y responder de manera eficiente a las transacciones de los clientes en tiempo real.
+
+### Temas tratados en este artículo
+
+- ¿Qué es el activador de flujo de trabajo de pago recibido y qué función cumple?
+- ¿Cuáles son algunos ejemplos excelentes de casos de uso para esto, junto con sus beneficios?
+- ¿Cómo utilizar el activador de pago recibido?
+- Filtros de activación de flujo de trabajo
+- Condiciones If/Else
+- Valores personalizados
+- Preguntas frecuentes
+
+---
+
+## ¿Qué es el activador de flujo de trabajo de pago recibido y qué función cumple?
+
+El activador "Pago recibido" automatiza procesos y acciones en función de los pagos entrantes cuando se utiliza en un flujo de trabajo. Se puede configurar para que responda a eventos de pago específicos, como transacciones exitosas o fallidas, o productos y fuentes de pago particulares.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Funcionalidad</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>En qué consiste</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Automatización del flujo de trabajo</td>
+        <td style={{ padding: "10px 16px" }}>El activador inicia el flujo de trabajo cada vez que se recibe un pago, lo que permite realizar acciones automatizadas como enviar correos de confirmación, generar facturas o actualizar los registros de clientes en el CRM.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Personalización con filtros</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Se pueden aplicar diversos filtros al activador, como el tipo de transacción, la fuente de pago o el producto, para crear flujos específicos ante situaciones concretas como renovaciones de suscripción o pagos fallidos.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Respuesta en tiempo real</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>El sistema funciona en tiempo real, lo que permite responder rápidamente a las transacciones de los clientes, dar retroalimentación inmediata y resolver problemas con prontitud.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Acciones condicionales</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Mediante condiciones if/else se pueden ejecutar acciones distintas según las características del pago, como el importe, la fuente o el estado de la transacción.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Informes y analítica</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>El activador puede capturar datos de pago con fines de análisis e informes. Al monitorizar los pagos entrantes y sus atributos, las empresas obtienen información sobre el rendimiento de ventas, el comportamiento del cliente y las áreas de mejora.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## ¿Cuáles son algunos ejemplos excelentes de casos de uso para esto, junto con sus beneficios?
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  |
+  |
+  |
+  |
+  |
+  |
+  |
+  |
+  |
+  |
+  |
+</div>
+
+---
+
+## ¿Cómo utilizar el activador de pago recibido?
+
+Dentro de un flujo de trabajo, agrega un activador llamado **Payment Received**.
+
+<Note>
+  **Imagen próximamente.** Captura del panel **Workflow Trigger** con el buscador mostrando `Payment Received` bajo _Contact Actions_ y el flujo con el bloque "Add New Workflow Trigger" resaltado.
+</Note>
+
+<Warning>
+  **Tenga en cuenta:** al elegir un filtro podrá seleccionar sus subfiltros correspondientes la próxima vez que añada un filtro al mismo activador del flujo de trabajo.
+</Warning>
+
+### Filtros de activación de flujo de trabajo para el activador de flujo de trabajo de pago recibido
+
+Puede hacer su activador más específico usando filtros. Esta es la tabla de todos los filtros y subfiltros disponibles.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem", minWidth: "820px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 14px", color: "#3add8f", textAlign: "left" }}>Activador</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Filtro</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Opciones del filtro</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Subfiltro nivel 1</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Opciones del subfiltro nivel 1</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Operadores</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 14px", fontWeight: "600" }} rowSpan={7}>Payment Received</td>
+        <td style={{ padding: "10px 14px" }} rowSpan={4}>Payment Source</td>
+        <td style={{ padding: "10px 14px" }}>Invoice</td>
+        <td style={{ padding: "10px 14px" }}>Sub-Source</td>
+        <td style={{ padding: "10px 14px" }}>Text2Pay link<br />One-time invoice<br />Recurring template</td>
+        <td style={{ padding: "10px 14px", fontWeight: "600" }} rowSpan={7}>is, is not</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }} rowSpan={2}>Funnel/ Website</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Sub-Source</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>One-step order form<br />Two-step order form<br />Upsell</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Transaction type</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Customer present/first transaction<br />Customer not present/subscription transaction</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Calendar</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Calendar</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Calendar names</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Global Product</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Global product Names</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Price</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Prices Names as per selected Global Product</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }} rowSpan={2}>Payment status</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Success</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)", textAlign: "center" }} colSpan={2} rowSpan={2}>---</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Failed</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Cómo leer esta tabla:** cada fila se construye de izquierda a derecha. Eliges primero el **Filtro** (por ejemplo Payment Source), luego una de sus **Opciones** (Invoice), después el **Subfiltro** disponible para esa opción (Sub-Source) y por último el valor concreto (Text2Pay link). El operador siempre es _is_ o _is not_.
+
+**Ejemplo:** para que el flujo se dispare únicamente con los cobros automáticos de una suscripción vendida en un embudo, la combinación es `Source is Funnel` \+ `Transaction type is Customer not present/subscription transaction` \+ `Payment Status is Success`.
+
+<Note>
+  **Imagen próximamente.** Captura del panel **Workflow Trigger** con los tres filtros aplicados: Source / Is / Funnel, Transaction type / Is / Customer not present subscription transaction y Payment Status / Is / Success.
+</Note>
+
+### Condiciones If/Else para el activador del flujo de trabajo de pago recibido
+
+Una vez añadidos los filtros y subfiltros deseados, puedes agregar una condición **If/Else** de tipo _Payment_ si necesitas ramificar el flujo de trabajo según ciertas condiciones. En el selector de segmentos aparecen las categorías Contact Details, Custom Values, Date Time, Events, **Payment** y Workflow Contact.
+
+Esta tabla explica las posibles condiciones If/Else y sus ramas.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem", minWidth: "760px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 14px", color: "#3add8f", textAlign: "left" }}>Opción If/Else</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Acción</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Operador</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Opciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 14px", fontWeight: "600" }} rowSpan={6}>Payment</td>
+        <td style={{ padding: "10px 14px" }}>Product</td>
+        <td style={{ padding: "10px 14px" }} rowSpan={5}>is, is not</td>
+        <td style={{ padding: "10px 14px" }}>Global product Names</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Funnel/Website</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Funnel/Website names</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Calendar</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Calendar names</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Source</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Invoice, Funnel, Website, Calendar</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Payment status</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>success/failed</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Amount</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Equal to, is not equal to, Greater than, Greater than or equal to, Less than, Less than or equal to, is not empty, is empty.</td>
+        <td style={{ padding: "10px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Amount paid</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de uso de la tabla:** para separar los pedidos grandes de los pequeños, crea una rama con `Amount` \+ `Greater than or equal to` \+ el importe que definas como umbral, y envía cada rama a una secuencia distinta de agradecimiento o de venta adicional.
+
+### Valores personalizados para el activador del flujo de trabajo de pago recibido
+
+Cuando usas el activador Payment Received, tienes acceso a un conjunto de valores personalizados que puedes insertar en SMS, correos electrónicos, notificaciones internas, etc. Esta tabla los detalla todos.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0", maxHeight: "620px", overflowY: "auto" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem", minWidth: "700px" }}>
+    <thead>
+      <tr style={{ background: "#13322c", position: "sticky", top: 0 }}>
+        <th style={{ padding: "12px 14px", color: "#3add8f", textAlign: "left" }}>Categoría</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Grupo</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Nombre</th>
+        <th style={{ padding: "12px 14px", color: "#ffffff", textAlign: "left" }}>Valor</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", fontWeight: "600" }} rowSpan={32}>Payment</td>
+        <td style={{ padding: "9px 14px" }} rowSpan={3}>—</td>
+        <td style={{ padding: "9px 14px" }}>Source</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.source}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Currency Symbol</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.currency\_symbol}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Currency Code</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.currency\_code}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px", fontWeight: "600" }} rowSpan={11}>Customer</td>
+        <td style={{ padding: "9px 14px" }}>ID</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.id}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>First Name</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.first\_name}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Last Name</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.last\_name}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Name</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.name}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Email</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.email}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Phone</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.phone}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Full Address</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.address}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>City</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.city}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>State</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.state}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Country</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.country}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Postal Code</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.customer.postal\_code}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px", fontWeight: "600" }} rowSpan={6}>Invoice</td>
+        <td style={{ padding: "9px 14px" }}>Name</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.invoice.name}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Number</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.invoice.number}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Issue Date</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.invoice.issue\_date}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Due Date</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.invoice.due\_date}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>URL</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.invoice.url}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Recorded By</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.invoice.recorded\_by}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }} rowSpan={12}>—</td>
+        <td style={{ padding: "9px 14px" }}>Sub-Total</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.sub\_total\_amount}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Discount Amount</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.discount\_amount}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Coupon Code</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.coupon\_code}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Tax Amount</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.tax\_amount}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Created On</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.created\_on}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Total Amount</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.total\_amount}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Transaction ID</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.transaction\_id}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Status</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.payment\_status}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Gateway</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.gateway}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Card Last 4 Digits</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.card.last4}}</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "9px 14px" }}>Card Brand</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.card.brand}}</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "9px 14px" }}>Method</td>
+        <td style={{ padding: "9px 14px" }}><code>\{\{payment.method}}</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de uso:** un SMS de confirmación podría escribirse así:
+
+```text
+Hola {{payment.customer.first_name}}, recibimos tu pago de {{payment.currency_symbol}}{{payment.total_amount}}.
+Transacción: {{payment.transaction_id}} · Tarjeta {{payment.card.brand}} terminada en {{payment.card.last4}}.
+```
+
+---
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Este mecanismo de activación incluirá también los pagos de suscripción posteriores?">
+    Sí, el activador se ejecutará siempre que se reciba un pago del cliente final directamente al enviar un formulario de pedido y también cuando la suscripción se cobre en segundo plano.
+  </Accordion>
+
+  <Accordion title="¿Cómo puedo lograr el desencadenante para que las transacciones de suscripción posteriores se realicen con éxito?">
+    Dado que las suscripciones se pueden crear en un embudo o en un sitio web, podemos crear un activador de Payment Received y aplicar los siguientes filtros para lograr el caso de uso: el tipo de fuente es **Funnel/Website** y el tipo de transacción es **"Customer not present/subscription transaction"**.
+
+    El filtro de estado de pago (Payment Status) permite filtrar pagos exitosos o fallidos según el caso de uso.
+  </Accordion>
+
+  <Accordion title='¿Qué significan "Cliente presente/primera transacción" y "Cliente no presente/transacción de suscripción"?'>
+    Las transacciones se clasifican en dos categorías:
+
+    - **Customer present / first transaction:** incluye las transacciones en las que el cliente final está en sesión realizando el pago. Comprende todas las compras únicas y el primer pedido de un producto de suscripción.
+    - **Transacción sin presencia del cliente / transacción de suscripción:** incluye los tipos de transacción que se ejecutan en segundo plano después de que se haya creado una suscripción. Por ejemplo, si un cliente compra un producto recurrente con un período de prueba de 14 días, la transacción realizada al comprar el producto recurrente (transacción de $$0 en este caso) se clasificaría como transacción con presencia del cliente / primera transacción. Después de 14 días, cuando finaliza el período de prueba y se cobran $$100 por el producto recurrente, la transacción de \$100 se clasificaría como transacción sin presencia del cliente / transacción de suscripción.
+  </Accordion>
+
+  <Accordion title="¿Los pagos fallidos también se incluirán en este activador?">
+    Sí, por defecto, sin filtros, el activador se ejecuta tanto en intentos de pago exitosos como fallidos. Para casos de uso específicos relacionados únicamente con pagos exitosos o fallidos, podemos aplicar el filtro "Estado de la transacción" y configurarlo como exitoso o fallido según el caso.
+  </Accordion>
+
+  <Accordion title="He configurado el disparador y seleccionado un producto específico en los filtros. ¿Significa esto que el disparador se activará cuando se venda ese producto en cualquier lugar?">
+    Si has configurado el activador y el filtro para un producto específico, este se ejecutará solo cuando dicho producto se venda en embudos de venta, sitio web o facturas. Mediante el filtro de estado de la transacción, podemos definir si el activador debe funcionar tanto si la compra es exitosa como si falla.
+  </Accordion>
+
+  <Accordion title="¿Qué es el filtro de subfuente?">
+    Al seleccionar una fuente como embudos de venta, sitios web o facturas, estas pueden tener subfuentes. Por ejemplo, un pago proveniente del embudo puede provenir de un formulario de pedido de un paso, un formulario de pedido de dos pasos o una venta adicional. Puede usar estos filtros de subfuentes para definir el origen del pago.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Formato de números" icon="hashtag" href="/flujo-de-trabajo/accion-premium-formato-de-numeros">
+    Da formato de moneda al importe antes de mostrarlo en el correo o el SMS.
+  </Card>
+
+  <Card title="Webhook personalizado de LC Premium" icon="code" href="/flujo-de-trabajo/accion-webhook-personalizado-lc-premium">
+    Envía la información del pago a tu sistema contable con un webhook saliente.
+  </Card>
+</CardGroup>
