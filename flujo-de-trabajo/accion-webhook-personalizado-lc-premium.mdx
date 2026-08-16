@@ -1,0 +1,240 @@
+---
+title: "¿Cómo utilizar la acción de flujo de trabajo de webhook personalizado de LC Premium?"
+sidebarTitle: "¿Cómo utilizar la acción de flujo de trabajo de webhook personalizado de LC Premium?"
+description: "El Webhook Personalizado - Acción Premium de LC permite el intercambio de datos en tiempo real entre el CRM y servicios de terceros mediante solicitudes personalizadas con métodos HTTP, autorización, encabezados y parámetros de consulta."
+icon: "code"
+---
+
+## ¿Cómo utilizar la acción de flujo de trabajo de webhook personalizado de LC Premium?
+
+<Info>
+  **Documentado el 16 de agosto de 2026.**
+
+  Artículo original modificado el lunes, 24 de abril de 2023 a las 4:32 a. m.
+</Info>
+
+El Webhook Personalizado - Acción Premium de LC es una función que permite el intercambio de datos en tiempo real entre su CRM y servicios de terceros. Permite realizar solicitudes personalizadas con diversos métodos HTTP, autorización, encabezados y parámetros de consulta. Esta herramienta intuitiva garantiza flujos de trabajo eficientes y precisos, teniendo en cuenta las respuestas de la API y las limitaciones del servidor.
+
+### Este artículo trata sobre
+
+- ¿Qué es la acción de flujo de trabajo de webhook personalizado de LC Premium?
+- ¿Para quién es útil esta función?
+- ¿Cuáles son los beneficios de esta función?
+- ¿Cómo utilizar la acción de flujo de trabajo de webhook personalizado de LC Premium?
+  - Complete la URL
+  - Seleccione un método
+  - Seleccione el método de autorización
+  - Encabezados y parámetros de consulta
+  - Configure los datos que se enviarán en el webhook personalizado
+- Puntos importantes a tener en cuenta
+
+---
+
+## ¿Qué es la acción de flujo de trabajo de webhook personalizado de LC Premium?
+
+El Webhook Personalizado (LC Premium Action) es una función potente y flexible que permite la comunicación en tiempo real entre su sistema CRM y servicios de terceros. Permite configurar y enviar solicitudes de datos personalizadas a URL específicas mediante diferentes métodos HTTP y de autorización.
+
+Esta función también admite la adición de encabezados, parámetros de consulta y la asignación de valores personalizados para crear una estructura de solicitud a medida que satisfaga sus necesidades. Con sugerencias de autocompletado e interfaces intuitivas, el Webhook Personalizado optimiza el intercambio de datos y garantiza la precisión en sus flujos de trabajo.
+
+<Warning>
+  Es fundamental tener en cuenta el éxito de la respuesta de la API y las limitaciones del servidor al utilizar esta función para evitar errores e interrupciones en la ejecución del flujo de trabajo.
+</Warning>
+
+---
+
+## ¿Para quién es útil esta función?
+
+Esta función resulta útil para empresas y particulares que necesitan integrar sus sistemas CRM con servicios de terceros para un intercambio de datos fluido, automatización y funcionalidades mejoradas. Es especialmente útil para profesionales del marketing, desarrolladores y expertos en TI que desean optimizar los flujos de trabajo, mejorar la coherencia de los datos y gestionar los procesos de forma más eficiente en diversas plataformas.
+
+---
+
+## ¿Cuáles son los beneficios de esta función?
+
+La tabla resume las siete ventajas que documenta la fuente para la función Custom Webhook - LC Premium Action.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "560px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Beneficio</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>En qué consiste</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Integración perfecta</td>
+        <td style={{ padding: "10px 16px" }}>Permite una comunicación accesible entre su sistema CRM y los servicios de terceros, mejorando el intercambio de datos y la eficiencia general.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Flexibilidad</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Admite varios métodos HTTP, métodos de autorización, encabezados y parámetros de consulta, lo que le permite crear solicitudes personalizadas que se adapten a sus necesidades.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Ahorro de tiempo</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>La interfaz intuitiva con sugerencias de autocompletado simplifica la asignación de datos y reduce el esfuerzo manual.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Mayor precisión</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Ayuda a garantizar la coherencia y la precisión de los datos en diferentes plataformas, reduciendo errores e inconsistencias.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Actualizaciones en tiempo real</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Facilita las notificaciones y actualizaciones en tiempo real, mejorando la capacidad de respuesta y la toma de decisiones.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Automatización de flujos de trabajo</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Optimiza los flujos de trabajo mediante la automatización del intercambio de datos del sistema, lo que aumenta la productividad y reduce las tareas manuales.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Escalabilidad</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Se adapta a diversas aplicaciones e industrias, lo que la convierte en una herramienta valiosa para empresas de diferentes tamaños y sectores.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## ¿Cómo utilizar la acción de flujo de trabajo de webhook personalizado de LC Premium?
+
+<Note>
+  **Imagen próximamente.** Captura del panel **Custom Webhook** ("Fire a fully customizable webhook containing any desired details") con los campos ACTION NAME, EVENT en `CUSTOM`, METHOD en `POST`, URL, AUTHORIZATION en `None`, HEADERS, QUERY PARAMETERS y RAW BODY.
+</Note>
+
+<Steps>
+  <Step title="Complete la URL">
+    Tienes la posibilidad de enviar solicitudes de datos a cualquier URL que elijas sin necesidad de programar ni operar un servidor.
+  </Step>
+  <Step title="Seleccione un método">
+    Puedes elegir cualquier método HTTP que se ajuste a tus necesidades, como **POST**, **GET**, **DELETE** o **PUT**.
+  </Step>
+  <Step title="Seleccione el método de autorización">
+    Se admiten diversos métodos de autorización, lo que le permite elegir el que mejor se adapte a sus necesidades al acceder al webhook.
+
+    <Note>
+      **Imagen próximamente.** Captura del desplegable **AUTHORIZATION** desplegado mostrando los métodos disponibles a partir del valor por defecto `None`.
+    </Note>
+  </Step>
+  <Step title="Encabezados y parámetros de consulta">
+    Además de enviar el cuerpo de la solicitud, el sistema le permite incluir encabezados y parámetros de consulta al enviar solicitudes a un webhook.
+
+    - **Encabezados (HEADERS):** se pueden utilizar para proporcionar información adicional sobre la solicitud, como credenciales de autenticación, tipo de contenido y control de caché.
+    - **Parámetros de consulta (QUERY PARAMETERS):** se pueden usar para pasar parámetros al punto final del webhook, lo que permite filtrar o modificar los datos de respuesta recibidos.
+
+    Ambos bloques se rellenan con pares **Key / Value** y admiten añadir tantos elementos como necesites con **Add another item**.
+  </Step>
+  <Step title="Configure los datos que se enviarán en el webhook personalizado">
+    La función premium de Webhook personalizado le permite asignar valores personalizados a cualquier estructura que se ajuste a sus necesidades. El cuadro de texto ofrece sugerencias de autocompletado para todos los valores personalizados, incluidas las variables de webhook entrantes.
+
+    Esta función simplifica el proceso de mapeo y ahorra tiempo al sugerir valores potenciales que coinciden con la entrada de datos. Además, ayuda a garantizar la precisión y la coherencia en el mapeo de datos.
+
+    Cuerpo de ejemplo (**RAW BODY**):
+
+    ```json
+    {
+      "id": "{{contact.id}}",
+      "name": "{{contact.name}}",
+      "email": "{{contact.email}}",
+      "phone": "{{contact.phone}}"
+    }
+    ```
+
+    Al escribir una clave nueva, por ejemplo `"user":`, el autocompletado propone los valores personalizados disponibles para completarla.
+  </Step>
+</Steps>
+
+### Resumen de la configuración del panel
+
+Esta tabla explica cada campo del panel **Custom Webhook** y qué valor de ejemplo trae la fuente.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Campo</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Para qué sirve</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Ejemplo de la fuente</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>ACTION NAME</td>
+        <td style={{ padding: "10px 16px" }}>Nombre con el que identificas la acción dentro del flujo de trabajo.</td>
+        <td style={{ padding: "10px 16px" }}><code>Custom Webhook</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>EVENT</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Tipo de evento que se dispara.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>CUSTOM</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>METHOD</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Método HTTP de la solicitud.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>POST</code> (también GET, DELETE o PUT)</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>URL</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Punto final al que se envía la solicitud.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>[https://sample-url.com](https://sample-url.com)</code></td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>AUTHORIZATION</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Método de autorización para acceder al webhook.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>None</code> por defecto</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>HEADERS</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Información adicional de la solicitud: credenciales, tipo de contenido, control de caché.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Pares Key / Value</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>QUERY PARAMETERS</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Parámetros que se pasan al punto final para filtrar o modificar la respuesta.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Pares Key / Value</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>RAW BODY</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Cuerpo de la solicitud con los valores personalizados asignados.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>JSON con id, name, email y phone del contacto</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura de la tabla:** para avisar a un ERP externo cada vez que un contacto llega a un paso, bastaría con METHOD `POST`, la URL del ERP, un encabezado `Authorization` con el token del proveedor y el RAW BODY del ejemplo. El ERP recibirá el identificador, el nombre, el correo y el teléfono del contacto en el momento exacto en que pasa por la acción.
+
+---
+
+## Puntos importantes a tener en cuenta
+
+<Warning>
+  1. La ejecución exitosa de la acción de webhook personalizada depende de la respuesta correcta de la API referenciada. Por lo tanto, si se devuelven errores, estos se reflejarán en la ejecución del flujo de trabajo del contacto y provocarán que la acción falle (y se omita) o se reintente con retrocesos exponenciales.
+  2. Además de lo mencionado en el punto 1, asegúrese de que el servidor receptor pueda gestionar la cantidad de ejecuciones que desea realizar; de lo contrario, podría experimentar errores debido a que se alcancen los límites del servidor. La acción de webhook personalizada se activará tan pronto como el contacto llegue al paso, así que asegúrese de agregar los contactos al flujo de trabajo teniendo en cuenta los límites del servidor receptor.
+</Warning>
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Activador Premium de webhook entrante" icon="arrow-right-to-bracket" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
+    El camino inverso: recibir datos de sistemas externos dentro del CRM.
+  </Card>
+
+  <Card title="Formateo de fecha y hora" icon="clock" href="/flujo-de-trabajo/accion-premium-formateo-de-fecha-y-hora">
+    Ajusta el formato de una fecha antes de enviarla por webhook personalizado.
+  </Card>
+</CardGroup>

@@ -1,0 +1,249 @@
+---
+title: "¿Cómo utilizar el activador Premium de flujo de trabajo de webhook entrante?"
+sidebarTitle: "¿Cómo utilizar el activador Premium de flujo de trabajo de webhook entrante?"
+description: "Los webhooks entrantes permiten que sistemas externos envíen datos automáticamente al CRM mediante POST, GET o PUT para iniciar un flujo de trabajo y usar esos datos como valores personalizados."
+icon: "arrow-right-to-bracket"
+---
+
+## ¿Cómo utilizar el activador Premium de flujo de trabajo de webhook entrante?
+
+<Info>
+  **Documentado el 16 de agosto de 2026.**
+
+  Artículo original modificado el viernes, 21 de junio de 2024 a las 7:18 a. m.
+</Info>
+
+Los webhooks entrantes permiten una integración perfecta con el CRM, ya que posibilitan que los sistemas externos envíen datos automáticamente mediante diversos métodos de solicitud HTTP como GET, POST y PUT. Esta capacidad de transferencia de datos en tiempo real mejora la funcionalidad del CRM y optimiza los flujos de trabajo, facilitando una comunicación y colaboración eficientes entre diversas plataformas y herramientas.
+
+### Este artículo trata sobre
+
+- ¿Qué es un webhook entrante?
+- ¿Cuáles son algunos casos de uso excelentes para esto?
+- ¿Cómo utilizar el activador de flujo de trabajo de webhook entrante? (Paso 1, Paso 2, Paso 3)
+- En sus acciones de comunicación
+- En acciones If/Else
+- Puntos importantes a tener en cuenta
+
+---
+
+## ¿Qué es un webhook entrante?
+
+Un webhook entrante es una función robusta que facilita la transferencia automática de datos desde sistemas externos a su CRM, mejorando la integración y la interoperabilidad. Cuando se produce un evento en un sistema externo, se envía una solicitud HTTP (POST, GET o PUT) a una URL específica vinculada a un activador dentro de su CRM, lo que inicia un flujo de trabajo. Esta capacidad de transferencia de datos en tiempo real mejora la funcionalidad de su CRM y optimiza los flujos de trabajo en diversas plataformas y herramientas.
+
+Al aprovechar los webhooks entrantes, las empresas pueden automatizar procesos, reducir tareas manuales y minimizar errores humanos, aumentando así la eficiencia y la productividad. Además, facilita una mejor colaboración entre equipos, ya que los datos críticos están disponibles y sincronizados entre los diferentes sistemas. Esta integración fluida mejora, en última instancia, la toma de decisiones, la satisfacción del cliente y el rendimiento empresarial.
+
+---
+
+## ¿Cuáles son algunos casos de uso excelentes para esto?
+
+Los webhooks entrantes se pueden usar en diversos escenarios para mejorar la funcionalidad del CRM y automatizar flujos de trabajo. La tabla recoge los cuatro casos prácticos documentados en la fuente, con el escenario y el ejemplo técnico de cada uno.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "680px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Caso de uso</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Escenario</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Ejemplo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Integración de pedidos de comercio electrónico</td>
+        <td style={{ padding: "10px 16px" }}>Tienes una tienda online y quieres actualizar tu CRM con la información de los nuevos pedidos cuando un cliente realiza uno.</td>
+        <td style={{ padding: "10px 16px" }}>Tu plataforma de comercio electrónico envía una solicitud HTTP POST a la URL del webhook con los detalles del pedido: nombre del cliente, correo electrónico, número de teléfono e importe del pedido. El CRM crea o actualiza el contacto y añade los detalles del pedido a su registro.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Integración del sistema de gestión de incidencias de atención al cliente</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Tu empresa usa un sistema de tickets independiente y quieres que el equipo de soporte tenga toda la información dentro del CRM.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>El sistema de tickets envía una solicitud HTTP POST a la URL del webhook con los detalles del ticket, incluidos el correo del cliente, el título y la descripción. El CRM asocia el ticket al registro del cliente correspondiente.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Integración de registro de eventos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Organizas eventos y usas una plataforma de inscripciones desde la que quieres enviar la información de los asistentes al CRM.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>La plataforma envía una solicitud HTTP POST con el nombre, correo, teléfono y nombre del evento. El CRM crea o actualiza el contacto del asistente y añade los datos de la inscripción a su registro.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Captura de clientes potenciales desde formularios web</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Quieres capturar leads desde los formularios de tu sitio web o páginas de aterrizaje y enviarlos al CRM.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Cuando un visitante envía el formulario, este dispara una solicitud HTTP POST con nombre, correo y teléfono. El CRM crea un nuevo lead o actualiza un contacto existente para que ventas haga el seguimiento de inmediato.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Estos son solo algunos ejemplos de cómo los webhooks entrantes pueden automatizar flujos de trabajo, optimizar procesos y ampliar la funcionalidad del CRM en distintos escenarios de negocio.
+
+---
+
+## ¿Cómo utilizar el activador de flujo de trabajo de webhook entrante?
+
+En resumen, puedes traer tus datos al sistema en 3 pasos sencillos usando el activador **Inbound Webhook**, que se encuentra en la sección **LC - Premium Triggers**.
+
+<Note>
+  **Imagen próximamente.** Captura del bloque **LC - Premium Triggers** mostrando la fila **Inbound Webhook** con el icono de corona que identifica los activadores premium.
+</Note>
+
+<Steps>
+  <Step title="Paso 1: Obtén la URL del webhook y envía datos de prueba">
+    Recupera la URL del webhook y úsala en tu aplicación o sistema. A continuación, envía los datos a esa URL con el método HTTP correspondiente (POST, GET o PUT) y pulsa el botón **"Test Trigger"**.
+
+    <Note>
+      **Imagen próximamente.** Captura del panel **Workflow Trigger** con _CHOOSE A WORKFLOW TRIGGER_ en `Inbound Webhook`, el campo _WORKFLOW TRIGGER NAME_, la _POST URL_ generada automáticamente y el bloque _MAPPING REFERENCE_ con el botón **Test Trigger** resaltado.
+    </Note>
+
+    La URL generada tiene esta forma:
+
+    ```text
+    https://services.leadconnectorhq.com/hooks/<identificador-de-tu-webhook>/webhook-trigger/<id>
+    ```
+
+    <Tip>
+      Es una URL personalizada generada para que envíes tus solicitudes. Cópiala tal cual desde el panel del activador; no la escribas a mano.
+    </Tip>
+  </Step>
+  <Step title="Paso 2: Selecciona los datos recibidos y guárdalos como referencia">
+    Elige los datos recibidos desde tu aplicación o sistema mediante el método HTTP admitido (POST, GET o PUT) y guárdalos como datos de muestra para futuras referencias. Pulsa **"Load More"** para ver más datos recientes. Una vez seleccionados los datos deseados, guarda el activador.
+
+    En este paso puedes guardar la referencia de datos para los valores personalizados, que se tratan igual que otros campos personalizados de contacto o que las variables personalizadas de ubicación (Location Custom Variables).
+
+    **Paso 2.1:** envía una solicitud HTTP admitida (POST, GET o PUT) a la URL del webhook copiada y copia el `id` de la respuesta.
+
+    Cuerpo de ejemplo enviado:
+
+    ```json
+    {
+      "name": "Jim Carry",
+      "email": "jim@email.com",
+      "purchase_info": {
+        "total": 1000,
+        "qty": 1
+      }
+    }
+    ```
+
+    Respuesta recibida:
+
+    ```json
+    {
+      "status": "Success: test request received",
+      "id": "640065c5cbacc7296d18e00a"
+    }
+    ```
+
+    **Paso 2.2:** copia el ID único obtenido en la respuesta y úsalo para buscar la referencia de asignación correspondiente dentro de tu activador de webhook. Ten en cuenta que la solicitud más reciente siempre aparecerá en la parte superior de la lista.
+
+    **Paso 2.3:** selecciona la referencia correcta y verifica el cuerpo.
+
+    <Note>
+      **Imagen próximamente.** Captura del selector **MAPPING REFERENCE** mostrando la entrada con fecha y el identificador de la solicitud, y debajo el cuerpo JSON recibido con los campos name, email y purchase\_info.
+    </Note>
+  </Step>
+  <Step title="Paso 3: Asigna los datos recibidos a la acción Crear/Actualizar contacto">
+    Tras guardar el activador, se le redirigirá a la acción **"Crear/Actualizar contacto"**. Desde allí, podrá seleccionar los campos necesarios y asignar los datos recibidos.
+
+    <Warning>
+      Para crear un nuevo contacto o asignar datos a uno existente, debe proporcionar un correo electrónico o un número de teléfono.
+    </Warning>
+
+    <Note>
+      **Imagen próximamente.** Captura del panel **Create Update Contact** con la lista _FIELDS_: la fila `Email` asignada al valor `email` y la fila `Monetary` con el desplegable abierto mostrando name, email, purchase\_info, total y qty.
+    </Note>
+  </Step>
+</Steps>
+
+---
+
+## Uso de los datos dentro del flujo de trabajo
+
+Al completar los pasos anteriores, ahora puede utilizar los datos que recibió dentro del flujo de trabajo como valores personalizados en correos electrónicos, SMS, sentencias condicionales (if/else), etc.
+
+Los valores del webhook entrante aparecen en el selector de valores personalizados bajo la rama **Inbound Webhook Trigger**, junto a las ramas Contact, User, Appointment, Calendar, Message, Account, Right now, Attribution y Custom Values.
+
+<Note>
+  **Imagen próximamente.** Captura del selector _Custom Values_ con la rama **Inbound Webhook Trigger** desplegada mostrando name, queryParams y headers.
+</Note>
+
+### En sus acciones de comunicación
+
+Los valores personalizados de Inbound Webhook se pueden utilizar en todas las acciones de su flujo de trabajo. En una acción de correo o SMS, abre el selector **Custom Values** dentro del cuadro _MESSAGE_ e inserta el valor recibido en el punto del texto que necesites.
+
+<Note>
+  **Imagen próximamente.** Captura de una acción de comunicación con el desplegable _TEMPLATES_, el cuadro _MESSAGE_ y los selectores Custom Values y Trigger Links en la barra superior del editor.
+</Note>
+
+### En acciones If/Else
+
+Dentro de una condición puedes construir ramas (_BRANCHES_) y segmentos (_SEGMENTS_) que comparen el valor recibido por el webhook. Por ejemplo, una rama llamada `Is it a electrical appliance?` con su condición y su operador.
+
+<Note>
+  **Imagen próximamente.** Captura del panel **Condition** con _CONDITION NAME_, la rama de ejemplo, la sección _SEGMENTS_ con los selectores Select y Select Operator, y los enlaces Add Condition, Add Segment y Add Branch.
+</Note>
+
+Como se muestra arriba, puede usar los valores del webhook entrante dentro de todas las demás acciones según lo considere oportuno.
+
+---
+
+## Respuestas
+
+Estas son las respuestas que devuelve el sistema según el momento en que se envía la solicitud.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "560px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Momento</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Código de estado</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Cuerpo de la respuesta</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Cuando se envía la solicitud de mapeo</td>
+        <td style={{ padding: "10px 16px" }}>200</td>
+        <td style={{ padding: "10px 16px" }}><code>\{ "estado": "Éxito: solicitud de prueba recibida" }</code></td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Cuando se ejecuta el disparador real</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>200</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>\{ "estado": "Éxito: solicitud enviada al servidor de ejecución del activador", "id": "66756001f47f59dde9d86009" }</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<Note>
+  En la respuesta de la solicitud de prueba del Paso 2.1 el campo aparece en inglés (`"status": "Success: test request received"`). En la sección de respuestas la fuente lo muestra traducido como `"estado"`. Se reproducen ambos tal cual aparecen en el artículo original.
+</Note>
+
+---
+
+## Puntos importantes a tener en cuenta
+
+<Warning>
+  - Al interactuar con el webhook, envíe siempre la solicitud utilizando un método compatible (POST, GET o PUT).
+  - Asegúrese de que los datos se envíen como un objeto JSON, el único formato de datos admitido.
+  - Para compilar correctamente, las claves deben ser una sola cadena sin espacios entre ellas; considere usar CamelCase o snake\_case en lugar de separar los nombres de las claves con espacios.
+  - Es obligatorio proporcionar una dirección de correo electrónico o un número de teléfono en la carga útil, ya que el flujo de trabajo requiere información de contacto. Se requiere un correo o un teléfono para buscar o crear un contacto.
+  - Los arrays no son compatibles con los valores personalizados. Puedes enviarlos en la solicitud, pero no puedes utilizarlos dentro de las acciones.
+  - Si cambia la estructura de sus datos, vuelva a seleccionar la Referencia de asignación dentro de la configuración del Activador de webhook entrante para que esos campos se utilicen correctamente en otras acciones.
+  - Si la URL de activación de tu webhook entrante se ve comprometida o filtrada y quieres evitar solicitudes no deseadas, elimina el webhook entrante existente y añade uno nuevo. Se generará una nueva URL con un ID final diferente; actualiza tus integraciones para que coincidan con la nueva URL. Una vez guardada, las solicitudes entrantes de la URL anterior no entrarán en tu flujo de trabajo; solo las de la nueva URL lo harán.
+</Warning>
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Webhook personalizado de LC Premium" icon="code" href="/flujo-de-trabajo/accion-webhook-personalizado-lc-premium">
+    El camino inverso: enviar datos desde el CRM hacia servicios de terceros.
+  </Card>
+
+  <Card title="Formato de números" icon="hashtag" href="/flujo-de-trabajo/accion-premium-formato-de-numeros">
+    Convierte a número los importes que lleguen como texto desde el webhook entrante.
+  </Card>
+</CardGroup>
