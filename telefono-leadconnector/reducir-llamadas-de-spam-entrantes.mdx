@@ -1,0 +1,122 @@
+---
+title: "Cómo reducir las llamadas de spam entrantes"
+sidebarTitle: "Cómo reducir las llamadas de spam entrantes"
+description: "Enfoque en tres pasos para reducir el spam entrante: activar Number Intelligence, poner en cuarentena los números repetidos con una disposición personalizada más No molestar entrante, y añadir un filtro IVR para frenar las llamadas automáticas."
+icon: "phone-slash"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Esta guía reúne pasos prácticos para reducir las llamadas no deseadas entrantes mediante herramientas integradas y estrategias de enrutamiento de llamadas.
+</Info>
+
+Las llamadas no deseadas pueden saturar a su equipo, aumentar el volumen de llamadas y hacerle perder tiempo.
+
+## Antes de empezar
+
+- Su cuenta ya bloquea las llamadas con identificador de llamadas oculto o privado.
+- Quienes realizan llamadas de spam a menudo **suplantan números locales**, por lo que bloquear solo números individuales no es una solución fiable.
+- El enfoque más eficaz consiste en combinar la **detección** con medidas de **fricción** para las personas que llaman de forma sospechosa.
+
+### Los tres pasos, de un vistazo
+
+Esta tabla resume la estrategia completa. Cada paso añade una capa sobre el anterior: no sustituya uno por otro, acumúlelos según la gravedad del problema.
+
+| Paso | Qué hace | Dónde se configura |
+| --- | --- | --- |
+| **1. Inteligencia numérica** | Detecta números sospechosos usando datos de reputación | Configuración de subcuenta → Sistema telefónico → Configuración adicional → Inteligencia de números |
+| **2. Disposición «Llamada de spam» \+ DND entrante** | Pone en cuarentena automáticamente los números que ya marcó como spam | Sistema telefónico → Voz → Disposiciones personalizadas \+ Automatizaciones/Flujos de trabajo |
+| **3. Filtro IVR** | Obliga a pulsar una tecla, lo que frena a las llamadas automáticas | Flujo de trabajo con activador IVR asignado al número |
+
+## Paso 1: Activar la inteligencia numérica
+
+**Number Intelligence** ayuda a identificar posibles llamadas de spam y llamadas molestas utilizando datos de reputación de números de teléfono.
+
+**Lo que hace**
+
+- Detecta números sospechosos antes de que responda.
+- Puede ayudar a su equipo a reconocer rápidamente los patrones de spam.
+- Reduce el tiempo perdido con llamadas de spam repetidas.
+
+**Cómo configurarlo**
+
+En **Configuración de subcuenta → Sistema telefónico → Configuración adicional → Inteligencia de números**, actívelo.
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura de la pestaña Additional Settings con la casilla «Gather Intelligence on Unknown Phone Numbers» marcada y el aviso de «Additional charges apply» (se aplican cargos adicionales).
+</Note>
+
+Siga los pasos de configuración aquí: [https://help.leadconnectorhq.com/support/solutions/articles/155000004298](https://help.leadconnectorhq.com/support/solutions/articles/155000004298)
+
+## Paso 2: Ponga en cuarentena los números de spam repetidos usando una disposición de «Llamada de spam» más la función No molestar (DND) entrante
+
+Si la función Number Intelligence resulta útil, pero el spam sigue llegando, el siguiente paso es lograr que el manejo del spam sea **consistente y automatizado**.
+
+La idea:
+
+1. Su agente marca la llamada como spam utilizando una clasificación de llamada personalizada.
+2. Un flujo de trabajo habilita automáticamente la función No molestar entrante para ese contacto, de modo que las futuras llamadas de ese número no suenen a su equipo.
+
+### 2A: Crear una disposición personalizada llamada «Llamada de spam»
+
+En **Configuración de subcuenta → Sistema telefónico → Voz → Disposiciones personalizadas**, agregue una disposición. Utilice un nombre simple y coherente como:
+
+- Llamada de spam
+
+<Note>
+  **Imagen próximamente.** Aquí van las capturas de la lista de Custom Dispositions (No Answer, Voicemail, Follow Up, Requested Appointment, Not Interested, Incorrect Number) y del modal «Add Disposition» con el nombre «Spam call» escrito.
+</Note>
+
+### 2B: Activar un flujo de trabajo cuando se seleccione «Llamada de spam»
+
+En **Automatizaciones/Flujos de trabajo**, cree un flujo de trabajo desde cero. En su flujo de trabajo:
+
+| Elemento del flujo | Configuración |
+| --- | --- |
+| **Disparador** | Detalles de la llamada |
+| **Filtros** | La clasificación de la llamada es «Llamada de spam» |
+| **Acción** | Activar/Desactivar No molestar. Seleccione Dirección de No molestar como «Entrante» y «Activar No molestar para todos los canales» |
+
+<Note>
+  **Imagen próximamente.** Aquí van las capturas del constructor de flujos de trabajo «Inbound Spam Calls»: el activador Call Details con el filtro Custom Disposition → Spam call, y la acción Dnd Contact con DND Direction en Inbound y «Enable DND for all channels».
+</Note>
+
+## Paso 3: Añada un filtro IVR para detener las llamadas automáticas y desalentar el spam humano
+
+El sistema IVR es uno de los filtros de spam más efectivos porque muchas llamadas automáticas no pueden navegar por los menús. Incluso quienes realizan llamadas de spam suelen desistir cuando tienen que presionar teclas y esperar.
+
+### Enfoque IVR recomendado
+
+- **Manténgalo simple:** «Pulse 1 para conectar» suele ser suficiente.
+- **Evite los menús largos.** Los menús largos perjudican más a los clientes reales que al spam.
+- Si atiende a clientes existentes, ofrezca una segunda opción como «Pulse 2 si ya es cliente».
+
+### Dónde encaja el IVR
+
+| Situación | ¿Es buena idea el IVR? |
+| --- | --- |
+| Números publicados públicamente en anuncios, directorios y páginas de destino | Ideal |
+| Volumen de spam alto y el equipo pierde tiempo a diario | Funciona mejor aquí |
+| Empresas con alta urgencia donde cada segundo cuenta | No es ideal |
+
+## Orden de configuración sugerido
+
+<Steps>
+  <Step title="Habilitar la inteligencia numérica">
+    Es la capa de detección básica y la que menos fricción añade a los clientes reales.
+  </Step>
+  <Step title="Añadir la marca de spam y el DND entrante">
+    Si el spam sigue haciendo perder tiempo valioso, añada la opción de marcar como «Spam» y la función de No molestar (DND) entrante basada en el flujo de trabajo.
+  </Step>
+  <Step title="Añadir un filtro IVR">
+    Si el spam sigue siendo elevado en los números de atención al público, añada un filtro IVR.
+  </Step>
+</Steps>
+
+## Qué esperar
+
+- No eliminará por completo el spam falsificado.
+- Reducirá la frecuencia con la que el spam llega a su equipo y el tiempo que consume.
+
+<Info>
+  Se están elaborando mejores soluciones.
+</Info>
