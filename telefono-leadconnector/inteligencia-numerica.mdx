@@ -1,0 +1,206 @@
+---
+title: "Inteligencia numérica: validación del número, detección de llamadas no deseadas y búsqueda del nombre del llamante desconocido."
+description: "Enfoque por capas para reducir el spam entrante: Number Intelligence, disposiciones personalizadas, flujo de trabajo de DND, filtrado IVR y listas VIP."
+icon: "shield-halved"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+Las llamadas no deseadas pueden saturar a tu equipo, aumentar el volumen de llamadas y hacerte perder un tiempo valioso. Esta guía describe un enfoque estructurado para reducir el spam entrante mediante herramientas de detección integradas, gestión de llamadas, flujos de trabajo automatizados y enrutamiento IVR opcional.
+
+Al combinar la detección temprana con la lógica de cuarentena automatizada, puede reducir las interrupciones y, al mismo tiempo, garantizar que las personas que llaman legítimamente puedan seguir comunicándose con su equipo.
+
+<Note>
+  **Tabla de contenido**
+
+  - ¿Qué es la reducción de llamadas de spam entrantes?
+  - Beneficios clave
+  - Inteligencia numérica (detección de spam, identificación y validación de llamadas)
+  - Disposiciones personalizadas para llamadas de voz
+  - Flujo de trabajo: Habilitar automáticamente la función No molestar entrante
+  - Control de acceso mediante IVR opcional
+  - Opciones VIP / Lista segura y de reversión
+  - Monitoreo y optimización
+  - Preguntas frecuentes
+  - ¿Necesitar ayuda?
+</Note>
+
+## ¿Qué es la reducción de llamadas de spam entrantes?
+
+La reducción de llamadas no deseadas entrantes es una configuración por capas diseñada para:
+
+- Identifique el posible spam antes de que los agentes interactúen.
+- Permitir que los agentes etiqueten las llamadas no deseadas de forma consistente.
+- Poner en cuarentena automáticamente a los remitentes de llamadas no deseadas repetidas.
+- Opcionalmente, puede filtrar las llamadas entrantes mediante un sistema IVR sencillo.
+
+Este enfoque combina la detección, la intervención humana y la automatización para crear una protección sólida sin bloquear a los clientes reales.
+
+## Beneficios clave
+
+Una estrategia de reducción de spam por capas proporciona protección y flexibilidad.
+
+| Beneficio | Qué aporta |
+| --- | --- |
+| **Menos interrupciones de los agentes** | Reduzca las llamadas de spam que llegan a los usuarios. |
+| **Gestión de llamadas más rápida** | Los agentes pueden marcar las llamadas de spam de forma rápida y consistente. |
+| **Cuarentena automática** | Los números marcados se colocan automáticamente en la lista de “No molestar” entrante. |
+| **Filtrado IVR opcional** | Mensajes sencillos disuaden las llamadas automáticas antes de que lleguen a los usuarios. |
+| **Reversión segura** | Los contactos VIP pueden eludir la lógica de cuarentena. |
+| **Resultados medibles** | Seguimiento de las tendencias de etiquetado de spam y reducción de las interrupciones en el tráfico entrante. |
+
+## Inteligencia numérica (detección de spam, identificación y validación de llamadas)
+
+Number Intelligence mejora la visibilidad de las llamadas entrantes y la fiabilidad de los mensajes salientes.
+
+### Lo que ofrece
+
+| Función | Descripción |
+| --- | --- |
+| **Detección de spam** | Marca las llamadas sospechosas de spam provenientes de números desconocidos. |
+| **Identificación de la persona que llama** | Muestra los detalles del nombre de la persona que llama (cuando estén disponibles). |
+| **Validación del número** | Verifica la validez del número antes de enviar el SMS inicial. |
+
+### Cómo funciona
+
+- La detección de spam se aplica a las llamadas entrantes de números desconocidos (no contactos guardados).
+- La identificación de llamadas se ejecuta antes de que se conteste la llamada.
+- La validación por SMS comprueba la validez del número en todo el mundo antes de enviar el primer mensaje.
+- Cuando están activadas, estas funciones operan automáticamente en segundo plano.
+
+### Notas importantes
+
+<Warning>
+  - La eficacia de la detección de spam puede variar según la región.
+  - La validación de números se aplica a nivel mundial.
+  - Todos los componentes se activan simultáneamente y no se pueden activar individualmente.
+</Warning>
+
+## Disposiciones personalizadas para llamadas de voz
+
+Las Custom Dispositions estandarizan la forma en que los agentes etiquetan los resultados de las llamadas.
+
+Crear una disposición dedicada “Spam call” asegura un etiquetado consistente y permite que los flujos de trabajo de automatización se activen correctamente.
+
+### Nombre de disposición recomendado
+
+```text
+Spam call
+```
+
+Mantenga la etiqueta corta y sin ambigüedades para evitar desajustes en los flujos de trabajo.
+
+## Flujo de trabajo: Habilitar automáticamente la función No molestar entrante
+
+Los flujos de trabajo hacen operativa su política de spam. Cuando un agente marca una llamada como “Spam call”, un flujo de trabajo puede habilitar automáticamente el DND entrante para ese contacto.
+
+### Configuración recomendada
+
+| Elemento | Valor |
+| --- | --- |
+| **Trigger** | Call Details |
+| **Filter** | Direction = Inbound · Disposition = Spam call |
+| **Action** | Enable DND |
+| **Parámetros de la acción** | Direction = Inbound · Channel = Voice |
+
+Comenzar de forma conservadora con Inbound \+ Voice evita el bloqueo accidental de la comunicación por SMS o correo electrónico.
+
+### Por qué esto importa
+
+- Los remitentes de spam recurrentes se silencian automáticamente.
+- La comunicación saliente legítima no se ve afectada.
+- La lógica de cuarentena puede ajustarse o revertirse si es necesario.
+
+## Control de acceso mediante IVR opcional
+
+Un IVR ligero puede disuadir las llamadas automáticas (robocalls) antes de que lleguen a los agentes. Esto es opcional, pero útil en entornos con alto volumen de spam.
+
+### Ejemplo de configuración mínima de IVR
+
+<Steps>
+  <Step title="Play Message">
+    “Thanks for calling. To connect, press 1.”
+  </Step>
+  <Step title="Gather Input (DTMF)">
+    - Dígito aceptado: 1
+    - Timeout: 3–5 segundos
+    - Un reintento
+  </Step>
+  <Step title="Si se presiona 1">
+    Connect Call
+  </Step>
+  <Step title="Si no hay entrada">
+    Enrutar al buzón de voz o finalizar la llamada.
+  </Step>
+</Steps>
+
+### Consideraciones importantes
+
+- Mantenga los mensajes cortos para no frustrar a las personas que llaman de verdad.
+- Un número de teléfono puede estar asignado a un solo flujo de trabajo IVR a la vez.
+- Pruebe siempre con dispositivos reales antes de publicar.
+
+## Opciones VIP / Lista segura y de reversión
+
+Pueden producirse falsos positivos. Estos patrones preservan la accesibilidad:
+
+### Acceso VIP (VIP Bypass)
+
+- Agregue una etiqueta como **VIP** o **SafeList**.
+- Agregue una condición If/Else en el flujo de trabajo.
+- Si el contacto tiene la etiqueta VIP → omitir DND.
+- De lo contrario → aplicar DND.
+
+### Desactivación automática del modo No molestar (Auto-Clear DND)
+
+Puede crear un flujo de trabajo secundario para eliminar el DND después de un período determinado (por ejemplo, 30 días) y así evitar un bloqueo permanente.
+
+## Monitoreo y optimización
+
+Revise su configuración con regularidad:
+
+- Revisión semanal de los registros de llamadas.
+- Monitoreo del uso de la disposición “Spam call”.
+- Comprobación del conteo de contactos con DND entrante.
+- Evaluación de las tasas de timeout del IVR.
+
+Ajuste los timeouts, los mensajes o el alcance del DND según sea necesario.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Number Intelligence bloquea automáticamente las llamadas de spam?">
+    No. Marca el spam sospechoso. El bloqueo ocurre a través de los flujos de trabajo y de la configuración de DND.
+  </Accordion>
+
+  <Accordion title="¿Debo habilitar el DND para todos los canales?">
+    Comience con Inbound \+ Voice. Extenderlo a todos los canales puede suprimir comunicación legítima.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si un agente marca a un cliente real como spam?">
+    Puede eliminar manualmente el DND del contacto o permitir que un flujo de trabajo de auto-clear restaure el acceso.
+  </Accordion>
+
+  <Accordion title="¿Es necesario el IVR para reducir el spam?">
+    No. Muchas empresas usan únicamente Number Intelligence y las disposiciones.
+  </Accordion>
+
+  <Accordion title="¿El DND entrante bloquea las llamadas salientes?">
+    No. El DND entrante impide los timbres entrantes, pero no bloquea la marcación saliente.
+  </Accordion>
+
+  <Accordion title="¿Esta configuración también puede reducir el spam por SMS?">
+    El DND puede extenderse a canales adicionales, pero pruebe con cuidado antes de habilitar restricciones más amplias.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitar ayuda?
+
+Si las llamadas de spam persisten después de la configuración:
+
+- La función Confirmar número inteligente está habilitada.
+- Verifique que el nombre de la disposición coincida exactamente con el filtro del flujo de trabajo.
+- Asegúrese de que el flujo de trabajo esté publicado.
+- Prueba utilizando números conocidos y desconocidos.

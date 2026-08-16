@@ -1,0 +1,130 @@
+---
+title: "Rendimiento de mensajes (MPS) y puntuaciones de confianza para A2P 10DLC en EE. UU."
+description: "Cómo se asigna el rendimiento MPS según tipo de marca, tipo de campaña y puntuación de confianza, con las tablas de MPS por operador."
+icon: "gauge-high"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+Bajo el nuevo [Servicio A2P 10DLC](https://help.leadconnectorhq.com/en/support/solutions/articles/155000000756) para el envío de mensajes mediante códigos de 10 dígitos en Estados Unidos, se han modificado los criterios de asignación del ancho de banda. El ancho de banda de mensajes A2P 10DLC en EE. UU. ahora se determinará en función del **tipo de marca**, el **tipo de campaña (caso de uso)** y el **índice de confianza** (para marcas estándar). Esta guía ofrece una descripción general de estos cambios y de cómo se asigna el ancho de banda.
+
+<Note>
+  T-Mobile también impondrá límites diarios de mensajes a sus suscriptores. Esto es independiente del ancho de banda de envío de mensajes. Para más detalles, consulte [los límites diarios de mensajes de T-Mobile para mensajería de código largo con A2P 10DLC](https://help.twilio.com/articles/1260804800549-T-Mobile-daily-message-limits-for-long-code-messaging-with-A2P-10DLC).
+</Note>
+
+<Note>
+  **Tabla de contenido**
+
+  - Descripción general del rendimiento
+  - ¿Qué es una puntuación de confianza?
+  - ¿Cómo se asigna el rendimiento (MPS) para A2P 10DLC?
+  - Estado actual del rendimiento de mensajes en A2P 10DLC
+  - Casos de uso declarados: Rendimiento de mensajes
+  - Casos de uso mixtos/de marketing: Rendimiento de mensajes
+  - Casos de uso para propietarios únicos: Rendimiento de mensajes
+</Note>
+
+## Descripción general del rendimiento
+
+El rendimiento de envío de mensajes SMS se mide en segmentos de mensaje por segundo (MPS). Cada segmento de mensaje consta de hasta 160 caracteres codificados en GSM-7, por lo que un SMS con más caracteres o con una codificación diferente puede estar compuesto por varios segmentos. Para obtener más información, consulte [¿Qué es un segmento?](https://www.twilio.com/en-us/blog/what-the-heck-is-a-segment-html)
+
+Anteriormente, el MPS para números de código largo de EE. UU. se fijaba en un estándar de 1 MPS por número, compartido entre todos los operadores móviles. Esta tarifa cambiará con el nuevo servicio A2P 10DLC. En adelante, el rendimiento del MPS se determinará en función del tipo de marca del remitente, el tipo de campaña (caso de uso) y la puntuación de confianza (para marcas estándar).
+
+## ¿Qué es una puntuación de confianza?
+
+La puntuación de confianza se asigna durante el registro estándar de marca con **The Campaign Registry** (TCR, la empresa externa que administra el nuevo sistema de registro de las operadoras de telefonía móvil de EE. UU.). Al enviar un registro de perfil de cliente A2P para mensajería 10DLC en EE. UU., enviamos esta información a TCR para su revisión. Además, sometemos la marca a una verificación secundaria, que asigna una puntuación de 0 a 100 y otorga acceso a límites de transmisión y mensajes predeterminados más altos para las operadoras de telefonía móvil de EE. UU.
+
+El proceso de registro de marca estándar utiliza un algoritmo de reputación para evaluar criterios específicos de su empresa y, posteriormente, asigna una puntuación de confianza. En resumen, cuanto mayor sea su puntuación de confianza, mayor será su volumen de mensajes (MPS).
+
+<Note>
+  **Nota:** las marcas de propietarios únicos y de bajo volumen no se someten a una verificación adicional y no se les asigna una puntuación de confianza. El volumen de mensajes es fijo y depende de su caso de uso.
+
+  Las puntuaciones de confianza son estáticas y no cambian automáticamente con el tiempo.
+</Note>
+
+T-Mobile también impondrá límites diarios de mensajes a sus suscriptores. Consulte [T-Mobile daily message limits for long code messaging with A2P 10DLC](https://help.twilio.com/articles/1260804800549-T-Mobile-daily-message-limits-for-long-code-messaging-with-A2P-10DLC) para todos los detalles.
+
+### ¿Qué pasa si no estoy satisfecho con mi Trust Score? ¿Puedo apelar?
+
+Las puntuaciones de confianza bajas pueden deberse a lo siguiente:
+
+- Discrepancias de datos en la información que envió en su registro A2P, como una dirección distinta a la asociada con su número oficial de registro comercial (por ejemplo, el EIN).
+- Una huella de marca pequeña.
+- En general, las organizaciones más pequeñas y con menor presencia comercial recibirán puntuaciones más bajas.
+
+Si recibe una puntuación de confianza baja, haremos todo lo posible por orientarle sobre las posibles causas o soluciones. Si este es su caso, contacte a Soporte.
+
+Para más información sobre el reenvío de marcas, consulte nuestra documentación de producto sobre Resubmitting Standard/LVS Brands.
+
+## ¿Cómo se asigna el rendimiento (MPS) para A2P 10DLC?
+
+Se concede un máximo de MPS establecido para cada una de sus campañas registradas (casos de uso). Este MPS se comparte entre todos los números de código largo de EE. UU./Canadá asignados a su campaña y entre todos los operadores inalámbricos. Ya sea que elija enviar mensajes por un solo número a un operador específico, o repartir los mensajes en un conjunto de números locales hacia varios operadores, aplica el mismo límite de MPS.
+
+También deberá considerar el **Account Based Rate Limiting**, que es un límite superior de MPS establecido a nivel de cuenta, combinado entre todos los remitentes. Por ejemplo, si tiene un Account Based Rate Limit de 100 MPS, con tres campañas A2P 10DLC aprobadas en la misma cuenta de 75 MPS cada una, seguirá estando limitado a 100 MPS combinados entre todas las campañas. Esto no le impedirá enviar a la Messaging API a 225 MPS combinados en ese escenario, pero cada segmento de mensaje que exceda esos 100 por segundo se colocará en cola.
+
+Los casos de uso específicos (lo que los operadores llaman campañas “Declared”) pueden recibir un MPS mayor con la misma puntuación de confianza que un caso de uso de tipo “Mixed” o Marketing.
+
+Para una lista completa de tipos de casos de uso y de campaña definidos por los operadores, y sus respectivas tarifas por mensaje y otras consideraciones, consulte [List of Campaign Types and Use Case Types for A2P 10DLC registration](https://help.leadconnectorhq.com/en/support/solutions/articles/155000004618).
+
+<AccordionGroup>
+  <Accordion title="¿Se ve afectado el rendimiento de SMS Toll-Free?">
+    No. El SMS Toll-Free no se ve afectado por los cambios de rendimiento descritos en este artículo, ni está sujeto a los nuevos requisitos de registro de campaña. Un número Toll-Free de EE. UU. tiene un total de 3 MPS hacia todos los operadores de EE. UU. y Canadá de forma predeterminada. Puede solicitar un mayor rendimiento de mensajes para un número Toll-Free de EE. UU. contactando a nuestro equipo de Ventas.
+  </Accordion>
+
+  <Accordion title="¿Se ve afectada la mensajería hacia países distintos de Estados Unidos?">
+    No.
+  </Accordion>
+</AccordionGroup>
+
+## Estado actual del rendimiento de mensajes en A2P 10DLC
+
+La puntuación de confianza que reciba (para marcas estándar) y el tipo de campaña que seleccione determinarán el flujo de sus números de prefijo largo hacia AT&T, Verizon y T-Mobile. Consulte la tabla correspondiente a continuación, según el tipo de campaña seleccionado, para obtener información específica sobre MPS.
+
+### Casos de uso declarados: Rendimiento de mensajes
+
+Un caso de uso declarado significa que ha seleccionado un caso de uso específico que no sea de marketing (por ejemplo: autenticación de dos factores, notificaciones de cuenta, etc.). Para ver la lista completa, consulte la Lista de tipos de campaña y casos de uso.
+
+| Puntuación de confianza | Total de SMS MPS dirigidos a las principales\* redes estadounidenses | Mensajes SMS MPS de AT&T | SMS MPS de T-Mobile | SMS MPS de Verizon |
+| --- | --- | --- | --- | --- |
+| **75 - 100** | 225 | 75 | 75 | 75 |
+| **50 - 74** | 120 | 40 | 40 | 40 |
+| **1 - 49** | 12 | 4 | 4 | 4 |
+| **0** (Marca estándar de bajo volumen - Se omitió la verificación secundaria) | 12 | 4 | 4 | 4 |
+
+<Note>
+  \*Sus mensajes dirigidos a la red móvil de US Cellular se basarán en el rendimiento de su red principal, hasta un máximo de 8 MPS; sus MPS dirigidos a todos los demás operadores menores de EE. UU. (pequeños operadores independientes que representan menos del 5 % de la cuota de mercado móvil total) serán de 1 MPS por número de teléfono.
+</Note>
+
+### Casos de uso mixtos/de marketing: Rendimiento de mensajes
+
+Los casos de uso mixtos/de marketing pueden registrarse para clientes que deseen enviar mensajes para múltiples casos de uso desde el mismo conjunto de números, o para fines de marketing. Se asignan diferentes niveles de rendimiento a los casos de uso mixtos/de marketing que a los casos de uso declarados.
+
+Tenga en cuenta que, además del caso de uso “Mixto / Marketing”, existe un caso de uso de Campaña independiente denominado **“Mezclado de bajo volumen”**. Esta opción tiene una tarifa mensual inferior a la de una Campaña estándar, pero está fijada al nivel de rendimiento más bajo que se indica a continuación, independientemente de su Puntuación de confianza.
+
+| Puntuación de confianza | Total de SMS enviados a las principales redes de EE. UU.\* | Mensajes SMS MPS de AT&T | SMS MPS de T-Mobile | SMS MPS de Verizon |
+| --- | --- | --- | --- | --- |
+| **75 - 100** | 225 | 75 | 75 | 75 |
+| **50 - 74** | 120 | 40 | 40 | 40 |
+| **1 - 49** | 12 | 4 | 4 | 4 |
+| **0** (Marca estándar de bajo volumen - Se omitió la verificación secundaria) | 12 | 4 | 4 | 4 |
+| **Campaña mixta de bajo volumen** (independientemente del índice de confianza) | 3,75 | 1,25 | 1,25 | 1,25 |
+
+<Note>
+  \*Sus mensajes dirigidos a la red móvil de US Cellular se basarán en el rendimiento de su red principal, hasta un máximo de 8 MPS; sus MPS dirigidos a todos los demás operadores menores de EE. UU. (pequeños operadores independientes que representan menos del 5 % de la cuota de mercado móvil total) serán de 1 MPS por número de teléfono.
+</Note>
+
+### Casos de uso para propietarios únicos: Rendimiento de mensajes
+
+Las marcas de propietario único están disponibles para particulares o pequeñas empresas sin número de identificación fiscal que envían mensajes de bajo volumen. Estas marcas están limitadas a 1 campaña, 1 número de teléfono por campaña y un límite de transmisión de 1 MPS. Las campañas de propietario único no tienen puntuación de confianza y cuentan con una transmisión fija, así como límites de 1000 mensajes al día (T-Mobile) y 15 mensajes al minuto (AT&T) por campaña. Si se desea una mayor transmisión, la empresa debe registrarse como marca estándar.
+
+| Total de SMS enviados a las principales redes de EE. UU.\*\* | Mensajes SMS MPS de AT&T | SMS MPS de T-Mobile | SMS MPS de Verizon |
+| --- | --- | --- | --- |
+| 2.25 | 0,25 | 1 por número | 1 por número |
+
+<Note>
+  \*Tus mensajes dirigidos a todos los operadores **menores** de EE. UU. (pequeños operadores independientes que representan menos del 5 % de la cuota de mercado móvil total) tendrán un coste de 1 MPS.
+
+  \*\* Una campaña de marca propia puede contener hasta 1 número de código largo de EE. UU./Canadá. Todos los números compartirán 0,25 MPS hacia AT&T, pero cada número recibirá 1 MPS hacia T-Mobile y 1 MPS hacia Verizon. Esto suma un máximo de 2,25 MPS hacia las principales redes de EE. UU.
+</Note>

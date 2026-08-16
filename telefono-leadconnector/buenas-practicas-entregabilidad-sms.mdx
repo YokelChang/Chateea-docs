@@ -1,0 +1,101 @@
+---
+title: "Buenas prácticas para la entregabilidad de SMS y cómo evitar restricciones de SMS."
+description: "Umbrales de tasa de error y de exclusión voluntaria, correos de infracción, restricción temporal de la cuenta y ocho prácticas para evitar suspensiones."
+icon: "paper-plane"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+## Monitoreo de errores y tasas de exclusión voluntaria
+
+Nos enfocamos en ayudar a nuestros clientes a ofrecer comunicaciones confiables. Nos aseguramos de que el operador no bloquee ni suspenda la cuenta permanentemente por mal uso.
+
+Realizaremos un seguimiento del índice de entrega de la cuenta en general y tomaremos medidas proactivas (como se menciona a continuación) para mantener bajo control dicho índice:
+
+| Medida | Cuándo se activa | Qué ocurre |
+| --- | --- | --- |
+| **Correo electrónico de infracción** | La subcuenta alcanza una **tasa de error del 8 %** y una **tasa de exclusión voluntaria del 2 %** | Enviaremos una notificación por correo electrónico. |
+| **Restricción temporal de la cuenta** | La subcuenta alcanza una **tasa de error del 12,5 %** y una **tasa de exclusión voluntaria del 3 %** | Enviaremos un correo electrónico de suspensión. |
+
+<Warning>
+  **Tenga en cuenta:** en cuanto la cuenta entre en suspensión temporal, todos los SMS salientes posteriores fallar… _(el texto aparece cortado en el documento fuente)_
+</Warning>
+
+## ¿Qué debemos hacer cuando recibimos un correo electrónico de infracción?
+
+<Steps>
+  <Step title="Detenga los envíos sin consentimiento">
+    Detén todos tus flujos de trabajo, campañas, activadores y/o acciones masivas dirigidas a contactos que no hayan dado su consentimiento explícito para recibir mensajes de la subcuenta.
+  </Step>
+  <Step title="Active el lenguaje de exclusión y el identificador del remitente">
+    Habilite y personalice el idioma de exclusión voluntaria y el mensaje de identificador del remitente según su caso de uso para que los mensajes futuros no se marquen como tales.
+  </Step>
+  <Step title="Alinee al cliente">
+    Por favor, hable con su cliente para asegurarse de que no se envíen comunicaciones masivas, mensajes masivos ni campañas de prospección en frío en un futuro próximo antes de que recibamos su respuesta a este ticket.
+  </Step>
+</Steps>
+
+## ¿Cuáles son las tasas de error y de exclusión voluntaria, y es bueno tener un umbral?
+
+| Indicador | Qué significa | Rango saludable | Umbral de bloqueo |
+| --- | --- | --- | --- |
+| **Tasa de exclusión voluntaria** | Una alta tasa de exclusión voluntaria indica que los contactos que reciben tus mensajes se han opuesto, han presentado quejas o han marcado tus SMS como spam. | Entre el **0 % y el 1 %** | Al alcanzar el **2 %**, la subcuenta se bloqueará para el envío de mensajes de texto durante 24 horas. |
+| **Tasa de error de entrega** | Una alta tasa de error de entrega indica que estás enviando SMS a contactos que ya no están en servicio, son inaccesibles o utilizan un dispositivo que no admite SMS, como un teléfono fijo. Esto también puede significar que los filtros externos del operador están impidiendo la entrega de tus SMS debido a un historial de envíos deficientes. | Entre el **0 % y el 6 %** | Si alcanza el **12 %**, la subcuenta se bloqueará para el envío de mensajes de texto durante 24 horas. |
+
+## ¿Qué debo hacer para que se levante la suspensión de la subcuenta cuanto antes?
+
+La suspensión de la subcuenta se levantará en 24 horas. Sin embargo, si la subcuenta se suspende permanentemente, consulte el artículo “¿Por qué se suspendió su cuenta?” para reactivarla.
+
+## Cómo evitar futuras suspensiones de SMS
+
+La subcuenta debería poder enviar SMS después de las 00:01 UTC del día siguiente a la recepción del correo electrónico que no cumple con los requisitos. A continuación, puede consultar las mejores prácticas para reducir la tasa de errores:
+
+<AccordionGroup>
+  <Accordion title="1. Añada el texto “Excluirse” (responda STOP para darse de baja)">
+    Añada el texto “Excluirse” (responda STOP para darse de baja) en todos los primeros SMS enviados a un nuevo contacto.
+
+    > **Captura pendiente:** conversación mostrando un primer SMS con el cierre “Reply STOP to unsubscribe. Thanks, ABI Technologies”. Debe recapturarse desde Chateea.
+  </Accordion>
+
+  <Accordion title="2. Añada la información del remitente (presentación personal/de la empresa)">
+    Añada la información del remitente (presentación personal/de la empresa) en todos los primeros SMS enviados a un nuevo contacto.
+  </Accordion>
+
+  <Accordion title="3. Active la función de validación de número">
+    No envíe mensajes a dispositivos que no admiten SMS, como teléfonos fijos. Para ello, **active la función de validación de número**. Esta función verificará el número antes de enviar el mensaje y activará temporalmente la función No molestar (DND) para ese contacto.
+
+    > **Captura pendiente:** sección **General** de la configuración con las casillas _Validate Phone numbers when first SMS is sent to a new contact_, _Make SMS compliant by adding an opt out message_ y _Make SMS compliant by adding a sender information_, incluyendo el aviso de que aplica un precio estándar de \$0.005 por validación. Debe recapturarse desde Chateea.
+  </Accordion>
+
+  <Accordion title="4. Evite los acortadores de URL públicos">
+    Evite enviar URL acortadas mediante un acortador de **URL público** como bit.ly o rb.gy; en su lugar, envíe el enlace original completo.
+  </Accordion>
+
+  <Accordion title="5. Asegúrese de que el perfil comercial, la marca A2P y la campaña estén registrados">
+    Asegúrese de que el perfil comercial, la marca A2P y la campaña estén registrados, ya que el mundo de la mensajería se dirige hacia una dirección en la que, sin estos registros, no se entregarán los mensajes. Puede ver la pestaña del centro de confianza una vez que el país de la subcuenta esté configurado en EE. UU.
+
+    Si el país no está configurado como EE. UU., aún puede usar el sistema siguiendo las mejores prácticas para lograr una alta tasa de entrega y evitar que el SMS sea marcado como inválido. La campaña A2P es simplemente una medida de seguridad adicional para la entrega, pero eso no significa que no pueda usar el sistema sin ella.
+
+    **Nota:** la verificación de la campaña puede tardar entre 6 y 7 semanas. Si no se aprueba después de la séptima semana, por favor, envíenos una solicitud de soporte para que la remitamos al departamento de TCR.
+  </Accordion>
+
+  <Accordion title="6. Incluya una casilla de verificación de consentimiento en sus formularios">
+    Para futuras configuraciones de formularios de suscripción en el sitio web, incluya una casilla de verificación para garantizar que el cliente potencial dé su consentimiento al completar el formulario, si es ahí donde los clientes potenciales se suscriben.
+
+    Puedes escribir algo como esto. Lo tomé de otro cliente como ejemplo:
+
+    > _Al proporcionar su nombre e información de contacto, usted consiente expresamente en recibir comunicaciones de COMPANY\_NAME o de uno de sus agentes autorizados, que pueden incluir llamadas telefónicas (incluso a cualquier número de teléfono móvil que proporcione), sistemas de marcación telefónica automática o mensajes pregrabados, mensajes de texto y/o correos electrónicos con el fin de comercializar productos y servicios de seguros, incluidos planes de seguro médico, Medicare y de vida. Al proporcionar su información, usted entiende que su consentimiento no es una condición para la compra de ningún producto o servicio, y que pueden aplicarse tarifas de mensajería y datos de su operador. Puede revocar este consentimiento en cualquier momento llamándonos al 1-800-000-000 o enviándonos un correo electrónico a EMAIL\_HERE para que lo incluyamos en nuestra lista de no llamar._
+  </Accordion>
+
+  <Accordion title="7. Recomendable: incluya la fuente de suscripción en el primer mensaje">
+    El primer mensaje debe incluir la fuente a través de la cual sus clientes potenciales se suscriben.
+
+    > **Captura pendiente:** flujo de trabajo _New Lead - Book Appointment_ con la acción SMS “Can I Send You A Quote?” y el cuerpo del mensaje mencionando la fuente de suscripción y “Reply STOP to unsubscribe”. Debe recapturarse desde Chateea.
+  </Accordion>
+
+  <Accordion title="8. Recomendable: use doble confirmación de suscripción">
+    Agregar un lenguaje de suscripción voluntaria para que los contactos se suscriban mediante doble confirmación a través de SMS y casilla de verificación en el formulario web (responder 1 para suscribirse).
+  </Accordion>
+</AccordionGroup>
