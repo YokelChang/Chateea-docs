@@ -1,0 +1,115 @@
+---
+title: "Explicación de la configuración para reintentar el pago de la suscripción"
+description: "Recupera cobros fallidos con hasta 3 reintentos automáticos y reglas de cancelación."
+icon: "rotate-right"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Los pagos de suscripción fallidos pueden afectar tus ingresos y la experiencia del cliente. La **configuración de reintentos de pago** permite volver a intentar el cobro automáticamente tras un fallo, lo que facilita recuperar transacciones sin intervención manual. Al definir el tiempo y el comportamiento de los reintentos, mantienes una facturación consistente y reduces la pérdida de ingresos.
+
+<Info>
+  La mayoría de los pagos fallidos no son clientes que se van: son tarjetas vencidas, límites temporales o saldos insuficientes que se resuelven solos en unos días. Reintentar es la diferencia entre recuperar ese cobro y perder al cliente por un problema que ya no existía.
+</Info>
+
+## ¿Qué es la configuración de reintento de pago fallido?
+
+Esta configuración te permite definir **cómo debe el sistema intentar el pago nuevamente** cuando falla un cargo de suscripción. En lugar de detenerse tras el primer fallo, el sistema vuelve a intentarlo según el calendario que hayas seleccionado.
+
+Así garantizas que el cliente tenga varias oportunidades de completar el pago, manteniendo el proceso automatizado.
+
+## Beneficios clave
+
+| Beneficio | Qué aporta |
+| --- | --- |
+| **Reintentos automatizados** | Recuperas pagos fallidos sin seguimiento manual |
+| **Plazos flexibles** | Eliges intervalos de reintento de 1, 3, 5 o 7 días |
+| **Reglas consistentes** | Aplicas la misma lógica de reintento a todas tus suscripciones |
+| **Menos pérdida de ingresos** | Aumentas las probabilidades de un cobro exitoso |
+| **Control de resultados** | Decides si cancelar o mantener las suscripciones impagadas |
+
+## Cómo configurar los reintentos de pago fallidos
+
+<Steps>
+  <Step title="Abre la configuración de suscripciones">
+    Ve a **Pagos → Configuración → Suscripciones** y localiza la sección **Administrar pagos fallidos para suscripciones**.
+  </Step>
+  <Step title="Selecciona el tiempo de espera">
+    Elige cuánto debe esperar el sistema antes de volver a intentarlo: 1, 3, 5 o 7 días después del intento anterior.
+  </Step>
+  <Step title="Añade los reintentos que necesites">
+    Puedes configurar **hasta 3 reintentos**. Cada uno tiene su propio intervalo, así que puedes combinarlos (por ejemplo, 1 día, luego 3, luego 7).
+  </Step>
+  <Step title="Define qué pasa si todos fallan">
+    Habilita la opción para **cancelar automáticamente la suscripción** cuando fallen todos los intentos, o déjala sin marcar para que la suscripción siga existiendo sin pagarse.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para aplicar las reglas.
+  </Step>
+</Steps>
+
+| Ajuste | Opciones disponibles |
+| --- | --- |
+| **Número de reintentos** | Hasta 3 |
+| **Intervalo entre intentos** | 1, 3, 5 o 7 días después del intento anterior |
+| **Estado tras agotar los reintentos** | Cancelar la suscripción automáticamente, o mantenerla impaga |
+
+<Tip>
+  Escalonar los intervalos suele funcionar mejor que repetir el mismo. Un patrón de **1 – 3 – 7 días** cubre el fallo puntual, el saldo que entra a mitad de semana y el ciclo de nómina, en vez de golpear tres veces la misma tarjeta en 72 horas.
+</Tip>
+
+## Escenario de ejemplo
+
+Si configuras **3 reintentos con un intervalo de 1 día**, el sistema intentará realizar el pago diariamente después de un fallo.
+
+Si después modificas la configuración de reintentos —por ejemplo, reduces el número de intentos o cambias la frecuencia—, la configuración actualizada se aplica **de inmediato**, incluso a las suscripciones que ya se encuentran en proceso de reintento.
+
+<Warning>
+  Ese último punto importa más de lo que parece: si bajas de 3 reintentos a 1 mientras hay suscripciones en curso, esas suscripciones pierden los intentos restantes de inmediato. Revisa cuántos cobros están en reintento antes de recortar la configuración.
+</Warning>
+
+## Proveedores de pago admitidos
+
+La configuración de reintento de pago fallido está disponible para:
+
+- **NMI**
+- **Authorize.net**
+- **Square**
+
+<Note>
+  Si el proveedor de la suscripción no está en esta lista, el ajuste no se aplicará a esos cobros, aunque lo hayas guardado. Verifica con qué proveedor se creó cada suscripción antes de dar por hecho que los reintentos están corriendo.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuántos reintentos puedo configurar?">
+    Puedes configurar hasta 3 intentos de reintento.
+  </Accordion>
+
+  <Accordion title="¿Los cambios se aplicarán a las suscripciones activas?">
+    Sí. Las actualizaciones se aplican tanto a las suscripciones nuevas como a las existentes, incluidas aquellas que ya están en proceso de reintento.
+  </Accordion>
+
+  <Accordion title="¿Qué sucede si todos los reintentos fallan?">
+    Tú decides: puedes mantener la suscripción sin pagar o cancelarla automáticamente.
+  </Accordion>
+
+  <Accordion title="¿Puedo controlar el tiempo de reintento?">
+    Sí. Puedes seleccionar intervalos predefinidos de 1, 3, 5 o 7 días.
+  </Accordion>
+
+  <Accordion title="¿Todos los proveedores de pago admiten esta función?">
+    No. La función solo está disponible para los proveedores compatibles listados arriba.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si necesitas ayuda para configurar las reglas de reintento o para entender cómo afectan a tus suscripciones, escríbenos por WhatsApp al **\+1 829-580-7071** indicando el proveedor de pago y la configuración que tienes guardada.
+
+<Card title="Automatización de pagos con activadores de suscripción y reembolso" icon="bolt" href="/pagos-facturas/activadores-suscripcion-reembolso">
+  Notifica al cliente automáticamente cuando un cobro falla o cuando la suscripción se cancela.
+</Card>
