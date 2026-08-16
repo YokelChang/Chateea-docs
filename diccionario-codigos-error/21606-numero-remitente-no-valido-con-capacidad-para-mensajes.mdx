@@ -1,0 +1,35 @@
+---
+title: "21606: El número de teléfono proporcionado como remitente no es un número de teléfono válido con capacidad para recibir mensajes para este destino/cuenta."
+sidebarTitle: "21606: El número de teléfono proporcionado como remitente no es un número de teléfono válido con capacidad para recibir mensajes para este destino/cuenta."
+description: "ERROR 21606: el número de origen no es válido o no tiene capacidad de mensajería para ese destino o esa cuenta. Descripción, posibles causas y posibles soluciones."
+icon: "phone-xmark"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo original modificado el lunes, 5 de mayo de 2025 a las 8:53 a. m.
+</Info>
+
+## Descripción
+
+Solo puedes enviar mensajes SMS desde un número de teléfono, un identificador de remitente alfanumérico o un código corto que haya sido configurado o transferido a tu cuenta **de LeadConnector**. El número de teléfono debe ser compatible con SMS. En el caso de los códigos cortos, el número del remitente debe estar ubicado en el mismo país que el del destinatario.
+
+Para comprobar los números de teléfono disponibles y sus funcionalidades, visite la sección **Números de teléfono en la configuración de su cuenta.**
+
+## Posibles causas
+
+- Es posible que el número de teléfono que está intentando utilizar no admita mensajes SMS.
+- Es posible que el número de teléfono tenga un formato incorrecto. **LeadConnector** requiere que los números estén en **formato E.164** (por ejemplo, `+12345678900`).
+- Si se utiliza un código corto, este debe estar registrado para su uso en el **mismo país** que el destinatario del mensaje.
+- Es posible que el número de teléfono aún esté en proceso de **portabilidad o alojamiento**, y que todavía no esté completamente activo.
+- Es posible que el número no pertenezca a la cuenta que se está utilizando para enviar el SMS.
+
+## Posibles soluciones
+
+- Asegúrate de que el número que estás usando sea compatible con SMS. Puedes verificarlo consultando tus números en **Ajustes \> Números de teléfono.**
+- Confirme que el número esté formateado en **el formato estándar internacional E.164**.
+- Al utilizar un código corto, asegúrese de que tanto el número emisor como el receptor se encuentren en el **mismo país**.
+- Si el número se está transfiriendo o alojando en **LeadConnector**, confirme que el proceso de transferencia se ha completado. Puede consultar el estado en la sección **Números de teléfono \> Solicitudes de portabilidad**.
+
+<Note>
+  **Nota sobre el título.** En la fuente, este error aparece con dos redacciones equivalentes: «el número de teléfono proporcionado **como remitente**» y «el número de teléfono proporcionado **en el campo "De"**». Ambas se refieren al mismo campo: el número desde el que se envía el mensaje (_From_). El contenido del artículo se mantiene tal cual.
+</Note>
