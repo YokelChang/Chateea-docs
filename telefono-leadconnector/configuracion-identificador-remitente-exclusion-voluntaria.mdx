@@ -1,0 +1,114 @@
+---
+title: "Configuración del identificador del remitente y del idioma de exclusión voluntaria para el cumplimiento de las normas de SMS"
+description: "Cómo funcionan la inclusión automática del identificador del remitente y del texto de baja, sus restricciones y cómo personalizarlos."
+icon: "signature"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+## Descripción general
+
+Para ayudarle a cumplir con la normativa y proteger la reputación de sus mensajes, hemos actualizado la configuración de cumplimiento de SMS relativa a la identificación del remitente y el texto para darse de baja. Estas actualizaciones garantizan que el primer mensaje de cada conversación, incluidas las respuestas automáticas a llamadas perdidas y las solicitudes de revisión, incluya la información de identificación del remitente y el texto para darse de baja, a menos que ya estén presentes.
+
+### Novedades en la experiencia de cumplimiento de SMS
+
+| Novedad | Qué significa |
+| --- | --- |
+| **Inclusión obligatoria** | El primer mensaje de cualquier conversación por SMS (incluidas las solicitudes de MCTB y de revisión) incluirá automáticamente la información de identificación del remitente y un mensaje para darse de baja (por ejemplo, "Responda STOP para cancelar la suscripción") si aún no está incluido. |
+| **Restricción del modo de prueba** | Las agencias en modo de prueba no pueden desactivar las casillas de verificación de identificación del remitente y de exclusión voluntaria en la configuración de cumplimiento de SMS. |
+| **Nueva restricción de ubicación** | Las ubicaciones creadas en los últimos 15 días no pueden desactivar el identificador del remitente ni las casillas de verificación para darse de baja. |
+| **Restricciones de usuario** | Los usuarios y administradores de la cuenta ya no tienen la posibilidad de desactivar las casillas de verificación para el envío de información del remitente y el idioma de exclusión voluntaria. |
+| **Lógica de exclusión voluntaria** | El texto de exclusión voluntaria solo se agregará si el mensaje no contiene ya una frase de exclusión voluntaria (por ejemplo, "Responda STOP para cancelar la suscripción" o similar). |
+| **Mejoras en la interfaz de usuario** | Hemos actualizado la interfaz de usuario de la pestaña Cumplimiento de SMS en Configuración avanzada para ofrecer una experiencia más clara e intuitiva. |
+
+Estos cambios garantizan el cumplimiento normativo, reducen el riesgo de restricciones en los mensajes y optimizan las operaciones de SMS.
+
+## Cómo acceder y configurar los ajustes de cumplimiento de SMS
+
+Siga estos pasos para revisar o personalizar la configuración de cumplimiento de SMS para el identificador del remitente y el idioma de exclusión voluntaria:
+
+<Steps>
+  <Step title="Navegue a la configuración del sistema del teléfono">
+    - Inicia sesión en tu subcuenta.
+    - Ve a la página de **Números de teléfono** en la configuración.
+    - Haz clic en **Configuración avanzada** en el menú superior.
+  </Step>
+  <Step title="Localice el cumplimiento de SMS">
+    En la pestaña Configuración avanzada, busque la sección **Cumplimiento de SMS**.
+  </Step>
+  <Step title="Revise las opciones">
+    Verá dos casillas de verificación debajo de “Personalizaciones de cumplimiento de SMS y exclusión voluntaria”:
+
+    - **Para que tus mensajes SMS sean compatibles, añade un mensaje de cancelación de suscripción:** esto garantiza que el primer mensaje incluya una opción para cancelar la suscripción (por ejemplo, «Responde STOP para darte de baja»). El texto predeterminado es «Responde STOP para darte de baja», pero puedes personalizarlo haciendo clic en el botón **Personalizar**.
+    - **Haz que el SMS cumpla la normativa añadiendo la información del remitente:** esto añade la identificación del remitente (por ejemplo, el nombre de tu negocio o tus datos de contacto) al primer mensaje. El texto predeterminado es “Thanks, `[YourName]` at `[YourBusiness]`,” pero puedes personalizarlo haciendo clic en el botón **Customize**.
+
+    **Nota:** si tu mensaje ya incluye texto de exclusión voluntaria o información del remitente, no lo duplicaremos.
+  </Step>
+  <Step title="Comprenda las restricciones">
+    - Si estás en modo de prueba, eres una agencia o gestionas una ubicación con menos de 15 días de antigüedad, no puedes desactivar estas casillas. Esto asegura el cumplimiento durante los periodos críticos de configuración.
+    - Los usuarios y administradores de la cuenta tampoco pueden desactivar estas opciones, lo que mantiene la coherencia en toda tu cuenta.
+  </Step>
+  <Step title="Personalice el texto (si está permitido)">
+    - Haz clic en el botón **Customize** junto a cada casilla para editar el texto predeterminado de los mensajes de baja o de la información del remitente.
+    - Asegúrate de que tu texto personalizado cumpla los requisitos normativos (por ejemplo, instrucciones de baja claras como “Reply STOP to unsubscribe”).
+  </Step>
+  <Step title="Guarde los cambios">
+    Después de hacer los ajustes, guarda la configuración para aplicarla a tus comunicaciones por SMS.
+  </Step>
+</Steps>
+
+## Por qué importan estos cambios
+
+<CardGroup cols={3}>
+  <Card title="Cumplimiento" icon="scale-balanced">
+    Añadir el identificador del remitente y el texto de baja te ayuda a cumplir la normativa A2P 10DLC, evitando restricciones de mensajería o sanciones de las operadoras.
+  </Card>
+
+  <Card title="Confianza del usuario" icon="handshake">
+    Una información del remitente clara y opciones de baja visibles generan confianza en quien recibe el mensaje, mejoran la interacción y reducen las quejas.
+  </Card>
+
+  <Card title="Seguridad en la automatización" icon="robot">
+    Funciones como Missed Call Text-Back y las solicitudes de reseña ahora cumplen la normativa automáticamente, lo que te ahorra tiempo y esfuerzo.
+  </Card>
+</CardGroup>
+
+## Solución de problemas y preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo desactivar el identificador del remitente o el texto de exclusión voluntaria?">
+    No. Si estás en modo de prueba, gestionas una ubicación con menos de 15 días de antigüedad o eres usuario/administrador de la cuenta, no puedes desactivar estas opciones. Esto garantiza el cumplimiento durante las fases críticas de configuración. Las agencias y las ubicaciones ya establecidas pueden tener más flexibilidad.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si mi mensaje ya tiene texto de exclusión voluntaria?">
+    No añadiremos texto de baja duplicado. El sistema revisa el contenido del mensaje y solo agrega el texto requerido si falta.
+  </Accordion>
+
+  <Accordion title="¿Cómo personalizo el texto de baja o el del remitente?">
+    Haz clic en el botón **Customize** junto a cada casilla en la sección de Cumplimiento de SMS para editar el texto predeterminado. Asegúrate de que tu texto personalizado sea claro, conciso y cumpla los estándares normativos (por ejemplo, “Reply STOP to unsubscribe”).
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si no veo el botón Customize?">
+    Si el botón no está disponible, lo más probable es que se deba a restricciones (por ejemplo, modo de prueba, ubicación nueva o permisos de usuario). Contacta al propietario/administrador de tu cuenta o al soporte de tu agencia para obtener ayuda.
+  </Accordion>
+</AccordionGroup>
+
+## Referencia visual
+
+<Note>
+  **Captura pendiente:** pestaña **SMS Compliance** dentro de **Advanced Settings** del Sistema telefónico, mostrando las dos casillas activas: "Make SMS compliant by adding an opt out message" con el campo "Reply STOP to unsubscribe" y "Make SMS compliant by adding a sender information" con el campo de firma, cada una con su botón **Customize**. Recapturar desde app.chateea.com.
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Buenas prácticas para la entregabilidad de SMS" icon="paper-plane" href="/telefono-leadconnector/buenas-practicas-entregabilidad-sms">
+    Umbrales de tasa de error y de exclusión voluntaria, y cómo evitar restricciones.
+  </Card>
+
+  <Card title="Política de mensajería de LeadConnector" icon="scale-balanced" href="/telefono-leadconnector/politica-de-mensajeria">
+    Consentimiento, bajas, arranque gradual y gestión de spam.
+  </Card>
+</CardGroup>
