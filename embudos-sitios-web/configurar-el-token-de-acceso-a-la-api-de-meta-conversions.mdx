@@ -1,0 +1,217 @@
+---
+title: "Configurar el token de acceso a la API de Meta Conversions"
+description: "Envía eventos del servidor a Meta con la API de conversiones: qué es, la nueva navegación del Administrador de eventos, cómo generar el token y cómo resolver problemas."
+icon: "meta"
+---
+
+<Info>
+  Documentado el 15 de agosto de 2026.
+</Info>
+
+Mejora la precisión del seguimiento de eventos enviándolos directamente desde tu servidor a Meta mediante la API de Conversiones. Esto ayuda a reducir la pérdida de datos causada por restricciones del navegador, limitaciones de cookies y bloqueadores de anuncios, a la vez que mejora la atribución y los informes de campaña.
+
+## Tabla de contenido
+
+- ¿Qué es la API de Meta Conversiones?
+- ¿Por qué utilizar la API de conversiones?
+- Navegación actualizada del administrador de metadatos de eventos
+- Cómo generar un token de acceso a la API de conversiones
+- Comprender la nueva interfaz de Meta
+- Solución de problemas relacionados con el token de acceso a la API de conversiones
+- Preguntas frecuentes
+- ¿Necesitas ayuda?
+
+## ¿Qué es la API de Meta Conversiones?
+
+La API de Meta Conversions permite enviar eventos directamente desde tu servidor a Meta, en lugar de depender únicamente del seguimiento basado en el navegador.
+
+A diferencia del seguimiento exclusivo del navegador, la API de conversiones ayuda a mejorar la fiabilidad de los eventos al reducir el impacto de:
+
+- Restricciones de privacidad del navegador
+- Limitaciones de cookies
+- Bloqueadores de anuncios
+- Interrupciones de la red
+- Tecnologías de prevención del seguimiento
+
+Cuando se utiliza junto con el seguimiento del navegador, la API de conversiones proporciona una visión más completa de la actividad del cliente y del rendimiento de las conversiones.
+
+## ¿Por qué utilizar la API de conversiones?
+
+El uso combinado de eventos del navegador y eventos del servidor crea una configuración de seguimiento más sólida y fiable.
+
+### Beneficios clave
+
+| Beneficio | Detalle |
+| :-- | :-- |
+| **Mayor precisión en la detección de eventos** | Permite capturar eventos que, de otro modo, podrían estar bloqueados por las restricciones del navegador. |
+| **Mejor atribución** | Proporciona a Meta datos de conversión más completos para la elaboración de informes y la optimización. |
+| **Reducción de la pérdida de datos** | Continúa realizando un seguimiento de los eventos importantes incluso cuando el seguimiento del navegador esté limitado. |
+| **Optimización mejorada de la campaña** | Proporciona a Meta señales más fiables para mejorar la entrega y el rendimiento de los anuncios. |
+| **Seguimiento a prueba de futuro** | Mantiene el seguimiento de eventos a medida que evolucionan los requisitos de privacidad y las restricciones de los navegadores. |
+
+## Navegación actualizada del administrador de metadatos de eventos
+
+Meta ha actualizado la interfaz del Administrador de eventos y la ubicación de la configuración de píxeles.
+
+### Ruta de navegación actual
+
+Navegar a:
+
+**Gestor de eventos → Fuentes de datos → Seleccionar píxel → Configuración → API de conversiones**
+
+Si gestionas varios píxeles, primero selecciona el píxel correcto en el área de Fuentes de datos antes de abrir la Configuración.
+
+### Navegación anterior vs. Navegación actual
+
+| Interfaz anterior | Interfaz actual |
+| :-- | :-- |
+| Gerente de eventos | Gerente de eventos |
+| Seleccionar píxel | Fuentes de datos → Seleccionar píxel |
+| Ajustes | Ajustes |
+| API del lado del servidor para web | API de conversiones |
+
+## Cómo generar un token de acceso a la API de conversiones
+
+Generar un token de acceso permite que tu plataforma envíe de forma segura eventos del servidor a Meta.
+
+<Steps>
+  <Step title="Gestor de eventos abierto">
+    - Inicia sesión en tu cuenta de Meta y abre el Gestor de eventos.
+    - Dirígete a la sección **Fuentes de datos** y selecciona el píxel que deseas configurar.
+  </Step>
+  <Step title="Abrir configuración de píxeles">
+    Después de seleccionar el píxel:
+
+    - Abre la pestaña de **Configuración**.
+    - Desplázate hacia abajo hasta que encuentres la sección de la **API de conversiones**.
+
+    **Nota:** es posible que las versiones anteriores de Meta aún hagan referencia a esta sección como **API del lado del servidor para la web**.
+  </Step>
+  <Step title="Generar el token de acceso">
+    Dentro de la sección **API de conversiones**:
+
+    - Haz clic en **Generate Access Token** o **Create Access Token**.
+    - Completa cualquier solicitud de autorización.
+    - Selecciona la aplicación adecuada si se te solicita.
+    - Genera el token.
+    - Copia el token para usarlo en tu integración.
+  </Step>
+  <Step title="Guarda el token de forma segura">
+    - Almacena el token de forma segura y úsalo al configurar las conexiones de la API de conversiones.
+    - El token actúa como la clave de autenticación que permite enviar eventos a Meta.
+  </Step>
+</Steps>
+
+<Note>
+  📸 _Espacio para captura: Gestor de eventos de Meta con Fuentes de datos, el píxel seleccionado, la pestaña Configuración y la sección API de conversiones con el botón de generar token._
+</Note>
+
+## Comprender la nueva interfaz de Meta
+
+Según la configuración de tu cuenta de Meta, es posible que encuentres pantallas diferentes durante la configuración.
+
+Es posible que se te solicite:
+
+- Seleccionar un píxel
+- Seleccionar una aplicación
+- Crear una aplicación
+- Asignar permisos
+- Verificar el acceso del negocio
+
+Estas variaciones son normales y dependen de los permisos de tu cuenta y de la configuración de tu negocio.
+
+Una vez completado el proceso, el token de acceso generado funciona igual, sin importar qué variación de la interfaz veas.
+
+## Solución de problemas relacionados con el token de acceso a la API de conversiones
+
+Si no encuentras la sección de la API de conversiones o no puedes generar un token de acceso, revisa los siguientes puntos.
+
+<AccordionGroup>
+  <Accordion title="Verificar el acceso al píxel">
+    Confirma que:
+
+    - Has iniciado sesión en la cuenta de Meta correcta.
+    - El píxel pertenece a la cuenta de Business Manager que estás gestionando.
+    - Tienes permisos de administrador sobre el píxel.
+  </Accordion>
+
+  <Accordion title="Actualizar el Gestor de eventos">
+    Si se realizaron cambios recientes de permisos:
+
+    - Actualiza la página.
+    - Cierra sesión y vuelve a entrar.
+    - Vuelve a abrir el Gestor de eventos.
+  </Accordion>
+
+  <Accordion title="Comprobar la selección de la fuente de datos">
+    Muchos usuarios seleccionan por accidente la fuente de datos equivocada cuando gestionan varios píxeles.
+
+    Confirma que el píxel correcto está seleccionado antes de abrir la Configuración.
+  </Accordion>
+
+  <Accordion title="Verificar los permisos del negocio">
+    Si falta la sección de la API de conversiones:
+
+    - Verifica el acceso de administrador.
+    - Confirma que se hayan completado los requisitos de verificación del negocio, si corresponde.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mis pantallas se ven diferentes a las de las capturas?">
+    Meta actualiza periódicamente la interfaz del Gestor de eventos. La ubicación de la configuración puede cambiar, pero la sección de la API de conversiones sigue estando disponible desde el área de Configuración del píxel.
+  </Accordion>
+
+  <Accordion title="¿La API del lado del servidor para web es lo mismo que la API de conversiones?">
+    Sí. Meta renombró partes de la interfaz, pero la función cumple el mismo propósito de enviar eventos del lado del servidor.
+  </Accordion>
+
+  <Accordion title="¿Por qué no puedo generar un token de acceso?">
+    La mayoría de los problemas con el token de acceso se deben a permisos insuficientes sobre el píxel o sobre la cuenta de Business Manager.
+  </Accordion>
+
+  <Accordion title="¿Necesito el seguimiento del navegador y la API de conversiones a la vez?">
+    Usar ambos en conjunto proporciona el seguimiento de eventos y la atribución más completos.
+  </Accordion>
+
+  <Accordion title="¿Puedo volver a generar un token de acceso más adelante?">
+    Sí. Se pueden generar tokens nuevos desde la sección de la API de conversiones siempre que sea necesario.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si mi token queda comprometido?">
+    Genera un token nuevo de inmediato y actualiza la configuración de tu integración.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si tienes problemas para encontrar la configuración de tu píxel, generar un token de acceso o configurar el seguimiento de la API de conversiones, comienza por verificar que tengas los permisos correctos para el píxel y la cuenta de Business Manager. Meta actualiza su interfaz periódicamente, por lo que algunas configuraciones pueden aparecer en ubicaciones diferentes a las de la documentación o las capturas de pantalla anteriores.
+
+Antes de continuar con la solución de problemas, confirma que:
+
+- Has iniciado sesión en la cuenta de Meta correcta.
+- Tienes acceso de administrador al píxel.
+- Se ha seleccionado la fuente de datos correcta (píxel).
+- Tu token de acceso se generó correctamente.
+- Cualquier cambio reciente en los permisos o la configuración se ha actualizado a tiempo.
+
+Si no se reciben eventos después de la configuración, revisa la configuración de integración, verifica que el token de acceso se haya copiado correctamente y confirma que el seguimiento de eventos del lado del servidor esté habilitado en tu configuración.
+
+Si los problemas persisten, ponte en contacto con el servicio de asistencia y proporciona la siguiente información:
+
+- Capturas de pantalla de la página de configuración de tu píxel.
+- Capturas de pantalla de cualquier mensaje de error que recibas.
+- Los pasos que ya has completado.
+- Detalles sobre si los eventos no se envían, no aparecen en los informes o no son recibidos por tu integración.
+
+Proporcionar esta información por adelantado ayudará a agilizar la resolución de problemas.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Comprender el Pixel ID para el seguimiento de eventos en tu embudo/sitio web" icon="bullseye" href="/embudos-sitios-web/comprender-el-pixel-id-para-el-seguimiento-de-eventos-en-tu-embudo-sitio-web">
+    Crea el píxel antes de configurar el token de la API de conversiones.
+  </Card>
+</CardGroup>
