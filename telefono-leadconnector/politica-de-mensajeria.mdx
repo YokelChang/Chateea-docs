@@ -1,0 +1,273 @@
+---
+title: "Política de mensajería de LeadConnector"
+description: "Reglas de mensajería A2P para LC - Teléfono: consentimiento, bajas, modelo de arranque gradual, gestión de spam, DND y tasas de error."
+icon: "scale-balanced"
+---
+
+<Info>
+  Documentado el 15 de agosto de 2026.
+</Info>
+
+Esta política de mensajería se aplica a todas las cuentas que utilizan LC - Teléfono para comunicarse dentro del CRM.
+
+Todos esperamos recibir los mensajes que deseamos, sin filtros ni otros obstáculos. Un paso importante que LC - Teléfono y nuestros clientes pueden dar para que esta expectativa se haga realidad es prevenir y eliminar los mensajes no deseados.
+
+Nos aseguramos de que los mensajes enviados a través de LC - Teléfono se dirijan a destinatarios que hayan dado su consentimiento y cumplan con las leyes, los estándares y las directrices aplicables del sector. Asimismo, priorizamos la equidad y la decencia en caso de duda.
+
+<Note>
+  **Temas tratados en este artículo**
+
+  - LC - Política de mensajería telefónica
+  - ¿Cómo gestionamos las infracciones?
+  - 1. Modelo de puesta en marcha gradual
+  - 2. Gestión de mensajes de spam
+  - 3. Adición de idioma de exclusión voluntaria
+  - 4. Adición de información del remitente
+  - 5. Monitoreo de errores y tasas de exclusión voluntaria
+  - Preguntas frecuentes
+</Note>
+
+## LC - Política de mensajería telefónica
+
+Todos los mensajes transmitidos a través de la plataforma, independientemente del caso de uso o del tipo de número de teléfono (por ejemplo, código largo o número gratuito), deben cumplir con la política de mensajería de aplicación a persona (A2P). Todos los mensajes A2P que se originan en el sistema están sujetos a esta Política de mensajería, que abarca las reglas y/o prohibiciones de mensajería con respecto a:
+
+| Regla | Qué exige |
+| --- | --- |
+| **Consentimiento (“opt-in”)** | El consentimiento no se puede comprar, vender ni intercambiar. Por ejemplo, no se puede obtener el consentimiento de los destinatarios de un mensaje comprando una lista de teléfonos a un tercero. Además, los SMS solo deben enviarse a los contactos que hayan dado su consentimiento. |
+| **Revocación del consentimiento (“opt-out”)** | El mensaje inicial que envíe a una persona debe incluir el siguiente texto: “Responda STOP para cancelar la suscripción” o su equivalente, de modo que las personas tengan la posibilidad de revocar su consentimiento en cualquier momento respondiendo con una palabra clave estándar de exclusión voluntaria. |
+| **Identificación del remitente** | Cada mensaje inicial que envíe debe identificarle claramente a usted (la parte que obtuvo el opt-in del destinatario) como remitente, excepto en los mensajes de seguimiento de una conversación en curso. |
+| **Uso de la mensajería** | No debe enviar mensajes relacionados de ninguna manera con alcohol, armas de fuego, juegos de azar, tabaco u otro contenido para adultos. |
+| **Evasión de filtros** | Como se indicó arriba, no permitimos contenido diseñado específicamente para evadir la detección de los mecanismos de prevención de mensajes no deseados. Esto incluye palabras mal escritas intencionalmente o frases de baja no estándar creadas específicamente con la intención de evadir esos mecanismos. No permitimos el _snowshoeing_, definido como distribuir mensajes similares o idénticos entre muchos números de teléfono con la intención o el efecto de evadir los mecanismos de detección y prevención de mensajes no deseados. |
+
+Esta política se aplica a todos los clientes que usan los servicios de mensajería de LC - Teléfono para salvaguardar sus capacidades y servicios de mensajería.
+
+## ¿Cómo gestionamos las infracciones?
+
+Cuando identificamos una infracción de estos principios, trabajamos de buena fe con los clientes para que vuelvan a cumplir con la política de mensajería. Sin embargo, para proteger la capacidad continua de todos nuestros clientes de usar la mensajería libremente con fines legítimos, nos reservamos el derecho de suspender o retirar el acceso a la plataforma a los clientes o a los usuarios finales de nuestros clientes que determinemos que no cumplen con la Política de Mensajería, o que no siguen la ley en cualquier área aplicable o las directrices o estándares aplicables del sector de las comunicaciones, en algunos casos con un aviso limitado si se trata de infracciones graves de esta política.
+
+## 1. Modelo de puesta en marcha gradual
+
+Cada nueva subcuenta (a partir del 20 de abril de 2022) que esté en el Sistema Telefónico LC seguirá en adelante el “Ramp Up Model”.
+
+El límite de SMS se multiplica cada día por el número de días (hasta el 7.º día) que la cuenta lleva con nosotros. A partir del 8.º día, la cuenta queda limitada a 5000 SMS/día.
+
+| Día | Límite \[SMS\] |
+| --- | --- |
+| 1 | 250 |
+| 2 | 500 |
+| 3 | 750 |
+| 4 | 1000 |
+| 5 | 1250 |
+| 6 | 1500 |
+| 7 | 1750 |
+| **8.º día y en adelante** | **5000** |
+
+<Warning>
+  **Tenga en cuenta:** el contador diario se reinicia todos los días a las 00:00:01 AM UTC. Si se alcanza el límite antes de ese momento, la cuenta queda bloqueada.
+</Warning>
+
+### ¿Por qué el cambio?
+
+La política de LC - Teléfono se implementó para:
+
+1. Evitar envíos masivos de SMS spam desde registros falsos. Las nuevas subcuentas en LC - Teléfono seguirán el Ramp-Up Model.
+2. Evitar que las subcuentas queden bloqueadas por actividad sospechosa.
+3. Evitar acciones legales derivadas del aumento de spam a clientes que no han dado su consentimiento. Solo el envío masivo de SMS tendrá limitaciones diarias, para evitar la suspensión de la subcuenta por actividad de mensajería no conforme.
+
+### ¿Qué pantallas de error o notificaciones verá una subcuenta durante una infracción?
+
+1. **Conversation Error:** You have exceeded your SMS sending limit.
+2. **Bulk Action:** You can send 5000 message(s) in a day. You have already sent 5000 messages (s). If you wish to proceed, 1 Message(s) will be failed.
+
+<Note>
+  **Captura pendiente:** pantalla de conversación con el aviso “You have exceeded your SMS sending limit” y el estado “Unsuccessful”; y ventana **Send SMS** de acción masiva con los dos avisos y el botón **Ok, proceed**.
+</Note>
+
+### ¿Cómo actualizar el límite de una subcuenta?
+
+Si desea aumentar el límite a más de 10K/día, comuníquese con el administrador de su agencia con el asunto de correo **\<Increase SMS Daily Limit\>**, indicando su cuenta, los detalles del nuevo límite y su caso de uso para ese nuevo límite.
+
+## 2. Gestión de mensajes de spam
+
+Cada uno de los mensajes enviados desde la subcuenta termina con uno de los siguientes 4 estados:
+
+1. **Sent:** los mensajes cuya respuesta no recibimos de la operadora pueden estar en cualquiera de los tres estados siguientes.
+2. **Delivered:** los mensajes que se entregaron y se enviaron correctamente al contacto.
+3. **Failed:** los mensajes que se cancelaron o no se enviaron a la operadora para reenviarlos al contacto.
+4. **Undelivered:** el mensaje enviado resultó sospechoso o no cumplió con la política de mensajería.
+
+Como parte de esta función, solo consideraremos los mensajes **Undelivered**. Todos los mensajes no entregados terminan con un código de error particular, y comenzaremos a almacenarlos a nivel de cada mensaje. Los usaremos además para habilitar DND temporal/permanente a nivel de contacto, de modo que no se le envíen nuevos SMS, aumentando su tasa de entregabilidad.
+
+La siguiente tabla resume los códigos de error de SMS no entregados, lo que significa cada uno y la medida de remediación correspondiente que aplicamos:
+
+| Response Code | Code Description | Remediation |
+| --- | --- | --- |
+| 30005 | User Inactive/Number does not exist | Enable Temporary DND |
+| 30003 | Unreachable - Out of Service | Enable Temporary DND |
+| 30004 | Do not want SMS/DND enabled | Enable Permanent DND |
+| 30006 | Landline/Incapable to receive SMS | Enable Temporary DND |
+| 30008 | None of the above scenarios matched | Do nothing |
+
+- **Temporary DND:** la agencia o la cuenta pueden revocar el DND establecido a nivel de contacto.
+- **Permanent DND:** el DND establecido a nivel de contacto no puede ser revocado por la agencia ni por la cuenta, ya que el contacto no puede recibir el mensaje o ha optado por no recibir mensajes.
+- **Opt-Out Keyword:** las personas deben poder revocar el consentimiento en cualquier momento respondiendo con una palabra clave estándar de baja como STOP, Unsubscribe, etc. En ese caso, también se habilitará un DND permanente a nivel de contacto.
+
+### Ventaja
+
+- Esto restringirá que la cuenta envíe SMS a contactos no relevantes, aumentando con el tiempo la tasa de entregabilidad y reduciendo la posibilidad de ser bloqueada.
+- Las cuentas solo enviarán mensajes a los contactos que hayan dado su consentimiento.
+
+### Pantallas de error de mensajes de spam
+
+1. **Conversation:** Cannot send messages as DND is active for SMS.
+2. **Bulk Action:** todos los SMS enviados mediante funciones como flujos de trabajo y SMS masivos omitirán automáticamente de la lista de envío a los contactos marcados con DND.
+
+### ¿Cómo revocar la orden de no molestar (DND) para un contacto?
+
+1. **Para el DND temporal,** ve a los detalles del contacto y quita la marca de DND.
+   <Note>
+     **Captura pendiente:** ventana **DND Preferences** con la opción “Turn off all notifications”, la etiqueta “User Unsubscribed” y los canales Email, SMS, GMB, Facebook y Whatsapp, con los botones **Cancel** y **Save**.
+   </Note>
+2. **Para el DND permanente,** no puedes revocarlo desde la interfaz. Para revocarlo, pide al contacto que envíe una respuesta con las palabras clave “START”, “YES” y “UNSTOP” al número. Esto debería eliminar automáticamente el DND del contacto.
+
+<Warning>
+  **Tenga en cuenta:** si la palabra clave START no revoca el DND y los mensajes entrantes/salientes siguen fallando, abra un ticket de soporte.
+</Warning>
+
+## 3. Adición de idioma de exclusión voluntaria
+
+- El consentimiento para enviar comunicaciones no se puede comprar; la única forma es obtener el consentimiento explícito del usuario para las campañas y comunicaciones por SMS.
+- El consentimiento lo toma una entidad específica; en nuestro caso, las subcuentas que son el remitente real de esas comunicaciones.
+- Para cumplir con las políticas de mensajería, cada uno de los mensajes iniciales enviados por la empresa a un usuario final debe llevar las dos informaciones obligatorias siguientes, es decir, **Sender ID** e **idioma de exclusión voluntaria**.
+- **Opt-Out Language:** el usuario final debe poder retirar el consentimiento en cualquier momento, de modo que cada mensaje inicial también debe llevar palabras clave de baja como STOP, UNSUBSCRIBE, etc. Adicionalmente añadiremos el texto de baja: “Reply STOP to unsubscribe.”
+
+<Note>
+  **Tenga en cuenta:** la función “Opt out message” se aplica a **Bulk action** (SMS masivos), flujos de trabajo y campañas, y no se aplica a las conversaciones uno a uno.
+</Note>
+
+<Note>
+  **Captura pendiente:** pantalla de Conversaciones con un mensaje saliente que muestra “How you doin? Reply STOP to unsubscribe. Thanks, ABI Technologies”.
+</Note>
+
+### ¿Cómo puedo personalizar el mensaje de exclusión voluntaria?
+
+Ve a **Subcuenta -\> Ajustes -\> Business Info -\> General**, donde puedes personalizar el mensaje de baja.
+
+<Note>
+  **Captura pendiente:** ventana **Customize Opt Out Message** con el campo de mensaje (“Reply STOP to Unsubscribe”), el contador de caracteres, la casilla “Apply the change to all the sub-accounts” y los botones **Cancel** y **Save**.
+</Note>
+
+### ¿Qué ocurre si mi mensaje ya contiene una palabra clave para darse de baja?
+
+Si el mensaje ya contiene una de las palabras clave de baja mencionadas en la pantalla anterior, no se añadirá ninguna palabra clave de baja desde nuestro lado.
+
+### ¿Qué ocurre cuando un usuario final responde con la palabra clave STOP?
+
+Si las personas responden con una palabra clave estándar de baja como **STOP**, se revocará el consentimiento para enviar SMS. Todos los mensajes pendientes y en cola fallarán. Además, se habilitará un **DND permanente** a nivel de contacto.
+
+<Warning>
+  **Tenga en cuenta:** esta es información obligatoria que debe compartirse con el cliente final, por lo que es una verificación obligatoria para todos los mensajes iniciales.
+</Warning>
+
+## 4. Adición de información del remitente
+
+- El consentimiento para enviar comunicaciones no se puede comprar; la única forma es obtener el consentimiento explícito del usuario para las campañas y comunicaciones por SMS.
+- El consentimiento lo toma una entidad específica; en nuestro caso, las cuentas que son el remitente real de esas comunicaciones.
+- Para cumplir con las políticas de mensajería, cada uno de los mensajes iniciales enviados por la empresa a un usuario final debe llevar las dos informaciones obligatorias siguientes, es decir, **Sender ID** e **idioma de exclusión voluntaria**.
+- **SenderID:** cada mensaje que envíe debe identificarle claramente a usted (la parte que obtuvo el opt-in del destinatario) como remitente, excepto en los mensajes de seguimiento de una conversación en curso. Adicionalmente añadiremos la información del remitente: “Thanks, \<account Name\>.”
+
+<Note>
+  **Tenga en cuenta:** la función “Sender ID” solo se aplica a **Bulk action (Bulk SMS)**, **Workflow** y **campañas**, y no se aplica a las conversaciones uno a uno.
+</Note>
+
+<Note>
+  **Captura pendiente:** ventana **Customize General Text** con los campos Sender ID (“ABC Office”), la opción de añadir el texto general al principio o al final, el texto “Thanks, \[senderID\]” y los botones **Cancel** y **Save**.
+</Note>
+
+<Warning>
+  **Tenga en cuenta:** esta es información obligatoria que debe compartirse con el cliente final, por lo que es una verificación obligatoria para todos los mensajes iniciales.
+</Warning>
+
+## 5. Monitoreo de errores y tasas de exclusión voluntaria
+
+Nos enfocamos en ayudar a nuestros clientes a entregar comunicaciones confiables y en asegurar que la operadora no bloquee ni suspenda permanentemente la cuenta por un mal uso.
+
+Monitorearemos la tasa de entrega de la cuenta en su conjunto y tomaremos medidas proactivas (mencionadas a continuación) para mantenerla bajo control:
+
+| Medida | Umbral |
+| --- | --- |
+| **Correo de infracción** | Enviaremos una notificación por correo en cuanto la subcuenta alcance una tasa de error del **8 %** y una tasa de baja del **1 %**. |
+| **Restricción temporal de la cuenta** | Enviaremos un correo de suspensión cuando la subcuenta alcance una tasa de error del **12,5 %** y una tasa de baja del **2,5 %**. |
+
+<Warning>
+  **Tenga en cuenta:** en cuanto la cuenta alcance la suspensión temporal, todos los SMS salientes siguientes fallarán hasta las 00:00 AM UTC.
+</Warning>
+
+### ¿Qué debemos hacer cuando recibimos un correo electrónico de infracción?
+
+1. Detenga todos sus flujos de trabajo, campañas, activadores y/o acciones masivas hacia contactos que no hayan dado su consentimiento explícito para recibir mensajes de la subcuenta.
+2. Habilite y personalice el idioma de exclusión voluntaria y el mensaje de SenderID según su caso de uso, para que los mensajes siguientes no queden marcados.
+3. Converse con su cliente para asegurarse de que no se envíen comunicaciones masivas, ráfagas de mensajes ni campañas de prospección en frío en el futuro cercano, antes de recibir su respuesta a este ticket.
+
+### ¿Qué son las tasas de error y de exclusión voluntaria, y es conveniente establecer un umbral?
+
+- Una **tasa de baja alta** indica que los contactos que reciben sus mensajes han objetado, generado quejas o marcado sus SMS como spam. Una buena tasa de baja suele estar en el rango de **0–1 %**. Una vez que la tasa de baja alcanza el **2 %**, la subcuenta quedará bloqueada para enviar mensajes de texto durante 24 horas.
+- Una **tasa de error de entrega alta** indica que envía SMS a contactos que ya no están en servicio, son inalcanzables o usan un dispositivo sin capacidad SMS, como una línea fija. También puede significar que filtros externos de las operadoras se niegan a entregar sus SMS por un mal comportamiento de envío en el pasado. Una buena tasa de error suele estar en el rango de **0–6 %**. Una vez que la tasa de error alcanza el **12 %**, la subcuenta quedará bloqueada para enviar mensajes de texto durante 24 horas.
+
+### ¿Qué debo hacer para que se levante la suspensión de la subcuenta cuanto antes?
+
+Su cuenta del Sistema Telefónico LeadConnector puede suspenderse por infracciones de política relacionadas con la identificación del remitente, el idioma de exclusión voluntaria y el envío masivo de mensajes similares. Además, las tasas de baja y de error de la cuenta pueden haber superado los niveles aceptables.
+
+Así puede abordar estos problemas:
+
+- **Identificación del remitente:** asegúrese de que cada mensaje le identifique como remitente, particularmente en el primer mensaje de cada conversación. Es esencial que el destinatario reconozca a quién dio su consentimiento.
+- **Idioma de exclusión voluntaria:** incluya una opción en su mensaje inicial, por ejemplo, “Reply STOP to unsubscribe”. Para ello, use palabras clave estándar como STOPALL, UNSUBSCRIBE, CANCEL, END o QUIT.
+- **Mensajes similares:** evite enviar mensajes idénticos o similares a muchos números de teléfono a menos que tenga una justificación comercial adecuada. Esto puede percibirse como spam y provocar más restricciones.
+
+Si desea apelar esta decisión, explique el caso de uso comercial que requiere esas prácticas de mensajería.
+
+En cuanto a las tasas de baja y de error, mantenga los siguientes rangos para obtener resultados óptimos:
+
+| Indicador | Rango recomendado |
+| --- | --- |
+| Tasa de exclusión voluntaria | 0–0,3 % |
+| Tasa de error | 0–6 % |
+
+- El primer paso para corregir su tasa de baja es asegurarse de que su mensaje siempre incluya la identidad del remitente. Procure informar al destinatario cómo dio su consentimiento, por ejemplo mediante el envío de un formulario. El mensaje inicial también debe incluir instrucciones claras para darse de baja.
+- Además, tenga precaución al enviar mensajes similares desde varios números de teléfono. Cualquier actividad percibida como spam puede provocar que las operadoras bloqueen los mensajes. Si existe un caso comercial legítimo para ello, comuníquelo al equipo de soporte.
+- Para gestionar las tasas de error, valide los números de teléfono antes de enviar SMS. Activar la búsqueda de número de teléfono en la configuración de la vista de agencia puede ayudar a reducir errores. Asegúrese también de que sus mensajes no contengan palabras clave que puedan marcarlos como spam.
+- Por último, recomendamos añadir los leads a las campañas en grupos pequeños, para una comunicación eficiente y una mejor gestión de errores.
+
+Implementar un proceso de doble confirmación puede mejorar aún más tus estrategias de mensajería. Para ello, dirige a tus clientes potenciales a un formulario donde puedan aceptar recibir SMS y, a continuación, pídeles que respondan con una palabra clave específica para confirmar su suscripción. Recuérdales siempre la opción de cancelar la suscripción incluyendo «Responde STOP para darte de baja» al final de cada mensaje.
+
+Una vez implementados estos cambios, envíenos un video explicativo de su nueva configuración. De esta manera, podremos comunicarnos con el proveedor del sistema telefónico para que levante la suspensión de la cuenta.
+
+Sin embargo, si la suspensión de la subcuenta es permanente, se levantará en 24 horas.
+
+<Note>
+  **Tenga en cuenta:** las conversaciones individuales, los SMS de prueba, el reenvío de mensajes y las respuestas a llamadas perdidas están permitidos incluso durante la restricción.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Con qué frecuencia se mantiene el límite de SMS?">
+    El límite de SMS se actualizará cada 24 horas. Si la cuenta es nueva, los incrementos diarios aumentarán según la tabla anterior. Al octavo día, el límite de SMS se limitará a 5000 diarios.
+  </Accordion>
+
+  <Accordion title="Quiero enviar más de 5000 SMS al día; ¿cómo puedo aumentar mi límite?">
+    Una vez que su(s) cuenta(s) alcance(n) el octavo día (5000 SMS por día), puede comunicarse con el administrador de su agencia con el asunto del correo electrónico **\<Aumentar límite diario de SMS\>** con su cuenta, los detalles del nuevo límite y su caso de uso para el nuevo límite.
+  </Accordion>
+
+  <Accordion title="¿Qué sucede cuando alcanzamos nuestro límite diario? ¿Podremos responder a los SMS si un cliente potencial responde?">
+    No, no puedes responder manualmente a los mensajes entrantes. Los límites diarios de SMS afectarán a todas las actividades de mensajería, incluidos los SMS manuales en las conversaciones, la automatización dentro de los flujos de trabajo y las acciones masivas.
+  </Accordion>
+
+  <Accordion title="¿Podemos desactivar la opción No molestar de forma masiva?">
+    No, no podemos porque esto impide volver a enviar SMS de forma masiva después de que se haya activado la función No molestar para los contactos.
+  </Accordion>
+
+  <Accordion title="¿La función de añadir automáticamente el ID del remitente y el idioma de exclusión voluntaria también se aplica al primer mensaje de texto de cada SMS enviado mediante flujo de trabajo o de forma manual?">
+    Esta función solo se aplica a las acciones masivas (SMS masivos) y no a las conversaciones individuales, los flujos de trabajo ni las campañas.
+  </Accordion>
+</AccordionGroup>
