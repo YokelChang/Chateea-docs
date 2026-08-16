@@ -1,0 +1,136 @@
+---
+title: "Guía: Integración de ondas"
+description: "Sincroniza las facturas que creas en Chateea directamente hacia tu cuenta contable de Wave."
+icon: "wave-square"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+<Note>
+  Este artículo cubre la integración con **Wave**, la plataforma de contabilidad. El título conserva el nombre con el que aparece listado el artículo en la fuente.
+</Note>
+
+## Descripción general
+
+La integración con Wave te permite sincronizar las facturas creadas en Chateea directamente con tu cuenta de contabilidad de Wave. Esto **elimina la necesidad de recrear manualmente las facturas**, agiliza tu flujo de facturación y reduce las tareas repetitivas.
+
+## ¿Qué hace la integración?
+
+Cuando está habilitada, la integración sincroniza automáticamente en dirección **Chateea → Wave**:
+
+| Elemento | Qué se envía |
+| --- | --- |
+| **Facturas nuevas** | Cualquier factura creada dentro de Chateea |
+| **Actualizaciones a esas facturas** | Partidas, totales, información del cliente y demás cambios |
+
+<Info>
+  La sincronización es **unidireccional**: viaja desde Chateea hacia Wave y nunca en sentido contrario.
+</Info>
+
+## Limitaciones importantes
+
+Wave actualmente **no** es compatible con:
+
+| No compatible | Motivo |
+| --- | --- |
+| **Sincronización de recibos de pago** desde Chateea | Restricción de Wave |
+| **Sincronización de cambios de estado de las facturas** (pagada, pagada parcialmente, etc.) | Limitación de la API de Wave |
+
+Esto significa, en la práctica:
+
+- Solo se sincronizan **las facturas**
+- Las actualizaciones de estado, por ejemplo marcar una factura como pagada, **deben actualizarse manualmente en Wave**
+- Chateea **no puede** actualizar los estados de pago de facturas en Wave
+
+<Warning>
+  Esta es la diferencia práctica más importante frente a otras integraciones contables. Si tu equipo concilia pagos por estado de factura, con Wave ese paso sigue siendo manual. Planifica una revisión periódica en lugar de asumir que el estado está al día.
+</Warning>
+
+### Comparación rápida con las otras integraciones contables
+
+| Capacidad | Wave | Xero | QuickBooks |
+| --- | --- | --- | --- |
+| Facturas Chateea → contabilidad | Sí | Sí | Sí |
+| Contactos contabilidad → Chateea | No | Sí | Sí |
+| Estados de factura sincronizados | No | Sí | Sí |
+| Recibos de venta / pago | No | No | Sí |
+| Dirección de la sincronización | Unidireccional | Unidireccional | Bidireccional |
+
+## Cómo configurar la integración de Wave
+
+<Steps>
+  <Step title="Ve a Ajustes → Integraciones → Wave">
+    Desde el menú lateral, entra a la configuración de tu cuenta y abre la pestaña de integraciones. Ubica el mosaico de Wave.
+  </Step>
+  <Step title="Haz clic en Administrar">
+    Se abre la pantalla de la integración, con el resumen de lo que se sincroniza.
+  </Step>
+  <Step title="Inicia sesión con tus credenciales de Wave">
+    Usa la cuenta de Wave que lleva la contabilidad de este negocio.
+  </Step>
+  <Step title="Aprueba el acceso">
+    Autoriza el permiso para la **sincronización unidireccional de facturas**.
+  </Step>
+  <Step title="Selecciona la cuenta de destino">
+    Elige la **cuenta de ingresos de Wave** donde se deben sincronizar las facturas y las transacciones.
+  </Step>
+  <Step title="Haz clic en Guardar">
+    Con eso queda activa la integración.
+  </Step>
+</Steps>
+
+{/* Captura pendiente: pantalla de la integración de Wave con el selector de cuenta de ingresos y los botones Guardar y Desconectar. */}
+
+**Una vez guardado:** cualquier factura que se cree en Chateea a partir de ese momento se sincronizará automáticamente con Wave.
+
+<Note>
+  La sincronización aplica **hacia adelante**. Las facturas emitidas antes de conectar la integración no se envían retroactivamente.
+</Note>
+
+### Ejemplo práctico
+
+Emites una factura de **\$450** a un cliente, la envías y días después el cliente paga.
+
+| Momento | En Chateea | En Wave |
+| --- | --- | --- |
+| Creas la factura | Factura creada | Se crea la factura con sus partidas |
+| Corriges una partida | Factura actualizada | La actualización se refleja |
+| El cliente paga | Estado cambia a **Pagada** | **Sin cambio.** Hay que marcarla manualmente |
+
+Ese último renglón es el que conviene tener presente al diseñar tu proceso de cierre mensual.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La sincronización es en ambos sentidos?">
+    No. Es unidireccional: solo viaja de Chateea hacia Wave.
+  </Accordion>
+
+  <Accordion title="¿Se sincronizan los recibos de pago?">
+    No. Wave actualmente no admite la sincronización de recibos de pago desde Chateea.
+  </Accordion>
+
+  <Accordion title="Marqué una factura como pagada en Chateea y en Wave sigue pendiente, ¿es un error?">
+    No es un error. La sincronización de cambios de estado no está disponible por limitaciones de la API de Wave, así que ese cambio debes hacerlo manualmente en Wave.
+  </Accordion>
+
+  <Accordion title="¿Dónde cambio la cuenta de ingresos que elegí?">
+    En **Ajustes → Integraciones → Wave → Administrar**. Ahí mismo está el selector de cuenta y el botón para desconectar la integración.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si una factura no llegó a Wave o quieres cambiar la cuenta de destino, escríbenos por WhatsApp al **\+1 829-580-7071** con el número de factura.
+
+<CardGroup cols={2}>
+  <Card title="Guía: Integración con Xero" icon="file-invoice-dollar" href="/pagos-facturas/integracion-xero">
+    Sincroniza también contactos, impuestos, monedas y estados de factura.
+  </Card>
+
+  <Card title="Guía: Configuración de la integración con QuickBooks" icon="book" href="/pagos-facturas/integracion-quickbooks">
+    La opción más completa, con recibos de venta y sincronización bidireccional.
+  </Card>
+</CardGroup>
