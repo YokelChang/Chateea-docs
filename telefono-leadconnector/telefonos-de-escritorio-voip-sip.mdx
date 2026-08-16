@@ -1,0 +1,241 @@
+---
+title: "Teléfonos de escritorio VoIP (terminales SIP)"
+sidebarTitle: "Teléfonos de escritorio VoIP (terminales SIP)"
+description: "Cómo registrar un teléfono fijo compatible con SIP en su subcuenta: requisitos de red, modelos recomendados, configuración paso a paso, gestión, transferencias entre extensiones y solución de problemas."
+icon: "phone-office"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo de origen modificado el martes, 17 de febrero de 2026 a las 6:00 a. m.
+</Info>
+
+La función de **teléfono de escritorio VoIP** le permite registrar cualquier teléfono fijo compatible con SIP en su subcuenta y conservar el seguimiento de llamadas, las grabaciones y las automatizaciones en un solo lugar.
+
+## Tabla de contenido
+
+<CardGroup cols={2}>
+  <Card title="¿Qué es la integración del teléfono de escritorio VoIP?" icon="circle-question" href="#qué-es-la-integración-del-teléfono-de-escritorio-voip">
+  </Card>
+
+  <Card title="¿Quién puede configurarlo?" icon="user-shield" href="#quién-puede-configurarlo">
+  </Card>
+
+  <Card title="Requisitos y teléfonos de escritorio recomendados" icon="network-wired" href="#requisitos-y-teléfonos-de-escritorio-recomendados">
+  </Card>
+
+  <Card title="Configuración paso a paso" icon="list-ol" href="#configuración-paso-a-paso">
+  </Card>
+
+  <Card title="Gestión de teléfonos de escritorio" icon="sliders" href="#gestión-de-teléfonos-de-escritorio">
+  </Card>
+
+  <Card title="Preguntas frecuentes" icon="comments-question" href="#preguntas-frecuentes">
+  </Card>
+
+  <Card title="Solución de problemas" icon="wrench" href="#solución-de-problemas">
+  </Card>
+</CardGroup>
+
+---
+
+## ¿Qué es la integración del teléfono de escritorio VoIP?
+
+La función de teléfono de escritorio VoIP le permite registrar cualquier teléfono fijo compatible con SIP en su subcuenta de LeadConnector (LC). Todas las llamadas realizadas o recibidas en el teléfono pasan por LC, de modo que usted mantiene el seguimiento de llamadas, las grabaciones y las automatizaciones en un solo lugar.
+
+---
+
+## ¿Quién puede configurarlo?
+
+| Perfil | Nivel de acceso |
+| --- | --- |
+| **Administradores** | Aprovisionamiento dentro de su propia ubicación. |
+| **Otros usuarios** | Vista de solo lectura; verán una información emergente que dice «Pídele a un administrador que configure esto». |
+
+---
+
+## Requisitos y teléfonos de escritorio recomendados
+
+### Red y protocolo
+
+- SIP sobre UDP, TCP o TLS
+- Los puertos de salida 5060/5061 están abiertos para SIP.
+- UDP 10000-20000 abierto para audio RTP
+- Alimentación a través de Ethernet (PoE) o alimentación externa.
+
+### Al comprar hardware nuevo
+
+- Busque los términos «SIP», «PoE» y al menos dos teclas de línea programables.
+- Evite los teléfonos bloqueados a un solo operador o que requieran códigos de aprovisionamiento propietarios.
+
+### Modelos populares
+
+| Fabricante | Modelo |
+| --- | --- |
+| Yealink | T54W / T58W |
+| Poly | VVX 450 |
+| Grandstream | GXP 2170 |
+| Snom | D785 |
+| Cisco | 7841 |
+
+<Note>
+  Cualquier teléfono con SIP abierto debería funcionar; estos son solo ejemplos probados.
+</Note>
+
+---
+
+## Configuración paso a paso
+
+<Steps>
+  <Step title="Abra el asistente de teléfono de escritorio VoIP">
+    Vaya a **Ajustes → Sistema telefónico → Ajustes avanzados → Teléfono de escritorio VoIP (SIP) → Empezar**.
+
+    <Note icon="image">
+      **Imagen próximamente.** Aquí irá la captura de la pestaña _VoIP deskphone (SIP)_ dentro de _Advanced Settings_, con la pantalla de bienvenida y la lista de dispositivos recientes.
+    </Note>
+  </Step>
+  <Step title="Confirme o edite su dominio SIP">
+    - Una sugerencia predeterminada aparece como `<LocationName>.sip.ashburn.twilio.com`.
+    - Puedes cambiarlo una vez antes de guardar.
+
+    <Note icon="image">
+      **Imagen próximamente.** Aquí irá la captura de la sección _SIP Server Configuration_ con el campo **SIP Domain/SIP Endpoint** y el bloque _Create New SIP User_.
+    </Note>
+  </Step>
+  <Step title="Cree la extensión y la contraseña">
+    Configura una extensión o un nombre de usuario (número o texto) y una **contraseña**. Tenlos a mano, los necesitarás al configurar tu teléfono.
+  </Step>
+  <Step title="Vincule un usuario de LC">
+    Vincula un usuario de LC (un teléfono de escritorio por usuario de LC). Si es necesario, crea primero el usuario.
+  </Step>
+  <Step title="Guarde la configuración">
+    Haz clic en **Guardar**.
+  </Step>
+  <Step title="Traslade los datos a su teléfono de escritorio">
+    En su teléfono de escritorio, pegue esos tres valores en los campos correspondientes (generalmente llamados _Registrador_, _Servidor_ o _Proxy_, además de _Nombre de usuario_ y _Contraseña_). Si tiene problemas con la configuración del teléfono de escritorio, reiniciar el dispositivo podría solucionarlo.
+  </Step>
+  <Step title="(Opcional) Llamada de prueba saliente">
+    Marque el número que aparece en pantalla; si la llamada es exitosa, escuchará «Esta es una llamada de prueba» tres veces.
+
+    <Note icon="image">
+      **Imagen próximamente.** Aquí irá la captura de la pestaña _Test Calls_, con el selector de usuario SIP y los bloques _Test Outgoing Calls_ y _Receive Incoming Calls_.
+    </Note>
+  </Step>
+  <Step title="(Opcional) Llamada de prueba entrante">
+    Haga clic en el botón; su teléfono debería sonar. Conteste y cuelgue para confirmar el audio.
+  </Step>
+</Steps>
+
+<Tip>
+  Si alguna de las pruebas falla, haga clic en **Detalles** para ver los códigos de error o seleccione **Contactar con soporte**.
+</Tip>
+
+---
+
+## Gestión de teléfonos de escritorio
+
+| Acción | Ruta |
+| --- | --- |
+| **Restablecer una contraseña** | Ajustes → Sistema telefónico → Ajustes avanzados → Teléfono de escritorio VoIP → Administrar dispositivos → _Editar icono_ |
+| **Eliminar un teléfono de escritorio** | El mismo menú → _Eliminar_ (da de baja el terminal de inmediato) |
+| **Agregar otro teléfono** | Repita el asistente (debe vincularse a un usuario de LC diferente) |
+| **Ver registros y grabaciones de llamadas** | Conversaciones → Todas las llamadas |
+
+<Note icon="image">
+  **Imagen próximamente.** Aquí irán las capturas de la ventana _Edit SIP User_ (extensión, nueva contraseña y usuario asignado) y de la tabla _Manage SIP Devices_.
+</Note>
+
+<Warning>
+  Cuando un usuario de LC vinculado se elimina o se transfiere, las credenciales SIP se desactivan automáticamente. Las llamadas salientes devuelven «403 Forbidden»; las llamadas entrantes reproducen un mensaje de intercepción.
+</Warning>
+
+---
+
+## Transferencia entre teléfonos de escritorio
+
+### 1. Marcación directa de extensión entre teléfonos de escritorio
+
+Ahora puede llamar a cualquier compañero de equipo que tenga un teléfono de escritorio configurado simplemente marcando su extensión.
+
+**¿Qué hay de nuevo?**
+
+Si la extensión de su compañero de equipo es **101**, solo marque **201** desde su teléfono de escritorio para conectarse al instante, sin números externos ni enrutamiento adicional.
+
+**Detalles clave**
+
+- Llamadas rápidas de extensión a extensión
+- Funciona entre teléfonos de escritorio configurados
+- Compatible únicamente con teléfonos de escritorio
+
+Esta actualización hace que la comunicación interna sea más rápida y eficiente para los equipos que utilizan teléfonos de escritorio.
+
+### 2. Transferencia de llamadas de IVR entre teléfonos de escritorio
+
+Ahora puede transferir llamadas de IVR de un teléfono de escritorio directamente a otro teléfono de escritorio.
+
+**¿Cómo funciona?**
+
+Durante una llamada de IVR activa en su teléfono de escritorio:
+
+1. Inicie una transferencia.
+2. Marque la extensión de su compañero de equipo.
+3. La llamada se enruta directamente a su teléfono de escritorio.
+
+Sencillo y sin fricciones.
+
+<Note icon="image">
+  **Imagen próximamente.** Aquí irán las capturas del softphone durante la transferencia (marcación de la extensión y llamada ya enrutada al teléfono del compañero).
+</Note>
+
+<Note>
+  Solo se admiten **transferencias ciegas** (_blind transfers_). Las transferencias asistidas (_warm transfers_) no están disponibles actualmente.
+</Note>
+
+---
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo tener varios dominios SIP?" icon="globe">
+    Ahora mismo no. La mayoría de las empresas solo necesitan uno.
+  </Accordion>
+
+  <Accordion title="¿Funcionará mi teléfono Yealink / Poly / Cisco actual?" icon="phone">
+    Sí, si admite el registro SIP genérico. Restablezca primero los valores de fábrica y luego siga los pasos anteriores.
+  </Accordion>
+
+  <Accordion title="¿Qué pasó con «Ring All»?" icon="bell">
+    El número máximo de miembros ahora es 6 (antes eran 7). Si anteriormente tenía 7, la séptima entrada se eliminó automáticamente al habilitar esta función.
+  </Accordion>
+
+  <Accordion title="¿Pueden dos teléfonos de escritorio apuntar al mismo usuario de LC?" icon="users">
+    No. Cree un usuario adicional (oculto) para cada terminal.
+  </Accordion>
+
+  <Accordion title="¿Hay algún cargo adicional?" icon="dollar-sign">
+    No. Las llamadas realizadas desde un teléfono de escritorio se facturan igual que las llamadas desde la aplicación web o móvil. Las transferencias de llamadas desde teléfonos de escritorio sí cuestan **\$0.10 adicionales por transferencia** (SIP Refer).
+  </Accordion>
+
+  <Accordion title="¿Por qué no recibo llamadas en mi teléfono de escritorio cuando recibo una llamada en mi número de teléfono asignado?" icon="phone-slash">
+    Puede deberse a que el tipo de dispositivo _Deskphone_ no está habilitado en la configuración de su personal. Actívelo en **Settings \> My Staff \> Edit Staff \> Call & Voicemail Settings**.
+
+    <Note icon="image">
+      **Imagen próximamente.** Aquí irá la captura de _Call & Voicemail Settings_, con las casillas _Forward Calls to_, _Default Channel for Ring All_ y _Default Channel for IVR_ y la opción **Deskphone (SIP)** marcada.
+    </Note>
+  </Accordion>
+
+  <Accordion title="¿Por qué no recibo llamadas de IVR en mi teléfono de escritorio?" icon="diagram-project">
+    Si el usuario establece _Default channel for IVR = Deskphone_, las llamadas enrutadas por IVR sonarán en el teléfono de escritorio.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Solución de problemas
+
+| # | Síntoma | Qué revisar |
+| --- | --- | --- |
+| 1 | **401/403 Unauthorized** | Verifique el nombre de usuario y la contraseña (distinguen mayúsculas y minúsculas). |
+| 2 | **Sin audio** | Asegúrese de que el rango UDP 10000-20000 esté abierto en su firewall. |
+| 3 | **El teléfono suena pero no se puede contestar** | Compruebe que los puertos RTP no estén bloqueados por NAT o SIP ALG. |
+| 4 | **No se puede guardar el dominio SIP** | El nombre ya está en uso; edítelo o acepte el incremento sugerido. |
+| 5 | **¿Sigues teniendo problemas?** | Haz clic en **Contactar con soporte técnico** e indica tu dominio SIP y modelo de terminal. |
