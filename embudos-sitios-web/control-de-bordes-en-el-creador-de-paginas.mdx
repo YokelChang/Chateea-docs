@@ -1,0 +1,239 @@
+---
+title: "Control de bordes en el creador de páginas"
+description: "Panel centralizado de bordes: estilo, color, ancho independiente por lado y radio por esquina para los elementos compatibles de embudos y sitios web."
+icon: "border-all"
+---
+
+<Info>
+  Documentado el 15 de agosto de 2026.
+</Info>
+
+El **Control de bordes** del Creador de páginas te da mucha más flexibilidad al personalizar los elementos compatibles dentro de **embudos y sitios web**. Desde un solo panel puedes ajustar el ancho del borde lado por lado, personalizar el radio de cada esquina y elegir entre varios estilos de borde, sin depender de CSS personalizado ni de soluciones improvisadas.
+
+<Note>
+  Este artículo cubre el panel **Border** que aparece en la pestaña **Styles** de la barra lateral derecha del Creador de páginas. Aplica tanto a embudos de venta como a sitios web.
+</Note>
+
+## Tabla de contenido
+
+- ¿Qué es el control de bordes en el Creador de páginas?
+- Principales ventajas del control de bordes
+- Configuración de bordes disponible
+- Catálogo de estilos de borde y cuándo usar cada uno
+- Cómo configurar los ajustes de control de bordes
+- Cómo funcionan los valores vinculados y desvinculados
+- Recetas de diseño listas para copiar
+- Buenas prácticas y errores frecuentes
+- Preguntas frecuentes
+
+## ¿Qué es el control de bordes en el Creador de páginas?
+
+El Control de bordes te permite personalizar la apariencia del borde de los elementos compatibles del Creador de páginas desde un panel centralizado. Puedes ajustar el **estilo**, el **color**, el **ancho específico de cada lado** y el **radio de las esquinas** para crear desde detalles sutiles hasta marcos visuales bien definidos.
+
+En la práctica, esto significa que un mismo elemento puede pasar de tener un contorno completo a tener solamente una línea inferior de acento, o a convertirse en una tarjeta con esquinas superiores redondeadas e inferiores rectas, sin salir del editor y sin escribir una sola línea de código.
+
+<Warning>
+  El panel **Border** solo aparece en los **elementos compatibles**. Si seleccionas un elemento y no ves la sección Border dentro de la pestaña **Styles**, ese elemento no admite configuración de bordes todavía. Prueba seleccionando el contenedor que lo envuelve (columna, fila o sección).
+</Warning>
+
+## Principales ventajas del control de bordes
+
+| Ventaja | Qué te permite hacer | Ejemplo real |
+| :-- | :-- | :-- |
+| **Personalización más precisa** | Ajustar la configuración de los bordes con mayor exactitud para lograr el aspecto que buscas. | Bajar un borde de 3 px a 1 px para que el marco no compita con el texto. |
+| **Estilo lateral independiente** | Configurar distintos anchos de borde en cada lado para crear acentos, divisores o marcos personalizados. | Solo `0-0-4-0` px para dejar una línea inferior tipo subrayado en un título. |
+| **Personalización de esquinas** | Aplicar diferentes valores de radio por esquina para lograr diseños suaves o formas más distintivas. | Esquinas superiores a 24 px e inferiores a 0 px para una tarjeta tipo pestaña. |
+| **Mayor variedad visual** | Elegir estilos adicionales como **double**, **groove**, **ridge**, **inset** y **outset** para agregar profundidad y variación. | Un `double` fino para un bloque de testimonio con aire editorial. |
+| **Menos soluciones alternativas** | Reunir todos los controles en un mismo lugar, sin CSS personalizado ni bloques de código inyectado. | Eliminar el `<style>` que antes hacía falta para redondear una sola esquina. |
+| **Consistencia entre páginas** | Repetir los mismos valores en todos los elementos equivalentes de un embudo. | Que todas las tarjetas de servicio compartan radio de 12 px y borde de 1 px. |
+
+## Configuración de bordes disponible
+
+El panel **Border** reúne los controles clave en un solo lugar, para que apliques estilos a los elementos compatibles más rápido y con menos rodeos.
+
+| Control | Qué hace | Valores típicos | Cuándo tocarlo |
+| :-- | :-- | :-- | :-- |
+| **Border Style** (estilo de borde) | Cambia la apariencia visual de la línea del borde. | None, Solid, Dashed, Dotted, Double, Groove, Ridge, Inset, Outset | Siempre primero: si está en **None**, el ancho y el color no se ven. |
+| **Color** (color del borde) | Establece el color que usará el borde. | Color de marca, gris neutro, blanco, transparente | Para integrar el elemento con la paleta o para crear contraste. |
+| **Border Sides** (bordes laterales) | Aplica un mismo ancho a todos los lados, o desvincula los valores para controlar **superior**, **derecho**, **inferior** e **izquierdo** por separado. | 0 a 8 px en la mayoría de diseños | Para marcos completos, divisores o acentos de un solo lado. |
+| **Corner Radius** (radio de las esquinas) | Ajusta el redondeo con un valor común, o desvincula los valores para redondear cada esquina de forma independiente. | 0 px (recto), 8–16 px (suave), 50 px o más (píldora) | Para suavizar tarjetas y botones o crear formas distintivas. |
+
+<Note>
+  📸 _Espacio para captura: pestaña **Styles** de la barra lateral derecha con el panel **Border** desplegado, mostrando Border Style, Color, Border Sides y Corner Radius._
+</Note>
+
+### Cómo se leen los cuatro campos de Border Sides
+
+Los cuatro campos siguen el mismo orden que la caja del elemento en pantalla. Esta referencia rápida te ayuda a no equivocarte de campo cuando trabajas con valores desvinculados:
+
+| Posición del campo | Lado que controla | Uso más común |
+| :-- | :-- | :-- |
+| Campo superior | **Top** (superior) | Separar una sección del bloque anterior. |
+| Campo izquierdo | **Left** (izquierdo) | Barra de acento vertical en citas y avisos. |
+| Campo derecho | **Right** (derecho) | Divisor entre columnas en diseños de dos o tres bloques. |
+| Campo inferior | **Bottom** (inferior) | Subrayado de títulos, pestañas activas y campos de formulario. |
+
+## Catálogo de estilos de borde y cuándo usar cada uno
+
+La lista de estilos va mucho más allá de la línea sólida. Esta tabla resume el efecto visual de cada uno y el escenario donde luce mejor:
+
+| Estilo | Efecto visual | Recomendado para | Ancho sugerido |
+| :-- | :-- | :-- | :-- |
+| **None** | Sin borde visible. | Estado por defecto o para “apagar” un borde sin borrar los valores. | — |
+| **Solid** | Línea continua y limpia. | Tarjetas, botones, formularios, contenedores en general. | 1–2 px |
+| **Dashed** | Línea segmentada. | Zonas de carga de archivos, bloques provisionales, cupones. | 2–3 px |
+| **Dotted** | Serie de puntos. | Separadores ligeros y detalles decorativos discretos. | 2–3 px |
+| **Double** | Dos líneas paralelas. | Bloques editoriales, testimonios, encabezados con aire clásico. | 4–6 px |
+| **Groove** | Efecto de hendidura hacia adentro. | Paneles con sensación de relieve, estética retro. | 4–6 px |
+| **Ridge** | Efecto de relieve hacia afuera. | Cajas destacadas que deben “sobresalir” del fondo. | 4–6 px |
+| **Inset** | Sombreado que hunde el elemento. | Campos y áreas que representan entrada de datos. | 3–5 px |
+| **Outset** | Sombreado que eleva el elemento. | Botones con aspecto tridimensional. | 3–5 px |
+
+<Tip>
+  **Double**, **Groove**, **Ridge**, **Inset** y **Outset** necesitan ancho suficiente para apreciarse. Con 1 px se ven prácticamente iguales a un **Solid**. Si eliges uno de estos estilos, sube el ancho a 3 px o más.
+</Tip>
+
+## Cómo configurar los ajustes de control de bordes
+
+<Steps>
+  <Step title="Abre un embudo de ventas o un sitio web">
+    Entra al Creador de páginas desde el embudo o el sitio web que quieras editar.
+  </Step>
+  <Step title="Selecciona un elemento compatible">
+    Haz clic sobre el elemento que incluya ajustes de borde (por ejemplo, un botón, una imagen, una sección o un contenedor).
+  </Step>
+  <Step title="Abre la pestaña Styles">
+    En la barra lateral derecha, haz clic en **Styles** y desplázate hasta el panel **Border**.
+  </Step>
+  <Step title="Elige un estilo y un color de borde">
+    Selecciona el **Border Style** en el desplegable y define el **Color**. Si el estilo queda en **None**, no verás cambios aunque configures el ancho.
+  </Step>
+  <Step title="Establece los valores de los lados del borde">
+    Mantén los valores **vinculados** para usar el mismo ancho en todos los lados, o **desvincúlalos** para configurar cada lado individualmente.
+  </Step>
+  <Step title="Establece los valores de radio de las esquinas">
+    Mantén los valores vinculados para redondear todas las esquinas por igual, o desvincúlalos para personalizar cada esquina de forma independiente.
+  </Step>
+  <Step title="Previsualiza, guarda y publica">
+    Revisa el elemento en el lienzo, ajusta los valores y, cuando estés conforme, **guarda** y **publica** la página.
+  </Step>
+</Steps>
+
+<Note>
+  📸 _Espacio para captura: secuencia del panel Border mostrando la selección del estilo, los cuatro campos de Border Sides desvinculados y los cuatro campos de Corner Radius._
+</Note>
+
+## Cómo funcionan los valores vinculados y desvinculados
+
+El icono de cadena que aparece en el centro de **Border Sides** y de **Corner Radius** es el interruptor entre dos modos de trabajo:
+
+| Modo | Icono | Comportamiento | Cuándo conviene |
+| :-- | :-- | :-- | :-- |
+| **Vinculado** | Cadena cerrada | Escribes un valor y se copia automáticamente a los cuatro campos. | Marcos uniformes, tarjetas, botones y todo lo que deba verse parejo. |
+| **Desvinculado** | Cadena abierta | Cada campo guarda su propio valor de forma independiente. | Acentos de un solo lado, divisores, formas asimétricas. |
+
+<Warning>
+  Si desvinculas, escribes valores distintos y luego vuelves a vincular, el panel iguala todos los lados con un mismo valor. Anota tus números antes de volver al modo vinculado si piensas recuperarlos después.
+</Warning>
+
+## Recetas de diseño listas para copiar
+
+Estas combinaciones te sirven como punto de partida. Los valores están expresados en píxeles y en el orden **superior · derecho · inferior · izquierdo**.
+
+| Receta | Estilo | Border Sides | Corner Radius | Resultado |
+| :-- | :-- | :-- | :-- | :-- |
+| **Tarjeta de servicio limpia** | Solid | `1 · 1 · 1 · 1` | `12 · 12 · 12 · 12` | Contorno discreto que ordena bloques repetidos. |
+| **Plan destacado** | Solid (color de marca) | `2 · 2 · 2 · 2` | `16 · 16 · 16 · 16` | El plan recomendado resalta sin cambiar de fondo. |
+| **Título subrayado** | Solid | `0 · 0 · 4 · 0` | `0 · 0 · 0 · 0` | Línea inferior que actúa como acento tipográfico. |
+| **Cita con barra lateral** | Solid | `0 · 0 · 0 · 6` | `0 · 8 · 8 · 0` | Testimonio con barra de color a la izquierda. |
+| **Botón fantasma** | Solid | `2 · 2 · 2 · 2` | `50 · 50 · 50 · 50` | Botón secundario tipo píldora, sin relleno. |
+| **Pestaña activa** | Solid | `0 · 0 · 3 · 0` | `8 · 8 · 0 · 0` | Elemento de menú marcado como seleccionado. |
+| **Zona de descarga** | Dashed | `2 · 2 · 2 · 2` | `10 · 10 · 10 · 10` | Área que comunica “aquí va un archivo o un recurso”. |
+| **Marco editorial** | Double | `5 · 5 · 5 · 5` | `0 · 0 · 0 · 0` | Bloque de contenido con carácter clásico. |
+| **Imagen tipo ficha** | Solid | `1 · 1 · 1 · 1` | `20 · 20 · 0 · 0` | Foto con esquinas superiores suaves y base recta. |
+
+<Tip>
+  Cuando uses una receta con radios altos (por ejemplo, 50 px) en un botón, asegúrate de que el alto del elemento sea mayor que el doble del radio. Si el radio supera la mitad del alto, el navegador lo recorta y el resultado deja de ser predecible.
+</Tip>
+
+## Buenas prácticas y errores frecuentes
+
+<AccordionGroup>
+  <Accordion title="Define un sistema de radios y respétalo">
+    Elige dos o tres valores de radio para todo el proyecto —por ejemplo 0 px, 12 px y 50 px— y úsalos siempre. Mezclar 6, 9, 11 y 14 px en la misma página hace que el diseño se sienta descuidado aunque cada elemento por separado se vea bien.
+  </Accordion>
+
+  <Accordion title="Menos ancho, más contraste">
+    Un borde de 1 px con buen contraste de color casi siempre se ve más profesional que uno de 4 px en un tono apagado. Antes de engrosar la línea, prueba a oscurecer el color.
+  </Accordion>
+
+  <Accordion title="Revisa el resultado en móvil">
+    Los bordes gruesos y los radios grandes consumen espacio horizontal. En pantallas estrechas pueden apretar el texto contra la línea. Cambia a la vista móvil del lienzo antes de publicar.
+  </Accordion>
+
+  <Accordion title="Cuidado con el borde invisible">
+    Si configuraste anchos y colores pero no ves nada, revisa dos cosas: que **Border Style** no esté en **None** y que el color del borde no coincida con el fondo del elemento.
+  </Accordion>
+
+  <Accordion title="El radio recorta el contenido interno">
+    Si redondeas mucho un contenedor que tiene una imagen a sangre dentro, la imagen se recorta siguiendo la curva. Es el comportamiento esperado: aprovéchalo para fotos de encabezado y evítalo cuando el contenido tenga texto pegado al borde.
+  </Accordion>
+
+  <Accordion title="Bordes y accesibilidad">
+    No uses el borde como único indicador de estado (por ejemplo, marcar un campo con error solo cambiando el color de la línea). Acompáñalo siempre de un texto de apoyo.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo editar cada lado del borde por separado?">
+    Sí. Utiliza el icono de vincular/desvincular en **Border Sides** para pasar de un valor compartido a valores individuales para cada lado.
+  </Accordion>
+
+  <Accordion title="¿Esto afectará a mis páginas existentes?">
+    No. Las páginas existentes que utilizan configuraciones de borde anteriores seguirán funcionando con normalidad. Los controles nuevos solo se aplican cuando los editas.
+  </Accordion>
+
+  <Accordion title="¿El control de bordes está disponible tanto en embudos como en sitios web?">
+    Sí. Está disponible en todos los **embudos** y **sitios web** del Creador de páginas.
+  </Accordion>
+
+  <Accordion title="¿Puedo editar el radio de cada esquina por separado?">
+    Sí. Utiliza el icono de vincular/desvincular en **Corner Radius** para configurar cada esquina de forma independiente.
+  </Accordion>
+
+  <Accordion title="¿Por qué no veo el panel Border en el elemento que seleccioné?">
+    Porque ese elemento no está entre los compatibles con ajustes de borde. Selecciona el contenedor que lo envuelve —columna, fila o sección— y aplica el borde ahí.
+  </Accordion>
+
+  <Accordion title="¿Los bordes se ven igual en todos los navegadores?">
+    Los estilos **Solid**, **Dashed**, **Dotted** y **Double** se representan de forma prácticamente idéntica. **Groove**, **Ridge**, **Inset** y **Outset** dependen del cálculo de sombreado de cada navegador y pueden variar ligeramente en el tono. Verifica el resultado en la página publicada, no solo en el lienzo.
+  </Accordion>
+
+  <Accordion title="¿Puedo aplicar un borde solo en móvil o solo en escritorio?">
+    El panel Border trabaja sobre el elemento seleccionado. Si necesitas un tratamiento distinto por dispositivo, revisa primero los ajustes de visibilidad del elemento y, si el diseño lo permite, duplica el bloque para controlarlo de forma separada.
+  </Accordion>
+
+  <Accordion title="¿Cómo quito un borde que ya apliqué?">
+    Cambia **Border Style** a **None**. Los anchos y el color quedan guardados, así que puedes recuperar el mismo borde volviendo a elegir el estilo, sin reescribir los valores.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Animaciones de entrada para secciones, filas y columnas" icon="wand-magic-sparkles" href="/embudos-sitios-web/animaciones-de-entrada-para-secciones-filas-y-columnas">
+    Combina bordes bien definidos con animaciones de aparición para reforzar la jerarquía visual.
+  </Card>
+
+  <Card title="Crea páginas en el Creador de páginas" icon="file-circle-plus" href="/embudos-sitios-web/crea-paginas-en-el-creador-de-paginas">
+    Crea, organiza y reordena páginas sin salir del editor.
+  </Card>
+</CardGroup>
+
+## ¿Necesitas ayuda?
+
+Si necesitas una mano para configurar esto, no estás solo. Verifica que el elemento seleccionado sea compatible, que **Border Style** no esté en **None** y que los valores estén en el modo correcto (vinculado o desvinculado). Los pequeños detalles marcan una gran diferencia en el resultado final.
+
+Si sigues teniendo problemas, ponte en contacto con el administrador de tu cuenta o con el equipo de soporte para obtener ayuda. Ellos te guiarán en la configuración y se asegurarán de que todo funcione correctamente.

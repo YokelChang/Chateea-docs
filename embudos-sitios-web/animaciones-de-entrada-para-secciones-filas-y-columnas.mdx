@@ -1,0 +1,298 @@
+---
+title: "Animaciones de entrada para secciones, filas y columnas"
+description: "Anima bloques de diseño completos con secuenciación automática, control por dispositivo móvil y vista previa en tiempo real, sin calcular retardos manualmente."
+icon: "wand-magic-sparkles"
+---
+
+<Info>
+  Documentado el 15 de agosto de 2026.
+</Info>
+
+Anima **bloques de diseño completos** —secciones, filas y columnas— con secuenciación automática, control independiente para móviles y vista previa en tiempo real, sin necesidad de calcular retardos a mano ni de escribir CSS personalizado.
+
+## Lo que aprenderás
+
+Este artículo explica cómo aplicar animaciones de entrada a secciones, filas y columnas en el Creador de páginas, cómo el sistema secuencia automáticamente las animaciones a medida que el visitante se desplaza y cómo controlar la reproducción en dispositivos móviles.
+
+Además, aprenderás a previsualizar las animaciones antes de aplicarlas, a ajustar la sincronización y la curva de suavizado, y a crear transiciones de página coherentes sin calcular los retrasos manualmente.
+
+## Tabla de contenido
+
+- ¿Qué son las animaciones de entrada para los bloques de diseño?
+- Beneficios clave
+- Tipos de animación disponibles
+- Configuración de animación
+- Cómo funciona la secuenciación automática
+- Controlar animaciones en dispositivos móviles
+- Cómo configurar las animaciones de entrada
+- Recetas de animación por tipo de sección
+- Solución de problemas
+- Preguntas frecuentes
+
+## ¿Qué son las animaciones de entrada para los bloques de diseño?
+
+Las animaciones de entrada permiten que las **secciones**, **filas** y **columnas** del Creador de páginas aparezcan con movimiento a medida que los visitantes se desplazan por la página. En lugar de animar elementos individuales uno por uno, animas bloques de diseño completos y el sistema secuencia automáticamente las animaciones en el orden en que aparecen en la página.
+
+Cuando un bloque entra en el área visible, reproduce su animación de entrada. El sistema espera a que el bloque padre termine antes de iniciar la animación del bloque hijo: primero se anima la sección, luego su fila, después la columna y, por último, el contenido que hay dentro. Así se logra una presentación fluida y profesional sin calcular tiempos de espera a mano.
+
+<Note>
+  Los bloques **permanecen visibles** después de la animación de aparición, y el contenido que espera su turno se muestra en su estado normal en lugar de ocultarse. Esto garantiza que la página siga siendo legible durante toda la secuencia.
+</Note>
+
+## Beneficios clave
+
+| Beneficio | Qué resuelve |
+| :-- | :-- |
+| **Transiciones de página coherentes** | Las animaciones se despliegan en una secuencia deliberada y profesional a medida que el visitante se desplaza, sin CSS personalizado ni cálculos de retardo manuales. |
+| **Mantenimiento automático de la sincronización** | Al agregar, eliminar o reordenar bloques, la secuencia se actualiza sola. No necesitas recalcular los retrasos. |
+| **Reproducción activada por desplazamiento** | Las animaciones se disparan solo cuando el bloque aparece en pantalla, por lo que nada se reproduce fuera de la vista. |
+| **Control para móviles** | Las animaciones están desactivadas en móvil de forma predeterminada para mantener las páginas rápidas. Puedes activarlas bloque por bloque. |
+| **Vista previa antes de decidir** | Al pasar el cursor sobre cualquier tarjeta de animación, esta se reproduce sobre el bloque seleccionado en el lienzo. La vista previa se limpia al retirar el cursor, así comparas opciones una tras otra. |
+| **Corrección automática para páginas existentes** | Las páginas ya publicadas se benefician automáticamente: la secuenciación se deriva al renderizar la página, sin necesidad de volver a guardar. |
+
+## Tipos de animación disponibles
+
+El Creador de páginas ofrece **nueve categorías** de animación. Cada categoría contiene múltiples variantes direccionales o estilísticas:
+
+| # | Categoría | Variantes | Sensación que transmite | Ideal para |
+| :-- | :-- | :-- | :-- | :-- |
+| 1 | **Fade** | In, Up, Down, Left, Right | Sutil y elegante | Casi cualquier sección; es la opción más segura. |
+| 2 | **Slide** | Up, Down, Left, Right | Direccional y dinámica | Filas con imágenes y texto enfrentados. |
+| 3 | **Bounce** | In, Up, Down, Left, Right | Juguetona y energética | Marcas informales, ofertas, secciones infantiles. |
+| 4 | **Flip** | Flip, Flip In X, Flip In Y | Sorprendente | Tarjetas de producto y bloques de “antes / después”. |
+| 5 | **Rotate** | In | Llamativa | Insignias, sellos de garantía, iconografía. |
+| 6 | **Zoom** | In | Enfocada | Testimonios, cifras clave, imágenes destacadas. |
+| 7 | **Light Speed** | Left, Right | Veloz y contundente | Anuncios de lanzamiento y contadores de urgencia. |
+| 8 | **Infinite Loop** | Glow, Rocking, Bounce | Persistente | Un único llamado a la acción por página. |
+| 9 | **None** | — | Sin movimiento | Quitar una animación aplicada previamente. |
+
+<Warning>
+  Las animaciones de **Infinite Loop** se repiten continuamente después de que el bloque entra en pantalla. Úsalas con moderación y solo para atraer la atención hacia un elemento específico: varias animaciones infinitas en la misma página compiten entre sí y cansan al visitante.
+</Warning>
+
+<Note>
+  📸 _Espacio para captura: pestaña **Animations** con la galería de tarjetas de Entrance Animation agrupadas por categoría (Fade, Slide, Bounce, Flip, Rotate, Zoom, Light speed, Infinite loop)._
+</Note>
+
+## Configuración de animación
+
+Después de seleccionar una animación de entrada, puedes afinar cómo aparece el bloque con estos cuatro ajustes:
+
+| Ajuste | Rango | Descripción | Valor recomendado para empezar |
+| :-- | :-- | :-- | :-- |
+| **Duration** (duración) | 0.1 s – 3 s | Cuánto tarda la animación en completarse. | 0.5 s – 0.8 s |
+| **Delay** (retardo) | 0 s – 5 s | Cuánto espera antes de iniciar la animación después de que el bloque entra en pantalla. | 0 s (deja que la secuenciación automática haga el trabajo) |
+| **Scale** (escala) | 0.5× – 2× | Multiplicador aplicado a la distancia o magnitud de la animación. | 1× |
+| **Easing** (suavizado) | Linear, Ease-in, Ease-out, Ease-in-out | Controla la curva de aceleración de la animación. | Ease-out |
+
+### Cómo se siente cada curva de suavizado
+
+| Easing | Comportamiento | Resultado percibido |
+| :-- | :-- | :-- |
+| **Linear** | Velocidad constante de principio a fin. | Mecánico; útil para efectos técnicos o barras de progreso. |
+| **Ease-in** | Arranca lento y acelera al final. | El bloque parece “lanzarse” hacia su posición. |
+| **Ease-out** | Arranca rápido y frena al final. | Entrada ágil y natural; la opción más usada. |
+| **Ease-in-out** | Arranca y termina lento, acelera en el medio. | Movimiento elegante y pausado, ideal para héroes grandes. |
+
+<Tip>
+  Ajusta **Duration** y **Easing** en conjunto para que coincidan con el tono de tu página. Duraciones cortas con **Ease-out** crean apariciones ágiles; duraciones largas con **Ease-in-out** se sienten más elegantes.
+</Tip>
+
+<Note>
+  📸 _Espacio para captura: panel **Adjust Animation** con los deslizadores de Scale, Duration, Delay y el desplegable de Easing._
+</Note>
+
+## Cómo funciona la secuenciación automática
+
+El sistema secuencia las animaciones según la jerarquía de los bloques de diseño, siguiendo este orden:
+
+<Steps>
+  <Step title="La sección se anima primero">
+    Es el contenedor exterior y marca el inicio de la secuencia.
+  </Step>
+  <Step title="La fila espera a la sección">
+    La fila que está dentro de la sección espera a que esta termine y luego se anima.
+  </Step>
+  <Step title="La columna espera a la fila">
+    La columna dentro de la fila espera a que la fila termine y luego se anima.
+  </Step>
+  <Step title="El contenido espera a la columna">
+    Los elementos dentro de la columna —texto, imágenes, botones— esperan a que la columna termine y después se animan.
+  </Step>
+</Steps>
+
+Esta secuencia se deriva de la estructura de la página, así que cuando agregas, eliminas o reordenas bloques, la sincronización se actualiza sola. **Nunca calculas retardos manualmente.**
+
+### Ejemplo de línea de tiempo
+
+Supongamos una sección de beneficios con una fila, tres columnas y un icono con texto en cada columna. Todos los bloques usan **Fade Up** con `Duration = 0.6 s`. Al entrar la sección en pantalla, la reproducción se ordena así:
+
+| Momento | Bloque que se anima | Qué ve el visitante |
+| :-- | :-- | :-- |
+| 0.0 s | **Sección** | El bloque completo asciende y aparece. |
+| 0.6 s | **Fila** | El contenedor de las tres columnas entra en escena. |
+| 1.2 s | **Columnas** | Las tarjetas de beneficio aparecen. |
+| 1.8 s | **Contenido** | Iconos, títulos y descripciones cierran la secuencia. |
+
+<Warning>
+  Encadenar animaciones en los cuatro niveles a la vez alarga bastante la secuencia. Si la sección tarda demasiado en terminar de mostrarse, el visitante puede seguir bajando antes de ver el mensaje completo. Para secciones densas, anima solo la **sección** (o solo las **columnas**) y deja el resto sin animación.
+</Warning>
+
+<Note>
+  **Páginas existentes:** las páginas ya publicadas se benefician de la secuenciación automática cuando se renderizan. No hace falta volver a guardarlas.
+</Note>
+
+## Controlar animaciones en dispositivos móviles
+
+Las animaciones de entrada están **desactivadas en dispositivos móviles de forma predeterminada**. Así las páginas se mantienen rápidas y se evita el movimiento que distrae en pantallas pequeñas, donde el rendimiento y la legibilidad son críticos.
+
+Cada **sección**, **fila** y **columna** incluye un interruptor **Enable animations on mobile**. Actívalo en los bloques concretos donde quieras movimiento en teléfonos. Cuando el interruptor de un bloque queda apagado, los bloques que sí se animan se resecuencian alrededor de él, por lo que el orden de la animación sigue siendo correcto en móvil.
+
+| Escenario en móvil | Interruptor de la sección | Interruptor de la fila / columna | Resultado |
+| :-- | :-- | :-- | :-- |
+| Configuración por defecto | Apagado | Apagado | No hay animación; el contenido aparece de inmediato. |
+| Solo el héroe animado | Encendido en la sección del héroe | Apagado | Se anima el bloque principal y el resto carga directo. |
+| Secuencia completa | Encendido | Encendido | Se reproduce la jerarquía completa, tal como en escritorio. |
+| Configuración incoherente | **Apagado** | Encendido | Las filas y columnas **no** se animan: el bloque padre bloquea la reproducción. |
+
+<Warning>
+  **Rendimiento en móvil:** activar animaciones en móvil puede afectar el tiempo de carga y la fluidez del desplazamiento en dispositivos de gama baja. Usa este interruptor con moderación para preservar una buena experiencia.
+</Warning>
+
+## Cómo configurar las animaciones de entrada
+
+Sigue estos pasos para aplicar una animación de entrada a una sección, fila o columna en el Creador de páginas:
+
+<Steps>
+  <Step title="Selecciona un bloque de diseño">
+    Haz clic en el lienzo sobre la **sección**, **fila** o **columna** que quieras animar.
+  </Step>
+  <Step title="Abre la pestaña Animations">
+    En la barra lateral derecha, haz clic en la pestaña **Animations**. Bajo **Entrance Animation** verás las categorías disponibles.
+  </Step>
+  <Step title="Previsualiza las opciones de animación">
+    Pasa el cursor sobre cualquier tarjeta de animación: se reproduce sobre el bloque seleccionado en el lienzo. Retira el cursor para limpiar la vista previa y comparar otras opciones.
+  </Step>
+  <Step title="Elige una animación">
+    Haz clic en la tarjeta que quieras aplicar. La animación queda guardada en el bloque.
+  </Step>
+  <Step title="Ajusta la configuración de la animación">
+    Usa los deslizadores y desplegables para definir:
+
+    - **Duration** — de 0.1 s a 3 s
+    - **Delay** — de 0 s a 5 s
+    - **Scale** — de 0.5× a 2×
+    - **Easing** — Linear, Ease-in, Ease-out, Ease-in-out
+  </Step>
+  <Step title="Activa las animaciones en móvil (opcional)">
+    Si quieres que la animación se reproduzca en teléfonos, enciende el interruptor **Enable animations on mobile** en la pestaña Animations. Por defecto está apagado para preservar el rendimiento móvil.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Save** en la parte superior del editor y publica la página para ver las animaciones en acción. Desplázate por la página para disparar la animación de cada bloque.
+  </Step>
+</Steps>
+
+<Note>
+  📸 _Espacio para captura: bloque seleccionado en el lienzo con la pestaña **Animations** abierta, el interruptor **Enable animations on mobile** y la tarjeta de Entrance Animation activa._
+</Note>
+
+## Recetas de animación por tipo de sección
+
+Estas combinaciones te dan un punto de partida probado para los bloques más habituales de un embudo o un sitio web:
+
+| Sección | Animación | Duration | Easing | Scale | Notas |
+| :-- | :-- | :-- | :-- | :-- | :-- |
+| **Héroe principal** | Fade Up | 0.8 s | Ease-out | 1× | Anima solo la sección; deja el contenido interno estático para que el titular se lea de inmediato. |
+| **Beneficios en tres columnas** | Fade Up | 0.5 s | Ease-out | 1× | Anima las columnas y deja fila y contenido sin animación para un efecto de cascada corto. |
+| **Imagen \+ texto enfrentados** | Slide Left / Slide Right | 0.7 s | Ease-in-out | 1× | Una columna entra desde cada lado y se encuentran en el centro. |
+| **Testimonios** | Zoom In | 0.6 s | Ease-out | 0.8× | Con `Scale` por debajo de 1× el acercamiento se siente más contenido. |
+| **Tabla de precios** | Fade In | 0.4 s | Linear | 1× | Movimiento mínimo: el visitante está comparando cifras, no mirando efectos. |
+| **Llamado a la acción final** | Bounce In | 0.9 s | Ease-out | 1.2× | Un poco de energía justo antes del botón de conversión. |
+| **Insignia de garantía** | Infinite Loop — Glow | 1.5 s | Ease-in-out | 1× | Solo una por página, siempre junto al botón principal. |
+| **Preguntas frecuentes** | Fade In | 0.3 s | Ease-out | 1× | Bloque largo de lectura: cuanto menos movimiento, mejor. |
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="No veo las opciones de Entrance Animation">
+    Verifica que el bloque seleccionado sea una **sección**, **fila** o **columna**, y que la pestaña **Animations** esté abierta en la barra lateral. Si no aparece nada, confirma que el bloque siga seleccionado en el lienzo.
+  </Accordion>
+
+  <Accordion title="Las animaciones no se reproducen en móvil">
+    Confirma que el interruptor **Enable animations on mobile** esté encendido para ese bloque **y** para todos sus bloques padre. Si la sección lo tiene apagado, las filas y columnas de su interior no se animarán aunque tengan el suyo encendido.
+  </Accordion>
+
+  <Accordion title="La secuencia se siente descoordinada">
+    Revisa que los bloques padre (Sección → Fila → Columna) tengan sus animaciones configuradas en la jerarquía correcta. Un `Delay` alto en un bloque intermedio retrasa toda la cadena posterior.
+  </Accordion>
+
+  <Accordion title="La vista previa al pasar el cursor dejó de funcionar">
+    Actualiza el lienzo del editor o vuelve a abrir la página para recargar el sistema de vista previa de animaciones.
+  </Accordion>
+
+  <Accordion title="El contenido aparece antes de que termine su bloque padre">
+    Comprueba que el bloque padre tenga efectivamente una animación de entrada asignada. Si el padre está en **None**, el hijo no tiene a quién esperar y se anima de inmediato.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo animar elementos individuales dentro de una sección, fila o columna?">
+    Sí. Las animaciones de entrada siguen funcionando en elementos individuales (texto, imágenes, botones, etc.). Cuando un bloque tiene animación de entrada, el sistema anima primero el bloque y luego los elementos de su interior: los elementos esperan a que el bloque termine antes de comenzar.
+  </Accordion>
+
+  <Accordion title="¿Qué sucede si reordeno las secciones de mi página?">
+    La secuencia de animación se actualiza automáticamente. La secuencia se deriva de la estructura actual de la página, por lo que al reordenar los bloques la sincronización se ajusta sin recálculo manual.
+  </Accordion>
+
+  <Accordion title="¿Las animaciones de entrada funcionan en las plantillas de elementos guardadas?">
+    Sí. Al arrastrar una plantilla de elemento guardada a una página, los elementos que contiene respetan la secuencia de animación del bloque padre. Si el bloque padre tiene una animación de entrada, los elementos de la plantilla esperan a que el padre termine antes de animarse.
+  </Accordion>
+
+  <Accordion title="¿Puedo desactivar una animación de entrada después de aplicarla?">
+    Sí. En la pestaña **Animations**, haz clic en la **X** o en el botón de eliminar junto a la animación de entrada seleccionada para borrarla. El bloque volverá a su estado normal, sin animación.
+  </Accordion>
+
+  <Accordion title="¿Por qué algunas animaciones no se reproducen en móvil incluso con la opción activada?">
+    Comprueba que **Enable animations on mobile** esté activado en todos los bloques principales. Si una sección lo tiene desactivado, las animaciones de las filas y columnas dentro de esa sección no se reproducirán en móvil, aunque sus interruptores individuales estén encendidos.
+  </Accordion>
+
+  <Accordion title="¿Las animaciones de entrada afectan al tiempo de carga de la página?">
+    Tienen un impacto mínimo. Utilizan transformaciones CSS y cambios de opacidad, que se aceleran por hardware. Sin embargo, habilitar animaciones en dispositivos móviles de gama baja puede reducir la fluidez del desplazamiento: usa las animaciones móviles con moderación.
+  </Accordion>
+
+  <Accordion title="¿Puedo previsualizar cómo se verán las animaciones en dispositivos móviles?">
+    Sí. Usa el modo de vista previa para móviles del Creador de páginas (activa la vista de dispositivo en la parte superior del lienzo). Las animaciones de entrada que tengan activada la opción **Enable animations on mobile** se reproducirán en ese modo.
+  </Accordion>
+
+  <Accordion title="¿Es necesario volver a guardar las páginas ya publicadas para usar la secuenciación automática?">
+    No. La secuenciación automática se genera cuando se renderiza la página, por lo que las páginas ya publicadas se benefician sin necesidad de volver a guardarlas.
+  </Accordion>
+
+  <Accordion title="¿Cuántas animaciones debería usar en una misma página?">
+    No hay un límite técnico, pero sí uno de diseño. Como regla práctica, usa **una o dos familias de animación** en toda la página (por ejemplo, Fade y Slide) y reserva las categorías más llamativas para uno o dos momentos concretos.
+  </Accordion>
+
+  <Accordion title="¿Se repite la animación si el visitante vuelve a subir y bajar?">
+    Los bloques permanecen visibles una vez que se han animado. Las únicas animaciones que se repiten de forma continua son las de la categoría **Infinite Loop**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Control de bordes en el creador de páginas" icon="border-all" href="/embudos-sitios-web/control-de-bordes-en-el-creador-de-paginas">
+    Define el marco visual de los bloques que vas a animar.
+  </Card>
+
+  <Card title="Crea páginas en el Creador de páginas" icon="file-circle-plus" href="/embudos-sitios-web/crea-paginas-en-el-creador-de-paginas">
+    Organiza la estructura de páginas antes de aplicar animaciones.
+  </Card>
+</CardGroup>
+
+## ¿Necesitas ayuda?
+
+Si encuentras problemas al configurar las animaciones de entrada, empieza por verificar tres cosas: que el bloque seleccionado sea una sección, fila o columna; que la pestaña **Animations** esté abierta; y que el interruptor de móvil esté encendido en toda la cadena de bloques padre.
+
+Si el problema persiste, ponte en contacto con el administrador de tu cuenta o con el equipo de soporte para obtener ayuda. Ellos te guiarán en la configuración y se asegurarán de que todo funcione correctamente.
