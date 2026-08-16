@@ -1,0 +1,169 @@
+---
+title: "Validación de cumplimiento A2P impulsada por IA"
+sidebarTitle: "Validación de cumplimiento A2P impulsada por IA"
+description: "Revisión previa al envío que analiza automáticamente su formulario de suscripción, su Política de privacidad y sus Términos de servicio antes de enviar la campaña A2P 10DLC, con los criterios verificados en cada sección y cómo interpretar los resultados."
+icon: "wand-magic-sparkles"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Este artículo explica la validación de cumplimiento A2P con IA que se ejecuta dentro del flujo de registro de campañas de SMS.
+</Info>
+
+La validación de cumplimiento A2P con IA le ayuda a detectar problemas comunes de cumplimiento antes de enviar su campaña A2P 10DLC para su revisión por parte del operador. Durante la configuración de la campaña, el sistema revisa su formulario de suscripción, la Política de privacidad y los Términos de servicio para ayudarle a identificar divulgaciones faltantes, lenguaje legal incompleto y otras deficiencias comunes en las primeras etapas del proceso de envío. Esto puede reducir los rechazos evitables, acortar los ciclos de reenvío y mejorar la experiencia general de envío de A2P.
+
+Para obtener información general sobre A2P 10DLC, consulte: **Mejores prácticas para la aprobación de marca de A2P 10DLC**: [https://help.leadconnectorhq.com/en/support/solutions/articles/155000000766](https://help.leadconnectorhq.com/en/support/solutions/articles/155000000766)
+
+## Contenido
+
+- ¿Qué es la validación de cumplimiento A2P impulsada por IA?
+- Principales ventajas
+- Métodos de suscripción admitidos
+- ¿Qué se revisa?
+- Cómo interpretar los resultados de la revisión
+- Cómo utilizar la revisión de cumplimiento
+- Preguntas frecuentes
+- Artículos relacionados
+
+## ¿Qué es la validación de cumplimiento A2P impulsada por IA?
+
+La validación de cumplimiento A2P con IA es una **revisión previa al envío** integrada en el flujo de la campaña A2P. Escanea automáticamente la URL del formulario de suscripción enviado, revisa las páginas de Política de privacidad y Términos de servicio vinculadas y las compara con los requisitos de cumplimiento comunes relacionados con las expectativas del sector y de los operadores. Esto le ayuda a identificar problemas antes de que su solicitud llegue a los operadores, para que pueda realizar actualizaciones con anticipación y enviarla con mayor confianza.
+
+<Warning>
+  Esta revisión tiene como objetivo reducir las causas comunes de rechazo, pero **no garantiza la aprobación del operador**. La decisión final de aprobación depende del caso de uso de su campaña, el contenido del mensaje, las normas específicas del operador y otros factores de revisión.
+</Warning>
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura del modal «Compliance Review» con las tres filas (Opt-in Form Review, Privacy Policy Review, Terms of Service Review) en estado «Ongoing» y los botones Cancel y Proceed.
+</Note>
+
+## Principales ventajas de la validación de cumplimiento A2P mediante IA
+
+| Ventaja | Qué gana usted |
+| --- | --- |
+| **Detección temprana de problemas** | Se identifican las deficiencias de cumplimiento más comunes antes de que su solicitud A2P se envíe a los operadores |
+| **Menos rechazos evitables** | Los problemas con la información faltante, las páginas legales incompletas y los formularios de suscripción pueden resolverse antes |
+| **Próximos pasos más claros** | Los resultados de la revisión línea por línea facilitan la comprensión de lo que puede necesitar actualizarse |
+| **Mayor confianza en las presentaciones** | Puede revisar los resultados y decidir si resuelve los elementos marcados antes de continuar |
+
+## Métodos de suscripción admitidos
+
+En este momento, la validación de cumplimiento A2P basada en IA admite:
+
+- Formulario del sitio web
+- Formulario de contacto de Facebook
+
+Es posible que en el futuro se admitan métodos de suscripción adicionales.
+
+## ¿Qué se revisa?
+
+La revisión de cumplimiento verifica **tres áreas** para que pueda identificar rápidamente dónde existe un problema:
+
+| Área revisada | Por qué importa |
+| --- | --- |
+| **Formulario de suscripción** | Es una de las partes más importantes del cumplimiento A2P, ya que muestra cómo los contactos dan su consentimiento para recibir mensajes. La falta de un texto de consentimiento claro, las divulgaciones poco claras o las casillas de verificación obligatorias pueden aumentar el riesgo de rechazo |
+| **Política de privacidad** | Explica qué información recopila y cómo se gestiona. Una política completa y accesible ayuda a los revisores a entender cómo se recopilan, usan, almacenan y divulgan los datos del cliente |
+| **Condiciones de servicio** | Deben explicar con claridad su programa de SMS y los términos clave de cara al cliente. La falta de detalles del programa, de instrucciones de baja o de los avisos legales exigidos puede generar dudas de cumplimiento durante la revisión |
+
+Cada sección muestra el número de aprobados y una revisión detallada de los criterios verificados.
+
+## Cómo interpretar los resultados de la revisión de cumplimiento
+
+Los resultados de la revisión le ayudan a ver rápidamente qué parte de cada sección cumple con los criterios de validación actuales, lo que facilita priorizar qué corregir antes de continuar.
+
+Dentro del modal de revisión de cumplimiento verá:
+
+- Secciones separadas para el formulario de suscripción, la Política de privacidad y los Términos de servicio.
+- Un conteo de aprobados para cada sección (por ejemplo, _Passed: 7/8_).
+- Comprobaciones línea por línea que muestran qué elementos pasaron y cuáles quedaron marcados.
+- Descripciones emergentes (_tooltips_) que ofrecen orientación adicional sobre qué significa un elemento marcado.
+
+### Criterios verificados en cada sección
+
+Esta tabla reproduce los puntos que aparecen dentro del modal, con el ejemplo de conteo que muestra la fuente. Los estados corresponden a la captura de ejemplo, no a un resultado fijo: en su cuenta variarán según lo que tenga publicado.
+
+| Sección | Criterio verificado | Estado en el ejemplo |
+| --- | --- | --- |
+| **Opt-in Form Review** (Passed: 7/8) | Opt-out instructions — instrucciones de baja | Aprobado |
+|  | Message frequency disclosure — divulgación de la frecuencia de mensajes | Aprobado |
+|  | Checkboxes can't be mandatory — las casillas no pueden ser obligatorias | Aprobado |
+|  | Message type disclosure — divulgación del tipo de mensaje | Aprobado |
+|  | Message & data rates disclosure — aviso de tarifas de mensajes y datos | Aprobado |
+| **Privacy Policy Review** (Passed: 6/7) | What information is collected — qué información se recopila | Aprobado |
+|  | How user data is used — cómo se usan los datos del usuario | Aprobado |
+|  | SMS opt-in details — detalles del consentimiento SMS | **Marcado** |
+|  | Cookie & tracking practices — prácticas de cookies y seguimiento | Aprobado |
+|  | Data security and handling — seguridad y tratamiento de datos | Aprobado |
+|  | User rights — derechos del usuario | Aprobado |
+|  | Mobile info sharing statement — declaración de no compartir información móvil | Aprobado |
+| **Terms of Service Review** (Passed: 3/7) | Description of SMS use cases — descripción de los casos de uso de SMS | **Marcado** |
+|  | Opt-out instructions — instrucciones de baja | **Marcado** |
+|  | Customer support contact — contacto de atención al cliente | Aprobado |
+|  | Message & data rate disclosure — aviso de tarifas de mensajes y datos | **Marcado** |
+|  | Carrier liability disclaimer — aviso de responsabilidad del operador | **Marcado** |
+|  | Age restriction (18\+) — restricción de edad | Aprobado |
+|  | Link to Privacy Policy — enlace a la política de privacidad | Aprobado |
+
+### Qué ocurre si se marcan problemas
+
+Un resultado marcado no significa automáticamente que su campaña vaya a ser rechazada, pero sí significa que puede existir un problema de cumplimiento que conviene revisar antes del envío. Si se marcan problemas:
+
+<Steps>
+  <Step title="Revise cada elemento fallido">
+    Revíselo en la sección correspondiente.
+  </Step>
+  <Step title="Use la orientación de las descripciones emergentes">
+    Le ayudan a entender qué puede estar faltando o poco claro.
+  </Step>
+  <Step title="Actualice sus páginas">
+    Actualice su formulario de suscripción, su Política de privacidad o sus Términos de servicio según sea necesario.
+  </Step>
+  <Step title="Vuelva al flujo de envío">
+    Regrese al flujo de envío y continúe cuando sus actualizaciones estén listas.
+  </Step>
+</Steps>
+
+<Warning>
+  Si decide no corregir los problemas de inmediato, aún puede continuar una vez finalizada la revisión. Sin embargo, continuar con elementos marcados **puede aumentar la probabilidad de rechazo**.
+</Warning>
+
+## Cómo utilizar la revisión de cumplimiento
+
+Como la revisión se ejecuta automáticamente, no necesita iniciarla manualmente ni salir del flujo de la campaña A2P. Así funciona:
+
+1. Introduzca los detalles de su campaña A2P como de costumbre. Asegúrese de usar un método de suscripción admitido (formulario del sitio web o formulario de clientes potenciales de Facebook).
+2. Añada la URL de su formulario de suscripción en el flujo de envío de la campaña. Asegúrese de que su URL sea de acceso público.
+3. Antes de enviar la solicitud, el sistema escanea la URL del formulario de suscripción y revisa las páginas vinculadas de Política de privacidad y Términos de servicio. El modal de revisión de cumplimiento se abre automáticamente.
+4. El sistema muestra los resultados de cada sección.
+5. Revise los elementos marcados y decida si:
+   - Vuelve atrás y actualiza el formulario o las páginas legales.
+   - Continúa con el envío a pesar de las advertencias.
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura del modal «Compliance Review» con los tres conteos visibles (Opt-in Form Review 7/8, Privacy Policy Review 6/7, Terms of Service Review 3/7) y los botones Cancel y Proceed.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Superar todas las comprobaciones de cumplimiento garantiza la aprobación A2P?" icon="circle-question">
+    No. Superar todas las comprobaciones puede ayudar a reducir los riesgos de rechazo más comunes, pero los operadores siguen tomando la decisión final de aprobación.
+  </Accordion>
+
+  <Accordion title="¿Puedo enviar mi campaña igualmente si hay elementos marcados?" icon="paper-plane">
+    Sí. Cuando termina la revisión, puede elegir entre volver atrás y corregir los problemas o continuar con el envío.
+  </Accordion>
+
+  <Accordion title="¿Cuándo se ejecuta la revisión de cumplimiento?" icon="clock">
+    La revisión se ejecuta antes de que revise y envíe su solicitud A2P en el flujo de la campaña. Se inicia automáticamente como parte del proceso de envío.
+  </Accordion>
+
+  <Accordion title="¿Qué debo hacer si un elemento marcado ya aparece en mi página?" icon="magnifying-glass">
+    Revise la redacción, la ubicación y la visibilidad del contenido. Si es necesario, actualice la página para que la información requerida sea más clara y fácil de detectar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+- **Mejores prácticas para la aprobación de marcas A2P 10DLC**: [https://help.leadconnectorhq.com/en/support/solutions/articles/155000000766](https://help.leadconnectorhq.com/en/support/solutions/articles/155000000766)
+- **Guía paso a paso y preguntas frecuentes sobre el registro de marcas**: [https://help.leadconnectorhq.com/en/support/solutions/articles/48001226976](https://help.leadconnectorhq.com/en/support/solutions/articles/48001226976)
+- **Política de mensajería de LeadConnector**: [https://help.leadconnectorhq.com/en/support/solutions/articles/48001214536](https://help.leadconnectorhq.com/en/support/solutions/articles/48001214536)
