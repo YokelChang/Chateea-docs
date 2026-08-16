@@ -1,0 +1,214 @@
+---
+title: "Primeros pasos con los cupones"
+description: "Crea cupones porcentuales o de monto fijo, con límites, vigencia y control de duración."
+icon: "ticket"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+## Descripción general
+
+Los cupones te ayudan a ofrecer descuentos en tus productos y a aumentar las conversiones en el proceso de pago. Puedes crear cupones que se apliquen a **productos de compra única y recurrentes**, y controlar cómo, dónde y con qué frecuencia se pueden usar.
+
+### Dónde se pueden utilizar los cupones
+
+| Lugar | Detalle |
+| --- | --- |
+| **Embudos** | En los formularios de pedido |
+| **Tiendas** | En el proceso de pago de la tienda |
+| **Sitios web** | En los elementos de cobro de tus páginas |
+| **Enlaces de pago** | Al abrir el enlace de cobro |
+| **Calendarios** | En las citas de pago |
+| **Servicios** | En el menú de servicios |
+| **Página de venta de tarjetas de regalo** | Al comprar una tarjeta de regalo |
+| **Creación de suscripciones desde el panel** | Cuando tú mismo generas la suscripción para el cliente |
+
+<Warning>
+  Los cupones **no son compatibles con presupuestos ni facturas**. Si necesitas rebajar el monto de una factura, hazlo con un descuento dentro del propio documento, no con un cupón.
+
+  Además, ciertas configuraciones de cupones **no funcionan con los pagos de suscripción realizados con PayPal**. Revisa el detalle al final de este artículo.
+</Warning>
+
+## ¿Qué hace esta función?
+
+Los cupones te permiten:
+
+- Ofrecer descuentos **porcentuales o fijos**
+- Aplicar descuentos a **carritos completos o a productos específicos**
+- Controlar el uso mediante **límites y restricciones**
+- Aplicar descuentos en **suscripciones**, con control de duración
+- Hacer **seguimiento del uso y del canje**
+
+## ¿Qué necesito para usar cupones?
+
+- Acceso a **Pagos → Cupones**
+- Un proceso de pago activo que venda productos y donde se acepten cupones
+
+## Cómo crear un cupón
+
+### Paso 1: Navega a Cupones
+
+Ve a **Pagos → Cupones → Crear cupón**.
+
+### Paso 2: Introduce los datos básicos
+
+**Nombre del cupón**
+
+- Es la referencia **interna** de tu cupón
+- Ejemplo: `SUMMER SALE 2025`
+
+**Código de cupón**
+
+- Es el código que el cliente escribirá en el checkout
+- Debe ser:
+  - **Solo alfanumérico**
+  - **Sin espacios ni caracteres especiales**
+  - **Sin distinción de mayúsculas** (se convierte automáticamente a mayúsculas)
+- También puedes hacer clic en **Generar** para que el sistema cree un código automáticamente
+
+<Tip>
+  Usa el nombre para ti y el código para el cliente. El nombre puede ser descriptivo ("Promo lanzamiento septiembre – Instagram") y el código corto y fácil de escribir (`SEPT20`). Un código largo o con guiones se escribe mal y genera tickets de soporte.
+</Tip>
+
+### Paso 3: Selecciona el tipo de cupón
+
+Puedes elegir entre dos tipos:
+
+| Tipo | Cómo funciona | Ejemplo |
+| --- | --- | --- |
+| **Cupón porcentual** | Aplica un descuento en porcentaje sobre el valor total | Carrito de 100 USD \+ cupón del 20 % = **80 USD** |
+| **Cupón de monto fijo** | Aplica un descuento fijo sin importar el tamaño del pedido | Carrito de 100 USD \+ cupón de 25 USD = **75 USD** |
+
+**Moneda del cupón**
+
+- La moneda del cupón se establece **automáticamente** según la moneda de tu subcuenta
+- **No se puede cambiar manualmente**
+
+<Note>
+  Esto importa más en los cupones de monto fijo que en los porcentuales: un 20 % siempre es un 20 % en cualquier moneda, pero "25" significa cosas muy distintas según la divisa de tu cuenta.
+</Note>
+
+### Paso 4: Define la validez (opcional)
+
+Puedes definir cuándo el cupón está disponible:
+
+| Campo | Qué controla |
+| --- | --- |
+| **Fecha y hora de inicio** | Cuándo el cupón se vuelve activo |
+| **Fecha y hora de finalización** | Cuándo el cupón expira |
+
+Si no defines una fecha de finalización, el cupón **permanece activo indefinidamente**.
+
+### Paso 5: Configura las restricciones de uso
+
+Puedes aplicar los siguientes controles:
+
+**1. Limitar el total de canjes**
+
+- Restringe cuántas veces se puede usar el cupón en total
+- Ejemplo: limitar a 100 usos
+
+**2. Limitar a productos seleccionados**
+
+- Restringe el uso del cupón a productos específicos
+- Ejemplo:
+  - El cupón funciona únicamente para "Plan Premium"
+  - No se puede usar en otros productos
+- Los cupones también se pueden restringir a **precios y variantes concretos**, en lugar de a todo lo que esté bajo un producto
+
+**3. Limitar a un uso por cliente**
+
+- Impide que un mismo cliente reutilice el cupón
+
+### Paso 6: Configura el comportamiento en suscripciones (si aplica)
+
+Para productos recurrentes puedes controlar **cuánto tiempo se aplica el descuento**.
+
+En **Aplicar a pagos futuros** puedes elegir:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Para siempre** | El descuento se aplica en todos los ciclos de facturación |
+| **Varios meses** | El descuento se aplica durante una duración fija |
+
+**Ejemplo:**
+
+- Suscripción de 100 USD al mes
+- Cupón del 20 % durante 3 meses
+- El cliente paga 80 USD al mes durante los primeros 3 meses
+- Después vuelve a pagar 100 USD al mes
+
+<Note>
+  Esto se aplica **sin importar la frecuencia de facturación**.
+</Note>
+
+### Paso 7: Crea el cupón
+
+Haz clic en **Crear**. Tu cupón queda activo (o programado, según la configuración que definiste).
+
+## Cómo funcionan los cupones en el checkout
+
+- El campo para introducir el cupón aparece **solo cuando existe un cupón válido**
+- Si no hay ningún cupón aplicable, el campo **se oculta automáticamente**
+- Los descuentos:
+  - Se muestran en el **resumen del checkout**
+  - Se aplican **proporcionalmente** entre los productos aplicables
+  - Quedan **visibles en los detalles del pedido**
+- Muchos procesos de pago (embudos, enlaces de pago, etc.) tienen una opción en el constructor para **habilitar o deshabilitar** la visibilidad y la aplicación de cupones durante el checkout
+
+## Comportamientos y limitaciones importantes
+
+| Punto | Detalle |
+| --- | --- |
+| **Tipos de producto** | Los cupones se aplican a productos de compra única y a productos recurrentes |
+| **Upsells de un clic** | Los cupones **no** se aplican a los upsells de un clic (en el caso de embudos) |
+| **Carrito en cero** | Un cupón puede reducir el valor del carrito a 0 |
+| **Datos de tarjeta en pedidos de 0** | El cliente aún debe introducir los datos de la tarjeta para verificación si esa opción está marcada en el constructor. Si el constructor no tiene ajuste para gestionar transacciones de 0, los datos de tarjeta siempre son obligatorios |
+| **Descuentos del 100 %** | Compatibles con la mayoría de los proveedores, **excepto PayPal** |
+| **Códigos de cupón** | Sin distinción de mayúsculas y únicos |
+| **Distribución del descuento** | Se reparte proporcionalmente entre los productos |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo crear un producto gratis usando cupones?">
+    Sí. Usa un cupón de 100 % de descuento.
+  </Accordion>
+
+  <Accordion title="¿Puedo editar o eliminar cupones después?">
+    Sí. Puedes editarlos, eliminarlos o consultar su historial de uso en cualquier momento.
+  </Accordion>
+
+  <Accordion title="¿Se puede aplicar un cupón a productos de compra única y de suscripción en el mismo pedido?">
+    Sí. Los cupones se aplican a ambos tipos dentro del mismo pedido. En el caso de las suscripciones, el comportamiento del cupón seguirá la duración configurada (una sola vez, varios meses o para siempre).
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si se aplica un cupón a un producto con varias unidades?">
+    El descuento se calcula en función del valor total del producto (cantidad × precio). Por ejemplo, si un producto cuesta 20 USD y el cliente compra 5 unidades con un cupón del 10 %, el descuento aplicado será de 10 USD (el 10 % de 100 USD).
+  </Accordion>
+
+  <Accordion title="¿Puedo cambiar un cupón después de haberlo usado?">
+    Puedes editar ciertos ajustes del cupón (como el nombre, los límites o la validez), pero los cambios solo se aplicarán a **usos futuros**. Los pedidos anteriores en los que ya se aplicó el cupón permanecerán sin cambios.
+  </Accordion>
+
+  <Accordion title="¿El cupón se aplica a los gastos de configuración?">
+    Sí. El cupón se aplica a los gastos de configuración en el caso de productos de suscripción.
+  </Accordion>
+
+  <Accordion title="¿Qué configuraciones de cupones no son compatibles con PayPal?">
+    Las siguientes configuraciones no son compatibles con PayPal:
+
+    1. La configuración de suscripción con un **número definido de meses** en lugar de "Para siempre" no funciona con PayPal: se cobrará el descuento durante toda la duración de la suscripción en vez de solo por los meses definidos.
+    2. Un cupón que deja el valor del pedido en **0** —es decir, un cupón de 100 % de descuento, o uno de monto fijo que hace que el pedido final quede en 0— no funciona con PayPal si hay productos de suscripción dentro del proceso de pago.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si un cupón no aparece en el checkout o no aplica el descuento esperado, escríbenos por WhatsApp al **\+1 829-580-7071** con el código del cupón, el producto afectado y el proveedor de pago que estás usando.
+
+<Card title="Aplicación de cupones en productos de suscripción" icon="repeat" href="/pagos-facturas/cupones-productos-suscripcion">
+  Profundiza en cómo se comporta la duración del descuento en productos recurrentes.
+</Card>
