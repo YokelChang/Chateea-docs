@@ -1,0 +1,530 @@
+---
+title: "Cómo configurar los eventos de objetivos del flujo de trabajo"
+sidebarTitle: "Cómo configurar los eventos de objetivos del flujo de trabajo"
+description: "Los Eventos de Objetivo mueven al contacto directamente a un paso concreto del flujo de trabajo cuando cumple una condición: evento de correo, clic en enlace de activación, etiquetas o estado de la cita."
+icon: "bullseye"
+---
+
+## Cómo configurar los eventos de objetivos del flujo de trabajo
+
+<Info>
+  **Documentado el 16 de agosto de 2026.**
+
+  Artículo original modificado el miércoles, 7 de junio de 2023 a las 6:46 a. m.
+</Info>
+
+¿Alguna vez has pensado en lo genial que sería si los contactos que cumplen una condición específica o un evento objetivo dentro de un flujo de trabajo pudieran pasar automáticamente a un paso específico dentro de ese flujo de trabajo sin tener que pasar por los pasos anteriores?
+
+Ahora puedes hacerlo con la acción **Eventos de objetivos del flujo de trabajo**. Este artículo explica qué son los eventos de objetivos y cómo y cuándo utilizarlos.
+
+<Warning>
+  **Tenga en cuenta:** para la versión 1, los filtros de eventos de objetivos se restringen a eventos de correo electrónico, agregar o eliminar etiquetas. Además, actualmente solo se permite **UN** evento de objetivo por flujo de trabajo.
+</Warning>
+
+### Este artículo trata sobre
+
+- Cómo configurar eventos de objetivos en flujos de trabajo
+- ¿Qué son los eventos de objetivo?
+- ¿Cómo funcionan los eventos de objetivos?
+- ¿Qué sucede si el contacto alcanza un Evento Meta sin cumplir sus condiciones?
+- ¿Qué eventos de Goal son compatibles actualmente? (Evento de correo electrónico recibido, Clic en enlace de activación, Etiquetas de contacto, Estado de la cita)
+- ¿Por qué querrías utilizar Eventos de Meta?
+
+---
+
+## Cómo configurar eventos de objetivos en flujos de trabajo
+
+Seleccione la acción de flujo de trabajo llamada **Evento de objetivo** \> Seleccione entre **"Evento de correo electrónico recibido"**, **"Se hizo clic en un enlace de activación"**, **"Se agregó una etiqueta de contacto"**, **"Se eliminó una etiqueta de contacto"** y **"Estado de la cita"**.
+
+<Note>
+  **Imagen próximamente.** Captura del constructor de flujos de trabajo con la acción **Goal** añadida entre el bloque Email y la bandera de fin del flujo.
+</Note>
+
+---
+
+## ¿Qué son los eventos de objetivo?
+
+La función Eventos de Objetivo permite establecer un objetivo de contacto para un flujo de trabajo. Desde el momento en que un contacto ingresa al flujo de trabajo, el sistema estará atento a que se produzca el evento de objetivo especificado, independientemente del paso en el que se encuentre el contacto.
+
+---
+
+## ¿Cómo funcionan los eventos de objetivos?
+
+Una vez que el contacto haya cumplido las condiciones del objetivo que especificaste en la acción, se le incorporará al paso del objetivo (independientemente de en qué punto del flujo de trabajo se encuentre).
+
+Actualmente, la función de Acción de objetivo del flujo de trabajo admite eventos de correo electrónico, etiquetas y clics en enlaces. Vuelva a consultar esta página periódicamente, ya que se irán añadiendo más acciones.
+
+---
+
+## ¿Qué sucede si el contacto alcanza un Evento Meta sin cumplir sus condiciones?
+
+Si el evento Objetivo no se alcanza cuando el contacto llega a la acción objetivo en su automatización, habrá 3 opciones para elegir.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "560px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Opción</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Nombre en la interfaz</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Qué ocurre con el contacto</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>1. Finalizar este flujo de trabajo</td>
+        <td style={{ padding: "10px 16px" }}>End this workflow</td>
+        <td style={{ padding: "10px 16px" }}>Sale del flujo de trabajo al llegar a la acción objetivo sin haber cumplido la condición.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>2. Continuar de todos modos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Continue anyway</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Avanza a los pasos siguientes aunque no haya cumplido la condición del objetivo.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>3. Esperar hasta que se alcance el objetivo</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Wait until the goal is met</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Queda retenido en ese punto hasta que cumpla la condición del objetivo.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Cómo leer esta tabla:** esta configuración solo aplica al contacto que **llega caminando** hasta el paso del objetivo sin haberlo cumplido antes. Los contactos que sí cumplen la condición saltan al paso del objetivo desde donde estén, sin pasar por aquí.
+
+<Note>
+  **Imagen próximamente.** Captura del panel **Goal Event** con los campos ACTION NAME, SELECT TYPE OF GOAL en `Recieved an Email Event`, PICK EMAIL STEP TO WAIT FOR, SELECT EMAIL EVENT y el desplegable _IF CONTACT REACHES THIS GOAL ACTION WITHOUT MEETING ITS CONDITIONS_ abierto con las tres opciones.
+</Note>
+
+---
+
+## ¿Qué eventos de Goal son compatibles actualmente?
+
+El desplegable **SELECT TYPE OF GOAL** ofrece: Recieved an Email Event, Clicked a trigger link, Added a contact Tag, Removed a contact Tag y Appointment Status.
+
+### 1. Evento de correo electrónico recibido
+
+Para el filtro **"Evento de correo electrónico recibido"**, asegúrese de seleccionar los eventos que desea que el sistema reconozca. Hay varias opciones:
+
+- Clic
+- Abierto
+- Me he dado de baja (solo en Mailgun)
+- Se quejó
+- Correo basura
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Caso de uso</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Qué consigue</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Marketing basado en la interacción</td>
+        <td style={{ padding: "10px 16px" }}>Mueve automáticamente a los contactos a un paso diseñado para usuarios comprometidos cuando abran o hagan clic en un correo electrónico.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Campañas de correo electrónico secuenciales</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Mueve a los contactos al siguiente correo de una serie secuencial solo después de que hayan abierto el anterior.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Gestión de bajas</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Dispara un flujo de recuperación cuando un contacto se da de baja de tus correos.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Personalización por comportamiento</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si un contacto hace clic con más frecuencia en un tipo concreto de contenido (por ejemplo, "Tech Gadgets"), dispara un flujo que le envíe contenido más personalizado según sus intereses.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Registro a eventos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si promocionas un evento por correo, fija un objetivo para cuando el contacto abra la invitación y dispara un flujo de seguimiento que le empuje a registrarse.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento de seminarios web</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Tras enviar el enlace de la repetición de un webinar, dispara un flujo de seguimiento cuando el contacto abra ese correo.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Participación en encuestas</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Envía una encuesta por correo y fija un objetivo para cuando el contacto abra ese correo, disparando un flujo que le envíe un agradecimiento o una recompensa.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Finalización de un curso por correo</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si impartes un curso por correo, dispara un flujo que envíe un certificado o una insignia cuando el contacto abra el último correo del curso.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Uso de descuentos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si enviaste un correo con un código de descuento, fija un objetivo para cuando el contacto lo abra y dispara un flujo que le recuerde usarlo antes de que caduque.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento de ventas</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Para equipos de ventas: si se envía una propuesta o presupuesto por correo, fija un objetivo para cuando el contacto lo abra y dispara un flujo de seguimiento que mantenga el trato en marcha.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<AccordionGroup>
+  <Accordion title="¿Puede un solo evento de correo cumplir varios eventos de objetivo?">
+    Sí, un único evento de correo, como la apertura de un email, puede cumplir varios eventos de objetivo si los objetivos están configurados para ese evento en particular.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si un evento de correo ocurre fuera del horario laboral? ¿Seguirá activando el evento de objetivo?">
+    Sí, el sistema "escucha" el evento de correo especificado las 24 horas. El contacto se moverá al paso del objetivo si se cumple el evento, incluso fuera del horario laboral.
+  </Accordion>
+
+  <Accordion title="Si un contacto abre un correo varias veces, ¿se activará el evento de objetivo cada vez?">
+    No. Una vez que un contacto cumple un Evento de Objetivo de correo concreto, no se le vuelve a evaluar para ese mismo objetivo dentro de ese flujo de trabajo.
+  </Accordion>
+
+  <Accordion title="¿Qué ocurre si el objetivo se fija sobre un correo que no forma parte del flujo de trabajo?">
+    El evento de objetivo solo se dispara si el contacto abre o hace clic en el correo específico asociado al objetivo mientras está dentro del flujo de trabajo. El objetivo no puede cumplirse si el correo no forma parte del flujo.
+  </Accordion>
+
+  <Accordion title="¿Puedo configurar un evento de objetivo para cuando un contacto NO abre un correo o NO hace clic en un enlace?">
+    Los eventos de objetivo admiten actualmente condiciones positivas, es decir, cuando el contacto realiza una acción determinada. Las condiciones negativas, como no abrir un correo, no están soportadas por ahora.
+  </Accordion>
+</AccordionGroup>
+
+### 2. Hice clic en un enlace desencadenante
+
+Para **"Clicked Trigger link"**, selecciona los enlaces de activación listados en el menú desplegable. Si aún no has creado un enlace de activación, créalo antes de continuar.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Caso de uso</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Qué consigue</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Interacción con el sitio web</td>
+        <td style={{ padding: "10px 16px" }}>Mueve a los contactos a un paso diseñado para usuarios comprometidos cuando hacen clic en un enlace concreto de tu web.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Respuestas de encuesta</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Usa enlaces distintos para respuestas distintas, moviendo al contacto al paso adecuado según lo que responda.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Interés en un producto</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Mueve a los contactos a un flujo diseñado para nutrir el interés en un producto o servicio concreto cuando hacen clic en un enlace relacionado.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Marketing de contenidos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si compartiste un artículo o una guía, fija un objetivo para cuando el contacto haga clic en el enlace, disparando un flujo que mida su interés o recoja su opinión.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Registros a seminarios web</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si promocionas un webinar, dispara un flujo de seguimiento cuando el contacto haga clic en el enlace de registro.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Compra en comercio electrónico</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Dispara un flujo posterior a la compra cuando el contacto hace clic en un enlace de "Buy Now" o "Add to Cart".</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Altas en membresías o suscripciones</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Dispara un flujo de bienvenida cuando el contacto hace clic en el enlace de alta.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Activación de prueba</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Para empresas de software con prueba gratuita, dispara un flujo de incorporación cuando el contacto hace clic en "Activate Trial".</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Marketing de afiliación</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si eres afiliado, dispara un flujo de seguimiento cuando el contacto hace clic en tu enlace de afiliado.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Confirmación de descarga</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si ofreces un recurso gratuito, fija un objetivo para cuando el contacto haga clic en el enlace de descarga y dispara un flujo que siga la conversación.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si un contacto hace clic en el enlace antes de entrar al flujo de trabajo? ¿Activará igualmente el objetivo?">
+    No. El contacto debe estar dentro del flujo de trabajo y cumplir las condiciones del objetivo durante ese tiempo para que se active el Evento de Objetivo por clic en enlace.
+  </Accordion>
+
+  <Accordion title="Si un contacto hace clic varias veces en el enlace, ¿se activará el objetivo cada vez?">
+    No. Una vez que un contacto cumple un Evento de Objetivo de clic en enlace concreto, no se le vuelve a evaluar para ese mismo objetivo dentro de ese flujo de trabajo.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si un contacto hace clic pero no cumple otras condiciones del Evento de Objetivo?">
+    El contacto no se moverá al paso del objetivo a menos que cumpla todas las condiciones fijadas para ese objetivo.
+  </Accordion>
+
+  <Accordion title="¿Se puede usar un enlace de cualquier sitio web para el Evento de Objetivo por clic?">
+    El enlace debe ser un enlace rastreado de tu plataforma de email marketing o automatización para que el sistema detecte el clic y active el Evento de Objetivo.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar el mismo enlace de activación para distintos eventos de objetivo en el mismo flujo de trabajo?">
+    Sí, puedes usar el mismo enlace para distintos eventos de objetivo siempre que cada uno tenga condiciones únicas.
+  </Accordion>
+</AccordionGroup>
+
+### 3. Etiquetas de contacto (Agregar y eliminar)
+
+- **Contact Tag Added** — el contacto es llevado al paso del objetivo cuando se le agrega una etiqueta específica.
+- **Contact Tag Removed** — el contacto es llevado al paso del objetivo cuando se le elimina una etiqueta específica.
+
+<Tip>
+  **Ejemplo de uso de la acción Tag Goal en un flujo de trabajo (de la fuente):** supongamos que estoy intentando vender un producto y, en cuanto se completa la compra, quiero añadir la etiqueta **"product purchased"** al contacto. Mientras tanto, quiero mantener al contacto en el flujo de nutrición. En cuanto se le añade la etiqueta "product purchased", quiero detener el flujo y sacar al contacto.
+
+  El sistema ya podía hacer esto con otro activador y otro flujo de trabajo, pero la incorporación de **Goal Event Action \> Tag function** elimina la necesidad de un flujo adicional.
+
+  Basta con añadir un paso Goal al final del flujo con el evento objetivo _contact tag added_ — **"product purchased"**. El contacto será llevado al paso del objetivo y continuará en cuanto se añada la etiqueta. En este caso, como es el último paso, el contacto se retira del flujo.
+</Tip>
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Caso de uso</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Qué consigue</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Gestión del embudo de ventas</td>
+        <td style={{ padding: "10px 16px" }}>Mueve automáticamente a los contactos por las distintas etapas del flujo de ventas según avanzan de "Lead" a "Prospect", a "Negotiation" y a "Closed Won".</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Compra de producto</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Usa un Evento de Objetivo para disparar un seguimiento posventa o un flujo de venta adicional cuando se añade la etiqueta "Product Purchased".</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento del nivel de interacción</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Usa objetivos de etiqueta para mover contactos entre flujos diseñados para distintos niveles de interacción, con etiquetas como "High Engagement" o "Low Engagement".</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Estado de suscripción</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Dispara distintos flujos de retención o recuperación según los cambios en el estado de suscripción, señalados con las etiquetas "Subscribed" o "Unsubscribed".</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Segmentación por comportamiento</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Segmenta contactos por comportamientos como "Downloaded E-book" o "Attended Webinar" y dispara flujos adaptados a esas acciones.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Satisfacción del cliente</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Usa etiquetas para marcar niveles de satisfacción recogidos en encuestas o formularios y dispara flujos de retención o de control de daños.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Asistencia a eventos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Dispara seguimientos posteriores al evento u ofertas especiales para quienes asistieron, identificados con etiquetas como "Attended Event X".</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Programa de referidos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Añade una etiqueta "Referrer" a los contactos que recomiendan a otros y dispara un flujo con agradecimientos o recompensas especiales.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Venta adicional y cruzada</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si un cliente compra un producto o servicio concreto, se puede añadir una etiqueta específica que dispare un flujo diseñado para vender productos relacionados.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Usuarios de prueba</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Para servicios de software o suscripción, añade una etiqueta "Trial User" a los contactos en prueba gratuita y dispara un flujo diseñado para convertirlos en clientes de pago.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<AccordionGroup>
+  <Accordion title="¿Cómo puedo detectar si una etiqueta se añadió o eliminó externamente, fuera del flujo de trabajo?">
+    Sí, el sistema "escucha" cualquier cambio en las etiquetas de un contacto, venga de donde venga ese cambio, y activará el Evento de Objetivo en consecuencia.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si quiero cambiar la etiqueta del objetivo cuando ya hay contactos dentro del flujo?">
+    Cambiar la etiqueta del objetivo no afectará a los contactos que ya han entrado al flujo de trabajo. Solo los contactos que entren después del cambio serán evaluados contra la nueva etiqueta.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar la misma etiqueta para distintos eventos de objetivo en el mismo flujo de trabajo?">
+    Puedes tener eventos de objetivo separados para añadir y para eliminar la misma etiqueta. Recuerda que los contactos serán llevados al paso del objetivo cuando cumplan la condición.
+  </Accordion>
+
+  <Accordion title="¿Puede un contacto cumplir el mismo Tag Goal Event más de una vez en el mismo flujo de trabajo?">
+    No. Una vez que un contacto es llevado al paso del objetivo tras cumplir un Tag Goal Event, no se le vuelve a evaluar para ese mismo objetivo dentro de ese flujo, salvo que la etiqueta se le retire y se le vuelva a añadir mientras sigue dentro del mismo flujo de trabajo.
+  </Accordion>
+
+  <Accordion title="¿Cómo puedo usar etiquetas para seguir los cambios de etapa del ciclo de vida y automatizar el flujo correspondiente?">
+    Puedes asignar etiquetas correspondientes a distintas etapas del ciclo de vida, como "Lead", "Prospect" y "Customer", y configurar eventos de objetivo en tus flujos para esas etiquetas. El sistema mueve automáticamente a los contactos al paso adecuado según cambia su etapa.
+  </Accordion>
+</AccordionGroup>
+
+### 4. Estado de la cita
+
+Para **Appointment Status**, selecciona un calendario del menú desplegable y luego uno o varios de los estados de cita New, Confirmed y Showed.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "560px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Estado</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Cuándo lleva al contacto al paso del objetivo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>New</td>
+        <td style={{ padding: "10px 16px" }}>Cuando el estado de la cita del calendario seleccionado cambia a "New".</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Confirmed</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Cuando el estado de la cita del calendario seleccionado cambia a "Confirmed".</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Showed</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Cuando el estado de la cita del calendario seleccionado cambia a "Showed".</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Caso de uso</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Estado usado como objetivo y resultado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Incorporación de clientes</td>
+        <td style={{ padding: "10px 16px" }}>"Confirmed": cuando se confirma la reunión introductoria, el contacto salta a la siguiente fase del proceso de incorporación.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Embudo de ventas</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"New": cuando un cliente potencial reserva una consulta inicial, avanza en el embudo saltando los pasos de contacto inicial.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Inscripciones a clases o seminarios web</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"Showed" en un calendario de clases: cuando el alumno asiste, pasa automáticamente a un paso de seguimiento con recursos adicionales o una solicitud de opinión.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Demostraciones de producto</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"New" o "Confirmed": cuando el cliente reserva o confirma la demo, pasa a la siguiente etapa del recorrido, como recibir los materiales de preparación.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Citas sanitarias</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"Showed": cuando el paciente asiste a su primera cita, el flujo lo lleva a un paso con una encuesta de seguimiento o un recordatorio de la siguiente cita.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Sesiones de fitness o entrenamiento personal</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"Showed": cuando el cliente asiste a su sesión, pasa a un paso donde recibe un resumen del entrenamiento o un descuento para reservar la siguiente.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Visitas inmobiliarias</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"Showed" en una visita a una propiedad: tras la visita, el contacto pasa a un paso donde recibe más detalles del inmueble, información de hipoteca u otros anuncios.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Citas de soporte o servicio</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"Confirmed" o "Showed": cuando el cliente confirma o acude a su cita de servicio, pasa al siguiente paso con una encuesta de satisfacción o un recordatorio de la próxima cita.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Consultoría o coaching</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"Confirmed" para una sesión de consultoría: al confirmarla, el cliente pasa a un paso donde recibe materiales preparatorios o preguntas previas a la sesión.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Proceso de entrevistas de RR. HH.</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>"Showed" en una entrevista: cuando el candidato asiste, el flujo lo lleva al siguiente paso, como una verificación de antecedentes o una encuesta sobre el proceso.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<AccordionGroup>
+  <Accordion title="¿Cómo gestiona el sistema que varios contactos cumplan el objetivo de cita a la vez?">
+    El sistema está diseñado para gestionar varios contactos que cumplan las condiciones del objetivo simultáneamente. Cada contacto se moverá al paso del objetivo correspondiente de forma independiente de los demás.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si el estado de la cita cambia mientras el contacto está en otro paso del flujo?">
+    Si el cambio de estado coincide con las condiciones del Evento de Objetivo, el sistema llevará automáticamente al contacto al paso del objetivo, sin importar en qué posición del flujo se encuentre.
+  </Accordion>
+
+  <Accordion title="¿Cómo puedo usar los objetivos de cita para mejorar mi proceso de ventas o reservas?">
+    Ayudan a automatizar y agilizar el proceso moviendo a los contactos a los pasos adecuados según sus acciones. Por ejemplo, si un contacto confirma una cita, puedes moverlo automáticamente a un paso donde recibe materiales de preparación.
+  </Accordion>
+
+  <Accordion title="¿Puede el objetivo de cita detectar cambios de estado hechos fuera del flujo, como actualizaciones manuales?">
+    Sí, el sistema "escucha" el Evento de Objetivo especificado sin importar de dónde venga el cambio de estado. Ya sea por otra parte del flujo, por un sistema externo o por una actualización manual, el contacto se moverá al paso del objetivo si se cumplen las condiciones.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si una cita se reprograma o cancela después de que el contacto ya se movió al paso del objetivo?">
+    El movimiento al paso del objetivo se basa en las condiciones en el momento en que se detectó el Evento de Objetivo. Si el estado cambia después de que el contacto ya fue movido, la acción no se revierte. Puede que necesites gestionar esas situaciones con flujos adicionales o intervenciones manuales.
+  </Accordion>
+
+  <Accordion title="¿Puedo combinar objetivos de cita con otros tipos de Eventos de Objetivo en el mismo flujo de trabajo?">
+    Sí, puedes usar varios tipos de Eventos de Objetivo en el mismo flujo. Ten en cuenta que cada Evento de Objetivo funciona de forma independiente, así que los contactos se moverán al paso asociado a cada evento en cuanto cumplan sus condiciones, sin importar los demás.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  **Imagen próximamente.** Capturas del panel **Goal Event** en sus cuatro variantes: _Recieved an Email Event_ con la lista de eventos de correo, _Clicked a trigger link_ con el selector SELECT TRIGGER LINK, _Added a contact Tag_ con el selector SELECT CONTACT TAG, y _Removed a contact Tag_ con el buscador de etiquetas y el botón **ADD NEW TAG**.
+</Note>
+
+---
+
+## ¿Por qué querrías utilizar Eventos de Meta?
+
+Eliminará la necesidad de cualquier flujo de trabajo secundario que hayas creado para eliminar, continuar o finalizar un flujo de trabajo para un contacto.
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Establecer fecha de inicio del evento" icon="calendar-day" href="/flujo-de-trabajo/establecer-fecha-de-inicio-del-evento">
+    Combina objetivos con esperas relativas a la fecha de un evento.
+  </Card>
+
+  <Card title="Actualizar el campo de contacto" icon="user-pen" href="/flujo-de-trabajo/accion-actualizar-el-campo-de-contacto">
+    Marca en el contacto qué objetivo alcanzó para segmentarlo después.
+  </Card>
+</CardGroup>
