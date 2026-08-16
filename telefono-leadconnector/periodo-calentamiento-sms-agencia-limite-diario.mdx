@@ -1,0 +1,96 @@
+---
+title: "Período de calentamiento de SMS de la agencia y límite diario"
+sidebarTitle: "Período de calentamiento de SMS de la agencia y límite diario"
+description: "Cómo se calcula el límite diario de SMS durante los primeros 7 días de una agencia nueva, el mensaje de error que aparece al superarlo y los pasos de solución."
+icon: "temperature-arrow-up"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+## Descripción general
+
+Para las agencias nuevas (con una cuenta de **menos de 7 días de antigüedad**), se aplica un período de adaptación para controlar los límites de envío de SMS. Esto ayuda a garantizar el cumplimiento y una gestión fluida del tráfico de SMS.
+
+## Límite diario de SMS
+
+Durante este período de calentamiento, el límite diario de SMS se calcula de la siguiente manera:
+
+**250 × n**, donde:
+
+- **n** = edad de la agencia en días
+- **1 ≤ n ≤ 7**
+
+| Día | Cálculo | Límite diario de SMS |
+| --- | --- | --- |
+| Día 1 | 250 × 1 | 250 mensajes |
+| Día 2 | 250 × 2 | 500 mensajes |
+| Día 3 | 250 × 3 | 750 mensajes |
+| Día 4 | 250 × 4 | 1000 mensajes |
+| Día 5 | 250 × 5 | 1250 mensajes |
+| Día 6 | 250 × 6 | 1500 mensajes |
+| Día 7 | 250 × 7 | 1750 mensajes |
+
+**Cómo leer esta tabla:** el límite no es fijo, crece cada día de forma automática. La columna del cálculo muestra que el único valor que cambia es la edad de la cuenta en días, por lo que no hay nada que solicitar ni configurar para que el límite suba.
+
+**Ejemplo:** una agencia creada el lunes puede enviar 250 mensajes ese primer día. Si intenta lanzar una campaña de 1.000 mensajes ese mismo lunes, 750 quedarán retenidos. Si espera al jueves (día 4), esa misma campaña de 1.000 mensajes entra completa dentro del límite.
+
+## Mensaje de error
+
+Cuando se supere este límite diario de SMS, se mostrará el siguiente mensaje para el usuario:
+
+> Se ha alcanzado el límite de SMS de la agencia debido al período de calentamiento de 7 días (día \{n\}/7). El envío se reanudará a las \{reset\_time\_local\}. \[Más información\]
+
+| Variable | Por qué se reemplaza |
+| --- | --- |
+| `{n}` | Por el día actual del período de calentamiento. |
+| `{reset_time_local}` | Por la hora de reinicio local para el envío de SMS. |
+
+**Cómo leer esta tabla:** las dos llaves del mensaje no son texto literal, son marcadores que el sistema sustituye antes de mostrarle el aviso. Le indican exactamente en qué día del calentamiento está y a qué hora podrá seguir enviando.
+
+**Ejemplo:** en el tercer día de una agencia con zona horaria de Santo Domingo, el aviso real que verá el usuario será del tipo: «Se ha alcanzado el límite de SMS de la agencia debido al período de calentamiento de 7 días (día 3/7). El envío se reanudará a las 12:00 a. m.».
+
+<Note>
+  **Nota:** después del **día 7**, finaliza el período de calentamiento y **no hay límite de envío de SMS** para la agencia.
+</Note>
+
+## Pasos para la solución de problemas
+
+Si encuentra este error:
+
+<Steps>
+  <Step title="Verifique la antigüedad de la agencia">
+    Confirme si la cuenta aún se encuentra dentro de los primeros 7 días.
+  </Step>
+  <Step title="Revise el uso diario de SMS">
+    Verifique cuántos mensajes se han enviado hoy.
+  </Step>
+  <Step title="Espere hasta la hora de reinicio">
+    El mensaje de error mostrará la hora local al enviar los resúmenes.
+  </Step>
+  <Step title="Pruebe después del reinicio">
+    Intente enviar mensajes de nuevo una vez que se haya restablecido el límite diario.
+  </Step>
+  <Step title="Después de 7 días">
+    Si el error persiste más allá del período de calentamiento de 7 días, comuníquese con el servicio de asistencia para obtener más ayuda.
+  </Step>
+</Steps>
+
+| Síntoma | Diagnóstico probable | Acción |
+| --- | --- | --- |
+| El error aparece y la cuenta tiene menos de 7 días | Comportamiento esperado del período de calentamiento | Esperar al reinicio o repartir el envío en varios días. |
+| El error aparece y la cuenta tiene más de 7 días | Situación anómala | Contactar al soporte. |
+| No aparece el error pero los mensajes no llegan | La causa no es el calentamiento | Revisar el registro A2P y la entregabilidad de SMS. |
+
+**Cómo leer esta tabla:** sirve para descartar. Antes de abrir un ticket conviene confirmar que el problema es realmente el período de calentamiento y no un asunto de registro o de entregabilidad.
+
+**Ejemplo:** una agencia con dos semanas de antigüedad que sigue viendo el aviso de calentamiento cae en la segunda fila: ahí sí corresponde escribir al soporte, porque el límite debería haber desaparecido al octavo día.
+
+<Note>
+  **Nota:** si el problema persiste o cree que aún existe algún inconveniente después de completar los pasos, puede ponerse en contacto con nuestro **equipo de soporte** para obtener más ayuda.
+</Note>
+
+<Card title="Buenas prácticas para la entregabilidad de SMS y cómo evitar restricciones de SMS" icon="paper-plane" href="/telefono-leadconnector/buenas-practicas-entregabilidad-sms">
+  Umbrales de tasa de error, exclusión voluntaria y cómo evitar suspensiones una vez superado el calentamiento.
+</Card>
