@@ -1,0 +1,250 @@
+---
+title: "Acceso SSH y gestión de claves SSH en tu alojamiento WordPress"
+description: "Cómo habilitar el acceso SSH, generar e importar claves en macOS, Linux y Windows, conectarte a tu servidor y usar WP-CLI en tu alojamiento WordPress."
+icon: "terminal"
+---
+
+<Info>
+  Documentado el 15 de agosto de 2026.
+</Info>
+
+SSH (_Secure Shell_) es una forma segura de conectarte a tu servidor y administrar tu instalación de WordPress mediante herramientas de línea de comandos como **WP-CLI**. Esta guía cubre cómo habilitar el acceso SSH, crear y agregar claves, y conectarte a tu sitio de forma segura.
+
+## ¿Qué es SSH y por qué usarlo?
+
+SSH permite a los usuarios avanzados:
+
+- **Ejecutar comandos WP-CLI** para:
+  - Gestión de plugins y temas.
+  - Importar o exportar datos, borrar cachés y actualizar configuraciones.
+- **Gestionar los archivos directamente desde la terminal**, sin pasar por el navegador.
+
+<Warning>
+  ⚠️ Se recomienda usar SSH únicamente si estás familiarizado con la línea de comandos. **Procede siempre con precaución al ejecutar comandos**: una instrucción mal escrita puede afectar los archivos o la base de datos de tu sitio.
+</Warning>
+
+### Dónde se activa
+
+En la tarjeta **Access SSH** del panel encontrarás el botón para habilitarlo o deshabilitarlo. Una vez activo, la misma tarjeta muestra los tres datos que necesitarás para conectarte:
+
+| Dato | Qué es | Ejemplo de formato |
+| :-- | :-- | :-- |
+| **Host** | La dirección IP del servidor | `000.000.00.00` |
+| **Port** | El puerto de conexión | `22` |
+| **Username** | Tu usuario de acceso | Cadena que asigna el sistema |
+
+<Note>
+  📸 _Espacio para captura: tarjeta "Access SSH" en sus dos estados —deshabilitada con el botón Habilitar, y habilitada mostrando Host, Port y Username—._
+</Note>
+
+## Paso 1: Crea tu clave SSH
+
+<Tip>
+  El acceso SSH en la plataforma **solo admite autenticación basada en claves**. No se utilizan contraseñas, por seguridad.
+</Tip>
+
+### En macOS
+
+Abre la Terminal y ejecuta:
+
+```bash
+ssh-keygen -t rsa
+```
+
+Pulsa **Enter** en todas las opciones; no necesitas crear una contraseña. La salida te confirmará dónde quedó guardada la clave privada (`~/.ssh/id_rsa`) y la pública (`~/.ssh/id_rsa.pub`), junto con la huella digital y la imagen _randomart_ de la clave.
+
+Una vez creada, cópiala al portapapeles:
+
+```bash
+pbcopy < ~/.ssh/id_rsa.pub
+```
+
+<Note>
+  📸 _Espacio para captura: salida de la terminal tras ejecutar `ssh-keygen -t rsa`._
+</Note>
+
+### En Linux
+
+<Steps>
+  <Step title="Abre la terminal">
+  </Step>
+  <Step title="Genera tu clave SSH">
+    ```bash
+    ssh-keygen -t rsa
+    ```
+
+    Pulsa **Intro** para aceptar todas las opciones predeterminadas.
+  </Step>
+  <Step title="Copia tu clave pública al portapapeles">
+    ```bash
+    cat ~/.ssh/id_rsa.pub | xclip -sel clip
+    ```
+
+    Este comando requiere `xclip`. Si no lo tienes instalado, usá el comando correspondiente a tu distribución:
+
+    | Distribución | Comando de instalación |
+    | :-- | :-- |
+    | **Ubuntu / Debian** | `sudo apt install xclip` |
+    | **Arch Linux** | `sudo pacman -S xclip` |
+    | **Fedora / CentOS** | `sudo yum -y install xclip` |
+  </Step>
+</Steps>
+
+### En Windows
+
+<Steps>
+  <Step title="Abre PowerShell">
+  </Step>
+  <Step title="Genera tu clave SSH">
+    ```powershell
+    ssh-keygen.exe -t rsa
+    ```
+
+    Pulsa **Enter** en todas las indicaciones.
+  </Step>
+  <Step title="Copia la clave pública">
+    ```powershell
+    Get-Content .ssh\id_rsa.pub | Set-Clipboard
+    ```
+  </Step>
+</Steps>
+
+<Warning>
+  Copia siempre el archivo **`.pub`** (la clave pública). El archivo sin extensión, `id_rsa`, es tu **clave privada** y no debe compartirse nunca ni pegarse en ningún panel.
+</Warning>
+
+## Paso 2: Añade tu clave SSH al panel de control del alojamiento
+
+<Steps>
+  <Step title="Inicia sesión en tu panel de control de hosting">
+  </Step>
+  <Step title="Abre la configuración del servidor">
+    Ve a la pestaña **Configuración avanzada → Configuración del servidor** de tu sitio.
+  </Step>
+  <Step title="Habilita el acceso SSH">
+    Actívalo si aún no lo está.
+  </Step>
+  <Step title="Ve al Administrador de claves SSH">
+    Desplázate hasta la sección **Administrador de claves SSH**.
+  </Step>
+  <Step title="Importa la clave">
+    Haz clic en **Importar nueva clave** y completa:
+
+    | Campo | Qué poner |
+    | :-- | :-- |
+    | **Public Key** | Pega tu clave pública completa |
+    | **Key Name** | Un nombre que te permita identificarla, por ejemplo “El MacBook de Juan” |
+    | **Key Passphrase** | Déjalo en blanco, a menos que hayas creado la clave con contraseña |
+  </Step>
+  <Step title="Confirma">
+    Haz clic en **Importar** y el sistema autorizará la clave importada.
+  </Step>
+</Steps>
+
+Una vez importada, la clave aparece en el listado con esta información:
+
+| Columna | Qué muestra |
+| :-- | :-- |
+| **Key Name** | El nombre que le asignaste |
+| **SSH Command** | El comando de conexión ya armado, listo para copiar |
+| **IPs Allowed** | Desde qué direcciones se admite la conexión (por defecto, _All_) |
+| **Actions** | Menú para eliminar o administrar la clave |
+
+<Note>
+  📸 _Espacio para captura: formulario "Manage SSH Keys" y listado de claves con el comando SSH generado._
+</Note>
+
+## Paso 3: Conéctate a tu servidor a través de SSH
+
+<Steps>
+  <Step title="Toma los datos de conexión">
+    Vuelve a la pestaña de **configuración del servidor** para obtener:
+
+    - **Dirección IP / de host**
+    - **Nombre de usuario**
+  </Step>
+  <Step title="Ejecuta el comando de conexión">
+    Abre tu terminal y ejecuta:
+
+    ```bash
+    ssh tuusuario@tuhostip
+    ```
+
+    Reemplaza `tuusuario` y `tuhostip` con tus valores reales.
+  </Step>
+  <Step title="Acepta la advertencia inicial">
+    La primera vez es posible que veas un mensaje de advertencia sobre la autenticidad del host. Escribe `yes` y pulsa Intro.
+  </Step>
+  <Step title="Ubica el directorio de tu sitio">
+    Una vez conectado, cámbiate al directorio del sitio:
+
+    ```bash
+    cd public_html
+    ```
+  </Step>
+</Steps>
+
+## ✅ Comandos comunes con WP-CLI
+
+Una vez conectado y dentro de `public_html`:
+
+| Objetivo | Comando |
+| :-- | :-- |
+| Listar los complementos instalados | `wp plugin list` |
+| Borrar la caché de WordPress | `wp cache flush` |
+| Borrar la caché del CDN | `wp cdn purge` |
+
+```bash
+wp plugin list
+wp cache flush
+wp cdn purge
+```
+
+<Tip>
+  `wp cache flush` seguido de `wp cdn purge` es la combinación habitual cuando publicaste un cambio y el sitio sigue mostrando la versión anterior.
+</Tip>
+
+## Gestión de claves SSH
+
+| Acción | Cómo se hace |
+| :-- | :-- |
+| **Eliminar clave** | Elimina las claves que ya no uses en cualquier momento desde el **Administrador de claves SSH** |
+| **Importar claves adicionales** | Repite el proceso del Paso 2 para otros dispositivos o miembros del equipo |
+
+<Note>
+  **Consejo:** rota tus claves periódicamente para mayor seguridad. Elimina de inmediato las de equipos que ya no estén en uso o de personas que dejaron el equipo de trabajo.
+</Note>
+
+## Consejos para solucionar problemas
+
+<AccordionGroup>
+  <Accordion title="No puedo conectarme">
+    Verifica que tu clave esté **autorizada** en el Administrador de claves SSH y que el **nombre de usuario** y la **dirección IP** sean correctos. Confirma también que el acceso SSH esté habilitado en la configuración del servidor.
+  </Accordion>
+
+  <Accordion title="Problemas en Linux al copiar la clave">
+    Instala `xclip` si fallan los comandos del portapapeles: `sudo apt install xclip` en Ubuntu, `sudo pacman -S xclip` en Arch o `sudo yum -y install xclip` en Fedora/CentOS.
+  </Accordion>
+
+  <Accordion title="Mi clave tiene contraseña">
+    Si estás usando una clave protegida con contraseña, cárgala en el agente antes de conectarte:
+
+    ```bash
+    ssh-add ~/.ssh/id_rsa
+    ```
+  </Accordion>
+</AccordionGroup>
+
+¿Necesitas más ayuda? Ponte en contacto con soporte y con gusto te asistimos.
+
+## Continúa con
+
+<CardGroup cols={2}>
+  <Card title="WordPress - Agregar dominios a tu sitio" icon="globe" href="/embudos-sitios-web/wordpress-agregar-dominios-a-tu-sitio">
+    Conecta tu dominio principal, adicionales y el dominio raíz.
+  </Card>
+
+  <Card title="Plugin de Chateea para WordPress" icon="puzzle-piece" href="/embudos-sitios-web/plugin-chateea-para-wordpress-todo-lo-que-necesitas-saber">
+    Chats, formularios, embudos y seguimiento dentro de tu sitio.
+  </Card>
+</CardGroup>
