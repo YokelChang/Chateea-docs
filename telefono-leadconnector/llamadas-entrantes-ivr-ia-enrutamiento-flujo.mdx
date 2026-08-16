@@ -1,0 +1,387 @@
+---
+title: "Llamadas entrantes: Explicación de IVR, IA, enrutamiento y flujo de llamadas"
+sidebarTitle: "Llamadas entrantes: Explicación de IVR, IA, enrutamiento y flujo de llamadas"
+description: "Todo lo que sucede desde que alguien llama a su número hasta que se contesta o pasa al buzón: las tres etapas del enrutamiento, IVR y Voice AI, el anillo simultáneo, la prioridad de desvío, el tiempo de espera, el respaldo, los ajustes por número y la tabla de referencia rápida."
+icon: "phone-arrow-down-left"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Este artículo explica todo lo que sucede desde el momento en que alguien llama al número de teléfono de su empresa hasta que se contesta la llamada o se desvía al buzón de voz.
+</Info>
+
+## Descripción general del flujo de llamadas entrantes
+
+Cuando alguien llama al número de teléfono de su empresa, el sistema funciona en **tres etapas**. Se detiene en el momento en que se atiende la llamada. Las opciones no configuradas se omiten automáticamente.
+
+Esta tabla es el mapa mental de todo el artículo: cada etapa se revisa en orden y solo se ejecuta si la anterior no resolvió la llamada.
+
+| Etapa | Cuándo se ejecuta | Qué hace |
+| --- | --- | --- |
+| **Etapa 1 — Enrutamiento inteligente** | Se revisa primero | IVR o IA de voz (modo principal). Si alguno está configurado, gestiona la llamada de inmediato y **la Etapa 2 nunca se ejecuta** |
+| **Etapa 2 — El anillo simultáneo** | Si la Etapa 1 no está configurada | Se envía una sola llamada a **todos** los destinos configurados a la vez: dispositivos de los miembros del equipo \+ un número de teléfono de desvío \+ los demás miembros añadidos. Gana quien responda primero. Dura lo que dure el tiempo de espera configurado |
+| **Etapa 3 — Después del tiempo muerto** | Si nadie respondió | Si está configurada, se intenta primero la IA de voz (modo de respaldo). Luego se recurre al último recurso: buzón de voz o IA de voz de la sección de respaldo |
+
+<Warning>
+  **Regla clave:** el sistema solo evalúa lo que usted haya configurado. Si algo no está configurado o está deshabilitado, se omite automáticamente; no se desperdicia ningún espacio d… _(texto cortado en la fuente)_.
+</Warning>
+
+## Dónde configurar los ajustes de llamadas entrantes
+
+Todas las configuraciones de llamadas entrantes se encuentran en el modal **Configurar** del número de teléfono:
+
+```text
+Configuración de la cuenta › Sistema telefónico › Números › ⚙️ Configurar (en cualquier número)
+```
+
+### Las tres pestañas del modal
+
+Esta tabla indica qué se configura en cada pestaña, para que sepa dónde buscar cada ajuste mencionado más adelante.
+
+| Pestaña | ¿Qué está configurado aquí? |
+| --- | --- |
+| **Detalles básicos** | Nombre y etiqueta del número (Captura de pantalla 1.0) |
+| **Desvío de llamadas** | Enrutamiento de todas las etapas 1, 2 y 3: IVR, miembro del equipo, teléfono externo, IA de voz, teléfono empresarial, tiempo de espera, copia de seguridad (capturas de pantalla 1.1 y 1.2) |
+| **Configuración avanzada** | Mensaje susurrado, Conexión de llamada, Grabación de llamada, Identificador de llamadas (Captura de pantalla 1.3) |
+
+Los interruptores de enrutamiento a nivel de ubicación (por ejemplo, «Hacer sonar al usuario asignado al número llamado») se encuentran por separado:
+
+```text
+Configuración de la cuenta › Sistema telefónico › Voz › Pestaña Otras configuraciones › Subpestaña Llamadas entrantes
+```
+
+La sección **Voz** tiene seis subpestañas: Call Recording & Transcription (Grabación y transcripción de llamadas), Voicemail & Missed Call TextBack (Buzón de voz y respuesta por SMS a llamadas perdidas), Call Scripts (Guiones de llamada), Custom Dispositions (Disposiciones personalizadas), VoIP Deskphone (SIP) y Other Settings (Otras configuraciones). Los interruptores de enrutamiento entrante están en **Other Settings → Inbound Calls**.
+
+## Etapa 1 — Enrutamiento inteligente de llamadas (IVR e IA de voz)
+
+Estas dos opciones, si están configuradas, **siempre tienen prioridad**. Si cualquiera de las dos gestiona la llamada, la Etapa 2 nunca se ejecuta.
+
+### 1. Configuración y flujo del IVR (Respuesta de Voz Interactiva)
+
+El IVR permite que quien llama navegue por un menú telefónico pulsando teclas.
+
+**Ejemplo de experiencia de quien llama:** «Gracias por llamar. Pulse 1 para Ventas. Pulse 2 para Soporte. Pulse 0 para hablar con un operador».
+
+<Note>
+  El IVR se construye **dentro de un flujo de trabajo**, no directamente en la configuración del número de teléfono. El número de teléfono solo apunta a qué flujo de trabajo utilizar.
+</Note>
+
+**Cómo configurar el IVR:**
+
+<Steps>
+  <Step title="Cree el flujo de trabajo">
+    Vaya a Automatización → Flujos de trabajo y cree un flujo nuevo usando el activador **Phone IVR**.
+  </Step>
+  <Step title="Construya su menú">
+    Reproduzca mensajes, recoja la entrada del teclado, ramifique según el dígito pulsado y enrute a miembros del equipo o departamentos.
+  </Step>
+  <Step title="Asócielo al número">
+    Una vez construido, abra el modal Configurar del número → pestaña Desvío de llamadas → asigne el flujo de trabajo al campo **IVR**.
+  </Step>
+</Steps>
+
+<Warning>
+  Cuando el IVR está activo, la llamada la gestiona por completo el flujo de trabajo. La Etapa 2 (Miembro del equipo, Teléfono externo, etc.) **nunca se ejecuta**.
+</Warning>
+
+### 2. IA de voz: explicación del modo principal frente al modo de respaldo
+
+La IA de voz permite que un agente de IA responda y gestione las llamadas. Que actúe como primer respondedor en todas las llamadas o como alternativa cuando los humanos no contestan depende de **un solo interruptor**, y ese interruptor vive en la configuración del agente de IA, no en la del número de teléfono.
+
+#### Cómo cambiar entre los modos de IA de voz
+
+```text
+Configuración de la cuenta › Agentes de IA › IA de voz › Seleccione su agente › pestaña Teléfono y disponibilidad
+```
+
+Busque este interruptor: **"Enable AI Agent as a backup to the phone number/number pool."** — «Habilitar el agente de IA como respaldo del número de teléfono / grupo de números».
+
+Deje esta opción desactivada si quiere que su agente de IA de voz responda cada llamada de inmediato.
+
+Esta tabla es la clave para entender por qué la IA aparece unas veces como 1.ª prioridad y otras como 3.ª:
+
+| Estado del interruptor | Comportamiento | Lo que ve en el modal de Desvío de llamadas |
+| --- | --- | --- |
+| **OFF (modo principal)** | La IA responde cada llamada de inmediato. La Etapa 2 nunca se ejecuta | La IA de voz aparece arriba como **1st Priority**. Miembro del equipo y Teléfono externo no tienen insignia de prioridad: solo se alcanzan si la IA transfiere la llamada |
+| **ON (modo de respaldo)** | Primero se intenta con humanos vía Etapa 2. La IA solo responde si nadie contesta dentro del tiempo de espera | La IA de voz aparece como **3rd Priority**, después de Miembro del equipo (1.º) y Teléfono externo (2.º). Se activa **después** de que expire el anillo de la Etapa 2, no durante |
+
+**Lo que puede hacer la IA de voz:**
+
+- Responder llamadas 24/7 sin un agente humano
+- Responder preguntas en lenguaje natural
+- Recopilar información de quien llama
+- Transferir a un agente humano cuando sea necesario
+
+También puede establecer un horario de trabajo para el agente (en la misma pestaña Teléfono y disponibilidad) para que la IA solo responda en días y horas específicos.
+
+<Note>
+  **Imagen próximamente.** Aquí van las dos capturas de la pestaña Phone & Availability del agente, mostrando el interruptor «Enable AI Agent as a backup…» desactivado y activado.
+</Note>
+
+## Etapa 2 — Llamada simultánea (cómo llegan las llamadas a su equipo)
+
+### Cómo funciona la llamada simultánea
+
+Cuando se ejecuta la Etapa 2, el sistema lanza **una sola marcación saliente a todos los destinos configurados al mismo tiempo**. No existe una lógica secuencial de «intenta con el miembro del equipo y luego con el teléfono externo». Todo suena a la vez:
+
+- Los dispositivos seleccionados de los miembros del equipo (aplicación web, aplicación móvil, teléfono de escritorio VoIP)
+- Un número de teléfono de desvío (vea la prioridad más abajo)
+- Todos los miembros del equipo añadidos con «Llamar a más miembros del equipo» (con sus dispositivos preferidos)
+
+**El primer destino que responde gana.** Todos los demás dejan de sonar de inmediato.
+
+<Warning>
+  **Qué significan realmente las insignias de prioridad (1.ª, 2.ª, 3.ª):** estas etiquetas **no** crean un timbrado secuencial. Indican el orden de prioridad para decidir **qué número de teléfono se incluye** en el anillo simultáneo, y la posición relativa del respaldo de IA de voz (que se ejecuta aparte, después de que expire el anillo).
+</Warning>
+
+### ¿Qué número de teléfono se marca? (prioridad de desvío)
+
+Solo **un** número de teléfono puede incluirse en el anillo simultáneo. El sistema llena ese espacio con la siguiente prioridad: gana el primero que se resuelva.
+
+| Prioridad | Fuente del número de teléfono | Condición |
+| --- | --- | --- |
+| **1.ª** | Teléfono personal del miembro del equipo | Solo si el dispositivo **Phone Number** está marcado en la fila del miembro del equipo. Cuando está marcado, no se usan ni el Teléfono externo ni el Teléfono comercial: el espacio ya está ocupado |
+| **2.ª** | Número de teléfono externo | Se usa cuando el dispositivo Phone Number del miembro del equipo **no** está marcado y hay un Teléfono externo configurado |
+| **3.ª** | Número de teléfono comercial | Se usa como último recurso si ninguno de los anteriores llena el espacio. Está habilitado por defecto en todas las cuentas. Desactívelo en Other Settings → Inbound Calls si no lo necesita |
+
+<Note>
+  Si ninguno de estos está configurado, **no suena ningún número de teléfono**: solo se incluyen en la marcación los dispositivos digitales (aplicación web, aplicación móvil).
+</Note>
+
+### Dispositivos de los miembros del equipo y gestión de llamadas
+
+El miembro del equipo es el destinatario principal de la llamada. Todos sus dispositivos seleccionados suenan simultáneamente como parte de la única marcación de la Etapa 2.
+
+| Dispositivo | Cómo se recibe la llamada | Requisito |
+| --- | --- | --- |
+| **Web App** (aplicación web) | Aparece una notificación de timbre en la pestaña del navegador y el usuario hace clic para responder | Debe estar activamente conectado |
+| **Mobile App** (aplicación móvil) | Se envía una notificación push al teléfono del usuario y responde desde la aplicación móvil | Notificaciones push habilitadas en el dispositivo |
+| **Phone Number** (número de teléfono) | El sistema llama al número personal del usuario y responde como en una llamada normal | **Nota:** marcar esta opción ocupa el espacio de desvío; el Teléfono externo y el Comercial no se usan |
+| **VoIP Deskphone** (teléfono de escritorio VoIP) | El sistema llama al teléfono de escritorio compatible con SIP del usuario | Requiere configuración previa: «Setup Deskphone» en la fila del miembro del equipo |
+
+#### Llamar a varios miembros del equipo a la vez
+
+Active esta casilla para hacer sonar simultáneamente a usuarios adicionales junto al miembro del equipo principal, todos en la misma marcación única.
+
+- Todos los miembros seleccionados suenan al mismo tiempo: gana el primero en responder.
+- Cada miembro suena en su propio dispositivo preferido (configurado por usuario en su perfil).
+- Máximo de **6 personas adicionales**.
+- No aplica cuando el IVR o la IA de voz (modo principal) están activos.
+
+### Configurar el tiempo de espera del timbre
+
+El tiempo de espera (Timeout) controla cuántos segundos se mantiene activo el anillo simultáneo de la Etapa 2 antes de rendirse y pasar a la Etapa 3.
+
+| Ajuste | Valor / comportamiento |
+| --- | --- |
+| Valor predeterminado | **20 segundos** si no se configura |
+| Cómo cambiarlo | Marque **Incoming Call Timeout** e introduzca el valor deseado en segundos |
+| Qué ocurre al alcanzarlo | Sin respuesta, el sistema pasa a la Etapa 3 |
+
+## Etapa 3 — Después del tiempo de espera
+
+Si nadie responde durante el anillo de la Etapa 2, la llamada pasa aquí. Ocurre en este orden:
+
+### 1. IA de voz — modo de respaldo, 3.ª prioridad
+
+Si la IA de voz está configurada con el interruptor de respaldo activado, se intenta primero tras el tiempo de espera de la Etapa 2. La IA responde la llamada mediante una **redirección aparte**: es un paso distinto del anillo simultáneo, no forma parte de él.
+
+Por eso la IA de voz en modo de respaldo aparece como «3rd Priority» en la pestaña de Desvío de llamadas: se ejecuta **después** del anillo simultáneo (1.ª \+ 2.ª), no junto a él.
+
+### 2. Respaldo — buzón de voz o IA de voz
+
+Si el respaldo de IA de voz no aplica (o como último recurso absoluto), la sección **Back up** determina qué sucede:
+
+| Opción | Qué ocurre |
+| --- | --- |
+| **Voicemail** (buzón de voz) | Quien llama escucha su mensaje de bienvenida y deja un mensaje grabado. Queda accesible en Conversaciones, para cada contacto |
+| **Voice AI** (IA de voz) | Un agente de IA contesta y gestiona la llamada no atendida |
+
+<Warning>
+  El respaldo es **siempre el paso final**. Nunca se omite.
+</Warning>
+
+### Mensaje de bienvenida del buzón de voz: de dónde proviene
+
+El sistema utiliza el primer saludo que encuentra, en este orden:
+
+| Orden | Origen del saludo | Dónde se configura |
+| --- | --- | --- |
+| 1 | Buzón de voz personal del miembro del equipo | En el perfil del usuario, en la configuración de Teléfono |
+| 2 | Buzón de voz de la ubicación | Configuración de la cuenta → Sistema telefónico → Voz → Voicemail & Missed Call TextBack |
+| 3 | Predeterminado del sistema | «We are unable to take your call right now. Please leave a message after the beep.» — «No podemos atender su llamada en este momento. Deje un mensaje después del tono» |
+
+**Formatos de carga admitidos:** MP3, WAV, AIFF, GSM, ULAW.
+
+## Configuración avanzada — funciones por número
+
+```text
+Configuración de la cuenta › Sistema telefónico › Números › ⚙️ Configurar › pestaña Configuración avanzada
+```
+
+Estos ajustes controlan cómo se comportan las llamadas individuales una vez que llegan a un agente humano durante la Etapa 2.
+
+### Mensaje susurrado (Whisper Message)
+
+Un breve mensaje de audio que se reproduce **solo para el agente** (no para quien llama) en el momento en que descuelga, antes de conectar a ambas partes.
+
+**Ejemplo:** el agente responde → escucha «Llamada entrante de su anuncio de clientes potenciales de Facebook — John Smith» → se conecta inmediatamente con quien llama.
+
+- Admite variables de plantilla: nombre del contacto, fuente del cliente potencial, nombre de la campaña, etc.
+- Quien llama escucha música en espera mientras el susurro se reproduce para el agente.
+- La llamada se conecta automáticamente cuando termina el susurro: el agente no tiene que hacer nada.
+
+<Note>
+  **Mensaje susurrado frente a Conexión de llamada:** el susurro reproduce información y conecta automáticamente. La Conexión de llamada (abajo) exige que el agente pulse una tecla: úsela cuando quiera bloquear contestadores automáticos.
+</Note>
+
+### Conexión de llamada (Call Connect)
+
+Cuando está habilitada, el agente debe pulsar cualquier tecla de su teclado para confirmar que es una persona real antes de conectarse con quien llama.
+
+**Por qué importa:** cuando las llamadas se reenvían a un número de teléfono externo, pueden llegar a un contestador automático en lugar de a un humano. Sin la Conexión de llamada, quien llama termina conectado al contestador. Con la Conexión de llamada habilitada, los contestadores no pulsan ninguna tecla, así que el sistema lo trata como «sin respuesta» y pasa a la Etapa 3 en lugar de desperdiciar la llamada.
+
+**Lo que experimenta el agente:**
+
+1. Su teléfono suena y responde.
+2. Escucha el mensaje susurrado (si está configurado) y luego: «Pulse cualquier tecla para conectar».
+3. El agente pulsa cualquier tecla y se conecta con quien llama.
+4. Si no se pulsa ninguna tecla, el sistema pasa a la Etapa 3 (respaldo de IA de voz o buzón de voz).
+
+<Tip>
+  **Mejor uso:** números de teléfono externos y comerciales, donde los contestadores automáticos son habituales. Es menos necesario en la aplicación web o móvil, donde la propia app confirma que ha respondido un humano.
+</Tip>
+
+### Grabación de llamadas (Call Recording)
+
+Cuando está habilitada, el sistema graba ambos lados de cada llamada entrante a este número.
+
+- Las grabaciones aparecen en la vista de Conversaciones de cada contacto.
+- Puede reproducirse un aviso de grabación a quien llama al inicio de la llamada: actívelo o desactívelo en Configuración avanzada (obligatorio por ley en algunas regiones).
+
+## Configuración de voz — enrutamiento en toda la ubicación
+
+```text
+Configuración de la cuenta › Sistema telefónico › Voz › pestaña Otras configuraciones › subpestaña Llamadas entrantes
+```
+
+Estos dos interruptores aplican a toda su ubicación y se sitúan **por encima** de todos los ajustes de desvío de llamadas por número.
+
+| Interruptor | Cuando está ACTIVADO | Cuando está DESACTIVADO |
+| --- | --- | --- |
+| **Hacer sonar al usuario asignado al número llamado** | El sistema intenta primero hacer sonar al usuario específico asignado al número que se marchó, antes de seguir la cadena estándar de Desvío de llamadas | El sistema enruta según el usuario asignado del contacto o los ajustes generales de Desvío de llamadas |
+| **Desviar llamadas al número de teléfono comercial** | El Número de teléfono comercial de su ubicación queda disponible como opción de último recurso en el espacio de desvío. Habilitado por defecto en todas las cuentas | Las llamadas no caen a su línea comercial cuando no hay ningún otro número configurado |
+
+<Note>
+  El ajuste «Hacer sonar al usuario asignado al número llamado» **no aplica** cuando el IVR o la IA de voz (modo principal) están configurados: esos siempre tienen prioridad primero, independientemente de este interruptor.
+</Note>
+
+## Diagrama de referencia completo del flujo de llamadas
+
+<Note>
+  **Imagen próximamente.** Aquí va el diagrama «Inbound Call Routing Flow» con la leyenda de colores (Inicio/Fin, Decisión, Proceso, Etapa 2 Anillo simultáneo, Sección de respaldo) y el recorrido completo: llamada entrante → ¿IVR configurado? → ¿IA de voz principal? → ¿Hacer sonar al usuario asignado? → Etapa 2 con temporizador → ¿respondida? → ¿Conexión de llamada? → llamada conectada, o sección de respaldo con buzón de voz / IA de voz.
+</Note>
+
+## Escenarios de configuración comunes
+
+<AccordionGroup>
+  <Accordion title="1. Todas las llamadas suenan directamente a mí" icon="user">
+    1. En Desvío de llamadas, establezca **Miembro del equipo** como usted mismo.
+    2. Marque los dispositivos que quiere que suenen (aplicación web, móvil, etc.).
+    3. Establezca el respaldo en **Buzón de voz**.
+  </Accordion>
+
+  <Accordion title="2. Que suene todo mi equipo a la vez" icon="users">
+    1. Establezca un miembro del equipo principal.
+    2. Active **Llamar a más miembros del equipo** y añada a su equipo (hasta 6 personas adicionales).
+    3. Cada miembro configura su dispositivo preferido en su propio perfil de usuario.
+  </Accordion>
+
+  <Accordion title="3. Menú telefónico (Pulse 1 para Ventas, Pulse 2 para Soporte)" icon="list-ol">
+    1. Vaya a **Automatización → Flujos de trabajo** y cree un flujo con el activador _Phone IVR_.
+    2. Construya las ramas de su menú para cada opción de tecla.
+    3. En Desvío de llamadas, asigne ese flujo de trabajo al campo **IVR**.
+  </Accordion>
+
+  <Accordion title="4. La IA responde cada llamada de inmediato" icon="robot">
+    1. Vaya a **Agentes de IA → IA de voz → su agente → Teléfono y disponibilidad**.
+    2. Desactive el interruptor _“Enable AI Agent as a backup”_.
+    3. Asigne el número de teléfono a este agente: la IA responderá cada llamada entrante de inmediato.
+  </Accordion>
+
+  <Accordion title="5. Primero los humanos, la IA atiende las llamadas perdidas" icon="user-clock">
+    1. Vaya a **Agentes de IA → IA de voz → su agente → Teléfono y disponibilidad**.
+    2. Active el interruptor _“Enable AI Agent as a backup”_.
+    3. Configure normalmente el Miembro del equipo y el Teléfono externo en Desvío de llamadas.
+    4. La IA de voz aparecerá como 3.ª prioridad y solo responderá tras expirar el anillo de la Etapa 2.
+  </Accordion>
+
+  <Accordion title="6. Evitar que las llamadas se conecten a contestadores automáticos" icon="phone-slash">
+    1. En la pestaña Configuración avanzada, habilite **Call Connect**.
+    2. Ahora los agentes deben pulsar cualquier tecla al responder para confirmar que son humanos.
+    3. Los contestadores no pulsan ninguna tecla: la llamada pasa automáticamente a la Etapa 3.
+  </Accordion>
+</AccordionGroup>
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="1. Mi teléfono no suena cuando entra una llamada" icon="bell-slash">
+    - Compruebe qué tipos de dispositivo están marcados en la fila del Miembro del equipo: al menos uno debe estar habilitado.
+    - Para la aplicación web: debe estar activamente conectado en su navegador.
+    - Para la aplicación móvil: las notificaciones push deben estar habilitadas en su dispositivo.
+    - Compruebe si el IVR o la IA de voz (modo principal) están capturando la llamada antes de que se ejecute la Etapa 2.
+    - Revise el tiempo de espera: si es muy corto, el timbre puede terminar antes de que pueda responder.
+  </Accordion>
+
+  <Accordion title="2. Las llamadas van directo al buzón de voz" icon="voicemail">
+    - El tiempo de espera puede ser demasiado corto: auméntelo en la sección Timeout.
+    - Si Call Connect está habilitado y se reenvía a un teléfono externo, puede que un contestador esté descolgando sin pulsar tecla, enviando la llamada a la Etapa 3.
+    - Revise Other Settings → Inbound Calls: si «Hacer sonar al usuario asignado al número llamado» está activado pero no hay ningún usuario asignado al número, la llamada puede caer al respaldo más rápido de lo esperado.
+  </Accordion>
+
+  <Accordion title="3. El agente escucha un mensaje antes que quien llama" icon="comment-dots">
+    Es el Mensaje susurrado funcionando como se espera: reproduce información de contexto solo para el agente. Para desactivarlo, vaya a la pestaña Configuración avanzada y apague Whisper Message.
+  </Accordion>
+
+  <Accordion title="4. El agente tiene que pulsar una tecla antes de conectarse" icon="keyboard">
+    Call Connect está habilitado. El agente debe pulsar cualquier tecla para confirmar que es humano (y no un contestador automático). Para desactivarlo, apague Call Connect en la pestaña Configuración avanzada.
+  </Accordion>
+
+  <Accordion title="5. Llamar a más miembros del equipo no hace sonar a todos" icon="users-slash">
+    - Cada miembro del equipo debe tener al menos un tipo de dispositivo habilitado en su propio perfil de usuario.
+    - La función Llamar a más miembros del equipo solo funciona en la Etapa 2; no tiene efecto cuando el IVR o la IA de voz (principal) están activos.
+  </Accordion>
+
+  <Accordion title="6. Se está llamando a la persona equivocada" icon="user-xmark">
+    - Compruebe la configuración de la cuenta → Sistema telefónico → Voz → Otras configuraciones → Llamadas entrantes: es posible que la opción «Hacer sonar al usuario asignado al número llamado» esté anulando la configuración de desvío de llamadas.
+    - Compruebe si el contacto tiene un usuario asignado; esa asignación puede afectar a quién recibe la llamada.
+  </Accordion>
+
+  <Accordion title="7. La IA de voz no responde aunque esté configurada" icon="robot">
+    - Compruebe la opción de copia de seguridad en Agentes de IA → IA de voz → Teléfono y disponibilidad.
+    - Si la función de respaldo está ACTIVADA, la IA de voz solo responde después de que expire el tiempo de espera del timbre de la Etapa 2; no interrumpirá un timbre activo.
+    - Si quiere que la IA siempre responda, desactive la opción de copia de seguridad.
+  </Accordion>
+</AccordionGroup>
+
+## Tabla de referencia rápida
+
+Esta es la tabla maestra del artículo: reúne cada función del flujo entrante, dónde se configura y qué hace exactamente.
+
+| Característica | Dónde configurar | Lo que hace |
+| --- | --- | --- |
+| **IVR** | Automatización → Flujos de trabajo (crear); pestaña Reenvío de llamadas (asignar) | Menú telefónico: rutas según la entrada del teclado. Gestiona la llamada antes de la Etapa 2 |
+| **IA de voz — Principal** | Agentes de IA → IA de voz → Teléfono y disponibilidad (desactivar la opción de copia de seguridad) | La IA responde a todas las llamadas de inmediato. La fase 2 nunca se ejecuta |
+| **IA de voz: copia de seguridad** | Agentes de IA → IA de voz → Teléfono y disponibilidad (activar la opción de respaldo) | La IA solo responde después de que la llamada de la Etapa 2 expire sin que haya respuesta |
+| **Miembro del equipo** | Pestaña Desvío de llamadas → Fila de miembros del equipo | Rutas a los dispositivos seleccionados por el usuario interno: todos suenan simultáneamente en la Etapa 2 |
+| **Llamar a más miembros del equipo** | Pestaña Desvío de llamadas → Casilla de verificación Llamar a más miembros del equipo | Permite llamar hasta a 6 usuarios adicionales simultáneamente en el mismo dial de Etapa 2 |
+| **Número de teléfono externo** | Pestaña Desvío de llamadas → Fila Número de teléfono externo | Si el teléfono del miembro del equipo no está marcado, rellena el espacio de desvío de llamadas (segunda prioridad) |
+| **Número de teléfono comercial** | Activado por defecto. Desactívalo en Otros ajustes → Llamadas entrantes | Ocupa el espacio de desvío de llamadas como último recurso (tercera prioridad) |
+| **Se acabó el tiempo** | Pestaña Desvío de llamadas → Sección Tiempo de espera | Cuánto tiempo permanece activo el anillo de la Etapa 2 antes de pasar a la Etapa 3 (valor predeterminado: 20 s) |
+| **Buzón de voz** | Pestaña Desvío de llamadas → Sección de copia de seguridad | Último recurso: la persona que llama deja un mensaje grabado |
+| **Mensaje de bienvenida del buzón de voz** | Perfil de usuario (por usuario) o Sistema telefónico → Voz → Buzón de voz y mensajes de texto de llamadas perdidas | Se reproduce un audio personalizado antes de que comience la grabación |
+| **Mensaje susurrado** | Pestaña Configuración avanzada | Reproduce información contextual solo para el agente, antes de establecer la conexión. La persona que llama no puede oírla |
+| **Llamar a conectar** | Pestaña Configuración avanzada | El agente debe pulsar cualquier tecla para confirmar la respuesta humana; esto bloquea los contestadores automáticos |
+| **Grabación de llamadas** | Pestaña Configuración avanzada | Graba ambos lados de cada llamada entrante a este número |
+| **Usuario de Ring asignado al número** | Sistema telefónico → Voz → Otros ajustes → Llamadas entrantes | Enruta las llamadas al usuario asignado al número marcado, antes del desvío estándar |
+| **Desviar al teléfono de la empresa** | Sistema telefónico → Voz → Otros ajustes → Llamadas entrantes | Activa/desactiva el teléfono empresarial como opción de desvío de llamadas de último recurso. Activado por defecto |

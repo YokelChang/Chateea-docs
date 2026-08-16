@@ -1,0 +1,183 @@
+---
+title: "Cómo evitar bucles de llamadas al enrutar llamadas a números de teléfono internos."
+sidebarTitle: "Cómo evitar bucles de llamadas al enrutar llamadas a números de teléfono internos."
+description: "Qué es un bucle de llamadas, por qué su número de empresa puede generar una advertencia, dónde aparece esa advertencia (grupo de números, perfil de personal, enrutamiento del número) y cómo configurar un enrutamiento seguro."
+icon: "arrows-spin"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Este artículo explica qué es un bucle de llamadas, por qué aparecen las advertencias de bucle, dónde puede encontrarlas y cómo configurar el enrutamiento de llamadas de forma segura.
+</Info>
+
+Los números de teléfono internos se pueden usar en toda la cuenta para perfiles de empresa, perfiles de personal, grupos de números, configuración de desvío y enrutamiento avanzado de llamadas. Si bien estas configuraciones ofrecen flexibilidad, redirigir una llamada al mismo número interno puede crear un **bucle de llamadas**, lo que provoca que las llamadas fallen, se desconecten inesperadamente o nunca lleguen al destinatario.
+
+## Descripción general
+
+El enrutamiento de llamadas puede involucrar múltiples destinos, incluyendo usuarios, números de desvío, grupos de timbrado y reglas de enrutamiento avanzadas. Si bien se pueden usar números de teléfono internos en muchos de estos casos, redirigir una llamada de vuelta a su número de origen crea un bucle que impide que la llamada se complete correctamente.
+
+Comprender cómo se producen los bucles de llamadas ayuda a garantizar que quienes llaman siempre lleguen a su destino, evitando así llamadas fallidas o desconectadas.
+
+## ¿Qué es un bucle de llamadas?
+
+Se produce un bucle de llamadas cuando una llamada entrante se redirige al **mismo número de teléfono o ruta de enrutamiento** por la que se recibió originalmente. En lugar de avanzar hacia un destino final, la llamada repite continuamente las mismas instrucciones de enrutamiento.
+
+### Ejemplo de una ruta de enrutamiento insegura
+
+```text
+Cliente → Número de teléfono de la empresa → Número de teléfono interno → Número de teléfono de la empresa
+```
+
+Debido a que la llamada regresa a su punto de partida, el proceso de enrutamiento se repite en lugar de completarse.
+
+### Qué consecuencias tiene
+
+Un bucle de llamadas puede dar como resultado:
+
+| Consecuencia | Cómo se percibe desde fuera |
+| --- | --- |
+| Llamadas entrantes fallidas | El cliente no logra comunicarse |
+| Desconexiones de llamadas inesperadas | La llamada se corta sin motivo aparente |
+| Llamadas que nunca llegan al destinatario previsto | El equipo nunca ve la llamada |
+| Intentos de enrutamiento repetidos | El registro muestra varios intentos por una sola llamada |
+| Informes de llamadas inexactos | Las métricas se inflan o se distorsionan |
+
+## Por qué el número de teléfono de su empresa puede generar una advertencia
+
+El uso de un número de teléfono interno como número de teléfono de su empresa **está totalmente permitido**. Simplemente añadir el número a su perfil de empresa **no crea un bucle de llamadas**.
+
+La advertencia aparece porque ese mismo número de teléfono también puede formar parte de su sistema de enrutamiento de llamadas entrantes.
+
+Por ejemplo:
+
+<Steps>
+  <Step title="El cliente llama">
+    Un cliente llama al número de teléfono de su empresa.
+  </Step>
+  <Step title="La llamada entra en la ruta">
+    La llamada sigue la ruta configurada.
+  </Step>
+  <Step title="Se reenvía a otro número interno">
+    Un destino de enrutamiento reenvía la llamada a otro número de teléfono interno.
+  </Step>
+  <Step title="Vuelve al punto de partida">
+    Ese número de teléfono finalmente redirige la llamada de vuelta al número de teléfono original de la empresa.
+  </Step>
+  <Step title="El ciclo se reinicia">
+    El sistema recibe la llamada como una nueva llamada entrante y reinicia el proceso de enrutamiento.
+  </Step>
+</Steps>
+
+<Warning>
+  **Importante:** el número de teléfono de la empresa en sí no es el problema. **La ruta de enrutamiento completa** determina si existe un bucle de llamadas.
+</Warning>
+
+## Advertencia sobre bucles de llamadas de números de teléfono comerciales
+
+Esta advertencia aparece cuando un número de teléfono interno introducido como **Número de teléfono de la empresa** (Business Phone Number) podría participar en una configuración de enrutamiento que crea un bucle de llamadas.
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura del modal «Configure Number Pool» con el campo «Forward Calls to» resaltado en rojo y el aviso «Using your CRM phone number here may cause some calls to fail because it can create a call loop» — «Usar aquí el número de teléfono de su CRM puede provocar que algunas llamadas fallen porque puede crear un bucle de llamadas».
+</Note>
+
+## Dónde puede encontrar la advertencia
+
+Las advertencias de bucle de llamadas pueden aparecer en cualquier lugar donde se use un número de teléfono interno como destino de enrutamiento. Revisar la ruta de enrutamiento completa antes de guardar ayuda a evitar comportamientos de enrutamiento no deseados.
+
+| Dónde aparece | Qué está avisando el sistema |
+| --- | --- |
+| **Desvío del grupo de números** (Number Pool Forwarding) | Un grupo de números puede reenviar las llamadas entrantes a otro destino. Si ese destino termina enviando las llamadas de vuelta al grupo de números o a uno de sus números de origen, puede producirse un bucle |
+| **Número de teléfono del perfil de personal** (Staff Profile Phone Number) | El número de un miembro del equipo debería ser, por norma general, un móvil externo, una línea fija o un número VoIP externo. Usar un número entrante en un perfil de personal puede crear de inmediato un bucle de enrutamiento, por lo que esta configuración puede quedar bloqueada |
+| **Enrutamiento del número de teléfono** (Phone Number Routing) | Al configurar las prioridades de enrutamiento, el sistema comprueba si el destino seleccionado podría terminar devolviendo la llamada al número entrante original |
+
+### Validación del número en el perfil de personal
+
+Este mensaje aparece cuando un número de teléfono entrante no puede utilizarse porque crearía de inmediato un bucle de enrutamiento:
+
+> _"You cannot use your inbound number here because it would create a call loop."_
+>
+> **Traducción al español:** «No puede usar aquí su número entrante porque crearía un bucle de llamadas».
+
+<Note>
+  **Imagen próximamente.** Aquí van las capturas del formulario de perfil de personal con el campo Phone en rojo, y del formulario de perfil de empresa con el aviso «Using your CRM phone number here may cause some calls to fail because it can create a call loop» junto al campo Business Phone.
+</Note>
+
+### Enrutamiento del número de teléfono
+
+Esta advertencia le recuerda revisar **toda la ruta de enrutamiento** antes de guardar su configuración. Aparece, por ejemplo, en la pestaña de desvío de llamadas junto a las filas de prioridad:
+
+| Fila del modal | Prioridad mostrada |
+| --- | --- |
+| Team Member (Miembro del equipo) | 1st Priority |
+| External Phone Number (Número de teléfono externo) | 2nd Priority |
+| Voice AI (IA de voz) | Sin insignia de prioridad en esta vista |
+| Business Phone Number (Número de teléfono comercial) | 3rd Priority |
+
+## Cómo evitar bucles de llamadas
+
+La configuración de enrutamiento más segura le da a cada llamada un camino claro hacia un destino final, sin regresar a un paso de enrutamiento anterior.
+
+Antes de guardar su configuración:
+
+1. Identifique qué número de teléfono recibe primero la llamada entrante.
+2. Revise cada destino de enrutamiento, incluidos usuarios, números de desvío, IVR, flujos de trabajo, IA de voz, grupos de timbrado y enrutamiento de respaldo.
+3. Confirme que ningún paso de enrutamiento devuelve la llamada al número entrante original.
+4. Utilice móviles externos, líneas fijas o números VoIP externos siempre que sea posible.
+5. Realice una llamada de prueba desde un teléfono externo después de hacer cambios para verificar que el enrutamiento se comporta como se espera.
+
+<Tip>
+  Un flujo de llamadas correcto siempre termina en su destino previsto y nunca regresa al punto donde empezó.
+</Tip>
+
+## Mejores prácticas
+
+Seguir estas recomendaciones ayuda a prevenir problemas de enrutamiento y mejora la fiabilidad de las llamadas.
+
+- Utilice números de teléfono externos siempre que sea posible.
+- Nunca reenvíe un número de teléfono a sí mismo.
+- Revise los números de teléfono de los perfiles de empresa y de personal después de actualizar el enrutamiento.
+- Verifique los IVR, las reglas de reenvío, los flujos de trabajo y los destinos de respaldo.
+- Pruebe cada cambio de enrutamiento antes de usarlo en producción.
+- Revise los registros de llamadas después de los cambios de configuración para identificar comportamientos de enrutamiento inesperados.
+- Documente las rutas de enrutamiento complejas para facilitar la resolución de problemas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar un número de teléfono interno como destino de enrutamiento?" icon="circle-question">
+    Sí. Los números de teléfono internos pueden usarse en escenarios de enrutamiento admitidos siempre que no devuelvan las llamadas al número entrante original.
+  </Accordion>
+
+  <Accordion title="¿Por qué no puedo guardar un número de teléfono entrante en un perfil de personal?" icon="user-lock">
+    El campo de teléfono del perfil del empleado sirve para identificar dónde recibe llamadas ese usuario. Usar un número de teléfono entrante podría generar inmediatamente un bucle de llamadas, por lo que la configuración podría bloquearse.
+  </Accordion>
+
+  <Accordion title="¿Es problemático usar un número de teléfono interno como número de teléfono de mi empresa?" icon="building">
+    No. El simple hecho de usar un número de teléfono interno como número de teléfono de su empresa no crea un bucle de llamadas. Un bucle solo se produce cuando la configuración de enrutamiento finalmente devuelve las llamadas a ese mismo número.
+  </Accordion>
+
+  <Accordion title="¿Cuál es el destino de reenvío más seguro?" icon="shield-check">
+    Un número de teléfono móvil externo, un teléfono fijo o un número VoIP externo suele ser la opción más segura, ya que elimina la llamada de la ruta de enrutamiento original.
+  </Accordion>
+
+  <Accordion title="¿Puede producirse un bucle de llamadas de forma indirecta?" icon="arrows-turn-right">
+    Sí. Una llamada puede pasar por varias etapas de enrutamiento antes de regresar finalmente al número de origen. Siempre revise la ruta de enrutamiento completa, no solo el siguiente destino.
+  </Accordion>
+
+  <Accordion title="¿Cómo puedo verificar que mi enrutamiento no contiene un bucle de llamadas?" icon="magnifying-glass">
+    Revise toda la ruta de enrutamiento, realice llamadas de prueba desde un teléfono externo y supervise los registros de llamadas para detectar llamadas fallidas, intentos de enrutamiento repetidos o desconexiones inesperadas.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesita ayuda?
+
+Si las llamadas fallan, se desconectan inesperadamente o nunca llegan a su destino, revise la ruta de enrutamiento completa antes de realizar cambios adicionales.
+
+Confirme que:
+
+- Ningún paso de enrutamiento devuelve la llamada al número de origen.
+- Los números de teléfono de los perfiles de empresa y de personal están configurados correctamente.
+- Los sistemas IVR, las reglas de reenvío, los flujos de trabajo, la IA de voz y el enrutamiento de respaldo no crean rutas de llamadas circulares.
+- Los números de reenvío externos están activos y accesibles.
+- Las llamadas de prueba se completaron correctamente desde un teléfono externo.
+
+Si el problema persiste, recopile capturas de pantalla de su configuración de enrutamiento, configuración de reenvío, perfil de empresa, perfil de personal y registros de llamadas relevantes antes de ponerse en contacto con el servicio de asistencia.
