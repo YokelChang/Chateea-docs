@@ -1,0 +1,165 @@
+---
+title: "Cómo evitar el filtrado de SMS por parte de los operadores: Error 30007"
+sidebarTitle: "Cómo evitar el filtrado de SMS por parte de los operadores: Error 30007"
+description: "ERROR 30007: qué es el filtrado del operador, cómo evitarlo mediante consentimiento, selección de caso de uso y remitente, contenido del mensaje, exclusión voluntaria y gestión de No molestar, mejores prácticas y qué hacer si cree que le filtran por error."
+icon: "filter-circle-xmark"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo original modificado el viernes, 27 de febrero de 2026 a las 8:08 a. m.
+</Info>
+
+El filtrado de mensajes (Error 30007) se produce cuando los mensajes se bloquean por considerarse no deseados, spam o por incumplir las políticas legales o del operador. Este artículo le ayudará a comprender qué es el filtrado de mensajes, cómo evitarlo y qué puede hacer si se ve afectado.
+
+## Índice
+
+- ¿Qué es el error 30007 – Filtrado de portadora?
+- Cómo evitar que los mensajes sean filtrados
+- Mejores prácticas
+- ¿Crees que te están filtrando por error?
+- Preguntas frecuentes
+
+## ¿Qué es el error 30007 – Filtrado de portadora?
+
+El código 30007 es un error del operador que indica que su mensaje fue filtrado debido a su contenido, la identidad del remitente o por motivos de cumplimiento normativo.
+
+Esto sucede cuando un mensaje:
+
+- Incumple la política de mensajería del operador.
+- Parece similar al spam o al tráfico ilegal.
+- Le faltan elementos de cumplimiento obligatorios, como el consentimiento explícito o la identificación del remitente.
+
+Estos filtros se aplican para proteger a los consumidores, cumplir con las regulaciones nacionales (como A2P 10DLC en EE. UU.) y mantener la confianza en la plataforma.
+
+<Note>
+  **Nota:** Si bien esta notificación no supone en modo alguno un cambio en las políticas establecidas por los operadores, la CTIA y Twilio, sí sirve como recordatorio de lo que es y no es aceptable dentro de la comunidad de mensajería de Norteamérica.
+</Note>
+
+Nuestros socios operadores nos han informado de que se aplicarán con mayor rigor las políticas de mensajería y prevemos un mayor filtrado de lo siguiente:
+
+- El tráfico, evidenciado por el aumento de las quejas de los clientes, muestra indicios de que no se está obteniendo el consentimiento adecuado.
+- El tráfico informativo y promocional no incluye una descripción clara de cómo darse de baja, lo que significa que el mensaje **"STOP"** no se muestra claramente al usuario final. Cabe recordar que el tráfico conversacional es iniciado por el consumidor y no requiere incluir el mensaje "STOP" en cada respuesta.
+
+## Cómo evitar que los mensajes sean filtrados
+
+A continuación se presentan directrices estructuradas basadas en los requisitos del operador.
+
+### 1. Consentimiento y Opción de Participación
+
+- Enviar mensajes únicamente a los usuarios que hayan dado su **consentimiento explícito**.
+- Su mensaje debe **identificar al remitente** e incluir **instrucciones para darse de baja**.
+- Debes incluir la palabra **STOP** al menos una vez cada **30 días** si envías mensajes al mismo contacto con regularidad.
+- Evite variaciones creativas como "_Responda con 2 para cancelar la suscripción_"; estas no cumplen con las normas y serán filtradas.
+- Reconfirma tu consentimiento cada **18 meses** para evitar enviar mensajes accidentalmente a números reciclados.
+- Tras monitorizar las **tasas de exclusión voluntaria y los picos de quejas**, las operadoras comenzarán a filtrar el tráfico que muestre patrones de abuso.
+
+### 2. Selección de casos de uso y remitente
+
+- Evite los casos de uso prohibidos, como préstamos de día de pago (_payday loans_), alivio de deudas, cannabis, etc.
+- Consulte nuestra guía: [Categorías de mensajes prohibidos para SMS y MMS en EE. UU. y Canadá](https://help.leadconnectorhq.com/support/solutions/articles/155000000068-forbidden-message-categories-for-sms-and-mms-in-the-us-and-canada).
+- No haga «snowshoeing» repartiendo el tráfico entre varios números para evadir el filtrado: use números basados únicamente en la geografía o en las unidades de negocio.
+- Use códigos cortos preregistrados o identificadores de remitente alfanuméricos (_Alphanumeric Sender IDs_) donde sea obligatorio, especialmente para países como Francia.
+- Consulte las directrices de SMS por país (_SMS Guidelines by Country_) para conocer las normas locales.
+
+### 3. Contenido y formato del mensaje
+
+- Evite los acortadores de URL públicos (como Bitly, TinyURL). Use dominios de marca, del tipo `tuempresa.com/oferta`.
+- Nunca use enlaces ofuscados ni redirecciones sospechosas.
+- Use un lenguaje claro y bien escrito, y evite:
+  1. Emojis, puntuación excesiva o MAYÚSCULAS.
+  2. Faltas de ortografía o mala gramática.
+- No envíe contenido ilegal o engañoso, ni nada de lo listado en el enlace de Categorías prohibidas indicado arriba.
+
+### 4. Requisitos de exclusión voluntaria y cumplimiento normativo
+
+Su SMS debe:
+
+- Contener instrucciones de **STOP** (al menos mensualmente).
+- Nombrar claramente al remitente.
+- Enviarse únicamente a usuarios que hayan dado permiso explícito.
+
+### 5. Seguimiento y gestión de la orden de no molestar
+
+- Procese las solicitudes de **DND (Do Not Disturb / No molestar) diariamente**: los números desactivados ya no son destinatarios válidos.
+- Un mensaje que dispare el error 30007 puede marcar automáticamente a un contacto como DND. [Ver artículo relacionado](https://help.chateea.com/en/support/solutions/articles/48001214849).
+
+## Mejores prácticas
+
+- Use URL cortas personalizadas o de marca, vinculadas al dominio de su negocio.
+- Limite las redirecciones a no más de una y evite ocultar el destino de los enlaces.
+- Cuando sea posible, incluya la URL completa para aumentar la transparencia (aunque ocupe caracteres adicionales).
+- Mejorar sus prácticas de URL puede evitar el filtrado y asegurar que sus mensajes lleguen a su audiencia.
+- Si envía enlaces por SMS, use únicamente los enlaces indicados en su A2P.
+- Los enlaces deben llevar esa dirección de dominio específica cuando se envían por SMS; de lo contrario podrían ser filtrados.
+
+**Referencia:** [https://www.twilio.com/en-us/blog/us-messaging-policy-guidelines-enforcement-ensure-higher-deliverability](https://www.twilio.com/en-us/blog/us-messaging-policy-guidelines-enforcement-ensure-higher-deliverability) — [LeadConnector Messaging Policy](https://help.leadconnectorhq.com/support/solutions/articles/48001214536-leadconnector-messaging-policy)
+
+## ¿Crees que te están filtrando por error?
+
+Si sus mensajes **cumplen todos los criterios de cumplimiento** pero aún así son **bloqueados**:
+
+<Steps>
+  <Step title="Reúna los ejemplos">
+    Recopile **más de 3 ejemplos de contactos** de los **últimos 7 días que muestren el error 30007**.
+  </Step>
+  <Step title="Comparta los enlaces">
+    **Comparta los enlaces con nosotros** para su revisión.
+  </Step>
+</Steps>
+
+### Cómo compartir los enlaces de contacto
+
+<Steps>
+  <Step title="Abra Conversaciones">
+    Vaya a **Conversaciones** desde su cuenta.
+  </Step>
+  <Step title="Busque el contacto">
+    Use la **barra de búsqueda** para encontrar el contacto afectado por **nombre** o **número**.
+  </Step>
+  <Step title="Abra los detalles">
+    Haga clic en la **imagen de contacto** para ver los detalles de contacto.
+  </Step>
+  <Step title="Copie la URL">
+    Copie la **URL del navegador**, que tendrá este aspecto:
+
+    ```text
+    .../contacts/detail/6kWzMq2r77GhGClXoMvu
+    ```
+  </Step>
+</Steps>
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura de la pantalla **Contactos → Detalles del contacto**, con la URL del navegador resaltada y la conversación del contacto a la derecha.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué varía el filtrado de mensajes entre operadores?" icon="code-compare">
+    Cada operador utiliza una lógica y algoritmos de filtrado diferentes. Un mensaje bloqueado por un operador (por ejemplo, Verizon) podría ser entregado por otro (por ejemplo, AT&T), dependiendo del contenido, el volumen y el historial del remitente.
+  </Accordion>
+
+  <Accordion title="¿Qué sucede si envío mensajes a números internacionales?" icon="earth-americas">
+    Cada país tiene normas diferentes para los SMS. Algunos requieren tipos de remitente específicos (por ejemplo, códigos cortos o identificadores alfanuméricos), y otros restringen ciertos sectores.
+  </Accordion>
+
+  <Accordion title="¿Cómo puedo saber si un contacto fue marcado como No molestar debido al código 30007?" icon="bell-slash">
+    Puedes consultar el estado de sus conversaciones, los registros de errores y los códigos de error de entrega. Si está en No molestar y los mensajes fueron filtrados previamente, es probable que se hayan vuelto a suprimir.
+  </Accordion>
+
+  <Accordion title="¿Los errores 30007 repetidos bloquearán mi número de forma permanente?" icon="triangle-exclamation">
+    Si no se soluciona, puede provocar que se active el modo No molestar, que se restrinja el acceso o incluso que se desactive el número.
+  </Accordion>
+
+  <Accordion title="¿Cómo puedo comprobar si mis mensajes serán filtrados?" icon="flask">
+    No existe una herramienta de prueba, pero seguir las mejores prácticas reduce significativamente el riesgo.
+  </Accordion>
+
+  <Accordion title="¿Necesito A2P 10DLC si solo envío mensajes a una lista pequeña?" icon="list-check">
+    Sí. Todo el tráfico de SMS con destino a EE. UU. debe cumplir con el registro A2P 10DLC.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar emojis o enlaces acortados?" icon="link-slash">
+    Es mejor evitarlos. Utilice únicamente URL de marca y formato de idioma estándar.
+  </Accordion>
+</AccordionGroup>
