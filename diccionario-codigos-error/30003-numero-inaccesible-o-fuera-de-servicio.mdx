@@ -1,0 +1,60 @@
+---
+title: "30003: Número inaccesible o fuera de servicio."
+sidebarTitle: "30003: Número inaccesible o fuera de servicio."
+description: "ERROR 30003: el teléfono de destino está apagado o no disponible. Descripción, posibles causas, lista de verificación de soluciones, mensajes enviados desde códigos largos y qué hacer ante problemas continuos."
+icon: "phone-slash"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo original modificado el lunes, 5 de mayo de 2025 a las 6:29 a. m.
+</Info>
+
+# ERROR: 30003
+
+Referencia del proveedor: [https://www.twilio.com/docs/api/errors/30003#error-30003](https://www.twilio.com/docs/api/errors/30003#error-30003)
+
+<Warning>
+  **Correcciones de traducción aplicadas en este artículo.** El artículo original tenía tres tramos con la traducción automática rota. Se corrigieron para que se entiendan, sin alterar el significado ni el resto del contenido:
+
+  | Decía en la fuente | Se escribe aquí | Motivo |
+  | --- | --- | --- |
+  | «un problema transitorio posterior al conector de cable» | «un problema transitorio posterior a Lead Connector» | «conector de cable» es una traducción automática de _Lead Connector_ |
+  | «otro número de conector de cable» | «otro número de Lead Connector» | Mismo caso |
+  | «números de teléfono largos (números de teléfono normales)» | «códigos largos (números de teléfono normales)» | Corresponde a _long codes_, el término que da título a esa misma sección |
+</Warning>
+
+## Descripción
+
+El teléfono de destino al que intenta llamar está apagado o no está disponible por algún otro motivo.
+
+## Posibles causas
+
+- El teléfono de destino al que intenta llamar está apagado o no está disponible por algún otro motivo.
+- El dispositivo al que intentas conectarte no tiene suficiente señal.
+- El dispositivo no puede recibir SMS (por ejemplo, el número de teléfono pertenece a un teléfono fijo).
+- Hay un problema con la operadora de telefonía móvil.
+
+## Posibles soluciones
+
+En algunos casos, puede producirse un error de entrega una sola vez debido a un problema transitorio posterior a Lead Connector. Para comprobar si el problema se repite.
+
+Si observa resultados similares, continúe solucionando el problema con la siguiente lista de verificación:
+
+- ¿Está encendido el dispositivo de destino?
+- ¿El dispositivo tiene suficiente señal? Si no es así, apáguelo, espere 30 segundos y vuelva a encenderlo.
+- ¿Está el dispositivo conectado a la red de su operador de origen? No podemos garantizar la entrega de mensajes en dispositivos que se encuentren fuera de la red.
+- ¿Puede el dispositivo recibir SMS que no sean LC?
+- ¿Puede el dispositivo recibir mensajes de otro número de Lead Connector (identificador de remitente no alfanumérico) o con un cuerpo más corto de un solo segmento (no concatenado)?
+- ¿Pueden otros dispositivos que utilicen la misma compañía de telefonía móvil recibir tus mensajes?
+
+Si puede descartar todos los problemas mencionados anteriormente, continúe con la solución de problemas a continuación.
+
+### Mensajes enviados desde códigos largos
+
+Los errores repetidos (error 30003) que aparecen en los mensajes no entregados enviados desde códigos largos (números de teléfono normales) y números gratuitos podrían deberse al filtrado del operador.
+
+Las reglas de filtrado de operadores varían en todo el sector, lo que a veces dificulta determinar con exactitud por qué se filtra un mensaje. Para obtener más información, incluidas posibles soluciones, consulte este artículo del Centro de ayuda: **"¿Cómo funciona el filtrado de operadores?"**.
+
+### Problemas continuos con el error 30003
+
+El equipo de soporte de Lead Connector puede ayudarle a investigar qué falló al entregar su mensaje. Recopile al menos tres ejemplos de mensajes de sus registros de SMS de las últimas 24 horas que hayan sido marcados con el error 30003 y abra una solicitud de soporte.
