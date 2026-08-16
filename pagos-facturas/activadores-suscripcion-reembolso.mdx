@@ -1,0 +1,150 @@
+---
+title: "Automatización de pagos con activadores de suscripción y reembolso"
+description: "Dispara flujos de trabajo cuando una suscripción cambia de estado o se procesa un reembolso."
+icon: "bolt"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Automatizar los eventos relacionados con pagos te permite responder al instante a las acciones de tus clientes sin intervención manual. Los **activadores de suscripción y reembolso** te dejan crear flujos de trabajo más inteligentes basados en la actividad de facturación: cuando una suscripción comienza, se cancela o se actualiza, o cuando se procesa un reembolso. Esto garantiza comunicación oportuna, mejor seguimiento y una experiencia de cliente más cuidada.
+
+## ¿Qué son los activadores de suscripción y reembolso?
+
+Estos activadores permiten que los flujos de trabajo se inicien automáticamente en función de eventos relacionados con los pagos.
+
+| Activador | Cuándo se dispara |
+| --- | --- |
+| **Activador de suscripción** | Cuando se crea, activa, cancela o actualiza una suscripción |
+| **Activador de reembolso** | Cuando se procesa un reembolso, tanto si tuvo éxito como si falló |
+
+Con ellos automatizas seguimientos, notificaciones y procesos internos vinculados a los eventos de facturación.
+
+## Beneficios clave
+
+| Beneficio | Qué aporta |
+| --- | --- |
+| **Comunicación automatizada** | Notifica al instante a clientes o equipos sobre eventos de suscripción o reembolso |
+| **Mejor experiencia del cliente** | Envía confirmaciones, actualizaciones y seguimientos puntuales |
+| **Seguimiento preciso** | Supervisa los eventos de pago sin comprobaciones manuales |
+| **Automatización flexible** | Usa filtros y condiciones para que el flujo corra solo cuando hace falta |
+| **Personalización** | Inserta valores dinámicos como montos, identificadores y estados en tus mensajes |
+
+## Activador de suscripción
+
+Los activadores de suscripción permiten que los flujos de trabajo reaccionen a los cambios en el **ciclo de vida** de una suscripción.
+
+### Casos de uso comunes
+
+- Enviar un mensaje de bienvenida cuando comienza una suscripción
+- Notificar a tu equipo cuando una prueba se convierte en activa
+- Disparar una solicitud de comentarios cuando se cancela una suscripción
+
+### Cómo configurarlo
+
+<Steps>
+  <Step title="Crea o abre un flujo de trabajo">
+    Haz clic en **Crear flujo de trabajo** para comenzar a configurar la automatización, o abre uno existente al que quieras añadirle el activador.
+  </Step>
+  <Step title="Agrega el activador">
+    Haz clic en **Agregar nuevo activador** y selecciona **Suscripción** en la lista.
+  </Step>
+  <Step title="Define los filtros">
+    Selecciona condiciones como **Estado** (Activo, Cancelado, Prueba, etc.) o productos específicos para controlar cuándo se ejecuta el flujo de trabajo.
+  </Step>
+</Steps>
+
+### Capacidades adicionales
+
+- Filtrar por **estado de suscripción** (por ejemplo, Activa o Cancelada)
+- Filtrar por **productos específicos**
+- Usar **valores dinámicos** dentro de tus mensajes y acciones:
+
+| Valor dinámico | Qué devuelve |
+| --- | --- |
+| **ID de suscripción** | El identificador único de la suscripción |
+| **Cantidad total** | El monto total del cobro |
+| **Descuento** | El monto descontado |
+| **Monto del impuesto** | El impuesto aplicado |
+| **Estado de la suscripción** | El estado en el momento del evento |
+
+<Tip>
+  Los valores dinámicos son lo que separa un correo genérico de uno que el cliente lee. "Tu suscripción fue cancelada" funciona mucho peor que "Tu suscripción #1234 fue cancelada el 3 de marzo; el último cobro de 49 USD ya se había procesado".
+</Tip>
+
+## Activador de reembolso
+
+Los activadores de reembolso permiten que los flujos de trabajo reaccionen cada vez que se procesa un reembolso.
+
+### Casos de uso comunes
+
+- Enviar correos de confirmación de reembolso
+- Notificar a los equipos internos si el reembolso se realizó correctamente o falló
+- Activar flujos distintos para reembolsos parciales o totales
+
+### Cómo configurarlo
+
+Selecciona condiciones como **Tipo de reembolso** (Total o Parcial), **Estado** (Éxito o Fallido) y **Origen** para controlar la automatización.
+
+### Capacidades adicionales
+
+Puedes filtrar por estas condiciones de reembolso:
+
+| Filtro | Opciones |
+| --- | --- |
+| **Estado del reembolso** | Éxito, Fallo |
+| **Tipo de reembolso** | Total, parcial |
+| **Origen del reembolso** | Pedido, suscripción, enlace de pago |
+
+Y usar estos valores dinámicos:
+
+| Valor dinámico | Qué devuelve |
+| --- | --- |
+| **ID de reembolso** | El identificador del reembolso |
+| **ID de transacción** | El identificador de la transacción original |
+| **Importe del reembolso** | El monto devuelto |
+| **Estado del reembolso** | Si tuvo éxito o falló |
+
+<Warning>
+  Configura siempre un flujo para el caso de **reembolso fallido**, no solo para el exitoso. Un reembolso que falla y nadie nota se convierte en un cliente molesto que reclama por otro canal, o directamente en un contracargo.
+</Warning>
+
+## Compatibilidad de integración
+
+Estos activadores funcionan con las integraciones de pago compatibles.
+
+| Proveedor | Nivel de compatibilidad |
+| --- | --- |
+| **Stripe** | Compatibilidad total |
+| **Authorize.net** | Compatibilidad total |
+| **NMI** | Compatibilidad total |
+| **PayPal** | Soporte limitado: solo para la creación de suscripciones |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué eventos pueden desencadenar estos flujos de trabajo?">
+    Puedes activar flujos de trabajo para la creación, activación, cancelación y reembolso de suscripciones.
+  </Accordion>
+
+  <Accordion title="¿Puedo activar flujos de trabajo para reembolsos fallidos?">
+    Sí. Puedes usar filtros para activar flujos tanto para reembolsos exitosos como para reembolsos fallidos.
+  </Accordion>
+
+  <Accordion title="¿Puedo personalizar los mensajes usando los datos de pago?">
+    Sí. Puedes insertar valores dinámicos como el estado de la suscripción, el importe del reembolso y el ID de la transacción dentro de tus flujos de trabajo.
+  </Accordion>
+
+  <Accordion title="¿Están disponibles estos activadores para todos los proveedores de pago?">
+    Se admiten la mayoría de los proveedores principales. Algunos pueden tener funcionalidad limitada según el tipo de evento, como es el caso de PayPal.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si necesitas ayuda para configurar activadores o flujos de trabajo, escríbenos por WhatsApp al **\+1 829-580-7071** con el nombre del flujo, el activador que usaste y qué esperabas que ocurriera.
+
+<Card title="Explicación de la configuración para reintentar el pago de la suscripción" icon="rotate-right" href="/pagos-facturas/reintentos-pago-suscripcion">
+  Combina estos activadores con reglas de reintento para recuperar pagos fallidos sin trabajo manual.
+</Card>
