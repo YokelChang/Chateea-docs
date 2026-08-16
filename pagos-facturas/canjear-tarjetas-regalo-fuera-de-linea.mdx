@@ -1,0 +1,205 @@
+---
+title: "Cómo canjear tarjetas de regalo para pagos fuera de línea / fuera de sesión"
+description: "Aplica el saldo de la tarjeta del cliente cuando el cobro lo inicias tú desde la plataforma."
+icon: "receipt"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+## Descripción general
+
+Las tarjetas de regalo se pueden canjear mientras tu negocio cobra los pagos **directamente desde la plataforma**. Ya sea que registres un pago, le cobres a un cliente o crees una suscripción, puedes aplicar el saldo de su tarjeta de regalo como parte del proceso de cobro **sin que el cliente tenga que completar la compra por su cuenta**.
+
+Al procesar el pago, simplemente ingresas el código de la tarjeta de regalo del cliente para validar su saldo:
+
+- Si el saldo disponible cubre el importe total, el pago se realiza íntegramente con la tarjeta de regalo
+- Si el saldo es insuficiente, el importe restante se carga automáticamente al método de pago guardado del cliente
+
+Esto da una experiencia de cobro fluida y un seguimiento preciso del uso de la tarjeta y de los saldos restantes.
+
+## ¿Qué hace esta función?
+
+Esta función permite a tu negocio canjear las tarjetas de regalo de tus clientes mientras cobras pagos a través de los flujos **iniciados por la empresa** que sean compatibles.
+
+La experiencia de canje es coherente con la de las cajas de atención al cliente e incluye:
+
+| Capacidad | Qué significa |
+| --- | --- |
+| **Validación del código** | El sistema confirma que la tarjeta existe y está vigente antes de cobrar |
+| **Consulta de saldo antes del pago** | Ves cuánto hay disponible sin comprometer la transacción |
+| **Canje total** | Cuando hay saldo suficiente, la tarjeta cubre el 100% del importe |
+| **Pago dividido** | Tarjeta de regalo \+ método de pago guardado del cliente en una sola operación |
+| **Detalles de transacción actualizados** | El recibo muestra explícitamente el importe canjeado con la tarjeta |
+
+## ¿Qué necesito para usar esta función?
+
+Antes de canjear una tarjeta de regalo:
+
+<Steps>
+  <Step title="Debe existir al menos un producto de tarjeta de regalo">
+    Creado desde **Pagos → Tarjetas de regalo**.
+  </Step>
+  <Step title="Se debe haber vendido o enviado al menos una tarjeta">
+    Sin una tarjeta emitida no hay código que ingresar.
+  </Step>
+  <Step title="La tarjeta debe cumplir tres condiciones">
+    - Mantenerse **activa**
+    - **No** estar caducada
+    - Tener **saldo disponible**
+  </Step>
+</Steps>
+
+## Cómo canjear una tarjeta de regalo
+
+El proceso de canje es el mismo sin importar desde dónde se reciba el pago.
+
+<Steps>
+  <Step title="Abre un flujo de pago compatible">
+    Selecciona una de las opciones de cobro compatibles que se enumeran más abajo, en la sección **Flujos de pago admitidos**.
+  </Step>
+  <Step title="Introduce el código de la tarjeta de regalo">
+    Localiza el campo **Canjear una tarjeta de regalo** y actívalo.
+
+    Introduce el código de la tarjeta del cliente y haz clic en **Aplicar**. El sistema valida la tarjeta y muestra el saldo disponible.
+
+    {/* Captura pendiente: modal de cobro con el interruptor "Canjear una tarjeta de regalo" activado y el campo de código. */}
+  </Step>
+  <Step title="Revisa el resumen de pagos">
+    Según el saldo disponible:
+
+    **Si la tarjeta cubre el pago completo**
+
+    - El importe total se canjea usando la tarjeta de regalo
+    - No se cobra ningún método de pago adicional
+
+    **Si la tarjeta solo cubre parte del pago**
+
+    - El saldo disponible se aplica primero
+    - El importe restante se cobra con el método de pago guardado del cliente
+  </Step>
+  <Step title="Completa el pago">
+    Una vez que el pago es exitoso:
+
+    - El saldo de la tarjeta se actualiza automáticamente
+    - Los detalles de la transacción muestran el importe canjeado con la tarjeta
+    - El pedido de tarjeta de regalo correspondiente refleja el saldo restante
+  </Step>
+</Steps>
+
+### Ejemplo práctico
+
+Un cobro de $$200** con una tarjeta de regalo que tiene **$$**150** de saldo:
+
+| Concepto | Importe |
+| --- | --- |
+| Total a cobrar | \$200 |
+| Tarjeta de regalo aplicada | \$150 |
+| Saldo restante de la tarjeta | \$0 |
+| **Importe pendiente de pago** | **\$50** |
+
+Esos \$50 se cargan automáticamente a la tarjeta guardada del cliente, o puedes agregar una tarjeta nueva en ese mismo momento.
+
+Y un segundo escenario, un cobro de $$100** con una tarjeta que tiene **$$**180**:
+
+| Concepto | Importe |
+| --- | --- |
+| Total a cobrar | \$100 |
+| Tarjeta de regalo aplicada | \$100 |
+| Saldo restante de la tarjeta | \$80 |
+| **Importe pendiente de pago** | **\$0** |
+
+Aquí no se toca ningún método de pago adicional y el cliente conserva \$80 para una próxima compra.
+
+## Flujos de pago admitidos
+
+El canje de tarjetas de regalo está disponible actualmente en las siguientes experiencias de cobro iniciadas por la empresa.
+
+### Registrar pago de un pedido
+
+**Ruta:** Pagos → Pedidos → Detalles del pedido → Registrar pago → Cobrar con tarjeta
+
+Si el cliente tiene una tarjeta de regalo elegible, introduce el código y haz clic en **Aplicar** antes de completar el pago.
+
+### Registrar un pago a partir de una factura
+
+**Ruta:** Pagos → Facturas → Detalles de la factura → Registrar pago → Cobrar con tarjeta
+
+Aplica la tarjeta del cliente para reducir o cubrir por completo el importe antes de cobrar el saldo restante, si hiciera falta.
+
+### Cobrar ahora
+
+**Ruta:** Contactos → Cobrar ahora
+
+Usa la tarjeta de regalo del cliente mientras cobras directamente desde su ficha de contacto. Si la tarjeta no cubre el importe total, el saldo restante se carga automáticamente al método de pago guardado.
+
+### Crear suscripción desde Contactos
+
+**Ruta:** Contactos → Crear suscripción
+
+Las tarjetas de regalo se pueden aplicar al **pago inicial** de la suscripción. Si el saldo es insuficiente, el importe restante se carga al método de pago guardado.
+
+<Warning>
+  Aunque la tarjeta cubra el primer cobro, **igual se requiere un método de pago** para los cobros recurrentes futuros. No es posible crear una suscripción únicamente con una tarjeta de regalo.
+</Warning>
+
+### Crear suscripción desde los detalles de la suscripción
+
+**Ruta:** Pagos → Suscripciones → Detalles de la suscripción → Crear suscripción
+
+La experiencia de canje es idéntica a la de crear una suscripción desde la página de Contactos.
+
+<Note>
+  **Próximamente:** el canje de tarjetas de regalo también estará disponible al cobrar pagos a través de **Calendarios** y **punto de venta (POS)**.
+</Note>
+
+{/* Captura pendiente: modal "Cobrar con tarjeta" desde una factura, mostrando tarjeta aplicada, saldo restante e importe pendiente. */}
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Pueden las empresas canjear las tarjetas de regalo igual que lo hacen los clientes al pagar?">
+    Sí. Tu negocio puede canjear tarjetas de regalo mientras cobra pagos en nombre de los clientes, usando la misma lógica de canje disponible en las cajas de cara al cliente.
+  </Accordion>
+
+  <Accordion title="¿Qué ocurre si el saldo de la tarjeta es inferior al importe del pago?">
+    El saldo disponible se canjea primero, y el importe restante se cobra automáticamente con el método de pago guardado del cliente. También puedes agregar una tarjeta nueva en ese momento.
+  </Accordion>
+
+  <Accordion title="¿Puedo canjear más de una tarjeta de regalo por un mismo pago?">
+    No. Actualmente solo se puede aplicar **una tarjeta de regalo por pago**.
+  </Accordion>
+
+  <Accordion title="¿Puedo canjear una tarjeta caducada o que ya haya sido utilizada?">
+    No. Solo se pueden canjear las tarjetas de regalo **activas y con saldo disponible**.
+  </Accordion>
+
+  <Accordion title="¿Se actualizará automáticamente el saldo después del pago?">
+    Sí. El saldo restante se actualiza inmediatamente después de un pago exitoso y se refleja en el pedido de tarjeta de regalo correspondiente.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar una tarjeta de regalo al crear una suscripción?">
+    Sí, para el **pago inicial** de la suscripción.
+
+    Los pagos posteriores, o cualquier saldo pendiente del pago inicial, deben realizarse obligatoriamente con una de las tarjetas guardadas o agregando una tarjeta nueva. No es posible crear una suscripción solo con una tarjeta de regalo.
+  </Accordion>
+
+  <Accordion title="¿Dónde puedo ver cuánto se canjeó con la tarjeta de regalo?">
+    En la página de **Detalles de la transacción**, que muestra el importe canjeado mediante la tarjeta de regalo junto al importe restante cobrado con otro método de pago.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si un código válido no se aplica en el momento del cobro, escríbenos por WhatsApp al **\+1 829-580-7071** indicando el flujo que estabas usando y el número de pedido de la tarjeta.
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con las tarjetas de regalo" icon="gift" href="/pagos-facturas/tarjetas-regalo-primeros-pasos">
+    Reglas generales de canje y cajas compatibles de cara al cliente.
+  </Card>
+
+  <Card title="Análisis y seguimiento de métricas" icon="chart-line" href="/pagos-facturas/tarjetas-regalo-analiticas">
+    Verifica saldos restantes y estados desde la página de pedidos.
+  </Card>
+</CardGroup>
