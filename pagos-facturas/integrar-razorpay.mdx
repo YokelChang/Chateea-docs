@@ -1,0 +1,154 @@
+---
+title: "Cómo integrar Razorpay en el CRM"
+description: "Instala la app, autentica con tus claves API, configura los webhooks y registra tu dominio de marca."
+icon: "credit-card"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Los usuarios empresariales pueden procesar pagos a través de **Razorpay**, un proveedor de pagos muy usado en India. Esta integración está disponible como aplicación en el **Marketplace**, dentro del menú de aplicaciones de una subcuenta, y también al hacer clic en **Buscar más opciones** dentro de **Pagos → Integraciones**.
+
+## Qué permite la integración
+
+| Capacidad | Detalle |
+| --- | --- |
+| **Pagos únicos** | Cobros puntuales en cualquier canal |
+| **Importes personalizados** | El cliente o tú definen el monto |
+| **Pagos recurrentes** | Suscripciones de duración fija |
+| **Gestión de suscripciones** | Cancelaciones y actualización de tarjetas registradas |
+| **Reembolsos** | Funcionalidades relacionadas con devoluciones |
+
+Y funciona a través de todos los canales de cobro: formularios de pedido, facturas, enlaces de pago, formularios, página de contacto, entre otros.
+
+<Info>
+  La aplicación **no difiere** de las integraciones de pago existentes como Stripe, NMI o Authorize.net. Tiene todas las funcionalidades de pago, incluyendo automatizaciones posteriores a la compra: recibos de venta automatizados, reembolsos, activadores de "pago recibido" y "pedido enviado", y aplicación de descuentos mediante códigos de cupón.
+</Info>
+
+{/* Captura pendiente: pantalla de Integraciones de pago mostrando Razorpay como proveedor predeterminado junto a los conectados. */}
+
+## Los cuatro pasos esenciales
+
+Para conectar Razorpay correctamente, sigue estos cuatro pasos. Los cuatro son obligatorios: **saltarse el cuarto es el error más común** y provoca que los pagos fallen aunque todo lo demás esté bien.
+
+<Steps>
+  <Step title="Instala la aplicación Razorpay">
+    Ve al **mercado de aplicaciones** e instala la aplicación Razorpay.
+
+    Al instalarla verás la pantalla de confirmación con los permisos que solicita sobre la cuenta:
+
+    | Permiso solicitado | Ámbito |
+    | --- | --- |
+    | Lectura de pedidos | Pagos |
+    | Escritura de pedidos | Pagos |
+    | Lectura de suscripciones | Pagos |
+    | Lectura de proveedor personalizado | Pagos |
+    | Lectura de transacciones | Pagos |
+
+    Haz clic en **Permitir e instalar**.
+  </Step>
+  <Step title="Autentica mediante claves API">
+    Una vez instalada la aplicación se muestra la página de autenticación.
+
+    Copia tus claves API desde el panel de control de Razorpay, en **Cuentas y configuración → Claves API**, y pégalas en la página de autenticación de la aplicación.
+
+    La pantalla tiene dos bloques separados:
+
+    | Bloque | Qué va ahí |
+    | --- | --- |
+    | **Credenciales de prueba** | Key Id y clave secreta de prueba, para validar el flujo sin cobros reales |
+    | **Credenciales en vivo** | Key Id y clave secreta de producción |
+
+    <Warning>
+      Cada bloque tiene su propio botón de conexión. Conectar el de prueba **no** habilita los cobros reales.
+    </Warning>
+  </Step>
+  <Step title="Configura los webhooks">
+    En tu panel de control de Razorpay, ve a **Cuentas y configuración → Webhooks** y agrega la URL de webhook que la plataforma te indica en la pantalla de configuración de la aplicación.
+
+    Sin esto, la integración **no puede obtener los estados de las transacciones** de Razorpay, y verás pagos que se cobran pero no se reflejan.
+
+    Asegúrate de habilitar **todos los eventos relacionados con pagos** para una sincronización adecuada. Estos son los que la integración espera:
+
+    | Familia de eventos | Eventos |
+    | --- | --- |
+    | **Pagos** | `payment.authorized`, `payment.failed`, `payment.captured` |
+    | **Pedidos** | `order.paid` |
+    | **Suscripciones** | `subscription.authenticated`, `subscription.paused`, `subscription.resumed`, `subscription.activated`, `subscription.pending`, `subscription.halted`, `subscription.charged`, `subscription.cancelled`, `subscription.completed`, `subscription.updated` |
+    | **Reembolsos** | `refund.processed`, `refund.created` |
+
+    <Note>
+      Razorpay recomienda añadir un **secreto** al webhook y un **correo de alerta** para recibir avisos cuando el webhook falle. Ambos campos están en la misma pantalla de creación.
+    </Note>
+  </Step>
+  <Step title="Registra y añade tu dominio a la lista blanca">
+    Este paso tiene dos mitades, una en cada plataforma.
+
+    **En tu panel de Chateea:** ve a **Configuración → Perfil del negocio → Dominio de marca** y registra el dominio que estás utilizando. Verifícalo y haz clic en actualizar información.
+
+    **En tu panel de Razorpay:** inicia sesión y ve a **Cuentas y configuración → Detalles del sitio web de la empresa → Añadir detalles adicionales de sitio web / app**. Añade ahí el **mismo dominio de marca**. Razorpay lo verificará y lo activará.
+
+    <Warning>
+      Razorpay solo permite aceptar pagos desde **dominios incluidos en la lista blanca** de su panel de control. Si omites este paso, los pagos fallarán con un aviso por correo desde Razorpay.
+    </Warning>
+  </Step>
+</Steps>
+
+{/* Captura pendiente: pantalla de configuración de Razorpay con los bloques de credenciales de prueba y en vivo. */}
+
+{/* Captura pendiente: pantalla de creación de webhook en Razorpay con los eventos activos seleccionados. */}
+
+## Ejemplo: por qué el paso 4 no es opcional
+
+Un negocio conecta Razorpay, pega bien sus claves y configura los webhooks, pero no registra su dominio propio. Esto es lo que pasa:
+
+| Elemento | Estado | Resultado |
+| --- | --- | --- |
+| Aplicación instalada | Correcto | La integración aparece activa |
+| Claves API en vivo | Correctas | La conexión se establece |
+| Webhooks configurados | Correctos | Los estados llegarían bien |
+| **Dominio de marca propio** | **No registrado** | Se usa el dominio predeterminado de la plataforma, que **no** está autorizado para tu ID de comerciante |
+| **Resultado final** | **Pago rechazado** | Razorpay envía un correo de intento fallido por dominio no registrado |
+
+La corrección es exactamente el paso 4: registrar tu propio dominio de marca y añadirlo a la lista blanca en Razorpay.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Hice la integración, pero al aceptar un pago recibo un correo de Razorpay diciendo que el intento falló porque el dominio no está registrado.">
+    Ese error se produce porque Razorpay **restringe el procesamiento de pagos desde dominios no registrados o no verificados**. Cada ID de comerciante en Razorpay debe estar asociado a un dominio incluido en la lista blanca, como parte de su política de cumplimiento del sitio web.
+
+    Por defecto la plataforma usa un dominio de marca compartido, autorizado únicamente para su propia cuenta comercial. Ese dominio **no funcionará** con tus claves de Razorpay.
+
+    Para solucionarlo, registra **tu propio dominio de marca** como se indica en el paso 4. Una vez conectado tu dominio, Razorpay lo reconocerá como parte de tu configuración autorizada y los pagos se procesarán correctamente.
+  </Accordion>
+
+  <Accordion title="¿Esta integración funcionará también para el modo SaaS y las recargas de monedero?">
+    No. Aunque el modo SaaS y las recargas de monedero se admiten con un proveedor de pago personalizado, con Razorpay no funcionarán.
+
+    El motivo es que Razorpay **no admite cargos fuera de sesión** sobre tarjetas guardadas a través de esta integración. Solo se admiten suscripciones de **duración fija**.
+  </Accordion>
+
+  <Accordion title="¿Dónde encuentro mis claves API de Razorpay?">
+    En el panel de control de Razorpay, en **Cuentas y configuración → Claves API**. Necesitarás el **Key Id** y la **clave secreta**, y tendrás un par distinto para prueba y para producción.
+  </Accordion>
+
+  <Accordion title="Los pagos se cobran pero el pedido no se actualiza, ¿qué reviso?">
+    Casi siempre son los webhooks. Verifica que la URL esté pegada correctamente en Razorpay y que estén activos **todos** los eventos de la tabla del paso 3, especialmente los de la familia `payment` y `order.paid`.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si la integración queda conectada pero los pagos no se procesan, escríbenos por WhatsApp al **\+1 829-580-7071** con el texto exacto del correo de error de Razorpay y el dominio que registraste.
+
+<CardGroup cols={2}>
+  <Card title="Suscripciones de horario fijo de Razorpay" icon="calendar-check" href="/pagos-facturas/razorpay-suscripciones-horario-fijo">
+    Guía en preparación sobre cobros recurrentes y cargos bajo demanda.
+  </Card>
+
+  <Card title="Aceptar pagos con PayPal" icon="paypal" href="/pagos-facturas/paypal-payment-elements">
+    Otra pasarela para ampliar las opciones de pago de tu caja.
+  </Card>
+</CardGroup>
