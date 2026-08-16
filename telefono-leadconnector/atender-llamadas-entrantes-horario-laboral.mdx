@@ -1,0 +1,147 @@
+---
+title: "Atender las llamadas entrantes durante el horario laboral."
+sidebarTitle: "Atender las llamadas entrantes durante el horario laboral."
+description: "Cómo activar «Solo sonar durante el horario laboral» para que las llamadas entrantes no suenen fuera de su jornada, qué ocurre con cada escenario de enrutamiento, cómo bloquear días festivos con horarios específicos por fecha y cómo controlar el permiso desde la administración."
+icon: "business-time"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo original modificado el jueves, 25 de junio de 2026.
+</Info>
+
+## Descripción general
+
+Esta configuración le permite recibir llamadas entrantes **solo durante su horario laboral**. Cuando está activada, cualquier llamada entrante que llegue fuera de su horario seleccionado se desviará directamente al sistema de gestión de llamadas alternativo del número (como el buzón de voz o la IA de voz).
+
+Es útil si no quiere que las llamadas suenen fuera del horario laboral, los fines de semana o durante sus días libres.
+
+<Note>
+  Esta configuración está **desactivada por defecto**. El enrutamiento de llamadas no cambia hasta que la active.
+</Note>
+
+## ¿Quién puede usarlo?
+
+| Quién configura | Ruta | Permiso necesario |
+| --- | --- | --- |
+| **Usted mismo** | Ajustes → **Mi perfil** | Gestionar calendarios (Manage calendars) |
+| **Administradores y gerentes, para un miembro del equipo** | Configuración → **Mi personal** → Editar → **Disponibilidad del usuario** | Gestionar calendarios (Manage calendars) |
+
+Para gestionar esta configuración se requiere el permiso **«Gestionar calendarios»**. Si no ve esta opción, es posible que su administrador no le haya otorgado dicho permiso.
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura de **My Staff → User Availability** mostrando la tarjeta **Inbound call routing** con el interruptor «Only ring during working hours» activado y el desplegable **Call routing schedule** con «Work Hours» seleccionado.
+</Note>
+
+## Cómo encenderlo
+
+<Steps>
+  <Step title="Abra el perfil correcto">
+    Vaya a **Configuración → Mi perfil** (o a **Mi personal** y abra el miembro del equipo).
+  </Step>
+  <Step title="Localice la tarjeta">
+    Busque la tarjeta **«Enrutamiento de llamadas entrantes»**.
+  </Step>
+  <Step title="Active el interruptor">
+    Active la opción **«Solo sonar durante el horario laboral»**.
+  </Step>
+  <Step title="Elija el horario">
+    Seleccione en el menú desplegable el horario que mejor defina su jornada laboral. Este es el horario que el sistema consulta antes de llamarle.
+  </Step>
+</Steps>
+
+**Su elección se guarda automáticamente.**
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura de **Mi perfil** con el bloque **Weekly working hours** (días de lunes a viernes con hora de inicio y fin), el panel **Date specific hours** y, debajo, la tarjeta **Inbound call routing**.
+</Note>
+
+## ¿Qué sucede con las llamadas fuera de su horario laboral?
+
+Esta tabla es la clave del artículo: el comportamiento cambia según cómo esté enrutada la llamada entrante. Úsela para anticipar qué escuchará quien llame fuera de su jornada.
+
+| Escenario de enrutamiento | Qué sucede fuera del horario laboral |
+| --- | --- |
+| **Se le asigna el número o el contacto** | La llamada le omite y se dirige al sistema de respaldo existente de ese número de teléfono (buzón de voz o IA de voz) |
+| **Se utiliza la opción «Llamar a todos»** | Solo se omiten los compañeros de equipo que están fuera de su horario laboral. Todos los que aún están dentro del horario reciben la llamada con normalidad. Si **todos** están fuera del horario, la llamada se redirige al número de teléfono de respaldo |
+| **Menú de llamadas (IVR)** | Si un paso de conexión está configurado para que le llamen y usted está fuera de su horario, se le omite mientras las demás personas y números de ese paso siguen sonando. Si usted era la **única** persona configurada para recibir esa llamada, la llamada no se conecta con nadie y el flujo continúa |
+
+**Durante su horario laboral, nada cambia. Las llamadas le suenan exactamente igual que hoy.**
+
+**Ejemplo práctico.** Un equipo de tres personas con «Llamar a todos»: si Ana trabaja de 8:00 a 17:00, Luis de 12:00 a 21:00 y Carla de 8:00 a 17:00, una llamada que entra a las 19:00 solo hará sonar el teléfono de Luis. Una llamada a las 22:00 no hace sonar a nadie y va directo al respaldo del número.
+
+## Uso de horarios específicos por fecha para días festivos y tiempos libres
+
+El sistema de programación que habilita esta función admite **horarios específicos para cada fecha**. Al ingresar un horario específico para una fecha, este modifica sus horas semanales habituales para ese día, lo que le permite desconectarse de las llamadas entrantes durante un día festivo o un día libre **sin alterar su horario semanal habitual**.
+
+### Para marcar un día como libre
+
+<Steps>
+  <Step title="Abra el horario">
+    Abra el horario que seleccionó en la tarjeta «Enrutamiento de llamadas entrantes».
+  </Step>
+  <Step title="Agregue la fecha">
+    Agregue una entrada específica para la fecha en la que desea no estar disponible.
+  </Step>
+  <Step title="Déjela sin horas">
+    Establezca esa fecha para que **no haya horas disponibles**.
+  </Step>
+  <Step title="Guarde">
+    Guarde los cambios.
+  </Step>
+</Steps>
+
+En esa fecha se le considerará fuera de horario laboral durante todo el día, por lo que las llamadas entrantes no se atenderán directamente en su número y se redirigirán al número de respaldo. Su horario semanal habitual se mantiene sin cambios y se reanuda automáticamente al día siguiente.
+
+### Es bueno saberlo
+
+| Detalle | Qué implica |
+| --- | --- |
+| **Prioridad de la entrada por fecha** | Una entrada específica para una fecha determinada **siempre tiene prioridad** sobre sus horas semanales habituales para esa fecha, por lo que funciona incluso si el día festivo cae en un día laborable normal |
+| **Funciona igual en ambos lugares** | Tanto si lo configura usted mismo en **Mi perfil** como si un administrador lo configura para un miembro del equipo en **Mi personal** |
+| **Día libre para todo el equipo** | Para que un equipo completo se tome un día libre por vacaciones de la empresa, agregue el día libre específico a la fecha **en el horario de cada miembro** y asegúrese de que su interruptor esté activado |
+
+## Para administradores: controle quién puede cambiar esto
+
+Esta configuración está vinculada al permiso **«Gestionar calendarios»**. Si no desea que un miembro del personal modifique su disponibilidad de llamadas, elimine el permiso «Gestionar calendarios» de su rol en **Configuración → Mi personal → Roles y permisos**.
+
+Cuando este permiso está desactivado, la tarjeta «Enrutamiento de llamadas entrantes» **se oculta para ese usuario** y se bloquea cualquier intento de modificar la configuración. Esto permite a los administradores controlar el enrutamiento de llamadas fuera del horario laboral en todo el equipo.
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura de **My Staff → Roles & Permissions** con el bloque **Calendars** desplegado y la casilla **Manage calendars** resaltada.
+</Note>
+
+## ¿Y mi número de desvío?
+
+Si su teléfono también está configurado como número de desvío en un número que le han asignado (o como número de empresa), **no necesita hacer nada**. Cuando esté fuera de su horario laboral, ese número de desvío se omitirá automáticamente, por lo que la llamada se redirigirá al número de respaldo en lugar de sonarle a usted. Su horario se respetará en cualquier caso.
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura del modal **Configure** de un número, pestaña **Call Forwarding**, donde el número externo aparece marcado en rojo con el mensaje «Ring skipped because of phone number match».
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cambiará algo si lo dejo desactivado?" icon="toggle-off">
+    No. Esta configuración está desactivada por defecto y el enrutamiento de llamadas permanece igual hasta que usted la active.
+  </Accordion>
+
+  <Accordion title="¿Qué horario utiliza?" icon="calendar">
+    El horario que seleccione en el menú desplegable. Puede cambiarlo en cualquier momento.
+  </Accordion>
+
+  <Accordion title="¿Cómo puedo bloquear las llamadas durante un día festivo?" icon="calendar-xmark">
+    Agregue una entrada con fecha específica, sin especificar el horario, a su calendario seleccionado. Consulte la sección «Uso de horarios específicos por fecha para días festivos y tiempos libres» más arriba.
+  </Accordion>
+
+  <Accordion title="¿Funciona para llamadas transferidas?" icon="phone-arrow-right">
+    Todavía no. Esta versión cubre las llamadas entrantes a usuarios asignados, la opción de llamada a todos y los pasos del menú de llamadas (IVR). La función de transferencia de llamadas se incluirá en una futura actualización.
+  </Accordion>
+
+  <Accordion title="¿Puedo desviar las llamadas fuera del horario laboral a un compañero de equipo específico o a mi propio buzón de voz?" icon="share-from-square">
+    En esta versión, esto no sucede. Las llamadas fuera de su horario laboral se redirigen al número de teléfono de respaldo existente.
+  </Accordion>
+
+  <Accordion title="Lo encendí, pero aún así recibo llamadas fuera del horario laboral. ¿Por qué?" icon="circle-question">
+    Compruebe que el horario seleccionado sea correcto y que la hora actual esté fuera de él (recuerde que el horario utiliza su propia zona horaria). Confirme también que la opción esté activada para el perfil correcto. Si está realizando pruebas con una fecha específica para un día festivo, asegúrese de que no haya horas disponibles para esa fecha.
+  </Accordion>
+</AccordionGroup>
