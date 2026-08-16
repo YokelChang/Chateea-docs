@@ -1,0 +1,196 @@
+---
+title: "Disposiciones de llamadas"
+description: "Registre el resultado de cada llamada, active flujos de trabajo automáticos y analice el rendimiento en el informe de llamadas."
+icon: "phone-flip"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+## Descripción general
+
+La función de Gestión de Llamadas le ayuda a registrar el resultado comercial al final de cada llamada y a tomar las medidas adecuadas a continuación, todo ello dentro de su sistema de marcación automática.
+
+Tras finalizar una llamada, puede seleccionar el resultado (la conclusión de la llamada), como **Interesado**, **Cita solicitada** o **No interesado**. Estos resultados permiten hacer un seguimiento de las conclusiones de las llamadas y ahorrar tiempo mediante la activación de flujos de trabajo.
+
+### Por qué esto importa
+
+Al utilizar la función de Disposiciones de llamadas, usted puede:
+
+<CardGroup cols={3}>
+  <Card title="Ahorrar tiempo" icon="clock">
+    Menos seguimiento manual y menos gestiones posteriores.
+  </Card>
+
+  <Card title="Activar flujos al instante" icon="bolt">
+    Por ejemplo: enviar un SMS, añadir a una campaña o programar una llamada de vuelta.
+  </Card>
+
+  <Card title="Analizar mejor" icon="chart-line">
+    Analice los resultados de las llamadas de forma más eficaz en los informes de llamadas.
+  </Card>
+</CardGroup>
+
+## Cómo agregar disposiciones personalizadas en Lead Connector
+
+### Disposiciones por defecto
+
+Por defecto, todas las cuentas comienzan con configuraciones predefinidas para mayor visibilidad y facilidad de uso. Los administradores pueden agregar o modificar estas configuraciones.
+
+| Disposición predeterminada | Uso habitual |
+| --- | --- |
+| **No Answer** | La llamada no fue contestada. |
+| **Voicemail** | La llamada cayó en buzón de voz. |
+| **Follow Up** | Requiere un seguimiento posterior. |
+| **Requested Appointment** | El contacto solicitó una cita. |
+| **Not Interested** | El contacto no está interesado. |
+| **Incorrect Number** | El número es incorrecto. |
+
+### Creación y edición de disposiciones
+
+<Warning>
+  Solo los **administradores de subcuentas** pueden crear, editar o eliminar disposiciones. Se pueden tener hasta **10 disposiciones por subcuenta**.
+</Warning>
+
+Para configurar:
+
+<Steps>
+  <Step title="Abra la configuración de voz">
+    Vaya a **Configuración de subcuenta → Sistema telefónico → Voz → Disposiciones de llamadas** (_Phone System → Voice → Custom Dispositions_).
+  </Step>
+  <Step title="Edite o agregue">
+    Edita los existentes o añade nuevos con el botón **\+ Add Disposition**, escribe el nombre en **Disposition Name** y guarda.
+
+    <Note>
+      **Captura pendiente:** pestaña **Custom Dispositions** con la tabla de disposiciones (Disposition Name, Created On, Modified On) y el modal **Add Disposition**. Recapturar desde app.chateea.com.
+    </Note>
+  </Step>
+</Steps>
+
+## Cómo funciona
+
+Cuando finaliza una llamada en el marcador web, verá hasta **10 opciones de estado de llamada** para elegir, por ejemplo, _Seguimiento_ o _Cita solicitada_. Simplemente seleccione la opción adecuada para registrar el resultado.
+
+<Note>
+  **Captura pendiente:** panel **Call Summary** al finalizar una llamada, mostrando el bloque **Custom Disposition** con las seis opciones y el botón **Done**. Recapturar desde app.chateea.com.
+</Note>
+
+## Conexión a flujos de trabajo
+
+<Steps>
+  <Step title="Vaya a la automatización">
+    Diríjase a **la automatización**.
+  </Step>
+  <Step title="Agregue el activador">
+    Agregue un activador: **Detalles de la llamada** (_Call Details_).
+  </Step>
+  <Step title="Seleccione el filtro">
+    Seleccione el filtro **Disposición personalizada** (_Custom Disposition_).
+  </Step>
+  <Step title="Elija las disposiciones">
+    Seleccione una o más disposiciones para automatizar las acciones de seguimiento deseadas.
+  </Step>
+</Steps>
+
+La disposición que haya elegido puede activar automáticamente flujos de trabajo como:
+
+- Enviar un SMS o correo electrónico de seguimiento
+- Programar una cita
+- Agregar el contacto a un embudo o campaña específica
+
+## Uso de disposiciones en la elaboración de informes
+
+Todas las disposiciones seleccionadas se almacenan y se pueden consultar en:
+
+**Informes → Informe de llamadas**
+
+Esto permite realizar un seguimiento de patrones como los resultados de las llamadas por usuario o el rendimiento del equipo.
+
+En **la tabla de Informes de llamadas**, ahora verá una nueva columna para _el Estado de la llamada_. También puede usarla como filtro para analizar el rendimiento según el estado de la llamada; por ejemplo, cuántas llamadas resultaron en una "Solicitud de devolución de llamada".
+
+## Disposiciones personalizadas en dispositivos móviles
+
+Las disposiciones personalizadas ahora son totalmente compatibles con **móvil**, lo que facilita registrar resultados de llamada claros y activar los siguientes pasos al instante desde el teléfono. Esta función está disponible en **LeadConnector** y en las **aplicaciones móviles** de iOS y Android.
+
+### Novedades
+
+| Novedad | Detalle |
+| --- | --- |
+| **Call End Screen Support** | Seleccione una disposición inmediatamente al terminar la llamada o desde la vista posterior a la llamada, sin necesidad de escritorio. |
+| **Single Disposition per Call** | Registre un único resultado definitivo (por ejemplo, Follow Up, Qualified) para garantizar datos limpios e informes consistentes. |
+| **Workflow-Ready** | Use el filtro **Custom Disposition** en los flujos de trabajo para activar automáticamente seguimientos, tareas, movimientos de pipeline y más. |
+
+<Note>
+  **Captura pendiente:** pantalla móvil de **Call Ended** con el bloque **Call Disposition** (No Answer, Voicemail, Follow Up, Requested Appointment y el desplegable "Choose Another Disposition") y las **Quick Actions**. Recapturar desde app.chateea.com.
+</Note>
+
+### Notas específicas de móvil
+
+<Warning>
+  **Coincidencia de subcuenta obligatoria.** Las disposiciones solo aparecen cuando la subcuenta seleccionada coincide con la ubicación de la llamada. Dado que las aplicaciones móviles pueden recibir llamadas de varias subcuentas, no se admiten disposiciones entre subcuentas. Use la opción **Switch** si es necesario.
+</Warning>
+
+## Tipos de llamada compatibles
+
+| Compatible | No compatible |
+| --- | --- |
+| Todas las llamadas realizadas o recibidas a través de la aplicación web o móvil. | Llamadas contestadas mediante un número personal o un teléfono de escritorio. |
+
+## Limitaciones
+
+- Solo una disposición por llamada.
+- Máximo 10 disposiciones por cuenta.
+- No están disponibles las subdisposiciones (resultados anidados).
+- No se admiten selecciones múltiples.
+
+## Nota de migración: Estado de llamada → Disposición de llamada
+
+Si anteriormente usaba **Call Status** en el Power Dialer (Manual Actions):
+
+- La opción de selección manual del estado de llamada ha sido reemplazada por **Call Disposition**.
+- Los flujos de trabajo existentes que usan activadores de “Call Status” deben actualizarse para usar el filtro **Custom Disposition** dentro del activador **Call Details**.
+- Sus datos antiguos seguirán visibles, pero las nuevas automatizaciones deben usar el nuevo sistema.
+
+## Permisos
+
+| Rol | Acción |
+| --- | --- |
+| **Admin** | Crear, editar y eliminar disposiciones. |
+| **User** | Seleccionar la disposición después de la llamada. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si no selecciono una disposición después de una llamada?">
+    Las disposiciones son opcionales y puede optar por no seleccionar ninguna.
+  </Accordion>
+
+  <Accordion title="¿Cuántas disposiciones puedo tener?">
+    Actualmente se admiten hasta 10.
+  </Accordion>
+
+  <Accordion title="¿Puedo activar un flujo de trabajo desde una disposición eliminada?">
+    No. Una vez eliminada, los flujos de trabajo asociados dejarán de activarse.
+  </Accordion>
+
+  <Accordion title="¿Qué sucede con las llamadas que contesto en mi teléfono personal o en el teléfono de mi escritorio?">
+    Esas llamadas no pueden usar disposiciones de llamadas. Por ahora, se requiere la aplicación web o móvil.
+  </Accordion>
+
+  <Accordion title="¿Qué pasó con el activador de estado de llamada?">
+    Se le cambió el nombre a **Detalles de llamada** y ahora admite el nuevo filtro de **Disposición personalizada**. **El estado de llamada** sigue siendo un filtro en el activador Detalles de llamada, pero es diferente de Disposición.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Inteligencia numérica" icon="shield-halved" href="/telefono-leadconnector/inteligencia-numerica">
+    Disposiciones personalizadas dentro del enfoque por capas contra el spam entrante.
+  </Card>
+
+  <Card title="Cómo configurar el seguimiento de llamadas (grupo de números)" icon="phone-arrow-down-left" href="/telefono-leadconnector/seguimiento-de-llamadas-grupo-de-numeros">
+    Atribuya las llamadas por fuente y palabra clave en el informe de llamadas.
+  </Card>
+</CardGroup>
