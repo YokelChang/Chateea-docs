@@ -1,0 +1,409 @@
+---
+title: "¿Cómo utilizar la acción de flujo de trabajo premium de formateo de fecha y hora?"
+sidebarTitle: "¿Cómo utilizar la acción de flujo de trabajo premium de formateo de fecha y hora?"
+description: "La acción Date/Time Formatter reformatea fechas y estructuras de fecha y hora y compara dos fechas para obtener la diferencia en días, con salidas reutilizables en pasos posteriores del flujo de trabajo."
+icon: "clock"
+---
+
+## ¿Cómo utilizar la acción de flujo de trabajo premium de formateo de fecha y hora?
+
+<Info>
+  **Documentado el 16 de agosto de 2026.**
+
+  Artículo original modificado el martes, 25 de abril de 2023 a las 7:36 a. m.
+</Info>
+
+La acción **Formatear fecha y hora** es una herramienta versátil que permite a los usuarios reformatear fechas o estructuras de fecha y hora, y compararlas dentro de los flujos de trabajo. Esta función facilita la conversión de formatos de fecha para garantizar la compatibilidad con diferentes aplicaciones, bases de datos o canales de comunicación como correo electrónico, SMS o Slack. Además, permite comparar fechas para calcular la diferencia en días, simplificando los cálculos y la toma de decisiones relacionados con fechas.
+
+### Este artículo trata sobre
+
+- ¿Qué es la acción de flujo de trabajo premium de formateo de fecha y hora?
+- ¿Cuáles son algunos casos de uso excelentes y para quién resulta útil esta función?
+- ¿Cuáles son los beneficios de esta función?
+- ¿Cómo utilizar la acción de flujo de trabajo premium de formateo de fecha y hora?
+  - Formato de fecha
+  - Formato de fecha/hora
+  - Comparar fechas
+- Puntos a tener en cuenta
+
+---
+
+## ¿Qué es la acción de flujo de trabajo premium de formateo de fecha y hora?
+
+La acción Formatear fecha y hora es una herramienta sencilla que te ayuda a trabajar con fechas y horas en tus tareas automatizadas. Estas son las tres funciones principales y sus pasos:
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Función</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Pasos</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Cambiar la apariencia de las fechas</td>
+        <td style={{ padding: "10px 16px" }}>a. Elige la fecha que deseas cambiar. b. La herramienta determina el formato de fecha por ti. c. Elige un nuevo formato de una lista. d. La herramienta cambia la fecha al nuevo formato.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Cambiar la apariencia de las fechas y horas</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>a. Elige la fecha y la hora que deseas cambiar. b. La herramienta determina automáticamente el formato de fecha y hora. c. Elige un nuevo formato de una lista. d. La herramienta cambia la fecha y la hora al nuevo formato.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Comparar dos fechas para ver su diferencia</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>a. Elige una fecha de inicio y una fecha de finalización. b. La herramienta determina los formatos de fecha por ti. c. La herramienta calcula la diferencia en días entre las dos fechas.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Con estas funciones, puedes cambiar fácilmente el aspecto de las fechas y horas o comparar dos fechas, lo que facilita compartir o guardar información en el formato correcto.
+
+---
+
+## ¿Cuáles son algunos casos de uso excelentes y para quién resulta útil esta función?
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Perfil</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Caso de uso</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Organizadores del evento</td>
+        <td style={{ padding: "10px 16px" }}>Formatear las fechas y horas de inicio y finalización del evento recibidas de diferentes fuentes para mantener la coherencia y hacer que los datos sean más legibles.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Equipos de marketing</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Utilizar información de fecha y hora formateada en campañas de correo electrónico, SMS o mensajes de Slack para una comunicación personalizada y urgente.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Equipos de ventas</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Comparar la fecha actual con las fechas de vencimiento de las facturas para enviar recordatorios automáticos a los clientes con pagos próximos o vencidos.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Equipos de atención al cliente</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Reformatear los datos de fecha y hora recibidos a través de activadores de webhook entrantes para crear tickets de soporte o actualizar los sistemas CRM.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Jefes de proyecto</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Comparar fechas de inicio y plazos del proyecto para calcular el tiempo restante y enviar notificaciones a los miembros del equipo.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Analistas de datos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Almacenar datos de fecha y hora con formato uniforme en hojas de cálculo o bases de datos, lo que facilita el análisis y la generación de informes.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Desarrolladores de software</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Integrar datos de fecha y hora formateados desde diversas fuentes en sus aplicaciones, garantizando la compatibilidad y el procesamiento fluido de los datos.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Negocios de comercio electrónico</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Reformatear la información de fechas de pedido y entrega para un mejor seguimiento y comunicación con el cliente.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## ¿Cuáles son los beneficios de esta función?
+
+<AccordionGroup>
+  <Accordion title="Coherencia">
+    Garantiza que los datos de fecha y hora tengan un formato uniforme en distintas plataformas y aplicaciones, mejorando la legibilidad y reduciendo la confusión.
+  </Accordion>
+
+  <Accordion title="Compatibilidad">
+    Facilita el intercambio de datos y la integración entre distintas herramientas y sistemas convirtiendo los formatos de fecha y hora según se necesite.
+  </Accordion>
+
+  <Accordion title="Ahorro de tiempo">
+    Automatiza las tareas de formateo de fecha y hora, reduciendo el esfuerzo manual y los errores.
+  </Accordion>
+
+  <Accordion title="Personalización">
+    Mejora la efectividad de la comunicación al permitir usar datos de fecha y hora formateados en mensajes, correos o notificaciones personalizados.
+  </Accordion>
+
+  <Accordion title="Toma de decisiones">
+    Simplifica las comparaciones y los cálculos de fechas, apoyando decisiones informadas en operaciones sensibles al tiempo.
+  </Accordion>
+
+  <Accordion title="Flexibilidad">
+    Ofrece un amplio abanico de formatos para adaptarse a requisitos o preferencias específicas.
+  </Accordion>
+
+  <Accordion title="Mejor gestión de datos">
+    Optimiza el almacenamiento y análisis de datos de fecha y hora garantizando la coherencia en bases de datos u hojas de cálculo.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## ¿Cómo utilizar la acción de flujo de trabajo premium de formateo de fecha y hora?
+
+Con la acción Date/Time Formatter puedes reformatear la fecha o la fecha y hora según lo necesites. También puedes comparar fechas con la acción. En el desplegable **ACTION TYPE** encontrarás tres opciones:
+
+- Format Date
+- Format Date and Time
+- Compare Dates
+
+<Note>
+  **Imagen próximamente.** Captura del panel **Date/Time Formatter** ("Format and Compare date fields") con el campo _ACTION NAME_ en `Format and Compare date fields` y el desplegable _ACTION TYPE_ abierto mostrando las tres opciones.
+</Note>
+
+### Formato de fecha (Format Date)
+
+La función Format Date es una pieza clave de la acción Date/Time Formatter, diseñada específicamente para convertir estructuras de fecha de un formato a otro.
+
+<Steps>
+  <Step title="Selección de campo (Field Selection)">
+    Elige el campo de fecha que quieres reformatear. Puedes seleccionar distintas fuentes: **Specific Date**, **Current Date**, campos de fecha del contacto, campos personalizados de tipo fecha, fecha de inicio/fin de la cita, valores personalizados o incluso un **Inbound Webhook Trigger**.
+
+    <Warning>
+      **Tenga en cuenta:** actualmente los campos personalizados de contacto no admiten la estructura Date Time.
+    </Warning>
+  </Step>
+  <Step title="Desde formato (From Format)">
+    Si seleccionas un campo del sistema como Specific Date, Current Date, campos estándar o personalizados de tipo fecha del contacto, o fecha de inicio/fin de la cita, la herramienta detectará el formato automáticamente y lo preseleccionará. Debes seleccionar manualmente el formato coincidente si eliges un Custom Value o un Inbound Webhook Trigger.
+  </Step>
+  <Step title="Para formatear (To Format)">
+    Selecciona el formato deseado para la fecha de salida de la lista de formatos disponibles. Este es el formato al que se convertirá la fecha original.
+  </Step>
+  <Step title="Producción (Output)">
+    Una vez configurada la función Format Date, puedes usar el resultado en acciones posteriores dentro del flujo de trabajo. La salida se obtiene con la variable dinámica:
+
+    ```text
+    {{datetime_formatter.1.date}}
+    ```
+  </Step>
+</Steps>
+
+### Formato de fecha/hora (Format Date/Time)
+
+La función Format Date and Time convierte estructuras de fecha y hora de un formato a otro.
+
+<Steps>
+  <Step title="Selección de campo">
+    Elige el campo de fecha y hora que quieres reformatear. Puedes seleccionar fuentes como **Specific Date and Time**, **Current Date and Time**, fecha y hora de inicio/fin de la cita, valores personalizados o un **Inbound Webhook Trigger**.
+
+    <Warning>
+      **Tenga en cuenta:** actualmente los campos personalizados de contacto no admiten la estructura Date Time.
+    </Warning>
+  </Step>
+  <Step title="Desde formato">
+    La herramienta detecta y preselecciona el formato si eliges un campo del sistema como Specific Date and Time, Current Date and Time o fecha y hora de inicio/fin de la cita. Debes seleccionar manualmente el formato coincidente si eliges un Custom Value o un Inbound Webhook Trigger.
+  </Step>
+  <Step title="Para formatear">
+    Selecciona el formato de salida de fecha y hora deseado de la lista de formatos disponibles.
+  </Step>
+  <Step title="Producción">
+    La salida se obtiene con la variable dinámica:
+
+    ```text
+    {{datetime_formatter.1.datetime}}
+    ```
+  </Step>
+</Steps>
+
+#### Formatos disponibles
+
+Estos son los formatos que aparecen en los desplegables **FROM FORMAT** y **TO FORMAT** de la fuente, con su ejemplo correspondiente. La lista del artículo original continúa más abajo en la interfaz; aquí se reproducen los visibles en la captura.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Se usa en</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Formato</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Ejemplo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Fecha y hora</td>
+        <td style={{ padding: "10px 16px" }}><code>ddd MMM DD HH:mm:ss YYYY</code></td>
+        <td style={{ padding: "10px 16px" }}>Sat Dec 21 13:30:59 2023</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Fecha y hora</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>MMMM DD YYYY HH:mm:ss</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>December 21 2023 13:30:59</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Fecha y hora</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>YYYY-MM-DD HH:mm:ss</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>2023-12-21 13:30:59</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Fecha y hora</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>YYYY-MM-DD hh:mm A</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>2023-12-21 1:30 PM</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Fecha y hora</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>DD/MM/YYYY HH:mm:ss</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>21/12/2023 13:30:59</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Solo fecha</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>YYYY-MM-DD</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>2023-12-21</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Solo fecha</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>MM-DD-YYYY</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>12-21-2023</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Solo fecha</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>MM/DD/YYYY</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>12/21/2023</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Solo fecha</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>MM/DD/YY</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>12/21/23</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Solo fecha</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>DD-MM-YYYY</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>21-12-2023</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Solo fecha</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>DD/MM/YYYY</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>21/12/2023</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Solo fecha</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}><code>DD/MM/YY</code></td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>21/12/23</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Cómo leer esta tabla:** en _FROM FORMAT_ eliges el formato en el que llega la fecha y en _TO FORMAT_ el formato en el que quieres que salga. Ejemplo: si el webhook entrante trae `21/12/2023` y necesitas enviarlo a una aplicación estadounidense, seleccionas `DD/MM/YYYY` como origen y `MM/DD/YYYY` como destino; el resultado será `12/21/2023`.
+
+### Comparar fechas (Compare Dates)
+
+La función Compare Dates permite comparar dos fechas y obtener la diferencia en días.
+
+<Steps>
+  <Step title="Selección de fecha de inicio">
+    Elige la fecha de inicio desde diversas fuentes: Specific Date, Current Date, campos de fecha del contacto, campos personalizados de tipo fecha, fecha de inicio/fin de la cita, valores personalizados o un Inbound Webhook Trigger.
+  </Step>
+  <Step title="Formato de fecha de inicio">
+    Si seleccionas un campo del sistema, la herramienta detecta y preselecciona el formato. Debes seleccionar manualmente el formato coincidente si eliges un Custom Value o un Inbound Webhook Trigger.
+  </Step>
+  <Step title="Selección de fecha de finalización">
+    Elige la fecha de finalización desde las mismas fuentes que la fecha de inicio.
+  </Step>
+  <Step title="Formato de fecha de finalización">
+    Igual que el formato de fecha de inicio: la herramienta lo detecta si eliges un campo del sistema y lo seleccionas tú manualmente para Custom Value o Inbound Webhook Trigger.
+  </Step>
+  <Step title="Producción">
+    Tras configurar la función Comparar fechas, puede utilizar el resultado en acciones posteriores dentro de su flujo de trabajo. El resultado, que representa la diferencia en días, se puede obtener mediante la variable dinámica:
+
+    ```text
+    {{datetime_formatter.1.days}}
+    ```
+  </Step>
+</Steps>
+
+<Warning>
+  **Tenga en cuenta:** la diferencia se calcula como **Fecha de finalización − Fecha de inicio**. Obtendrá un valor negativo si la Fecha de inicio es posterio _(texto cortado en la fuente)_.
+
+  La función Comparar fechas resulta útil para los usuarios que necesitan comparar fechas con diversos fines, como calcular fechas de _(texto cortado en la fuente)_.
+</Warning>
+
+<Note>
+  **Imagen próximamente.** Capturas de los selectores _FIELD_, _FROM FORMAT_, _TO FORMAT_, _START DATE FORMAT_ y _END DATE FORMAT_, y del selector de valores personalizados con la rama **Date/Time Formatter** desplegada mostrando `#1 Format Date and Time` → Datetime y `#1 Compare Dates` → Days.
+</Note>
+
+---
+
+## Puntos a tener en cuenta
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Escenario</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Recomendación de la fuente</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Datos de webhook entrante</td>
+        <td style={{ padding: "10px 16px" }}>Formatee los datos del activador de webhook entrante para establecer la fecha de inicio del evento, actualizar los campos personalizados de contacto y compararlos en la condición If/Else.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Envío a otra aplicación</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si el formato de fecha es MM/DD/AAAA pero necesitas enviarlo a una aplicación que formatea las fechas como DD/MM/AAAA, usa el formateador de fecha y hora para cambiar el formato y envíalo a través de un webhook personalizado.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Almacenamiento externo</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Almacena la información de fecha y hora con formato personalizado en Google Sheets.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Comunicaciones</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Utiliza la información de fecha y hora con formato personalizado en correo electrónico/SMS/Slack.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Vencimiento de facturas</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Compara la fecha actual (fecha de inicio) con la fecha de vencimiento de la factura (fecha de finalización) y utiliza el valor dinámico en Email/SMS/Slack. Por ejemplo: <em>Su factura vence en <code>\{\{datetime\_formatter.1.days}}</code> días</em>.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Retrasos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>En caso de retraso, es decir, cuando la fecha actual (fecha de inicio) sea posterior a la fecha de vencimiento de la factura (fecha de finalización), el resultado será negativo.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Establecer fecha de inicio del evento" icon="calendar-day" href="/flujo-de-trabajo/establecer-fecha-de-inicio-del-evento">
+    Usa la fecha ya formateada como punto de referencia del flujo de trabajo.
+  </Card>
+
+  <Card title="Formato de números" icon="hashtag" href="/flujo-de-trabajo/accion-premium-formato-de-numeros">
+    La acción hermana para importes, teléfonos y monedas.
+  </Card>
+</CardGroup>

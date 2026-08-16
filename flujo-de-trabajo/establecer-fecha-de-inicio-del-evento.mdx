@@ -1,0 +1,288 @@
+---
+title: "Establecer fecha de inicio del evento Evento en flujos de trabajo"
+sidebarTitle: "Establecer fecha de inicio del evento Evento en flujos de trabajo"
+description: 'La acción "Establecer fecha de inicio del evento" fija un punto de referencia de fecha y hora dentro del flujo de trabajo para programar recordatorios y seguimientos con los pasos de "Esperar a la hora del evento/cita".'
+icon: "calendar-day"
+---
+
+## Establecer fecha de inicio del evento Evento en flujos de trabajo
+
+<Info>
+  **Documentado el 16 de agosto de 2026.**
+
+  Artículo original modificado el lunes, 29 de enero de 2024 a las 10:58.
+</Info>
+
+En esta guía exploraremos la acción de flujo de trabajo **"Establecer fecha de inicio del evento"**, una herramienta dinámica que permite programar tareas y recordatorios dentro del flujo de trabajo para una gestión precisa de eventos. Esta función es fundamental para mantener bien organizados seminarios web, conferencias o sistemas de notificación personalizados.
+
+### Este artículo trata sobre
+
+- ¿Qué es el paso "Establecer fecha de inicio del evento" en los flujos de trabajo?
+- ¿Cuáles son los beneficios de esta función?
+- ¿Cuáles son algunos casos de uso prácticos de esta acción de flujo de trabajo?
+- ¿Cómo utilizar la acción Fecha de inicio del evento?
+  - Paso 1: Agregue la acción Fecha/Hora de inicio del evento a su flujo de trabajo.
+  - Paso 2: Personaliza la fecha y hora de inicio del evento.
+  - Paso 3: Agregar una acción de espera para el evento/hora de la cita
+- Preguntas frecuentes
+
+---
+
+## ¿Qué es el paso "Establecer fecha de inicio del evento" en los flujos de trabajo?
+
+<Note>
+  **Vídeo próximamente.** El artículo original incluye un vídeo titulado _Event Start Time_. El PDF de origen no expone la URL del vídeo, así que queda marcado aquí para incrustarlo cuando el equipo lo recapture.
+</Note>
+
+La acción "Establecer fecha y hora de inicio del evento" es una herramienta dentro de un sistema de gestión de flujos de trabajo que permite definir una fecha y hora específicas que servirán como punto de referencia para los pasos posteriores del flujo de trabajo. Es especialmente útil para programar tareas, recordatorios o acciones que deben realizarse antes o después de un evento en particular.
+
+Una vez configurada esta acción, puede usar los pasos de **"Espera"** en su flujo de trabajo para **pausar** la ejecución hasta una hora específica en relación con la fecha del evento. Por ejemplo, puede configurar recordatorios para que se envíen varios días antes del evento o programar una acción de seguimiento para varios días después.
+
+Esta herramienta ofrece flexibilidad y automatización, lo que permite una gestión eficaz del tiempo dentro de tu flujo de trabajo. Es especialmente útil para gestionar seminarios web, conferencias, reuniones y eventos.
+
+---
+
+## ¿Cuáles son los beneficios de esta función?
+
+La acción "Establecer fecha y hora de inicio del evento" ofrece varias ventajas prácticas para la gestión de flujos de trabajo y eventos. La siguiente tabla resume cada beneficio y qué significa en la práctica dentro de una automatización.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "560px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Beneficio</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Qué aporta</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Programación automatizada</td>
+        <td style={{ padding: "10px 16px" }}>Permite programar tareas, recordatorios o correos electrónicos para que se envíen automáticamente en momentos específicos relacionados con un evento. Reduce considerablemente el trabajo manual y garantiza que no se pase por alto ni se olvide nada.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Recordatorios oportunos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si gestionas eventos como seminarios web o conferencias, esta acción envía automáticamente recordatorios a los asistentes un número determinado de días u horas antes de que comience el evento, lo que aumenta la participación y los índices de asistencia.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Acciones de seguimiento</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>También puedes usar esta acción para programar tareas o comunicaciones posteriores al evento. Por ejemplo, enviar automáticamente una encuesta o un correo de agradecimiento varios días después del evento.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Flexibilidad</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>La acción "Set Event Start Date/Time" no se limita a fechas concretas. Puede usarse con cualquier campo relacionado con fechas, de modo que puedes activar tareas basadas en fechas individuales de cada cliente, como fechas de renovación o cumpleaños.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Eventos recurrentes</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>También puede gestionar eventos recurrentes. Por ejemplo, si realizas seminarios web semanales, puedes configurar tu flujo de trabajo para enviar recordatorios cada semana y luego restablecer la fecha del evento para la semana siguiente.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Acciones en momentos específicos</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Algunas acciones deben ocurrir a una hora exacta, como una publicación en redes sociales o un anuncio de ventas. Esta acción permite programarlas con precisión.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## ¿Cuáles son algunos casos de uso prácticos de esta acción de flujo de trabajo?
+
+Esta tabla recoge los diez escenarios que documenta la fuente. En todos ellos el patrón es el mismo: la acción **Set Event Start Date/Time** marca la fecha de referencia y los pasos **Wait for Event/Appointment Time** disparan las comunicaciones antes o después de esa fecha.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Caso de uso</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Cómo se configura</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Gestión de seminarios web</td>
+        <td style={{ padding: "10px 16px" }}>Especifica la fecha y hora del seminario web y añade pasos de espera para enviar recordatorios una semana, un día y una hora antes de que empiece. Un correo de seguimiento puede salir uno o dos días después para agradecer la participación y compartir recursos adicionales.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Renovaciones de suscripción</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Para un servicio con renovaciones anuales, combina la acción con un campo de fecha personalizado con la fecha de renovación de cada cliente. Con pasos de espera, los recordatorios salen un mes, una semana y un día antes de cada renovación.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Planificación de conferencias</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Fija la fecha de la conferencia como fecha de inicio del evento y automatiza recordatorios de inscripción anticipada, compra de entradas, agenda del evento o actualizaciones de última hora.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Promociones de cumpleaños</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Empareja la acción con un campo personalizado con el cumpleaños de cada cliente y usa un paso de espera para enviar la felicitación y un descuento especial.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Lanzamientos de producto</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Establece la fecha de lanzamiento como fecha de inicio del evento y configura una serie de esperas para enviar correos de expectativa previos, el anuncio del día y las comunicaciones posteriores.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Sesiones de formación</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Marca el inicio de la sesión y usa esperas para enviar los detalles, recordatorios unos días antes y un aviso de última hora. También puedes programar un correo posterior con grabaciones o materiales.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Pruebas de producto</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Fija la fecha de expiración de la prueba gratuita como fecha del evento y envía recordatorios una semana, tres días y un día antes de que caduque, animando a comprar la versión completa.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Rebajas o promociones</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Usa la fecha y hora de inicio de la promoción como fecha del evento y programa correos de expectativa, el lanzamiento de la oferta y los avisos de última oportunidad al cierre.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Revisiones o mantenimientos anuales</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si tu negocio hace revisiones anuales, como una empresa de climatización o una clínica dental, fija la próxima cita de cada cliente como fecha del evento y recuérdales la cita y el seguimiento posterior.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Fechas límite de proyecto</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Marca la fecha límite con la acción y usa las esperas para enviar recordatorios o tareas al equipo en los días previos.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+---
+
+## ¿Cómo utilizar la acción Fecha de inicio del evento?
+
+<Steps>
+  <Step title="Paso 1: Agregue la acción Fecha/Hora de inicio del evento a su flujo de trabajo">
+    Navega hasta el flujo de trabajo específico que quieras modificar.
+
+    Añade la acción **"Set Event Start Date/Time"** y prepárate para personalizarla.
+
+    <Note>
+      **Imagen próximamente.** Captura del constructor de flujos de trabajo con el panel _Actions_ abierto, el buscador con la palabra `event` escrita y la acción **Set Event Start Date** resaltada en la lista de resultados.
+    </Note>
+  </Step>
+  <Step title="Paso 2: Personaliza la fecha y hora de inicio del evento">
+    Normalmente tendrás opciones de tipo como **Custom Field**, **Specific Date/Time** o **Specific Day**.
+
+    Para los campos personalizados (**Custom Fields**), puedes usar valores personalizados de tipo Campo de Fecha ya creados para indicarle al flujo de trabajo qué fecha de evento quieres especificar.
+
+    <Note>
+      **Imagen próximamente.** Captura del panel **Event Start Date** con el campo _ACTION NAME_ relleno como `Set Event Start Time` y el desplegable _TYPE_ abierto mostrando Custom Field, Specific Date/Time y Specific Day. Una segunda captura muestra el selector _SELECT CUSTOM FIELD_ con las ramas Contact, Custom Values, Date Of Birth y Custom Fields.
+    </Note>
+
+    <Warning>
+      **Tenga en cuenta:** la acción "Set Event Start Date/Time" suele admitir distintos formatos de fecha y hora. Estos son algunos de los formatos aceptados habitualmente:
+
+      - **MM-DD-YYYY HH:MM** — incluye el mes (MM), el día (DD) y el año (YYYY), seguidos de la hora en formato de 24 horas (HH:MM). Por ejemplo, el 21 de diciembre de 2021 a las 8:30 a. m. se escribiría como `12-21-2021 08:30`.
+      - **DD-MMM-YYYY HH:MM** — incluye el día (DD), el mes abreviado (MMM) y el año (YYYY), seguidos de la hora en formato de 24 horas (HH:MM). Por ejemplo, el 21 de octubre de 2021 a las 8:30 a. m. se escribiría como `21-OCT-2021 08:30`.
+    </Warning>
+
+    Selecciona la opción que quieras usar y completa la información necesaria. Por ejemplo, si eliges una fecha y hora específicas, tendrás que introducir la fecha y la hora exactas del evento. Guarda la acción para añadirla a tu flujo de trabajo.
+  </Step>
+  <Step title="Paso 3: Agregar una acción de espera para el evento/hora de la cita">
+    Después de establecer la fecha y hora de inicio del evento, añade una acción **"Wait for Event/Appointment Time"** en tu flujo de trabajo.
+
+    Configura la acción para esperar un número determinado de días, horas o minutos antes o después de la fecha y hora de inicio del evento. Por ejemplo, si lo configuras en 2 días antes, el flujo de trabajo esperará y ejecutará la siguiente acción 2 días antes de la fecha de inicio del evento programada.
+
+    <Note>
+      **Imagen próximamente.** Captura del panel **Wait** con _WAIT FOR_ en `Event / Appointment time`, la fila _UNTIL_ con los campos When / Months (max: 9999) / Days (max: 30) / Hours (max: 23) / Minutes (max: 59) y las tres opciones de comportamiento cuando la espera ya pasó.
+    </Note>
+
+    Guarda la acción para confirmar los cambios.
+
+    Recuerda que estas acciones son repetibles dentro del flujo de trabajo. Puedes añadir varias acciones **"Wait for Event/Appointment Time"** para crear eventos previos o posteriores a la fecha de inicio del evento.
+  </Step>
+</Steps>
+
+### Configuración de la acción Wait for Event/Appointment Time
+
+La acción de espera tiene configuraciones adicionales. Esta tabla explica qué controla cada campo del panel.
+
+<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
+  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "620px" }}>
+    <thead>
+      <tr style={{ background: "#13322c" }}>
+        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Campo</th>
+        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Qué hace</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Event / Appointment Time</td>
+        <td style={{ padding: "10px 16px" }}>Este campo se relaciona normalmente con el evento o la cita que hayas fijado con la acción "Set Event Start Date/Time". La acción "Wait for" retendrá al contacto hasta el momento especificado en relación con ese evento o cita.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>UNTIL – When</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Permite fijar el tiempo de espera hasta que ocurra la siguiente acción, en meses, días, horas y minutos. Por ejemplo, esperar hasta 2 días y 3 horas antes de la hora del evento. Los valores que superen el máximo se distribuyen a las unidades mayores: si introduces 60 minutos, se convierten en 1 hora.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Move to the next step</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Si la espera ya está vencida, el flujo de trabajo omite la espera y continúa al siguiente paso.</td>
+      </tr>
+
+      <tr>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Move to a specific step</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>El flujo de trabajo omite la espera y salta al paso concreto que designes.</td>
+      </tr>
+
+      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
+        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Skip all outbound communication actions, till next wait or Event Start Date action</td>
+        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>El flujo de trabajo omite cualquier acción que implique enviar comunicación (correos o SMS) hasta encontrar la siguiente acción "Wait for Event/Appointment Time" o "Set Event Start Date/Time".</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura de la tabla:** si un contacto entra al flujo de trabajo el 20 de diciembre y la espera estaba configurada para "2 días antes" de un evento fijado el 21 de diciembre, ese momento ya pasó. Con _Move to the next step_ el contacto avanza de inmediato; con la tercera opción no recibe el recordatorio atrasado, pero sí continúa el resto del flujo hasta la siguiente espera.
+
+---
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title='P1: ¿Puedo usar la acción "Establecer fecha/hora de inicio del evento" para eventos recurrentes?'>
+    Sí, normalmente es posible usar esta acción para eventos recurrentes. Puedes fijar la fecha y hora de inicio del evento para la primera instancia y luego usar una acción **"Go To"** para volver al principio del flujo de trabajo en las instancias siguientes.
+  </Accordion>
+
+  <Accordion title="P2: ¿Puedo establecer varias fechas/horas de inicio de eventos en el mismo flujo de trabajo?">
+    Normalmente, puedes añadir varias acciones de "Establecer fecha/hora de inicio del evento" dentro del mismo flujo de trabajo. Cada una podría corresponder a un evento o cita diferente, y luego podrías usar los pasos correspondientes de "Esperar a la hora del evento/cita" para crear acciones relativas a cada fecha/hora de inicio.
+  </Accordion>
+
+  <Accordion title="P3: ¿Qué sucede si un contacto ingresa al flujo de trabajo después de que haya pasado la fecha y hora de inicio del evento?">
+    El comportamiento depende de la configuración de la acción "Esperar a la hora del evento/cita". Si la configura como "Pasar al siguiente paso" o "Pasar a un paso específico", el contacto omitirá la acción de espera. Si la configura como "Omitir todas las acciones de comunicación saliente hasta la siguiente espera o la fecha de inicio del evento", omitirá los pasos de comunicación saliente hasta que encuentre la siguiente espera o la fecha/hora de inicio.
+  </Accordion>
+
+  <Accordion title='P4: ¿Puedo usar la acción "Establecer fecha/hora de inicio del evento" sin una acción correspondiente de "Esperar a que comience el evento/la hora de la cita"?'>
+    No sería muy útil si técnicamente se pudiera establecer la fecha y hora de inicio de un evento sin una acción posterior de "Esperar a la hora del evento/cita". El propósito principal de la acción "Establecer fecha y hora de inicio del evento" es fijar un punto de referencia al que puedan hacer referencia otras acciones.
+  </Accordion>
+
+  <Accordion title='P5: Si la configuración de mi flujo de trabajo está configurada para respetar las zonas horarias de Contacto, ¿cómo afecta eso a la acción "Establecer fecha/hora de inicio del evento"?'>
+    Si tu herramienta de gestión de flujos de trabajo admite zonas horarias, normalmente configurarías la fecha y hora de inicio del evento en tu zona horaria, y la herramienta la ajustaría según la zona horaria de cada contacto. Si el flujo de trabajo no dispone de información sobre la zona horaria de un contacto, utilizará por defecto la zona horaria de tu cuenta.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Activador Premium de webhook entrante" icon="arrow-right-to-bracket" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
+    Trae fechas y datos desde sistemas externos para usarlos como fecha de inicio del evento.
+  </Card>
+
+  <Card title="Formateo de fecha y hora" icon="clock" href="/flujo-de-trabajo/accion-premium-formateo-de-fecha-y-hora">
+    Convierte el formato de una fecha antes de fijarla como fecha de inicio del evento.
+  </Card>
+</CardGroup>
