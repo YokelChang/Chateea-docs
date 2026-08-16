@@ -1,0 +1,204 @@
+---
+title: "Enrutamiento de llamadas entrantes según el horario laboral"
+sidebarTitle: "Enrutamiento de llamadas entrantes según el horario laboral"
+description: "Cómo funciona el filtro de horario laboral sobre las llamadas entrantes: quién puede configurarlo y con qué permiso, la tabla completa de escenarios de enrutamiento dentro y fuera de horario, la configuración para uno mismo y para un miembro del equipo, y cómo se tratan los números de reenvío."
+icon: "clock"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo original modificado el miércoles, 22 de julio de 2026.
+</Info>
+
+El enrutamiento de llamadas entrantes según el horario laboral evita que las llamadas de trabajo suenen fuera del horario de disponibilidad del usuario. Este artículo explica cómo funciona esta función, cómo configurarla para usted o para un miembro de su equipo, y cómo la plataforma gestiona las llamadas recibidas fuera del horario laboral.
+
+## Índice
+
+- ¿Qué es el enrutamiento de llamadas entrantes según el horario laboral?
+- ¿Quién puede configurar el enrutamiento de llamadas entrantes?
+- Cómo se enrutan las llamadas fuera del horario laboral
+- Cómo configurar el enrutamiento de llamadas entrantes según el horario laboral
+- Cómo se gestionan los números de reenvío
+- Preguntas frecuentes
+- ¿Necesita ayuda?
+
+## ¿Qué es el enrutamiento de llamadas entrantes según el horario laboral?
+
+<Note>
+  Esta opción está **desactivada por defecto**. No cambiará nada hasta que la active.
+</Note>
+
+El enrutamiento de llamadas entrantes según el horario laboral utiliza un **calendario de disponibilidad seleccionado** para determinar si una llamada entrante debe sonar en un usuario. Esto ayuda a evitar que las llamadas de trabajo lleguen a los usuarios fuera del horario laboral, los fines de semana, durante los días festivos o mientras están ausentes, **sin que tengan que cambiar la configuración del dispositivo ni desinstalar la aplicación móvil**.
+
+Cuando la opción **«Solo sonar durante el horario laboral»** está activada, cualquier llamada entrante que reciba fuera del horario seleccionado no le será devuelta y se redirigirá al sistema de gestión de llamadas de respaldo del número. Durante su horario laboral, las llamadas sonarán exactamente igual que siempre.
+
+### El árbol de decisión, paso a paso
+
+Esta tabla traduce el diagrama de flujo del artículo original: la plataforma comprueba el horario seleccionado del usuario **antes** de decidir si le hace sonar o si continúa hacia el respaldo existente del número de teléfono.
+
+| Comprobación | Resultado | Qué ocurre |
+| --- | --- | --- |
+| **¿Está activada la opción «Solo sonar durante el horario laboral»?** | No | **Se hace sonar al usuario** con el flujo de llamadas existente. La opción está desactivada por defecto y el enrutamiento actual no se altera |
+| **¿Está el usuario actualmente dentro de su horario laboral?** | Sí | **Se hace sonar al usuario** con normalidad. Durante el horario laboral las llamadas suenan exactamente igual que hoy |
+| **¿Está el usuario actualmente dentro de su horario laboral?** | No | **Se omite al usuario** y se continúa hacia el respaldo existente del número: buzón de voz, IA de voz, miembros adicionales del equipo, pasos de IVR u otros respaldos configurados |
+
+<Tip>
+  **Qué significa esto:** cuando se habilita, la plataforma evalúa el horario seleccionado del usuario antes de hacerle sonar. Las llamadas fuera del horario laboral se enrutan automáticamente al respaldo existente del número de teléfono.
+</Tip>
+
+<Note>
+  **Imagen próximamente.** Aquí va el diagrama **Inbound Call Routing by Working Hours**, con la leyenda de colores (Ring the user / Skip the user / Decision) y el recorrido completo desde «Inbound call received» hasta el respaldo del número.
+</Note>
+
+## ¿Quién puede configurar el enrutamiento de llamadas entrantes?
+
+El acceso depende de si el usuario gestiona su propia disponibilidad o si un administrador gestiona la disponibilidad de otro miembro del equipo. Esta tabla indica dónde se configura la opción en cada caso y qué permiso se exige.
+
+| Persona que configura | Ruta de navegación | Permiso requerido |
+| --- | --- | --- |
+| **Usuario que configura su propia disponibilidad.** La persona actualiza su propio horario laboral | **Configuración → Mi perfil** | **Gestionar calendarios** (Manage calendars). Debe estar habilitado para ese usuario |
+| **Administrador o gerente que configura a un miembro del equipo.** Un administrador o gerente actualiza la disponibilidad de otra persona | **Configuración → Mi personal → Editar miembro del equipo → Disponibilidad del usuario** | **Gestionar calendarios** (Manage calendars). Debe estar habilitado para el administrador o gerente que realiza el cambio |
+
+<Warning>
+  **Importante:** cuando se elimina el permiso **Gestionar calendarios** del rol de un usuario, la tarjeta **Enrutamiento de llamadas entrantes** queda oculta y ese usuario no puede ver ni actualizar la configuración.
+</Warning>
+
+<Note>
+  **Imagen próximamente.** Aquí va la tabla visual **Who Can Configure Inbound Call Routing by Working Hours?** del artículo original, con las rutas Settings \> My Profile y Settings \> My Staff \> Edit Team Member \> User Availability.
+</Note>
+
+## Cómo se enrutan las llamadas fuera del horario laboral
+
+La plataforma verifica el horario seleccionado antes de llamar al usuario. **El resultado depende de cómo se enruta la llamada entrante.** Esta es la tabla de referencia central del artículo: compárela con la configuración real de su número para saber qué esperar.
+
+| Escenario de enrutamiento | Durante el horario laboral | Fuera del horario laboral |
+| --- | --- | --- |
+| **Usuario o contacto asignado** | El usuario llama normalmente | Se omite al usuario y la llamada se redirige al número de teléfono de respaldo existente (buzón de voz o IA de voz) |
+| **Llamar a todos** | Todos los usuarios elegibles llaman normalmente | Los usuarios que se encuentren fuera del horario laboral serán ignorados; los usuarios disponibles seguirán llamando |
+| **Menú de llamadas o IVR** | Los destinatarios configurados llaman normalmente | Se omite al usuario no disponible; los demás destinatarios continúan llamando |
+| **Único destinatario en un paso de conexión IVR** | El usuario llama normalmente | No hay ningún destinatario conectado y el flujo de llamadas continúa |
+| **Llamada transferida** | Se aplica el comportamiento de transferencia existente | **Actualmente no se admite el filtrado de horas de trabajo** |
+
+**Ejemplo.** Un IVR con la opción «2 para Soporte» enruta a dos agentes. Si uno de ellos ya terminó su jornada, la opción 2 sigue funcionando: solo suena el agente que aún está dentro de su horario. Si ambos terminaron, ese paso no conecta con nadie y el flujo de llamadas avanza al siguiente paso configurado.
+
+## Cómo configurar el enrutamiento de llamadas entrantes según el horario laboral
+
+Seleccionar el horario correcto garantiza que la plataforma pueda determinar con precisión cuándo debe recibir llamadas entrantes. **Confirme las horas semanales, las fechas específicas y la zona horaria del horario** antes de utilizarlo para el enrutamiento de llamadas fuera del horario laboral.
+
+### Configure los ajustes de su perfil
+
+<Steps>
+  <Step title="1. Abra la configuración">
+    Haga clic en **Configuración**.
+
+    <Note>
+      **Imagen próximamente.** Aquí va la captura del panel principal señalando el acceso a **Settings** en la barra lateral.
+    </Note>
+  </Step>
+  <Step title="2. Entre en Mi perfil">
+    Haga clic en **Mi perfil**.
+  </Step>
+  <Step title="3. Localice la tarjeta">
+    Desplace hasta la tarjeta **de enrutamiento de llamadas entrantes**.
+  </Step>
+  <Step title="4. Active el interruptor">
+    Habilite **Suena solo durante el horario laboral**.
+  </Step>
+  <Step title="5. Abra el desplegable de horarios">
+    Abra el **menú desplegable de programación de enrutamiento de llamadas**.
+  </Step>
+  <Step title="6. Seleccione el horario">
+    Seleccione el horario que define su jornada laboral. Ese es el horario que la plataforma consulta antes de hacerle sonar. **Su elección se guarda automáticamente.**
+
+    <Note>
+      **Imagen próximamente.** Aquí va la captura de la pantalla **My Profile** con el bloque de calendario, la firma y el panel de **Update Availability**.
+    </Note>
+  </Step>
+</Steps>
+
+### Configure el ajuste para un miembro del equipo
+
+<Note>
+  El administrador o gerente que complete estos pasos debe tener el permiso **Gestionar calendarios**.
+</Note>
+
+<Steps>
+  <Step title="1. Abra la configuración">
+    Haga clic en **Configuración**.
+  </Step>
+  <Step title="2. Vaya a Mi personal">
+    Entre en **Mi personal (My Staff)**.
+  </Step>
+  <Step title="3. Edite al miembro del equipo">
+    Haga clic en el **icono de edición** del miembro del equipo que quiere actualizar.
+
+    <Note>
+      **Imagen próximamente.** Aquí va la captura del listado **My Staff** señalando el icono de edición en la columna Action.
+    </Note>
+  </Step>
+  <Step title="4. Abra la disponibilidad">
+    Seleccione **Disponibilidad del usuario (User Availability)**.
+  </Step>
+  <Step title="5. Localice la tarjeta">
+    Ubique la tarjeta **Enrutamiento de llamadas entrantes (Inbound call routing)**.
+  </Step>
+  <Step title="6. Active el interruptor">
+    Habilite **Solo sonar durante el horario laboral (Only ring during working hours)**.
+  </Step>
+  <Step title="7. Seleccione el horario">
+    Seleccione el horario que define la jornada laboral de ese miembro del equipo.
+  </Step>
+  <Step title="8. Guarde">
+    Guarde la configuración del miembro del equipo cuando se le solicite.
+  </Step>
+</Steps>
+
+## Cómo se gestionan los números de reenvío
+
+La plataforma impide que un usuario sea alcanzado **indirectamente** a través de un número de reenvío coincidente cuando ese usuario está fuera de su horario laboral. Esto asegura que el horario seleccionado se respete a lo largo de todo el flujo de enrutamiento.
+
+Cuando su número de teléfono personal también está configurado como número de reenvío de un número asignado a usted, o como número de teléfono de la empresa, **no se requiere configuración adicional**. Fuera de su horario laboral, la plataforma omite automáticamente ese número de reenvío junto con usted y envía la llamada al respaldo existente del número de teléfono.
+
+| Situación | Comportamiento fuera de horario |
+| --- | --- |
+| Su número personal figura como **número externo de reenvío** del número que le está asignado | Se omite el timbre por coincidencia de número (**Ring skipped because of phone number match**) y la llamada pasa al respaldo |
+| Su número personal figura como **número de teléfono de la empresa** | Mismo comportamiento: se omite y la llamada pasa al respaldo |
+
+<Note>
+  **Imagen próximamente.** Aquí va la captura del modal **Configure → Call Forwarding** mostrando Team Member (1st Priority), External Phone Number (2nd Priority) marcado en rojo con el aviso «Ring skipped because of phone number match» y la sección Voice AI.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cambiará algo si dejo la opción desactivada?" icon="toggle-off">
+    No. La opción está desactivada por defecto, así que las llamadas entrantes siguen su configuración de enrutamiento actual hasta que usted la active.
+  </Accordion>
+
+  <Accordion title="¿Qué horario se usa para determinar mi jornada laboral?" icon="calendar">
+    La plataforma usa el horario seleccionado en el desplegable **Call Routing Schedule**. Puede actualizar o reemplazar ese horario en cualquier momento.
+  </Accordion>
+
+  <Accordion title="¿Cómo evito que las llamadas suenen en días festivos o días libres planificados?" icon="calendar-xmark">
+    Añada una entrada específica de fecha **sin horas disponibles** al horario seleccionado. Las entradas específicas por fecha anulan el horario semanal habitual para ese día.
+  </Accordion>
+
+  <Accordion title="¿El enrutamiento por horario laboral aplica a las llamadas transferidas?" icon="phone-arrow-right">
+    No. El enrutamiento por horario laboral aplica actualmente solo a los escenarios de llamadas entrantes admitidos. Las llamadas transferidas durante una conversación activa **no se filtran** según el horario laboral.
+  </Accordion>
+
+  <Accordion title="¿Qué ocurre si hay varios usuarios en una configuración de Llamar a todos?" icon="users">
+    Solo los usuarios que se encuentren dentro de su horario laboral configurado recibirán la llamada entrante. Los usuarios fuera de su disponibilidad programada se omiten automáticamente, lo que permite que los usuarios disponibles sigan recibiendo la llamada.
+  </Accordion>
+
+  <Accordion title="¿Por qué recibo llamadas fuera de mi horario laboral?" icon="circle-question">
+    Verifique que la opción «Solo sonar durante el horario laboral» esté activada, que el horario seleccionado sea el correcto y que la zona horaria, las horas semanales y la disponibilidad para fechas específicas estén configuradas correctamente. Confirme también que está probando el perfil de usuario correcto y que la llamada entrante utiliza un método de enrutamiento compatible.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesita ayuda?
+
+Si las llamadas entrantes siguen sonando fuera de su horario laboral programado, primero verifique que la opción **«Solo sonar durante el horario laboral»** esté habilitada, que se haya seleccionado el horario de enrutamiento de llamadas correcto y que la zona horaria, las horas semanales y la disponibilidad específica de la fecha estén configuradas correctamente.
+
+Si sigue recibiendo llamadas inesperadas, revise el enrutamiento de su número de teléfono, la gestión de llamadas de respaldo, la configuración de desvío y los ajustes de usuario asignados, para asegurarse de que coincidan con el comportamiento de enrutamiento previsto.
+
+Para obtener ayuda adicional, recopile capturas de pantalla de su horario laboral, de la configuración de enrutamiento y de los ajustes de usuario antes de contactar con el servicio de asistencia. Proporcionar esta información ayudará a agilizar la resolución de problemas.
