@@ -1,0 +1,28 @@
+---
+title: "21614: El número 'Para' no es un número de móvil válido."
+sidebarTitle: "21614: El número 'Para' no es un número de móvil válido."
+description: "ERROR 21614: intentó enviar un SMS a un número de destinatario que no es un móvil válido. Descripción, posibles causas y posibles soluciones."
+icon: "mobile-screen"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo original modificado el lunes, 5 de mayo de 2025 a las 6:25 a. m.
+</Info>
+
+# ERROR: 21614
+
+## Descripción
+
+Has intentado enviar un SMS con un número de destinatario que no es un número de móvil válido. Es probable que el número que has especificado sea un teléfono fijo o un número inválido.
+
+## Posibles causas
+
+- El número que proporcionó podría ser un número de teléfono fijo.
+- El número que proporcionó puede ser inválido o estar formateado incorrectamente.
+- Si intenta enviar mensajes SMS a números de Internet de las Cosas (IoT) o de máquina a máquina (M2M), es posible que los números utilicen un formato no estándar que Lead Connector aún no ha añadido a nuestro sistema de validación de números.
+
+## Posibles soluciones
+
+- Confirme, mediante la API de búsqueda, que el número al que está enviando la llamada no es un teléfono fijo.
+- Por favor, verifique que ha proporcionado un número de teléfono móvil válido en el formato **E.164** correcto.
+- Si intenta enviar SMS a un número IoT o M2M, compruebe si el formato del número difiere de los números de móvil estándar de ese país o localidad. A menudo, estos números tienen dígitos adicionales o formatos inusuales que no superan la validación de números de Lead Connector. Si cree que este es el problema, póngase en contacto con el servicio de asistencia.

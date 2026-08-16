@@ -1,0 +1,43 @@
+---
+title: "21211: Número de teléfono de destino no válido"
+sidebarTitle: "21211: Número de teléfono de destino no válido"
+description: "ERROR 21211: el número de teléfono de destino no era válido o tenía un formato incorrecto. Descripción, posibles causas y posibles soluciones."
+icon: "circle-exclamation"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Artículo original modificado el lunes, 5 de mayo de 2025 a las 6:23 a. m.
+</Info>
+
+# ERROR: 21211
+
+Referencia del proveedor: [https://www.twilio.com/docs/api/errors/21211#error-21211](https://www.twilio.com/docs/api/errors/21211#error-21211)
+
+## Descripción
+
+Intentaste realizar una llamada saliente o enviar un mensaje, pero el número de teléfono que proporcionaste no era válido o tenía un formato incorrecto. La plataforma acepta números de teléfono en [formato E164](https://en.wikipedia.org/wiki/E.164):
+
+```text
+[+] [código de país] [número de abonado, incluido el código de área]
+```
+
+## Posibles causas
+
+- El formato del número **"Para"** que proporcionó no es válido.
+- Intentaste enviar un mensaje o realizar una llamada desde un número de Lead Connector a sí mismo (es decir, colocando el mismo número de Lead Connector en los parámetros **Para** y **Desde**).
+- Intentaste enviar un mensaje a un código corto.
+- Intentaste enviar un mensaje a un identificador de remitente alfanumérico.
+- Intentaste enviar un mensaje a un número de destinatario con un prefijo no válido mediante un servicio de mensajería.
+
+## Posibles soluciones
+
+- Asegúrese de haber formateado sus números de teléfono en formato E164: `[+] [código de país] [número de abonado, incluido el código de área]`.
+- Asegúrese de haber utilizado el [código de país](https://en.wikipedia.org/wiki/List_of_telephone_country_codes#Alphabetical_listing_by_country_or_region) correcto para el número de teléfono al que está llamando.
+- Asegúrese de no intentar llamar ni enviar mensajes desde un número de Lead Connector a sí mismo.
+- Asegúrese de no intentar enviar mensajes a códigos cortos ni a identificadores de remitente alfanuméricos. Estos tipos de remitente no pueden recibir mensajes de números de Lead Connector.
+- Revise el número **"Para"** para detectar cualquier error tipográfico o método de entrada incorrecto.
+- Al enviar mensajes mediante un servicio de mensajería, en lugar de formatear el número de destinatario con un prefijo no válido, elimine el prefijo y envíelo directamente utilizando el formato E164: `[+] [código de país] [número de abonado, incluido el código de área]`. Si el número de destinatario admite mensajes RCS y hay un agente RCS disponible en el grupo de remitentes del servicio de mensajería, se seleccionará para enviar el mensaje a dicho número.
+
+<Note>
+  **Corrección de la fuente.** En el artículo original, la última viñeta de las causas y una de las soluciones decían «números de conectores de clientes potenciales», que es una traducción automática de _Lead Connector numbers_. Aquí se escribe **"números de Lead Connector"** para que se entienda. El resto del contenido se mantiene tal cual.
+</Note>
