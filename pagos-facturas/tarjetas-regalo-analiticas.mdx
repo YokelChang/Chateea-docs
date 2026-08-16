@@ -1,0 +1,189 @@
+---
+title: "Cómo realizar un seguimiento del rendimiento de las tarjetas de regalo (Análisis y seguimiento de métricas)"
+description: "Mide cuántas tarjetas emitiste, cuánto valen y qué denominación se vende sola."
+icon: "chart-line"
+---
+
+<Info>
+  **Documentado el 15 de agosto de 2026.**
+</Info>
+
+Utiliza el panel de análisis de tarjetas de regalo para entender **cuántas tarjetas has emitido, cuál es su valor total, cuál es el valor promedio del pedido y qué denominaciones tienen mejor rendimiento**.
+
+Este artículo explica cada métrica, cómo funcionan los filtros y cómo bajar desde los indicadores hasta el pedido individual, para que puedas tomar decisiones más acertadas sobre inventario, precios y promociones.
+
+## ¿Qué es el panel de control de tarjetas de regalo?
+
+El panel de control de tarjetas de regalo vive en **Pagos → Tarjetas de regalo** y ofrece una visión general del rendimiento de tu programa a lo largo del tiempo: número de tarjetas emitidas, impacto en los ingresos, tendencias de los compradores y preferencias de denominación.
+
+Además de los indicadores generales, el panel te deja abrir cada **pedido de tarjeta de regalo** para verificar el cliente, el estado, el saldo restante y el resto de los detalles de esa tarjeta en particular.
+
+<Info>
+  Piensa en el panel como dos capas: arriba, las cinco tarjetas de indicadores que responden "¿cómo va el programa?"; abajo, la lista de pedidos que responde "¿qué pasó exactamente con esta tarjeta?". La mayoría de las dudas operativas se resuelven bajando de la primera capa a la segunda.
+</Info>
+
+{/* Captura pendiente: vista general del panel de Tarjetas de regalo con las cinco tarjetas de indicadores y la lista de pedidos debajo. */}
+
+## Principales ventajas del análisis de tarjetas de regalo
+
+| Ventaja | Qué te permite hacer |
+| --- | --- |
+| **Información rápida sobre el rendimiento** | Ver de un vistazo las tarjetas emitidas, el valor total, el valor promedio del pedido y la denominación más vendida |
+| **Mejor comercialización** | Identificar qué denominaciones convierten mejor y ajustar tu combinación de productos o promociones |
+| **Auditoría más rápida** | Pasar directamente de un indicador al pedido de tarjeta de regalo para confirmar el código, el saldo, la entrega y el estado |
+| **Filtrar resultados** | Comparar métricas entre rangos de fechas predefinidos o personalizados |
+
+## Filtros y rangos de fechas
+
+La vista del panel cambia según el filtro que elijas en la **esquina superior izquierda** de la página principal de Tarjetas de regalo. La opción predeterminada es **Este mes**.
+
+Este selector permanece constante sin importar si estás viendo la pestaña de **Productos de tarjetas de regalo** o la de **Todos los pedidos**, así que puedes moverte entre ambas sin perder el rango que estabas analizando.
+
+| Rango disponible | Para qué sirve |
+| --- | --- |
+| **Hoy** | Confirmar emisiones del día, típico durante una campaña activa |
+| **Ayer** | Cerrar el día anterior sin que las ventas de hoy contaminen el número |
+| **Últimos 7 días** | Leer la tendencia semanal sin depender del corte de calendario |
+| **Últimos 30 días** | Ventana móvil para comparar campañas de duración similar |
+| **Este mes** | Vista predeterminada, alineada al cierre contable |
+| **Mes pasado** | Comparación mes contra mes |
+| **Personalizado** | Aislar una fecha exacta: un Black Friday, un evento, un lanzamiento |
+
+<Tip>
+  Cada indicador muestra debajo una comparación **vs. rango anterior**. Si eliges "Últimos 7 días", el sistema compara contra los 7 días previos. Ese porcentaje es lo que realmente te dice si la campaña movió la aguja o si solo estás viendo estacionalidad.
+</Tip>
+
+{/* Captura pendiente: menú desplegable de rangos de fechas abierto sobre el panel. */}
+
+## Métricas del panel de control de tarjetas de regalo
+
+### Total de tarjetas de regalo emitidas
+
+Muestra el **número total de tarjetas de regalo creadas** dentro del período seleccionado, combinando dos orígenes:
+
+- Tarjetas **vendidas** a través de cualquier proceso de pago
+- Tarjetas **enviadas** directamente mediante el flujo de envío
+
+Utiliza esta métrica para comprender la adopción y la utilización generales del programa.
+
+<Note>
+  Como el número mezcla ventas y envíos gratuitos, no lo leas como ingreso. Para ingreso, usa **Valor total de las tarjetas de regalo emitidas** y cruza con el filtro de estado.
+</Note>
+
+### Valor total de las tarjetas de regalo emitidas
+
+Muestra el **valor monetario total** de todas las tarjetas de regalo emitidas en el rango. Un gráfico de tendencias acompaña el número y muestra los cambios de valor a lo largo del tiempo, lo que resulta útil para detectar picos estacionales o aumentos repentinos impulsados por campañas.
+
+**Ejemplo:** si en una semana se emitieron cinco tarjetas de $$500 y dos tarjetas de $$2,000, el valor total asciende a **\$6,500**.
+
+| Denominación | Cantidad emitida | Subtotal |
+| --- | --- | --- |
+| \$500 | 5 | \$2,500 |
+| \$2,000 | 2 | \$4,000 |
+| **Total** | **7** | **\$6,500** |
+
+### Valor medio del pedido (VMP)
+
+Muestra el **valor promedio de los pedidos** de tarjetas de regalo. Esto ayuda a identificar si tus clientes prefieren denominaciones más pequeñas o más grandes.
+
+Siguiendo el ejemplo anterior: $$6,500 ÷ 7 pedidos = **$$928.57 de valor medio\*\*.
+
+<Tip>
+  Un VMP que sube mientras el total de tarjetas emitidas se mantiene plano suele significar que estás vendiendo a menos personas pero por más dinero. Si tu objetivo era captar clientes nuevos, esa señal te pide revisar la denominación mínima que estás ofreciendo.
+</Tip>
+
+### Número de clientes únicos
+
+Representa la **cantidad de personas distintas** que compraron o recibieron una tarjeta de regalo durante el período seleccionado.
+
+Esto ayuda a medir tres cosas a la vez:
+
+<CardGroup cols={3}>
+  <Card title="Alcance del programa" icon="users">
+    Cuánta gente distinta tocó tu programa de tarjetas de regalo.
+  </Card>
+
+  <Card title="Participación recurrente" icon="repeat">
+    Si el total de tarjetas crece mucho más rápido que los clientes únicos, tienes compradores repetidos.
+  </Card>
+
+  <Card title="Captación por regalo" icon="user-plus">
+    Cada destinatario que no era cliente antes es un contacto nuevo entrando por la puerta del regalo.
+  </Card>
+</CardGroup>
+
+### Tabla de denominaciones principales y popularidad
+
+Esta métrica destaca:
+
+- La **denominación emitida con mayor frecuencia**
+- Una **tabla con las 5 denominaciones más populares**
+
+Estos datos te ayudan a optimizar las decisiones futuras de inventario y de denominación.
+
+**Ejemplo de las 5 principales:**
+
+| Posición | Denominación | Lectura para tu negocio |
+| --- | --- | --- |
+| 1 | \$1,000 | Tu punto dulce actual, protégelo en toda campaña |
+| 2 | \$500 | Entrada natural, buena para regalo entre conocidos |
+| 3 | \$2,000 | Segmento premium, pocos pedidos pero mucho valor |
+| 4 | \$250 | Denominación de prueba o de compensación |
+| 5 | \$5,000 | Corporativo o VIP, revisa que el inventario alcance |
+
+{/* Captura pendiente: tarjeta de "Denominación principal" con la tabla de las 5 más populares desplegada. */}
+
+## Página de pedidos de tarjetas de regalo
+
+La página de pedidos muestra **todas las tarjetas vendidas o enviadas**, junto con su estado, saldo y detalles del cliente.
+
+Todas las tarjetas de esta página son interactivas: al hacer clic se abre la página de detalles del pedido, que es la **fuente principal de información** sobre cualquier tarjeta de regalo de la cuenta.
+
+Puedes usar los filtros para segmentar las métricas por:
+
+| Filtro | Uso típico |
+| --- | --- |
+| **Contactos** | Auditar todas las tarjetas de un cliente específico |
+| **Estado** | Separar tarjetas Programadas, Activas e Inactivas |
+| **Denominación** | Verificar el consumo de inventario de un valor puntual |
+| **Importe / saldo** | Detectar tarjetas emitidas que nadie ha canjeado todavía |
+
+<Warning>
+  El saldo restante que ves en esta página es el saldo real y vivo de la tarjeta. Si un cliente reclama que su tarjeta "no tiene fondos", esta es la pantalla que resuelve la conversación, no el correo original de entrega.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo se contabilizan las tarjetas de regalo programadas en el panel de control?">
+    Las emisiones programadas **sí se incluyen** en los totales de emisión del rango de fechas seleccionado. Si quieres analizarlas por separado, utiliza el filtro **Estado** para aislar las tarjetas programadas o las activas.
+  </Accordion>
+
+  <Accordion title="¿Cuál es la diferencia entre Pedidos de tarjetas de regalo y la página de Pedidos habitual?">
+    En **Pedidos de tarjetas de regalo** (dentro de Pagos → Tarjetas de regalo) se registra **cada tarjeta emitida o comprada**, haya habido pago o no.
+
+    La página de **Pedidos** genérica solo registra transacciones pagadas, así que las tarjetas enviadas gratuitamente no aparecen ahí.
+  </Accordion>
+
+  <Accordion title="¿Cómo afectan las tarjetas emitidas en modo de prueba a los análisis?">
+    No los afectan. Las tarjetas de regalo creadas en **modo de prueba** no se contabilizan en el panel de control, así que puedes hacer todas las pruebas internas que necesites sin ensuciar tus métricas reales.
+  </Accordion>
+
+  <Accordion title="El indicador dice 0% vs. rango anterior, ¿está roto?">
+    No. Significa que el rango anterior comparable no tuvo movimiento o tuvo exactamente el mismo resultado. Es habitual en las primeras semanas del programa, cuando todavía no hay historia contra la cual comparar.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si un indicador no cuadra con lo que esperabas, escríbenos por WhatsApp al **\+1 829-580-7071** indicando el rango de fechas que estabas viendo y la métrica en cuestión.
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con las tarjetas de regalo" icon="gift" href="/pagos-facturas/tarjetas-regalo-primeros-pasos">
+    Crea tu primer producto de tarjeta de regalo y entiende el ciclo completo.
+  </Card>
+
+  <Card title="Cómo vender tarjetas de regalo" icon="store" href="/pagos-facturas/vender-tarjetas-regalo">
+    Los canales disponibles para poner tus tarjetas a la venta.
+  </Card>
+</CardGroup>
