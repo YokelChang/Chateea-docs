@@ -1,0 +1,259 @@
+---
+title: "Cómo configurar el seguimiento de llamadas (grupo de números)"
+description: "Crear grupos de números para atribuir llamadas por fuente, integrar el snippet en embudos y sitios web, probar el intercambio y rastrear palabras clave."
+icon: "phone-arrow-down-left"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+Los grupos de números son una excelente manera de rastrear las llamadas generadas por campañas de pago. Mediante estos grupos, puedes atribuir las conversaciones de seguimiento de llamadas según los números de teléfono específicos que se muestran a los clientes potenciales que acceden a páginas de destino y sitios web designados. Estos números solo se muestran en páginas específicas y únicamente a los clientes potenciales que realizan una acción determinada. También se conocen como "códigos de seguimiento de llamadas", pero nosotros los llamamos "grupos de números".
+
+En este artículo, explicaremos cómo configurar grupos de números para que puedas empezar a recopilar datos sobre tus visitantes.
+
+### Este artículo trata sobre
+
+- [Cómo configurar grupos de números para el seguimiento de llamadas](#cómo-configurar-grupos-de-números-para-el-seguimiento-de-llamadas)
+- [Cómo probar el intercambio de números](#cómo-probar-el-intercambio-de-números)
+- [Cómo configurar el seguimiento de palabras clave](#cómo-configurar-el-seguimiento-de-palabras-clave)
+- [Para intercambiar números en un botón](#para-intercambiar-números-en-un-botón)
+- [ID de grupo](#id-de-grupo)
+- [Preguntas frecuentes](#preguntas-frecuentes)
+
+## Cómo configurar grupos de números para el seguimiento de llamadas
+
+<Warning>
+  **Actualización:** Ya no podemos usar `gclid` en la URL para imitar los anuncios de Google. Debe provenir de los anuncios reales de Google.
+</Warning>
+
+<Note>
+  **Actualización (29 de julio de 2020):** Para números de EE. UU. (números locales de 10 dígitos), ahora puede ingresar el número en cualquiera de estos tres formatos: 11... _(El texto aparece cortado en la fuente.)_
+</Note>
+
+<Steps>
+  <Step title="Abra Configuración">
+    Haz clic en **Configuración**.
+  </Step>
+  <Step title="Entre en Números de teléfono">
+    Haz clic en **Números de teléfono**.
+  </Step>
+  <Step title="Agregar grupo de números">
+    Haz clic en **"Agregar grupo de números"**. Lo encontrarás en el menú desplegable **"\+ Agregar número"**, ubicado en el lado derecho de la página (_Add Number → Add Number Pool — Used for Lead Tracking_).
+
+    <Note>
+      **Captura pendiente:** menú "\+ Add Number" desplegado mostrando las tres opciones (Add Phone Number, Add Number Pool, Add Verified CallerID). Recapturar desde app.chateea.com.
+    </Note>
+  </Step>
+  <Step title="Actividad de los visitantes">
+    Dado que estamos creando un grupo de números para el seguimiento de llamadas, seleccionaremos la opción **"Actividad de visitantes"** (_Visitors Activity — Create multiple numbers that correlate calls to website visitors, PPC keywords, and more_), en lugar de **Marketing Campaign** (_Create one phone number that tracks all callers to a single marketing campaign_).
+
+    De esta lista, seleccione los visitantes que desea rastrear. Una vez que haya seleccionado, haga clic en **Siguiente: Crear grupo**. Recomendamos realizar un seguimiento **de todos los visitantes**.
+
+    | Opción de seguimiento | Qué rastrea |
+    | --- | --- |
+    | **All visitors (recommended)** | Todos los visitantes del sitio. |
+    | **All Except Direct** | Todos excepto el tráfico directo. |
+    | **All Except Direct & Organic** | Todos excepto el tráfico directo y el orgánico. |
+    | **PPC search** | Solo búsqueda de pago. |
+    | **Visitors from Google Ads** | Visitantes procedentes de Google Ads. |
+    | **Landing page or URL parameter** | Visitantes que llegan a una página o parámetro de URL concreto. |
+    | **Referring page** | Visitantes procedentes de una página de referencia. |
+
+    **Nota:** Si selecciona la búsqueda PPC, el número que aparece en el sitio web solo cambiará cuando los visitantes accedan desde un anuncio de pago.
+  </Step>
+  <Step title="Número Nombre">
+    En este campo, puede indicar su número de seguimiento. Lo identificaremos en su cuenta como el "Number Name": elija un nombre conciso y fácil de recordar.
+  </Step>
+  <Step title="Tamaño de la piscina (Pool Size)">
+    Cada grupo de números contiene un **mínimo de 4 números de seguimiento**. Puedes ajustar el tamaño del grupo según el volumen de llamadas: a mayor volumen, más números de seguimiento se necesitarán.
+
+    La cantidad de números de seguimiento del grupo determina cuántos visitantes pueden llamar a su sitio web al mismo tiempo. El tamaño recomendado del grupo es una cuarta parte del tráfico por hora en su hora pico según Google Analytics, con un mínimo de 4 números.
+  </Step>
+  <Step title="Número de reenvío (Forward Calls To)">
+    Aquí puede ingresar el número principal de la empresa o el número donde desea recibir las llamadas cuando los interlocutores marquen el número de seguimiento. Ejemplo de formato: 404-555-1212.
+
+    <Warning>
+      **Nota:** No puede usar un número de teléfono de LC como número de desvío, ya que esto creará un bucle. Asegúrese de usar un número externo diferente para evitar problemas de enrutamiento de llamadas.
+    </Warning>
+  </Step>
+  <Step title="Número de intercambio (Swapping Number)">
+    Introduzca el número de teléfono que desea que el sistema actualice en su sitio web. Puede ser el mismo número que el de reenvío configurado en el paso anterior, o puede desmarcar la casilla **"Same As Forwarding Number"** para indicar uno distinto.
+
+    Al marcar la casilla de reconocimiento, usted confirma que está comprando 4 números de teléfono nuevos para añadirlos a su grupo de números. Una vez completada toda la información, haga clic en **Next: Choose Numbers**.
+  </Step>
+  <Step title="Elija los números">
+    Al crear números de seguimiento tiene la opción de elegir números locales al código de área, un número gratuito o números de cualquier código de área.
+
+    <Tabs>
+      <Tab title="Local Number">
+        Al seleccionar número local, se le mostrarán 4 números distintos locales al número que fijó como **"Forwarding Number"** al inicio del proceso.
+      </Tab>
+      <Tab title="Toll-free numbers">
+        La segunda opción le permite elegir números gratuitos para su grupo. Puede optar por esta vía cuando no haya números disponibles en el código de área deseado.
+
+        Para ver los números gratuitos disponibles, elija el código de área en el menú desplegable: **833, 844, 855, 866, 877, 888**.
+      </Tab>
+      <Tab title="Numbers from any given area code">
+        Si está abierto a elegir un número de otra región, escriba el código de área y haga clic en **"Check Availability"**; verá los números disponibles en unos segundos.
+      </Tab>
+    </Tabs>
+
+    Cuando haya creado el número de seguimiento por cualquiera de los 3 métodos anteriores, haga clic en **"Next: Number Features"**.
+  </Step>
+  <Step title="Whisper Message">
+    Al recibir una llamada, usted escuchará este mensaje. Si configura el mensaje susurrado como "Call from (Source)", el mensaje será algo como "Call from a ad campaign". **El interlocutor no puede escuchar este mensaje**: es solo para usted como usuario del CRM.
+  </Step>
+  <Step title="Call recording">
+    Aquí puede usar la casilla de verificación para permitir que el sistema grabe las llamadas y personalizar el mensaje que debe escuchar el interlocutor, como "This call will be recorded for quality assurance purposes."
+
+    Ciertas jurisdicciones exigen el consentimiento mutuo para grabar conversaciones. Para ayudarle a cumplir con esas leyes, se ofrece la opción de activar una notificación previa a la llamada que informa al interlocutor de que la conversación podría ser grabada.
+  </Step>
+  <Step title="Activate Number">
+    Haga clic en **Activate Number**.
+  </Step>
+</Steps>
+
+## Integrar el snippet
+
+Una vez configurado el grupo de números, deberá integrar el snippet en su sitio web. Este es el proceso paso a paso:
+
+<Steps>
+  <Step title="Abra Number Pools">
+    Vaya a la opción **Number Pools**.
+  </Step>
+  <Step title="Abra el menú de tres puntos">
+    Vaya al grupo de números que desea usar y haga clic en los tres puntos.
+  </Step>
+  <Step title="Number Pool Info">
+    Haga clic en **"Number Pool Info"**.
+  </Step>
+  <Step title="Copie el Normal Snippet Code">
+    Copie el **"Normal Snippet Code"**. Este es el código que hay que pegar en el sitio web o embudo.
+
+    En esa misma ventana verá tres pasos: **Step 1** — Add Swapping Numbers (los números que activan el intercambio en el sitio, en formato local o internacional); **Step 2** — Not Replacing at certain place (si no quiere reemplazar el número en cierto lugar, añada una clase `noswap`); **Step 3** — Adding Javascript Snippets (copie el snippet y péguelo justo encima de la etiqueta de cierre `body` de cada página donde quiera reemplazar los números).
+  </Step>
+  <Step title="Vaya a Sites">
+    Vaya a la sección **"Sites"** y haga clic en **Funnels** o **Websites**.
+  </Step>
+  <Step title="Elija el embudo">
+    Haga clic en el embudo donde quiere usar el grupo de números.
+  </Step>
+  <Step title="Pegue el snippet">
+    Dentro del embudo/sitio web, haga clic en la pestaña **"Settings"**. Ahora pegue el Normal Snippet copiado al **final** del campo **Body Tracking code**.
+
+    Haga clic en **Save**. Esto intercambiará el número en todo el embudo/sitio web.
+  </Step>
+</Steps>
+
+### Intercambio en una sola página
+
+Si quiere que el número se intercambie en una única página del embudo/sitio web:
+
+1. Haga clic en el icono **Tracking Code** en la parte superior izquierda.
+2. Haga clic en la opción **"Footer Tracking"** del lado derecho.
+3. Pegue el código en el editor.
+4. Haga clic en **"Save"** para continuar.
+
+## Actualizar el número de intercambio
+
+Vuelva a la configuración del grupo de números. Pase el cursor sobre el grupo recién creado y haga clic en el menú de tres puntos → **"Update Tracking Number."** Copie el número de intercambio y péguelo en los embudos/sitios web.
+
+Para actualizar el número de intercambio, siga estos pasos:
+
+<Steps>
+  <Step title="Menú de tres puntos">
+    Haga clic en el menú de tres puntos.
+  </Step>
+  <Step title="Edit Configuration">
+    Haga clic en **"Edit Configuration."**
+  </Step>
+  <Step title="Desmarque la casilla">
+    Desmarque la opción **"Swapping number(s) same as forwarding number"** y establezca su propio número de intercambio. Introduzca el número en el campo correspondiente y haga clic en **"Add"**.
+
+    <Warning>
+      **Nota:** No puede usar un número de teléfono de LC como número de reenvío, ya que esto creará un bucle. Asegúrese de usar un número externo diferente para evitar problemas de enrutamiento de llamadas.
+    </Warning>
+  </Step>
+  <Step title="Pegue el número en el sitio">
+    Ahora puede pegar el número de intercambio en el sitio web.
+  </Step>
+</Steps>
+
+Una vez que el grupo de números esté configurado y en funcionamiento, podrá ver la columna **Keyword** en Reporting, dentro del **"Call Report"**.
+
+Sus visitantes buscan las palabras clave, llegan a su sitio web y llaman al número de seguimiento; a partir de ahí podremos atribuir la fuente y la palabra clave en la pestaña de informes de llamadas. Si se desplaza a la derecha y hace clic en la flecha hacia abajo, también puede ver el enlace que estaba visitando el contacto, y hacer clic en su nombre para ver sus actividades.
+
+## Cómo probar el intercambio de números
+
+Una vez que haya añadido el script de seguimiento al Body de su página web, puede comprobar que el intercambio funciona abriendo un navegador en modo incógnito.
+
+Introduzca en el navegador incógnito lo siguiente y pulse Enter:
+
+```text
+yourwebsite.com/landing-page?gclid
+```
+
+<Note>
+  Si la opción de seguimiento seleccionada es **All Except Direct**, debemos enlazar la URL de la página de destino desde otra página web en lugar de introducir el enlace directamente en el navegador para probarlo.
+
+  Por ejemplo: enlazar "Apple Smiles" con `yourwebsite.com/landing-page`.
+</Note>
+
+## Cómo configurar el seguimiento de palabras clave
+
+Para que se muestre la palabra clave que se buscó antes de iniciar la llamada, deberá añadir el siguiente parámetro a la URL del anuncio en Google Ads: `?keyword={keyword}`
+
+Así, si tiene un anuncio de Google con una URL como `yourwebsite.com/landingpage`, deberá actualizarla a:
+
+```text
+yourwebsite.com/landingpage/?keyword={keyword}
+```
+
+## Para intercambiar números en un botón
+
+Puedes usar una etiqueta de anclaje y establecer el atributo `href` con el número de teléfono y el texto que desees.
+
+```html
+<a href="tel:(972) 421-5139" class="btn btn-blue">Llámenos</a>
+```
+
+## ID de grupo
+
+Esto permitirá intercambiar solo un número, pero no todos y cada uno de los números de los diferentes conjuntos. Por lo tanto, encontrará el conjunto de números que mejor coincida e intercambiará el número.
+
+**Ejemplo de caso de uso:** Si el usuario tiene dos anuncios activos, si los clientes potenciales acceden al primero, el sitio web mostrará un número diferente; si acceden al segundo, mostrará otro número distinto. En ese caso, deberá modificar la fuente según el anuncio y configurar el grupo mediante un **ID de grupo**.
+
+**Editar** el grupo de números → Hacer clic en **Agregar/Editar ID de grupo** → Asignar un nombre al **ID de grupo** → Hacer clic en **Actualizar**.
+
+Puedes hacer clic en el icono de información para copiar el fragmento de Grupo e integrarlo en el pie de página de tu sitio web.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="1. ¿Por qué debemos configurar grupos de números para rastrear las llamadas?">
+    Recomendamos configurar el seguimiento de llamadas para todas las fuentes. Podemos determinar cómo llegan a su sitio web cambiando el número de teléfono en cuanto los clientes potenciales llegan desde diferentes fuentes. Por ejemplo, en los anuncios reales de Google, hay parámetros `&gclid` al final de la URL de destino. Así es como nuestro código los detecta y cambia el número en consecuencia, de modo que cuando llaman a ese número de seguimiento, lo asociamos con las cookies del sitio web, las vinculamos y atribuimos la fuente a los clientes potenciales.
+
+    Una vez que los visitantes del sitio web llamen al número de seguimiento, podremos atribuir palabras clave en la pestaña de informes de llamadas. Por lo tanto, esa columna de palabras clave se completará con esos datos.
+  </Accordion>
+
+  <Accordion title="2. ¿Cuál es el costo/precio para configurar un grupo de números?">
+    La tarifa mensual estándar y los cargos por uso del número de teléfono se aplican a un grupo de números, al igual que a un número de teléfono estándar dentro de LeadConnector.
+  </Accordion>
+
+  <Accordion title="3. ¿Puedo redirigir las llamadas del grupo de números a la aplicación web o a la aplicación móvil?">
+    Actualmente, esto no es posible. Las llamadas realizadas al grupo de números solo pueden dirigirse al número configurado para desviar llamadas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo comprar un número de teléfono para su negocio" icon="cart-shopping" href="/telefono-leadconnector/comprar-un-numero-de-telefono">
+    Proceso completo de compra y habilitación de SMS y voz.
+  </Card>
+
+  <Card title="Explicación de la configuración del número de teléfono" icon="sliders" href="/telefono-leadconnector/configuracion-del-numero-de-telefono">
+    Reenvío, mensaje susurrado, grabación y tiempos de espera.
+  </Card>
+</CardGroup>

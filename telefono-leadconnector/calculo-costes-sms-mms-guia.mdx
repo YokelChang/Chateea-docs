@@ -1,0 +1,276 @@
+---
+title: "Cálculo de costes de SMS y MMS: Guía paso a paso"
+description: "Ecuación de costo de SMS salientes, segmentos, tarifas de operador, MMS, emojis, caracteres ocultos y mensajería internacional."
+icon: "calculator"
+---
+
+<Info>
+  Documentado el 16 de agosto de 2026.
+</Info>
+
+## ¿Qué factores determinan el coste de los SMS?
+
+Existen muchos factores que influyen en el costo de los SMS, como el costo por segmento, la dirección (entrante o saliente), la posibilidad de adjuntar una imagen (MMS), los emojis, las tarifas del operador y más. Le invitamos a consultar la [información completa sobre precios de SMS aquí](https://www.twilio.com/en-us/sms/pricing/us). Además, hemos detallado la mayoría de los factores que influyen en el costo de los SMS en la sección "Comprender los factores que influyen en el costo de los SMS".
+
+## Pasos para estimar los costos de los SMS salientes
+
+Un SMS se compone de segmentos, cada uno de los cuales contiene **160 caracteres**. Si tu mensaje supera este límite, se dividirá en varios segmentos, lo que aumentará el coste total.
+
+<Warning>
+  En caso de que se produzca un error interno en LC Phone antes de que el mensaje se entregue al proveedor de telefonía, no se le cobrará. Sin embargo, una vez realizado el intento de entrega, se aplicarán cargos independientemente de si el mensaje se entrega correctamente. Esto incluye los SMS enviados desde números gratuitos, números A2P y aquellos que no se pueden entregar debido a restricciones geográficas u otras limitaciones. Recomendamos revisar cuidadosamente los mensajes antes de enviarlos, ya que no se realizan reembolsos por SMS no entregados.
+</Warning>
+
+### ¿Qué es un segmento de SMS?
+
+Un segmento SMS es una unidad de medida que se utiliza para calcular los costos de los mensajes SMS. Cada segmento consta de 160 caracteres si se utiliza la codificación GSM-7. Si el mensaje excede este límite, se dividirá en varios segmentos, lo que aumentará el costo.
+
+| Longitud del mensaje | Segmentos |
+| --- | --- |
+| 160 caracteres | 1 segmento |
+| 161 caracteres | 2 segmentos |
+
+Cuantos más segmentos contenga su mensaje, mayor será el coste.
+
+### La ecuación de costo
+
+<Note>
+  **Outbound SMS Cost Equation:**
+
+  Estimated Cost of Outbound SMS = \[(Number of Segments)(Per-Segment Cost)\] \+ \[(Number of Segments)(Carrier Fees)\]
+</Note>
+
+Esta estimación corresponde a un único SMS saliente enviado desde un número de EE. UU. a otro número de EE. UU. Existen muchos factores que pueden alterar el precio final. Consulte los precios en [SMS Pricing](https://www.twilio.com/en-us/sms/pricing/us); los precios pueden cambiar con el tiempo. _(El resto de la nota aparece cortado en la fuente.)_
+
+Existen cuatro pasos para estimar el costo de un SMS saliente:
+
+<Steps>
+  <Step title="Find the Number of Segments in your Text">
+    Después de escribir el mensaje que desea enviar, cópielo y péguelo en la [Messaging Segment Calculator](https://twiliodeved.github.io/message-segment-calculator/). Consulte el campo "Number of Segments" para localizar el número de segmentos y manténgalo a mano.
+
+    **Ejemplo:** Estimated Cost of Outbound SMS = \[(5)(Per-Segment Cost)\] \+ \[(5)(Carrier Fees)\]
+  </Step>
+  <Step title="Lookup Per-Segment Cost">
+    Abra la [SMS Pricing page](https://www.twilio.com/en-us/sms/pricing/us) y seleccione el país al que envía los mensajes salientes. Desplácese hasta "SMS/MMS Pricing" y localice su "Per-Segment Cost". En el ejemplo se envía un SMS saliente por long code, así que se elige **\$0.0079**.
+
+    **Ejemplo:** Estimated Cost of Outbound SMS = \[(5)(\$0.0079)\] \+ \[(5)(Carrier Fees)\]
+  </Step>
+  <Step title="Lookup Carrier Fees (≈$0.005)">
+    En EE. UU. y Canadá, operadores como T-Mobile, AT&T o Verizon le cobran por los mensajes entrantes enviados a sus usuarios finales. Los precios varían según el operador y cambian con el tiempo. Para localizarlos, vaya a la página de SMS Pricing, desplácese a la sección "Carrier Fees" y consulte la columna de SMS entrante del operador específico.
+
+    Como las tarifas del operador dependen del número del usuario final, no se puede calcular el costo hasta saber a qué operador se envía. Para superar esa barrera, se estima con ≈\$0.005, que es actualmente el cargo de operador más alto.
+
+    **Ejemplo:** Estimated Cost of Outbound SMS = \[(5)($$0.0079)] + [(5)(≈$$0.005)\]
+  </Step>
+  <Step title="Calculate">
+    Primero se multiplica el número de segmentos por el costo por segmento; luego el número de segmentos por las tarifas de operador; por último se suman ambos resultados.
+
+    ```text
+    Estimated Cost of Outbound SMS = [(5)($0.0079)] + [(5)($0.005)]
+    Estimated Cost of Outbound SMS = [$0.0395] + [(5)($0.005)]
+    Estimated Cost of Outbound SMS = [$0.0395] + [$0.025]
+    [$0.0395] + [$0.025] = $0.0595
+    ```
+
+    Costo final estimado: **\$0.0595 o 5.95 centavos** para este mensaje.
+  </Step>
+</Steps>
+
+<Warning>
+  Esta es una estimación. El precio final solo se conoce después del envío. Añadir una imagen, caracteres ocultos, emojis y otros factores puede modificarlo. _(El resto de la nota aparece cortado en la fuente.)_
+</Warning>
+
+### SMS/MMS Pricing (referencia)
+
+| Phone number type | SMS Outbound | SMS Inbound | MMS Outbound | MMS Inbound |
+| --- | --- | --- | --- | --- |
+| **Long codes** — número de 10 dígitos para SMS y voz con identidad local | \$0.0079 | \$0.0079 | \$0.0200 | \$0.0100 |
+| **Toll-free** — número de negocio con prefijo (8xx, 867) para SMS y voz de alto rendimiento | \$0.0079 | \$0.0079 | \$0.0200 | \$0.0200 |
+| **Short codes** — número corto (5-6 dígitos) para SMS bidireccional de alto rendimiento | \$0.0079 | \$0.0079 | \$0.0200 | \$0.0100 |
+
+### Carrier Fees — Long code (referencia)
+
+| Carrier | SMS Outbound | SMS Inbound | MMS Outbound | MMS Inbound |
+| --- | --- | --- | --- | --- |
+| **AT&T** | \$0.0030 | — | \$0.0050 | — |
+| **T-Mobile** | \$0.0030 | \$0.0030 | \$0.0100 | \$0.0100 |
+| **Verizon** | \$0.0030 | — | \$0.0050 | — |
+| **US Cellular** | \$0.0050 | — | \$0.0100 | — |
+| **All other carriers** | \$0.0025 | — | \$0.0100 | — |
+
+<Note>
+  Los precios de las tarifas de operador varían según el tipo de número (long code, toll-free y shortcode) y pueden cambiar en cualquier momento. Consulte siempre la página de [SMS Pricing](https://www.twilio.com/sms/pricing/).
+</Note>
+
+## Hoja de cálculo del costo de SMS
+
+Use la **SMS Cost Estimator Sheet** para calcular rápidamente sus costos de SMS. Haga una copia, introduzca los datos de su mensaje y deje que la hoja haga el trabajo. Abra la hoja desde el enlace y seleccione **"Make a Copy"**.
+
+[SMS Cost Estimator Sheet](https://docs.google.com/spreadsheets/d/1rhJKukw4Y8G2KCqpphuhY6Q51zrohNmraCChVh-ETAI/edit?usp=sharing) — haga "Make a Copy" de esta hoja para poder editarla.
+
+<Note>
+  Esto es un estimador; los costos finales variarán en función de factores adicionales. Consulte la sección "Comprender los factores que influyen en el costo de los SMS".
+</Note>
+
+## Comprender los factores que influyen en el costo de los SMS
+
+Muchos factores influyen en el costo de un SMS: la dirección (entrante/saliente), el número de segmentos, las tarifas del operador, la validación del número, la inclusión de una imagen, los caracteres ocultos y más.
+
+<AccordionGroup>
+  <Accordion title="Costo por segmento">
+    Un SMS consta de segmentos de 160 caracteres; los mensajes más largos se dividen en varios segmentos y aumentan el costo. Los emojis, las imágenes y los caracteres ocultos también afectan al precio.
+
+    **Importante:** en EE. UU. y Canadá un segmento contiene 160 caracteres; sin embargo, tener entre 161 y 320 caracteres implica automáticamente más de un segmento. _(El texto continúa cortado en la fuente.)_ La longitud de caracteres de los segmentos también varía según países y regiones, lo que impacta en el precio final. La mayoría de los países usan 160 caracteres. _(Texto cortado en la fuente.)_
+  </Accordion>
+
+  <Accordion title="Número de segmentos">
+    El costo se basa en el número de segmentos: más segmentos = mayor costo. Un mensaje de 5 segmentos cuesta aproximadamente cinco veces más que uno de un solo segmento.
+
+    | Mensaje | Cálculo | Total |
+    | --- | --- | --- |
+    | **5 segmentos** | \[(5)($$0.0079)] + [(5)($$0.005)\] = \[$$.0395] + [$$0.025\] | \$0.0695 o 6.95 centavos |
+    | **1 segmento** | \[(1)($$0.0079)] + [(1)($$0.005)\] = \[$$0.0079] + [$$0.005\] | \$0.0129 o 1.29 centavos |
+  </Accordion>
+
+  <Accordion title="Agregar una imagen (MMS)">
+    MMS incluye archivos adjuntos (por ejemplo, imágenes) que se cobran de forma distinta al SMS. Añadir una imagen cambia el mensaje a tarifas de MMS, que incluyen tanto las MMS Message Fees como las Carrier Fees.
+
+    **Ejemplo para un mensaje de 5 segmentos con imagen:**
+
+    ```text
+    Estimated Cost of MMS Text = [(Number of Segments)(Per-Segment MMS Cost)] + [(Number of Segments)(MMS Carrier Fees)]
+    Estimated Cost of MMS Text = [(5)($0.02)] + [(5)($0.01)]
+    [$0.10] + [$0.05] = $0.15 o 15 centavos
+    ```
+
+    Los mensajes pueden incluir hasta 10 archivos multimedia con un tamaño total de hasta 5 MB. Cualquier archivo que supere los 5 MB se sube a la biblioteca de medios y se crea un enlace corto que puede enviar al contacto. Los mensajes con más de 5 MB de contenido multimedia no serán aceptados.
+  </Accordion>
+
+  <Accordion title="Usar emojis">
+    Los emojis pueden mejorar la interacción, pero aumentan el costo porque activan la codificación Unicode, que reduce el límite de caracteres por segmento a **70** en lugar de 160.
+
+    En el ejemplo de la fuente, un mensaje que sería de 1 segmento pasa a 4 segmentos por el uso de emojis. ¿Quizá con un solo emoji sea suficiente?
+  </Accordion>
+
+  <Accordion title="Caracteres ocultos">
+    Muchas agencias copian y pegan el cuerpo del SMS mientras diseñan la automatización. Al copiar texto desde un editor como MS Word o Google Docs, a veces se añaden caracteres ocultos en la cadena. El usuario no puede verlos, pero están presentes en el texto.
+
+    **Ejemplo:** la frase `Hey there` copiada desde una página web debería ser 1 segmento, pero contiene tantos caracteres ocultos (caracteres vacíos) que llega a ocupar 4 segmentos.
+
+    Puede usar la [Segment Calculator](https://twiliodeved.github.io/message-segment-calculator/) para comprobar el número real de segmentos y la longitud de caracteres de su texto SMS.
+
+    **Recomendación:** al pegar el contenido de un SMS en el editor de texto del sistema, use la opción de pegar como texto plano en lugar de pegar directamente.
+
+    | Sistema | Atajo |
+    | --- | --- |
+    | **Windows** | Ctrl \+ Shift \+ V |
+    | **Mac** | Cmd \+ Shift \+ V |
+  </Accordion>
+
+  <Accordion title="Tarifas del operador">
+    Las tarifas del operador las cobran compañías como Verizon, T-Mobile y AT&T cuando envía un mensaje a uno de sus números de usuario final. Se cobran **por segmento**, por lo que cuantos más segmentos tenga un SMS, mayor será el costo.
+
+    ```text
+    Estimated Cost of Outbound SMS = [(Number of Segments)(Per-Segment Cost)] + [(Number of Segments)(Carrier Fees)]
+    ```
+
+    Reducir el número de segmentos reduce también las tarifas del operador. Recuerde además que existe diferencia entre operadores de SMS y de MMS.
+
+    Para subcuentas de LC Phone, configure el registro A2P en el Trust Center del Sistema telefónico de LC.
+
+    **Additional SMS long code fees per carrier**
+
+    | Carrier | Messages received | Messages sent |
+    | --- | --- | --- |
+    | US CELLULAR | N/A | \$0.005 |
+    | VERIZON | N/A | \$0.003 |
+    | AT&T | N/A | $$0.002–$$0.004 |
+    | T-MOBILE | \$0.003 | \$0.003 |
+    | ALL OTHER CARRIERS | N/A | \$0.0025 |
+
+    **Additional SMS toll-free fees per carrier**
+
+    | Carrier | Messages received | Messages sent |
+    | --- | --- | --- |
+    | US CELLULAR | \$0.0025 | N/A |
+    | VERIZON | N/A | \$0.003 |
+    | AT&T | N/A | \$0.0025 |
+    | T-MOBILE | \$0.003 | \$0.003 |
+
+    **Additional MMS long code fees per carrier**
+
+    | Carrier | Messages received | Messages sent |
+    | --- | --- | --- |
+    | US CELLULAR | N/A | \$0.01 |
+    | VERIZON | N/A | \$0.005 |
+    | AT&T | N/A | $$0.0035–$$0.005 |
+    | T-MOBILE | \$0.01 | \$0.01 |
+    | ALL OTHER CARRIERS | N/A | \$0.01 |
+
+    **Additional MMS toll-free fees per carrier**
+
+    | Carrier | Messages received | Messages sent |
+    | --- | --- | --- |
+    | US CELLULAR | \$0.005 | \$0.005 |
+    | VERIZON | N/A | \$0.005 |
+    | AT&T | N/A | \$0.003 |
+    | T-MOBILE | \$0.01 | \$0.01 |
+  </Accordion>
+
+  <Accordion title="Tarifas de consulta del operador (Carrier Lookup Fees)">
+    Las Carrier Lookup Fees (CARRIER-LOOKUP-FEES) se generan en el primer SMS que intenta enviar a un contacto. Forman parte de la función de validación de SMS / número de teléfono. Esta función comprueba si el número es real y si puede recibir SMS/MMS.
+
+    Esto le ahorra dinero a largo plazo: sin ella, correría el riesgo de enviar mensajes a números falsos y pagar el costo completo del texto. Con la validación de número puede comprobar si el número es válido antes de enviar, lo que resulta mucho más económico con el tiempo.
+  </Accordion>
+
+  <Accordion title="Dirección (entrada/salida)">
+    En el ejemplo anterior se calculó un mensaje **saliente** de 5 segmentos. Sin embargo, si recibe una respuesta desde ese número, también se le cobra por los mensajes entrantes.
+
+    Para calcularlo, abra la página de SMS Pricing y localice la columna "Inbound" correspondiente a un número Long Code de 10 dígitos.
+
+    ```text
+    Estimated Cost of INBOUND Text = [(Number of Segments)(Per-Segment INBOUND SMS/MMS Cost)] + [(Number of Segments)(INBOUND SMS/MMS Carrier Fees)]
+    ```
+
+    Asegúrese de consultar la columna "Inbound" en [SMS Pricing](https://www.twilio.com/en-us/sms/pricing/us) y de diferenciar los costos de SMS y MMS al sustituir las variables.
+  </Accordion>
+
+  <Accordion title="Mensajería internacional">
+    En el ejemplo anterior se envía desde un número de EE. UU./Canadá a otro número de EE. UU./Canadá. Si envía un mensaje a un número fuera de EE. UU./Canadá, quedará sujeto a las tarifas del país del destinatario. Por ejemplo, un mensaje enviado desde un número de EE. UU./Canadá a un número de Australia se cobra según las tarifas australianas.
+
+    Puede consultar las tarifas de todos los países ajustando el menú desplegable "Messages in" y seleccionando el país de los destinatarios (ver Paso 2).
+
+    En este ejemplo, el costo por segmento en EE. UU./Canadá puede ser de $$.0079 mientras que el costo australiano es de $$.0515, aproximadamente 6.5 veces la tarifa estándar. Enviar a números internacionales puede afectar considerablemente los costos de SMS.
+
+    Generalmente solo se le cobra el precio del país de destino; sin embargo, en algunos casos pueden aplicarse otras tarifas. _(El texto continúa cortado en la fuente.)_
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se me cobra por los SMS no enviados?">
+    No. Si LC Phone comete un error interno antes de entregar el mensaje a su proveedor de telefonía, no se le cobrará. Sin embargo, se aplican cargos a todos los mensajes en los que se haya intentado la entrega, independientemente del resultado final. Esto incluye los mensajes enviados desde números gratuitos, números A2P y aquellos que no se pueden entregar debido a restricciones geográficas u otros factores.
+
+    **Nota:** No se realizan reembolsos por SMS no entregados, por lo que le recomendamos revisar los mensajes cuidadosamente antes de enviarlos.
+  </Accordion>
+
+  <Accordion title="¿Por qué me cuestan tanto los SMS?">
+    **La razón más común para los altos costos de los SMS es el envío de mensajes con múltiples segmentos.** El precio de los SMS se basa en segmentos, lo que significa que a mayor número de segmentos, mayor coste. Por ejemplo, un mensaje de 5 segmentos cuesta 5 veces más que un SMS de un solo segmento.
+
+    **Reducir el número de segmentos en tus SMS puede disminuir el coste de los mismos.** Para ello, abre la Calculadora de Segmentos y pega tu mensaje. Intenta reducir el número de segmentos para disminuir los costes totales.
+
+    **Muchos factores pueden influir en el precio de los SMS.** Reducir el número de segmentos y no incluir imágenes ni archivos adjuntos puede ayudar a disminuir los costos, pero existen otros factores a considerar. Consulte la sección de factores que influyen en el costo de los SMS para comprenderlos mejor y ajustar sus SMS a sus necesidades.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Precios detallados para inscripciones A2P 10DLC" icon="tags" href="/telefono-leadconnector/precios-inscripciones-a2p-10dlc">
+    Tarifas de registro de marca y campaña, y tarifas por mensaje de cada operador.
+  </Card>
+
+  <Card title="Buenas prácticas para la entregabilidad de SMS" icon="paper-plane" href="/telefono-leadconnector/buenas-practicas-entregabilidad-sms">
+    Cómo evitar restricciones y mantener sanas sus métricas de envío.
+  </Card>
+</CardGroup>
