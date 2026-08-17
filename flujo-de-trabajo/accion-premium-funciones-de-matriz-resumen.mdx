@@ -1,0 +1,113 @@
+---
+title: "Flujo de trabajo - Acción Premium de funciones de matriz"
+sidebarTitle: "Flujo de trabajo - Acción Premium de funciones de matriz"
+description: "Versión resumida del artículo sobre Funciones de matriz (Array Functions): cómo seleccionar el tipo de acción y cómo configurar el tipo Buscar sobre los artículos de línea de Shopify."
+icon: "brackets-curly"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Esta es la **versión resumida** del artículo sobre la acción premium **Funciones de matriz** (Array Functions), tal como aparece publicada en la fuente. Se centra en el tipo de acción **Buscar**.
+</Info>
+
+<Note>
+  ¿Buscas el detalle de los cinco tipos de acción (Buscar, Filtro, Buscar por índice, Partidas individuales y Matemáticas)? Consulta la versión ampliada: [Flujo de trabajo - Acción Premium de funciones de matriz](/flujo-de-trabajo/accion-premium-funciones-de-matriz).
+</Note>
+
+## Funciones de matriz
+
+Para manejar datos de matriz en el flujo de trabajo.
+
+La acción **Array Functions** ofrece métodos para trabajar con listas provenientes de distintos orígenes dentro del flujo.
+
+<Note>
+  **Imagen próximamente** — Captura del panel **Array Functions** con el campo **ACTION NAME** y el desplegable **ACTION TYPE** sin seleccionar.
+</Note>
+
+## Seleccionar tipo de acción
+
+Antes de configurar nada más, elige el tipo de acción en el desplegable **ACTION TYPE**.
+
+## Tipo de acción: Buscar
+
+Para encontrar las claves-valores coincidentes en una matriz de objetos y devolver el objeto.
+
+Al seleccionar **Find**, el panel muestra la ayuda _Returns object that matches key-value_ y añade el campo **SELECT FIELD**.
+
+### Seleccione un campo
+
+Aquí se enumeran todos los campos con tipo de datos de matriz disponibles en el flujo de trabajo. La lista de datos de matriz disponibles se obtiene de los activadores de **Shopify**, el activador de **webhook entrante** y los datos de respuesta de **acciones de webhook personalizadas**.
+
+En el siguiente ejemplo se utiliza el activador de **pedido realizado de Shopify** y se comprueba si un producto con el ID de producto `zGhad23wfadfa` forma parte de los artículos de la línea de Shopify.
+
+<Steps>
+  <Step title="Seleccione Shopify > Artículos">
+    Despliega el grupo **Shopify** dentro de **SELECT FIELD** y elige **Line Items**.
+  </Step>
+  <Step title="Seleccione clave-valor para encontrar el objeto coincidente">
+    En el bloque **FILTERS** aparecen los campos **Key** y **Value**.
+  </Step>
+  <Step title="Seleccionar tecla">
+    Se muestra la lista de variables clave del campo de matriz seleccionado. En este ejemplo, las claves de los artículos de línea de Shopify.
+  </Step>
+  <Step title="Introduzca el valor para encontrar la coincidencia">
+    Por ejemplo: clave `id`, valor `zGhad23wfadfa`.
+  </Step>
+  <Step title="Agregar otro artículo">
+    También puedes encontrar el objeto coincidente con múltiples pares clave-valor agregando otro elemento clave-valor con **Add another item**.
+  </Step>
+</Steps>
+
+**Qué muestra la siguiente tabla:** las claves disponibles de los artículos de línea de Shopify que puedes usar en el filtro.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Clave</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué contiene</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px'}}><code>id</code></td>
+        <td style={{padding:'12px 14px'}}>Identificador del producto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px'}}><code>title</code></td>
+        <td style={{padding:'12px 14px'}}>Nombre del producto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px'}}><code>price</code></td>
+        <td style={{padding:'12px 14px'}}>Precio unitario.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px'}}><code>quantity</code></td>
+        <td style={{padding:'12px 14px'}}>Cantidad pedida.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px'}}><code>image</code></td>
+        <td style={{padding:'12px 14px'}}>Imagen del producto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px'}}><code>line\_price</code></td>
+        <td style={{padding:'12px 14px'}}>Importe total de la línea.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** filtrando por `id` = `zGhad23wfadfa` obtienes el objeto de ese producto y, con él, su `title`, su `price` y su `quantity` listos para usarse más adelante.
+
+## Usar las variables devueltas
+
+Al completar los pasos anteriores, ya puedes usar las variables de objeto devueltas por la función **Array** como valores personalizados en correos electrónicos, SMS, sentencias condicionales (**if/else**), etc. En el menú de valores personalizados aparecen agrupadas bajo **Array Functions**, junto al número del paso que las generó (por ejemplo, `#2 Array Functions`).
+
+<Note>
+  **Imagen próximamente** — Captura del menú **Custom Values** con **Array Functions** desplegado y las claves del artículo de línea disponibles.
+</Note>

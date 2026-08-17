@@ -1,0 +1,318 @@
+---
+title: "Configuración del flujo de trabajo - Descripción general"
+sidebarTitle: "Configuración del flujo de trabajo - Descripción general"
+description: "Guía completa de la pestaña Configuración del creador de flujos de trabajo: gestión de contactos, reingreso, múltiples oportunidades, detener en respuesta, zona horaria, ventana de tiempo, datos del remitente y marcar conversaciones como leídas."
+icon: "sliders"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Este artículo ofrece una guía completa de todas las opciones de la pestaña **Configuración** del creador de flujos de trabajo. Aprende a configurar la gestión de contactos, la programación de las comunicaciones, los datos del remitente y mucho más para garantizar que tus flujos de trabajo se ejecuten según lo previsto.
+</Info>
+
+## Tabla de contenido
+
+- ¿Qué son los ajustes de flujo de trabajo?
+- Principales ventajas de configurar los ajustes del flujo de trabajo
+- Cómo acceder a la configuración del flujo de trabajo
+- Configuración de contactos: permitir el reingreso, permitir múltiples oportunidades, detener en respuesta
+- Configuración de comunicación: zona horaria, ventana de tiempo, detalles del remitente, conversaciones - marcar como leído
+- Preguntas frecuentes
+
+## ¿Qué son los ajustes de flujo de trabajo?
+
+La configuración del flujo de trabajo controla cada flujo de trabajo individualmente. En lugar de configurar reglas para cada acción, esta configuración se aplica a todo el flujo de trabajo, regulando su comportamiento fundamental de principio a fin.
+
+Determina cómo ingresan y vuelven a ingresar los contactos, cuándo se pueden enviar mensajes y qué sucede cuando un contacto responde, garantizando así que tu automatización sea potente y precisa.
+
+<Note>
+  **Imagen próximamente** — Captura de la pestaña **Configuración** (Workflow Settings) con sus dos bloques: **Contacto** (Permitir reingreso, Permitir múltiples oportunidades, Detener en respuesta) y **Comunicación** (Zona horaria, Ventana de tiempo, Detalles del remitente, Conversaciones).
+</Note>
+
+## Principales ventajas de configurar los ajustes del flujo de trabajo
+
+Configurar correctamente los ajustes del flujo de trabajo es fundamental para crear una automatización eficaz y respetuosa. Estas opciones permiten ajustar el comportamiento del flujo de trabajo para que se adapte a la lógica de tu negocio y mejore la experiencia del contacto.
+
+<CardGroup cols={2}>
+  <Card title="Controlar el flujo de contactos" icon="arrows-rotate">
+    Decide si los contactos pueden ingresar a un flujo de trabajo más de una vez, evitando que reciban secuencias duplicadas.
+  </Card>
+
+  <Card title="Personalizar la programación" icon="globe">
+    Envía mensajes en el momento más adecuado para cada contacto utilizando su zona horaria local en lugar de una única hora fija.
+  </Card>
+
+  <Card title="Establecer un horario comercial" icon="clock">
+    Asegúrate de que las comunicaciones se envíen únicamente durante horarios y días específicos, para respetar el tiempo de tus contactos y aumentar las tasas de interacción.
+  </Card>
+
+  <Card title="Automatizar la gestión de conversaciones" icon="comments">
+    Detén automáticamente las secuencias de seguimiento cuando un contacto responda, creando una transición fluida para que un miembro del equipo retome la conversación.
+  </Card>
+
+  <Card title="Mantener la coherencia de la marca" icon="signature">
+    Configura nombres de remitente, direcciones de correo electrónico y números de teléfono predeterminados para todas las comunicaciones del flujo de trabajo.
+  </Card>
+</CardGroup>
+
+## Cómo acceder a la configuración del flujo de trabajo
+
+Encontrar y ajustar la configuración principal de tu flujo de trabajo es muy sencillo: todas las opciones están centralizadas en una única pestaña dentro del creador de flujos de trabajo.
+
+<Steps>
+  <Step title="Abre la sección Automatización">
+    Dirígete a la sección de **Automatización** en tu panel de control.
+  </Step>
+  <Step title="Elige el flujo de trabajo">
+    Abre un flujo de trabajo existente o crea uno nuevo desde **Crear flujo de trabajo**.
+  </Step>
+  <Step title="Entra en la pestaña Configuración">
+    Dentro del creador de flujos de trabajo, haz clic en la pestaña **Configuración**, en la parte superior de la página, junto a **Constructor**, **Historial de inscripciones** y **Registros de ejecución**.
+  </Step>
+</Steps>
+
+<Note>
+  **Imagen próximamente** — Captura de la lista de flujos de trabajo (Workflow List) señalando la pestaña **Configuración** dentro de un flujo ya abierto.
+</Note>
+
+## Configuración de contactos
+
+Este conjunto de ajustes controla cómo se gestionan los contactos y sus datos asociados, como las oportunidades, dentro del flujo de trabajo. Estas reglas determinan quién puede entrar, cuántas veces puede entrar y qué acciones provocarán su salida.
+
+**Qué muestra la siguiente tabla:** los tres interruptores del bloque **Contacto** y el resultado exacto de dejarlos activados (azul) o desactivados (gris).
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Ajuste</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Activado (azul)</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Desactivado (gris)</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Permitir el reingreso</td>
+        <td style={{padding:'12px 14px'}}>El contacto puede volver a entrar tras completar el flujo por completo o tras ser retirado manualmente.</td>
+        <td style={{padding:'12px 14px'}}>El contacto solo puede entrar y completar este flujo de trabajo una única vez.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Permitir múltiples oportunidades</td>
+        <td style={{padding:'12px 14px'}}>Cada oportunidad del contacto entra como una ejecución independiente dentro del flujo.</td>
+        <td style={{padding:'12px 14px'}}>El contacto solo entra por la primera oportunidad que cumpla los criterios del activador.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Detener en respuesta</td>
+        <td style={{padding:'12px 14px'}}>El flujo finaliza para ese contacto si responde a un mensaje enviado desde este flujo de trabajo.</td>
+        <td style={{padding:'12px 14px'}}>El contacto continúa en el flujo hasta que este termine.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** en un flujo de recordatorios mensuales de mantenimiento tendrías **Permitir el reingreso** activado (para que el cliente vuelva a entrar cada mes) y **Detener en respuesta** activado (para que, en cuanto conteste, un asesor humano tome la conversación).
+
+### Permitir el reingreso
+
+Este interruptor determina si un contacto puede ingresar a este flujo de trabajo más de una vez.
+
+- **Activado (azul):** el contacto puede volver a entrar al flujo después de haberlo completado por completo o de haber sido eliminado manualmente. Es útil para procesos recurrentes, como recordatorios de citas o seguimientos posteriores a una compra. Un contacto **no** puede volver a entrar si todavía está activo dentro del flujo.
+- **Desactivado (gris):** el contacto solo puede entrar y completar este flujo de trabajo una vez.
+
+<Warning>
+  **Excepción importante:** los flujos de trabajo que usan un activador **basado en citas** o **basado en facturas** siempre permitirán que un contacto entre varias veces (una por cita o por factura), sin importar si este ajuste está activado o desactivado. Así se garantiza que cada nueva cita o factura dispare correctamente la automatización.
+</Warning>
+
+### Permitir múltiples oportunidades
+
+Este interruptor es esencial para los flujos de trabajo que se activan mediante acciones basadas en oportunidades (por ejemplo, "Etapa del embudo modificada").
+
+- **Activado (azul):** si un mismo contacto tiene varias oportunidades, cada una entra al flujo como una instancia independiente. Esto permite ejecutar una secuencia de automatización única por cada negocio asociado al contacto.
+- **Desactivado (gris):** el contacto solo entra al flujo por la primera oportunidad que cumpla los criterios del activador.
+
+**Comportamiento predeterminado:** en los flujos de trabajo nuevos, este ajuste viene activado por defecto. En los flujos creados antes del lanzamiento de esta función, viene desactivado por defecto.
+
+**Comportamiento ante actualizaciones:** si los detalles de una oportunidad se actualizan mientras está activa dentro del flujo, el flujo **no** se reinicia: simplemente continúa desde su paso actual utilizando la información actualizada.
+
+### Detener en respuesta
+
+Esta casilla permite retirar automáticamente a un contacto de un flujo de trabajo cuando entabla una conversación. Es fundamental para evitar que se sigan enviando mensajes automatizados después de que el contacto ya respondió y está esperando una respuesta humana.
+
+- **Activado (azul):** el flujo finaliza para el contacto si responde a un mensaje enviado desde este flujo en concreto. Aplica a todos los canales de comunicación gestionados por el flujo.
+- **Desactivado (gris):** el contacto continúa en el flujo hasta que este termine.
+
+<Warning>
+  **Detección de buzón de voz.** De forma predeterminada, el sistema usa la detección de buzón de voz para determinar si una llamada saliente fue atendida por una persona o por una máquina. Esto evita que un buzón de voz dispare por error "Detener en respuesta". Esta detección añade un pequeño retraso al conectar la llamada.
+
+  Dentro de la acción de flujo de trabajo **Llamada** existe un ajuste avanzado, **Disable Voicemail Detect** (desactivar la detección de buzón de voz), que elimina ese retraso, pero implica que un buzón de voz se tratará como una respuesta y detendrá el flujo. En ese caso puedes fijar el tiempo de espera de la llamada en menos de 20 segundos, lo bastante corto como para que la llamada no entre al buzón.
+
+  Artículo que explica cómo combinar **Stop On Response** y **Disable Voicemail Detect**: [help.leadconnectorhq.com](https://help.leadconnectorhq.com/en/support/solutions/articles/155000006790)
+</Warning>
+
+## Configuración de comunicación
+
+Estos ajustes gestionan la programación, la identidad del remitente y las propiedades conversacionales de los mensajes enviados desde el flujo de trabajo. Úsalos para asegurar que tus comunicaciones sean oportunas, profesionales y estén bien gestionadas.
+
+### Zona horaria
+
+Este menú desplegable determina la zona horaria utilizada en cualquier paso del flujo que dependa del tiempo, como una acción **Esperar** o una **Ventana de tiempo**.
+
+**Qué muestra la siguiente tabla:** las dos opciones disponibles y cuándo conviene cada una.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Opción</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Cómo se ejecuta</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Cuándo usarla</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Account Timezone (zona horaria de la cuenta)</td>
+        <td style={{padding:'12px 14px'}}>Todas las acciones basadas en tiempo se ejecutan según la zona horaria configurada para toda la ubicación (cuenta).</td>
+        <td style={{padding:'12px 14px'}}>Negocios locales, con un solo horario de atención.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact Timezone (zona horaria del contacto)</td>
+        <td style={{padding:'12px 14px'}}>Las acciones se ejecutan según la zona horaria individual de cada contacto. Si el contacto no tiene zona horaria en su perfil, el sistema usa la de la cuenta como respaldo.</td>
+        <td style={{padding:'12px 14px'}}>Campañas nacionales o globales, para que el mensaje llegue a una hora local adecuada (por ejemplo, 9 a. m. en la ciudad del contacto).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** con **Contact Timezone**, un recordatorio programado para las 9 a. m. sale a las 9 a. m. de Santo Domingo para un contacto dominicano y a las 9 a. m. de Ciudad de México para uno mexicano.
+
+**Historial:** en el historial del flujo de trabajo verás una entrada que indica si la acción se ejecutó con la zona horaria de la cuenta o con la del contacto (por ejemplo, `Using Contact's timezone (Australia/Sydney)`).
+
+### Ventana de tiempo
+
+Esta función restringe cuándo pueden ejecutarse las acciones de comunicación (como enviar un SMS o un correo electrónico). Si una acción está programada para ejecutarse fuera de la ventana definida, se pausa y se reanuda en la siguiente franja disponible.
+
+Activa el interruptor **Specific Time** (hora específica) para habilitar la ventana.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Campo</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Para qué sirve</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Ejemplo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Start Time (hora de inicio)</td>
+        <td style={{padding:'12px 14px'}}>Marca el comienzo de la ventana de ejecución.</td>
+        <td style={{padding:'12px 14px'}}>08:00 a. m.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>End Time (hora de fin)</td>
+        <td style={{padding:'12px 14px'}}>Marca el final de la ventana de ejecución.</td>
+        <td style={{padding:'12px 14px'}}>5:00 p. m.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Include Days (días incluidos)</td>
+        <td style={{padding:'12px 14px'}}>Selecciona los días de la semana en los que la ventana está activa.</td>
+        <td style={{padding:'12px 14px'}}>Lunes a viernes (domingo y sábado sin marcar).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** con una ventana de 08:00 a. m. a 5:00 p. m. de lunes a viernes, un SMS que tocaba enviarse un sábado a las 9 p. m. queda en espera y sale el lunes a las 08:00 a. m. Los pasos de espera sí pueden programarse fuera de la ventana, pero la acción siguiente solo se dispara dentro de ella.
+
+### Detalles del remitente
+
+Esta sección permite fijar la información de remitente predeterminada para todas las comunicaciones enviadas desde este flujo de trabajo, para no tener que configurarla en cada acción de correo o SMS.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Campo</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué define</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>From Name (nombre del remitente)</td>
+        <td style={{padding:'12px 14px'}}>El nombre que aparecerá como remitente de los correos electrónicos.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>From Email (correo del remitente)</td>
+        <td style={{padding:'12px 14px'}}>La dirección de correo predeterminada que se usará como remitente.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>From Number (número del remitente)</td>
+        <td style={{padding:'12px 14px'}}>Menú desplegable para elegir el número de teléfono predeterminado desde el que se envían los SMS.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<Tip>
+  Puedes anular esta información dentro de cada acción de correo electrónico del flujo, especificando un nombre y un correo de "remitente" distintos.
+</Tip>
+
+### Conversaciones - Marcar como leído
+
+Esta sección contiene ajustes que afectan a cómo aparecen las interacciones de este flujo en el área principal de **Conversaciones**.
+
+De forma predeterminada, cuando un flujo de trabajo envía un mensaje, la conversación correspondiente se marca como **no leída** para llamar la atención sobre ella. Si activas este interruptor, cualquier conversación con la que interactúe este flujo se marcará automáticamente como **leída**. Es útil para flujos que realizan tareas administrativas o envían mensajes puramente informativos que no requieren revisión manual.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Si desactivo Permitir reingreso, ¿un contacto con una cita nueva puede entrar igual a un flujo de recordatorios de citas?">
+    Sí. Los flujos de trabajo que utilizan un activador basado en citas tienen una excepción especial y siempre permitirán que un contacto vuelva a ingresar para cada nueva cita, independientemente de la configuración de "Permitir reingreso". Lo mismo se aplica a los activadores basados en facturas.
+  </Accordion>
+
+  <Accordion title="¿Qué sucede si selecciono Zona horaria del contacto pero un contacto no tiene zona horaria en su perfil?">
+    El sistema utilizará la zona horaria de la cuenta (ubicación) como predeterminada para ese contacto específico. El flujo de trabajo no fallará; simplemente utilizará la zona horaria de reserva.
+  </Accordion>
+
+  <Accordion title="¿La configuración de Ventana de tiempo afecta a todas las acciones del flujo de trabajo?">
+    El intervalo de tiempo afecta principalmente a las acciones de comunicación, como el envío de correos electrónicos, SMS y llamadas. No afecta a las acciones internas, como añadir una etiqueta, actualizar un campo o crear una oportunidad.
+  </Accordion>
+
+  <Accordion title="Si un contacto tiene dos oportunidades y Permitir múltiples oportunidades está activado, ¿recibirá dos conjuntos separados de correos?">
+    Sí. Cuando la opción está activada, cada oportunidad que cumpla con los criterios de activación iniciará un proceso independiente dentro del flujo de trabajo para ese contacto. Esto significa que el contacto podría recibir comunicaciones relacionadas con cada una de sus oportunidades por separado.
+  </Accordion>
+
+  <Accordion title="¿Puedo configurar diferentes franjas horarias para diferentes días de la semana?">
+    Actualmente, el intervalo de tiempo se aplica de forma uniforme a todos los días de la semana. No es posible especificar intervalos de tiempo diferentes para días distintos dentro del mismo flujo de trabajo.
+  </Accordion>
+
+  <Accordion title="¿Qué sucede si cambio la zona horaria de mi cuenta mientras un flujo de trabajo aún está en ejecución?">
+    Cualquier cambio realizado en la zona horaria de la cuenta no afectará a los contactos de los flujos de trabajo que se estén ejecutando actualmente. El cambio solo se aplicará a las nuevas entradas en dichos flujos de trabajo.
+  </Accordion>
+
+  <Accordion title="¿Puedo configurar diferentes zonas horarias para diferentes pasos dentro de un flujo de trabajo?">
+    No, la configuración de la zona horaria se aplica a todo el flujo de trabajo, no a los pasos individuales dentro del mismo.
+  </Accordion>
+
+  <Accordion title="¿Puedo configurar diferentes direcciones de correo de remitente para diferentes acciones dentro del mismo flujo de trabajo?">
+    Puedes anular el correo electrónico del remitente predeterminado especificando un nombre y un correo electrónico de "remitente" diferentes en las acciones de correo electrónico individuales dentro del flujo de trabajo.
+  </Accordion>
+
+  <Accordion title="¿La opción Detener al recibir respuesta finaliza el flujo de trabajo para todos los contactos si uno de ellos responde?">
+    No, la opción "Detener al recibir respuesta" solo finaliza el flujo de trabajo para el contacto específico que respondió. No afecta a los demás contactos del flujo de trabajo.
+  </Accordion>
+
+  <Accordion title="¿Puedo elegir qué tipos de mensajes se marcan como leídos con la configuración Marcar como leído?">
+    No, la opción "Marcar como leído" se aplica a todo tipo de mensajes automatizados salientes del flujo de trabajo, incluidos correos electrónicos, SMS, llamadas y mensajes de voz.
+  </Accordion>
+</AccordionGroup>
