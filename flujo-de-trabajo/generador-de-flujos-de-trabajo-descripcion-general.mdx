@@ -1,0 +1,199 @@
+---
+title: "Generador de flujos de trabajo - Descripción general"
+sidebarTitle: "Generador de flujos de trabajo - Descripción general"
+description: "Recorrido por el creador de flujos de trabajo: lienzo infinito, agregar activadores y acciones, vista de estadísticas, prueba del flujo, guardado, historial de versiones y modo borrador o publicado."
+icon: "diagram-project"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Este artículo recorre todas las funciones del **creador de flujos de trabajo**, desde el lienzo infinito hasta la publicación.
+</Info>
+
+## Tabla de contenido
+
+- Diseño de lienzo infinito
+- Agregar nuevo activador
+- Agregar nueva acción
+- Vista de estadísticas
+- Flujo de trabajo de prueba
+- Guardar flujo de trabajo
+- Historial de versiones
+- Borrador / Publicar
+- Preguntas frecuentes
+
+**Qué muestra la siguiente tabla:** las pestañas superiores del creador y para qué sirve cada una.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Pestaña</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Para qué sirve</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Builder (Constructor)</td>
+        <td style={{padding:'12px 14px'}}>El lienzo donde se diseña el flujo: activadores, acciones y ramas.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Settings (Configuración)</td>
+        <td style={{padding:'12px 14px'}}>Ajustes generales del flujo: reingreso, oportunidades, zona horaria, ventana de tiempo y remitente.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Enrollment History (Historial de inscripciones)</td>
+        <td style={{padding:'12px 14px'}}>Quién ha entrado al flujo y en qué estado está.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Execution Logs (Registros de ejecución)</td>
+        <td style={{padding:'12px 14px'}}>Detalle técnico de cada ejecución, útil para diagnosticar errores.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Diseño de lienzo infinito
+
+Utiliza los botones **"Ajustar a la pantalla"** y **"Acercar/Alejar"** situados en la parte inferior izquierda de la pantalla para controlar el área de visualización. El **minimapa**, en la parte inferior derecha, muestra la posición actual.
+
+<Note>
+  **Imagen próximamente** — Captura del lienzo con un flujo de ejemplo (Trigger: Form Submitted → Send Email → Send SMS → END), el control de zoom al 100 % abajo a la izquierda y el minimapa abajo a la derecha.
+</Note>
+
+## Agregar nuevo activador
+
+Haz clic en el botón **"Agregar nuevo activador"** (Add New Trigger) para abrir la lista de activadores de flujo de trabajo. Después, selecciona un activador de la lista y configúralo.
+
+El panel **Workflow Trigger** indica que añade un activador al flujo y que, al ejecutarse, el contacto se agrega al flujo de trabajo. Cuenta con un buscador (**Search Triggers**) y los activadores aparecen agrupados por área. Entre los del grupo **Contact** se encuentran:
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Activador</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Cuándo dispara el flujo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Birthday Reminder</td>
+        <td style={{padding:'12px 14px'}}>Recordatorio de cumpleaños del contacto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact Changed</td>
+        <td style={{padding:'12px 14px'}}>Cuando cambia información del contacto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact Created</td>
+        <td style={{padding:'12px 14px'}}>Cuando se crea un contacto nuevo.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact DND</td>
+        <td style={{padding:'12px 14px'}}>Cuando se activa o cambia el estado “No molestar”.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact Tag</td>
+        <td style={{padding:'12px 14px'}}>Cuando se añade o quita una etiqueta.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Custom Date Reminder</td>
+        <td style={{padding:'12px 14px'}}>Recordatorio basado en una fecha personalizada.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Note Added / Note Changed</td>
+        <td style={{padding:'12px 14px'}}>Cuando se agrega o modifica una nota.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Task Added / Task Reminder</td>
+        <td style={{padding:'12px 14px'}}>Cuando se agrega una tarea o llega su recordatorio.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** para un flujo de bienvenida, el activador natural es **Contact Created**; para reactivar clientes etiquetados, **Contact Tag**.
+
+## Agregar nueva acción
+
+Haz clic en el botón **"\+"** para abrir la lista de acciones de flujo de trabajo. Después, selecciona una acción de la lista y configúrala.
+
+El panel **Actions** incluye un buscador (**Search Action**) y agrupa las acciones por área. En el grupo **Contact** aparecen, entre otras: **Create/Update Contact**, **Find Contact**, **Update Contact Field**, **Add Contact Tag**, **Remove Contact Tag**, **Assign To User**, **Remove Assigned User**, **Edit Conversation**, **Enable/Disable DND**, **Add To Notes** y **Add Task**.
+
+<Note>
+  **Imagen próximamente** — Captura del panel **Actions** abierto junto al lienzo, con el listado de acciones del grupo **Contact**.
+</Note>
+
+## Vista de estadísticas
+
+Activa la opción **"Vista de estadísticas"** (Stats View) en la esquina superior izquierda para ver las estadísticas de correo electrónico y SMS dentro del propio editor. Abre el modelo estadístico detallado haciendo clic en cualquiera de los datos estadísticos.
+
+**Qué muestra la siguiente tabla:** las métricas que se muestran sobre cada bloque de comunicación del lienzo.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Bloque</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Métricas</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Email</td>
+        <td style={{padding:'12px 14px'}}>Delivered (entregados), Opened (abiertos), Clicked (con clic), Replied (respondidos), Bounced (rebotados).</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>SMS</td>
+        <td style={{padding:'12px 14px'}}>Delivered (entregados), Clicked (con clic), Failed (fallidos).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** un bloque de correo con 55,56 % entregado, 27,78 % abierto y 5,56 % rebotado te dice que el problema no está en el contenido sino en la calidad de la lista.
+
+## Flujo de trabajo de prueba
+
+Haz clic en el botón **"Probar flujo de trabajo"** (Test Workflow) en la parte superior derecha. Selecciona un contacto y haz clic en **"Ejecutar prueba"** (Run Test) para comenzar a probar el flujo de trabajo.
+
+<Tip>
+  Prueba siempre con un contacto propio antes de publicar, sobre todo si el flujo incluye acciones irreversibles como eliminar contactos o enviar comunicaciones masivas.
+</Tip>
+
+## Guardar flujo de trabajo
+
+Haz clic en el botón **"Guardar"** (Save) en la esquina superior derecha. El botón indica visualmente cuándo hay cambios sin guardar.
+
+## Historial de versiones
+
+Consulta el historial de cambios realizados haciendo clic en el **icono de historial** en la esquina superior derecha. El panel **Version History** lista cada versión con su número, nombre del flujo, fecha y hora, y el usuario que la actualizó, marcando cuál es la **versión actual** y cuáles fueron **publicadas**.
+
+## Borrador / Publicar
+
+Publica el flujo de trabajo o vuelve al modo **Borrador** activando el interruptor **Draft / Publish** en la parte superior derecha.
+
+<Warning>
+  Mientras el flujo esté en **Borrador**, no procesará nuevas entradas. Recuerda publicarlo cuando termines de editarlo.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué sucede con los contactos de mi flujo de trabajo si lo configuro como borrador? ¿Permanecerán en el mismo paso cuando lo reanude más tarde?">
+    Si el contacto está en espera en cualquiera de los pasos de espera (espera, llamada manual, SMS manual, etc.), estará en el mismo paso cuando se reanude el flujo de trabajo.
+  </Accordion>
+</AccordionGroup>

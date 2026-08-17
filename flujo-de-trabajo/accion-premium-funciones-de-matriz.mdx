@@ -1,0 +1,321 @@
+---
+title: "Flujo de trabajo - Acción Premium de funciones de matriz"
+sidebarTitle: "Flujo de trabajo - Acción Premium de funciones de matriz"
+description: "Guía completa de la acción premium Funciones de matriz (Array Functions) y sus cinco tipos de acción: Buscar, Filtro, Buscar por índice, Partidas individuales y Matemáticas."
+icon: "brackets-square"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Versión ampliada del artículo sobre la acción premium **Funciones de matriz** (Array Functions), con los cinco tipos de acción explicados paso a paso. Existe también una [versión resumida](/flujo-de-trabajo/accion-premium-funciones-de-matriz-resumen) de este mismo artículo publicada en la fuente.
+</Info>
+
+## En este artículo
+
+- ¿Qué es una función de matriz?
+- ¿Cómo utilizar los nuevos tipos de acciones?
+- Agregar la acción
+- Lista de tipos de acción
+- Tipo de acción: Buscar
+- Tipo de acción: Filtro
+- Tipo de acción: Buscar por índice
+- Tipo de acción: Partidas individuales
+- Tipo de acción: Matemáticas
+
+## 1. ¿Qué es una función de matriz?
+
+Una función de matriz es una **acción premium** de la automatización de flujos de trabajo diseñada específicamente para manejar datos de matriz (arrays).
+
+Esta funcionalidad resulta muy útil para flujos de trabajo complejos que involucran matrices: listas de productos de un pedido, respuestas de un webhook con varios elementos o cualquier estructura que devuelva más de un objeto.
+
+## 2. ¿Cómo utilizar los tipos de acciones?
+
+<Steps>
+  <Step title="Agregar la acción">
+    Haz clic en el botón **"\+"** para agregar una acción. Busca **"Funciones de matriz"** (Array Functions) o desplaza hacia abajo hasta la pestaña **Acciones** para seleccionarla.
+  </Step>
+  <Step title="Seleccionar tipo de acción">
+    Después de seleccionar la acción **Función de matriz**, debes elegir el **tipo de acción** en el desplegable **ACTION TYPE**.
+  </Step>
+</Steps>
+
+<Note>
+  **Imagen próximamente** — Captura del buscador de acciones con **Array Functions** marcado con el icono de acción premium (corona), y del panel con el desplegable **ACTION TYPE** desplegado mostrando sus cinco opciones.
+</Note>
+
+### Lista de tipos de acción
+
+**Qué muestra la siguiente tabla:** los cinco tipos de acción disponibles, qué devuelve cada uno y en qué escenario conviene usarlo.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Tipo de acción</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué devuelve</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Cuándo usarlo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Find (Buscar)</td>
+        <td style={{padding:'12px 14px'}}>El objeto que coincide con el par clave-valor indicado.</td>
+        <td style={{padding:'12px 14px'}}>Comprobar si un producto concreto forma parte del pedido.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Find by index (Buscar por índice)</td>
+        <td style={{padding:'12px 14px'}}>El objeto que ocupa la posición indicada dentro de la matriz.</td>
+        <td style={{padding:'12px 14px'}}>Tomar siempre el primer artículo del carrito (índice 0).</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Filter (Filtro)</td>
+        <td style={{padding:'12px 14px'}}>Una matriz filtrada con todos los objetos que coinciden con la clave-valor.</td>
+        <td style={{padding:'12px 14px'}}>Quedarte solo con los productos de una categoría antes de enviarlos por webhook.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Line Items (Partidas individuales)</td>
+        <td style={{padding:'12px 14px'}}>Una matriz nueva reconstruida con claves personalizadas.</td>
+        <td style={{padding:'12px 14px'}}>Adaptar la estructura a la que espera un sistema externo o el carrito del Email Builder.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Math Functions (Matemáticas)</td>
+        <td style={{padding:'12px 14px'}}>Cálculos basados en la matriz: suma, mínimo, máximo, promedio y recuento.</td>
+        <td style={{padding:'12px 14px'}}>Calcular el subtotal o la cantidad total de artículos del carrito.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** si necesitas saber cuántas unidades lleva el pedido, el tipo correcto es **Math Functions** con la operación **Sum** sobre la clave `quantity`; si necesitas saber si un producto puntual está en el pedido, el tipo correcto es **Find**.
+
+## 2.1 Tipo de acción: Buscar
+
+Sirve para encontrar las parejas clave-valor coincidentes en un array de objetos y devolver el objeto.
+
+**Seleccione un campo.** Aquí se enumeran todos los campos con tipo de datos de matriz disponibles en el flujo de trabajo. La lista de datos de matriz disponibles se obtiene de:
+
+- los activadores de **Shopify**,
+- el activador de **webhook entrante**,
+- los datos de respuesta de **acciones de webhook personalizadas**.
+
+En el siguiente ejemplo se utiliza el activador de **pedido realizado de Shopify** y se comprueba si un producto con el ID de producto `zGhad23wfadfa` forma parte de los artículos de línea de Shopify.
+
+<Steps>
+  <Step title="Seleccione Shopify → Artículos de línea">
+    En **SELECT FIELD**, despliega el grupo **Shopify** y elige **Line Items**.
+  </Step>
+  <Step title="Seleccione clave-valor para encontrar el objeto coincidente">
+    En el bloque **FILTERS**, elige la clave (**Key**) y escribe el valor (**Value**).
+  </Step>
+  <Step title="Introduzca el valor para encontrar la coincidencia">
+    Por ejemplo, clave `id` y valor `zGhad23wfadfa`.
+  </Step>
+  <Step title="Agregar otro elemento (opcional)">
+    También puedes encontrar el objeto coincidente con varios pares clave-valor agregando otro elemento clave-valor con **Add another item**.
+  </Step>
+</Steps>
+
+**Qué muestra la siguiente tabla:** la lista de variables clave del campo de matriz seleccionado. En este ejemplo, se muestran las claves de los artículos de línea de Shopify.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Clave</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué contiene</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px'}}>`id`</td>
+        <td style={{padding:'12px 14px'}}>Identificador del producto dentro del artículo de línea.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px'}}>`title`</td>
+        <td style={{padding:'12px 14px'}}>Nombre del producto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px'}}>`price`</td>
+        <td style={{padding:'12px 14px'}}>Precio unitario.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px'}}>`quantity`</td>
+        <td style={{padding:'12px 14px'}}>Cantidad pedida de ese producto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px'}}>`image`</td>
+        <td style={{padding:'12px 14px'}}>Imagen asociada al producto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px'}}>`line_price`</td>
+        <td style={{padding:'12px 14px'}}>Importe total de esa línea (precio por cantidad).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** con la clave `id` y el valor `zGhad23wfadfa`, la acción devuelve el objeto completo de ese producto, con su `title`, su `price`, su `quantity` y el resto de claves listadas arriba.
+
+Al completar los pasos anteriores, ya puedes usar las variables de objeto devueltas por la función **Array** como valores personalizados en correos electrónicos, SMS, sentencias condicionales (**if/else**), etc. En el menú de valores personalizados aparecerán bajo el grupo **Array Functions**, con el número del paso que las generó (por ejemplo, `#2 Array Functions`).
+
+<Note>
+  **Imagen próximamente** — Captura del menú **Custom Values** con el grupo **Array Functions** desplegado y las claves `id`, `title`, `price`, `quantity`, `image` y `line_price` disponibles para insertar.
+</Note>
+
+## 2.2 Tipo de acción: Filtro
+
+Selecciona el tipo de acción **"Filtrar"** en el menú desplegable. Este tipo de acción te ayudará a filtrar la matriz haciendo coincidir los pares clave-valor en una matriz de objetos.
+
+**Caso de uso:** filtra el array por grupo de productos y luego envíalo a través de un **webhook personalizado**.
+
+<Steps>
+  <Step title="Seleccione el campo de matriz">
+    En **SELECT FIELD** se enumeran todos los campos con tipo de datos de matriz disponibles en el flujo de trabajo (Shopify, webhook entrante y respuestas de webhooks personalizados). Selecciona **Shopify → Artículos de línea**.
+  </Step>
+  <Step title="Seleccione el valor de la clave">
+    Elige la clave por la que quieres filtrar; se mostrará la lista de variables clave del campo de matriz seleccionado.
+  </Step>
+  <Step title="Introduzca el valor para encontrar la coincidencia">
+    Puedes escribir un valor fijo o insertar una variable, como `{{user.name}}`.
+  </Step>
+  <Step title="Agregar otro elemento (opcional)">
+    También puedes encontrar los objetos coincidentes con varios pares clave-valor agregando otro elemento clave-valor.
+  </Step>
+</Steps>
+
+<Tip>
+  La diferencia clave con **Find**: **Find** devuelve **un** objeto y **Filter** devuelve **una matriz** con todos los objetos que cumplen la condición.
+</Tip>
+
+## 2.3 Tipo de acción: Buscar por índice
+
+Selecciona el tipo de acción **"Buscar por índice"** en el menú desplegable. Este tipo de acción te ayudará a encontrar los datos del índice de la matriz.
+
+1. En **SELECT FIELD** se enumeran todos los campos con tipo de datos de matriz disponibles en el flujo de trabajo. Selecciona **Shopify → Artículos de línea**.
+2. Escribe el **INDEX** que quieres recuperar. Se devolverá el valor del índice introducido.
+
+<Warning>
+  Los índices empiezan en **0**: el primer elemento de la matriz es el índice `0`, el segundo es el `1`, y así sucesivamente. Si el índice solicitado no existe en la matriz, no habrá objeto que devolver.
+</Warning>
+
+## 2.4 Tipo de acción: Partidas individuales
+
+Selecciona el tipo de acción **"Elementos de línea"** (Line Items) en el menú desplegable. Este tipo de acción ayudará a reconstruir una matriz con **claves personalizadas**.
+
+**Casos de uso:**
+
+- Reconstruir la estructura del array antes de enviarlo a través de un webhook personalizado.
+- Reconstruir la matriz antes de almacenarla en Google Sheets (**Crear filas**).
+- Reconstruir la matriz para que coincida con la estructura del carrito de compras del **Email Builder**.
+
+<Steps>
+  <Step title="Seleccione el campo de matriz">
+    En **SELECT FIELD**, elige **Shopify → Artículos de línea**.
+  </Step>
+  <Step title="Defina las claves personalizadas">
+    En el bloque **FIELDS**, introduce el valor personalizado en el campo de entrada **"Clave"** (Key) y selecciona el valor correspondiente en el menú desplegable de valores (**Value**).
+  </Step>
+  <Step title="Agregar otro elemento (opcional)">
+    Agrega tantos pares clave-valor como necesite la estructura de destino.
+  </Step>
+</Steps>
+
+**Qué muestra la siguiente tabla:** un ejemplo de reconstrucción, tal como aparece en la fuente, donde la clave original `id` pasa a llamarse `product_id`.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Clave personalizada (Key)</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Valor de origen (Value)</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Resultado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px'}}>`product_id`</td>
+        <td style={{padding:'12px 14px'}}>`id`</td>
+        <td style={{padding:'12px 14px'}}>La nueva matriz expone el identificador con el nombre que espera el sistema de destino.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** si el sistema externo espera recibir `product_id` y no `id`, esta acción hace la traducción sin que tengas que tocar nada del lado del origen.
+
+## 2.5 Tipo de acción: Matemáticas
+
+Selecciona el tipo de acción **"Matemáticas"** (Math Functions) en el menú desplegable. Este tipo de acción te ayudará a calcular la suma, el mínimo, el máximo y el promedio mediante la comparación de pares clave-valor en una matriz de objetos.
+
+**Caso de uso:** calcular el subtotal (total del artículo), artículos en el carrito (cantidad) y artículos totales (cantidad).
+
+<Steps>
+  <Step title="Seleccione el campo de matriz">
+    En **SELECT FIELD**, elige **Shopify → Artículos de línea**.
+  </Step>
+  <Step title="Seleccione la clave">
+    Elige la clave sobre la que se hará el cálculo (por ejemplo, `quantity`). Se mostrará la lista de variables clave del campo de matriz seleccionado.
+  </Step>
+  <Step title="Marque las operaciones">
+    Selecciona o deselecciona de la lista de opciones disponibles en el bloque **OPERATIONS**.
+  </Step>
+</Steps>
+
+**Qué muestra la siguiente tabla:** las cinco operaciones disponibles y qué devuelve cada una sobre la clave elegida.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Operación</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué devuelve</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Ejemplo sobre `quantity`</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Sum</td>
+        <td style={{padding:'12px 14px'}}>La suma de todos los valores de esa clave.</td>
+        <td style={{padding:'12px 14px'}}>Unidades totales del pedido.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Min</td>
+        <td style={{padding:'12px 14px'}}>El valor más bajo.</td>
+        <td style={{padding:'12px 14px'}}>La línea con menos unidades.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Max</td>
+        <td style={{padding:'12px 14px'}}>El valor más alto.</td>
+        <td style={{padding:'12px 14px'}}>La línea con más unidades.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Average</td>
+        <td style={{padding:'12px 14px'}}>El promedio de los valores.</td>
+        <td style={{padding:'12px 14px'}}>Unidades promedio por línea de producto.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Count</td>
+        <td style={{padding:'12px 14px'}}>El recuento de elementos.</td>
+        <td style={{padding:'12px 14px'}}>Número de líneas distintas del carrito.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** en un pedido con 3 líneas de 2, 1 y 5 unidades, **Sum** devuelve 8, **Min** devuelve 1, **Max** devuelve 5, **Average** devuelve 2,67 y **Count** devuelve 3.

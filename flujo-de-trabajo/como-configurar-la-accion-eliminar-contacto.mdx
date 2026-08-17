@@ -1,0 +1,98 @@
+---
+title: "Cómo configurar la acción Eliminar contacto"
+sidebarTitle: "Cómo configurar la acción Eliminar contacto"
+description: "La acción Eliminar contacto borra permanentemente un contacto de la cuenta y de todos los flujos de trabajo: cómo configurarla, por qué solo puede ir en el último paso y casos de uso."
+icon: "user-xmark"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Este artículo explica qué es la acción **Eliminar contacto** (Delete Contact), cómo configurarla dentro de un flujo de trabajo, sus preguntas frecuentes y sus casos de uso.
+</Info>
+
+## En este artículo
+
+- ¿Qué es la acción Eliminar contacto?
+- ¿Cómo configurar la acción Eliminar contacto?
+- Preguntas frecuentes
+- Casos de uso
+
+## ¿Qué es Eliminar contacto?
+
+La función **Eliminar contacto** es una acción del flujo de trabajo que **elimina permanentemente** un contacto de tu cuenta y de tus flujos de trabajo.
+
+Esta acción te permite mantener una lista de contactos limpia y organizada, asegurándote de dirigirte únicamente a clientes potenciales y prospectos relevantes.
+
+<Warning>
+  La eliminación es permanente: el contacto se retira de todos los flujos de trabajo y se borra de la cuenta. Prueba siempre el flujo con un contacto de prueba antes de publicarlo.
+</Warning>
+
+## ¿Cómo configurar la acción Eliminar contacto en los flujos de trabajo?
+
+<Steps>
+  <Step title="Paso 1 - Agregar la acción">
+    Haz clic en el botón **"\+"** para agregar una acción. Busca **"eliminar contacto"** o desplázate hacia abajo hasta la pestaña **Acciones** para seleccionarla.
+  </Step>
+  <Step title="Paso 2 - Guardar la acción">
+    Haz clic en **"Guardar acción"** (Save Action) para finalizar el paso del flujo de trabajo.
+  </Step>
+</Steps>
+
+<Note>
+  **Imagen próximamente** — Captura del lienzo del flujo de trabajo con el buscador de acciones abierto y **Delete Contact** resaltado, y del panel de la acción con el campo **ACTION NAME**.
+</Note>
+
+**Qué muestra la siguiente tabla:** el único campo configurable de la acción y la advertencia que el propio panel muestra al añadirla.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Elemento del panel</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué indica</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Descripción de la acción</td>
+        <td style={{padding:'12px 14px'}}>Esta acción elimina permanentemente el contacto de esta cuenta y de todos los flujos de trabajo.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Action Name (nombre de la acción)</td>
+        <td style={{padding:'12px 14px'}}>Nombre con el que la acción aparece en el lienzo. Viene con el valor <em>Delete Contact</em>.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Aviso de ubicación</td>
+        <td style={{padding:'12px 14px'}}>Esta acción solo puede ser el <strong>último paso</strong> del flujo de trabajo. El contacto será retirado de todos los flujos y eliminado de esta cuenta.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** si tu rama termina con un correo de despedida y luego quieres borrar el contacto, la acción **Eliminar contacto** debe ir después de ese correo, como último bloque de la rama.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se puede agregar la acción Eliminar contacto en cualquier parte del flujo de trabajo?">
+    La acción Eliminar contacto solo puede estar disponible como último paso del flujo de trabajo. Esta acción solo puede agregarse al final de la rama.
+  </Accordion>
+
+  <Accordion title="¿Puedo restaurar el contacto eliminado?">
+    La restauración manual del contacto se puede realizar desde el CRM.
+  </Accordion>
+</AccordionGroup>
+
+## Casos de uso
+
+<CardGroup cols={2}>
+  <Card title="Limpieza automática de spam" icon="broom">
+    Eliminación automática de contactos de spam detectados por etiqueta, origen o campo del formulario.
+  </Card>
+
+  <Card title="Eliminación vía webhook" icon="webhook">
+    Eliminar contactos mediante webhooks entrantes o webhooks personalizados, cuando otro sistema es el que decide qué registros deben desaparecer.
+  </Card>
+</CardGroup>

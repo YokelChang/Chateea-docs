@@ -1,0 +1,72 @@
+---
+title: "¿Cómo copiar un contacto a otra cuenta?"
+sidebarTitle: "¿Cómo copiar un contacto a otra cuenta?"
+description: "La acción Copiar contacto duplica un contacto en otra cuenta a la que tenga acceso el usuario con sesión iniciada, con la opción de copiar también sus etiquetas y sus campos personalizados."
+icon: "copy"
+---
+
+<Info>
+  **Documentado el 16 de agosto de 2026.** Este artículo explica la acción de flujo de trabajo **Copiar contacto** (Copy Contact) y cada uno de sus campos de configuración.
+</Info>
+
+## Copiar contacto
+
+La función **Copiar contacto** permite copiar un contacto a otra cuenta.
+
+Es una acción pensada para escenarios en los que un mismo contacto debe existir en más de una cuenta: derivaciones entre sucursales, traspasos de un cliente entre unidades de negocio o consolidación de leads en una cuenta central.
+
+<Note>
+  **Imagen próximamente** — Captura del panel **Copy Contact** con el campo **ACTION NAME**, el desplegable **SELECT AN ACCOUNT** y los dos interruptores **COPY TAGS** y **COPY CUSTOM FIELDS**.
+</Note>
+
+## Campos de la acción
+
+**Qué muestra la siguiente tabla:** cada campo del panel de la acción, qué controla y qué debes tener en cuenta antes de guardarla.
+
+<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
+  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
+    <thead>
+      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Campo</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué hace</th>
+        <th style={{padding:'12px 14px',textAlign:'left'}}>A tener en cuenta</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Action Name (nombre de la acción)</td>
+        <td style={{padding:'12px 14px'}}>Nombre con el que la acción aparece dentro del lienzo del flujo de trabajo.</td>
+        <td style={{padding:'12px 14px'}}>Usa un nombre descriptivo si tienes varias copias hacia cuentas distintas.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Seleccione una cuenta</td>
+        <td style={{padding:'12px 14px'}}>El contacto se copiará a la cuenta seleccionada.</td>
+        <td style={{padding:'12px 14px'}}>Solo se mostrarán aquí las cuentas a las que el usuario que ha iniciado sesión tenga acceso.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Copiar etiquetas</td>
+        <td style={{padding:'12px 14px'}}>Si está habilitada, las etiquetas del contacto se copiarán a la cuenta seleccionada.</td>
+        <td style={{padding:'12px 14px'}}>Útil cuando la cuenta de destino usa las mismas etiquetas para segmentar.</td>
+      </tr>
+
+      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
+        <td style={{padding:'12px 14px',fontWeight:'600'}}>Copiar campos personalizados</td>
+        <td style={{padding:'12px 14px'}}>Si está habilitada, los campos personalizados del contacto se copiarán a la cuenta seleccionada.</td>
+        <td style={{padding:'12px 14px'}}>El valor del campo personalizado se copiará <strong>solo si dicho campo existe</strong> en la cuenta seleccionada.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+**Ejemplo de lectura:** si el contacto tiene el campo personalizado `sucursal_asignada` y la cuenta de destino no lo tiene creado, el contacto se copia igualmente, pero ese valor no viaja. Crea primero el campo en la cuenta de destino con el mismo nombre y luego vuelve a ejecutar el flujo.
+
+<Warning>
+  Antes de activar **Copiar campos personalizados**, revisa que los campos existan en la cuenta de destino. De lo contrario, la copia se completará con datos incompletos sin mostrar ningún error.
+</Warning>
+
+<Tip>
+  Combina esta acción con un filtro previo (por etiqueta, por origen o por una condición **Si/Entonces**) para copiar únicamente los contactos que realmente deben existir en la otra cuenta y evitar duplicados innecesarios.
+</Tip>
