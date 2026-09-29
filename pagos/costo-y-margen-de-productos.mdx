@@ -1,0 +1,166 @@
+---
+title: "Registrar el costo y el margen de tus productos"
+description: "Agrega el precio de costo y el margen a precios y variantes, y expórtalos en el CSV de transacciones."
+icon: "chart-line"
+---
+
+Saber cuánto ganas realmente con cada venta es clave para fijar precios y decidir qué productos impulsar. En Chateea puedes registrar el **precio de costo** y el **margen** de cada precio o variante de tus productos, sin hojas de cálculo aparte. Ese costo también se exporta en el CSV de transacciones, así que puedes analizar la rentabilidad venta por venta.
+
+## Conceptos básicos
+
+| Término | Qué es | Cómo se calcula |
+| --- | --- | --- |
+| **Precio de costo** | Lo que le cuesta a tu negocio producir, comprar o entregar el producto. Nunca puede ser negativo. | Lo ingresas tú, o se calcula a partir del margen. |
+| **Margen (monto)** | La diferencia entre el precio de venta y el costo. Puede ser positivo o negativo. | Precio de venta menos precio de costo |
+| **Margen (porcentaje)** | Esa misma diferencia expresada como porcentaje del costo. | (Precio de venta menos precio de costo) dividido entre el precio de costo, por 100 |
+
+Si el precio de costo es 0, el margen porcentual se considera 100 %.
+
+## Para qué te sirve
+
+- **Rentabilidad dentro de Chateea:** ves el margen de cada producto sin salir de la plataforma.
+- **Cálculo automático:** escribes el costo o el margen y el otro valor se calcula solo.
+- **Flexible:** funciona con productos de pago único y recurrentes, con precios y con variantes.
+- **Costos consistentes:** el costo no cambia aunque modifiques manualmente el precio en una factura o un calendario.
+- **Listo para contabilidad:** exportas el costo por transacción en CSV para conciliaciones y análisis.
+
+## Antes de empezar
+
+- Necesitas acceso a **Pagos → Productos**.
+- Debes tener al menos un producto creado (nuevo o existente).
+- Tu usuario necesita permiso para crear y editar productos.
+
+## Registrar costo y margen en un producto
+
+El costo y el margen se configuran por precio en los productos estándar.
+
+<Steps>
+  <Step title="Abre tus productos">
+    En el menú lateral, entra en **Pagos** y, en la barra superior, haz clic en **Productos**.
+  </Step>
+  <Step title="Crea o abre un producto">
+    Haz clic en **Crear producto** o abre uno existente para editarlo.
+  </Step>
+  <Step title="Ve a la sección de precios">
+    Baja hasta la sección **Precios**. En productos existentes, haz clic en **Editar** junto al precio que quieres configurar.
+  </Step>
+  <Step title="Activa el margen">
+    Marca la casilla **Agregar margen** (Add Margin). Aparecen los campos de precio de costo y margen. La casilla viene desmarcada y activarla no afecta a las transacciones que ya existen.
+  </Step>
+  <Step title="Ingresa el costo o el margen">
+    Elige si quieres ver el margen como **monto** o como **porcentaje** con el selector junto al campo. Luego escribe uno de los dos valores y el otro se calcula automáticamente a partir del precio de venta.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Desde ese momento, el costo queda guardado en ese precio y se incluye en las exportaciones.
+  </Step>
+</Steps>
+
+<Note>
+Si marcas **Agregar margen** pero dejas ambos campos vacíos, Chateea toma el precio de costo como igual al precio de venta, es decir, con margen 0, y así lo exporta.
+</Note>
+
+## Registrar costo y margen en variantes
+
+En los productos con variantes, el costo y el margen se configuran variante por variante. Primero debes haber creado las variantes del producto.
+
+<Steps>
+  <Step title="Ve a las variantes">
+    Dentro de la edición del producto, abre la sección **Variantes**.
+  </Step>
+  <Step title="Edita la variante">
+    Haz clic en **Editar** en la variante que quieres configurar.
+  </Step>
+  <Step title="Activa el margen">
+    En la sección de precios de la variante, marca **Agregar margen**.
+  </Step>
+  <Step title="Ingresa el costo o el margen">
+    Elige monto o porcentaje y escribe uno de los dos valores. El otro se calcula solo.
+  </Step>
+  <Step title="Guarda y repite">
+    Guarda los cambios y repite el proceso con cada variante.
+  </Step>
+</Steps>
+
+<Tip>
+Cada precio y cada combinación de variantes tiene su propio costo y margen. Así puedes medir, por ejemplo, que la talla grande deja más margen que la pequeña, o que la opción de 100 es más rentable que la de 25.
+</Tip>
+
+## Cómo se sincronizan costo y margen
+
+Los dos campos se mantienen sincronizados con el precio de venta:
+
+- **Modo monto:** margen = precio de venta menos costo, y costo = precio de venta menos margen. El costo debe ser mayor o igual a 0. El margen puede ser positivo o negativo.
+- **Modo porcentaje:** margen % = (precio de venta menos costo) dividido entre el costo, por 100. El margen porcentual tiene un límite superior de 100 % y uno inferior de menos 100 %. No lo confundas con el recargo (markup), que sí puede superar el 100 %.
+- **Si cambias el precio de venta:** el margen se recalcula a partir del costo que ya tenías. El costo no cambia.
+- **Si cambias entre monto y porcentaje:** los campos se recalculan sin perder datos.
+
+## Costo en facturas y calendarios
+
+En facturas y calendarios puedes cambiar manualmente el precio de venta de una línea. En esos casos:
+
+- El costo **siempre** se toma del precio original del producto. No se recalcula con el precio modificado.
+- El margen no se recalcula a nivel de factura o calendario.
+- Las tarifas de configuración de los productos recurrentes quedan fuera del cálculo del margen.
+- En las suscripciones, solo se usa el monto recurrente para el margen, no la tarifa de configuración.
+
+## Costo en el CSV de transacciones
+
+Al exportar tus transacciones aparece la columna **Costo de la línea** (Line Item Cost Price), para que analices la rentabilidad por transacción y por producto.
+
+1. Ve a **Pagos → Transacciones**.
+2. Haz clic en **Exportar CSV**.
+3. La columna aparece automáticamente con el costo de cada producto que lo tenga definido.
+
+Cómo se llena la columna:
+
+| Situación | Qué muestra |
+| --- | --- |
+| El producto tiene costo definido | El monto del costo |
+| El producto no tiene costo definido | Vacío |
+| El precio se modificó en una factura o calendario | El costo del producto original |
+| Pagos únicos, de suscripción y parciales | Se incluye en todos |
+| Pagos parciales | El costo completo del producto, no un monto prorrateado |
+
+<Warning>
+El costo no se aplica de forma retroactiva. Solo las transacciones creadas después de configurar el costo de un producto tendrán esta columna llena.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo agregar el costo a productos que ya tengo?">
+    Sí. Abre el producto, edita el precio o la variante y marca **Agregar margen**. No afecta a las transacciones pasadas; solo las futuras llevarán el costo.
+  </Accordion>
+  <Accordion title="¿El cliente ve el precio de costo?">
+    No. Es un dato interno y no aparece en el checkout, los recibos ni las facturas.
+  </Accordion>
+  <Accordion title="¿Puedo poner un costo distinto a cada variante?">
+    Sí. Cada combinación de variantes tiene sus propios campos de costo y margen.
+  </Accordion>
+  <Accordion title="Si cambio el precio de venta, ¿cambia el costo?">
+    No. Se recalcula el margen a partir del costo que ya tenías, así tus datos se mantienen y el margen sigue siendo correcto.
+  </Accordion>
+  <Accordion title="¿Puedo editar costos de muchos productos a la vez?">
+    Por ahora no. La edición masiva del costo no está disponible todavía.
+  </Accordion>
+  <Accordion title="¿Las tarifas de configuración cuentan para el margen?">
+    No. En los productos recurrentes solo se usa el monto recurrente para calcular costo y margen.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar transacciones por CSV" icon="file-csv" href="/pagos-facturas/importar-transacciones-csv">
+    Formatos de campo para trabajar con transacciones en CSV.
+  </Card>
+  <Card title="Crea productos y véndelos con embudos" icon="box-open" href="/comercio/productos-y-embudos">
+    Crea productos y conéctalos a tus procesos de venta.
+  </Card>
+  <Card title="Peso, dimensiones y SKU" icon="weight-scale" href="/tienda/peso-dimensiones-y-sku">
+    Completa los datos de inventario de tus productos.
+  </Card>
+  <Card title="Nuevo editor de facturas" icon="file-invoice" href="/pagos-facturas/nuevo-editor-facturas">
+    Crea y envía facturas más rápido.
+  </Card>
+</CardGroup>

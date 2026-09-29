@@ -1,0 +1,67 @@
+---
+title: "Vende productos en formularios de pedido"
+description: "Proveedores de pago, productos adicionales, ventas adicionales y límites al vender en formularios de pedido."
+icon: "cart-shopping"
+---
+
+Los formularios de pedido de uno y dos pasos son la forma más directa de vender desde tus embudos y sitios web. Puedes vender productos de pago único y productos recurrentes, sumar ofertas adicionales en el mismo checkout y cobrar con el proveedor de pago que prefieras. Este artículo resume qué puedes vender, con qué proveedores y qué límites conviene tener en cuenta al diseñar tu checkout.
+
+<Note>
+Todo esto aplica a los embudos y sitios web de la versión 2, que es la versión con la que se crean todos los embudos y sitios nuevos.
+</Note>
+
+## Proveedores de pago disponibles
+
+- Stripe
+- Authorize.net
+- NMI
+- PayPal
+- Square
+- Proveedores de pago personalizados instalados desde el **Marketplace de aplicaciones**
+
+Conéctalos en **Pagos → Integraciones**. Si necesitas ayuda, consulta [Configurar los proveedores de pago](/pagos-facturas/configurar-proveedores-pago).
+
+## Qué puedes vender en un formulario de pedido
+
+| Tipo | Qué es |
+| --- | --- |
+| **Producto principal** | El producto que vendes en ese formulario. |
+| **Producto adicional (bump)** | Una oferta extra que el cliente marca con una casilla mientras compra el producto principal. |
+| **Venta adicional (upsell)** | Una oferta que muestras justo después del pago, para que el cliente la agregue con un solo clic. |
+
+## Reglas y límites que debes conocer
+
+- **Apple Pay y Google Pay:** solo están disponibles con Stripe. Actívalos desde los métodos de pago de Stripe. Consulta [Apple Pay y Google Pay](/pagos-facturas/apple-pay-google-pay).
+- **Un solo producto recurrente por checkout:** no puedes vender dos productos recurrentes distintos en el mismo checkout, con ningún proveedor. Si necesitas vender dos suscripciones en el mismo recorrido, ofrece la segunda como venta adicional (upsell).
+- **PayPal y productos adicionales:** con PayPal, el cliente no puede agregar un producto adicional (bump) cuando compra un producto recurrente.
+- **Configuración de productos recurrentes:** el cargo de instalación, el periodo de prueba y el número de pagos se definen al crear el producto en **Pagos → Productos**, y se aplican solos cuando el cliente lo compra.
+- **Periodo de prueba sin cargo de instalación:** si el producto tiene prueba gratuita y no cobra un cargo de instalación antes de empezar, el pedido se completa con monto 0. El cobro se hace cuando termina la prueba.
+
+<Tip>
+Si vendes una suscripción con prueba gratuita, explica en la página cuándo se hará el primer cobro. Así evitas sorpresas y contracargos.
+</Tip>
+
+## Dónde ver tus ventas
+
+| Qué | Dónde |
+| --- | --- |
+| Pedidos | **Pagos → Pedidos** |
+| Suscripciones creadas | **Pagos → Suscripciones** |
+| Pagos y reembolsos | **Pagos → Transacciones** |
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Formulario de pedido de un paso" icon="file-lines" href="/sitios/formulario-de-pedido-de-un-paso">
+    Configura un checkout en una sola pantalla.
+  </Card>
+  <Card title="Formulario de pedido en dos pasos" icon="list-ol" href="/sitios/formulario-de-pedido-en-dos-pasos">
+    Divide el checkout en datos y pago.
+  </Card>
+  <Card title="Upsell de un clic" icon="arrow-up-right-dots" href="/sitios/upsell-de-un-clic-en-formularios">
+    Ofrece un producto extra después del pago.
+  </Card>
+  <Card title="Proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
+    Usa un proveedor distinto en cada canal.
+  </Card>
+</CardGroup>

@@ -1,0 +1,120 @@
+---
+title: "Editar una factura con pago parcial"
+description: "Cambia productos, impuestos y cuotas de una factura parcialmente pagada sin anularla ni perder los pagos ya cobrados."
+icon: "file-pen"
+---
+
+A veces el cliente ya pagó una parte de la factura y luego cambia lo que necesita: agrega un servicio, quita otro, negocia un precio distinto o pide mover las fechas de pago. En Chateea puedes editar una factura en estado **Parcialmente pagada** sin anularla ni crear una nueva. Los pagos que ya cobraste se quedan asociados a la factura y solo cambias lo que todavía está pendiente.
+
+## Para qué te sirve
+
+- **Mantienes una sola factura:** no tienes que anularla y emitir una de reemplazo, así que el historial queda limpio.
+- **Conservas los pagos cobrados:** los pagos registrados siguen vinculados a la factura después de editarla.
+- **Ajustas el alcance:** agregas, quitas o modificas productos cuando cambian los requisitos del cliente.
+- **Corriges importes e impuestos:** actualizas precios, impuestos, descuentos y datos del negocio.
+- **Reorganizas los pagos pendientes:** cambias montos y fechas de las cuotas que faltan.
+- **Mantienes informado al cliente:** reenvías la factura actualizada en cuanto guardas.
+
+## Qué puedes cambiar
+
+| Área | Cambios permitidos |
+| --- | --- |
+| **Detalles de la factura** | Nombre de la factura, fecha de vencimiento, términos y notas |
+| **Productos** | Agregar productos, quitar productos elegibles, cambiar cantidades, descripciones y precios unitarios, y crear un producto nuevo desde el editor |
+| **Importes e impuestos** | Ajustar importes, actualizar impuestos y descuentos |
+| **Datos del negocio** | Actualizar la información del negocio que aparece en la factura |
+| **Calendario de pagos** | Agregar, editar o eliminar cuotas elegibles y cambiar sus montos y fechas de vencimiento |
+| **Términos y condiciones** | Actualizar el texto legal y otras opciones elegibles |
+
+<Warning>
+  El **cliente** de la factura no se puede cambiar una vez que se registró un pago. Si te equivocaste de cliente, tendrás que gestionar el reembolso y emitir una factura nueva al contacto correcto.
+</Warning>
+
+### Calendario de pagos frente a pagos parciales
+
+Son dos cosas distintas y conviene no confundirlas:
+
+| Función | Cómo funciona |
+| --- | --- |
+| **Calendario de pagos** | Divide la factura en cuotas predefinidas, cada una con su monto (o porcentaje) y su fecha de vencimiento |
+| **Pagos parciales** | Permite que el cliente pague una parte del saldo según la configuración de pagos parciales que definiste |
+
+Al editar una factura parcialmente pagada puedes reorganizar las cuotas del calendario de pagos que todavía no se han cobrado.
+
+## Cuándo está disponible
+
+- La edición aplica a facturas en estado **Parcialmente pagada**.
+- En cuanto la factura queda **Pagada** por completo, ya no puedes editarla de esta forma.
+- Los pagos anteriores permanecen intactos al editar.
+
+<Note>
+  Las facturas generadas desde reservas de alquiler siguen reglas de edición propias. Si la factura viene de una reserva de alquiler, gestiónala desde esa reserva en lugar de aplicar estas reglas.
+</Note>
+
+## Cómo editar una factura parcialmente pagada
+
+<Steps>
+  <Step title="Abre tus facturas">
+    Ve a **Pagos → Facturas y presupuestos** y localiza la factura parcialmente pagada que quieres actualizar.
+  </Step>
+  <Step title="Abre el editor">
+    Haz clic en el **menú de tres puntos** a la derecha de la factura y selecciona **Editar en una nueva pestaña**. El menú tiene otras acciones, así que asegúrate de elegir la de edición.
+  </Step>
+  <Step title="Haz los cambios">
+    Actualiza lo que necesites: datos del negocio, fecha de vencimiento, productos, precios y cantidades, impuestos, descuentos, calendario de pagos o términos. La vista previa de la derecha muestra la factura tal como la verá el cliente.
+  </Step>
+  <Step title="Guarda">
+    Revisa con calma el saldo pendiente, los productos y las cuotas. Cuando todo cuadre con lo acordado, haz clic en **Guardar**. Los pagos ya cobrados siguen asociados a la factura.
+  </Step>
+  <Step title="Reenvía la factura">
+    Si el cliente necesita la versión actualizada, haz clic en **Reenviar**. Recibirá la misma factura con los cambios, sin que tengas que crear una nueva.
+  </Step>
+</Steps>
+
+<Tip>
+  Antes de reenviar, explícale al cliente qué cambió y por qué (por ejemplo, "agregamos la segunda sesión que pediste y movimos la última cuota al día 30"). Un cambio de importe sin contexto genera dudas y retrasa el pago.
+</Tip>
+
+## Automatiza el seguimiento
+
+**Parcialmente pagada** está disponible como estado de factura en los filtros de las automatizaciones de facturas. Puedes usarlo, por ejemplo, para enviar un recordatorio del saldo pendiente o avisar a tu equipo de cobranza cuando una factura queda a medio pagar.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo editar una factura que ya está pagada por completo?">
+    No. Esta edición solo está disponible mientras la factura está en estado **Parcialmente pagada**. Una vez que queda **Pagada**, ya no se puede editar de esta forma.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los pagos que ya cobré?">
+    Siguen asociados a la factura. Editar la información elegible no elimina los registros de pago existentes.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el cliente después de un pago parcial?">
+    No. El cliente asociado no se puede modificar después de registrar un pago.
+  </Accordion>
+  <Accordion title="¿Tengo que anular la factura antes de modificarla?">
+    No. Las facturas parcialmente pagadas elegibles se editan directamente, sin anularlas ni crear una de reemplazo.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el calendario de pagos restante?">
+    Sí. Puedes modificar los montos y las fechas de vencimiento de las cuotas elegibles, además de agregar o eliminar cuotas.
+  </Accordion>
+  <Accordion title="¿Los pagos parciales y el calendario de pagos son lo mismo?">
+    No. Los pagos parciales permiten que el cliente abone una parte del saldo. El calendario de pagos define cuotas fijas con montos o porcentajes y fechas de vencimiento.
+  </Accordion>
+  <Accordion title="¿Puedo reenviar la factura después de editarla?">
+    Sí. Después de guardar, usa **Reenviar** para enviarle al cliente la factura actualizada.
+  </Accordion>
+  <Accordion title="¿Las automatizaciones pueden identificar facturas parcialmente pagadas?">
+    Sí. **Parcialmente pagada** está disponible como estado de factura en los filtros de las automatizaciones de facturas compatibles.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Editar calendarios de pago y facturas parcialmente pagadas" icon="calendar-days" href="/pagos/editar-facturas-parcialmente-pagadas">
+    Más detalles sobre cómo se comportan las cuotas al editar.
+  </Card>
+  <Card title="Nuevo editor de facturas" icon="file-invoice" href="/pagos-facturas/nuevo-editor-facturas">
+    Crea y envía facturas más rápido.
+  </Card>
+</CardGroup>

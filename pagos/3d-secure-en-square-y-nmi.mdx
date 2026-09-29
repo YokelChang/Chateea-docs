@@ -1,0 +1,97 @@
+---
+title: "3D Secure en pagos con Square y NMI"
+description: "Cómo funciona la verificación 3DS del titular de la tarjeta con Square y NMI, qué configurar y cómo resolver los errores."
+icon: "shield-check"
+---
+
+3D Secure (3DS) es una verificación adicional que le pide a tu cliente confirmar su identidad antes de aprobar el pago con tarjeta, por ejemplo con un código por SMS, Face ID o una pantalla de su banco. Chateea es compatible con 3DS cuando cobras con Square o con NMI: menos pagos rechazados por tarjetas que lo exigen y más protección contra fraude y contracargos.
+
+## Por qué te conviene
+
+- **Menos pagos fallidos** en tarjetas que exigen 3DS, lo que mejora tu tasa de conversión.
+- **Protección contra fraude:** cuando la verificación se completa, la responsabilidad por contracargos de fraude pasa al banco emisor.
+- **Cumplimiento automático** de la autenticación reforzada de clientes (SCA) exigida en regiones como el Reino Unido y la Unión Europea.
+- **Poca fricción:** la verificación aparece en una ventana dentro de tu propia página de pago, sin sacar al cliente de tu embudo.
+
+## Cómo funciona durante el pago
+
+<Steps>
+  <Step title="El cliente completa el pago">
+    Ingresa su dirección de facturación y sus datos de contacto en un formulario de pedido, elemento de pago, factura o tienda.
+  </Step>
+  <Step title="La pasarela evalúa el riesgo">
+    Chateea envía la transacción a Square o NMI. Las reglas de riesgo de la pasarela y del banco deciden si hace falta 3DS según la tarjeta, el monto, el país y otros factores.
+  </Step>
+  <Step title="Aparece la ventana de verificación">
+    Si se requiere 3DS, el cliente ve una ventana segura para autenticarse con su banco.
+  </Step>
+  <Step title="Se confirma o se rechaza">
+    Si la verificación es correcta, el pago se cobra y el pedido o la factura pasa a **Pagado**. Si falla o expira, el pago se rechaza y el cliente ve el error para intentar con otra tarjeta.
+  </Step>
+</Steps>
+
+## Configuración según la pasarela
+
+| Pasarela | Qué tienes que hacer |
+| --- | --- |
+| **Square** | Nada. Funciona en cuanto el cliente completa la dirección y los datos de contacto en el pago. |
+| **NMI** | Una configuración única: inscribirte en **Payer Authentication 2.0**, confirmar que el servicio está **Active**, generar una **Checkout Public Key** para 3DS en el portal de NMI y pegarla en la integración de NMI en **Pagos → Integraciones**. |
+
+Consulta los pasos completos de NMI en [integración con NMI](/pagos/integracion-nmi).
+
+## Requisitos para Square
+
+- Square conectado en **Pagos → Integraciones** (ver [integración con Square](/pagos/integracion-square)).
+- La ubicación de Square en modo en vivo.
+- Campos de **dirección de facturación** y **correo o teléfono** visibles en el formulario de pago, idealmente como obligatorios, para que Square pueda validar al comprador.
+- Una tarjeta y un banco emisor compatibles con 3DS.
+
+3DS con Square funciona en todos los canales donde ya cobras con tarjeta de Square: formularios de pedido, enlaces de pago, tienda en línea, facturas y más.
+
+## Errores frecuentes y cómo ayudar a tu cliente
+
+| Mensaje | Qué pasó | Qué hacer |
+| --- | --- | --- |
+| **Autenticación fallida** | El cliente ingresó mal el código o rechazó la verificación | Pedirle que lo intente de nuevo o use otra tarjeta |
+| **Rechazado por el emisor** | El banco bloqueó la transacción antes o después de 3DS | Sugerirle que llame a su banco |
+| **3DS no completado** | El cliente cerró la ventana de verificación | Pedirle que complete el paso |
+
+La respuesta de la pasarela siempre queda registrada en **Pagos → Transacciones**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que activar algo en el panel de Square?">
+    No. Las reglas predeterminadas del Risk Manager de Square ya aplican 3DS a las transacciones de alto riesgo o que exigen SCA.
+  </Accordion>
+  <Accordion title="¿3DS se aplica a los cobros con tarjeta guardada?">
+    No. Con Square, 3DS aplica solo a pagos que el cliente hace en el momento. Los cargos a tarjetas guardadas están exentos.
+  </Accordion>
+  <Accordion title="¿Tiene un costo extra?">
+    Square no cobra tarifas adicionales por 3DS; se aplican sus tarifas de procesamiento habituales.
+  </Accordion>
+  <Accordion title="¿Aparecerá en todas las transacciones?">
+    No. El banco emisor y el motor de riesgo de la pasarela deciden cuándo pedirlo. Muchos pagos de bajo riesgo se aprueban sin verificación extra.
+  </Accordion>
+  <Accordion title="¿Puedo desactivar 3DS?">
+    No desde Chateea. Square gestiona las reglas. Puedes ajustar las reglas de riesgo en tu panel de Square, pero no es recomendable en regiones donde la SCA es obligatoria.
+  </Accordion>
+  <Accordion title="¿Hace más lento el pago?">
+    Solo agrega unos segundos y aparece dentro de la misma página, así que la fricción es mínima.
+  </Accordion>
+  <Accordion title="¿Aplica a cobros presenciales con Square?">
+    No. 3DS es solo para pagos en línea con tarjeta no presente. En persona, la seguridad viene del chip o del pago sin contacto.
+  </Accordion>
+  <Accordion title="Un cliente falla la verificación una y otra vez, ¿qué reviso?">
+    Que la dirección de facturación coincida con la registrada en su banco, que su navegador o dispositivo permita ventanas emergentes y, si persiste, que intente con otra tarjeta.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Integración con Square" icon="credit-card" href="/pagos/integracion-square">
+    Conecta tu cuenta de Square y elige la ubicación.
+  </Card>
+  <Card title="Integración con NMI" icon="credit-card" href="/pagos/integracion-nmi">
+    Conecta NMI y activa 3DS paso a paso.
+  </Card>
+</CardGroup>

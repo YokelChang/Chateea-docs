@@ -1,0 +1,312 @@
+---
+title: "Crea una integración de pagos personalizada"
+description: "Guía técnica para que un desarrollador conecte una pasarela propia a Chateea: app, iframe de pago, verificación, suscripciones y webhooks."
+icon: "code"
+---
+
+Si tu negocio trabaja con una pasarela de pagos que Chateea no trae integrada, un desarrollador puede crear un **proveedor de pagos personalizado** y conectarlo a tu cuenta. Una vez listo, ese proveedor aparece en **Pagos → Integraciones** y puede cobrar en pagos únicos, suscripciones, tarjetas guardadas y reembolsos, igual que las pasarelas nativas.
+
+<Note>
+  Esta guía es técnica y está pensada para el desarrollador que construirá la integración. Para obtener acceso al panel de desarrolladores del Marketplace de aplicaciones, la documentación de la API de Chateea y las URL de los servicios, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Qué puede hacer un proveedor personalizado
+
+- Aparecer en el Marketplace de aplicaciones y en **Pagos → Integraciones**.
+- Cobrar pagos únicos y recurrentes.
+- Hacer cobros fuera de sesión con métodos de pago guardados.
+- Gestionar suscripciones manuales y calendarios de suscripción.
+- Mantener Chateea al día mediante webhooks.
+
+## Conceptos clave
+
+| Concepto | Qué es |
+| --- | --- |
+| **App del Marketplace** | El contenedor de tu integración. Define OAuth, permisos (scopes), categoría y páginas personalizadas |
+| **Proveedor de pagos personalizado** | La configuración que indica que tu app es una pasarela y qué tipos de pago admite |
+| **queryUrl** | Endpoint de tu servidor al que Chateea llama para operaciones de backend: `verify`, `list_payment_methods`, `charge_payment`, `create_subscription`, `cancel_subscription` y `refund` |
+| **paymentsUrl** | Página pública que Chateea carga en un iframe para que el cliente pague |
+| **Página personalizada** | Página pública que se carga en un iframe para configurar la integración (claves, ID de comercio, modo prueba o en vivo) |
+| **Modo prueba y en vivo** | Cada cuenta puede tener una configuración de prueba (sin dinero real) y otra en vivo |
+
+## Requisitos
+
+- Acceso al panel de desarrolladores del Marketplace de aplicaciones.
+- Un servicio backend (Node.js, Python, Ruby, PHP, Java u otro) alojado en la nube.
+- Un dominio público para la URL de redirección de OAuth, la página personalizada, el `queryUrl`, los webhooks y el `paymentsUrl`.
+- Conocimientos de OAuth 2.0, APIs HTTP con JSON y manejo de webhooks.
+
+## Flujo general
+
+1. Crea una app del Marketplace en la categoría de proveedor de pagos personalizado.
+2. Crea un backend que gestione OAuth, webhooks y las solicitudes al `queryUrl`.
+3. Publica las páginas de configuración (página personalizada) y de cobro (`paymentsUrl`).
+4. Configura los modos de prueba y en vivo, y prueba todo el flujo de punta a punta.
+
+## Paso 1: crea la app en el Marketplace
+
+### Configuración (Settings)
+
+**Permisos necesarios (scopes):**
+
+```text
+payments/orders.readonly
+payments/orders.write
+payments/subscriptions.readonly
+payments/transactions.readonly
+payments/custom-provider.readonly
+payments/custom-provider.write
+products.readonly
+products/prices.readonly
+```
+
+| Elemento | Uso |
+| --- | --- |
+| **URL de redirección** | Adonde se envía al usuario al instalar la app, con un parámetro `code`. Cámbialo por un token de acceso con la API de OAuth y guárdalo de forma segura |
+| **Client keys** | Claves de OAuth. Guárdalas solo en tu backend |
+| **Webhook de instalación y desinstalación** | Recibe un aviso cuando la app se instala o desinstala en una cuenta, para preparar o limpiar datos |
+| **SSO key** | Sirve para descifrar el token que se envía a tu página personalizada y así identificar al usuario y la cuenta |
+
+### Proveedor de pagos (Payment Provider)
+
+| Campo | Detalle |
+| --- | --- |
+| **Name** | Nombre visible de tu pasarela |
+| **App description** | Descripción corta que se ve en **Pagos → Integraciones** |
+| **Payment provider type** | `OneTime` (pago único), `Recurring` (suscripciones que tú gestionas y reportas por webhook) u `Off Session` (cobros sin el cliente presente, con método guardado) |
+| **Logo** | URL pública del logo |
+
+### Perfil y páginas personalizadas
+
+- En **Profile**, elige la categoría **Third Party Provider** para que la app aparezca en el Marketplace y en **Pagos → Integraciones**.
+- En **Custom Pages**, indica la URL de tu página de configuración. Se abre después de instalar la app y al hacer clic en **Gestionar integración**. Úsala para conectar y desconectar la pasarela, pedir las credenciales de prueba y en vivo, y llamar a la API de integración.
+
+## Paso 2: instalación y registro del proveedor
+
+Cuando alguien instala tu app:
+
+1. Chateea abre tu URL de redirección con el código de OAuth.
+2. Tu backend cambia el código por un token de acceso.
+3. Se carga tu página personalizada.
+4. Tu backend llama a la API **Create Public Provider Config** para registrar el proveedor y que aparezca como opción de pago.
+
+```json
+{
+  "name": "Mi pasarela",
+  "description": "Descripción corta",
+  "imageUrl": "https://tu-dominio.com/logo.png",
+  "locationId": "ID_DE_LA_CUENTA",
+  "queryUrl": "https://tu-backend.com/payments/query",
+  "paymentsUrl": "https://tu-frontend.com/payments/checkout"
+}
+```
+
+`locationId` es el identificador de la cuenta de Chateea donde se instaló la app.
+
+## Paso 3: credenciales de prueba y en vivo
+
+Con la API **Connect Config** envías, para cada modo, dos claves:
+
+- `apiKey`: clave secreta que Chateea incluye en sus llamadas a tu `queryUrl`.
+- `publishableKey`: clave pública que usa tu iframe para iniciar el pago.
+
+Lo habitual es que el usuario pegue sus claves de prueba en tu página personalizada, tu backend llame a Connect Config en modo prueba y luego repita con las claves en vivo. Después, el usuario marca tu pasarela como predeterminada en **Pagos → Integraciones**. Cada modo queda utilizable en cuanto tiene sus claves.
+
+## Paso 4: el iframe de pago
+
+Todos los cobros ocurren dentro de un iframe que carga tu `paymentsUrl`, y la comunicación se hace con eventos.
+
+**1. Tu iframe avisa que está listo:**
+
+```json
+{ "type": "custom_provider_ready", "loaded": true }
+```
+
+**2. Chateea envía los datos del pago** (`payment_initiate_props`), entre ellos:
+
+| Campo | Contenido |
+| --- | --- |
+| `publishableKey` | Clave pública para iniciar el SDK de tu pasarela |
+| `amount` y `currency` | Monto en formato decimal y moneda ISO de tres letras |
+| `mode` | `payment` (pago único) o `subscription` |
+| `productDetails` | Líneas de producto: nombre, cantidad, IDs de producto y precio, impuestos, precios (montos en la unidad mínima de la moneda), cuota de configuración y datos de envío |
+| `contact` | ID, nombre, correo, teléfono y dirección de envío del cliente |
+| `orderId`, `transactionId`, `subscriptionId` | Identificadores internos del pedido, la transacción y la suscripción |
+| `locationId` | Cuenta donde se creó el pedido |
+
+**3. Tu iframe responde con el resultado:**
+
+```json
+{ "type": "custom_element_success_response", "chargeId": "ID_DEL_COBRO_EN_TU_PASARELA" }
+```
+
+```json
+{ "type": "custom_element_error_response", "error": { "description": "Tarjeta rechazada" } }
+```
+
+```json
+{ "type": "custom_element_close_response" }
+```
+
+**4. Chateea verifica el cobro** llamando a tu `queryUrl`:
+
+```json
+{
+  "type": "verify",
+  "transactionId": "ID_TRANSACCION",
+  "apiKey": "TU_API_KEY",
+  "chargeId": "ID_DEL_COBRO",
+  "subscriptionId": "ID_SUSCRIPCION"
+}
+```
+
+| Respuesta | Efecto |
+| --- | --- |
+| `{ "success": true }` | El pedido y la transacción quedan como pagados |
+| `{ "failed": true }` | La transacción queda como fallida |
+| `{ "success": false }` | La transacción queda pendiente; puedes confirmarla más tarde por webhook (pagos diferidos) |
+
+## Paso 5: métodos guardados y suscripciones manuales
+
+### Guardar un método de pago
+
+Agrega `"addCardOnFileSupported": true` al evento `custom_provider_ready` solo si tu pasarela guarda métodos de pago y ya implementaste guardar, listar y cobrar. Chateea enviará un evento `setup_initiate_props` (con `mode: "setup"`, sin cobro) y tu iframe responderá con `custom_element_success_response` o `custom_element_error_response`. El método guardado debe aparecer después al listar los métodos de ese contacto.
+
+### Listar métodos: `list_payment_methods`
+
+Chateea envía `locationId`, `contactId`, `apiKey` y `type`. Responde con una lista:
+
+```json
+[
+  {
+    "id": "payment_method_id",
+    "type": "card",
+    "title": "Visa",
+    "subTitle": "**** **** **** 1111",
+    "expiry": "02/29",
+    "customerId": "id_cliente_en_tu_pasarela",
+    "imageUrl": "https://tu-dominio.com/assets/visa.png"
+  }
+]
+```
+
+Debes mantener la relación entre contacto, cuenta, `apiKey` y el cliente de tu pasarela.
+
+### Cobrar un método guardado: `charge_payment`
+
+Se usa en cobros fuera de sesión o facturas. Chateea envía `paymentMethodId`, `contactId`, `transactionId`, `chargeDescription`, `amount`, `currency` y `apiKey`. Tu respuesta incluye `success`, `failed`, `chargeId`, `message` y un objeto con el **estado del cobro**, con esta forma:
+
+```json
+{
+  "id": "payment-id",
+  "status": "succeeded",
+  "amount": 100.00,
+  "chargeId": "pay_r8167s62b",
+  "chargedAt": 1724217600
+}
+```
+
+`status` puede ser `succeeded`, `failed`, `pending` o `processing`, y `chargedAt` es una marca de tiempo Unix en segundos. El nombre exacto de cada objeto de estado está en la documentación de la API de Chateea.
+
+### Suscripciones manuales
+
+Si tu pasarela admite métodos guardados, puede aceptar suscripciones creadas desde Chateea sin pasar por un pago (por ejemplo, "empieza el día X y cobra cada mes"). Primero declara la capacidad con la API **Update Capabilities**. Después:
+
+- **`create_subscription`:** Chateea envía `apiKey`, `locationId`, `contactId`, `paymentMethodId`, `subscriptionId`, `transactionId`, `startDate` (AAAA-MM-DD), `currency`, `amount`, `recurringAmount` y `productDetails` (con intervalo, período de prueba y número total de ciclos). Responde con `success`, `failed`, `message`, un objeto `transaction` opcional (si hubo cobro inicial) y un objeto `subscription` obligatorio con el ID de la suscripción y su **estado de la suscripción**. Si la suscripción empieza en el futuro sin cobro inicial, puedes omitir `transaction`.
+- **`cancel_subscription`:** Chateea envía `subscriptionId` y `apiKey`. Responde `{ "status": "canceled" }`.
+
+Estados válidos de la suscripción: `scheduled`, `trialing`, `active`, `expired`, `canceled`, `unpaid`, `incomplete`.
+
+## Paso 6: reembolsos
+
+Chateea llama a tu `queryUrl` con `type: "refund"`, `amount`, `transactionId`, `chargeId` y `apiKey`. Los reembolsos pueden ser parciales y una transacción puede tener varios, siempre que el total no supere el monto original. Responde:
+
+```json
+{ "success": true, "message": "Reembolso correcto", "id": "REFUND_ID", "amount": 50.0, "currency": "USD" }
+```
+
+## Paso 7: webhooks hacia Chateea
+
+Tu sistema envía webhooks (POST con JSON) al endpoint de pagos personalizados de Chateea para informar cambios. Soporte te indica la URL exacta.
+
+| Evento | Cuándo enviarlo |
+| --- | --- |
+| `payment.captured` | Cuando se confirma un pago, por ejemplo uno que quedó pendiente |
+| `subscription.trialing` | Al crear una suscripción de prueba sin cobro inicial |
+| `subscription.active` | Tras el primer cobro correcto que activa la suscripción |
+| `subscription.charged` | Después de cada cobro recurrente |
+| `subscription.updated` | Cuando cambia el estado de la suscripción |
+
+Cada webhook incluye el evento, el ID del cobro en tu pasarela, los identificadores de la transacción y la suscripción en Chateea, el estado de la suscripción o el estado del cobro según el evento, el ID de tu app, el `locationId` y el `apiKey`. Consulta los nombres exactos de los campos obligatorios por evento en la documentación de la API de Chateea.
+
+Forma del estado de la suscripción y del estado del cobro:
+
+```json
+{ "id": "SUBSCRIPTION_ID", "status": "trialing", "trialEnd": 1724217600, "createdAt": 1724217600, "nextCharge": 1726896000 }
+```
+
+```json
+{ "status": "succeeded", "amount": 10000, "chargeId": "CHARGE_ID", "chargedAt": 1724217600 }
+```
+
+En los webhooks, `amount` suele ir en la unidad mínima de la moneda (monto × 100).
+
+## Lista de verificación antes de salir en vivo
+
+1. App creada con los permisos correctos y con Settings, Payment Provider, Profile y Custom Pages configurados.
+2. La URL de redirección recibe el código y el backend obtiene el token; los webhooks de instalación y desinstalación funcionan.
+3. Create Public Provider Config se llama al instalar, con `queryUrl` y `paymentsUrl` correctos.
+4. Connect Config se llama para prueba y en vivo, y el proveedor está marcado como predeterminado.
+5. El iframe emite `custom_provider_ready`, procesa `payment_initiate_props` y responde éxito, error o cierre; `verify` responde bien en los tres casos.
+6. Métodos guardados: `addCardOnFileSupported`, `setup_initiate_props`, `list_payment_methods` y `charge_payment`.
+7. Suscripciones manuales: capacidad declarada y `create_subscription` con los estados de cobro y suscripción correctos.
+8. Reembolsos con `type: "refund"`.
+9. Webhooks enviados con los eventos y datos correctos.
+10. Flujos completos probados en modo prueba y los críticos repetidos en vivo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué lenguaje o framework puedo usar?">
+    Cualquiera que haga solicitudes HTTP y maneje JSON: Node.js, Python, Ruby, PHP, Java, etc.
+  </Accordion>
+  <Accordion title="¿Puedo probar antes de salir en vivo?">
+    Sí. Usa la configuración de modo prueba con los datos de sandbox de tu pasarela para simular pagos sin cobrar dinero real.
+  </Accordion>
+  <Accordion title="¿Cómo registro errores?">
+    Implementa tu propio registro de las solicitudes que recibes en el `queryUrl`, de los webhooks que envías y de las respuestas de la API. Te ahorrará mucho tiempo al depurar en producción.
+  </Accordion>
+  <Accordion title="¿Puedo integrar varias pasarelas en una sola app?">
+    Sí. Crea configuraciones separadas en tu backend y enruta cada solicitud según la cuenta, la moneda o tus reglas de negocio.
+  </Accordion>
+  <Accordion title="La suscripción sigue en Incompleta aunque envié subscription.active">
+    Lo que fija el estado inicial de la suscripción es la respuesta a `verify`, no el webhook. Incluye en esa respuesta `success`, un estado del cobro válido, `subscriptionStatus` y el estado de la suscripción. Si faltan o están mal, la suscripción puede quedarse en Incompleta.
+  </Accordion>
+  <Accordion title="¿Envío los webhooks antes o después de verify?">
+    El orden no es crítico. En un pago con suscripción: el cliente paga en tu iframe, el iframe envía el éxito, Chateea llama a `verify`, tú respondes con los estados del cobro y de la suscripción y, en paralelo, tu sistema puede enviar el webhook que corresponda. `verify` es la fuente de verdad del estado inicial; los webhooks mantienen todo sincronizado después y sirven de respaldo.
+  </Accordion>
+  <Accordion title="¿Cómo manejo una suscripción que empieza en prueba sin cobro?">
+    Crea la suscripción en tu sistema en estado `trialing` con una fecha `nextCharge` futura. Aun sin cobro, envía el evento de éxito desde el iframe para que Chateea llame a `verify`, y responde con `success: true`, `subscriptionStatus: "trialing"` y el estado de la suscripción (con `trialEnd` y `nextCharge`). El webhook `subscription.trialing` es opcional.
+  </Accordion>
+  <Accordion title="¿Quién ejecuta los cobros recurrentes?">
+    Tu integración. Chateea no cobra los ciclos de un proveedor personalizado: tú guardas el calendario, cobras en cada fecha, dejas de cobrar al cancelar o terminar los ciclos, y envías `subscription.charged` después de cada cobro correcto.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre una suscripción desde el pago y una creada manualmente?">
+    En el flujo de pago, el cliente compra con `mode: "subscription"`, Chateea crea una suscripción Incompleta y una transacción Pendiente, carga tu iframe y luego llama a `verify`. En el flujo manual, alguien de tu equipo crea la suscripción en Chateea, se llama a `create_subscription` y tu respuesta fija el estado directamente, sin iframe ni `verify`. Después tú ejecutas el calendario y envías `subscription.charged`.
+  </Accordion>
+  <Accordion title="El transactionId de verify no coincide con lo que veo en mi sistema">
+    En casos con varios intentos, cancelaciones o reintentos puede pasar. Busca usando todos los identificadores (`transactionId`, `chargeId`, `subscriptionId` y el contexto de contacto y cuenta), prioriza `chargeId` al consultar tu pasarela y, si no logras conciliarlo, registra el payload completo y devuelve estados coherentes con el pago que realmente se cobró.
+  </Accordion>
+  <Accordion title="Las tarjetas guardadas aparecen al crear suscripciones pero no en la ficha del contacto">
+    Es el comportamiento actual: las tarjetas guardadas con un proveedor personalizado se pueden elegir al crear suscripciones, pero todavía no aparecen en la sección de tarjetas guardadas del contacto.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Integraciones privadas" icon="key" href="/integraciones/integraciones-privadas">
+    Conecta Chateea con tus propios sistemas mediante tokens.
+  </Card>
+  <Card title="Configurar proveedores de pago" icon="credit-card" href="/pagos-facturas/configurar-proveedores-pago">
+    Conecta y ordena las pasarelas de tu cuenta.
+  </Card>
+</CardGroup>

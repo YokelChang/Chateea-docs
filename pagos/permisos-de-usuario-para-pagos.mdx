@@ -1,0 +1,87 @@
+---
+title: "Permisos de usuario para pagos"
+description: "Decide qué puede ver, crear, editar o configurar cada persona de tu equipo en los seis módulos de Pagos."
+icon: "user-lock"
+---
+
+No todos en tu equipo necesitan poder emitir reembolsos, cancelar suscripciones o cambiar la configuración de impuestos. Los permisos de pagos están divididos en seis módulos independientes, así que puedes decidir con precisión qué puede ver, crear, editar, eliminar, exportar o configurar cada persona dentro de **Pagos**.
+
+## Los seis módulos de permisos
+
+| Módulo | Qué controla |
+| --- | --- |
+| **Pedidos** | Ver, exportar e importar pedidos, y cobrar pagos (incluidos los pagos parciales) |
+| **Suscripciones** | Crear, modificar, pausar, reanudar, cancelar y exportar suscripciones, y gestionar la actualización del método de pago |
+| **Transacciones** | Ver, reembolsar, exportar e importar transacciones, y descargar recibos |
+| **Impuestos** | Ver y configurar los impuestos, agregar o eliminar tasas manuales y activar el cálculo automático |
+| **Productos** | Ver, crear, editar, importar, duplicar, gestionar en masa y eliminar productos |
+| **Configuración de pagos** | Configurar recibos, valores predeterminados de suscripciones y otros ajustes de pagos |
+
+Estos módulos conviven con el permiso general de **Pagos**. Permisos que antes estaban sueltos, como **Reembolsar transacciones** o **Gestionar suscripciones**, ahora están dentro del módulo que les corresponde.
+
+## Antes de empezar
+
+- Necesitas acceso a **Configuración → Mi equipo** con permiso para editar los roles del equipo.
+- Ten claro qué persona o rol debe encargarse de cada área de pagos.
+
+## Asigna los permisos
+
+<Steps>
+  <Step title="Abre el usuario">
+    Ve a **Configuración → Mi equipo** y haz clic en el ícono de editar junto a la persona que quieres ajustar.
+  </Step>
+  <Step title="Entra a Roles y permisos">
+    Abre la sección **Roles y permisos**. Verás **Pedidos**, **Suscripciones**, **Transacciones**, **Impuestos**, **Productos** y **Configuración de pagos** como secciones separadas.
+  </Step>
+  <Step title="Marca las acciones permitidas">
+    En cada módulo, marca las acciones que esa persona puede hacer (ver, crear, actualizar, eliminar, exportar, configurar). Puedes cambiar varios módulos a la vez antes de guardar.
+  </Step>
+  <Step title="Limita a los datos asignados (opcional)">
+    Si quieres que la persona solo vea la información que tiene asignada, aplica el permiso de **Solo datos asignados**.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Los nuevos permisos se aplican de inmediato en todos los módulos que modificaste.
+  </Step>
+</Steps>
+
+<Note>
+Las dependencias se controlan solas. Si una acción necesita otro permiso base que no está activado, esa acción queda deshabilitada. Por ejemplo, las acciones masivas de productos solo están disponibles si la persona también puede crear y editar productos.
+</Note>
+
+## Ejemplos de configuración
+
+| Rol en tu negocio | Qué le darías |
+| --- | --- |
+| **Vendedor** | Ver y crear pedidos, ver productos, cobrar pagos |
+| **Atención al cliente** | Ver transacciones y descargar recibos, pausar o reanudar suscripciones |
+| **Contabilidad** | Ver y exportar transacciones, pedidos y suscripciones, ver impuestos |
+| **Administrador de pagos** | Todos los módulos, incluidos reembolsos, impuestos y configuración de pagos |
+
+<Tip>
+Reserva los reembolsos, la cancelación de suscripciones y la configuración de impuestos para muy pocas personas. Son las acciones con mayor impacto en tus ingresos y en tu contabilidad.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Activé la gestión masiva de productos, pero no funciona. ¿Por qué?">
+    Porque falta el permiso base de crear y editar productos. Las acciones masivas se deshabilitan automáticamente si ese permiso no está activo.
+  </Accordion>
+  <Accordion title="¿Dónde encuentro estas opciones?">
+    En **Configuración → Mi equipo**, editando a la persona y abriendo **Roles y permisos**.
+  </Accordion>
+  <Accordion title="¿Qué pasó con los permisos de reembolsar y gestionar suscripciones?">
+    Siguen existiendo, pero ahora están dentro de los módulos **Transacciones** y **Suscripciones**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Permisos de pagos por categoría" icon="user-lock" href="/pagos/permisos-de-pagos-por-categoria">
+    Más detalle sobre los permisos granulares de pagos.
+  </Card>
+  <Card title="Cómo gestionar los reembolsos" icon="rotate-left" href="/pagos-facturas/gestionar-reembolsos">
+    Emite reembolsos totales o parciales.
+  </Card>
+</CardGroup>

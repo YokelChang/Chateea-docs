@@ -1,0 +1,72 @@
+---
+title: "Facturas pagables solo por transferencia bancaria"
+description: "Configura una factura para que tu cliente solo pueda pagarla por transferencia SEPA o ACH y ahorra comisiones de tarjeta."
+icon: "building-columns"
+---
+
+Puedes configurar una factura para que tu cliente solo pueda pagarla por **transferencia bancaria** (SEPA o ACH), sin la opción de tarjeta. Es útil cuando quieres evitar las comisiones de las tarjetas, cuando tus clientes prefieren pagar banco a banco o cuando operas en un mercado donde la transferencia es lo habitual.
+
+## Para qué te sirve
+
+| Beneficio | Detalle |
+| --- | --- |
+| **Menores costos** | Evitas las comisiones de procesamiento de tarjeta, que suelen ser más altas |
+| **Se adapta a tu cliente** | Ideal para empresas o sectores que pagan por transferencia |
+| **Proceso más simple** | El cliente ve un único método de pago, sin distracciones |
+
+Casos típicos:
+
+- Negocios en regiones donde se usa poco la tarjeta de crédito.
+- Servicios de monto alto donde la comisión de tarjeta pesa en tu margen.
+- Clientes corporativos que exigen pagar banco a banco.
+
+## Requisitos
+
+Las transferencias bancarias de facturas se procesan con **Stripe**. Tu cuenta de Stripe debe estar conectada a Chateea y tener habilitados los métodos de transferencia que vas a ofrecer (débito ACH para cuentas de Estados Unidos o SEPA para cuentas de la zona euro). Consulta [cómo conectar Stripe](/comercio/integracion-stripe) y [métodos de pago con Stripe](/pagos/metodos-de-pago-con-stripe).
+
+## Cómo configurar una factura solo con transferencia
+
+<Steps>
+  <Step title="Abre tus facturas">
+    Ve a **Pagos → Facturas y presupuestos**.
+  </Step>
+  <Step title="Crea o edita una factura">
+    Para una nueva, haz clic en **+ Nuevo → Nueva factura**. Para una existente, búscala en la lista y ábrela para editarla.
+  </Step>
+  <Step title="Elige Transferencia bancaria como método de pago">
+    En la sección de **opciones de pago**, selecciona **Transferencia bancaria** como único método.
+  </Step>
+  <Step title="Guarda y envía">
+    Haz clic en **Guardar** y luego en **Enviar** para mandarla a tu cliente.
+  </Step>
+</Steps>
+
+<Tip>
+  Avísale a tu cliente en el mensaje de envío que la factura se paga por transferencia. Así no se sorprende al no ver la opción de tarjeta.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo ofrecer tarjeta y transferencia en la misma factura?">
+    Sí, pero no con esta opción. Para eso elige **Todos los métodos de pago válidos**, que habilita la tarjeta, la transferencia y los demás métodos disponibles. La opción de transferencia bancaria sirve para que sea el único método.
+  </Accordion>
+  <Accordion title="¿Necesito Stripe?">
+    Sí. Las transferencias bancarias en facturas se procesan a través de tu cuenta de Stripe, que debe tener esos métodos activados.
+  </Accordion>
+  <Accordion title="¿Está disponible en todos los planes?">
+    Sí, siempre que tu plan incluya facturación.
+  </Accordion>
+  <Accordion title="¿Dónde veo los pagos recibidos por transferencia?">
+    En la sección de facturas, igual que los pagos con cualquier otro método.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos-facturas/nuevo-editor-facturas">
+    Guía completa del editor de facturas.
+  </Card>
+  <Card title="Transferencias bancarias ACH con NMI" icon="building-columns" href="/pagos/transferencias-bancarias-ach-con-nmi">
+    La alternativa si cobras con NMI.
+  </Card>
+</CardGroup>

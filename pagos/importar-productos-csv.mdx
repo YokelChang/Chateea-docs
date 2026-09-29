@@ -1,0 +1,99 @@
+---
+title: "Importar productos por CSV"
+description: "Sube muchos productos a Chateea de una sola vez con un archivo CSV y evita los errores de formato más comunes."
+icon: "file-import"
+---
+
+Cargar un catálogo grande producto por producto lleva horas. Con la importación por CSV puedes subir muchos productos a Chateea de una sola vez, ya sea que los traigas de Shopify, de otra plataforma o de tu propia hoja de cálculo.
+
+## Antes de empezar
+
+- Acceso a **Pagos → Productos**.
+- El **CSV de ejemplo** que descargas desde Chateea, para seguir su formato.
+- Tu archivo de productos preparado con ese formato.
+
+## Cómo importar productos
+
+<Steps>
+  <Step title="Abre Productos">
+    Ve a **Pagos → Productos**.
+  </Step>
+  <Step title="Descarga el CSV de ejemplo">
+    Haz clic en **Importar como CSV**. En la ventana que se abre, descarga el archivo de ejemplo que aparece abajo para ver el formato y los campos necesarios.
+  </Step>
+  <Step title="Prepara tu archivo">
+    Abre el ejemplo en Excel, Google Sheets u otra hoja de cálculo y completa los datos de cada producto, como nombre, precio, SKU, descripción y categoría. Respeta el formato de cada campo y guarda el archivo como `.csv`.
+  </Step>
+  <Step title="Sube el archivo">
+    Vuelve a **Pagos → Productos**, haz clic en **Importar como CSV** y selecciona tu archivo. Verás una vista previa del contenido.
+  </Step>
+  <Step title="Revisa la vista previa">
+    Confirma que los datos estén correctos. Si hay algún problema, corrígelo en tu CSV y vuelve a subirlo.
+  </Step>
+  <Step title="Importa">
+    Haz clic en **Importar productos**. Cuando termine, tus productos estarán disponibles en Chateea, listos para usar.
+  </Step>
+</Steps>
+
+<Warning>
+  **No elimines ni renombres columnas**, aunque no las uses. Si vendes servicios, campos como peso, dimensiones, inventario u origen de la imagen pueden quedar vacíos, pero los encabezados deben seguir ahí tal como vienen en el ejemplo. Si quitas o cambias un encabezado, verás errores como "Column 1 is not correct".
+</Warning>
+
+<Tip>
+  Antes de subir, revisa que no haya SKU duplicados ni caracteres especiales raros. Son las causas más comunes de errores en la importación.
+</Tip>
+
+## Límites
+
+| Límite | Detalle |
+| --- | --- |
+| **Tamaño del archivo** | Hasta 10 MB por CSV |
+| **Productos existentes** | La importación crea productos nuevos. No actualiza ni sobrescribe productos que ya existen |
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| **Error de formato** | Que el archivo esté guardado como `.csv` y que cada campo siga el formato del ejemplo |
+| **Faltan campos obligatorios** | Que todos los campos obligatorios (por ejemplo nombre, SKU y precio) estén completos |
+| **Caracteres especiales** | Quita los caracteres especiales que puedan romper la importación |
+| **Error de columna** | Que los encabezados sean exactamente los del ejemplo, sin columnas eliminadas ni renombradas |
+
+Si hay errores, Chateea te muestra un mensaje con el detalle de lo que tienes que corregir. Arregla el archivo y súbelo de nuevo. Si no logras resolverlo, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo actualizar productos existentes con un CSV?">
+    No. La importación por CSV solo crea productos nuevos. Para cambiar varios productos a la vez, usa la edición masiva.
+  </Accordion>
+  <Accordion title="¿Qué pasa si mi archivo tiene errores?">
+    Verás mensajes de error en pantalla. Corrige el archivo y vuelve a subirlo.
+  </Accordion>
+  <Accordion title="¿Cuántos productos puedo importar en un archivo?">
+    El límite es por tamaño: hasta 10 MB por archivo.
+  </Accordion>
+  <Accordion title="Vendo servicios. ¿Qué hago con campos como peso o inventario?">
+    Déjalos vacíos, pero conserva los encabezados de esas columnas. Si eliminas o renombras columnas, la importación falla.
+  </Accordion>
+  <Accordion title="¿La importación sobrescribe mis productos actuales?">
+    No. Como no actualiza productos existentes, no hay riesgo de sobrescribirlos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Edición masiva de productos" icon="table-list" href="/tienda/edicion-masiva-de-productos">
+    Cambia varios productos a la vez.
+  </Card>
+  <Card title="Migrar tu tienda desde Shopify" icon="store" href="/tienda/migrar-tienda-desde-shopify">
+    Trae tu catálogo de Shopify.
+  </Card>
+  <Card title="Eliminar productos" icon="trash" href="/pagos/eliminar-productos">
+    Cómo borrar productos que ya no usas.
+  </Card>
+  <Card title="Crea y vende productos" icon="box" href="/primeros-pasos/crea-y-vende-productos">
+    Primeros pasos con tu catálogo.
+  </Card>
+</CardGroup>

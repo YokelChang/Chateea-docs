@@ -1,0 +1,130 @@
+---
+title: "Agregar cargos por procesamiento a tus cobros"
+description: "Suma automáticamente una comisión por procesamiento o conveniencia a tus checkouts, facturas y enlaces de pago."
+icon: "percent"
+---
+
+Los cargos por procesamiento te permiten sumar automáticamente una comisión a los pagos de tus clientes, por ejemplo un cargo por conveniencia o por uso de tarjeta. Sirven para recuperar lo que te cobra tu procesador de pagos y mostrarlo de forma transparente: el cargo aparece como una línea aparte en el checkout y en el recibo.
+
+<Warning>
+Eres responsable de cumplir las leyes sobre recargos de tu país o región. En algunas jurisdicciones está prohibido cobrar recargos por pagar con tarjeta. Consulta con tu asesor antes de activarlo.
+</Warning>
+
+## Cómo se calcula
+
+El cargo es un porcentaje que se aplica sobre el monto que realmente se procesa:
+
+| Tipo de checkout | Base del cálculo |
+| --- | --- |
+| **General** | Subtotal menos descuentos más impuestos |
+| **Tienda en línea** | Subtotal menos descuentos más impuestos más envío |
+
+El resultado se redondea a dos decimales antes de sumarse al total.
+
+**Ejemplo:** con un cargo del 3 %, una venta de 100 USD con 10 USD de descuento y 9 USD de impuestos da una base de 99 USD. El cargo por procesamiento es de 2,97 USD y el total a pagar queda en 101,97 USD.
+
+## Dónde se aplica
+
+- Tiendas en línea (no aplica a los productos de venta adicional o upsell de la tienda)
+- Facturas y presupuestos
+- Embudos
+- Formularios
+- Encuestas
+- Enlaces de pago
+- Servicios
+
+<Note>
+Los cargos por procesamiento no funcionan con **PayPal** ni con **proveedores de pago personalizados**, salvo en **facturas y presupuestos**, donde funcionan con todos los proveedores.
+</Note>
+
+## Configura el cargo por procesamiento
+
+<Steps>
+  <Step title="Abre la configuración de pagos">
+    Ve a **Pagos → Configuración** y baja hasta la sección **Cargos varios** (Miscellaneous Charges).
+  </Step>
+  <Step title="Activa el cargo">
+    Enciende el interruptor **Cargos por procesamiento**.
+  </Step>
+  <Step title="Ponle nombre">
+    Escribe la etiqueta que verá tu cliente en el checkout y en el recibo, por ejemplo "Cargo por conveniencia" o "Comisión por procesamiento".
+  </Step>
+  <Step title="Define el porcentaje">
+    Ingresa el porcentaje que quieres cobrar, por ejemplo `2.5`.
+  </Step>
+  <Step title="Elige dónde aplicarlo">
+    Marca una o varias casillas: **Facturas y presupuestos**, **Embudos**, **Tiendas en línea**, **Enlaces de pago**, **Formularios** y **Encuestas**.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. El cargo se aplicará automáticamente en los checkouts que seleccionaste.
+  </Step>
+</Steps>
+
+<Tip>
+Usa una etiqueta clara y honesta. Un nombre como "Comisión por pago con tarjeta" genera menos reclamos que un cargo genérico que el cliente no entiende.
+</Tip>
+
+## Qué ve tu cliente
+
+| Dónde paga | Cómo se muestra el cargo |
+| --- | --- |
+| **Tienda en línea** | Como línea aparte en el resumen del checkout |
+| **Facturas y presupuestos** | Después de que el cliente hace clic en **Pagar** |
+| **Embudos, formularios y enlaces de pago** | Incluido como parte del monto total |
+
+El cargo también aparece en el recibo de la transacción.
+
+## Reglas de comportamiento
+
+- Las facturas en **borrador** muestran el cargo solo si las editas después de activar la función.
+- Las facturas ya enviadas y los pedidos ya realizados antes de activarlo **no cambian**.
+- Si desactivas la función, el cargo no desaparece de facturas o pedidos existentes, salvo que todavía sean editables.
+- El cargo no se aplica a facturas pagadas desde la aplicación móvil.
+- Se usa el mismo porcentaje en todos los canales seleccionados.
+
+## Revisa los cargos en tus informes
+
+Exporta el **CSV de transacciones** o el **CSV de pedidos**. Ambos incluyen la etiqueta y el monto del cargo por procesamiento de cada transacción u orden, para que puedas conciliar tus cuentas.
+
+## Solución de problemas: el cargo no aparece en una factura
+
+1. **Revisa el canal:** en **Pagos → Configuración → Cargos varios**, confirma que **Facturas y presupuestos** está marcado y que guardaste.
+2. **Mira en el lugar correcto:** en facturas, el cargo aparece después de hacer clic en **Pagar**, no en la vista previa.
+3. **Edita los borradores antiguos:** los borradores creados antes de activar la función necesitan una edición para mostrar el cargo.
+4. **Facturas ya enviadas:** si la enviaste antes de activar la función, no se actualizará.
+5. **Canal de pago:** el cargo no se aplica si el cliente paga desde la aplicación móvil.
+6. **Prueba rápida:** crea una factura nueva, ábrela como cliente, haz clic en **Pagar** y confirma que aparece la línea del cargo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo poner un porcentaje distinto en cada canal?">
+    Todavía no. El mismo porcentaje se aplica a todos los canales seleccionados.
+  </Accordion>
+  <Accordion title="Si desactivo el cargo, ¿se elimina de las facturas anteriores?">
+    No. Solo afecta a facturas y pedidos nuevos. Los existentes conservan el cargo, salvo que todavía sean editables.
+  </Accordion>
+  <Accordion title="¿Funciona con todos los proveedores de pago?">
+    En facturas y presupuestos, sí. En los demás checkouts no funciona con PayPal ni con proveedores de pago personalizados.
+  </Accordion>
+  <Accordion title="¿Se aplica a los pagos hechos desde la app móvil?">
+    Por ahora no.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el nombre del cargo?">
+    Sí. Defines la etiqueta que verá tu cliente al configurarlo.
+  </Accordion>
+  <Accordion title="¿Dónde veo cuánto he cobrado en cargos?">
+    En las exportaciones CSV de transacciones y de pedidos, que incluyen la etiqueta y el monto del cargo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar proveedores de pago" icon="plug" href="/pagos-facturas/configurar-proveedores-pago">
+    Conecta el procesador con el que vas a cobrar.
+  </Card>
+  <Card title="Importar transacciones por CSV" icon="file-csv" href="/pagos-facturas/importar-transacciones-csv">
+    Formatos de campo de las transacciones.
+  </Card>
+</CardGroup>

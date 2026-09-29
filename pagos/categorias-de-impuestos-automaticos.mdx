@@ -1,0 +1,75 @@
+---
+title: "Categorías de impuestos automáticos: nombres e IDs"
+description: "Qué son las categorías de impuesto, cómo asignarlas a tus productos y los IDs de las más usadas para la API."
+icon: "tags"
+---
+
+Cuando usas impuestos automáticos, cada producto necesita una **categoría de impuesto** para que Chateea sepa cómo gravarlo. En la interfaz eliges la categoría por su nombre, y detrás de cada nombre hay un **ID de categoría** único que el sistema usa para calcular el impuesto y para los informes. Este artículo explica cómo funcionan estas categorías, dónde se asignan y cuáles son las más usadas, con su ID para que puedas usarlas también desde la API de Chateea.
+
+## Cómo funcionan las categorías de impuesto
+
+1. **Asignas una categoría** al crear o editar un producto, o defines una categoría predeterminada para tu cuenta. En la interfaz eliges el nombre de la categoría de la lista disponible.
+2. **Chateea calcula el impuesto** con esa categoría, la dirección del cliente y las direcciones de nexo (los lugares donde estás obligado a cobrar impuestos) que configuraste.
+3. **Si trabajas con la API**, usa el ID y el nombre de categoría propios de Chateea que aparecen en la tabla de abajo.
+
+<Note>
+Cada categoría tiene además un código fiscal de Avalara, el motor que se usa como referencia para clasificar productos y servicios. Te sirve para contrastar la categoría con tu contador o con la documentación fiscal de tu jurisdicción.
+</Note>
+
+## Categorías más usadas
+
+La lista completa tiene alrededor de 3.000 categorías y se muestra al elegir la categoría de un producto. Estas son las que más usan los negocios de servicios, formación, comercio y hospitalidad:
+
+| Nombre de la categoría | ID de categoría | Código Avalara |
+| --- | --- | --- |
+| Services | `6852749d6e0bd39dd76d14b4` | S0000000 |
+| Non-Taxable Product | `6852749d6e0bd3b3466d14b6` | NT |
+| Tangible Personal Property (TPP) | `6852749d6e0bd30f086d14ba` | P0000000 |
+| Other | `6852749d6e0bd31fdc6d14b5` | O0000000 |
+| Professional Services | `6852749d6e0bd3824b6d1785` | SP140000 |
+| Consulting | `6852749d6e0bd34c966d176b` | SC160000 |
+| Educational | `6852749d6e0bd35e1f6d1591` | SE020000 |
+| Training and Seminar | `6852749e6e0bd36b856d1cb0` | ST080000 |
+| Digital goods: Videos-Streaming / electronic download | `6852749e6e0bd333d06d2022` | DV010200 |
+| Books / Manuals | `6852749d6e0bd3aecd6d14c9` | PB100000 |
+| Prepared Food / Intended for Immediate Consumption | `6852749d6e0bd3f8c56d14b9` | PA0010000 |
+| Lodging accommodations | `6852749d6e0bd32ece6d14b8` | SL090200 |
+| Admissions | `6852749d6e0bd329da6d159f` | OA020000 |
+| Barber (Haircutting) | `6852749d6e0bd38b896d158d` | SB030000 |
+| Shipping And Handling Combined | `6852749d6e0bd3d1846d156a` | FR030000 |
+
+<Tip>
+Si un producto o servicio no debe llevar impuesto, asígnale **Non-Taxable Product**. Así evitas que se aplique un impuesto por error.
+</Tip>
+
+## Cómo elegir la categoría correcta
+
+- Busca la categoría más específica que describa lo que vendes. Por ejemplo, un curso en video descargable encaja mejor en una categoría de bienes digitales que en **Services**.
+- Si vendes lo mismo de varias formas (en persona, en línea, con materiales físicos), revisa si existen categorías distintas para cada caso, porque la tasa puede cambiar.
+- Revisa tus categorías cada cierto tiempo: las leyes fiscales cambian y una categoría que antes no pagaba impuesto puede empezar a hacerlo.
+- Ante la duda, confirma la clasificación con tu contador. Chateea aplica la tasa que corresponde a la categoría, pero la elección de la categoría es responsabilidad del negocio.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde veo la lista completa de categorías?">
+    Al crear o editar un producto, en la opción de categoría de impuesto, puedes buscar entre todas las categorías disponibles por su nombre. Si necesitas el ID de una categoría que no está en esta tabla para usarla por API, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+  <Accordion title="¿Qué pasa si no asigno categoría a un producto?">
+    Se usa la categoría predeterminada que tengas configurada en tu cuenta. Asignar una categoría a cada producto da resultados más precisos.
+  </Accordion>
+  <Accordion title="¿Por qué los nombres de las categorías están en inglés?">
+    Son los nombres oficiales de la clasificación fiscal que usa el motor de impuestos. Se muestran igual en la interfaz y en la API para que no haya confusiones.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar impuestos" icon="file-invoice" href="/pagos/configurar-impuestos">
+    Configura tus impuestos manuales y automáticos.
+  </Card>
+  <Card title="Impuestos automáticos en la app móvil" icon="mobile" href="/pagos/impuestos-automaticos-en-la-app-movil">
+    Calcula impuestos al facturar o cobrar desde el teléfono.
+  </Card>
+</CardGroup>

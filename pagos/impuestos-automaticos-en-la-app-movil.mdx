@@ -1,0 +1,113 @@
+---
+title: "Impuestos automáticos en la app móvil"
+description: "Calcula impuestos automáticamente en facturas, presupuestos y cobros POS creados desde el teléfono."
+icon: "percent"
+---
+
+Cuando facturas o cobras desde el teléfono, calcular impuestos a mano es lento y es fácil equivocarse. Con los impuestos automáticos en la aplicación móvil de Chateea, el impuesto correcto se calcula solo al crear facturas, presupuestos o cobros en el punto de venta (POS), según la dirección del cliente y la categoría de impuesto de cada producto. Es especialmente útil si vendes en varias regiones con reglas fiscales distintas.
+
+## Cómo funciona
+
+Chateea combina tres datos para calcular el impuesto:
+
+1. **Tu configuración fiscal:** las direcciones de nexo (los lugares donde estás obligado a cobrar impuestos) y tus identificadores fiscales, que defines en la versión web.
+2. **La categoría de impuesto del producto:** indica cómo se grava cada producto o servicio.
+3. **La dirección del cliente:** determina qué tasas aplican.
+
+Con eso, la app muestra el impuesto en el resumen de la factura sin que tengas que escribir ninguna tasa.
+
+<Note>
+Necesitas la aplicación móvil de Chateea en la versión 3.108.4 o posterior.
+</Note>
+
+## Por qué te conviene
+
+- **Cálculo automático:** el impuesto se calcula al instante con la dirección del cliente y tu configuración.
+- **Menos errores:** evitas equivocarte al escribir tasas a mano.
+- **Cumplimiento en varias regiones:** admite cálculos para distintos países y regiones.
+- **Ahorro de tiempo:** no tienes que aplicar la tasa en cada transacción.
+- **Precisión por producto:** cada producto usa su propia categoría de impuesto.
+
+## Configurar los impuestos automáticos
+
+<Steps>
+  <Step title="Configura los impuestos en la web">
+    Entra a Chateea desde la computadora y ve a **Pagos → Configuración → Impuestos → Impuestos automáticos**. Agrega tus **direcciones de nexo** (los países o estados donde cobras impuestos), escribe tus **identificadores fiscales** de cada región y guarda.
+  </Step>
+  <Step title="Asigna categorías a tus productos">
+    Al crear o editar cada producto, elige su **categoría de impuesto**. Así cada producto se grava según su tipo. Si no eliges ninguna, el sistema puede usar una configuración predeterminada.
+  </Step>
+  <Step title="Activa los impuestos automáticos en la app">
+    En la aplicación móvil, entra en **Facturas** o en **POS** y toca **+** para crear una factura. Toca el ícono de configuración en la esquina superior derecha y activa **Impuestos automáticos**.
+  </Step>
+</Steps>
+
+## Crear una factura con impuestos automáticos
+
+<Steps>
+  <Step title="Agrega los productos">
+    Agrega productos de tu catálogo o artículos personalizados.
+  </Step>
+  <Step title="Revisa las categorías">
+    Asegúrate de que los productos tengan su categoría de impuesto asignada.
+  </Step>
+  <Step title="Confirma la dirección del cliente">
+    Escribe o confirma la dirección del cliente. Puedes editarla durante la revisión de la factura.
+  </Step>
+  <Step title="Revisa el resumen">
+    Comprueba que el impuesto aparece calculado en el resumen de la factura.
+  </Step>
+  <Step title="Envía">
+    Toca **Enviar**.
+  </Step>
+</Steps>
+
+## Desglose de impuestos en la factura
+
+- El impuesto aparece automáticamente en el **resumen de la factura**.
+- Puede mostrarse dividido en varios componentes, por ejemplo impuesto estatal, municipal o especial.
+- Según tu configuración, el impuesto se incluye en el subtotal o se suma encima.
+
+<Tip>
+La dirección del cliente es la pieza que más falla. Si la dirección falta o está incompleta, el impuesto puede no calcularse bien. Pídela siempre completa antes de facturar.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que configurar los impuestos en la web antes de usarlos en el teléfono?">
+    Sí. Los impuestos automáticos necesitan que primero configures en la web tus direcciones de nexo y tus identificadores fiscales.
+  </Accordion>
+  <Accordion title="¿Qué pasa si un producto no tiene categoría de impuesto?">
+    El sistema puede usar una configuración predeterminada, pero asignar la categoría a cada producto da resultados más precisos.
+  </Accordion>
+  <Accordion title="¿Puedo seguir aplicando impuestos manualmente?">
+    Sí, las opciones de impuesto manual siguen disponibles. Aun así, los impuestos automáticos son más precisos y rápidos.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece el impuesto en mi factura?">
+    Revisa tres cosas: que la dirección del cliente esté completa, que **Impuestos automáticos** esté activado en la app y que la configuración fiscal de la web esté terminada.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar la dirección del cliente después de crear la factura?">
+    Sí. Puedes editarla en el paso de revisión de la factura.
+  </Accordion>
+  <Accordion title="¿Funciona también en el POS y en los presupuestos?">
+    Sí. Los impuestos automáticos se aplican a facturas, cobros en el POS y presupuestos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar impuestos" icon="file-invoice" href="/pagos/configurar-impuestos">
+    Configura tus impuestos manuales y automáticos en la web.
+  </Card>
+  <Card title="Categorías de impuestos automáticos" icon="tags" href="/pagos/categorias-de-impuestos-automaticos">
+    Elige la categoría correcta para cada producto.
+  </Card>
+  <Card title="Impuestos automáticos internacionales" icon="globe" href="/pagos/impuestos-automaticos-internacionales">
+    Calcula impuestos en varios países.
+  </Card>
+  <Card title="Pestaña Pagos en la app móvil" icon="mobile" href="/pagos-facturas/pestana-pagos-movil">
+    Cobra desde contactos y oportunidades en el teléfono.
+  </Card>
+</CardGroup>

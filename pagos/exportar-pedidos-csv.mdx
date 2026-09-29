@@ -1,0 +1,145 @@
+---
+title: "Exportar pedidos a CSV"
+description: "Descarga tus pedidos en CSV con detalle por producto e impuesto para reportes, logística y análisis de ventas."
+icon: "file-csv"
+---
+
+La exportación de pedidos te permite descargar el detalle de tus pedidos en un archivo CSV para reportes, conciliación, análisis financiero, logística o para medir qué productos se venden más. Puedes exportar todos los pedidos o solo los que coinciden con tus filtros.
+
+## Cómo exportar pedidos
+
+<Steps>
+  <Step title="Abre Pedidos">
+    Ve a **Pagos → Pedidos**.
+  </Step>
+  <Step title="Filtra si lo necesitas">
+    Puedes filtrar por estado del pedido, rango de fechas, tipo de origen (embudo, enlace de pago, checkout de la tienda, etc.) o tipo de producto (único o recurrente).
+  </Step>
+  <Step title="Descarga">
+    Haz clic en **Descargar**.
+  </Step>
+  <Step title="Revisa tu correo">
+    Recibirás un enlace seguro para descargar el archivo.
+  </Step>
+</Steps>
+
+<Note>
+  El enlace de descarga vence a los **7 días**. Si venció, simplemente genera una exportación nueva.
+</Note>
+
+## Cómo está organizado el CSV
+
+Un pedido puede tener varios productos y varios impuestos, así que **un mismo pedido puede ocupar varias filas**. Esto permite ver precios e impuestos por producto, algo necesario para la contabilidad y el análisis.
+
+### Ceros y celdas vacías
+
+| Valor | Cuándo aparece |
+| --- | --- |
+| **0** | El campo aplica y su valor es realmente cero |
+| **Vacío** | El campo no aplica, por ejemplo el método de pago de un pedido sin pagar |
+
+El orden de las columnas es siempre el mismo, así que puedes usar el archivo en tablas dinámicas, importaciones o herramientas de inteligencia de negocio.
+
+<Warning>
+  Para sumar totales, agrupa primero por `Internal order id`. Si sumas la columna directamente, contarás varias veces los pedidos que ocupan más de una fila.
+</Warning>
+
+## Referencia de columnas
+
+| Columna | Qué contiene | Ejemplo |
+| --- | --- | --- |
+| `Internal order id` | Identificador interno del pedido en Chateea | `69369a9968f735180bfeb6ed` |
+| `Location id` | Identificador de tu cuenta de Chateea | `NyGCsdhgRZ8Ffa8Ssagfhd` |
+| `Customer id` | Identificador del cliente que hizo el pedido | `jbtyjkzMjvd8cLi9HUC` |
+| `Customer name` | Nombre del cliente | `Jordan Lane` |
+| `Customer email` | Correo recogido en el checkout | `jordan@example.com` |
+| `Customer phone` | Teléfono recogido en el checkout | `+44 7700 900111` |
+| `Payment method` | Método de pago; vacío si el pedido no se pagó | `Credit Card`, `Cash`, `Instant Transfer` |
+| `Currency` | Moneda de los precios | `USD` |
+| `Sub total` | Valor de los artículos antes de descuentos e impuestos no incluidos | `120.00` |
+| `Discount` | Descuentos aplicados | `-20.00` |
+| `Total tax amount (excluded in prices)` | Impuesto sumado al subtotal | `8.40` |
+| `Total tax amount (included in prices)` | Impuesto ya incluido en los precios | `0.00` |
+| `Total amount` | Total a pagar después de descuentos, impuestos y cargos adicionales | `108.40` |
+| `Coupon code` | Cupón usado en el checkout | `SPRING20` |
+| `Status` | Estado de pago del pedido | `Completed`, `Pending` |
+| `Live mode` | Si fue en modo real o de prueba | `Yes`, `No` |
+| `Total products` | Cantidad total de productos del pedido | `3` |
+| `One-time products` | Cantidad de productos de pago único | `2` |
+| `Recurring products` | Cantidad de productos de suscripción | `1` |
+| `Source type` | Dónde se creó el pedido | `Store Checkout`, `Form`, `Funnel` |
+| `Source id` | Identificador interno del origen | `afalfgn4ag12neogho` |
+| `Source name` | Nombre del origen | `Gift Card Store` |
+| `Order date` | Fecha en que se cerró el pedido | `Dec 10, 2025` |
+| `Order time` | Hora en que se cerró el pedido | `10:45 AM` |
+| `Timezone` | Zona horaria del registro | `America/Chicago` |
+| `Line item name` | Nombre del producto | `Premium Coaching Plan` |
+| `Line item quantity` | Cantidad comprada | `1` |
+| `Line item price` | Precio unitario | `100.00` |
+| `Line item discount` | Descuento asignado a esta línea | `20.00` |
+| `Line item subtotal` | Subtotal de la línea | `80.00` |
+| `Line item product id` | Identificador del producto | `prod_52ZS` |
+| `Line item price id` | Identificador del precio o variante | `price_00382` |
+| `Tax name` | Tipo de impuesto aplicado | `Sales Tax` |
+| `Tax amount` | Impuesto de esta línea | `5.60` |
+| `Address line 1` | Calle de envío o facturación, si se recogió | `123 Main St` |
+| `City` | Ciudad | `Austin` |
+| `State` | Estado o región | `TX` |
+| `Country` | País | `US` |
+| `Postal code` | Código postal | `73301` |
+| `Processing charge name` | Nombre del cargo adicional | `Handling Fee` |
+| `Processing charge amount` | Monto del cargo adicional | `2.80` |
+
+## Ejemplos de pedidos en varias filas
+
+**Ejemplo 1.** Un pedido con 3 productos y 2 impuestos no incluidos en el precio, aplicados a los tres productos: cada producto ocupa una fila por impuesto, así que el pedido ocupa **6 filas**, todas con el mismo `Internal order id`.
+
+**Ejemplo 2.** Un pedido con 3 productos donde el producto 1 tiene 2 impuestos no incluidos, el producto 2 tiene 2 impuestos incluidos en el precio y el producto 3 no tiene impuestos:
+
+| Filas | Contenido |
+| --- | --- |
+| 2 filas | Producto 1 con `Tax Name 1` y `Tax Name 2` |
+| 2 filas | Producto 2 con `Tax Name 1 (Included in prices)` y `Tax Name 2 (Included in prices)` |
+| 1 fila | Producto 3, sin valores en las columnas de impuestos |
+
+En total, **5 filas** con el mismo `Internal order id`.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué veo varias filas para el mismo pedido?">
+    Porque cada producto y cada impuesto de producto necesita su propia línea contable para que el reporte sea preciso.
+  </Accordion>
+  <Accordion title="¿Por qué el método de pago está vacío en algunos pedidos?">
+    Solo se muestra cuando hubo una transacción. Los pedidos sin pagar no tienen método de pago.
+  </Accordion>
+  <Accordion title="¿Se incluyen los pedidos sin pagar o abandonados?">
+    Sí, salvo que los excluyas con los filtros.
+  </Accordion>
+  <Accordion title="¿Puedo ver el historial de cobros de las suscripciones?">
+    No en esta exportación: solo indica cuántos productos recurrentes tiene cada pedido. Para el detalle de suscripciones usa la exportación de suscripciones, y para el historial de cobros la de transacciones.
+  </Accordion>
+  <Accordion title="¿Puedo exportar de nuevo pedidos antiguos?">
+    Sí. Cada exportación se genera en el momento con los datos actuales.
+  </Accordion>
+  <Accordion title="¿Quién puede descargar exportaciones de pedidos?">
+    Los usuarios con permiso para ver pedidos y exportar pedidos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Exportar transacciones a CSV" icon="file-csv" href="/pagos/exportar-transacciones-csv">
+    El historial detallado de cobros.
+  </Card>
+  <Card title="Exportar suscripciones a CSV" icon="file-csv" href="/pagos/exportar-suscripciones-csv">
+    Tus suscripciones con fechas de prueba, pausa y cancelación.
+  </Card>
+  <Card title="Formato CSV de pedidos para importar" icon="file-import" href="/pagos-facturas/importar-pedidos-csv">
+    Cómo cargar pedidos desde otra plataforma.
+  </Card>
+  <Card title="Permisos de usuario para pagos" icon="user-lock" href="/pagos/permisos-de-usuario-para-pagos">
+    Controla quién puede exportar.
+  </Card>
+</CardGroup>

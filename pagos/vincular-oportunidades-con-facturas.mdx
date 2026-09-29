@@ -1,0 +1,115 @@
+---
+title: "Vincula oportunidades con facturas y presupuestos"
+description: "Conecta cada factura o presupuesto con su oportunidad desde el negocio, desde Pagos o con un flujo de trabajo."
+icon: "link"
+---
+
+Cuando una factura o un presupuesto queda vinculado a una oportunidad, toda la historia comercial de ese negocio vive en un solo lugar: qué se cotizó, qué se facturó y qué se cobró. Así tu equipo de ventas y quien lleva la cobranza miran los mismos datos, sin cruzar hojas de cálculo.
+
+En Chateea puedes hacer el vínculo de tres formas: desde la propia oportunidad, desde el módulo de **Pagos** o de forma automática con un flujo de trabajo.
+
+## Para qué te sirve
+
+- **Historial financiero por negocio:** cada oportunidad muestra sus facturas y presupuestos asociados.
+- **Menos carga manual:** el vínculo se hace al crear el documento, sin pasos extra.
+- **Menos errores:** evitas facturas "sueltas" que nadie sabe a qué venta pertenecen.
+- **Automatización:** los flujos de trabajo pueden crear, enviar y vincular el documento solos.
+- **Visibilidad para todo el equipo:** ventas ve el estado de pago sin salir de la oportunidad.
+
+## Opción 1: Crear el documento desde la oportunidad
+
+Es la forma más rápida cuando ya estás trabajando en un negocio concreto.
+
+<Steps>
+  <Step title="Abre la oportunidad">
+    Ve a **Oportunidades** y haz clic en el negocio con el que quieres trabajar.
+  </Step>
+  <Step title="Entra a la pestaña Pagos">
+    Dentro de la oportunidad, abre la pestaña **Pagos**. En el menú **Acciones**, elige **Crear factura** o **Crear presupuesto**.
+  </Step>
+  <Step title="Completa el documento">
+    Se abre el editor con la oportunidad ya vinculada. Agrega productos, impuestos y condiciones como en cualquier otra factura o presupuesto.
+  </Step>
+  <Step title="Envía">
+    Cuando esté listo, envíalo al cliente. El documento aparecerá en la pestaña **Pagos** de la oportunidad.
+  </Step>
+</Steps>
+
+## Opción 2: Vincular desde el módulo de Pagos
+
+Útil cuando empiezas por la factura y luego decides a qué negocio pertenece.
+
+<Steps>
+  <Step title="Abre facturas o presupuestos">
+    Ve a **Pagos → Facturas y presupuestos** y elige **Facturas** o **Presupuestos** en el menú desplegable.
+  </Step>
+  <Step title="Crea el documento">
+    Haz clic en **Crear factura** o **Crear presupuesto**.
+  </Step>
+  <Step title="Selecciona el contacto">
+    Elige el contacto al que va dirigido el documento.
+  </Step>
+  <Step title="Vincula la oportunidad">
+    En el editor, busca el campo **Vincular oportunidad** y selecciona el negocio correspondiente de ese contacto.
+  </Step>
+</Steps>
+
+## Opción 3: Vincular automáticamente con un flujo de trabajo
+
+Si facturas o cotizas siempre en el mismo momento del proceso de venta (por ejemplo, cuando el negocio pasa a "Ganado"), deja que lo haga una automatización.
+
+<Steps>
+  <Step title="Crea o abre un flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y crea uno nuevo o abre uno existente.
+  </Step>
+  <Step title="Usa un disparador de oportunidad">
+    Elige un disparador basado en oportunidades, como un cambio de etapa o de estado.
+  </Step>
+  <Step title="Agrega la acción de envío">
+    Añade la acción **Enviar factura** o **Enviar presupuesto** y configúrala.
+  </Step>
+  <Step title="Publica">
+    Cada vez que se dispare, el sistema crea el documento, lo envía y lo vincula con la oportunidad que activó el flujo.
+  </Step>
+</Steps>
+
+<Tip>
+  Alinea las etapas de tu pipeline con tu proceso de cobro. Por ejemplo: "Propuesta enviada" dispara el presupuesto y "Ganado" dispara la factura. Así el pipeline refleja también el estado financiero de cada negocio.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo vincular varias facturas o presupuestos a una misma oportunidad?">
+    Sí. Una oportunidad puede tener varios documentos asociados, por ejemplo un presupuesto inicial, un anticipo y la factura final.
+  </Accordion>
+  <Accordion title="Olvidé vincular una factura. ¿Qué hago?">
+    Puedes editar la factura desde **Pagos** y vincularla a la oportunidad correcta.
+  </Accordion>
+  <Accordion title="¿Puedo desvincular un documento de una oportunidad?">
+    No, una vez finalizado el documento no se puede desvincular. Si lo necesitas, clónalo y asígnalo a la oportunidad correcta.
+  </Accordion>
+  <Accordion title="¿Los documentos creados por un flujo de trabajo aparecen en la oportunidad?">
+    Sí. Cualquier factura o presupuesto generado por un flujo de trabajo y vinculado a una oportunidad se ve en la pestaña **Pagos** de esa oportunidad.
+  </Accordion>
+  <Accordion title="¿La acción Buscar oportunidad vincula la factura automáticamente?">
+    No. **Buscar oportunidad** solo selecciona una oportunidad para usarla en pasos posteriores del flujo. El vínculo lo hace la acción de enviar factura o presupuesto cuando el flujo parte de una oportunidad.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos/crear-y-enviar-facturas">
+    Todo lo que necesitas para emitir tu primera factura.
+  </Card>
+  <Card title="Crea y envía presupuestos" icon="file-lines" href="/pagos/crear-y-enviar-presupuestos">
+    Cotiza, recibe la aprobación y conviértela en factura.
+  </Card>
+  <Card title="Pipelines" icon="diagram-project" href="/contactos/pipelines">
+    Organiza tus oportunidades por etapas.
+  </Card>
+  <Card title="Generador de flujos de trabajo" icon="bolt" href="/flujo-de-trabajo/generador-de-flujos-de-trabajo-descripcion-general">
+    Automatiza tareas de venta y cobro.
+  </Card>
+</CardGroup>

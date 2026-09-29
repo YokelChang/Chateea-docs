@@ -1,0 +1,76 @@
+---
+title: "Débito directo ACH en facturas"
+description: "Cobra facturas únicas y recurrentes directamente desde la cuenta bancaria del cliente con Stripe."
+icon: "building-columns"
+---
+
+El débito directo ACH permite que tus clientes en Estados Unidos paguen las facturas directamente desde su cuenta bancaria, sin tarjeta. Funciona con facturas únicas, enlaces de pago por SMS (Text2Pay) y facturas recurrentes con pago automático, y se procesa a través de Stripe.
+
+## Para qué te sirve
+
+- **Menores comisiones:** las transacciones ACH suelen tener un costo de procesamiento menor que las tarjetas.
+- **Comodidad para el cliente:** paga desde su banco, sin usar tarjeta de crédito o débito.
+- **Ideal para importes altos:** no depende del límite de la tarjeta del cliente.
+- **Cobros recurrentes sin intervención:** puedes activar el pago automático en facturas recurrentes.
+- **Gestión en Stripe:** administras los pagos y métodos de pago desde tu panel de Stripe.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Activa ACH en Stripe">
+    Inicia sesión en Stripe, ve a **Settings → Payment Methods** y confirma que **ACH Direct Debit** esté habilitado.
+  </Step>
+  <Step title="Conecta Stripe a Chateea">
+    En Chateea, ve a **Pagos → Integraciones**, haz clic en **Conectar Stripe** y sigue los pasos para vincular tu cuenta.
+  </Step>
+  <Step title="Elige ACH en la factura">
+    Al crear una factura, selecciona el débito directo ACH como método de pago disponible. En facturas recurrentes, puedes activar además el **pago automático**.
+  </Step>
+  <Step title="Envía la factura">
+    El cliente verá la opción de pago ACH al abrir la factura e introducirá los datos de su cuenta bancaria para autorizar el pago.
+  </Step>
+  <Step title="Da seguimiento en Stripe">
+    Desde el panel de Stripe revisas los pagos ACH, resuelves los que fallen y actualizas los métodos de pago de tus clientes.
+  </Step>
+</Steps>
+
+<Note>
+  Los pagos ACH tardan unos días hábiles en liquidarse. Mientras tanto, la factura puede mostrarse como **Pago en proceso** y pasa a **Pagada** cuando el dinero se acredita.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Stripe cobra comisiones por ACH?">
+    Sí. Stripe aplica comisiones propias al débito directo ACH, distintas de las de tarjeta. Consulta las tarifas vigentes en la página de precios de Stripe.
+  </Accordion>
+  <Accordion title="¿Puedo usar ACH en facturas recurrentes con pago automático?">
+    Sí. Al enviar la factura recurrente, activa el pago automático. Los cobros siguientes se harán solos en cada fecha programada.
+  </Accordion>
+  <Accordion title="¿Cómo elijo qué métodos de pago ve el cliente en la factura?">
+    Desde tu panel de Stripe, en **Settings → Connect → Payment Methods**, elige la configuración correspondiente (por ejemplo, la de facturas o la de facturas con pago automático) y activa o desactiva los métodos que quieras.
+  </Accordion>
+  <Accordion title="¿Qué hago si un pago ACH falla?">
+    Stripe te avisará con el motivo, por ejemplo fondos insuficientes o un número de cuenta incorrecto. Contacta al cliente para que actualice sus datos bancarios o use otro método de pago.
+  </Accordion>
+  <Accordion title="¿Puedo guardar la cuenta bancaria del cliente para futuros pagos?">
+    Si el cliente paga con ACH y elige el pago automático, Stripe guarda la cuenta como método de pago para próximos cobros. Si no lo elige, tendrás que guardarla desde la gestión de clientes de Stripe o pedirle que pague con un enlace que guarde la cuenta, como una configuración de pago recurrente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cumplimiento Nacha para ACH con Stripe" icon="shield-check" href="/pagos/stripe-cumplimiento-nacha-para-ach">
+    Requisitos para cobrar por débito bancario.
+  </Card>
+  <Card title="Métodos de pago con Stripe" icon="credit-card" href="/pagos/metodos-de-pago-con-stripe">
+    Activa o desactiva métodos de pago por canal.
+  </Card>
+  <Card title="Pagos automáticos en plantillas recurrentes" icon="arrows-rotate" href="/pagos-facturas/pagos-automaticos-recurrentes">
+    Cobra las facturas recurrentes sin intervención.
+  </Card>
+  <Card title="Facturas solo con transferencia bancaria" icon="building-columns" href="/pagos/facturas-solo-transferencia-bancaria">
+    Limita el pago de tus facturas a transferencia.
+  </Card>
+</CardGroup>

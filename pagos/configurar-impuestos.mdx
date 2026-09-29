@@ -1,0 +1,133 @@
+---
+title: "Configura impuestos para tus productos y facturas"
+description: "Crea tasas de impuesto, asígnalas a productos y facturas y combina impuestos manuales con automáticos."
+icon: "percent"
+---
+
+Cobrar los impuestos correctos es parte de vender bien: evita errores en tus facturas, te mantiene al día con la normativa de tu país y le da a tu cliente un cobro claro. En Chateea puedes crear tus tasas de impuesto una sola vez y aplicarlas a tus productos y facturas sin calcular nada a mano.
+
+<Note>
+Este artículo explica cómo configurar impuestos en Chateea, no qué impuestos debes cobrar. Confirma con tu contador o asesor fiscal las tasas y reglas que aplican a tu negocio y a tus clientes.
+</Note>
+
+## Para qué te sirve
+
+- **Facturas precisas:** cada producto o servicio lleva la tasa que le corresponde.
+- **Menos errores:** el cálculo es automático, sin fórmulas ni hojas de cálculo.
+- **Varias tasas a la vez:** puedes manejar, por ejemplo, un impuesto general y otro reducido, o impuestos distintos por región.
+- **Mejor orden contable:** la información de impuestos queda registrada en tus facturas y transacciones.
+
+Algunos ejemplos: una tienda en línea con productos que pagan tasas distintas, una empresa de eventos que vende entradas y servicios adicionales en varios países, o una consultora que factura servicios con impuestos diferentes según el cliente.
+
+## Crea una tasa de impuesto
+
+<Steps>
+  <Step title="Abre la configuración de impuestos">
+    Ve a **Pagos → Configuración → Impuestos** y haz clic en **Agregar impuesto** (o **Crear impuesto** si todavía no tienes ninguno).
+  </Step>
+  <Step title="Completa los datos">
+    Escribe el **nombre** del impuesto (por ejemplo, "IVA 16 %"), la **tasa** y, si quieres, una **descripción**. Si aplica, agrega también tu **número de identificación fiscal** y la **autoridad tributaria** correspondiente.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Agregar**. El impuesto aparecerá en tu lista y ya podrás usarlo.
+  </Step>
+</Steps>
+
+<Tip>
+Usa nombres que incluyan la tasa y el tipo ("IVA 19 %", "ITBIS 18 %", "Exento 0 %"). Así tu equipo elige el correcto sin dudar al crear productos o facturas.
+</Tip>
+
+## Asigna impuestos a tus productos
+
+Cuando un producto tiene impuestos asignados, se aplican solos cada vez que ese producto aparece en un checkout (formularios de pedido, tiendas, enlaces de pago y otros), **excepto en facturas**, donde los agregas en la propia factura.
+
+<Steps>
+  <Step title="Abre el producto">
+    Crea un producto nuevo o edita uno existente.
+  </Step>
+  <Step title="Activa los impuestos">
+    Marca la casilla **Adjuntar tasas de impuesto**. Se abrirá un menú desplegable con los impuestos que creaste.
+  </Step>
+  <Step title="Elige una o varias tasas">
+    Selecciona todas las que correspondan. Si te falta alguna, haz clic en el ícono **+** para crearla ahí mismo.
+  </Step>
+  <Step title="Guarda el producto">
+    Desde ahora, el impuesto se calculará automáticamente en los checkouts donde vendas ese producto.
+  </Step>
+</Steps>
+
+## Agrega impuestos en una factura
+
+<Steps>
+  <Step title="Abre la factura">
+    Ve a **Pagos → Facturas** y crea una factura nueva o edita un borrador.
+  </Step>
+  <Step title="Agrega el impuesto al producto">
+    Haz clic en **Agregar impuesto** junto al producto.
+  </Step>
+  <Step title="Selecciona las tasas">
+    En la ventana **Agregar impuestos**, marca los impuestos que quieras aplicar.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. El impuesto se calculará en la factura.
+  </Step>
+</Steps>
+
+## Elimina un impuesto
+
+En **Pagos → Configuración → Impuestos**, haz clic en el ícono de eliminar junto a la tasa que ya no uses.
+
+## Impuestos manuales y automáticos
+
+Si además tienes activados los **impuestos automáticos**, las tasas manuales funcionan como respaldo (salvo en facturas, donde siempre usas las que agregas tú).
+
+- Si quieres usar **solo tasas manuales** para todos tus clientes, desactiva por completo los impuestos automáticos.
+- Si quieres usar tasas manuales solo en algunas jurisdicciones, quita esas jurisdicciones de tus direcciones de nexo en la configuración de impuestos automáticos.
+
+Por ejemplo: si vendes en Estados Unidos y quieres impuestos automáticos en todos los estados excepto Texas, elimina Texas de la lista de direcciones de nexo. En Texas se aplicará tu tasa manual.
+
+## Precisión y redondeo
+
+| Dato | Precisión |
+| --- | --- |
+| Tasa de impuesto | Hasta 4 decimales (por ejemplo, 7,1250 %) |
+| Monto del impuesto | 2 decimales, según las reglas de la moneda |
+
+Las tasas con 4 decimales se muestran en facturas, presupuestos, suscripciones, detalles de transacciones, recibos y checkouts. También se exportan así en los archivos CSV y aparecen así en las respuestas de la API de Chateea que lo admiten.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo manejo a un cliente exento de impuestos?">
+    Crea un impuesto con tasa del 0 % (por ejemplo, "Exento 0 %") y aplícalo en la factura de ese cliente.
+  </Accordion>
+  <Accordion title="¿Puedo usar varias tasas de impuesto?">
+    Sí. Puedes crear todas las que necesites y asignar una o varias a cada producto o a cada línea de una factura.
+  </Accordion>
+  <Accordion title="¿Qué hago si un cliente cambia de país o de dirección de facturación?">
+    Revisa qué tasa le corresponde con su nueva dirección y actualiza los impuestos en sus próximas facturas.
+  </Accordion>
+  <Accordion title="¿Puedo aplicar impuestos a compras únicas?">
+    Sí. Asigna el impuesto al producto o agrégalo directamente en la factura.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los impuestos cuando hago un reembolso?">
+    Si reembolsas una factura, revisa y ajusta manualmente el monto de impuestos que corresponde devolver.
+  </Accordion>
+  <Accordion title="¿Chateea genera reportes de impuestos?">
+    No hay un reporte de impuestos dedicado. Puedes exportar los datos de tus facturas, que incluyen la información de impuestos, y trabajarlos en tu software contable.
+  </Accordion>
+  <Accordion title="¿Cómo actualizo una tasa que cambió por ley?">
+    Actualiza la tasa en tu lista de impuestos y úsala en las facturas nuevas. Revisa también los productos que la tienen asignada.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Precios con o sin impuestos incluidos" icon="percent" href="/pagos/precios-con-o-sin-impuestos-incluidos">
+    Decide si tus precios ya incluyen el impuesto.
+  </Card>
+  <Card title="Nuevo editor de facturas" icon="file-invoice" href="/pagos-facturas/nuevo-editor-facturas">
+    Crea y envía facturas más rápido.
+  </Card>
+</CardGroup>

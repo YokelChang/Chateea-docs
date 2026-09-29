@@ -1,0 +1,137 @@
+---
+title: "Gestionar métodos de pago de Stripe desde Chateea"
+description: "Activa o desactiva tarjetas, billeteras, débitos bancarios y pagos a plazos de Stripe en cada área de venta sin salir de Chateea."
+icon: "sliders"
+---
+
+Si cobras con Stripe, puedes decidir desde tu cuenta de Chateea qué métodos de pago ve tu cliente en cada lugar donde vendes: tarjetas, billeteras digitales, débitos bancarios o pagos a plazos. Ya no necesitas entrar al panel de Stripe para activarlos o desactivarlos, y cada checkout muestra solo las opciones que tú habilitaste.
+
+## Para qué te sirve
+
+- **Control centralizado:** gestionas los métodos de pago de Stripe sin salir de Chateea.
+- **Modo en vivo y modo de prueba por separado:** configura cada entorno de forma independiente.
+- **Opciones por área de venta:** por ejemplo, pagos a plazos en tu tienda pero solo tarjeta en facturas con pago automático.
+- **Configuración propia para suscripciones:** define qué métodos se aceptan en los checkouts de productos recurrentes.
+- **Sin sorpresas en el checkout:** cada página de pago respeta lo que configuraste.
+
+## Antes de empezar
+
+- Tu cuenta de Stripe debe estar conectada en **Pagos → Integraciones**. Si todavía no lo está, sigue [Conecta Stripe](/primeros-pasos/conecta-stripe).
+- Algunos métodos requieren que tu cuenta de Stripe esté verificada, que tu país los admita o que Stripe apruebe su uso.
+
+## Activa o desactiva métodos de pago
+
+<Steps>
+  <Step title="Abre la integración de Stripe">
+    Ve a **Pagos → Integraciones** y haz clic en **Administrar** junto a tu cuenta de Stripe conectada.
+  </Step>
+  <Step title="Entra a la gestión de métodos de pago">
+    Haz clic en **Administrar métodos de pago** (Manage Payment Methods). Verás la lista de métodos disponibles para cada área de producto.
+  </Step>
+  <Step title="Elige el modo">
+    Confirma si estás configurando el **modo en vivo** o el **modo de prueba**. Cada uno guarda su propia configuración.
+  </Step>
+  <Step title="Activa o desactiva cada método">
+    Usa los interruptores para decidir qué métodos estarán disponibles en cada área de producto.
+  </Step>
+  <Step title="Configura las suscripciones">
+    Si vendes productos de suscripción, abre el desplegable **Suscripciones** y elige los métodos que aceptarás en esos checkouts.
+  </Step>
+  <Step title="Guarda los cambios">
+    Guarda y prueba un checkout para confirmar que se muestran las opciones esperadas.
+  </Step>
+</Steps>
+
+<Note>
+El desplegable **Suscripciones** solo aparece cuando ya tienes al menos un producto de suscripción creado en **modo en vivo** en tu cuenta. Es un requisito de Stripe.
+</Note>
+
+## Áreas de producto donde aplica la configuración
+
+| Área | Qué cubre |
+| --- | --- |
+| **Facturas** | Facturas únicas y recurrentes sin pago automático |
+| **Facturas con pago automático** | Facturas recurrentes que se cobran solas |
+| **Enlaces de pago** | Checkouts alojados que compartes por enlace |
+| **Embudos: formulario de pedido de un paso** | Checkout en una sola pantalla |
+| **Embudos: formulario de pedido de dos pasos** | Checkout dividido en dos pasos |
+| **Formularios** | Formularios con cobro integrado |
+| **Tiendas en línea** | Checkout de tu tienda |
+| **Calendarios** | Pagos al reservar una cita |
+| **Cursos** | Venta de cursos |
+| **Comunidades** | Accesos pagados a comunidades |
+| **Suscripciones** | Checkouts de productos recurrentes |
+
+## Métodos que requieren configuración adicional
+
+Algunos métodos no aparecen en el checkout aunque los actives, hasta que se cumplen ciertos requisitos.
+
+### Billeteras digitales
+
+| Método | Requisitos |
+| --- | --- |
+| **Apple Pay** | Cuenta de pagos totalmente activada, dominio verificado y Apple Pay habilitado. Solo se muestra en dispositivos Apple compatibles. |
+| **Google Pay** | Depende del dispositivo, del navegador y de que tu cuenta sea elegible. |
+
+Para activarlas: **Pagos → Integraciones → Administrar métodos de pago**, enciende el método y guarda.
+
+### Pagos bancarios
+
+- **Débito directo ACH:** disponible solo en regiones compatibles y para cuentas elegibles. Puede pedir verificación adicional.
+- **iDEAL y SEPA:** métodos regionales que aparecen solo cuando tu cuenta de Stripe y la ubicación del cliente los admiten.
+
+### Compra ahora, paga después
+
+Métodos de financiamiento como **Affirm**, **Klarna**, **Afterpay** o **Clearpay** pueden requerir la aprobación del proveedor antes de activarse. Una vez aprobados, se encienden desde la misma pantalla de **Administrar métodos de pago**.
+
+<Info>
+Las comisiones de Stripe varían según tu país y el método de pago. Consulta la [página de precios de Stripe](https://stripe.com/pricing) para ver las tarifas vigentes.
+</Info>
+
+## Solución de problemas
+
+Si un método está activado pero no aparece en el checkout, revisa:
+
+1. **El modo:** confirma que lo activaste en el mismo modo (en vivo o de prueba) en el que estás probando.
+2. **El área de producto:** revisa que esté activado en el área correcta (por ejemplo, **Facturas con pago automático** y no solo **Facturas**).
+3. **La verificación:** tu cuenta de Stripe puede tener requisitos pendientes para ese método.
+4. **La región:** algunos métodos solo se muestran a clientes de ciertos países.
+5. **El dispositivo:** Apple Pay solo aparece en dispositivos Apple y Google Pay en dispositivos y navegadores compatibles.
+6. **Guardar:** confirma que guardaste los cambios antes de volver a probar.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa con los métodos que ya tenía configurados en Stripe?">
+    Se conservan. Los métodos predeterminados de cada área coinciden con tu configuración original de Stripe hasta que los cambies desde Chateea.
+  </Accordion>
+  <Accordion title="¿El modo en vivo y el de prueba tienen configuraciones separadas?">
+    Sí. Puedes activar métodos distintos en cada modo para probar sin afectar a tus clientes reales.
+  </Accordion>
+  <Accordion title="¿Por qué no veo el desplegable de Suscripciones?">
+    Porque todavía no tienes ningún producto de suscripción creado en modo en vivo. Crea al menos uno y la opción aparecerá.
+  </Accordion>
+  <Accordion title="Tengo BLIK activo en Stripe, pero no aparece en el checkout. ¿Cómo lo activo?">
+    BLIK no está disponible en esta integración. Requiere confirmar el pago de inmediato en el checkout, lo que no es compatible con el flujo de pago que usa Chateea.
+  </Accordion>
+  <Accordion title="¿Por qué un método está activado pero no aparece?">
+    Puede deberse a restricciones de tu cuenta, a que el tipo de checkout no lo admite, a limitaciones regionales, a verificaciones pendientes o a que solo lo activaste en modo de prueba. Revisa la sección de solución de problemas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integración de pagos con Stripe" icon="credit-card" href="/comercio/integracion-stripe">
+    Conecta y configura tu cuenta de Stripe.
+  </Card>
+  <Card title="Proveedores y métodos de pago por área" icon="table" href="/pagos/proveedores-y-metodos-de-pago-por-area">
+    Qué funciona en cada parte de Chateea.
+  </Card>
+  <Card title="Apple Pay y Google Pay" icon="wallet" href="/pagos-facturas/apple-pay-google-pay">
+    Activa las billeteras digitales en tus checkouts.
+  </Card>
+  <Card title="Enlaces de pago" icon="link" href="/comercio/enlaces-de-pago">
+    Cobra con un enlace que compartes por cualquier canal.
+  </Card>
+</CardGroup>

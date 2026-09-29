@@ -1,68 +1,110 @@
 ---
-title: "Habilitación de recibos de venta para las compras mediante formularios de pedido"
-description: "Envía un recibo profesional automático tras cada pago, con tu marca."
+title: "Recibos de venta automáticos"
+description: "Envía un recibo en PDF tras cada pago de formularios, calendarios, suscripciones y facturas, o desactívalo."
 icon: "receipt"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Un recibo le confirma a tu cliente que su pago llegó y le sirve como comprobante para sus registros. Con los recibos de venta automáticos, Chateea envía ese comprobante por correo en cuanto se completa el pago, sin que nadie de tu equipo tenga que generarlo.
 
-Los recibos de venta automáticos envían un comprobante al cliente en cuanto un pago se completa, sin que nadie lo genere a mano. Puedes personalizarlos para que reflejen tu marca.
+## Qué pagos generan recibo
 
-## Cómo habilitar los recibos automáticos
+Los recibos automáticos cubren:
 
-Localiza la configuración de recibos y activa el interruptor para habilitar la entrega automática en **todas las transacciones elegibles**.
+- Compras en formularios de pedido de uno y dos pasos, incluidos el producto principal, los productos adicionales (bumps) y las ventas adicionales (upsells).
+- Pagos de suscripciones, tanto el primero como los recurrentes.
+- Pagos de citas en calendarios.
+- Pagos de facturas.
+
+## Activa los recibos automáticos
+
+<Steps>
+  <Step title="Abre la configuración de recibos">
+    Ve a **Pagos → Configuración** y abre la pestaña **Recibos**.
+  </Step>
+  <Step title="Activa el envío automático">
+    Enciende **Habilitar recibos de venta automáticos para pagos**.
+  </Step>
+  <Step title="Personaliza el recibo">
+    Ajusta el título, la numeración y la plantilla de correo (ver la tabla siguiente).
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Desde ese momento, cada pago elegible enviará su recibo.
+  </Step>
+</Steps>
 
 ## Personaliza tus recibos
 
-| Elemento | Qué puedes hacer |
+| Opción | Qué puedes hacer |
 | --- | --- |
-| **Título del recibo** | Establecer un título personalizado que coincida con tu marca |
-| **Numeración de recibos** | Agregar un prefijo y definir un número inicial para el seguimiento |
-| **Plantilla de correo** | Personalizar el diseño y el mensaje del correo que acompaña al recibo |
+| **Título** | Poner un título propio, acorde a tu marca. |
+| **Numeración** | Definir un prefijo y un número inicial para ordenar tus comprobantes. |
+| **Plantilla de correo** | Diseñar el correo que acompaña al recibo con el editor de correos y los valores personalizados. |
 
 <Warning>
-  La numeración de recibos solo se puede **aumentar, nunca disminuir**, una vez creados los primeros recibos. Define bien el número inicial antes de empezar.
+Los números de recibo se generan automáticamente y cada uno debe ser mayor que el anterior. No puedes editarlos, reiniciarlos ni bajarlos a un número menor. Define bien el prefijo y el número inicial antes de empezar.
 </Warning>
 
-## Cómo funciona la entrega
+## Cómo llega el recibo
 
-- Se envía automáticamente tras el pago exitoso
-- Llega por correo electrónico al cliente
-- Incluye un recibo en **PDF descargable**
+El recibo se envía al correo del contacto como un **PDF descargable** adjunto, en cuanto el pago se procesa con éxito. Puede haber pequeñas demoras por factores de entrega ajenos a Chateea, como el servidor de correo del destinatario.
 
-## Uso de plantillas personalizadas
+## Desactiva los recibos automáticos
 
-Puedes crear correos de recibo con plantillas a medida, para controlar el diseño, el mensaje y la presentación general, y mantener una experiencia de marca coherente.
+Si prefieres enviar los recibos a mano o desde otra herramienta (por ejemplo, desde Stripe):
+
+<Steps>
+  <Step title="Abre la pestaña Recibos">
+    Ve a **Pagos → Configuración → Recibos**.
+  </Step>
+  <Step title="Apaga el interruptor">
+    Desactiva **Habilitar recibos de venta automáticos para pagos**.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+Al desactivarlos, dejan de enviarse para todos los tipos de pago, únicos y recurrentes. Tus registros no se ven afectados: cada pago exitoso sigue apareciendo en **Pagos → Transacciones**.
+
+## Comprueba si un recibo se entregó
+
+Ve a **Marketing → Correos → Informes de correo** y filtra por el correo del cliente o por el asunto del recibo. Verás si el correo se entregó, se abrió o rebotó.
+
+Si un recibo no llega, revisa en este orden:
+
+1. Que los recibos automáticos estén activados.
+2. Que el pago se haya completado correctamente.
+3. Que el correo del contacto sea válido.
+4. Que la plantilla de correo esté bien configurada.
+5. El estado de entrega en los informes de correo.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Cómo habilito los recibos automáticos?">
-    Activa la opción de recibos en la configuración de pagos.
+  <Accordion title="¿Puedo enviar recibos automáticos solo para ciertos pagos?">
+    No. Al activarlos, se aplican a todos los pagos elegibles de formularios de pedido, calendarios, suscripciones y facturas. Si necesitas algo selectivo, desactívalos y envía los recibos manualmente, o usa un flujo de trabajo con el disparador **Pedido enviado** para mensajes por producto.
   </Accordion>
-
-  <Accordion title="¿Puedo editar los detalles del recibo?">
-    Los detalles de la transacción se generan automáticamente, pero el título, la numeración y el diseño del correo sí se pueden personalizar.
+  <Accordion title="¿Puedo agregar campos personalizados o mensajes al recibo?">
+    El PDF del recibo muestra los datos estándar de la transacción. Para agregar un mensaje o elementos de marca, personaliza la plantilla del correo que lo acompaña.
   </Accordion>
-
-  <Accordion title="¿Puedo restablecer la numeración de los recibos?">
-    Una vez creados los recibos, puedes aumentar el número, pero no disminuirlo.
+  <Accordion title="¿Se envían justo después del pago?">
+    Sí, en cuanto el pago se procesa con éxito, salvo demoras propias del servidor de correo del destinatario.
   </Accordion>
-
-  <Accordion title="¿Están incluidos los pagos de suscripción?">
-    Sí. Se generan recibos también para los pagos recurrentes.
+  <Accordion title="¿Puedo cambiar un número de recibo por uno más bajo?">
+    No. La numeración es automática y siempre avanza.
+  </Accordion>
+  <Accordion title="¿Se generan recibos para pagos de suscripción?">
+    Sí, también para los cobros recurrentes.
   </Accordion>
 </AccordionGroup>
 
-## Si un recibo no se envía
+## Artículos relacionados
 
-Revisa en este orden:
-
-1. Que los recibos automáticos estén habilitados
-2. Que el correo del cliente sea válido
-3. Que la plantilla de correo esté bien configurada
-4. Que el pago se haya realizado correctamente
-
-Si el problema persiste, contacta al servicio de asistencia.
+<CardGroup cols={2}>
+  <Card title="Confirmaciones de compra y pedido" icon="envelope-circle-check" href="/pagos/confirmaciones-de-compra-y-pedido">
+    Elige entre recibo, confirmación de tienda o flujo de trabajo.
+  </Card>
+  <Card title="PDF de facturas y recibos" icon="file-pdf" href="/pagos-facturas/generacion-pdf-facturas-recibos">
+    Cómo se generan los documentos PDF.
+  </Card>
+</CardGroup>

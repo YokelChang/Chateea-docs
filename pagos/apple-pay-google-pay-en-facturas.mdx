@@ -1,0 +1,103 @@
+---
+title: "Apple Pay y Google Pay en facturas y enlaces de pago por SMS"
+description: "Activa Apple Pay y Google Pay con Stripe en tus facturas y resuelve los problemas más comunes."
+icon: "mobile-screen"
+---
+
+Tus clientes pueden pagar facturas y enlaces de pago por SMS (Text2Pay) con **Apple Pay** y **Google Pay**, usando la tarjeta que ya tienen guardada en su teléfono o navegador. Funciona con facturas únicas y recurrentes, y suele acelerar el cobro, sobre todo cuando el cliente abre la factura desde el celular.
+
+## Cuándo ve el cliente estas opciones
+
+Apple Pay y Google Pay aparecen junto a la opción de pago con tarjeta solo si se cumplen **las dos** condiciones:
+
+- El país del cliente y su navegador admiten la billetera.
+- El cliente tiene un método de pago asociado a su cuenta de Apple o de Google.
+
+Navegadores compatibles:
+
+| Navegador | Plataforma |
+| --- | --- |
+| Chrome | Escritorio y Android |
+| Safari | macOS e iOS |
+| Microsoft Edge | Windows |
+
+Consulta los países compatibles en la documentación oficial de [Apple Pay](https://support.apple.com/es-es/HT207957) y de [Google Pay](https://support.google.com/googlepay/answer/12429287).
+
+## Cómo activarlos
+
+<Steps>
+  <Step title="Conecta Stripe">
+    Ve a **Pagos → Integraciones** y conecta tu cuenta de Stripe. Estas billeteras solo están disponibles con Stripe conectado desde esa pantalla.
+  </Step>
+  <Step title="Activa las billeteras en Stripe">
+    En tu panel de Stripe, activa Apple Pay y Google Pay como métodos de pago.
+  </Step>
+  <Step title="Listo">
+    Las opciones empiezan a aparecer automáticamente en tus facturas y enlaces de pago por SMS.
+  </Step>
+</Steps>
+
+<Note>
+  Apple Pay exige registrar el dominio en el que se acepta el pago. Chateea hace ese registro por ti de forma automática en cuanto conectas Stripe.
+</Note>
+
+## Solución de problemas con Apple Pay
+
+<Steps>
+  <Step title="Revisa la conexión">
+    Confirma que Stripe está conectado a tu cuenta de Chateea y que el interruptor de Apple Pay y Google Pay está activado.
+  </Step>
+  <Step title="Revisa la disponibilidad en tu país">
+    Comprueba que Apple Pay esté disponible en tu país según la [lista de Stripe](https://stripe.com/docs/connect/payment-method-available-countries#apple-pay).
+  </Step>
+  <Step title="Revisa el dominio en Stripe">
+    Entra a la sección de [dominios de Apple Pay en Stripe](https://dashboard.stripe.com/settings/payments/apple_pay) y confirma que el dominio donde se muestra la factura aparece en **Web Domains**. Si no aparece, puedes agregarlo con **Add New Domain** como solución rápida, y escribe a soporte de Chateea en **help@chateea.com** para revisar por qué no se registró solo.
+  </Step>
+  <Step title="Revisa el archivo de verificación">
+    Si el dominio figura como registrado, confirma que el archivo de asociación está publicado: al visitar `https://tudominio.com/.well-known/apple-developer-merchantid-domain-association` debe descargarse un archivo. Más información en la [guía de Stripe](https://stripe.com/docs/stripe-js/elements/payment-request-button?client=html#verifying-your-domain-with-apple-pay).
+  </Step>
+  <Step title="Revisa el dispositivo del cliente">
+    El cliente debe usar Safari en iOS 10 o macOS Sierra en adelante, con un [dispositivo compatible](https://support.apple.com/es-es/HT208531) y una tarjeta de un [banco participante](https://support.apple.com/es-es/HT204916).
+  </Step>
+</Steps>
+
+## Solución de problemas con Google Pay
+
+- Stripe debe estar conectado en **Pagos → Integraciones**.
+- Google Pay debe estar [disponible en tu país](https://stripe.com/docs/connect/payment-method-available-countries#google-pay).
+- El cliente debe usar Google Chrome o Safari.
+- El cliente debe tener una tarjeta válida registrada en Google Pay.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cambia algo en mis reportes de transacciones?">
+    No. Stripe trata los pagos con Apple Pay y Google Pay como pagos con tarjeta, y se ven en las páginas de facturas y transacciones como cualquier otro cobro.
+  </Accordion>
+  <Accordion title="¿Stripe cobra una comisión distinta?">
+    Stripe procesa estos pagos como pagos con tarjeta. Revisa las tarifas vigentes en tu cuenta de Stripe o en su [documentación de Apple Pay](https://stripe.com/docs/apple-pay).
+  </Accordion>
+  <Accordion title="Uso PayPal, Authorize.net o NMI. ¿Puedo ofrecer Apple Pay y Google Pay en facturas?">
+    No. En facturas y enlaces de pago por SMS, estas billeteras solo están disponibles con Stripe.
+  </Accordion>
+  <Accordion title="¿Puedo ofrecer otros métodos de pago, como débito bancario?">
+    Sí. Con Stripe también puedes aceptar débito directo ACH en facturas. Consulta [Débito ACH en facturas](/pagos/debito-ach-en-facturas).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Apple Pay y Google Pay en formularios de pedido" icon="mobile" href="/pagos-facturas/apple-pay-google-pay">
+    Ofrece estas billeteras en tus embudos.
+  </Card>
+  <Card title="Integración con Stripe" icon="credit-card" href="/comercio/integracion-stripe">
+    Conecta Stripe a tu cuenta de Chateea.
+  </Card>
+  <Card title="Débito ACH en facturas" icon="building-columns" href="/pagos/debito-ach-en-facturas">
+    Cobra directamente desde la cuenta bancaria del cliente.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos/crear-y-enviar-facturas">
+    Configura y emite tus facturas.
+  </Card>
+</CardGroup>

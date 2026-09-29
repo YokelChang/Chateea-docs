@@ -1,0 +1,174 @@
+---
+title: "Envía confirmaciones de compra y de pedido"
+description: "Elige entre recibo automático, confirmación de la tienda o un flujo con Pedido enviado, sin mensajes duplicados."
+icon: "envelope-circle-check"
+---
+
+Después de una compra, tu cliente espera saber que todo salió bien y qué sigue. Chateea te da tres formas de confirmar una compra: el recibo de venta automático, el correo de confirmación de pedido de la tienda y un flujo de trabajo con el disparador **Pedido enviado**. Elegir bien evita mensajes duplicados y te permite automatizar lo que pasa después de cada venta.
+
+## Ventajas de confirmar cada compra
+
+- **Tranquilidad inmediata:** el cliente sabe que su pedido o pago se recibió.
+- **Información clara:** recibe los datos del pedido, del pago y de los productos.
+- **Seguimiento personalizado:** puedes enviar instrucciones, bienvenida o pasos siguientes según el producto.
+- **Automatización posventa:** puedes avisar a tu equipo, etiquetar al contacto o enviar datos a otros sistemas.
+
+## Elige el método adecuado
+
+| Método | Ideal para | Cómo funciona |
+| --- | --- | --- |
+| **Recibo de venta automático** | Formularios de pedido, suscripciones, calendarios y facturas | Envía un comprobante estándar después de cada pago exitoso. |
+| **Correo de confirmación de pedido de la tienda** | Pedidos de tu tienda en línea | Envía una confirmación propia de la tienda, con acceso al pedido y a descargas digitales. |
+| **Flujo de trabajo con Pedido enviado** | Mensajes personalizados después de la compra | Permite correos a medida, datos del pedido, condiciones, bienvenida, acciones internas e integraciones. |
+
+<Tip>
+Puedes combinar métodos a propósito. Por ejemplo, el recibo como comprobante de pago y un correo del flujo con las instrucciones de inicio. Lo importante es que cada mensaje tenga un objetivo distinto.
+</Tip>
+
+## Opción 1: recibo de venta automático
+
+Es la forma más sencilla de enviar un comprobante sin crear flujos. Cubre:
+
+- Compras en formularios de pedido de uno y dos pasos.
+- Productos adicionales (bumps) y ventas adicionales (upsells).
+- Suscripciones.
+- Pagos de citas en calendarios.
+- Pagos de facturas.
+
+El recibo se envía por correo con un PDF adjunto y puedes personalizar su título, numeración y plantilla.
+
+<Note>
+Los recibos automáticos se aplican a todos los pagos compatibles. Si necesitas mensajes distintos por producto, origen o condición, usa un flujo de trabajo con **Pedido enviado**.
+</Note>
+
+Consulta la configuración completa en [Recibos de venta automáticos](/pagos-facturas/recibos-de-venta).
+
+## Opción 2: confirmación de pedido de la tienda
+
+Los pedidos de tu tienda en línea tienen su propio correo de confirmación.
+
+<Steps>
+  <Step title="Abre las notificaciones de pagos">
+    Ve a **Pagos → Configuración** y abre **Notificaciones**.
+  </Step>
+  <Step title="Configura la confirmación de la tienda">
+    Busca **Correo de confirmación de pedido para tiendas** y ajústalo a tu gusto.
+  </Step>
+</Steps>
+
+Según la configuración de tu tienda, el correo puede incluir un botón **Ver pedido** para que el cliente consulte su compra. Si vendes productos digitales, también puede darle acceso a sus descargas.
+
+<Warning>
+Si vendes productos descargables, no dependas solo de un correo genérico de un flujo para entregarlos. Configura la entrega de productos digitales de la tienda.
+</Warning>
+
+## Opción 3: confirmación personalizada con Pedido enviado
+
+Usa esta opción cuando quieras controlar el contenido y lo que ocurre después de la compra.
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo**, crea un flujo nuevo o abre uno existente y agrega el disparador **Pedido enviado**.
+  </Step>
+  <Step title="Filtra los pedidos">
+    Agrega filtros para que solo entren las compras que te interesan. Según el pedido, puedes filtrar por producto, origen del pedido, suborigen, embudo o sitio web, página, tipo de envío o precio del producto. Por ejemplo, filtra por un producto concreto si las instrucciones solo aplican a ese producto.
+  </Step>
+  <Step title="Revisa Permitir múltiples">
+    Un mismo cliente puede generar más de un pedido, sobre todo si hay productos adicionales o ventas adicionales. Si el flujo debe correr en cada compra del mismo cliente, activa **Permitir múltiples** en la configuración del flujo.
+  </Step>
+  <Step title="Agrega el correo de confirmación">
+    Agrega la acción **Enviar correo** con el mensaje: agradecimiento, datos del pedido, instrucciones del producto, pasos de inicio, cómo pedir ayuda y lo que el cliente debe hacer a continuación.
+  </Step>
+  <Step title="Usa los datos del pedido">
+    Con el disparador **Pedido enviado** tienes disponibles valores personalizados del pedido, como número de pedido, total, total del carrito, moneda, cupón o descuento, fecha y hora, pasarela de pago y nombre, correo y teléfono del cliente. Usa solo los que le sirvan al cliente.
+  </Step>
+  <Step title="Muestra los productos comprados">
+    Agrega el elemento **Carrito de compras** a la plantilla de correo que usa el flujo. Mostrará automáticamente los productos, imágenes, cantidades y precios de cada línea del pedido.
+  </Step>
+</Steps>
+
+<Warning>
+**Pedido enviado** y **Formulario de pedido enviado** son disparadores distintos. Pedido enviado corresponde a la compra; Formulario de pedido enviado solo indica que se envió el formulario y no garantiza que la compra se haya completado.
+</Warning>
+
+## Automatiza lo que sigue a la compra
+
+Además de confirmar, el mismo flujo puede:
+
+- Avisar a tu equipo con una notificación interna.
+- Actualizar datos del contacto en el CRM.
+- Agregar etiquetas para segmentar.
+- Iniciar un proceso de bienvenida.
+- Avisar al responsable de la cuenta o al equipo de entregas.
+- Enviar los datos del pedido a otro sistema con un webhook.
+
+Un recorrido típico: **Pedido enviado → confirmación al cliente → aviso interno → acciones de bienvenida**. Usa filtros para separar productos que necesiten procesos distintos.
+
+## Evita confirmaciones duplicadas
+
+Antes de activar otro flujo de confirmación, revisa si la compra ya genera:
+
+- Un recibo de venta automático.
+- Un correo de confirmación de la tienda.
+- Una notificación de pago de factura.
+- Una notificación del calendario.
+- Otro correo o SMS de un flujo.
+
+Recibir un recibo y una confirmación personalizada puede estar bien si cada uno cumple su función: el recibo documenta el pago y el flujo explica los siguientes pasos.
+
+## Prueba tu confirmación
+
+<Steps>
+  <Step title="Haz una compra de prueba">
+    Usa el mismo origen y las mismas condiciones que tendrá tu cliente.
+  </Step>
+  <Step title="Revisa el flujo">
+    Confirma que se disparó el flujo correcto y que los filtros funcionan.
+  </Step>
+  <Step title="Revisa el mensaje">
+    Verifica que llegó el correo, que los datos del pedido y del cliente son correctos y que el carrito muestra los productos.
+  </Step>
+  <Step title="Revisa lo demás">
+    Comprueba que las acciones adicionales se ejecutaron y si llegó algún otro recibo o aviso. Ajusta los mensajes que se superpongan.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Uso el recibo automático o un flujo con Pedido enviado?">
+    El recibo sirve para documentar el pago de forma estándar. El flujo sirve para mensajes personalizados, condiciones, bienvenida, acciones internas o integraciones. Puedes usar ambos si cada uno tiene un propósito distinto.
+  </Accordion>
+  <Accordion title="¿Pedido enviado es lo mismo que Formulario de pedido enviado?">
+    No. Pedido enviado corresponde a la compra; Formulario de pedido enviado corresponde al envío del formulario y no confirma que se haya pagado.
+  </Accordion>
+  <Accordion title="¿Puedo mostrar los productos comprados en el correo?">
+    Sí. Usa el elemento **Carrito de compras** en la plantilla de correo del flujo con el disparador Pedido enviado.
+  </Accordion>
+  <Accordion title="Mi cliente recibió varias confirmaciones. ¿Por qué?">
+    Probablemente hay más de un método activo: recibo automático, confirmación de la tienda, notificaciones de facturas o calendario y flujos. Revísalos y deja solo los que tengan un propósito distinto.
+  </Accordion>
+  <Accordion title="¿Qué pasa si después reembolso el pedido?">
+    La confirmación ya se envió. El reembolso es un evento aparte: usa el disparador de reembolso en un flujo si quieres avisar al cliente o hacer otras acciones.
+  </Accordion>
+  <Accordion title="¿Un flujo con Pedido enviado entrega productos digitales?">
+    No por sí solo. Para productos digitales de la tienda, configura el correo de confirmación de la tienda y la entrega de productos digitales.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador Pedido enviado" icon="bolt" href="/automatizaciones/disparador-pedido-enviado">
+    Filtros y opciones del disparador.
+  </Card>
+  <Card title="Entrega de productos digitales" icon="download" href="/tienda/entregar-productos-digitales">
+    Da acceso a las descargas después de la compra.
+  </Card>
+  <Card title="Recibos de venta automáticos" icon="receipt" href="/pagos-facturas/recibos-de-venta">
+    Configura el comprobante de cada pago.
+  </Card>
+  <Card title="Disparadores de suscripción y reembolso" icon="rotate-left" href="/pagos-facturas/activadores-suscripcion-reembolso">
+    Automatiza avisos de reembolso.
+  </Card>
+</CardGroup>

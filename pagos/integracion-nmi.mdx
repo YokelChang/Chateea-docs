@@ -1,0 +1,167 @@
+---
+title: "Conecta NMI para cobrar con tarjeta"
+description: "Configura NMI con tu Gateway ID y tus claves, activa 3D Secure y entiende cómo funcionan las suscripciones y los reintentos."
+icon: "credit-card"
+---
+
+NMI (Network Merchants Inc.) es una pasarela de pagos que te permite cobrar con tarjeta de crédito y débito desde tu cuenta de Chateea. Si tu banco adquirente o tu procesador trabaja con NMI, puedes conectarlo con tres claves y usarlo en formularios de pedido, facturas y enlaces de pago por mensaje de texto, sin tener que recrear tus productos.
+
+## Qué ofrece NMI
+
+NMI es una pasarela pensada para comercios que ya tienen una cuenta de comerciante con un banco o procesador compatible. Entre sus funciones destacan:
+
+| Función | Para qué te sirve |
+| --- | --- |
+| **Varias monedas** | Cobrar a clientes de distintos países, según lo que tenga aprobado tu cuenta |
+| **Tokenización y cifrado** | Los datos de tarjeta se transmiten y almacenan de forma segura |
+| **Herramientas antifraude** | Verificación de dirección (AVS) y del código de seguridad (CVV) |
+| **Bóveda de clientes** | Guardar tarjetas de forma segura para cobros recurrentes |
+| **Informes** | Consultar y analizar tus transacciones desde el portal de NMI |
+
+## Antes de empezar
+
+Necesitas una cuenta de comerciante activa en NMI y estos tres datos:
+
+| Dato | Dónde encontrarlo |
+| --- | --- |
+| **Gateway ID** | En tu portal de comerciante de NMI, en **Settings → Account Information** |
+| **Security key** (clave de seguridad) | En la sección de claves de seguridad del portal de NMI |
+| **Public key** (clave pública) | En la misma sección de claves de seguridad |
+
+Si todavía no tienes las claves, sigue la [guía oficial de NMI sobre claves de seguridad](https://support.nmi.com/hc/en-gb/articles/360002575497-Security-Keys-).
+
+<Note>
+  Para cobrar con NMI en formularios de pedido, tu embudo debe usar la versión 2 de embudos.
+</Note>
+
+## Cómo conectar NMI
+
+<Steps>
+  <Step title="Obtén el Gateway ID">
+    Inicia sesión en tu portal de comerciante de NMI y ve a **Settings → Account Information**. Copia el Gateway ID.
+  </Step>
+  <Step title="Genera o copia tus claves">
+    En el portal de NMI, copia tu **Security key** y tu **Public key**. Si no existen, créalas siguiendo la guía de NMI.
+  </Step>
+  <Step title="Abre las integraciones de pago en Chateea">
+    En tu cuenta de Chateea, ve a **Pagos → Integraciones** y busca NMI.
+  </Step>
+  <Step title="Pega los datos y guarda">
+    Completa los campos Gateway ID, Security key y Public key, y haz clic en **Guardar**.
+  </Step>
+  <Step title="Elige el proveedor predeterminado">
+    Si tienes otra pasarela de tarjetas conectada (por ejemplo Stripe o Authorize.net), define cuál será la predeterminada para cobrar con tarjeta.
+  </Step>
+</Steps>
+
+## Dónde funciona NMI
+
+| Canal | Compatible |
+| --- | --- |
+| Formularios de pedido de un paso y de dos pasos (embudos versión 2) | Sí |
+| Ventas adicionales de un clic (upsells) | Sí |
+| Facturas | Sí |
+| Enlaces de pago por mensaje de texto | Sí |
+| Calendarios y membresías | No, siguen cobrando con Stripe |
+
+<Warning>
+  Aunque NMI sea tu pasarela predeterminada, solo se procesan con NMI los pagos de facturas, enlaces de pago por mensaje de texto y formularios de pedido. El resto de áreas sigue usando Stripe.
+</Warning>
+
+### Métodos de pago admitidos
+
+Con NMI solo puedes aceptar **tarjetas de crédito y débito**. Apple Pay, Google Pay y cheques no están disponibles con esta integración. Si necesitas cobrar por cuenta bancaria, revisa [transferencias bancarias ACH con NMI](/pagos/transferencias-bancarias-ach-con-nmi), disponible en facturas y suscripciones.
+
+## Activa 3D Secure (3DS) en NMI
+
+NMI admite 3D Secure, la verificación adicional que algunos bancos exigen al titular de la tarjeta. Requiere una configuración única:
+
+<Steps>
+  <Step title="Inscríbete en Payer Authentication 2.0">
+    Solicítalo desde tu cuenta de NMI.
+  </Step>
+  <Step title="Confirma que el servicio está activo">
+    El estado del servicio debe aparecer como **Active** en NMI.
+  </Step>
+  <Step title="Genera la Checkout Public Key">
+    En el portal de comerciante de NMI, crea una clave pública de checkout para 3DS.
+  </Step>
+  <Step title="Agrégala en Chateea">
+    Pega esa clave en el campo correspondiente de la integración de NMI, en **Pagos → Integraciones**.
+  </Step>
+</Steps>
+
+Desde ese momento, cuando una tarjeta requiera 3DS, tu cliente verá una ventana para verificar su identidad y completar el pago. Más detalles en [3D Secure con Square y NMI](/pagos/3d-secure-en-square-y-nmi).
+
+## Suscripciones con NMI
+
+Puedes vender productos recurrentes con NMI. Las suscripciones se ven en **Pagos → Suscripciones** y los detalles de pedidos y cobros en **Pedidos** y **Transacciones**.
+
+<Note>
+  En un mismo formulario de pedido solo puedes comprar un producto recurrente a la vez.
+</Note>
+
+Chateea gestiona el calendario de cobros de la suscripción: no usa la facturación recurrente automática de NMI. Por eso en el portal de NMI solo verás los cargos individuales, y la suscripción se cancela desde Chateea con la acción **Cancelar suscripción**.
+
+### Estados de la suscripción
+
+| Estado | Significado | ¿Se puede cancelar? |
+| --- | --- | --- |
+| **Pendiente** | El primer cobro no se completó o está en revisión | No |
+| **Prueba** | La suscripción está en período de prueba | Sí |
+| **Activa** | El último pago se cobró y hay pagos futuros | Sí |
+| **Vencida** | Se completaron todos los pagos y la suscripción terminó | No |
+| **Cancelada** | Tu negocio la canceló y no habrá más cobros | No |
+| **Impaga** | El último cobro falló, pero la suscripción sigue en curso | Sí |
+
+### Qué pasa si falla un cobro
+
+- Si el primer pago se aprueba, la suscripción pasa a **Activa** (o a **Prueba** si el producto tiene período de prueba).
+- Si falla un cobro posterior, el sistema lo reintenta **dos veces más, cada 24 horas**, y la suscripción queda en **Impaga**.
+- Los siguientes cobros programados se siguen intentando, cada uno con sus dos reintentos. Si alguno se aprueba, la suscripción vuelve a **Activa**.
+- Tras los reintentos del último cobro, la suscripción pasa a **Vencida**.
+- Si desconectas NMI con suscripciones en curso, los cobros no pueden procesarse y la suscripción pasa a **Impaga**, siguiendo la misma lógica de reintentos.
+
+## Buenas prácticas
+
+- **No desconectes Stripe ni PayPal** al conectar NMI. Las suscripciones y transacciones pendientes que ya corren con esos proveedores siguen funcionando mientras la conexión exista. Elegir NMI como predeterminado solo cambia los cobros nuevos.
+- **Prueba antes de vender.** Usa las [tarjetas de prueba de NMI](https://support.nmi.com/hc/en-gb/articles/115002375583-Test-Cards) y revisa las [monedas disponibles](https://support.nmi.com/hc/en-gb/articles/360005072012-Available-Currencies-Currency-Selection) para tu cuenta.
+- **Los reembolsos se hacen en el portal de NMI.** Por ahora no puedes reembolsar pagos de NMI desde Chateea.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que crear productos nuevos o sincronizarlos con NMI?">
+    No. Basta con crear el producto (único o recurrente) en **Pagos → Productos**; se cobrará con el precio que definiste. Si ya usas productos con Stripe o PayPal, funcionarán con NMI al cambiar el proveedor predeterminado en **Pagos → Integraciones**, sin sincronizar nada.
+  </Accordion>
+  <Accordion title="¿Puedo usar Stripe para Apple Pay y Google Pay y NMI para tarjetas?">
+    No. Apple Pay y Google Pay solo están disponibles con Stripe, y para los formularios de pedido solo puede haber una pasarela de tarjetas predeterminada entre Stripe, Authorize.net y NMI. No se pueden combinar en el mismo formulario.
+  </Accordion>
+  <Accordion title="Ya uso Stripe. ¿Debo desconectarlo para conectar NMI?">
+    No. Puedes tener ambas pasarelas conectadas. Solo debes elegir cuál es la predeterminada para cobrar con tarjeta.
+  </Accordion>
+  <Accordion title="¿Qué significa la pasarela predeterminada en Integraciones?">
+    Cuando tienes más de una pasarela de tarjetas conectada, el sistema necesita saber cuál usar para los cobros nuevos. Esa es la predeterminada, y siempre debe haber una elegida.
+  </Accordion>
+  <Accordion title="¿Por qué PayPal no aparece como opción predeterminada?">
+    Porque PayPal funciona como método de pago adicional, al lado de las tarjetas. La predeterminada se elige entre Stripe, Authorize.net y NMI, y PayPal sigue disponible en tus formularios de pedido de forma independiente.
+  </Accordion>
+  <Accordion title="No puedo eliminar la última tarjeta guardada de un cliente">
+    NMI no permite eliminar la única tarjeta que queda en un perfil de facturación y rechaza la solicitud. Agrega primero otro método de pago al perfil y después podrás eliminar la tarjeta anterior.
+  </Accordion>
+  <Accordion title="¿Cambian mis informes, disparadores o atribución al usar NMI?">
+    No. Los pagos con NMI aparecen en **Pagos → Transacciones**, igual que los demás, y los disparadores y la atribución de los formularios de pedido funcionan exactamente igual.
+  </Accordion>
+  <Accordion title="¿Puedo hacer reembolsos desde Chateea?">
+    Por ahora no. Haz los reembolsos de pagos con NMI desde el portal de comerciante de NMI.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Países y bancos adquirentes de NMI" icon="building-columns" href="/pagos/nmi-paises-y-bancos-adquirentes">
+    Comprueba si tu país y tu banco trabajan con NMI.
+  </Card>
+  <Card title="Configurar proveedores de pago" icon="credit-card" href="/pagos-facturas/configurar-proveedores-pago">
+    Conecta y ordena las pasarelas de tu cuenta.
+  </Card>
+</CardGroup>

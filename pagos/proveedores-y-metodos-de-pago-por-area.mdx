@@ -1,0 +1,112 @@
+---
+title: "Proveedores y métodos de pago por área"
+description: "Tabla de qué proveedores y métodos de pago funcionan en cada parte de Chateea, del checkout al POS."
+icon: "table"
+---
+
+Esta guía rápida te dice qué proveedores y métodos de pago funcionan en cada parte de Chateea: Stripe (con sus billeteras, pagos a plazos y débitos bancarios), PayPal, Square, NMI, Authorize.net, Razorpay y lectores de tarjetas. Úsala para planificar tus checkouts, para elegir proveedor o cuando un método no aparece donde esperabas.
+
+<Note>
+Algunos métodos de pago **no admiten suscripciones ni pagos recurrentes**: solo sirven para pagos únicos. Prueba siempre tu caso recurrente antes de lanzarlo.
+</Note>
+
+## Pagos en línea
+
+| Proveedor o método | Formularios de pedido | Formularios | Encuestas | Checkout desde correo | Tienda | Facturas | Facturas recurrentes | Enlaces de pago |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Stripe: tarjeta | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Stripe: Apple Pay y Google Pay | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Stripe: Affirm, Klarna y Afterpay | Sí | Sí | Sí | Sí | Sí | Sí | No | Sí |
+| Stripe: débito directo ACH | No | No | No | No | No | Sí | Sí | No |
+| Stripe: iDEAL y Bancontact | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Stripe: SEPA | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Stripe: Amazon Pay y Revolut Pay | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Stripe: Link | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Stripe: lector de tarjetas | No | No | No | No | No | No | No | No |
+| PayPal | Sí | Sí | No | Sí | Sí | Sí | Sí | Sí |
+| Authorize.net: tarjeta | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| NMI: tarjeta | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Square: tarjeta | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Square: lector de tarjetas | No | No | No | No | No | No | No | No |
+| Razorpay | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| Integraciones de terceros | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+
+## Otras áreas y cobros presenciales
+
+| Proveedor o método | Cursos | Comunidades | Ficha del contacto | Calendarios y servicios | Menú de servicios | POS |
+| --- | --- | --- | --- | --- | --- | --- |
+| Stripe: tarjeta | Sí | Sí | Sí | Sí | Sí | Sí |
+| Stripe: Apple Pay y Google Pay | Sí | Sí | No | Sí | No | Sí |
+| Stripe: Affirm, Klarna y Afterpay | No | No indicado | No | No | No | No |
+| Stripe: débito directo ACH | No | No | No | No | No | No |
+| Stripe: iDEAL y Bancontact | Sí | Sí | No | Sí | No | No |
+| Stripe: SEPA | Sí | Sí | No | No | No | No |
+| Stripe: Amazon Pay y Revolut Pay | Sí | Sí | No | No | No | No |
+| Stripe: Link | Sí | Sí | No | No | No | No |
+| Stripe: lector de tarjetas (Stripe M2 y BBPOS WisePad 3) | No | No | No | No | No | Sí |
+| PayPal | Sí | Sí | No | No | No | No |
+| Authorize.net: tarjeta | Sí | Sí | Sí | Sí | Sí | Sí |
+| NMI: tarjeta | Sí | Sí | Sí | Sí | No | Sí |
+| Square: tarjeta | Sí | Sí | Sí | Sí | No | Sí |
+| Square: lector de tarjetas | No | No | No | No | No | Sí |
+| Razorpay | Sí | Sí | No | Sí | No | No |
+| Integraciones de terceros | Sí | Sí | No | Sí | No | No |
+
+## Qué significa cada área
+
+| Área | Qué incluye |
+| --- | --- |
+| **Formularios de pedido** | Formularios de embudos y sitios web pensados para vender productos y ofertas |
+| **Formularios** | Formularios estándar con el elemento de pago, para cobros o donaciones |
+| **Encuestas** | Encuestas con el elemento de pago para cobrar al enviarlas |
+| **Checkout desde correo** | Pago que inicia directamente desde un correo, usando un enlace de pago |
+| **Tienda** | Tu tienda en línea y su checkout |
+| **Facturas** | Facturas únicas y su cobro |
+| **Facturas recurrentes** | Plantillas de facturas recurrentes y ciclos de cobro automáticos |
+| **Enlaces de pago** | Enlaces a un checkout alojado con uno o varios productos |
+| **Cursos** | Pagos por la compra o el acceso a cursos |
+| **Comunidades** | Pagos por membresías o grupos de comunidades |
+| **Ficha del contacto** | Cobro a una tarjeta guardada o nueva directamente desde el contacto |
+| **Calendarios y servicios** | Cobros al reservar citas o servicios |
+| **Menú de servicios** | Experiencias de reserva desde un menú de servicios |
+| **POS** | Cobros presenciales desde la app móvil o con lectores compatibles |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="La tabla dice Sí para Apple Pay o Google Pay, pero el botón no aparece. ¿Por qué?">
+    Las billeteras solo aparecen en entornos compatibles: Apple Pay en dispositivos Apple (iPhone, iPad o Mac) y Google Pay en dispositivos y navegadores compatibles. Además, el método debe estar activado con tu proveedor y la billetera configurada en el dispositivo del cliente.
+  </Accordion>
+  <Accordion title="Si un proveedor tiene Sí, ¿las suscripciones funcionarán?">
+    No necesariamente. Algunos métodos solo admiten pagos únicos. Prueba tu caso recurrente antes de lanzarlo.
+  </Accordion>
+  <Accordion title="¿Puedo mostrar Stripe y PayPal en el mismo checkout?">
+    En muchas áreas sí, si ambos están conectados y habilitados. El checkout muestra automáticamente las opciones disponibles.
+  </Accordion>
+  <Accordion title="¿Puedo usar un lector de tarjetas en formularios de pedido o facturas?">
+    No. Los lectores de tarjetas solo funcionan en el POS. Usa el POS para los cobros presenciales.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conecta Stripe" icon="credit-card" href="/primeros-pasos/conecta-stripe">
+    Conecta tu cuenta de Stripe para empezar a cobrar.
+  </Card>
+  <Card title="Gestionar métodos de pago de Stripe" icon="sliders" href="/pagos/gestionar-metodos-de-pago-stripe-desde-chateea">
+    Activa o desactiva métodos por área de producto.
+  </Card>
+  <Card title="Configurar proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
+    Asigna un proveedor distinto a cada canal.
+  </Card>
+  <Card title="Integración con Authorize.net" icon="building-columns" href="/pagos/integracion-authorize-net">
+    Conecta Authorize.net como pasarela de pago.
+  </Card>
+  <Card title="Integración con Square" icon="square" href="/pagos/integracion-square">
+    Conecta Square y cobra en persona.
+  </Card>
+  <Card title="Cómo integrar Razorpay" icon="indian-rupee-sign" href="/pagos-facturas/integrar-razorpay">
+    Conecta Razorpay para cobrar en India.
+  </Card>
+</CardGroup>

@@ -1,0 +1,65 @@
+---
+title: "Cuota de configuración en facturas recurrentes"
+description: "Cobra la cuota inicial y la mensualidad en la primera factura recurrente, y solo la mensualidad después."
+icon: "file-invoice-dollar"
+---
+
+Muchos servicios cobran una cuota inicial (alta, instalación o configuración) y luego una mensualidad. Con Chateea puedes cobrar ambas en la **primera factura recurrente**, sin crear dos facturas: la cuota de configuración aparece solo en la primera y las siguientes llevan únicamente el importe recurrente.
+
+## Cómo funciona
+
+- Creas un producto con precio **recurrente** y le agregas una **cuota de configuración**.
+- Al añadir ese producto a una factura recurrente, la primera factura muestra **dos líneas** del mismo producto: una con la cuota de configuración (con el sufijo "Setup Fee") y otra con el precio recurrente.
+- Las facturas siguientes, que se generan solas según tu calendario, incluyen **solo el importe recurrente**.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea el producto">
+    Ve a **Pagos → Productos** y crea un producto con tipo de precio **Recurrente**. En su precio, agrega la cuota de configuración.
+  </Step>
+  <Step title="Crea la factura recurrente">
+    Ve a **Pagos → Facturas y presupuestos** y haz clic en **Nuevo → Nueva factura recurrente**.
+  </Step>
+  <Step title="Agrega el producto">
+    Añade el producto con cuota de configuración. Verás dos líneas: la cuota inicial y el precio recurrente.
+  </Step>
+  <Step title="Programa la factura">
+    Define la frecuencia, las fechas y el resto de opciones, y envíala o prográmala.
+  </Step>
+</Steps>
+
+<Tip>
+  Es la opción perfecta para empresas de servicios, gimnasios, instaladores o cualquier negocio que cobre una cuota de alta más una mensualidad: el cliente recibe una sola factura para empezar y tú no tienes que acordarte de quitar la cuota después.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La cuota de configuración se vuelve a cobrar en las facturas siguientes?">
+    No. Es un cargo único que solo aparece en la primera factura. Las siguientes llevan solo el importe recurrente.
+  </Accordion>
+  <Accordion title="¿Puedo mezclar una cuota única y una mensualidad en una factura única (no recurrente)?">
+    No. Una factura única no gestiona cobros recurrentes. Usa una factura recurrente con un producto que tenga cuota de configuración, o crea dos facturas: una única para la cuota y otra recurrente para la mensualidad.
+  </Accordion>
+  <Accordion title="Mi producto tiene periodo de prueba. ¿Se respeta en la factura?">
+    No. Las facturas no tienen en cuenta el periodo de prueba del producto, así que la primera factura incluye la cuota y el primer periodo. Si quieres cobrar solo la cuota al inicio, emite una factura única con la cuota y programa la factura recurrente para cuando termine la prueba.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo crear facturas recurrentes" icon="file-invoice" href="/pagos-facturas/facturas-recurrentes">
+    Frecuencias, estados y gestión de plantillas.
+  </Card>
+  <Card title="Pagos automáticos en plantillas recurrentes" icon="credit-card" href="/pagos-facturas/pagos-automaticos-recurrentes">
+    Cobra cada factura sin intervención.
+  </Card>
+  <Card title="Productos únicos y recurrentes en documentos" icon="file-signature" href="/pagos/productos-unicos-y-recurrentes-en-documentos">
+    Usa productos recurrentes en contratos y propuestas.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice-dollar" href="/pagos/crear-y-enviar-facturas">
+    Guía completa de facturación.
+  </Card>
+</CardGroup>

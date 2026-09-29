@@ -1,0 +1,248 @@
+---
+title: "Crea y envía tu primera factura"
+description: "Configura tus facturas, agrega productos, descuentos, impuestos y planes de pago, y envíalas por correo o SMS."
+icon: "file-invoice"
+---
+
+Facturar bien es cobrar a tiempo. Con Chateea creas facturas a partir de tus productos (o escribiendo los conceptos al vuelo), las envías por correo o SMS y el cliente paga en línea desde el mismo enlace. Esta guía te lleva desde la configuración inicial hasta el envío de tu primera factura, con descuentos, impuestos, planes de pago y opciones adicionales.
+
+## Tipos de factura
+
+| | Factura única | Factura recurrente |
+| --- | --- | --- |
+| **Productos** | Productos de pago único | Productos recurrentes |
+| **Fecha anterior (fecha de emisión pasada)** | Sí | No, empieza hoy o en una fecha futura |
+| **Automatización** | Se envía una vez y listo | Se genera sola en cada ciclo |
+| **Ideal para** | Arreglos, cuotas de alta, trabajos puntuales | Igualas y servicios mensuales |
+
+Esta guía se centra en las facturas únicas. Para las recurrentes, consulta [Cómo crear facturas recurrentes](/pagos-facturas/facturas-recurrentes).
+
+<Note>
+  Para cobrar con tarjeta en línea necesitas un proveedor de pago conectado, como Stripe. Sin él puedes emitir facturas, pero tendrás que registrar los pagos a mano. Consulta [Casos de uso de pagos y facturas](/pagos/casos-de-uso-de-facturas).
+</Note>
+
+## Paso 1: Configura los valores predeterminados
+
+Es opcional pero muy recomendable: lo que configures aquí se aplica a todas tus facturas y te ahorra repetir datos.
+
+Ve a **Pagos → Facturas y presupuestos**, elige **Todas las facturas** y haz clic en **Configuración**.
+
+### Información del negocio
+
+Agrega el **logotipo**, el **nombre**, el **teléfono**, la **dirección** y el **sitio web** de tu negocio. Con **Agregar valor personalizado** puedes sumar otros datos, como tu identificación fiscal.
+
+### Configuración de correo
+
+Define el **nombre** y el **correo** desde los que se enviarán las facturas a tus clientes.
+
+### Título, términos y diseño
+
+Edita el título y los términos de facturas y presupuestos, y personaliza el diseño y las etiquetas con **Personalizar diseño**. Más detalles en [Personaliza el diseño de tus facturas](/pagos/personalizar-diseno-de-facturas).
+
+### Configuración de pagos
+
+| Opción | Qué hace |
+| --- | --- |
+| **Vencimiento** | Número de días tras la emisión en que vence la factura |
+| **Prefijo** | Prefijo del número de factura |
+| **Métodos de pago** | Con **Administrar**, decide si el cliente puede pagar con todos los métodos válidos o solo por transferencia bancaria |
+| **Pagos parciales** | Permite abonos con un porcentaje mínimo por pago |
+| **Recargo por pago tardío** | Cargo fijo o porcentual sobre el saldo pendiente, con intervalo, periodo de gracia e importe máximo |
+| **Propinas** | Activa las propinas y define los porcentajes sugeridos |
+
+### Configuración de productos
+
+Decide si se importa la descripción de los productos en la factura y si es opcional.
+
+### Recordatorios
+
+Los recordatorios se aplican a las facturas únicas y recurrentes que **no** tienen pago automático ni plan de pagos. Por defecto hay uno, y puedes editar su plantilla de correo y SMS, el asunto, la frecuencia, el horario comercial y la zona horaria. Con **Agregar otro recordatorio** sumas más.
+
+<Warning>
+  Si una factura vence en menos de 3 días, desactiva manualmente en esa factura el recordatorio de "3 días antes". Lo encuentras en la lista de recordatorios del editor.
+</Warning>
+
+### Campos personalizados de facturación
+
+Con **Agregar campo personalizado** eliges campos que se mostrarán en la factura. A la derecha verás la vista previa.
+
+### Notificaciones
+
+| Notificaciones al cliente | Notificaciones al equipo |
+| --- | --- |
+| Factura recibida | Pago de factura correcto |
+| Presupuesto recibido | Pago de factura fallido |
+| Pago de factura correcto | Pago automático fallido |
+| Pago de factura fallido | Pago automático omitido |
+| Información de pago automático | La factura no se pudo enviar |
+| Cambio en el importe del pago automático | Presupuesto aceptado |
+| Pago automático fallido | Presupuesto rechazado |
+
+En cada una puedes activar o desactivar el aviso y editar la plantilla y el asunto.
+
+## Paso 2: Crea la factura
+
+<Steps>
+  <Step title="Abre las facturas">
+    Ve a **Pagos → Facturas y presupuestos** y elige **Todas las facturas**.
+  </Step>
+  <Step title="Crea una factura nueva">
+    Haz clic en **Nuevo → Nueva factura**.
+  </Step>
+  <Step title="Cliente y fechas">
+    Selecciona el cliente y revisa el **número de factura**, la **fecha de emisión** y la **fecha de vencimiento**. Con **Editar** puedes cambiar la información del negocio que aparecerá en esta factura.
+  </Step>
+  <Step title="Agrega productos">
+    Haz clic en **Agregar un artículo** para elegir productos de tu catálogo. Una vez agregados, puedes cambiar el precio y la cantidad en la misma línea.
+  </Step>
+</Steps>
+
+## Agrega un descuento
+
+Debajo del subtotal, haz clic en **Agregar descuento**, elige **importe fijo** o **porcentaje**, escribe el valor y guarda.
+
+## Agrega impuestos
+
+Los impuestos se gestionan en dos niveles:
+
+**Configuración general**
+
+1. Ve a **Configuración → Impuestos**.
+2. Elige si los impuestos están **incluidos en el precio** o se suman aparte.
+3. Crea impuestos manuales con **Crear impuesto** y su tasa, o activa el **impuesto automático** eligiendo la categoría y las ubicaciones donde aplica.
+
+**En la factura**
+
+Haz clic en **Agregar impuesto** debajo del descuento y elige un impuesto manual o automático. También puedes usar el interruptor **Aplicar impuestos automáticamente** que está sobre la lista de productos.
+
+## Agrega un plan de pagos
+
+Haz clic en **Agregar calendario de pagos**, elige **Porcentaje** o **Importe fijo** y define el importe y la fecha de cada cuota. Por defecto aparecen dos pagos; con **Agregar pago** sumas más. Más detalles en [Planes de pago en facturas](/pagos/planes-de-pago-en-facturas).
+
+## Opciones adicionales
+
+En la sección **Opciones adicionales** de la factura puedes activar:
+
+- **Términos y condiciones:** tus condiciones completas para que el cliente las revise.
+- **Recargo por pago tardío:** fijo o porcentual, con intervalo, periodo de gracia e importe máximo.
+- **Cargo por procesamiento y propinas:** el porcentaje de comisión a trasladar y el rango de propinas. El cargo por procesamiento no se ve en el editor ni en la vista previa inicial; el cliente lo ve al hacer clic en **Pagar**.
+- **Adjunto:** un archivo que se envía junto con el correo de la factura.
+
+<Note>
+  Los pagos parciales, los recargos por pago tardío y las propinas deben estar activados primero en **Configuración → Configuración de pagos**.
+</Note>
+
+### Con proveedores de pago personalizados
+
+Si usas un proveedor de pago personalizado compatible, las facturas también admiten planes de pago, pagos parciales, propinas y recargos por pago tardío. La disponibilidad de cada función depende del proveedor.
+
+## Paso 3: Revisa y envía
+
+<Steps>
+  <Step title="Guarda">
+    Haz clic en **Guardar** y espera la confirmación antes de enviar.
+  </Step>
+  <Step title="Revisa la vista previa real">
+    La vista previa del lado derecho del editor usa datos de ejemplo y solo muestra la estructura. Para ver la factura tal como la recibirá el cliente, usa **⋮ → Vista previa** (se abre en una pestaña nueva).
+  </Step>
+  <Step title="Envía">
+    Haz clic en **Enviar**, revisa el nombre de la factura y elige si se envía por **correo**, por **SMS** o por ambos. Puedes editar la plantilla del correo haciendo clic sobre su vista previa.
+  </Step>
+  <Step title="Elige el modo">
+    En las opciones adicionales, elige **Prueba** o **En vivo** y confirma el envío.
+  </Step>
+</Steps>
+
+<Tip>
+  Con la flecha junto a **Enviar** puedes elegir **Copiar y marcar como enviada**: la factura pasa de borrador a enviada y el enlace de pago se copia al portapapeles, listo para pegarlo en cualquier mensaje.
+</Tip>
+
+## Comparte el enlace de la factura
+
+Si prefieres enviarla desde tu propio correo (por ejemplo, Outlook):
+
+1. Abre la lista de facturas.
+2. Haz clic en el menú **⋮** de la factura y elige **Copiar enlace**.
+3. Pega el enlace en tu correo.
+
+También puedes descargar la factura en PDF y adjuntarla.
+
+## Consulta el estado de tus facturas
+
+En la lista de facturas ves cada una con su estado y puedes filtrar por estado y por fechas. En **Pagos → Transacciones** encuentras los pagos correctos o fallidos relacionados con tus facturas y puedes abrir la factura desde ahí.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué falta el logotipo en facturas antiguas si aparece en las nuevas?">
+    Porque se eliminó el archivo original de tu biblioteca de **Medios**. Las facturas toman el logotipo de su ubicación original. Para las facturas sin pagar, sube un logotipo nuevo y actualiza los datos del negocio: volverá a aparecer. Las facturas pagadas no se pueden editar.
+  </Accordion>
+  <Accordion title="No puedo escribir en los términos o notas, solo veo la barra de formato">
+    Es un problema local del navegador. Borra la caché y las cookies, cierra todas las pestañas y vuelve a iniciar sesión.
+  </Accordion>
+  <Accordion title='La factura figura como "Enviada" pero el cliente no la recibió'>
+    Revisa el recorrido real del correo en la conversación del contacto: abre el mensaje de correo de la factura, haz clic en **⋮** y elige **Detalles**. Si el problema viene del navegador, borra la caché y las cookies, vuelve a iniciar sesión y reenvía. Si persiste, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+  <Accordion title="¿Cómo cobro en otra moneda distinta a la de mi cuenta?">
+    Crea en **Pagos → Productos** un producto con la moneda que necesitas y agrégalo a la factura con **Agregar un artículo**. No basta con escribir el importe en la factura.
+  </Accordion>
+  <Accordion title="El cliente dice que el enlace de pago no funciona">
+    Si la fecha de pago programada ya pasó, el enlace se desactiva. Clona la factura, ajusta las fechas del plan de pagos a hoy o a una fecha futura y vuelve a enviarla.
+  </Accordion>
+  <Accordion title="¿Puedo cobrar una cuota inicial y una mensualidad en la misma factura?">
+    No en una factura única. Usa una factura recurrente con un producto que tenga cuota de configuración, o dos facturas: una única para la cuota y una recurrente para la mensualidad. Consulta [Cuota de configuración en facturas recurrentes](/pagos/cargo-de-configuracion-en-facturas-recurrentes).
+  </Accordion>
+  <Accordion title="¿Por qué falla el envío de la factura por SMS?">
+    Suele ser porque el número no es válido o está fuera de servicio, o porque el destinatario tiene activado el bloqueo de mensajes (No molestar) en su operador.
+  </Accordion>
+  <Accordion title="¿Por qué se saltan números de factura? ¿Puedo reutilizarlos?">
+    El número se reserva al crear la factura, incluso en borrador. Si eliminas borradores, quedan huecos. Puedes escribir manualmente el número omitido al crear una factura nueva para mantener la secuencia.
+  </Accordion>
+  <Accordion title="¿Puedo reactivar una factura anulada?">
+    No. Anular es definitivo: el importe pasa a cero y la factura no puede volver a enviada, abierta ni pagada.
+  </Accordion>
+  <Accordion title="¿Dónde veo las notas de un pago manual?">
+    Abre la factura pagada, haz clic en **⋮ → Ver transacción** y busca la sección de notas.
+  </Accordion>
+  <Accordion title="¿Cómo paso una factura de prueba a modo en vivo?">
+    No se puede convertir. Clona la factura (quedará como borrador), revísala y envíala eligiendo el modo **En vivo**.
+  </Accordion>
+  <Accordion title='¿Por qué aparece "Algo salió mal" al enviar?'>
+    Normalmente la factura no estaba guardada. Haz clic en **Guardar**, espera la confirmación y vuelve a enviarla.
+  </Accordion>
+  <Accordion title="El impuesto no se calcula bien después de aplicar un descuento">
+    Revisa la configuración de impuestos incluidos. Si eliges que el impuesto **no** está incluido en el precio, el sistema calcula el impuesto sobre el subtotal ya descontado.
+  </Accordion>
+  <Accordion title="¿Una factura vencida muestra el importe original y el recargo?">
+    Sí. El recargo se suma a la misma factura y se muestra junto al importe original en un solo total. El cliente también recibe un correo cuando se aplica.
+  </Accordion>
+  <Accordion title="Me da error al poner las fechas de las cuotas">
+    Las cuotas deben vencer en la fecha de vencimiento de la factura o antes. Cambia primero el vencimiento principal y luego las cuotas.
+  </Accordion>
+  <Accordion title="¿Por qué la factura no se envía de inmediato?">
+    Revisa que la **fecha de emisión** sea hoy (si es futura, el envío espera) y que la zona horaria de tu cuenta en **Configuración → Perfil del negocio** sea la correcta. Las facturas recurrentes se procesan por lotes; para un envío inmediato usa una factura única.
+  </Accordion>
+  <Accordion title="¿Puedo enviar la factura a varias personas?">
+    Sí. Al hacer clic en **Enviar**, usa la opción **CC** para agregar otros correos.
+  </Accordion>
+  <Accordion title="¿Cómo guardo la tarjeta del cliente antes de una factura futura?">
+    Una factura programada no pide la tarjeta hasta que se envía. Para guardarla antes, cobra una pequeña cuota inicial, inicia la factura recurrente hoy con un periodo de prueba que termine en la fecha de cobro, o usa un formulario de pedido de importe cero que guarde la tarjeta. Después activa el pago automático.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo crear facturas recurrentes" icon="arrows-rotate" href="/pagos-facturas/facturas-recurrentes">
+    Automatiza tus cobros periódicos.
+  </Card>
+  <Card title="Nuevo editor de facturas" icon="file-pen" href="/pagos-facturas/nuevo-editor-facturas">
+    Edita con vista previa en tiempo real.
+  </Card>
+  <Card title="Recordatorios automáticos de facturas" icon="bell" href="/pagos/recordatorios-automaticos-de-facturas">
+    Cobra a tiempo sin perseguir a tus clientes.
+  </Card>
+  <Card title="Configurar impuestos" icon="percent" href="/pagos/configurar-impuestos">
+    Impuestos manuales y automáticos.
+  </Card>
+</CardGroup>

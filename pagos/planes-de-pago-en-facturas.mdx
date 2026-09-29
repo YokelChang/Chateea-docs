@@ -1,0 +1,110 @@
+---
+title: "Planes de pago en facturas"
+description: "Divide una factura en cuotas con importe y fecha propios, y cóbralas manual o automáticamente."
+icon: "calendar-days"
+---
+
+Un plan de pagos divide una factura en cuotas, cada una con su importe y su fecha de vencimiento. A diferencia de los pagos parciales, aquí **tú** decides cuánto se paga y cuándo. Es la mejor opción para proyectos o ventas de importe medio o alto donde acuerdas un calendario con el cliente, por ejemplo 50 % al firmar y 50 % a la entrega.
+
+## Cómo funciona
+
+- Divides la factura en cuotas por **porcentaje** o por **importe fijo**.
+- Cada cuota tiene su **fecha de vencimiento** y su **estado de pago**.
+- En la fecha de cada cuota, el cliente recibe un recordatorio si aún no la ha pagado.
+- El cliente solo puede pagar las cuotas definidas, pero puede pagar **una o varias a la vez**.
+- La factura queda pagada cuando se cubren todas las cuotas.
+- Puedes activar el **pago automático** para que las cuotas siguientes se cobren solas.
+
+## Cómo agregar un plan de pagos
+
+<Steps>
+  <Step title="Abre la factura">
+    Crea una factura nueva o abre una existente en **Pagos → Facturas y presupuestos**.
+  </Step>
+  <Step title="Agrega el calendario">
+    Haz clic en **Agregar calendario de pagos**. Se abre una ventana para configurar las cuotas.
+  </Step>
+  <Step title="Elige el tipo">
+    Selecciona **Porcentaje** o **Importe fijo**.
+  </Step>
+  <Step title="Define las cuotas">
+    Por defecto aparecen dos pagos. Escribe el porcentaje o el importe y la fecha de vencimiento de cada uno. Para añadir más cuotas, haz clic en **Agregar pago**. Luego guarda.
+  </Step>
+  <Step title="Envía la factura">
+    El cliente verá el plan en la factura. Al pagar, puede elegir la cuota que corresponde o marcar otras para pagarlas juntas.
+  </Step>
+</Steps>
+
+<Warning>
+  Las fechas de las cuotas deben ser iguales o anteriores a la fecha de vencimiento de la factura. Si te sale un error al guardarlas, cambia primero el vencimiento principal de la factura y luego ajusta las cuotas.
+</Warning>
+
+## Cobrar las cuotas automáticamente
+
+Puedes hacer que las cuotas se cobren solas en cada fecha programada:
+
+<Steps>
+  <Step title="Haz clic en Enviar">
+    Con el plan de pagos ya configurado, haz clic en **Enviar**.
+  </Step>
+  <Step title="Activa el pago automático">
+    En la ventana de envío, activa el interruptor de **pago automático**.
+  </Step>
+  <Step title="Elige la tarjeta">
+    Selecciona la tarjeta del cliente (la que use para el primer pago), una de sus tarjetas guardadas o una tarjeta nueva.
+  </Step>
+</Steps>
+
+Los cobros automáticos se ven después en **Pagos → Transacciones**.
+
+## Personaliza el aviso de cuota
+
+Puedes editar, activar o desactivar la notificación que recibe el cliente sobre las cuotas:
+
+1. Ve a **Pagos → Facturas y presupuestos → Configuración → Notificaciones → Notificaciones al cliente**.
+2. Busca **Calendario de pago recibido** (Payment Schedule Received).
+3. Edita la plantilla de correo o SMS, o desactívala.
+
+<Note>
+  Los campos combinados del calendario de pago aparecen vacíos si la factura no tiene un plan de pagos.
+</Note>
+
+## Planes de pago o pagos parciales
+
+| | Plan de pagos | Pagos parciales |
+| --- | --- | --- |
+| **Quién decide el importe** | Tú | El cliente, respetando un mínimo |
+| **Fechas** | Cada cuota tiene su vencimiento | Libres |
+
+Una factura con plan de pagos no admite pagos parciales del cliente.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo personalizar los recordatorios de las cuotas?">
+    Sí. Edita la notificación **Calendario de pago recibido** en la configuración de notificaciones de facturas, o desactívala si prefieres gestionar los avisos con tus propios flujos de trabajo.
+  </Accordion>
+  <Accordion title="El cliente dice que el enlace de pago no funciona">
+    Cuando la fecha de una cuota ya pasó, el pago se desactiva. Clona la factura, ajusta las fechas del plan a hoy o a una fecha futura y vuelve a enviarla.
+  </Accordion>
+  <Accordion title="¿Puedo pagar varias cuotas a la vez?">
+    Sí. Al pagar, el cliente puede marcar varias cuotas y pagarlas juntas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Pagos parciales en facturas" icon="percent" href="/pagos/pagos-parciales-en-facturas">
+    Deja que el cliente pague por partes con un mínimo.
+  </Card>
+  <Card title="Notificaciones de facturas" icon="bell" href="/pagos/notificaciones-de-facturas">
+    Personaliza los correos y SMS de tus facturas.
+  </Card>
+  <Card title="Tarjetas guardadas de clientes" icon="credit-card" href="/pagos/tarjetas-guardadas-de-clientes">
+    Gestiona las tarjetas que usas para cobrar.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos/crear-y-enviar-facturas">
+    Guía completa de facturación.
+  </Card>
+</CardGroup>

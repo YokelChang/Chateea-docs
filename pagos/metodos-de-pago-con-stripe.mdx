@@ -1,0 +1,96 @@
+---
+title: "Gestiona los métodos de pago de Stripe por canal"
+description: "Activa o desactiva tarjetas, billeteras, débito bancario y pago en cuotas en cada canal de venta con Stripe."
+icon: "credit-card"
+---
+
+Cuando Stripe es tu proveedor de pago, Chateea muestra a tus clientes los métodos de pago de forma dinámica: tarjetas, billeteras digitales, débito bancario, compra ahora y paga después y otros métodos locales. Ofrecer la forma de pago que tu cliente ya usa en su país suele aumentar las ventas. Este artículo explica qué métodos hay y cómo activarlos o desactivarlos en cada canal.
+
+## Métodos de pago compatibles
+
+| Método | Requisito o dato útil |
+| --- | --- |
+| Tarjetas | |
+| Apple Pay | Requiere dominios registrados |
+| Google Pay | |
+| ACH Direct Debit | Débito bancario en Estados Unidos |
+| Affirm | Requiere dirección de envío |
+| Klarna | Requiere dirección de envío |
+| Afterpay | Requiere dirección de envío |
+| Bancontact | Común en Bélgica |
+| iDEAL | Popular en Países Bajos |
+| SEPA Direct Debit | Común en la Unión Europea |
+| Link | Requiere dominios registrados |
+| Amazon Pay | |
+| Revolut Pay | Popular en Reino Unido |
+| Cash App | |
+| GrabPay | Popular en Malasia |
+| Zip | Popular en Australia |
+| BACS Direct Debit | Popular en Reino Unido |
+| BECS Direct Debit | Popular en Australia |
+| FPX | Popular en Malasia |
+
+La lista crece con el tiempo. Algunos métodos pueden verse bloqueados en tu cuenta de Stripe mientras se habilitan para todas las cuentas conectadas.
+
+## Las cuatro configuraciones por canal
+
+Chateea usa cuatro configuraciones de Stripe para mostrar métodos de pago distintos según el canal de venta:
+
+| Configuración | Dónde se usa | Activados por defecto |
+| --- | --- | --- |
+| **Invoice** | Facturas únicas, facturas recurrentes sin pago automático y enlaces de pago por mensaje de texto | Tarjetas, Apple Pay, Google Pay, ACH Direct Debit, Affirm, Klarna, Afterpay, Link, Amazon Pay y Revolut Pay |
+| **InvoiceWithAutopayment** | Facturas recurrentes con pago automático | Tarjetas, Apple Pay, Google Pay y ACH Direct Debit |
+| **Store** | Tiendas en línea de tus sitios web | Tarjetas, Apple Pay, Google Pay, Affirm, Klarna, Afterpay, Link, Amazon Pay y Revolut Pay |
+| **Default** | Todo lo demás: formularios de pedido de uno y dos pasos, enlaces de pago, membresías y comunidades | Tarjetas, Apple Pay, Google Pay, Link, Amazon Pay y Revolut Pay |
+
+## Activa o desactiva un método de pago
+
+Los métodos se gestionan desde tu panel de Stripe.
+
+<Steps>
+  <Step title="Abre los métodos de pago en Stripe">
+    En tu panel de Stripe, ve a **Settings → Connect → Payment methods** y abre la vista de tu cuenta.
+  </Step>
+  <Step title="Elige la plataforma correcta">
+    En el menú desplegable de configuraciones, selecciona las configuraciones de Chateea. Tu cuenta de Stripe puede estar conectada a varias plataformas, así que confirma que estás editando la correcta.
+  </Step>
+  <Step title="Selecciona el canal">
+    Elige la configuración que quieres cambiar (**Invoice**, **InvoiceWithAutopayment**, **Store** o **Default**).
+  </Step>
+  <Step title="Cambia el método">
+    Selecciona el método de pago y actívalo o desactívalo.
+  </Step>
+</Steps>
+
+<Tip>
+Activa solo los métodos que tus clientes realmente usan. Un checkout con demasiadas opciones puede confundir en lugar de ayudar.
+</Tip>
+
+## Suscripciones y pagos recurrentes
+
+Para que un método de pago aparezca en las suscripciones, además de activarlo en la configuración de Chateea debes activarlo en **Stripe → Settings → Payment methods → Billing payment methods**.
+
+## Registro de ventas y automatizaciones
+
+Los pedidos y transacciones pagados con cualquiera de estos métodos se registran en **Pagos** igual que un pago con tarjeta. Los disparadores **Pedido enviado** y **Pago recibido** funcionan de la misma forma.
+
+<Note>
+Esta función solo está disponible si usas Stripe como proveedor de pago. Algunos cambios dependen de migraciones de Stripe que llegan a las cuentas de forma gradual, así que un método puede estar disponible en una cuenta y todavía no en otra.
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Apple Pay y Google Pay" icon="wallet" href="/pagos-facturas/apple-pay-google-pay">
+    Configura las billeteras en tus formularios de pedido.
+  </Card>
+  <Card title="Compra ahora, paga después" icon="clock" href="/pagos/compra-ahora-paga-despues">
+    Ofrece Klarna, Affirm y Afterpay.
+  </Card>
+  <Card title="Integración de pagos con Stripe" icon="stripe" href="/comercio/integracion-stripe">
+    Conecta tu cuenta de Stripe.
+  </Card>
+  <Card title="Proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
+    Elige qué proveedor cobra en cada canal.
+  </Card>
+</CardGroup>

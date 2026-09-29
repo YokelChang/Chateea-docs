@@ -1,0 +1,142 @@
+---
+title: "Integración con Authorize.net"
+description: "Conecta Authorize.net para cobrar con tarjeta, gestionar suscripciones y usar tus filtros antifraude."
+icon: "credit-card"
+---
+
+Authorize.net es una pasarela de pago con una larga trayectoria, conocida por su seguridad y sus herramientas antifraude. Al conectarla a tu cuenta de Chateea puedes cobrar con tarjeta en formularios de pedido, facturas, suscripciones, cursos y otras áreas, y ver todos esos pagos en **Pagos** junto al resto de tus cobros.
+
+## Para qué te sirve
+
+- **Pagos seguros:** las transacciones se procesan con los protocolos de seguridad de Authorize.net.
+- **Cobros con tarjeta en casi toda la plataforma:** formularios de pedido, formularios, facturas, enlaces de pago, tienda, cursos, comunidades, calendarios y POS.
+- **Suscripciones:** cobra pagos recurrentes y cancélalos desde Chateea.
+- **Todo en un solo lugar:** pedidos, transacciones y suscripciones aparecen en **Pagos** igual que con cualquier otro proveedor.
+- **Compatible con tus filtros antifraude:** respeta los filtros FDS que tengas configurados en Authorize.net.
+
+## Requisitos
+
+- Tu negocio debe estar en **Estados Unidos, Canadá o Australia**. Authorize.net solo acepta comercios de esos países. Consulta las monedas admitidas en la [documentación de Authorize.net](https://support.authorize.net/knowledgebase/Knowledgearticle/?code=000001207).
+- Un navegador compatible para trabajar con el panel de Authorize.net:
+
+| Navegador | Versión recomendada |
+| --- | --- |
+| Chrome | 80 o superior |
+| Edge (Chromium) | 85 o superior |
+| Firefox | 78 o superior |
+| Safari | 12 o superior |
+
+Internet Explorer 11, Edge heredado y Opera pueden dar problemas en el panel de Authorize.net. Si ves un aviso de navegador desactualizado, actualízalo o usa otro de la lista.
+
+## Conecta Authorize.net
+
+<Steps>
+  <Step title="Obtén tus claves de API">
+    Inicia sesión en tu panel de Authorize.net (Merchant Interface) y ve a **Account → Settings → API Credentials & Keys**. Genera tus claves de API, entre ellas el **API Login ID** y la **Transaction Key**. Obtén las claves **en vivo** desde tu cuenta real y las de **prueba** desde el [panel sandbox de Authorize.net](https://sandbox.authorize.net).
+  </Step>
+  <Step title="Abre las integraciones de pago">
+    En Chateea, ve a **Pagos → Integraciones** y busca Authorize.net.
+  </Step>
+  <Step title="Pega tus claves">
+    Ingresa las tres claves de API que te pide el formulario: las claves en vivo en los campos de modo en vivo y las de sandbox en los campos de prueba. Haz clic en **Guardar**.
+  </Step>
+  <Step title="Decide si será tu proveedor predeterminado">
+    Verás un aviso para convertir Authorize.net en tu pasarela predeterminada. Con **Confirmar** se conecta y queda como predeterminada. Con **Cancelar** se conecta igual, pero no se vuelve predeterminada.
+  </Step>
+  <Step title="Haz una transacción de prueba">
+    En modo de prueba, completa una compra con una de las tarjetas de prueba de la tabla de abajo para confirmar que todo funciona.
+  </Step>
+</Steps>
+
+<Note>
+No necesitas desconectar Stripe para usar Authorize.net. Puedes tener ambos conectados y elegir cuál es el predeterminado. PayPal sigue funcionando junto al que elijas.
+</Note>
+
+<Warning>
+No desconectes un proveedor que tenga suscripciones activas o cobros pendientes. Las suscripciones creadas con Stripe o PayPal siguen cobrándose por esos proveedores mientras la conexión exista. Al cambiar el predeterminado, solo las transacciones nuevas pasan por Authorize.net.
+</Warning>
+
+## Tarjetas de prueba
+
+Usa cualquier fecha de vencimiento futura y cualquier código de seguridad de 3 o 4 dígitos.
+
+| Número | Marca |
+| --- | --- |
+| `4007000000027` | Visa |
+| `4012888818888` | Visa |
+| `4111111111111111` | Visa |
+| `370000000000002` | American Express |
+| `5424000000000015` | Mastercard |
+| `2223000010309703` | Mastercard |
+| `2223000010309711` | Mastercard |
+| `6011000000000012` | Discover |
+| `3088000000000017` | JCB |
+| `38000000000006` | Diners Club / Carte Blanche |
+
+## Suscripciones con Authorize.net
+
+Las suscripciones creadas con Authorize.net se ven en **Pagos → Suscripciones** con estos estados:
+
+| Estado | Qué significa | ¿Se puede cancelar? |
+| --- | --- | --- |
+| **Pendiente** | Retenida para revisión del comercio por los filtros antifraude (FDS) | No |
+| **Prueba** | La suscripción está en periodo de prueba | Sí |
+| **Activa** | El último pago se cobró y hay un pago próximo | Sí |
+| **Vencida** | Se completaron todos los pagos y la suscripción terminó | No |
+| **Cancelada** | La cancelaste y no se procesarán más pagos | No |
+| **Impaga** | El último pago falló, pero la suscripción sigue en curso | Sí |
+
+Para cancelar una suscripción, ábrela en **Pagos → Suscripciones** y usa la acción **Cancelar suscripción**.
+
+### Qué pasa si un pago falla
+
+- Si el primer pago se cobra bien, la suscripción pasa a **Activa** (o a **Prueba** si el producto tiene periodo de prueba).
+- Si la tarjeta vence, el pago requiere autenticación del cliente o simplemente falla, la suscripción pasa a **Impaga**.
+- El pago se reintenta **dos veces más, cada 24 horas**. Mientras tanto, sigue en **Impaga**.
+- Los pagos siguientes del calendario también se intentan, cada uno con dos reintentos. Si alguno se cobra, la suscripción vuelve a **Activa**.
+- Después de agotar los reintentos del último pago, la suscripción pasa a **Vencida**.
+- Si desconectas la pasarela con suscripciones en curso, los cobros no se pueden procesar y la suscripción pasa a **Impaga**, siguiendo la misma lógica de reintentos.
+
+## Filtros antifraude (FDS)
+
+Si usas los filtros FDS de Authorize.net para retener transacciones en revisión (por ejemplo, cuando falta la dirección o el código de seguridad):
+
+- En **formularios de pedido**, la transacción queda retenida (o rechazada, según tu configuración) y la ves en tu panel de Authorize.net. Cuando la apruebas o la rechazas, el estado se actualiza en **Pagos → Transacciones**.
+- En **pagos automáticos de facturas recurrentes** y **reservas de calendario con pago**, una transacción retenida se trata como rechazada: no se agenda la cita ni se programa el pago automático.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué PayPal no aparece como opción de pasarela predeterminada?">
+    Porque el predeterminado se elige entre los procesadores de tarjeta, como Stripe o Authorize.net. PayPal funciona junto a ellos como opción adicional en el checkout.
+  </Accordion>
+  <Accordion title="¿Dónde veo los pagos procesados con Authorize.net?">
+    En **Pagos → Transacciones**, igual que el resto. Los pedidos, las suscripciones, los disparadores de tus flujos y la atribución funcionan igual que con otros proveedores.
+  </Accordion>
+  <Accordion title="¿Puedo hacer reembolsos desde Chateea?">
+    Sí. Abre la transacción en **Pagos → Transacciones** y emite el reembolso.
+  </Accordion>
+  <Accordion title="¿Authorize.net funciona en cursos y membresías?">
+    Sí. Puedes usarlo en los checkouts de cursos y comunidades.
+  </Accordion>
+  <Accordion title="¿Cómo elijo entre Stripe, PayPal y Authorize.net?">
+    Depende de tu negocio: los tipos de pago que necesitas, dónde están tus clientes y las comisiones. Stripe es muy flexible y ofrece muchos métodos de pago, PayPal aporta una marca que tus clientes ya conocen y Authorize.net destaca por su trayectoria y sus herramientas antifraude. Compara las tarifas vigentes en las páginas de precios de [Stripe](https://stripe.com/pricing), [PayPal](https://www.paypal.com/us/webapps/mpp/merchant-fees) y [Authorize.net](https://www.authorize.net/en-us/sign-up/pricing.html).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar los proveedores de pago" icon="plug" href="/pagos-facturas/configurar-proveedores-pago">
+    Conecta tus procesadores para empezar a cobrar.
+  </Card>
+  <Card title="Configurar proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
+    Asigna un proveedor distinto a cada canal.
+  </Card>
+  <Card title="Proveedores y métodos de pago por área" icon="table" href="/pagos/proveedores-y-metodos-de-pago-por-area">
+    Dónde funciona Authorize.net.
+  </Card>
+  <Card title="Estados de suscripción" icon="repeat" href="/pagos-facturas/gestionar-suscripciones">
+    Entiende el ciclo de vida de tus suscripciones.
+  </Card>
+</CardGroup>

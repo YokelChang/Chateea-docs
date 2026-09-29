@@ -1,22 +1,26 @@
 ---
-title: "Importación masiva de facturas mediante CSV: guía de configuración y formato"
-description: "Añade muchas facturas de una vez con el formato correcto, en lugar de crearlas a mano."
+title: "Importa facturas con un archivo CSV"
+description: "Migra tus facturas desde otro sistema con un CSV: asigna columnas e impuestos y revisa el resumen de la importación."
 icon: "file-csv"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Si vienes de otro sistema de facturación o llevas tus facturas en una hoja de cálculo, puedes importarlas a Chateea con un archivo CSV en lugar de crearlas una por una. Durante la importación asignas cada columna a su campo (fechas, impuestos y demás) y al terminar recibes un correo con el resumen de lo que se importó y lo que falló.
 
-Importar facturas mediante CSV te permite añadir varias de una sola vez, en lugar de crearlas manualmente. Ahorra tiempo, mantiene la precisión y organiza tus registros de facturación. Con el formato correcto, las facturas se cargan sin errores.
+## Para qué te sirve
 
-## Lo que necesitas antes de subir
+- Migrar tu historial de facturas desde otra plataforma o desde hojas de cálculo.
+- Asignar correctamente fechas de emisión, vencimiento e impuestos.
+- Recibir un resumen por correo con el resultado de cada fila.
+- Evitar errores de carga manual.
+- Tener toda tu facturación en un solo lugar para tus informes.
 
-El sistema exige nombres de columna exactos y datos válidos. Incluso errores pequeños —encabezados mal escritos o valores faltantes— hacen que la importación falle.
+## Antes de empezar
+
+- **Crea tus impuestos primero.** Todas las tasas de impuesto que aparezcan en tu archivo deben existir en **Configuración → Impuestos**. Si falta alguna, la importación no puede continuar.
+- **Usa el archivo de ejemplo.** Descárgalo desde el propio importador para copiar la estructura de columnas.
+- **Revisa las fechas.** Usa un formato de fecha consistente en todo el archivo.
 
 ### Campos obligatorios
-
-Deben incluirse **exactamente** como se indican, y cada fila debe tener datos válidos en ellos:
 
 | Campo | Qué contiene |
 | --- | --- |
@@ -24,84 +28,108 @@ Deben incluirse **exactamente** como se indican, y cada fila debe tener datos v�
 | **Nombre de la factura** | Título de la factura |
 | **Nombre del cliente** | A quién se factura |
 | **Correo del cliente** | Correo del cliente |
-| **Fecha de asunto** | Fecha de emisión |
+| **Fecha de emisión** | Cuándo se emitió |
 | **Fecha de vencimiento** | Cuándo vence |
-| **Divisa** | Moneda de la factura |
+| **Moneda** | Moneda de la factura |
 | **Nombre del artículo** | Concepto facturado |
-| **Tasa por artículo** | Precio del artículo |
+| **Precio del artículo** | Precio unitario |
 
-<Note>
-  Hay campos **opcionales** —útiles para un mejor seguimiento e informes— que puedes dejar en blanco si no los necesitas.
-</Note>
+Hay además campos opcionales, útiles para tus informes, que puedes dejar en blanco.
 
-## Ejemplo de formato CSV
-
-Un ejemplo sencillo con el formato correcto:
+### Ejemplo de formato
 
 ```text
 *InvoiceNo,*InvoiceName,*CustomerName,*CustomerEmail,*IssueDate,*DueDate,*Currency,*ItemName,*ItemRate
-INV001,Web Design,John Doe,john@email.com,03/06/2025,10/06/2025,USD,Landing Page,500
+INV001,Diseño web,Juan Pérez,juan@correo.com,03/06/2025,10/06/2025,USD,Página de aterrizaje,500
 ```
 
-<Tip>
-  El asterisco `*` en los encabezados marca los campos obligatorios. Mantén los nombres de columna tal cual: es lo que el sistema busca para mapear cada dato.
-</Tip>
+El asterisco marca las columnas obligatorias. Mantén los encabezados tal como vienen en el archivo de ejemplo. Para varias líneas en una misma factura, repite el mismo número de factura en varias filas.
 
 ## Cómo importar facturas
 
 <Steps>
-  <Step title="Abre la sección Facturas">
-    Haz clic en **Nuevo** y selecciona **Importar facturas desde CSV**.
+  <Step title="Abre el importador">
+    Ve a **Pagos → Facturas y presupuestos**, haz clic en **+ Nuevo** (arriba a la derecha) y elige **Importar facturas desde CSV**.
+  </Step>
+  <Step title="Descarga el archivo de ejemplo">
+    Úsalo como plantilla y prepara tu CSV con la misma estructura.
   </Step>
   <Step title="Sube tu archivo">
-    Haz clic para seleccionarlo, o arrástralo y suéltalo en el área de carga.
+    Selecciónalo o arrástralo al área de carga.
   </Step>
-  <Step title="Verifica y mapea los campos">
-    Revisa cómo coinciden las columnas de tu CSV con los campos del sistema. Confirma que todo quedó bien mapeado.
+  <Step title="Asigna las columnas">
+    Relaciona cada columna de tu CSV con su campo de factura, incluidas las fechas de emisión y vencimiento con el formato correcto.
   </Step>
-  <Step title="Corrige errores, si los hay">
-    Si aparecen, actualiza tu CSV y vuélvelo a subir hasta resolver todos los problemas.
+  <Step title="Asigna los impuestos">
+    El sistema detecta las columnas de impuestos y te pide relacionar cada una con una tasa ya creada en **Configuración → Impuestos**.
   </Step>
-  <Step title="Finaliza la importación">
-    Cuando todo esté correcto, complétala. Tus facturas se crean y quedan disponibles.
+  <Step title="Inicia la importación">
+    Haz clic en **Iniciar importación**. Verás un aviso de que el proceso comenzó.
+  </Step>
+  <Step title="Revisa el correo de resumen">
+    Al terminar recibirás un correo con el resultado.
   </Step>
 </Steps>
 
-## Errores comunes que se deben evitar
+## Cómo funciona la asignación de impuestos
 
-La mayoría de los fallos vienen de cosas sencillas:
+- Cada columna de impuesto debe corresponder a una tasa creada en **Configuración → Impuestos**.
+- Si la tasa no existe, créala antes de terminar la asignación.
+- La importación se detiene mientras quede un impuesto sin asignar, para no cargar datos incorrectos.
 
-- Nombres de columna incorrectos
-- Campos obligatorios faltantes
-- Formatos de fecha no válidos
-- Números de factura duplicados
+## El correo de resumen
 
-Revisa bien tu archivo antes de subirlo.
+Llega a tu correo registrado e incluye:
+
+- La cantidad de facturas importadas correctamente.
+- La lista de filas que fallaron, con el motivo de cada una.
+- Un CSV adjunto con el estado de importación de cada fila.
+
+## Qué tener en cuenta con las facturas importadas
+
+<Warning>
+  Las facturas importadas **no envían recordatorios** automáticos por correo ni por mensaje de texto. Los recordatorios solo aplican a facturas creadas dentro de Chateea.
+</Warning>
+
+- **Recargos por mora y propinas:** las facturas importadas siguen tu configuración predeterminada. Si no quieres que se apliquen en alguna, edítala después de importarla.
+- **Sin notificaciones al cliente:** se tratan como registros históricos y no se envían a tus clientes.
+
+## Errores comunes
+
+- Nombres de columna distintos a los del archivo de ejemplo.
+- Campos obligatorios vacíos.
+- Formatos de fecha no válidos.
+- Números de factura duplicados.
+- Impuestos que no existen en **Configuración → Impuestos**.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Puedo añadir varios artículos a una misma factura?">
-    Sí. Usa el mismo número de factura en varias filas para incluir varios artículos.
+  <Accordion title="¿Puedo importar facturas con varios tipos de impuesto?">
+    Sí, siempre que cada impuesto esté bien identificado en el CSV y ya exista en **Configuración → Impuestos** para poder asignarlo.
   </Accordion>
-
-  <Accordion title="¿Qué pasa si faltan datos obligatorios?">
-    La importación falla y deberás corregir el archivo antes de intentarlo de nuevo.
+  <Accordion title="¿Las facturas importadas envían correos o avisos a mis clientes?">
+    No. Se consideran registros históricos y no disparan recordatorios ni notificaciones.
   </Accordion>
-
-  <Accordion title="¿Puedo actualizar facturas existentes con un CSV?">
-    No. Este proceso solo crea facturas nuevas.
+  <Accordion title="¿Puedo actualizar o sobrescribir facturas existentes con un CSV?">
+    No. El importador solo crea facturas nuevas.
   </Accordion>
-
-  <Accordion title="¿Necesito incluir los campos opcionales?">
-    No. Los campos opcionales pueden dejarse en blanco.
+  <Accordion title="¿Qué pasa si fallan algunas filas?">
+    Aparecen en el correo de resumen con el motivo exacto, por ejemplo un formato de fecha inválido o un impuesto sin asignar. Corrige esas filas y vuelve a importarlas.
+  </Accordion>
+  <Accordion title="¿Hay un límite de facturas por importación?">
+    No hay un límite estricto, pero se recomienda importar en lotes de 500 facturas o menos para un mejor rendimiento y para revisar los errores con más facilidad.
+  </Accordion>
+  <Accordion title="¿Puedo poner varios artículos en una misma factura?">
+    Sí. Repite el mismo número de factura en varias filas, una por artículo.
   </Accordion>
 </AccordionGroup>
 
-## Si la importación no funciona
-
-Revisa los nombres de las columnas, los campos obligatorios y los formatos de fecha. Si el problema persiste, contacta al servicio de asistencia.
-
-<Card title="Importar archivo CSV de transacciones" icon="file-csv" href="/pagos-facturas/importar-transacciones-csv">
-  La guía equivalente para registros de pago.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Importar transacciones por CSV" icon="file-csv" href="/pagos-facturas/importar-transacciones-csv">
+    La guía equivalente para tus cobros.
+  </Card>
+  <Card title="Importar pedidos por CSV" icon="file-csv" href="/pagos-facturas/importar-pedidos-csv">
+    Trae tu historial de pedidos.
+  </Card>
+</CardGroup>

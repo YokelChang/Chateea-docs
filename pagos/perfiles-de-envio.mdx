@@ -1,0 +1,158 @@
+---
+title: "Perfiles de envío con tarifas por producto"
+description: "Cobra tarifas de envío distintas según el producto con perfiles personalizados, un perfil general de respaldo e integraciones."
+icon: "truck"
+---
+
+Los **perfiles de envío** te permiten cobrar tarifas de envío distintas según el producto. Un mueble voluminoso no debería costar lo mismo de enviar que una camiseta, y con los perfiles puedes asignar reglas propias a ciertos productos mientras un **perfil general** cubre automáticamente todo lo demás. También sirven para trabajar con integraciones de envío que calculan tarifas en vivo.
+
+## Para qué te sirven
+
+- **Control por producto:** tarifas distintas para productos pesados, ligeros o especiales.
+- **Varios modelos de precio:** tarifa fija, por precio del pedido, por peso o envío gratis.
+- **Integraciones:** las aplicaciones de envío compatibles sincronizan sus tarifas automáticamente.
+- **Totales correctos:** si el carrito mezcla productos de varios perfiles, el checkout combina las tarifas en un solo total.
+- **Siempre hay tarifa:** los productos sin perfil personalizado usan el perfil general, así que ningún checkout se queda sin envío.
+
+## Perfil general
+
+El **perfil general de envío** se crea automáticamente para tu tienda. Se aplica a todos los productos que no estén asignados a un perfil personalizado o a uno creado por una aplicación.
+
+Úsalo como tus tarifas estándar y como respaldo cuando una aplicación de envío no devuelve tarifas.
+
+## Perfiles personalizados
+
+Un perfil personalizado aplica tarifas específicas a ciertos productos. Cada perfil puede:
+
+- Aplicarse a una o varias tiendas.
+- Incluir los productos que elijas.
+- Definir zonas por país, región o provincia.
+- Combinar cualquier tipo de tarifa: fija, por precio, por peso o gratis.
+
+<Note>
+  Un producto solo puede pertenecer a un perfil personalizado a la vez. Si lo asignas a otro perfil, sale del anterior.
+</Note>
+
+## Cómo se calcula el envío en el checkout
+
+Cuando el cliente compra productos de varios perfiles, Chateea suma las tarifas de todos los perfiles que aplican:
+
+| Situación | Cómo se muestra |
+| --- | --- |
+| **Perfiles con nombres distintos** | Una sola línea llamada **Envío** con el total combinado |
+| **Perfiles con el mismo nombre de tarifa** | Las tarifas se combinan y se muestran bajo ese nombre compartido |
+
+Si hay varias opciones de envío, el checkout las ordena de menor a mayor precio y preselecciona la más barata. Si hay **envío gratis**, aparece primero y queda seleccionado. Cuando el cliente cambia la dirección o el carrito, las tarifas se recalculan y se vuelve a aplicar el mismo orden.
+
+## Cómo crear un perfil de envío
+
+<Steps>
+  <Step title="Abre los perfiles">
+    Ve a **Pagos → Configuración → Envío y entrega → Perfiles personalizados** y haz clic en **Agregar personalizado**.
+  </Step>
+  <Step title="Nombra el perfil">
+    Escribe un nombre único. Es de uso interno.
+  </Step>
+  <Step title="Elige tiendas y productos">
+    Selecciona las tiendas donde aplica el perfil y los productos o grupos de productos que incluye.
+  </Step>
+  <Step title="Agrega zonas">
+    Haz clic en **Agregar zona** y selecciona los países o regiones a los que envías.
+  </Step>
+  <Step title="Define las tarifas de cada zona">
+    Agrega uno o varios tipos de tarifa:
+
+    | Tipo | Ejemplo |
+    | --- | --- |
+    | **Fija** | 5 USD por pedido |
+    | **Por precio** | Gratis en compras mayores a 50 USD |
+    | **Por peso** | 10 USD de 0 a 10 lb |
+    | **Gratis** | Sin costo de envío |
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar** y haz un pedido de prueba para confirmar que el checkout muestra las tarifas correctas.
+  </Step>
+</Steps>
+
+<Tip>
+  Configura primero bien el perfil general y crea perfiles personalizados solo para los productos o regiones que realmente necesitan tarifas distintas. Menos perfiles significa menos sorpresas en el checkout.
+</Tip>
+
+## Limitar una zona a códigos postales
+
+Al crear o editar una zona puedes restringirla a ciertos códigos postales. Es útil para entregas locales o para evitar que una zona se aplique donde no repartes.
+
+<Steps>
+  <Step title="Activa la restricción">
+    En la zona de envío, activa **Limitar el envío a códigos postales específicos**.
+  </Step>
+  <Step title="Escribe los códigos">
+    Puedes usar cualquiera de estos formatos:
+
+    | Formato | Ejemplo |
+    | --- | --- |
+    | Un código | `100210` |
+    | Varios separados por coma | `100210,122021` |
+    | Prefijo con comodín | `46*` (todos los códigos que empiezan por 46) |
+  </Step>
+</Steps>
+
+Reglas de validación:
+
+- El comodín solo se admite como asterisco final, por ejemplo `56*`.
+- No puedes guardar la zona si activaste la restricción sin ningún código válido.
+- Las entradas no válidas o duplicadas se bloquean al escribirlas.
+
+## Perfiles creados por integraciones
+
+Algunas integraciones crean su propio perfil de envío para calcular tarifas en vivo:
+
+| Integración | Cómo funciona |
+| --- | --- |
+| **Printful** | Al conectarla y sincronizar productos se crea un perfil de Printful. No lo edites a mano. Los productos deben seguir asignados a ese perfil para recibir tarifas en vivo; si los quitas, se desactivan sus tarifas de envío. Si eliminas el perfil, no se vuelve a crear solo: reinstala la integración para recuperarlo |
+| **Printify** | Al conectarla y sincronizar productos se crea un perfil de Printify. Los productos deben seguir asignados a él para recibir tarifas en vivo |
+
+Si una aplicación no devuelve tarifas, Chateea aplica la tarifa del perfil general. Si quieres ignorar las tarifas de una aplicación para ciertos productos, crea un perfil personalizado con esos productos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dos perfiles personalizados pueden tener el mismo nombre?">
+    No. Cada perfil necesita un nombre único para evitar confusiones en el checkout.
+  </Accordion>
+  <Accordion title="¿Qué pasa si elimino un perfil personalizado?">
+    Sus productos vuelven automáticamente al perfil general.
+  </Accordion>
+  <Accordion title="¿Cómo se calcula el envío en un carrito mixto?">
+    Se suman las tarifas de todos los perfiles que aplican y se muestran como una sola línea de envío combinada.
+  </Accordion>
+  <Accordion title="¿Puedo reemplazar las tarifas que envía una aplicación?">
+    Sí. Crea un perfil personalizado con esos mismos productos para sobrescribir las tarifas de la aplicación.
+  </Accordion>
+  <Accordion title="¿Qué pasa si una aplicación no devuelve tarifas?">
+    Chateea aplica la tarifa de respaldo del perfil general.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el código postal del cliente no coincide con mi zona restringida?">
+    Esa zona no se aplica en el checkout si el código postal no coincide con ninguna entrada ni patrón con comodín.
+  </Accordion>
+  <Accordion title="¿Cómo indico un rango de códigos postales?">
+    Usa un comodín al final. Por ejemplo, `56*` incluye todos los códigos que empiezan por 56.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Zonas y tarifas de envío" icon="truck" href="/tienda/zonas-y-tarifas-de-envio">
+    Configura zonas y tarifas condicionales.
+  </Card>
+  <Card title="Integración con Shippo" icon="box" href="/tienda/integracion-shippo">
+    Tarifas y etiquetas de transportistas.
+  </Card>
+  <Card title="Integración con Printful" icon="shirt" href="/tienda/integracion-printful">
+    Impresión bajo demanda con tarifas en vivo.
+  </Card>
+  <Card title="Integración con ShipStation" icon="truck-fast" href="/tienda/integracion-shipstation">
+    Gestiona tus envíos desde ShipStation.
+  </Card>
+</CardGroup>

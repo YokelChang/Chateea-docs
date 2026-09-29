@@ -1,0 +1,115 @@
+---
+title: "Cobra por transferencia bancaria ACH con NMI"
+description: "Acepta pagos desde cuentas bancarias de Estados Unidos y Canadá en facturas y suscripciones con NMI."
+icon: "building-columns"
+---
+
+Con NMI puedes cobrar por transferencia bancaria (ACH) desde cuentas de Estados Unidos y Canadá. Tu cliente paga la factura directamente desde su cuenta bancaria en lugar de usar una tarjeta, algo práctico para montos altos y que en muchos casos sale más barato de procesar.
+
+## Qué permite
+
+| Aspecto | Detalle |
+| --- | --- |
+| **Países de las cuentas** | Estados Unidos y Canadá |
+| **Dónde se usa** | Facturas únicas, facturas recurrentes y suscripciones |
+| **Datos que pide** | Número de ruta ABA (Estados Unidos) o números de tránsito e institución (Canadá) |
+| **Tiempo de confirmación** | Hasta 5 días hábiles, según el banco del cliente |
+| **Seguimiento** | La transacción muestra proveedor, modo de pago, origen, cuenta enmascarada y estado |
+
+<Note>
+  Por ahora el pago con cuenta bancaria de NMI está confirmado para facturas, facturas recurrentes y suscripciones. No está confirmado para enlaces de pago, formularios de pedido, enlaces por mensaje de texto ni documentos.
+</Note>
+
+## Requisitos
+
+Antes de ofrecer este método de pago:
+
+1. Conecta tu cuenta de comerciante de NMI en **Pagos → Integraciones** (ver [cómo configurar NMI](/pagos/integracion-nmi)).
+2. Confirma que tu cuenta de NMI tiene habilitado el procesamiento de cuentas bancarias. Si no lo está, pide la activación a NMI.
+3. Configura en tu panel de NMI los webhooks de liquidaciones y de estado de pago (consulta la [documentación de NMI sobre webhooks](https://docs.nmi.com/reference/overview#where-to-setup)). La URL de destino que debes usar te la entrega soporte de Chateea en **help@chateea.com**.
+4. Verifica que la factura use NMI como proveedor de pago.
+
+## Qué ve tu cliente al pagar
+
+Al abrir la factura, el cliente elige **US / CA Bank account** y completa sus datos. Los campos cambian según el país.
+
+### Cuenta de Estados Unidos
+
+- Nombre del titular de la cuenta
+- Número de ruta (ABA), de nueve dígitos
+- Número de cuenta
+- Tipo de titular
+- Tipo de cuenta
+- Aceptación de la autorización
+- Código postal (ZIP)
+
+### Cuenta de Canadá
+
+- Nombre del titular de la cuenta
+- Número de tránsito, de cinco dígitos
+- Número de institución, de tres dígitos
+- Número de cuenta
+- Tipo de titular
+- Tipo de cuenta
+- Aceptación de la autorización
+- Código postal que pida el formulario
+- País: debe seleccionar **Canadá**
+
+## Cómo se procesa el pago
+
+Las transferencias bancarias no se confirman al instante como muchas tarjetas. Cuando el cliente envía el pago:
+
+- La factura muestra un mensaje de **pago en curso**, con la fecha y hora de inicio.
+- La transacción aparece en estado **Procesando**.
+- En el detalle de la transacción verás NMI como proveedor, **Bank Account** como modo de pago, el número de cuenta enmascarado y la factura de origen.
+
+El resultado final puede tardar **hasta 5 días hábiles**, según el banco del cliente.
+
+<Warning>
+  No entregues el producto ni prestes el servicio hasta que la transacción pase a **Correcto** (Success). Un pago en proceso todavía puede ser rechazado por el banco.
+</Warning>
+
+## Cuentas guardadas para cobros recurrentes
+
+Las facturas recurrentes y las suscripciones solo pueden usar una cuenta bancaria **ya guardada**. No es posible ingresar una cuenta nueva directamente en esos flujos. El orden es:
+
+<Steps>
+  <Step title="Cobra primero una factura normal">
+    El cliente paga una factura eligiendo la opción de cuenta bancaria.
+  </Step>
+  <Step title="El cliente autoriza el cargo">
+    Acepta la autorización del formulario de pago.
+  </Step>
+  <Step title="La cuenta queda guardada">
+    Con ese pago, la cuenta bancaria se guarda en el perfil del cliente.
+  </Step>
+  <Step title="Úsala en el cobro recurrente">
+    Al crear la factura recurrente o la suscripción, selecciona la cuenta guardada.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Mi cliente ya pagó, pero la transacción sigue en Procesando">
+    Es normal. Las transferencias ACH pueden tardar hasta 5 días hábiles en tener un resultado final. Presta el servicio solo cuando el estado cambie a Correcto.
+  </Accordion>
+  <Accordion title="No me aparece la opción de cuenta bancaria en la factura">
+    Revisa que el procesamiento de cuentas bancarias esté habilitado en tu cuenta de NMI y que la factura use NMI como proveedor. Si sigue sin aparecer, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+  <Accordion title="No veo la opción de agregar una cuenta bancaria en facturas recurrentes o suscripciones">
+    Es el comportamiento actual. Primero debes cobrar una factura con cuenta bancaria para que quede guardada; después podrás usarla en facturas recurrentes y suscripciones.
+  </Accordion>
+  <Accordion title="¿Tengo que activar algo más en NMI?">
+    Sí. Además de habilitar el procesamiento bancario, activa en tu panel de NMI los webhooks de liquidaciones y de actualización del estado de pago. Pide a soporte de Chateea la URL de destino.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Integración con NMI" icon="credit-card" href="/pagos/integracion-nmi">
+    Conecta tu cuenta de NMI y activa 3D Secure.
+  </Card>
+  <Card title="Cómo crear facturas recurrentes" icon="repeat" href="/pagos-facturas/facturas-recurrentes">
+    Programa facturas que se emiten solas.
+  </Card>
+</CardGroup>

@@ -1,96 +1,77 @@
 ---
-title: '¿Cómo ver todo el "Plan de cuentas" dentro de la integración con Xero?'
-description: "Habilita los pagos en tus cuentas de Xero para que aparezcan al conectar la integración."
+title: "Ver todo el plan de cuentas de Xero en Chateea"
+description: "Habilita los pagos en tus cuentas de Xero para que aparezcan al configurar la integración."
 icon: "list-check"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Después de conectar Xero, al elegir la cuenta donde se publicarán tus facturas puede que la lista salga vacía o que falte la cuenta que buscas. Casi siempre la causa es la misma: Chateea solo muestra las cuentas de Xero que tienen **habilitados los pagos**. Con este ajuste en Xero, tu plan de cuentas queda disponible en Chateea.
 
-Si después de conectar Xero no puedes ver tu **plan de cuentas** dentro de Chateea, sigue los pasos de este artículo para habilitarlo.
+## Habilita los pagos en la cuenta de Xero
 
-<Info>
-  La causa casi siempre es la misma: Chateea solo muestra las cuentas de Xero que tienen **habilitados los pagos**. Si ninguna cuenta tiene esa casilla marcada, la lista aparecerá vacía aunque la conexión esté activa.
-</Info>
-
-## Paso 1: Ve a Configuración en Xero
+Estos pasos se hacen **dentro de Xero**.
 
 <Steps>
-  <Step title="Selecciona tu organización">
-    Desde tu panel de control de Xero.
+  <Step title="Abre la configuración de tu organización">
+    En el panel de Xero, selecciona tu organización y elige **Settings** (Configuración) en el menú desplegable.
   </Step>
-  <Step title="Haz clic en Configuración">
-    En el menú desplegable de la organización.
+  <Step title="Entra a la configuración avanzada">
+    En la configuración de la organización, desplázate hacia abajo y haz clic en **Looking for advanced settings?** (¿Buscas la configuración avanzada?).
   </Step>
-</Steps>
-
-## Paso 2: Abre la configuración avanzada
-
-En **Configuración de la organización**, desplázate hacia abajo y haz clic en **¿Buscas configuración avanzada?**
-
-## Paso 3: Acceder al plan de cuentas
-
-En **Contabilidad avanzada**, haz clic en **Plan de cuentas**.
-
-## Paso 4: Selecciona la cuenta correspondiente
-
-De la lista de cuentas, elige la que deseas conectar (por ejemplo, **Pagos anticipados**) y haz clic para **editar los detalles de esta cuenta**.
-
-<Note>
-  El plan de cuentas de Xero incluye activos, pasivos, patrimonio, ingresos y gastos. Para esta integración te interesan las cuentas donde tenga sentido registrar cobros, no cualquier cuenta de la lista.
-</Note>
-
-## Paso 5: Habilita los pagos para la cuenta
-
-En la ventana emergente de edición:
-
-<Steps>
-  <Step title="Marca 'Habilitar pagos a esta cuenta'">
-    Es la casilla que le indica a Xero que esa cuenta puede recibir pagos.
+  <Step title="Abre el plan de cuentas">
+    En **Advanced Accounting** (Contabilidad avanzada), haz clic en **Chart of accounts** (Plan de cuentas).
   </Step>
-  <Step title="Haz clic en Guardar">
-    El cambio queda aplicado en tu organización de Xero.
+  <Step title="Elige la cuenta">
+    Busca en la lista la cuenta que quieres usar, por ejemplo **Prepayments** (Anticipos), y haz clic para editar sus detalles.
+  </Step>
+  <Step title="Habilita los pagos">
+    En la ventana de edición, marca **Enable payments to this account** (Habilitar pagos a esta cuenta) y haz clic en **Save**.
   </Step>
 </Steps>
 
 <Warning>
-  Repite este paso en **cada cuenta** que quieras ver disponible en Chateea. Habilitar una sola cuenta hará que solo esa aparezca en el desplegable.
+  Repite el paso en cada cuenta que quieras ver en Chateea. Si habilitas una sola, solo esa aparecerá en la lista.
 </Warning>
 
-## Paso 6: Conectar en Chateea
+## Selecciona la cuenta en Chateea
 
 <Steps>
-  <Step title="Vuelve a la integración con Xero">
-    Desde **Pagos → Integraciones** en Chateea.
+  <Step title="Vuelve a la integración">
+    En Chateea, ve a **Configuración → Integraciones → Xero**.
   </Step>
-  <Step title="Abre Cuenta conectada">
-    Selecciona la cuenta que acabas de habilitar (por ejemplo, **Pagos anticipados**).
+  <Step title="Elige la cuenta conectada">
+    En **Cuenta conectada**, selecciona la cuenta que acabas de habilitar (por ejemplo, **Prepayments**).
   </Step>
 </Steps>
 
-Una vez finalizado, tu plan de cuentas quedará visible y listo para usarse en Chateea.
+Listo: tu plan de cuentas ya está visible y puedes usarlo para publicar tus facturas.
+
+<Note>
+  Elige una cuenta donde tenga sentido registrar cobros. Evita asignar cuentas bancarias a las líneas de factura, porque Xero rechaza esas facturas con errores de validación.
+</Note>
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="Conecté Xero pero el desplegable de cuentas sale vacío">
-    Es el síntoma exacto que resuelve este artículo: ninguna de tus cuentas de Xero tiene marcada la casilla **Habilitar pagos a esta cuenta**. Marca al menos una y vuelve a abrir el desplegable.
+  <Accordion title="Conecté Xero pero la lista de cuentas sale vacía">
+    Ninguna de tus cuentas tiene marcada la opción **Enable payments to this account**. Habilita al menos una en Xero y vuelve a abrir la lista en Chateea.
   </Accordion>
-
+  <Accordion title="Habilité la cuenta y sigue sin aparecer">
+    Revisa que estés editando la **misma organización de Xero** que conectaste a Chateea. Si administras varias, es fácil habilitar la cuenta en una y tener conectada otra.
+  </Accordion>
   <Accordion title="¿Puedo cambiar la cuenta conectada más adelante?">
-    Sí. Vuelve a **Cuenta conectada** dentro de la integración y elige otra de las cuentas habilitadas.
-  </Accordion>
-
-  <Accordion title="Habilité la cuenta en Xero y sigue sin aparecer">
-    Confirma que estás trabajando en la **misma organización de Xero** que conectaste. Si gestionas varias organizaciones, es fácil editar el plan de cuentas de una y tener conectada otra.
+    Sí. Vuelve a **Cuenta conectada** en la integración y elige otra de las cuentas habilitadas.
   </Accordion>
 </AccordionGroup>
 
-## ¿Necesitas ayuda?
+Si después de habilitar los pagos tu plan de cuentas sigue sin aparecer, escribe a soporte de Chateea en **help@chateea.com** indicando el nombre de tu organización de Xero y las cuentas que habilitaste.
 
-Si después de habilitar los pagos en Xero tu plan de cuentas sigue sin aparecer, escríbenos por WhatsApp al **\+1 829-580-7071** indicando el nombre de la organización de Xero y las cuentas que habilitaste.
+## Artículos relacionados
 
-<Card title="Configurar los proveedores de pago para que comiencen a aceptar pagos" icon="plug-circle-check" href="/pagos-facturas/configurar-proveedores-pago">
-  Revisa cómo se conectan y se gestionan el resto de tus integraciones de cobro.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Integración con Xero" icon="file-invoice-dollar" href="/pagos-facturas/integracion-xero">
+    Qué se sincroniza y cómo conectar Xero.
+  </Card>
+  <Card title="Configurar proveedores de pago" icon="plug-circle-check" href="/pagos-facturas/configurar-proveedores-pago">
+    Conecta tus pasarelas para empezar a cobrar.
+  </Card>
+</CardGroup>

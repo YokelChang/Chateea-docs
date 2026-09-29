@@ -1,129 +1,189 @@
 ---
 title: "Cómo crear facturas recurrentes"
-description: "Programa una plantilla que emite y cobra facturas solas, a la frecuencia que definas."
-icon: "file-invoice"
+description: "Programa facturas que se generan y envían solas, controla su frecuencia, sus estados y su historial."
+icon: "arrows-rotate"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Crear la misma factura cada mes a mano quita tiempo y abre la puerta a errores. Las facturas recurrentes resuelven eso: configuras una plantilla una sola vez, con su cliente, sus productos y su frecuencia, y Chateea genera y envía cada factura a tiempo. Son ideales para servicios continuos, igualas mensuales, membresías o pagos a plazos.
 
-Las facturas recurrentes te permiten emitir cobros a intervalos definidos sin crear cada factura a mano. Configuras una plantilla con su frecuencia, su cliente y su importe, y el sistema se encarga de enviarlas.
+## Ventajas
 
-<Warning>
-  Recomendamos usar **Stripe Connect** con las facturas. Si no lo usas, los pagos deberán registrarse manualmente.
-</Warning>
+- **Ahorro de tiempo:** automatizas una tarea repetitiva y te concentras en tu negocio.
+- **Precisión:** todas las facturas salen de la misma plantilla, sin errores de copia.
+- **Flujo de caja predecible:** cobras en fechas regulares.
+- **Comodidad para el cliente:** recibe sus facturas con un ciclo claro y constante.
+- **Imagen profesional:** facturas puntuales y ordenadas generan confianza.
+
+<Note>
+  Para cobrar con tarjeta en línea necesitas un proveedor de pago conectado, como Stripe. Sin él, puedes emitir facturas pero tendrás que registrar los pagos manualmente.
+</Note>
 
 ## Cómo crear una factura recurrente
 
 <Steps>
-  <Step title="Abre la pestaña Facturas">
-    En la sección de **Pagos**.
+  <Step title="Abre las facturas">
+    Ve a **Pagos → Facturas y presupuestos**.
   </Step>
-  <Step title="Crea una nueva plantilla recurrente">
-    Pulsa **Nuevo** en la página de Todas las facturas o Plantillas recurrentes, y elige **Nueva plantilla recurrente** — envía una factura al cliente a intervalos programados.
+  <Step title="Crea una factura recurrente">
+    Haz clic en **Nuevo** (arriba a la derecha) y elige **Nueva factura recurrente**.
+  </Step>
+  <Step title="Completa los datos del negocio y del cliente">
+    Revisa la información de tu negocio, selecciona el cliente y agrega los productos o servicios con sus precios, cantidades e impuestos.
+  </Step>
+  <Step title="Define la frecuencia">
+    En el menú **¿Con qué frecuencia?**, elige cada cuánto se genera la factura: diaria, semanal, mensual, anual o un intervalo personalizado.
+  </Step>
+  <Step title="Configura el inicio y el fin">
+    Elige la **fecha de inicio** de la primera factura y la **condición de fin**: una fecha concreta, un número de apariciones o sin fin.
+  </Step>
+  <Step title="Decide si se envía por adelantado">
+    Con la opción de envío anticipado, el cliente recibe la factura unos días antes del vencimiento para tener tiempo de pagarla.
+  </Step>
+  <Step title="Revisa y programa">
+    Comprueba frecuencia, precios e impuestos mientras la plantilla sigue en **Borrador** y luego envíala o prográmala.
   </Step>
 </Steps>
 
-## Comprende la configuración de frecuencia
+<Warning>
+  Revisa todo con calma antes de activar la plantilla. Cuando pasa a **Activa** o **Programada**, ya no puedes cambiar la frecuencia, los precios, los descuentos ni los impuestos.
+</Warning>
 
-Aquí está el corazón de la función. La frecuencia decide cuándo vence cada factura y cuándo se envía. Esta tabla recoge los casos del artículo original, con la configuración y su resultado:
+## Cómo funciona la frecuencia
+
+La frecuencia decide cuándo vence cada factura y cuándo se envía. Estos son los patrones más comunes:
+
+- **Intervalos regulares:** las facturas se generan cada cierto número de días, semanas o meses hasta que las detengas o se cumpla la condición de fin. Si la primera vence el 5 de julio y el intervalo es de 7 días, las siguientes vencen el 12, el 19 y así sucesivamente.
+- **Días concretos:** por ejemplo, el primer lunes de cada mes. Útil si alineas la facturación con fechas fijas.
+- **Anual:** una factura al año en la misma fecha, ideal para renovaciones o cuotas anuales.
+
+Estos ejemplos muestran el resultado de distintas combinaciones:
 
 | Configuración | Resultado |
 | --- | --- |
-| **Diaria**, cada 2 días · inicio 5 jul · sin fin | 1.ª factura vence el 5 jul · 2.ª el 7 jul · la generación nunca se detiene automáticamente |
-| **Diaria**, cada 2 días · inicio 5 jul · fin "por" 13 jul | 1.ª el 5 jul · 2.ª el 7 jul · siguientes los días 9, 11 y 13 de julio |
-| **Diaria**, cada 2 días · inicio 5 jul · fin "por" 12 jul | 1.ª el 5 jul · 2.ª el 7 jul · siguientes los días 9 y 11 · **ninguna** el 12 de julio |
-| **Semanal**, lunes, cada 2 semanas · inicio 5 jul · sin fin · enviar 2 días antes | 1.ª vence el 18 jul, se envía el 16 jul · 2.ª vence el 1 ago, se envía el 30 jul |
-| **Mensual**, en fecha, el 2 · cada 2 meses · inicio 6 jul · fin tras 3 apariciones · enviar 0 días antes | 1.ª vence el 2 sep (se envía el mismo día) · 2.ª el 2 nov · termina tras enviar 3 facturas |
-| **Mensual**, primer lunes · cada 1 mes · inicio 1 ago · fin "por" 31 dic · enviar 1 día antes | 1.ª vence el 1 ago (es el primer lunes) · se envían 1 día antes · la última vence el 5 dic (primer lunes de diciembre) · ninguna después |
-| **Anual**, último de diciembre · cada 1 año · inicio 1 ago · fin tras 5 apariciones | Envía una factura el 31 dic de cada año · termina tras 5 facturas |
+| Diaria, cada 2 días, inicio 5 jul, sin fin | Vencen el 5 jul, el 7 jul y así sucesivamente, sin detenerse solas |
+| Diaria, cada 2 días, inicio 5 jul, fin el 13 jul | Vencen el 5, 7, 9, 11 y 13 de julio |
+| Diaria, cada 2 días, inicio 5 jul, fin el 12 jul | Vencen el 5, 7, 9 y 11 de julio. El 12 no cae en el ciclo, así que no hay factura ese día |
+| Semanal, los lunes, cada 2 semanas, inicio 5 jul, enviar 2 días antes | La primera vence el 18 jul y se envía el 16 jul. La segunda vence el 1 ago y se envía el 30 jul |
+| Mensual, el día 2, cada 2 meses, inicio 6 jul, fin tras 3 apariciones | Vencen el 2 sep, el 2 nov y el 2 ene, y la plantilla termina |
+| Mensual, primer lunes, inicio 1 ago, fin el 31 dic, enviar 1 día antes | Vencen el primer lunes de cada mes, de agosto a diciembre, y se envían un día antes |
+| Anual, 31 de diciembre, fin tras 5 apariciones | Una factura cada 31 de diciembre durante 5 años |
 
 <Tip>
-  Los dos parámetros que más confunden son **"enviar X días antes"** y la fecha de fin. El primero adelanta el envío respecto al vencimiento; la fecha de fin "por" una fecha **incluye** esa fecha solo si cae en el ciclo, como muestra el caso del 12 vs. 13 de julio.
+  Los dos ajustes que más confunden son el envío anticipado y la fecha de fin. El primero solo adelanta el **envío**, no el vencimiento. La fecha de fin incluye ese día solo si coincide con el ciclo.
 </Tip>
 
-## Estados y acciones en las plantillas recurrentes
+## Opciones adicionales
 
-Qué puedes hacer con una plantilla depende de su estado. Esta tabla lo resume:
+En la sección de opciones adicionales puedes completar la plantilla con:
 
-| Acción / Estado | Borrador | Activa | Programada | Cancelada | Completada |
-| --- | --- | --- | --- | --- | --- |
-| **Editar** | Sí | No | No | No | No |
-| **Ver** | No | Sí | Sí | Sí | Sí |
-| **Eliminar** | Sí | No | Sí | No\* | No\* |
-| **Finalizar** | N/A | Sí | Sí | N/A | N/A |
+- **Términos y condiciones:** políticas de pago, reembolsos u otras notas importantes.
+- **Recargo por pago tardío:** un cargo automático si el cliente no paga a tiempo.
+- **Cargo por procesamiento:** traslada al cliente la comisión de la pasarela, si lo tienes habilitado en tus ajustes de pago.
+- **Propinas:** permite al cliente añadir una propina, útil en negocios de servicios.
+- **Adjuntos:** contratos o documentos de apoyo que acompañan a la factura.
 
-<Warning>
-  **\*** Las facturas **canceladas** y **completadas** solo se pueden eliminar si **no se ha enviado ninguna factura** al cliente. Las plantillas recurrentes eliminadas no se muestran en la vista de lista.
-</Warning>
+## Estados de una plantilla recurrente
+
+Lo que puedes hacer con una plantilla depende de su estado:
+
+| Estado | Qué significa | Editar | Eliminar | Finalizar |
+| --- | --- | --- | --- | --- |
+| **Borrador** | Creada pero sin activar | Sí | Sí | No aplica |
+| **Programada** | Empezará a generar facturas en una fecha futura | No | Sí | Sí |
+| **Activa** | Está generando facturas según su calendario | No | No | Sí |
+| **Cancelada** | Ya no generará más facturas | No | Solo si nunca se envió una factura | No aplica |
+| **Completada** | Terminó al cumplir su condición de fin | No | Solo si nunca se envió una factura | No aplica |
+
+## Gestionar tus plantillas
+
+En la lista de **Plantillas recurrentes**, abre el menú **⋮** de una plantilla para:
+
+- **Ver historial:** todas las facturas que generó.
+- **Ver:** revisar los detalles de la plantilla.
+- **Finalizar:** detener las facturas futuras sin borrar las ya enviadas.
+- **Eliminar:** solo si no se envió ninguna factura.
+- **Clonar:** duplicarla para reutilizar su configuración.
+- **Convertir en plantilla:** guardarla como plantilla reutilizable para automatizaciones.
 
 ## Ver las facturas enviadas y su estado de pago
 
-Pulsa **Detalles** en una plantilla para abrir el panel con las facturas enviadas y su estado. Cada factura puede estar en uno de cuatro estados:
+En **Plantillas recurrentes**, haz clic en **Detalles** para abrir un panel con las facturas generadas. Cada una puede estar:
 
 | Estado | Qué significa |
 | --- | --- |
-| **Enviada** | Se envió correctamente al cliente |
-| **Vencida** | Se envió a tiempo pero el cliente aún no la ha pagado |
-| **Pagada** | El cliente pagó la factura |
-| **No enviada** | Hubo un error de sistema al entregarla; hay que reenviarla |
+| **Enviada** | Se entregó correctamente al cliente |
+| **Vencida** | Se envió pero el pago sigue pendiente |
+| **Pagada** | El cliente la pagó |
+| **No enviada** | Falló la entrega y hay que reenviarla |
 
-Los estados también pueden consultarse dentro del generador de facturas una vez que la plantilla está **Programada**.
+También ves estos estados dentro del editor cuando la plantilla está programada.
 
-## Notificaciones de pago
-
-Estas son las notificaciones predeterminadas que se envían según el evento. Puedes crear más con activadores de factura en los flujos de trabajo (estado enviada o pagada):
-
-| Caso | Quién recibe el correo |
-| --- | --- |
-| Pago de factura realizado con éxito | Receptor |
-| El pago de la factura falló | Receptor |
-| Factura recibida | Receptor |
-| Pago de factura realizado con éxito | Remitente |
-| El pago de la factura falló | Remitente |
-
-## Cómo dejar de emitir facturas futuras
-
-Las facturas recurrentes activas o programadas se pueden detener para que no se envíen más:
+## Cómo detener una factura recurrente
 
 <Steps>
-  <Step title="Abre el menú Acciones">
-    En la lista de plantillas recurrentes, en la fila que quieras detener.
+  <Step title="Abre la plantilla">
+    Ve a **Pagos → Facturas y presupuestos** y abre la pestaña **Recurrentes**.
   </Step>
-  <Step title="Selecciona Finalizar">
-    Y confirma con **Sí, finalizar factura**.
-
-    Esto finaliza la plantilla con efecto en la fecha indicada; no se crean ni envían facturas futuras.
+  <Step title="Finaliza la plantilla">
+    En la fila del cliente, abre el menú **⋮** y elige **Finalizar**. También puedes hacerlo desde el editor con **Finalizar factura recurrente**.
   </Step>
 </Steps>
 
-También puedes finalizarla desde el propio generador de facturas, con la opción **Finalizar factura recurrente**.
+Desde ese momento no se generan más facturas, y el historial de las ya enviadas se conserva.
+
+## Descargar el PDF de una factura recurrente
+
+<Steps>
+  <Step title="Localiza la factura">
+    En **Pagos → Facturas y presupuestos**, busca la factura recurrente activa.
+  </Step>
+  <Step title="Copia el enlace">
+    Abre el menú **⋮** y elige **Copiar enlace**.
+  </Step>
+  <Step title="Descarga">
+    Abre el enlace en una pestaña nueva y haz clic en la opción de descarga. El PDF se descargará.
+  </Step>
+</Steps>
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Puedo cambiar el precio, el descuento o los impuestos después de programar?">
-    No. Una vez programada la factura recurrente, no puedes cambiar precio, descuento ni impuestos. Puedes editar y reenviar una factura individual en casos específicos, pero no modificar la automatización.
+  <Accordion title="Anulé una factura recurrente pero el cliente sigue recibiendo facturas. ¿Por qué?">
+    Anular una factura solo cancela ese cobro puntual. La plantilla recurrente sigue activa y seguirá generando facturas. Para detener la serie, finaliza la plantilla desde la pestaña **Recurrentes** con **⋮ → Finalizar**.
   </Accordion>
-
-  <Accordion title="¿Puedo cambiar la frecuencia después de programar?">
-    No. La configuración de frecuencia no se puede cambiar una vez programada la plantilla.
+  <Accordion title="¿Puedo cambiar el precio o la frecuencia después de programarla?">
+    No. Una vez activa o programada, la plantilla no se puede editar. Si necesitas otros valores, finalízala y crea una nueva (puedes clonarla para ir más rápido).
   </Accordion>
-
-  <Accordion title="¿Qué productos puedo agregar a una factura recurrente?">
-    Solo productos de **compra única**, no suscripciones. Para productos recurrentes, la frecuencia debe definirse en la configuración de frecuencia de la factura.
+  <Accordion title="Si agrego un descuento, ¿se aplica para siempre?">
+    Depende de dónde lo pongas. Un descuento en la plantilla recurrente se aplica a todas las facturas futuras. Un descuento en una factura concreta solo afecta a ese cobro.
   </Accordion>
-
-  <Accordion title="¿Qué muestra la vista de lista?">
-    Las plantillas recurrentes creadas por el usuario, que a su vez crean y envían facturas individuales al cliente según la frecuencia definida en cada una.
+  <Accordion title="¿Puedo poner a otras personas en copia en las facturas recurrentes?">
+    No hay una opción para poner en copia automáticamente a otros destinatarios en cada factura recurrente. Se envían al correo principal del contacto.
   </Accordion>
-
-  <Accordion title="¿Cómo me notifican cuando pagan una factura?">
-    Con las notificaciones predeterminadas de la tabla anterior, y las que tú agregues mediante activadores de factura en los flujos de trabajo.
+  <Accordion title="¿Puedo agregar notas o términos personalizados?">
+    Sí. Usa la sección de términos y condiciones para indicar políticas de pago o mensajes para tu cliente.
+  </Accordion>
+  <Accordion title="¿Por qué la cuota de configuración y el pago recurrente aparecen en líneas separadas?">
+    Porque se cobran de forma distinta. La cuota de configuración es un cargo único que solo aparece en la primera factura. El importe recurrente sigue su propio ciclo en las facturas siguientes.
+  </Accordion>
+  <Accordion title="Mi producto tiene periodo de prueba, pero la primera factura cobra la cuota de configuración y el primer mes. ¿Por qué?">
+    Las facturas no tienen en cuenta el periodo de prueba del producto: la prueba se aplica a las suscripciones, no a las facturas. Si quieres cobrar solo la cuota al inicio, crea una factura única con la cuota (menciona la prueba en la descripción) y programa la factura recurrente para que empiece cuando termine la prueba.
   </Accordion>
 </AccordionGroup>
 
-<Card title="Pagos automáticos en plantillas recurrentes" icon="credit-card" href="/pagos-facturas/pagos-automaticos-recurrentes">
-  Haz que estas facturas se cobren solas en cada vencimiento.
-</Card>
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Pagos automáticos en plantillas recurrentes" icon="credit-card" href="/pagos-facturas/pagos-automaticos-recurrentes">
+    Haz que estas facturas se cobren solas.
+  </Card>
+  <Card title="Cuota de configuración en facturas recurrentes" icon="file-invoice-dollar" href="/pagos/cargo-de-configuracion-en-facturas-recurrentes">
+    Cobra el alta y la mensualidad en una misma factura.
+  </Card>
+  <Card title="Facturas recurrentes automáticas con flujos" icon="arrows-rotate" href="/pagos-facturas/facturas-recurrentes-automaticas">
+    Inicia la facturación desde una automatización.
+  </Card>
+  <Card title="Editar facturas recurrentes" icon="pen" href="/pagos/editar-facturas-recurrentes">
+    Qué puedes cambiar en una serie ya creada.
+  </Card>
+</CardGroup>

@@ -1,0 +1,109 @@
+---
+title: "Importar transacciones y pedidos desde CSV"
+description: "Trae tu historial de ventas de otra plataforma a Chateea para que tus reportes de ingresos y contactos estén completos."
+icon: "file-import"
+---
+
+Si vienes de otra plataforma de cobros o tienes ventas registradas en hojas de cálculo, puedes traer ese historial a Chateea con archivos CSV. Al importar tus transacciones y pedidos anteriores, tus paneles de ingresos, tus reportes y la línea de tiempo de cada contacto reflejan todo lo que has vendido, no solo lo que vendiste desde que empezaste a usar Chateea.
+
+## Para qué te sirve
+
+- **Centralizas tu historial:** traes las ventas de plataformas anteriores a un solo lugar.
+- **Reportes completos:** los paneles y métricas de ingresos se actualizan con lo importado.
+- **Contactos al día:** la importación crea o actualiza los contactos de tus clientes.
+- **Fechas reales:** la fecha en que ocurrió la venta se guarda aparte de la fecha en que la importaste.
+- **Menos errores:** ves una vista previa con validación antes de confirmar, y tienes archivos de ejemplo para guiarte.
+
+## Transacciones o pedidos: qué importar
+
+| Importas | Qué representa | Qué genera |
+| --- | --- | --- |
+| **Transacciones** | Eventos de pago reales, sin necesidad de detallar artículos | Registros de transacción que suman a tus ingresos de inmediato |
+| **Pedidos** | Ventas detalladas por artículo | El pedido y, automáticamente, su transacción vinculada |
+
+Si solo necesitas que tus números de ingresos estén completos, importa transacciones. Si quieres saber qué productos compró cada cliente, importa pedidos.
+
+<Warning>
+  No importes las mismas ventas como transacciones y como pedidos: cada pedido ya crea su propia transacción, así que duplicarías tus ingresos.
+</Warning>
+
+## Cómo importar transacciones
+
+<Steps>
+  <Step title="Abre Transacciones">
+    Ve a **Pagos → Transacciones** y haz clic en **Importar**.
+  </Step>
+  <Step title="Prepara tu archivo">
+    Descarga el **CSV de ejemplo** y ajusta tus datos a ese formato.
+  </Step>
+  <Step title="Sube y revisa">
+    Sube el archivo y revisa la **vista previa**, que marca los errores de validación.
+  </Step>
+  <Step title="Confirma">
+    Confirma la importación. Las transacciones impactan tus métricas de ingresos en cuanto se agregan.
+  </Step>
+</Steps>
+
+## Cómo importar pedidos
+
+<Steps>
+  <Step title="Abre Pedidos">
+    Ve a **Pagos → Pedidos** y selecciona **Importar**.
+  </Step>
+  <Step title="Sube tu archivo">
+    Sube un CSV con el formato correcto.
+  </Step>
+  <Step title="Valida">
+    Revisa los datos en la vista previa y corrige lo que haga falta.
+  </Step>
+  <Step title="Confirma">
+    Cada pedido crea automáticamente su transacción. Ambos registros aparecen en tus paneles y reportes.
+  </Step>
+</Steps>
+
+## Reglas del archivo CSV
+
+- Los nombres de las columnas deben ser **exactamente** los del archivo de ejemplo.
+- Incluye los datos del cliente (correo o teléfono) para que Chateea encuentre el contacto o lo cree.
+- Indica bien las fechas: la fecha real de la venta es distinta de la fecha en que se importa.
+
+Consulta el detalle de cada columna en las guías de formato:
+
+<CardGroup cols={2}>
+  <Card title="Formato CSV de transacciones" icon="file-csv" href="/pagos-facturas/importar-transacciones-csv">
+    Columnas, ejemplos y errores comunes.
+  </Card>
+  <Card title="Formato CSV de pedidos" icon="file-csv" href="/pagos-facturas/importar-pedidos-csv">
+    Incluye cómo cargar pedidos con varios artículos.
+  </Card>
+</CardGroup>
+
+<Tip>
+  Haz primero una prueba con cinco o diez filas. Si la vista previa y los registros importados se ven bien, sube el archivo completo. Es mucho más fácil corregir un error de formato en diez filas que en diez mil.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se duplican los contactos que ya tengo?">
+    No. Chateea intenta encontrar el contacto por correo o teléfono antes de crear uno nuevo.
+  </Accordion>
+  <Accordion title="¿Puedo registrar una venta con una fecha anterior?">
+    Sí. La fecha en que ocurrió la transacción se indica por separado de la fecha en que la agregas a Chateea.
+  </Accordion>
+  <Accordion title="¿Qué pasa si mi archivo tiene errores?">
+    La vista previa marca los problemas de validación antes de que confirmes la importación.
+  </Accordion>
+  <Accordion title="¿Puedo importar reembolsos o transacciones anuladas?">
+    No por ahora. Solo se admiten transacciones y pedidos completados con éxito.
+  </Accordion>
+  <Accordion title="¿La importación afecta mis reportes de ingresos?">
+    Sí. Los paneles de ingresos y demás reportes financieros se actualizan con los datos importados.
+  </Accordion>
+</AccordionGroup>
+
+## Siguientes pasos
+
+- Revisa tu panel de ingresos para confirmar que los datos se reflejan bien.
+- Abre algunos contactos y verifica la actividad importada en su línea de tiempo.
+- Crea automatizaciones que se activen con nuevos pedidos o pagos para lo que venga a partir de ahora.

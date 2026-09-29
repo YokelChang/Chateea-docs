@@ -1,126 +1,122 @@
 ---
-title: "Cómo modificar las suscripciones existentes"
-description: "Añade o quita productos, cambia cantidades y ajusta fechas sin recrear la suscripción."
+title: "Modificar suscripciones existentes"
+description: "Agrega o quita productos, cambia cantidades y fechas o actualiza la tarjeta sin cancelar ni recrear la suscripción."
 icon: "pen-to-square"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
-
-## Descripción general
-
-Las suscripciones se pueden actualizar para reflejar cambios en los **productos**, las **cantidades** o las **fechas de inicio y finalización**. Esto te permite atender las necesidades del cliente sin tener que cancelar y volver a crear la suscripción, manteniendo la coherencia en las fechas de facturación.
+Cuando un cliente quiere agregar un servicio, quitar otro o cambiar cantidades, no hace falta cancelar su suscripción y crear una nueva. Con la opción **Actualizar** puedes modificar productos, cantidades y fechas de una suscripción existente manteniendo su calendario de cobro.
 
 <Info>
-  El valor real está en lo que evitas: cancelar y recrear una suscripción reinicia el calendario de cobro, rompe el historial y suele terminar con el cliente pagando dos veces en el mismo mes o con un hueco de facturación.
+  Cancelar y recrear una suscripción reinicia el calendario de cobro, rompe el historial y suele terminar con el cliente pagando dos veces en el mismo mes o con un hueco de facturación. Actualizar evita todo eso.
 </Info>
 
-## ¿Qué hace esta función?
-
-La opción **Actualizar suscripción** te permite:
+## Qué puedes cambiar
 
 | Acción | Detalle |
 | --- | --- |
-| **Añadir productos** | Puedes agregar productos a una suscripción existente, siempre que compartan la **misma frecuencia de facturación y moneda** |
-| **Eliminar productos** | Para que no vuelvan a aparecer en los ciclos de facturación futuros |
+| **Agregar productos** | Siempre que tengan la **misma frecuencia de facturación y moneda** que la suscripción |
+| **Quitar productos** | Dejan de aparecer en los ciclos de facturación futuros |
 | **Ajustar cantidades** | De cualquier producto de la suscripción, **entre 1 y 1000** |
-| **Editar la fecha de inicio** | Solo si la suscripción está programada y aún no está activa |
-| **Actualizar la fecha de finalización** | Para suscripciones activas |
-| **Previsualizar** | Ves todos los cambios y los totales actualizados antes de guardar |
+| **Cambiar la fecha de inicio** | Solo si la suscripción está programada y todavía no está activa |
+| **Cambiar la fecha de fin** | En suscripciones activas |
+| **Previsualizar** | Ves los cambios y los nuevos totales antes de guardar |
 
 <Warning>
-  Actualmente esta función **no permite prorratear los cargos**. Esa funcionalidad estará disponible próximamente. Mientras tanto, el nuevo total se aplica íntegro en la próxima fecha de facturación: si subes de plan a mitad de ciclo, el cliente no paga la diferencia proporcional de los días restantes.
+  Por ahora **no hay prorrateo**. El nuevo total se aplica completo en la próxima fecha de cobro: si agregas un producto a mitad de ciclo, el cliente no paga la parte proporcional de los días restantes, sino el total nuevo en el siguiente cobro.
 </Warning>
 
-## ¿Qué necesito para usar esta función?
+## Requisitos
 
-- Acceso a **Pagos → Suscripciones**
-- Una suscripción en estado **programado, de prueba o activo**
-- Un proveedor de pago compatible: **Stripe, Square, NMI o Authorize.net**
+- Acceso a **Pagos → Suscripciones**.
+- Una suscripción en estado **Programada**, **Prueba** o **Activa**.
+- Un proveedor de pago compatible: **Stripe**, **Square**, **NMI** o **Authorize.net**.
 
 ## Cómo modificar una suscripción
 
-### Paso 1: Accede a la suscripción
-
 <Steps>
-  <Step title="Ve a Pagos → Suscripciones">
-    Verás la lista de todas las suscripciones de tus clientes.
+  <Step title="Abre la suscripción">
+    Ve a **Pagos → Suscripciones** y localiza la suscripción. Abre el menú de tres puntos y haz clic en **Actualizar**. También puedes abrir la página **Detalles de la suscripción** y elegir **Actualizar** en el menú **Acciones**.
   </Step>
-  <Step title="Selecciona la suscripción que quieres modificar">
-    Puedes ayudarte con la búsqueda o los filtros de fecha.
+  <Step title="Haz los cambios">
+    | Qué quieres hacer | Cómo |
+    | --- | --- |
+    | **Agregar un producto** | Haz clic en el botón **+**. Solo verás productos con la misma frecuencia de facturación |
+    | **Quitar un producto** | Usa el **icono de eliminar** junto al nombre del producto |
+    | **Cambiar cantidades** | Ajusta el número en el campo **Cantidad** |
+    | **Cambiar fechas** | Elige la **fecha de inicio** (suscripciones programadas) o la **fecha de fin** (suscripciones activas) |
   </Step>
-  <Step title="Abre el menú y haz clic en Actualizar">
-    Es la opción del menú de tres puntos al final de la fila.
-  </Step>
-  <Step title="Alternativa: desde los detalles">
-    También puedes abrir la página **Detalles de la suscripción** y usar **Actualizar** dentro del menú **Acciones**.
+  <Step title="Revisa y guarda">
+    La vista previa muestra los productos, cantidades, fechas y nuevos totales. Confirma para actualizar la suscripción. La nueva configuración se aplica a partir del siguiente ciclo de facturación.
   </Step>
 </Steps>
 
-### Paso 2: Realiza los cambios
+## Cómo afectan los cambios a pruebas, cargos de configuración y cupones
 
-| Qué quieres hacer | Cómo se hace |
+| Situación | Qué ocurre |
 | --- | --- |
-| **Añadir un producto** | Haz clic en el botón **\+**. Los productos disponibles serán solo los que coincidan con la frecuencia de facturación de la suscripción |
-| **Eliminar un producto** | Usa el **icono de eliminar** que aparece junto al nombre del producto |
-| **Actualizar cantidades** | Ajusta el número en el campo **Cantidad** |
-| **Editar fechas** | Selecciona la **fecha de inicio** (en suscripciones programadas) o actualiza la **fecha de finalización** (en suscripciones activas) |
+| **Producto con prueba agregado a una suscripción activa** | La prueba se omite. Lo mismo si cambias cantidades en una suscripción activa |
+| **Producto agregado a una suscripción en prueba** | El nuevo producto también queda en prueba hasta que termine la prueba original, y todos los cargos se aplican en el primer cobro después de la prueba |
+| **Producto con cargo de configuración** | El cargo se suma una sola vez al total del siguiente ciclo. Si aumentas la cantidad de un producto con cargo de configuración, se cobra por las unidades adicionales |
+| **Cargo de configuración en una suscripción en prueba** | Se cobra en el siguiente ciclo, es decir, cuando termina la prueba |
+| **Suscripción con cupón vigente** | Si el cupón aplica al producto nuevo, se le aplica desde el siguiente ciclo |
 
-### Paso 3: Revisa y guarda
+## Actualizar la tarjeta del cliente
 
-- En la **vista previa** se muestran los productos actualizados, las cantidades, las fechas y los nuevos importes totales
-- Confirma los cambios para actualizar la suscripción
-- La nueva configuración se aplicará **a partir del próximo ciclo de facturación**
+Si el problema no son los productos sino la tarjeta (vencida, rechazada o que el cliente quiere cambiar), envíale un enlace seguro para que la actualice él mismo:
 
-<Note>
-  La función de prorrateo estará disponible próximamente. Por ahora, el nuevo total se aplica en la próxima fecha de facturación.
-</Note>
+<Steps>
+  <Step title="Abre la suscripción">
+    Ve a **Pagos → Suscripciones** y localiza la suscripción del cliente.
+  </Step>
+  <Step title="Genera el enlace">
+    Haz clic en los tres puntos a la derecha y selecciona **Compartir enlace de actualización de pago**.
+  </Step>
+  <Step title="Envíaselo">
+    Copia el enlace para mandarlo por chat o mensaje, o usa la opción de correo para enviarlo directamente desde Chateea.
+  </Step>
+</Steps>
+
+El cliente usa ese enlace para actualizar los datos de su tarjeta sin que tú tengas que manejarlos.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Cambiar un producto o una cantidad afecta a las transacciones anteriores?">
-    No. Las transacciones anteriores permanecen sin cambios. Las actualizaciones solo se aplican a los ciclos de facturación futuros.
+  <Accordion title="¿Cambiar un producto o una cantidad afecta los cobros anteriores?">
+    No. Las transacciones anteriores no cambian. Las actualizaciones solo se aplican a los ciclos futuros.
   </Accordion>
-
-  <Accordion title="¿Qué sucede con la fecha de cobro cuando se realizan cambios?">
-    La fecha de cobro no cambia. Todas las actualizaciones se aplican siguiendo el mismo calendario de facturación.
+  <Accordion title="¿Cambia la fecha de cobro al modificar la suscripción?">
+    No. Todos los cambios se aplican siguiendo el mismo calendario de facturación.
   </Accordion>
-
-  <Accordion title="¿Se pueden añadir varios productos a la vez?">
+  <Accordion title="¿Puedo agregar varios productos a la vez?">
     Sí, siempre que compartan la misma frecuencia de facturación.
   </Accordion>
-
-  <Accordion title="¿Dónde se puede consultar el historial de modificaciones?">
-    Todos los cambios se registran en la página de **Detalles de la suscripción**, para consulta y auditoría.
+  <Accordion title="¿Dónde veo el historial de cambios?">
+    Todos los cambios quedan registrados en la página **Detalles de la suscripción**.
   </Accordion>
-
-  <Accordion title="¿Qué sucede si el producto tiene un período de prueba y ahora se agrega a una suscripción?">
-    - Los períodos de prueba **se omiten** si el producto se agrega a una suscripción que ya está **activa**, o si se modifican las cantidades de un producto en una suscripción activa.
-    - Si la suscripción está en estado de **prueba**, el nuevo producto también estará en período de prueba hasta la fecha de finalización de la prueba de la suscripción original, y todos los cargos se aplicarán en el siguiente ciclo de facturación, una vez finalizada la prueba.
+  <Accordion title="¿Puedo modificar una suscripción cancelada, vencida o impaga?">
+    No. Solo se pueden modificar suscripciones en estado **Programada**, **Activa** o **Prueba**.
   </Accordion>
-
-  <Accordion title="¿Qué sucede si el producto tiene un cargo de configuración y se agrega a una suscripción?">
-    - Si el producto recién añadido tiene un **cargo de configuración**, se aplicará como un cargo único al total, vigente en el siguiente ciclo de facturación. Lo mismo ocurre si aumentas las cantidades de un producto existente que tiene cargos de configuración: se cobrarán por las unidades adicionales en el siguiente ciclo.
-    - Si la suscripción está en estado de **prueba**, la tarifa de configuración del nuevo producto se cobrará en el siguiente ciclo de facturación, es decir, cuando finalice el período de prueba.
+  <Accordion title="¿Puedo cambiar el cupón de una suscripción activa?">
+    Todavía no. Si el cupón vigente aplica al producto que agregas, se le aplicará automáticamente desde el siguiente ciclo.
   </Accordion>
-
-  <Accordion title="¿Qué sucede si la suscripción tiene un cupón vigente?">
-    Si el cupón es aplicable al producto recién agregado, se aplicará al nuevo producto a partir del próximo ciclo de facturación.
-
-    Próximamente estará disponible la opción de cambiar los cupones de una suscripción activa.
-  </Accordion>
-
-  <Accordion title="¿Puedo modificar una suscripción con estado Cancelada, Vencida o Impaga?">
-    No. Solo permiten modificaciones los estados **Programada, Activa y de Prueba**.
+  <Accordion title="¿Por qué a mi cliente no se le cobró la mensualidad después de cambiar un producto?">
+    Si renombras o modificas en **Pagos → Productos** el producto vinculado a una suscripción de Stripe, la sincronización puede romperse. Abre la suscripción, usa **Actualizar**, agrega el producto actualizado, quita el anterior y guarda. Los cobros que no se hicieron no se recuperan solos: envía una factura o un enlace de pago único para cobrarlos.
   </Accordion>
 </AccordionGroup>
 
-## ¿Necesitas ayuda?
+## Artículos relacionados
 
-Si una modificación no se refleja como esperabas en el siguiente cobro, escríbenos por WhatsApp al **\+1 829-580-7071** con el ID de la suscripción y el cambio que aplicaste.
-
-<Card title="Comprender los estados de suscripción y el seguimiento" icon="arrows-rotate" href="/pagos-facturas/gestionar-suscripciones">
-  Repasa qué significa cada estado antes de decidir si una suscripción se puede modificar.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Estados de suscripción" icon="arrows-rotate" href="/pagos-facturas/gestionar-suscripciones">
+    Qué significa cada estado antes de modificar.
+  </Card>
+  <Card title="Pausar y reanudar suscripciones" icon="pause" href="/pagos/pausar-y-reanudar-suscripciones">
+    Detén el cobro temporalmente sin cancelar.
+  </Card>
+  <Card title="Cupones en productos de suscripción" icon="ticket" href="/pagos-facturas/cupones-productos-suscripcion">
+    Cómo se aplican los descuentos a cobros recurrentes.
+  </Card>
+  <Card title="Tarjetas guardadas de clientes" icon="credit-card" href="/pagos/tarjetas-guardadas-de-clientes">
+    Administra los métodos de pago de tus clientes.
+  </Card>
+</CardGroup>

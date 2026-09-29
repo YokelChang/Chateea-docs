@@ -1,0 +1,73 @@
+---
+title: "Configurar Stripe para cumplir con Nacha en pagos ACH"
+description: "Actualiza tu cuenta de Stripe para cumplir las reglas de Nacha si cobras con débito directo ACH."
+icon: "building-columns"
+---
+
+Si cobras pagos con cuentas bancarias de Estados Unidos (débito directo ACH) a través de Stripe, es posible que debas actualizar tu cuenta de Stripe para cumplir las reglas de Nacha, la organización que regula la red ACH. Stripe está endureciendo estos requisitos para que tus clientes identifiquen claramente tu negocio en su estado de cuenta y sepan cómo contactarte. El cambio rige desde el **20 de marzo de 2026**.
+
+## Quién debe hacer este ajuste
+
+Te afecta si tienes una cuenta de Stripe conectada a Chateea y aceptas, o planeas aceptar, pagos con débito directo ACH (cuentas bancarias de EE. UU.).
+
+<Note>
+Chateea no puede hacer este cambio por ti. Es una configuración de tu cuenta de Stripe y se hace desde el panel de Stripe.
+</Note>
+
+## Elige cómo clasificar tus transacciones
+
+Stripe te pide indicar si tus cobros bancarios corresponden a compras de bienes. Tienes tres opciones:
+
+| Opción | Cuándo elegirla |
+| --- | --- |
+| **Clasificar transacciones automáticamente** | Stripe decide en cada transacción si es una compra de bienes, usando la información del comercio y de la transacción. Sirve para la mayoría de los negocios y no requiere cambios técnicos. |
+| **Clasificar todas las transacciones ACH como bienes** | Vendes exclusivamente productos físicos o digitales. |
+| **No clasificar ninguna transacción como bienes** | Ofreces servicios, recibes donaciones o cobras pagos de facturas en lugar de vender productos. |
+
+## Configura la clasificación en Stripe
+
+<Steps>
+  <Step title="Abre tu panel de Stripe">
+    Inicia sesión en tu cuenta de Stripe.
+  </Step>
+  <Step title="Busca la sección de Nacha">
+    Ve a **Settings → Payments** y localiza la sección de cumplimiento de Nacha (Nacha compliance).
+  </Step>
+  <Step title="Elige una opción">
+    Selecciona una de las tres formas de clasificación según tu tipo de negocio.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios en Stripe.
+  </Step>
+</Steps>
+
+<Tip>
+Revisa también tu **descriptor del estado de cuenta** (statement descriptor) en Stripe. Usa un nombre que tus clientes reconozcan como tu negocio, porque es lo que verán en su estado bancario. Un nombre confuso es una de las causas más comunes de disputas y contracargos en ACH.
+</Tip>
+
+Para más detalles, consulta la guía oficial de Stripe sobre [cómo configurar tu cuenta para cumplir con Nacha](https://support.stripe.com/questions/configure-your-account-for-nacha-compliance) y la documentación de [débito directo ACH](https://docs.stripe.com/payments/ach-direct-debit).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Chateea hace estos cambios por mí?">
+    No. Son ajustes de tu cuenta de Stripe y debes hacerlos en el panel de Stripe.
+  </Accordion>
+  <Accordion title="¿Qué nombre debo usar como descriptor del estado de cuenta?">
+    Un nombre que tus clientes reconozcan como tu negocio, ya que es lo que aparecerá en su estado bancario para los cobros con débito directo ACH.
+  </Accordion>
+  <Accordion title="No acepto pagos ACH. ¿Tengo que hacer algo?">
+    No, si no aceptas ni planeas aceptar pagos con cuentas bancarias de EE. UU. Si más adelante activas ACH, configura primero la clasificación en Stripe.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestionar métodos de pago de Stripe desde Chateea" icon="sliders" href="/pagos/gestionar-metodos-de-pago-stripe-desde-chateea">
+    Activa o desactiva ACH y otros métodos por área.
+  </Card>
+  <Card title="Integración de pagos con Stripe" icon="credit-card" href="/comercio/integracion-stripe">
+    Conecta y configura tu cuenta de Stripe.
+  </Card>
+</CardGroup>

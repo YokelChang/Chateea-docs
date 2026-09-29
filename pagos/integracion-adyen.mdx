@@ -1,0 +1,106 @@
+---
+title: "Conecta Adyen para cobrar con tarjeta"
+description: "Configura tu cuenta de Adyen en modo prueba y en vivo, conoce sus canales compatibles y cómo gestionar reembolsos y disputas."
+icon: "credit-card"
+---
+
+Si tu empresa ya procesa pagos con Adyen, puedes conectar tu cuenta de comerciante a Chateea y cobrar con tarjeta de crédito y débito en facturas, enlaces de pago, tienda y formularios de pedido. Es una buena opción si operas en Europa o Norteamérica, o si tu empresa tiene estandarizados sus pagos en Adyen.
+
+## Qué ofrece la integración
+
+- **Pagos con tarjeta** de crédito y débito sobre la infraestructura de Adyen, que cumple con PCI.
+- **3D Secure (3DS):** Adyen solicita la verificación adicional cuando corresponde, sin configuración extra en Chateea.
+- **Cobertura:** Unión Europea y Reino Unido, Estados Unidos y Canadá.
+- **Puesta en marcha rápida:** si ya eres comerciante de Adyen, solo pegas tus credenciales.
+
+## Requisitos
+
+- Una cuenta de comerciante de Adyen aprobada para procesar (prueba y en vivo).
+- La **Company API Key** de cada entorno: prueba (Test) y en vivo (Live).
+- El **Live URL Prefix** de tu cuenta de Adyen, necesario solo para el modo en vivo.
+- Acceso de administrador a **Pagos** en tu cuenta de Chateea.
+
+## Resumen rápido
+
+| Categoría | Elemento | Detalle |
+| --- | --- | --- |
+| **Credenciales** | Modo en vivo | Company API Key **y** Live URL Prefix |
+| | Modo de prueba | Company API Key |
+| | Live URL Prefix | Cadena que antecede a los endpoints en vivo, por ejemplo `1797a841fbb37ca7-MyStore`. Está en la configuración de desarrollador de Adyen |
+| **Capacidades** | Métodos de pago | Tarjetas de crédito y débito |
+| | Autenticación | 3D Secure |
+| | Canales en Chateea | Facturas, enlaces de pago, tienda y formularios de pedido de embudos y formularios (donde se acepta tarjeta) |
+| **Regiones** | Países | UE y Reino Unido, Estados Unidos, Canadá |
+| | Monedas y liquidación | Las que tenga aprobadas y configuradas tu cuenta de Adyen |
+
+## Cómo conectar Adyen
+
+<Steps>
+  <Step title="Abre las integraciones de pago">
+    En tu cuenta de Chateea, ve a **Pagos → Integraciones** y haz clic en **Conectar Adyen**.
+  </Step>
+  <Step title="Elige el modo">
+    Usa el selector para indicar si conectas el modo **Live** (en vivo) o **Test** (prueba).
+  </Step>
+  <Step title="Pega tu Company API Key">
+    Si no sabes dónde está, consulta la [guía de Adyen sobre credenciales de API](https://docs.adyen.com/development-resources/api-credentials).
+  </Step>
+  <Step title="Pega el Live URL Prefix (solo en vivo)">
+    Sin este dato los cobros en vivo fallan, porque Adyen no puede enrutar la solicitud.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Un mensaje confirma la conexión.
+  </Step>
+</Steps>
+
+## Prueba antes de cobrar
+
+<Steps>
+  <Step title="Conecta el modo de prueba">
+    Simula pagos con tarjeta sin cargos reales.
+  </Step>
+  <Step title="Usa las tarjetas de prueba de Adyen">
+    Sigue las ventanas de 3DS que aparezcan para confirmar que la autenticación funciona.
+  </Step>
+  <Step title="Pasa a en vivo">
+    Cambia la integración a **Live**, agrega el Live URL Prefix y haz un pago real de monto bajo para verificar.
+  </Step>
+</Steps>
+
+## Reembolsos y disputas
+
+- **Reembolsos:** si tu cuenta tiene habilitados los reembolsos en Chateea, puedes hacer reembolsos totales o parciales desde **Pagos → Transacciones** o desde la factura. Si no, hazlos desde tu panel de Adyen.
+- **Disputas y contracargos:** se gestionan en Adyen. Atiende sus notificaciones y envía la evidencia dentro de los plazos que indique.
+- Los tiempos, comisiones y ajustes de liquidación los define Adyen.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo aceptar Apple Pay o Google Pay con Adyen?">
+    Por ahora no. La integración solo admite tarjetas de crédito y débito. Billeteras digitales, compra ahora y paga después, y terminales físicas todavía no están disponibles.
+  </Accordion>
+  <Accordion title="¿Chateea cobra algo adicional sobre las tarifas de Adyen?">
+    No. Las transacciones se procesan con tus tarifas vigentes de Adyen.
+  </Accordion>
+  <Accordion title="¿Qué pasa si dejo vacío el Live URL Prefix en modo en vivo?">
+    Los cobros en vivo fallarán, porque Adyen no puede enrutar la solicitud sin ese prefijo.
+  </Accordion>
+  <Accordion title="¿Puedo tener Stripe y Adyen conectados a la vez?">
+    Sí. Mantén varias pasarelas conectadas y elige el proveedor predeterminado en cada canal.
+  </Accordion>
+  <Accordion title="¿Tengo que activar 3DS en Chateea?">
+    No. Adyen gestiona la verificación 3DS durante el pago cuando hace falta.
+  </Accordion>
+  <Accordion title="¿Dónde veo los depósitos y comisiones de Adyen?">
+    En tu panel de Adyen. Los tiempos de liquidación y las comisiones los determina Adyen.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Configurar proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
+    Asigna Adyen a los canales donde quieres cobrar con él.
+  </Card>
+  <Card title="Cómo gestionar los reembolsos" icon="rotate-left" href="/pagos-facturas/gestionar-reembolsos">
+    Devuelve pagos totales o parciales desde Chateea.
+  </Card>
+</CardGroup>

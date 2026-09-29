@@ -1,0 +1,65 @@
+---
+title: "Notificaciones push personalizadas desde flujos de trabajo"
+description: "Envía notificaciones push con título, mensaje y destino personalizados a los usuarios del portal usando un flujo de trabajo."
+icon: "bell"
+---
+
+La acción **Notificación push inteligente** (Smart Push Notification) te permite enviar notificaciones push personalizadas a tus contactos a través del portal del cliente, directamente desde un flujo de trabajo. Puedes definir el título y el mensaje, personalizarlos con datos del contacto y elegir a qué sección del portal llega la persona al tocar la notificación, por ejemplo Comunidades o Cursos.
+
+Es ideal para avisar de una publicación nueva en la comunidad, recordar una lección pendiente o dar la bienvenida a un alumno nuevo, con un mensaje que llega directo al teléfono.
+
+## Campos de la acción
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| **Nombre de la acción** | Viene prellenado como "Smart Push Notification". Puedes cambiarlo para identificarla en el flujo. | No |
+| **Título** | El título de la notificación, hasta 100 caracteres. Admite variables como `{{contact.first_name}}`. | Sí |
+| **Cuerpo del mensaje** | El texto principal, hasta 300 caracteres. Admite variables como `{{contact.last_name}}`. | Sí |
+| **Redirección** | La sección del portal que se abre al tocar la notificación: **Comunidades** o **Cursos**. | Sí |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Agrega la acción al flujo">
+    Ve a **Automatización → Flujos de trabajo**, abre un flujo existente o crea uno nuevo. Haz clic en **+ Agregar acción**, escribe "Smart" en el buscador y selecciona **Smart Push Notification**.
+  </Step>
+  <Step title="Completa los campos">
+    Escribe el **Título** (por ejemplo, `Bienvenido, {{contact.first_name}}`), redacta el **Cuerpo del mensaje** y elige la **Redirección** (Comunidades o Cursos).
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar acción**. Prueba el flujo con un contacto de prueba que tenga la app instalada y, cuando todo funcione, publica el flujo.
+  </Step>
+</Steps>
+
+## Ejemplo
+
+Quieres avisar a tus miembros de una publicación nueva en la comunidad:
+
+| Campo | Valor |
+| --- | --- |
+| **Título** | Nueva publicación en la comunidad |
+| **Cuerpo del mensaje** | `Hola {{contact.first_name}}, mira la última publicación en nuestra comunidad.` |
+| **Redirección** | Comunidades |
+
+Cuando el flujo se ejecuta, el contacto recibe la notificación push y, al tocarla, se abre la página de la comunidad.
+
+## Ten en cuenta
+
+- La notificación solo llega a **usuarios registrados** en el portal del cliente. Quien no esté registrado no la recibe.
+- Además, la persona debe tener activadas las notificaciones push en su teléfono y en sus preferencias del portal. Ver [Notificaciones del portal del cliente](/portal-cliente/notificaciones-del-portal-del-cliente).
+- Completa todos los campos obligatorios antes de guardar el flujo.
+
+<Tip>
+  Las notificaciones push se leen en segundos: usa títulos cortos, un mensaje concreto y una sola invitación a actuar. Evita enviar varias el mismo día o tus usuarios terminarán desactivándolas.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Aplicación móvil con tu marca" icon="mobile-screen" href="/portal-cliente/app-movil-con-tu-marca">
+    Publica tu portal como app en las tiendas.
+  </Card>
+  <Card title="Notificaciones del portal del cliente" icon="bell" href="/portal-cliente/notificaciones-del-portal-del-cliente">
+    Qué avisos existen y cómo se configuran.
+  </Card>
+</CardGroup>

@@ -1,113 +1,70 @@
 ---
 title: "Generación de PDF para facturas y recibos"
-description: "Descargas casi instantáneas, sin tiempos de espera ni fallos en tus automatizaciones."
+description: "Los PDF de facturas y recibos ahora se generan mucho más rápido y sin fallos por tiempo de espera, sin configurar nada."
 icon: "file-pdf"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Cada vez que descargas una factura, un cliente recibe su recibo por correo o una automatización adjunta un documento, Chateea genera un PDF. Ese motor se renovó: los PDF de facturas y recibos ahora se generan unas cinco veces más rápido y ya no fallan por tiempo de espera. No tienes que activar nada.
 
-Este artículo explica las mejoras recientes en el sistema de generación de PDF que Chateea usa para facturas y recibos. Estas actualizaciones ofrecen **descargas más rápidas**, flujos de trabajo automatizados más fiables y entrega casi instantánea de documentos PDF, sin tiempos de espera ni fallos.
+## Qué hace el motor de PDF
 
-<Info>
-  No tienes que hacer nada para aprovecharlo. No hay interruptor, ni instalación, ni migración: el motor nuevo ya está activo para todos.
-</Info>
+Es el sistema que crea los documentos descargables y listos para enviar por correo, tanto de facturas como de recibos. Interviene en:
 
-## ¿Qué es el proceso de generación de PDF?
+- La **descarga de facturas** desde la interfaz.
+- La **generación de recibos** cuando se completa un pago.
+- El **envío de facturas o recibos** desde automatizaciones.
 
-El sistema de generación de PDF es el responsable de crear documentos descargables y listos para enviar por correo electrónico, tanto para facturas como para recibos. Admite acciones como:
+## Qué mejoró
 
-- **Descarga de facturas** desde la interfaz de facturación
-- **Generación de recibos** durante los flujos de pago
-- **Envío de facturas o recibos** mediante flujos de trabajo automatizados
-
-Este sistema desempeña un papel fundamental para garantizar que los documentos de facturación se entreguen de forma precisa, rápida y constante.
-
-<Note>
-  Cada vez que un cliente paga un formulario de pedido y recibe su recibo por correo, o cada vez que una automatización adjunta una factura, este motor está trabajando por detrás. Por eso su velocidad afecta a mucho más que al botón de descarga.
-</Note>
-
-## Principales ventajas del motor PDF actualizado
-
-El motor actualizado ofrece mejoras significativas de rendimiento y fiabilidad en todos los flujos de facturas y recibos.
-
-Las mejoras clave incluyen:
-
-- Tiempo de generación promedio aproximadamente un **80 % más rápido**
-- **Reducción del 75 %** en la latencia de alta carga (P95)
-- **Eliminación de los fallos por tiempo de espera** durante la creación de archivos PDF
-- Entrega de facturas y recibos más rápida y fiable
-- Menos incidencias de soporte relacionadas con PDF
-- Mayor confianza gracias a la disponibilidad inmediata de los documentos
-
-Estas mejoras se aplican tanto a las **descargas manuales** como a la **entrega automatizada**.
-
-## Cómo funciona el nuevo motor de PDF
-
-No se requiere configuración ni instalación. El motor mejorado se activa automáticamente para todos los usuarios.
-
-Es posible que notes lo siguiente:
-
-- Descarga más rápida de facturas y recibos
-- Flujos de trabajo automatizados más fiables cuando dependen de un PDF
-- Sin retrasos ni tiempos de espera al generar documentos
-
-Todos los flujos de trabajo existentes seguirán funcionando igual, solo que de forma más rápida y estable.
-
-| Dónde lo notas | Qué cambia |
-| --- | --- |
-| **Facturas y presupuestos** | El PDF se genera al descargar o al preparar el envío |
-| **Transacciones** | Los recibos en PDF se generan solos tras completarse el pago |
-| **Automatizaciones** | Los pasos que adjuntan un PDF dejan de quedarse colgados |
-| **Conversaciones** | Los correos con factura o recibo adjunto salen sin demora |
-
-## Comparación de rendimiento
-
-| Métrica | Antes | Después | Mejora |
+| Métrica | Antes | Ahora | Mejora |
 | --- | --- | --- | --- |
-| **Tiempo de generación promedio** | ~14,8 segundos | 2,97 segundos | 80 % más rápido |
-| **Latencia P95** | ~19,5 segundos | 4,8 segundos | 75 % más rápido |
-| **Fallos por tiempo de espera** | ~1 % | 0 % | 100 % de fiabilidad |
+| **Tiempo promedio de generación** | ~14,8 segundos | 2,97 segundos | 80 % más rápido |
+| **Latencia P95** (el 95 % de los casos) | ~19,5 segundos | 4,8 segundos | 75 % más rápido |
+| **Fallos por tiempo de espera** | ~1 % | 0 % | Eliminados |
 
-Estas mejoras se notan sobre todo durante actividades de **alto volumen** o usos intensivos de automatización.
+En la práctica:
+
+- Las facturas y recibos se descargan mucho más rápido.
+- Las automatizaciones que envían facturas o recibos terminan sin errores de tiempo de espera.
+- Los clientes reciben sus documentos casi al instante.
 
 <Tip>
-  Ese 1 % de fallos parecía pequeño hasta que lo miras en escala: en un mes con 3.000 facturas, eran 30 clientes que no recibieron su documento y 30 conversaciones de soporte que ya no tienes que tener.
+  Un 1 % de fallos parece poco hasta que lo miras en volumen: con 3.000 facturas al mes eran unos 30 clientes sin su documento y 30 conversaciones de soporte que ya no tendrás.
 </Tip>
+
+## Dónde lo notas
+
+| Área | Qué cambia |
+| --- | --- |
+| **Facturas y presupuestos** | El PDF se genera enseguida al descargar o preparar el envío |
+| **Pagos** | Los recibos en PDF salen en cuanto se completa el cobro |
+| **Automatizaciones** | Las acciones que envían facturas o recibos ya no se quedan esperando |
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Necesito habilitar o configurar algo para usar el nuevo motor de PDF?">
-    No. Las mejoras ya están activas y se aplican automáticamente a todos los flujos de facturas y recibos.
+  <Accordion title="¿Tengo que activar o configurar algo?">
+    No. El motor nuevo ya está activo en todas las descargas y automatizaciones de facturas y recibos.
   </Accordion>
-
-  <Accordion title="¿Qué ocurre si el archivo PDF sigue sin generarse?">
-    Los problemas relacionados con el tiempo de espera fueron eliminados. Si aún se produce un fallo, probablemente se deba a factores ajenos a este proceso y debe revisarlo el equipo de soporte.
+  <Accordion title="¿Mis automatizaciones existentes se actualizan solas?">
+    Sí. Cualquier automatización que genere o envíe PDF de facturas o recibos usa el motor nuevo automáticamente.
   </Accordion>
-
-  <Accordion title="¿Se actualizan automáticamente los flujos de trabajo existentes?">
-    Sí. Cualquier flujo de trabajo que genere o envíe facturas o recibos en PDF usa automáticamente el motor actualizado.
+  <Accordion title="¿Cómo puedo comprobar la mejora?">
+    Descarga una factura o dispara el envío de un recibo desde una automatización: debería ser notablemente más rápido.
   </Accordion>
-
-  <Accordion title="¿Cómo puedo ver la mejora del rendimiento?">
-    Descargar una factura o activar la entrega de un recibo debería ser notablemente más rápido que antes.
+  <Accordion title="Un PDF no se genera o tarda mucho, ¿qué hago?">
+    Los fallos por tiempo de espera se eliminaron, así que probablemente la causa sea otra. Escribe a soporte de Chateea en **help@chateea.com** con el número de la factura o del recibo afectado.
   </Accordion>
-
-  <Accordion title="¿Esta actualización afecta a otros tipos de documentos?">
-    No. Las mejoras se aplican específicamente a los PDF de facturas y recibos.
+  <Accordion title="¿Afecta a otros tipos de documentos?">
+    No. La mejora aplica solo a los PDF de facturas y recibos.
   </Accordion>
 </AccordionGroup>
 
-## Dónde encontrar ayuda
-
-Si necesitas ayuda con facturas, recibos o envío de PDF:
-
-- Usa el buscador del centro de ayuda para encontrar documentación relacionada
-- Consulta las guías de solución de problemas de facturación o de automatizaciones
-- Escríbenos por WhatsApp al **\+1 829-580-7071** si los PDF no se generan o aparecen con retraso
-
-<Card title="Gestión de documentos adjuntos para presupuestos y facturas" icon="paperclip" href="/pagos-facturas/documentos-adjuntos">
-  Añade especificaciones, términos o imágenes al mismo envío de tu factura.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos-facturas/nuevo-editor-facturas">
+    Guía completa del editor de facturas.
+  </Card>
+  <Card title="Recibos de venta" icon="receipt" href="/pagos-facturas/recibos-de-venta">
+    Envía recibos automáticos tras cada compra.
+  </Card>
+</CardGroup>

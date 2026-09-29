@@ -1,0 +1,91 @@
+---
+title: "Recordatorios automáticos de facturas"
+description: "Programa recordatorios por correo y SMS antes o después del vencimiento para cobrar tus facturas a tiempo."
+icon: "bell"
+---
+
+Muchas facturas no se pagan por olvido, no por falta de intención. Con los recordatorios automáticos de facturas, Chateea avisa a tus clientes por correo y SMS antes o después de la fecha de vencimiento, sin que tengas que armar un flujo de trabajo ni escribir a cada uno.
+
+## Qué puedes configurar
+
+- Varios recordatorios, cada uno con su propio momento de envío.
+- Una plantilla de correo y una de SMS para cada recordatorio, y el asunto del correo.
+- La frecuencia, basada en la fecha de vencimiento o en la fecha de envío de la factura.
+- Un número máximo de recordatorios para que dejen de enviarse.
+- Un interruptor para activar o pausar cada recordatorio, y la opción de eliminarlo.
+
+## Configura tus recordatorios
+
+<Steps>
+  <Step title="Abre la configuración de facturas">
+    Ve a **Pagos → Facturas** y abre **Configuración**.
+  </Step>
+  <Step title="Entra en los recordatorios">
+    Haz clic en **Configuración de recordatorios**.
+  </Step>
+  <Step title="Ponle nombre">
+    Escribe un **nombre** que te ayude a identificarlo, por ejemplo "3 días antes del vencimiento".
+  </Step>
+  <Step title="Elige las plantillas">
+    Selecciona la plantilla de correo y de SMS. Puedes usar una existente, editarla o crear una nueva en ese momento. Ajusta también el **asunto** del correo.
+  </Step>
+  <Step title="Define la frecuencia">
+    Configura cada cuánto se envía: **cada** [número] [horas, días, meses...] **antes** o **después** de la **fecha de vencimiento** o de la **fecha de envío** de la factura.
+  </Step>
+  <Step title="Limita los envíos">
+    Indica el **número máximo de recordatorios** para que no sigan llegando indefinidamente.
+  </Step>
+  <Step title="Agrega más recordatorios si los necesitas">
+    Haz clic en **Agregar nuevo recordatorio** para sumar otro. Activa o desactiva cada uno con su interruptor, o elimínalo si ya no lo usas.
+  </Step>
+</Steps>
+
+<Tip>
+Una secuencia que suele funcionar: un aviso amable 3 días antes del vencimiento, otro el mismo día y uno más firme 3 días después. Ajusta el tono de cada plantilla según el momento.
+</Tip>
+
+## Cómo se comportan
+
+- **La vista previa es la real:** la plantilla que ves en la configuración es la que se envía en los recordatorios automáticos.
+- **Solo desde que los activas:** los recordatorios empiezan a funcionar cuando están activados, y se aplican a las facturas creadas después de activarlos.
+- **Facturas vencidas de antes no se incluyen:** si una factura ya estaba vencida antes de activar los recordatorios, no recibirá recordatorios automáticos. Tendrás que avisar a ese cliente manualmente.
+
+## Recordatorios manuales
+
+Para facturas vencidas que no cubren los recordatorios automáticos, puedes escribirle al cliente desde **Conversaciones**.
+
+<Warning>
+Al enviar un mensaje manual, al elegir el contacto solo se completan sus datos. Los datos de la factura (monto, fecha de vencimiento, número) no se completan solos, así que debes escribirlos tú. Revisa bien el mensaje antes de enviarlo.
+</Warning>
+
+## Fecha de vencimiento predeterminada
+
+El ajuste **Factura vence después de (días)** en la configuración de pagos solo afecta a las facturas futuras. Las facturas existentes, incluidas las recurrentes ya generadas, no cambian. Si cobras de forma recurrente, tenlo en cuenta al modificar este valor.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo tener varios recordatorios para la misma factura?">
+    Sí. Crea todos los que necesites, cada uno con su propio momento de envío y sus plantillas.
+  </Accordion>
+  <Accordion title="Activé los recordatorios y una factura vencida no recibió ninguno">
+    Es lo esperado si esa factura se creó o venció antes de activar los recordatorios. Envíale un recordatorio manual.
+  </Accordion>
+  <Accordion title="¿Cómo detengo los recordatorios?">
+    Desactiva el recordatorio con su interruptor o elimínalo. También dejan de enviarse al llegar al número máximo que configuraste.
+  </Accordion>
+  <Accordion title="Cambié los días de vencimiento y mis facturas no se actualizaron">
+    El cambio solo aplica a facturas nuevas. Las ya creadas conservan su fecha de vencimiento.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Notificaciones de facturas" icon="envelope" href="/pagos/notificaciones-de-facturas">
+    Personaliza los correos y SMS de tus facturas.
+  </Card>
+  <Card title="Facturas recurrentes" icon="rotate" href="/pagos-facturas/facturas-recurrentes">
+    Automatiza cobros periódicos.
+  </Card>
+</CardGroup>

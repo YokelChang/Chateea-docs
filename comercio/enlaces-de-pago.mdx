@@ -1,74 +1,92 @@
 ---
-title: "Cobro simplificado con enlaces de pago"
-description: "Un solo enlace lleva a tu cliente directo a pagar, sin sitio web ni facturación manual."
+title: "Enlaces de pago"
+description: "Crea una página de pago en pocos clics y compártela para cobrar sin sitio web, con datos precargados y redirección."
 icon: "link"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
-
-Un enlace de pago es una URL que puedes compartir y que lleva al cliente directamente a una página de pago segura. En vez de guiarlo por varios pasos, un solo enlace resuelve la compra.
-
-Es la forma más rápida de cobrar servicios, productos u ofertas puntuales, sin necesidad de un sitio web completo ni de emitir facturas a mano.
+Un enlace de pago es una URL que lleva a tu cliente directo a una página de pago segura. No necesitas sitio web ni programar nada: creas la página en unos clics, copias el enlace y lo compartes. Es la forma más rápida de cobrar un servicio, un producto o una oferta puntual.
 
 <Info>
-  Para la mayoría de los negocios en Latinoamérica es la herramienta de cobro más útil que existe, porque la venta ya está ocurriendo por WhatsApp. El cliente dice que sí, le mandas el enlace y paga desde el mismo chat.
+  Para la mayoría de los negocios en Latinoamérica es la herramienta de cobro más útil, porque la venta ya está ocurriendo por WhatsApp. El cliente dice que sí, le mandas el enlace y paga desde el mismo chat.
 </Info>
 
 ## Qué ganas
 
 | Ventaja | Detalle |
 | --- | --- |
-| **Pagos más rápidos** | El cliente paga al instante desde un único enlace |
-| **Experiencia simple** | Sin proceso de compra complejo |
-| **Comparte donde quieras** | Correo, SMS o aplicaciones de mensajería |
-| **Mejores conversiones** | Menos abandono durante el pago |
-| **Transacciones seguras** | Los pagos se procesan de forma segura |
+| **Cobras más rápido** | El cliente paga al instante desde un único enlace |
+| **Sin sitio web** | La página de pago la genera Chateea |
+| **Lo compartes donde quieras** | WhatsApp, correo, SMS, redes sociales o tu sitio |
+| **Menos abandono** | Un checkout simple convierte mejor que un proceso largo |
+| **Pagos seguros** | El cliente escribe sus datos en una página segura, no en un chat |
+
+## Antes de empezar
+
+Para crear un enlace de pago necesitas:
+
+- Un **producto** creado en **Pagos → Productos → Crear producto**. Las imágenes que guardes en el producto se muestran automáticamente en el enlace.
+- Un **proveedor de pago** conectado en **Pagos → Integraciones**.
 
 ## Cómo crear un enlace de pago
 
 <Steps>
-  <Step title="Abre la sección de enlaces de pago">
-    Ve a **Pagos** en el menú lateral y pulsa **Enlaces de pago** en la barra superior.
-
-    Luego pulsa **Crear nuevo enlace de pago**.
+  <Step title="Abre los enlaces de pago">
+    Ve a **Pagos → Enlaces de pago** y haz clic en **Crear enlace**.
   </Step>
-  <Step title="Introduce los detalles">
-    | Campo | Qué poner |
-    | --- | --- |
-    | **Nombre del producto o servicio** | Lo que verá el cliente al pagar |
-    | **Precio o cantidad** | El monto a cobrar |
-    | **Tipo de pago** | Único o recurrente |
-    | **Descripción** | Opcional, pero ayuda a dar confianza |
-
-    Revisa que todo esté correcto antes de guardar.
+  <Step title="Ponle nombre">
+    Escribe un nombre para el enlace en la parte superior de la pantalla. Te sirve para encontrarlo después.
   </Step>
-  <Step title="Guarda y genera el enlace">
-    Al guardar se crea automáticamente una URL única.
+  <Step title="Elige el producto y el precio">
+    Selecciona un producto y luego el precio que quieres cobrar (único o recurrente).
   </Step>
-  <Step title="Compártelo">
-    Copia el enlace y envíalo por correo, SMS o aplicaciones de mensajería.
-
-    El cliente hace clic y completa el pago al instante.
+  <Step title="Configura las opciones">
+    Ajusta las opciones que necesites (cantidades, teléfono obligatorio, dirección, cupones, redirección, términos, fecha de desactivación, modo de prueba o real) y haz clic en **Guardar**.
+  </Step>
+  <Step title="Comparte">
+    Haz clic en **Vista previa** para revisar la página y copia el enlace, o usa **Copiar / Enviar** para compartirlo directamente con tus contactos.
   </Step>
 </Steps>
+
+<Tip>
+  Abre siempre la vista previa antes de mandar el enlace. Un precio mal escrito o un producto equivocado cuesta credibilidad justo en el momento en que el cliente está decidido a pagar.
+</Tip>
+
+## Idioma del checkout
+
+La página de pago traduce automáticamente las etiquetas de los campos, los botones y los mensajes de validación y error según el **idioma de la plataforma** configurado en **Configuración → Perfil del negocio**. Si quieres cambiar el idioma predeterminado del checkout, cámbialo ahí.
+
+## Prellenar datos y redirigir con parámetros en la URL
+
+Puedes agregar parámetros al final del enlace para cargar los datos del cliente y redirigirlo después del pago:
+
+| Parámetro | Qué hace |
+| --- | --- |
+| `firstName` | Prellena el nombre |
+| `lastName` | Prellena el apellido |
+| `email` | Prellena el correo |
+| `phone` | Prellena el teléfono |
+| `redirectUrl` | Redirige al cliente a esa dirección después de la compra |
+| `redirectIn` | Segundos de cuenta regresiva antes de la redirección |
+
+Ejemplo:
+
+```text
+https://tu-enlace-de-pago?firstName=Ana&lastName=Lopez&email=ana@ejemplo.com&phone=5215512345678&redirectIn=8&redirectUrl=https://tusitio.com/gracias
+```
+
+<Note>
+  Si quieres enviar enlaces con los datos ya cargados a varios contactos a la vez, no hace falta armar las URL a mano: usa la opción **Copiar / Enviar** del enlace.
+</Note>
 
 ## Buenas prácticas
 
 <AccordionGroup>
   <Accordion title="Usa nombres claros y precios exactos">
-    El cliente ve ese nombre en la pantalla de pago y en su comprobante. Un nombre confuso genera dudas justo en el momento más delicado.
+    El cliente ve el nombre del producto en la pantalla de pago y en su comprobante. Un nombre confuso genera dudas en el momento más delicado.
   </Accordion>
-
-  <Accordion title="Verifica los datos antes de compartir">
-    Corregir un precio después de haberlo enviado cuesta credibilidad.
-  </Accordion>
-
   <Accordion title="Prueba el enlace tú mismo">
-    Ábrelo antes de enviárselo a nadie y confirma que todo se ve y funciona bien.
+    Ábrelo antes de enviarlo y confirma que todo se ve y funciona bien. Revisa que esté en modo real y no en modo de prueba.
   </Accordion>
-
   <Accordion title="Envíalo en el momento del sí">
     Cada hora entre la decisión y el pago es una oportunidad para que el cliente se distraiga o se arrepienta.
   </Accordion>
@@ -82,34 +100,35 @@ Es la forma más rápida de cobrar servicios, productos u ofertas puntuales, sin
 
 <AccordionGroup>
   <Accordion title="¿Puedo reutilizar un enlace de pago?">
-    Sí, salvo que lo hayas configurado para un solo uso.
+    Sí. El mismo enlace puede usarlo cualquier cliente hasta que lo desactives o llegue su fecha de desactivación automática.
   </Accordion>
-
-  <Accordion title="¿Puedo enviarlo por SMS o correo?">
-    Sí. Se puede compartir por cualquier canal de comunicación.
-  </Accordion>
-
-  <Accordion title="¿Son seguros?">
-    Sí. Utilizan procesos de pago seguros que protegen los datos del cliente.
-  </Accordion>
-
-  <Accordion title="¿Puedo editarlo después de crearlo?">
-    Sí, según tu configuración puedes actualizar los detalles.
-  </Accordion>
-
   <Accordion title="¿Qué tipos de pago puedo cobrar?">
-    Pagos únicos o recurrentes.
+    Pagos únicos o recurrentes, según el precio del producto que elijas.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece mi método de pago manual, como transferencia bancaria?">
+    Los métodos de pago manuales no están disponibles en el checkout de los enlaces de pago. Solo aparecen los métodos automáticos, como Stripe o PayPal. Si necesitas aceptar un pago manual, usa una factura o un formulario de pedido.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el idioma de la página de pago?">
+    Sí. El checkout usa el idioma de la plataforma definido en **Configuración → Perfil del negocio**.
+  </Accordion>
+  <Accordion title="¿Puedo editar el enlace después de crearlo?">
+    Sí. Abre el enlace desde **Pagos → Enlaces de pago**, haz los cambios y guarda.
   </Accordion>
 </AccordionGroup>
 
-## Continúa
+## Artículos relacionados
 
 <CardGroup cols={2}>
-  <Card title="Integración con Stripe" icon="stripe" href="/comercio/integracion-stripe">
-    Conecta tu proveedor antes de crear enlaces.
+  <Card title="Enlace de pago con varios productos" icon="layer-group" href="/pagos/enlace-de-pago-con-varios-productos">
+    Combina productos únicos y recurrentes en un solo checkout.
   </Card>
-
-  <Card title="Pagos y facturación" icon="credit-card" href="/pagos/introduccion">
-    Facturas, presupuestos y automatizaciones de cobro.
+  <Card title="Enviar enlaces de pago personalizados" icon="paper-plane" href="/pagos/enviar-enlaces-de-pago-personalizados">
+    Envía enlaces con los datos del cliente ya cargados.
+  </Card>
+  <Card title="Enlaces de texto para pagar" icon="comment-dollar" href="/pagos/enlaces-de-texto-para-pagar">
+    Pide un pago por SMS desde una conversación.
+  </Card>
+  <Card title="Proveedores y métodos de pago por área" icon="credit-card" href="/pagos/proveedores-y-metodos-de-pago-por-area">
+    Qué métodos funcionan en cada tipo de checkout.
   </Card>
 </CardGroup>

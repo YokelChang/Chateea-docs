@@ -1,0 +1,141 @@
+---
+title: "Pausar y reanudar suscripciones"
+description: "Detén temporalmente el cobro de una suscripción sin cancelarla, elige qué pasa con las facturas y reanúdala cuando quieras."
+icon: "pause"
+---
+
+Cuando un cliente necesita un respiro (vacaciones, una temporada baja, un problema temporal de flujo de caja), cancelar su suscripción no suele ser la mejor salida: pierdes el historial y tienes que volver a venderle. En Chateea puedes **pausar** una suscripción elegible de forma indefinida o hasta una fecha concreta, decidir qué pasa con las facturas mientras tanto y **reanudarla** cuando el cliente esté listo.
+
+## Para qué te sirve
+
+- **Flexibilidad temporal:** detienes el cobro sin cancelar la suscripción.
+- **Duración a tu medida:** pausa indefinida o con fecha de reanudación.
+- **Reanudación anticipada:** si el cliente vuelve antes, reanudas manualmente sin esperar la fecha.
+- **Control de facturas:** eliges si las facturas del período se guardan como borrador o se anulan.
+- **Seguimiento:** las fechas de pausa y reanudación salen en la exportación de suscripciones.
+
+<Tip>
+  Ofrecer una pausa en lugar de una cancelación es una de las tácticas de retención más efectivas. Si tienes un flujo para cancelaciones, incluye un mensaje que proponga pausar la suscripción uno o dos meses.
+</Tip>
+
+## Requisitos y limitaciones
+
+- La suscripción debe aparecer en **Pagos → Suscripciones**.
+- La opción de pausar o reanudar depende del **proveedor de pago** de la suscripción: no todos los proveedores que crean suscripciones la admiten.
+- El **estado actual** de la suscripción también influye en las acciones disponibles.
+- Tu usuario necesita los **permisos de suscripciones** correspondientes dentro de **Pagos**.
+
+Si no ves la opción, revisa estos tres puntos (proveedor, estado y permisos) antes de pensar que es un error.
+
+### Revisar los permisos de un usuario
+
+<Steps>
+  <Step title="Abre tu equipo">
+    Ve a **Configuración → Mi equipo** y abre el usuario que quieres revisar.
+  </Step>
+  <Step title="Revisa los permisos">
+    Despliega **Roles y permisos** y revisa los permisos de **Suscripciones**. Concede solo las acciones que ese rol necesita.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios del usuario.
+  </Step>
+</Steps>
+
+## Cómo pausar una suscripción
+
+<Steps>
+  <Step title="Localiza la suscripción">
+    Ve a **Pagos → Suscripciones** y busca la suscripción que quieres pausar.
+  </Step>
+  <Step title="Abre la acción de pausa">
+    Abre el **menú de tres puntos** de la suscripción y selecciona la opción de pausar.
+  </Step>
+  <Step title="Elige la duración">
+    - **Indefinida:** la suscripción queda pausada hasta que la reanudes manualmente.
+    - **Fecha personalizada:** eliges cuándo termina la pausa. Aun así, puedes reanudarla antes si hace falta.
+  </Step>
+  <Step title="Elige qué pasa con las facturas">
+    Selecciona cómo se manejan las facturas programadas durante la pausa (ver la tabla de abajo).
+  </Step>
+  <Step title="Confirma">
+    Revisa las opciones elegidas y confirma la pausa.
+  </Step>
+</Steps>
+
+## Qué pasa con las facturas durante la pausa
+
+| Opción | Cómo funciona |
+| --- | --- |
+| **Borrador** | Las facturas del período quedan en borrador para que las revises y decidas después qué hacer con ellas |
+| **Marcar como anulada** | Las facturas programadas durante la pausa se anulan |
+
+Elige con intención: si piensas cobrar ese período más adelante, usa **Borrador**. Si el período de pausa no se va a cobrar, usa **Marcar como anulada**.
+
+## Cómo reanudar una suscripción
+
+<Steps>
+  <Step title="Localiza la suscripción pausada">
+    Ve a **Pagos → Suscripciones** y busca la suscripción.
+  </Step>
+  <Step title="Reanuda">
+    Abre el **menú de tres puntos** y selecciona **Reanudar**.
+  </Step>
+  <Step title="Confirma">
+    Revisa el mensaje de confirmación y confirma.
+  </Step>
+</Steps>
+
+| Tipo de pausa | Cómo termina |
+| --- | --- |
+| **Fecha personalizada** | Se reanuda al llegar la fecha elegida, o antes si la reanudas manualmente |
+| **Indefinida** | Solo se reanuda manualmente |
+
+## Pausas en la exportación de suscripciones
+
+La exportación CSV de suscripciones incluye tres columnas para analizar pausas, retención y conciliación:
+
+| Columna | Qué representa |
+| --- | --- |
+| **Last paused on date** | La fecha de la pausa más reciente |
+| **Resumed on date** | La fecha real en que la suscripción se reanudó |
+| **Pause end date** | La fecha prevista de fin de la pausa más reciente, cuando aplica |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo reanudar antes de la fecha elegida?">
+    Sí. Una suscripción pausada hasta una fecha personalizada se puede reanudar manualmente antes, siempre que la acción **Reanudar** esté disponible.
+  </Accordion>
+  <Accordion title="¿Una pausa indefinida se reanuda sola?">
+    No. Queda pausada hasta que la reanudes manualmente.
+  </Accordion>
+  <Accordion title="¿Qué opciones hay para las facturas durante la pausa?">
+    **Borrador** y **Marcar como anulada**.
+  </Accordion>
+  <Accordion title="¿Por qué no veo la opción de pausar o reanudar?">
+    Depende del proveedor de pago, del estado de la suscripción y de tus permisos en **Pagos**. Revisa los tres antes de tratarlo como un error.
+  </Accordion>
+  <Accordion title="¿Dos usuarios de mi cuenta pueden ver acciones distintas?">
+    Sí. Los permisos de **Pagos** pueden limitar qué acciones de suscripción puede hacer cada usuario, aunque ambos vean la misma suscripción.
+  </Accordion>
+  <Accordion title="¿Puedo ver en un reporte cuándo se pausaron y reanudaron las suscripciones?">
+    Sí. La exportación CSV de suscripciones incluye la fecha de la última pausa, la de reanudación y la de fin de pausa cuando aplica.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Estados de suscripción" icon="arrows-rotate" href="/pagos-facturas/gestionar-suscripciones">
+    Qué aparece en la página de suscripciones.
+  </Card>
+  <Card title="Exportar suscripciones a CSV" icon="file-csv" href="/pagos/exportar-suscripciones-csv">
+    Descarga tus suscripciones con todas sus columnas.
+  </Card>
+  <Card title="Permisos de pagos por categoría" icon="user-lock" href="/pagos/permisos-de-pagos-por-categoria">
+    Controla qué puede hacer cada usuario en Pagos.
+  </Card>
+  <Card title="Proveedores y métodos de pago por área" icon="credit-card" href="/pagos/proveedores-y-metodos-de-pago-por-area">
+    Qué funciona con cada proveedor.
+  </Card>
+</CardGroup>

@@ -1,0 +1,152 @@
+---
+title: "Exportar suscripciones a CSV"
+description: "Descarga tus suscripciones en CSV con fechas de prueba, pausa y cancelación para analizar ingresos recurrentes y retención."
+icon: "file-csv"
+---
+
+La exportación de suscripciones te permite descargar tus suscripciones en un archivo CSV para analizar ingresos recurrentes, medir retención, preparar reportes de cumplimiento o revisar la facturación. Puedes exportar todas las suscripciones de tu cuenta o solo las que coinciden con tus filtros.
+
+## Cómo exportar suscripciones
+
+<Steps>
+  <Step title="Abre Suscripciones">
+    Ve a **Pagos → Suscripciones**.
+  </Step>
+  <Step title="Filtra si lo necesitas">
+    Puedes filtrar por estado (Activa, Cancelada, Vencida, etc.), tipo de producto, datos del cliente, proveedor, moneda o rango de fechas.
+  </Step>
+  <Step title="Descarga">
+    Haz clic en **Descargar**.
+  </Step>
+  <Step title="Abre el enlace del correo">
+    Recibirás un enlace seguro en tu correo. Al abrirlo, el CSV se descarga al instante.
+  </Step>
+</Steps>
+
+<Note>
+  El enlace vence a los **7 días**. Si venció, genera otra exportación.
+</Note>
+
+## Cómo está organizado el CSV
+
+Una suscripción puede incluir varios productos y varios impuestos, así que **puede ocupar varias filas**: una por producto y por cada impuesto que aplique. Es lo que permite reportar con precisión por producto y por impuesto.
+
+### Ceros y celdas vacías
+
+| Valor | Cuándo aparece |
+| --- | --- |
+| **0** | El campo aplica y su valor es realmente cero |
+| **Vacío** | El campo no aplica, por ejemplo las columnas de prueba cuando no hay período de prueba |
+
+El orden de las columnas es siempre el mismo, así que puedes usarlo en tablas dinámicas, importaciones o herramientas de inteligencia de negocio.
+
+<Tip>
+  Para sumar totales en Excel o Google Sheets, agrupa primero por `Subscription id`. Así evitas contar dos veces las suscripciones que ocupan varias filas.
+</Tip>
+
+## Referencia de columnas
+
+| Columna | Qué contiene | Ejemplo |
+| --- | --- | --- |
+| `Subscription id` | Identificador interno de la suscripción | `jfhbiabfoanfle13kj` |
+| `Location id` | Identificador de tu cuenta de Chateea | `NyGCsdhgRZ8Ffa8Ssagfhd` |
+| `Customer id` | Identificador del cliente | `jbtyjkzMjvd8cLi9HUC` |
+| `Customer name` | Nombre del cliente | `Maria Russell` |
+| `Customer email` | Correo del suscriptor | `maria@domain.com` |
+| `Customer phone` | Teléfono del suscriptor | `+1 480-555-7002` |
+| `Subscription start` | Fecha de creación de la suscripción | `Jan 05, 2026` |
+| `Subscription end` | Fecha de fin si se canceló o venció; vacío si sigue vigente | `May 30, 2026` |
+| `Number of trial days` | Días de prueba; vacío si no hay prueba | `14` |
+| `Trial start` | Primer día de prueba; vacío si no hay prueba | `Jan 05, 2026` |
+| `Trial end` | Último día de prueba; vacío si no hay prueba | `Jan 19, 2026` |
+| `Cancelled at` | Momento de la cancelación; vacío si no se canceló | `Mar 15, 2026` |
+| `Payment method` | Método del último cobro exitoso | `Visa •1234` |
+| `Currency` | Moneda de la suscripción | `USD` |
+| `Sub total` | Total antes de descuentos e impuestos no incluidos (sin cargos de configuración) | `200.00` |
+| `Discount` | Descuento aplicado (cupón u otro) | `-20.00` |
+| `Total tax amount (excluded in prices)` | Impuestos sumados al precio (sin incluir cargos de configuración) | `14.40` |
+| `Total tax amount (included in prices)` | Impuestos incluidos en el precio (sin incluir cargos de configuración) | `0.00` |
+| `Total amount` | Cobro final después de descuentos e impuestos; no incluye cargos por procesamiento | `194.40` |
+| `Coupon code` | Cupón aplicado | `WELCOME10` |
+| `Status` | Estado de la suscripción | `Active`, `Past Due`, `Cancelled` |
+| `Live mode` | Si es real o de prueba | `Yes`, `No` |
+| `Source type` | Origen del checkout | `Funnel` |
+| `Source sub type` | Clasificación más específica del origen | `One-Step Checkout` |
+| `Source id` | Identificador interno del checkout | `fnl_0188` |
+| `Source name` | Nombre del origen | `Health Coaching Funnel` |
+| `Payment provider` | Proveedor de pago | `Stripe`, `NMI`, `Authorize.net`, `PayPal`, `Square` |
+| `Connected account` | Cuenta del proveedor usada para cobrar | `acct_5520XX` |
+| `Transaction date` | Fecha de la última renovación cobrada | `Mar 05, 2026` |
+| `Transaction time` | Hora del último cobro | `2:10 PM` |
+| `Timezone` | Zona horaria | `America/New_York` |
+| `Total products` | Cantidad de productos de la suscripción | `1` |
+| `Line item name` | Nombre del producto | `Monthly Yoga Plan` |
+| `Line item quantity` | Cantidad | `1` |
+| `Line item price` | Precio unitario | `200.00` |
+| `Line item discount` | Descuento aplicado al producto | `20.00` |
+| `Line item subtotal` | Subtotal del producto antes de impuestos y cargos | `180.00` |
+| `Line item product id` | Identificador del producto | `prod_X7E12` |
+| `Tax name` | Nombre del impuesto de la línea | `NY Sales Tax` |
+| `Tax amount` | Parte del impuesto asignada a la línea | `14.40` |
+| `Last paused on date` | Fecha de la pausa más reciente | `April 01, 2026` |
+| `Resumed on date` | Fecha real en que la suscripción se reanudó | `April 10, 2026` |
+| `Pause end date` | Fecha prevista de fin de la pausa más reciente | `April 10, 2026` |
+| `Processing charge name` | Nombre del cargo adicional | `Platform Fee` |
+| `Processing charge amount` | Monto del cargo adicional | `2.50` |
+
+## Ejemplos de suscripciones en varias filas
+
+**Ejemplo 1.** Una suscripción con 3 productos y 2 impuestos no incluidos en el precio, aplicados a los tres: cada producto ocupa una fila por impuesto, en total **6 filas** con el mismo `Subscription id`.
+
+**Ejemplo 2.** Una suscripción con 3 productos donde el producto 1 tiene 2 impuestos no incluidos, el producto 2 tiene 2 impuestos incluidos en el precio y el producto 3 no tiene impuestos:
+
+| Filas | Contenido |
+| --- | --- |
+| 2 filas | Producto 1 con `Tax Name 1` y `Tax Name 2` |
+| 2 filas | Producto 2 con `Tax Name 1 (Included in prices)` y `Tax Name 2 (Included in prices)` |
+| 1 fila | Producto 3, sin valores en las columnas de impuestos |
+
+En total, **5 filas** con el mismo `Subscription id`.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué veo varias filas por suscripción?">
+    Porque cada producto y cada impuesto se desglosan por separado para que el reporte sea preciso.
+  </Accordion>
+  <Accordion title="¿Se incluyen las suscripciones canceladas?">
+    Sí, salvo que filtres por estado antes de exportar.
+  </Accordion>
+  <Accordion title="¿La exportación muestra los cambios que hice con Actualizar?">
+    Sí. Siempre muestra los datos más recientes de la suscripción. Si cambiaste productos o cantidades, verás los valores actuales.
+  </Accordion>
+  <Accordion title="¿Puedo exportar el historial de cobros de una suscripción?">
+    Para el historial completo de cobros, usa la exportación de transacciones.
+  </Accordion>
+  <Accordion title="¿Quién puede descargar exportaciones de suscripciones?">
+    Solo los usuarios con permiso para ver suscripciones y exportar suscripciones.
+  </Accordion>
+  <Accordion title="¿Se incluye la dirección del cliente?">
+    Solo si se recogió en el checkout. Si no, esas columnas quedan vacías.
+  </Accordion>
+  <Accordion title="¿Por qué la fecha de fin está vacía?">
+    Porque la suscripción todavía no terminó: puede estar activa, impaga, en prueba o programada.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Exportar transacciones a CSV" icon="file-csv" href="/pagos/exportar-transacciones-csv">
+    El historial detallado de cobros.
+  </Card>
+  <Card title="Exportar pedidos a CSV" icon="file-csv" href="/pagos/exportar-pedidos-csv">
+    Tus pedidos con detalle por producto.
+  </Card>
+  <Card title="Pausar y reanudar suscripciones" icon="pause" href="/pagos/pausar-y-reanudar-suscripciones">
+    De dónde salen las columnas de pausa.
+  </Card>
+  <Card title="Estados de suscripción" icon="arrows-rotate" href="/pagos-facturas/gestionar-suscripciones">
+    Qué significa cada estado.
+  </Card>
+</CardGroup>

@@ -1,0 +1,154 @@
+---
+title: "Exportar transacciones a CSV"
+description: "Descarga tus transacciones en CSV para contabilidad y conciliación, y entiende cada columna y por qué hay varias filas."
+icon: "file-csv"
+---
+
+La exportación de transacciones te permite descargar el detalle de tus cobros en un archivo CSV para reportes, conciliación bancaria, contabilidad o cumplimiento. Puedes exportar todas las transacciones o solo las que coinciden con tus filtros, y abrir el archivo en Excel, Google Sheets o cualquier herramienta de hojas de cálculo.
+
+## Cómo exportar transacciones
+
+<Steps>
+  <Step title="Abre Transacciones">
+    Ve a **Pagos → Transacciones**.
+  </Step>
+  <Step title="Filtra si lo necesitas">
+    Aplica filtros o búsquedas, por ejemplo rango de fechas, estado del pago o tipo de origen. Si no filtras, se exportan todas.
+  </Step>
+  <Step title="Descarga">
+    Haz clic en el icono de **Descargar**.
+  </Step>
+  <Step title="Revisa tu correo">
+    Recibirás un enlace seguro de descarga en el correo del usuario que pidió la exportación.
+  </Step>
+</Steps>
+
+## Cómo se entrega el archivo
+
+- El enlace suele llegar en pocos minutos.
+- El archivo se descarga **desde el enlace del correo**, no directamente en Chateea.
+- El enlace es válido durante **7 días** y es exclusivo del usuario que lo solicitó.
+- Si el enlace vence, genera una exportación nueva.
+
+## Cómo está organizado el CSV
+
+Una fila **no siempre equivale a una transacción**. Una misma transacción puede ocupar varias filas cuando incluye:
+
+- **Varios productos:** una fila por producto.
+- **Varios impuestos:** una fila por cada impuesto distinto en cada producto.
+- **Cargos adicionales:** cargos por procesamiento, recargos por mora o propinas.
+
+Así cada componente financiero se identifica por separado. Cuando una transacción ocupa varias filas, no todas las columnas se llenan en cada una: las filas adicionales muestran sobre todo los datos del producto o del impuesto, y los datos completos de la transacción aparecen en una sola fila.
+
+### Ceros y celdas vacías
+
+| Valor | Cuándo aparece |
+| --- | --- |
+| **0** | El campo aplica y su valor es realmente cero |
+| **Vacío** | El campo no aplica a esa fila o registro |
+
+El orden de las columnas es siempre el mismo, así que puedes usar el archivo en tablas dinámicas, importaciones o herramientas de inteligencia de negocio sin reajustarlo cada vez.
+
+<Warning>
+  Nunca sumes una columna de totales directamente: contarías varias veces la misma transacción. Agrupa primero por `Internal transaction id` y luego suma.
+</Warning>
+
+## Referencia de columnas
+
+| Columna | Qué contiene | Ejemplo |
+| --- | --- | --- |
+| `Internal transaction id` | Identificador único de la transacción en Chateea | `69369a9968f735180bfeb6ed` |
+| `Location id` | Identificador de tu cuenta de Chateea | `NyGCsdhgRZ8Ffa8Ssagfhd` |
+| `Customer id` | Identificador del cliente en Chateea | `jbtyjkzMjvd8cLi9HUC` |
+| `Customer name` | Nombre del cliente en la transacción | `Alex Ray` |
+| `Customer email` | Correo usado para enviar el recibo | `alex@example.com` |
+| `Customer phone` | Teléfono usado en el checkout | `+1 555-012-2345` |
+| `Payment method` | Método de pago | `Credit Card`, `Cash`, `Instant Transfer` |
+| `Currency` | Moneda | `USD` |
+| `Sub total` | Total de productos antes de descuentos e impuestos no incluidos | `100.00` |
+| `Discount` | Descuentos aplicados al subtotal | `-15.00` |
+| `Total tax amount (excluded in prices)` | Impuesto sumado al subtotal después de descuentos | `8.40` |
+| `Total tax amount (included in prices)` | Impuesto ya incluido en el precio de los productos | `0.00` |
+| `Tip amount` | Propina voluntaria del cliente; no forma parte del monto a pagar | `5.00` |
+| `Late fees` | Recargo por mora sobre el precio | `10.00` |
+| `Total amount due` | Monto original del pedido o factura (subtotal, descuento, impuestos y recargos). No considera pagos parciales | `103.40` |
+| `Total amount paid` | Monto realmente pagado en esta transacción, incluidas propinas y cargos por procesamiento | `110.40` |
+| `Coupon code` | Cupón aplicado | `WELCOME15` |
+| `Status` | Estado de la transacción | `Success`, `Refunded` |
+| `Live mode` | Si fue en modo real (`Yes`) o de prueba (`No`) | `Yes` |
+| `Source type` | Dónde se hizo la compra | `Invoice`, `Funnel Page`, `Form` |
+| `Source id` | Identificador interno del origen | `inv_8281` |
+| `Source name` | Nombre del origen definido por tu negocio | `Q4 Billing Invoice` |
+| `Internal order id` | Pedido relacionado en Chateea, si existe | `jfnkwbgfwbegiu234` |
+| `Payment provider` | Proveedor que procesó el cobro | `Stripe`, `NMI`, `Authorize.net` |
+| `Subscription id` | Suscripción relacionada, si existe | `sub_7A91F` |
+| `Charge id` | Identificador del cobro en el proveedor | `ch_1NHXYZ` |
+| `Connected account` | Cuenta conectada del proveedor de pago | `acct_1sagewg732Hko` |
+| `Transaction date` | Fecha del cobro | `Dec 8, 2025` |
+| `Transaction time` | Hora del cobro | `03:00 PM` |
+| `Timezone` | Zona horaria del registro | `America/New_York` |
+| `Is refunded` | Si fue reembolsada | `Yes`, `No` |
+| `Amount refunded` | Total reembolsado (suma todos los reembolsos) | `25.00` |
+| `Refund date` | Fecha del reembolso (la del último, si hubo varios) | `Dec 9, 2025` |
+| `Line item name` | Nombre del producto | `Annual Pro Plan` |
+| `Line item quantity` | Cantidad comprada de ese producto | `1` |
+| `Line item price` | Precio unitario de ese producto | `100.00` |
+| `Line item coupon discount` | Parte del cupón aplicada a ese producto | `15.00` |
+| `Line item subtotal` | Subtotal de ese producto | `85.00` |
+| `Line item product id` | Identificador del producto en Chateea | `prod_5449` |
+| `Tax name` | Nombre del impuesto; aparece una vez por transacción aunque lo compartan varios productos | `Sales Tax` |
+| `Tax amount` | Suma de ese impuesto para todos los productos que lo tienen | `8.40` |
+| `Processing charge name` | Nombre del cargo adicional (máximo uno por transacción); vacío si no hay | `Platform Fee` |
+| `Processing charge amount` | Monto del cargo adicional; vacío si no hay | `2.00` |
+| `Gift card order number` | Número de la tarjeta de regalo usada; vacío si no se usó | `GC-ORD-19202` |
+| `Gift card amount used` | Monto pagado con tarjeta de regalo; vacío si no se usó | `20.00` |
+
+## Detalles de formato
+
+- **Varios productos:** generan varias filas con el mismo identificador de transacción.
+- **Varios impuestos:** cada impuesto va en su propia fila por producto. Por ejemplo, si dos productos tienen los mismos dos impuestos, la transacción ocupa 4 filas: producto 1 con impuesto 1 y 2, y producto 2 con impuesto 1 y 2.
+- **Pagos combinados** (por ejemplo, tarjeta más tarjeta de regalo): cada parte se muestra en su propia columna de valor.
+- **Tasas de impuesto:** se exportan con 4 decimales (por ejemplo, `7.1250%`) para admitir tasas fraccionarias. Los montos de impuesto se redondean a 2 decimales.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué una transacción aparece en varias filas?">
+    Porque los productos se registran por línea y los impuestos por nombre de impuesto. Es el formato habitual en reportes contables.
+  </Accordion>
+  <Accordion title="¿Por qué el monto a pagar es distinto del monto pagado?">
+    Los cargos por procesamiento, las propinas y los pagos parciales afectan el pago final, no el monto original a pagar.
+  </Accordion>
+  <Accordion title="¿Por qué faltan transacciones en mi exportación?">
+    Revisa que no tengas filtros activos y que el rango de fechas sea el correcto.
+  </Accordion>
+  <Accordion title="¿Se incluyen las transacciones fallidas?">
+    Sí, salvo que filtres solo las exitosas o reembolsadas.
+  </Accordion>
+  <Accordion title="¿Se incluyen los reembolsos parciales?">
+    Sí. `Amount refunded` muestra el total acumulado reembolsado.
+  </Accordion>
+  <Accordion title="¿Puedo volver a generar una exportación?">
+    Sí, cuantas veces quieras.
+  </Accordion>
+  <Accordion title="¿Quién puede exportar transacciones?">
+    Solo los usuarios con permiso para ver transacciones y exportar registros.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Exportar pedidos a CSV" icon="file-csv" href="/pagos/exportar-pedidos-csv">
+    Descarga tus pedidos con su detalle por producto.
+  </Card>
+  <Card title="Exportar suscripciones a CSV" icon="file-csv" href="/pagos/exportar-suscripciones-csv">
+    Descarga tus suscripciones para análisis de retención.
+  </Card>
+  <Card title="Importar transacciones y pedidos" icon="file-import" href="/pagos/importar-transacciones-y-pedidos">
+    Trae tu historial de ventas desde otra plataforma.
+  </Card>
+  <Card title="Permisos de usuario para pagos" icon="user-lock" href="/pagos/permisos-de-usuario-para-pagos">
+    Controla quién puede exportar.
+  </Card>
+</CardGroup>

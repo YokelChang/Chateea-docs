@@ -1,0 +1,135 @@
+---
+title: "Eliminar productos"
+description: "Borra productos, precios y variantes uno a uno o en bloque, y conoce qué productos están protegidos y por qué."
+icon: "trash"
+---
+
+Con el tiempo tu catálogo acumula productos que ya no vendes. En Chateea puedes eliminarlos uno por uno o en bloque. Para proteger tus cobros y el acceso de tus clientes, algunos productos están protegidos y no se pueden borrar. Esta guía explica cómo eliminar productos y precios, y qué restricciones existen.
+
+## Qué pasa al eliminar un producto
+
+- La eliminación es **permanente** y no se puede deshacer.
+- Lo que ya se vendió **no se borra**: las transacciones, pedidos, facturas y suscripciones que incluyen ese producto siguen existiendo tal como están.
+- Lo que se bloquea son las **compras y acciones futuras** sobre ese producto.
+- En eliminaciones masivas, solo se borran los productos que se pueden eliminar; los protegidos se omiten.
+
+## Requisitos
+
+- Un rol con permiso de **Productos → Eliminar** (y **Productos → Ver**).
+- Acceso a **Pagos → Productos**.
+- Confirmar antes que el producto no se esté usando en checkouts activos, calendarios o membresías.
+
+## Cómo eliminar un producto
+
+<Steps>
+  <Step title="Abre tus productos">
+    Ve a **Pagos → Productos** y localiza el producto.
+  </Step>
+  <Step title="Elimina">
+    Haz clic en el icono de **Eliminar** (papelera).
+  </Step>
+  <Step title="Confirma">
+    Confirma en el cuadro de diálogo.
+  </Step>
+</Steps>
+
+<Note>
+  Si el botón de eliminar está desactivado o no aparece, revisa la sección de restricciones más abajo.
+</Note>
+
+## Cómo eliminar un precio o una variante
+
+<Steps>
+  <Step title="Edita el producto">
+    Ve a **Pagos → Productos** y abre el producto en modo edición.
+  </Step>
+  <Step title="Elimina el precio">
+    Haz clic en **Eliminar precio** junto al precio o la variante que quieres quitar.
+  </Step>
+</Steps>
+
+Solo puedes eliminar un precio si el producto tiene más de uno. El último precio o variante de un producto no se puede eliminar.
+
+## Cómo eliminar productos en bloque
+
+<Steps>
+  <Step title="Selecciona los productos">
+    Ve a **Pagos → Productos** y marca las casillas de los productos, o usa **Seleccionar todo**.
+  </Step>
+  <Step title="Elimina">
+    En **Acciones masivas**, haz clic en **Eliminar**.
+  </Step>
+  <Step title="Confirma">
+    Lee el mensaje de confirmación y acepta.
+  </Step>
+</Steps>
+
+El mensaje de confirmación te recuerda que la acción no se puede deshacer y que **solo se eliminarán los productos que se pueden eliminar**. Los protegidos se quedan en tu catálogo.
+
+## Qué productos no se pueden eliminar
+
+| Tipo de producto | Restricción |
+| --- | --- |
+| **Productos creados desde Calendarios** | No se pueden eliminar. El botón de eliminar no aparece |
+| **Productos creados desde Membresías o Comunidades** | No se pueden eliminar. El botón de eliminar no aparece |
+| **Precios y variantes guardados de esos productos** | No se pueden eliminar; el icono de eliminar aparece desactivado |
+| **Precios y variantes sin guardar de esos productos** | Sí se pueden quitar, mientras no los hayas guardado |
+
+Estas protecciones existen porque esos productos están conectados a reservas, cursos o comunidades: borrarlos podría romper el cobro o el acceso de tus clientes.
+
+## Eliminar también en tu proveedor de pago
+
+Si el producto está vinculado a un proveedor de pago externo como Stripe o PayPal, eliminarlo en Chateea borra el registro local, pero normalmente **no** borra el producto o plan que existe en el proveedor. Para eliminarlo por completo:
+
+<Steps>
+  <Step title="Elimínalo en Chateea">
+    Borra el producto desde **Pagos → Productos**.
+  </Step>
+  <Step title="Elimínalo en el proveedor">
+    Entra al panel de tu proveedor de pago (por ejemplo, Stripe o PayPal) y elimina o archiva manualmente el producto o plan correspondiente.
+  </Step>
+</Steps>
+
+<Tip>
+  Si solo quieres dejar de vender un producto pero no estás seguro de que nada dependa de él, revisa primero dónde se usa (embudos, enlaces de pago, formularios de pedido, suscripciones activas). Eliminar es permanente.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no veo el botón de eliminar en mi producto?">
+    Porque es un producto creado desde Calendarios o desde Membresías o Comunidades. Esos productos no se pueden eliminar.
+  </Accordion>
+  <Accordion title="¿Qué pasa si en una eliminación masiva selecciono productos protegidos?">
+    Solo se eliminan los productos que se pueden eliminar. Los protegidos se omiten, y el mensaje de confirmación te lo advierte.
+  </Accordion>
+  <Accordion title="¿Puedo eliminar un precio o variante de un producto protegido?">
+    Solo si todavía no lo guardaste. Los precios y variantes guardados de productos de Calendarios o Membresías no se pueden eliminar.
+  </Accordion>
+  <Accordion title="¿Puedo recuperar un producto eliminado?">
+    No. La eliminación es permanente. Revisa sus dependencias antes de borrarlo.
+  </Accordion>
+  <Accordion title="¿Se borran las ventas anteriores de ese producto?">
+    No. Transacciones, pedidos, facturas y suscripciones que ya incluían el producto se mantienen.
+  </Accordion>
+  <Accordion title="Eliminé el producto en Chateea, ¿por qué sigue apareciendo?">
+    Si está vinculado a un proveedor como Stripe o PayPal, también tienes que eliminarlo o archivarlo en el panel de ese proveedor.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar productos por CSV" icon="file-import" href="/pagos/importar-productos-csv">
+    Carga muchos productos a la vez.
+  </Card>
+  <Card title="Edición masiva de productos" icon="table-list" href="/tienda/edicion-masiva-de-productos">
+    Cambia varios productos sin eliminarlos.
+  </Card>
+  <Card title="Permisos de usuario para pagos" icon="user-lock" href="/pagos/permisos-de-usuario-para-pagos">
+    Controla quién puede eliminar productos.
+  </Card>
+  <Card title="Cobrar pagos en calendarios" icon="calendar" href="/calendarios/cobrar-pagos-en-calendarios">
+    Cómo se crean los productos de calendarios.
+  </Card>
+</CardGroup>

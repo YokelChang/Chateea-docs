@@ -1,15 +1,107 @@
 ---
-title: "Cómo configurar una integración con PayPal"
-description: "Conecta PayPal para aceptar pagos en Chateea."
+title: "Cómo configurar la integración con PayPal"
+description: "Conecta tu cuenta comercial de PayPal a Chateea y ofrécela junto a tu procesador de tarjetas."
 icon: "paypal"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Conectar PayPal a tu cuenta de Chateea te permite ofrecer a tus clientes una de las formas de pago más conocidas del mundo. Una vez conectado, PayPal aparece como opción en tus checkouts junto a tu procesador de tarjetas (Stripe, NMI, Authorize.net, Square u otro), y el cliente elige cómo pagar.
 
-{/* Espacio reservado para el video tutorial. Incrustar aquí. */}
+## Antes de empezar
 
-<Note>
-  El video de esta guía se publicará próximamente.
-</Note>
+- Necesitas una **cuenta comercial de PayPal** (PayPal Business).
+- Necesitas acceso al **panel de desarrolladores de PayPal** para generar tus credenciales.
+
+## Paso 1: obtén tus credenciales en PayPal
+
+<Steps>
+  <Step title="Entra al panel de desarrolladores">
+    Inicia sesión en el panel de desarrolladores de PayPal con tu cuenta comercial.
+  </Step>
+  <Step title="Crea una aplicación">
+    Ve a **Apps & Credentials** y crea una aplicación nueva. Asegúrate de estar en el modo correcto: **Live** para cobros reales o **Sandbox** para pruebas.
+  </Step>
+  <Step title="Copia las credenciales">
+    Copia el **Client ID** y la **Secret Key** de la aplicación. Guárdalas en un lugar seguro y no las compartas.
+  </Step>
+</Steps>
+
+## Paso 2: conecta PayPal en Chateea
+
+<Steps>
+  <Step title="Abre las integraciones de pago">
+    Ve a **Pagos → Integraciones**.
+  </Step>
+  <Step title="Elige PayPal">
+    Busca PayPal en la lista de proveedores y haz clic para conectarlo.
+  </Step>
+  <Step title="Pega tus credenciales">
+    Ingresa el **ID de cliente** y la **clave secreta** que copiaste de PayPal.
+  </Step>
+  <Step title="Guarda">
+    Guarda la configuración. PayPal queda disponible en tus checkouts compatibles.
+  </Step>
+</Steps>
+
+<Tip>
+Haz una compra de prueba con un enlace de pago de monto bajo antes de anunciar PayPal a tus clientes. Así confirmas que las credenciales son las correctas y que el pago llega a tu cuenta.
+</Tip>
+
+## Cómo convive PayPal con otros proveedores
+
+- PayPal funciona **junto** a tu procesador de tarjetas. No necesitas desconectar Stripe, NMI ni Authorize.net.
+- PayPal no puede ser el proveedor predeterminado de la cuenta: el predeterminado se elige entre tus procesadores de tarjeta. PayPal aparece como opción adicional en el checkout.
+- En la configuración por canal puedes usar **PayPal más un proveedor adicional** en cada canal.
+- Si tienes un proveedor predeterminado y PayPal conectados, tus clientes verán ambas opciones.
+
+## Dónde funciona PayPal
+
+| Funciona | No funciona |
+| --- | --- |
+| Formularios de pedido de embudos y sitios web | Encuestas |
+| Formularios con el elemento de pago | Cobro desde la ficha del contacto |
+| Checkout desde correo (enlaces de pago) | Calendarios y servicios |
+| Tienda en línea | Menú de servicios |
+| Facturas y facturas recurrentes | Punto de venta (POS) |
+| Enlaces de pago | |
+| Cursos y comunidades | |
+
+## Detalles a tener en cuenta
+
+- **Facturas recurrentes:** PayPal está disponible solo cuando el **pago automático está desactivado**.
+- **Cargos por procesamiento:** no se aplican a pagos con PayPal, salvo en facturas y presupuestos.
+- **Pay Later:** su disponibilidad depende de la elegibilidad del cliente y de las condiciones de PayPal.
+- **Elementos de pago antiguos:** si un formulario o formulario de pedido no muestra PayPal, actualiza el elemento de pago o vuelve a agregarlo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no puedo elegir PayPal como proveedor predeterminado?">
+    Porque el predeterminado se elige entre los procesadores de tarjeta, como Stripe o Authorize.net. PayPal funciona como opción adicional junto a ellos.
+  </Accordion>
+  <Accordion title="¿Tengo que desconectar Stripe para usar PayPal?">
+    No. Ambos pueden estar conectados al mismo tiempo y tus clientes verán las dos opciones.
+  </Accordion>
+  <Accordion title="¿Dónde veo los pagos recibidos por PayPal?">
+    En **Pagos → Transacciones**, junto con el resto de tus cobros.
+  </Accordion>
+  <Accordion title="¿Puedo cobrar facturas recurrentes automáticas con PayPal?">
+    No. PayPal solo está disponible en facturas recurrentes con el pago automático desactivado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="PayPal en los elementos de pago" icon="paypal" href="/pagos-facturas/paypal-payment-elements">
+    Muestra los botones de PayPal y Pay Later en tus checkouts.
+  </Card>
+  <Card title="Configurar proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
+    Combina PayPal con otro proveedor en cada canal.
+  </Card>
+  <Card title="Proveedores y métodos de pago por área" icon="table" href="/pagos/proveedores-y-metodos-de-pago-por-area">
+    Qué funciona en cada parte de Chateea.
+  </Card>
+  <Card title="Configurar los proveedores de pago" icon="plug" href="/pagos-facturas/configurar-proveedores-pago">
+    Conecta tus procesadores para empezar a cobrar.
+  </Card>
+</CardGroup>

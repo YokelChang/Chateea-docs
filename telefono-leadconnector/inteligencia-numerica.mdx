@@ -1,206 +1,137 @@
 ---
-title: "Inteligencia numérica: validación del número, detección de llamadas no deseadas y búsqueda del nombre del llamante desconocido."
-description: "Enfoque por capas para reducir el spam entrante: Number Intelligence, disposiciones personalizadas, flujo de trabajo de DND, filtrado IVR y listas VIP."
+title: "Inteligencia numérica: detección de spam, nombre del llamante y validación de SMS"
+description: "Detecta llamadas sospechosas, identifica a quien llama y valida números antes del primer SMS con un solo ajuste."
 icon: "shield-halved"
 ---
 
-<Info>
-  Documentado el 16 de agosto de 2026.
-</Info>
+La inteligencia numérica es un conjunto de comprobaciones automáticas sobre números de teléfono que te ayuda a atender mejor las llamadas y a no gastar SMS en números que no pueden recibirlos. Reúne tres funciones en un solo ajuste: **detección de spam**, **búsqueda del nombre del llamante** y **validación del número** antes del primer SMS.
 
-Las llamadas no deseadas pueden saturar a tu equipo, aumentar el volumen de llamadas y hacerte perder un tiempo valioso. Esta guía describe un enfoque estructurado para reducir el spam entrante mediante herramientas de detección integradas, gestión de llamadas, flujos de trabajo automatizados y enrutamiento IVR opcional.
+Así tu equipo sabe si una llamada entrante parece sospechosa, ve el nombre de quien llama aunque no esté guardado como contacto, y evitas enviar mensajes a líneas fijas u otros destinos que no aceptan SMS.
 
-Al combinar la detección temprana con la lógica de cuarentena automatizada, puede reducir las interrupciones y, al mismo tiempo, garantizar que las personas que llaman legítimamente puedan seguir comunicándose con su equipo.
+## Qué incluye
 
-<Note>
-  **Tabla de contenido**
+Cada función actúa en un momento distinto de la comunicación con tus clientes.
 
-  - ¿Qué es la reducción de llamadas de spam entrantes?
-  - Beneficios clave
-  - Inteligencia numérica (detección de spam, identificación y validación de llamadas)
-  - Disposiciones personalizadas para llamadas de voz
-  - Flujo de trabajo: Habilitar automáticamente la función No molestar entrante
-  - Control de acceso mediante IVR opcional
-  - Opciones VIP / Lista segura y de reversión
-  - Monitoreo y optimización
-  - Preguntas frecuentes
-  - ¿Necesitar ayuda?
-</Note>
+| Función | Cuándo se ejecuta | Cobertura | Resultado |
+| --- | --- | --- | --- |
+| **Detección de spam** | Llamada entrante de un número que no está guardado como contacto | Estados Unidos | Revisa señales de spam y puede mostrar la llamada como **Spam probable** (Spam Likely) |
+| **Búsqueda del nombre del llamante** | Llamada entrante en la que falta el nombre de quien llama | Estados Unidos | Obtiene el nombre disponible del titular de la línea |
+| **Validación del número** | Justo antes del primer SMS saliente a ese número | Todo el mundo | Comprueba que el número sea válido y pueda recibir SMS |
 
-## ¿Qué es la reducción de llamadas de spam entrantes?
+Una forma sencilla de recordarlo:
 
-La reducción de llamadas no deseadas entrantes es una configuración por capas diseñada para:
-
-- Identifique el posible spam antes de que los agentes interactúen.
-- Permitir que los agentes etiqueten las llamadas no deseadas de forma consistente.
-- Poner en cuarentena automáticamente a los remitentes de llamadas no deseadas repetidas.
-- Opcionalmente, puede filtrar las llamadas entrantes mediante un sistema IVR sencillo.
-
-Este enfoque combina la detección, la intervención humana y la automatización para crear una protección sólida sin bloquear a los clientes reales.
-
-## Beneficios clave
-
-Una estrategia de reducción de spam por capas proporciona protección y flexibilidad.
-
-| Beneficio | Qué aporta |
-| --- | --- |
-| **Menos interrupciones de los agentes** | Reduzca las llamadas de spam que llegan a los usuarios. |
-| **Gestión de llamadas más rápida** | Los agentes pueden marcar las llamadas de spam de forma rápida y consistente. |
-| **Cuarentena automática** | Los números marcados se colocan automáticamente en la lista de “No molestar” entrante. |
-| **Filtrado IVR opcional** | Mensajes sencillos disuaden las llamadas automáticas antes de que lleguen a los usuarios. |
-| **Reversión segura** | Los contactos VIP pueden eludir la lógica de cuarentena. |
-| **Resultados medibles** | Seguimiento de las tendencias de etiquetado de spam y reducción de las interrupciones en el tráfico entrante. |
-
-## Inteligencia numérica (detección de spam, identificación y validación de llamadas)
-
-Number Intelligence mejora la visibilidad de las llamadas entrantes y la fiabilidad de los mensajes salientes.
-
-### Lo que ofrece
-
-| Función | Descripción |
-| --- | --- |
-| **Detección de spam** | Marca las llamadas sospechosas de spam provenientes de números desconocidos. |
-| **Identificación de la persona que llama** | Muestra los detalles del nombre de la persona que llama (cuando estén disponibles). |
-| **Validación del número** | Verifica la validez del número antes de enviar el SMS inicial. |
-
-### Cómo funciona
-
-- La detección de spam se aplica a las llamadas entrantes de números desconocidos (no contactos guardados).
-- La identificación de llamadas se ejecuta antes de que se conteste la llamada.
-- La validación por SMS comprueba la validez del número en todo el mundo antes de enviar el primer mensaje.
-- Cuando están activadas, estas funciones operan automáticamente en segundo plano.
-
-### Notas importantes
+- **Llamadas entrantes:** detección de spam y búsqueda del nombre.
+- **Primer SMS saliente:** validación del número.
 
 <Warning>
-  - La eficacia de la detección de spam puede variar según la región.
-  - La validación de números se aplica a nivel mundial.
-  - Todos los componentes se activan simultáneamente y no se pueden activar individualmente.
+  Las tres funciones se activan y desactivan juntas. Por ahora no puedes encender solo la detección de spam o solo la validación de números.
 </Warning>
 
-## Disposiciones personalizadas para llamadas de voz
+## Beneficios para tu negocio
 
-Las Custom Dispositions estandarizan la forma en que los agentes etiquetan los resultados de las llamadas.
+- **Identificas llamadas sospechosas** antes de contestarlas, para que tu equipo decida cómo atenderlas.
+- **Reconoces a quien llama** aunque todavía no sea contacto, lo que te da contexto desde el primer segundo.
+- **Completas tus contactos:** si un contacto existe pero no tiene nombre, la búsqueda puede aportar el nombre disponible.
+- **Evitas SMS inútiles:** si el número no puede recibir mensajes (por ejemplo, una línea fija), el primer SMS no se envía.
+- **Cuidas la entregabilidad** de tus mensajes al reducir intentos fallidos.
 
-Crear una disposición dedicada “Spam call” asegura un etiquetado consistente y permite que los flujos de trabajo de automatización se activen correctamente.
+## Detección de spam en llamadas entrantes
 
-### Nombre de disposición recomendado
+La detección de spam revisa las llamadas entrantes de Estados Unidos que llegan desde un número **desconocido**, es decir, un número que no está guardado como contacto en tu cuenta de Chateea.
 
-```text
-Spam call
-```
+Cuando la llamada parece sospechosa:
 
-Mantenga la etiqueta corta y sin ambigüedades para evitar desajustes en los flujos de trabajo.
+- Puede aparecer marcada como **Spam probable**.
+- El resultado se muestra en el registro de llamadas y en las pantallas de telefonía compatibles.
+- Tu equipo puede usar esa señal para decidir si contesta o cómo trata al llamante.
 
-## Flujo de trabajo: Habilitar automáticamente la función No molestar entrante
+<Note>
+  La detección de spam **etiqueta** las llamadas, pero no las bloquea automáticamente. Si quieres poner en cuarentena o bloquear a quienes llaman con spam de forma repetida, combínala con disposiciones de llamada, un flujo de trabajo que active el modo No molestar entrante y, si lo necesitas, un filtro IVR sencillo.
+</Note>
 
-Los flujos de trabajo hacen operativa su política de spam. Cuando un agente marca una llamada como “Spam call”, un flujo de trabajo puede habilitar automáticamente el DND entrante para ese contacto.
+## Búsqueda del nombre del llamante
 
-### Configuración recomendada
+La búsqueda del nombre intenta obtener el nombre asociado a la línea de quien llama en llamadas entrantes de Estados Unidos. Se ejecuta cuando:
 
-| Elemento | Valor |
-| --- | --- |
-| **Trigger** | Call Details |
-| **Filter** | Direction = Inbound · Disposition = Spam call |
-| **Action** | Enable DND |
-| **Parámetros de la acción** | Direction = Inbound · Channel = Voice |
+- El número entrante no está vinculado a ningún contacto.
+- El número pertenece a un contacto existente, pero ese contacto no tiene el nombre completado.
 
-Comenzar de forma conservadora con Inbound \+ Voice evita el bloqueo accidental de la comunicación por SMS o correo electrónico.
+Fíjate en la diferencia con la detección de spam: la búsqueda del nombre también puede ejecutarse con contactos que ya existen si les falta el nombre.
 
-### Por qué esto importa
+## Validación del número antes del primer SMS
 
-- Los remitentes de spam recurrentes se silencian automáticamente.
-- La comunicación saliente legítima no se ve afectada.
-- La lógica de cuarentena puede ajustarse o revertirse si es necesario.
+La validación comprueba el número de destino **antes de enviar el primer SMS** a ese número. Funciona con números de todo el mundo.
 
-## Control de acceso mediante IVR opcional
+El proceso es este:
 
-Un IVR ligero puede disuadir las llamadas automáticas (robocalls) antes de que lleguen a los agentes. Esto es opcional, pero útil en entornos con alto volumen de spam.
+1. Se prepara el primer SMS para el contacto.
+2. La validación revisa el número de destino.
+3. Si pasa la validación, el SMS se envía. Si no la pasa, el SMS no se envía.
 
-### Ejemplo de configuración mínima de IVR
+<Info>
+  La validación **no** se ejecuta al crear o importar un contacto. Solo ocurre cuando vas a enviarle el primer SMS. Un caso típico de número que no pasa la validación es una línea fija.
+</Info>
+
+## Costo
+
+La inteligencia numérica se cobra por uso: cada comprobación que se realiza (detección de spam, búsqueda de nombre o validación) se descuenta de la **billetera** de tu cuenta. Puedes consultar las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+
+## Cómo activar la inteligencia numérica
+
+Antes de cambiar este ajuste, recuerda que activarlo o desactivarlo afecta a las tres funciones a la vez, tanto en llamadas entrantes como en SMS salientes.
 
 <Steps>
-  <Step title="Play Message">
-    “Thanks for calling. To connect, press 1.”
+  <Step title="Abre la configuración del sistema telefónico">
+    En tu cuenta de Chateea, ve a **Configuración → Sistema telefónico**.
   </Step>
-  <Step title="Gather Input (DTMF)">
-    - Dígito aceptado: 1
-    - Timeout: 3–5 segundos
-    - Un reintento
+  <Step title="Entra en la configuración adicional">
+    Abre **Configuración adicional → Inteligencia numérica**.
   </Step>
-  <Step title="Si se presiona 1">
-    Connect Call
+  <Step title="Activa o desactiva la opción">
+    Busca la opción **Recopilar información sobre números de teléfono desconocidos** (Gather Intelligence on Unknown Phone Numbers). Márcala para activar la inteligencia numérica o desmárcala para desactivarla.
   </Step>
-  <Step title="Si no hay entrada">
-    Enrutar al buzón de voz o finalizar la llamada.
+  <Step title="Guarda los cambios">
+    Si la pantalla te lo pide, guarda la configuración.
   </Step>
 </Steps>
 
-### Consideraciones importantes
-
-- Mantenga los mensajes cortos para no frustrar a las personas que llaman de verdad.
-- Un número de teléfono puede estar asignado a un solo flujo de trabajo IVR a la vez.
-- Pruebe siempre con dispositivos reales antes de publicar.
-
-## Opciones VIP / Lista segura y de reversión
-
-Pueden producirse falsos positivos. Estos patrones preservan la accesibilidad:
-
-### Acceso VIP (VIP Bypass)
-
-- Agregue una etiqueta como **VIP** o **SafeList**.
-- Agregue una condición If/Else en el flujo de trabajo.
-- Si el contacto tiene la etiqueta VIP → omitir DND.
-- De lo contrario → aplicar DND.
-
-### Desactivación automática del modo No molestar (Auto-Clear DND)
-
-Puede crear un flujo de trabajo secundario para eliminar el DND después de un período determinado (por ejemplo, 30 días) y así evitar un bloqueo permanente.
-
-## Monitoreo y optimización
-
-Revise su configuración con regularidad:
-
-- Revisión semanal de los registros de llamadas.
-- Monitoreo del uso de la disposición “Spam call”.
-- Comprobación del conteo de contactos con DND entrante.
-- Evaluación de las tasas de timeout del IVR.
-
-Ajuste los timeouts, los mensajes o el alcance del DND según sea necesario.
+<Warning>
+  Si desactivas la inteligencia numérica, se detienen las tres funciones: detección de spam, búsqueda del nombre del llamante y validación del número.
+</Warning>
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Number Intelligence bloquea automáticamente las llamadas de spam?">
-    No. Marca el spam sospechoso. El bloqueo ocurre a través de los flujos de trabajo y de la configuración de DND.
+  <Accordion title="¿La inteligencia numérica bloquea automáticamente las llamadas marcadas como spam?">
+    No. Solo identifica y etiqueta las llamadas sospechosas. Para bloquear o poner en cuarentena a quienes llaman con spam de forma repetida, usa disposiciones de llamada, un flujo de trabajo que active el modo No molestar entrante y, si quieres, un filtro IVR.
   </Accordion>
-
-  <Accordion title="¿Debo habilitar el DND para todos los canales?">
-    Comience con Inbound \+ Voice. Extenderlo a todos los canales puede suprimir comunicación legítima.
+  <Accordion title="¿Cuándo se ejecuta la validación del número?">
+    Justo antes de enviar el primer SMS a ese número. No se ejecuta al crear ni al importar el contacto.
   </Accordion>
-
-  <Accordion title="¿Qué pasa si un agente marca a un cliente real como spam?">
-    Puede eliminar manualmente el DND del contacto o permitir que un flujo de trabajo de auto-clear restaure el acceso.
+  <Accordion title="¿Qué pasa si un número no pasa la validación?">
+    El SMS no se envía. Revisa el número del contacto o usa otro canal, como llamada, WhatsApp o correo.
   </Accordion>
-
-  <Accordion title="¿Es necesario el IVR para reducir el spam?">
-    No. Muchas empresas usan únicamente Number Intelligence y las disposiciones.
+  <Accordion title="¿Por qué se busca el nombre de un contacto que ya existe?">
+    Porque la búsqueda del nombre también se ejecuta cuando el contacto existe pero su campo de nombre está vacío.
   </Accordion>
-
-  <Accordion title="¿El DND entrante bloquea las llamadas salientes?">
-    No. El DND entrante impide los timbres entrantes, pero no bloquea la marcación saliente.
+  <Accordion title="¿Puedo activar la detección de spam sin la validación de números?">
+    No. Las tres funciones forman un mismo paquete y se activan o desactivan juntas.
   </Accordion>
-
-  <Accordion title="¿Esta configuración también puede reducir el spam por SMS?">
-    El DND puede extenderse a canales adicionales, pero pruebe con cuidado antes de habilitar restricciones más amplias.
+  <Accordion title="¿Funciona fuera de Estados Unidos?">
+    La validación de números funciona con números de todo el mundo. La detección de spam y la búsqueda del nombre del llamante aplican a llamadas entrantes de Estados Unidos.
+  </Accordion>
+  <Accordion title="¿Es lo mismo que Voice Integrity?">
+    No. La inteligencia numérica evalúa a quien te **llama**. Voice Integrity es otra función que ayuda a mejorar la reputación de **tus** números cuando haces llamadas salientes, para que no aparezcan como spam en el teléfono de tus clientes.
   </Accordion>
 </AccordionGroup>
 
-## ¿Necesitar ayuda?
+## Artículos relacionados
 
-Si las llamadas de spam persisten después de la configuración:
-
-- La función Confirmar número inteligente está habilitada.
-- Verifique que el nombre de la disposición coincida exactamente con el filtro del flujo de trabajo.
-- Asegúrese de que el flujo de trabajo esté publicado.
-- Prueba utilizando números conocidos y desconocidos.
+<CardGroup cols={2}>
+  <Card title="El marcador telefónico de Chateea" icon="phone" href="/telefonia/marcador-telefonico">
+    Aprende a usar el marcador para llamar y atender desde Chateea.
+  </Card>
+  <Card title="Error 30007: filtrado de SMS" icon="triangle-exclamation" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Cómo evitar que los operadores filtren tus mensajes.
+  </Card>
+</CardGroup>

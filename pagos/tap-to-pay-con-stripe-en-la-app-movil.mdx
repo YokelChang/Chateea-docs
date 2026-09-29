@@ -1,0 +1,97 @@
+---
+title: "Cobrar con Tap to Pay y Stripe en la app móvil"
+description: "Convierte tu teléfono en terminal y cobra con tarjetas sin contacto o billeteras móviles desde el punto de venta."
+icon: "mobile-screen"
+---
+
+Con Tap to Pay conviertes tu teléfono en una terminal de cobro. Desde el **punto de venta** de la aplicación móvil de Chateea, tu cliente acerca su tarjeta sin contacto o su billetera móvil (Apple Pay, Google Pay) al teléfono y el pago entra directo a tu cuenta de Stripe. No necesitas lector de tarjetas, ni que el cliente firme o escriba un PIN.
+
+<Note>
+Por ahora Tap to Pay está disponible para cuentas ubicadas en **Estados Unidos**. En otros países está en fase beta. Si te interesa probarlo, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Por qué te conviene
+
+- **Cobros sin fricción:** funciona con tarjetas y dispositivos compatibles con pagos sin contacto.
+- **Rapidez:** el cliente acerca su tarjeta o teléfono y listo. Sin deslizar tarjetas, sin PIN y sin firmas.
+- **Seguridad:** las transacciones viajan cifradas para proteger tus datos y los de tus clientes.
+- **Amplia compatibilidad:** acepta tarjetas sin contacto y billeteras móviles como Apple Pay y Google Pay.
+- **Ideal para cobrar en persona:** ferias, eventos, visitas a domicilio o tu propio local.
+
+## Antes de empezar
+
+- **Conecta Stripe desde la versión web** de Chateea, en **Pagos → Integraciones → Conectar con Stripe**. Si en la app ves el aviso de Stripe no conectado, es que falta este paso.
+- **Revisa la ubicación de tu cuenta** en la aplicación: Tap to Pay solo funciona en los países habilitados.
+- **Usa un teléfono compatible** (ver la tabla de abajo).
+
+## Teléfonos compatibles
+
+| Sistema | Requisitos |
+| --- | --- |
+| **Android** | Cualquier teléfono con NFC y Android 8 o posterior. |
+| **iPhone** | iPhone XS o posterior con iOS 16 o posterior. |
+
+<Warning>
+Tap to Pay no funciona en versiones beta de iOS. Te recomendamos mantener el teléfono actualizado a la última versión estable del sistema.
+</Warning>
+
+## Cómo cobrar con Tap to Pay
+
+<Steps>
+  <Step title="Abre el punto de venta">
+    En la aplicación móvil de Chateea, entra en **Punto de venta** (Point of Sale).
+  </Step>
+  <Step title="Ingresa el monto">
+    Escribe el monto a cobrar. Si quieres dejar registro de qué vendiste, toca **+ Nota** y agrega los detalles.
+  </Step>
+  <Step title="Inicia el cobro">
+    Toca **Cobrar (monto)** y espera a que la app se conecte al lector del teléfono.
+  </Step>
+  <Step title="Agrega propina (opcional)">
+    Elige una de las propinas sugeridas, toca **Personalizada** para escribir otro monto, o **Sin propina** para seguir.
+  </Step>
+  <Step title="Pide al cliente que acerque su tarjeta">
+    El cliente acerca su tarjeta sin contacto o su teléfono con billetera móvil a la parte trasera de tu teléfono.
+  </Step>
+  <Step title="Confirma el pago">
+    Cuando el cobro se completa, verás el mensaje de pago aprobado con el nombre de tu negocio y el ID de la transacción. El dinero se cobra en tu cuenta de Stripe.
+  </Step>
+</Steps>
+
+<Tip>
+Antes de un evento o una jornada de ventas, haz un cobro pequeño de prueba para confirmar que Stripe está conectado y que tu teléfono lee bien las tarjetas.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito comprar un lector de tarjetas?">
+    No. Tap to Pay usa el NFC de tu propio teléfono para leer tarjetas y billeteras sin contacto.
+  </Accordion>
+  <Accordion title="¿Qué proveedor de pago necesito?">
+    Tap to Pay cobra a través de tu cuenta de Stripe conectada a Chateea. Si usas Square, revisa la guía de cobros presenciales con Square.
+  </Accordion>
+  <Accordion title="La app dice que Stripe no está conectado. ¿Qué hago?">
+    Entra a Chateea desde la computadora, conecta Stripe en **Pagos → Integraciones** y vuelve a abrir el punto de venta en la app.
+  </Accordion>
+  <Accordion title="¿Funciona en mi país?">
+    Por ahora está disponible en Estados Unidos. En otros países está en beta; escribe a **help@chateea.com** si quieres probarlo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integración de pagos con Stripe" icon="stripe" href="/comercio/integracion-stripe">
+    Conecta Stripe a tu cuenta de Chateea.
+  </Card>
+  <Card title="Tap to Pay con Square en iPhone" icon="mobile-screen" href="/pagos/tap-to-pay-con-square-en-iphone">
+    Cobra sin contacto usando Square.
+  </Card>
+  <Card title="Impuestos automáticos en la app móvil" icon="percent" href="/pagos/impuestos-automaticos-en-la-app-movil">
+    Calcula impuestos al cobrar desde el teléfono.
+  </Card>
+  <Card title="Aplicación móvil" icon="mobile" href="/aplicacion-movil/introduccion">
+    Todo lo que puedes hacer desde el teléfono.
+  </Card>
+</CardGroup>

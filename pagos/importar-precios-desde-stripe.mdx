@@ -1,0 +1,95 @@
+---
+title: "Importar precios y planes desde Stripe"
+description: "Trae a Chateea tus planes recurrentes creados en Stripe y entiende cómo se sincronizan los cambios de precio."
+icon: "stripe"
+---
+
+Si ya vendes suscripciones con planes creados directamente en Stripe, no tienes que rehacerlos a mano en Chateea. Con la opción **Importar desde Stripe** traes esos planes a tu catálogo de productos y los puedes usar en embudos, sitios web, enlaces de pago y el resto de tus procesos de cobro. En este artículo verás qué precios se pueden importar, qué hace Chateea durante la importación y cómo se sincronizan los cambios entre ambas plataformas.
+
+## Antes de empezar
+
+- Tu cuenta de Stripe debe estar conectada a Chateea en **Pagos → Integraciones**.
+- El plan o precio que quieres importar debe estar en **modo en vivo** (Live) en Stripe. Los precios creados en modo de prueba no aparecen para importar.
+
+## Qué precios se pueden importar
+
+| Tipo de precio en Stripe | ¿Se puede importar? |
+| --- | --- |
+| Recurrente o de suscripción | Sí |
+| Pago único | No. Créalo directamente en Chateea como producto de pago único. |
+| Recurrente con facturación por uso (metered) | No |
+| Precio que ya importaste antes | No aparece en la lista, porque ya existe en tu catálogo |
+
+## Cómo importar un precio desde Stripe
+
+<Steps>
+  <Step title="Abre tus productos">
+    Ve a **Pagos → Productos**.
+  </Step>
+  <Step title="Elige importar">
+    Haz clic en **Importar desde Stripe** (Import From Stripe).
+  </Step>
+  <Step title="Selecciona el plan">
+    Elige el plan o precio recurrente de Stripe que quieres traer a Chateea y confirma la importación.
+  </Step>
+  <Step title="Revisa el producto creado">
+    El producto aparece en tu lista de productos con su precio. Desde ahí ya puedes asignarlo a un formulario de pedido, un enlace de pago o cualquier otro proceso de cobro.
+  </Step>
+</Steps>
+
+## Qué hace Chateea al importar
+
+Cuando importas un precio, Chateea:
+
+1. Importa el producto de Stripe al que está vinculado ese precio y lo crea en tu catálogo, si todavía no existe.
+2. Crea el precio dentro de ese producto.
+3. Crea el mismo producto y precio en el **modo de prueba** de Stripe, para que puedas hacer compras de prueba sin tocar datos reales.
+4. Si tienes PayPal conectado, crea también el producto y el precio en PayPal.
+
+## Cómo se sincronizan los cambios
+
+La sincronización funciona en un solo sentido: **de Chateea hacia Stripe**. Los cambios que hagas directamente en Stripe no se reflejan en Chateea.
+
+### Productos creados en Chateea
+
+- Al crear un producto en Chateea se crea automáticamente el plan o precio correspondiente en Stripe.
+- Si editas el precio en Chateea, el cambio se envía a Stripe creando **un precio nuevo**. Esto se debe a que la API de Stripe no permite modificar un precio existente.
+- Si editas el precio en Stripe, Chateea no se entera. Para usar ese precio modificado tendrías que importarlo como un producto nuevo.
+
+### Productos creados directamente en Stripe
+
+- Usa **Importar desde Stripe** para traerlos a Chateea como productos.
+- Si necesitas cambiar el precio de un producto importado, hazlo **en Chateea**: el cambio se sincroniza con Stripe creando un precio nuevo.
+- Si cambias el precio en Stripe, el producto de Chateea no se actualiza. Tendrías que importar el precio modificado como un producto nuevo.
+
+<Tip>
+Para evitar precios duplicados o desactualizados, toma a Chateea como el lugar donde creas y editas tus precios, y deja que Stripe reciba los cambios.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no veo mi precio de pago único para importar?">
+    La importación solo admite precios recurrentes o de suscripción. Los productos de pago único se crean directamente en **Pagos → Productos**.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece un plan que sí existe en Stripe?">
+    Revisa tres cosas: que el plan esté en modo en vivo, que no use facturación por uso (metered) y que no lo hayas importado antes. Los planes ya importados no vuelven a aparecer en la lista.
+  </Accordion>
+  <Accordion title="Cambié el precio en Stripe y en Chateea sigue igual. ¿Es normal?">
+    Sí. Los cambios hechos en Stripe no se sincronizan hacia Chateea. Importa el precio modificado como un producto nuevo, o mejor, haz el cambio desde Chateea para que se sincronice con Stripe.
+  </Accordion>
+  <Accordion title="¿Se borra el precio anterior en Stripe cuando edito el producto en Chateea?">
+    No. Stripe no permite editar precios existentes, así que Chateea crea un precio nuevo con el valor actualizado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integración de pagos con Stripe" icon="stripe" href="/comercio/integracion-stripe">
+    Conecta Stripe para cobrar con tarjeta y gestionar suscripciones.
+  </Card>
+  <Card title="Crea productos y véndelos con embudos" icon="box-open" href="/comercio/productos-y-embudos">
+    Vincula tus productos a formularios de pedido.
+  </Card>
+</CardGroup>

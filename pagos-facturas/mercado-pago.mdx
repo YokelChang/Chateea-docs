@@ -1,198 +1,159 @@
 ---
-title: "¿Cómo integrarse con Mercado Pago para aceptar pagos?"
-description: "Conecta tu cuenta de Mercado Pago, configura el webhook y asígnalo a tus canales de cobro."
+title: "Integra Mercado Pago para aceptar pagos"
+description: "Conecta Mercado Pago con tus credenciales de producción, configura el webhook y asígnalo a tus canales de cobro."
 icon: "wallet"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Mercado Pago es el medio de pago que millones de personas en Latinoamérica usan a diario. Al conectarlo a tu cuenta de Chateea, tus clientes pagan con una marca que ya conocen y en su moneda local, lo que reduce la fricción en el pago y mejora la conversión. Para conectarlo necesitas tus credenciales de producción y configurar un webhook en tu panel de desarrollador de Mercado Pago.
 
-En este artículo aprenderás a conectar tu cuenta de **Mercado Pago** para aceptar pagos dentro de Chateea. Para completar la configuración necesitarás tus **credenciales de producción** de Mercado Pago y, posiblemente, configurar las notificaciones de webhook en el panel de desarrollador de Mercado Pago.
-
-## Qué es Mercado Pago
-
-Mercado Pago es un proveedor de pagos ampliamente usado en Latinoamérica. La integración te permite conectarlo directamente a tu cuenta de Chateea, en lugar de depender de soluciones alternativas o cobros manuales.
-
-Una vez conectado, lo gestionas desde **Pagos → Integraciones** y eliges en qué canales de pago quieres usarlo.
-
-<Info>
-  Para un negocio en Argentina, México, Colombia o Chile, esto suele ser la diferencia entre un checkout que convierte y uno que no: el cliente ve una marca de pago que ya usa todos los días.
-</Info>
-
-### Beneficios clave
+## Por qué usar Mercado Pago
 
 | Beneficio | Qué aporta |
 | --- | --- |
-| **Experiencia localizada** | Métodos de pago en los que tus clientes ya confían |
-| **Mejores conversiones** | Menos fricción en el checkout con un proveedor conocido |
-| **Expansión de mercado** | Acceso al ecosistema de pagos de mayor crecimiento en LATAM |
-| **Mayor control** | Decides cómo y dónde encaja Mercado Pago en tu sistema de cobros |
+| **Experiencia local** | Métodos de pago en los que tus clientes ya confían |
+| **Más conversiones** | Menos abandono en el pago con un proveedor conocido |
+| **Expansión regional** | Acceso al ecosistema de pagos de mayor crecimiento en la región |
+| **Control** | Decides en qué canales de cobro aparece |
 
-## Requisitos previos
+Una vez conectado, lo gestionas desde **Pagos → Integraciones** y eliges en qué canales usarlo.
 
-Antes de comenzar, asegúrate de tener:
+## Países compatibles
 
-- Una cuenta de Mercado Pago con **soporte sin CVV/CVC habilitado**
-- Acceso a tu **panel de desarrollador** de Mercado Pago
-- La **URL del sitio web** de tu empresa, por si Mercado Pago la solicita al habilitar las credenciales de producción
+Colombia, Argentina, Chile, México, Uruguay, Perú y Brasil.
 
-Y necesitarás estos cuatro valores de Mercado Pago:
+## Antes de empezar
 
-| Valor | Dónde se obtiene |
+- Una cuenta de Mercado Pago con el **pago sin CVV** (CVV/CVC less) habilitado. Si no sabes si lo tienes, pregúntale al soporte de Mercado Pago.
+- Acceso a tu panel de desarrollador de Mercado Pago.
+- La URL del sitio web de tu negocio, por si Mercado Pago la pide al activar las credenciales de producción.
+
+Vas a necesitar estos cuatro datos:
+
+| Dato | Dónde se obtiene |
 | --- | --- |
-| **Clave pública** | Credenciales de producción de tu aplicación |
-| **Token de acceso** | Credenciales de producción de tu aplicación |
-| **País de la cuenta** | El país en que está registrada tu cuenta |
-| **Secreto del webhook** | Lo generas tú y debe coincidir en ambos lados |
+| **Public Key** (clave pública) | Credenciales de producción de tu aplicación en Mercado Pago |
+| **Access Token** (token de acceso) | Credenciales de producción de tu aplicación en Mercado Pago |
+| **País de la cuenta** | El país donde está registrada tu cuenta de Mercado Pago |
+| **Secreto del webhook** | Lo generas tú; debe ser idéntico en Chateea y en Mercado Pago |
 
 <Warning>
-  Los pagos en vivo requieren **credenciales de producción**, no credenciales de prueba. Las de producción están vinculadas a una aplicación que tú creas dentro de Mercado Pago.
+  Los cobros reales requieren **credenciales de producción**. Las de prueba solo sirven para probar y no procesan transacciones. Guarda tu Access Token en un lugar seguro y no lo compartas.
 </Warning>
 
-## Notas importantes
+## Cómo conectar Mercado Pago
 
-- Usa **credenciales de producción** para pagos reales. Las de prueba solo sirven para probar y no procesan transacciones reales.
-- Mantén tu **token de acceso** privado y guárdalo de forma segura.
-- Según la configuración de Mercado Pago en tu país, las opciones disponibles pueden variar. Cada país tiene **requisitos de monto mínimo**.
-- Para que la integración funcione correctamente, tu cuenta debe tener habilitada la compatibilidad **sin CVV (CVV less)**.
-- Mercado Pago **no permite dos elementos de pago en una sola página**. Por ejemplo, no puedes mantener dos formularios de pedido de un solo paso en el mismo embudo.
-
-## Cómo configurar Mercado Pago
-
-Una configuración correcta asegura que el sistema pueda conectarse, enrutar los pagos y recibir las actualizaciones de eventos por webhook. Completar cada paso con cuidado evita conexiones fallidas y problemas de sincronización después.
-
-### Paso 1: Abre Mercado Pago en las integraciones de pago
+### Paso 1: abre Mercado Pago en Chateea
 
 <Steps>
-  <Step title="Ve a Pagos">
-    Desde el menú lateral izquierdo.
-  </Step>
-  <Step title="Abre la pestaña Integraciones">
-    Verás la lista de proveedores disponibles.
+  <Step title="Ve a Pagos → Integraciones">
+    Desde el menú lateral de tu cuenta.
   </Step>
   <Step title="Busca Mercado Pago y haz clic en Conectar">
-    Se abre la pantalla de configuración con los campos de credenciales.
+    Se abre la pantalla con los campos de credenciales.
   </Step>
 </Steps>
 
-### Paso 2: Obtén tus credenciales de producción
+### Paso 2: obtén tus credenciales de producción
 
 <Steps>
-  <Step title="Inicia sesión en tu cuenta de Mercado Pago">
-    Con el usuario dueño de la cuenta de cobro.
+  <Step title="Entra al área de desarrolladores de Mercado Pago">
+    Inicia sesión con la cuenta que recibirá los cobros y abre **Tus integraciones**.
   </Step>
-  <Step title="Abre el área de desarrollador">
-    Desde la configuración de tu perfil de negocio.
+  <Step title="Abre o crea una aplicación">
+    Si no tienes una, créala: ponle un nombre, elige pagos en línea como tipo de integración, confirma los datos y activa las credenciales de producción.
   </Step>
-  <Step title="Entra en Tus integraciones">
-    Ahí viven las aplicaciones y sus credenciales.
-  </Step>
-  <Step title="Abre una aplicación existente o crea una nueva">
-    Si no tienes ninguna, créala primero: nombre de la aplicación, tipo de pago o caso de uso para pagos en línea, confirmación de los datos y activación de las credenciales de producción.
-  </Step>
-  <Step title="Copia la Clave pública y el Token de acceso">
-    Desde **Credenciales de producción**. Si aún no están activas, completa los datos de negocio que pida Mercado Pago (rubro, sitio web).
+  <Step title="Copia las credenciales">
+    En **Credenciales de producción**, copia la **Public Key** y el **Access Token**. Si aún no están activas, completa los datos que pida Mercado Pago (rubro, sitio web).
   </Step>
 </Steps>
 
-### Paso 3: Ingresa tus credenciales en Chateea
+### Paso 3: ingresa las credenciales en Chateea
 
 <Steps>
-  <Step title="Pega la Clave pública">
-    En el campo correspondiente.
+  <Step title="Pega la Public Key y el Access Token">
+    Cada uno en su campo.
   </Step>
-  <Step title="Pega el Token de acceso">
-    En el campo correspondiente.
-  </Step>
-  <Step title="Elige el país o región de la cuenta">
+  <Step title="Elige el país de la cuenta">
     Debe coincidir con el país donde está registrada tu cuenta de Mercado Pago.
   </Step>
-  <Step title="Genera o ingresa tu Secreto del webhook">
+  <Step title="Genera o escribe el secreto del webhook">
     Guárdalo: lo necesitarás idéntico en el paso siguiente.
   </Step>
-  <Step title="Haz clic en Guardar o Conectar">
-    Tu cuenta de Mercado Pago queda vinculada.
+  <Step title="Guarda">
+    Haz clic en **Guardar** o **Conectar**. Tu cuenta queda vinculada.
   </Step>
 </Steps>
 
-### Paso 4: Configura los webhooks en Mercado Pago
+### Paso 4: configura el webhook en Mercado Pago
 
-Algunas integraciones de Mercado Pago requieren notificaciones de webhook para que los eventos de pago se sincronicen correctamente de vuelta a la plataforma.
+El webhook permite que los eventos de pago vuelvan a Chateea y tus transacciones se actualicen.
 
 <Steps>
-  <Step title="Entra al panel de desarrollador de Mercado Pago">
-    Abre la aplicación que usaste para la integración y ve a **Webhooks**.
+  <Step title="Abre Webhooks en tu aplicación">
+    En el [panel de desarrolladores de Mercado Pago](https://www.mercadopago.com.br/developers/en), abre la aplicación que usaste y entra a **Webhooks**.
   </Step>
   <Step title="Haz clic en Configurar notificaciones">
-    Se abre el formulario de URLs de producción y prueba.
+    Se abre el formulario de URLs.
   </Step>
-  <Step title="Pega la URL de webhook en el campo de modo producción">
-    <Warning>
-      Copia la URL de webhook **exactamente como aparece en la pantalla de configuración de Mercado Pago dentro de Chateea**. No la escribas de memoria: un solo carácter distinto hace que los eventos de pago nunca lleguen y las transacciones queden sin actualizar.
-    </Warning>
+  <Step title="Pega la URL del webhook en modo producción">
+    Copia la URL exactamente como aparece en la pantalla de configuración de Mercado Pago dentro de Chateea. Si no la ves, pídela a soporte en **help@chateea.com**. Un solo carácter distinto impide que lleguen los eventos.
   </Step>
   <Step title="Agrega el mismo secreto del webhook">
-    Debe ser idéntico al que registraste en Chateea.
+    Debe ser idéntico al que guardaste en Chateea.
   </Step>
-  <Step title="Selecciona el evento 'Pago'">
-    Es el evento requerido para la integración.
-  </Step>
-  <Step title="Guarda los cambios">
-    Ya puedes volver a Chateea.
+  <Step title="Selecciona el evento Pagos y guarda">
+    Es el evento que necesita la integración.
   </Step>
 </Steps>
 
-### Paso 5: Asigna Mercado Pago por canal
+### Paso 5: asigna Mercado Pago a tus canales
 
-Con la integración conectada, abre **Gestionar configuraciones de proveedor** para Mercado Pago:
+En Chateea, abre **Gestionar configuraciones de proveedor** de Mercado Pago:
 
-- Alterna entre modo **en vivo** y **de prueba** según necesites
-- Asigna Mercado Pago a los canales donde quieras que esté disponible
+- Cambia entre modo **en vivo** y **de prueba** según necesites.
+- Activa Mercado Pago en los canales donde quieras cobrar con él.
+
+## Limitaciones importantes
+
+- **Un solo elemento de pago por página.** Mercado Pago no permite abrir dos pantallas de pago en la misma sesión. Por ejemplo, dos formularios de pedido de un paso con captura de tarjeta en la misma página de un embudo no cargarán.
+- **Sin conversión de moneda.** Cobra en la moneda local de tu cuenta de Mercado Pago. Si tu cuenta es de Argentina, pon tus precios en pesos argentinos.
+- **Montos mínimos y máximos.** Cada país y método de pago tiene sus límites; si un producto no los cumple, el pago puede fallar.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Hay montos mínimos y máximos en mi país?">
-    Sí. Mercado Pago aplica reglas de monto mínimo y máximo según el método de pago. Si creas un producto que no cumple esas condiciones, el pago puede fallar. Referencia según los límites publicados por Mercado Pago:
+  <Accordion title="¿Hay montos mínimos o máximos en mi país?">
+    Sí. Mercado Pago define límites por método de pago. Como referencia, en Argentina:
 
     | Método | Mínimo | Máximo |
     | --- | --- | --- |
-    | **Tarjetas de crédito y débito** (Visa, Mastercard, American Express, Naranja, Cabal, Sucrédito) | $$100.00 en pago único · $$100.00 por cuota en compras en cuotas | \$15,000,000.00 |
-    | **Pago Fácil y Rapipago** | \$100.00 | \$1,000,000.00 |
+    | **Tarjetas de crédito y débito** (Visa, Mastercard, American Express, Naranja, Cabal, Sucrédito) | 100 pesos por pago único o por cuota | 15.000.000 pesos |
+    | **Pago Fácil y Rapipago** | 100 pesos | 1.000.000 pesos |
 
-    Los montos están expresados en la moneda local de la cuenta y pueden cambiar; confirma siempre en la ayuda oficial de Mercado Pago para tu país.
+    Estos montos pueden cambiar. Confírmalos siempre en la [ayuda oficial de Mercado Pago](https://www.mercadopago.com.ar/ayuda/monto-minimo-maximo-medios-de-pago_620) para tu país.
   </Accordion>
-
   <Accordion title="¿Qué pasa si creo un producto en dólares?">
-    Por ahora Mercado Pago no convierte la moneda dinámicamente en esta configuración. Se recomienda que la moneda de tu producto o servicio sea la misma que la de tu cuenta local. Por ejemplo, si tu cuenta está en Argentina, usa pesos argentinos en tus precios.
+    Mercado Pago no convierte la moneda en esta integración. Usa la misma moneda que tu cuenta local de Mercado Pago.
   </Accordion>
-
-  <Accordion title="Agregué dos elementos de checkout a mi embudo y no funcionan">
-    Mercado Pago no lo permite por sus condiciones de seguridad: solo se puede abrir una pantalla de checkout por sesión activa. Asegúrate de que tu embudo use un único elemento de pago de Mercado Pago a la vez. Dos o más formularios de pedido con captura de tarjeta en una sola página no cargarán.
+  <Accordion title="Puse dos elementos de pago en mi embudo y no funcionan">
+    Por seguridad, Mercado Pago solo permite una pantalla de pago activa por sesión. Deja un único elemento de pago de Mercado Pago por página.
   </Accordion>
-
-  <Accordion title="¿Qué pasa si no tengo habilitado el soporte sin CVV?">
-    Se recomienda encarecidamente habilitarlo. Sin él, funciones como las suscripciones, los pagos fuera de sesión y el modo SaaS pueden no funcionar correctamente.
+  <Accordion title="¿Qué pasa si mi cuenta no tiene el pago sin CVV?">
+    Es muy recomendable activarlo. Sin él, las suscripciones y los cobros fuera de sesión (con tarjeta guardada, sin que el cliente esté presente) pueden no funcionar bien.
   </Accordion>
-
-  <Accordion title="¿Qué países admite esta integración?">
-    Colombia, Argentina, Chile, México, Ecuador, Uruguay, Perú, Brasil y El Salvador.
+  <Accordion title="¿Qué es el pago sin CVV/CVC?">
+    El CVV o CVC es el código de seguridad de 3 o 4 dígitos de la tarjeta. En los cobros con tarjeta guardada, pedirlo cada vez genera fricción y abandono. Con el pago sin CVV, la tarjeta queda guardada de forma segura y los cobros repetidos son más fluidos. Puede que tu cuenta ya lo tenga; confírmalo con el soporte de Mercado Pago y, si no, pide la activación.
   </Accordion>
-
-  <Accordion title="¿Cómo genero un secreto de webhook?">
-    Es una cadena aleatoria de alta entropía que se usa para firmar las solicitudes. Puede ser una contraseña que recuerdes, pero **debe coincidir exactamente** en Chateea y en Mercado Pago. También puedes usar un generador de secretos basado en HMAC-SHA256, que produce cadenas más seguras.
-  </Accordion>
-
-  <Accordion title="¿Qué es la habilitación de cuenta sin CVV/CVC?">
-    El CVV o CVC es el código de seguridad de 3 o 4 dígitos impreso en la tarjeta, usado para verificar transacciones en línea y reducir el fraude.
-
-    En los cobros con tarjetas guardadas —sobre todo al cobrar fuera de sesión o al iniciar suscripciones con una tarjeta ya almacenada— pedir el CVV cada vez genera fricción y aumenta el abandono. Por eso algunos proveedores admiten flujos sin CVV: la tarjeta se almacena de forma segura y permite pagos recurrentes más fluidos.
-
-    Es posible que esta función ya esté activada en tu cuenta, pero deberás verificarlo con el equipo de Mercado Pago. Si no lo está, tendrás que solicitar su activación.
+  <Accordion title="¿Cómo genero el secreto del webhook?">
+    Es una cadena aleatoria que se usa para firmar las notificaciones. Puede ser una contraseña que recuerdes, pero es más seguro usar un generador de secretos HMAC-SHA256. Lo importante es que sea exactamente igual en Chateea y en Mercado Pago.
   </Accordion>
 </AccordionGroup>
 
-<Card title="Configurar proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
-  Define en qué canales quieres que aparezca Mercado Pago al momento de cobrar.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Configurar proveedores de pago por canal" icon="shuffle" href="/pagos-facturas/proveedores-pago-por-canal">
+    Define en qué canales aparece Mercado Pago.
+  </Card>
+  <Card title="Cobro simplificado con enlaces de pago" icon="link" href="/comercio/enlaces-de-pago">
+    Comparte un enlace y cobra con Mercado Pago.
+  </Card>
+</CardGroup>

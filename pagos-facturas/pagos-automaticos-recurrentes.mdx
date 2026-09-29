@@ -1,137 +1,185 @@
 ---
-title: "Pagos automáticos en plantillas recurrentes"
-description: "Cobra las facturas recurrentes solo, sin esperar a que el cliente pague."
+title: "Pagos automáticos en facturas recurrentes"
+description: "Cobra cada factura recurrente a la tarjeta del cliente en su vencimiento, desde la web o el móvil."
 icon: "credit-card"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
-
-Gestionar los pagos de los clientes puede volverse complicado, sobre todo con facturas recurrentes. El pago automático resuelve eso: deduce el importe de la factura de la tarjeta del cliente **en la fecha de vencimiento**, sin esperar a que haga nada.
-
-<Info>
-  Para un negocio con cobros mensuales, esto es la diferencia entre perseguir pagos y recibirlos solos. La factura se genera y se cobra sola; tú solo revisas que todo entró.
-</Info>
-
-## Qué significa el pago automático
-
-Significa que no tienes que esperar a que el cliente pague a tiempo. La configuración deduce el importe en la fecha de vencimiento usando su tarjeta de crédito.
-
-La tarjeta con la que se cobra puede definirse de dos formas:
-
-| Opción | Qué hace |
-| --- | --- |
-| **Tarjeta del cliente** | Cobra con la misma tarjeta que usó en el primer pago de la plantilla recurrente |
-| **Tarjeta guardada** | Si el cliente tiene tarjetas guardadas, se usa una de ellas para cobrar en cada vencimiento |
-| **Tarjeta nueva** | Ingresas los datos de una tarjeta nueva para cobrar en ese medio cuando venza una factura de la plantilla |
-
-## Cómo cobrar automáticamente al cliente
-
-Los pagos automáticos se habilitan en la plantilla recurrente al programarla.
-
-<Steps>
-  <Step title="Abre la programación de la factura">
-    En la plantilla recurrente, en la ventana **Programar factura**.
-  </Step>
-  <Step title="Activa el pago automático">
-    Enciende el interruptor **Habilitar pago automático**.
-  </Step>
-  <Step title="Confirma el importe a pagar">
-    Verifica el monto que se cobrará.
-  </Step>
-  <Step title="Elige la tarjeta">
-    Tarjeta del cliente, tarjeta guardada o tarjeta nueva.
-  </Step>
-  <Step title="Programa">
-    Pulsa **Programar** para guardar la plantilla con el pago automático activo.
-  </Step>
-</Steps>
-
-## Qué significa "Tarjeta del cliente"
-
-Permite cobrar al cliente con la tarjeta que usó para el **primer pago** de la plantilla recurrente. Se aplica a partir de la **siguiente** factura, sin importar cuál se pague (puede ser la primera, la segunda o la enésima).
-
-<Info>
-  **Ejemplo:** si el cliente paga por primera vez en la cuarta factura, sin haber pagado las tres anteriores, el pago automático con esa tarjeta comenzaría a partir de la **quinta** aparición de la plantilla recurrente (si existe).
-</Info>
-
-## Cómo recibirás las notificaciones
-
-- Se envía una notificación al usuario local y al cliente final en cada **éxito o fracaso** de una factura secundaria de la plantilla
-- El cliente final también recibe un aviso **antes** de cada cargo automático, con "x" días de antelación según la frecuencia de confirmación establecida
-
-## Qué pasa si falla el pago automático
-
-Si no se realiza el cargo a la tarjeta seleccionada, se notifica al usuario del establecimiento y al cliente final.
-
-<Note>
-  Al programar la plantilla, se autoriza el cargo mínimo a cualquier tarjeta nueva seleccionada en la moneda correspondiente. Cualquier tarjeta agregada correctamente **se guarda para usos futuros** del usuario de la ubicación.
-</Note>
-
-## Reintentos de pagos fallidos
-
-Tras el fallo inicial, el sistema vuelve a intentar el cobro **hasta dos veces**, con un intervalo de **24 horas** entre cada intento.
-
-| Momento | Qué ocurre |
-| --- | --- |
-| Intento inicial | Se cobra en la fecha de vencimiento |
-| Reintento 1 | 24 horas después del fallo |
-| Reintento 2 | 24 horas después del reintento anterior |
-| Después del reintento 2 | No hay más intentos automáticos en ese ciclo de facturación |
-
-Si todos los intentos fallan, el cliente deberá completar el pago manualmente. Si actualiza su tarjeta y el pago se completa con éxito, **esa tarjeta se usará para los cargos futuros**.
+Con el pago automático, cada factura recurrente se cobra sola a la tarjeta del cliente en su fecha de vencimiento. No tienes que esperar a que el cliente pague ni perseguirlo cada mes: la factura se genera, se cobra y tú solo revisas que todo entró.
 
 <Warning>
-  Un cobro que agota los tres intentos deja de ser un problema técnico y pasa a ser un problema comercial: nadie va a insistir por ti. Configura un flujo de trabajo que te avise cuando una factura recurrente quede impaga, para retomar la conversación con el cliente el mismo día.
+  Cuándo empieza a cobrar el pago automático depende de cuándo lo actives, de si la siguiente factura ya se generó y de si hay una tarjeta válida disponible. Después de activarlo, revisa siempre la próxima aparición programada y la tarjeta seleccionada.
 </Warning>
 
-## Cómo cancelar los pagos automáticos
+## Ventajas
+
+- **Cobros más rápidos:** el cargo se hace en la fecha de vencimiento, sin retrasos.
+- **Menos trabajo administrativo:** menos seguimientos y conciliaciones manuales.
+- **Flujo de caja predecible:** ingresos más constantes en cada ciclo.
+- **Control sobre la tarjeta:** eliges la tarjeta del cliente, una guardada o una nueva.
+- **Clientes informados:** recordatorios y confirmaciones de pago opcionales.
+
+## Antes de empezar
+
+- Debes tener una factura recurrente creada o en proceso de creación.
+- Necesitas un proveedor de pago compatible conectado.
+- El cliente debe tener una tarjeta válida si quieres que las facturas futuras se cobren solas.
+- El pago automático funciona **solo con tarjeta**. Los pagos en efectivo, por transferencia u otros métodos manuales no se cobran automáticamente.
+
+## Qué tarjeta se usa
+
+| Opción | Qué hace | Cuándo empieza a cobrar |
+| --- | --- | --- |
+| **Tarjeta del cliente** | Usa la tarjeta con la que el cliente pague por primera vez cualquier factura de la serie | En la aparición **siguiente** a ese primer pago |
+| **Tarjeta guardada** | Usa una tarjeta que ya está registrada en la ficha del cliente | Desde la **primera** aparición, sin pago manual previo |
+| **Tarjeta nueva** | Agregas una tarjeta al crear o editar la serie, y queda guardada | Desde la **primera** aparición tras guardarla |
+
+<Info>
+  **Ejemplo con tarjeta del cliente:** si el cliente paga por primera vez la cuarta factura, el pago automático empieza a partir de la quinta (si está programada).
+</Info>
+
+<Note>
+  Al agregar una tarjeta nueva puede hacerse una pequeña autorización de verificación. Las tarjetas guardadas del cliente se consultan en su ficha, en **Pagos → Tarjetas guardadas**, donde solo se muestran los últimos dígitos y la fecha de vencimiento.
+</Note>
+
+## Cómo se comporta en series nuevas y existentes
+
+| Situación | Primera factura | Facturas siguientes | Detalle |
+| --- | --- | --- | --- |
+| Activas el pago automático en una serie **existente** | Manual | Automáticas | El pago manual de la siguiente factura captura la tarjeta para los cargos futuros |
+| Serie **nueva** con **tarjeta guardada** | Automática | Automáticas | Cobra desde la primera aparición |
+| Serie **nueva** sin tarjeta guardada | Manual | Automáticas | El primer pago correcto guarda la tarjeta para los siguientes |
+
+<Note>
+  Activar el pago automático no cambia las facturas que ya se generaron. Los cambios aplican a las apariciones futuras, y no puedes modificar la fecha de una factura ya creada.
+</Note>
+
+## Cómo activar el pago automático
 
 <Steps>
-  <Step title="Abre Gestionar pagos automáticos">
-    En el generador de facturas, en el menú de opciones, elige **Gestionar pagos automáticos**.
+  <Step title="Abre las facturas recurrentes">
+    Ve a **Pagos → Facturas y presupuestos → Facturas recurrentes**.
   </Step>
-  <Step title="Desactiva el interruptor">
-    Se abre la ventana con el interruptor activado y la opción de pago seleccionada. Desactívalo para deshabilitar los pagos automáticos **a partir de la próxima vez**.
+  <Step title="Crea o abre una serie">
+    Para una serie nueva, haz clic en **Nuevo → Nueva factura recurrente**. Para una existente, haz clic en su fila.
   </Step>
-  <Step title="Actualiza">
-    Guarda el cambio.
+  <Step title="Abre Gestionar pago automático">
+    En el editor, haz clic en el menú **⋮** (arriba a la derecha) y elige **Gestionar pago automático**.
+  </Step>
+  <Step title="Activa y elige la tarjeta">
+    Enciende **Habilitar pago automático**, elige **Tarjeta del cliente**, **Tarjeta guardada** o **Tarjeta nueva**, y haz clic en **Guardar**.
   </Step>
 </Steps>
 
-## Activarlos en una plantilla recurrente existente
+También puedes activarlo al programar la serie, en la ventana de envío: enciende el pago automático, confirma el importe, elige la tarjeta y haz clic en **Programar**.
 
-Sí se puede. Desde el editor, usa **Gestionar pagos automáticos**: se abre la ventana con la opción desactivada, y puedes activarla y elegir la tarjeta (guardada o nueva).
+### Comprueba que quedó activo
+
+1. El pago automático aparece como activado en la configuración de la serie.
+2. La tarjeta seleccionada es la correcta.
+3. La próxima aparición no se generó ya con la configuración anterior.
+4. El cliente tiene una tarjeta válida para los cargos futuros.
+
+## Desde la aplicación móvil
+
+También puedes activar el pago automático al crear una factura recurrente desde la aplicación móvil de Chateea, ya sea en **Facturas** o desde el **punto de venta** (cuando conviertes en factura un carrito con productos recurrentes).
+
+<Steps>
+  <Step title="Prepara la factura recurrente">
+    Crea la factura recurrente con el cliente, los artículos y la frecuencia de facturación.
+  </Step>
+  <Step title="Activa el pago automático">
+    En la hoja de envío o programación, activa **Habilitar pago automático**.
+  </Step>
+  <Step title="Elige la tarjeta">
+    **Tarjeta guardada** para usar una tarjeta ya registrada en el contacto, o **Tarjeta del cliente** para usar la tarjeta capturada con Tap to Pay, tarjeta en archivo o pago en línea.
+  </Step>
+  <Step title="Confirma y envía">
+    Verás la tarjeta elegida con sus últimos 4 dígitos. Usa **Cambiar tarjeta** si necesitas otra y toca **Enviar** o **Programar**.
+  </Step>
+</Steps>
+
+## Notificaciones
+
+| Quién | Qué recibe |
+| --- | --- |
+| **Cliente** | Recordatorios opcionales antes del cargo (según tu configuración), confirmación de pago y aviso de pago fallido |
+| **Tu equipo** | Aviso de pago correcto, aviso de pago fallido y aviso si se editó una factura antes de su cargo automático |
+
+Puedes personalizar el asunto, el texto y la marca de estas notificaciones desde la configuración de notificaciones de facturas, y configurar varios recordatorios.
+
+## Si falla un cobro
+
+1. El cliente y tu equipo reciben un aviso.
+2. El cliente puede pagar manualmente con la misma tarjeta o con una nueva. Si usa una nueva, esa pasa a ser la tarjeta predeterminada de la serie.
+3. El sistema hace **dos reintentos más**, con **24 horas** de diferencia.
+4. Si siguen fallando, no hay más intentos automáticos para esa factura y debe pagarse manualmente.
+
+<Tip>
+  Crea un flujo de trabajo con los disparadores de factura y de **Pago recibido** para avisar a tu equipo, etiquetar al contacto o enviar un mensaje de recuperación cuando un cobro falle. Así retomas la conversación con el cliente el mismo día.
+</Tip>
+
+## Editar una factura antes de su cobro
+
+Si editas una factura ya generada de la serie antes de su hora de cobro, el pago automático se pausa **solo para esa factura**. Las apariciones siguientes no se ven afectadas. Cuando activas el pago automático en una factura recurrente editada, también se envía un correo informando del cambio.
+
+## Cómo desactivar el pago automático
+
+<Steps>
+  <Step title="Abre la serie">
+    Abre la factura recurrente y haz clic en **⋮ → Gestionar pago automático**.
+  </Step>
+  <Step title="Desactívalo">
+    Apaga **Habilitar pago automático** y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+El cambio aplica a partir de la próxima aparición. Desactivarlo no cancela la factura ni afecta a los pagos anteriores: las facturas siguen existiendo y pueden pagarse manualmente.
+
+## Solución de problemas
+
+Si el pago automático no se ejecuta como esperabas, revisa:
+
+- Si la siguiente factura ya se había generado antes de activarlo.
+- Si el cliente tiene una tarjeta válida.
+- Si la serie se modificó después de crearse una aparición anterior.
+- Si el cargo anterior falló y la factura quedó pendiente de pago manual.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Desde qué factura empieza a cobrar la tarjeta del cliente?">
-    Desde la siguiente a la del primer pago, sin importar cuál se haya pagado.
+  <Accordion title="¿Dónde encuentro la opción Gestionar pago automático?">
+    Abre la factura recurrente, haz clic en el menú **⋮** de la parte superior derecha y elige **Gestionar pago automático**.
   </Accordion>
-
-  <Accordion title="¿El cliente sabe antes de que le cobren?">
-    Sí. Recibe un aviso con los días de antelación que definas en la frecuencia de confirmación.
+  <Accordion title="¿La primera factura siempre se cobra sola?">
+    No. Con tarjeta guardada o tarjeta nueva, sí. Sin tarjeta al crear la serie, la primera se paga manualmente y las siguientes se cobran solas.
   </Accordion>
-
-  <Accordion title="¿La tarjeta nueva queda guardada?">
-    Sí. Cualquier tarjeta agregada correctamente se guarda para usos futuros.
+  <Accordion title="¿Por qué no se cobró sola la siguiente factura?">
+    Probablemente ya estaba generada cuando activaste el pago automático, o no había una tarjeta válida. Revisa la próxima aparición y la tarjeta seleccionada.
   </Accordion>
-
-  <Accordion title="¿Puedo desactivar el pago automático después?">
-    Sí, desde **Gestionar pagos automáticos**. Aplica a partir del próximo cobro.
+  <Accordion title="¿Puedo cambiar la tarjeta de los cobros futuros?">
+    Sí. Elige otra tarjeta guardada del cliente o agrega una nueva desde **Gestionar pago automático**. El siguiente cargo usará la tarjeta actualizada.
   </Accordion>
-
-  <Accordion title="¿Desactivar el pago automático cancela la factura?">
-    No. Solo detiene los cargos automáticos. La factura sigue existiendo y puede pagarse manualmente. Tampoco afecta a las transacciones anteriores.
+  <Accordion title="¿Funciona con efectivo o transferencias?">
+    No. El pago automático solo cobra tarjetas.
   </Accordion>
-
-  <Accordion title="¿Qué pasa si el cliente actualiza su tarjeta después de un pago fallido?">
-    La nueva tarjeta se usará para los futuros pagos automáticos una vez que el pago se haya completado con éxito.
+  <Accordion title="¿Qué diferencia hay entre tarjeta guardada y tarjeta del cliente en el móvil?">
+    La tarjeta guardada es cualquier tarjeta ya registrada en el contacto. La tarjeta del cliente es la que capturaste con Tap to Pay, tarjeta en archivo o un pago en línea.
   </Accordion>
 </AccordionGroup>
 
-<Card title="Cómo crear facturas recurrentes" icon="file-invoice" href="/pagos-facturas/facturas-recurrentes">
-  Configura la plantilla y la frecuencia sobre la que corren estos cobros.
-</Card>
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo crear facturas recurrentes" icon="file-invoice" href="/pagos-facturas/facturas-recurrentes">
+    Configura la serie sobre la que corren estos cobros.
+  </Card>
+  <Card title="Facturas recurrentes automáticas con flujos" icon="arrows-rotate" href="/pagos-facturas/facturas-recurrentes-automaticas">
+    Inicia la facturación desde una automatización.
+  </Card>
+  <Card title="Tarjetas guardadas de clientes" icon="credit-card" href="/pagos/tarjetas-guardadas-de-clientes">
+    Agrega y gestiona las tarjetas de tus clientes.
+  </Card>
+  <Card title="Recordatorios automáticos de facturas" icon="bell" href="/pagos/recordatorios-automaticos-de-facturas">
+    Programa avisos antes y después del vencimiento.
+  </Card>
+</CardGroup>

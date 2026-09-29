@@ -1,0 +1,89 @@
+---
+title: "Pagos parciales en facturas"
+description: "Permite que tus clientes paguen las facturas por partes con un porcentaje mínimo por pago."
+icon: "percent"
+---
+
+Con los pagos parciales, tu cliente puede abonar una parte de la factura en lugar del total de una vez. Tú defines el porcentaje mínimo que debe pagar en cada abono y él decide cuánto paga, siempre que llegue a ese mínimo. Es una forma sencilla de facilitar el cobro de facturas grandes sin perder el control.
+
+## Cómo funciona
+
+- Estableces un **porcentaje mínimo** sobre el total de la factura.
+- El cliente puede pagar **cualquier importe igual o mayor** a ese mínimo.
+- La factura queda como pagada parcialmente hasta que se cubre el total.
+- Está disponible en **facturas únicas y recurrentes**.
+
+<Note>
+  En las facturas recurrentes, los pagos parciales funcionan cuando el pago automático está desactivado. Si el pago automático está activo con la tarjeta del cliente, el cliente puede pagar parcialmente la primera factura, pero en las siguientes se cobra el importe completo.
+</Note>
+
+## Antes de empezar
+
+Necesitas un proveedor de pago conectado que admita pagos parciales, como **Stripe**, **Authorize.net** o **NMI**. Algunos proveedores de pago personalizados también los admiten; la disponibilidad depende de cada proveedor.
+
+## Cómo activar los pagos parciales
+
+<Steps>
+  <Step title="Abre los ajustes de facturas">
+    Ve a **Pagos → Facturas y presupuestos** y haz clic en **Configuración**.
+  </Step>
+  <Step title="Entra a los ajustes de pago">
+    En el menú de la página, abre **Configuración de pagos**.
+  </Step>
+  <Step title="Activa los pagos parciales">
+    Enciende el interruptor **Pagos parciales**.
+  </Step>
+  <Step title="Define el porcentaje mínimo">
+    Escribe el porcentaje mínimo que debe cubrir cada pago. Se calcula sobre el total de la factura.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Desde ese momento tus facturas permitirán pagos parciales.
+  </Step>
+</Steps>
+
+<Tip>
+  Un mínimo del 30 % al 50 % suele funcionar bien como anticipo en servicios o proyectos: aseguras un compromiso real del cliente y le das flexibilidad para el resto.
+</Tip>
+
+## Pagos parciales o plan de pagos
+
+Los dos sirven para cobrar en varias partes, pero cambian quién decide:
+
+| | Pagos parciales | Plan de pagos |
+| --- | --- | --- |
+| **Quién decide cuánto se paga** | El cliente, respetando tu mínimo | Tú, con cuotas fijas |
+| **Fechas** | Libres | Cada cuota tiene su fecha de vencimiento |
+| **Cuándo usarlo** | Clientes que prefieren pagar a su ritmo | Proyectos o ventas con calendario de pago acordado |
+
+Si tu factura ya tiene un plan de pagos, los pagos parciales del cliente no están disponibles, porque entrarían en conflicto con las cuotas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mi cliente no puede hacer un pago parcial?">
+    Revisa que los pagos parciales estén activados en **Configuración de pagos** y que la factura no tenga un plan de pagos. Si tiene cuotas programadas, quítalas o modifícalas primero.
+  </Accordion>
+  <Accordion title="¿Puedo registrar yo un pago parcial que recibí por fuera?">
+    Sí. En la factura, abre el menú **⋮**, elige **Registrar pago → Registrar manualmente** y escribe el importe recibido.
+  </Accordion>
+  <Accordion title="¿El porcentaje se calcula sobre el saldo pendiente o sobre el total?">
+    Sobre el total de la factura.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Planes de pago en facturas" icon="calendar-days" href="/pagos/planes-de-pago-en-facturas">
+    Divide una factura en cuotas con fechas fijas.
+  </Card>
+  <Card title="Editar facturas parcialmente pagadas" icon="pen" href="/pagos/editar-facturas-parcialmente-pagadas">
+    Qué puedes cambiar cuando ya hay abonos.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos/crear-y-enviar-facturas">
+    Configuración completa de tus facturas.
+  </Card>
+  <Card title="Casos de uso de pagos y facturas" icon="lightbulb" href="/pagos/casos-de-uso-de-facturas">
+    Cobros por teléfono, pagos manuales y más.
+  </Card>
+</CardGroup>

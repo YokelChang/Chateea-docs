@@ -1,0 +1,73 @@
+---
+title: "Por qué un método de pago no aparece en Stripe"
+description: "Descubre por qué Stripe oculta métodos como Klarna o Afterpay a ciertos clientes y cómo averiguar la causa en tu panel."
+icon: "circle-question"
+---
+
+Cuando cobras con Stripe, los métodos de pago que ve tu cliente en el pago (tarjetas, Klarna, Afterpay y otros) los decide Stripe en cada transacción. Por eso un método puede estar activado en Stripe y en Chateea y aun así no aparecerle a un cliente concreto. Este artículo te explica por qué pasa y cómo averiguar la causa.
+
+## Por qué un método de pago no aparece
+
+El elemento de pago de Stripe se adapta a cada comprador y a cada transacción. Stripe decide qué métodos mostrar según:
+
+1. La moneda predeterminada de tu cuenta de Stripe.
+2. La moneda de presentación, es decir, la moneda del producto o de la factura que se está pagando.
+3. La ubicación y la dirección IP del comprador.
+4. La elegibilidad y las restricciones de ese método para tu cuenta.
+5. Los límites de monto de la transacción para ese método.
+6. Si el método está disponible en el país o región del comprador.
+
+Por eso es normal que dos clientes vean métodos distintos en la misma página de pago.
+
+## Cómo averiguar la causa
+
+### Opción 1: la herramienta de diagnóstico de Stripe
+
+Stripe tiene una herramienta específica para revisar métodos de pago que no aparecen: [solucionar métodos de pago faltantes](https://support.stripe.com/questions/troubleshoot-missing-payment-methods).
+
+### Opción 2: los requisitos del método en tu panel de Stripe
+
+<Steps>
+  <Step title="Abre tu panel de Stripe">
+    Inicia sesión en Stripe con la cuenta conectada a Chateea.
+  </Step>
+  <Step title="Entra a la configuración">
+    Haz clic en el ícono de engranaje (arriba a la derecha).
+  </Step>
+  <Step title="Abre los métodos de pago">
+    En **Product settings**, entra a **Payments** y abre la pestaña **Payment methods**.
+  </Step>
+  <Step title="Revisa el método que falta">
+    Busca el método que tu cliente no ve y haz clic en **View details**. Se abre un panel con sus requisitos y condiciones de elegibilidad.
+  </Step>
+</Steps>
+
+Las causas más comunes son diferencias en:
+
+| Requisito | Ejemplo |
+| --- | --- |
+| **Límites de monto** | El total del carrito está por debajo del mínimo o por encima del máximo del método |
+| **Moneda de presentación** | El método no acepta la moneda del producto |
+| **Ubicación del cliente** | El comprador está en un país donde el método no está disponible |
+| **Disponibilidad global** | El método tiene restricciones para tu tipo de cuenta |
+
+Por ejemplo, en muchas cuentas Klarna solo aparece si el comprador está en Estados Unidos o Puerto Rico y la moneda del pago es USD. Si no se cumple alguna condición, Stripe oculta el método.
+
+## Qué controla Chateea y qué controla Stripe
+
+Stripe genera el elemento de pago y decide qué métodos se muestran. Chateea solo controla si un método está habilitado de forma general en la plataforma.
+
+Si Stripe muestra un mensaje que indica que el método está bloqueado por la plataforma de pagos, significa que ese método aún no está habilitado en Chateea. Escribe a soporte de Chateea en **help@chateea.com** para consultar su disponibilidad. Aun así, Chateea no puede obligar a Stripe a mostrar un método: siempre depende de las reglas de elegibilidad para cada comprador y transacción.
+
+<Tip>
+  Si vendes a varios países, crea precios en la moneda local de cada mercado. Muchos métodos de pago locales solo aparecen cuando la moneda coincide con la del país del comprador.
+</Tip>
+
+<CardGroup cols={2}>
+  <Card title="Métodos de pago con Stripe" icon="credit-card" href="/pagos/metodos-de-pago-con-stripe">
+    Elige qué métodos de Stripe se muestran en tus pagos.
+  </Card>
+  <Card title="Integración de pagos con Stripe" icon="stripe" href="/comercio/integracion-stripe">
+    Conecta tu cuenta de Stripe a Chateea.
+  </Card>
+</CardGroup>

@@ -1,0 +1,148 @@
+---
+title: "Impuestos automáticos internacionales"
+description: "Calcula automáticamente el IVA y los impuestos locales según la dirección del cliente en varios países."
+icon: "globe"
+---
+
+Los impuestos automáticos calculan por ti el impuesto que corresponde en cada venta (IVA, impuesto sobre ventas u otros impuestos locales), según la dirección del cliente y los países o estados donde tu negocio tiene obligaciones fiscales. Funcionan en varios países a la vez y con todos los proveedores de pago, así que no tienes que mantener tasas a mano.
+
+<Note>
+Chateea calcula y muestra el impuesto, pero la responsabilidad de cumplir la normativa fiscal de cada jurisdicción donde cobras o declaras impuestos es tuya. Consulta con tu contador o asesor fiscal.
+</Note>
+
+## Para qué te sirve
+
+- **Cálculos correctos en varios países:** IVA e impuestos locales aplicados según la dirección del cliente.
+- **Menos errores manuales:** no tienes que decidir la tasa en cada venta.
+- **Alta masiva:** agrega de una vez todos los países o estados donde tienes obligaciones fiscales.
+- **Identificaciones fiscales por país:** registra tu número de IVA o identificación fiscal local para que se considere en el cálculo.
+- **Control por producto:** asigna una categoría fiscal distinta a cada producto cuando lo necesites.
+- **Funciona en todos tus checkouts:** embudos, enlaces de pago, facturas, presupuestos y tiendas en línea.
+
+## Configura los impuestos automáticos
+
+<Steps>
+  <Step title="Abre la configuración de impuestos">
+    Ve a **Pagos → Configuración** y entra en la pestaña **Impuestos**.
+  </Step>
+  <Step title="Decide si tus precios incluyen impuestos">
+    En **Incluir impuestos en los precios**, elige **Sí** o **No**. Más abajo te explicamos la diferencia con ejemplos.
+  </Step>
+  <Step title="Activa el cálculo automático">
+    Baja hasta la sección **Impuestos automáticos** y enciende **Habilitar impuesto automático**.
+  </Step>
+  <Step title="Elige una categoría fiscal predeterminada (opcional)">
+    En **Categoría fiscal predeterminada**, selecciona la que mejor describe tu negocio o tus productos. La categoría que asignes a un producto concreto tiene prioridad sobre esta.
+  </Step>
+  <Step title="Agrega tus direcciones de nexo">
+    Haz clic en **Agregar dirección de nexo** y elige los países donde tienes obligación fiscal. En **Estados Unidos** puedes elegir estado por estado y en **Canadá** entre sus 13 provincias y territorios. En el resto de países la selección es por país. Si aplica, escribe tu **identificación fiscal** para cada país o estado y haz clic en **Agregar**.
+  </Step>
+  <Step title="Comprueba el checkout">
+    Haz una compra de prueba con una dirección de uno de esos países. El impuesto debe aparecer como una línea aparte en el resumen de pago.
+  </Step>
+</Steps>
+
+<Tip>
+La lista de países disponibles está dentro del menú **Agregar dirección de nexo**. Puedes buscar por nombre de país o estado.
+</Tip>
+
+## Precios con o sin impuestos incluidos
+
+Esta opción define si el impuesto forma parte del precio que ves en el producto o se suma encima.
+
+| Tasa aplicada | Precio con impuestos incluidos (**Sí**) | Precio sin impuestos incluidos (**No**) |
+| --- | --- | --- |
+| 10 % | Total 100 USD, de los cuales 9,09 USD son impuesto | 100 USD + 10 USD de impuesto = 110 USD |
+| 0 % | Total 100 USD, impuesto 0 USD | 100 USD + 0 USD = 100 USD |
+| 20 % | Total 100 USD, de los cuales 16,67 USD son impuesto | 100 USD + 20 USD de impuesto = 120 USD |
+
+Con **Sí**, el cliente siempre paga el mismo total y lo que varía es la parte que corresponde al impuesto. Con **No**, el impuesto se suma al precio del producto.
+
+## Configura impuestos por producto
+
+Cuando un producto tiene un tratamiento fiscal distinto al del resto, asígnale su propia categoría.
+
+<Steps>
+  <Step title="Abre el producto">
+    Ve a **Pagos → Productos** y haz clic en **Crear producto**, o en el menú de tres puntos de un producto existente elige **Editar**.
+  </Step>
+  <Step title="Elige la categoría fiscal">
+    En la sección **Código fiscal del producto**, selecciona la **Categoría fiscal** que corresponde.
+  </Step>
+  <Step title="Define si incluye impuestos">
+    En **Incluir impuestos en los precios** elige:
+    - **Según la configuración global:** hereda lo que definiste en la configuración de impuestos.
+    - **Sí:** este producto siempre incluye el impuesto en su precio.
+    - **No:** este producto nunca incluye el impuesto en su precio.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+Si un producto no tiene código fiscal asignado, se usa la categoría predeterminada de la configuración global.
+
+<Info>
+Para saber qué código corresponde a cada tipo de producto, consulta la [lista de códigos fiscales de Avalara](https://taxcode.avatax.avalara.com/).
+</Info>
+
+## Administra tus direcciones de nexo
+
+Las direcciones de nexo indican dónde tu negocio tiene obligaciones fiscales, así que el impuesto solo se aplica donde corresponde.
+
+- Agrega o quita países y estados a medida que tu negocio crece o deja de vender en un lugar.
+- Puedes editar la identificación fiscal de cualquier dirección en cualquier momento.
+- Si eliminas un país al que le agregaste estados o provincias (por ejemplo, Canadá), también se eliminan esos estados. Los países se eliminan de uno en uno.
+- Revisa la lista con regularidad para mantenerte al día con los cambios de normativa.
+
+## Si usabas los impuestos automáticos solo para EE. UU.
+
+Las cuentas que usaban el sistema anterior, limitado a Estados Unidos, deben pasar al sistema internacional con el asistente de migración:
+
+1. Ve a **Pagos → Configuración → Impuestos**.
+2. Baja a **Impuestos automáticos** y haz clic en **Reconfigurar**.
+3. Lee las indicaciones y haz clic en **Confirmar**.
+
+Si no migras, el cálculo automático de impuestos queda desactivado hasta que vuelvas a configurarlo.
+
+## Cómo se calcula el impuesto en el checkout
+
+El cálculo tiene en cuenta:
+
+- La dirección de facturación o de envío del cliente.
+- Tus direcciones de nexo configuradas.
+- El código fiscal del producto.
+- Tu identificación fiscal en esa región, si la registraste.
+
+El monto del impuesto aparece como una línea separada en el resumen del pedido.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que agregar cada país donde vendo?">
+    Tienes que agregar cada país (o estado, en EE. UU. y Canadá) donde tienes una obligación fiscal, para que el impuesto se calcule correctamente.
+  </Accordion>
+  <Accordion title="¿Funciona con todos los proveedores de pago?">
+    Sí. Los impuestos automáticos funcionan con todos los proveedores de pago compatibles con Chateea.
+  </Accordion>
+  <Accordion title="¿En qué checkouts se aplica?">
+    En embudos, enlaces de pago, facturas y presupuestos, y tiendas en línea.
+  </Accordion>
+  <Accordion title="¿Puedo agregar varios países o estados a la vez?">
+    Sí. Puedes seleccionar varios y agregarlos en un solo paso.
+  </Accordion>
+  <Accordion title="¿Funciona en la India?">
+    No. El cálculo automático no está disponible para la India. Configura las tasas manualmente en tus productos o incluye el impuesto en el precio, y consulta con un profesional sobre las reglas del GST.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar impuestos" icon="percent" href="/pagos/configurar-impuestos">
+    Crea tasas manuales y asígnalas a tus productos.
+  </Card>
+  <Card title="Precios con o sin impuestos incluidos" icon="scale-balanced" href="/pagos/precios-con-o-sin-impuestos-incluidos">
+    Elige cómo presentar tus precios.
+  </Card>
+</CardGroup>

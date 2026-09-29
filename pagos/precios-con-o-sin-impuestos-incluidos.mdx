@@ -1,0 +1,85 @@
+---
+title: "Precios con o sin impuestos incluidos"
+description: "Define si tus precios incluyen el impuesto para toda la cuenta o producto por producto."
+icon: "percent"
+---
+
+Según tu país y tu tipo de cliente, tus precios pueden mostrarse con el impuesto ya incluido (por ejemplo, "100 con IVA incluido") o sin incluirlo, sumando el impuesto al final del cobro. Chateea te permite definir qué convención usas para toda tu cuenta y, si hace falta, cambiarla en productos concretos.
+
+## Diferencia entre ambos modelos
+
+| Modelo | Cómo se ve | Ejemplo con impuesto del 16 % |
+| --- | --- | --- |
+| **Impuestos incluidos** | El precio del producto ya contiene el impuesto. | Precio 116: el cliente paga 116, de los cuales 16 son impuesto. |
+| **Impuestos no incluidos** | El impuesto se suma al precio en el checkout. | Precio 100: el cliente paga 100 + 16 = 116. |
+
+<Note>
+Si no eliges nada, la configuración predeterminada es **impuestos no incluidos**.
+</Note>
+
+## Configuración general de tu cuenta
+
+<Steps>
+  <Step title="Abre la configuración de impuestos">
+    Ve a **Pagos → Configuración → Impuestos**.
+  </Step>
+  <Step title="Responde a Incluir impuestos en los precios">
+    Elige **Sí** si tus precios ya incluyen el impuesto, o **No** si el impuesto se suma al precio.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios. Se aplicarán a los productos que siguen la configuración general.
+  </Step>
+</Steps>
+
+## Configuración por producto
+
+Al crear o editar un producto, la opción **Incluir impuestos en los precios** tiene tres respuestas:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Según la configuración general** | El producto sigue lo que definiste para la cuenta. Si cambias la configuración general, este producto cambia también. |
+| **Impuestos incluidos** | El producto siempre se trata como precio con impuesto incluido, aunque cambie la configuración general. |
+| **Impuestos no incluidos** | El producto siempre suma el impuesto al precio, aunque cambie la configuración general. |
+
+- Los productos nuevos se crean con **Según la configuración general**.
+- Los productos que ya existían también quedaron en **Según la configuración general**.
+- Puedes cambiar la opción de un producto cuando quieras. Al elegir incluidos o no incluidos, ese producto deja de depender de la configuración general.
+
+<Tip>
+Si vendes sobre todo a consumidores finales, los precios con impuesto incluido suelen ser más claros: lo que ven es lo que pagan. Si vendes a empresas, muchas prefieren ver el precio sin impuesto y el impuesto desglosado.
+</Tip>
+
+## Dónde se refleja
+
+La convención que elijas se aplica en el formulario de pedido, en el detalle y el resumen del pedido y en el recibo, donde el impuesto aparece desglosado según el modelo del producto.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo cambiar de modelo después de configurarlo?">
+    Sí. Antes de hacerlo, revisa tus facturas y presupuestos pendientes, porque el cambio puede afectar cómo se calculan los montos.
+  </Accordion>
+  <Accordion title="¿Cambiar el modelo afecta a suscripciones o pagos recurrentes existentes?">
+    Puede afectarlos. Revisa tus suscripciones y facturas recurrentes y ajústalas manualmente si hace falta para que los impuestos sean correctos.
+  </Accordion>
+  <Accordion title="¿Puedo tener unos productos con impuesto incluido y otros sin él?">
+    Sí. Usa la configuración por producto para elegir el modelo de cada uno.
+  </Accordion>
+  <Accordion title="¿Cómo se aplican los descuentos?">
+    Con precios con impuesto incluido, el descuento reduce el precio total y el impuesto se recalcula sobre el nuevo total. Con precios sin impuesto incluido, el descuento se aplica al precio base antes de sumar el impuesto.
+  </Accordion>
+  <Accordion title="¿Puedo ajustar el impuesto en una factura concreta?">
+    Sí, puedes modificar los impuestos de una factura. Ten en cuenta que ese ajuste manual puede no coincidir con tu configuración general.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configura impuestos" icon="percent" href="/pagos/configurar-impuestos">
+    Crea tus tasas y asígnalas a productos y facturas.
+  </Card>
+  <Card title="Recibos de venta automáticos" icon="receipt" href="/pagos-facturas/recibos-de-venta">
+    Envía comprobantes con el impuesto desglosado.
+  </Card>
+</CardGroup>

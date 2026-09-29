@@ -1,255 +1,138 @@
 ---
-title: "Guía: Integración con Xero"
-description: "Envía tus facturas a Xero e importa contactos, con impuestos, monedas y estados incluidos."
+title: "Integración con Xero"
+description: "Envía tus facturas de Chateea a Xero con contacto, impuestos, moneda y estado, e importa tus contactos."
 icon: "file-invoice-dollar"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Si llevas tu contabilidad en Xero, conectar Chateea te ahorra volver a escribir cada factura. Las facturas que creas en Chateea se publican solas en Xero, con su contacto, sus líneas, sus impuestos, su moneda y su estado, y tu contador trabaja siempre con datos al día.
 
-## Descripción general
+## Cómo funciona la sincronización
 
-La integración con Xero permite que Chateea sincronice automáticamente **contactos y facturas**, reduciendo el trabajo manual de contabilidad y garantizando la coherencia entre ambos sistemas. Con una asignación precisa de impuestos, compatibilidad con múltiples divisas y actualizaciones de facturas en tiempo real, ayuda a optimizar tus flujos financieros.
+La integración es **unidireccional** para las facturas:
 
-La integración proporciona una **sincronización unidireccional** que envía las facturas desde Chateea hacia Xero. Los contactos, en cambio, se importan de Xero a Chateea para que las facturas se puedan cotejar correctamente. Si no se encuentra ningún contacto coincidente en el momento de la sincronización, **se crea automáticamente un contacto nuevo en Xero**.
+- **Contactos (Xero → Chateea):** al conectar, Chateea importa los contactos activos de Xero para poder asociar cada factura con el contacto correcto.
+- **Facturas (Chateea → Xero):** cada factura que creas en Chateea se crea automáticamente en Xero. Si su cliente no coincide con ningún contacto importado, se crea un contacto nuevo en Xero durante la sincronización.
 
-## ¿Qué se sincroniza hoy?
+### Qué se sincroniza
 
-| Elemento | Dirección | Detalle |
-| --- | --- | --- |
-| **Contactos** | Xero → Chateea | Los contactos activos de Xero se importan durante la configuración |
-| **Facturas** | Chateea → Xero | Con contacto, partidas, impuestos, divisa y estado |
-
-### Contactos (Xero → Chateea)
-
-- Los contactos activos de Xero se importan a Chateea durante la configuración
-- Si se sincroniza una factura y no se encuentra ningún contacto coincidente, el sistema crea automáticamente un contacto nuevo en Xero
-
-### Facturas (Chateea → Xero)
-
-Cuando creas una factura en Chateea, estos detalles viajan a Xero:
-
-| Detalle | Qué incluye |
+| Elemento | Qué pasa en Xero |
 | --- | --- |
-| **Mapeo de contactos** | Cruce con el contacto importado o creación automática |
-| **Artículos de la línea** | Nombres, cantidades, precios y descuentos |
-| **Impuestos** | Tasa coincidente o creada según corresponda |
-| **Divisa** | La moneda de la factura |
-| **Actualizaciones de estado** | Enviado, Pagado parcialmente, Anulado |
+| **Contacto** | Se usa el contacto coincidente o se crea uno nuevo |
+| **Líneas de la factura** | Se envían nombre, cantidad, importe y descuentos. Los productos no se crean en el catálogo de Xero |
+| **Impuestos** | Si la tasa ya existe en Xero, se aplica. Si no existe, se crea y se usa en la factura |
+| **Moneda** | Se envía la moneda de la factura. Si no está habilitada en tu organización, se agrega |
+| **Estado** | Los cambios de estado se reflejan en Xero, por ejemplo Enviada, Pagada parcialmente o Anulada |
+
+### Qué no se sincroniza
+
+| Elemento | Detalle |
+| --- | --- |
+| **Recibos** | No se envían recibos ni sus PDF |
+| **Catálogo de productos** | No se crean ni se actualizan productos o artículos en Xero. Las líneas viven solo dentro de la factura |
+| **Facturas anteriores a la conexión** | Por lo general, solo se sincronizan las facturas creadas después de conectar Xero |
+
+<Warning>
+  Para facturar en varias monedas, tu plan de Xero debe admitir **multidivisa**. Si no lo admite, la factura fallará con un error de moneda no suscrita.
+</Warning>
+
+## Ventajas
+
+- **Sin doble captura:** las facturas aparecen en Xero en cuanto las creas en Chateea.
+- **Contactos consistentes:** se asocian con los existentes o se crean al vuelo.
+- **Impuestos correctos:** las tasas se asignan con precisión, incluso con estructuras de varios componentes.
+- **Estados al día:** los pagos parciales o las anulaciones se reflejan en Xero y facilitan la conciliación.
+- **Cuentas filtradas:** al elegir la cuenta predeterminada solo ves las que tienen pagos habilitados.
+
+## Cómo conectar Xero
+
+<Steps>
+  <Step title="Abre la integración">
+    En Chateea, ve a **Configuración → Integraciones** y busca **Xero**.
+  </Step>
+  <Step title="Conecta">
+    Haz clic en el mosaico de Xero y luego en **Conectar**. Se abrirá una ventana segura de Xero.
+  </Step>
+  <Step title="Inicia sesión y autoriza">
+    Inicia sesión en Xero si te lo pide, elige la organización que quieres conectar y haz clic en **Permitir acceso**. Chateea solo solicita los permisos necesarios para leer contactos y configuración, y crear transacciones de facturación.
+  </Step>
+  <Step title="Confirma la conexión">
+    De vuelta en Chateea, verás el nombre de la organización conectada y el estado de la conexión en **Configuración → Integraciones → Xero**.
+  </Step>
+  <Step title="Elige la cuenta predeterminada">
+    En los ajustes de Xero dentro de Chateea, selecciona la organización y la cuenta donde se publicarán las facturas.
+  </Step>
+</Steps>
 
 <Note>
-  Los productos o artículos **no se crean en Xero**. Las partidas aparecen únicamente dentro de la factura.
+  En la lista de cuentas solo aparecen las que tienen **pagos habilitados** en Xero. Si no ves la que necesitas, sigue los pasos de [Ver todo el plan de cuentas de Xero en Chateea](/pagos-facturas/plan-de-cuentas-xero).
 </Note>
 
-### Impuestos
+## Ejemplo práctico
 
-El sistema aplica automáticamente el tipo impositivo correcto:
+Emites una factura de 1.200 EUR a un cliente que aún no existe en Xero, con un impuesto del 18 % que tampoco está configurado allí.
 
 | Situación | Qué hace la integración |
 | --- | --- |
-| El impuesto **ya existe** en Xero | Se utiliza esa tasa |
-| El impuesto **no existe** | Se crea en Xero durante la sincronización |
+| El contacto no existe en Xero | Lo crea automáticamente |
+| La tasa del 18 % no existe | Crea la tasa durante la sincronización |
+| La moneda EUR no está habilitada | La agrega a tu organización, si tu plan admite multidivisa |
+| Las líneas del servicio | Aparecen dentro de la factura, sin crear productos |
+| Marcas la factura como enviada | El estado se refleja en Xero |
 
-### Monedas
+## Buenas prácticas
 
-- La moneda de la factura se transfiere a Xero
-- Si aún no existe, se añade a la organización de Xero
+- Si usas categorías de seguimiento o cuentas de ingresos específicas en Xero, elige con cuidado la **cuenta predeterminada** para publicar facturas.
+- No asignes **cuentas bancarias** a las líneas de factura: Xero rechaza esas facturas con errores de validación.
+- Haz una factura de prueba después de conectar y revisa en Xero que el contacto, el impuesto y la moneda quedaron como esperabas.
 
-<Warning>
-  Asegúrate de que tu plan de Xero incluya soporte para **múltiples divisas**. Si no lo tiene, la factura fallará con el error de moneda no suscrita que se explica en las preguntas frecuentes.
-</Warning>
+## Desconectar y volver a conectar
 
-### Estados
-
-Chateea sincroniza estados de factura como:
-
-- Enviado
-- Pagado
-- Pagado parcialmente
-- Vacío
-
-## Lo que NO se sincroniza
-
-| No se sincroniza | Detalle |
-| --- | --- |
-| **Recibos** | La sincronización de recibos aún no es compatible (próximamente) |
-| **Catálogo de productos / artículos** | La información viaja solo a nivel de factura. No se crean registros de productos en Xero |
-
-## Principales ventajas de la integración con Xero
-
-| Ventaja | Qué te resuelve |
-| --- | --- |
-| **Contactos actualizados en todos los sistemas** | Se sincronizan automáticamente y se pueden crear nuevos sobre la marcha durante la sincronización de facturas |
-| **Creación de facturas automatizada** | Las facturas creadas en Chateea aparecen en Xero al instante, sin duplicarlas a mano |
-| **Normas fiscales coherentes** | Mapeo preciso de impuestos, incluso en estructuras tributarias con varios componentes |
-| **Estados sincronizados** | Los cambios de estado se reflejan en Xero, lo que reduce el trabajo de conciliación |
-| **Compatibilidad con múltiples divisas** | Las divisas se aplican y se añaden automáticamente cuando hace falta |
-| **Filtrar y seleccionar cuentas** | Al elegir la cuenta predeterminada solo aparecen las cuentas habilitadas para pagos |
-
-## Cómo configurar la integración con Xero
-
-<Steps>
-  <Step title="Navega hasta la integración de Xero">
-    Ve a **Configuración → Integraciones → Xero** dentro de Chateea.
-  </Step>
-  <Step title="Conéctate a Xero">
-    Haz clic en el mosaico de la integración y selecciona **Conectar**. Se abrirá una ventana segura de autorización de Xero.
-  </Step>
-  <Step title="Inicia sesión y autoriza el acceso">
-    - Inicia sesión en tu cuenta de Xero si te lo solicita
-    - Selecciona la organización que quieres conectar
-    - Haz clic en **Permitir acceso** para aprobar la conexión
-
-    <Note>
-      Chateea solicita los permisos estándar necesarios para leer contactos y crear transacciones de facturación. Nada más.
-    </Note>
-  </Step>
-  <Step title="Elige una cuenta predeterminada">
-    Después de conectar, selecciona la cuenta de Xero donde quieres que se publiquen las facturas.
-
-    <Warning>
-      Solo aparecerán las cuentas que tengan **pagos habilitados**. Si tu cuenta no está en la lista, sigue la sección siguiente.
-    </Warning>
-  </Step>
-</Steps>
-
-{/* Captura pendiente: pantalla de la integración de Xero con Organización conectada, Cuenta conectada y el botón de desconexión. */}
-
-## Cómo habilitar tu "Plan de cuentas" para usarlo
-
-Si después de conectar no ves tu plan de cuentas dentro de Chateea, sigue estos pasos **dentro de Xero**:
-
-<Steps>
-  <Step title="Ve a Configuración en Xero">
-    Desde tu panel de Xero, elige tu organización y haz clic en **Configuración**.
-  </Step>
-  <Step title="Abre la configuración avanzada">
-    Desplaza la página y selecciona **¿Buscas la configuración avanzada?**
-  </Step>
-  <Step title="Selecciona el plan de cuentas">
-    Entra a **Contabilidad avanzada → Plan de cuentas**.
-  </Step>
-  <Step title="Elige tu cuenta">
-    Selecciona la cuenta que quieres usar, por ejemplo **Prepayments** (Anticipos).
-  </Step>
-  <Step title="Habilita los pagos">
-    En la ventana de configuración de la cuenta, marca **Habilitar pagos a esta cuenta** y haz clic en **Guardar**.
-  </Step>
-  <Step title="Regresa a Chateea">
-    La cuenta que habilitaste ya será seleccionable al configurar tu integración.
-  </Step>
-</Steps>
-
-<Card title='¿Cómo ver todo el "Plan de cuentas" dentro de la integración con Xero?' icon="list-check" href="/pagos-facturas/plan-de-cuentas-xero">
-  Artículo dedicado a este mismo procedimiento, con más detalle.
-</Card>
-
-## Cómo funciona la integración
-
-### 1. Importación de contactos (Xero → Chateea)
-
-Cuando la integración se conecta:
-
-- Los contactos activos de Xero se importan automáticamente a Chateea
-- Los contactos importados ayudan a garantizar el mapeo correcto de las facturas
-- Si no se encuentra un contacto coincidente durante la sincronización, el sistema crea uno directamente en Xero
-
-### 2. Sincronización de facturas (Chateea → Xero)
-
-Cuando creas o envías una factura, el sistema publica en Xero una factura que contiene:
-
-| Bloque | Contenido |
-| --- | --- |
-| **Información de contacto** | Cruzada con los contactos importados o creada automáticamente si falta |
-| **Partidas** | Nombre del artículo, importe, cantidad y descuentos. Los productos no se crean en Xero |
-| **Mapeo de impuestos** | Se usan las tasas existentes cuando coinciden; se crean nuevas si hace falta |
-| **Divisa** | Se transfiere la moneda de la factura; si no está habilitada, el sistema la agrega (requiere plan multidivisa) |
-
-### 3. Fuera de alcance por diseño
-
-- Sin sincronización de recibos
-- Sin sincronización del catálogo de artículos
-- Sin sincronización de PDF de recibos ni de gastos
-- Sin gestión de inventario ni de productos
-
-### 4. Desconexiones y mejores prácticas
-
-<Warning>
-  Si usas **categorías de seguimiento avanzadas** o cuentas de ingresos especializadas en Xero, configura con cuidado tu cuenta predeterminada de publicación de facturas.
-</Warning>
-
-- Evita vincular las **cuentas bancarias** con las partidas de las facturas, para prevenir errores de validación en Xero
-- Si la integración se desconecta, simplemente vuelve a conectarla desde **Configuración → Integraciones → Xero**
-
-### Ejemplo práctico
-
-Emites una factura de **€1,200** en euros a un cliente que aún no existe en Xero, con un impuesto del 18% que tampoco está configurado allá.
-
-| Elemento de la factura | Qué hace la integración en Xero |
-| --- | --- |
-| Contacto no encontrado | **Lo crea** automáticamente |
-| Impuesto del 18% inexistente | **Crea la tasa** durante la sincronización |
-| Moneda EUR no habilitada | **La agrega** a la organización, si tu plan es multidivisa |
-| Partidas del servicio | Aparecen dentro de la factura, **sin** crear productos |
-| La marcas como Enviada | El estado se refleja en Xero |
-
-Si tu plan de Xero **no** admite multidivisa, ese cuarto renglón falla y verás el error de moneda no suscrita.
+Desde **Configuración → Integraciones → Xero** puedes ver el estado, desconectar la integración y volver a conectarla con **Conectar**. Al reconectar, vuelves a autenticarte y elegir tu organización.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Se trata de una sincronización unidireccional o bidireccional?">
-    Unidireccional. Los contactos se importan de Xero a Chateea, y las facturas se sincronizan de Chateea a Xero.
+  <Accordion title="¿La sincronización es en un sentido o en los dos?">
+    En un sentido. Los contactos se importan de Xero a Chateea para asociarlos, y las facturas viajan de Chateea a Xero.
   </Accordion>
-
-  <Accordion title="¿Se crearán contactos nuevos en Xero?">
-    Sí. Si no existe ningún contacto coincidente, Chateea crea uno nuevo en Xero durante la sincronización de la factura.
+  <Accordion title="¿Chateea crea contactos nuevos en Xero?">
+    Sí. Si el cliente de la factura no coincide con ningún contacto importado, se crea en Xero al sincronizar.
   </Accordion>
-
-  <Accordion title="¿Los productos o artículos se sincronizan con Xero?">
-    No. Los artículos aparecen únicamente en la factura; no se crean entradas en el catálogo de productos.
+  <Accordion title="¿Se crean productos o artículos en Xero?">
+    No. Las líneas se publican solo dentro de la factura.
   </Accordion>
-
-  <Accordion title="¿Cómo se gestionan los impuestos?">
-    Los impuestos coincidentes usan la tasa existente de Xero. Los que no coinciden se crean automáticamente.
+  <Accordion title="¿Cómo se manejan los impuestos?">
+    Si la tasa asignada ya existe en Xero, se usa esa. Si no existe, se crea y se aplica a la factura.
   </Accordion>
-
-  <Accordion title="¿Cómo se gestionan las divisas?">
-    Chateea transfiere la moneda de la factura a Xero y la agrega a tu organización si es necesario. Asegúrate de que tu plan de Xero admita varias monedas.
+  <Accordion title="¿Se sincronizan los recibos?">
+    No, la integración no incluye recibos.
   </Accordion>
-
-  <Accordion title="¿Están sincronizados los recibos?">
-    No, por el momento no.
+  <Accordion title="¿Puedo conectar varias organizaciones de Xero a mi cuenta?">
+    No. Cada cuenta de Chateea se conecta a una sola organización de Xero a la vez.
   </Accordion>
-
-  <Accordion title="¿Se pueden conectar varias organizaciones de Xero a una misma cuenta?">
-    Actualmente no. Cada cuenta se conecta a una única organización de Xero.
+  <Accordion title='Me aparece "Organisation is not subscribed to currency XXX". ¿Qué hago?'>
+    La moneda de la factura no está habilitada en tu organización de Xero. Activa la multidivisa en Xero (o esa moneda en concreto) y vuelve a intentarlo.
   </Accordion>
-
-  <Accordion title="¿Dónde puedo gestionar o desconectar la integración?">
-    En **Configuración → Integraciones → Xero**.
-  </Accordion>
-
-  <Accordion title='¿Qué significa el error "La organización no está suscrita a la moneda XXX"?'>
-    Aparece cuando la moneda de la factura no está habilitada en Xero. Habilita la opción de varias monedas en tu plan de Xero o activa esa moneda específica.
-  </Accordion>
-
-  <Accordion title="¿Cómo me reconecto después de desconectarme?">
-    Vuelve a **Configuración → Integraciones → Xero** y haz clic en **Conectar** de nuevo para autenticarte.
+  <Accordion title="¿Se sincronizan las facturas creadas antes de conectar Xero?">
+    Por lo general no. La sincronización automática aplica a las facturas creadas después de conectar la integración.
   </Accordion>
 </AccordionGroup>
 
-## ¿Necesitas ayuda?
+Si una factura no llega a Xero o ves un error de validación, escribe a soporte de Chateea en **help@chateea.com** con el número de la factura y el mensaje de error exacto.
 
-Si una factura no llega a Xero o ves un error de validación, escríbenos por WhatsApp al **\+1 829-580-7071** con el número de factura y el mensaje de error exacto.
+## Artículos relacionados
 
 <CardGroup cols={2}>
-  <Card title="Guía: Configuración de la integración con QuickBooks" icon="book" href="/pagos-facturas/integracion-quickbooks">
-    La alternativa con sincronización bidireccional y recibos de venta.
+  <Card title="Ver todo el plan de cuentas de Xero" icon="list-check" href="/pagos-facturas/plan-de-cuentas-xero">
+    Habilita las cuentas que quieres usar en Chateea.
   </Card>
-
-  <Card title="Guía: Integración de ondas" icon="wave-square" href="/pagos-facturas/integracion-wave">
-    La opción más ligera, solo facturas y sin estados.
+  <Card title="Integración con QuickBooks" icon="book" href="/pagos-facturas/integracion-quickbooks">
+    La alternativa si llevas tu contabilidad en QuickBooks.
+  </Card>
+  <Card title="Integración con Wave" icon="wave-square" href="/pagos-facturas/integracion-wave">
+    Envía tus facturas a Wave.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos/crear-y-enviar-facturas">
+    Configura y emite tus facturas en Chateea.
   </Card>
 </CardGroup>

@@ -1,150 +1,151 @@
 ---
-title: "Automatización de pagos con activadores de suscripción y reembolso"
-description: "Dispara flujos de trabajo cuando una suscripción cambia de estado o se procesa un reembolso."
+title: "Disparadores de suscripción y reembolso"
+description: "Automatiza mensajes y tareas cuando una suscripción se crea, se activa o se cancela, o cuando se procesa un reembolso."
 icon: "bolt"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Además de los disparadores de **Pago recibido**, **Pedido enviado** y los de facturas, Chateea tiene dos disparadores pensados para automatizar lo que pasa después de la venta: el **disparador de suscripción** y el **disparador de reembolso**. Con ellos puedes dar la bienvenida a un nuevo suscriptor, avisar a tu equipo cuando una prueba se convierte en cliente de pago o confirmar un reembolso sin mover un dedo.
 
-Automatizar los eventos relacionados con pagos te permite responder al instante a las acciones de tus clientes sin intervención manual. Los **activadores de suscripción y reembolso** te dejan crear flujos de trabajo más inteligentes basados en la actividad de facturación: cuando una suscripción comienza, se cancela o se actualiza, o cuando se procesa un reembolso. Esto garantiza comunicación oportuna, mejor seguimiento y una experiencia de cliente más cuidada.
+## Qué hace cada disparador
 
-## ¿Qué son los activadores de suscripción y reembolso?
-
-Estos activadores permiten que los flujos de trabajo se inicien automáticamente en función de eventos relacionados con los pagos.
-
-| Activador | Cuándo se dispara |
+| Disparador | Cuándo se activa |
 | --- | --- |
-| **Activador de suscripción** | Cuando se crea, activa, cancela o actualiza una suscripción |
-| **Activador de reembolso** | Cuando se procesa un reembolso, tanto si tuvo éxito como si falló |
+| **Suscripción** | Cuando se crea una suscripción para un cliente, cuando pasa de prueba a activa y cuando se cancela |
+| **Reembolso** | Cuando tú o tu equipo de ventas intentan un reembolso, tanto si sale bien como si falla |
 
-Con ellos automatizas seguimientos, notificaciones y procesos internos vinculados a los eventos de facturación.
+## Disparador de suscripción
 
-## Beneficios clave
+Sirve para automatizar procesos alrededor de los cambios de estado de una suscripción.
 
-| Beneficio | Qué aporta |
-| --- | --- |
-| **Comunicación automatizada** | Notifica al instante a clientes o equipos sobre eventos de suscripción o reembolso |
-| **Mejor experiencia del cliente** | Envía confirmaciones, actualizaciones y seguimientos puntuales |
-| **Seguimiento preciso** | Supervisa los eventos de pago sin comprobaciones manuales |
-| **Automatización flexible** | Usa filtros y condiciones para que el flujo corra solo cuando hace falta |
-| **Personalización** | Inserta valores dinámicos como montos, identificadores y estados en tus mensajes |
+### Ideas de uso
 
-## Activador de suscripción
-
-Los activadores de suscripción permiten que los flujos de trabajo reaccionen a los cambios en el **ciclo de vida** de una suscripción.
-
-### Casos de uso comunes
-
-- Enviar un mensaje de bienvenida cuando comienza una suscripción
-- Notificar a tu equipo cuando una prueba se convierte en activa
-- Disparar una solicitud de comentarios cuando se cancela una suscripción
+- Enviar un mensaje de bienvenida cuando empieza una suscripción.
+- Avisar a tu equipo cuando una prueba gratuita se convierte en suscripción activa.
+- Pedir comentarios o lanzar una oferta de retención cuando alguien cancela.
 
 ### Cómo configurarlo
 
 <Steps>
   <Step title="Crea o abre un flujo de trabajo">
-    Haz clic en **Crear flujo de trabajo** para comenzar a configurar la automatización, o abre uno existente al que quieras añadirle el activador.
+    Ve a **Automatización** y crea un flujo de trabajo nuevo o abre uno existente.
   </Step>
-  <Step title="Agrega el activador">
-    Haz clic en **Agregar nuevo activador** y selecciona **Suscripción** en la lista.
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y selecciona **Suscripción**.
   </Step>
   <Step title="Define los filtros">
-    Selecciona condiciones como **Estado** (Activo, Cancelado, Prueba, etc.) o productos específicos para controlar cuándo se ejecuta el flujo de trabajo.
+    Filtra por **estado de la suscripción** (por ejemplo, Activa, Prueba o Cancelada) o por el **producto** asociado para que el flujo se ejecute solo cuando corresponde.
+  </Step>
+  <Step title="Agrega tus acciones">
+    Usa condiciones **Si/Sino** para ramificar según el estado o el producto, y personaliza los mensajes con los valores personalizados de pagos.
   </Step>
 </Steps>
 
-### Capacidades adicionales
+### Valores dinámicos disponibles
 
-- Filtrar por **estado de suscripción** (por ejemplo, Activa o Cancelada)
-- Filtrar por **productos específicos**
-- Usar **valores dinámicos** dentro de tus mensajes y acciones:
+En la sección de **Pagos** de los valores personalizados encontrarás datos de la suscripción para personalizar mensajes y acciones:
 
-| Valor dinámico | Qué devuelve |
+| Valor | Qué devuelve |
 | --- | --- |
 | **ID de suscripción** | El identificador único de la suscripción |
-| **Cantidad total** | El monto total del cobro |
+| **Importe total** | El monto total del cobro |
 | **Descuento** | El monto descontado |
-| **Monto del impuesto** | El impuesto aplicado |
+| **Importe del impuesto** | El impuesto aplicado |
 | **Estado de la suscripción** | El estado en el momento del evento |
 
 <Tip>
-  Los valores dinámicos son lo que separa un correo genérico de uno que el cliente lee. "Tu suscripción fue cancelada" funciona mucho peor que "Tu suscripción #1234 fue cancelada el 3 de marzo; el último cobro de 49 USD ya se había procesado".
+  Un mensaje con datos concretos funciona mucho mejor que uno genérico. "Tu suscripción fue cancelada" se ignora; "Tu suscripción al plan mensual fue cancelada. Si fue un error, responde este mensaje y la reactivamos" abre una conversación.
 </Tip>
 
-## Activador de reembolso
+## Disparador de reembolso
 
-Los activadores de reembolso permiten que los flujos de trabajo reaccionen cada vez que se procesa un reembolso.
+Sirve para automatizar lo que ocurre cuando se procesa un reembolso, ya sea desde tu cuenta o por parte de tu equipo de ventas.
 
-### Casos de uso comunes
+### Ideas de uso
 
-- Enviar correos de confirmación de reembolso
-- Notificar a los equipos internos si el reembolso se realizó correctamente o falló
-- Activar flujos distintos para reembolsos parciales o totales
+- Enviar al cliente la confirmación de su reembolso.
+- Avisar a tu equipo cuando un reembolso falla para que lo revise.
+- Tratar distinto un reembolso total (posible baja) de uno parcial (ajuste de cobro).
 
 ### Cómo configurarlo
 
-Selecciona condiciones como **Tipo de reembolso** (Total o Parcial), **Estado** (Éxito o Fallido) y **Origen** para controlar la automatización.
+<Steps>
+  <Step title="Agrega el disparador">
+    En tu flujo de trabajo, haz clic en **Agregar disparador** y selecciona **Reembolso**.
+  </Step>
+  <Step title="Ramifica según el resultado">
+    Usa condiciones para separar los casos según el resultado del reembolso, el tipo, el importe o el origen.
+  </Step>
+  <Step title="Personaliza los mensajes">
+    Inserta los valores personalizados de reembolso de la sección **Pagos** para enviar notificaciones adaptadas a cada caso.
+  </Step>
+</Steps>
 
-### Capacidades adicionales
+### Condiciones que puedes usar
 
-Puedes filtrar por estas condiciones de reembolso:
-
-| Filtro | Opciones |
+| Condición | Opciones |
 | --- | --- |
-| **Estado del reembolso** | Éxito, Fallo |
-| **Tipo de reembolso** | Total, parcial |
-| **Origen del reembolso** | Pedido, suscripción, enlace de pago |
+| **Resultado** | Exitoso o fallido |
+| **Tipo** | Reembolso total o parcial |
+| **Importe** | El monto reembolsado |
+| **Origen** | De dónde viene el cobro reembolsado |
 
-Y usar estos valores dinámicos:
+### Valores dinámicos disponibles
 
-| Valor dinámico | Qué devuelve |
+| Valor | Qué devuelve |
 | --- | --- |
 | **ID de reembolso** | El identificador del reembolso |
 | **ID de transacción** | El identificador de la transacción original |
 | **Importe del reembolso** | El monto devuelto |
-| **Estado del reembolso** | Si tuvo éxito o falló |
+| **Estado del reembolso** | Si salió bien o falló |
 
 <Warning>
-  Configura siempre un flujo para el caso de **reembolso fallido**, no solo para el exitoso. Un reembolso que falla y nadie nota se convierte en un cliente molesto que reclama por otro canal, o directamente en un contracargo.
+  Configura siempre una rama para el **reembolso fallido**, no solo para el exitoso. Un reembolso que falla sin que nadie lo note termina en un cliente molesto que reclama por otro canal, o directamente en un contracargo.
 </Warning>
 
-## Compatibilidad de integración
+## Proveedores compatibles
 
-Estos activadores funcionan con las integraciones de pago compatibles.
-
-| Proveedor | Nivel de compatibilidad |
+| Proveedor | Compatibilidad |
 | --- | --- |
-| **Stripe** | Compatibilidad total |
-| **Authorize.net** | Compatibilidad total |
-| **NMI** | Compatibilidad total |
-| **PayPal** | Soporte limitado: solo para la creación de suscripciones |
+| **Stripe** | Completa |
+| **Authorize.net** | Completa |
+| **NMI** | Completa |
+| **PayPal** | Limitada: el disparador de suscripción solo se activa cuando se crea la suscripción, no en los cambios posteriores |
+
+Los proveedores se conectan desde **Pagos → Integraciones**.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Qué eventos pueden desencadenar estos flujos de trabajo?">
-    Puedes activar flujos de trabajo para la creación, activación, cancelación y reembolso de suscripciones.
+  <Accordion title="¿Qué eventos de suscripción activan el flujo?">
+    La creación de la suscripción, el paso de prueba a activa y la cancelación.
   </Accordion>
-
-  <Accordion title="¿Puedo activar flujos de trabajo para reembolsos fallidos?">
-    Sí. Puedes usar filtros para activar flujos tanto para reembolsos exitosos como para reembolsos fallidos.
+  <Accordion title="¿Puedo activar un flujo cuando un reembolso falla?">
+    Sí. El disparador de reembolso se activa con cada intento, y puedes ramificar según si fue exitoso o fallido.
   </Accordion>
-
-  <Accordion title="¿Puedo personalizar los mensajes usando los datos de pago?">
-    Sí. Puedes insertar valores dinámicos como el estado de la suscripción, el importe del reembolso y el ID de la transacción dentro de tus flujos de trabajo.
+  <Accordion title="¿Puedo diferenciar reembolsos totales y parciales?">
+    Sí. Usa la condición de tipo de reembolso para tratar cada caso por separado.
   </Accordion>
-
-  <Accordion title="¿Están disponibles estos activadores para todos los proveedores de pago?">
-    Se admiten la mayoría de los proveedores principales. Algunos pueden tener funcionalidad limitada según el tipo de evento, como es el caso de PayPal.
+  <Accordion title="¿Puedo personalizar los mensajes con datos del pago?">
+    Sí. Los valores personalizados de suscripción y de reembolso están en la sección **Pagos** de los valores personalizados.
+  </Accordion>
+  <Accordion title="¿Funcionan con PayPal?">
+    Solo en parte: con PayPal, el disparador de suscripción se activa cuando se crea la suscripción, pero no en las acciones posteriores.
   </Accordion>
 </AccordionGroup>
 
-## ¿Necesitas ayuda?
+## Artículos relacionados
 
-Si necesitas ayuda para configurar activadores o flujos de trabajo, escríbenos por WhatsApp al **\+1 829-580-7071** con el nombre del flujo, el activador que usaste y qué esperabas que ocurriera.
-
-<Card title="Explicación de la configuración para reintentar el pago de la suscripción" icon="rotate-right" href="/pagos-facturas/reintentos-pago-suscripcion">
-  Combina estos activadores con reglas de reintento para recuperar pagos fallidos sin trabajo manual.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Disparador de pago recibido" icon="bolt" href="/flujo-de-trabajo/disparador-de-flujo-de-trabajo-pago-recibido">
+    Automatiza lo que pasa cuando entra un pago.
+  </Card>
+  <Card title="Gestionar reembolsos" icon="rotate-left" href="/pagos-facturas/gestionar-reembolsos">
+    Cómo reembolsar cobros desde Chateea.
+  </Card>
+  <Card title="Estados de suscripción" icon="arrows-rotate" href="/pagos-facturas/gestionar-suscripciones">
+    Qué significa cada estado de una suscripción.
+  </Card>
+  <Card title="Reintentos de pago de suscripciones" icon="rotate-right" href="/pagos-facturas/reintentos-pago-suscripcion">
+    Recupera cobros fallidos automáticamente.
+  </Card>
+</CardGroup>

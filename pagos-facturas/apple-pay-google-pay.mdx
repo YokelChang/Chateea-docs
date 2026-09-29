@@ -1,138 +1,142 @@
 ---
-title: "Usando Apple Pay y Google Pay"
-description: "Ofrece pagos con un toque en tus formularios de pedido, a través de Stripe."
+title: "Apple Pay y Google Pay en formularios de pedido"
+description: "Activa Apple Pay y Google Pay con Stripe en tus formularios de pedido y resuelve por qué no aparecen."
 icon: "wallet"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Apple Pay y Google Pay permiten que tus clientes paguen con un toque, usando la tarjeta que ya tienen guardada en su teléfono o navegador, sin escribir los datos a mano. Menos pasos en el checkout suele significar más compras terminadas, sobre todo desde el celular.
 
-Aceptar Apple Pay y Google Pay en tu formulario de pedido es una excelente forma de mejorar la experiencia de compra: ofrecen comodidad, seguridad y una rapidez que los métodos tradicionales no pueden igualar.
+En Chateea puedes ofrecer estas billeteras digitales en los formularios de pedido de uno y dos pasos cuando usas **Stripe** como proveedor de pago.
 
 <Warning>
-  **Requisitos base, antes de nada:**
-
-  - Esta función solo se ofrece a través de **Stripe Connect**
-  - Solo funciona con la **versión 2 de embudos**
-
-  Si usas PayPal como proveedor en lugar de Stripe, no puedes ofrecer Apple Pay ni Google Pay.
+Activar una billetera no garantiza que todos tus clientes la vean. Que aparezca depende del tipo de checkout, del modo (prueba o en vivo), de tu cuenta de Stripe, del país del cliente, de su navegador y dispositivo, de que tenga una tarjeta en su billetera y, en el caso de Apple Pay, de que tu dominio esté verificado.
 </Warning>
 
-## Cómo se usan en el CRM
+## Ventajas
 
-Stripe permite añadir Apple Pay y Google Pay como opciones en la pestaña **Otros** de los formularios de pedido de uno y dos pasos. Las ventas adicionales (bumps y upsells) también funcionan con ellos.
+- **Checkout más rápido:** el cliente paga con su billetera, sin escribir la tarjeta.
+- **Control centralizado:** gestionas los métodos de pago de Stripe desde tu cuenta de Chateea.
+- **Configuración por tipo de checkout:** decides si la billetera aparece en el formulario de un paso, en el de dos pasos o en ambos.
+- **Prueba y en vivo por separado:** puedes probar sin tocar lo que ya está cobrando.
+- **Opciones para suscripciones:** los checkouts con productos recurrentes tienen su propia configuración.
 
-Al habilitar esta opción, las subcuentas pueden activar Apple Pay y Google Pay como método de pago, además del método predeterminado de tarjeta de crédito y PayPal.
+## Antes de empezar
+
+- Stripe debe estar conectado a tu cuenta. Si aún no lo tienes, sigue [Integración de pagos con Stripe](/comercio/integracion-stripe).
+- Las billeteras deben estar activadas para el tipo de checkout que usas.
+- Confirma si estás configurando el modo **Prueba** o **En vivo**.
+- El país, el dispositivo, el navegador y la billetera del cliente deben ser compatibles, y el cliente debe tener un método de pago válido en ella.
+- **Apple Pay** necesita que tu dominio esté verificado.
+- La configuración de **Suscripciones** aparece cuando ya agregaste al menos un producto de suscripción en modo en vivo.
 
 <Note>
-  **PayPal solo aparece si está habilitado** en **Pagos → Integraciones**.
+Apple Pay y Google Pay en formularios de pedido se ofrecen a través de Stripe. Otros proveedores (por ejemplo, PayPal) tienen sus propios métodos de pago y no muestran estas billeteras.
 </Note>
 
-### Qué ve tu cliente
-
-Tus clientes verán Apple Pay y Google Pay según **dos condiciones**, y ambas deben cumplirse:
-
-| Condición | Detalle |
-| --- | --- |
-| **Ubicación y navegador** | Según su región geográfica y el navegador que usen |
-| **Método de pago asociado** | Que tengan una tarjeta registrada en su cuenta de Google o de Apple |
-
-Solo si se cumplen ambas, Google Pay o Apple Pay aparecen como opción, junto a la tarjeta de crédito predeterminada.
-
-### Navegadores compatibles
-
-| Navegador | Plataforma |
-| --- | --- |
-| Chrome | Escritorio |
-| Chrome | Android |
-| Safari | macOS |
-| Safari | iOS |
-| Microsoft Edge | Windows |
-
-Para los países y regiones compatibles, consulta la documentación oficial de [Apple Pay](https://support.apple.com/en-in/HT207957) y de [Google Pay](https://support.google.com/googlepay/answer/12429287).
-
-## Cómo activar Apple Pay y Google Pay
-
-El requisito principal es usar **Stripe Connect** en la página **Pagos → Integraciones**. Si conectas Stripe mediante sus APIs, usa Stripe Connect para poder habilitar esta función.
+## Configura Apple Pay y Google Pay
 
 <Steps>
-  <Step title="Conecta tu cuenta de Stripe">
-    En **Pagos → Integraciones**, mediante Stripe Connect.
+  <Step title="Abre la integración de Stripe">
+    Ve a **Pagos → Integraciones**, localiza **Stripe** y haz clic en **Administrar**.
   </Step>
-  <Step title="Activa el interruptor">
-    Una vez conectada, aparece un interruptor **Habilitar Google Pay y Apple Pay** en la tarjeta de conexión de Stripe. Actívalo.
+  <Step title="Revisa el dominio para Apple Pay">
+    En la página de gestión de la integración, confirma que Stripe está conectado y revisa la opción **Registrar dominios para Apple Pay y Link**. Tu dominio debe estar verificado para que Apple Pay pueda aparecer.
   </Step>
-  <Step title="Verifica el modo de Stripe">
-    La tarjeta muestra el estado de los modos en vivo y de prueba. El interruptor debe activarse **mientras Stripe está conectado** a la ubicación.
+  <Step title="Abre los métodos de pago">
+    Haz clic en **Administrar métodos de pago**.
+  </Step>
+  <Step title="Activa las billeteras en tu tipo de formulario">
+    Busca la configuración **Embudos: formulario de pedido de un paso** o **Embudos: formulario de pedido de dos pasos**, según el que uses. Activa **Apple Pay** y **Google Pay** y guarda los cambios.
+  </Step>
+  <Step title="Verifica el modo">
+    Las configuraciones de **Prueba** y **En vivo** son independientes. Asegúrate de activar las billeteras en el modo que vas a usar y guarda antes de probar.
+  </Step>
+  <Step title="Revisa las suscripciones, si vendes productos recurrentes">
+    Abre la configuración **Suscripciones**, activa las billeteras disponibles y guarda.
   </Step>
 </Steps>
 
-## Solución de problemas con Apple Pay
+## Qué decide si la billetera aparece
+
+| Factor | Por qué importa |
+| --- | --- |
+| Tipo de checkout | La billetera debe estar activada en la configuración de ese formulario. |
+| Modo prueba o en vivo | Debe estar activada en el mismo modo en que funciona el checkout. |
+| Cuenta de Stripe | La disponibilidad depende de que tu cuenta esté activada y sea elegible en tu región. |
+| Ubicación del cliente | Algunas billeteras solo funcionan en ciertos países. |
+| Dispositivo y navegador | El entorno del cliente debe admitir la billetera. |
+| Billetera del cliente | Debe tener una tarjeta válida guardada en Apple Pay o Google Pay. |
+| Dominio verificado | Apple Pay no aparece en la web sin verificación del dominio. |
+
+### Navegadores habituales
+
+| Navegador | Plataforma |
+| --- | --- |
+| Chrome | Escritorio y Android |
+| Safari | macOS e iOS |
+| Microsoft Edge | Windows |
+
+Consulta los países y dispositivos compatibles en la documentación oficial de [Apple Pay](https://support.apple.com/es-es/HT207957) y de [Google Pay](https://support.google.com/googlepay/answer/12429287), y la disponibilidad por país en [Stripe](https://stripe.com/docs/connect/payment-method-available-countries).
+
+## Solución de problemas
 
 <AccordionGroup>
-  <Accordion title="El interruptor debe activarse con Stripe conectado">
-    Enciende Apple Pay y Google Pay mientras Stripe está conectado a la ubicación.
+  <Accordion title="Apple Pay no aparece">
+    1. Ve a **Pagos → Integraciones** y haz clic en **Administrar** en Stripe.
+    2. Abre **Administrar métodos de pago** y confirma que Apple Pay está activo en tu formulario de un paso o de dos pasos.
+    3. Verifica que estás en el modo correcto (**Prueba** o **En vivo**).
+    4. Si el checkout incluye una suscripción, revisa la configuración **Suscripciones**.
+    5. Confirma que tu cuenta de Stripe está activada y es elegible para Apple Pay.
+    6. Confirma que la verificación del dominio está completa.
+    7. Prueba desde un dispositivo Apple compatible y con Apple Pay configurado.
   </Accordion>
-
-  <Accordion title="Confirma que Apple Pay esté disponible en tu país">
-    Consulta la lista de [países compatibles de Stripe](https://stripe.com/docs/connect/payment-method-available-countries#apple-pay).
-  </Accordion>
-
-  <Accordion title="Registra el dominio con Stripe">
-    El dominio donde se aloja el embudo debe estar registrado con Stripe. Es un requisito adicional de Apple Pay y, en condiciones normales, ocurre automáticamente al encender el interruptor.
-
-    - Revisa en tu panel de Stripe si el dominio figura en la sección **Web Domains**
-    - Si no aparece, agrégalo manualmente con **Add New Domain** (solución rápida; si no se registra solo al activar el interruptor, conviene abrir un ticket)
-  </Accordion>
-
-  <Accordion title="Verifica los requisitos del navegador o dispositivo">
-    El cliente debe estar en Safari, desde iOS 10 o macOS Sierra en adelante. Consulta la lista de dispositivos compatibles y de bancos participantes en el soporte de Apple.
+  <Accordion title="Google Pay no aparece">
+    1. Ve a **Pagos → Integraciones** y haz clic en **Administrar** en Stripe.
+    2. Abre **Administrar métodos de pago** y confirma que Google Pay está activo en tu tipo de formulario.
+    3. Verifica el modo (**Prueba** o **En vivo**).
+    4. Si el checkout incluye una suscripción, revisa la configuración **Suscripciones**.
+    5. Confirma que tu cuenta de Stripe es elegible.
+    6. Prueba desde un navegador compatible con una tarjeta guardada en Google Pay.
   </Accordion>
 </AccordionGroup>
 
-## Solución de problemas con Google Pay
-
-<AccordionGroup>
-  <Accordion title="El interruptor debe activarse con Stripe conectado">
-    Igual que con Apple Pay: enciéndelo mientras Stripe está conectado a la ubicación.
-  </Accordion>
-
-  <Accordion title="Confirma que Google Pay esté disponible en tu país">
-    Consulta la lista de [países compatibles de Stripe](https://stripe.com/docs/connect/payment-method-available-countries#google-pay).
-  </Accordion>
-
-  <Accordion title="El cliente debe usar Chrome o Safari">
-  </Accordion>
-
-  <Accordion title="El cliente debe tener una tarjeta válida en Google Pay">
-  </Accordion>
-</AccordionGroup>
+<Tip>
+Antes de modificar el formulario de pedido, revisa en este orden: tipo de checkout, modo prueba o en vivo, estado del método de pago, elegibilidad de Stripe y entorno del cliente. La mayoría de los casos se resuelven en uno de esos puntos.
+</Tip>
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Qué cambia en mis reportes de transacciones y pedidos?">
-    Nada. Stripe trata los pagos con Apple Pay y Google Pay como pagos con tarjeta. Todos los pedidos hechos con ellos se reflejan en la página de Pedidos, Transacciones y Suscripciones.
+  <Accordion title="Activé la billetera y no aparece. ¿Por qué?">
+    Además de estar activada, debe cumplirse todo lo demás: tipo de checkout correcto, mismo modo, cuenta de Stripe elegible, país, navegador o dispositivo compatibles y una tarjeta guardada en la billetera. Apple Pay necesita además el dominio verificado.
   </Accordion>
-
-  <Accordion title="¿Hay diferencia de precio de Stripe entre tarjeta y Apple/Google Pay?">
-    No. El costo es el mismo que el de una transacción con tarjeta de crédito.
+  <Accordion title="¿Puedo configurar el modo de prueba y el modo en vivo por separado?">
+    Sí. Cada modo tiene su propia configuración de métodos de pago.
   </Accordion>
-
-  <Accordion title="Uso PayPal en lugar de Stripe. ¿Puedo ofrecer Apple Pay y Google Pay?">
-    No. Solo se pueden ofrecer a través de **Stripe Connect** en la versión 2 de embudos.
+  <Accordion title="¿Funcionan con productos de suscripción?">
+    Los checkouts con suscripciones usan la configuración **Suscripciones**. Activa ahí las billeteras disponibles.
   </Accordion>
-
-  <Accordion title="¿Puedo habilitar otros métodos como redirecciones bancarias o ACH?">
-    Por ahora, mediante Stripe solo se pueden habilitar Apple Pay y Google Pay. La compatibilidad con otros métodos de pago se irá ampliando.
+  <Accordion title="No veo la configuración de Suscripciones">
+    Aparece cuando agregas al menos un producto de suscripción en modo en vivo.
   </Accordion>
-
-  <Accordion title="¿Cómo desactivo estos métodos después de haberlos activado?">
-    Al desactivar Apple Pay y Google Pay en la tarjeta de conexión de Stripe (en la página de Integraciones), se desactiva la pestaña **Otros métodos de pago** en el formulario de pedido.
+  <Accordion title="¿Estas ventas aparecen en mis reportes?">
+    Sí. Se registran en **Pagos** como cualquier otra transacción, y los disparadores **Pedido enviado** y **Pago recibido** funcionan igual.
+  </Accordion>
+  <Accordion title="¿La comisión de Stripe es la misma que con tarjeta?">
+    No necesariamente. Las comisiones de Stripe varían según el país y el método de pago. Revisa las tarifas vigentes de tu cuenta de Stripe.
+  </Accordion>
+  <Accordion title="¿Puedo ofrecer otros métodos de pago de Stripe?">
+    Sí. Chateea admite otros métodos de Stripe según el tipo de checkout, tu región y tu cuenta. Consulta [Métodos de pago con Stripe](/pagos/metodos-de-pago-con-stripe).
   </Accordion>
 </AccordionGroup>
 
-<Card title="Integración de pagos con Stripe" icon="stripe" href="/comercio/integracion-stripe">
-  Conecta Stripe Connect, requisito para esta función.
-</Card>
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Métodos de pago con Stripe" icon="credit-card" href="/pagos/metodos-de-pago-con-stripe">
+    Activa o desactiva métodos de pago por canal.
+  </Card>
+  <Card title="Vende productos en formularios de pedido" icon="cart-shopping" href="/pagos/vender-productos-en-formularios-de-pedido">
+    Proveedores, ventas adicionales y límites del checkout.
+  </Card>
+</CardGroup>

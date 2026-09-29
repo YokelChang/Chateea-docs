@@ -1,0 +1,96 @@
+---
+title: "Muestra la identificación fiscal en tus facturas"
+description: "Haz que tus facturas muestren automáticamente tu número fiscal y el de cada cliente."
+icon: "id-card"
+---
+
+En muchos países la factura debe mostrar el número de identificación fiscal de quien la emite y, a veces, también el del cliente (RFC, NIT, RUC, CUIT, NIF, número de IVA, etc.). En Chateea puedes configurarlo una vez para que ambos aparezcan solos en cada factura: el tuyo en los datos del negocio y el del cliente en los datos del contacto.
+
+## Cómo funciona
+
+El proceso tiene dos partes:
+
+1. **Guardar los datos:** usas un **campo personalizado** para guardar la identificación fiscal de cada cliente y un **valor personalizado** para guardar la de tu negocio.
+2. **Mostrarlos en la factura:** personalizas el diseño de la factura para que tu número aparezca en la información del negocio y el del cliente en la información del contacto.
+
+## Paso 1: Crea el campo para la identificación fiscal del cliente
+
+<Steps>
+  <Step title="Abre los campos personalizados">
+    Ve a **Configuración → Campos personalizados** y haz clic en **Agregar campo**.
+  </Step>
+  <Step title="Elige el tipo">
+    En **Entrada de texto**, selecciona **Una línea** y haz clic en **Siguiente**.
+  </Step>
+  <Step title="Nómbralo y guárdalo">
+    Ponle un nombre, por ejemplo **Identificación fiscal**, elige **Contacto** en **Objeto** y en **Grupo**, y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Paso 2: Crea el valor con tu identificación fiscal
+
+<Steps>
+  <Step title="Abre los valores personalizados">
+    Ve a **Configuración → Valores personalizados** y haz clic en **Agregar valor personalizado**.
+  </Step>
+  <Step title="Escribe tu número">
+    Introduce un **nombre** (por ejemplo, "Identificación fiscal del negocio") y como **valor** tu número, por ejemplo `NIF: B12345678`. Haz clic en **Crear**.
+  </Step>
+</Steps>
+
+## Paso 3: Personaliza el diseño de la factura
+
+<Steps>
+  <Step title="Abre la configuración de facturas">
+    Ve a **Pagos → Facturas y presupuestos** y haz clic en **Configuración**.
+  </Step>
+  <Step title="Abre el diseño">
+    En **Título, términos y diseño**, busca **Diseño de la factura** y haz clic en **Personalizar diseño**.
+  </Step>
+  <Step title="Agrega tu identificación fiscal">
+    En la pestaña **Diseño**, dentro de **Información del negocio**, haz clic en **Agregar valor personalizado** y elige el valor que creaste.
+  </Step>
+  <Step title="Agrega la del cliente">
+    En **Información del contacto**, haz clic en **Agregar campo personalizado** y elige el campo **Identificación fiscal**.
+  </Step>
+  <Step title="Guarda">
+    Revisa la vista previa y haz clic en **Guardar cambios**.
+  </Step>
+</Steps>
+
+## Paso 4: Completa el dato en cada cliente
+
+<Steps>
+  <Step title="Abre el contacto">
+    Ve a **Contactos**, abre el cliente y entra a la pestaña de información adicional.
+  </Step>
+  <Step title="Escribe su identificación fiscal">
+    Completa el campo **Identificación fiscal** y guarda.
+  </Step>
+  <Step title="Crea la factura">
+    Desde la pestaña **Pagos** del contacto, en **Acciones**, elige **Crear factura**, o créala desde **Pagos → Facturas y presupuestos**.
+  </Step>
+</Steps>
+
+La factura mostrará tu identificación fiscal en los datos del negocio y la del cliente en sus datos, siempre que el contacto tenga el campo completado.
+
+<Tip>
+  Si facturas sobre todo a empresas, agrega el campo de identificación fiscal a tus formularios de alta o de pedido. Así el dato llega completo desde el principio y no tienes que pedirlo al facturar.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Personaliza el diseño de tus facturas" icon="palette" href="/pagos/personalizar-diseno-de-facturas">
+    Marca, secciones y etiquetas de la factura.
+  </Card>
+  <Card title="Configurar impuestos" icon="percent" href="/pagos/configurar-impuestos">
+    Crea y aplica impuestos en tus ventas.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos/crear-y-enviar-facturas">
+    Guía completa de facturación.
+  </Card>
+  <Card title="Personaliza la ficha del contacto" icon="address-card" href="/contactos/personalizar-la-ficha-del-contacto">
+    Organiza los campos que ves en cada contacto.
+  </Card>
+</CardGroup>

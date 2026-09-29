@@ -1,0 +1,117 @@
+---
+title: "Reintentar manualmente pagos fallidos de suscripciones"
+description: "Cobra de nuevo un pago de suscripción impago con una tarjeta guardada o nueva y combínalo con los reintentos automáticos."
+icon: "rotate-right"
+---
+
+Cuando un cobro de suscripción falla, Chateea puede reintentarlo automáticamente según tu configuración. Pero si los reintentos automáticos ya se agotaron, no están disponibles o el cliente te dice que ya tiene una tarjeta nueva, puedes **reintentar el pago manualmente** desde los detalles de la suscripción, con una tarjeta guardada o una nueva, y decidir si esa tarjeta queda para los próximos cobros.
+
+## Para qué te sirve
+
+- **Recuperas cobros fallidos** sin salir de Chateea ni perseguir al cliente por fuera.
+- **Usas otro método de pago:** eliges una tarjeta guardada o agregas una nueva.
+- **Actualizas los cobros futuros:** puedes dejar esa tarjeta como la tarjeta de la suscripción.
+- **Reduces las bajas involuntarias:** muchos clientes no se van, solo tienen una tarjeta vencida o sin fondos ese día.
+
+## Proveedores compatibles
+
+El reintento manual está disponible para suscripciones con:
+
+- **NMI**
+- **Authorize.net**
+- **Square**
+- **Mercado Pago**
+
+Se usa cuando la suscripción tiene un pago en estado **Impago** o **Vencido**.
+
+## Límites de reintento
+
+| Regla | Detalle |
+| --- | --- |
+| **Intentos fallidos con la misma tarjeta** | Hasta 3 |
+| **Espera después del tercer fallo** | 24 horas antes de volver a intentar con esa tarjeta |
+| **Aviso** | Chateea te muestra un mensaje cuando todavía no puedes reintentar con esa tarjeta |
+
+<Tip>
+  Si una tarjeta falló tres veces, no esperes las 24 horas sin hacer nada: contacta al cliente y pídele otra tarjeta. Puedes agregarla tú mismo en el reintento o enviarle un enlace de actualización de pago.
+</Tip>
+
+## Cómo reintentar un pago manualmente
+
+<Steps>
+  <Step title="Abre la suscripción">
+    Ve a **Pagos → Suscripciones** y abre la suscripción con el pago fallido.
+  </Step>
+  <Step title="Elige el pago fallido">
+    Localiza el pago fallido y abre su menú **Acciones**.
+  </Step>
+  <Step title="Inicia el reintento">
+    Haz clic en **Reintentar pago** y revisa la información que aparece en la ventana **Reintentar pago fallido**.
+  </Step>
+  <Step title="Elige la tarjeta">
+    Selecciona una tarjeta guardada o haz clic en **+ Agregar nueva** para usar otra.
+  </Step>
+  <Step title="Decide sobre los próximos cobros">
+    Activa **Usar esta tarjeta para pagos futuros** si quieres que esa tarjeta se use también en los siguientes cobros recurrentes de la suscripción.
+  </Step>
+  <Step title="Cobra">
+    Haz clic en **Cobrar tarjeta**. Chateea intenta cobrar el pago impago **más antiguo** de la suscripción.
+  </Step>
+</Steps>
+
+## Reintentos automáticos: cómo se complementan
+
+Antes de llegar al reintento manual, conviene tener bien configurados los reintentos automáticos en **Pagos → Configuración → Suscripciones**:
+
+| Ajuste | Opciones |
+| --- | --- |
+| **Número de reintentos** | Hasta 3 (por defecto, 3 reintentos con 1 día entre cada uno) |
+| **Espera entre reintentos** | 1, 3, 5 o 7 días |
+| **Si todos fallan** | Dejar la suscripción como **Impaga** o moverla automáticamente a **Cancelada** |
+| **Proveedores** | NMI, Authorize.net y Square |
+
+Los cambios en esta configuración se aplican a las suscripciones nuevas y a las que ya están en proceso de reintento. Por ejemplo, si tenías 3 reintentos cada 3 días, ya se hizo el primero y cambias a 2 reintentos de 3 y 5 días, el segundo reintento ocurrirá a los 5 días y ya no habrá un tercero.
+
+<Note>
+  Si eliges que la suscripción quede como **Impaga** al agotar los reintentos automáticos, podrás recuperarla después con un reintento manual. Si eliges **Cancelada**, ya no habrá pago pendiente que reintentar.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué proveedores permiten reintentar pagos manualmente?">
+    NMI, Authorize.net, Square y Mercado Pago.
+  </Accordion>
+  <Accordion title="¿Qué pago se reintenta?">
+    El pago impago más antiguo de la suscripción.
+  </Accordion>
+  <Accordion title="¿Puedo usar otra tarjeta para el reintento?">
+    Sí. Puedes elegir una tarjeta guardada o agregar una nueva.
+  </Accordion>
+  <Accordion title="¿La tarjeta del reintento se usará en los próximos cobros?">
+    Solo si activas **Usar esta tarjeta para pagos futuros**. Si no, la suscripción sigue cobrando con su tarjeta habitual.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la misma tarjeta falla tres veces?">
+    Tienes que esperar 24 horas para volver a reintentar con esa tarjeta. Mientras tanto, puedes usar otra.
+  </Accordion>
+  <Accordion title="¿Por qué a mi cliente no se le cobró la mensualidad si no hubo ningún fallo?">
+    Suele pasar cuando se renombra o modifica en **Pagos → Productos** el producto vinculado a la suscripción, lo que puede romper la sincronización con Stripe. Abre la suscripción, usa **Actualizar**, agrega el producto actualizado, quita el anterior y guarda para restablecer los cobros futuros. Los cobros que no se hicieron no se recuperan solos: envía una factura o un enlace de pago único.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Reintentos automáticos de pago" icon="rotate-right" href="/pagos-facturas/reintentos-pago-suscripcion">
+    Configura cuántas veces y cada cuánto se reintenta.
+  </Card>
+  <Card title="Estados de suscripción" icon="arrows-rotate" href="/pagos-facturas/gestionar-suscripciones">
+    Qué significa cada estado de una suscripción.
+  </Card>
+  <Card title="Modificar suscripciones existentes" icon="pen-to-square" href="/pagos-facturas/modificar-suscripciones-existentes">
+    Incluye cómo enviar un enlace para actualizar la tarjeta.
+  </Card>
+  <Card title="Proveedores y métodos de pago por área" icon="credit-card" href="/pagos/proveedores-y-metodos-de-pago-por-area">
+    Qué funciona con cada proveedor.
+  </Card>
+</CardGroup>

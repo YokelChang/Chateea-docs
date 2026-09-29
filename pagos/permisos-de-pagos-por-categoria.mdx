@@ -1,0 +1,118 @@
+---
+title: "Permisos detallados de pagos para tu equipo"
+description: "Controla quién puede ver, crear, editar, reembolsar, exportar o configurar pedidos, suscripciones, transacciones, impuestos y productos."
+icon: "user-lock"
+---
+
+Los permisos detallados de pagos te dejan decidir exactamente qué puede hacer cada miembro de tu equipo en el módulo de **Pagos**: ver, crear, editar, eliminar, exportar o configurar. En lugar de un único interruptor de "acceso a pagos", tienes seis categorías independientes, así puedes delegar tareas sin exponer operaciones delicadas como los reembolsos o la configuración de impuestos.
+
+## Para qué te sirve
+
+- **Menos riesgo:** reservas las acciones de alto impacto (reembolsos, eliminar productos, configurar impuestos) para personas de confianza.
+- **Incorporaciones más rápidas:** cada persona nueva recibe solo lo que necesita para su puesto.
+- **Auditorías más limpias:** con permisos acotados es más fácil saber quién cambió qué en los registros de auditoría.
+- **Claridad operativa:** cada tarea vive en una categoría concreta (por ejemplo, reembolsos en Transacciones, no en Pedidos).
+- **Control de datos:** las acciones masivas, importaciones y exportaciones dependen de los permisos de cada usuario.
+
+## Qué cambió respecto al permiso único de Pagos
+
+- **Permisos reubicados:** capacidades como **Reembolsar transacciones** y **Gestionar suscripciones** ahora están dentro de su categoría (Transacciones y Suscripciones). Puedes dar acceso de consulta sin dar derecho a reembolsar.
+- **Acciones estandarizadas:** todas las categorías usan el mismo conjunto: **Ver, Crear, Actualizar, Eliminar, Exportar y Configurar**.
+- **Dependencias en la interfaz:** algunas herramientas requieren permisos base. Por ejemplo, las acciones masivas de productos y las importaciones por CSV requieren Crear o Actualizar.
+- **Control fino de lo sensible:** decides explícitamente quién puede reembolsar, editar suscripciones o cambiar impuestos.
+
+## Las seis categorías
+
+| Categoría | Qué cubre | Perfil recomendado |
+| --- | --- | --- |
+| **Pedidos** | Pedidos y cobros únicos creados desde enlaces de pago, páginas de pago, tiendas y punto de venta | Atención al cliente o logística: consultar pedidos, exportar listados y hacer ajustes puntuales |
+| **Suscripciones** | Ciclo de vida de los cobros recurrentes: crear, asignar a contactos, pausar, reanudar, cancelar y cambiar el método de pago | Facturación y gestores de cuenta. Soporte solo con Ver |
+| **Transacciones** | Pagos completados, reembolsos y descarga de recibos | Soporte para consultas (Ver, Exportar, Recibos). Reembolsos solo para finanzas |
+| **Impuestos** | Tasas manuales y cálculo automático de impuestos | Contabilidad o responsable financiero. No dar Configurar ni Eliminar a otros perfiles |
+| **Productos** | Crear, editar, duplicar, importar, exportar y eliminar productos. Los cambios afectan enlaces de pago, tiendas y páginas de pago | Responsable del catálogo. Importar, Exportar y Eliminar solo para administradores |
+| **Configuración de pagos** | Preferencias generales: recibos, valores predeterminados de suscripciones y notificaciones de pago | Administradores o responsables de marca y finanzas |
+
+## Cómo asignar los permisos
+
+<Steps>
+  <Step title="Abre tu equipo">
+    Ve a **Configuración → Mi equipo**, busca al usuario y haz clic en el ícono de lápiz para editarlo.
+  </Step>
+  <Step title="Abre Roles y permisos">
+    Despliega la sección **Roles y permisos** y entra a las categorías de pagos.
+  </Step>
+  <Step title="Activa las acciones de cada categoría">
+    En Pedidos, Suscripciones, Transacciones, Impuestos, Productos y Configuración de pagos, activa solo las acciones que necesita: **Ver, Crear, Actualizar, Eliminar, Exportar, Configurar**. Algunas acciones masivas, de importación o de exportación no estarán disponibles sin Crear o Actualizar.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+  <Step title="Copia la configuración (opcional)">
+    Usa **Copiar permisos** para aplicar la misma configuración a otro usuario con el mismo puesto.
+  </Step>
+  <Step title="Verifica el acceso">
+    Pide al usuario que cierre sesión y vuelva a entrar si hace falta, y comprueba su acceso con un registro de prueba (abrir un producto, ver una transacción).
+  </Step>
+</Steps>
+
+## Perfiles recomendados
+
+Son sugerencias para puestos habituales. Adáptalas a las políticas de tu negocio.
+
+| Puesto | Categoría | Acciones | Comentario |
+| --- | --- | --- | --- |
+| **Soporte de facturación** | Transacciones | Ver, Exportar, Descargar recibo (sin Reembolsar) | Investiga y envía recibos sin poder devolver dinero |
+| | Suscripciones | Ver, Pausar, Reanudar, Cancelar | Evita Crear y Actualizar si el equipo no está capacitado |
+| | Pedidos | Ver, Exportar | Para responder por el estado de un pedido |
+| | Productos | Ver | Solo consulta del catálogo |
+| | Configuración de pagos | Ninguna | Queda en manos de administración |
+| **Logística o encargado de tienda** | Pedidos | Ver, Exportar, Actualizar (sin Eliminar) | Envíos y ajustes; eliminar solo administradores |
+| | Productos | Ver, Actualizar (Crear para el responsable del catálogo) | Sin Importar, Exportar ni Eliminar |
+| | Transacciones | Ver | Sin reembolsos: se escalan a finanzas |
+| | Suscripciones | Ver (opcional) | Solo contexto |
+| **Gestor de cuenta** | Suscripciones | Ver, Crear, Actualizar, Pausar, Reanudar, Cancelar, Exportar | Responsable de renovaciones y retención |
+| | Transacciones | Ver | Consulta del historial, sin reembolsos |
+| | Pedidos | Ver | Contexto para conversar con el cliente |
+| | Productos | Ver (opcional) | Contexto de precios |
+| **Contador o controller** | Transacciones | Ver, Exportar, Reembolsar | Reembolsos solo para finanzas, revisados en los registros de auditoría |
+| | Impuestos | Ver, Configurar, Actualizar, Eliminar | Solo personal financiero capacitado |
+| | Configuración de pagos | Configurar, Actualizar | Recibos, valores predeterminados y notificaciones |
+| | Pedidos | Ver | Solo lectura |
+| | Productos | Ver, Exportar (opcional) | Exportar para conciliación |
+| **Administrador** | Todas | Todas las acciones que apliquen | Un grupo pequeño y capacitado. Usa Eliminar con moderación |
+
+<Tip>
+  Arma primero el perfil de un puesto, pruébalo con una persona y después usa **Copiar permisos** para replicarlo en el resto del equipo con ese mismo rol.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los permisos afectan las importaciones y exportaciones por CSV?">
+    Sí. Si un usuario no ve las herramientas masivas, revisa que tenga Crear, Actualizar o Exportar en esa categoría.
+  </Accordion>
+  <Accordion title="¿Alguien puede consultar transacciones sin poder reembolsar?">
+    Sí. Dale **Transacciones: Ver** (y Exportar si lo necesita) y deja el reembolso solo para finanzas.
+  </Accordion>
+  <Accordion title="Si le quito permisos de Productos a alguien, ¿se rompen mis enlaces de pago?">
+    No. Tus páginas de pago y enlaces siguen vendiendo con la configuración actual. Esa persona solo deja de poder editar los productos o los enlaces.
+  </Accordion>
+  <Accordion title="¿Dónde veo quién cambió un producto, un impuesto o una preferencia de pago?">
+    En los registros de auditoría de tu cuenta. También hay registros de auditoría por recurso en embudos, sitios web y tiendas.
+  </Accordion>
+  <Accordion title="Un usuario ve botones deshabilitados en Pagos">
+    Casi siempre le falta Crear, Actualizar o Exportar en esa categoría. Revisa su rol o prueba temporalmente con un rol de administrador para confirmarlo.
+  </Accordion>
+  <Accordion title="¿El permiso de Impuestos incluye el cálculo automático?">
+    Sí, donde esté disponible. Quien tenga el permiso puede activar y gestionar el cálculo automático. Asegúrate de pedir la dirección del cliente en el pago para que el cálculo sea correcto.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Permisos de usuario para pagos" icon="user-lock" href="/pagos/permisos-de-usuario-para-pagos">
+    Cómo dar o quitar acceso al módulo de Pagos.
+  </Card>
+  <Card title="Cómo gestionar los reembolsos" icon="rotate-left" href="/pagos-facturas/gestionar-reembolsos">
+    Devuelve pagos desde Chateea.
+  </Card>
+</CardGroup>

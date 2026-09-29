@@ -1,0 +1,136 @@
+---
+title: "Casos de uso frecuentes de pagos y facturas"
+description: "Cobra una tarjeta por teléfono, registra pagos manuales, factura artículos sueltos y traslada la comisión."
+icon: "lightbulb"
+---
+
+Las facturas de Chateea no solo sirven para enviar un cobro por correo. También te permiten cobrar una tarjeta mientras hablas con el cliente por teléfono, dejar constancia de pagos en efectivo o transferencia, facturar servicios que no tienes en tu catálogo y trasladar la comisión de la tarjeta. Aquí tienes los casos más habituales y cómo resolverlos.
+
+## Cobrar una tarjeta por teléfono sin enviar la factura
+
+Ideal cuando el cliente te dicta su tarjeta en una llamada y quieres cobrar en el momento.
+
+<Steps>
+  <Step title="Crea la factura">
+    Crea una factura nueva y selecciona el contacto. Si todavía no existe, puedes agregarlo en ese mismo momento.
+  </Step>
+  <Step title="Agrega el producto">
+    Añade lo que estás vendiendo. Si no está en la lista, elige **Agregar artículo nuevo**.
+  </Step>
+  <Step title="Registra el pago">
+    En lugar de enviar la factura, abre el menú **⋮** de la barra superior y haz clic en **Registrar pago**.
+  </Step>
+  <Step title="Cobra la tarjeta">
+    Elige **Cobrar una tarjeta**. Si es un cliente nuevo, selecciona **Tarjeta nueva** e introduce los datos. Si ya te compró antes, verás su tarjeta en la sección de tarjetas guardadas.
+  </Step>
+</Steps>
+
+<Note>
+  Con este método el cliente no recibe una confirmación automática por correo ni por SMS. Si quieres que tenga su comprobante, envíaselo tú.
+</Note>
+
+## Registrar pagos manuales sin una pasarela conectada
+
+Puedes usar las facturas aunque no tengas Stripe u otro proveedor conectado. En ese caso no podrás cobrar tarjetas en línea, pero sí dejar registro de pagos recibidos por otros medios.
+
+<Note>
+  Sin proveedor de pago, los pagos se registran siempre a mano. Por ahora, esta opción funciona solo con facturas únicas, no con recurrentes.
+</Note>
+
+<Steps>
+  <Step title="Abre las facturas">
+    Ve a **Pagos → Facturas y presupuestos**. Si aparece una ventana pidiéndote conectar un proveedor de pago, ciérrala.
+  </Step>
+  <Step title="Crea la factura">
+    Haz clic en **Nuevo → Nueva factura** y completa cliente, productos, impuestos y descuentos.
+  </Step>
+  <Step title="Registra el pago">
+    Abre el menú **⋮** y elige **Registrar pago → Registrar manualmente**.
+  </Step>
+  <Step title="Elige el método">
+    Selecciona **Efectivo**, **Tarjeta**, **Cheque**, **Transferencia bancaria** u **Otro**, revisa los datos y haz clic en **Enviar**.
+  </Step>
+</Steps>
+
+La factura queda registrada como pagada para ese cliente. Tampoco en este caso se envía una confirmación automática al cliente.
+
+## Agregar productos o servicios que no están en tu catálogo
+
+Si vas a facturar algo puntual que no tienes creado en **Productos**, puedes añadirlo directamente en la factura.
+
+<Steps>
+  <Step title="Agrega un artículo">
+    En la factura, haz clic en **Agregar un artículo**.
+  </Step>
+  <Step title="Crea el artículo nuevo">
+    Elige **Artículo nuevo** e introduce el nombre del producto y del precio.
+  </Step>
+  <Step title="Decide si lo guardas">
+    Si lo vas a volver a vender, marca **Guardar para uso posterior** y quedará en tu catálogo de productos. Luego haz clic en **Agregar artículo nuevo**.
+  </Step>
+</Steps>
+
+## Trasladar la comisión de la tarjeta al cliente
+
+Una forma de cobrar la comisión de procesamiento es configurarla como si fuera un impuesto:
+
+<Steps>
+  <Step title="Crea el cargo en los impuestos">
+    Ve a la configuración de impuestos y crea un impuesto con el nombre y el porcentaje de tu comisión, por ejemplo "Comisión por pago con tarjeta".
+  </Step>
+  <Step title="Aplícalo en la factura">
+    En la factura, haz clic en **Agregar impuesto**, selecciona la comisión que creaste y guarda.
+  </Step>
+</Steps>
+
+El cargo aparece en la factura y el cliente lo ve desglosado al pagar.
+
+<Tip>
+  Chateea también tiene una opción específica de cargo por procesamiento en los ajustes de facturas. Consulta [Cargos por procesamiento](/pagos/cargos-por-procesamiento) antes de elegir un método, y revisa las normas de tu país sobre recargos por pago con tarjeta.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo llevar el control de pagos parciales?">
+    Sí. Puedes crear la factura por el total y registrar cada abono a medida que lo recibes, para saber siempre cuánto queda pendiente. También puedes permitir que el cliente pague por partes: consulta [Pagos parciales en facturas](/pagos/pagos-parciales-en-facturas).
+  </Accordion>
+  <Accordion title='Elegí "Prueba" pero la página de pago dice "Modo en vivo". ¿Por qué?'>
+    Normalmente tu cuenta de Stripe sigue en modo en vivo. Entra a tu panel de Stripe, activa el modo de prueba (arriba a la derecha) y actualiza la página en Chateea.
+  </Accordion>
+  <Accordion title='¿Por qué la factura dice "Pago en proceso" si el cliente ya pagó?'>
+    El pago se inició pero todavía no se liquidó. Pasa con transferencias ACH o con métodos como el eCheck de PayPal, que tardan de 2 a 5 días hábiles. Cuando se acredita, la factura cambia sola a **Pagada**.
+  </Accordion>
+  <Accordion title="El cliente dice que el enlace de pago no funciona. ¿Qué pasó?">
+    El enlace se desactiva cuando la fecha de pago programada ya pasó. Clona la factura, ajusta las fechas del plan de pagos a hoy o a una fecha futura y vuelve a enviarla.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo anular ni eliminar una factura pagada?">
+    Una factura marcada como pagada no se puede anular, aunque el pago fuera de prueba (si no se hizo claramente en modo de prueba, cuenta como real). Primero reembolsa el pago: en la factura, abre **⋮ → Ver transacción**, haz clic en **Reembolsar** y completa el reembolso. Después vuelve a la factura y elige **⋮ → Anular**. Las facturas pagadas no se pueden eliminar directamente.
+  </Accordion>
+  <Accordion title='Al registrar un pago manual, la fecha desaparece y sale "Fecha no válida"'>
+    La fecha del pago no puede ser anterior a la fecha de emisión de la factura. Elige una fecha igual o posterior a la emisión, actualiza la página y vuelve a intentarlo. Si persiste, cambia temporalmente el idioma de tu cuenta a inglés y prueba de nuevo.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo hacer un pago parcial en una factura?">
+    Si la factura tiene un plan de pagos, no admite pagos parciales porque entrarían en conflicto con las cuotas. Quita o modifica el plan y luego usa **Registrar pago → Registrar manualmente** para anotar el abono.
+  </Accordion>
+  <Accordion title="¿Por qué la comisión de procesamiento sale en una factura y en otra no?">
+    Los cargos por procesamiento que actives en la configuración no se aplican a facturas que ya existían. Solo aparecen en las facturas creadas después de guardar el ajuste. Si lo necesitas en una anterior, vuelve a crearla.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/pagos/crear-y-enviar-facturas">
+    Guía completa para emitir facturas.
+  </Card>
+  <Card title="Gestionar reembolsos" icon="rotate-left" href="/pagos-facturas/gestionar-reembolsos">
+    Cómo devolver un pago desde Chateea.
+  </Card>
+  <Card title="Configurar impuestos" icon="percent" href="/pagos/configurar-impuestos">
+    Crea y aplica impuestos en tus ventas.
+  </Card>
+  <Card title="Tarjetas guardadas de clientes" icon="credit-card" href="/pagos/tarjetas-guardadas-de-clientes">
+    Cobra con las tarjetas que tus clientes ya registraron.
+  </Card>
+</CardGroup>

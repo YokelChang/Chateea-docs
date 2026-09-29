@@ -1,98 +1,166 @@
 ---
 title: "Portal del cliente"
-description: "Un espacio propio donde tus clientes gestionan sus citas, pagos y contenido."
+description: "Qué es el portal del cliente y cómo configurarlo: dominio propio, marca, idioma, permisos e invitaciones."
 icon: "user-lock"
 ---
 
-El portal es el área privada de tus clientes. Entran con su cuenta y encuentran todo lo suyo en un solo lugar, sin tener que escribirte para preguntar.
+El portal del cliente es el área privada de tus clientes y leads. Entran con su propio usuario y encuentran en un solo lugar todo lo que tienen contigo: sus cursos, sus grupos de comunidad, su panel de afiliado, sus suscripciones y facturas, y los documentos que compartes con ellos.
 
-El beneficio práctico: **menos mensajes de gestión**. Preguntas como "¿cuándo era mi cita?", "¿me puedes reenviar la factura?" o "¿cómo entro al curso?" se resuelven solas.
+El beneficio práctico: **menos mensajes de gestión**. Preguntas como "¿me reenvías la factura?" o "¿cómo entro al curso?" se resuelven solas, y tu cliente siente que trabaja con un negocio ordenado y profesional.
 
 ## Qué encuentra tu cliente
 
 <CardGroup cols={2}>
-  <Card title="Sus citas" icon="calendar">
-    Próximas y pasadas, con opción de reprogramar o cancelar según tus reglas.
+  <Card title="Cursos y membresías" icon="graduation-cap">
+    El contenido que compró, con su progreso, tareas y certificados.
   </Card>
-
-  <Card title="Sus facturas y pagos" icon="file-invoice">
-    Historial completo, con la posibilidad de pagar lo pendiente.
+  <Card title="Comunidades" icon="users">
+    Los grupos a los que pertenece, con publicaciones, comentarios y eventos.
   </Card>
-
-  <Card title="Sus cursos y membresías" icon="graduation-cap">
-    El contenido que compró y su progreso.
+  <Card title="Programa de afiliados" icon="handshake">
+    Sus enlaces de referido, comisiones y pagos si es afiliado tuyo.
   </Card>
-
-  <Card title="Sus datos" icon="user-pen">
-    Puede actualizar teléfono, correo y dirección sin pasártelos a ti.
+  <Card title="Suscripciones y facturas" icon="file-invoice">
+    Su historial de facturas y pagos, con opción de descargarlas y gestionar sus suscripciones.
   </Card>
 </CardGroup>
 
-<Info>
-  Que el cliente actualice sus propios datos no es un detalle menor: mantiene tu base de datos limpia sin que nadie de tu equipo tenga que hacerlo.
-</Info>
+Todo se ve con tu marca: nombre, logo, colores y, si quieres, tu propio dominio.
 
-## Configúralo
+## Casos en los que más rinde
+
+- **Escuelas y creadores de cursos:** los alumnos ven sus cursos, su avance y conversan en la comunidad.
+- **Entrenadores y programas de bienestar:** cada miembro accede a su plan y participa en un grupo privado.
+- **Negocios con programa de afiliados:** tus afiliados revisan referidos y comisiones sin pedirte reportes.
+- **Tiendas con clientes frecuentes:** un grupo VIP con contenido y beneficios exclusivos.
+
+## Configúralo paso a paso
+
+El portal se administra desde **Sitios → Portal del cliente** (en algunas cuentas aparece también en **Membresías → Portal del cliente**). Ahí encuentras el **Panel**, la **Configuración** y la sección de la aplicación móvil.
 
 <Steps>
-  <Step title="Activa el portal">
-    En **Configuración → Portal del cliente**.
+  <Step title="Revisa la dirección del portal">
+    Chateea le asigna a tu portal una dirección predeterminada. Puedes usarla tal cual o conectar tu propio dominio en el siguiente paso.
+  </Step>
+  <Step title="Conecta tu dominio (opcional, recomendado)">
+    En **Configuración → Configuración del dominio**, elige **Dominio personalizado** y escribe el dominio o subdominio que quieres usar, por ejemplo `miembros.tunegocio.com`. Luego crea el registro DNS en tu proveedor de dominio (detalles abajo) y haz clic en **Actualizar dominio**.
   </Step>
   <Step title="Aplica tu marca">
-    Logo, colores y nombre del negocio. El cliente debe sentir que sigue en tu casa.
+    En **Configuración → Marca**, completa nombre, descripción, colores, logo e imágenes. Guarda con **Guardar configuración**.
   </Step>
-  <Step title="Conéctalo a tu dominio">
-    Idealmente un subdominio propio, por ejemplo `micuenta.tunegocio.com`. Ver [Dominios](/dominios/introduccion).
+  <Step title="Elige el idioma predeterminado">
+    En **Configuración → Configuración de idioma**, selecciona el idioma y haz clic en **Guardar**.
   </Step>
-  <Step title="Elige qué secciones se muestran">
-    Activa solo lo que aplica a tu negocio. Un portal con secciones vacías confunde más de lo que ayuda.
-  </Step>
-  <Step title="Define las reglas de autogestión">
-    Hasta cuándo puede cancelar o reprogramar por su cuenta. Por ejemplo, hasta 24 horas antes.
-
-    <Tip>
-      Permitir reprogramar solo suena arriesgado, pero reduce las ausencias: un cliente que puede mover su cita en dos clics lo hace, en vez de simplemente no aparecer.
-    </Tip>
+  <Step title="Decide qué aplicaciones se muestran">
+    En **Configuración → Permisos de aplicaciones**, activa solo lo que usa tu negocio (cursos, comunidades, afiliados) y define si se muestra **Iniciar sesión con Google**. Ver [Permisos de aplicaciones del portal](/portal-cliente/permisos-de-aplicaciones-del-portal).
   </Step>
   <Step title="Pruébalo como cliente">
-    Entra con una cuenta de prueba desde el teléfono y recorre cada sección.
+    Abre la dirección del portal en una ventana de incógnito, regístrate con un correo de prueba y recorre cada sección, idealmente también desde el teléfono.
   </Step>
 </Steps>
 
-## Cómo lograr que lo usen
+## Conectar tu propio dominio
 
-Un portal que nadie conoce no ahorra ningún trabajo.
+Un dominio propio da más confianza y hace que el cliente sienta que sigue en tu casa.
+
+1. Entra al panel de tu proveedor de dominio (GoDaddy, Namecheap, Hostinger, Cloudflare, etc.) y abre la configuración de **DNS**.
+2. Agrega un registro nuevo:
+
+| Tipo de registro | Cuándo usarlo | Valor |
+| --- | --- | --- |
+| **A** | Si usas el dominio raíz (`tunegocio.com`) | `162.159.140.166` |
+| **CNAME** | Si usas un subdominio (`miembros.tunegocio.com`) | El destino que te muestra la pantalla **Configuración del dominio** del portal |
+
+3. Guarda los cambios, espera la propagación y vuelve a Chateea para hacer clic en **Actualizar dominio**.
+
+<Note>
+  La propagación de DNS suele tardar entre 24 y 48 horas, según el TTL del registro y tu proveedor. Si pasadas 48 horas el portal sigue sin abrir, revisa el registro con tu proveedor de dominio.
+</Note>
+
+Cuando cambias el dominio o subdominio del portal, quienes entren por la dirección anterior ven un aviso con el enlace a la nueva, y a los 30 segundos se les redirige automáticamente.
+
+## Opciones de marca
+
+| Opción | Para qué sirve | Requisitos |
+| --- | --- | --- |
+| **Nombre del portal** | El nombre que se muestra de forma destacada en el portal. | |
+| **Descripción del portal** | Una frase breve sobre tu portal o tus servicios, visible para tus clientes. | |
+| **Color de marca 1** | Color principal: botones, títulos y elementos destacados. | |
+| **Color de marca 2** | Color secundario que complementa al principal. | |
+| **Favicon** | El ícono que aparece en la pestaña del navegador. | Proporción 1:1, SVG, PNG o JPG, máximo 16 x 16 px |
+| **Imagen del portal** | La imagen principal de marca del portal. | Proporción 1:1, SVG, PNG o JPG, máximo 720 x 720 px |
+| **Logo** | Tu logo dentro del portal. | Proporción 1:1, SVG, PNG o JPG, máximo 200 x 200 px |
+| **Correo de soporte** | La dirección a la que tus clientes pueden escribir si tienen dudas. | |
+| **Derechos de autor** | El texto de copyright, por ejemplo "© 2026 Tu Negocio". | |
+
+Haz clic en **Guardar configuración** para aplicar los cambios o en **Cancelar** para descartarlos.
+
+## Idioma del portal
+
+Si atiendes clientes de varios países, define un idioma predeterminado en **Configuración → Configuración de idioma**. Cada cliente puede cambiar su propio idioma desde **Administrar tu cuenta → Configuración de idioma** dentro del portal.
+
+## Si vienes de las membresías clásicas
+
+Si tus cursos aún usan la experiencia clásica de membresías, verás un mensaje de migración en la configuración de tus cursos (**Membresías → Cursos → Configuración**). Sigue los pasos en pantalla para pasar a la configuración del portal del cliente. Después de migrar, revisa marca, dominio, correos y permisos de aplicaciones para confirmar que todo coincide con lo que tenías. Ver [Migrar las membresías clásicas al portal del cliente](/membresias/migrar-membresias-clasicas-al-portal-de-clientes).
+
+## Cómo invitar a tus clientes
+
+Tienes dos caminos:
+
+- **Desde cada aplicación.** Quien ya tiene acceso a un curso entra al portal con el mismo usuario y contraseña. Para afiliados, ve a **Marketing → Administrador de afiliados → Campañas**, edita la campaña y copia el enlace de registro: quien se registre verá sus enlaces, comisiones y ganancias en el portal.
+- **Compartiendo la dirección del portal.** Cópiala desde **Configuración → Configuración del dominio** o desde el [panel del portal](/portal-cliente/panel-del-portal-del-cliente), que además te permite invitar contactos y enviarles correos de acceso.
+
+Un portal que nadie conoce no ahorra trabajo. Para que lo usen:
 
 <AccordionGroup>
   <Accordion title="Inclúyelo en el correo de bienvenida">
-    Con el enlace y una frase de qué va a encontrar ahí.
+    Con el enlace y una frase de lo que van a encontrar. Puedes automatizarlo con un [correo de bienvenida de membresías](/automatizaciones/correo-de-bienvenida-de-membresias).
   </Accordion>
-
-  <Accordion title="Agrégalo a las confirmaciones de cita">
-    "Puedes ver o cambiar tu cita aquí" resuelve la mitad de los mensajes de reprogramación.
+  <Accordion title="Ponlo en tus facturas y comunicaciones">
+    Para que consulten su historial de pagos sin pedirte nada.
   </Accordion>
-
-  <Accordion title="Pónlo en las facturas">
-    Para que consulte su historial de pagos sin pedirte nada.
-  </Accordion>
-
   <Accordion title="Créale una respuesta rápida">
-    Un atajo como `/portal` para que tu equipo lo comparta en un segundo.
+    Un atajo como `/portal` para que tu equipo lo comparta en un segundo desde Conversaciones.
   </Accordion>
-
   <Accordion title="Enséñaselo a tu agente de IA">
-    Que sepa remitir al portal cuando alguien pregunte por sus citas o facturas.
+    Que sepa remitir al portal cuando alguien pregunte por sus cursos, facturas o accesos.
   </Accordion>
 </AccordionGroup>
 
 ## Aplicación móvil
 
-El portal también está disponible como aplicación móvil, y en los planes que lo incluyen puede llevar tu propia marca.
+El portal también puede llegar a las tiendas de aplicaciones como una app con tu marca. Tiene sentido sobre todo para negocios de relación continua (gimnasios, academias, comunidades, clínicas con seguimiento), donde el cliente entra con frecuencia. Ver [Aplicación móvil con tu marca](/portal-cliente/app-movil-con-tu-marca).
 
-Tiene sentido sobre todo para negocios de relación continua — gimnasios, membresías, clínicas con seguimiento — donde el cliente entra con frecuencia. Para un negocio de compra ocasional, el acceso web suele bastar.
+## Preguntas frecuentes
 
-## Siguiente paso
+<AccordionGroup>
+  <Accordion title="Personalicé la marca, pero no veo los cambios">
+    Suele ser caché del navegador. Borra la caché o abre el portal en una ventana de incógnito. Si sigue igual, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+  <Accordion title="Configuré el DNS y el portal no abre">
+    Los cambios de DNS pueden tardar hasta 48 horas en propagarse. Si pasa más tiempo, confirma con tu proveedor de dominio que el registro quedó bien creado.
+  </Accordion>
+  <Accordion title="Mis afiliados no ven sus estadísticas en el portal">
+    Verifica que usen el correo correcto para entrar y que la aplicación de afiliados esté activa en **Permisos de aplicaciones**. Si el problema continúa, escribe a **help@chateea.com**.
+  </Accordion>
+  <Accordion title="No puedo subir el favicon">
+    Debe ser cuadrado (1:1), en SVG, PNG o JPG, y no superar 16 x 16 px.
+  </Accordion>
+</AccordionGroup>
 
-<Card title="Volver al inicio" icon="house" href="/">
-  Explora el resto del centro de ayuda.
-</Card>
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registro e inicio de sesión" icon="right-to-bracket" href="/portal-cliente/registro-e-inicio-de-sesion-en-el-portal">
+    Cómo entran tus clientes al portal.
+  </Card>
+  <Card title="Panel del portal del cliente" icon="gauge" href="/portal-cliente/panel-del-portal-del-cliente">
+    Invita usuarios y envía accesos de un clic.
+  </Card>
+  <Card title="Compartir documentos" icon="folder-open" href="/contactos/compartir-documentos-con-el-portal-del-cliente">
+    Intercambia archivos con tus clientes desde su ficha.
+  </Card>
+  <Card title="Dominios" icon="globe" href="/dominios/introduccion">
+    Todo sobre conectar dominios en Chateea.
+  </Card>
+</CardGroup>
