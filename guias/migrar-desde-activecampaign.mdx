@@ -1,0 +1,226 @@
+---
+title: "Migrar desde ActiveCampaign a Chateea"
+description: "Lleva contactos, deals, plantillas de correo, landing pages, formularios y automatizaciones de ActiveCampaign a Chateea."
+icon: "right-left"
+---
+
+Si vienes de ActiveCampaign, esta guía te acompaña para llevar a Chateea todo lo que usas en tu marketing y tus ventas, sin perder datos y sin interrumpir tus procesos. Algunas piezas se importan directamente (contactos, oportunidades y plantillas de correo) y otras se reconstruyen con las herramientas de Chateea (páginas de destino, formularios y automatizaciones).
+
+## Qué debes migrar
+
+Revisa esta lista antes de empezar para no dejar nada atrás:
+
+| En ActiveCampaign | En Chateea | Método |
+| --- | --- | --- |
+| Contactos | Contactos | Exportar CSV e importar |
+| Deals (negocios) | Oportunidades | Exportar CSV e importar |
+| Plantillas de correo | Plantillas de correo | Importar con enlace para compartir |
+| Landing pages | Embudos y sitios web | Reconstruir |
+| Formularios | Formularios | Reconstruir |
+| Automatizaciones | Flujos de trabajo | Reconstruir |
+
+<Tip>
+Migra en este mismo orden. Los contactos van primero porque las oportunidades, los formularios y los flujos de trabajo dependen de ellos.
+</Tip>
+
+## 1. Migra tus contactos
+
+Los contactos son el centro de tu CRM y tu marketing. El proceso consiste en exportarlos de ActiveCampaign, dejar el archivo listo y subirlo a Chateea asignando bien cada campo.
+
+<Steps>
+<Step title="Exporta los contactos desde ActiveCampaign">
+En ActiveCampaign, entra en **Contacts** desde el menú lateral y haz clic en **Export**, arriba a la derecha. Elige los campos que quieres incluir: como mínimo correo, nombre, apellido, teléfono, etiquetas y tus campos personalizados. Ponle un nombre al archivo **sin caracteres especiales** (como !, # o $), porque pueden dar problemas al importar. Haz clic en **Export** y descarga el CSV cuando esté listo.
+</Step>
+<Step title="Prepara el archivo CSV">
+Antes de subirlo, revisa que:
+- Las fechas estén en formato **AAAA-MM-DD**.
+- El archivo use codificación **UTF-8**, para que los acentos y la ñ se vean bien.
+- No haya saltos de línea dentro de las celdas, emojis ni caracteres especiales innecesarios.
+- Cada contacto tenga un correo válido. Chateea acepta filas con solo nombre o teléfono, pero sin correo no podrás incluir a ese contacto en tus campañas de correo.
+</Step>
+<Step title="Crea los campos personalizados que falten">
+Si alguna columna del CSV no tiene un campo equivalente en Chateea, créalo antes como campo personalizado, con el tipo de dato correcto.
+</Step>
+<Step title="Importa el archivo en Chateea">
+Ve a **Contactos** y haz clic en **Importar contactos**. Sube el CSV y relaciona cada columna con su campo de Chateea (por ejemplo, "First Name" con **Nombre**).
+</Step>
+<Step title="Etiqueta el origen">
+Durante la importación, agrega una etiqueta que identifique de dónde vienen, por ejemplo `importado-activecampaign`. Te servirá para filtrarlos, revisarlos o incluirlos en un flujo de bienvenida.
+</Step>
+<Step title="Revisa los datos importados">
+Cuando termine la importación, abre algunos contactos y confirma que todos los campos, etiquetas y datos personalizados llegaron correctamente.
+</Step>
+</Steps>
+
+## 2. Migra tus deals como oportunidades
+
+Lo que en ActiveCampaign se llama **Deals** en Chateea son **oportunidades**: ventas potenciales que avanzan por las etapas de un pipeline.
+
+<Steps>
+<Step title="Crea tus pipelines en Chateea">
+Antes de importar, crea en Chateea los pipelines y etapas equivalentes a los de ActiveCampaign. Los nombres de pipeline y etapa del CSV deben coincidir con los de tu cuenta.
+</Step>
+<Step title="Exporta los deals desde ActiveCampaign">
+En ActiveCampaign, entra en **Deals**. Usa los filtros de arriba para elegir qué exportar: por estado (abierto, ganado, perdido), por pipeline u otros criterios. Abre el menú del ícono de engranaje, arriba a la derecha, haz clic en **Export** y descarga el CSV.
+</Step>
+<Step title="Prepara el archivo">
+Asegúrate de que incluya título del deal, valor, pipeline, etapa, nombre del contacto y responsable. Cada deal debe corresponder a un contacto que ya exista en Chateea, por eso importas los contactos primero.
+</Step>
+<Step title="Importa en Chateea">
+Ve a **Oportunidades**, haz clic en **Importar** y sube el CSV. Relaciona las columnas con los campos de Chateea (por ejemplo, "Deal Title" con **Nombre de la oportunidad**) y confirma que cada oportunidad quede en el pipeline y la etapa correctos.
+</Step>
+<Step title="Revisa el resultado">
+Abre el pipeline y comprueba que todas las oportunidades se importaron con su etapa, valor y responsable.
+</Step>
+</Steps>
+
+## 3. Importa tus plantillas de correo
+
+Puedes traer tus plantillas de ActiveCampaign sin rediseñarlas, usando su enlace para compartir.
+
+<Steps>
+<Step title="Copia el enlace para compartir en ActiveCampaign">
+Ve a **Campaigns → Campaign Templates**, busca la plantilla, pasa el cursor por encima, haz clic en el ícono de engranaje y elige **Share**. Copia el enlace que aparece.
+</Step>
+<Step title="Importa la plantilla en Chateea">
+Ve a **Marketing → Correos → Plantillas**, crea una plantilla nueva y elige la opción de **Importar**. Pega el enlace de ActiveCampaign, escribe un nombre para la plantilla y haz clic en **Crear plantilla**.
+</Step>
+<Step title="Revisa y ajusta">
+Abre la plantilla en el editor y revisa enlaces, imágenes y variables. Sustituye los campos personalizados de ActiveCampaign por los de Chateea y ajusta el diseño a tu marca.
+</Step>
+</Steps>
+
+## 4. Reconstruye tus landing pages
+
+Las páginas de destino no se pueden importar directamente desde ActiveCampaign, pero puedes recrearlas con el editor de arrastrar y soltar de Chateea.
+
+<Steps>
+<Step title="Documenta cada página">
+Anota la estructura, los textos, las imágenes y los códigos de seguimiento (Google Analytics, píxel de Meta, etc.) de cada página. Toma capturas de pantalla del diseño para tenerlas como referencia.
+</Step>
+<Step title="Crea la página en Chateea">
+Ve a **Sitios → Embudos** (o **Sitios web**) y crea uno nuevo desde una plantilla o en blanco. Reproduce la estructura con el editor y agrega el contenido, las imágenes y los formularios.
+</Step>
+<Step title="Agrega los códigos de seguimiento">
+En la pestaña **Configuración** del embudo o sitio, pega tus scripts en **Código de seguimiento del head** o **del body**.
+</Step>
+<Step title="Personaliza y publica">
+Ajusta el tema, el diseño y la configuración SEO, y publica.
+</Step>
+<Step title="Comprueba que todo funciona">
+Prueba en la página publicada todos los enlaces, formularios y códigos de seguimiento.
+</Step>
+</Steps>
+
+## 5. Reconstruye tus formularios
+
+Los formularios capturan prospectos y disparan automatizaciones. Los de ActiveCampaign se recrean en el constructor de formularios de Chateea.
+
+<Steps>
+<Step title="Documenta cada formulario">
+Anota los campos, las acciones que ejecuta (agregar a una lista, aplicar una etiqueta), las integraciones y cualquier ajuste especial: visibilidad, CSS personalizado o lógica condicional.
+</Step>
+<Step title="Crea el formulario en Chateea">
+Ve a **Sitios → Formularios**, haz clic en **Crear nuevo formulario** y agrega los mismos campos que tenía el original.
+</Step>
+<Step title="Configura lo que pasa al enviarlo">
+Replica las acciones del formulario original con un flujo de trabajo que use el disparador de formulario enviado: aplicar etiquetas, agregar a una campaña, avisar a tu equipo, etc.
+</Step>
+<Step title="Inserta el formulario">
+Agrégalo a tu página de Chateea o copia el código de inserción para usarlo en un sitio externo.
+</Step>
+<Step title="Prueba el formulario">
+Envía una respuesta de prueba y confirma que se ejecutan todas las acciones, que los datos llegan bien a los campos (incluidos los personalizados y las etiquetas) y que el formulario se ve correctamente en computadora, tableta y móvil.
+</Step>
+</Steps>
+
+## 6. Reconstruye tus automatizaciones
+
+Las automatizaciones de ActiveCampaign se recrean a mano como **flujos de trabajo** en Chateea.
+
+<Steps>
+<Step title="Documenta cada automatización">
+Si ActiveCampaign te permite exportar un esquema, hazlo. Si no, anota a mano el disparador de entrada (por ejemplo, contacto agregado a una lista), las acciones (enviar correo, agregar etiqueta), las condiciones (ramas si/no) y el objetivo final de cada automatización.
+</Step>
+<Step title="Crea el flujo de trabajo">
+Ve a **Automatización → Flujos de trabajo**, crea uno nuevo y configura el disparador equivalente al de ActiveCampaign (formulario enviado, etiqueta agregada, etc.).
+</Step>
+<Step title="Agrega acciones y condiciones">
+Reproduce la secuencia de acciones: enviar correos, agregar o quitar etiquetas, actualizar campos o mover oportunidades en el pipeline. Usa las condiciones si/no de Chateea para replicar las ramas del original.
+</Step>
+<Step title="Configura las esperas">
+Si la automatización tenía pausas (por ejemplo, esperar un día), agrega las acciones de espera con los mismos tiempos.
+</Step>
+<Step title="Prueba y valida">
+Haz pasar un contacto de prueba por el flujo, revisa las estadísticas del flujo para confirmar que cada acción se ejecutó y ajusta lo necesario hasta que funcione como esperas.
+</Step>
+</Steps>
+
+<Note>
+Los flujos de trabajo de Chateea cubren las mismas funciones que las automatizaciones de ActiveCampaign, pero la interfaz y algunos disparadores o acciones tienen otros nombres o funcionan distinto. Revisa cada automatización con calma en lugar de copiarla paso por paso.
+</Note>
+
+## Antes de dar por terminada la migración
+
+| Aspecto | Qué hacer |
+| --- | --- |
+| **Formación del equipo** | Enseña a tu equipo a usar Chateea, sobre todo lo que cambia respecto a ActiveCampaign. Documenta los procesos internos que se modificaron. |
+| **Integridad de los datos** | Verifica que contactos, oportunidades y plantillas se transfirieron completos y correctos. |
+| **Copia de seguridad** | Guarda una copia de todos tus datos de ActiveCampaign antes de eliminar o archivar esa cuenta. |
+| **Comunicación con clientes** | Si cambian procesos que tus contactos ven (formularios, correos), avísales para evitar confusiones. |
+| **Seguimiento continuo** | Durante las primeras semanas, revisa el rendimiento de flujos de trabajo y campañas, y usa los informes de Chateea para optimizar. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cómo exporto mis contactos de ActiveCampaign?">
+Entra en **Contacts**, haz clic en **Export**, elige los campos (correo, nombre, apellido, teléfono, etiquetas y campos personalizados), ponle al archivo un nombre sin caracteres especiales y descarga el CSV.
+</Accordion>
+<Accordion title="¿Cómo preparo el archivo antes de importarlo?">
+Pon las fechas en formato AAAA-MM-DD, guarda el CSV en UTF-8, quita saltos de línea y emojis, y confirma que cada contacto tenga un correo válido.
+</Accordion>
+<Accordion title="¿Cómo importo los contactos y asigno los campos?">
+En **Contactos**, haz clic en **Importar contactos**, sube el CSV, relaciona cada columna con su campo de Chateea, agrega una etiqueta de origen e importa.
+</Accordion>
+<Accordion title="¿Cómo migro los deals?">
+Exporta los deals desde **Deals → Export** con título, valor, pipeline y etapa. En Chateea, ve a **Oportunidades → Importar**, sube el CSV, relaciona los campos e impórtalos en el pipeline correcto.
+</Accordion>
+<Accordion title="¿Puedo pasar las plantillas de correo directamente?">
+Sí. En ActiveCampaign copia el enlace de **Share** de la plantilla. En Chateea, en **Marketing → Correos → Plantillas**, elige importar, pega el enlace y crea la plantilla.
+</Accordion>
+<Accordion title="¿Se pueden importar las landing pages?">
+No directamente. Documenta el diseño y los códigos de seguimiento, reconstruye la página con el editor de embudos o sitios web, agrega los códigos en **Configuración** y publica.
+</Accordion>
+<Accordion title="¿Cómo migro mis formularios?">
+Anota los campos y acciones del formulario original, créalo de nuevo en **Sitios → Formularios**, configura las acciones con un flujo de trabajo e insértalo en tus páginas.
+</Accordion>
+<Accordion title="¿Cómo migro mis automatizaciones?">
+Documenta disparadores, acciones y condiciones de cada automatización. En **Automatización → Flujos de trabajo**, crea un flujo nuevo, configura el disparador, agrega acciones y condiciones, y pruébalo con un contacto.
+</Accordion>
+<Accordion title="¿Cómo protejo mis datos durante la migración?">
+Sigue los pasos en orden, verifica formatos y asignación de campos, guarda una copia de todos tus datos de ActiveCampaign, revisa lo importado y vigila los flujos de trabajo después de migrar.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Importar contactos desde un archivo CSV" icon="file-csv" href="/contactos/importar-contactos-desde-csv">
+Paso a paso del importador de contactos.
+</Card>
+<Card title="Formato CSV para importar" icon="table" href="/contactos/formato-csv-para-importar">
+Columnas, fechas y campos obligatorios.
+</Card>
+<Card title="Importar oportunidades desde CSV" icon="file-import" href="/oportunidades/importar-oportunidades-desde-csv">
+Lleva tus deals a tus pipelines.
+</Card>
+<Card title="Códigos de seguimiento y píxeles" icon="code" href="/sitios/codigos-de-seguimiento-y-pixeles">
+Agrega Google Analytics o el píxel de Meta.
+</Card>
+<Card title="Crear un formulario de contacto" icon="file-lines" href="/sitios/crear-formulario-de-contacto">
+Reconstruye tus formularios.
+</Card>
+<Card title="Primeros pasos con flujos de trabajo" icon="bolt" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+Recrea tus automatizaciones.
+</Card>
+</CardGroup>

@@ -1,123 +1,115 @@
 ---
 title: "Guarda y reutiliza las configuraciones del bot de IA conversacional"
-description: "Clona un bot completo en una instantánea y replícalo en otras cuentas sin reconstruir nada."
+description: "Guarda un bot completo en una plantilla de cuenta y replícalo en otra cuenta sin reconstruirlo desde cero."
 icon: "copy"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+Las plantillas de cuenta te permiten guardar un bot de IA conversacional ya configurado, con sus indicaciones, acciones, ajustes y datos de entrenamiento, para reutilizarlo en otra cuenta de Chateea.
 
-Las instantáneas de bots te permiten guardar un bot ya configurado —con sus mensajes, acciones, ajustes y datos de entrenamiento— dentro de una instantánea de cuenta, para reutilizarlo en otras cuentas.
+Es útil cuando tienes un bot probado que funciona bien y quieres usarlo de nuevo (por ejemplo, en otra sucursal o línea de negocio) sin rehacer a mano las indicaciones, las acciones y el entrenamiento.
 
-Es útil cuando tienes una configuración probada que quieres implementar una y otra vez sin reconstruir desde cero las indicaciones, las acciones y el entrenamiento.
+<Note>
+  Si no ves la opción de plantillas de cuenta o necesitas ayuda para copiar un bot a otra cuenta, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+</Note>
 
-<Info>
-  Para una agencia, esto es lo que hace escalable el trabajo: armas tu bot perfecto una vez, lo guardas en instantánea y lo despliegas en cada cliente nuevo con la misma calidad, en minutos en vez de horas.
-</Info>
+## Qué se copia
 
-## Qué clona
-
-La instantánea copia el bot completo:
+La plantilla guarda el bot completo:
 
 - Indicaciones
 - Acciones
 - Configuraciones
 - URL del rastreador web de entrenamiento
-- Respuestas personalizadas / preguntas frecuentes
+- Respuestas personalizadas y preguntas frecuentes
 
-Así cada bot importado empieza con la misma estructura, lógica y entrenamiento que el original.
+Así, cada bot importado empieza con la misma estructura, lógica y entrenamiento que el original.
 
 ## Principales ventajas
 
 | Ventaja | Detalle |
 | --- | --- |
-| **Captura completa** | Configuración, indicaciones, acciones y detalles relacionados |
-| **Cuentas más rápidas** | No reconstruyes el mismo bot en cada cuenta |
-| **Experiencia coherente** | Mismo tono, instrucciones y lógica en todas |
+| **Copia completa** | Configuración, indicaciones, acciones y detalles relacionados |
+| **Puesta en marcha más rápida** | No reconstruyes el mismo bot en cada cuenta |
+| **Experiencia coherente** | Mismo tono, instrucciones y lógica en todas partes |
 | **Entrenamiento incluido** | URL del rastreador web y respuestas personalizadas |
-| **Compatibilidad con bot principal** | Si la cuenta destino no tiene uno, el importado se asigna como principal |
-| **Importación flexible** | Decides si sobrescribir u omitir cuando hay conflicto de nombres |
+| **Bot principal automático** | Si la cuenta de destino no tiene uno, el bot importado se asigna como principal |
+| **Importación flexible** | Decides si sobrescribir u omitir cuando hay un conflicto de nombres |
 
-## Cómo crear una instantánea con bots
+## Cómo crear una plantilla de cuenta con bots
 
 <Warning>
-  Antes de crearla, asegúrate de que la cuenta de **origen** contenga la configuración, las indicaciones, las acciones y el entrenamiento que quieres reutilizar.
+  Antes de crearla, confirma que la cuenta de **origen** tenga la configuración, las indicaciones, las acciones y el entrenamiento que quieres reutilizar.
 </Warning>
 
 <Steps>
-  <Step title="Entra a Instantáneas de la cuenta">
-    Desde el menú de navegación izquierdo.
+  <Step title="Abre las plantillas de cuenta">
+    Entra a la sección de plantillas de cuenta desde el menú lateral.
   </Step>
-  <Step title="Pulsa Crear nueva instantánea">
-  </Step>
-  <Step title="Ponle un nombre descriptivo">
+  <Step title="Crea una plantilla nueva">
+    Pulsa **Crear nueva plantilla** y ponle un nombre descriptivo, por ejemplo "Bot de reservas v2".
   </Step>
   <Step title="Selecciona la cuenta de origen">
-    En el desplegable, la que contiene el bot que quieres incluir. Pulsa **Siguiente**.
+    En el desplegable, elige la cuenta que contiene el bot que quieres incluir y pulsa **Siguiente**.
   </Step>
-  <Step title="Avanza y revisa los recursos">
-    Continúa por el flujo de creación revisando lo seleccionado.
+  <Step title="Revisa los recursos incluidos">
+    Avanza por el asistente revisando lo que se va a guardar. En la sección de **IA conversacional** verás los bots y sus datos: nombres, configuraciones, acciones, indicaciones, URL del rastreador y respuestas personalizadas.
   </Step>
-  <Step title="Localiza la sección de IA conversacional">
-    Revisa los bots y sus datos incluidos: nombres, configuraciones, acciones, indicaciones, URL del rastreador y respuestas personalizadas.
-  </Step>
-  <Step title="Pulsa Crear instantánea">
-    Para terminar.
+  <Step title="Guarda la plantilla">
+    Pulsa **Crear** para terminar.
   </Step>
 </Steps>
 
-## Comportamiento al importar
+## Qué pasa al importar
 
-### Asignación automática de bot principal
+### Asignación automática del bot principal
 
-Si la cuenta destino **no** tiene un bot principal, el importado se asigna automáticamente como tal. Si ya tiene uno, puedes revisarlo y cambiarlo manualmente después.
+Si la cuenta de destino **no** tiene un bot principal, el importado se asigna automáticamente como principal. Si ya tiene uno, puedes revisarlo y cambiarlo manualmente después.
 
-### Manejo de conflictos
+### Conflictos de nombre
 
-Si ya existe un bot con el mismo nombre en el destino, se te ofrecen dos opciones:
+Si en el destino ya existe un bot con el mismo nombre, tienes dos opciones:
 
 | Opción | Qué hace |
 | --- | --- |
-| **Sobrescribir** | Reemplaza el bot existente por el de la instantánea |
-| **Omitir** | Conserva el existente y no importa el de la instantánea |
+| **Sobrescribir** | Reemplaza el bot existente por el de la plantilla |
+| **Omitir** | Conserva el bot existente y no importa el de la plantilla |
 
 ### Qué se incluye
 
-Estructura completa del bot, acciones, mapeos de indicación y respuesta, configuraciones, URL del rastreador web y respuestas personalizadas / preguntas frecuentes creadas en el entrenamiento.
+La estructura completa del bot, sus acciones, las indicaciones y respuestas, las configuraciones, la URL del rastreador web y las respuestas personalizadas o preguntas frecuentes creadas durante el entrenamiento.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
   <Accordion title="¿Qué pasa si ya existe un bot con el mismo nombre?">
-    Al importar, eliges sobrescribir el existente u omitir el de la instantánea.
+    Al importar, eliges entre sobrescribir el bot existente u omitir el de la plantilla.
   </Accordion>
 
   <Accordion title="¿Se conservan mis indicaciones y la lógica de acciones?">
-    Sí. La instantánea preserva indicaciones, acciones, configuraciones y lógica del bot.
+    Sí. La plantilla conserva las indicaciones, las acciones, las configuraciones y la lógica del bot.
   </Accordion>
 
-  <Accordion title="¿Incluye datos de entrenamiento como FAQ y URL del rastreador?">
+  <Accordion title="¿Incluye datos de entrenamiento como preguntas frecuentes y URL del rastreador?">
     Sí. El entrenamiento, incluidas las URL del rastreador web y las respuestas personalizadas, va incluido.
   </Accordion>
 
   <Accordion title="¿El bot importado se vuelve principal automáticamente?">
-    Solo si la cuenta destino no tiene ya un bot principal.
+    Solo si la cuenta de destino no tiene ya un bot principal.
   </Accordion>
 
   <Accordion title="¿Puedo cambiar el bot principal después de importar?">
     Sí, manualmente desde la configuración del bot.
   </Accordion>
 
-  <Accordion title="¿Puedo editar una instantánea después de crearla?">
-    No. Las instantáneas no se editan. Si actualizas el bot original, crea una instantánea nueva para capturar la configuración más reciente.
+  <Accordion title="¿Puedo editar una plantilla después de crearla?">
+    No. Si actualizas el bot original, crea una plantilla nueva para guardar la configuración más reciente.
   </Accordion>
 
-  <Accordion title="¿Debo probar el bot después de importar?">
-    Sí. Prueba siempre el bot importado en la cuenta destino para confirmar que indicaciones, acciones, entrenamiento y configuración funcionan como esperas.
+  <Accordion title="¿Debo probar el bot después de importarlo?">
+    Sí. Prueba siempre el bot importado en la cuenta de destino para confirmar que las indicaciones, las acciones, el entrenamiento y la configuración funcionan como esperas.
   </Accordion>
 </AccordionGroup>
 
 <Card title="Nueva experiencia de gestión de canales" icon="diagram-next" href="/bot-ia/nueva-gestion-canales">
-  Cómo se comportan los bots y sus canales al instalar una instantánea.
+  Cómo se comportan los bots y sus canales al importar una plantilla.
 </Card>

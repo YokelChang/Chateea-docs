@@ -1,0 +1,151 @@
+---
+title: "Seguridad y protección de datos en Chateea"
+description: "Cómo se protegen tus datos en Chateea: certificaciones, cifrado, respaldos, control de acceso, privacidad y lo que te toca a ti."
+icon: "shield-check"
+---
+
+Tus contactos, conversaciones y pagos son el activo más valioso de tu negocio. Esta página resume cómo se protege la información en Chateea: dónde se aloja, cómo se cifra, cómo se respalda y qué controles tienes tú para decidir quién accede a qué. También explica qué te toca a ti para mantener tu cuenta segura y cumplir con las normas de tu sector.
+
+Te sirve si un cliente, un socio o un proceso de compras te pregunta cómo proteges sus datos.
+
+## Objetivos de seguridad
+
+El marco de seguridad sigue las buenas prácticas de la industria del software en la nube y persigue cuatro objetivos:
+
+- **Confianza y protección:** mantener la privacidad y la confidencialidad de los datos.
+- **Disponibilidad y continuidad:** que el servicio esté disponible y reducir los riesgos de interrupción.
+- **Integridad:** que la información nunca se corrompa ni se altere de forma indebida.
+- **Cumplimiento de estándares:** cumplir o superar las buenas prácticas reconocidas del sector.
+
+## Certificaciones
+
+La infraestructura y los controles de seguridad que usa Chateea están auditados de forma independiente:
+
+| Certificación | Qué significa |
+| --- | --- |
+| **SOC 2 Type II** | Informe de auditoría del estándar del AICPA (American Institute of CPAs), en los criterios de **seguridad**, **confidencialidad** y **disponibilidad**. |
+| **ISO/IEC 27001:2022** | Norma internacional para sistemas de gestión de seguridad de la información. |
+
+La diferencia entre un informe SOC 2 **Type I** y uno **Type II** es importante: el Type I revisa los controles en un momento concreto, mientras que el Type II confirma que los controles están bien diseñados **y que funcionaron de forma efectiva durante un periodo prolongado**. Muchas empresas grandes y sectores regulados (financiero, salud) lo piden como requisito en sus procesos de compra.
+
+<Tip>
+Si un cliente o un proceso de compras te pide documentación de seguridad (el informe SOC 2, el certificado ISO o la descripción del programa de seguridad de la información), escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+</Tip>
+
+## Infraestructura
+
+**Alojamiento en la nube.** Ningún sistema ni dato se aloja en oficinas físicas. La infraestructura está en proveedores de nube líderes, Google Cloud y Amazon Web Services (AWS), y reside en Estados Unidos. Ambos proveedores tienen sus propios programas auditados de seguridad física, ambiental y de infraestructura.
+
+**Red y perímetro.** Todas las conexiones pasan por varias capas de filtrado e inspección: la aplicación web, cortafuegos lógicos y grupos de seguridad. Por defecto, los cortafuegos rechazan cualquier conexión que no esté autorizada de forma explícita, y sus reglas se revisan de manera periódica.
+
+**Configuración controlada.** Los servidores se crean a partir de imágenes con configuraciones reforzadas. Si un servidor se desvía de su configuración base, se sobrescribe con la configuración correcta en un máximo de 30 minutos. Los parches se aplican con herramientas automáticas o reemplazando los servidores que no cumplen.
+
+**Registros y monitoreo.** Las acciones y eventos de la aplicación se registran de forma completa y centralizada, con acceso de escritura muy restringido. El monitoreo automático alerta al equipo técnico ante tasas de error anómalas, abusos o ataques, y algunos mecanismos responden solos, por ejemplo, limitando el tráfico al superar ciertos umbrales.
+
+## Seguridad de la aplicación
+
+- **Defensas web:** todo el contenido alojado (incluidos tus sitios y embudos) está protegido por cortafuegos de aplicaciones con reglas alineadas con el **OWASP Top 10**, y con protección contra ataques de denegación de servicio (DDoS).
+- **Desarrollo y publicación:** el código pasa por revisión, pruebas y análisis estático antes de publicarse. Se prueba primero en un entorno separado y los despliegues son automáticos, con posibilidad de revertirlos si algo falla.
+- **Actualizaciones sin interrupciones:** las mejoras se publican sin tiempo de inactividad. Los cambios importantes se anuncian dentro de la plataforma.
+- **Gestión de vulnerabilidades:** se hacen escaneos periódicos con herramientas reconocidas y pruebas de penetración anuales sobre la aplicación y la infraestructura.
+
+## Protección de tus datos
+
+**Separación entre cuentas.** Chateea es una plataforma en la nube compartida, pero los datos de cada cuenta están separados de forma lógica mediante identificadores únicos. Las reglas de autorización forman parte de la arquitectura y se validan de manera continua.
+
+**Cifrado.**
+
+| Dónde | Cómo se protege |
+| --- | --- |
+| En tránsito | TLS 1.2 o 1.3, con claves de 2048 bits o más. Tus sitios alojados en Chateea también usan TLS por defecto. |
+| En reposo | Cifrado AES-256. |
+| Contraseñas | Se guardan con hash según las buenas prácticas del sector y cifradas en reposo. |
+
+**Gestión de claves.** Las claves de cifrado se guardan en un sistema de gestión de claves (KMS) reforzado y se rotan con una frecuencia que depende de la sensibilidad de los datos. Los certificados TLS se renuevan cada año. Por ahora no es posible usar claves de cifrado propias del cliente.
+
+## Respaldos y recuperación
+
+- **Redundancia:** los servicios se distribuyen en varias zonas de disponibilidad, y las bases de datos permiten recuperación a un punto en el tiempo.
+- **Copias de seguridad:** se hacen a diario, se conservan siete días de copias de cada base de datos, y se monitorean para detectar fallos.
+- **Protección de las copias:** acceso restringido y protección de escritura única (WORM), que impide modificarlas.
+- **Recuperación ante desastres:** la gestiona el equipo técnico de la plataforma. Los clientes no pueden iniciar una conmutación por error por su cuenta.
+
+Lo que **tú** puedes recuperar directamente:
+
+- **Papelera:** contactos, oportunidades, campos personalizados, valores personalizados, etiquetas, notas y tareas eliminados se pueden restaurar hasta **30 días** después de borrarlos.
+- **Historial de versiones:** páginas, entradas de blog y correos se pueden volver a una versión anterior. Ver [Guardado automático e historial de versiones](/sitios/guardado-automatico-e-historial-de-versiones).
+- **Exportaciones y API:** muchas secciones permiten exportar datos, y la API de Chateea te deja sincronizarlos con otros sistemas si quieres tu propia copia.
+
+## Acceso e identidad
+
+**Usuarios y permisos.** Tú creas los usuarios de tu cuenta, les asignas los permisos adecuados y limitas su acceso como prefieras. Ver [Roles y permisos de usuarios](/configuracion/roles-y-permisos-de-usuarios).
+
+**Inicio de sesión protegido.** La política de contraseñas exige un mínimo de 8 caracteres con mayúsculas, minúsculas, números y caracteres especiales, y no se puede relajar. Las cuentas están protegidas con autenticación de dos pasos, y como administrador puedes exigirla a todos tus usuarios. Ver [Autenticación de dos pasos con app](/configuracion/autenticacion-de-dos-pasos-con-app).
+
+**Registro de actividad.** Se registran los inicios de sesión, la actividad de seguridad y los cambios de contenido. Revisa quién hizo qué en [Registros de auditoría](/configuracion/registros-de-auditoria).
+
+## Lo que te corresponde a ti
+
+La seguridad es compartida. Chateea protege la plataforma y tú decides qué datos guardas y quién accede a ellos.
+
+<Warning>
+No uses Chateea para guardar información sensible como números de tarjeta de crédito o débito, datos de cuentas bancarias, números de seguridad social o cédula, números de pasaporte, ni información financiera o de salud, salvo en los casos permitidos. Si tu negocio maneja información de salud protegida de pacientes en Estados Unidos, revisa [Cumplimiento de HIPAA en Chateea](/configuracion/cumplimiento-hipaa).
+</Warning>
+
+- **Pagos con tarjeta:** Chateea no almacena los datos de tarjeta de tus clientes ni tiene certificación PCI-DSS propia. Los cobros se procesan a través de pasarelas de pago certificadas PCI que conectas a tu cuenta. Nunca pidas ni guardes números de tarjeta en formularios, campos, notas o mensajes.
+- **Usuarios:** da a cada persona solo los permisos que necesita y elimina a quienes ya no trabajan contigo.
+- **Contraseñas y 2FA:** exige la autenticación de dos pasos a todo tu equipo.
+
+## Privacidad y datos personales
+
+**Conservación y eliminación.** Tus datos se conservan mientras tu cuenta esté activa. Si eres o fuiste cliente, puedes pedir por escrito que se eliminen ciertos datos, y la solicitud se atiende según lo exijan las normas de privacidad. Algunos datos, como registros técnicos y metadatos, se conservan por motivos de seguridad, cumplimiento o requisitos legales. Por ahora no es posible definir políticas de conservación personalizadas.
+
+**Incidentes.** Si se detecta una filtración que afecte a tus datos personales, se te notificará según lo exija la ley.
+
+**GDPR.** La plataforma ofrece funciones que te ayudan a cumplir con el Reglamento General de Protección de Datos de la Unión Europea, pero usar Chateea por sí solo no te convierte en cumplidor del GDPR. Revisa tus propios procesos, avisos de privacidad y consentimientos con tu asesor legal.
+
+Para solicitudes de eliminación de datos o preguntas de privacidad, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+
+<Note>
+Esta página es informativa. No crea obligaciones contractuales ni modifica los acuerdos vigentes, y los controles descritos pueden cambiar a medida que se refuerzan las protecciones.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde se guardan mis datos?">
+    En la infraestructura de nube de Google Cloud y AWS, ubicada en Estados Unidos.
+  </Accordion>
+  <Accordion title="¿Mis datos están cifrados?">
+    Sí. En tránsito con TLS 1.2 o 1.3 y en reposo con AES-256. Las contraseñas se guardan con hash.
+  </Accordion>
+  <Accordion title="¿Puedo recuperar un contacto que borré por error?">
+    Sí, desde la papelera, hasta 30 días después de eliminarlo. Lo mismo aplica a oportunidades, campos y valores personalizados, etiquetas, notas y tareas.
+  </Accordion>
+  <Accordion title="¿Chateea tiene certificación SOC 2?">
+    La infraestructura y los controles que usa Chateea cuentan con un informe SOC 2 Type II (seguridad, confidencialidad y disponibilidad) y certificación ISO/IEC 27001:2022. Pide la documentación a soporte si la necesitas.
+  </Accordion>
+  <Accordion title="¿Puedo usar mis propias claves de cifrado?">
+    No por ahora. Las claves se gestionan en un sistema de gestión de claves reforzado.
+  </Accordion>
+  <Accordion title="¿Puedo guardar datos de salud de pacientes?">
+    Solo si tu cuenta tiene activada la protección HIPAA y firmaste el acuerdo correspondiente. Ver [Cumplimiento de HIPAA en Chateea](/configuracion/cumplimiento-hipaa).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cumplimiento de HIPAA en Chateea" icon="notes-medical" href="/configuracion/cumplimiento-hipaa">
+    Protección adicional para datos de salud.
+  </Card>
+  <Card title="Autenticación de dos pasos con app" icon="shield-halved" href="/configuracion/autenticacion-de-dos-pasos-con-app">
+    Protege el acceso a tu cuenta.
+  </Card>
+  <Card title="Roles y permisos de usuarios" icon="user-shield" href="/configuracion/roles-y-permisos-de-usuarios">
+    Decide qué puede ver y hacer cada persona.
+  </Card>
+  <Card title="Registros de auditoría" icon="clipboard-list" href="/configuracion/registros-de-auditoria">
+    Revisa la actividad de tu cuenta.
+  </Card>
+</CardGroup>

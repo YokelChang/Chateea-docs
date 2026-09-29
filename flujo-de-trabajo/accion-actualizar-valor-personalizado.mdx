@@ -1,213 +1,94 @@
 ---
 title: "Acción: Actualizar valor personalizado"
 sidebarTitle: "Acción: Actualizar valor personalizado"
-description: 'La acción "Actualizar valor personalizado" automatiza la actualización de valores personalizados a nivel de subcuenta, con impacto en servicios recurrentes, suscripciones y seguimiento de campañas.'
+description: "Actualiza automáticamente los valores personalizados de tu cuenta desde un flujo de trabajo, para campañas, suscripciones y seguimientos."
 icon: "pen-to-square"
 ---
 
-## Acción: Actualizar valor personalizado
+La acción **Actualizar valor personalizado** (Update Custom Value) cambia automáticamente el contenido de un valor personalizado de tu cuenta desde un flujo de trabajo. Como los valores personalizados se comparten en toda la cuenta, un solo cambio se refleja en todos los flujos, correos, SMS y páginas que los usan.
 
-<Info>
-  **Documentado el 16 de agosto de 2026.**
+## Qué es un valor personalizado
 
-  Artículo original modificado el viernes, 5 de mayo de 2023 a las 00:40.
-</Info>
-
-La acción de flujo de trabajo **"Actualizar valor personalizado"** es una potente herramienta que automatiza la actualización de valores personalizados en un CRM. Gracias a su capacidad para actualizar valores personalizados a nivel de subcuenta, esta acción tiene un gran impacto en la gestión y automatización de servicios recurrentes, la administración de suscripciones y mucho más.
-
-### Temas tratados en este artículo
-
-- ¿Qué es la acción Actualizar valor personalizado en los flujos de trabajo?
-- ¿Cuáles son algunos casos de uso excelentes para esto, con ejemplos prácticos?
-- ¿Cómo utilizar esta acción?
-- Preguntas frecuentes
-
----
-
-## ¿Qué es la acción Actualizar valor personalizado en los flujos de trabajo?
-
-La acción de flujo de trabajo "Actualizar valor personalizado" en un CRM se utiliza para actualizar los valores de los campos personalizados en una subcuenta, lo que puede tener un impacto mucho mayor que la simple actualización del campo personalizado de un contacto individual.
-
-Los valores personalizados son marcadores de posición establecidos a nivel de subcuenta y se pueden usar para almacenar y realizar un seguimiento de diversos tipos de información. Esta acción puede automatizar la actualización de dichos valores y activar acciones en función de los valores actualizados.
+Los valores personalizados son marcadores que guardas a nivel de tu cuenta (por ejemplo, el nombre de la oferta vigente, un enlace o un correo de notificaciones) y que puedes insertar en mensajes, páginas y automatizaciones. Esta acción te permite actualizarlos sin entrar a editarlos a mano y usar el nuevo valor en los pasos siguientes.
 
 <Tip>
-  **Diferencia clave:** "Actualizar campo de contacto" cambia el dato de una sola persona; "Actualizar valor personalizado" cambia un dato compartido por toda la subcuenta, así que todos los flujos, correos y SMS que usen ese valor pasarán a mostrar el nuevo contenido.
+  **Diferencia clave:** **Actualizar campo de contacto** cambia un dato de una sola persona. **Actualizar valor personalizado** cambia un dato compartido por toda tu cuenta, así que todos los flujos, correos y SMS que lo usen mostrarán el nuevo contenido.
 </Tip>
 
----
+## Casos de uso
 
-## ¿Cuáles son algunos casos de uso excelentes para esto, con ejemplos prácticos?
+| Caso de uso | Ejemplo práctico |
+| --- | --- |
+| **Origen de los leads** | Si captas contactos con anuncios de Facebook, anuncios de Google y campañas de correo, actualiza un valor por cada fuente para saber cuál genera más leads. |
+| **Programa de referidos** | Actualiza un valor cada vez que un cliente refiere a otro para medir el rendimiento del programa. |
+| **Rendimiento de ventas** | Lleva un valor por representante para detectar áreas de mejora. |
+| **Interacción con clientes** | Tu equipo de atención puede actualizar un valor en cada interacción para medir el compromiso. |
+| **Suscripciones** | Guarda información de renovaciones, cancelaciones o mejoras de plan y dispara acciones según su estado. |
+| **Inscripciones a eventos** | Actualiza un valor por cada registro para medir la asistencia. |
+| **Opiniones de clientes** | Actualiza un valor por cada encuesta o formulario enviado para detectar tendencias. |
+| **Campañas de marketing** | Lleva un valor por campaña (correo, redes sociales, anuncios de pago) para saber cuál genera más leads o ventas. |
 
-<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
-  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "680px" }}>
-    <thead>
-      <tr style={{ background: "#13322c" }}>
-        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Caso de uso</th>
-        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Ejemplo práctico</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Seguimiento de fuentes de clientes potenciales</td>
-        <td style={{ padding: "10px 16px" }}>Rastrear el origen de los nuevos leads actualizando un valor personalizado para cada fuente. Si utilizas varias fuentes, como anuncios de Facebook, anuncios de Google y campañas de correo electrónico, puedes actualizar un valor personalizado para cada una y saber cuáles generan más clientes potenciales.</td>
-      </tr>
-
-      <tr>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento del programa de referidos</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Monitorear el éxito de un programa de referidos actualizando un valor personalizado por cada cliente referido. Por ejemplo, si recompensas a los clientes por recomendar a otros, puedes actualizar un valor personalizado en cada referencia y medir el programa.</td>
-      </tr>
-
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento del rendimiento de ventas</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguir el rendimiento de cada representante actualizando un valor personalizado para cada uno, lo que ayuda a detectar áreas de mejora.</td>
-      </tr>
-
-      <tr>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento de la interacción del cliente</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguir la interacción actualizando un valor personalizado por cada contacto con el cliente. Por ejemplo, un equipo de atención al cliente puede actualizar un valor por cada interacción para medir el compromiso e identificar mejoras.</td>
-      </tr>
-
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Gestión de suscripciones</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Gestionar y automatizar el proceso de suscripción de servicios recurrentes: renovaciones, cancelaciones o mejoras de plan. Los valores personalizados pueden almacenar información de cada suscripción y disparar acciones según su estado.</td>
-      </tr>
-
-      <tr>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento de inscripciones a eventos</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguir las inscripciones actualizando un valor personalizado por cada registro, para medir las tasas de asistencia e identificar mejoras.</td>
-      </tr>
-
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento de comentarios de clientes</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguir la retroalimentación actualizando un valor personalizado por cada formulario enviado. Si recoges opiniones mediante encuestas o formularios, puedes actualizar un valor por envío para detectar tendencias.</td>
-      </tr>
-
-      <tr>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguimiento del rendimiento de campañas de marketing</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Seguir el rendimiento de las campañas actualizando un valor personalizado por cada una. Si lanzas varias campañas (correo, redes sociales, anuncios de pago), puedes actualizar un valor para saber cuáles generan más leads o ventas.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
----
-
-## ¿Cómo utilizar esta acción?
-
-Para usar la acción de flujo de trabajo Actualizar valor personalizado debe tener una plataforma CRM que admita esta función. Una vez que tenga acceso a la plataforma, siga estos pasos:
+## Cómo usar la acción
 
 <Steps>
-  <Step title="Paso 1: Crea un nuevo flujo de trabajo o edita uno existente">
-    En tu cuenta, entra en **Automation \> Workflows** y crea un flujo de trabajo nuevo con **\+ Create Workflow**, o selecciona uno existente para editarlo.
-
-    <Note>
-      **Imagen próximamente.** Captura de la pantalla **Workflow List** con el menú lateral (Launchpad, Dashboard, Conversations, Calendars, Contacts, Opportunities, Payments, Marketing, Automation, Sites, Reputation, Reporting), la pestaña _Workflows_ resaltada y el botón **\+ Create Workflow**.
-    </Note>
+  <Step title="Crea o edita un flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y pulsa **Crear flujo de trabajo**, o abre uno existente para editarlo.
   </Step>
-  <Step title="Paso 2: Agregue la acción Actualizar valor personalizado">
-    Añade la acción **Update Custom Value** desde la lista de acciones disponibles dentro del flujo de trabajo.
-
-    <Note>
-      **Imagen próximamente.** Captura de la tarjeta de la acción **Update Custom Value** tal como aparece en el listado de acciones.
-    </Note>
+  <Step title="Agrega la acción">
+    Pulsa **+** para añadir una acción y elige **Actualizar valor personalizado** en la lista.
   </Step>
-  <Step title="Paso 3: Elija el valor personalizado que desea actualizar">
-    Selecciona el valor personalizado que quieres actualizar de la lista de valores disponibles —por ejemplo: Notifications Email For Client, Offer Name, SMS or Email, testtest, Twilio Number, Twilio Number In link Form, Your App Login URL—.
+  <Step title="Elige el valor y el nuevo contenido">
+    Selecciona en el desplegable el valor personalizado que quieres actualizar. El panel muestra tres campos:
 
-    El panel muestra tres campos:
+    | Campo | Qué contiene | Ejemplo |
+    | --- | --- | --- |
+    | **Valor personalizado** (Custom Value) | El valor que vas a actualizar | Canal preferido |
+    | **Valor actual** (Current Value) | El contenido que tiene ahora. Es solo informativo, no se edita aquí | sms |
+    | **Nuevo valor** (New Value) | El contenido nuevo | email |
 
-    <div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", margin: "0.75rem 0" }}>
-  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem", minWidth: "520px" }}>
-    <thead>
-      <tr style={{ background: "#13322c" }}>
-        <th style={{ padding: "11px 14px", color: "#3add8f", textAlign: "left" }}>Campo</th>
-        <th style={{ padding: "11px 14px", color: "#ffffff", textAlign: "left" }}>Qué contiene</th>
-        <th style={{ padding: "11px 14px", color: "#ffffff", textAlign: "left" }}>Ejemplo de la fuente</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "9px 14px", fontWeight: "600" }}>CUSTOM VALUE</td>
-        <td style={{ padding: "9px 14px" }}>El valor personalizado que vas a actualizar.</td>
-        <td style={{ padding: "9px 14px" }}>SMS or Email</td>
-      </tr>
-
-      <tr>
-        <td style={{ padding: "9px 14px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>CURRENT VALUE</td>
-        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>El contenido que tiene ahora mismo ese valor. Es informativo, no se edita aquí.</td>
-        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>sms</td>
-      </tr>
-
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "9px 14px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>NEW VALUE</td>
-        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>El contenido nuevo. Puede ser un valor estático o un valor dinámico insertado con el selector de variables.</td>
-        <td style={{ padding: "9px 14px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>email</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-    **Especifica el nuevo valor:** introduce el nuevo valor al que quieres actualizar el valor personalizado. Puedes actualizarlo con un valor estático, un valor fijo que especificas en el flujo de trabajo, o un valor personalizado, generado dinámicamente a partir de otros datos de tu flujo de trabajo.
-
-    <Note>
-      **Imagen próximamente.** Capturas del panel **Update Custom Value** con el desplegable _CUSTOM VALUE_ abierto mostrando la lista de valores, y del panel con CURRENT VALUE en `sms` y NEW VALUE en `email`.
-    </Note>
+    El nuevo valor puede ser **estático** (un texto fijo que escribes en la acción) o **dinámico** (una variable que insertas con el selector de variables, tomada de otros datos del flujo).
   </Step>
   <Step title="Guarda, prueba y publica">
-    - **Guarda la acción:** guarda la acción y cualquier otra acción o condición que quieras añadir al flujo de trabajo.
-    - **Prueba el flujo de trabajo:** compruébalo para asegurarte de que funciona como esperas. Puedes hacerlo activando el flujo con un contacto de prueba o configurando un entorno de prueba con el botón **Test Workflow**.
-    - **Publica el flujo de trabajo:** cuando estés conforme, publícalo para que pueda activarse automáticamente según las condiciones establecidas.
+    - **Guarda** la acción y las demás acciones o condiciones del flujo.
+    - **Prueba** el flujo con un contacto de prueba o con el botón **Probar flujo de trabajo** para confirmar que funciona como esperas.
+    - **Publica** el flujo para que se ejecute automáticamente cuando se cumplan sus condiciones.
   </Step>
 </Steps>
 
 <Warning>
-  Revisa el flujo de trabajo antes de ejecutarlo. Un valor personalizado actualizado por error afecta a toda la subcuenta y **no se puede deshacer**.
+  Revisa el flujo antes de publicarlo. Un valor personalizado actualizado por error afecta a toda tu cuenta y **no se puede deshacer** automáticamente.
 </Warning>
-
----
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="P: ¿Puedo usar la acción Actualizar valor personalizado junto con otras acciones en un flujo de trabajo?">
-    Sí, la acción Actualizar valor personalizado se puede usar con otras acciones en un flujo de trabajo. Por ejemplo, puede usarla con una acción de desencadenador para actualizar un campo de valor personalizado cuando ocurre un evento específico.
+  <Accordion title="¿Puedo combinar esta acción con otras en el mismo flujo?">
+    Sí. Por ejemplo, puedes usarla después de un disparador para actualizar un valor cuando ocurre un evento concreto.
   </Accordion>
 
-  <Accordion title="P: ¿Puedo actualizar varios valores personalizados usando la acción Actualizar valor personalizado?">
-    Puede actualizar varios valores personalizados utilizando la acción Actualizar valor personalizado agregando pasos de acción adicionales a su flujo de trabajo.
+  <Accordion title="¿Puedo actualizar varios valores personalizados a la vez?">
+    Sí, pero cada acción actualiza un solo valor. Agrega una acción **Actualizar valor personalizado** por cada valor que quieras cambiar.
   </Accordion>
 
-  <Accordion title="P: ¿Con qué frecuencia puedo actualizar un valor personalizado usando esta acción?">
-    Puede actualizar un valor personalizado con la frecuencia que necesite. No existen límites en cuanto a la frecuencia con la que puede actualizar un valor personalizado mediante esta acción.
+  <Accordion title="¿Con qué frecuencia puedo actualizar un valor?">
+    Con la frecuencia que necesites. No hay límite de actualizaciones con esta acción.
   </Accordion>
 
-  <Accordion title="P: ¿Puedo usar la acción Actualizar valor personalizado para actualizar valores personalizados de forma masiva?">
-    Puedes usar la acción Actualizar valor personalizado para actualizar varios valores personalizados a la vez. Sin embargo, para ello necesitarás varias acciones Actualizar valor personalizado, ya que cada una actualiza un único valor personalizado.
+  <Accordion title="¿Puedo usar variables en el nuevo valor?">
+    Sí. Las variables te permiten actualizar el valor de forma dinámica según otros datos del flujo, lo que abre la puerta a automatizaciones más completas.
   </Accordion>
 
-  <Accordion title="P: ¿Puedo usar la acción Actualizar valor personalizado para actualizar valores personalizados para diferentes subcuentas?">
-    Sí, puede usar la acción Actualizar valor personalizado para actualizar los valores personalizados de distintas subcuentas con valores diferentes. Actualice los valores personalizados en la subcuenta que sea la cuenta maestra utilizada para crear una instantánea de sus cuentas vinculadas. Una vez actualizados los valores personalizados, actualice la instantánea y cárguela en las cuentas vinculadas.
-  </Accordion>
-
-  <Accordion title="P: ¿Puedo usar variables en la acción Actualizar valor personalizado?">
-    Puedes usar variables en la acción Actualizar valor personalizado para actualizar dinámicamente valores personalizados en función de otros datos. Esto te permite crear flujos de trabajo más complejos que responden a los cambios en tus datos.
-  </Accordion>
-
-  <Accordion title="P: ¿Puedo deshacer una actualización realizada con la acción Actualizar valor personalizado?">
-    No, no se puede deshacer una vez que se ha actualizado un valor personalizado mediante la acción Actualizar valor personalizado. Es importante revisar cuidadosamente el flujo de trabajo antes de ejecutarlo para evitar actualizaciones no deseadas.
+  <Accordion title="¿Puedo deshacer una actualización?">
+    No. Una vez que la acción actualiza el valor, el cambio queda aplicado. Si te equivocas, tendrás que volver a editar el valor manualmente en **Configuración → Valores personalizados**. Por eso conviene probar el flujo antes de publicarlo.
   </Accordion>
 </AccordionGroup>
 
----
-
 <CardGroup cols={2}>
   <Card title="Actualizar el campo de contacto" icon="user-pen" href="/flujo-de-trabajo/accion-actualizar-el-campo-de-contacto">
-    La acción equivalente a nivel de contacto individual.
+    La acción equivalente para el dato de un contacto individual.
   </Card>
 
-  <Card title="Activador Premium de webhook entrante" icon="arrow-right-to-bracket" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
+  <Card title="Disparador premium de webhook entrante" icon="arrow-right-to-bracket" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
     Alimenta el valor personalizado con datos que lleguen de un sistema externo.
   </Card>
 </CardGroup>
