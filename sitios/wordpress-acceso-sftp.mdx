@@ -1,0 +1,61 @@
+---
+title: "Configurar el acceso SFTP a tu sitio de WordPress"
+description: "Crea un usuario SFTP y conéctate de forma segura a los archivos de tu sitio de WordPress con FileZilla, Cyberduck u otro cliente."
+icon: "server"
+---
+
+SFTP te permite ver y editar los archivos y carpetas de tu sitio de WordPress desde un programa en tu computadora. SFTP significa protocolo seguro de transferencia de archivos (Secure File Transfer Protocol o SSH File Transfer Protocol) y funciona sobre SSH, así que todo lo que envías viaja cifrado. Por seguridad, el hosting de WordPress de Chateea solo admite conexiones SFTP, no FTP tradicional.
+
+Te sirve para subir un tema personalizado, reemplazar archivos, revisar el contenido de `wp-content` o hacer cambios que no puedes hacer desde el administrador de WordPress.
+
+## Crear un usuario SFTP
+
+<Steps>
+  <Step title="Abre la configuración avanzada">
+    Ve a **Sitios → WordPress**, abre tu sitio y entra en **Configuración avanzada → Acceso FTP**.
+  </Step>
+  <Step title="Agrega el usuario">
+    Haz clic en **Agregar usuario FTP** (Add FTP User) y define las credenciales.
+  </Step>
+  <Step title="Copia los datos de conexión">
+    El panel te muestra el **host**, el **puerto**, el **usuario** y la **contraseña**. Con estos datos te conectas desde tu programa de SFTP.
+  </Step>
+</Steps>
+
+<Warning>
+  Guarda las credenciales en un lugar seguro y no las compartas por chat o correo. Cada usuario tiene su propio nombre y contraseña, y puedes restablecerlos cuando quieras desde el mismo panel.
+</Warning>
+
+## Conectarte desde un programa de SFTP
+
+Usa cualquier cliente compatible con SFTP. Algunos recomendados:
+
+| Programa | Tipo | Sistema |
+| --- | --- | --- |
+| [FileZilla](https://filezilla-project.org/) | Gratis | macOS y Windows |
+| [WinSCP](https://winscp.net/eng/index.php) | Gratis | Windows |
+| [Cyberduck](https://cyberduck.io/) | Gratis | macOS y Windows |
+| [FlashFXP](https://www.flashfxp.com/) | De pago | Windows |
+| [Transmit](https://panic.com/transmit/) | De pago | macOS |
+
+Al crear la conexión en tu programa, elige el protocolo **SFTP** y escribe el host, el puerto, el usuario y la contraseña que te dio el panel.
+
+<Tip>
+  Antes de modificar o borrar archivos, crea una copia de seguridad manual del sitio desde el panel de WordPress. Si algo sale mal, podrás restaurarlo.
+</Tip>
+
+## Otras formas de acceder a tus archivos
+
+- Si prefieres no instalar un programa, puedes usar el plugin [WP File Manager](/sitios/wordpress-plugin-wp-file-manager) desde el administrador de WordPress.
+- Si trabajas con la terminal, puedes usar [SSH y WP-CLI](/embudos-sitios-web/acceso-ssh-y-gestion-de-claves-ssh-en-tu-alojamiento-wordpress).
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acceso SSH y claves SSH" icon="terminal" href="/embudos-sitios-web/acceso-ssh-y-gestion-de-claves-ssh-en-tu-alojamiento-wordpress">
+    Administra tu sitio desde la terminal.
+  </Card>
+  <Card title="Plugin WP File Manager" icon="folder-open" href="/sitios/wordpress-plugin-wp-file-manager">
+    Gestiona archivos desde el administrador de WordPress.
+  </Card>
+</CardGroup>

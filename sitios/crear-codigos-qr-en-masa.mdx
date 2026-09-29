@@ -1,0 +1,113 @@
+---
+title: "Crear códigos QR en masa con un archivo CSV"
+description: "Genera muchos códigos QR a la vez subiendo un CSV con nombre y URL, asígnalos a una carpeta y corrige errores."
+icon: "file-csv"
+---
+
+La creación **en masa** de códigos QR te permite generar muchos códigos a la vez a partir de un archivo CSV: Chateea crea un código por cada fila. Es ideal para gafetes de eventos, cupones de descuento, empaques de productos, volantes por zona o cualquier campaña que necesite muchos enlaces listos para escanear.
+
+## Para qué te sirve
+
+- **Ahorras tiempo:** generas 10 o 10.000 códigos en segundos, sin crearlos uno por uno.
+- **Todo ordenado:** asignas los códigos creados a una carpeta.
+- **Errores a la vista:** la validación marca las filas con problemas para que las corrijas.
+- **Progreso en tiempo real:** un contador te muestra cuándo termina el lote.
+- **Listos para usar:** descargas los códigos en PNG, SVG o PDF.
+
+## Prepara el archivo CSV
+
+El archivo debe ser simple: solo dos columnas, una fila por código.
+
+| Columna | Qué va |
+| --- | --- |
+| `name` | El nombre con el que verás el código en tu lista |
+| `url` | La URL completa de destino |
+
+- Usa **Descargar CSV de ejemplo** en la ventana de creación en masa para partir de una plantilla con el formato correcto.
+- No agregues columnas extra, filas vacías ni encabezados en blanco.
+
+```text
+name,url
+Volante zona norte,https://tusitio.com/promo?utm_source=volante&utm_campaign=norte
+Volante zona sur,https://tusitio.com/promo?utm_source=volante&utm_campaign=sur
+```
+
+<Tip>
+Si agregas parámetros UTM distintos a cada URL, podrás ver en la analítica de tu sitio qué volante, local o campaña trae más visitas.
+</Tip>
+
+## Errores frecuentes en el CSV
+
+| Error | Solución |
+| --- | --- |
+| **Encabezados incorrectos o faltantes** | La primera fila debe tener exactamente las columnas `url` y `name`. Si no, verás un mensaje de error |
+| **URL no válida** | Cada URL debe empezar con `http://` o `https://` y no tener espacios. El mensaje de error te indica la fila con el problema |
+
+## Asignar los códigos a una carpeta (opcional)
+
+Al subir el archivo puedes elegir una carpeta existente, y todos los códigos del lote se guardarán ahí. La carpeta debe existir antes de la carga, porque solo aparecen las carpetas ya creadas. Si no eliges ninguna, los códigos quedan en la carpeta raíz.
+
+Después puedes moverlos cuando quieras: haz clic en el ícono de **tres puntos** del código, selecciona **Mover a carpeta** y elige la carpeta de destino.
+
+## Cómo crear códigos en masa
+
+<Steps>
+  <Step title="Abre Códigos QR">
+    En el menú lateral, entra en **Sitios** y selecciona **Códigos QR** en la barra superior.
+  </Step>
+  <Step title="Abre la creación en masa">
+    Haz clic en el ícono **Crear códigos QR en masa**, arriba a la derecha.
+  </Step>
+  <Step title="Descarga la plantilla">
+    Si la necesitas, haz clic en **Descargar CSV de ejemplo** y complétala con los nombres y URL de tus códigos.
+  </Step>
+  <Step title="Sube tu archivo">
+    Arrastra el CSV a la ventana o usa **Haz clic para subir** para buscarlo en tu equipo.
+  </Step>
+  <Step title="Elige la carpeta">
+    Selecciona una carpeta existente en el desplegable. Si no eliges ninguna, los códigos se guardan en la carpeta raíz.
+  </Step>
+  <Step title="Genera los códigos">
+    Haz clic en **Subir**. Aparecerá un indicador de progreso con los códigos creados y los errores. Si todas las filas salen bien, haz clic en **Cerrar** y entra en la carpeta para ver, seleccionar y descargar tus códigos en PNG, SVG o PDF.
+  </Step>
+  <Step title="Corrige los errores">
+    Si alguna fila aparece marcada, corrígela en tu CSV y vuelve a subirlo.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo descargar los códigos después de crearlos?">
+    Sí. Haz clic en el ícono de descarga de cualquier código para guardarlo en alta resolución, o descarga varios a la vez con las [acciones masivas](/sitios/acciones-masivas-en-codigos-qr).
+  </Accordion>
+  <Accordion title="¿Qué pasa cuando alguien escanea un código?">
+    La persona llega a la URL de destino que definiste para ese código.
+  </Accordion>
+  <Accordion title="¿Puedo ver cuántas veces se escaneó cada código?">
+    Sí. En la página de Códigos QR, entra en **Analítica** para ver los escaneos.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar la URL de destino de un código?">
+    Sí. Haz clic en **Editar** en el código y cambia la URL. El código impreso seguirá funcionando.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar el diseño de los códigos?">
+    Sí. Puedes editar colores e imágenes de cada código para que coincidan con tu marca. Consulta [Crear y descargar códigos QR](/sitios/crear-y-descargar-codigos-qr).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear y descargar códigos QR" icon="qrcode" href="/sitios/crear-y-descargar-codigos-qr">
+    Guía completa del generador de códigos QR.
+  </Card>
+  <Card title="Acciones masivas en códigos QR" icon="layer-group" href="/sitios/acciones-masivas-en-codigos-qr">
+    Mueve, descarga, renombra y elimina en bloque.
+  </Card>
+  <Card title="Parámetros de URL" icon="link" href="/sitios/parametros-de-url">
+    Usa parámetros en tus embudos y sitios web.
+  </Card>
+  <Card title="Fuentes de tráfico en la analítica" icon="chart-column" href="/sitios/fuentes-de-trafico-en-analisis">
+    Descubre de dónde llegan tus visitas.
+  </Card>
+</CardGroup>

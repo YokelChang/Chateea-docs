@@ -1,0 +1,81 @@
+---
+title: "Acceder a tu sitio de WordPress por FTP"
+description: "Obtén tus credenciales FTP y conéctate con FileZilla para subir, descargar y editar los archivos de tu sitio de WordPress."
+icon: "server"
+---
+
+El acceso FTP (protocolo de transferencia de archivos) te permite entrar a los archivos de tu sitio de WordPress alojado en Chateea desde tu computadora. Puedes subir, descargar y editar archivos como si fueran carpetas de tu propio equipo. Es útil cuando necesitas hacer algo que no se puede desde el escritorio de WordPress.
+
+## Cuándo usar FTP
+
+- Subir plugins o temas personalizados.
+- Editar archivos como `wp-config.php` o `.htaccess`.
+- Resolver una pantalla en blanco o un plugin que bloquea el sitio.
+- Descargar copias de seguridad o archivos concretos.
+
+<Tip>
+  Si solo necesitas hacer cambios puntuales, el [administrador de archivos](/sitios/administrador-de-archivos-wordpress) te deja hacer lo mismo desde el navegador, sin instalar nada.
+</Tip>
+
+## Datos que necesitas
+
+Encuentra tus credenciales en **Sitios → WordPress → Configuración avanzada → Acceso FTP** (FTP Access):
+
+| Dato | Descripción |
+| --- | --- |
+| **Host** | La dirección IP del servidor, por ejemplo `103.67.202.37` |
+| **Puerto** | Normalmente `21` |
+| **Usuario** | El nombre de usuario FTP que muestra el panel |
+| **Contraseña** | Si no la tienes, haz clic en **Restablecer contraseña** (Reset Password) para generar una nueva |
+
+## Conectarte con FileZilla
+
+Te recomendamos [FileZilla](https://filezilla-project.org/), un cliente FTP gratuito y confiable para Windows, macOS y Linux.
+
+<Steps>
+  <Step title="Descarga e instala FileZilla">
+    Entra a la [página de descargas de FileZilla](https://filezilla-project.org/download.php) y elige la versión para tu sistema operativo: Windows de 64 bits, macOS con Apple Silicon, macOS con Intel o Linux de 64 bits.
+  </Step>
+  <Step title="Escribe tus credenciales">
+    En la barra superior de FileZilla completa **Host**, **Nombre de usuario**, **Contraseña** y **Puerto** (`21`) con los datos de tu panel.
+  </Step>
+  <Step title="Conéctate">
+    Haz clic en **Conexión rápida** (Quickconnect).
+  </Step>
+  <Step title="Navega por tus archivos">
+    El lado derecho muestra los archivos de tu sitio en el servidor y el lado izquierdo, los de tu computadora. Arrastra y suelta archivos entre ambos lados para subirlos o descargarlos.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- No borres archivos si no sabes para qué sirven.
+- Para editar un archivo, haz clic derecho sobre él y elige **Ver/Editar**.
+- Descarga siempre una copia del archivo antes de modificarlo, para poder restaurarlo si algo sale mal.
+
+<Warning>
+  Un error en `wp-config.php` o `.htaccess` puede dejar tu sitio fuera de línea. Guarda una copia del archivo original antes de tocarlo.
+</Warning>
+
+## Solución de problemas
+
+| Problema | Qué hacer |
+| --- | --- |
+| No se conecta | Revisa la contraseña, el puerto y la IP del host |
+| Error de tiempo de espera | Activa el modo pasivo en la configuración de FileZilla |
+| Permiso denegado | Restablece la contraseña FTP desde el panel o pide acceso al administrador de tu cuenta |
+
+Si sigues sin poder conectarte, escribe a soporte de Chateea en **help@chateea.com** e incluye el nombre de tu sitio, tu usuario FTP y una captura de la configuración de FileZilla (sin mostrar la contraseña).
+
+La [documentación oficial de FileZilla](https://wiki.filezilla-project.org/Documentation) también explica en detalle todas sus opciones.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Administrador de archivos de WordPress" icon="folder-open" href="/sitios/administrador-de-archivos-wordpress">
+    Gestiona los archivos de tu sitio desde el navegador.
+  </Card>
+  <Card title="Acceso SSH y claves SSH" icon="terminal" href="/embudos-sitios-web/acceso-ssh-y-gestion-de-claves-ssh-en-tu-alojamiento-wordpress">
+    Conéctate por terminal y usa WP-CLI.
+  </Card>
+</CardGroup>

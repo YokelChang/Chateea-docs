@@ -1,0 +1,78 @@
+---
+title: "Enviar respuestas de encuestas a Google Sheets"
+description: "Exporta las respuestas de tus encuestas o agrega cada respuesta nueva como una fila en Google Sheets con un flujo de trabajo."
+icon: "table"
+---
+
+Tener las respuestas de tus encuestas en una hoja de Google Sheets facilita compartirlas con tu equipo, hacer gráficos o cruzarlas con otros datos. En Chateea tienes dos caminos: exportar las respuestas que ya recibiste o crear una automatización que agregue cada respuesta nueva como una fila en tu hoja, en tiempo real.
+
+## Antes de empezar
+
+- Una encuesta publicada en Chateea.
+- Tu cuenta de Google conectada a Chateea.
+- Una hoja de Google Sheets con los encabezados de columna ya preparados (por ejemplo: Nombre, Correo, Teléfono, Pregunta 1, Pregunta 2).
+- Acceso a **Automatización → Flujos de trabajo**.
+- La acción de Google Sheets es una acción premium: su uso se descuenta de la **billetera** de tu cuenta. Consulta las tarifas en **Configuración → Facturación**.
+
+## Opción 1: Enviar cada respuesta nueva a Google Sheets
+
+<Steps>
+  <Step title="Crea el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo desde cero.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Encuesta enviada** (Survey Submitted). Agrega el filtro de encuesta y selecciona la encuesta cuyas respuestas quieres enviar.
+  </Step>
+  <Step title="Agrega la acción de Google Sheets">
+    Añade la acción de Google Sheets para crear una fila. Elige tu cuenta de Google, la hoja de cálculo y la pestaña de destino.
+  </Step>
+  <Step title="Mapea los datos">
+    Relaciona cada columna de la hoja con el dato correspondiente: nombre, correo, teléfono y las respuestas de la encuesta.
+  </Step>
+  <Step title="Publica y prueba">
+    Guarda y publica el flujo. Envía la encuesta con datos de prueba y comprueba que aparece una fila nueva en la hoja.
+  </Step>
+</Steps>
+
+<Tip>
+  Deja los encabezados de la hoja definidos antes de crear el flujo. Si los cambias después, tendrás que volver a mapear las columnas en la acción.
+</Tip>
+
+## Opción 2: Exportar las respuestas que ya tienes
+
+<Steps>
+  <Step title="Abre los envíos">
+    Ve a **Sitios → Encuestas → Envíos**.
+  </Step>
+  <Step title="Filtra por encuesta">
+    Usa el filtro para quedarte solo con la encuesta que te interesa.
+  </Step>
+  <Step title="Exporta">
+    Haz clic en **Exportar**. Chateea te enviará por correo un enlace para descargar el archivo, que luego puedes importar en Google Sheets.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si un contacto responde la encuesta varias veces?">
+    Cada envío se registra por separado, así que el flujo agrega una fila por cada respuesta.
+  </Accordion>
+  <Accordion title="¿Las respuestas actualizan la ficha del contacto?">
+    Solo las respuestas de preguntas vinculadas a campos del contacto (como nombre, correo o teléfono, o un campo personalizado) actualizan su ficha. El resto queda guardado en el envío de la encuesta.
+  </Accordion>
+  <Accordion title="¿Tiene costo usar Google Sheets en un flujo?">
+    Sí. Es una acción premium y su consumo se descuenta de la billetera de tu cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acción de Google Sheets" icon="table" href="/automatizaciones/accion-google-sheets">
+    Todas las opciones de la acción en tus flujos de trabajo.
+  </Card>
+  <Card title="Envíos de formularios y encuestas" icon="inbox" href="/sitios/envios-de-formularios-y-encuestas">
+    Revisa y exporta las respuestas.
+  </Card>
+</CardGroup>

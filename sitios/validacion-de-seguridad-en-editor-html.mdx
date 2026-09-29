@@ -1,0 +1,76 @@
+---
+title: "Validación de seguridad en el editor HTML de formularios"
+description: "Qué código JavaScript bloquea el editor HTML de formularios, encuestas y cuestionarios y qué alternativas seguras puedes usar."
+icon: "shield-check"
+---
+
+El elemento **HTML** de los formularios, encuestas y cuestionarios te permite agregar código propio: un widget, un texto con formato especial o un pequeño script. Para proteger tu cuenta y a tus visitantes, Chateea revisa ese código mientras lo escribes y no te deja guardar JavaScript inseguro. Así se evitan ataques de tipo cross-site scripting (XSS), el robo de cookies o de tokens de sesión y los intentos de tomar el control de una cuenta.
+
+## Cómo funciona
+
+<Steps>
+  <Step title="Agrega el elemento HTML">
+    Abre tu formulario, encuesta o cuestionario en el editor y arrastra el elemento **HTML** al lienzo.
+  </Step>
+  <Step title="Edita el código">
+    Haz clic en **Editar HTML** y escribe o pega tu código.
+  </Step>
+  <Step title="Revisa la validación">
+    El editor analiza el código en tiempo real. Si detecta un patrón inseguro, aparece un mensaje de error en rojo y el botón **Guardar** se desactiva hasta que quites el fragmento problemático.
+  </Step>
+</Steps>
+
+## Qué se bloquea
+
+| Patrón | Ejemplo bloqueado | Por qué |
+| --- | --- | --- |
+| Acceso a cookies | `document.cookie` o `document['cookie']` | Las cookies pueden contener datos de autenticación |
+| Función `eval()` | `eval("alert('hola')")` | Ejecuta cualquier texto como código |
+| `new Function()` | `new Function('return document.cookie')` | Mismo riesgo que `eval()` |
+| `setTimeout()` con texto | `setTimeout("alert('hola')", 1000)` | El texto se ejecuta como código |
+| `setInterval()` con texto | `setInterval("miFuncion()", 1000)` | El texto se ejecuta como código |
+| Lectura de `localStorage` | `localStorage.getItem("authToken")` | Puede exponer tokens guardados en el navegador |
+
+## Qué sí está permitido
+
+- HTML estándar, sin scripts.
+- Lógica JavaScript segura.
+- Funciones flecha.
+- Temporizadores que reciben una función en lugar de texto, por ejemplo `setTimeout(function () { alert('hola') }, 1000)` o `setInterval(() => actualizar(), 1000)`.
+- Escribir en `localStorage` con `setItem()` y borrar con `removeItem()`.
+- Usar `sessionStorage`.
+
+## Detalles a tener en cuenta
+
+- La detección no distingue mayúsculas de minúsculas: `EVAL(` o `Document.Cookie` también se bloquean.
+- Puedes dejar el campo HTML vacío y guardar sin problema.
+- El HTML puro, sin etiquetas de script, siempre se acepta.
+
+<Tip>
+  Si tu código usa un temporizador con texto, reescríbelo pasando una función. Por ejemplo, cambia `setTimeout("mostrar()", 500)` por `setTimeout(mostrar, 500)`. El resultado es el mismo y el editor te dejará guardar.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el botón Guardar está desactivado?">
+    Porque el editor encontró uno de los patrones bloqueados. Lee el mensaje en rojo, localiza el fragmento indicado y elimínalo o reescríbelo con una alternativa permitida.
+  </Accordion>
+  <Accordion title="¿Esto afecta a scripts de terceros como un píxel o un widget?">
+    Solo si esos scripts usan alguno de los patrones bloqueados dentro del elemento HTML. Los códigos de seguimiento generales se agregan mejor desde la configuración de seguimiento de tu sitio o formulario.
+  </Accordion>
+  <Accordion title="¿Mi código ya guardado deja de funcionar?">
+    La validación se aplica cuando editas y guardas el elemento HTML. Si vuelves a editar un código antiguo que contiene un patrón bloqueado, tendrás que corregirlo para poder guardar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="CSS personalizado en formularios" icon="code" href="/sitios/css-personalizado-en-formularios">
+    Ajusta el diseño de formularios, encuestas y cuestionarios con CSS.
+  </Card>
+  <Card title="Proteger tus formularios contra el spam" icon="shield-check" href="/sitios/proteger-formularios-contra-spam">
+    Evita envíos falsos y automatizados.
+  </Card>
+</CardGroup>

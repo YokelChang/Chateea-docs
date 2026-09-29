@@ -1,0 +1,75 @@
+---
+title: "Imprimir listas de empaque de los pedidos"
+description: "Genera un PDF con los datos del pedido y sus artículos para preparar y despachar los pedidos de tu tienda en línea."
+icon: "print"
+---
+
+Las listas de empaque (packing slips) te ayudan a preparar cada pedido de tu tienda en línea sin errores. Desde Chateea puedes generar un PDF listo para imprimir con los datos del pedido completo o solo con los artículos que estás despachando en ese momento, y meterlo en la caja junto con los productos.
+
+## Qué incluye la lista de empaque
+
+Cada lista generada muestra:
+
+- ID del pedido.
+- Fecha del pedido.
+- Nombre de la tienda.
+- Dirección de envío y dirección de facturación.
+- Notas del pedido, cuando el cliente las escribió durante el pago.
+- Lista detallada de productos con nombre del producto o variante, imagen, cantidad y SKU.
+- Dirección del remitente (la dirección de tu tienda).
+
+## Cómo imprimir una lista de empaque
+
+Encuentras la opción en **Pagos → Pedidos**. Abre cualquier pedido de tu tienda y usa el botón **Imprimir etiqueta de envío** (Print Shipping Label). Puedes generarla desde dos lugares:
+
+<Steps>
+  <Step title="Desde el detalle del pedido">
+    En la página de detalle del pedido, haz clic en **Imprimir etiqueta de envío**. Se descarga un PDF que incluye los artículos pendientes y los ya despachados, cada grupo en una página distinta.
+  </Step>
+  <Step title="Durante el despacho del pedido">
+    Cuando registras un despacho (fulfillment), se listan los artículos y cantidades que seleccionaste. Al hacer clic en **Imprimir etiqueta de envío**, la lista se genera solo con esos artículos.
+  </Step>
+</Steps>
+
+<Tip>
+  Imprime la lista en el momento de registrar el despacho. Así la caja lleva exactamente lo que estás enviando y evitas confusiones en pedidos que salen en varias entregas.
+</Tip>
+
+## Detalles a tener en cuenta
+
+| Situación | Comportamiento |
+| --- | --- |
+| Tipo de pedido | Solo se pueden generar listas de empaque para pedidos de tiendas en línea. |
+| Despachos parciales | Si un pedido tiene varios despachos parciales, cada despacho aparece en una página distinta. |
+| Dirección de facturación | Si el pedido no tiene una dirección de facturación distinta, en la lista aparece la misma dirección de envío en ambos campos. |
+| Notas del pedido | La sección de notas aparece encima de la lista de artículos solo si el cliente escribió notas al pagar. |
+| SKU | Se toma de la configuración del producto o de la variante y aparece en la tabla de artículos. |
+
+<Note>
+  Para que tus clientes puedan dejar notas en el pago, activa el campo de notas en la página de pago de tu tienda. Consulta [Personalizar la página de pago de tu tienda](/tienda/personalizar-pagina-de-pago).
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo imprimir listas de empaque de pedidos hechos con formularios de pedido o embudos?">
+    No. La función está disponible solo para pedidos de tiendas en línea.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece el SKU en algunos productos?">
+    El SKU se toma del producto o de la variante. Revisa que lo tengas configurado en **Pagos → Productos** o en la página de inventario.
+  </Accordion>
+  <Accordion title="¿Por qué no veo la sección de notas?">
+    Solo aparece cuando el cliente escribió notas durante el pago. Si el cliente no escribió nada, la sección se oculta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestión de inventario" icon="boxes-stacked" href="/tienda/gestion-de-inventario">
+    Actualiza cantidades y SKU de tus productos y variantes.
+  </Card>
+  <Card title="Centro de acceso del cliente" icon="user" href="/tienda/centro-de-acceso-del-cliente">
+    Tus clientes consultan el estado y el seguimiento de sus pedidos.
+  </Card>
+</CardGroup>

@@ -1,0 +1,226 @@
+---
+title: "Crear productos con precio mediante la API"
+description: "Guía para desarrolladores: crea productos simples o con variantes y sus precios usando la API de Chateea."
+icon: "code"
+---
+
+Si tienes un desarrollador o un sistema propio, puedes crear productos con sus precios mediante la API de Chateea en lugar de hacerlo a mano. Es útil para cargar catálogos grandes o mantener tus productos sincronizados con otro sistema. Los productos creados así se pueden vender en tu tienda en línea, en facturas, en estimaciones y en otros canales de venta.
+
+Esta guía es para desarrolladores y explica el orden de las llamadas y los campos principales.
+
+## Tipos de producto
+
+| Tipo | Cuándo usarlo | Ejemplo |
+| --- | --- | --- |
+| Producto con precio | Productos simples, sin variantes o con una sola clasificación. | Un póster, un curso, un servicio. |
+| Producto con variantes | Productos con varias combinaciones de opciones. | Una camiseta con varios colores y tallas. |
+
+## Antes de empezar
+
+- Necesitas un token de acceso para la API de Chateea. Puedes generarlo desde una [integración privada](/integraciones/integraciones-privadas) con los permisos de productos.
+- Para conocer la URL base de la API y la documentación de referencia, escribe a soporte de Chateea en **help@chateea.com**.
+- Sigue el orden de esta guía: primero creas el producto y después sus precios.
+
+## Paso 1: Crear el producto
+
+Usa el endpoint **Crear producto** de la API. Estos son los campos principales:
+
+| Campo | Descripción |
+| --- | --- |
+| `name` | Nombre del producto. |
+| `locationId` | ID de tu cuenta de Chateea. |
+| `description` | Descripción breve que se muestra en los canales de venta. |
+| `productType` | Tipo de producto, por ejemplo `PHYSICAL` o `DIGITAL`. |
+| `image` | Imagen destacada que ve el cliente por defecto. |
+| `availableInStore` | Indica si el producto está disponible en tus tiendas en línea. |
+| `medias` | Lista de medios: `id` (identificador único), `title`, `url`, `type` (por ahora solo `image`) e `isFeatured` (`true` para mostrarla al cliente). |
+| `variants` | Solo para productos con variantes: `id` y `name` de la variante, y `options` con el `id` y `name` de cada opción. Los `id` de las opciones son necesarios para crear los precios. |
+
+### Ejemplo: producto con precio
+
+```json
+{
+  "name": "Memoria de alta velocidad",
+  "description": "Memoria de alta velocidad con las últimas funciones de seguridad",
+  "locationId": "<id_de_tu_cuenta>",
+  "availableInStore": true,
+  "productType": "PHYSICAL",
+  "image": "https://ejemplo.com/memoria.png",
+  "medias": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "title": "Memoria de alta velocidad",
+      "url": "https://ejemplo.com/memoria.png",
+      "type": "image",
+      "isFeatured": true
+    }
+  ]
+}
+```
+
+### Ejemplo: producto con variantes
+
+```json
+{
+  "name": "Camiseta",
+  "description": "Camiseta con el diseño y la calidad más recientes",
+  "locationId": "<id_de_tu_cuenta>",
+  "availableInStore": true,
+  "productType": "PHYSICAL",
+  "image": "https://ejemplo.com/camiseta.png",
+  "medias": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "title": "Camiseta",
+      "url": "https://ejemplo.com/camiseta.png",
+      "type": "image",
+      "isFeatured": true
+    }
+  ],
+  "variants": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "name": "Color",
+      "options": [
+        { "id": "550e8400-e29b-41d4-a716-446655440002", "name": "Rojo" },
+        { "id": "550e8400-e29b-41d4-a716-446655440001", "name": "Azul" },
+        { "id": "550e8400-e29b-41d4-a716-446655440003", "name": "Verde" }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440111",
+      "name": "Talla",
+      "options": [
+        { "id": "550e8400-e29b-41d4-a716-446655440112", "name": "Pequeña" },
+        { "id": "550e8400-e29b-41d4-a716-446655440113", "name": "Mediana" },
+        { "id": "550e8400-e29b-41d4-a716-446655440114", "name": "Grande" }
+      ]
+    }
+  ]
+}
+```
+
+<Note>
+  En productos con variantes, guarda los `id` de cada opción. Los necesitarás para crear los precios.
+</Note>
+
+La respuesta incluye la propiedad `_id`, que es el ID del producto creado. Lo usarás en el siguiente paso.
+
+## Paso 2: Crear el precio del producto
+
+Usa el endpoint **Crear precio para un producto**. Campos principales:
+
+| Campo | Descripción |
+| --- | --- |
+| `product` | ID del producto (el `_id` del paso anterior). |
+| `locationId` | ID de tu cuenta de Chateea. |
+| `name` | Nombre del precio. |
+| `type` | `one_time` (pago único) o `recurring` (recurrente). |
+| `currency` | Moneda del precio. |
+| `amount` | Monto en esa moneda. |
+| `description` | Descripción del precio. |
+| `variantOptionIds` | Obligatorio en productos con variantes. Lista con los `id` de las opciones que forman la combinación. |
+| `trackInventory` | `true` si quieres llevar el inventario. |
+| `availableQuantity` | Cantidad disponible. Aplica si `trackInventory` es `true`. |
+| `allowOutOfStockPurchases` | Permite vender sin existencias. Aplica si `trackInventory` es `true`. |
+| `sku` | SKU del precio o de la variante. |
+| `isDigitalProduct` | `true` si es un producto digital. |
+| `shippingOptions` | Datos de envío para productos físicos, útiles para las integraciones de envío. `weight` con `value` y `unit` (`kg`, `g`, `lb`, `oz`) y `dimensions` con `height`, `width`, `length` y `unit` (`cm`, `in`, `m`). |
+
+Por ejemplo, para la combinación Rojo / Pequeña, `variantOptionIds` lleva el ID de la opción Rojo y el ID de la opción Pequeña:
+
+```json
+["550e8400-e29b-41d4-a716-446655440002", "550e8400-e29b-41d4-a716-446655440112"]
+```
+
+<Warning>
+  En productos con variantes, si no envías `variantOptionIds`, las combinaciones se muestran de forma incorrecta. Crea un precio por cada combinación que quieras vender.
+</Warning>
+
+### Ejemplo: precio simple (sin variantes)
+
+```json
+{
+  "product": "66b6021be68f7a98102ba272",
+  "locationId": "<id_de_tu_cuenta>",
+  "name": "256 GB",
+  "type": "one_time",
+  "currency": "USD",
+  "amount": 100,
+  "description": "256 GB de almacenamiento",
+  "sku": "PS-256GB",
+  "isDigitalProduct": false,
+  "shippingOptions": {
+    "weight": { "value": 100, "unit": "g" },
+    "dimensions": { "length": 10, "width": 10, "height": 10, "unit": "cm" }
+  }
+}
+```
+
+### Ejemplo: precio de una variante
+
+```json
+{
+  "product": "66b6021be68f7a98102ba272",
+  "locationId": "<id_de_tu_cuenta>",
+  "name": "Rojo / Pequeña",
+  "type": "one_time",
+  "currency": "USD",
+  "amount": 100,
+  "description": "Rojo / Pequeña",
+  "sku": "PS-ROJO-PEQUENA",
+  "isDigitalProduct": false,
+  "variantOptionIds": ["550e8400-e29b-41d4-a716-446655440002", "550e8400-e29b-41d4-a716-446655440112"],
+  "shippingOptions": {
+    "weight": { "value": 100, "unit": "g" },
+    "dimensions": { "length": 10, "width": 10, "height": 10, "unit": "cm" }
+  }
+}
+```
+
+## Paso 3 (opcional): Asignar imágenes a cada variante
+
+Esta opción solo está disponible para productos con variantes. Al crear cada precio, la respuesta incluye su ID interno. Con esos IDs, actualiza el producto y agrega la propiedad `priceIds` a cada medio de la lista `medias`. Así cada imagen queda asignada a su variante automáticamente.
+
+```text
+{
+  "name": "Camiseta",
+  "description": "Camiseta con el diseño y la calidad más recientes",
+  "locationId": "<id_de_tu_cuenta>",
+  "availableInStore": true,
+  "productType": "PHYSICAL",
+  "image": "https://ejemplo.com/camiseta.png",
+  "medias": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "title": "Camiseta roja",
+      "url": "https://ejemplo.com/camiseta-roja.png",
+      "type": "image",
+      "priceIds": ["<id_del_precio_creado>"],
+      "isFeatured": true
+    }
+  ],
+  "variants": [ ...las variantes que ya tiene el producto... ]
+}
+```
+
+En `variants`, vuelve a enviar los datos de variantes que ya tenía el producto.
+
+<Warning>
+  Por ahora, cada imagen solo admite un ID de precio. Asignar varios IDs de precio a una misma imagen causa problemas al mostrar el producto.
+</Warning>
+
+## Productos recurrentes
+
+Con estas mismas llamadas puedes crear productos físicos de pago único, simples o con variantes. La API también admite productos recurrentes: usa `type` con el valor `recurring` y los campos específicos de precios recurrentes que se describen en la documentación de la API.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integraciones privadas" icon="key" href="/integraciones/integraciones-privadas">
+    Genera tokens con permisos controlados para la API.
+  </Card>
+  <Card title="Gestión de inventario" icon="boxes-stacked" href="/tienda/gestion-de-inventario">
+    Revisa y ajusta las existencias desde tu cuenta.
+  </Card>
+</CardGroup>

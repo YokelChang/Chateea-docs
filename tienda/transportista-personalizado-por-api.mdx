@@ -1,0 +1,280 @@
+---
+title: "Integrar una transportista personalizada por API"
+description: "Guía para desarrolladores: muestra tarifas de envío en vivo y sincroniza pedidos y seguimiento con tu transportista."
+icon: "truck-fast"
+---
+
+Si trabajas con una empresa de envíos que no está entre las integraciones disponibles, un desarrollador puede conectarla a tu tienda en línea mediante la API de Chateea. Con una integración de transportista personalizada puedes mostrar tarifas de envío en vivo durante el pago, enviar los pedidos a la transportista automáticamente y devolver a Chateea el número y la URL de seguimiento para que tus clientes los vean.
+
+Esta guía es técnica y está pensada para el desarrollador que construirá la integración.
+
+## Ventajas
+
+- **Flexibilidad:** conectas cualquier transportista que tenga API, además de las opciones integradas.
+- **Tarifas exactas:** el cliente ve en el pago el costo real de envío según tu cuenta con la transportista.
+- **Despacho automatizado:** los pedidos pagados se envían a la transportista sin trabajo manual.
+- **Seguimiento sincronizado:** el número y la URL de seguimiento vuelven al pedido en Chateea.
+
+## Cómo funciona
+
+1. Tu servicio registra la transportista en la cuenta de Chateea con una URL de devolución de llamada (callback).
+2. Durante el pago, Chateea llama a esa URL con el carrito y la dirección de destino, y tu servicio responde con las tarifas de la transportista.
+3. Cuando entra un pedido, Chateea envía un webhook a tu servicio, que crea el envío en la transportista.
+4. Cuando la transportista genera el seguimiento, tu servicio crea el despacho (fulfillment) del pedido en Chateea.
+5. Si se desinstala la integración, tu servicio elimina la transportista registrada.
+
+## Requisitos
+
+### Conocimientos
+
+- Desarrollo backend (por ejemplo Node.js o Python).
+- API REST, webhooks y el flujo de autorización OAuth 2.0.
+
+### Servicio backend
+
+Tu servicio debe poder:
+
+- Recibir la redirección de OAuth de Chateea.
+- Recibir webhooks de Chateea (eventos de pedidos) y de la transportista (actualizaciones de envío).
+- Hacer llamadas a la API de Chateea y a la API de la transportista.
+- Servir la interfaz de configuración, si no la alojas aparte.
+
+### Base de datos
+
+Para guardar de forma segura:
+
+- Los tokens OAuth de Chateea (de acceso y de actualización) asociados al ID de cada cuenta.
+- Las credenciales de la transportista (claves y secretos) que introduce el usuario, asociadas a la cuenta.
+- La relación entre los pedidos de Chateea y los envíos de la transportista.
+
+### Endpoints que debes implementar
+
+| Endpoint | Para qué sirve |
+| --- | --- |
+| Redirección OAuth | Recibe la respuesta de Chateea después de autorizar la aplicación. |
+| Receptor de webhooks de Chateea | Recibe eventos como `OrderCreate` y `OrderStatusUpdate`. |
+| Gestión de credenciales | Guarda, actualiza y elimina las credenciales de la transportista. |
+| Receptor de webhooks de la transportista | Recibe las actualizaciones de envío. |
+| Tarifas en vivo | Chateea lo llama durante el pago para obtener las tarifas. |
+
+## Paso 1: Configuración inicial
+
+### Crea la aplicación
+
+Para crear una aplicación con acceso OAuth a la API de Chateea, obtener sus credenciales y conocer la URL base de la API, escribe a soporte de Chateea en **help@chateea.com**. Configúrala así:
+
+- **Tipo de aplicación:** a nivel de cuenta, para que se instale en cuentas concretas.
+- **URL de redirección:** el endpoint de tu servicio que recibe la respuesta de OAuth, por ejemplo `https://tu-backend.com/oauth/callback`.
+- **URL de webhooks:** el endpoint que recibe los webhooks de Chateea, por ejemplo `https://tu-backend.com/webhooks/chateea`. Activa los webhooks `OrderCreate` y `OrderStatusUpdate`.
+
+### Permisos necesarios
+
+- `orders.readonly`
+- `orders.write`
+- `shipping.readonly`
+- `shipping.write`
+
+### Interfaz de configuración
+
+Crea una página donde el usuario introduzca las credenciales de su transportista (clave de API, secreto, ID de cuenta, etc.) e insértala en Chateea como un enlace de menú personalizado que apunte a tu página.
+
+### Identifica la cuenta del usuario
+
+Tu página y tu backend deben saber en qué cuenta está trabajando el usuario. Al cargar tu página, solicita el contexto a la ventana principal con un mensaje `REQUEST_USER_DATA` y espera la respuesta `REQUEST_USER_DATA_RESPONSE`. La respuesta trae los datos del usuario cifrados: envíalos a tu backend y descífralos allí con el secreto compartido de tu aplicación para obtener el ID de la cuenta.
+
+```javascript
+function getUserContext() {
+  return new Promise((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new Error('Sin respuesta de contexto')), 5000)
+    function handler(event) {
+      if (event.data && event.data.message === 'REQUEST_USER_DATA_RESPONSE') {
+        clearTimeout(timeout)
+        window.removeEventListener('message', handler)
+        resolve(event.data.payload) // datos cifrados: descífralos en tu backend
+      }
+    }
+    window.addEventListener('message', handler)
+    window.parent.postMessage({ message: 'REQUEST_USER_DATA' }, '*') // usa un origen concreto en producción
+  })
+}
+```
+
+<Warning>
+  Descifra siempre el contexto en tu backend, nunca en el navegador, y no expongas el secreto compartido de tu aplicación.
+</Warning>
+
+### Gestiona las credenciales de la transportista
+
+1. Recibe las credenciales desde tu interfaz.
+2. Guárdalas de forma segura en tu base de datos, asociadas al ID de la cuenta.
+3. Valídalas con una llamada de prueba a la API de la transportista e informa el resultado al usuario.
+4. Con las credenciales validadas, registra en la transportista la URL de tu receptor de webhooks, por ejemplo `https://tu-backend.com/webhooks/transportista`, para que te avise de cambios en los envíos.
+
+## Paso 2: Tarifas de envío en vivo
+
+### Registra la transportista
+
+Haz una solicitud `POST /shipping-carrier` a la API de Chateea con el contexto de la cuenta y los datos de tu integración:
+
+```http
+POST /shipping-carrier
+Authorization: Bearer <token_de_acceso_de_la_cuenta>
+Content-Type: application/json
+
+{
+  "altId": "<id_de_la_cuenta>",
+  "altType": "location",
+  "name": "Mi Transportista",
+  "callbackUrl": "https://tu-backend.com/rates"
+}
+```
+
+- `name`: el nombre que verá el usuario en la configuración de envíos.
+- `callbackUrl`: la URL de tu endpoint de tarifas en vivo. Haz un pago de prueba y comprueba en tus registros que las llamadas llegan a la ruta que esperas.
+
+La respuesta incluye el `_id` de la transportista creada. Guárdalo como `shippingCarrierId`, asociado a la cuenta y a sus credenciales.
+
+### Implementa el endpoint de tarifas
+
+Durante el pago, Chateea envía un `POST` a tu `callbackUrl` con el origen, el destino, los artículos del carrito y la moneda:
+
+```json
+{
+  "rate": {
+    "altId": "<id_de_la_cuenta>",
+    "altType": "location",
+    "origin": {
+      "name": "Nombre del dueño", "companyName": "Mi Tienda",
+      "address1": "Calle Origen 123", "city": "Ciudad", "state": "CA",
+      "zip": "90210", "country": "US", "phone": "5551112222", "email": "tienda@ejemplo.com"
+    },
+    "destination": {
+      "name": "Nombre del cliente", "address1": "Avenida Destino 456",
+      "city": "Ciudad", "state": "NY", "zip": "10001", "country": "US",
+      "phone": "5553334444", "email": "cliente@ejemplo.com"
+    },
+    "items": [
+      {
+        "name": "Producto A", "sku": "SKU123", "quantity": 2, "grams": 500,
+        "unitPrice": 25.0, "totalPrice": 50.0,
+        "productId": "<id_del_producto>", "priceId": "<id_del_precio>"
+      }
+    ],
+    "currency": "USD"
+  }
+}
+```
+
+`grams` es el peso por unidad y `totalPrice` es la cantidad por el precio unitario.
+
+Tu endpoint debe:
+
+1. Leer la solicitud.
+2. Buscar las credenciales de la transportista asociadas al `altId`.
+3. Convertir los datos al formato de la API de la transportista y pedir las tarifas.
+4. Responder con las tarifas en este formato:
+
+```json
+{
+  "rates": [
+    { "serviceName": "Estándar terrestre", "amount": 15.5, "currency": "USD", "estimatedDays": 5 },
+    { "serviceName": "Exprés al día siguiente", "amount": 45.0, "currency": "USD", "estimatedDays": 1 }
+  ]
+}
+```
+
+`estimatedDays` es opcional.
+
+### Agrega la tarifa a las zonas de envío
+
+Después de registrar la transportista, hay que agregar una tarifa basada en ella en cada zona de envío donde quieras ofrecerla. Puede hacerlo el usuario desde la configuración de envíos de su tienda o tu integración de forma automática:
+
+1. Lista las zonas de envío de la cuenta con `GET /shipping-zone?altId=<id_de_la_cuenta>&altType=location`.
+2. En cada zona, crea una tarifa con `isCarrierRate` en `true`, el `shippingCarrierId` que guardaste y un `amount` de 0 como referencia, porque el costo real se obtiene en vivo.
+
+```json
+{
+  "altId": "<id_de_la_cuenta>",
+  "altType": "location",
+  "name": "Mi Transportista - Tarifas en vivo",
+  "currency": "USD",
+  "amount": 0,
+  "conditionType": "NONE",
+  "isCarrierRate": true,
+  "shippingCarrierId": "<shippingCarrierId>"
+}
+```
+
+## Paso 3: Sincronizar pedidos y despachos
+
+### Cuando entra un pedido
+
+Con los webhooks `OrderCreate` y `OrderStatusUpdate` activos, tu receptor recibe los eventos de pedidos. Para cada evento:
+
+1. Verifica la autenticidad del webhook.
+2. Comprueba que el pedido esté en un estado listo para enviar, por ejemplo completado o pagado, y que tenga productos físicos.
+3. Obtén el detalle completo con `GET /orders/{orderId}`.
+4. Busca las credenciales de la transportista de esa cuenta.
+5. Crea el envío en la API de la transportista.
+6. Guarda la relación entre el `orderId` de Chateea y el ID del envío de la transportista.
+
+<Tip>
+  Responde rápido a los webhooks con un código 200 y procesa el envío en segundo plano, con reintentos y alertas de error. Así evitas duplicados y pedidos perdidos.
+</Tip>
+
+### Cuando la transportista actualiza el envío
+
+Cuando la transportista avisa que generó la etiqueta, el número de seguimiento o que envió el paquete:
+
+1. Verifica la autenticidad del webhook según el mecanismo de la transportista.
+2. Extrae el ID del envío, el número y la URL de seguimiento y el estado.
+3. Busca el `orderId` y la cuenta correspondientes en tu base de datos.
+4. Si ya hay número de seguimiento, crea el despacho del pedido en Chateea con `POST /orders/{orderId}/fulfillments`:
+
+```json
+{
+  "altId": "<id_de_la_cuenta>",
+  "altType": "location",
+  "items": [
+    { "priceId": "<id_del_precio>", "qty": 1 }
+  ],
+  "trackings": [
+    {
+      "trackingNumber": "<numero_de_seguimiento>",
+      "shippingCarrier": "Mi Transportista",
+      "trackingUrl": "<url_de_seguimiento>"
+    }
+  ],
+  "notifyCustomer": true
+}
+```
+
+Con `notifyCustomer` en `true`, el cliente recibe el aviso del despacho y ve el seguimiento en el centro de acceso del cliente.
+
+## Paso 4: Desinstalación
+
+Configura tu aplicación para recibir el webhook de desinstalación. Cuando llegue para una cuenta:
+
+1. Busca el `shippingCarrierId` de esa cuenta.
+2. Elimina la transportista con `DELETE /shipping-carrier/{shippingCarrierId}?altId=<id_de_la_cuenta>&altType=location`.
+3. Limpia tus datos: borra las credenciales guardadas y los webhooks registrados en la transportista.
+
+Así evitas que el pago de la tienda intente llamar a una URL de tarifas que ya no funciona.
+
+## Buenas prácticas
+
+- Maneja los errores con cuidado y registra lo que ocurre para facilitar la depuración.
+- Protege las credenciales: cífralas en reposo y nunca las expongas en el navegador.
+- Prepara tu servicio y tu base de datos para crecer con el volumen de pedidos.
+- Revisa periódicamente los cambios en la API de Chateea y en la de tu transportista.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integraciones privadas" icon="key" href="/integraciones/integraciones-privadas">
+    Conecta tus propios sistemas con permisos controlados.
+  </Card>
+  <Card title="Personalizar la página de pago" icon="cart-shopping" href="/tienda/personalizar-pagina-de-pago">
+    Campos de dirección que afectan el cálculo de tarifas.
+  </Card>
+</CardGroup>

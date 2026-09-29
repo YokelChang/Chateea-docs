@@ -1,0 +1,133 @@
+---
+title: "Integrar WooCommerce con tu cuenta de Chateea"
+description: "Importa y sincroniza contactos, pedidos, transacciones, productos y colecciones de WooCommerce y automatiza el seguimiento."
+icon: "plug"
+---
+
+La integración con WooCommerce conecta tu tienda de WooCommerce con tu cuenta de Chateea. Te permite importar tu historial (contactos, pedidos, transacciones, productos y colecciones) y mantener sincronizadas las compras nuevas, para que puedas dar seguimiento a tus clientes con las herramientas de marketing y automatización de Chateea. Te sirve tanto para gestionar las dos plataformas en paralelo como para migrar tu tienda por completo.
+
+## Ventajas
+
+- **Pedidos en un solo lugar:** ves tus pedidos de WooCommerce dentro de Chateea en cuanto activas la sincronización.
+- **Contactos enriquecidos:** se crean o actualizan contactos a partir de las compras, incluidas las compras como invitado.
+- **Automatizaciones por pedido:** inicias flujos de trabajo cuando entra un pedido o se recibe un pago en WooCommerce.
+- **Control selectivo:** eliges qué importar una sola vez y qué seguir sincronizando.
+- **Catálogo sincronizado:** tus productos y categorías publicados en WooCommerce llegan a tu tienda en línea de Chateea.
+- **Reimportación:** puedes volver a importar el historial cuando lo necesites.
+
+## Cómo conectar WooCommerce
+
+<Steps>
+  <Step title="Abre la integración">
+    En tu cuenta de Chateea, ve a **Configuración → Integraciones → WooCommerce** y haz clic en **Conectar**.
+  </Step>
+  <Step title="Escribe la URL de tu tienda">
+    Escribe la URL de tu tienda de WooCommerce **sin barra final**, por ejemplo `https://tutienda.com`, y aprueba la conexión.
+  </Step>
+  <Step title="Elige qué importar">
+    Selecciona los elementos que quieres traer como importación única del historial y haz clic en **Siguiente**.
+  </Step>
+  <Step title="Elige qué sincronizar">
+    Selecciona los datos y disparadores que quieres mantener sincronizados a partir de ahora.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para iniciar la importación y la sincronización. Puedes activar o desactivar opciones de sincronización cuando quieras desde la misma integración.
+  </Step>
+</Steps>
+
+### Opciones de importación (historial)
+
+| Opción | Qué importa |
+| --- | --- |
+| Contactos | Solo los clientes que hicieron al menos un pedido en el pasado. |
+| Pedidos | Tus pedidos anteriores. Actívala para poder importar transacciones. |
+| Transacciones | Todas las transacciones de tus pedidos de WooCommerce. |
+| Productos | Todos los productos publicados. Se incluyen automáticamente en tu tienda en línea. |
+| Colecciones | Las categorías de WooCommerce vinculadas a productos. |
+
+### Opciones de sincronización (a futuro)
+
+| Opción | Qué sincroniza |
+| --- | --- |
+| Contactos | Los clientes que hagan pedidos a partir de ahora. |
+| Pedidos | Todos tus pedidos futuros. Actívala para poder sincronizar transacciones y usar los disparadores de pedido y pago. |
+| Disparador de pedido recibido | Permite iniciar flujos de trabajo cuando entra un pedido en WooCommerce. |
+| Transacciones | Las transacciones de tus pedidos futuros. |
+| Disparador de pago recibido | Permite iniciar flujos de trabajo cuando se recibe un pago en WooCommerce. |
+| Productos y colecciones | Productos publicados, categorías y atributos. Los cambios que hagas en WooCommerce se reflejan en Chateea, pero los cambios hechos en Chateea no vuelven a WooCommerce. |
+
+## Reglas de importación de productos y categorías
+
+- Solo se importan productos **simples** y **variables**. Los demás tipos de producto se excluyen.
+- No se importan productos con precio 0 ni productos sin variantes.
+- La opción **Incluir en la tienda en línea** se activa solo para productos **publicados**.
+- WooCommerce es la fuente de verdad de la información de productos.
+- Solo se importan categorías vinculadas a productos. Las categorías sin productos se ignoran.
+- Las eliminaciones de productos o categorías en WooCommerce no se sincronizan con Chateea.
+- Los pedidos se importan completos, con sus productos e imágenes vinculados.
+
+## Automatizaciones con pedidos de WooCommerce
+
+### Cuando entra un pedido
+
+<Steps>
+  <Step title="Crea o edita un flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o edita uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Pedido enviado** (Order Submitted).
+  </Step>
+  <Step title="Filtra por WooCommerce">
+    Agrega el filtro **Origen del pedido** es **Externo** y un segundo filtro **Suborigen** es **WooCommerce**. Guarda el disparador.
+  </Step>
+  <Step title="Agrega tus acciones">
+    Agrega las acciones que necesites después del disparador, como enviar un SMS, un correo o una factura.
+  </Step>
+</Steps>
+
+### Cuando se recibe un pago
+
+Sigue los mismos pasos, pero elige el disparador **Pago recibido** (Payment Received) y usa los filtros **Origen** es **Externo** y **Suborigen** es **WooCommerce**.
+
+## Reconexión y errores de autenticación
+
+Si la conexión devuelve errores de autenticación, como 401 (no autorizado), 403 (prohibido) o 404 (no encontrado), la integración pasa a modo de reconexión y los administradores de tu cuenta reciben un correo con los pasos para restablecerla.
+
+Para volver a importar datos que faltaron, **desconecta** y **vuelve a conectar** la integración, y selecciona otra vez lo que quieres importar.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué tipos de clientes de WooCommerce se importan como contactos?">
+    Los clientes con los roles **Customer** y **Subscriber**.
+  </Accordion>
+  <Accordion title="¿Se crean contactos si la sincronización de contactos está desactivada?">
+    Sí. Si la sincronización de pedidos está activa, se crean contactos a partir de los pedidos aunque la sincronización de contactos esté apagada.
+  </Accordion>
+  <Accordion title="¿Qué pasa con las compras como invitado?">
+    Los compradores invitados se crean como contactos, pero no reciben actualizaciones ni sincronizaciones futuras.
+  </Accordion>
+  <Accordion title="¿Cómo se traducen los estados de pedido de WooCommerce?">
+    **Completed** o **Refunded** en WooCommerce pasan a **Completado** en Chateea. **Cancelled** o **Failed** pasan a **Cancelado**. Cualquier otro estado pasa a **Pendiente**.
+  </Accordion>
+  <Accordion title="¿Puedo importar todos los tipos de producto de WooCommerce?">
+    No. Solo se importan productos simples y variables.
+  </Accordion>
+  <Accordion title="¿Cada cuánto se sincronizan los datos?">
+    La sincronización es continua, según las opciones que hayas activado en la integración.
+  </Accordion>
+  <Accordion title="¿Debo poner barra al final de la URL de mi tienda?">
+    No. Escribe la URL sin barra final.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador: Pedido enviado" icon="bolt" href="/automatizaciones/disparador-pedido-enviado">
+    Inicia flujos de trabajo cuando entra un pedido.
+  </Card>
+  <Card title="Migrar tu tienda desde Shopify" icon="right-left" href="/tienda/migrar-tienda-desde-shopify">
+    Trae productos, clientes y pedidos desde Shopify.
+  </Card>
+</CardGroup>

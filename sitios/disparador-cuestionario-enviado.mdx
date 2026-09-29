@@ -1,0 +1,87 @@
+---
+title: "Disparador Cuestionario enviado"
+description: "Inicia un flujo de trabajo cuando alguien envía un cuestionario y filtra por puntuación, categoría o cuestionario."
+icon: "bolt"
+---
+
+El disparador **Cuestionario enviado** (Quiz Submitted) inicia un flujo de trabajo en cuanto un contacto termina y envía un cuestionario. Te permite reaccionar al instante según su resultado: enviarle una recomendación personalizada, asignar el lead a un vendedor, etiquetarlo o entregarle un certificado.
+
+## Ventajas
+
+- **Respuesta inmediata:** actúas en el momento en que el contacto termina.
+- **Filtros avanzados:** por cuestionario, por puntuación general, por categoría o por campo personalizado.
+- **Acciones a medida:** correos, SMS, tareas o actualizaciones del CRM según el resultado.
+- **Sin trabajo manual:** olvídate de exportar resultados para decidir qué hacer con cada lead.
+
+## Filtros disponibles
+
+| Filtro | Para qué sirve |
+| --- | --- |
+| **Nombre del cuestionario** | Elegir uno o varios cuestionarios, o excluir alguno |
+| **Puntuación general** | Condiciones como "mayor que 80" o un rango |
+| **Puntuación por categoría** | Actuar según el resultado en una sección concreta |
+| **Campo personalizado** | Usar campos de puntuación propios definidos en el cuestionario |
+
+### Filtrar por rango de puntuación
+
+Con el operador **Entre** segmentas a los contactos por rangos, por ejemplo de 40 a 79. Los dos extremos se incluyen en el rango. El sistema no te deja guardar un rango en el que el mínimo sea mayor que el máximo.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o edita uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Cuestionario enviado**.
+  </Step>
+  <Step title="Define los filtros">
+    Elige el cuestionario y, si quieres, agrega condiciones de puntuación general, por categoría o de campos personalizados.
+  </Step>
+  <Step title="Agrega las acciones">
+    Añade lo que debe pasar: enviar un correo o SMS, asignar una tarea, actualizar el contacto, agregar una etiqueta, etc.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda el flujo y publícalo. Haz un envío de prueba del cuestionario para comprobar que se dispara.
+  </Step>
+</Steps>
+
+<Tip>
+  Crea varios flujos con el mismo cuestionario y distintos rangos de puntuación (por ejemplo, 0 a 39, 40 a 79 y 80 a 100). Cada grupo recibirá un mensaje distinto y tu equipo de ventas solo hablará con los leads más calificados.
+</Tip>
+
+## Ideas de uso
+
+- Enviar comentarios personalizados según el desempeño.
+- Segmentar leads para campañas específicas.
+- Recomendar cursos o productos según la categoría ganadora.
+- Pasar a tu equipo de ventas los contactos con mejor puntuación.
+- Entregar un certificado a quien apruebe.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Funciona con todos los cuestionarios?">
+    Sí. Puedes usarlo con cualquier cuestionario de tu cuenta.
+  </Accordion>
+  <Accordion title="¿Puedo ejecutar varias acciones en el mismo flujo?">
+    Sí. Agrega todas las acciones que necesites después del disparador.
+  </Accordion>
+  <Accordion title="¿Puedo enviar los resultados a otras herramientas?">
+    Sí. Desde el flujo puedes usar acciones de integración, como webhooks o Google Sheets, para llevar los datos a otros sistemas.
+  </Accordion>
+  <Accordion title="¿Puedo insertar el cuestionario en una página?">
+    Sí. Usa el botón **Integrar** del editor, copia el código de inserción y pégalo en un elemento de código personalizado de tu página.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear cuestionarios" icon="clipboard-question" href="/sitios/crear-cuestionarios">
+    Guía completa del editor de cuestionarios.
+  </Card>
+  <Card title="Lista de disparadores" icon="list" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles en los flujos.
+  </Card>
+</CardGroup>

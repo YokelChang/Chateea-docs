@@ -1,165 +1,155 @@
 ---
-title: "WordPress - Agregar dominios a tu sitio"
-description: "Cómo agregar y configurar el dominio principal, dominios adicionales y el dominio raíz o APEX en tu sitio de WordPress dentro de Chateea."
+title: "Agregar dominios a tu sitio de WordPress"
+description: "Conecta el dominio principal, subdominios y dominios adicionales a tu sitio de WordPress, con SSL automático y verificación de DNS."
 icon: "globe"
 ---
 
-<Info>
-  Documentado el 15 de agosto de 2026.
-</Info>
+Conectar un dominio a tu sitio de WordPress es lo que lo hace accesible al público con tu propia dirección (por ejemplo, `tudominio.com`). Chateea verifica los registros DNS y emite automáticamente el certificado SSL, así tus visitantes llegan a un sitio seguro con HTTPS. En esta guía verás cómo agregar el dominio principal, subdominios y dominios adicionales, y cómo leer los estados del panel.
 
-Este artículo reúne las instrucciones para **agregar y configurar dominios** en un sitio de WordPress alojado en Chateea: el dominio principal, los dominios adicionales y el dominio raíz (o APEX).
+Mientras no conectes un dominio, tu sitio sigue disponible en la URL temporal que se genera al crearlo. Úsala para armar y revisar todo antes de publicar.
 
-<Warning>
-  Este procedimiento aplica únicamente a **instalaciones nuevas de WordPress creadas a partir del 31 de marzo de 2023**. Si tu instalación es anterior a esa fecha, la pantalla de gestión de dominios puede verse distinta y conviene que consultes con soporte antes de hacer cambios.
-</Warning>
+<Note>
+  La gestión de dominios solo está disponible en el entorno **en vivo**. Si estás en el entorno de pruebas, esta sección aparece desactivada con un aviso. Cambia a **En vivo** con el selector de entorno de la parte superior derecha.
+</Note>
 
-## Qué cubre este artículo
+## Ventajas
 
-<CardGroup cols={3}>
-  <Card title="Dominio principal" icon="star">
-    El primer dominio que conectas. Queda marcado como principal de forma automática.
-  </Card>
+- **SSL automático**: el certificado se emite al verificar el DNS del dominio principal.
+- **Varios dominios**: conecta hasta 5 dominios o subdominios al mismo sitio.
+- **Subdominios más simples**: los subdominios (por ejemplo, `blog.tudominio.com`) no necesitan el paso de validación SSL con registros TXT.
+- **Configuración automática**: si tu proveedor es compatible, puedes configurar el DNS sin crear registros a mano.
+- **Estados claros**: ves de un vistazo si el DNS y el SSL están listos.
 
-  <Card title="Dominios adicionales" icon="layer-group">
-    Hasta cinco dominios extra apuntando al mismo sitio de WordPress.
-  </Card>
+## Antes de empezar
 
-  <Card title="Dominio raíz y APEX" icon="code-branch">
-    Cómo tratar `www.tudominio.com` y `tudominio.com` sin duplicar configuración.
-  </Card>
-</CardGroup>
+- Trabaja en el entorno **en vivo**.
+- Tu sitio de WordPress ya debe estar creado en tu cuenta de Chateea.
+- Necesitas acceso a la configuración DNS de tu dominio en tu proveedor (por ejemplo, Cloudflare, GoDaddy, IONOS, Namecheap o Hostinger).
+- Si usas **Cloudflare**, desactiva el proxy de los registros (deja la nube en gris, modo "solo DNS"). Con el proxy activo, la verificación no se completa.
+- El dominio no puede estar conectado a otra cuenta. Si lo está, elimínalo primero de allí.
 
-## ¿Por qué necesitas agregar un dominio?
-
-Agregar un dominio a un sitio de WordPress es lo que lo hace **accesible al público**. El dominio funciona como la dirección del sitio: es lo que tus visitantes escriben en el navegador para llegar a él.
-
-Mientras no conectes un dominio propio, tu instalación sigue disponible en la **URL temporal de prueba** que Chateea genera al crear el sitio. Esa URL es útil para revisar cómo se ve el sitio antes de vincular tu dominio definitivo.
-
-<Tip>
-  Usa la URL de prueba para armar y revisar todo el sitio. Conecta tu dominio real solo cuando el contenido esté listo para publicarse: así evitas que los visitantes (y los buscadores) encuentren una versión a medio construir.
-</Tip>
-
-## a) Agregar un dominio para tu sitio
+## Agregar el dominio principal
 
 <Steps>
-  <Step title="Añade el dominio desde el panel">
-    Entra al panel de WordPress de tu sitio y ubica la sección **Dominios y subdominios**. Haz clic en el botón **"Añadir dominio o subdominio"**, escribe el nombre de tu dominio y pulsa **"Añadir dominio"**.
-
-    El sistema te devolverá **dos registros TXT y un registro CNAME**.
-
-    <Note>
-      📸 _Espacio para captura: pantalla "Dominios y subdominios" con el botón "Añadir dominio o subdominio" resaltado._
-    </Note>
+  <Step title="Abre el sitio">
+    Ve a **Sitios → WordPress** y haz clic en **Administrar sitio** en el sitio al que quieres conectar el dominio.
   </Step>
-  <Step title="Copia los registros y cárgalos en tu proveedor de DNS">
-    Copia la **clave** y el **valor** de cada registro y créalos en el proveedor donde administras el DNS de tu dominio.
-
-    | Tipo | Clave (Name / Host) | Valor | ¿Obligatorio? | Para qué sirve |
-    | :-- | :-- | :-- | :-- | :-- |
-    | **TXT** | `_acme-challenge.tudominio.com` | Cadena que muestra el panel | Sí | Comprueba que el dominio es tuyo y habilita la emisión del certificado SSL |
-    | **TXT** | `_cf-custom-hostname.tudominio.com` | Identificador que muestra el panel | Sí | Registra tu dominio como host personalizado dentro de la red |
-    | **CNAME** | `tudominio.com` | Destino que muestra el panel | Opcional, pero **necesario para que el sitio cargue** | Dirige el tráfico del dominio hacia tu instalación de WordPress |
-
-    <Warning>
-      Si usas **Cloudflare**, desactiva el proxy y deja el estado del registro en **solo DNS** (la nube gris). Con el proxy activo la verificación no se completa.
-    </Warning>
-
-    <Note>
-      📸 _Espacio para captura: panel de DNS del proveedor con los registros TXT y CNAME ya creados._
-    </Note>
+  <Step title="Agrega el dominio">
+    En la sección **Administra tu dominio** (Manage Your Domain), haz clic en **Agregar dominio** (+ Add Domain) y escribe el nombre de tu dominio.
   </Step>
-  <Step title="Verifica los registros">
-    Vuelve al panel de WordPress, marca la casilla **"He añadido los registros de dominio anteriores en la configuración DNS de mi proveedor de dominio"** y haz clic en **"Verificar registros"**.
+  <Step title="Elige cómo configurarlo">
+    Selecciona **Configurar automáticamente** (Auto Configure) si tu proveedor es compatible, o **Agregar manualmente** (Add Manually) para crear tú los registros. El sistema comprueba en ese momento que el dominio no esté conectado a otra cuenta. Si está disponible, continúa.
   </Step>
-  <Step title="Listo: el dominio queda como principal">
-    Una vez configurado, el dominio se establece **automáticamente como tu dominio principal**. A partir de ese momento, tanto la URL pública del sitio como el acceso a `/wp-admin` responden bajo ese dominio.
+  <Step title="Configura el certificado SSL">
+    El panel te muestra los registros **TXT** necesarios para emitir el certificado SSL. Créalos en tu proveedor de DNS copiando exactamente la clave y el valor de cada uno.
+  </Step>
+  <Step title="Espera la verificación de los TXT">
+    La mayoría de los registros SSL se propagan en menos de una hora, pero la propagación global puede tardar hasta 48 horas. Configura el TTL en 600 o en el valor más bajo que permita tu proveedor. Cuando los TXT aparezcan como verificados, pasa al último paso.
+  </Step>
+  <Step title="Apunta el dominio al sitio">
+    Crea en tu proveedor los registros **CNAME** y **A** que te muestra el panel y haz clic en **Verificar registros DNS** (Verify DNS Records).
   </Step>
 </Steps>
 
-## b) Agregar dominios adicionales a tu sitio de WordPress
+Estos son los tipos de registro que verás. Los valores exactos son únicos para tu sitio: cópialos siempre del panel.
 
-Puedes conectar **hasta cinco dominios o subdominios extra** al mismo sitio. El procedimiento es el mismo del apartado anterior, con una diferencia importante.
+| Tipo | Nombre | Para qué sirve |
+| --- | --- | --- |
+| TXT | `_acme-challenge` y el segundo TXT que indique el panel | Validan que el dominio es tuyo y permiten emitir el SSL |
+| A | `@` (dominio raíz) | Apunta `tudominio.com` a tu sitio |
+| CNAME | `www` o el subdominio | Apunta la versión con `www` o el subdominio a tu sitio |
+
+<Warning>
+  Si tu dominio está en **GoDaddy** y el panel te pide un registro con nombre `@` que tu proveedor no acepta, escribe el nombre de dominio completo en su lugar.
+</Warning>
+
+## Agregar un subdominio o un dominio adicional
+
+El proceso es igual, pero más corto: el SSL de los dominios adicionales se valida dentro del paso de DNS, así que **no necesitas agregar registros TXT**.
 
 <Steps>
-  <Step title="Repite el flujo de alta">
-    Haz clic nuevamente en **"Añadir dominio o subdominio"** e ingresa el nuevo dominio. Esta vez **solo necesitas agregar el registro CNAME**: los TXT ya no se piden porque la validación del certificado se resuelve en el mismo paso.
+  <Step title="Agrega el subdominio">
+    En **Administra tu dominio**, haz clic en **Agregar dominio** y escribe el subdominio o el dominio adicional.
   </Step>
-  <Step title="Decide si lo quieres como principal">
-    Ningún dominio adicional se marca como principal de forma automática. Si quieres que uno de ellos pase a serlo, configúralo manualmente desde el menú de opciones del dominio.
+  <Step title="Elige cómo configurarlo">
+    Selecciona **Configurar automáticamente** o **Agregar manualmente**. Si el dominio está disponible, pasas directo a la actualización de DNS.
   </Step>
-  <Step title="Revisa la etiqueta de estado">
-    Mientras la verificación DNS no se complete, verás la etiqueta **"No verificado"** junto al dominio. Es normal: significa que el registro aún no se ha propagado o que todavía no lo has cargado en tu proveedor.
-  </Step>
-  <Step title="Abre la configuración de DNS del dominio">
-    En el menú de tres puntos del dominio encontrarás **Configuración de DNS**, donde se muestran los valores exactos que debes cargar en tu plataforma de alojamiento de dominios. Desde ese mismo menú también puedes **eliminar** el dominio.
-
-    <Note>
-      📸 _Espacio para captura: menú contextual del dominio con las opciones "Configuración de DNS" y "Eliminar"._
-    </Note>
+  <Step title="Actualiza el DNS">
+    Crea los registros **CNAME** y **A** que te muestra el panel en tu proveedor y haz clic en **Verificar registros DNS**.
   </Step>
 </Steps>
 
+<Note>
+  Si al verificar ves un aviso de que el registro A todavía se está propagando, no es un error. Espera un rato y vuelve a verificar.
+</Note>
+
+## Panel de dominios
+
+Desde **Administra tu dominio** controlas todos tus dominios en una sola vista.
+
+| Elemento | Qué te indica |
+| --- | --- |
+| **SSL emitido / SSL no emitido** | Si el certificado SSL ya está listo. |
+| **Verificado / No verificado** | Si los registros DNS están bien configurados y propagados. |
+| **Dominio principal** | El dominio oficial del sitio. Puedes tener hasta 5 dominios o subdominios y uno de ellos es el principal. |
+| **Cambiar prefijo a WWW / Quitar prefijo WWW** | Alterna entre `tudominio.com` y `www.tudominio.com` como dirección principal. |
+
+En el menú de tres puntos de cada dominio encontrarás:
+
+- **Establecer como dominio principal**.
+- **Configuración de DNS**: muestra los registros exactos que debes cargar en tu proveedor.
+- **Eliminar**: desconecta el dominio del sitio.
+
 <Tip>
-  Cuando todo queda correcto, al pasar el cursor sobre el indicador verde del dominio aparece el mensaje **"Certificado SSL generado, dominio apuntado"**. Esa es la señal de que el dominio está completamente operativo.
+  Cuando todo está correcto, el indicador del dominio se pone en verde y muestra que el certificado SSL se generó y el dominio está apuntado. Esa es la señal de que tu sitio ya carga con tu dominio.
 </Tip>
 
-## c) Agregar el dominio raíz al sitio de WordPress
-
-Antes de configurarlo, conviene tener clara la diferencia entre los dos formatos:
-
-| Concepto | Cómo se escribe | Qué significa |
-| :-- | :-- | :-- |
-| **Dominio raíz** | `www.tudominio.com` | El nombre de dominio que representa el punto de entrada principal del sitio, con el prefijo `www` |
-| **Dominio APEX** (o dominio desnudo) | `tudominio.com` | El mismo nombre de dominio **sin** el prefijo `www` |
-
-<Note>
-  Por defecto, el **valor CNAME del dominio raíz y el del dominio APEX es idéntico**. Si ya agregaste tu dominio raíz, reutiliza ese mismo valor CNAME para configurar el APEX, y viceversa.
-</Note>
-
-Si intentas agregar el dominio APEX después de haber agregado el raíz, el panel te mostrará directamente los registros que necesitas. Se ven así:
-
-| Tipo | Nombre | Valor |
-| :-- | :-- | :-- |
-| CNAME | `@` | Destino que muestra el panel |
-| CNAME | `www` | El mismo destino |
-
 <Warning>
-  **Si tu dominio está en GoDaddy**, no uses `@` en el campo de nombre. GoDaddy no lo admite en este caso: escribe el **nombre de dominio completo** en su lugar.
+  Eliminar un dominio y volver a agregarlo puede tardar un tiempo en quedar operativo. Evítalo en un sitio en producción si no tienes margen para una interrupción.
 </Warning>
 
-<Note>
-  📸 _Espacio para captura: aviso "Configuración de DNS para el dominio raíz" con la tabla de registros CNAME._
-</Note>
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| El dominio sigue como **No verificado** | Que los registros tengan la clave y el valor exactos, sin espacios; que el proxy de Cloudflare esté desactivado; y que haya pasado el tiempo de propagación. Luego vuelve a verificar. |
+| El dominio ya está en uso | Un dominio no puede estar en dos cuentas a la vez. Elimínalo de la otra cuenta o escribe a soporte de Chateea en **help@chateea.com** si no sabes quién lo tiene. |
+| No se conecta el dominio raíz | Revisa que no haya otros registros A, AAAA o CNAME para el mismo nombre apuntando a otro proveedor. Elimina los duplicados. |
+| No puedes cambiar el dominio principal | Primero agrega y verifica un dominio adicional. Después podrás marcarlo como principal. |
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Cuántos dominios puedo conectar a un mismo sitio?">
-    Hasta **cinco dominios o subdominios adicionales**, además de la URL de prueba que se genera al crear la instalación. Uno de ellos debe designarse como principal.
+  <Accordion title="¿Por qué el dominio principal pide registros TXT y los subdominios no?">
+    Los TXT confirman que controlas el dominio para poder emitir el certificado SSL. Una vez validado el dominio principal, los subdominios se validan dentro del paso de DNS.
   </Accordion>
-
-  <Accordion title="El dominio sigue apareciendo como 'No verificado'. ¿Qué reviso?">
-    En orden: que los registros estén creados con la clave y el valor exactos, que no hayas dejado espacios al copiar, que el proxy de Cloudflare esté desactivado y que haya pasado el tiempo de propagación. Luego vuelve a pulsar **"Verificar registros"**.
+  <Accordion title="¿Cuánto tarda la propagación del DNS?">
+    Depende del proveedor. Muchos cambios se ven en minutos, pero algunos tardan hasta 48 horas. Con un TTL de unos 600 segundos, vuelve a comprobar a los 10 o 30 minutos.
   </Accordion>
-
-  <Accordion title="¿El registro CNAME es realmente opcional?">
-    El panel lo marca como opcional porque la verificación del dominio se resuelve con los TXT. Pero **sin el CNAME el tráfico no llega a tu sitio**: en la práctica, es obligatorio si quieres que el dominio cargue.
+  <Accordion title="¿Necesito registros A y CNAME?">
+    Agrega exactamente los registros que te muestra el panel para tu sitio. Algunas configuraciones requieren ambos y otras solo uno. Los valores son únicos para tu instalación.
   </Accordion>
-
-  <Accordion title="¿Puedo cambiar cuál es mi dominio principal más adelante?">
-    Sí. Desde el menú de opciones del dominio puedes marcarlo como principal en cualquier momento.
+  <Accordion title="¿Cuántos dominios puedo conectar a un sitio?">
+    Hasta 5 dominios o subdominios, y uno de ellos se designa como principal.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el dominio principal más adelante?">
+    Sí. Desde el menú de tres puntos de un dominio verificado, elige **Establecer como dominio principal**.
   </Accordion>
 </AccordionGroup>
 
-## Continúa con
+## Artículos relacionados
 
 <CardGroup cols={2}>
-  <Card title="Cómo añadir dominios en el panel de control de WordPress" icon="gauge-high" href="/embudos-sitios-web/como-anadir-dominios-en-el-panel-de-control-de-wordpress">
-    El flujo guiado paso a paso, con SSL y verificación de DNS.
+  <Card title="Conectar tu dominio automáticamente" icon="wand-magic-sparkles" href="/sitios/conectar-dominio-automaticamente">
+    Configura el DNS en pocos clics con Domain Connect.
   </Card>
-
-  <Card title="Acceso SSH y gestión de claves SSH" icon="terminal" href="/embudos-sitios-web/acceso-ssh-y-gestion-de-claves-ssh-en-tu-alojamiento-wordpress">
-    Administra tu instalación desde la terminal con WP-CLI.
+  <Card title="Tipos de dominios" icon="globe" href="/sitios/tipos-de-dominios">
+    Qué dominio necesitas para cada producto de Chateea.
+  </Card>
+  <Card title="Primeros pasos con el hosting de WordPress" icon="wordpress" href="/sitios/wordpress-primeros-pasos">
+    Crea tu sitio y conoce el panel.
+  </Card>
+  <Card title="Entorno de pruebas (staging)" icon="flask" href="/sitios/wordpress-entorno-de-pruebas">
+    Prueba cambios sin afectar tu sitio en vivo.
   </Card>
 </CardGroup>

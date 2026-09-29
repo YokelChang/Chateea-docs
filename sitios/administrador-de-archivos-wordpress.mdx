@@ -1,0 +1,100 @@
+---
+title: "Administrador de archivos de WordPress"
+description: "Explora, sube, edita, comprime y cambia permisos de los archivos de tu sitio de WordPress desde el navegador, sin FTP."
+icon: "folder-open"
+---
+
+El **administrador de archivos** te da acceso directo a los archivos de tu sitio de WordPress alojado en Chateea desde el navegador. Puedes explorar carpetas, subir y descargar archivos, editarlos, comprimirlos o extraerlos y cambiar permisos, sin usar un cliente FTP, cPanel ni la terminal. Es la forma más rápida de retocar un tema, revisar un plugin o resolver un problema puntual.
+
+## Para qué te sirve
+
+- **Todo en un solo lugar:** gestionas los archivos del sitio sin cambiar entre FTP, cPanel o SSH.
+- **Trabajas más rápido:** búsqueda, filtros, orden y paginación para moverte por carpetas grandes.
+- **Editas con seguridad:** previsualizas el contenido antes de cambiarlo y el sistema te avisa si alguien modificó el archivo mientras lo tenías abierto.
+- **Operaciones completas:** creas, borras, comprimes, extraes y cambias permisos de archivos y carpetas.
+- **Mantenimiento más ágil:** personalizas temas, ajustas plugins y solucionas problemas desde el mismo panel.
+
+## Qué puedes hacer
+
+| Función | Detalle |
+| --- | --- |
+| **Explorar archivos y carpetas** | Navega por la estructura del sitio, busca archivos, aplica filtros, ordena por nombre o fecha y usa la paginación en carpetas grandes |
+| **Subir y descargar** | Sube archivos a cualquier carpeta y descarga los que necesites para respaldo, edición sin conexión o para compartir |
+| **Editar archivos** | Previsualiza y edita el contenido con protección contra conflictos, que evita sobrescribir cambios más recientes |
+| **Gestionar archivos y carpetas** | Crea archivos y carpetas nuevos, borra lo que sobra, comprime en archivos como `.zip` y extrae archivos comprimidos |
+| **Permisos (chmod)** | Cambia los permisos de lectura, escritura y ejecución, cuando tu entorno lo permita |
+
+## Usar el administrador de archivos
+
+<Steps>
+  <Step title="Abre el administrador">
+    Entra a **Sitios → WordPress**, abre la gestión de tu sitio y haz clic en la opción **Administrador de archivos** (File Manager).
+  </Step>
+  <Step title="Explora y busca">
+    Haz clic en las carpetas para abrirlas. Usa la barra de búsqueda para encontrar un archivo, aplica filtros u ordena por nombre o fecha de modificación.
+  </Step>
+  <Step title="Sube o descarga archivos">
+    **Para subir:** ve a la carpeta de destino, haz clic en **Subir** y elige los archivos de tu computadora.
+
+    **Para descargar:** selecciona el archivo o carpeta y haz clic en **Descargar**. Se guardará en tu equipo.
+  </Step>
+  <Step title="Edita un archivo">
+    Selecciona el archivo, haz clic en **Editar** para ver su contenido, haz tus cambios y haz clic en **Guardar**. Si otra persona o un proceso modificó el archivo desde que lo abriste, recibirás un aviso para revisar los cambios, combinarlos o cancelar el guardado.
+  </Step>
+  <Step title="Organiza archivos y carpetas">
+    Desde la barra de herramientas o el menú contextual:
+
+    - **Crear:** haz clic en **Nuevo archivo** o **Nueva carpeta**.
+    - **Borrar:** selecciona uno o varios elementos con sus casillas y haz clic en **Eliminar**.
+    - **Comprimir:** selecciona archivos o carpetas y haz clic en **Comprimir** para crear, por ejemplo, un `.zip`.
+    - **Extraer:** selecciona un archivo comprimido y haz clic en **Extraer**.
+  </Step>
+  <Step title="Cambia permisos si lo necesitas">
+    Selecciona el archivo o carpeta, haz clic en **Permisos** o **Propiedades**, ajusta lectura, escritura y ejecución para propietario, grupo y otros, y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Antes de editar archivos críticos como `wp-config.php` o `.htaccess`, previsualiza su contenido y descarga una copia. Así confirmas que es el archivo correcto y puedes restaurarlo si algo falla.
+</Tip>
+
+<Warning>
+  Unos permisos incorrectos pueden dejar tu sitio vulnerable o hacer que deje de funcionar. Verifica los permisos recomendados para los archivos de WordPress, temas y plugins antes de cambiarlos.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito credenciales FTP para usarlo?">
+    No. El administrador de archivos funciona directamente desde Chateea, sin clientes FTP ni cPanel.
+  </Accordion>
+  <Accordion title="¿Qué tipos de archivo puedo subir?">
+    Los formatos habituales en WordPress: imágenes, documentos, scripts, hojas de estilo y archivos comprimidos. Si un formato no está permitido, te avisará al subirlo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si guardo un archivo que otra persona modificó?">
+    La protección contra conflictos detecta el cambio y te avisa, para que revises, combines los cambios o canceles el guardado.
+  </Accordion>
+  <Accordion title="¿Hay un límite de tamaño para subir archivos?">
+    Sí. Lo define la configuración de PHP del alojamiento. Si un archivo supera el límite, escribe a soporte de Chateea en **help@chateea.com** o usa el acceso FTP.
+  </Accordion>
+  <Accordion title="¿Puedo editar archivos de temas y plugins?">
+    Sí. Haz una copia antes de modificarlos y, cuando puedas, prueba los cambios en el entorno de pruebas para no afectar tu sitio en vivo.
+  </Accordion>
+  <Accordion title="No me aparece la opción de permisos. ¿Qué hago?">
+    El cambio de permisos depende de que el entorno lo admita. Si no está disponible, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+  <Accordion title="¿Puedo borrar varios archivos a la vez?">
+    Sí. Marca las casillas de los elementos y haz clic en **Eliminar**. Revisa bien la selección antes de confirmar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acceso FTP a tu sitio de WordPress" icon="server" href="/sitios/acceso-ftp-a-tu-sitio-wordpress">
+    Conéctate con FileZilla para transferencias grandes.
+  </Card>
+  <Card title="Acceso SSH y claves SSH" icon="terminal" href="/embudos-sitios-web/acceso-ssh-y-gestion-de-claves-ssh-en-tu-alojamiento-wordpress">
+    Administra tu sitio desde la terminal con WP-CLI.
+  </Card>
+</CardGroup>

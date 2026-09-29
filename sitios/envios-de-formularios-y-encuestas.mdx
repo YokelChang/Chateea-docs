@@ -1,66 +1,84 @@
 ---
 title: "Envíos de formularios y encuestas"
-description: "Revisa, organiza, descarga en PDF y exporta a CSV las respuestas de tus formularios y encuestas."
+description: "Revisa, filtra, descarga en PDF y exporta las respuestas de tus formularios y encuestas, y encuéntralas en la ficha del contacto."
 icon: "inbox"
 ---
 
-La página de envíos reúne todas las respuestas que recibes en tus formularios y encuestas. Desde ahí puedes revisar cada respuesta completa, elegir qué columnas ver, copiar datos de contacto, descargar un PDF de un envío concreto y exportar todo a CSV.
+Cada vez que alguien llena uno de tus formularios o encuestas, Chateea guarda un envío: el registro de sus respuestas, con la fecha, la hora y los datos del contacto. La página de envíos reúne todas esas respuestas en un solo lugar para que las revises, elijas qué columnas ver, copies datos de contacto, descargues un PDF de un envío concreto y exportes todo para analizarlo fuera de la plataforma.
 
-## Dónde encontrarla
+## Dónde ver los envíos
 
-Ve a **Sitios → Formularios → Envíos** (o **Sitios → Encuestas → Envíos**). También puedes abrir un formulario en el editor y pulsar la pestaña **Envíos** en la parte superior para ver solo las respuestas de ese formulario.
+Tienes dos formas de llegar:
+
+| Desde | Cómo | Qué ves |
+| --- | --- | --- |
+| **El menú de Sitios** | **Sitios → Formularios → Envíos** o **Sitios → Encuestas → Envíos** | Las respuestas de todos tus formularios o encuestas. Usa el filtro desplegable para quedarte con uno concreto. |
+| **El editor** | Abre el formulario o la encuesta en **Sitios → Formularios** o **Sitios → Encuestas** y pulsa la pestaña **Envíos** en la parte superior | Solo las respuestas de ese formulario o encuesta |
 
 ## Qué puedes hacer
 
 | Función | Qué te permite |
 | --- | --- |
-| **Todas las columnas visibles** | Ver todos los campos del formulario en la tabla, no solo nombre y correo |
+| **Filtrar por formulario o encuesta** | Saber qué recurso generó cada respuesta y ver solo las de uno |
+| **Todas las columnas visibles** | Ver todos los campos en la tabla, no solo nombre y correo |
 | **Columnas dinámicas** | Mostrar, ocultar y reordenar columnas según lo que necesites revisar |
 | **Ajustar el ancho** | Arrastrar el borde de cada columna para ensancharla o estrecharla |
 | **Copiar datos** | Copiar teléfonos y correos directamente desde la tabla |
 | **Abrir enlaces** | Ir a las URL enviadas en el formulario con un clic |
 | **Descargar PDF** | Descargar un envío individual con el diseño nuevo o el anterior |
-| **Exportar a CSV** | Descargar los envíos seleccionados o todos a la vez |
+| **Exportar** | Descargar los envíos seleccionados o todos a la vez |
 | **Eliminar** | Borrar los envíos seleccionados |
 
 ## Cómo usarla
 
 <Steps>
   <Step title="Filtra y busca">
-    Usa los filtros de fecha o el buscador para localizar una respuesta concreta.
+    Elige el formulario o la encuesta en el filtro desplegable y usa los filtros de fecha o el buscador para localizar una respuesta concreta.
   </Step>
   <Step title="Organiza las columnas">
     Haz clic en **Gestionar columnas** y marca o desmarca los campos que quieres ver. Arrastra para cambiar el orden y ajusta el ancho desde los bordes de cada columna.
   </Step>
   <Step title="Revisa un envío completo">
-    Haz clic en el icono de expandir de una fila para ver el envío individual. Desde el desplegable de descarga en PDF puedes elegir:
+    Haz clic en el icono de expandir de una fila para ver el envío individual con todas sus respuestas. Desde el desplegable de descarga en PDF puedes elegir:
     - **Diseño nuevo de PDF:** más limpio, pensado para verlo en pantalla y compartirlo.
     - **Diseño anterior de PDF:** con el mismo formato de siempre.
   </Step>
-  <Step title="Descarga o elimina envíos">
-    Selecciona los envíos que quieras y descárgalos en CSV o elimínalos. Para descargar todos, usa el botón **Exportar**.
+  <Step title="Exporta o elimina envíos">
+    Selecciona los envíos que quieras y descárgalos en CSV o elimínalos. Para exportar todo, pulsa el botón azul **Exportar**: Chateea te envía por correo un enlace para descargar el archivo.
   </Step>
 </Steps>
 
 <Tip>
-  Cuando estés probando un formulario nuevo, trabaja con la pestaña **Envíos** dentro del propio editor: haces un envío de prueba y compruebas al instante que los datos se guardaron en los campos correctos, sin salir del formulario.
+  Cuando estés probando un formulario o una encuesta nueva, trabaja con la pestaña **Envíos** dentro del propio editor: haces un envío de prueba y compruebas al instante que los datos se guardaron en los campos correctos, sin salir del editor.
 </Tip>
 
 <Warning>
-  Eliminar un envío lo quita de la tabla de envíos. Si necesitas conservar el historial, exporta primero a CSV.
+  Eliminar un envío lo quita de la tabla de envíos. Si necesitas conservar el historial, exporta primero.
 </Warning>
+
+## Los envíos en la ficha del contacto
+
+Cada envío se asocia al contacto que llenó el formulario o la encuesta:
+
+- Las respuestas de preguntas vinculadas a campos del contacto (correo, teléfono, nombre o campos personalizados) actualizan automáticamente su ficha.
+- El resto de respuestas de una encuesta aparecen en la información del contacto, dentro de un desplegable con el nombre **Encuesta | Nombre de la encuesta**.
+
+Si necesitas un documento formal de cada respuesta guardado en la ficha, activa la generación automática de PDF en la configuración del formulario o la encuesta.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Los envíos también quedan en la ficha del contacto?">
-    Sí. Cada envío se asocia al contacto que llenó el formulario, así que también puedes revisarlo desde su ficha y su actividad.
+  <Accordion title="¿Los envíos pueden iniciar automatizaciones?">
+    Sí. Usa los disparadores **Formulario enviado** o **Encuesta enviada** en un flujo de trabajo para responder al instante, etiquetar al contacto o notificar a tu equipo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si un mismo contacto responde varias veces?">
+    Cada envío se registra por separado, así que verás una fila por cada respuesta.
   </Accordion>
   <Accordion title="¿Puedo ver los envíos de formularios de sitios externos?">
     Sí, si usas el seguimiento externo. En la página de envíos puedes filtrar por **Formularios externos** para ver solo esas respuestas.
   </Accordion>
-  <Accordion title="¿El CSV incluye todos los campos?">
-    Sí. La exportación incluye las respuestas de los campos del formulario, incluidos los textos libres como la opción "Otro".
+  <Accordion title="¿La exportación incluye todos los campos?">
+    Sí. Incluye las respuestas de todos los campos, incluidos los textos libres como la opción "Otro".
   </Accordion>
 </AccordionGroup>
 
@@ -69,6 +87,12 @@ Ve a **Sitios → Formularios → Envíos** (o **Sitios → Encuestas → Envío
 <CardGroup cols={2}>
   <Card title="Analítica de formularios y encuestas" icon="chart-line" href="/sitios/analitica-de-formularios-y-encuestas">
     Mide vistas, respuestas y abandono.
+  </Card>
+  <Card title="Documentos PDF de los envíos" icon="file-pdf" href="/sitios/documentos-pdf-de-envios">
+    Guarda un PDF de cada respuesta en la ficha del contacto.
+  </Card>
+  <Card title="Enviar respuestas de encuestas a Google Sheets" icon="table" href="/sitios/enviar-respuestas-de-encuestas-a-google-sheets">
+    Agrega cada respuesta como una fila nueva.
   </Card>
   <Card title="Seguimiento externo" icon="radar" href="/sitio-web/seguimiento-externo">
     Captura formularios de sitios fuera de Chateea.

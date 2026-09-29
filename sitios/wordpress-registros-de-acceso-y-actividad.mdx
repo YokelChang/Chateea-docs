@@ -1,0 +1,87 @@
+---
+title: "Registros de acceso, actividad y auditoría en WordPress"
+description: "Revisa quién hizo cambios en tu sitio de WordPress, qué solicitudes recibe el servidor y las acciones críticas de tu hosting."
+icon: "list-check"
+---
+
+Los registros de tu sitio de WordPress te dicen quién hizo qué, cuándo y desde dónde. Te sirven para detectar accesos sospechosos, encontrar el origen de un error y tener un historial claro de los cambios importantes. En Chateea tienes tres tipos de registros: de actividad, de acceso y de auditoría.
+
+## Tipos de registros
+
+| Registro | Qué muestra | Para qué te sirve |
+| --- | --- | --- |
+| **Registros de actividad** | Las acciones realizadas en tu hosting de WordPress o en un sitio concreto | Seguir cambios de configuración y la actividad de tu equipo |
+| **Registros de acceso** | Todas las solicitudes que recibe el servidor | Analizar el tráfico, detectar patrones inusuales y optimizar el rendimiento |
+| **Registros de auditoría** | Las acciones críticas de WordPress dentro de los registros de auditoría de tu cuenta | Saber quién compró, canceló, creó o eliminó un sitio |
+
+## Registros de actividad
+
+Cada entrada incluye:
+
+- **Usuario**: quién realizó la acción.
+- **Fecha y hora**: cuándo se hizo.
+- **Estado**: si la acción se completó o si tuvo errores.
+
+<Steps>
+  <Step title="Abre el sitio">
+    Ve a **Sitios → WordPress** y haz clic en **Administrar sitio** en el sitio que quieres revisar.
+  </Step>
+  <Step title="Activa los registros">
+    En el submenú, selecciona **Registros de actividad** (Activity Logs) y haz clic en **Activar**.
+  </Step>
+  <Step title="Elige el rango de tiempo">
+    Selecciona el rango de tiempo que quieres consultar. Los registros empiezan a mostrarse una vez que se activan y transcurre el periodo seleccionado.
+  </Step>
+</Steps>
+
+<Note>
+  Los registros de actividad solo guardan lo que ocurre después de activarlos. Actívalos desde el principio para tener historial cuando lo necesites.
+</Note>
+
+## Registros de acceso
+
+Cada solicitud al servidor registra:
+
+| Dato | Qué significa |
+| --- | --- |
+| **URL solicitada** | La dirección exacta a la que se accedió |
+| **Dirección IP del cliente** | Desde dónde se hizo la solicitud |
+| **Fecha y hora** | El momento exacto de la solicitud |
+| **Código de estado HTTP** | La respuesta del servidor, por ejemplo 200 (correcto) o 404 (no encontrado) |
+| **Tamaño de la respuesta** | La cantidad de datos enviados al visitante |
+
+Para verlos, entra en **Administrar sitio → Analítica → Informe de visitantes** (Visitors Report) y desplázate hasta el final de la página.
+
+## Registros de auditoría
+
+Los eventos importantes de WordPress se integran con los registros de auditoría de tu cuenta de Chateea. Ahí puedes rastrear qué usuario hizo acciones como:
+
+- Comprar el hosting de WordPress.
+- Cancelar una suscripción.
+- Crear un sitio.
+- Eliminar un sitio.
+
+Para verlos, ve a **Configuración** en el menú lateral, desplázate hasta el final y selecciona **Registros de auditoría**.
+
+## Solución de problemas y buenas prácticas
+
+| Situación | Qué hacer |
+| --- | --- |
+| No aparecen los registros | Confirma que tu usuario tiene permisos para verlos y que los registros de actividad están activados. |
+| Detectas actividad sospechosa | Cambia de inmediato las contraseñas de WordPress y de SFTP, y revisa quién tiene acceso al servidor. |
+| Muchos errores en los registros | Úsalos para identificar plugins que fallan o configuraciones incorrectas. El [solucionador de plugins](/sitios/wordpress-solucionador-de-plugins) te ayuda a encontrar el culpable. |
+
+<Tip>
+  Muchas respuestas 404 seguidas desde la misma IP suelen indicar un bot buscando vulnerabilidades. Mantén WordPress, temas y plugins actualizados para reducir el riesgo.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Informe de rendimiento del sitio" icon="gauge-high" href="/sitios/wordpress-informe-de-rendimiento">
+    Mide la velocidad y las Core Web Vitals de tu sitio.
+  </Card>
+  <Card title="Permisos de WordPress para tu equipo" icon="user-lock" href="/sitios/wordpress-permisos-de-usuarios">
+    Controla quién puede administrar tus sitios.
+  </Card>
+</CardGroup>

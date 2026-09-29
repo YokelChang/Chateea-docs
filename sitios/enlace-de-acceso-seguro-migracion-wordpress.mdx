@@ -1,0 +1,111 @@
+---
+title: "Enlace de acceso seguro para migrar tu sitio de WordPress"
+description: "Genera un enlace temporal y revocable para que un experto migre tu sitio de WordPress sin que compartas tu contraseña."
+icon: "link"
+---
+
+Con la **migración asistida** (White-Glove Migration), un experto en migraciones traslada tu sitio de WordPress por ti. Para que pueda entrar a tu sitio actual no tienes que compartir tu usuario ni tu contraseña: generas un **enlace de acceso seguro** con el plugin de migración y lo entregas en tu solicitud.
+
+El enlace tiene tres protecciones:
+
+- **Solo lo puede usar el experto en migraciones.** Aunque da acceso de administrador, nadie más puede entrar a tu sitio con él.
+- **Caduca solo** después del tiempo que tú elijas.
+- **Puedes revocarlo** en cualquier momento.
+
+## Antes de empezar
+
+- Necesitas acceso de administrador al sitio de WordPress que quieres migrar.
+- Necesitas el archivo `.zip` del plugin de migración. Si no lo tienes, pídelo a soporte de Chateea en **help@chateea.com**. No lo descomprimas.
+
+## 1. Instala el plugin de migración
+
+<Steps>
+  <Step title="Ve a los plugins">
+    En el escritorio de WordPress del sitio que vas a migrar, entra a **Plugins → Añadir nuevo**.
+  </Step>
+  <Step title="Sube el archivo">
+    Haz clic en **Subir plugin**, luego en **Elegir archivo**, selecciona el `.zip` del plugin de migración y haz clic en **Instalar ahora**.
+  </Step>
+  <Step title="Actívalo">
+    Cuando termine la instalación, haz clic en **Activar plugin**.
+  </Step>
+</Steps>
+
+## 2. Genera el enlace de acceso seguro
+
+<Steps>
+  <Step title="Abre el plugin">
+    En el menú lateral de WordPress, abre el plugin de migración. Verás la pantalla de bienvenida.
+  </Step>
+  <Step title="Inicia la generación">
+    Haz clic en **Generar enlace de acceso seguro** (Generate secure access link). No necesitas iniciar sesión en ninguna cuenta para hacerlo.
+  </Step>
+  <Step title="Elige cuánto tiempo estará activo">
+    En **Enlace activo durante** (Link active for), elige entre 24 horas y 7 días. El valor predeterminado es 3 días. El enlace caduca solo al terminar ese plazo, y puedes revocarlo antes si quieres.
+  </Step>
+  <Step title="Lee el aviso y confirma">
+    Revisa el aviso de que el enlace otorga acceso completo de administrador y que solo puede usarlo el experto en migraciones. Haz clic en **Generar enlace de acceso seguro** y, en la ventana de confirmación, haz clic en **Generar enlace**.
+  </Step>
+</Steps>
+
+<Note>
+  Si generas el enlace un viernes, sábado o domingo, la duración mínima es de 4 días, para que el experto pueda usarlo cuando empiece la semana laboral.
+</Note>
+
+## 3. Comparte el enlace y envía tu solicitud
+
+1. Tu enlace queda activo y se copia automáticamente al portapapeles. Si lo necesitas de nuevo, haz clic en **Copiar**.
+2. Pega el enlace en el campo **Enlace de acceso seguro** de tu solicitud de migración asistida y envíala.
+
+El enlace es una dirección de tu propio sitio que termina en un código único, con esta forma general:
+
+```text
+https://tu-sitio-wordpress.com/wp-json/.../secure/codigo-unico
+```
+
+El experto lo usa para entrar y hacer la migración. Tu contraseña nunca se comparte.
+
+## 4. Administra tu enlace
+
+Mientras el enlace esté activo, verás una cuenta regresiva con el tiempo que le queda. Desde esa misma pantalla puedes:
+
+| Acción | Qué hace |
+| --- | --- |
+| **Regenerar** | Crea un enlace nuevo e invalida el anterior al instante. Solo puede haber un enlace activo a la vez |
+| **Revocar enlace** | Corta el acceso de inmediato. Confirma con **Revocar enlace**. Para dar acceso otra vez, genera un enlace nuevo y compártelo |
+| **No hacer nada** | El enlace deja de funcionar solo cuando termina el plazo |
+
+<Tip>
+  Cuando la migración termine y la hayas revisado, revoca el enlace y desactiva el plugin de migración. Así no queda ningún acceso abierto que no necesites.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Es seguro?">
+    Sí. Tu contraseña de WordPress nunca se comparte, el enlace solo funciona para el experto en migraciones, caduca automáticamente y puedes revocarlo cuando quieras.
+  </Accordion>
+  <Accordion title="¿Tengo que compartir mi usuario y contraseña de WordPress?">
+    No. El enlace de acceso seguro reemplaza por completo el envío de contraseñas.
+  </Accordion>
+  <Accordion title="Necesito más tiempo para la migración. ¿Qué hago?">
+    Genera un enlace nuevo y elige una duración más larga, hasta 7 días.
+  </Accordion>
+  <Accordion title="¿Cómo corto el acceso ahora mismo?">
+    Abre la pantalla del enlace de acceso seguro en el plugin y haz clic en **Revocar enlace**.
+  </Accordion>
+  <Accordion title="¿Qué pasa cuando el enlace caduca?">
+    Deja de funcionar automáticamente. Si todavía se necesita acceso, genera un enlace nuevo y compártelo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Guía de configuración del alojamiento" icon="list-check" href="/sitios/guia-de-configuracion-alojamiento-wordpress">
+    Todos los pasos para dejar listo tu sitio, incluida la importación.
+  </Card>
+  <Card title="Buscar y reemplazar en WordPress" icon="magnifying-glass" href="/sitios/buscar-y-reemplazar-en-wordpress">
+    Actualiza enlaces y dominios después de migrar.
+  </Card>
+</CardGroup>

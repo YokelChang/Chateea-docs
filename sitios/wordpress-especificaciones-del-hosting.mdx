@@ -1,0 +1,84 @@
+---
+title: "Especificaciones del hosting de WordPress"
+description: "Capacidades técnicas del hosting de WordPress de Chateea: almacenamiento, versiones de PHP, MySQL, extensiones y seguridad."
+icon: "microchip"
+---
+
+El hosting de WordPress de Chateea está integrado en tu cuenta para que administres tu sitio, tu CRM y tu marketing desde un mismo lugar. Aquí tienes las especificaciones técnicas del servicio, útiles para saber si un tema, un plugin o una aplicación a medida funcionará en tu sitio.
+
+<Info>
+  El hosting de WordPress se cobra aparte de tu plan de Chateea. Las tarifas vigentes se ven en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Info>
+
+## Qué incluye
+
+- **Velocidad**: CDN global para entregar tu sitio rápido en cualquier país.
+- **Seguridad**: certificado SSL gratuito, copias de seguridad diarias y restauración en un clic.
+- **Tráfico sin límites estrictos**: visitantes ilimitados y ancho de banda sin medición.
+- **Soporte**: si tienes dudas técnicas, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Características generales
+
+| Característica | Detalle |
+| --- | --- |
+| Visitantes | Ilimitados |
+| Ancho de banda | Sin medición (sujeto a uso razonable) |
+| Almacenamiento | Hasta 500 GB, según tu plan |
+| Tipo de servidor | Linux (VPS) |
+| Tiempo de instalación de un sitio | Aproximadamente 10 minutos |
+
+## Gestión del sitio y seguridad
+
+| Característica | Detalle |
+| --- | --- |
+| Copias de seguridad y restauración | Hasta los últimos 30 días, con copias manuales disponibles |
+| Restaurar `.htaccess` y `wp-config` | Sí |
+| Entorno de pruebas (staging) | Sí |
+| Acceso a temas y plugins | Sí |
+| Importación de sitios | Mediante carga de archivo |
+| Gestión de usuarios | Sí |
+| Restablecer contraseña | Desde el panel |
+| CDN y SFTP | Ambos incluidos |
+
+## Especificaciones técnicas del servidor
+
+| Característica | Detalle |
+| --- | --- |
+| Versiones de PHP | 5.6, 7.4, 8.0, 8.1, 8.2, 8.3 y 8.4 |
+| Procesos PHP (PHP workers) | Ilimitados |
+| Versión de MySQL | 8 |
+| Inodos | Ilimitados |
+| `mod_rewrite` | Cargado y activado |
+| Etiquetas cortas de PHP | Activadas |
+| Función Base64 | Activada |
+| Soporte JSON | Activado |
+| Imagick | Activado (versión 3.6.0) |
+| Extensiones activadas | bcmath, Ctype, FileInfo, MBstring, OpenSSL, PDO, Tokenizer, XML, SimpleXML, ZIP |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué significa ancho de banda sin medición?">
+    Que no hay un tope estricto de transferencia de datos y tu sitio no se frena por llegar a un límite. Aun así, aplican las políticas de uso razonable.
+  </Accordion>
+  <Accordion title="¿Dónde veo cuánto almacenamiento estoy usando?">
+    En el panel de tu sitio de WordPress, en la sección **Detalles del sitio**.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar la versión de PHP?">
+    Sí. Consulta [Cambiar la versión de PHP de tu sitio](/sitios/wordpress-cambiar-version-de-php).
+  </Accordion>
+  <Accordion title="¿Hay plugins que no pueda usar?">
+    Sí. Algunos plugins están restringidos porque duplican funciones del hosting o afectan el rendimiento. Revisa la [lista de plugins bloqueados](/sitios/wordpress-plugins-bloqueados).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con el hosting de WordPress" icon="wordpress" href="/sitios/wordpress-primeros-pasos">
+    Crea tu sitio y conoce el panel.
+  </Card>
+  <Card title="Aumentar el límite de subida de PHP" icon="upload" href="/sitios/wordpress-aumentar-limite-de-subida-php">
+    Sube archivos, temas y plugins más grandes.
+  </Card>
+</CardGroup>

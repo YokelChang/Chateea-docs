@@ -1,0 +1,143 @@
+---
+title: "Configura zonas y tarifas de envío en tu tienda"
+description: "Crea zonas de envío por país, estado o código postal y cobra tarifas fijas o según el monto o el peso del pedido."
+icon: "truck"
+---
+
+Las zonas de envío te permiten cobrar el costo real de entregar cada pedido según a dónde va y qué contiene. Defines regiones (países, estados o provincias, e incluso códigos postales) y a cada una le asignas sus tarifas, fijas o condicionadas por el monto del pedido o por el peso. Tus clientes ven en el checkout solo las opciones que corresponden a su dirección.
+
+## Qué es una zona de envío
+
+Una zona es un grupo de destinos que comparten las mismas tarifas. Por ejemplo, una zona "Área metropolitana" con entrega económica y otra "Resto del país" con un costo mayor. Dentro de cada zona puedes crear varias tarifas (estándar, exprés, gratis a partir de cierto monto, etc.).
+
+## Crea una zona de envío
+
+<Steps>
+  <Step title="Abre la configuración de envíos">
+    Ve a **Pagos → Configuración → Envío y entrega** (Shipping & Delivery).
+  </Step>
+  <Step title="Agrega la zona">
+    Haz clic en **Agregar zona** y escribe un nombre descriptivo, por ejemplo "Costa este" o "Zona norte".
+  </Step>
+  <Step title="Elige los destinos">
+    Selecciona uno o más países y, si aplica, los estados o provincias que incluye la zona.
+  </Step>
+  <Step title="Agrega tarifas">
+    Haz clic en **Agregar tarifa** para definir el costo de envío. Si quieres que cambie según el pedido, activa el precio condicional (ver más abajo).
+  </Step>
+</Steps>
+
+<Note>
+Un estado o provincia solo puede pertenecer a una zona. Si ya lo asignaste a una, no podrás agregarlo a otra.
+</Note>
+
+## Precio condicional: por monto o por peso
+
+El precio condicional ajusta la tarifa automáticamente según el carrito del cliente:
+
+| Condición | Cómo funciona |
+| --- | --- |
+| Por precio del pedido (By Order Price) | La tarifa depende del total que gasta el cliente. |
+| Por peso de los artículos (By Item Weight) | La tarifa depende del peso total del pedido. |
+
+Ejemplo práctico:
+
+- **Envío gratis** para pedidos de 500 o más (en tu moneda) o de 10 kg en adelante.
+- **Envío estándar** de 10 para pedidos por debajo de 500 o de menos de 10 kg.
+
+### Cómo agregar una tarifa condicional
+
+<Steps>
+  <Step title="Crea la tarifa">
+    En **Pagos → Configuración → Envío y entrega**, dentro de la zona, haz clic en **Agregar tarifa** y activa **Precio condicional**.
+  </Step>
+  <Step title="Elige la condición">
+    Selecciona **Por precio del pedido** o **Por peso de los artículos**.
+  </Step>
+  <Step title="Define el rango">
+    Escribe el valor **Mínimo** y, si lo necesitas, el **Máximo**. Por ejemplo, de 0 a 10 kg, o de 0 a 500.
+  </Step>
+  <Step title="Indica el costo">
+    Escribe el monto de la tarifa que aplica a ese rango y haz clic en **Agregar**.
+  </Step>
+</Steps>
+
+Puedes crear varios rangos de peso o de precio dentro de una misma zona, y combinar en la misma zona tarifas por precio con tarifas por peso.
+
+## Limita una zona a códigos postales específicos
+
+Si haces entregas locales, puedes restringir una zona para que solo aplique a ciertos códigos postales.
+
+<Steps>
+  <Step title="Abre la zona">
+    Ve a **Pagos → Configuración → Envío y entrega**, abre el perfil de envío y crea o edita la zona.
+  </Step>
+  <Step title="Activa la restricción">
+    Activa **Limitar el envío a códigos postales específicos**.
+  </Step>
+  <Step title="Escribe los códigos">
+    Ingresa los códigos separados por comas y guarda.
+  </Step>
+</Steps>
+
+Formatos aceptados:
+
+| Formato | Ejemplo |
+| --- | --- |
+| Un código | `100210` |
+| Varios códigos | `100210,122021` |
+| Prefijo con comodín | `46*` (todos los códigos que empiezan por 46) |
+
+Reglas de validación:
+
+- El asterisco solo puede ir al final de una entrada.
+- No se aceptan valores duplicados ni inválidos.
+- Con la restricción activa debes ingresar al menos un código válido.
+- Si el código postal del cliente no coincide, esa zona no se le aplica.
+
+## Qué ve el cliente en el checkout
+
+Cuando el cliente escribe su dirección, el checkout muestra automáticamente las tarifas de la zona que le corresponde:
+
+- Las opciones se ordenan de menor a mayor precio y se selecciona la más barata por defecto.
+- Si hay envío gratis, aparece primero y queda seleccionado.
+- Si el cliente cambia la dirección o el carrito, las tarifas se recalculan y se vuelven a ordenar.
+- Si solo hay una opción, se selecciona sola.
+- Si varias opciones cuestan lo mismo, se respeta el orden del proveedor.
+
+## Buenas prácticas
+
+- Agrupa en una sola zona los países o regiones con costos parecidos para evitar duplicados.
+- Crea una zona que cubra el resto de destinos para que ningún cliente se quede sin tarifa.
+- Después de crear o cambiar zonas, haz un pedido de prueba con distintas direcciones para confirmar que las tarifas se muestran bien.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar condiciones por peso y por precio en la misma zona?">
+    Sí. Cada tarifa de la zona puede tener su propia condición: una por precio y otra por peso, según lo que necesite tu negocio.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la dirección del cliente no está en ninguna zona?">
+    El checkout no mostrará ninguna tarifa. Para evitarlo, crea una zona predeterminada que cubra los países o estados restantes.
+  </Accordion>
+  <Accordion title="¿Puedo ofrecer envío gratis solo en algunos productos?">
+    Por ahora el envío gratis se aplica a nivel de zona o de condición, no por producto. Una alternativa es usar una condición por monto o por peso que solo cumplan esos pedidos.
+  </Accordion>
+  <Accordion title="¿Cómo manejo varios países con costos similares?">
+    Agrúpalos en una sola zona (por ejemplo, "Estados Unidos y Reino Unido") con tarifas compartidas.
+  </Accordion>
+  <Accordion title="¿Cómo pruebo mi configuración?">
+    Agrega productos al carrito y recorre el checkout con distintas direcciones para comprobar que aparecen las tarifas correctas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Peso, dimensiones y SKU" icon="weight-scale" href="/tienda/peso-dimensiones-y-sku">
+    Carga el peso de tus productos para las tarifas por peso.
+  </Card>
+  <Card title="Integración con Shippo" icon="truck-fast" href="/tienda/integracion-shippo">
+    Muestra tarifas en vivo de transportistas.
+  </Card>
+</CardGroup>

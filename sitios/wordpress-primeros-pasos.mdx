@@ -1,0 +1,140 @@
+---
+title: "Primeros pasos con el hosting de WordPress"
+description: "Crea tu sitio de WordPress en Chateea y conoce el panel: usuarios, copias de seguridad, configuración avanzada y dominios."
+icon: "wordpress"
+---
+
+El hosting de WordPress de Chateea te permite crear, migrar y administrar sitios de WordPress completos sin salir de tu cuenta. Es una alternativa a los sitios y embudos del creador de páginas: tienes una instalación real de WordPress, con sus temas y plugins, pero el alojamiento, las copias de seguridad, los dominios y la seguridad se gestionan desde Chateea.
+
+Esta guía te lleva por la creación del sitio y te muestra qué encontrarás en cada área del panel de WordPress.
+
+## Antes de empezar
+
+- Necesitas tener activo el hosting de WordPress en tu cuenta. Si no lo ves disponible en **Sitios → WordPress**, escribe a soporte de Chateea en **help@chateea.com**.
+- El consumo o la suscripción del hosting se cobra según tu plan. Las tarifas vigentes se ven en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+- Para entrar a esta sección, tu usuario necesita el permiso de WordPress. Consulta [Permisos de WordPress para tu equipo](/sitios/wordpress-permisos-de-usuarios).
+
+## Crear un sitio de WordPress
+
+<Steps>
+  <Step title="Abre la sección de WordPress">
+    Ve a **Sitios → WordPress** y haz clic en **Crear sitio** (+ Create Site).
+  </Step>
+  <Step title="Elige cómo quieres empezar">
+    Tienes tres opciones:
+    - **Desde cero**: una instalación limpia de WordPress.
+    - **Desde una plantilla**: un sitio prediseñado listo para personalizar. Consulta [Crear un sitio de WordPress desde una plantilla](/sitios/wordpress-crear-sitio-desde-plantilla).
+    - **Clonar un sitio existente**: una copia exacta de otro sitio tuyo. Consulta [Clonar un sitio de WordPress](/sitios/wordpress-clonar-sitio).
+  </Step>
+  <Step title="Completa los datos del sitio y del usuario">
+    Escribe el nombre del sitio y los datos del usuario administrador de WordPress.
+  </Step>
+  <Step title="Espera la instalación">
+    La instalación tarda normalmente entre 2 y 5 minutos. Al terminar tendrás acceso al panel del sitio, a la gestión de usuarios, a las copias de seguridad y a la configuración avanzada.
+  </Step>
+</Steps>
+
+<Info>
+  En los sitios nuevos, el plugin de Chateea para WordPress se instala automáticamente. En el panel del sitio verás el indicador **Estado del plugin** con el valor **Conectado** o **Desconectado**.
+</Info>
+
+## Varios sitios en una misma cuenta
+
+Puedes tener todos los sitios de WordPress que necesites dentro de tu cuenta de Chateea, sin crear cuentas separadas para cada uno.
+
+- Entra en **Sitios → WordPress → Todos los sitios** para ver el listado completo.
+- Para crear otro sitio, completa los datos requeridos y el pago correspondiente.
+- Desde la pantalla de información de un sitio puedes cambiar rápidamente a otro.
+- La facturación se registra por sitio, así que cada sitio tiene su propio cargo identificado.
+
+## Qué encontrarás en el panel del sitio
+
+Para abrir el panel de un sitio, ve a **Sitios → WordPress** y haz clic en **Administrar sitio** (Manage Website).
+
+### Panel principal
+
+Desde aquí accedes al sitio y al administrador de WordPress (WP Admin), gestionas el dominio principal y los dominios adicionales, y puedes **refrescar la caché** del sitio con un clic.
+
+Si ya tienes un sitio de WordPress en otro hosting, puedes importarlo con el plugin de migración que se ofrece en el panel.
+
+### Gestión de usuarios
+
+Administra los usuarios de WordPress que tienen acceso al sitio.
+
+### Copias de seguridad y restauración
+
+| Detalle | Valor |
+| --- | --- |
+| Frecuencia de las copias automáticas | Diaria, a las 5:00 a. m. (hora central de EE. UU.) |
+| Historial disponible | Últimos 30 días |
+| Copias manuales | Sí, puedes crear una cuando la necesites |
+
+<Tip>
+  Crea una copia manual antes de actualizar plugins, cambiar de tema o cambiar la versión de PHP. Si algo sale mal, restauras en un par de clics.
+</Tip>
+
+### Configuración avanzada
+
+| Opción | Para qué sirve |
+| --- | --- |
+| **Acceso FTP** | Crea usuarios SFTP para trabajar con los archivos del sitio. Consulta [Configurar el acceso SFTP](/sitios/wordpress-acceso-sftp). |
+| **Configuración de comunicaciones** | Ajusta las notificaciones del sitio. |
+| **Gestión de caché** | Administra y limpia la caché del servidor. |
+| **Depuración de WordPress** | Activa o desactiva la visualización de errores, advertencias y avisos de PHP para diagnosticar problemas. |
+| **Configuración del servidor** | Administra la base de datos con phpMyAdmin y elige la versión de PHP. Consulta [Cambiar la versión de PHP](/sitios/wordpress-cambiar-version-de-php). |
+
+### Dominios
+
+Cuando el sitio esté listo para publicarse, conecta tu dominio. Sigue la guía [Agregar dominios a tu sitio de WordPress](/embudos-sitios-web/wordpress-agregar-dominios-a-tu-sitio).
+
+## Solución de problemas comunes
+
+| Problema | Qué revisar |
+| --- | --- |
+| Un plugin no se instala | Confirma que tu usuario es administrador de WordPress y revisa la [lista de plugins bloqueados](/sitios/wordpress-plugins-bloqueados). |
+| El sitio no muestra los widgets de Chateea | Limpia la caché (del plugin, del servidor y de la CDN) y desactiva temporalmente los plugins que puedan entrar en conflicto. |
+| Errores de conexión | Vuelve a revisar las credenciales y confirma que tienes seleccionada la cuenta correcta en Chateea. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuántos sitios de WordPress puedo tener en mi cuenta?">
+    No hay un límite de sitios por cuenta. Cada sitio se factura por separado según tu plan.
+  </Accordion>
+  <Accordion title="No puedo agregar un dominio que ya uso en otra cuenta">
+    Un mismo dominio o subdominio no puede estar conectado en dos cuentas a la vez. Primero elimínalo de la otra cuenta y luego agrégalo aquí.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo cambiar mi dominio principal?">
+    Para cambiar el dominio principal, primero debes haber agregado correctamente un dominio adicional. Después podrás marcarlo como principal.
+  </Accordion>
+  <Accordion title="Agregué los registros A y CNAME, pero el dominio no se conecta">
+    Las causas más comunes son:
+    - Un error de escritura en el nombre del dominio.
+    - Los cambios de DNS aún no se han propagado. Espera unas horas o hasta el día siguiente y vuelve a intentarlo.
+    - La configuración de DNS no es correcta. Revísala con el soporte de tu proveedor de dominio.
+    - Hay registros en conflicto para el mismo nombre (por ejemplo, un CNAME y un registro A apuntando a proveedores distintos). Elimina el registro duplicado.
+  </Accordion>
+  <Accordion title="No puedo conectar mi dominio raíz (por ejemplo, midominio.com)">
+    Asegúrate de que no existan otros registros A, AAAA o TXT en conflicto para ese nombre si vas a usarlo en WordPress.
+  </Accordion>
+  <Accordion title="¿Cómo cancelo el hosting de un sitio?">
+    Ve a la **Configuración avanzada** del sitio y usa la opción **Eliminar sitio** para iniciar la solicitud de cancelación. Haz una copia de seguridad antes si quieres conservar el contenido.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Especificaciones del hosting de WordPress" icon="server" href="/sitios/wordpress-especificaciones-del-hosting">
+    Capacidades técnicas del servidor, PHP y seguridad.
+  </Card>
+  <Card title="Entorno de pruebas (staging)" icon="flask" href="/sitios/wordpress-entorno-de-pruebas">
+    Prueba cambios sin afectar tu sitio en vivo.
+  </Card>
+  <Card title="Gestionar plugins y temas" icon="puzzle-piece" href="/sitios/wordpress-gestionar-plugins-y-temas">
+    Actualiza, activa o elimina extensiones desde Chateea.
+  </Card>
+  <Card title="Agregar dominios a tu sitio" icon="globe" href="/embudos-sitios-web/wordpress-agregar-dominios-a-tu-sitio">
+    Conecta tu dominio principal y dominios adicionales.
+  </Card>
+</CardGroup>

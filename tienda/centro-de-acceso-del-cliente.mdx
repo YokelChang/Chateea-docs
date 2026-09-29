@@ -1,0 +1,102 @@
+---
+title: "Centro de acceso del cliente para ver sus pedidos"
+description: "Permite que tus clientes consulten pedidos, seguimiento y descargas con su correo y un código de verificación."
+icon: "user"
+---
+
+El centro de acceso del cliente es un portal seguro donde tus compradores consultan sus pedidos sin tener que escribirte. Desde ahí ven el pedido actual, el historial de compras, el estado del despacho con su número de seguimiento y, si compraron productos digitales, sus descargas. Para entrar solo necesitan el correo con el que pagaron y un código de verificación (OTP).
+
+## Qué pueden ver tus clientes
+
+| Sección | Contenido |
+| --- | --- |
+| Pedido actual | Artículos, desglose de precios, estado del pedido, impuestos y envío. |
+| Estado del despacho | Si registraste el despacho, muestra si es parcial o completo, el número de seguimiento, la URL de seguimiento y el nombre de la transportista. |
+| Pedidos anteriores | Todo el historial de compras, desde el botón **Pedidos** del menú de navegación. |
+| Descargas digitales | Los archivos de los productos digitales comprados, cuando tienen archivos cargados. |
+
+## Antes de empezar
+
+- Tu tienda debe tener un **dominio conectado** y el dominio debe tener como ruta predeterminada alguna página de la tienda. Sin esto, el portal no funciona correctamente.
+- Debes activar el correo de confirmación de pedido, que es la puerta de entrada al portal.
+
+## Cómo activar el acceso
+
+<Steps>
+  <Step title="Activa el correo de confirmación de pedido">
+    Ve a **Pagos → Configuración → Notificaciones**, busca **Correo de confirmación de pedido para tiendas** (Order Confirmation Email for Stores), activa **Habilitar correo de confirmación de pedido** y haz clic en **Guardar**. Si esta opción está desactivada, tus clientes no reciben el correo de acceso.
+  </Step>
+  <Step title="Tu cliente recibe el correo">
+    Después de cada compra, el cliente recibe el correo de confirmación con el botón **Ver pedido** (View Order).
+  </Step>
+  <Step title="Tu cliente inicia sesión">
+    Al hacer clic en el botón, se abre el centro de acceso. El cliente escribe el mismo correo que usó al pagar y recibe un código de verificación para entrar.
+  </Step>
+</Steps>
+
+### Acceso directo por URL
+
+Tus clientes también pueden entrar directamente con esta ruta de tu tienda:
+
+```text
+<url-de-tu-tienda>/store/account/orders
+```
+
+Por ejemplo: `mitienda.com/store/account/orders`. Puedes compartir este enlace en tu página de agradecimiento, en tus correos o en el menú de tu tienda.
+
+## Verificación automática
+
+Las solicitudes de código de verificación están protegidas automáticamente contra bots con Cloudflare Turnstile. Normalmente la verificación ocurre en segundo plano, sin que el cliente haga nada. Si hace falta una verificación extra, aparece un pequeño desafío antes de enviar el código. No necesitas configurar nada.
+
+## Descargas de productos digitales
+
+Si vendes productos digitales, el portal también es el lugar donde tus clientes los descargan:
+
+- El botón de descarga aparece solo si el producto o la variante comprada tiene al menos un archivo válido cargado.
+- Si no hay archivos cargados, el botón no aparece y el portal muestra el mensaje **No hay descargas disponibles todavía**.
+- Si cargas los archivos después de la compra, el portal se actualiza solo y la descarga queda disponible de inmediato.
+- Si eliminas todos los archivos, el botón de descarga desaparece al instante.
+- En pedidos mixtos, los productos digitales con archivos muestran el botón de descarga, los digitales sin archivos muestran el mensaje de "no hay descargas" y los productos físicos nunca muestran botón de descarga.
+
+Consulta [Entregar productos digitales en tu tienda](/tienda/entregar-productos-digitales) para configurarlos.
+
+## Idioma del portal
+
+Los correos del sistema y los mensajes del portal se muestran automáticamente en el idioma preferido del cliente. Esto incluye el correo de confirmación de pedido, el texto del botón **Ver pedido**, los mensajes del portal, los mensajes de descarga y las pantallas del código de verificación. No necesitas configurar nada.
+
+## Detalles a tener en cuenta
+
+- Si varios contactos comparten el mismo correo, se usa el contacto creado primero para iniciar sesión.
+- Si tienes activado el contacto persistente (sticky contact), todos los pedidos de una misma sesión de navegador se agrupan.
+- Las descargas digitales solo están disponibles para productos marcados como digitales que tengan archivos cargados.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Mi cliente no recibió el correo de confirmación de pedido">
+    Revisa que **Habilitar correo de confirmación de pedido** esté activado en **Pagos → Configuración → Notificaciones**. Pídele también que revise su carpeta de spam.
+  </Accordion>
+  <Accordion title="Mi cliente no puede entrar al portal">
+    Confirma que esté usando el mismo correo con el que pagó y que tu tienda tenga un dominio conectado cuya ruta predeterminada apunte a una página de la tienda.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece el botón de descarga?">
+    El botón aparece solo cuando el producto o la variante comprada tiene al menos un archivo digital válido cargado.
+  </Accordion>
+  <Accordion title="¿Por qué el portal dice que no hay descargas disponibles?">
+    El producto digital comprado no tiene archivos cargados. En cuanto los cargues, la descarga aparece automáticamente.
+  </Accordion>
+  <Accordion title="¿Los correos se envían en otros idiomas?">
+    Sí. Los correos del sistema y los mensajes del portal se muestran en el idioma preferido del cliente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Entregar productos digitales" icon="download" href="/tienda/entregar-productos-digitales">
+    Vende ebooks, audios, videos y otros archivos descargables.
+  </Card>
+  <Card title="Imprimir listas de empaque" icon="print" href="/tienda/imprimir-listas-de-empaque">
+    Prepara y despacha los pedidos de tu tienda.
+  </Card>
+</CardGroup>

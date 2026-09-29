@@ -1,0 +1,142 @@
+---
+title: "Protección antispam del widget de chat"
+description: "Detecta envíos de bots en el widget de chat, pausa los mensajes salientes a esos contactos y etiquétalos para revisarlos."
+icon: "shield-check"
+---
+
+Los formularios del widget de chat pueden recibir muchos envíos falsos generados por bots. Esos contactos gastan saldo de tu billetera en SMS que nadie leerá y dañan la reputación de tus correos con rebotes. La **protección antispam** del widget de chat detecta automáticamente los envíos sospechosos, pausa los mensajes salientes hacia esos contactos y los etiqueta para que los revises, sin CAPTCHA y sin afectar a los visitantes reales.
+
+## Cómo funciona
+
+La detección ocurre en el servidor. No agrega CAPTCHA, ni campos extra, ni demoras visibles: el visitante real ve el mismo formulario de siempre.
+
+Cuando un envío tiene patrones típicos de bots o spam:
+
+1. El contacto **se crea igual** en tu cuenta. Nada se borra.
+2. Recibe la etiqueta `chat_widget_high_volume_flag`.
+3. Se activa **No molestar (DND)** en los canales salientes que elegiste (SMS, correo o ambos).
+4. El registro de actividad del contacto deja constancia de que la protección antispam activó No molestar y en qué canal.
+
+Tú decides al final: revisas los contactos marcados, restauras los reales y eliminas el spam.
+
+## Para qué te sirve
+
+- **Cero fricción para el visitante:** sin CAPTCHA ni pasos extra.
+- **No pierdes leads:** los sospechosos se guardan y etiquetan, no se borran.
+- **Proteges tu reputación de envío:** no se envían mensajes a contactos marcados en los canales pausados, así evitas rebotes y gasto innecesario.
+- **Control por widget:** cada widget tiene su propia configuración.
+- **Reversible y preciso:** solo se pausan los canales que eliges. Las llamadas, los mensajes entrantes y otros ajustes de No molestar no cambian.
+- **Rastro claro:** el registro de actividad explica por qué no se envió un mensaje.
+
+## Niveles de protección
+
+| Opción | Qué hace | Cuándo usarla |
+| --- | --- | --- |
+| **Solo etiquetar** | Etiqueta el contacto, sin pausar mensajes | Quieres ver cuántos envíos sospechosos llegan sin bloquear nada |
+| **Pausar SMS** | Etiqueta y pausa los SMS. El correo sigue activo | Proteger tu gasto en SMS y seguir el contacto por correo |
+| **Pausar correo** | Etiqueta y pausa el correo. Los SMS siguen activos | Proteger la reputación de tu correo y seguir por SMS |
+| **Pausar ambos** | Etiqueta y pausa SMS y correo | La protección más completa. Es la opción por defecto en widgets nuevos |
+
+<Note>
+Las llamadas, los mensajes entrantes y el resto de los ajustes de No molestar nunca se ven afectados. Solo se pausan los canales salientes que elegiste.
+</Note>
+
+## Cómo activarla
+
+<Steps>
+  <Step title="Abre el widget">
+    Ve a **Sitios → Widgets de chat** y abre el widget que quieres proteger.
+  </Step>
+  <Step title="Busca la sección Protección antispam">
+    En la barra lateral del editor, despliega **Protección antispam** (Spam Protection).
+  </Step>
+  <Step title="Activa la protección">
+    Enciende el interruptor. En los widgets que ya tenías viene apagado. En los widgets nuevos viene encendido.
+  </Step>
+  <Step title="Elige el nivel">
+    Selecciona una de las cuatro opciones de la tabla anterior.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. La protección aplica a los envíos que lleguen a partir de ese momento.
+  </Step>
+</Steps>
+
+<Info>
+Los widgets nuevos se crean con la protección activada y la opción **Pausar ambos**. Los widgets existentes siguen desactivados hasta que la actives tú.
+</Info>
+
+## Revisar los contactos marcados
+
+<Steps>
+  <Step title="Filtra por la etiqueta">
+    Ve a **Contactos** y filtra por la etiqueta `chat_widget_high_volume_flag`.
+  </Step>
+  <Step title="Revisa cada contacto">
+    Abre el contacto y revisa su envío. En el registro de actividad verás una entrada como `DnD enabled by chat widget spam protection` que indica qué canales se pausaron.
+  </Step>
+  <Step title="Restaura los contactos reales">
+    Si el contacto es legítimo, quita No molestar en los canales pausados y elimina la etiqueta `chat_widget_high_volume_flag`. Los mensajes salientes se reanudan de inmediato.
+  </Step>
+  <Step title="Elimina el spam confirmado">
+    Selecciona en bloque los contactos que sí son spam y elimínalos. Así limpias tu lista y evitas escribirles por error.
+  </Step>
+</Steps>
+
+<Tip>
+Revisa los contactos marcados cada semana o después de cada campaña, para restaurar a tiempo a los leads reales antes de que se enfríen.
+</Tip>
+
+## Picos de tráfico legítimos
+
+Un lanzamiento, una campaña de anuncios, un evento o una mención en medios pueden generar muchos envíos seguidos, y eso puede parecer una ola de spam. En esos casos:
+
+1. **Antes del evento:** ve a **Sitios → Widgets de chat**, abre el widget y apaga la protección antispam.
+2. **Después del evento:** cuando el volumen vuelva a la normalidad, enciéndela de nuevo y vuelve a elegir tu nivel de protección.
+
+Si olvidaste apagarla, revisa los contactos marcados al terminar el evento y restaura los que sean reales.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Agrega CAPTCHA o campos extra al widget?">
+    No. Funciona en el servidor y no modifica el formulario que ve el visitante.
+  </Accordion>
+  <Accordion title="¿Los contactos marcados se eliminan automáticamente?">
+    No. Se crean en tu cuenta con la etiqueta `chat_widget_high_volume_flag` y con los canales elegidos en pausa, para que los revises.
+  </Accordion>
+  <Accordion title="¿Puedo restaurar un contacto marcado?">
+    Sí. Abre el contacto, quita No molestar en los canales pausados y elimina la etiqueta. Los mensajes salientes se reanudan al momento.
+  </Accordion>
+  <Accordion title="¿Afecta a mis contactos o flujos de trabajo actuales?">
+    No. Solo aplica a los envíos nuevos que lleguen después de activarla. Además, viene desactivada en todos los widgets existentes.
+  </Accordion>
+  <Accordion title="¿Qué pasa con las llamadas y mensajes entrantes de un contacto marcado?">
+    Nada. Solo se pausan los mensajes salientes en los canales elegidos. Las llamadas entrantes, las respuestas por SMS y el resto de las interacciones funcionan con normalidad.
+  </Accordion>
+  <Accordion title="¿Cómo sé qué canal se pausó?">
+    En el registro de actividad del contacto verás la entrada de la protección antispam con el canal pausado: SMS, correo o ambos.
+  </Accordion>
+  <Accordion title="¿Baja mi tasa de conversión?">
+    No. Como no agrega pasos visibles, el visitante real completa el formulario igual que antes.
+  </Accordion>
+  <Accordion title="¿Puedo usarla en varios widgets con niveles distintos?">
+    Sí. Cada widget se configura por separado: puedes activarla en unos, dejarla apagada en otros y elegir un nivel distinto en cada uno.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="No molestar (DND)" icon="bell-slash" href="/contactos/no-molestar-dnd">
+    Cómo funciona el bloqueo de canales por contacto.
+  </Card>
+  <Card title="Proteger tus formularios contra el spam" icon="shield-check" href="/sitios/proteger-formularios-contra-spam">
+    Medidas antispam para formularios y encuestas.
+  </Card>
+  <Card title="Eliminar contactos" icon="trash" href="/contactos/eliminar-contactos">
+    Limpia tu base de contactos.
+  </Card>
+  <Card title="Configura el chat en vivo en tu sitio web" icon="comments" href="/primeros-pasos/configura-el-chat-en-vivo">
+    Crea, personaliza e instala el widget de chat.
+  </Card>
+</CardGroup>

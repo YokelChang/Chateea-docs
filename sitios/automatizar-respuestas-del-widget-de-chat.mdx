@@ -1,0 +1,134 @@
+---
+title: "Automatizar respuestas del widget de chat Todo en uno"
+description: "Dispara flujos de trabajo cuando un cliente responde desde un widget de chat Todo en uno concreto y enruta cada conversación."
+icon: "bolt"
+---
+
+Cuando un cliente te escribe desde el widget de chat **Todo en uno** (All-in-One) de tu sitio, puedes disparar un flujo de trabajo al instante: confirmar que recibiste su mensaje, asignarlo a la persona correcta, etiquetarlo o avisar a tu equipo. La clave está en el disparador **Cliente respondió** (Customer Replied) y en sus filtros, que te permiten limitar el flujo a un tipo de chat y a un widget concreto.
+
+## Cómo funciona el disparador
+
+El disparador se configura por capas. El flujo solo se ejecuta cuando se cumplen todas:
+
+| Capa | Qué defines | Opciones |
+| --- | --- | --- |
+| **1. Evento** | Qué tiene que pasar | **Cliente respondió**: el cliente envía un mensaje |
+| **2. Canal de respuesta** | Por dónde llega el mensaje | **Chat Todo en uno** |
+| **3. Tipo de chat** | Qué experiencia de chat | **Widget de chat** o **Chat en vivo** |
+| **4. Configuración específica** | Qué widget exacto | El widget o la configuración de chat en vivo que elijas |
+
+Los filtros de las capas 3 y 4 solo aparecen después de elegir **Chat Todo en uno** como canal de respuesta.
+
+## Antes de empezar
+
+- Tener al menos un widget de chat **Todo en uno** configurado.
+- Tener acceso a **Automatización**.
+- Si vas a asignar conversaciones, tener creados los usuarios o equipos.
+- Si vas a usar etiquetas o pipelines, definir antes cómo los vas a nombrar.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea o abre un flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo**, haz clic en **Crear flujo de trabajo** (o abre uno existente) y selecciona **Agregar disparador** (Add Trigger).
+  </Step>
+  <Step title="Elige el disparador">
+    Selecciona **Cliente respondió**. Se abrirá el panel de configuración.
+  </Step>
+  <Step title="Define el canal de respuesta">
+    En el desplegable **Canal de respuesta**, elige **Chat Todo en uno**. Al hacerlo aparecen los filtros avanzados.
+  </Step>
+  <Step title="Elige el tipo de chat">
+    En **Tipo de chat**, selecciona **Widget de chat** si quieres las respuestas que llegan desde la interfaz del widget, o **Chat en vivo** si quieres las respuestas asociadas a una configuración de chat en vivo.
+  </Step>
+  <Step title="Selecciona la configuración exacta">
+    El último desplegable cambia según el tipo de chat: **El widget de chat es** o **El chat en vivo es**. Elige el widget o la configuración concreta. Solo aparecen las opciones que corresponden.
+  </Step>
+  <Step title="Guarda el disparador">
+    Haz clic en **Guardar disparador**. Desde ahora el flujo solo se ejecuta con las respuestas que llegan desde esa configuración.
+  </Step>
+</Steps>
+
+## Ideas para usarlo
+
+### Confirmación automática
+
+Disparador limitado a tu widget de soporte. Acciones:
+
+- Enviar un mensaje: "Recibimos tu mensaje y te respondemos en unos minutos".
+- Asignar el contacto a alguien del equipo.
+- Agregar la etiqueta `respuesta-recibida`.
+- Opcional: crear una tarea interna.
+
+Escribe la confirmación corta y con tono humano, no como un aviso de sistema.
+
+### Enrutamiento por área (ventas o soporte)
+
+Crea un flujo por widget:
+
+- **Widget de ventas:** asignar a un vendedor (o por turnos), etiquetar `consulta-ventas`, crear una oportunidad y avisar al equipo comercial.
+- **Widget de soporte:** asignar a un agente de soporte, etiquetar `soporte`, crear una tarea de servicio y enviar un mensaje de confirmación.
+
+### Alerta de alta prioridad
+
+Para un widget dedicado a clientes clave: enviar una notificación interna, crear una tarea de alta prioridad, etiquetar `vip` y asignar a alguien con más experiencia.
+
+### Calificación según el mensaje
+
+En tu widget principal, agrega condiciones:
+
+- Si el mensaje contiene "precio" o "costo", etiqueta `interes-precio`.
+- Si contiene "cancelar" o "reembolso", etiqueta `riesgo-de-baja`.
+- Enruta al equipo que corresponda y envía una pregunta de seguimiento.
+
+### Escalamiento si nadie responde
+
+Para una configuración de chat en vivo:
+
+1. Espera 10 minutos.
+2. Si no hubo respuesta (según el indicador que elijas), avisa a un usuario de respaldo, reasigna la conversación y ofrece al cliente devolverle la llamada.
+
+### Varios sitios o marcas
+
+- Crea un flujo por widget.
+- Usa nombres claros, por ejemplo `Respuesta - Widget soporte - Enrutamiento`.
+- Mantén las mismas reglas de etiquetas en todos.
+- No mezcles widgets sin relación en un mismo flujo.
+
+## Buenas prácticas
+
+- Si tienes varios widgets, selecciona siempre la configuración específica.
+- Mantén la lógica de enrutamiento separada por flujos pequeños.
+- No combines la lógica de **Widget de chat** y **Chat en vivo** en el mismo flujo, salvo que sea intencional.
+- Revisa tus flujos cada trimestre para evitar disparadores que se superpongan.
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="No aparece Chat Todo en uno en el canal de respuesta">
+    Confirma que el disparador elegido es **Cliente respondió** y que tienes al menos un widget de chat Todo en uno creado en tu cuenta.
+  </Accordion>
+  <Accordion title="No aparece el widget que busco">
+    Cambia el tipo de chat (Widget de chat o Chat en vivo) y confirma que ese widget existe y está activo.
+  </Accordion>
+  <Accordion title="El flujo se ejecuta cuando no debería">
+    Revisa que hayas elegido la configuración específica, busca flujos duplicados y verifica que no haya otros disparadores con condiciones que se superpongan.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles en los flujos.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="diagram-project" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Crea tu primera automatización.
+  </Card>
+  <Card title="Asignar contactos automáticamente" icon="users" href="/automatizaciones/asignar-contactos-a-usuarios-automaticamente">
+    Reparte las conversaciones entre tu equipo.
+  </Card>
+  <Card title="Chat en vivo en Conversaciones" icon="comments" href="/conversaciones/chat-en-vivo">
+    Atiende a tus visitantes en tiempo real.
+  </Card>
+</CardGroup>

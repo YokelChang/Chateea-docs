@@ -1,0 +1,59 @@
+---
+title: "Crear contacto con una encuesta incompleta"
+description: "Guarda al contacto en cuanto completa la primera diapositiva, aunque abandone la encuesta antes de terminar."
+icon: "user-plus"
+---
+
+Muchas personas empiezan una encuesta y la abandonan a mitad de camino. Con la opción **Crear contacto con envío parcial**, Chateea guarda al contacto en cuanto completa la primera diapositiva, aunque no termine el resto. Así no pierdes esos leads y puedes hacerles seguimiento con un correo, un mensaje o una llamada.
+
+## Cómo funciona
+
+- El contacto se crea cuando la persona llena la primera diapositiva y pulsa **Siguiente**.
+- Para que eso ocurra, los campos de contacto (nombre, correo, teléfono) deben estar en la **primera diapositiva**.
+- A medida que la persona avanza, sus respuestas se siguen guardando, incluso si sale antes de enviar la encuesta.
+- La opción funciona junto con la lógica condicional de diapositivas, con algunas limitaciones (ver más abajo).
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre o crea la encuesta">
+    Ve a **Sitios → Encuestas** y crea una encuesta nueva con **Agregar encuesta** o abre una existente en el editor.
+  </Step>
+  <Step title="Activa la opción">
+    En el editor, abre **Opciones** y activa **Crear contacto con envío parcial** (Create Contact on Partial Submission).
+  </Step>
+  <Step title="Coloca los datos de contacto al principio">
+    Pon los campos de nombre, correo y teléfono en la primera diapositiva. Sin ellos no se puede crear el contacto.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda la encuesta, llénala en la vista previa hasta la segunda diapositiva y cierra. Comprueba en **Contactos** que el contacto se creó.
+  </Step>
+</Steps>
+
+## Limitaciones
+
+| Situación | Qué ocurre |
+| --- | --- |
+| La lógica de diapositivas salta directamente a la última diapositiva | No se crea el contacto parcial |
+| La lógica salta a la penúltima diapositiva | La información del contacto no se actualiza |
+
+<Tip>
+  Coloca los campos de contacto básicos al inicio y evita que la primera diapositiva salte directamente al final. Así el contacto se crea siempre, sin importar el camino que tome la persona.
+</Tip>
+
+## Qué hacer con los contactos parciales
+
+- Crea un flujo de trabajo que les envíe un recordatorio para terminar la encuesta.
+- Etiquétalos para distinguirlos de quienes completaron la encuesta.
+- Revisa en la analítica de la encuesta en qué diapositiva se van la mayoría y simplifícala.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lógica condicional en encuestas" icon="code-branch" href="/sitios/logica-condicional-en-encuestas">
+    Muestra preguntas y salta diapositivas según las respuestas.
+  </Card>
+  <Card title="Analítica de formularios y encuestas" icon="chart-line" href="/sitios/analitica-de-formularios-y-encuestas">
+    Descubre dónde abandonan tus encuestas.
+  </Card>
+</CardGroup>

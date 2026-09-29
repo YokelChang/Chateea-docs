@@ -1,0 +1,86 @@
+---
+title: "Usar el solucionador de plugins de WordPress"
+description: "Encuentra y desactiva el plugin que rompe tu sitio de WordPress, incluso con la pantalla blanca de la muerte."
+icon: "stethoscope"
+---
+
+Cuando tu sitio de WordPress deja de funcionar después de instalar o actualizar algo, casi siempre el culpable es un plugin. El solucionador de plugins es una herramienta del panel de WordPress de Chateea que encuentra ese plugin por ti: desactiva y reactiva los plugins activos por grupos hasta aislar el que causa el fallo, y te deja desactivarlo con un clic.
+
+Funciona incluso si tu sitio muestra la pantalla blanca de la muerte (White Screen of Death) y no puedes entrar al administrador de WordPress.
+
+## Ventajas
+
+- **Diagnóstico rápido**: prueba los plugins en grupos inteligentes en lugar de uno por uno.
+- **Paso a paso**: una interfaz guiada que no requiere conocimientos técnicos.
+- **Solución en un clic**: desactiva el plugin problemático de inmediato.
+- **Funciona con el sitio caído**: sirve aunque haya errores críticos.
+
+## Usar el solucionador de plugins
+
+<Steps>
+  <Step title="Abre el sitio">
+    Ve a **Sitios → WordPress** y haz clic en **Administrar sitio** en el sitio que tiene problemas.
+  </Step>
+  <Step title="Inicia el diagnóstico">
+    Arriba a la derecha, abre el menú **Acciones rápidas** (Quick actions) y haz clic en **Solucionar problemas del sitio** (Troubleshoot site).
+  </Step>
+  <Step title="Empieza el proceso">
+    En el panel **Buscar problemas** (Find issues), haz clic en **Iniciar el proceso** (Start the process).
+  </Step>
+  <Step title="Marca los plugins esenciales">
+    Cuando te lo pida, selecciona **solo los plugins imprescindibles** para el funcionamiento básico de tu sitio. Estos se mantendrán activos durante la prueba. Luego haz clic en **Confirmar plugins**.
+  </Step>
+  <Step title="Deja que la herramienta revise">
+    Verás la pantalla **Buscando la solución** (Finding the fix) mientras se inspeccionan los plugins. Haz clic en **Continuar** cuando se te indique.
+  </Step>
+  <Step title="Desactiva el plugin problemático">
+    Si aparece el mensaje de **plugins dañados encontrados** (Broken plugins found), haz clic en **Desactivar el plugin**.
+  </Step>
+  <Step title="Confirma si se resolvió">
+    En la pantalla **Problemas solucionados**, la herramienta recarga tu sitio y te pregunta si ya funciona:
+    - Si el sitio funciona, haz clic en **Sí, está solucionado**.
+    - Si sigue fallando, haz clic en **Sigue fallando** para continuar el diagnóstico.
+  </Step>
+</Steps>
+
+## Si no se encuentra ningún plugin
+
+Si ves el mensaje de que **no se encontraron problemas con los plugins** (No plugin issues found), la herramienta probó todos los plugins activos y ninguno parece ser la causa. Tienes dos opciones:
+
+- **Volver al panel**: para revisar otras causas, como el tema, la versión de PHP o un cambio reciente en los archivos.
+- **Reiniciar el diagnóstico**: por ejemplo, cambiando la selección de plugins esenciales. Si marcaste como esencial justo el plugin que falla, la herramienta no lo habrá probado.
+
+<Tip>
+  Si ningún plugin es el culpable, revisa los [registros de acceso y actividad](/sitios/wordpress-registros-de-acceso-y-actividad) o activa la depuración de WordPress en **Configuración avanzada** para ver los errores de PHP. Como último recurso, restaura una copia de seguridad reciente.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Funciona si mi sitio está parcialmente caído?">
+    Sí. Funciona incluso con errores graves, como la pantalla blanca de la muerte.
+  </Accordion>
+  <Accordion title="¿Puedo evitar que se desactiven ciertos plugins?">
+    Sí. Al inicio marcas los plugins esenciales y se mantienen activos durante todo el diagnóstico.
+  </Accordion>
+  <Accordion title="¿Cómo sabe la herramienta qué plugin causa el problema?">
+    Desactiva y reactiva los plugins por grupos mientras comprueba el estado del sitio, hasta aislar el que lo rompe.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestionar plugins y temas" icon="puzzle-piece" href="/sitios/wordpress-gestionar-plugins-y-temas">
+    Actualiza, activa o elimina extensiones desde Chateea.
+  </Card>
+  <Card title="Plugins bloqueados" icon="ban" href="/sitios/wordpress-plugins-bloqueados">
+    Plugins que no se pueden usar en el hosting.
+  </Card>
+  <Card title="Crear un sitio desde una plantilla" icon="swatchbook" href="/sitios/wordpress-crear-sitio-desde-plantilla">
+    Empieza con un diseño prediseñado.
+  </Card>
+  <Card title="Cambiar la versión de PHP" icon="code" href="/sitios/wordpress-cambiar-version-de-php">
+    Elige la versión de PHP de tu sitio.
+  </Card>
+</CardGroup>

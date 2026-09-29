@@ -1,0 +1,75 @@
+---
+title: "Cuestionarios de personalidad"
+description: "Crea cuestionarios que muestran como resultado la categoría con más o con menos puntos."
+icon: "masks-theater"
+---
+
+Un cuestionario de personalidad no busca una nota, sino un "tipo". Agrupas las preguntas en categorías (estilos, perfiles, arquetipos o habilidades) y cada respuesta suma puntos a una o varias de ellas. Al enviar, Chateea suma los puntos y muestra en la página de resultados una sola categoría como resultado, normalmente la que obtuvo más puntos o la que obtuvo menos.
+
+Es el formato clásico de "¿Qué tipo de cliente eres?", "¿Cuál es tu estilo de decoración?" o "¿Qué área de tu negocio necesita más atención?".
+
+## Ventajas
+
+- **Un resultado claro:** se destaca una sola categoría como el perfil de la persona.
+- **Más personalización:** usa campos personalizados y valores dinámicos para adaptar lo que viene después.
+- **Resultados más completos:** el editor de texto enriquecido admite encabezados, listas y enlaces.
+- **Listo para automatizar:** combínalo con flujos de trabajo para dar un seguimiento distinto a cada categoría.
+- **Más atractivo:** agrega GIF, videos y botones de llamada a la acción al resultado.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre el cuestionario">
+    Ve a **Sitios → Cuestionarios** y crea uno nuevo o abre uno existente.
+  </Step>
+  <Step title="Crea las categorías">
+    Usa **Gestionar categorías** para agregar tus perfiles, por ejemplo "Explorador", "Planificador" y "Ejecutor".
+  </Step>
+  <Step title="Asigna categoría y puntos a cada respuesta">
+    En el panel de opciones de cada pregunta, indica a qué categoría suma cada respuesta y cuántos puntos.
+  </Step>
+  <Step title="Abre el editor de resultados">
+    Entra en el editor de la página de resultados para personalizar lo que se muestra.
+  </Step>
+  <Step title="Agrega una sección de categoría individual">
+    Añade una sección **Categoría individual** y elige **Categoría más alta** o **Categoría más baja**.
+  </Step>
+  <Step title="Usa etiquetas dinámicas">
+    Escribe el texto del resultado con etiquetas como `{{quiz_tags.highest_category_name}}` (nombre de la categoría ganadora) y `{{quiz_tags.highest_category_score}}` (su puntuación).
+  </Step>
+  <Step title="Define rangos y guarda">
+    Si quieres, configura rangos de puntuación (bajo, medio, alto) con mensajes distintos y guarda.
+  </Step>
+</Steps>
+
+<Tip>
+  Escribe un resultado para cada categoría que describa el perfil en positivo y termine con una recomendación concreta: un producto, un servicio o una cita. Luego usa el disparador **Cuestionario enviado** para enviar a cada perfil una secuencia de correos distinta.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo mostrar la categoría más alta y la más baja a la vez?">
+    Sí. Agrega dos secciones de **Categoría individual**, una con la categoría más alta y otra con la más baja.
+  </Accordion>
+  <Accordion title="¿Puedo combinar el resultado de personalidad con un porcentaje general?">
+    Sí. Ambas cosas pueden convivir en la misma página de resultados.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Categorías y puntuación en cuestionarios" icon="list-ol" href="/sitios/categorias-y-puntuacion-en-cuestionarios">
+    Cómo se calculan los puntos y los rangos.
+  </Card>
+  <Card title="Página de resultados de cuestionarios" icon="square-poll-vertical" href="/sitios/pagina-de-resultados-de-cuestionarios">
+    Ordena y configura las secciones de resultados.
+  </Card>
+  <Card title="Disparador Cuestionario enviado" icon="bolt" href="/sitios/disparador-cuestionario-enviado">
+    Da un seguimiento distinto a cada perfil.
+  </Card>
+  <Card title="Crear cuestionarios" icon="clipboard-question" href="/sitios/crear-cuestionarios">
+    Guía completa del editor de cuestionarios.
+  </Card>
+</CardGroup>

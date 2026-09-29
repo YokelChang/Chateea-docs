@@ -1,0 +1,75 @@
+---
+title: "Aumentar el límite de subida de archivos en WordPress"
+description: "Edita el archivo .htaccess para subir archivos, temas y plugins más grandes a tu sitio de WordPress, hasta 300 MB."
+icon: "upload"
+---
+
+Si al subir un archivo, un tema o un plugin grande a tu sitio de WordPress ves el error "excede el tamaño máximo de subida para este sitio" (exceeds the maximum upload size for this site), necesitas aumentar los límites de PHP. Puedes hacerlo tú mismo editando el archivo `.htaccess` de tu sitio desde el administrador de WordPress, sin usar FTP.
+
+<Warning>
+  El límite máximo que se puede fijar de forma fiable con `.htaccess` es de **300 MB**. Si pones un valor mayor, puede que la Biblioteca de medios lo muestre, pero la subida seguirá fallando. Para archivos de más de 300 MB se necesita una configuración a nivel de servidor: escribe a soporte de Chateea en **help@chateea.com**.
+</Warning>
+
+## Paso a paso
+
+<Steps>
+  <Step title="Instala un administrador de archivos">
+    Entra al administrador de WordPress, ve a **Plugins → Añadir nuevo**, busca **WP File Manager** (u otro administrador de archivos de confianza), haz clic en **Instalar ahora** y luego en **Activar**. Más detalles en [Plugin WP File Manager](/sitios/wordpress-plugin-wp-file-manager).
+  </Step>
+  <Step title="Ubica el archivo .htaccess">
+    Abre WP File Manager desde el menú lateral y entra en la carpeta raíz del sitio (normalmente `public_html`, donde están los archivos principales de WordPress). Busca el archivo `.htaccess`.
+  </Step>
+  <Step title="Edita el archivo">
+    Haz clic derecho sobre `.htaccess` y elige **Editor de código** (Code Editor) o **Editar**. Ve al final del archivo y pega estas líneas:
+
+    ```text
+    php_value upload_max_filesize 128M
+    php_value post_max_size 128M
+    php_value memory_limit 2048M
+    php_value max_execution_time 600
+    php_value max_input_vars 10000
+    ```
+
+    Puedes cambiar los valores de `128M` según lo que necesites, hasta un máximo de `300M`. Luego haz clic en **Guardar y cerrar** (o **Actualizar**).
+  </Step>
+  <Step title="Comprueba el nuevo límite">
+    En WordPress, ve a **Medios → Añadir nuevo**. Debajo del área de subida deberías ver "Tamaño máximo de archivo: 128 MB" (o el valor que hayas puesto).
+  </Step>
+</Steps>
+
+<Tip>
+  El archivo `.htaccess` es un archivo de sistema y a veces está oculto. Si no lo ves, abre las preferencias de WP File Manager y activa la opción para mostrar archivos ocultos (Show Hidden Files).
+</Tip>
+
+## Qué hace cada línea
+
+| Directiva | Para qué sirve |
+| --- | --- |
+| `upload_max_filesize` | Tamaño máximo de un archivo que se sube. |
+| `post_max_size` | Tamaño máximo de todo lo que se envía en una solicitud. Debe ser igual o mayor que `upload_max_filesize`. |
+| `memory_limit` | Memoria máxima que puede usar PHP al procesar la solicitud. |
+| `max_execution_time` | Tiempo máximo, en segundos, que puede durar un proceso de PHP. |
+| `max_input_vars` | Número máximo de campos que se pueden enviar en un formulario (útil en menús y constructores de páginas grandes). |
+
+<Warning>
+  Crea una copia de seguridad del sitio antes de editar `.htaccess`. Un error de escritura en este archivo puede dejar el sitio sin cargar.
+</Warning>
+
+## Solución de problemas
+
+| Problema | Qué hacer |
+| --- | --- |
+| Sigues viendo el límite anterior | Limpia la caché del navegador, de los plugins de caché y la caché de la CDN, y actualiza la página. |
+| La subida falla aunque el límite ya es mayor | Comprueba que WordPress admita ese tipo de archivo. Por seguridad, algunos formatos no se permiten. |
+| Necesitas más de 300 MB | No se puede forzar con `.htaccess`. Escribe a soporte de Chateea en **help@chateea.com**. |
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Plugin WP File Manager" icon="folder-open" href="/sitios/wordpress-plugin-wp-file-manager">
+    Gestiona archivos desde el administrador de WordPress.
+  </Card>
+  <Card title="Cambiar la versión de PHP" icon="code" href="/sitios/wordpress-cambiar-version-de-php">
+    Elige la versión de PHP de tu sitio.
+  </Card>
+</CardGroup>

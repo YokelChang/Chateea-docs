@@ -1,0 +1,92 @@
+---
+title: "Pedir datos de contacto antes del chat en vivo"
+description: "Exige nombre y correo o teléfono antes de chatear y personaliza los mensajes que piden los datos al visitante."
+icon: "address-card"
+---
+
+Con el formulario de contacto del chat en vivo, el visitante deja su nombre y su correo o teléfono antes de poder escribir. Así cada conversación queda asociada a un contacto real, tu equipo puede darle seguimiento aunque el visitante cierre la página y tus automatizaciones tienen los datos que necesitan para funcionar.
+
+## Para qué te sirve
+
+- **Ningún chat anónimo:** cada conversación queda vinculada a una ficha de contacto.
+- **Seguimiento sin demoras:** tu equipo o tus flujos de trabajo pueden responder por otros canales en cuanto termina el chat.
+- **Visitantes recurrentes sin fricción:** si el visitante tiene un chat activo, se salta el formulario y continúa donde lo dejó. Si el chat anterior se eliminó o se cerró, el formulario vuelve a aparecer.
+- **Continuidad de la sesión:** si el visitante actualiza la página, el widget se reconecta y conserva el historial.
+- **Datos más limpios:** menos conversaciones incompletas y mejores informes.
+
+## Activar o desactivar el formulario
+
+<Steps>
+  <Step title="Abre el widget">
+    Ve a **Sitios → Widget de chat** y selecciona el widget de chat en vivo que quieres configurar.
+  </Step>
+  <Step title="Activa el formulario">
+    En la pestaña **Ventana de chat**, abre el desplegable del chat en vivo y activa **Habilitar formulario de contacto** (Enable Contact Form).
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para aplicar los cambios.
+  </Step>
+</Steps>
+
+Para desactivarlo, apaga la misma opción. Sin formulario, el widget no pide datos al inicio y el chat empieza directamente.
+
+## Personalizar los mensajes que piden los datos
+
+Puedes cambiar el texto que invita al visitante a compartir sus datos. Hay dos mensajes editables en la pestaña **Ventana de chat**, y solo aplican al chat en vivo y al chat en vivo dentro del widget todo en uno.
+
+| Mensaje | Cuándo aparece | Visible en el editor |
+| --- | --- | --- |
+| **Mensaje de introducción del formulario** (automático) | Justo antes del formulario, cuando **Habilitar formulario de contacto** está activado. | Solo si el formulario está activado. |
+| **Mensaje del sistema del formulario** (lo activa tu equipo) | Cuando alguien de tu equipo hace clic en **Solicitar datos de contacto** en Conversaciones. Se puede usar aunque el mensaje de introducción ya se haya mostrado. | Siempre, esté el formulario activado o no. |
+
+En ambos casos el texto predeterminado le pide al visitante que comparta sus datos de contacto. Si dejas el campo en blanco, el widget se salta el mensaje y muestra el formulario directamente.
+
+<Note>
+  Si el sonido de notificación del widget está activado, el visitante puede escuchar un sonido cuando aparece la solicitud de datos de contacto.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué campos puedo hacer obligatorios?">
+    El nombre es obligatorio y se necesita al menos teléfono o correo para crear el contacto. También puedes agregar campos personalizados de contacto compatibles, dentro del límite de cinco campos en total. Si marcas un campo personalizado como obligatorio, el visitante debe completarlo para enviar el formulario.
+  </Accordion>
+  <Accordion title="¿Qué se considera un chat activo?">
+    Una sesión que no se ha cerrado manualmente ni ha expirado por inactividad. Mientras siga activa, el visitante vuelve a la conversación sin llenar el formulario otra vez.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el visitante actualiza la página durante el chat?">
+    El widget se reconecta automáticamente y conserva la conversación; no se pierde ningún mensaje.
+  </Accordion>
+  <Accordion title="¿La configuración aplica a todos mis widgets?">
+    No. Aplica solo al widget que estás editando. Asegúrate de tener seleccionado el widget correcto antes de activar la opción.
+  </Accordion>
+  <Accordion title="¿Cómo funciona con el horario de atención?">
+    Fuera del horario, el widget muestra el formulario de datos de contacto y, cuando el visitante lo envía, el chat se cierra automáticamente.
+  </Accordion>
+  <Accordion title="¿Puedo disparar flujos de trabajo con el envío del formulario?">
+    Sí. Usa disparadores como **Cliente respondió** para iniciar seguimientos automáticos o asignar tareas.
+  </Accordion>
+  <Accordion title="¿Debo enlazar mi política de privacidad?">
+    Es recomendable. Puedes incluir un enlace a tu política de privacidad en el texto de la ventana de chat para ser transparente con los datos que recoges.
+  </Accordion>
+  <Accordion title="Tengo varios widgets en mi sitio. ¿Cada uno sigue sus propias reglas?">
+    Sí. Cada widget tiene su propia configuración, así que puedes exigir el formulario en unos y no en otros.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Campos personalizados en el widget" icon="list" href="/sitios/campos-personalizados-en-widget-de-chat">
+    Pide información adicional en el formulario.
+  </Card>
+  <Card title="Horario de atención en el chat en vivo" icon="clock" href="/sitios/horario-de-atencion-en-chat-en-vivo">
+    Qué ve el visitante fuera de horario.
+  </Card>
+  <Card title="Personalizar el widget de chat" icon="palette" href="/sitios/personalizar-widget-de-chat">
+    Todas las opciones del widget.
+  </Card>
+  <Card title="Chat en vivo en Conversaciones" icon="comments" href="/conversaciones/chat-en-vivo">
+    Atiende los chats desde la bandeja.
+  </Card>
+</CardGroup>

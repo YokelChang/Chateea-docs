@@ -1,0 +1,99 @@
+---
+title: "Generar documentos PDF de los envíos"
+description: "Crea automáticamente un PDF de cada envío de formulario, encuesta o cuestionario y guárdalo en la ficha del contacto."
+icon: "file-pdf"
+---
+
+Con la opción **Generar documento de envío**, Chateea crea automáticamente un PDF cada vez que alguien envía un formulario, una encuesta o un cuestionario. El PDF incluye todas las preguntas, las respuestas, la fecha y hora del envío y los datos del contacto, y se guarda en la ficha de ese contacto. Te sirve para llevar un registro formal de solicitudes, fichas de ingreso, autorizaciones o evaluaciones sin tener que exportar nada a mano.
+
+## Ventajas
+
+- **Automático:** el PDF se genera en cuanto llega el envío, sin intervención.
+- **Registro completo:** preguntas, respuestas, fecha, hora y datos del contacto.
+- **Todo ordenado:** los documentos se guardan en la sección **Documentos** del contacto, separados por tipo.
+- **Asociado al contacto:** cada PDF queda vinculado a la persona que envió el formulario.
+- **Listo para usar en el CRM:** puedes compartirlo por correo, usarlo en automatizaciones o ponerlo en el portal del cliente.
+- **Funciona en computadora y en celular.**
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre el formulario, encuesta o cuestionario">
+    Ve a **Sitios** y entra en **Formularios**, **Encuestas** o **Cuestionarios**. Crea uno nuevo o edita uno existente.
+  </Step>
+  <Step title="Ve a la configuración">
+    Haz clic en **Configuración** en la barra superior del editor.
+  </Step>
+  <Step title="Activa la opción">
+    En la configuración del formulario, encuesta o cuestionario, busca **Generar documento de envío** (Generate Submission Document) y actívala.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. A partir de ese momento, cada envío nuevo genera su PDF.
+  </Step>
+</Steps>
+
+<Note>
+  La opción se configura en cada formulario, encuesta o cuestionario por separado. Actívala en todos los que necesites.
+</Note>
+
+## Cómo se nombran los PDF
+
+| Tipo | Formato del nombre |
+| --- | --- |
+| Formularios y encuestas | `[NombreDelFormulario]_[NombreDelContacto]_[AAAA-MM-DD_HHMM]` |
+| Cuestionarios | `Result_[NombreDelCuestionario]_[NombreDelContacto]_[AAAA-MM-DD_HHMM]` |
+
+Ejemplos:
+
+```text
+FormularioContacto_JuanPerez_2026-03-15_1430.pdf
+Result_EvaluacionDeProducto_AnaGomez_2026-03-15_0920.pdf
+```
+
+## Dónde encontrar los documentos
+
+<Steps>
+  <Step title="Abre el contacto">
+    Ve a **Contactos** y abre la ficha de la persona que envió el formulario.
+  </Step>
+  <Step title="Entra en Documentos">
+    Haz clic en **Documentos** en el panel derecho de la ficha.
+  </Step>
+  <Step title="Elige la carpeta">
+    Los PDF se agrupan en carpetas por tipo: formularios, encuestas y cuestionarios.
+  </Step>
+  <Step title="Usa el PDF">
+    Desde ahí puedes previsualizarlo, descargarlo, imprimirlo o compartirlo.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se generan PDF de los envíos anteriores?">
+    No. Solo se generan para los envíos que lleguen después de activar la opción.
+  </Accordion>
+  <Accordion title="¿Puedo desactivarlo más adelante?">
+    Sí, en cualquier momento. Los PDF que ya se generaron siguen disponibles en la ficha de cada contacto.
+  </Accordion>
+  <Accordion title="¿Qué contiene cada PDF?">
+    Todas las preguntas, las respuestas enviadas, la fecha y hora del envío y la información del contacto, con un formato limpio.
+  </Accordion>
+  <Accordion title="¿Puedo compartir el PDF con el contacto?">
+    Sí. Puedes descargarlo y enviarlo por correo como adjunto, compartirlo a través del portal del cliente o imprimirlo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si un contacto envía varios formularios?">
+    Cada envío genera un PDF distinto, con su propia fecha y hora. Todos quedan guardados en la sección **Documentos** del contacto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Envíos de formularios y encuestas" icon="inbox" href="/sitios/envios-de-formularios-y-encuestas">
+    Revisa, descarga y exporta las respuestas.
+  </Card>
+  <Card title="Compartir documentos con el portal del cliente" icon="folder-open" href="/contactos/compartir-documentos-con-el-portal-del-cliente">
+    Pon los documentos del contacto a su alcance.
+  </Card>
+</CardGroup>

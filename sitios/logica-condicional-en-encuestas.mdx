@@ -1,0 +1,162 @@
+---
+title: "Lógica condicional en encuestas"
+description: "Muestra preguntas, salta diapositivas, redirige o descalifica leads según las respuestas de cada persona."
+icon: "code-branch"
+---
+
+La lógica condicional hace que tu encuesta cambie según lo que responde cada persona. En lugar de mostrar las mismas preguntas a todos, puedes enseñar preguntas extra, saltar secciones que no aplican, mostrar un mensaje personalizado, redirigir a otra página, descalificar a quien no cumple tus criterios o llevar a la persona directamente a otra diapositiva. El resultado: encuestas más cortas, más respuestas completas y leads mejor calificados.
+
+<Note>
+  La versión 2 de la lógica condicional está disponible en las encuestas creadas o clonadas recientemente.
+</Note>
+
+## Para qué te sirve
+
+- **Personalizar la experiencia:** cada persona ve solo las preguntas relevantes para ella.
+- **Mejorar la tasa de finalización:** menos preguntas innecesarias, encuestas más cortas.
+- **Calificar leads automáticamente:** identificas al instante quién encaja y quién no.
+- **Crear varios caminos:** envías a cada persona a una diapositiva distinta según sus respuestas.
+- **Ahorrar revisión manual:** las acciones se ejecutan solas en lugar de revisar respuestas después.
+
+## Novedades de la versión 2
+
+- Constructor de reglas simplificado en tres pasos.
+- Operador **Entre** para números, puntuaciones, importes y fechas.
+- Saltos a otra diapositiva con **Ir a** (Jump To).
+- Compatibilidad con más tipos de campo.
+- Mostrar u ocultar elementos de texto, HTML, imágenes y términos y condiciones.
+- Filtro de reglas por campo o por diapositiva.
+- Protección contra bucles para evitar recorridos circulares.
+- Mejor accesibilidad y etiquetas traducidas.
+
+## Acciones disponibles
+
+| Acción | Qué hace |
+| --- | --- |
+| **Mostrar u ocultar campos** | Muestra u oculta campos, preguntas o diapositivas |
+| **Mostrar mensaje personalizado** | Enseña un mensaje según las respuestas |
+| **Redirigir a una URL** | Envía a la persona a otra página después del envío |
+| **Descalificar lead** | Marca automáticamente a la persona como no calificada |
+| **Ir a** | Salta directamente a otra diapositiva o pregunta de la encuesta |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Abre el editor de encuestas">
+    Ve a **Sitios → Encuestas** y abre una encuesta existente o crea una nueva.
+  </Step>
+  <Step title="Revisa la estructura">
+    Antes de crear reglas, asegúrate de que la encuesta ya tiene todas sus preguntas, diapositivas y páginas de resultado. Conviene tener diapositivas separadas para leads calificados, leads descalificados, reserva de citas y agradecimiento.
+  </Step>
+  <Step title="Abre la lógica condicional">
+    Haz clic en **Lógica condicional** en la barra de herramientas del editor o ábrela desde el panel derecho.
+  </Step>
+  <Step title="Crea una regla">
+    Pulsa **Agregar nueva condición** y elige la acción: mostrar u ocultar campos, mostrar mensaje, redirigir a URL, descalificar lead o ir a.
+  </Step>
+  <Step title="Define la condición">
+    Usa el constructor en tres pasos:
+    - **Selecciona el campo:** la pregunta o diapositiva que activa la regla.
+    - **Selecciona el estado:** el operador, por ejemplo **Es igual a**, **Contiene**, **Mayor que**, **Entre** o **Está vacío**.
+    - **Indica el valor:** el valor que debe cumplirse para que la regla se ejecute.
+
+    Puedes combinar varias condiciones con **Y** (se deben cumplir todas) u **O** (basta con una). Una misma regla usa **Y** u **O**, no las dos a la vez.
+  </Step>
+  <Step title="Configura la acción">
+    Según la acción, elige los campos a mostrar u ocultar, escribe el mensaje, indica la URL, selecciona la diapositiva de destino o marca a la persona como descalificada.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda la regla y recorre la encuesta en la vista previa probando cada camino posible antes de publicar.
+  </Step>
+</Steps>
+
+## Crear varios resultados en una sola encuesta
+
+**Camino de calificados.** Si la persona cumple tus criterios, puedes dejar que siga con las preguntas, llevarla directamente a una diapositiva para reservar una cita o mostrarle un mensaje de agradecimiento.
+
+**Camino de descalificados.** Si no cumple, puedes mostrarle un mensaje que explique por qué, llevarla a una diapositiva de descalificación y dejar de hacerle preguntas innecesarias.
+
+**Desvíos temporales.** Puedes enviar a la persona a otra diapositiva para pedir información adicional y luego continuar con la encuesta. Por ejemplo: pregunta 3, luego diapositiva de información adicional y después la diapositiva 5.
+
+<Note>
+  La lógica condicional impide los recorridos circulares que crearían un bucle infinito (por ejemplo, de la diapositiva A a la B y otra vez a la A).
+</Note>
+
+## Campos compatibles
+
+**Campos de entrada:** texto de una línea, texto de varias líneas, número, importe, puntuación, selector de fecha, desplegable simple, desplegable múltiple, selección única (radio), casillas de verificación, términos y condiciones, carga de archivos y firma.
+
+**Elementos estáticos:** texto, HTML e imagen.
+
+Los campos de calendario no son compatibles.
+
+## Operadores por tipo de campo
+
+| Tipo de campo | Operadores disponibles |
+| --- | --- |
+| Texto | Es igual a, No es igual a, Contiene, Empieza con, Termina con, Está vacío, Está lleno |
+| Número, puntuación, importe | Es igual a, Mayor que, Menor que, Entre, Está vacío, Está lleno |
+| Fecha | Es igual a, Antes de, Después de, Entre, Está vacío, Está lleno |
+| Desplegable simple, selección única | Es igual a, No es igual a, Está vacío, Está lleno |
+| Desplegable múltiple, casillas | Es igual a, No es igual a, Está vacío, Está lleno |
+| Términos y condiciones | Está marcado, No está marcado |
+| Carga de archivos, firma | Está vacío, Está lleno |
+
+## Cómo se evalúan las reglas
+
+- Las reglas se evalúan de arriba abajo.
+- **Redirigir**, **Mostrar mensaje** y **Descalificar** ejecutan solo la primera regla que se cumple.
+- Las reglas de **Mostrar u ocultar** siguen evaluándose y una regla posterior puede anular a una anterior.
+- **Ir a** se evalúa cuando la persona pulsa **Siguiente**.
+- Las comparaciones de texto ignoran mayúsculas y espacios de más.
+- Las comparaciones de fecha usan la zona horaria de tu cuenta.
+
+Para encontrar reglas rápido en encuestas grandes, filtra la lista por campo o por diapositiva.
+
+## Buenas prácticas
+
+- Crea todas las diapositivas antes de agregar reglas.
+- Da a cada campo una **clave de consulta** (Query Key) única.
+- Mantén las reglas lo más simples posible y evita reglas repetidas o que se pisen entre sí.
+- Usa **Entre** para rangos de números y fechas.
+- Prueba cada camino posible, sobre todo los saltos con **Ir a**, antes de publicar.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo mezclar Y y O en la misma regla?">
+    No. Cada regla usa solo **Y** o solo **O**. Si necesitas combinaciones, crea varias reglas.
+  </Accordion>
+  <Accordion title="¿Puedo tener varias reglas?">
+    Sí. Cada regla se ejecuta de forma independiente según su posición en la lista.
+  </Accordion>
+  <Accordion title="¿Cómo doy resultados distintos a calificados y descalificados?">
+    Crea una diapositiva para cada resultado y usa las acciones **Ir a**, **Mostrar mensaje** o **Descalificar lead** para enviar a cada persona al camino que corresponde.
+  </Accordion>
+  <Accordion title="¿Puedo enviar a alguien a otra diapositiva y luego seguir con la encuesta?">
+    Sí. Usa **Ir a** para desviar a la persona a otra diapositiva y después continuar con el resto de preguntas. Los recorridos circulares se bloquean automáticamente.
+  </Accordion>
+  <Accordion title="¿Qué pasa si se cumplen varias reglas a la vez?">
+    Redirigir, Mostrar mensaje y Descalificar ejecutan la primera regla que se cumple. Las reglas de mostrar u ocultar siguen evaluándose y pueden anular a las anteriores.
+  </Accordion>
+  <Accordion title="¿Por qué no aparecen algunos campos en el desplegable de la lógica condicional?">
+    Comprueba que cada campo de la encuesta tenga una clave de consulta única y vuelve a abrir el panel de lógica condicional.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cálculos matemáticos en formularios y encuestas" icon="calculator" href="/sitios/calculos-matematicos-en-formularios">
+    Calcula totales y puntuaciones con las respuestas.
+  </Card>
+  <Card title="Crear contacto con envío parcial" icon="user-plus" href="/sitios/crear-contacto-con-encuesta-parcial">
+    Guarda al contacto aunque no termine la encuesta.
+  </Card>
+  <Card title="Clonar elementos y diapositivas" icon="clone" href="/sitios/clonar-elementos-y-diapositivas">
+    Duplica preguntas y diapositivas.
+  </Card>
+  <Card title="Personalizar el mensaje al enviar" icon="message" href="/sitios/mensaje-al-enviar-formulario">
+    Decide qué ve la persona al terminar.
+  </Card>
+</CardGroup>

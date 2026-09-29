@@ -1,0 +1,87 @@
+---
+title: "Páginas HTML personalizadas en WordPress"
+description: "Sube un archivo HTML y publícalo como página en tu sitio de WordPress, con tu dominio y SSL, sin constructor de páginas."
+icon: "file-code"
+---
+
+Las páginas HTML personalizadas te permiten subir un archivo `.html` a tu sitio de WordPress alojado en Chateea y publicarlo como una página más en tu dominio. No necesitas un constructor de páginas: puedes usar código exportado de un generador de sitios estáticos, de una herramienta de IA que crea páginas o escrito a mano. Todo queda en el mismo hosting, con tu dominio y tu certificado SSL.
+
+## Para qué te sirve
+
+- **Todo en un solo hosting**: combinas páginas hechas con constructor y páginas de código en el mismo sitio.
+- **Carga muy rápida**: los archivos HTML estáticos cargan casi al instante.
+- **Compatible con cualquier herramienta**: sirve para páginas creadas con IA, generadores estáticos o código manual.
+- **Sin configurar nada extra**: usa el dominio y el SSL que ya tienes conectados.
+- **Ideal para campañas**: micrositios, páginas de aterrizaje a medida o páginas para una promoción puntual.
+
+## Requisitos del archivo
+
+| Requisito | Detalle |
+| --- | --- |
+| Archivos por carga | Un solo archivo `.html` |
+| Tamaño máximo | 5 MB |
+| Imágenes, CSS y JavaScript | Deben enlazarse con URL absolutas (por ejemplo, desde una CDN o desde la Biblioteca de medios de WordPress) |
+| Rutas relativas y carpetas | Todavía no se admiten |
+| Páginas | Cada carga crea una página. Para varias páginas, sube cada archivo por separado. |
+
+<Tip>
+  Antes de subir el archivo, busca en el código las rutas del tipo `img/foto.jpg` o `./styles.css` y cámbialas por URL completas que empiecen por `https://`. Si no lo haces, la página se verá sin estilos ni imágenes.
+</Tip>
+
+## Subir una página HTML
+
+<Steps>
+  <Step title="Abre WordPress">
+    Ve a **Sitios → WordPress**. Si aún no tienes el hosting activo, haz clic en **Activar WordPress**.
+  </Step>
+  <Step title="Entra en la pestaña Páginas">
+    Haz clic en **Administrar sitio** en el sitio donde quieres publicar la página y abre la pestaña **Páginas** en la parte superior.
+  </Step>
+  <Step title="Sube el archivo">
+    Haz clic en **Subir nueva página HTML** (Upload New HTML Page). Escribe un **Nombre de la página** (por ejemplo, "Promoción de temporada") y un **slug** personalizado (por ejemplo, `/promocion-temporada`). Luego haz clic en el área de carga y selecciona tu archivo `.html`.
+  </Step>
+  <Step title="Revisa la vista previa">
+    Haz clic en **Confirmar y previsualizar** para comprobar el diseño y el contenido. Si quieres agregar otra página, haz clic en **Subir más páginas**.
+  </Step>
+  <Step title="Publica">
+    Cuando todo esté listo, haz clic en **Publicar**. La página queda en línea en tu dominio con el slug que elegiste.
+  </Step>
+</Steps>
+
+## Reemplazar una página publicada
+
+En la pestaña **Páginas**, abre el menú de acciones (⋮) junto al nombre de la página y selecciona **Subir nueva versión**. El archivo nuevo reemplaza al anterior y se mantienen la URL y la configuración de la página.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo subir varias páginas a la vez?">
+    No. Cada carga admite un solo archivo `.html`. Sube cada página por separado.
+  </Accordion>
+  <Accordion title="¿Cómo agrego CSS, imágenes o scripts?">
+    Alójalos fuera del archivo (en una CDN o en la Biblioteca de medios de WordPress) y enlázalos con URL absolutas. Los scripts del lado del cliente, como la analítica o los píxeles de seguimiento, funcionan sin problema.
+  </Accordion>
+  <Accordion title="¿Puedo editar una página ya subida?">
+    No se edita el HTML dentro de Chateea. Modifica el archivo en tu computadora y sube la nueva versión para reemplazar la anterior.
+  </Accordion>
+  <Accordion title="¿Tiene un costo adicional?">
+    No. Está incluido en tu hosting de WordPress.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar dominios a tu sitio" icon="globe" href="/embudos-sitios-web/wordpress-agregar-dominios-a-tu-sitio">
+    Conecta tu dominio al sitio de WordPress.
+  </Card>
+  <Card title="Configurar el acceso SFTP" icon="server" href="/sitios/wordpress-acceso-sftp">
+    Trabaja con los archivos del sitio desde tu computadora.
+  </Card>
+  <Card title="Clonar un sitio de WordPress" icon="copy" href="/sitios/wordpress-clonar-sitio">
+    Crea una copia independiente de un sitio.
+  </Card>
+  <Card title="Informe de rendimiento del sitio" icon="gauge-high" href="/sitios/wordpress-informe-de-rendimiento">
+    Mide la velocidad de tus páginas.
+  </Card>
+</CardGroup>

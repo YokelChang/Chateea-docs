@@ -1,0 +1,104 @@
+---
+title: "Instalar el widget de chat en tu sitio"
+description: "Agrega el widget de chat a tus sitios, embudos o sitios externos y recibe un aviso cada vez que alguien te escribe."
+icon: "code"
+---
+
+Instalar el widget de chat en tu sitio web es una de las formas más sencillas de captar leads sin invertir en publicidad. No necesitas conocimientos técnicos: si tu sitio está hecho en Chateea basta con elegir el widget en la configuración, y si es un sitio externo solo copias y pegas un código. En este artículo también verás cómo recibir un aviso cada vez que alguien te escribe por el widget.
+
+## Antes de empezar
+
+- Crea y personaliza tu widget en **Sitios → Widget de chat**.
+- Si vas a responder por **SMS** (por ejemplo, con el widget de SMS o correo), necesitas un número de teléfono en tu cuenta y, en Estados Unidos, el registro A2P 10DLC completado. Sin eso, las respuestas por SMS no se envían.
+- Si vas a usar WhatsApp, necesitas un número de WhatsApp conectado.
+
+## Instalar en un sitio web o embudo de Chateea
+
+<Steps>
+  <Step title="Abre el sitio o embudo">
+    Ve a **Sitios → Sitios web** o **Sitios → Embudos** y abre el que quieres editar.
+  </Step>
+  <Step title="Elige el widget">
+    En la pestaña **Configuración**, usa el desplegable **Widget de chat** para seleccionar el widget que quieres mostrar en todo el sitio.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda los cambios y publica el sitio o embudo.
+  </Step>
+</Steps>
+
+Si quieres mostrar un widget solo en algunas páginas, consulta cómo usar varios widgets de chat.
+
+## Instalar en un sitio externo
+
+<Steps>
+  <Step title="Copia el código">
+    En **Sitios → Widget de chat**, abre tu widget y haz clic en **Obtener código**. Copia el código para páginas web o, si usas Google Tag Manager, el código de la opción para GTM.
+  </Step>
+  <Step title="Pégalo en tu sitio">
+    Pega el código en el área de código personalizado de tu sitio (por lo general en el encabezado o justo antes del cierre de la etiqueta `body`), o crea una etiqueta HTML personalizada en Google Tag Manager.
+  </Step>
+  <Step title="Publica y prueba">
+    Publica los cambios, abre tu sitio y envía un mensaje de prueba desde el widget.
+  </Step>
+</Steps>
+
+<Tip>
+  Si tu sitio está en WordPress, pega el código en el encabezado o pie de página de tu tema, o con un plugin de inserción de código. Para Wix, Shopify, Squarespace, Duda o Weebly, sigue la guía específica de cada plataforma.
+</Tip>
+
+## Recibe un aviso cuando alguien escribe por el widget
+
+Una vez instalado el widget, configura un flujo de trabajo para que tu equipo se entere al instante de cada nueva conversación.
+
+<Steps>
+  <Step title="Crea el disparador">
+    En **Automatización**, crea un flujo de trabajo con el disparador **Cliente respondió** (Customer Replied) y agrega el filtro **Canal de respuesta** = **Widget de chat**.
+  </Step>
+  <Step title="Agrega una notificación interna">
+    Haz clic en **+**, busca **Notificación interna** y elige cómo avisar:
+    - **Correo:** a usuarios específicos o a un correo personalizado.
+    - **Notificación en la app:** en la aplicación web o móvil de Chateea, a usuarios específicos o a todos.
+    - **SMS:** a usuarios específicos o a un número personalizado.
+  </Step>
+  <Step title="Incluye el mensaje del visitante">
+    En el texto de la notificación usa el valor `{{message.body}}` para mostrar lo que el visitante escribió en el widget.
+  </Step>
+  <Step title="Publica el flujo">
+    Guarda y publica el flujo de trabajo.
+  </Step>
+</Steps>
+
+<Note>
+  Cada canal de respuesta necesita su propio disparador. Si además quieres avisos para otros canales, agrega otro disparador o crea otro flujo con el canal correspondiente.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo mostrar mensajes distintos en cada página?">
+    Un widget muestra siempre la misma configuración en todas las páginas donde esté. Para mensajes distintos, crea varios widgets y colócalos en las páginas que correspondan.
+  </Accordion>
+  <Accordion title="¿Puedo crear más de un widget en mi cuenta?">
+    Sí, puedes crear todos los widgets que necesites.
+  </Accordion>
+  <Accordion title="¿Tengo que reinstalar el código si cambio el diseño del widget?">
+    No. Los cambios que guardes se aplican automáticamente al widget instalado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Widget en Wix, Shopify y otras plataformas" icon="puzzle-piece" href="/sitios/widget-de-chat-en-wix-shopify-y-otras-plataformas">
+    Pasos para cada constructor de sitios.
+  </Card>
+  <Card title="Varios widgets de chat" icon="clone" href="/sitios/varios-widgets-de-chat">
+    Un widget por sitio o por página.
+  </Card>
+  <Card title="Widget de chat con Google Analytics 4" icon="chart-line" href="/sitios/widget-de-chat-con-google-analytics-4">
+    Mide aperturas, cierres y envíos.
+  </Card>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores de flujos de trabajo.
+  </Card>
+</CardGroup>

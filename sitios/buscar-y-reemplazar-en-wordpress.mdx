@@ -1,0 +1,106 @@
+---
+title: "Buscar y reemplazar texto en tu sitio de WordPress"
+description: "Cambia dominios, enlaces o correos en toda la base de datos de tu sitio de WordPress de una vez, con vista previa y de forma segura."
+icon: "magnifying-glass"
+---
+
+La herramienta **Buscar y reemplazar** del alojamiento de WordPress en Chateea cambia un texto en toda la base de datos de tu sitio de una sola vez, sin plugins ni scripts. Primero te dice cuántas coincidencias hay y luego aplica el reemplazo, en el sitio en vivo o en el entorno de pruebas (staging). Es ideal después de una migración, para pasar enlaces de HTTP a HTTPS o para corregir en bloque una URL o un correo que aparece en muchas páginas.
+
+## Para qué te sirve
+
+- **Integrada y segura:** no necesitas instalar plugins ni ejecutar código.
+- **Primero revisas:** una búsqueda sin reemplazo te muestra cuántas coincidencias hay antes de cambiar nada.
+- **En vivo o en pruebas:** funciona en el sitio publicado y en el entorno de pruebas, para que puedas ensayar antes.
+- **Con red de seguridad:** te recuerda hacer una copia de seguridad y te pide confirmación antes de modificar datos.
+- **Ahorra horas:** un cambio en bloque reemplaza la edición manual página por página.
+
+## Casos de uso comunes
+
+| Situación | Qué buscas | Qué pones en su lugar |
+| --- | --- | --- |
+| Cambiaste de dominio tras migrar | `https://dominio-anterior.com` | `https://dominio-nuevo.com` |
+| Activaste SSL | `http://tudominio.com` | `https://tudominio.com` |
+| Cambió un correo de contacto | `ventas@tudominio.com` | `hola@tudominio.com` |
+
+## Antes de empezar
+
+<Warning>
+  El reemplazo modifica directamente la base de datos. Haz una copia de seguridad de tu sitio antes de ejecutarlo. Si algo sale mal, la forma de deshacerlo es restaurar esa copia.
+</Warning>
+
+- Si es un cambio grande, pruébalo primero en el entorno de pruebas.
+- En sitios con mucho contenido, ejecútalo en horarios de poco tráfico.
+
+## Buscar sin reemplazar (vista previa)
+
+La vista previa te deja confirmar exactamente qué se va a cambiar:
+
+1. Escribe el texto a buscar y ejecuta solo la búsqueda, sin valor de reemplazo.
+2. Revisa el número de coincidencias. Un número inesperadamente alto suele indicar que el texto es demasiado general.
+3. Ajusta la búsqueda para que sea más específica antes de reemplazar.
+
+## Cómo busca la herramienta
+
+| Regla | Qué significa para ti |
+| --- | --- |
+| **Distingue mayúsculas y minúsculas** | `HTTP` y `http` son textos distintos. Escribe el texto exactamente como está guardado |
+| **Coincidencias parciales** | Encuentra el texto aunque forme parte de otro más largo. Usa textos específicos para no cambiar de más |
+| **Datos de WordPress** | Está pensada para el contenido y los metadatos habituales de WordPress. No la uses sobre datos sensibles del sistema, como credenciales |
+| **Sin expresiones regulares ni comodines** | Solo busca textos literales |
+
+## Usar Buscar y reemplazar
+
+<Steps>
+  <Step title="Abre tu sitio">
+    Ve a **Sitios → WordPress** y selecciona el sitio.
+  </Step>
+  <Step title="Abre la herramienta">
+    En **Acciones rápidas** (Quick Actions), elige **Buscar y reemplazar** (Search & Replace).
+  </Step>
+  <Step title="Define el cambio">
+    Completa el texto a buscar, las tablas y el texto de reemplazo. Haz clic en **Siguiente**.
+  </Step>
+  <Step title="Confirma y revisa">
+    Espera el mensaje de finalización, revisa el resumen y abre varias páginas y entradas para comprobar que el cambio quedó bien.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo deshacer un reemplazo?">
+    Sí, restaurando la copia de seguridad que hiciste antes de usar la herramienta.
+  </Accordion>
+  <Accordion title="¿Admite expresiones regulares o comodines?">
+    No. Usa textos literales y precisos para obtener resultados predecibles.
+  </Accordion>
+  <Accordion title="¿Maneja bien los datos serializados?">
+    Está diseñada para los datos habituales de WordPress. Si tienes tablas personalizadas o plugins complejos, pruébala antes en el entorno de pruebas.
+  </Accordion>
+  <Accordion title="¿Distingue mayúsculas y minúsculas?">
+    Sí. Así evitas cambios no deseados. Escribe el texto tal como está guardado.
+  </Accordion>
+  <Accordion title="¿Funciona en WordPress multisitio?">
+    Debes ejecutarla sitio por sitio. No hace reemplazos en toda la red de una sola vez.
+  </Accordion>
+  <Accordion title="¿Cómo sé quién hizo un reemplazo?">
+    Revisa los registros de actividad o seguridad de tu sitio, donde quedan las acciones administrativas.
+  </Accordion>
+  <Accordion title="¿Cuánto tarda?">
+    Depende del tamaño de la base de datos y de la carga del servidor. En sitios grandes, hazlo en horas de poco tráfico y prueba antes en el entorno de pruebas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar dominios a tu sitio de WordPress" icon="globe" href="/embudos-sitios-web/wordpress-agregar-dominios-a-tu-sitio">
+    Conecta tu nuevo dominio antes de actualizar los enlaces.
+  </Card>
+  <Card title="Acceso SSH y claves SSH" icon="terminal" href="/embudos-sitios-web/acceso-ssh-y-gestion-de-claves-ssh-en-tu-alojamiento-wordpress">
+    Para cambios avanzados con WP-CLI desde la terminal.
+  </Card>
+  <Card title="Informe SEO de WordPress" icon="magnifying-glass-chart" href="/sitios/informe-seo-alojamiento-wordpress">
+    Revisa títulos y descripciones después de migrar.
+  </Card>
+</CardGroup>

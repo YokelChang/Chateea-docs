@@ -1,0 +1,107 @@
+---
+title: "Entorno de pruebas (staging) para WordPress"
+description: "Crea una copia de tu sitio de WordPress para probar plugins, temas y cambios sin afectar el sitio en vivo, y publícalos cuando estén listos."
+icon: "flask"
+---
+
+El entorno de pruebas (staging) es una copia de tu sitio de WordPress donde puedes probar plugins, temas y cambios de contenido sin tocar el sitio en vivo. Cuando todo funciona como esperas, publicas los cambios al sitio real con un clic. Así evitas que tus clientes vean un sitio roto mientras haces ajustes.
+
+<Note>
+  Necesitas tener activo el hosting de WordPress en tu cuenta.
+</Note>
+
+## Cómo funciona
+
+- **Réplica**: el entorno de pruebas copia los archivos, la base de datos y la configuración de tu sitio en vivo.
+- **Aislamiento**: funciona por separado. Lo que hagas ahí no afecta al sitio en vivo hasta que lo publiques.
+- **Espacio seguro**: puedes instalar plugins, cambiar el tema o reorganizar contenido sin riesgo.
+
+Es especialmente útil cuando varias personas de tu equipo trabajan en el sitio, o cuando vas a hacer cambios grandes como un rediseño o una actualización importante.
+
+## Qué puedes hacer en cada entorno
+
+| Función | En vivo | Pruebas |
+| --- | --- | --- |
+| Plugins y temas | Sí | Sí |
+| Usuarios | Sí | Sí (aislados del sitio en vivo) |
+| Depuración de WordPress | Sí | Sí |
+| Configuración del servidor (phpMyAdmin, versión de PHP) | Sí | Sí |
+| Gestión de WordPress (actualizaciones automáticas, indexación SEO) | Sí | Sí |
+| Gestión de dominios | Sí | No |
+| Analítica del sitio en producción | Sí | No |
+| Cancelar la suscripción | Sí | No |
+| URL y acceso de administrador propios del entorno de pruebas | No | Sí |
+
+Las opciones que solo existen en vivo aparecen desactivadas en el entorno de pruebas, con un mensaje que te pide cambiar al entorno en vivo.
+
+## Crear y usar el entorno de pruebas
+
+<Steps>
+  <Step title="Abre el sitio">
+    Ve a **Sitios → WordPress** y haz clic en **Administrar sitio** en el sitio donde quieres crear el entorno de pruebas.
+  </Step>
+  <Step title="Crea el entorno">
+    Haz clic en **Crear entorno** (+ Create Environment). La preparación puede tardar un rato, según el tamaño del sitio.
+  </Step>
+  <Step title="Entra al sitio de pruebas">
+    Al terminar verás la **URL del entorno de pruebas** y el **acceso de administrador** para entrar y hacer cambios. Trabaja y prueba todo lo que necesites.
+  </Step>
+  <Step title="Cambia entre entornos">
+    Usa el selector **En vivo | Pruebas** (Live | Staging) en la parte superior derecha para pasar de un entorno a otro.
+  </Step>
+  <Step title="Publica en vivo">
+    Cuando todo esté listo, haz clic en **Publicar**. Todos los cambios del entorno de pruebas pasan al sitio en vivo en un plazo de 2 a 5 minutos.
+  </Step>
+</Steps>
+
+<Warning>
+  Publicar es irreversible: todo lo que hay en el entorno de pruebas reemplaza al sitio en vivo. Revisa bien los cambios y haz una copia de seguridad del sitio en vivo antes de publicar.
+</Warning>
+
+Si quieres empezar de nuevo, haz clic en **Eliminar** para borrar el entorno de pruebas actual y luego crea uno nuevo.
+
+## Buenas prácticas
+
+<Warning>
+  Los cambios que hagas directamente en el sitio en vivo no se copian al entorno de pruebas. Si alguien edita el sitio en vivo mientras trabajas en pruebas, esos cambios se perderán al publicar.
+</Warning>
+
+1. **Copias de seguridad**: antes de cambios importantes, asegúrate de tener una copia reciente del sitio en vivo.
+2. **Lista de pruebas**: anota qué páginas, formularios y funciones debes revisar antes de publicar.
+3. **Revisión de contenido**: verifica textos, imágenes y elementos multimedia.
+4. **Conciliación**: antes de publicar, confirma que no haya diferencias pendientes entre ambos entornos (por ejemplo, pedidos o entradas nuevas en el sitio en vivo).
+5. **Limpieza**: elimina archivos, tablas y configuraciones que ya no uses en el entorno de pruebas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los cambios en pruebas afectan mi sitio en vivo?">
+    No. Nada de lo que hagas en el entorno de pruebas afecta al sitio en vivo hasta que publiques.
+  </Accordion>
+  <Accordion title="¿Qué pasa al publicar de pruebas a en vivo?">
+    Todos los cambios del entorno de pruebas se envían al sitio en vivo. La acción no se puede deshacer.
+  </Accordion>
+  <Accordion title="¿Por qué algunas opciones están desactivadas en pruebas?">
+    Son funciones exclusivas del entorno en vivo, como la gestión de dominios. Cambia al entorno en vivo con el selector de la parte superior para usarlas.
+  </Accordion>
+  <Accordion title="¿Cuánto tarda en crearse el entorno de pruebas?">
+    Depende del tamaño del sitio. La preparación puede tardar un rato.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestionar plugins y temas" icon="puzzle-piece" href="/sitios/wordpress-gestionar-plugins-y-temas">
+    Actualiza y administra extensiones en cada entorno.
+  </Card>
+  <Card title="Clonar un sitio de WordPress" icon="copy" href="/sitios/wordpress-clonar-sitio">
+    Crea una copia independiente de un sitio.
+  </Card>
+  <Card title="Informe de rendimiento del sitio" icon="gauge-high" href="/sitios/wordpress-informe-de-rendimiento">
+    Mide la velocidad de tu sitio.
+  </Card>
+  <Card title="Registros de acceso y actividad" icon="list-check" href="/sitios/wordpress-registros-de-acceso-y-actividad">
+    Revisa quién hizo cambios y cuándo.
+  </Card>
+</CardGroup>

@@ -1,0 +1,119 @@
+---
+title: "Guardar resultados de cuestionarios en campos del contacto"
+description: "Sincroniza puntuaciones, niveles y categorías de tus cuestionarios con campos personalizados del contacto para segmentar y automatizar."
+icon: "database"
+---
+
+Cuando alguien responde uno de tus cuestionarios, Chateea puede guardar sus resultados directamente en campos personalizados del contacto: puntuación general, nivel alcanzado, puntuación por categoría y la categoría más alta o más baja. Así cada envío se convierte en datos ordenados dentro del CRM que puedes usar para segmentar, personalizar mensajes y activar automatizaciones, sin etiquetar a mano ni llevar hojas de cálculo aparte.
+
+## Para qué te sirve
+
+- **Campos creados automáticamente:** no tienes que crear uno por uno los campos de puntuación, nivel y categorías.
+- **Siempre el resultado más reciente:** si la persona vuelve a responder el mismo cuestionario, los valores se sobrescriben en lugar de duplicarse.
+- **Listo para automatizar:** los campos se pueden usar en flujos de trabajo, ramas condicionales y contenido personalizado.
+- **Segmentación más limpia:** crea listas inteligentes por puntuación, nivel o categoría ganadora.
+- **Seguimiento a la medida:** envía correos, SMS o páginas distintas según el resultado de cada persona.
+
+## Qué campos se generan
+
+Chateea revisa la estructura del cuestionario y crea campos del contacto con un patrón de nombres predecible, para que sean fáciles de encontrar:
+
+| Ejemplo de nombre del campo | Qué guarda | Tipo de dato |
+| --- | --- | --- |
+| `{{quiz_name}} - Overall Score` | Puntuación general | Número |
+| `{{quiz_name}} - Overall Score - Tier` | Nivel según la puntuación general | Texto |
+| `{{quiz_name}} - {{category_name}} - Score` | Puntuación de cada categoría | Número |
+| `{{quiz_name}} - {{category_name}} - Tier` | Nivel de cada categoría | Texto |
+| `{{quiz_name}} - Highest Category - Score` | Datos de la categoría con mayor puntuación | Número o texto |
+
+En resumen, las **puntuaciones** se guardan como campos numéricos y los **niveles y nombres de categoría** como campos de texto. Eso los hace compatibles con todos los filtros del CRM, las condiciones de los flujos de trabajo y las herramientas de personalización.
+
+<Note>
+  Son campos personalizados **del contacto** (no de oportunidades), así que puedes usarlos en formularios, listas inteligentes y flujos basados en contactos.
+</Note>
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre el cuestionario">
+    Ve a **Sitios → Cuestionarios**. Abre un cuestionario existente o haz clic en **Agregar cuestionario** para crear uno nuevo.
+  </Step>
+  <Step title="Edita la plantilla de resultados">
+    Desplázate hasta el final del cuestionario, a la **Plantilla de resultados** (Results Template), y haz clic en **Editar plantilla**.
+  </Step>
+  <Step title="Activa los campos que quieres sincronizar">
+    Haz clic en **Configuración**, en la esquina superior derecha, y despliega la sección **Campos personalizados**. Ahí verás los campos generados automáticamente. Enciende los interruptores de los que quieras guardar, por ejemplo:
+    - Puntuación general
+    - Nivel de la puntuación general
+    - Puntuaciones y niveles por categoría
+    - Categorías con mayor y menor puntuación
+
+    El sistema asigna un **nombre de campo** y una **clave única** a cada campo que actives. Haz clic en **Guardar**.
+  </Step>
+  <Step title="Recibe envíos">
+    Cuando alguien completa el cuestionario, sus puntuaciones y niveles se capturan de forma automática.
+  </Step>
+  <Step title="Revisa la ficha del contacto">
+    Después del envío, los campos seleccionados se crean (si aún no existían) y se actualizan en la ficha del contacto.
+  </Step>
+</Steps>
+
+## Ideas para usar los resultados
+
+### Segmentar contactos
+
+- Crea una lista inteligente con quienes tengan **Puntuación general mayor o igual a 80**.
+- Agrupa a las personas por nivel, por ejemplo **Nivel de condición física = Principiante**, para enviarles mensajes específicos.
+
+### Personalizar automatizaciones
+
+- Envía una secuencia de correos distinta según la categoría más alta o más baja.
+- Dispara acciones cuando la puntuación de una categoría supera un umbral.
+
+### Crear rutas condicionales
+
+En tus flujos de trabajo o campañas usa condiciones sobre estos campos:
+
+- Si el nivel de la categoría Alimentación es **Avanzado**, envía la guía avanzada.
+- Si la puntuación de la categoría Condición física es menor que 50, inscribe al contacto en el plan para principiantes.
+
+<Tip>
+  Como los valores se sobrescriben en cada nuevo envío, tus automatizaciones siempre trabajan con el resultado más reciente. No necesitas reglas adicionales de limpieza.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo renombrar o eliminar los campos generados?">
+    Puedes renombrarlos o moverlos a grupos de campos. Si eliminas un campo, se borran los datos históricos del cuestionario de todos los contactos que lo tenían.
+  </Accordion>
+  <Accordion title="¿Funciona con cuestionarios que ya tenía creados?">
+    Sí, siempre que actives los campos en la configuración de la plantilla de resultados. Cuando un contacto envía el cuestionario, nuevo o antiguo, Chateea crea los campos en ese momento.
+  </Accordion>
+  <Accordion title="¿Son campos de contacto o de oportunidad?">
+    Son campos personalizados del contacto, por lo que se pueden usar en formularios, listas inteligentes y flujos de trabajo de contactos.
+  </Accordion>
+  <Accordion title="¿Puedo exportar los resultados a CSV?">
+    Sí. Al exportar contactos se incluyen todos los campos personalizados, también las puntuaciones y niveles de los cuestionarios.
+  </Accordion>
+  <Accordion title="¿Qué pasa si alguien responde el cuestionario dos veces?">
+    Los valores del mismo cuestionario se sobrescriben con los del último envío. No se crean campos duplicados.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Resultados personalizados por categoría" icon="list-check" href="/sitios/cuestionarios-resultados-por-categoria">
+    Muestra contenido distinto según la categoría ganadora.
+  </Card>
+  <Card title="Listas inteligentes" icon="filter" href="/contactos/listas-inteligentes">
+    Segmenta contactos usando los resultados guardados.
+  </Card>
+  <Card title="Objetos en formularios, encuestas y cuestionarios" icon="cubes" href="/crm/objetos-en-formularios-encuestas-y-cuestionarios">
+    Envía respuestas a objetos del CRM.
+  </Card>
+  <Card title="Envíos de formularios y encuestas" icon="inbox" href="/sitios/envios-de-formularios-y-encuestas">
+    Revisa y gestiona las respuestas recibidas.
+  </Card>
+</CardGroup>

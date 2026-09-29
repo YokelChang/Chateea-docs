@@ -1,0 +1,182 @@
+---
+title: "Migrar tu tienda desde Shopify a Chateea"
+description: "Importa productos, colecciones, clientes, pedidos y transacciones de Shopify y completa la migración paso a paso."
+icon: "right-left"
+---
+
+Si vendes en Shopify, puedes traer tu tienda a Chateea para tener en un solo lugar tus productos, clientes, pedidos, pagos y automatizaciones de seguimiento. La integración con Shopify importa tu historial y mantiene sincronizados los datos que elijas mientras haces la transición. Esta guía te lleva por todo el proceso: preparar Shopify, conectarlo, revisar lo importado, reconstruir tus procesos y cerrar Shopify cuando todo funcione.
+
+## Qué hace la integración y qué no
+
+La integración importa y sincroniza productos, colecciones, contactos, pedidos y transacciones, y permite usar los disparadores **Pedido enviado** y **Pago recibido** en tus flujos de trabajo.
+
+Otros elementos, como tus flujos de automatización, las páginas de la tienda, la configuración de pagos y los procesos de tu equipo, no se migran solos: debes revisarlos y reconstruirlos en Chateea.
+
+## Ventajas de migrar
+
+- **Datos centralizados:** productos, colecciones, contactos, pedidos y transacciones en tu cuenta de Chateea.
+- **Mejor seguimiento:** usas los datos de compra con el CRM para segmentar y comunicarte mejor con tus clientes.
+- **Automatizaciones listas:** disparadores de pedido y pago para tus flujos de trabajo.
+- **Transición controlada:** decides qué sigue sincronizándose mientras terminas de migrar.
+
+## Antes de empezar
+
+Asegúrate de tener:
+
+- Acceso de administrador a la tienda de Shopify.
+- Acceso de administrador a tu cuenta de Chateea.
+- La URL o el nombre de tu tienda de Shopify.
+- Una lista de las automatizaciones, notificaciones, flujos de pago y procesos de seguimiento que tendrás que reconstruir.
+
+<Warning>
+  **Limitación del plan Basic de Shopify.** Con la API actualizada de Shopify, el plan Basic puede no dar acceso a los datos personales de los clientes (nombre, correo, teléfono y dirección). Sin esos datos no se pueden sincronizar contactos, pedidos ni transacciones. Productos y colecciones sí se importan y sincronizan en Basic. Para contactos, pedidos y transacciones puedes necesitar los planes Grow, Advanced o Plus de Shopify. Si tu plan no da acceso, algunas opciones pueden aparecer deshabilitadas durante la configuración.
+</Warning>
+
+## Qué datos se pueden importar y sincronizar
+
+La integración tiene dos momentos: la **importación única** del historial y la **sincronización** de lo que ocurra a partir de ahora.
+
+| Importación única | Sincronización a futuro |
+| --- | --- |
+| Contactos | Contactos |
+| Pedidos | Pedidos |
+| Transacciones | Transacciones |
+| Productos | Productos |
+| Colecciones | Colecciones |
+|  | Disparador de pedido recibido |
+|  | Disparador de pago recibido |
+
+La importación de contactos incluye a los clientes de Shopify que hicieron al menos un pedido. Los clientes sin pedidos pueden no incluirse. La importación puede tardar según el tamaño de tu tienda y los datos que elijas.
+
+## Cómo conectar Shopify
+
+Todas las conexiones nuevas y las reconexiones usan la aplicación OAuth de Shopify, que se instala en unos clics y no requiere crear apps personalizadas ni manejar tokens de API.
+
+<Note>
+  Si conectaste Shopify antes con una aplicación personalizada (método anterior), tu integración sigue funcionando y no tienes que cambiar nada. Desde el 1 de enero de 2026, algunas tiendas nuevas de Shopify ya no muestran la opción de apps personalizadas, por eso el método recomendado es OAuth.
+</Note>
+
+<Steps>
+  <Step title="Abre la integración">
+    En tu cuenta de Chateea, ve a **Configuración → Integraciones → Shopify** y haz clic en **Conectar**.
+  </Step>
+  <Step title="Escribe tu tienda">
+    Escribe la URL o el nombre de tu tienda de Shopify y haz clic en **Siguiente**.
+  </Step>
+  <Step title="Elige qué importar">
+    En **Importar elementos**, selecciona lo que quieres traer del historial: contactos, pedidos, transacciones, productos y colecciones. Haz clic en **Siguiente**.
+  </Step>
+  <Step title="Elige qué sincronizar">
+    En **Configuración de sincronización**, selecciona los datos y disparadores que quieres mantener actualizados: contactos, pedidos, disparador de pedido recibido, transacciones, disparador de pago recibido, productos y colecciones.
+  </Step>
+  <Step title="Autoriza en Shopify">
+    Haz clic en **Guardar**. Se abre Shopify con la pantalla **Instalar aplicación**. Revisa los permisos solicitados y haz clic en **Instalar**. Al aprobar, vuelves a Chateea con la tienda conectada.
+  </Step>
+</Steps>
+
+<Tip>
+  Para una migración completa, selecciona todas las opciones de importación y sincronización, salvo que tu plan requiera solo ciertos datos.
+</Tip>
+
+### Dónde encontrar el nombre de tu tienda de Shopify
+
+Entra al administrador de Shopify y mira la URL del navegador. El nombre de la tienda es lo que aparece después de `/store/`. Por ejemplo, si la URL contiene `admin.shopify.com/store/ef760-ef`, el nombre de tu tienda es `ef760-ef`.
+
+## Revisa los productos y colecciones importados
+
+Cuando termine la importación:
+
+- Revisa los productos en **Pagos → Productos → Productos**.
+- Revisa las colecciones en **Pagos → Productos → Colecciones de productos**.
+- Confirma nombres, descripciones, imágenes, precios e inventario.
+- Confirma que cada producto esté en las colecciones correctas.
+- Revisa los campos de SEO y corrige lo que haga falta.
+
+<Note>
+  Los impuestos no se asignan a los productos al importar ni al sincronizar. Configúralos en Chateea. Además, si en Shopify nunca modificaste los datos de SEO y usan los valores predeterminados, pueden llegar vacíos.
+</Note>
+
+## Reconstruye tus operaciones en Chateea
+
+La integración mueve los datos, pero estos procesos debes revisarlos o recrearlos:
+
+| Área | Qué reconstruir o confirmar |
+| --- | --- |
+| Páginas de la tienda | Que tus páginas estén creadas y organizadas. |
+| Página de pago | El recorrido de compra funciona de principio a fin. |
+| Páginas de agradecimiento | Crea o actualiza las páginas posteriores a la compra. |
+| Pasarela de pago | Conecta y verifica tu proveedor de pagos. |
+| Envío y entrega | Recrea tarifas y ajustes de envío. |
+| Confirmación de pedido | Correos, SMS y notificaciones posteriores a la compra. |
+| Checkout abandonado | Seguimiento para recuperar ventas perdidas. |
+| Flujos de seguimiento | Posventa, reactivación, solicitud de reseñas y ventas adicionales. |
+| Avisos internos | Alertas al equipo por pedidos nuevos, pagos o despachos. |
+| Etiquetas y segmentos | Reglas para organizar y segmentar clientes. |
+| Plantillas y documentos | Facturas, documentos y plantillas reutilizables. |
+| Procesos del equipo | Actualiza tus manuales internos para operar desde Chateea. |
+
+Para las automatizaciones, ve a **Automatización → Flujos de trabajo** y recrea los flujos que usabas en Shopify con disparadores como **Pedido enviado** y **Pago recibido**.
+
+## Gestiona la sincronización después de migrar
+
+- Vuelve a **Configuración → Integraciones → Shopify** para revisar qué está sincronizado.
+- Activa o desactiva opciones según tu plan de migración.
+- Revisa que los registros importados sean correctos.
+- Comprueba que tus flujos de trabajo reaccionen bien a la nueva actividad sincronizada.
+
+Para volver a importar datos que faltaron, desconecta y vuelve a conectar la integración y selecciona de nuevo lo que quieres importar. Revisa los registros después de reimportar.
+
+## Cierra Shopify solo después de validar
+
+Antes de cancelar Shopify:
+
+1. Haz una exportación final de productos, clientes y pedidos.
+2. Confirma que los datos importantes estén en Chateea.
+3. Confirma que la página de pago, los cobros, el envío y las notificaciones estén configurados.
+4. Prueba tus flujos de trabajo y automatizaciones de seguimiento.
+5. Capacita a tu equipo en el nuevo proceso.
+6. Guarda tus notas de migración y procedimientos internos.
+7. Cancela Shopify solo cuando estés seguro de que la migración está completa.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué clientes de Shopify se importan como contactos?">
+    Los clientes que hicieron al menos un pedido. Los clientes sin pedidos pueden no incluirse.
+  </Accordion>
+  <Accordion title="¿Cuál es la diferencia entre importar y sincronizar?">
+    La importación trae los datos existentes de Shopify al configurar la integración. La sincronización mantiene actualizados los datos y eventos a partir de ese momento.
+  </Accordion>
+  <Accordion title="¿Cómo se manejan los estados de pedido de Shopify?">
+    Los pedidos sincronizados se marcan como **Completado** o **Cancelado** en Chateea.
+  </Accordion>
+  <Accordion title="¿Se crean varias transacciones por pedido?">
+    No. Se crea una transacción por cada pedido sincronizado.
+  </Accordion>
+  <Accordion title="¿Por qué no se sincronizan mis contactos de Shopify?">
+    Con la API actualizada de Shopify, el plan Basic puede no dar acceso a los datos personales de los clientes, necesarios para crear o actualizar contactos. Puede que necesites el plan Grow, Advanced o Plus.
+  </Accordion>
+  <Accordion title="Antes funcionaba. ¿Por qué dejó de sincronizar contactos, pedidos o transacciones?">
+    Shopify cambió sus reglas de acceso a la API y retiró la versión anterior que daba acceso a los datos de clientes en todos los planes. Ahora aplican restricciones según tu plan, tanto en la API como en los webhooks. Si Shopify no envía los datos del cliente, no se puede crear el contacto, el pedido ni la transacción.
+  </Accordion>
+  <Accordion title="¿Dónde reviso los permisos de la aplicación en Shopify?">
+    Desde el administrador de Shopify, en la sección de aplicaciones de la configuración de tu tienda.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar proveedores de pago" icon="credit-card" href="/pagos-facturas/configurar-proveedores-pago">
+    Conecta tu pasarela para empezar a cobrar.
+  </Card>
+  <Card title="Disparador: Checkout abandonado" icon="cart-arrow-down" href="/automatizaciones/disparador-checkout-abandonado">
+    Recupera ventas de clientes que no terminaron de pagar.
+  </Card>
+  <Card title="Integrar WooCommerce" icon="plug" href="/tienda/integrar-woocommerce">
+    Importa y sincroniza tu tienda de WooCommerce.
+  </Card>
+  <Card title="Personalizar la página de pago" icon="cart-shopping" href="/tienda/personalizar-pagina-de-pago">
+    Ajusta campos, textos y países de tu checkout.
+  </Card>
+</CardGroup>

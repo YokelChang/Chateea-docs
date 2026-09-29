@@ -1,0 +1,103 @@
+---
+title: "Recupera ventas con correos de carrito abandonado"
+description: "Envía automáticamente un recordatorio con enlace al carrito a los clientes que dejaron el checkout sin pagar."
+icon: "cart-arrow-down"
+---
+
+Muchos clientes agregan productos al carrito, empiezan el checkout y se van sin pagar. Chateea les envía automáticamente un correo de recordatorio con un enlace para retomar la compra justo donde la dejaron. Está activado por defecto y funciona en segundo plano: tú solo decides la plantilla, el asunto y cuándo se envía.
+
+## Cuándo se envía el correo
+
+El recordatorio se envía cuando el cliente:
+
+1. Agrega productos al carrito.
+2. Llega a la página de checkout.
+3. Escribe su correo electrónico.
+4. No completa la compra.
+
+Si el cliente no llega a escribir su correo, no se envía nada.
+
+## Cómo funciona el enlace del carrito
+
+- **Funciona en cualquier dispositivo:** el cliente puede abrirlo en otro navegador o en otra sesión.
+- **Un enlace por carrito:** cada carrito abandonado tiene su propio enlace.
+- **Carrito de solo lectura:** el cliente ve lo que dejó, pero no puede agregar productos nuevos desde ese enlace.
+- **Datos actualizados:** muestra los nombres y precios vigentes de los productos.
+- **Control de inventario:** si un producto se agotó, el cliente puede quitarlo con **Eliminar artículo**.
+- **Compra como invitado:** funciona aunque el cliente no tenga cuenta, con una sesión temporal.
+- **Respaldo:** si todos los productos dejaron de estar disponibles, el checkout muestra un botón **Seguir comprando**.
+
+## Activa y configura el correo
+
+<Steps>
+  <Step title="Abre las notificaciones de pagos">
+    Ve a **Pagos → Configuración → Notificaciones**.
+  </Step>
+  <Step title="Activa los correos de carrito abandonado">
+    Activa **Habilitar correos de carrito abandonado**.
+  </Step>
+  <Step title="Elige la plantilla y el asunto">
+    Selecciona la plantilla de correo en el menú desplegable y escribe el asunto que verá el cliente en su bandeja de entrada.
+  </Step>
+  <Step title="Define la espera">
+    En **Enviar después de**, indica cuántas horas o minutos esperar antes de enviar el recordatorio. El valor predeterminado es 10 horas.
+  </Step>
+</Steps>
+
+## Personaliza la plantilla
+
+<Steps>
+  <Step title="Abre las plantillas">
+    Ve a **Marketing → Correos → Plantillas** y crea una plantilla nueva o edita una existente.
+  </Step>
+  <Step title="Inserta el enlace de la tienda">
+    Usa el ícono de valores personalizados, entra en la opción **Ecommerce** y elige **URL de la página de checkout** o **Página de lista de productos**. Por ejemplo, el campo `{{ ecom_checkout_page_url }}` lleva al cliente directo a su carrito.
+  </Step>
+  <Step title="Muestra los productos del carrito">
+    Arrastra el elemento **Carrito de compras** al diseño del correo. Se llena solo con los productos que el cliente dejó.
+  </Step>
+</Steps>
+
+<Tip>
+Un buen recordatorio es breve: una línea amable, la foto de los productos, un botón claro para terminar la compra y, si tu margen lo permite, un cupón con fecha límite.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo desactivar estos correos?">
+    Sí. Ve a **Pagos → Configuración → Notificaciones** y desactiva la opción.
+  </Accordion>
+  <Accordion title="¿Funciona con los formularios de pedido de embudos o sitios web?">
+    No, solo con el checkout de la tienda en línea. Para recuperar ventas de embudos o sitios web, crea un flujo de trabajo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el cliente no escribe su correo?">
+    No se envía ninguna notificación, porque el correo es obligatorio para el recordatorio.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar cuándo se envía?">
+    Sí. El valor predeterminado es 10 horas y puedes cambiarlo en **Enviar después de**.
+  </Accordion>
+  <Accordion title="¿Puedo enviar varios recordatorios?">
+    El envío automático admite un solo recordatorio por carrito abandonado. Para una secuencia de varios mensajes, usa un flujo de trabajo.
+  </Accordion>
+  <Accordion title="¿Puedo enviar el recordatorio por SMS o WhatsApp?">
+    No de forma predeterminada. Configura un flujo de trabajo con el disparador de checkout abandonado para usar otros canales.
+  </Accordion>
+  <Accordion title="¿El enlace se puede compartir?">
+    Sí. Funciona en distintos dispositivos, navegadores y sesiones.
+  </Accordion>
+  <Accordion title="¿El cliente puede agregar productos desde el enlace?">
+    No. El carrito del enlace es de solo lectura.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador de checkout abandonado" icon="bolt" href="/automatizaciones/disparador-checkout-abandonado">
+    Crea secuencias de recuperación más completas.
+  </Card>
+  <Card title="Crea tu tienda en línea" icon="store" href="/tienda/crear-tienda-en-linea">
+    Configura la tienda y su checkout.
+  </Card>
+</CardGroup>

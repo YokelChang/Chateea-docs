@@ -1,0 +1,94 @@
+---
+title: "Medir el widget de chat con Google Analytics 4"
+description: "Registra en GA4 cuándo los visitantes abren, cierran y envían el formulario del widget de chat."
+icon: "chart-line"
+---
+
+Si ya mides tu sitio con Google Analytics 4 (GA4), también puedes medir cómo interactúan los visitantes con tu widget de chat: cuántas veces lo abren, cuántas lo cierran y cuántos envían el formulario. Esto funciona en embudos y sitios web de Chateea, en WordPress y en cualquier otra plataforma donde instales el widget, como Shopify, Wix o Squarespace.
+
+## Para qué te sirve
+
+- **Conocer mejor a tus visitantes:** ves cuánto se usa el chat y en qué páginas.
+- **Detectar problemas:** si muchos abren el widget pero pocos envían el formulario, algo en la ventana de chat se puede mejorar.
+- **Decidir con datos:** compara páginas, campañas y horarios según las conversaciones que generan.
+- **Sin conflictos:** el widget y GA4 funcionan juntos sin interferir entre sí.
+
+## Cómo activar la medición
+
+El widget envía sus eventos a GA4 de forma automática cuando GA4 está instalado en la página donde aparece. No necesitas configurar nada más en el widget.
+
+<Steps>
+  <Step title="Instala GA4 en tu sitio">
+    Agrega la etiqueta global de GA4 en el encabezado (`head`) de tu sitio o como etiqueta HTML personalizada en Google Tag Manager. Reemplaza `G-XXXXXXXXXX` por tu ID de medición:
+
+    ```html
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    ```
+
+    En los sitios y embudos de Chateea puedes pegarlo en los códigos de seguimiento del encabezado.
+  </Step>
+  <Step title="Instala el widget de chat">
+    Si tu sitio está hecho en Chateea, selecciona el widget en la configuración del sitio o embudo. Si es externo, en **Sitios → Widget de chat** abre tu widget, haz clic en **Obtener código** y copia el código (para Google Tag Manager, usa la opción **Vía GTM**). Pégalo en el cuerpo (`body`) de tu sitio.
+  </Step>
+  <Step title="Publica y prueba">
+    Publica los cambios y abre tu sitio. Abre y cierra el widget y envía el formulario para generar los primeros eventos.
+  </Step>
+</Steps>
+
+<Note>
+  El script de GA4 debe cargarse en todas las páginas donde quieras medir el widget. Si el widget está en una página sin GA4, esas interacciones no se registran.
+</Note>
+
+## Eventos que envía el widget
+
+| Evento | Cuándo se envía | Etiqueta |
+| --- | --- | --- |
+| `widget-open` | Cuando el visitante abre el widget | Widget Open |
+| `widget-close` | Cuando el visitante cierra el widget | Widget Close |
+| `form-submit` | Cuando el visitante envía el formulario del chat | Form Submitted |
+
+Los eventos se envían con la categoría de chat, así que puedes filtrarlos juntos en tus informes.
+
+## Probar y depurar
+
+1. **Google Tag Assistant:** revisa los eventos en tiempo real mientras usas el widget.
+2. **DebugView de GA4:** en tu propiedad de GA4, ve a la vista de depuración para ver los eventos al instante.
+3. **Herramientas del navegador:** en la pestaña Red (Network) de las herramientas de desarrollo, verifica que se envían las solicitudes a Google Analytics.
+4. **Prueba completa:** abre, cierra y envía el formulario del chat para confirmar cada evento.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se miden todas las páginas de mi sitio?">
+    Sí, siempre que el widget y GA4 estén instalados en esas páginas.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar los eventos que envía el widget?">
+    No. El widget envía un conjunto fijo de eventos: apertura, cierre y envío del formulario. Si necesitas una medición más avanzada, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+  <Accordion title="¿Dónde veo los eventos del widget en GA4?">
+    En tu propiedad de GA4, en la sección **Eventos** de los informes. Mientras pruebas, usa DebugView para verlos en tiempo real.
+  </Accordion>
+  <Accordion title="¿Tengo que instalar GA4 de nuevo solo para el widget?">
+    No. Si GA4 ya está instalado en tu sitio, el widget usa esa misma instalación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Códigos de seguimiento y píxeles" icon="code" href="/sitios/codigos-de-seguimiento-y-pixeles">
+    Agrega GA4 a tus sitios y embudos.
+  </Card>
+  <Card title="Instalar el widget de chat" icon="plug" href="/sitios/instalar-widget-de-chat">
+    Todas las formas de instalar el widget.
+  </Card>
+  <Card title="Primeros pasos con el widget de chat" icon="comment-dots" href="/sitios/widget-de-chat-primeros-pasos">
+    Tipos de widget y configuración inicial.
+  </Card>
+</CardGroup>

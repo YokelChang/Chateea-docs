@@ -1,0 +1,91 @@
+---
+title: "Monitor de disponibilidad de WordPress"
+description: "Activa el monitor para saber si tu sitio de WordPress está en línea, cuánto tarda en responder y cuándo tuvo caídas."
+icon: "heart-pulse"
+---
+
+El monitor de disponibilidad revisa periódicamente tu sitio de WordPress alojado en Chateea para confirmar que está en línea y medir cuánto tarda en responder. Además, guarda un historial de caídas y recuperaciones con fecha, hora y motivo. Así detectas problemas antes de que te los reporte un cliente y tienes datos para explicar qué pasó.
+
+## Qué hace el monitor
+
+- Comprueba de forma continua la disponibilidad y el tiempo de respuesta de tu sitio.
+- Muestra un panel con tarjetas de estado, gráficos de tiempo de respuesta y un registro de eventos recientes.
+- Reúne el monitoreo en el mismo lugar donde gestionas el alojamiento, las copias de seguridad y las herramientas de WordPress.
+
+## Para qué te sirve
+
+- **Reaccionas más rápido:** ves las caídas en orden cronológico y con indicadores claros.
+- **Transparencia con tus clientes:** puedes mostrar el historial de disponibilidad para respaldar la fiabilidad de tu sitio.
+- **Vas a la causa:** cada evento indica el motivo (por ejemplo, acceso prohibido o restricciones del servidor) para priorizar la solución.
+- **Contexto de rendimiento:** comparas los tiempos de respuesta mínimo, promedio y máximo.
+
+## Activar el monitor
+
+<Steps>
+  <Step title="Abre tu sitio">
+    Ve a **Sitios → WordPress** y haz clic en **Administrar sitio web** (Manage Website) en el sitio que quieres vigilar.
+  </Step>
+  <Step title="Entra al informe de visitantes">
+    Abre **Análisis → Informe de visitantes** (Analytics → Visitors Report).
+  </Step>
+  <Step title="Enciende el monitor">
+    Busca el interruptor **Monitor de disponibilidad** (Uptime Monitor) y actívalo. A partir de ese momento empiezan las comprobaciones.
+  </Step>
+</Steps>
+
+## Cómo leer el panel
+
+### Tarjetas de estado
+
+Dan una visión rápida para decidir si hace falta investigar más:
+
+| Tarjeta | Qué indica |
+| --- | --- |
+| **Estado operativo** | Si el sitio está accesible en este momento |
+| **Disponibilidad promedio** | El porcentaje de tiempo en línea durante el periodo elegido |
+| **Última comprobación** | Confirma que el monitor está activo y cuándo revisó por última vez |
+
+### Tiempo de respuesta
+
+Los cambios en el tiempo de respuesta suelen avisar de un problema antes de que el sitio se caiga:
+
+- Revisa los tiempos **mínimo, promedio y máximo** de las últimas 24 horas y, si está disponible, cambia a periodos más largos para comparar.
+- Si ves picos, revisa si coinciden con actualizaciones de plugins, cambios de tema, aumentos de tráfico o falta de recursos del servidor.
+- Si tus visitantes están lejos del servidor, la región del alojamiento puede influir en la latencia.
+
+### Eventos recientes
+
+Es un registro cronológico de caídas y recuperaciones:
+
+- Cada entrada muestra si fue una **caída** o una **recuperación automática**, con su **fecha y hora** y la **causa** registrada.
+- Úsalo para saber cuándo empezó un problema, cuándo se resolvió y qué lo provocó.
+- Copia las fechas y notas en tus reportes o en tus mensajes a soporte.
+
+<Tip>
+  Si notas que el tiempo de respuesta sube después de instalar o actualizar un plugin, desactívalo temporalmente y vuelve a revisar el panel. Es la forma más rápida de confirmar si ese plugin es el culpable.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El monitor envía alertas por correo, SMS o notificación?">
+    No. Por ahora la información se consulta dentro del panel.
+  </Accordion>
+  <Accordion title="¿Qué dirección revisa el monitor? ¿Puedo cambiarla?">
+    El monitor revisa la dirección principal de tu sitio, según está configurada en el alojamiento.
+  </Accordion>
+  <Accordion title="¿Qué zona horaria usan las fechas?">
+    Las fechas siguen la configuración de tu cuenta. Verifica la zona horaria de tu cuenta antes de comparar los datos con herramientas externas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Informe SEO de WordPress" icon="magnifying-glass-chart" href="/sitios/informe-seo-alojamiento-wordpress">
+    Mejora títulos y descripciones de tus páginas.
+  </Card>
+  <Card title="Guía de configuración del alojamiento" icon="list-check" href="/sitios/guia-de-configuracion-alojamiento-wordpress">
+    Los pasos para dejar tu sitio listo, del dominio a las estadísticas.
+  </Card>
+</CardGroup>

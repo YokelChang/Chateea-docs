@@ -1,0 +1,86 @@
+---
+title: "Fuentes de tráfico en la analítica de sitios"
+description: "Descubre qué canales traen visitas a tus embudos y sitios, cómo se clasifica cada visita y cómo mejorar la atribución con UTM."
+icon: "chart-column"
+---
+
+La analítica de **fuentes de tráfico** te muestra de dónde llegan las visitas a tus sitios web y embudos: anuncios de pago, búsqueda orgánica, redes sociales, tráfico directo o referencias de otros sitios. Con una gráfica de barras diaria puedes comparar canales, ver tendencias y revisar un día o canal concreto para saber qué campañas están funcionando.
+
+## Para qué te sirve
+
+- **Claridad por canal:** ves cuánto tráfico viene de búsqueda de pago, redes de pago, búsqueda orgánica, directo, referencias, redes orgánicas (cuando está disponible) y otros.
+- **Decisiones más rápidas:** detectas subidas, caídas o temporadas de un vistazo.
+- **Mejor atribución:** confirmas que tus UTM e identificadores de clic funcionan, para que los clics de pago no se registren como directos u otros.
+- **Todo el equipo lee lo mismo:** colores y etiquetas consistentes en las gráficas.
+- **Análisis puntual:** haz clic en un día para filtrar el panel e investigar lo que pasó.
+
+## Cómo se clasifica cada visita
+
+| Señal | Cómo se usa |
+| --- | --- |
+| **Parámetros UTM** | Se leen `utm_source`, `utm_medium` y `utm_campaign` cuando están presentes |
+| **Identificadores de clic** | Parámetros como `gclid`, `msclkid` o `fbclid` ayudan a confirmar que la visita viene de un anuncio |
+| **Sitio de origen (referrer)** | Se reconocen buscadores y redes sociales conocidas. **Directo** significa que no hay sitio de origen ni UTM |
+| **Otros (desconocido o sin asignar)** | Visitas sin UTM ni sitio de origen utilizables, o con valores mal escritos |
+
+## Cómo consultarla
+
+<Steps>
+  <Step title="Abre Análisis">
+    Ve a **Sitios → Análisis**.
+  </Step>
+  <Step title="Elige el recurso y las fechas">
+    Selecciona **Embudos** o **Sitios web** y define el rango de fechas.
+  </Step>
+  <Step title="Revisa los canales">
+    Desplázate hasta **Datos de adquisición** y entra en la pestaña **Canal de tráfico** para ver el reparto por canal (tráfico directo, redes de pago, búsqueda de pago, redes sociales, referencias).
+  </Step>
+  <Step title="Revisa el origen exacto">
+    Cambia a la pestaña **Fuente / medio** para ver el origen preciso (por ejemplo, google, facebook, direct, tiktok, other).
+  </Step>
+  <Step title="Mira el detalle de un día">
+    Pasa el cursor sobre cualquier barra para ver el número exacto de visitas de ese canal en esa fecha.
+  </Step>
+</Steps>
+
+## Buenas prácticas para una atribución limpia
+
+- Agrega UTM a todos los enlaces que publiques: anuncios, publicaciones en redes, correos, códigos QR y mensajes de WhatsApp.
+- Usa siempre los mismos valores y en minúsculas (por ejemplo, `utm_source=facebook`, no a veces `Facebook` y a veces `fb`).
+- Revisa que tus redirecciones no borren los parámetros de la URL.
+- Deja activado el etiquetado automático de tus plataformas de anuncios para que se agreguen los identificadores de clic.
+
+```text
+https://tusitio.com/oferta?utm_source=instagram&utm_medium=social&utm_campaign=lanzamiento-mayo
+```
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué métrica muestra la gráfica de barras?">
+    Las visitas diarias a tus sitios web o embudos dentro del rango de fechas elegido.
+  </Accordion>
+  <Accordion title="¿Por qué parte del tráfico aparece como Otros?">
+    Son visitas sin UTM, con parámetros mal escritos o que llegan sin sitio de origen (por ejemplo, desde navegadores dentro de apps o tras redirecciones). Usa UTM consistentes y revisa tus redirecciones para reducirlo.
+  </Accordion>
+  <Accordion title="¿Qué zona horaria usa el panel?">
+    Los datos se agrupan según la zona horaria de tu cuenta. Si tu equipo trabaja en varias zonas horarias, acláralo para evitar confusiones al comparar días.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Análisis de sitios y embudos" icon="chart-line" href="/sitios/analisis-de-sitios-y-embudos">
+    Visión general del panel de análisis.
+  </Card>
+  <Card title="Parámetros de URL" icon="link" href="/sitios/parametros-de-url">
+    Usa parámetros en tus embudos y sitios web.
+  </Card>
+  <Card title="Visitas por ubicación" icon="map-location-dot" href="/sitios/visitas-por-ubicacion-en-analisis">
+    Mapa de calor por país, estado y ciudad.
+  </Card>
+  <Card title="Navegadores e IP" icon="globe" href="/sitios/navegadores-e-ips-en-analisis">
+    Navegadores y direcciones IP de tus visitantes.
+  </Card>
+</CardGroup>

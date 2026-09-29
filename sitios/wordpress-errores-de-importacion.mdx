@@ -1,0 +1,48 @@
+---
+title: "Errores al importar un sitio de WordPress"
+description: "Qué significan los errores de archivo dañado, plugin dañado y error desconocido al importar un sitio de WordPress, y cómo resolverlos."
+icon: "triangle-exclamation"
+---
+
+Al importar un archivo de respaldo o migración a tu sitio de WordPress en Chateea, el sistema revisa que el archivo y sus plugins estén sanos. Si detecta un problema, muestra uno de estos errores propios del hosting. Aquí te explicamos qué significa cada uno y cómo resolverlo.
+
+## Errores posibles
+
+| Error | Qué significa | Qué hacer |
+| --- | --- | --- |
+| **Archivo dañado** (File Corrupted) | El archivo de importación está dañado y no se puede usar. El problema puede estar en esta instalación o en el sitio de origen desde donde generaste el archivo. | Elimina el archivo, genera uno nuevo desde el sitio de origen y vuelve a intentarlo. |
+| **Problema con un plugin** (Plugin Issue) | Uno de los plugins incluidos está dañado. El mensaje indica cuál, por ejemplo: `Plugin named "yith-topbar-countdown" is corrupted`. | Elimina ese plugin (en esta instalación o en el sitio de origen), vuelve a generar el archivo si hace falta e intenta de nuevo. |
+| **Error desconocido** (Unknown Error) | Pueden estar dañados tanto un plugin como el archivo. | Sigue el orden que se explica abajo. |
+
+## Cuando hay más de un problema
+
+Si el plugin y el archivo están dañados a la vez, el sistema siempre muestra primero el error del plugin.
+
+<Steps>
+  <Step title="Resuelve el plugin">
+    Elimina el plugin que indica el mensaje y vuelve a intentar la importación.
+  </Step>
+  <Step title="Revisa si cambia el error">
+    Si el archivo también estaba dañado, ahora verás el error de **Archivo dañado**.
+  </Step>
+  <Step title="Reemplaza el archivo">
+    Elimina el archivo, genera uno nuevo desde el sitio de origen y vuelve a importarlo.
+  </Step>
+</Steps>
+
+<Tip>
+  Antes de generar el archivo de migración en el sitio de origen, desactiva y elimina los plugins que no uses. El archivo pesará menos y habrá menos posibilidades de que falle la importación.
+</Tip>
+
+Si después de estos pasos el error continúa, escribe a soporte de Chateea en **help@chateea.com** e indica el mensaje exacto que ves.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Plugins bloqueados" icon="ban" href="/sitios/wordpress-plugins-bloqueados">
+    Plugins que no se pueden usar en el hosting.
+  </Card>
+  <Card title="Solucionador de plugins" icon="stethoscope" href="/sitios/wordpress-solucionador-de-plugins">
+    Encuentra el plugin que está rompiendo tu sitio.
+  </Card>
+</CardGroup>

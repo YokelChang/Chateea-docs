@@ -1,0 +1,186 @@
+---
+title: "Widget de chat con IA de voz"
+description: "Deja que los visitantes hablen con tu agente de IA de voz desde el navegador, sin llamar ni instalar nada."
+icon: "microphone"
+---
+
+El widget de chat con IA de voz permite que los visitantes de tu sitio hablen en tiempo real con tu agente de IA de voz directamente desde el navegador, usando su micrófono y sus altavoces. No necesitan marcar un número, descargar una aplicación ni configurar una llamada: hacen clic en el micrófono y empiezan a hablar. Es ideal para captar y calificar leads a cualquier hora con una conversación natural, como si llamaran a tu negocio.
+
+## Para qué te sirve
+
+- **Cero fricción:** el visitante habla al instante, sin teléfono ni instalaciones.
+- **Conversaciones más humanas:** la voz mantiene al prospecto hablando más tiempo y compartiendo más detalles.
+- **Más conversiones:** tu agente califica y agenda mientras el interés está en su punto más alto.
+- **Nombre de agente con tu marca:** muestra un nombre amigable, como "Asistente de ventas".
+- **Seguridad incluida:** protección reCAPTCHA contra el abuso y aviso de que la llamada no se graba.
+- **Compatible con tus automatizaciones:** usa las acciones y flujos que ya configuraste para tu agente de IA de voz.
+
+## Cómo funciona
+
+El widget es un modo de chat solo de voz. El audio viaja por el navegador del visitante (mediante WebRTC), así que toda la llamada ocurre dentro de la ventana del chat, sin línea telefónica, troncal SIP ni softphone.
+
+Durante la sesión, el visitante puede:
+
+- Iniciar y terminar la conversación de voz.
+- Silenciar y reactivar el micrófono.
+- Dar sus datos de contacto y otra información hablando.
+- Reiniciar la conversación desconectándose y volviendo a llamar.
+
+Tu agente usa la configuración y las acciones de IA de voz que ya tienes. Todas las acciones están disponibles excepto **Transferir llamada**, que por ahora no se admite en el widget.
+
+## Antes de empezar
+
+<Warning>
+  Necesitas tener la IA de voz configurada y al menos un agente de voz creado. Sin eso, no podrás crear un widget de IA de voz.
+</Warning>
+
+## Paso 1: activa la función
+
+Si la función todavía aparece como experimental en tu cuenta, actívala en **Configuración → Labs**: busca **Widget de chat con IA de voz** y enciéndelo. A partir de ahí, el tipo de chat de IA de voz aparece en el editor de widgets. Si no ves la opción, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Paso 2: crea y configura el widget
+
+<Steps>
+  <Step title="Abre los widgets de chat">
+    Ve a **Sitios → Widget de chat**.
+  </Step>
+  <Step title="Crea o abre un widget">
+    Haz clic en **Nuevo** y elige **IA de voz** como tipo, o abre un widget existente.
+  </Step>
+  <Step title="Elige el agente">
+    En la pestaña **Agente**, selecciona tu agente de IA de voz.
+  </Step>
+  <Step title="Ponle nombre">
+    En **Nombre del agente de IA de voz**, escribe el nombre que verán los visitantes, por ejemplo "Asistente de ventas" o "Soporte".
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**, en la esquina superior derecha.
+  </Step>
+</Steps>
+
+Puedes cambiar el nombre del agente cuando quieras desde la misma pestaña **Agente**. El nombre aparece en la conversación y refuerza la confianza del visitante.
+
+## Paso 3: agrégalo a tu sitio web o embudo
+
+<Steps>
+  <Step title="Copia el código">
+    En el editor del widget, haz clic en **Obtener código** y copia la etiqueta `script` generada.
+  </Step>
+  <Step title="Pégalo en tu sitio">
+    - **Sitios y embudos de Chateea:** pega el código en los códigos de seguimiento del encabezado o del pie de página.
+    - **Sitios programados a mano:** colócalo en el `head` o antes del cierre del `body`.
+    - **Wix, Shopify, Squarespace y similares:** usa la función de código personalizado de la plataforma.
+  </Step>
+  <Step title="Publica y prueba">
+    Publica o actualiza la página, abre tu sitio y haz una llamada de prueba.
+  </Step>
+</Steps>
+
+## Conectar un widget desde el agente de IA de voz
+
+También puedes conectar un widget de chat sin salir de la configuración del agente:
+
+1. Ve a **IA → IA de voz** y selecciona el agente.
+2. Abre la pestaña **Implementar** (Deploy).
+3. En la sección **Widgets**, busca **Widgets de chat**.
+4. Selecciona un widget existente para asociarlo al agente, o haz clic en **Crear widget nuevo** para que Chateea cree un widget básico ya conectado.
+5. Para editar un widget conectado, haz clic sobre él: el editor se abre en una pestaña nueva y la configuración del agente sigue abierta.
+6. Con **Administrar widgets** accedes a todos tus widgets de chat.
+7. Si quieres quitar una conexión, desconecta el widget del agente.
+8. Haz clic en **Guardar** al terminar.
+
+## La experiencia del visitante
+
+1. Abre el widget y ve un ícono de micrófono.
+2. Hace clic en el ícono para iniciar la sesión de voz.
+3. El navegador le pide permiso para usar el micrófono, y debe aceptarlo.
+4. El agente de IA responde en tiempo real.
+5. El visitante puede silenciar o terminar la llamada cuando quiera.
+
+## Seguridad, privacidad y límites
+
+- **Sin grabación:** las llamadas del widget no se graban. El widget muestra automáticamente un aviso para que el visitante lo sepa.
+- **Protección reCAPTCHA:** si un mismo visitante se conecta y desconecta **10 veces en 60 segundos**, aparece una verificación reCAPTCHA para confirmar que es una persona.
+- **Permisos del navegador:** el acceso al micrófono y los altavoces sigue los permisos estándar del navegador.
+- **Llamadas simultáneas:** cada cuenta admite hasta **20 llamadas simultáneas** en el widget. Si entra una llamada número 21, el visitante ve un aviso de que no hay disponibilidad. Este límite protege la calidad de las conversaciones.
+- **Agentes:** puedes crear hasta **100 agentes de IA de voz**, para hacer pruebas, tener agentes en producción y agentes especializados.
+
+## Ejemplo: captar leads por voz
+
+**Objetivo:** convertir visitantes en leads calificados con una conversación de voz.
+
+1. Activa el widget de chat con IA de voz.
+2. Crea un widget de tipo IA de voz y llama al agente "Asistente de ventas".
+3. Configura tu agente para que:
+   - Salude al visitante.
+   - Pida su nombre y los datos de su negocio.
+   - Confirme qué le interesa (por ejemplo, cotizar un servicio o pedir una demostración).
+   - Guarde el lead en tu CRM.
+   - Cierre la conversación de forma amable.
+4. Coloca el widget en tu página de **Contacto** o de **Precios**.
+
+**Resultado:** el visitante hace clic en el micrófono, responde las preguntas hablando y sus datos quedan guardados sin llenar ningún formulario.
+
+## Buenas prácticas
+
+- Elige un nombre de agente claro y amigable, acorde con el tono de tu marca.
+- Coloca el widget en páginas de alta intención, como Contacto, Precios o Solicitar demostración.
+- Prueba los permisos del micrófono en distintos navegadores.
+- Haz tus pruebas en un lugar con poco ruido de fondo.
+- Revisa el uso en las primeras semanas y ajusta tu agente y tu widget según el comportamiento de los visitantes.
+
+## Solución de problemas
+
+| Problema | Causa probable | Solución |
+| --- | --- | --- |
+| La sesión de voz no inicia | No se dio permiso al micrófono | Pide al visitante que permita el acceso al micrófono cuando el navegador lo solicite. |
+| No se escucha el audio | Altavoces silenciados o desconectados | Revisa la configuración de audio del dispositivo. |
+| El widget no aparece | El script no está bien instalado | Vuelve a copiar el código desde **Obtener código** y pégalo de nuevo. |
+| Aparece reCAPTCHA con frecuencia | Muchas conexiones seguidas | Espera un poco entre cada reconexión. |
+| No encuentro la grabación de la llamada | La grabación no está disponible | Las llamadas del widget no se graban. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El visitante necesita un número de teléfono o descargar una app?">
+    No. La conversación ocurre en el navegador con el micrófono y los altavoces del visitante.
+  </Accordion>
+  <Accordion title="¿Puedo crear el widget sin tener un agente de IA de voz?">
+    No. Primero debes configurar la IA de voz y crear un agente.
+  </Accordion>
+  <Accordion title="¿Se graban las llamadas?">
+    No. Las llamadas del widget solo se transmiten; la grabación está desactivada y el widget muestra un aviso al respecto.
+  </Accordion>
+  <Accordion title="¿Dónde configuro lo que dice el agente?">
+    El agente es tu agente de IA de voz. Ve a **IA → IA de voz** y edita su saludo, instrucciones y acciones.
+  </Accordion>
+  <Accordion title="¿El visitante tiene que dar permiso al micrófono cada vez?">
+    La mayoría de los navegadores recuerdan el permiso después de la primera vez, pero en ventanas privadas o de incógnito lo pedirán de nuevo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si se cae la conexión del visitante?">
+    La llamada termina. El visitante puede volver a hacer clic en el micrófono para reconectarse; si se desconecta muchas veces seguidas, aparece la verificación reCAPTCHA.
+  </Accordion>
+  <Accordion title="¿Funciona en navegadores móviles?">
+    Sí. Safari (iOS 16 o superior), Chrome y Edge admiten el audio en el navegador, siempre que el visitante permita el acceso al micrófono.
+  </Accordion>
+  <Accordion title="¿Puedo usar agentes distintos en distintas páginas?">
+    Sí. Crea varios widgets de IA de voz, cada uno con su agente, e instala en cada página el código que corresponda.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Widget de IA de voz incrustado" icon="window-maximize" href="/sitios/widget-de-ia-de-voz-incrustado">
+    Muestra el widget dentro del contenido de la página.
+  </Card>
+  <Card title="Protección reCAPTCHA del widget" icon="shield-check" href="/ia/recaptcha-widget-ia-de-voz">
+    Cómo funciona la verificación automática.
+  </Card>
+  <Card title="Crear un agente de IA de voz" icon="robot" href="/ia/crear-agente-de-voz-ia">
+    Configura el agente que atenderá a tus visitantes.
+  </Card>
+  <Card title="Varios widgets de chat" icon="clone" href="/sitios/varios-widgets-de-chat">
+    Un widget distinto por sitio o por página.
+  </Card>
+</CardGroup>

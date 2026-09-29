@@ -1,0 +1,158 @@
+---
+title: "Crear cuestionarios"
+description: "Guía completa del editor de cuestionarios: elementos, puntuación, categorías, resultados, notificaciones y publicación."
+icon: "clipboard-question"
+---
+
+Los cuestionarios de Chateea son interactivos: capturan los datos del lead, califican su interés y le devuelven un resultado personalizado. Pueden tener varias páginas y tipos de pregunta, puntuación y categorías opcionales, y una página de resultados a tu medida. Son ideales para diagnósticos ("¿Qué plan te conviene?"), evaluaciones de conocimiento, test de personalidad o exámenes de certificación.
+
+## Para qué te sirven
+
+- **Segmentar a tu audiencia:** agrupa a los contactos según su resultado y su intención.
+- **Automatizar el seguimiento:** inicia flujos de trabajo cuando alguien envía el cuestionario.
+- **Personalizar la experiencia:** la página de resultados muestra niveles de puntuación y botones de acción.
+- **Guardar resultados en el CRM:** lleva la puntuación y la categoría a campos personalizados del contacto.
+
+## El editor de cuestionarios
+
+El editor tiene cuatro pestañas:
+
+| Pestaña | Para qué sirve |
+| --- | --- |
+| **Editar** | Agregar preguntas, páginas y elementos de diseño |
+| **Configuración** | Configurar la lógica, los resultados y las integraciones |
+| **Notificaciones** | Configurar avisos por correo y respuestas automáticas |
+| **Envíos** | Revisar las respuestas de ese cuestionario |
+
+Para cambiar el orden de un elemento, arrástralo a su nueva posición. Mientras lo mueves verás una sombra que indica dónde caerá, y el editor se desplaza solo si lo acercas al borde superior o inferior.
+
+## Elementos disponibles
+
+### Preguntas
+
+| Tipo | Descripción |
+| --- | --- |
+| Opción única | Una sola respuesta entre opciones visibles |
+| Opción múltiple | Varias respuestas entre opciones visibles |
+| Sí / No | Respuesta binaria |
+| Respuesta corta | Campo de texto pequeño |
+| Respuesta larga | Campo de texto amplio con desplazamiento |
+| Número | Campo numérico con controles de más y menos |
+| Desplegable simple | Una opción de un menú desplegable |
+| Desplegable múltiple | Varias opciones de un menú desplegable |
+
+### Datos personales y dirección
+
+Nombre completo, nombre, apellido, fecha de nacimiento, teléfono (con validación), correo (con validación), dirección, ciudad, estado, país (desplegable con búsqueda), código postal, organización y sitio web (con validación de URL).
+
+### Otros elementos
+
+| Tipo | Descripción |
+| --- | --- |
+| Calificación | Valoración de 5 estrellas |
+| Texto | Texto informativo, no es una pregunta |
+| HTML | Código HTML propio o de terceros |
+| Captcha | Verificación "No soy un robot" |
+| Fuente | Valor personalizado para saber de dónde viene el lead |
+| Términos y condiciones | Casilla de aceptación |
+| Puntuación | Campo numérico |
+| Imagen | Imagen informativa, no es una pregunta |
+| Carga de archivos | Selector de archivos |
+| Importe | Campo para cantidades de dinero |
+| Firma | Área para firmar a mano |
+
+### Campos de objetos
+
+Con **Agregar campos de objetos** puedes buscar campos de los objetos compatibles, seleccionar varios y agregarlos juntos con el botón **Agregar N campos** o arrastrando el grupo al lienzo.
+
+## Puntuación y categorías
+
+Son la capa lógica del cuestionario: traducen las respuestas en un resultado claro.
+
+- **Categorías:** los grupos de resultado posibles, por ejemplo "Principiante", "Intermedio" y "Avanzado", o "Servicio A" y "Servicio B".
+- **Puntuación:** el sistema de puntos. Cada opción de respuesta suma puntos, y el total da la puntuación general, la puntuación por categoría o el nivel de puntuación.
+
+## Cómo crear un cuestionario
+
+<Steps>
+  <Step title="Abre el editor">
+    Ve a **Sitios → Cuestionarios** y pulsa **Agregar cuestionario**, o abre uno existente para editarlo.
+  </Step>
+  <Step title="Elige cómo empezar">
+    Elige **Empezar desde cero** o **Desde plantilla**. En la biblioteca de plantillas puedes buscar, filtrar y previsualizar antes de cargar una en el editor.
+  </Step>
+  <Step title="Agrega páginas y elementos">
+    Las páginas se muestran en el orden de la lista. Los elementos siempre van dentro de una página; arrástralos para reordenarlos o moverlos a otra página.
+  </Step>
+  <Step title="Configura cada elemento">
+    Haz clic en un elemento para abrir sus ajustes en el panel derecho. Ahí defines la pregunta, la **clave de consulta** (para rellenarla desde un parámetro de URL) y si es obligatoria u oculta. También puedes fijar la alineación de la etiqueta de cada campo por separado, útil en diseños compactos.
+  </Step>
+  <Step title="Crea las categorías y asigna puntos">
+    Haz clic en el icono de cuadrícula para abrir el panel de categorías. Agrega, renombra o elimina categorías y asigna a cada opción de respuesta su categoría y su puntuación.
+  </Step>
+  <Step title="Configura las notificaciones">
+    En **Notificaciones**, activa el aviso por correo para tu equipo y la respuesta automática para quien responde. Define asunto, destinatario, dirección de respuesta y nombre del remitente, y elige si adjuntar el PDF del envío o el PDF de la página de resultados.
+  </Step>
+  <Step title="Ajusta estilos y opciones">
+    Haz clic en el icono de líneas y puntos a la derecha de la barra superior. En **Estilos** encontrarás diseño, pie de página, colores y fondo, y otros ajustes. En **Opciones** configuras qué pasa al enviar, el píxel de Facebook y sus eventos, la configuración del cuestionario y el HTML del pie.
+  </Step>
+  <Step title="Personaliza la página de resultados">
+    Desde **Configuración → Editar página de resultados** edita el encabezado, los textos de cada nivel de puntuación, los colores y rangos de los niveles, los botones de llamada a la acción y el pie de página.
+  </Step>
+  <Step title="Integra y publica">
+    Guarda y pulsa **Integrar**, arriba a la derecha. Copia el código de inserción para ponerlo en tu sitio web o embudo, o copia el enlace directo para compartirlo por correo, redes sociales o conversaciones.
+  </Step>
+</Steps>
+
+## Usar los resultados en el CRM
+
+El mapeo de campos del CRM guarda en campos personalizados del contacto la puntuación general y su nivel, la puntuación y el nivel de cada categoría, y la categoría más alta y más baja. Con eso puedes:
+
+- **Segmentar contactos:** crea listas inteligentes como "Puntuación general mayor o igual a 80" o agrupa por nivel (por ejemplo, "Nivel = Principiante").
+- **Personalizar automatizaciones:** envía correos distintos según la categoría más alta o más baja, o dispara acciones cuando una puntuación supere un umbral.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo poner el cuestionario en mi sitio web?">
+    Sí. Usa el código de inserción o comparte el enlace directo desde **Integrar**.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar la puntuación?">
+    Sí. Asigna puntos distintos a cada respuesta y crea varias categorías de puntuación.
+  </Accordion>
+  <Accordion title="¿Admite saltos según las respuestas?">
+    Sí. Puedes crear reglas de **Ir a** para llevar a cada persona a una página distinta según lo que responda.
+  </Accordion>
+  <Accordion title="¿Dónde veo los resultados?">
+    En **Sitios → Cuestionarios**, eligiendo **Envíos** en el desplegable, o en la pestaña **Envíos** del editor.
+  </Accordion>
+  <Accordion title="¿Puedo automatizar el seguimiento según la puntuación?">
+    Sí. Usa el disparador **Cuestionario enviado** en un flujo de trabajo y filtra por puntuación o categoría.
+  </Accordion>
+  <Accordion title="¿Sirve para exámenes de certificación?">
+    Sí. Define criterios de aprobado o reprobado con los niveles de puntuación y usa un flujo de trabajo para enviar el certificado a quien apruebe.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador Cuestionario enviado" icon="bolt" href="/sitios/disparador-cuestionario-enviado">
+    Automatiza acciones cuando alguien termina un cuestionario.
+  </Card>
+  <Card title="Página de resultados de cuestionarios" icon="square-poll-vertical" href="/sitios/pagina-de-resultados-de-cuestionarios">
+    Diseña lo que ve cada persona al terminar.
+  </Card>
+  <Card title="Categorías y puntuación en cuestionarios" icon="list-ol" href="/sitios/categorias-y-puntuacion-en-cuestionarios">
+    Asigna puntos y muestra resultados dinámicos.
+  </Card>
+  <Card title="Plantillas de cuestionarios" icon="clone" href="/sitios/plantillas-de-cuestionarios">
+    Empieza más rápido con una plantilla.
+  </Card>
+  <Card title="Resultados en campos personalizados" icon="address-card" href="/sitios/cuestionarios-resultados-en-campos-personalizados">
+    Guarda la puntuación en la ficha del contacto.
+  </Card>
+  <Card title="Programar apertura y cierre" icon="calendar-clock" href="/sitios/programar-apertura-y-cierre-de-formularios">
+    Define cuándo acepta respuestas el cuestionario.
+  </Card>
+</CardGroup>

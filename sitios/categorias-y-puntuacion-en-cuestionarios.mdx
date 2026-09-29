@@ -1,0 +1,85 @@
+---
+title: "Categorías y puntuación en cuestionarios"
+description: "Asigna puntos y categorías a las respuestas y muestra resultados distintos según el rango de puntuación."
+icon: "list-ol"
+---
+
+La puntuación y las categorías convierten las respuestas de un cuestionario en un resultado claro. Asignas puntos a cada respuesta, agrupas las respuestas en categorías y defines rangos de puntuación con un mensaje distinto para cada uno. Así cada persona ve un resultado personalizado según cómo respondió, y tú puedes segmentarla y darle seguimiento.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre el cuestionario">
+    Ve a **Sitios → Cuestionarios** y crea uno nuevo o abre uno existente.
+  </Step>
+  <Step title="Agrega las preguntas">
+    Crea las preguntas con sus opciones de respuesta.
+  </Step>
+  <Step title="Asigna puntos">
+    En cada opción de respuesta, indica cuántos puntos suma.
+  </Step>
+  <Step title="Crea categorías">
+    Abre el panel de categorías, crea las que necesites y asigna cada respuesta a su categoría.
+  </Step>
+  <Step title="Configura la página de resultados">
+    Define los rangos de puntuación y escribe el mensaje que verá la persona en cada uno.
+  </Step>
+  <Step title="Revisa y guarda">
+    Usa la vista previa para comprobar que la puntuación se calcula bien y guarda.
+  </Step>
+</Steps>
+
+## Cómo se calcula la puntuación
+
+Chateea normaliza todas las puntuaciones a un porcentaje de 0 a 100 con esta fórmula:
+
+```text
+Puntuación final = (Puntos obtenidos / Puntos máximos) × 100
+```
+
+Se calcula por separado para la puntuación general y para cada categoría.
+
+| Tipo de pregunta | Puntos máximos |
+| --- | --- |
+| Opción única y desplegable | Un máximo fijo por pregunta, porque solo se elige una respuesta |
+| Opción múltiple | La suma de los puntos de todas las opciones |
+
+Ejemplo: si una persona obtiene 18 puntos de 24 posibles, su puntuación final es del 75 %.
+
+## Resultados dinámicos
+
+Defines rangos de puntuación, por ejemplo 0 a 40 %, 41 a 70 % y 71 a 100 %, y un mensaje distinto para cada uno. La página de resultados se arma con estas secciones:
+
+| Sección | Qué muestra |
+| --- | --- |
+| **Encabezado** | Logo, nombre del negocio y texto de introducción |
+| **Puntuación general** | El porcentaje total y el mensaje de su rango |
+| **Puntuación por categoría** | El resultado de cada categoría |
+| **Categoría individual** | Una categoría concreta, como la más alta o la más baja |
+| **Llamada a la acción** | Un botón con el siguiente paso, por ejemplo reservar una cita |
+| **Pie de página** | Logo, redes sociales y datos de contacto |
+
+Cada sección admite estilos propios, contenido dinámico y botones de acción.
+
+## Buenas prácticas
+
+- Previsualiza siempre el cuestionario para confirmar que la puntuación es correcta.
+- Prueba las puntuaciones límite (por ejemplo, exactamente 40 % y 41 %) para asegurarte de que caen en el rango esperado.
+- Si usas opción múltiple, recuerda que el máximo es la suma de todas las opciones: ajusta los puntos para que el resultado no quede siempre bajo.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Página de resultados de cuestionarios" icon="square-poll-vertical" href="/sitios/pagina-de-resultados-de-cuestionarios">
+    Ordena, oculta y configura las secciones de resultados.
+  </Card>
+  <Card title="Cuestionarios de personalidad" icon="masks-theater" href="/sitios/cuestionarios-de-personalidad">
+    Muestra la categoría más alta o más baja como resultado.
+  </Card>
+  <Card title="Crear cuestionarios" icon="clipboard-question" href="/sitios/crear-cuestionarios">
+    Guía completa del editor de cuestionarios.
+  </Card>
+  <Card title="Disparador Cuestionario enviado" icon="bolt" href="/sitios/disparador-cuestionario-enviado">
+    Automatiza el seguimiento según la puntuación.
+  </Card>
+</CardGroup>

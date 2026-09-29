@@ -1,0 +1,116 @@
+---
+title: "Valores personalizados en WordPress"
+description: "Muestra los valores personalizados de tu cuenta en tu sitio de WordPress con códigos cortos que se actualizan solos."
+icon: "code"
+---
+
+Los valores personalizados de tu cuenta de Chateea también pueden mostrarse en tu sitio de WordPress. El plugin de Chateea para WordPress sincroniza esos valores y los convierte en códigos cortos (shortcodes) que pegas en cualquier página o entrada. Así, cuando cambias un dato en Chateea (un horario, una promoción, un teléfono), tu sitio se actualiza solo, sin editar página por página.
+
+## Para qué te sirve
+
+- **Un solo lugar para tus datos:** usas la misma información en automatizaciones, correos, embudos y en tu sitio de WordPress.
+- **Cambios al instante:** modificas el valor una vez en Chateea y WordPress lo muestra actualizado tras la sincronización.
+- **Sin programar:** pegas un código corto en lugar de tocar código.
+- **Plantillas reutilizables:** puedes diseñar páginas con marcadores que se llenan solos con los datos de tu cuenta.
+
+## Cómo funciona la sincronización
+
+El plugin conecta tu sitio de WordPress con tu cuenta de Chateea mediante una autorización segura (OAuth). Una vez conectado:
+
+- Trae todos los valores personalizados, tanto los del sistema como los que tú creaste.
+- Los guarda en WordPress para que carguen rápido.
+- Se vuelve a sincronizar automáticamente **cada 12 horas**. Si no quieres esperar, puedes forzar una sincronización manual con **Sincronizar ahora** (Sync Now).
+
+## Requisitos
+
+- El plugin de Chateea para WordPress en la **versión 3.5.0 o superior**.
+- Un usuario de Chateea con acceso a la API de tu cuenta. Solo ese tipo de usuario puede autorizar la conexión.
+
+## Configurar los valores personalizados en WordPress
+
+<Steps>
+  <Step title="Conecta tu cuenta">
+    En el escritorio de WordPress, abre la configuración del plugin de Chateea y haz clic en **Conectar cuenta** (Connect Account). Inicia sesión con tu usuario de Chateea, elige tu cuenta y concede el acceso.
+  </Step>
+  <Step title="Espera la primera sincronización">
+    Al terminar la autorización, el plugin sincroniza los datos automáticamente y muestra un mensaje que confirma que la conexión quedó activa.
+  </Step>
+  <Step title="Revisa tus valores importados">
+    Abre la sección de valores personalizados del plugin dentro de WordPress y confirma que aparecen tus claves con sus datos actuales.
+  </Step>
+  <Step title="Copia el código corto">
+    Junto a cada valor verás un botón para copiar su código corto con un clic. Cada código incluye la clave del valor con el formato `custom_values.tu_clave`.
+  </Step>
+  <Step title="Pégalo en tu página y publica">
+    Inserta el código corto donde quieras mostrar el dato, dentro del texto o en un bloque de código corto de tu editor. Al publicar, la página mostrará el valor sincronizado.
+  </Step>
+</Steps>
+
+<Tip>
+  Puedes mezclar texto normal con el código corto. Por ejemplo, un saludo de temporada: escribe "Te deseamos" y a continuación pega el código corto de un valor llamado `festive_greeting`. Cuando cambies el saludo en Chateea, el texto del sitio cambiará con él.
+</Tip>
+
+### Editores compatibles
+
+Los códigos cortos funcionan en cualquier editor que acepte códigos cortos nativos de WordPress, entre ellos:
+
+| Editor | Dónde pegar el código |
+| --- | --- |
+| Gutenberg | Bloque de código corto o dentro de un párrafo |
+| Editor clásico | Directamente en el contenido |
+| Elementor | Widget de código corto |
+| Divi | Módulo de texto o de código |
+| Bricks y Beaver Builder | Elemento de código corto o de texto |
+
+## Administrador de valores personalizados en WordPress
+
+Dentro del escritorio de WordPress, la sección de valores personalizados del plugin te permite:
+
+- Ver cada valor sincronizado y su dato actual.
+- Copiar el código corto con un clic.
+- Lanzar una sincronización manual o dejar activa la sincronización automática.
+- Filtrar por carpetas, con la misma organización que tienes en Chateea.
+
+## Caché y datos desactualizados
+
+El plugin muestra el valor cada vez que un visitante abre la página. Si usas un plugin de caché, la página podría mostrar un dato viejo hasta que la caché se renueve.
+
+Para evitarlo:
+
+- Activa la opción **Purgar caché al sincronizar** (Purge cache on resync) si tienes un plugin de caché activo.
+- No guardes en caché páginas que muestran valores propios de cada contacto.
+- Vuelve a sincronizar después de cambiar valores en Chateea.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo mostrar valores propios de cada contacto?">
+    Sí, siempre que el visitante esté identificado mediante una cookie de seguimiento o un parámetro en la URL.
+  </Accordion>
+  <Accordion title="¿Esto hace más lento mi sitio?">
+    No. Los valores se guardan en WordPress y solo se actualizan durante las sincronizaciones.
+  </Accordion>
+  <Accordion title="¿Puedo conectar varias cuentas de Chateea al mismo WordPress?">
+    Cada instalación de WordPress se conecta a una sola cuenta. Si necesitas varias, usa una instalación multisitio con un sitio por cuenta.
+  </Accordion>
+  <Accordion title="¿Qué pasa si borro un valor en Chateea?">
+    El código corto se mostrará vacío hasta que sincronices de nuevo y lo reemplaces por otro valor.
+  </Accordion>
+  <Accordion title="¿Quién puede autorizar la conexión?">
+    Solo los usuarios de Chateea con acceso a la API de tu cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Variables y campos personalizados" icon="code" href="/variables/introduccion">
+    Cómo funcionan las variables y los valores personalizados en Chateea.
+  </Card>
+  <Card title="Acción: Actualizar valor personalizado" icon="pen-to-square" href="/flujo-de-trabajo/accion-actualizar-valor-personalizado">
+    Cambia valores personalizados de forma automática desde un flujo de trabajo.
+  </Card>
+  <Card title="Buscar y reemplazar en WordPress" icon="magnifying-glass" href="/sitios/buscar-y-reemplazar-en-wordpress">
+    Corrige textos y enlaces en todo tu sitio de una sola vez.
+  </Card>
+</CardGroup>

@@ -1,0 +1,70 @@
+---
+title: "Conecta Shippo para mostrar tarifas de envío en vivo"
+description: "Integra tu cuenta de Shippo con tu tienda para mostrar en el checkout tarifas en vivo de los transportistas que elijas."
+icon: "truck-fast"
+---
+
+Shippo es una plataforma de envíos que conecta con varias empresas transportistas. Al integrarla con tu tienda de Chateea, el checkout muestra tarifas de envío en vivo calculadas por los transportistas que elijas, en lugar de tarifas fijas que tienes que mantener a mano.
+
+## Antes de empezar
+
+- Necesitas una cuenta de Shippo.
+- Ten lista la dirección desde la que despachas tus pedidos.
+
+## Paso 1: crea un token en vivo en Shippo
+
+En tu cuenta de Shippo ve a **Settings → Advanced → API → Live Token**, genera un token nuevo y cópialo. Lo usarás al final para conectar Chateea.
+
+<Warning>
+Trata el token como una contraseña. No lo compartas por chat ni lo publiques.
+</Warning>
+
+## Paso 2: configura Shippo
+
+Antes de conectar, deja listas estas tres configuraciones dentro de Shippo:
+
+### Plantilla de paquete
+
+Ve a **Settings → Shipping → Packages → Add New Template**. Elige entre medidas personalizadas o las cajas estándar de los transportistas, indica el peso del paquete y, si quieres, márcala como plantilla predeterminada.
+
+### Dirección de origen
+
+Ve a **Settings → Address book → Sender & return → Add New address**. Agrega tu dirección de remitente y de devolución, y márcalas como predeterminadas.
+
+### Opciones de envío en el checkout
+
+Ve a **Settings → Shipping → Rates at Checkout → Add Shipping option**. Selecciona las opciones de tarifa en vivo y los transportistas que prefieres. Aquí también puedes:
+
+- Sumar un recargo sobre la tarifa en vivo, en porcentaje o como monto fijo.
+- Definir una tarifa de respaldo para cuando no haya tarifa en vivo disponible.
+
+## Paso 3: define el origen de envío en Chateea
+
+En Chateea ve a **Pagos → Configuración → Origen de envío** (Shipping Origin) y agrega una dirección válida. Será la dirección del remitente en los pedidos que gestione Shippo.
+
+## Paso 4: instala la app de Shippo
+
+Abre el **Marketplace de aplicaciones**, busca **Shippo** e instálala.
+
+## Paso 5: pega el token
+
+En la configuración de la app, pega el token en vivo que generaste en el paso 1 y activa las tarifas en vivo.
+
+## Paso 6: activa o desactiva las tarifas
+
+Marca o desmarca las casillas de las tarifas que quieres mostrar en el checkout y guarda los cambios. Puedes volver a este paso cuando quieras para ajustar qué opciones ven tus clientes.
+
+<Tip>
+Haz un pedido de prueba con una dirección real de tu zona de reparto para comprobar que las tarifas en vivo y tus recargos se muestran como esperas.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Zonas y tarifas de envío" icon="truck" href="/tienda/zonas-y-tarifas-de-envio">
+    Configura tarifas manuales por zona.
+  </Card>
+  <Card title="Peso, dimensiones y SKU" icon="weight-scale" href="/tienda/peso-dimensiones-y-sku">
+    Datos de producto necesarios para calcular envíos.
+  </Card>
+</CardGroup>

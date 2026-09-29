@@ -1,0 +1,152 @@
+---
+title: "Plugins bloqueados en el hosting de WordPress"
+description: "Lista de plugins restringidos en el hosting de WordPress de Chateea y por qué no los necesitas: caché, copias de seguridad y más."
+icon: "ban"
+---
+
+Para que tu sitio de WordPress sea rápido, estable y seguro, el hosting de Chateea restringe algunos plugins. En general son plugins que duplican funciones que el hosting ya incluye (caché, copias de seguridad, optimización), que consumen demasiados recursos del servidor o que abren riesgos de seguridad.
+
+Cuando el equipo técnico detecta problemas con un plugin, lo clasifica como restringido. Esta lista se actualiza de forma continua.
+
+<Info>
+  No necesitas plugins de caché ni de copias de seguridad: el hosting de WordPress de Chateea ya incluye caché de servidor, CDN y copias de seguridad diarias con restauración en un clic.
+</Info>
+
+## Caché, compresión y optimización
+
+El hosting ya gestiona la caché y la compresión. Estos plugins entran en conflicto con esa configuración:
+
+- `bwp-minify`
+- `cache-enabler`
+- `jch-optimize`
+- `litespeed-cache`
+- `quick-cache`
+- `quick-cache-pro`
+- `sg-cachepress`
+- `w3-total-cache`
+- `wordpress-gzip-compression`
+- `wp-cache`
+- `wp-file-cache`
+- `wp-super-cache`
+- `rvg-optimize-database`
+- `wp-database-optimizer`
+- `no-revisions`
+
+## Copias de seguridad y migración
+
+Las copias de seguridad ya están incluidas en el hosting. Estos plugins generan archivos pesados en el servidor y duplican esa función:
+
+- `backup`
+- `backup-scheduler`
+- `backupbuddy`
+- `backupwordpress`
+- `backwpup`
+- `backwpup-pro`
+- `duplicator`
+- `duplicator-pro`
+- `ezpz-one-click-backup`
+- `the-codetree-backup`
+- `updraft`
+- `versionpress`
+- `wp-db-backup`
+- `wp-db-backup-made`
+- `wponlinebackup`
+- `wpengine-migrate`, `wpengine-migrate.tar.gz` y `wpengine-migrate.zip`
+
+También están bloqueados los plugins de copias instantáneas de sitios, incluidos los que provienen de otros proveedores de hosting como WP Engine.
+
+## Acceso a la base de datos y ejecución de código
+
+Por seguridad, no se permiten plugins que dan acceso directo a la base de datos o que ejecutan código PHP desde el contenido:
+
+- `adminer`
+- `allow-php-execute`
+- `exec-php`
+- `file-commander`
+- `portable-phpmyadmin`
+- `wp-dbmanager`
+- `wp-phpmyadmin`
+
+<Tip>
+  Si necesitas administrar la base de datos, usa phpMyAdmin desde **Configuración avanzada → Configuración del servidor** en el panel de tu sitio.
+</Tip>
+
+## Estadísticas, contenido relacionado y alto consumo
+
+Estos plugins hacen consultas pesadas a la base de datos en cada visita o escaneos continuos que ralentizan el sitio:
+
+- `async-google-analytics`
+- `broken-link-checker`
+- `contextual-related-posts`
+- `dynamic-related-posts`
+- `jr-referrer`
+- `p3`
+- `p3-profiler`
+- `seo-alrp`
+- `similar-posts`
+- `super-post`
+- `wordpress-popular-posts`
+- `wp-postviews`
+- `wp-slimstat`
+
+## Otros plugins restringidos
+
+- `amazon-ebay-integration`
+- `woocommerce-amazon-ebay-integration`
+- `codistoconnect`
+- `bad-behavior`
+- `content-molecules`
+- `dynamic-widgets`
+- `fuzzy-seo-booster`
+- `gd-system-plugin` y `gd-system-plugin.php`
+- `google-xml-sitemaps-with-multisite-support`
+- `hc-custom-wp-admin-url`
+- `hcs.php`
+- `hello.php`
+- `inactive-user-deleter`
+- `jumpple`
+- `login-wall`
+- `missed-schedule`
+- `ozh-who-sees-ads`
+- `pagefrog`
+- `pipdig-power-pack`
+- `recommend-a-friend`
+- `si-captcha-for-wordpress`
+- `spamreferrerblock`
+- `ssclassic`
+- `sspro`
+- `superslider`
+- `sweetcaptcha-revolutionary-free-captcha-service`
+- `text-passwords`
+- `toolspack`
+- `tweet-blender`
+- `wonderm00ns-simple-facebook-open-graph-tags`
+- `wp-rss-multi-importer`
+- `wp-symposium-alerts`
+- Really Simple SSL
+
+<Note>
+  Really Simple SSL no hace falta: el certificado SSL se emite automáticamente cuando conectas tu dominio y el sitio carga por HTTPS.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si intento instalar un plugin bloqueado?">
+    El hosting no permite usarlo. Busca una alternativa que no esté en la lista o comprueba si la función ya está incluida en el hosting (caché, copias de seguridad, SSL).
+  </Accordion>
+  <Accordion title="Necesito un plugin de la lista para mi negocio. ¿Qué hago?">
+    Escribe a soporte de Chateea en **help@chateea.com** y cuéntanos qué necesitas lograr. Te ayudaremos a encontrar una alternativa compatible.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestionar plugins y temas" icon="puzzle-piece" href="/sitios/wordpress-gestionar-plugins-y-temas">
+    Actualiza, activa o elimina extensiones desde Chateea.
+  </Card>
+  <Card title="Solucionador de plugins" icon="stethoscope" href="/sitios/wordpress-solucionador-de-plugins">
+    Encuentra el plugin que está rompiendo tu sitio.
+  </Card>
+</CardGroup>

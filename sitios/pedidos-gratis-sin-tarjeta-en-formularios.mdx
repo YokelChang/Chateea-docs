@@ -1,0 +1,72 @@
+---
+title: "Pedidos gratis sin tarjeta en formularios y encuestas"
+description: "Oculta los campos de pago cuando el pedido cuesta cero para que el cliente termine sin dar su tarjeta."
+icon: "credit-card"
+---
+
+Si ofreces productos gratuitos o cupones que dejan el total en cero, pedir una tarjeta de crédito solo genera fricción y abandono. Con la opción **Requerir tarjeta en pedidos de $0** desactivada, tus formularios y encuestas ocultan automáticamente los campos de pago cuando el pedido no cuesta nada, y el cliente completa la compra sin dar datos bancarios.
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre el editor">
+    Ve a **Sitios → Formularios** o **Sitios → Encuestas** y abre el formulario o la encuesta que vende tus productos.
+  </Step>
+  <Step title="Selecciona el elemento de productos">
+    Haz clic en el elemento **Vender productos** (Sell Products) dentro del formulario.
+  </Step>
+  <Step title="Desactiva el requisito de tarjeta">
+    En el panel de configuración del elemento, apaga la opción **Requerir tarjeta en pedidos de $0** (Require card for $0 orders).
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda los cambios. Se aplican de inmediato.
+  </Step>
+</Steps>
+
+## Cuándo se ocultan los campos de pago
+
+Los campos de la tarjeta desaparecen solo si se cumplen **las tres** condiciones:
+
+| Condición | Detalle |
+| --- | --- |
+| Total igual a cero | Contando todos los productos, variantes y cupones aplicados |
+| Sin cobros recurrentes | No hay suscripciones ni pagos programados a futuro |
+| Total confirmado | El precio final ya está calculado y no va a cambiar |
+
+Si falla cualquiera de ellas, el formulario muestra los campos de pago por seguridad.
+
+## Limitaciones
+
+- **Las suscripciones siempre piden tarjeta.** Aunque el primer cobro sea de cero (por ejemplo, una prueba gratuita), los pagos recurrentes futuros necesitan un método de pago guardado.
+- **Formularios dentro de embudos.** Si el formulario está insertado en un embudo, manda la configuración del embudo por encima de la del elemento.
+- **Donaciones e importes libres.** Los pagos de tipo donación o de importe personalizado siempre muestran los campos de la tarjeta.
+
+<Note>
+  La opción viene activada por defecto (se pide tarjeta siempre). Tus formularios actuales siguen igual hasta que la desactives manualmente en cada elemento **Vender productos**.
+</Note>
+
+<Tip>
+  Combina esta opción con un cupón del 100 % para regalar un producto a clientes concretos, o para dar acceso gratuito a un recurso descargable sin pedir tarjeta.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Mi pedido es gratis pero sigue pidiendo tarjeta, ¿por qué?">
+    Revisa que la opción esté desactivada en el elemento **Vender productos**, que no haya productos recurrentes en el pedido y que no sea una donación o un importe personalizado. Si el formulario está en un embudo, revisa también la configuración del embudo.
+  </Accordion>
+  <Accordion title="¿Se crea igualmente el pedido y el contacto?">
+    Sí. El cliente completa el formulario con normalidad; solo se omiten los campos de pago.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cobrar pagos en encuestas" icon="credit-card" href="/sitios/cobrar-pagos-en-encuestas">
+    Vende productos y acepta pagos desde una encuesta.
+  </Card>
+  <Card title="Pagos manuales en formularios y encuestas" icon="money-bill" href="/sitios/pagos-manuales-en-formularios">
+    Acepta pagos fuera de línea.
+  </Card>
+</CardGroup>
