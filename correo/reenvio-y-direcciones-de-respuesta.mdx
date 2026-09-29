@@ -1,0 +1,105 @@
+---
+title: "Reenvío, dirección de respuesta y copias en CCO"
+description: "Configura quién recibe copia de las respuestas de tus contactos, a dónde van las respuestas y las copias ocultas."
+icon: "reply"
+---
+
+Cuando un contacto responde a tus correos, la respuesta llega a **Conversaciones**. Si además quieres recibir copias en la bandeja de alguien del equipo, enviar las respuestas a otra dirección o guardar una copia oculta de lo que envías, lo configuras desde **Configuración → Servicios de correo → Configuración de respuesta y reenvío** (Reply & Forward Settings).
+
+## Opciones disponibles
+
+| Opción | Qué hace |
+| --- | --- |
+| **Dirección de reenvío** | Envía una copia de cada respuesta de tus contactos a las bandejas que indiques. La respuesta sigue apareciendo en Conversaciones. |
+| **Dirección de respuesta** | Hace que las respuestas vayan a esa dirección **en lugar de** llegar a Conversaciones. |
+| **Correos en CCO** | Te envía una copia oculta de cada correo que sale de tu cuenta. |
+| **Reenviar al usuario asignado** | Envía las respuestas del contacto directamente a la bandeja del usuario asignado. |
+
+<Warning>
+  La dirección de reenvío y los correos en CCO solo funcionan cuando envías con el correo de Chateea. No están disponibles si tu cuenta envía con un proveedor SMTP externo.
+</Warning>
+
+## Dirección de reenvío
+
+Úsala cuando quieras que una persona reciba en su bandeja cada respuesta de un contacto, sin dejar de tener la conversación completa en Chateea.
+
+Puedes escribir varias direcciones separadas por comas:
+
+```text
+ventas@tunegocio.com, gerencia@tunegocio.com
+```
+
+<Note>
+  Los archivos adjuntos que envía el contacto no se reenvían. Para verlos, abre la conversación en Chateea.
+</Note>
+
+## Dirección de respuesta
+
+Al agregar una dirección de respuesta, todas las respuestas de tus contactos se envían a esa dirección y **ya no aparecen en Conversaciones**. Además, si contestas desde esa bandeja externa, tu respuesta tampoco se sincroniza con Chateea.
+
+Puedes agregar hasta **5 direcciones**. Escríbelas en **Dirección de respuesta** y haz clic en **Guardar**.
+
+<Tip>
+  Si quieres conservar el historial completo de cada contacto en Chateea, usa la dirección de reenvío en lugar de la dirección de respuesta.
+</Tip>
+
+## Correos en CCO
+
+Recibes una copia oculta de cada correo individual (1 a 1), de cada correo enviado por un flujo de trabajo y de cada correo de facturación que salga de tu cuenta. Los envíos masivos y las campañas de correo **no** generan copia en CCO.
+
+## Reenviar al usuario asignado
+
+Si activas esta opción, el usuario asignado al contacto recibe las respuestas en su bandeja. Se usa el correo que tiene en **Configuración → Mi equipo → Editar usuario → Información del usuario**.
+
+## Costo de los correos reenviados
+
+Cada correo reenviado cuenta como un envío normal y se descuenta de la **billetera** de tu cuenta con la misma tarifa. Todos los correos entrantes y salientes (Para, CC y CCO) generan consumo. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+
+En el detalle de transacciones de la billetera puedes identificar cada cargo por su tipo de servicio y por su identificador de evento.
+
+## Seguimiento de respuestas
+
+Para que las respuestas vuelvan a Conversaciones, Chateea usa una dirección de respuesta técnica sobre tu subdominio de envío. Por ejemplo, si envías desde `hola@gmail.com`, en el encabezado de respuesta verás algo como `hola@replies.tudominio.com`. Así el sistema captura la respuesta y la coloca en la conversación del contacto, donde puedes contestar o disparar flujos de trabajo.
+
+<Warning>
+  Copiar esa dirección técnica y escribirle un correo nuevo no llega a Conversaciones. Solo funciona cuando el contacto responde al correo original que enviaste desde Chateea.
+</Warning>
+
+Si la dirección de respuesta apunta directamente a tu correo remitente, las respuestas llegan a esa bandeja y **no** se registran en Conversaciones.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no se reenvían los archivos adjuntos?">
+    El reenvío desde Servicios de correo no incluye adjuntos. Si el contacto responde con un archivo, ábrelo desde la conversación en Chateea.
+  </Accordion>
+  <Accordion title="¿Por qué desaparecen las direcciones de reenvío después de guardar?">
+    Si una dirección no es válida, o pertenece a un dominio dedicado que ya está agregado en tu cuenta, no se puede usar para reenvío y no se guarda.
+  </Accordion>
+  <Accordion title="¿Los correos reenviados tienen costo?">
+    Sí. Cada correo reenviado se cobra igual que un envío normal y se descuenta de tu billetera.
+  </Accordion>
+  <Accordion title="¿Dónde veo qué correos reenviados se cobraron?">
+    En el detalle de transacciones de tu billetera, dentro de **Configuración → Facturación**. Cada cargo muestra el tipo de servicio que lo generó y un identificador único del evento.
+  </Accordion>
+  <Accordion title="¿Las campañas masivas generan copia en CCO?">
+    No. La copia en CCO solo aplica a correos individuales, correos de flujos de trabajo y correos de facturación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Qué remitente ven tus contactos" icon="envelope" href="/correo/remitente-de-tus-correos">
+    Orden de prioridad del correo "De" en cada tipo de envío.
+  </Card>
+  <Card title="CC y CCO en correos" icon="envelope" href="/conversaciones/cc-y-cco-en-correos">
+    Agrega copias a correos individuales desde Conversaciones.
+  </Card>
+  <Card title="Qué es el correo de Chateea" icon="envelope" href="/correo/que-es-el-correo-de-chateea">
+    El servicio de envío incluido en tu cuenta.
+  </Card>
+  <Card title="Solucionar problemas de entrega SMTP" icon="circle-question" href="/smtp/solucion-de-problemas">
+    Qué revisar si tus correos no salen.
+  </Card>
+</CardGroup>

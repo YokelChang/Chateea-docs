@@ -1,0 +1,129 @@
+---
+title: "Credenciales SMTP de tu dominio dedicado"
+description: "Crea, restablece y elimina credenciales SMTP, elige el puerto correcto y conoce los límites de envío por SMTP."
+icon: "key"
+---
+
+Las credenciales SMTP te permiten enviar correos con tu dominio dedicado desde herramientas externas, como un plugin SMTP de WordPress, tu sitio web o tu cliente de correo. Cada dominio dedicado tiene sus propias credenciales: no se comparten entre dominios.
+
+En esta guía verás cómo crear, restablecer y eliminar credenciales, qué puertos usar, los límites de envío y por qué no puedes usarlas para recibir correo (IMAP).
+
+## Crear credenciales SMTP
+
+<Note>
+Solo puedes crear credenciales SMTP para un **dominio dedicado** que hayas agregado y verificado en tu cuenta. Si aún no tienes uno, sigue [Agregar y verificar tu dominio de envío](/correo/agregar-y-verificar-dominio-de-envio).
+</Note>
+
+<Steps>
+<Step title="Abre la configuración SMTP de tu dominio">
+Ve a **Configuración → Servicios de correo → Servicio SMTP → Dominio dedicado e IP** y, en tu dominio dedicado, abre **Configuración SMTP** (SMTP Settings).
+</Step>
+<Step title="Crea un usuario SMTP">
+Haz clic en **Crear nuevo usuario SMTP** (Create New SMTP User) e ingresa un nombre de usuario y una contraseña.
+</Step>
+<Step title="Copia los datos de conexión">
+Usa los datos que se muestran en pantalla para configurar tu herramienta externa.
+</Step>
+</Steps>
+
+| Dato | Valor |
+| --- | --- |
+| Servidor SMTP | El que aparece en la pantalla de configuración SMTP de tu dominio |
+| Conexión segura | TLS o SSL, según tu cliente de correo o plugin |
+| Usuario SMTP | El usuario que creaste, con el formato `usuario@tudominio.com` |
+| Contraseña SMTP | La contraseña que definiste |
+| Puertos | 25, 465 (SSL/TLS), 587 (STARTTLS) o 2525 |
+
+<Info>
+El acceso SMTP pasa por un sistema de aprobación automática. Las cuentas que cumplen los requisitos pueden crear credenciales de inmediato. Si el botón **Crear nuevo usuario SMTP** aparece desactivado o ves un aviso, revisa la sección de solución de problemas más abajo.
+</Info>
+
+## Qué puerto usar
+
+| Puerto | Protocolo | Cuándo usarlo |
+| --- | --- | --- |
+| **587** | STARTTLS | Recomendado para la mayoría de clientes de correo y plugins SMTP. |
+| **465** | SSL/TLS | Si tu cliente exige TLS implícito desde el inicio de la conexión. |
+| **2525** | SMTP alternativo | Si tu hosting o proveedor de internet bloquea los otros puertos. |
+| **25** | SMTP estándar | Retransmisión entre servidores. Muchos proveedores de internet lo bloquean para uso de clientes. |
+
+## Restablecer la contraseña
+
+En la configuración SMTP de tu dominio, busca la credencial y haz clic en la opción para restablecerla. Confirma en la ventana emergente con **Restablecer contraseña** (Reset Password). Recuerda actualizar la nueva contraseña en todas las herramientas que usaban la anterior.
+
+## Eliminar una credencial
+
+En la configuración SMTP de tu dominio, busca la credencial, haz clic en **Eliminar** (Delete) y confirma en la ventana emergente. Las herramientas que usaban esa credencial dejarán de poder enviar.
+
+## Límites
+
+| Límite | Valor |
+| --- | --- |
+| Credenciales por dominio dedicado | Hasta 5 |
+| Correos por día por cuenta | 1.500 |
+
+<Warning>
+Si superas el límite diario de 1.500 correos, **todas las credenciales SMTP se eliminan automáticamente** de todos los dominios dedicados de tu cuenta, y tendrás que volver a crearlas cuando tu cuenta vuelva a estar dentro del límite.
+</Warning>
+
+## Costo de los envíos
+
+Cada correo enviado o recibido se cobra de forma individual y se descuenta de la **billetera** de tu cuenta. Cada destinatario cuenta por separado: un correo con un destinatario en Para, uno en CC y uno en CCO cuenta como 3 correos, tanto para el cobro como para el límite diario. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+
+## ¿Y la configuración IMAP?
+
+El correo de Chateea no aloja buzones, así que **no admite IMAP ni POP** y las credenciales SMTP no sirven para recibir correo. SMTP es para enviar; IMAP es para leer los mensajes de tu buzón. Si necesitas IMAP, pide los datos a tu proveedor de correo (el que aloja tu buzón).
+
+Por ejemplo, con Google Workspace o Gmail, genera una contraseña de aplicación en tu cuenta de Google y usa:
+
+| Dato | Valor |
+| --- | --- |
+| Usuario | Tu dirección de correo completa |
+| Contraseña | Tu contraseña de aplicación de Google |
+| Servidor IMAP | `imap.gmail.com` |
+| Puerto IMAP | 993 |
+
+Para otros proveedores, revisa su documentación oficial. Algunos enlaces útiles: [Amazon WorkMail](https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html), [HostGator](https://www.hostgator.com/help/article/email-connection-settings), [IONOS](https://www.ionos.com/help/email/general-topics/settings-for-your-email-programs-imap-pop3/), [Rackspace](https://docs.rackspace.com/support/how-to/rackspace-email-and-hosted-exchange-settings/), [Bluehost](https://www.bluehost.com/help/article/email-application-setup), [Titan](https://support.titan.email/hc/en-us/articles/900000215446-Configure-Titan-on-other-apps-using-IMAP-POP), [DreamHost](https://help.dreamhost.com/hc/en-us/articles/215612887-Email-client-protocols-and-port-numbers), [InMotion](https://www.inmotionhosting.com/support/email/getting-started-guide-email/).
+
+## Solución de problemas
+
+### No puedo crear un usuario SMTP
+
+Si el botón **Crear nuevo usuario SMTP** está desactivado o aparece un aviso, el sistema de aprobación automática todavía no habilitó el acceso SMTP para ese dominio. Escribe a soporte de Chateea en **help@chateea.com** e incluye:
+
+- El dominio o subdominio de envío.
+- Una captura de pantalla del aviso.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Por qué veo el mensaje «La creación de credenciales SMTP está bloqueada»?">
+Aparece cuando tu cuenta alcanzó ciertos umbrales de uso o fue marcada por los controles internos contra abusos, normalmente por superar el límite de 1.500 correos al día. Escribe a soporte de Chateea en **help@chateea.com** para revisar el bloqueo.
+</Accordion>
+<Accordion title="¿Qué pasa con mis credenciales si supero el límite diario?">
+Se eliminan automáticamente de todos los dominios dedicados de tu cuenta. Tendrás que volver a crearlas cuando tu cuenta esté dentro de los límites.
+</Accordion>
+<Accordion title="¿Qué puerto uso en mi plugin SMTP de WordPress?">
+El **587 con STARTTLS** es la opción recomendada. Usa el **465** si tu plugin exige TLS implícito y el **2525** si tu hosting bloquea los demás.
+</Accordion>
+<Accordion title="¿Puedo recibir correo con estas credenciales?">
+No. Son solo para enviar. Para recibir, usa la configuración IMAP de tu proveedor de correo, como Google Workspace u Outlook.
+</Accordion>
+<Accordion title="¿Cuántas credenciales puedo crear por dominio?">
+Hasta cinco por cada dominio dedicado.
+</Accordion>
+<Accordion title="¿Los destinatarios en CCO cuentan para el límite?">
+Sí. Cada destinatario en Para, CC y CCO cuenta y se cobra por separado.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Agregar y verificar tu dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+Necesitas un dominio dedicado para crear credenciales.
+</Card>
+<Card title="Solucionar problemas de entrega SMTP" icon="circle-question" href="/smtp/solucion-de-problemas">
+Qué revisar si tus envíos SMTP fallan.
+</Card>
+</CardGroup>

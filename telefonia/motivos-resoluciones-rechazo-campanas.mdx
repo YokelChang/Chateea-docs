@@ -1,0 +1,246 @@
+---
+title: "Rechazos de campañas A2P: códigos y correcciones"
+description: "Qué significa cada código de rechazo de tu campaña A2P, cuáles admiten reenvío y cómo corregirlos antes de volver a enviarla."
+icon: "circle-xmark"
+---
+
+Cuando los operadores rechazan tu campaña A2P 10DLC, Chateea te muestra el motivo del rechazo y lo que debes corregir antes de volver a enviarla. En esta guía verás dónde consultar las correcciones, qué significa cada código de rechazo, cuándo se puede reenviar una campaña y cuándo no, y cómo resolver los problemas más frecuentes de consentimiento, sitio web, datos del negocio, caso de uso y contenido.
+
+## Por qué se revisan las campañas
+
+Las campañas A2P 10DLC pasan por una revisión (vetting) para reducir el spam, el fraude y los mensajes no deseados en las redes de los operadores. La revisión confirma que el caso de uso, el método de suscripción, los mensajes de ejemplo y los datos del negocio están completos, son correctos y coinciden con los mensajes que vas a enviar.
+
+Una campaña recién enviada puede quedar en estado **Pendiente** hasta que termine la revisión. Si no cumple los requisitos, se rechaza con las correcciones necesarias.
+
+## Cómo ver las correcciones necesarias
+
+<Steps>
+  <Step title="Abre tus campañas">
+    Ve a **Configuración → Sistema telefónico → Trust Center**, abre **Marcas y campañas** y entra en la pestaña **Campañas**.
+  </Step>
+  <Step title="Localiza la campaña rechazada">
+    Busca la campaña con estado **Rechazada** y revisa los motivos que aparecen.
+  </Step>
+  <Step title="Abre el detalle de cada motivo">
+    Haz clic en **Ver correcciones necesarias** (View required fixes) junto a cada motivo. Se abre una ventana con cuatro campos:
+
+    | Campo | Qué indica |
+    | --- | --- |
+    | Código de error | El código que devolvió el operador |
+    | Categoría del rechazo | Una etiqueta legible, por ejemplo "URL de sitio web no válida" |
+    | Qué significa | Por qué falló el envío |
+    | Corrección necesaria | Lo que debes hacer antes de reenviar |
+  </Step>
+  <Step title="Corrige y reenvía">
+    Aplica cada corrección indicada y reenvía la campaña cuando todo esté resuelto.
+  </Step>
+</Steps>
+
+<Tip>
+  Una campaña puede tener varios motivos de rechazo. Abre las correcciones de **cada uno** y resuélvelos todos antes de reenviar. Si corriges solo una parte, lo más probable es que la vuelvan a rechazar.
+</Tip>
+
+## Antes de reenviar
+
+Algunos motivos se corrigen editando la campaña existente. Otros exigen crear una campaña nueva, porque el campo que hay que cambiar no se puede editar al reenviar. Por ejemplo, el **caso de uso** y el **mensaje de suscripción** pueden no ser editables: si tienes que cambiarlos, crea y envía una campaña nueva.
+
+<Warning>
+  Revisa la campaña completa, no solo el campo señalado. Comprueba que la descripción, el caso de uso, los mensajes de ejemplo, el sitio web, el flujo de suscripción, la política de privacidad y los términos y condiciones son correctos y coherentes entre sí.
+</Warning>
+
+| Si tu campaña está... | Qué hacer |
+| --- | --- |
+| **Pendiente** | Espera a que termine la revisión. No reenvíes ni crees otra campaña mientras tanto. |
+| **Rechazada con un error corregible** | Abre **Ver correcciones necesarias**, corrige todo, revisa la campaña completa y reenvíala. |
+| **Rechazada y el campo a corregir no es editable** | Corrige el problema de fondo y crea una campaña nueva si hace falta. |
+| **Rechazada por contenido prohibido o de alto riesgo** | No reenvíes la misma campaña. Revisa las restricciones de mensajería. |
+| **Aprobada, pero los SMS no funcionan** | Comprueba que el número que envía está vinculado a la campaña aprobada y revisa el error de SMS por separado. |
+
+## Rechazos que puedes corregir y reenviar
+
+Aplica la corrección de cada código, actualiza el registro de la campaña y reenvíala.
+
+### Suscripción y consentimiento
+
+| Código | Qué significa | Corrección necesaria |
+| --- | --- | --- |
+| **30909** | Los revisores no pueden verificar tu llamada a la acción ni el flujo de mensajes. | Describe la llamada a la acción completa y todos los métodos de consentimiento. Si están detrás de un inicio de sesión, aporta capturas alojadas en un enlace público. |
+| **30913** | El consentimiento de marketing debe pedirse aparte del informativo o transaccional. | Añade un consentimiento separado para mensajes promocionales. Si solo envías transaccionales, acláralo en la descripción. |
+| **30917** | Marcaste varios métodos de suscripción pero no los describiste todos. | Describe en el flujo de suscripción cada método que marcaste. |
+| **30923** | El consentimiento para mensajes está incluido en términos obligatorios. | Haz que la suscripción sea una acción separada y opcional. El cliente debe poder rechazar los mensajes y seguir usando tu servicio. |
+| **30924** | Faltan avisos obligatorios junto al consentimiento. | Incluye junto a la casilla: tipo de mensajes, frecuencia, "pueden aplicarse tarifas de mensajes y datos" e instrucciones para responder STOP. |
+| **30925** | Falta la casilla de consentimiento o viene marcada. | Añade una casilla específica para SMS, desmarcada por defecto. |
+| **30931** | El formulario no permite rechazar los mensajes. | Añade una opción para omitir o una casilla desmarcada. Un solo botón no puede otorgar todos los permisos, incluidos los mensajes. |
+| **30932** | Tu política de privacidad indica que compartes datos de suscripción con terceros para marketing. | Indica expresamente que la información móvil no se compartirá con terceros con fines de marketing. |
+| **30896** | El flujo de suscripción no basta para el tipo de campaña, falta consentimiento o se comparte con terceros. | Cumple las pautas de la CTIA y lista todos los métodos. Si el formulario es en papel o está tras un inicio de sesión, da un enlace a una imagen. Si está en la web, da el enlace: debe incluir política de privacidad y términos. |
+| **30887** | Indicaste que gestionas bajas, pero el flujo no es claro o faltan palabras clave o mensaje de baja. | Describe el proceso de baja, añade las palabras clave y un mensaje que confirme la solicitud, indique que no recibirá más mensajes e incluya el nombre de tu marca. |
+| **30890** | La respuesta a HELP no incluye nombre de marca, teléfono ni correo. | Haz que el mensaje de HELP incluya tu marca y un teléfono o correo de contacto. |
+
+### Sitio web
+
+| Código | Qué significa | Corrección necesaria |
+| --- | --- | --- |
+| **30919** | El sitio no tiene suficiente información del negocio ni del programa de mensajes. | Añade nombre de la empresa, descripción de servicios, contacto, política de privacidad y una mención a tu programa de SMS. |
+| **30920** | El sitio es solo un formulario, sin contexto del negocio. | Rodea el formulario de información: nombre de la empresa, a qué se dedica y cómo contactarla. |
+| **30921** | El sitio exige iniciar sesión y los revisores no pueden verlo. | Crea una página pública que describa tu negocio y tu programa de mensajes. |
+| **30922** | El sitio no cumple los requisitos de verificación (en construcción o URL no estándar). | Usa una URL estándar que funcione. Si aún no has lanzado, indícalo en la descripción y aporta capturas. |
+| **30891** | La URL no es válida o el sitio no funciona. | Comprueba que funcione, o aclara en la descripción que el registro es para un sitio aún no lanzado. |
+| **30907** | La URL no coincide con la descripción de la campaña ni con la marca. | Asegúrate de que el sitio corresponde a la marca registrada y a la campaña. |
+| **30908** | No se encontró una política de privacidad válida. | Haz que la política sea accesible e incluye su enlace directo en el flujo de mensajes. |
+| **30888** | No hay verificación de edad en el sitio o en el flujo de suscripción. | Añade una verificación de edad sólida en tu sitio o en tu flujo de suscripción. |
+
+### Identidad del negocio
+
+| Código | Qué significa | Corrección necesaria |
+| --- | --- | --- |
+| **30914** | El contenido de la campaña de empresario individual no coincide con el nombre registrado. | Alinea descripción, mensajes de ejemplo y sitio web con el nombre registrado. |
+| **30915** | Te registraste como empresario individual pero usas un nombre corporativo (LLC, Inc.). | Regístrate como marca estándar con tu EIN y tus datos corporativos. |
+| **30918** | El nombre comercial (DBA) no coincide con el nombre legal registrado. | Añade tu nombre comercial al registro de la marca antes de reenviar. |
+| **30926** | La campaña menciona varias empresas o marcas. | Registra una campaña distinta para cada marca. |
+| **30927** | La prueba de suscripción muestra otra empresa. | Asegúrate de que capturas y URLs muestran exactamente el nombre de la marca registrada. |
+| **30971** | El correo de contacto es personal (Gmail, Yahoo). | Usa un correo con el dominio de tu negocio, por ejemplo nombre@tuempresa.com. |
+| **30972** | El contacto no es un representante autorizado del negocio. | Cambia el contacto por un representante autorizado. |
+| **30881** | El correo de soporte de la marca no es válido o es de un proveedor público. | Usa un correo válido con el dominio de tu negocio. |
+| **30894** | La campaña no está asociada a la marca correcta. | Verifica que los datos de la marca son válidos y están bien asociados a la campaña. |
+| **30903** | La marca no cumple los criterios de empresario individual de TCR y los operadores. | Registra una marca estándar y un caso de uso estándar acorde con ella. |
+
+### Caso de uso y mensajes de ejemplo
+
+| Código | Qué significa | Corrección necesaria |
+| --- | --- | --- |
+| **30910** | Hay campos que no están en inglés. | Los campos del registro deben estar en inglés. Añade la traducción al inglés junto a los mensajes originales. |
+| **30911** | El mismo texto está copiado en varios campos o todos los ejemplos son iguales. | Cada campo debe tener contenido propio y cada mensaje de ejemplo debe ser distinto. |
+| **30912** | Parece mensajería personal (P2P), no A2P. | Explica qué software envía los mensajes y cómo sirve a tus clientes. |
+| **30916** | Elegiste generación de clientes potenciales pero describes seguimiento (o al revés). | Generación = primer contacto para conseguir clientes nuevos. Seguimiento = relación continua con clientes existentes. Elige el que corresponda. |
+| **30928** | La comunicación de influencers o figuras públicas no es un caso de uso válido. | Regístrate como negocio y plantea la campaña con un caso de uso comercial (comercio electrónico, avisos de eventos). |
+| **30929** | Las alertas de emergencia no están permitidas por A2P 10DLC. | Escribe a **help@chateea.com** para valorar alternativas. |
+| **30930** | Tu marca alcanzó el límite de 100 campañas. | Da de baja las campañas que ya no uses. |
+| **30886** | La descripción no explica bien el propósito o no coincide con el caso de uso. | Escribe una descripción precisa y detallada. |
+| **30893** | Faltan mensajes de ejemplo, no son claros o no coinciden con el caso de uso. | Usa el ejemplo 1 para marketing y el 2 para informativos. En campañas mixtas, incluye al menos uno de cada tipo. Marca los campos variables entre corchetes, como [Nombre]. Incluye tu marca en al menos un mensaje y la opción de baja en al menos otro. |
+| **30892** | Los ejemplos usan acortadores públicos o URLs sin HTTPS. | Quita acortadores como bit.ly y usa URLs completas con HTTPS. |
+| **30889** | Marcaste que incluyes un teléfono en los mensajes, pero no aparece en los ejemplos. | Añade el teléfono a los ejemplos o corrige esa opción. |
+
+### Registro y marca
+
+| Código | Qué significa | Corrección necesaria |
+| --- | --- | --- |
+| **30895** | La campaña es de préstamos directos y falta el atributo correspondiente. | Marca préstamos directos en el registro, o ajusta la descripción si la campaña no trata de eso. |
+| **30898** | El mismo EIN se usa en varias marcas. | Registra el mínimo de marcas por EIN. No reenvíes hasta actualizar el registro de la marca. |
+| **30995** | La cuenta alcanzó el límite de números en sus servicios de mensajería. | Escribe a **help@chateea.com**. |
+
+## Rechazos que no se pueden reenviar
+
+Estos códigos corresponden a categorías de mensajes prohibidas. Aplican a la descripción de la campaña, los mensajes de ejemplo, el contenido del sitio web y cualquier enlace.
+
+### Contenido SHAFT
+
+| Código | Categoría |
+| --- | --- |
+| **30953** | Sexo o contenido para adultos |
+| **30954** | Odio, violencia, groserías o incitación a la violencia |
+| **30955** | Promoción de alcohol |
+| **30956** | Alcohol sin verificación sólida de mayoría de edad (21+) |
+| **30957** | Armas de fuego, fuegos artificiales o explosivos |
+| **30958** | Tabaco, vapeadores o productos similares |
+
+### Contenido no permitido
+
+| Código | Categoría |
+| --- | --- |
+| **30940** | Cannabis, CBD, marihuana o sustancias ilegales |
+| **30941** | Medicamentos con receta o sustancias controladas |
+| **30942** | Marketing de préstamos (día de pago, prenda de auto, personales) |
+| **30943** | Cobranza de deudas de terceros |
+| **30944** | Juegos de azar o apuestas |
+| **30945** | Sorteos o concursos |
+| **30946** | Alertas bursátiles o señales de inversión |
+| **30947** | Trading de criptomonedas o promoción de tokens |
+| **30948** | Inversiones de alto riesgo (forex, opciones binarias) |
+| **30949** | Reducción o consolidación de deudas |
+| **30950** | Reparación de crédito |
+| **30951** | Generación de clientes potenciales para terceros o marketing multinivel |
+| **30952** | Caso de uso que no cumple la normativa federal |
+
+### Alto riesgo
+
+| Código | Categoría |
+| --- | --- |
+| **30959** | Contenido fraudulento o engañoso |
+| **30960** | Campaña identificada como phishing |
+| **30961** | Sitio o URL con mala reputación de dominio |
+| **30962** | Prácticas de marketing engañosas (falsa urgencia, cebo y cambio, testimonios falsos) |
+| **30963** | Uso de acortadores de URL públicos (bit.ly, tinyurl) |
+| **30964** | URLs con HTTP en lugar de HTTPS |
+
+### Códigos antiguos (antes del 23 de marzo de 2026)
+
+Desde el 23 de marzo de 2026, los códigos generales se sustituyeron por los códigos detallados de las tablas anteriores. Puede que aún los veas en rechazos antiguos.
+
+| Código | Categoría |
+| --- | --- |
+| **30882** | La campaña no cumple los términos y condiciones de los operadores |
+| **30883** | Contenido SHAFT (sexo, odio, alcohol, armas, tabaco o marihuana/CBD) |
+| **30884** | Spam o phishing detectado en el número, el negocio o el tráfico |
+| **30885** | Alto riesgo: fraude, marketing engañoso o cesión de datos a terceros |
+| **30897** | Contenido no permitido o cesión de datos a terceros en la política o los términos |
+
+## Tarifas de revisión y reenvío
+
+La revisión de campañas puede tener tarifas de verificación, y las campañas tienen cuotas recurrentes que varían según el tipo de registro, el tipo de campaña y los requisitos vigentes de los operadores. El importe se descuenta de la billetera de tu cuenta; consulta las tarifas en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+
+## Error "Maximum 3 tries exhausted"
+
+Este error indica que los intentos de registro de la marca fallaron porque los datos del negocio no coinciden o no son válidos.
+
+1. Consigue tu carta de confirmación del EIN **CP-575**, o pide al IRS la carta **147C** si no la tienes.
+2. Envíala (o una captura) a soporte de Chateea en **help@chateea.com**.
+3. Soporte enviará la documentación para la aprobación de tu marca.
+
+Ten en cuenta:
+
+- El nombre legal y el EIN deben coincidir **exactamente** con la carta CP-575.
+- No uses el nombre de los formularios W-2 o W-9, porque puede ser distinto.
+- Si el nombre ocupa varias líneas en la carta, escribe todas las líneas que hay encima de la dirección.
+
+```text
+ABC Holding Group Inc.
+Division of Regional Services
+123 Main Street
+New York, NY 10001
+```
+
+En este ejemplo, el nombre legal es: **ABC Holding Group Inc. Division of Regional Services**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo reenviar en cuanto corrija?">
+    Sí, en los códigos que admiten reenvío. Cuando resuelvas todos los motivos, reenvía desde el Trust Center. La nueva revisión del operador puede tardar.
+  </Accordion>
+  <Accordion title="Mi campaña tiene varios motivos de rechazo. ¿Tengo que corregirlos todos?">
+    Sí. Si corriges solo algunos, lo más probable es que la vuelvan a rechazar.
+  </Accordion>
+  <Accordion title="Me rechazaron con un código que no admite reenvío. ¿Puedo apelar?">
+    Sí. Si crees que el rechazo es un error, escribe a **help@chateea.com** con el asunto "Apelación de campaña 10DLC para [nombre del negocio o número]" y explica tu caso con todo detalle.
+  </Accordion>
+  <Accordion title="Corregí el problema y me volvieron a rechazar. ¿Qué hago?">
+    Lee los nuevos motivos con atención: los operadores pueden detectar otros problemas en revisiones posteriores. Si crees que tu campaña cumple y los rechazos siguen, escribe a soporte.
+  </Accordion>
+  <Accordion title="¿Por qué mi campaña está en Pendiente?">
+    Porque los operadores o los socios de registro la están revisando. Si se aprueba, podrás enviar mensajes A2P; si no, se rechazará con las correcciones necesarias.
+  </Accordion>
+  <Accordion title="¿Cuesta reenviar una campaña rechazada?">
+    Depende del tipo de rechazo y de los requisitos vigentes de los operadores. Consulta las tarifas en **Configuración → Facturación**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registrar la campaña con el widget de chat" icon="comments" href="/telefonia/registro-campana-a2p-con-widget-de-chat">
+    Evita rechazos de consentimiento con el flujo guiado.
+  </Card>
+  <Card title="Error 30034: vincular tu número a la campaña" icon="link" href="/diccionario-codigos-error/30034-numero-no-cumple-requisitos-a2p-registrese-en-a2p">
+    Si tu campaña está aprobada pero no puedes enviar.
+  </Card>
+</CardGroup>

@@ -1,0 +1,118 @@
+---
+title: "Límites de llamadas entrantes"
+description: "Cuántas llamadas por minuto admite cada número según use IVR, IA de voz o enrutamiento normal, y qué pasa si se superan."
+icon: "gauge-high"
+---
+
+Chateea aplica límites de frecuencia a las llamadas entrantes para proteger el sistema telefónico de patrones abusivos, automatizados o anormalmente altos, sin afectar las llamadas legítimas. El límite que aplica depende de cómo atiende las llamadas cada número: con un IVR, con la IA de voz o con el enrutamiento normal a tu equipo.
+
+Conocer estos límites te ayuda a planificar campañas o eventos con mucho volumen de llamadas y a entender por qué, en casos extremos, una llamada puede bloquearse.
+
+<Note>
+Estos límites aplican solo a **llamadas telefónicas entrantes**. No los confundas con los límites de las llamadas salientes de la IA de voz ni con el límite de sesiones simultáneas del widget de IA de voz en el navegador.
+</Note>
+
+## Límite de frecuencia frente a llamadas simultáneas
+
+Un **límite de frecuencia** mide cuántas llamadas entran en un periodo de tiempo (por ejemplo, por minuto). Las **llamadas simultáneas** son las que están activas en el mismo instante. Son cosas distintas: diez personas que llaman a la vez no superan un límite de 200 llamadas por minuto.
+
+## Cómo se miden
+
+| Medida | Qué representa | Ejemplo |
+| --- | --- | --- |
+| **Desde un número** | Llamadas que salen del mismo número de quien llama. | Un número externo que llama una y otra vez a tus números. |
+| **Hacia un número** | Llamadas que llegan al mismo número de Chateea. | Muchas personas llamando a la misma línea de tu negocio. |
+| **Límite de infracciones** | Cantidad de infracciones registradas en una hora. | Más de cinco infracciones pueden bloquear todas las llamadas entrantes de tu cuenta. |
+
+Un límite escrito como «más de 200 llamadas por minuto» significa que se infringe solo cuando se superan las 200.
+
+## Tabla de límites
+
+| Tipo de número | Desde un mismo número | Hacia un mismo número | Qué pasa si se supera |
+| --- | --- | --- | --- |
+| **Conectado a un IVR** | No aplica | No aplica | Estos límites no se aplican. |
+| **Conectado a la IA de voz** | Más de 200 llamadas/minuto | Más de 200 llamadas/minuto | Se bloquea la llamada que supera el límite y se registra una infracción. |
+| **Número normal** | Más de 10 llamadas/minuto | Más de 15 llamadas/minuto | Se bloquea la llamada que supera el límite y se registra una infracción. |
+
+Un **número normal** es el que recibe llamadas sin pasar por un IVR ni por la IA de voz.
+
+## Qué pasa cuando se supera un límite
+
+- **Una infracción:** se bloquea solo la llamada que superó el límite y se registra la infracción.
+- **Más de cinco infracciones en una hora:** pueden bloquearse **todas las llamadas entrantes** de tu cuenta. Escribe a soporte de Chateea en **help@chateea.com** para revisar el tráfico y restablecer las llamadas entrantes.
+
+## IA de voz y llamadas simultáneas
+
+Si diez personas llaman a la vez a tu número con IA de voz, están muy por debajo del límite de más de 200 llamadas por minuto. Aun así, ese límite de frecuencia no es una garantía de sesiones simultáneas ilimitadas: el agente solo contestará si el número está bien asignado, el modo de enrutamiento es el correcto y está dentro de su horario de atención.
+
+| Experiencia de voz | Límite publicado | ¿Aplica a llamadas entrantes? |
+| --- | --- | --- |
+| **IA de voz por número de teléfono** | Más de 200 llamadas/minuto desde o hacia un número | Sí |
+| **Widget de IA de voz en el navegador** | 20 llamadas simultáneas por cuenta | No. Es una experiencia distinta, desde el navegador. |
+| **Llamadas salientes de la IA de voz** | Límites propios de frecuencia y diarios | No. Son reglas de salida. |
+
+## Cómo preparar tu enrutamiento para mucho volumen
+
+<Steps>
+  <Step title="Define cómo debe atenderse cada número">
+    Decide si el número usará un IVR, la IA de voz o el enrutamiento normal a tu equipo. El límite aplicable depende de esa elección.
+  </Step>
+  <Step title="Configura la IA de voz si debe atender llamadas">
+    Ve a **IA → IA de voz**, abre el agente y entra a la pestaña **Implementar** (Deploy). Asigna el número o grupo de números y elige **Contestar llamadas directamente** para que conteste de inmediato, o **Usar como respaldo** si tu equipo debe intentar primero. Revisa el **horario de atención** del agente.
+  </Step>
+  <Step title="Prepara la capacidad de tu equipo por separado">
+    El límite de frecuencia no es lo mismo que la capacidad de tu equipo para contestar. Si las llamadas van a personas, confirma que estén activos los dispositivos correctos (aplicación web, aplicación móvil, teléfono o teléfono VoIP). Puedes hacer sonar hasta **seis miembros adicionales** a la vez: el primero que contesta se queda con la llamada.
+  </Step>
+  <Step title="Usa un IVR si encaja con tu flujo">
+    Si quien llama debe elegir entre opciones antes de hablar con alguien, crea el IVR en **Automatización → Flujos de trabajo** y asígnalo en la configuración de desvío del número. Los números con IVR no están sujetos a estos límites.
+  </Step>
+  <Step title="Prueba antes del evento">
+    Haz llamadas de prueba para confirmar que contesta el destino correcto. Si esperas una campaña, un evento o una difusión que pueda acercarse a los límites, escribe a **help@chateea.com** antes del lanzamiento para revisar el volumen previsto.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- **Elige el tipo de enrutamiento correcto** según la experiencia que quieres dar.
+- **Reparte el tráfico concentrado:** un número normal alcanza su límite de destino mucho antes que uno con IA de voz.
+- **Vigila a quienes llaman repetidamente:** el límite «desde un número» puede activarse aunque las llamadas vayan a distintos números tuyos.
+- **Protege la IA de voz del spam** con sus controles de detección y bloqueo.
+- **No mezcles límites de entrada y de salida:** las llamadas salientes de la IA de voz tienen sus propias reglas.
+- **Avisa con tiempo** a soporte si esperas picos de tráfico.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Si 10 personas llaman a la vez a mi número con IA de voz, ¿puede atenderlas?">
+    Diez llamadas en el mismo minuto están muy por debajo del límite de más de 200 por minuto. No existe un límite publicado de sesiones simultáneas para la IA de voz por teléfono, pero eso no significa capacidad ilimitada. Revisa la asignación del número, el modo de enrutamiento y el horario del agente antes de un pico de tráfico.
+  </Accordion>
+  <Accordion title="¿El límite de 20 llamadas simultáneas aplica a mis números de teléfono?">
+    No. Ese límite es del widget de IA de voz que funciona en el navegador, no de las llamadas telefónicas entrantes.
+  </Accordion>
+  <Accordion title="¿Los números con IVR no tienen ninguna restricción?">
+    No están sujetos a estos límites de frecuencia, pero pueden aplicar otras reglas de enrutamiento, de la plataforma, de las operadoras o de la cuenta.
+  </Accordion>
+  <Accordion title="Si reparto las llamadas entre varios números, ¿evito las infracciones?">
+    Reduces la concentración en un solo número de destino, pero las llamadas repetidas desde el mismo número externo pueden seguir activando el límite «desde un número».
+  </Accordion>
+  <Accordion title="¿El límite de entrada es lo mismo que la capacidad de mi equipo para contestar?">
+    No. El límite controla el tráfico que entra a Chateea. Que una persona conteste depende de tus usuarios, sus dispositivos, el timbre simultáneo, el tiempo de espera y su disponibilidad.
+  </Accordion>
+  <Accordion title="¿Estos límites aplican a las llamadas salientes de la IA de voz?">
+    No. Las llamadas salientes tienen sus propios límites de frecuencia, diarios, de números y de horario.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Flujo de llamadas entrantes con IA de voz" icon="robot" href="/ia/flujo-de-llamadas-entrantes-voz-ia">
+    Contestar directamente o como respaldo.
+  </Card>
+  <Card title="Fin de llamada inteligente y antispam" icon="shield-halved" href="/ia/fin-de-llamada-inteligente-y-antispam">
+    Protege a tu agente de llamadas no deseadas.
+  </Card>
+  <Card title="Llamadas salientes con IA de voz" icon="phone-arrow-up-right" href="/ia/llamadas-salientes-ia-de-voz">
+    Límites y reglas de las llamadas de salida.
+  </Card>
+</CardGroup>

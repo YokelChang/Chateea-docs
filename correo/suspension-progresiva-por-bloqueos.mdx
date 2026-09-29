@@ -1,0 +1,109 @@
+---
+title: "Pausas de envío por bloqueos de proveedores de correo"
+description: "Cómo Chateea avisa y pausa temporalmente tus envíos cuando los proveedores de correo bloquean demasiados correos."
+icon: "shield-halved"
+---
+
+Chateea vigila de forma automática cuántos de tus correos rechazan los proveedores de correo (Gmail, Outlook, Yahoo, etc.). Si los rechazos, llamados **bloqueos de proveedor**, superan niveles sanos, se aplica una respuesta progresiva: primero un aviso y, si el problema continúa, pausas temporales del envío de correo. El objetivo es proteger la reputación de tu dominio y evitar un daño más grave a tu entregabilidad.
+
+## ¿Qué es un bloqueo de proveedor?
+
+Un bloqueo ocurre cuando un proveedor de correo rechaza un mensaje por problemas de reputación, autenticación, interacción, contenido o comportamiento de envío. Muchos bloqueos seguidos indican que algo en tus envíos no está bien y que seguir enviando puede empeorar la situación.
+
+El monitoreo funciona solo, a nivel de tu cuenta, y no requiere configuración.
+
+## Cómo funciona la aplicación progresiva
+
+| Etapa | Qué pasa |
+| --- | --- |
+| 1. Aviso | Recibes un correo de advertencia cuando los bloqueos superan el nivel sano. |
+| 2. Pausa de 12 horas | Si los bloqueos continúan, el envío de correo de tu cuenta se pausa 12 horas. |
+| 3. Pausa de 24 horas | Si vuelve a ocurrir después de la primera pausa, el envío se pausa 24 horas. |
+| 4. Suspensión permanente (fase futura) | En una fase posterior, las pausas repetidas podrían llevar a suspender de forma permanente el envío de correo de la cuenta. |
+
+### Correo de advertencia
+
+Te da tiempo para revisar tu configuración, tu volumen y la calidad de tus contactos antes de que se pause el envío. Puede incluir:
+
+- Tu tasa actual de bloqueos.
+- El nivel recomendado.
+- Por qué los proveedores pueden estar bloqueando tus correos.
+- Los pasos recomendados y una guía para resolver los bloqueos.
+
+### Pausa de 12 horas
+
+Si los bloqueos siguen después del aviso:
+
+- El envío de correo de tu cuenta se desactiva temporalmente.
+- Recibes un correo de notificación.
+- Aparece un aviso dentro de Chateea.
+- El envío se reanuda **automáticamente** al terminar las 12 horas.
+
+### Aviso dentro de Chateea
+
+Mientras el envío está pausado, verás un aviso en la plataforma que indica que el envío de correo está bloqueado, el motivo, la hora estimada de reanudación y un botón **Más información**.
+
+### Pausa de 24 horas
+
+Si los bloqueos se repiten después de la primera pausa, significa que la causa original no se resolvió. El envío se pausa 24 horas. Aprovecha ese tiempo para:
+
+- Revisar tus estadísticas de correo.
+- Confirmar que SPF, DKIM y DMARC estén bien configurados.
+- Reducir tu volumen de envío.
+- Enviar solo a contactos que interactúan.
+- Limpiar contactos inactivos o de baja calidad.
+
+<Warning>
+  En una fase futura, si tu cuenta acumula pausas repetidas, el envío de correo podría suspenderse de forma permanente. Chateea avisará antes de activar esta etapa.
+</Warning>
+
+## Cómo evitar los bloqueos
+
+- Configura bien SPF, DKIM y DMARC. Consulta [DMARC y autenticación de correo](/correo/dmarc-autenticacion-de-correo).
+- Envía primero a tus contactos más activos.
+- Evita subidas repentinas de volumen. Consulta [Buenas prácticas y calentamiento de correo](/correo/buenas-practicas-y-calentamiento-de-correo).
+- Elimina contactos inválidos, inactivos, que rebotaron o que no interactúan.
+- Revisa tu contenido: evita palabras típicas de spam, enlaces rotos y asuntos engañosos.
+- Revisa tus estadísticas y la clasificación de rebotes con frecuencia.
+- Reduce tus envíos en cuanto notes que los bloqueos aumentan.
+
+## Qué hacer si tu envío está pausado
+
+1. Detén las campañas que no sean esenciales.
+2. Revisa tus envíos recientes y detecta picos de volumen.
+3. Comprueba tus registros de autenticación.
+4. Revisa las categorías de bloqueo en tus estadísticas de correo.
+5. Limpia tu lista de contactos.
+6. Prioriza a tus contactos más activos.
+7. Cuando termine la pausa, retoma los envíos con cuidado y de forma gradual.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que activar el monitoreo?">
+    No. Está activo automáticamente en tu cuenta.
+  </Accordion>
+  <Accordion title="¿Qué pasa después del correo de advertencia?">
+    Si los bloqueos continúan, el envío de correo se pausa temporalmente.
+  </Accordion>
+  <Accordion title="¿Cuánto duran las pausas?">
+    La primera dura 12 horas. Si el problema se repite, la siguiente dura 24 horas.
+  </Accordion>
+  <Accordion title="¿El envío se reanuda solo?">
+    Sí. Al terminar la pausa, el envío se reanuda automáticamente.
+  </Accordion>
+  <Accordion title="¿La suspensión puede ser permanente?">
+    En una fase futura, las pausas repetidas podrían llevar a una suspensión permanente del envío de correo de la cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Bloqueos de proveedores de correo" icon="shield-check" href="/correo/bloqueos-de-proveedores-de-correo">
+    Cómo resolver un bloqueo y restablecer tus envíos.
+  </Card>
+  <Card title="Salud de envío: rebotes, quejas y aperturas" icon="heart-pulse" href="/correo/salud-de-envio-rebotes-quejas-y-aperturas">
+    Las métricas que vigilan los proveedores de correo.
+  </Card>
+</CardGroup>

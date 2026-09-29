@@ -1,0 +1,105 @@
+---
+title: "Permisos de los paneles"
+description: "Define si un panel es privado o compartido y qué nivel de acceso tiene cada rol de tu equipo."
+icon: "lock"
+---
+
+Cada panel puede ser privado, visible solo para quien lo creó, o compartido con tu equipo con distintos niveles de acceso. Así el equipo comercial puede consultar sus números sin arriesgarse a borrar o modificar un panel que usa la dirección.
+
+## Niveles de acceso
+
+| Nivel | Qué permite |
+| --- | --- |
+| **Total** (Full) | Crear, editar, compartir y eliminar el panel. |
+| **Edición** (Edit) | Editar el panel y sus widgets. No permite eliminarlo. |
+| **Solo lectura** (View) | Ver el panel sin cambiar nada. |
+| **Sin acceso** (No Access) | El panel no aparece para ese rol. |
+
+## Qué puede hacer cada nivel
+
+| Acción | Total | Edición | Solo lectura | Sin acceso | Panel privado de otro | Propietario |
+| --- | --- | --- | --- | --- | --- | --- |
+| Gestionar permisos | Sí | No | No | No | No | Sí |
+| Eliminar el panel | Sí | No | No | No | No | Sí |
+| Marcarlo como predeterminado | Sí | No | No | No | No | Sí |
+| Editar el panel | Sí | Sí | No | No | No | Sí |
+| Clonar el panel | Sí | Sí | No | No | No | Sí |
+| Ver el panel | Sí | Sí | Sí | No | No | Sí |
+
+Ten en cuenta estas reglas:
+
+- Solo el propietario del panel o quien tenga acceso **Total** puede cambiar sus permisos.
+- Solo un **administrador** de la cuenta con acceso **Total** al panel puede marcarlo como [panel predeterminado](/informes/panel-predeterminado).
+- Un panel privado solo lo ve quien lo creó.
+
+## Asignar permisos al crear un panel
+
+<Steps>
+  <Step title="Agrega un panel">
+    En **Panel de control**, abre el selector de paneles y haz clic en **Agregar panel**.
+  </Step>
+  <Step title="Elige un panel en blanco">
+    En **Crear un panel en blanco**, haz clic en **Seleccionar**.
+  </Step>
+  <Step title="Define los permisos y confirma">
+    En la ventana **Nuevo panel**, deja activado **Panel privado** si solo lo vas a usar tú. Si quieres compartirlo, desactívalo y elige el nivel de acceso para cada rol. Haz clic en **Confirmar**.
+  </Step>
+</Steps>
+
+## Cambiar los permisos de un panel existente
+
+<Steps>
+  <Step title="Abre la gestión de permisos">
+    En el panel, haz clic en el menú de tres puntos y elige **Gestionar permisos**.
+  </Step>
+  <Step title="Ajusta y guarda">
+    Usa el interruptor **Privado** para alternar entre privado (solo tú) y compartido. Si lo compartes, ajusta el nivel de cada rol y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Roles y jerarquía
+
+Dentro de tu cuenta hay dos roles con permisos configurables sobre los paneles: **Administrador** y **Usuario**.
+
+Los permisos siguen una jerarquía: el administrador está por encima del usuario, y un rol inferior nunca puede tener más acceso que uno superior. Si reduces el acceso del rol superior, el del inferior se ajusta automáticamente.
+
+Por ejemplo, si el panel tiene Administrador en **Edición** y Usuario en **Edición**, y cambias Administrador a **Solo lectura**, el Usuario pasa también a **Solo lectura**.
+
+## Exportar datos
+
+El permiso **Exportar datos** controla si una persona puede descargar los datos de los widgets del panel. Te permite compartir informes con tu equipo y, al mismo tiempo, decidir quién puede sacar información de la cuenta.
+
+<Tip>
+  Para que cada vendedor vea solo sus propios contactos y oportunidades dentro de un panel compartido, combina los permisos del panel con la opción [Solo datos asignados](/informes/datos-asignados-en-paneles).
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si no configuro permisos?">
+    Si el panel no es privado y no restringes ningún rol, queda visible para todos los usuarios de la cuenta.
+  </Accordion>
+  <Accordion title="¿Qué restringe exactamente Solo datos asignados?">
+    Filtra los widgets para que cada usuario vea únicamente los registros que tiene asignados (contactos, oportunidades, citas, conversaciones, etc.).
+  </Accordion>
+  <Accordion title="¿Cómo quito el acceso a un rol?">
+    Vuelve a abrir **Gestionar permisos** y cambia el nivel de ese rol a **Sin acceso**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Editar un panel" icon="pen-to-square" href="/informes/editar-un-panel">
+    Cambia el nombre, los widgets y el diseño.
+  </Card>
+  <Card title="Clonar un panel" icon="copy" href="/informes/clonar-un-panel">
+    Crea una copia para reutilizarla.
+  </Card>
+  <Card title="Fijar paneles favoritos" icon="thumbtack" href="/informes/fijar-paneles-favoritos">
+    Ten a mano los paneles que más usas.
+  </Card>
+  <Card title="Invita a tu equipo" icon="users" href="/primeros-pasos/invita-a-tu-equipo">
+    Agrega usuarios y define sus roles.
+  </Card>
+</CardGroup>

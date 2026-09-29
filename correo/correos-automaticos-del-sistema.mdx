@@ -1,0 +1,93 @@
+---
+title: "Correos automáticos que envía el sistema"
+description: "Lista de correos del sistema sobre citas, reseñas, facturas y acceso de usuarios, y cuáles puedes desactivar."
+icon: "list"
+---
+
+Además de los correos que tú diseñas, Chateea envía correos automáticos del sistema: avisos de citas, solicitudes de reseña, notificaciones de facturas y correos de acceso para tu equipo. Esta referencia te dice cuáles son, qué los dispara, quién los recibe y cuáles puedes desactivar.
+
+## Citas, reseñas y redes sociales
+
+| Correo | Cuándo se envía | ¿Se puede desactivar? |
+| --- | --- | --- |
+| **Nueva solicitud de cita** | Cuando alguien reserva en un calendario sin asignar o en un calendario de grupo. | Sí, desde la configuración del calendario |
+| **Solicitud de reseña (correo y SMS)** | Después de una cita, para pedirle al contacto que deje una reseña. | Sí |
+| **Reconexión de red social** | Cuando vence el acceso de una red conectada al Planificador social y hay que volver a conectarla. | Sí |
+| **Nueva reseña** | Cuando llega una reseña pública en una de las plataformas conectadas a tu cuenta. | Sí |
+
+### Desactivar los avisos de nueva solicitud de cita
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Configuración → Calendarios** y abre el calendario.
+  </Step>
+  <Step title="Entra en la pestaña de confirmación">
+    Haz clic en la pestaña **Confirmación**.
+  </Step>
+  <Step title="Ajusta los avisos">
+    En calendarios de grupo, desactiva los avisos de nueva solicitud para los usuarios asignados. En calendarios sin asignar, elimina los correos que reciben el aviso. Guarda los cambios.
+  </Step>
+</Steps>
+
+<Note>
+  Si el calendario tiene activadas la **confirmación automática** y el **envío de alertas de citas por correo**, los dueños de la cita pueden seguir recibiendo el aviso de solicitud.
+</Note>
+
+### Quién aparece como remitente
+
+- Los avisos de calendario salen desde una dirección del sistema del tipo `no-reply@` sobre tu dominio de envío, salvo que tengas un proveedor SMTP conectado.
+- Las solicitudes de reseña y las notificaciones de reconexión de redes sociales muestran como remitente al **usuario que tiene la sesión iniciada**.
+
+<Tip>
+  Si quieres que la solicitud de reseña salga en nombre del usuario asignado al contacto, usa la acción **Enviar solicitud de reseña** en un flujo de trabajo.
+</Tip>
+
+## Facturas y pagos
+
+Las facturas generan dos flujos de avisos distintos: uno para tu negocio y otro para tu cliente. Se disparan con los mismos eventos, pero cada uno llega a un destinatario diferente.
+
+| Para tu negocio | Para tu cliente |
+| --- | --- |
+| Falló el intento de pago de una factura del cliente | Factura recibida |
+| El cliente pagó una factura con éxito | Pago de factura realizado con éxito |
+| Error en el cobro automático de una plantilla recurrente | Falló el intento de pago de una factura |
+| Se omitió el cobro automático porque el monto de la factura se editó a mano | Aviso de próximo cobro automático |
+| | Falló el cobro automático de una plantilla recurrente |
+
+## Acceso y seguridad de usuarios
+
+| Correo | Cuándo se envía |
+| --- | --- |
+| **Restablecer contraseña** | Cuando un usuario pide recuperar su contraseña desde la pantalla de inicio de sesión. |
+| **Código de verificación** | Cuando el inicio de sesión exige un código adicional. |
+| **Bienvenida de nuevo usuario** | Cuando se agrega un usuario a tu cuenta, con sus datos de acceso. |
+
+Estos correos son esenciales para entrar a la cuenta y **no se pueden desactivar** ni personalizar.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo desactivar todos los correos del sistema?">
+    No. Los de citas, reseñas y redes sociales tienen una opción que los controla. Los de restablecer contraseña, código de verificación y bienvenida de usuario son necesarios para el acceso y no se pueden apagar.
+  </Accordion>
+  <Accordion title="¿Por qué los correos del calendario salen desde una dirección no-reply?">
+    Es el remitente predeterminado cuando tu cuenta no tiene un proveedor SMTP conectado. Revisa [qué remitente ven tus contactos](/correo/remitente-de-tus-correos) para entender el orden de prioridad.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar el diseño de estos correos?">
+    Los correos de acceso (contraseña, código de verificación y bienvenida) no se pueden personalizar. Las confirmaciones de cita y las solicitudes de reseña se ajustan desde la configuración de cada calendario y de Reputación.
+  </Accordion>
+  <Accordion title="Un usuario no recibe los correos del sistema. ¿Qué reviso?">
+    Confirma que el correo del usuario esté bien escrito, revisa la carpeta de spam (sobre todo para restablecer contraseña) y verifica que su dominio no esté bloqueando al remitente. Si el problema sigue, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Qué remitente ven tus contactos" icon="envelope" href="/correo/remitente-de-tus-correos">
+    Orden de prioridad del correo "De" en cada tipo de envío.
+  </Card>
+  <Card title="Enlace para reseñas en tu correo de solicitud" icon="star" href="/gestion-reputacion/como-configurar-un-enlace-para-resenas-en-tu-correo-electronico-de-solicitud-de-resenas">
+    Personaliza la solicitud de reseña que reciben tus clientes.
+  </Card>
+</CardGroup>

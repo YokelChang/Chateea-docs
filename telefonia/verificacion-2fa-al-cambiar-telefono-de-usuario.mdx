@@ -1,0 +1,137 @@
+---
+title: "Verificación en dos pasos al cambiar el teléfono de un usuario"
+description: "Cómo funciona la verificación obligatoria al cambiar el teléfono de tu perfil o del de tu equipo, qué canales puedes usar y el límite diario de intentos."
+icon: "shield-check"
+---
+
+Cada vez que alguien cambia el número de teléfono del perfil de un usuario, Chateea pide una verificación en dos pasos (2FA). Es la misma protección que ya existe al cambiar el correo, y cierra una vía muy usada para robar cuentas: cambiar el teléfono de la víctima para recibir ahí los códigos de acceso.
+
+## Cómo funciona
+
+Antes de guardar el nuevo número, Chateea te pide un código enviado a un canal que **ya estaba verificado** en tu cuenta:
+
+- Tu **correo verificado**.
+- Tu **teléfono actual verificado** (por SMS).
+- Tu **aplicación de autenticación** (TOTP), si la tienes activada.
+
+<Warning>
+  El código **nunca** se envía al número nuevo que estás agregando. Así, aunque alguien intente poner su propio número en tu perfil, no puede completar el cambio.
+</Warning>
+
+## Para qué te sirve
+
+- **Protege tu cuenta:** evita que alguien se apropie de ella cambiando el teléfono.
+- **Experiencia coherente:** funciona igual que el cambio de correo con 2FA.
+- **Más confianza:** refuerza el control sobre los datos sensibles de tu equipo.
+- **Protección contra abuso:** el límite diario de intentos frena los ataques de prueba y error.
+
+## Antes de empezar
+
+Para poder cambiar tu teléfono necesitas **al menos un canal verificado** y tener acceso a él en ese momento:
+
+| Canal | Cuándo aparece como opción |
+| --- | --- |
+| **Correo** (recomendado) | Siempre que tu correo esté verificado. |
+| **SMS** | Solo si tu teléfono **actual** está verificado. |
+| **Aplicación de autenticación** (recomendado) | Si activaste previamente una app TOTP. |
+
+Además, tu rol debe permitirte editar tu propio perfil. Si eres administrador y vas a cambiar el teléfono de otra persona, necesitas permiso para editar perfiles del equipo.
+
+<Tip>
+  Si todavía no tienes ningún canal verificado, verifica tu correo o activa una aplicación de autenticación **antes** de intentar el cambio. Así no te quedas bloqueado a mitad del proceso.
+</Tip>
+
+## Límite de intentos
+
+- Puedes hacer como máximo **5 intentos de cambio de teléfono o correo por usuario al día**.
+- Al llegar al límite, los siguientes intentos se bloquean hasta que el contador se reinicia, y verás un mensaje indicándolo.
+
+Si llegas al límite sin esperarlo, revisa si otro administrador o un proceso automático intentó cambios en tu nombre ese mismo día.
+
+## Cambiar tu propio número
+
+<Steps>
+  <Step title="Abre tu perfil">
+    Ve a **Configuración → Mi perfil**.
+  </Step>
+  <Step title="Escribe el número nuevo">
+    En **Datos personales**, edita el teléfono, escribe el número nuevo y haz clic en **Actualizar perfil**.
+  </Step>
+  <Step title="Elige cómo verificar">
+    En la ventana **Elige cómo verificar**, selecciona uno de tus canales disponibles: **Correo**, **Mensaje de texto** (a tu teléfono actual) o **Usar aplicación de autenticación**.
+  </Step>
+  <Step title="Ingresa el código">
+    Haz clic en **Continuar**. Si elegiste correo o SMS, busca el código y escríbelo. Si elegiste la aplicación de autenticación, escribe el código de 6 dígitos que aparece en ella.
+  </Step>
+  <Step title="Confirma el cambio">
+    Tras la verificación verás un mensaje de éxito y tu perfil mostrará el número nuevo.
+  </Step>
+</Steps>
+
+## Cambiar el número de un miembro del equipo (administradores)
+
+<Steps>
+  <Step title="Abre el perfil del usuario">
+    Ve a **Configuración → Mi personal** y abre el perfil del miembro del equipo.
+  </Step>
+  <Step title="Edita el teléfono">
+    Cambia el **número de teléfono** por el nuevo.
+  </Step>
+  <Step title="Elige cómo verificar">
+    En **Elige cómo verificar**, selecciona un canal. El código llega a los canales verificados **del miembro del equipo**, no a los tuyos. Si usa aplicación de autenticación, él mismo te dará el código.
+  </Step>
+  <Step title="Completa el cambio">
+    Escribe el código que te comparta el usuario por una vía segura y haz clic en **Continuar**.
+  </Step>
+</Steps>
+
+## Seguridad y auditoría
+
+- Los códigos solo se envían a canales **verificados** y nunca al número nuevo.
+- El límite diario de intentos reduce los ataques de fuerza bruta.
+- Si tu plan incluye registros de actividad, puedes revisar quién inició cada cambio y cuándo.
+- Activar una aplicación de autenticación te da una opción que funciona aunque no tengas señal para recibir SMS.
+
+## Solución de problemas
+
+| Problema | Qué hacer |
+| --- | --- |
+| No aparece ninguna opción de verificación | Verifica tu correo o activa una aplicación de autenticación. Necesitas al menos un canal verificado. |
+| No aparece la opción SMS | Tu teléfono actual no está verificado. Usa correo o aplicación de autenticación, o verifica primero tu número actual. |
+| No llega el código | Revisa la carpeta de spam, confirma que tienes señal para SMS y pide un código nuevo cuando lo permita el temporizador. |
+| Llegaste al límite diario | Espera a que se reinicie el contador. Considera activar una app de autenticación para depender menos del SMS. |
+| Perdiste acceso a tu correo y a tu teléfono | Usa tus códigos de respaldo si los tienes, o pide ayuda al administrador de tu cuenta. Si eres el administrador, escribe a **help@chateea.com**. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no puedo recibir el código en mi número nuevo?">
+    Por seguridad, los códigos solo van a canales ya verificados. Así se bloquea a quien intente agregar su propio número y recibir ahí el código.
+  </Accordion>
+  <Accordion title="No veo la opción SMS. ¿Qué hago?">
+    SMS solo aparece si tu teléfono actual está verificado. Usa correo o aplicación de autenticación, o verifica primero tu número actual.
+  </Accordion>
+  <Accordion title="¿Cuántos intentos puedo hacer al día?">
+    Hasta 5 cambios de teléfono o correo por usuario al día. Después quedas bloqueado temporalmente hasta que se reinicia el contador.
+  </Accordion>
+  <Accordion title="Si un administrador cambia mi número, ¿quién recibe el código?">
+    Tú, el usuario al que se le cambia el número. El código va a tus canales verificados, no a los del administrador.
+  </Accordion>
+  <Accordion title="¿Puedo usar mi aplicación de autenticación en lugar de correo o SMS?">
+    Sí. Si la tienes activada, elige **Usar aplicación de autenticación** y escribe el código de 6 dígitos vigente.
+  </Accordion>
+  <Accordion title="¿Cambia algo al actualizar mi correo?">
+    No. El cambio de correo ya pedía 2FA. Ahora el cambio de teléfono sigue el mismo estándar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Alertas de cambio de teléfono" icon="shield-check" href="/telefonia/alertas-de-cambio-de-telefono-y-reversion">
+    Recibe un aviso y revierte cambios inesperados en tu número.
+  </Card>
+  <Card title="Invita a tu equipo" icon="users" href="/primeros-pasos/invita-a-tu-equipo">
+    Agrega usuarios y define sus permisos.
+  </Card>
+</CardGroup>

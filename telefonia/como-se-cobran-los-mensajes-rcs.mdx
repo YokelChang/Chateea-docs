@@ -1,0 +1,180 @@
+---
+title: "Cómo se cobran los mensajes RCS"
+description: "Tipos de mensaje RCS, cálculo de segmentos por bytes, país de facturación y diferencias de cobro entre Estados Unidos y otros países."
+icon: "file-invoice"
+---
+
+El costo de un mensaje RCS depende de tres cosas: su **tipo** (RCS básico o RCS enriquecido), su **dirección** (saliente o entrante) y el **país** que se toma como referencia. Además, las reglas cambian entre Estados Unidos y el resto de países. Entender cómo se clasifica cada mensaje te ayuda a prever el gasto y a diseñar campañas más rentables. Los cargos se descuentan de la **billetera** de tu cuenta.
+
+<Info>
+  Las tarifas vigentes por país las ves en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). Pueden cambiar con el tiempo.
+</Info>
+
+## Tipos de mensaje RCS
+
+Cada mensaje se clasifica como **RCS básico** o **RCS enriquecido** (también llamado RCS individual o Single). La clasificación decide si se cobra **por segmento** o **por mensaje**, y qué tarifa se aplica.
+
+### RCS básico
+
+Mensajes solo de texto. La clasificación depende del país:
+
+- **Estados Unidos:** un mensaje solo de texto es **siempre básico**, sin importar su longitud. Si es largo, sigue siendo básico y solo aumenta el número de segmentos cobrados.
+- **Resto de países:** un mensaje solo de texto es básico si ocupa **160 bytes UTF-8 o menos**. Si supera esa cifra, pasa a cobrarse como **RCS enriquecido**, como un único mensaje y no como varios segmentos.
+
+### RCS enriquecido
+
+Un mensaje es enriquecido cuando:
+
+- Incluye un **archivo adjunto o una tarjeta con multimedia**, en cualquier país y con cualquier longitud de texto.
+- Fuera de Estados Unidos, es solo de texto pero supera los **160 bytes UTF-8**.
+
+<Note>
+  En Estados Unidos, un mensaje de texto largo no se vuelve enriquecido. Sigue siendo básico y se cobra según sus segmentos.
+</Note>
+
+## Qué es un segmento RCS
+
+En los mensajes RCS básicos de Estados Unidos, el cobro se calcula por segmentos. Un segmento equivale a **160 bytes UTF-8** del texto del mensaje:
+
+```text
+Segmentos = el mayor entre 1 y (bytes UTF-8 del texto ÷ 160, redondeado hacia arriba)
+```
+
+| Tamaño del texto | Segmentos cobrados |
+| --- | --- |
+| Mensaje vacío | 1 |
+| 1 a 160 bytes | 1 |
+| 161 a 320 bytes | 2 |
+| 321 a 480 bytes | 3 |
+| 481 a 640 bytes | 4 |
+
+**Ejemplos:**
+
+- "Hola, esto es una prueba." ocupa 25 bytes: **1 segmento**.
+- Un texto de 200 caracteres en inglés ocupa 200 bytes: **2 segmentos**.
+- 80 emojis, a 4 bytes cada uno, ocupan 320 bytes: **2 segmentos**.
+
+### Bytes, no caracteres
+
+El cálculo se basa en **bytes UTF-8**, no en caracteres visibles:
+
+- La mayoría de las letras sin acento usan 1 byte.
+- Las letras con tilde, la ñ y muchos caracteres no latinos usan 2 o más bytes.
+- Los emojis suelen usar 4 bytes.
+
+Por eso dos mensajes con el mismo número de caracteres pueden tener distinto número de segmentos. Chateea recalcula los segmentos directamente a partir del texto del mensaje, y un mensaje vacío cuenta como 1 segmento.
+
+## Qué país se usa para cobrar
+
+| Dirección | País de referencia | Ejemplo |
+| --- | --- | --- |
+| **Saliente** | El país del número de destino | Envías a un cliente en el Reino Unido: se aplica la tarifa del Reino Unido |
+| **Entrante** | El país del teléfono que envía | Un cliente de Estados Unidos te escribe: se aplica la tarifa de Estados Unidos |
+
+El país se determina antes de aplicar las reglas de básico o enriquecido.
+
+## Cobro en Estados Unidos
+
+| Tipo | Dirección | Unidad de cobro |
+| --- | --- | --- |
+| RCS básico | Saliente | Por segmento (160 bytes UTF-8) |
+| RCS básico | Entrante | Por segmento (160 bytes UTF-8) |
+| RCS enriquecido | Saliente | Por mensaje |
+| RCS enriquecido | Entrante | Por mensaje |
+
+**Ejemplos:**
+
+- Mensaje saliente de 120 bytes sin imagen: básico, **1 segmento**.
+- Mensaje saliente de 350 bytes sin imagen: sigue siendo básico, **3 segmentos**.
+- Mensaje saliente con texto e imagen: enriquecido, se cobra **una vez por mensaje**, sin importar la longitud del texto.
+
+## Cobro fuera de Estados Unidos
+
+- **Básico** (texto de 160 bytes o menos): se cobra una vez, a la tarifa básica del país.
+- **Enriquecido** (con multimedia, o texto de más de 160 bytes): se cobra una vez, a la tarifa enriquecida del país.
+- **Entrantes:** se cobran por mensaje.
+
+**Ejemplos:**
+
+- Texto de 100 bytes sin multimedia: **básico**, un cobro a tarifa básica.
+- Texto de 250 bytes sin multimedia: supera el límite, así que es **enriquecido**, un cobro a tarifa enriquecida (no dos segmentos básicos).
+- Texto de 50 bytes con una imagen: **enriquecido** por la imagen.
+
+<Tip>
+  Fuera de Estados Unidos, mantener tus mensajes de texto en 160 bytes o menos marca una diferencia real de precio. Recuerda que las tildes, la ñ y los emojis ocupan más de un byte.
+</Tip>
+
+## Estados Unidos frente al resto de países
+
+| Situación | Estados Unidos | Resto de países |
+| --- | --- | --- |
+| Solo texto, 160 bytes o menos | Básico | Básico |
+| Solo texto, más de 160 bytes | Básico, con varios segmentos | Enriquecido |
+| Con archivo adjunto | Enriquecido | Enriquecido |
+| Con tarjeta multimedia | Enriquecido | Enriquecido |
+| Unidad de cobro del básico | Por segmento | Por mensaje |
+| Unidad de cobro del enriquecido | Por mensaje | Por mensaje |
+
+## Tarifas de operador
+
+Además del cargo del mensaje, pueden aplicarse **tarifas de operador**, que varían según el operador, el tipo de mensaje y la dirección. Se cobran aparte del cargo base del mensaje.
+
+## Mensajes fallidos y respaldo por SMS
+
+| Situación | Qué se cobra |
+| --- | --- |
+| El RCS falla y el SMS de respaldo se entrega | No se cobra el RCS. Solo pagas el SMS entregado |
+| El RCS falla y el SMS de respaldo también falla | Puede aplicarse una pequeña tarifa fija de procesamiento, salvo en ciertos errores (como 30036, 30002, 30450 o 21408), que no se cobran |
+
+Los primeros intentos de RCS que activan el respaldo no se cobran. Solo puede haber cargo si el SMS de respaldo final también falla.
+
+## Cómo calcular el cobro paso a paso
+
+<Steps>
+  <Step title="Determina el país">
+    Saliente: país del destino. Entrante: país del teléfono que envía.
+  </Step>
+  <Step title="Revisa si hay multimedia">
+    Si el mensaje lleva adjunto o tarjeta multimedia, es enriquecido: se cobra una vez a la tarifa enriquecida del país. Si no, sigue al paso 3.
+  </Step>
+  <Step title="Aplica la regla del país">
+    **Estados Unidos:** es básico. Calcula los segmentos y multiplícalos por la tarifa básica. **Otro país:** si el texto ocupa 160 bytes o menos, es básico (un cobro); si ocupa más, es enriquecido (un cobro).
+  </Step>
+  <Step title="Suma las tarifas de operador">
+    Añade las tarifas de operador que correspondan.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el número de segmentos no coincide con el que esperaba?">
+    Porque se calcula en bytes UTF-8, no en caracteres. Las tildes, la ñ, los caracteres no latinos y los emojis ocupan varios bytes.
+  </Accordion>
+  <Accordion title="¿Un texto largo en Estados Unidos se cobra como varios mensajes?">
+    No. Sigue siendo RCS básico y solo aumenta el número de segmentos cobrados. No se reclasifica como enriquecido.
+  </Accordion>
+  <Accordion title="¿Añadir una imagen cambia el cobro?">
+    Sí. Cualquier adjunto o tarjeta multimedia convierte el mensaje en enriquecido, que se cobra una vez por mensaje.
+  </Accordion>
+  <Accordion title="¿Qué país se usa si el cliente y yo estamos en países distintos?">
+    Depende de la dirección: en salientes, el país del destino; en entrantes, el país del teléfono que te escribe.
+  </Accordion>
+  <Accordion title="¿Las tarifas de operador están incluidas en el precio del mensaje?">
+    No. Se cobran aparte, además del cargo base del mensaje.
+  </Accordion>
+  <Accordion title="¿Los precios son definitivos?">
+    Varían según el país y pueden cambiar. Consulta siempre las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="RCS: mensajes enriquecidos con tu marca" icon="comment-dots" href="/telefonia/rcs-mensajes-enriquecidos">
+    Qué es RCS y cómo activarlo.
+  </Card>
+  <Card title="Crear fragmentos RCS y enviar mensajes" icon="layer-group" href="/telefonia/fragmentos-rcs-y-envio-de-mensajes-rcs">
+    Plantillas, envíos masivos y flujos.
+  </Card>
+</CardGroup>

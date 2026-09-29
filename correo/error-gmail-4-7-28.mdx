@@ -1,0 +1,89 @@
+---
+title: "Error de Gmail 4.7.28: tasa inusual de correo no solicitado"
+description: "Qué significa el límite temporal 4.7.28 de Gmail, por qué aparece y cómo recuperar tus envíos."
+icon: "envelope-circle-check"
+---
+
+Si al enviar correos a destinatarios de Gmail ves el error **4.7.28**, Gmail está limitando **temporalmente** los correos que recibe desde tu IP de envío porque detectó un comportamiento inusual. No es un bloqueo permanente ni una lista negra, y normalmente se resuelve solo cuando tus envíos vuelven a la normalidad.
+
+El mensaje que verás es similar a este:
+
+```text
+4.7.28 Gmail has detected an unusual rate of unsolicited mail originating from your IP
+```
+
+## ¿Mi IP está bloqueada?
+
+**No.** Es un límite temporal de ritmo, no un bloqueo.
+
+- Los códigos que empiezan con **4** significan que Gmail **aplaza** los correos, no que los rechaza.
+- Cuando tu comportamiento de envío mejora, Gmail retira la restricción automáticamente.
+- No tienes que pedir que te saquen de ninguna lista.
+
+## Por qué pasa
+
+Gmail protege a sus usuarios del spam con sistemas automáticos. Cuando detecta un pico repentino de volumen o patrones poco habituales, frena los correos de esa IP. Las causas más comunes son:
+
+- Un **aumento repentino del volumen**, sobre todo hacia direcciones de Gmail.
+- Enviar desde una **IP nueva o recién calentada**.
+- Campañas a contactos **inactivos o que no interactúan**.
+- Flujos de trabajo que envían correos con demasiada frecuencia.
+- Muchas **quejas de spam** o poca interacción.
+- Problemas de autenticación (SPF, DKIM o DMARC mal alineados).
+
+Incluso un remitente legítimo puede provocar este error si sube el volumen demasiado rápido.
+
+## Cómo solucionarlo
+
+<Steps>
+  <Step title="Reduce el volumen hacia Gmail">
+    Baja temporalmente la cantidad de correos a direcciones `@gmail.com` y `@googlemail.com`. Después, aumenta el volumen poco a poco en lugar de enviar en bloques grandes.
+  </Step>
+  <Step title="Envía solo a contactos que interactúan">
+    Prioriza a quienes abrieron o hicieron clic en tus correos recientemente. Evita listas viejas, inactivas o compradas.
+  </Step>
+  <Step title="Revisa tus flujos de trabajo y campañas">
+    Busca flujos que envíen correos repetidos o muy seguidos. Pausa o ajusta las campañas que provocaron el pico.
+  </Step>
+  <Step title="Confirma tu autenticación">
+    Revisa que SPF, DKIM y DMARC estén bien configurados en tu dominio de envío. Consulta [DMARC y autenticación de correo](/correo/dmarc-autenticacion-de-correo).
+  </Step>
+</Steps>
+
+## Cuánto tarda en recuperarse
+
+En la mayoría de los casos, Gmail retira el límite **en 24 a 72 horas** cuando tu envío se estabiliza. Mantener buenas prácticas acelera la recuperación.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que dejar de enviar por completo?">
+    No necesariamente. Pausar las campañas grandes y las automatizaciones que no son esenciales ayuda, pero no hace falta detener todo. Reducir el volumen y enfocarte en contactos activos suele ser suficiente.
+  </Accordion>
+  <Accordion title="¿Afecta también a Outlook o Yahoo?">
+    No. El error 4.7.28 es propio del sistema de Gmail. Los demás proveedores evalúan tu envío por separado.
+  </Accordion>
+  <Accordion title="Sigo viendo el error después de 72 horas">
+    Vuelve a revisar tu volumen, la calidad de tu lista y tu autenticación (SPF, DKIM y DMARC). Si el error se repite, la causa de fondo no se ha resuelto.
+  </Accordion>
+  <Accordion title="¿Daña para siempre mi reputación?">
+    Un episodio aislado no deja un daño duradero. Pero si se repite con frecuencia, puede afectar tu entregabilidad futura, así que conviene corregir la causa cuanto antes.
+  </Accordion>
+  <Accordion title="¿Cuándo puedo volver a mi volumen normal?">
+    Cuando deje de aparecer el error y tus tasas de rebote y quejas vuelvan a la normalidad. Sube el volumen en pasos pequeños, no de golpe.
+  </Accordion>
+  <Accordion title="¿Es lo mismo que estar en una lista negra?">
+    No. Las listas negras son listas de reputación de terceros y son un problema más grave. Este error es el limitador automático de Gmail y se resuelve solo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Requisitos de Google y Yahoo para remitentes" icon="shield-check" href="/correo/requisitos-de-google-y-yahoo-para-remitentes">
+    Lo que exigen los grandes proveedores a quienes envían en volumen.
+  </Card>
+  <Card title="Google Postmaster Tools" icon="chart-line" href="/correo/google-postmaster-tools">
+    Monitorea tu reputación ante Gmail.
+  </Card>
+</CardGroup>

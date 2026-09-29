@@ -1,0 +1,122 @@
+---
+title: "Conectar un proveedor de envío externo con clave API"
+description: "Conecta tu propio proveedor de envío a Chateea con su clave API privada y elige qué proveedor usa tu cuenta."
+icon: "key"
+---
+
+Por defecto, tu cuenta envía con el correo de Chateea. Si ya tienes una cuenta propia en un proveedor de envío externo que se conecta por API, puedes conectarla a Chateea con su **clave API privada** para que tus correos salgan por tu propia infraestructura y tu dominio verificado.
+
+En este artículo verás qué preparar antes de conectar, cómo agregar el servicio, qué proveedor usa tu cuenta cuando hay varios configurados y cómo resolver los problemas más comunes.
+
+<Warning>
+  La clave API privada es un secreto. No la compartas en capturas de pantalla, correos, chats ni tickets de soporte. Si crees que se expuso, genera una nueva en tu proveedor y actualízala en Chateea.
+</Warning>
+
+## Antes de empezar
+
+- Ten una cuenta activa en tu proveedor de envío externo.
+- Ten al menos un **dominio o subdominio verificado** en ese proveedor, creado en la región de **Estados Unidos (US)**. Los dominios de la región de Europa no aparecen en Chateea.
+- Completa todos los registros DNS que pide el proveedor (SPF, DKIM, MX y CNAME). Si tu dominio está en SiteGround, consulta [Registros DNS de correo en SiteGround](/correo/registros-dns-de-correo-en-siteground).
+- Ten a mano la **clave API privada** (no la pública).
+
+<Tip>
+  Si tu dominio principal ya recibe correo en Google Workspace o Microsoft 365, usa un subdominio para enviar, por ejemplo `mg.tunegocio.com`. Así no interfieres con tu buzón actual.
+</Tip>
+
+## Conectar el proveedor
+
+<Steps>
+  <Step title="Copia tu clave API privada">
+    Inicia sesión en tu proveedor de envío, entra a la sección de claves API (normalmente **Settings → API Keys**), crea una clave privada si no tienes una y cópiala en un lugar seguro.
+  </Step>
+  <Step title="Abre los servicios de correo de tu cuenta">
+    En Chateea, ve a **Configuración → Servicios de correo**.
+  </Step>
+  <Step title="Agrega el servicio">
+    Haz clic en **Agregar servicio** (Add Service), elige tu proveedor en la ventana **Agrega tu propio servicio de correo**, pega la **clave API** y selecciona el **dominio** verificado. Guarda los cambios.
+  </Step>
+  <Step title="Márcalo como proveedor predeterminado">
+    Guardar el servicio no lo activa. Busca el servicio que agregaste y márcalo como **predeterminado** para que tu cuenta empiece a enviar con él.
+  </Step>
+</Steps>
+
+<Note>
+  Si no ves la opción para agregar tu propio servicio de correo, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Qué proveedor usa tu cuenta para enviar
+
+Cuando envías un correo, Chateea elige el proveedor en este orden:
+
+| Prioridad | Proveedor |
+| --- | --- |
+| 1 | El proveedor que marcaste como **predeterminado** en **Configuración → Servicios de correo**. |
+| 2 | Si no tienes ninguno marcado, **el correo de Chateea**. |
+
+Puedes tener varios servicios guardados, pero solo uno funciona como predeterminado a la vez. Para volver al correo de Chateea, márcalo de nuevo como predeterminado en la misma pantalla.
+
+## Comprobar que funciona
+
+1. Confirma que el servicio aparece como **predeterminado** y con el dominio correcto.
+2. Crea o abre un contacto de prueba con un correo al que tengas acceso.
+3. Envía un correo desde la conversación del contacto y confirma que llega.
+4. Responde ese correo y verifica que la respuesta aparece en **Conversaciones**.
+
+Si necesitas el paso a paso, consulta [Enviar un correo de prueba desde Conversaciones](/correo/enviar-correo-de-prueba-desde-conversaciones).
+
+<Info>
+  Conectar la clave API configura el envío, pero la recepción de respuestas depende además de la ruta de recepción en tu proveedor y de los registros MX. Si los correos salen pero las respuestas no llegan, revisa [Las respuestas de correo no llegan a Conversaciones](/correo/respuestas-no-llegan-a-conversaciones).
+</Info>
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="Mi dominio no aparece en la lista">
+    - Confirma que el dominio pertenece a la misma cuenta del proveedor que la clave API.
+    - Revisa que esté completamente verificado.
+    - Asegúrate de que lo creaste en la región de Estados Unidos (US).
+    - Comprueba que todos los registros DNS estén completos.
+  </Accordion>
+  <Accordion title="La clave API no recupera los dominios">
+    - Usa la clave **privada**, no la pública.
+    - Confirma que la clave pertenece a la cuenta correcta y que no fue eliminada ni reemplazada.
+    - Si tu proveedor tiene restricciones por IP, desactívalas temporalmente, vuelve a conectar y restablécelas después de validar.
+  </Accordion>
+  <Accordion title="Guardé el servicio pero los correos salen por otro proveedor">
+    Revisa que el servicio que agregaste esté marcado como **predeterminado** en **Configuración → Servicios de correo**.
+  </Accordion>
+  <Accordion title="Los correos salen, pero las respuestas no llegan a Conversaciones">
+    Revisa la ruta de recepción y los registros MX del dominio. Consulta [Las respuestas de correo no llegan a Conversaciones](/correo/respuestas-no-llegan-a-conversaciones).
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Uso la clave API pública o la privada?">
+    La **privada**. La clave pública no sirve para autenticar la conexión.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece mi dominio de la región de Europa?">
+    Chateea solo lee dominios verificados de la región de Estados Unidos. Crea un dominio o subdominio en esa región.
+  </Accordion>
+  <Accordion title="¿Puedo volver al correo de Chateea después?">
+    Sí. En **Configuración → Servicios de correo**, marca el correo de Chateea como predeterminado.
+  </Accordion>
+  <Accordion title="¿Quién me cobra los envíos cuando uso mi propio proveedor?">
+    Tu proveedor externo. La facturación, los límites de volumen y las restricciones de esa cuenta se gestionan directamente con él.
+  </Accordion>
+  <Accordion title="¿Puedo usar el mismo dominio en varias cuentas de Chateea?">
+    Para enviar, sí. Pero si quieres recibir correos que los contactos escriben directamente a tu dominio (sin responder a un correo tuyo), usa un dominio o subdominio exclusivo para cada cuenta. Consulta [Recibir correos entrantes con un proveedor externo](/correo/recibir-correos-entrantes-con-proveedor-externo).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="¿Qué es el correo de Chateea?" icon="envelope" href="/correo/que-es-el-correo-de-chateea">
+    El servicio de envío incluido en tu cuenta.
+  </Card>
+  <Card title="Agregar tu propio servicio SMTP" icon="server" href="/correo/agregar-tu-propio-servicio-smtp">
+    Conecta un proveedor por SMTP en lugar de API.
+  </Card>
+</CardGroup>

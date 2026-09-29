@@ -1,0 +1,93 @@
+---
+title: "Los enlaces de mis correos no abren"
+description: "Corrige el CNAME, el DNS o el HTTPS del dominio de seguimiento cuando los enlaces de tus correos no abren."
+icon: "link"
+---
+
+Si tus contactos hacen clic en un enlace de tus correos y no se abre, casi siempre el problema está en el **dominio de seguimiento**: le falta el registro CNAME, no resuelve en DNS o no tiene HTTPS activo. Aquí verás por qué pasa y cómo corregirlo paso a paso.
+
+## Por qué los enlaces dejan de abrir
+
+Para medir los clics, el enlace original de tu correo se reemplaza por un enlace de seguimiento. Ese enlace pasa primero por un subdominio tuyo y luego redirige al contacto a la página final.
+
+1. Tu enlace original se reemplaza por un enlace de seguimiento.
+2. El enlace de seguimiento pasa por un subdominio, por ejemplo `email.envios.tunegocio.com`.
+3. Ese subdominio depende de un **registro CNAME** en tu DNS.
+4. Si el CNAME falta, apunta a otro lugar o el SSL no está activo, la redirección falla y el enlace no abre.
+
+<Note>
+  Casi todos los proveedores de envío usan este sistema de redirección, así que el problema puede aparecer con cualquier proveedor. Los informes de aperturas y clics dentro de Chateea están disponibles cuando envías con el correo de Chateea.
+</Note>
+
+## Cómo corregirlo
+
+<Steps>
+  <Step title="Identifica tu dominio de envío">
+    En **Configuración → Servicios de correo**, revisa qué dominio o subdominio usa tu cuenta para enviar (por ejemplo, `envios.tunegocio.com`).
+  </Step>
+  <Step title="Consulta el CNAME de seguimiento">
+    Agrega `email.` delante de tu dominio de envío y consulta ese nombre en una herramienta como [MXToolbox](https://mxtoolbox.com/CnameLookup.aspx) o [WhatsMyDNS](https://www.whatsmydns.net/).
+
+    | Dominio de envío | CNAME que debes consultar |
+    | --- | --- |
+    | `mg.tunegocio.com` | `email.mg.tunegocio.com` |
+    | `replies.tunegocio.com` | `email.replies.tunegocio.com` |
+    | `support.tunegocio.com` | `email.support.tunegocio.com` |
+
+    El resultado debe mostrar un CNAME válido. Si aparece **DNS record not found**, el registro falta o está mal escrito.
+  </Step>
+  <Step title="Revisa el registro en tu proveedor de dominio">
+    Entra al panel DNS de tu dominio y busca el CNAME de seguimiento. Comprueba que:
+
+    - El **host** tenga solo la parte del subdominio (por ejemplo, `email.mg`), no el dominio completo.
+    - El **valor** apunte al destino de seguimiento que indica la pantalla de verificación de tu dominio de envío.
+  </Step>
+  <Step title="Confirma que HTTPS esté activo">
+    Los dominios de seguimiento deben funcionar con HTTPS. Si usas un proveedor de envío externo, revisa en su panel que el protocolo de seguimiento esté en **HTTPS**. Si lo acabas de cambiar, espera a que se emita el certificado SSL.
+  </Step>
+  <Step title="Prueba los enlaces">
+    Envíate un correo de prueba desde Chateea, haz clic en el enlace y confirma que llegas a la página correcta.
+  </Step>
+  <Step title="Pide ayuda si sigue fallando">
+    Contacta a tu proveedor de dominio (GoDaddy, Cloudflare, Namecheap, etc.) y pídele que confirme que el CNAME de seguimiento está bien configurado y resuelve. Compárteles una captura de tus registros DNS. Si ellos confirman que todo está bien y el problema continúa, escribe a soporte de Chateea en **help@chateea.com**.
+  </Step>
+</Steps>
+
+## Problemas frecuentes
+
+| Problema | Solución |
+| --- | --- |
+| El CNAME no aparece (**DNS record not found**) | Vuelve a crear el registro en tu proveedor de dominio. |
+| El CNAME apunta a otro destino | Corrige el valor con el destino de seguimiento correcto. |
+| Escribiste el dominio completo en el host | En la mayoría de proveedores (GoDaddy, Namecheap) el host debe ser solo `email` o `email.mg`, no `email.tunegocio.com`. |
+| Usas Cloudflare con proxy | El registro debe estar en **DNS only** (nube gris), sin proxy. |
+| HTTPS no está activo | Activa el seguimiento por HTTPS en tu proveedor y espera el certificado SSL. |
+| Cambios recientes | La propagación DNS puede tardar hasta 24 o 48 horas. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué los enlaces funcionan en algunos clientes de correo y en otros no?">
+    Algunos clientes guardan en caché el DNS o los certificados, o analizan los enlaces por seguridad. Si el CNAME o el SSL todavía se están propagando, puedes ver resultados distintos hasta que termine.
+  </Accordion>
+  <Accordion title="¿Uso el dominio principal o un subdominio para el seguimiento?">
+    Un subdominio. Aísla el tráfico de seguimiento de tu dominio principal y evita conflictos con los registros que ya tienes.
+  </Accordion>
+  <Accordion title="En Cloudflare todo se ve bien, pero los enlaces siguen fallando">
+    Revisa si el registro tiene la nube naranja (proxy activo). Los CNAME de seguimiento deben estar en **DNS only** (nube gris).
+  </Accordion>
+  <Accordion title="¿Cómo confirmo que el seguimiento por HTTPS está activo?">
+    Envíate un correo de prueba, pasa el cursor sobre un enlace o haz clic y comprueba que la dirección empiece con `https://` y no con `http://`.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Certificado SSL del dominio dedicado" icon="lock" href="/correo/certificado-ssl-dominio-dedicado">
+    Cómo funciona el SSL de tu dominio de envío.
+  </Card>
+  <Card title="Las estadísticas de correo no aparecen" icon="chart-line" href="/correo/estadisticas-de-correo-no-aparecen">
+    El mismo CNAME afecta aperturas, clics y bajas.
+  </Card>
+</CardGroup>

@@ -1,0 +1,110 @@
+---
+title: "Registros DNS de correo en SiteGround"
+description: "Agrega en SiteGround los registros TXT, MX y CNAME de tu dominio de envío sin afectar tu buzón actual."
+icon: "globe"
+---
+
+Si tu dominio está alojado en SiteGround, los registros DNS que necesitas para enviar correo con tu propio dominio se agregan desde el **Editor de zona DNS** (DNS Zone Editor). Esta guía te muestra cómo crear los cinco registros habituales (dos TXT, dos MX y un CNAME) sin afectar el correo que ya recibes en Google Workspace, Microsoft 365 u otro buzón.
+
+Los valores exactos (SPF, DKIM, servidores MX y destino del CNAME) te los muestra la pantalla de verificación de tu dominio de envío, ya sea en Chateea o en tu proveedor de envío externo. Deja esa pantalla abierta mientras trabajas en SiteGround.
+
+## Antes de empezar
+
+- Decide si vas a usar el **dominio principal** (por ejemplo, `tunegocio.com`) o un **subdominio** (por ejemplo, `mg.tunegocio.com`, `envios.tunegocio.com` o `replies.tunegocio.com`).
+- Si tu dominio principal ya recibe correo en Google Workspace, Outlook u otro servidor, usa un **subdominio**. Un dominio solo puede tener un juego de registros MX, y si los reemplazas dejarías de recibir correo en tu buzón actual.
+- Si configuras el dominio en un proveedor de envío externo, créalo en la región de **Estados Unidos (US)**, no en la de Europa.
+
+<Tip>
+  Usar un subdominio para enviar es la opción más segura: separa la reputación de tus envíos masivos de la de tu correo de trabajo y evita conflictos con tus registros actuales.
+</Tip>
+
+## Cómo se escribe el nombre (host) de cada registro
+
+En SiteGround, el campo **Nombre** solo lleva la parte que va antes de tu dominio principal. Nunca escribas el dominio completo.
+
+| Lo que configuras | Nombre en registros TXT (SPF) y MX | Nombre en el registro CNAME |
+| --- | --- | --- |
+| `mg.tunegocio.com` | `mg` | `email.mg` |
+| `replies.tunegocio.com` | `replies` | `email.replies` |
+| `tunegocio.com` (dominio principal) | `@` o vacío | `email` |
+
+## Agregar los registros en SiteGround
+
+<Steps>
+  <Step title="Abre el Editor de zona DNS">
+    Inicia sesión en SiteGround y entra a **Site Tools → Domain → DNS Zone Editor**. En la sección **Create New Record** vas a repetir el proceso para cada uno de los cinco registros.
+  </Step>
+  <Step title="Crea el primer registro TXT (SPF)">
+    1. Haz clic en la pestaña **TXT**.
+    2. En **Name**, escribe el host según la tabla anterior (por ejemplo, `mg`).
+    3. En **Value**, pega el valor SPF que te muestra la pantalla de verificación. Empieza con `v=spf1`.
+    4. Haz clic en **Create**.
+  </Step>
+  <Step title="Crea el segundo registro TXT (DKIM)">
+    1. Vuelve a la pestaña **TXT**.
+    2. En **Name**, copia el nombre del registro DKIM hasta antes de tu dominio principal. Por ejemplo, si el nombre completo es `mx._domainkey.mg.tunegocio.com`, escribe `mx._domainkey.mg`. Si usas el dominio principal, quedaría algo como `mx._domainkey`.
+    3. En **Value**, pega el valor DKIM completo. Es el registro más largo de la lista y es distinto para cada dominio.
+    4. Haz clic en **Create**.
+  </Step>
+  <Step title="Crea el primer registro MX">
+    1. Haz clic en la pestaña **MX** y selecciona **Add your own MX records**.
+    2. En **Name**, escribe el host (por ejemplo, `mg`, o `@` si es el dominio principal).
+    3. En **Priority**, escribe `10`.
+    4. En **Destination**, pega el primer servidor MX que te indica la pantalla de verificación.
+    5. Haz clic en **Create**.
+  </Step>
+  <Step title="Crea el segundo registro MX">
+    Repite el paso anterior con el mismo nombre y prioridad `10`, pero con el **segundo** servidor MX de la lista.
+  </Step>
+  <Step title="Crea el registro CNAME">
+    1. Haz clic en la pestaña **CNAME**.
+    2. En **Name**, escribe el host del CNAME según la tabla (por ejemplo, `email.mg`).
+    3. En **Resolves to**, pega el destino que te indica la pantalla de verificación.
+    4. Haz clic en **Create**.
+  </Step>
+  <Step title="Verifica los registros">
+    Regresa a la pantalla de verificación de tu dominio y haz clic en **Verificar**. Si algún registro todavía no aparece en verde, espera unos minutos y vuelve a verificar: la propagación DNS puede tardar.
+  </Step>
+</Steps>
+
+<Warning>
+  Si ya tienes registros MX de Google Workspace u otro servidor en el dominio principal, no los borres ni agregues los nuevos MX junto a ellos. Configura el envío en un subdominio.
+</Warning>
+
+## Después de verificar
+
+Cuando los cinco registros aparezcan en verde:
+
+1. Si usas un proveedor externo, conecta tu clave API en Chateea. Consulta [Conectar un proveedor de envío externo con clave API](/correo/conectar-proveedor-de-envio-externo-con-clave-api).
+2. Envía un correo de prueba para confirmar que todo funciona. Consulta [Enviar un correo de prueba desde Conversaciones](/correo/enviar-correo-de-prueba-desde-conversaciones).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde está el Editor de zona DNS en SiteGround?">
+    Inicia sesión en SiteGround y entra a **Site Tools → Domain → DNS Zone Editor**. Desde ahí puedes crear registros TXT, MX y CNAME.
+  </Accordion>
+  <Accordion title="No veo la opción Add your own MX records">
+    Aparece en la pestaña **MX** del editor. Si no la ves, confirma que estás en el dominio correcto y que tu plan de SiteGround no tiene el correo bloqueado a otro proveedor.
+  </Accordion>
+  <Accordion title="¿Uso @ o dejo vacío el nombre para el dominio principal?">
+    En SiteGround ambas opciones representan el dominio raíz. Usa la que el campo acepte sin mostrar error.
+  </Accordion>
+  <Accordion title="¿Esto afecta mi correo de Google Workspace o Gmail?">
+    No, siempre que uses un subdominio para enviar y dejes intactos los registros MX de Google Workspace en tu dominio principal.
+  </Accordion>
+  <Accordion title="¿Cuánto tarda la propagación en SiteGround?">
+    Normalmente es rápida, pero a veces tarda algunas horas. Si un registro todavía no aparece en verde, espera un poco y vuelve a verificar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar y verificar un dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+    Configura tu dominio para enviar con el correo de Chateea.
+  </Card>
+  <Card title="Registros DNS por proveedor de dominio" icon="server" href="/correo/registros-dns-de-correo-por-proveedor-de-dominio">
+    Guías para otros proveedores de dominio.
+  </Card>
+</CardGroup>

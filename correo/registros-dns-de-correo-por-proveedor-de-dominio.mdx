@@ -1,0 +1,195 @@
+---
+title: "Registros DNS de correo en GoDaddy, HostGator, Namecheap y Cloudflare"
+description: "Cómo crear los registros TXT, MX y CNAME de tu dominio de envío en GoDaddy, HostGator, Namecheap y Cloudflare."
+icon: "sitemap"
+---
+
+Para enviar correo con tu dominio tienes que crear registros DNS en el panel del proveedor donde gestionas ese dominio. Da igual si configuras un dominio de envío con el correo de Chateea o si preparas tu dominio en un servicio de envío externo: los tipos de registro son los mismos (TXT, MX y CNAME) y lo que cambia es la pantalla de cada proveedor. Aquí tienes las reglas comunes y los pasos exactos en GoDaddy, HostGator, Namecheap y Cloudflare.
+
+## Los registros que vas a crear
+
+Lo habitual en un dominio de envío son cinco registros. Los valores exactos te los da el servicio de envío: **cópialos y pégalos, nunca los escribas a mano**.
+
+| # | Tipo | Registro | Para qué sirve |
+| --- | --- | --- | --- |
+| 1 | `TXT` | SPF | Autoriza al servicio a enviar en nombre de tu dominio. Empieza por `v=spf1` |
+| 2 | `TXT` | DKIM | Firma tus correos. Es un valor muy largo y único para tu dominio |
+| 3 | `MX` | Primer servidor de correo | Recibe rebotes y respuestas del dominio de envío. Prioridad `10` |
+| 4 | `MX` | Segundo servidor de correo | Respaldo del anterior. Prioridad `10` |
+| 5 | `CNAME` | Seguimiento | Registra aperturas y clics |
+
+## La regla de oro del campo Host
+
+En casi todos los proveedores, el campo **Host** (o **Nombre**) **no lleva el dominio raíz**: el proveedor lo agrega solo. Si lo escribes completo, el registro queda duplicado (por ejemplo, `mg.tunegocio.com.tunegocio.com`) y la verificación falla.
+
+| Si configuras | En Host escribes |
+| --- | --- |
+| `mg.tunegocio.com` | `mg` |
+| `respuestas.tunegocio.com` | `respuestas` |
+| El dominio principal `tunegocio.com` | `@` |
+
+Para los registros DKIM y CNAME, copia del nombre que te da el servicio **todo lo que va antes del dominio raíz**:
+
+| Nombre completo que te da el servicio | En Host escribes |
+| --- | --- |
+| `mx._domainkey.mg.tunegocio.com` | `mx._domainkey.mg` |
+| `email.mg.tunegocio.com` | `email.mg` |
+| `email.tunegocio.com` (dominio principal) | `email` |
+
+<Warning>
+  Si tu dominio principal ya recibe correo en Google Workspace, Microsoft 365 u otro proveedor, usa un **subdominio** para el envío. Crear registros MX nuevos en el dominio principal puede cortar la recepción de tu correo de trabajo.
+</Warning>
+
+## Pasos por proveedor
+
+<Tabs>
+  <Tab title="GoDaddy">
+    <Steps>
+      <Step title="Abre la configuración DNS">
+        Inicia sesión en tu [portafolio de dominios de GoDaddy](https://dcc.godaddy.com/control/portfolio). Haz clic en los tres puntos junto a tu dominio y elige **Editar DNS** (Edit DNS). Puede que tengas que desplazarte para ver la opción.
+      </Step>
+      <Step title="Agrega el registro SPF">
+        Pulsa **Agregar** (Add). En **Tipo** elige `TXT`, en **Host** escribe el subdominio (por ejemplo, `mg`) o `@` si es el dominio principal, y en **Valor TXT** pega el registro SPF. Guarda.
+      </Step>
+      <Step title="Agrega el registro DKIM">
+        Pulsa **Agregar** otra vez. Tipo `TXT`, Host con el nombre DKIM sin el dominio raíz (por ejemplo, `mx._domainkey.mg`) y en Valor pega el registro largo. Guarda.
+      </Step>
+      <Step title="Agrega los dos registros MX">
+        Para cada uno: Tipo `MX`, Host igual que el SPF (`mg` o `@`), **Apunta a** con el servidor de correo que te da el servicio y **Prioridad** `10`. Guarda cada registro.
+      </Step>
+      <Step title="Agrega el registro CNAME">
+        Tipo `CNAME`, Host con el nombre de seguimiento sin el dominio raíz (por ejemplo, `email.mg`) y **Apunta a** con el destino que te da el servicio. Guarda.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Si no ves **Editar DNS**, confirma que estás en el portafolio de dominios y en el dominio correcto. Si el DNS de tu dominio se gestiona en otro lugar (por ejemplo, tu proveedor de alojamiento), tendrás que crear los registros allí. GoDaddy explica el proceso en su guía para [agregar un registro TXT](https://www.godaddy.com/help/add-a-txt-record-19232).
+    </Tip>
+  </Tab>
+  <Tab title="HostGator (cPanel)">
+    <Steps>
+      <Step title="Abre el editor de zona">
+        Inicia sesión en **cPanel**. En la sección **Dominios**, haz clic en **Editor de zona** (Zone Editor). Busca tu dominio y pulsa **Administrar** (Manage) para ver todos sus registros.
+      </Step>
+      <Step title="Agrega el registro SPF">
+        Pulsa **+ Agregar registro** y elige **Agregar registro "TXT"**. En **Nombre** escribe el subdominio (por ejemplo, `mg`) o `@`, y en **Registro** pega el SPF. Pulsa **Agregar registro**.
+      </Step>
+      <Step title="Agrega el registro DKIM">
+        De nuevo **Agregar registro "TXT"**. En Nombre, el nombre DKIM sin el dominio raíz (por ejemplo, `mx._domainkey.mg`), y en Registro, el valor largo.
+      </Step>
+      <Step title="Agrega los dos registros MX">
+        Elige **Agregar registro "MX"**. Nombre igual que el SPF, **Prioridad** `10` y en **Destino** el primer servidor de correo. Pulsa **Guardar registro** y repite con el segundo servidor.
+      </Step>
+      <Step title="Agrega el registro CNAME">
+        Elige **Agregar registro "CNAME"**. En Nombre, el nombre de seguimiento sin el dominio raíz (por ejemplo, `email.mg`), y en Registro, el destino que te da el servicio. Pulsa **Guardar registro**.
+      </Step>
+    </Steps>
+
+    <Note>
+      En el Editor de zona de cPanel, el campo Nombre solo necesita la parte del subdominio: el dominio raíz se agrega automáticamente.
+    </Note>
+  </Tab>
+  <Tab title="Namecheap">
+    <Steps>
+      <Step title="Abre la configuración DNS avanzada">
+        Inicia sesión en Namecheap, ve a **Domain List**, pulsa **Manage** junto a tu dominio y entra a la pestaña **Advanced DNS**.
+      </Step>
+      <Step title="Agrega el registro SPF">
+        En **Host Records**, pulsa **Add New Record** y elige **TXT Record**. En **Host** escribe el subdominio (por ejemplo, `mg`) o `@`, en **Value** pega el SPF y pulsa la marca verde para guardar.
+      </Step>
+      <Step title="Agrega el registro DKIM">
+        Otro **TXT Record**. En Host, el nombre DKIM sin el dominio raíz, y en Value, el registro largo. Guarda con la marca verde.
+      </Step>
+      <Step title="Activa los registros MX personalizados">
+        Baja hasta **Mail Settings** y cambia el menú a **Custom MX**.
+
+        <Warning>
+          Si tenías seleccionado Gmail en ese menú, cambiar a Custom MX elimina los registros MX de Google Workspace del dominio principal y deja de llegarte el correo. Antes de seguir, vuelve a agregar los cinco registros MX de Google:
+
+          | Host | TTL | Prioridad | Valor |
+          | --- | --- | --- | --- |
+          | `@` | 3600 | 1 | `ASPMX.L.GOOGLE.COM` |
+          | `@` | 3600 | 5 | `ALT1.ASPMX.L.GOOGLE.COM` |
+          | `@` | 3600 | 5 | `ALT2.ASPMX.L.GOOGLE.COM` |
+          | `@` | 3600 | 10 | `ALT3.ASPMX.L.GOOGLE.COM` |
+          | `@` | 3600 | 10 | `ALT4.ASPMX.L.GOOGLE.COM` |
+
+          Consulta los valores vigentes en la [guía de registros MX de Google](https://support.google.com/a/answer/140034?hl=es).
+        </Warning>
+      </Step>
+      <Step title="Agrega los dos registros MX de envío">
+        Pulsa **Add New Record**. En Host, el subdominio (por ejemplo, `mg`) o `@`; en **Value**, el primer servidor de correo; en **Priority**, `10`. Guarda y repite con el segundo servidor.
+      </Step>
+      <Step title="Agrega el registro CNAME">
+        Vuelve a **Host Records**, pulsa **Add New Record** y elige **CNAME Record**. En Host, el nombre de seguimiento sin el dominio raíz (por ejemplo, `email.mg`), y en Value, el destino que te da el servicio. Guarda.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Cloudflare">
+    <Steps>
+      <Step title="Abre los registros DNS">
+        Inicia sesión en el [panel de Cloudflare](https://dash.cloudflare.com/login), elige tu cuenta y tu dominio, y ve a **DNS → Records**.
+      </Step>
+      <Step title="Agrega el registro SPF">
+        Pulsa **+ Add record**. En **Type** elige `TXT`, en **Name** escribe el subdominio (por ejemplo, `mg`) o `@`, y en **Content** pega el SPF. Guarda.
+      </Step>
+      <Step title="Agrega el registro DKIM">
+        Otro registro `TXT`. En Name, el nombre DKIM sin el dominio raíz, y en Content, el valor largo. Guarda.
+      </Step>
+      <Step title="Agrega los dos registros MX">
+        Type `MX`, Name igual que el SPF, **Mail server** con el primer servidor de correo y **Priority** `10`. Guarda y repite con el segundo servidor.
+      </Step>
+      <Step title="Agrega el registro CNAME en modo DNS only">
+        Type `CNAME`, Name con el nombre de seguimiento sin el dominio raíz (por ejemplo, `email.mg`) y **Target** con el destino que te da el servicio.
+
+        Antes de guardar, haz clic en la **nube naranja** para cambiar el estado de **Proxied** a **DNS only** (nube gris). Guarda.
+      </Step>
+    </Steps>
+
+    <Warning>
+      Si el registro CNAME se queda en **Proxied**, el servicio de envío no puede verificarlo y el seguimiento falla. Solo el CNAME necesita este ajuste: los registros TXT y MX no se pueden poner en modo proxy.
+    </Warning>
+
+    <Tip>
+      Cloudflare explica el proceso en su guía para [crear registros DNS](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
+    </Tip>
+  </Tab>
+</Tabs>
+
+## Verifica los registros
+
+Cuando hayas creado los cinco registros, vuelve a la pantalla de tu servicio de envío y pulsa el botón de verificar. Si algún registro no aparece en verde, espera unos minutos y vuelve a intentarlo: la propagación del DNS suele ser rápida, pero a veces tarda unas horas.
+
+## Problemas frecuentes
+
+<AccordionGroup>
+  <Accordion title="El registro no verifica">
+    Revisa, en este orden: que el Host no incluya el dominio raíz, que no haya espacios al inicio o al final del valor, que el registro no esté duplicado y que lo creaste en el proveedor que realmente gestiona tu DNS. Para más casos, ver [Solucionar errores de conexión de dominio](/dominios/errores-de-conexion).
+  </Accordion>
+  <Accordion title="Dejé de recibir correo en mi dominio">
+    Modificaste los registros MX del dominio principal. Restaura los de tu proveedor de correo (por ejemplo, los de Google Workspace) y usa un subdominio para el envío.
+  </Accordion>
+  <Accordion title="¿Los valores cambian si uso un subdominio o el dominio principal?">
+    Solo cambia el Host (`mg`, `respuestas` o `@`). Los valores de SPF, MX y CNAME suelen ser los mismos; el de DKIM es único para cada dominio. Copia siempre los que te muestra tu servicio.
+  </Accordion>
+  <Accordion title="Mi proveedor de dominio no aparece aquí">
+    Los cinco registros son los mismos en cualquier proveedor; solo cambian los nombres de los campos. Usa cualquiera de estas pestañas como referencia, o busca "[nombre del proveedor] agregar registro DNS".
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Preparar tu dominio en un servicio externo" icon="server" href="/correo/preparar-dominio-en-proveedor-de-envio-externo">
+    El proceso completo antes de conectar tu servicio de envío.
+  </Card>
+  <Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+    Qué hace cada registro y cómo cuidar tu reputación.
+  </Card>
+  <Card title="Requisitos de Google y Yahoo" icon="shield-check" href="/correo/requisitos-de-google-y-yahoo-para-remitentes">
+    Cómo crear tu registro DMARC.
+  </Card>
+  <Card title="Errores de conexión de dominio" icon="triangle-exclamation" href="/dominios/errores-de-conexion">
+    Diagnóstico cuando un registro no verifica.
+  </Card>
+</CardGroup>

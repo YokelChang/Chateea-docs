@@ -1,0 +1,87 @@
+---
+title: "Correos bloqueados por dominio de destinatario restringido"
+description: "Por qué Chateea bloquea envíos a dominios inválidos o restringidos y cómo corregir la dirección del contacto."
+icon: "ban"
+---
+
+Antes de enviar cualquier correo, Chateea revisa el dominio del destinatario (la parte que va después de la @). Si ese dominio no es válido o está restringido por motivos de seguridad, el envío se bloquea y el correo nunca sale. Esta validación evita rebotes seguros, protege tu reputación de envío y reduce riesgos de seguridad.
+
+## Por qué te conviene
+
+- **Menos envíos fallidos:** frena correos que casi con seguridad no se entregarían.
+- **Mejor entregabilidad:** menos rebotes significa menos riesgo para tu reputación como remitente.
+- **Más seguridad:** impide envíos a dominios marcados como riesgosos.
+
+## Cómo funciona
+
+1. Chateea valida el dominio del correo del destinatario antes de intentar el envío.
+2. Si el dominio es inválido o está restringido, el envío se bloquea.
+3. Ese correo no se puede usar para comunicaciones salientes hasta que lo actualices por uno de un dominio permitido.
+
+El bloqueo aplica a todos los envíos: correos manuales desde Conversaciones, campañas y flujos de trabajo, sin importar si envías con el correo de Chateea o con un proveedor SMTP propio.
+
+## Qué verás
+
+Debajo del campo **Correo** de la ficha del contacto aparece este aviso:
+
+```text
+This email address is invalid as the domain is restricted for security reasons.
+```
+
+Significa que la dirección no es válida porque su dominio está restringido por seguridad.
+
+## Cómo resolverlo
+
+<Steps>
+  <Step title="Revisa la dirección">
+    Busca errores de escritura, sobre todo en el dominio después de la @ (por ejemplo, `gmial.com` en lugar de `gmail.com`).
+  </Step>
+  <Step title="Actualiza el correo del contacto">
+    Reemplaza la dirección por una válida de un dominio permitido. En cuanto la actualizas, los envíos se reanudan con normalidad.
+  </Step>
+  <Step title="Si el destinatario es clave para tu negocio">
+    Si de verdad necesitas escribir a ese dominio, escribe a soporte de Chateea en **help@chateea.com** e incluye:
+    - El dominio del destinatario (por ejemplo, `ejemplo.com`).
+    - Dónde viste el aviso (ficha del contacto, Conversaciones, campañas, flujos de trabajo).
+    - El nombre de tu cuenta de Chateea.
+    - Cómo envías tus correos (correo de Chateea o proveedor SMTP propio).
+  </Step>
+</Steps>
+
+<Note>
+  No existe una opción dentro de la plataforma para saltarse el bloqueo. La dirección debe reemplazarse por una permitida para volver a enviar.
+</Note>
+
+## Cómo prevenirlo
+
+- Valida los correos al momento de captarlos: usa validación en tus formularios y doble confirmación (double opt-in).
+- Usa la [acción Verificación de correo](/automatizaciones/accion-verificacion-de-correo) en tus flujos para revisar direcciones antes de enviar.
+- Corrige los errores de escritura en el dominio antes de lanzar una campaña.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo enviar a una dirección que muestra este aviso?">
+    No. Chateea bloquea el envío antes de que salga.
+  </Accordion>
+  <Accordion title="¿Puedo saltarme el bloqueo?">
+    No. Tienes que actualizar el contacto con una dirección válida de un dominio permitido.
+  </Accordion>
+  <Accordion title="¿Chateea intenta entregar el correo de todos modos?">
+    No. Cuando aparece el aviso, no se hace ningún intento de envío, ni en campañas, ni en flujos, ni en envíos manuales.
+  </Accordion>
+  <Accordion title="¿Los envíos bloqueados cuentan como rebotes?">
+    No. Como nunca se envía nada, no generan rebotes. Esa es justamente una de las formas en que esta función protege tu reputación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acción Verificación de correo en flujos" icon="shield-check" href="/automatizaciones/accion-verificacion-de-correo">
+    Revisa direcciones antes de enviarles.
+  </Card>
+  <Card title="Suspensión de envíos por rebotes" icon="triangle-exclamation" href="/correo/suspension-por-rebotes">
+    Qué pasa si tu tasa de rebote sube demasiado.
+  </Card>
+</CardGroup>

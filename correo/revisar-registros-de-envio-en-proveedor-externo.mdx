@@ -1,0 +1,78 @@
+---
+title: "Revisar los registros de envío en tu proveedor externo"
+description: "Consulta el estado de entrega de un correo en tu proveedor externo y resuelve rebotes, bajas y errores de autenticación."
+icon: "magnifying-glass"
+---
+
+Si envías con tu propio proveedor de envío externo conectado por API y un contacto dice que no recibió un correo, el registro de envíos (logs) de tu proveedor te dice exactamente qué pasó con ese mensaje: si se entregó, si rebotó o si se bloqueó. Aquí verás cómo buscar un correo concreto, cómo interpretar el resultado y cómo resolver los errores más frecuentes.
+
+<Note>
+  Necesitas acceso al panel de tu proveedor de envío externo, en la cuenta que tiene tu dominio de envío. Si usas el correo de Chateea, el estado de cada envío se ve directamente en la conversación del contacto.
+</Note>
+
+## Buscar un correo en los registros de envío
+
+<Steps>
+  <Step title="Entra al panel de tu proveedor">
+    Inicia sesión en el panel de tu proveedor de envío externo.
+  </Step>
+  <Step title="Abre los registros">
+    Ve a **Sending → Logs** (o la sección equivalente de registros de envío).
+  </Step>
+  <Step title="Selecciona el dominio correcto">
+    Los registros se filtran por un dominio a la vez. Elige el dominio o subdominio que usa tu cuenta de Chateea.
+  </Step>
+  <Step title="Filtra por destinatario">
+    Haz clic en **Add Filter**, elige **Recipient** y pega el correo del contacto. Luego haz clic en **Filter**.
+  </Step>
+  <Step title="Revisa el detalle">
+    Cuando encuentres el correo, abre el menú del mensaje (ícono de engrane) y elige **Quick view** para ver una vista previa y su estado de entrega.
+  </Step>
+</Steps>
+
+<Tip>
+  Si el estado dice **delivered** (entregado) pero el contacto no lo ve, pídele que revise la carpeta de spam. Si no está ahí, contacta al soporte de tu proveedor para confirmar si el servidor del destinatario lo está bloqueando en silencio.
+</Tip>
+
+## Errores comunes y cómo resolverlos
+
+| Error | Qué significa | Solución |
+| --- | --- | --- |
+| No se entrega a una dirección que rebotó antes | La dirección está en la lista de supresión de rebotes | En **Sending → Suppressions**, elige el dominio, busca el correo y elimínalo de la pestaña **Bounces** |
+| El destinatario se dio de baja por error | La dirección está en la lista de bajas | En la misma sección, abre la pestaña **Unsubscribes** y elimina el correo |
+| Correo no autenticado desde tu dominio | Tu política DMARC es estricta y el envío no está alineado con SPF o DKIM | Cambia temporalmente la política DMARC de tu dominio a `p=none` mientras corriges la autenticación |
+| Correo no autenticado desde yahoo.com, hotmail.com, aol.com u outlook.com | Esos proveedores no permiten que terceros envíen en su nombre | Cambia el remitente a una dirección de tu propio dominio |
+
+<Warning>
+  Elimina una dirección de las supresiones solo si estás seguro de que es válida y de que el contacto quiere recibir tus correos. Volver a enviar a direcciones que rebotan o que se dieron de baja daña tu reputación de envío.
+</Warning>
+
+Si tu dominio está en Google Workspace, Google explica cómo ajustar tu registro DMARC en su [documentación oficial](https://support.google.com/a/answer/10032169). Para entender mejor las políticas, consulta [DMARC y autenticación de correo](/correo/dmarc-autenticacion-de-correo). Para cambiar el remitente, consulta [Remitente de tus correos](/correo/remitente-de-tus-correos).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="No encuentro el correo en los registros">
+    Revisa que tengas seleccionado el dominio correcto y que el rango de fechas incluya el momento del envío. Los registros solo muestran un dominio a la vez.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre un rebote y una baja?">
+    Un rebote significa que el servidor del destinatario rechazó el mensaje (dirección inválida, buzón lleno, etc.). Una baja significa que el destinatario pidió no recibir más correos. Ambos bloquean envíos futuros, pero se eliminan desde pestañas distintas.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo se guardan los registros?">
+    Depende del plan que tengas con tu proveedor. Si necesitas un envío antiguo, revisa el periodo de retención de tu plan o consulta con su soporte.
+  </Accordion>
+  <Accordion title="¿Por qué DMARC causa un error de correo no autenticado?">
+    Si tu dominio tiene una política estricta (quarantine o reject) y el envío no está alineado con SPF o DKIM, los proveedores de correo lo marcan como no autenticado. Poner DMARC en `none` relaja la política mientras corriges la autenticación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enviar un correo de prueba desde Conversaciones" icon="paper-plane" href="/correo/enviar-correo-de-prueba-desde-conversaciones">
+    Comprueba el envío y las respuestas paso a paso.
+  </Card>
+  <Card title="Por qué no usar un correo gratuito como remitente" icon="triangle-exclamation" href="/correo/por-que-no-usar-un-correo-gratuito-como-smtp">
+    Los riesgos de enviar desde Gmail, Yahoo u Outlook.
+  </Card>
+</CardGroup>

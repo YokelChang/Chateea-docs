@@ -1,0 +1,137 @@
+---
+title: "Configuración de llamadas entrantes de un número"
+description: "Decide a quién suena cada número, en qué dispositivos, cuánto tiempo y a dónde va la llamada si nadie contesta, y entiende el orden de prioridad."
+icon: "phone-arrow-down-left"
+---
+
+La pantalla **Editar configuración** de cada número reúne en un solo lugar todo lo que decide qué pasa con una llamada entrante: a quién suena, en qué dispositivos, cuánto tiempo, a dónde se desvía y qué ocurre si nadie contesta. Si una llamada no suena donde esperas, este es el primer lugar que debes revisar.
+
+## Para qué te sirve
+
+- **Transparencia total:** ves qué regla atiende primero, cuál segundo y cuál tercero.
+- **Edición en línea:** cambias casi todo sin salir de la página.
+- **Orden de prioridad claro:** entiendes cómo evalúa el sistema cada destino.
+- **Diagnóstico rápido:** detectas tiempos de espera mal configurados o usuarios que faltan.
+- **Menos llamadas perdidas:** el cliente llega a una persona, a la IA de voz o a tu buzón, y no a un buzón del operador.
+
+## Cómo abrir la configuración
+
+<Steps>
+  <Step title="Ve a tus números">
+    Entra en **Configuración → Sistema telefónico** y abre la pestaña **Números de teléfono**.
+  </Step>
+  <Step title="Edita el número">
+    Haz clic en el menú de **tres puntos** junto al número y selecciona **Editar configuración**.
+  </Step>
+</Steps>
+
+Cualquier usuario con permiso para administrar números de teléfono puede ver y editar esta pantalla.
+
+## Pestaña Detalles básicos
+
+| Opción | Qué hace |
+| --- | --- |
+| **Nombre descriptivo** | Cambia el nombre con el que identificas el número, por ejemplo "Ventas" o "Sucursal centro". |
+| **Las llamadas van a** | El miembro del equipo principal que recibe las llamadas. |
+| **Opciones de timbre** | Dónde suena a la vez para ese usuario: **aplicación web** (si la tiene abierta), **aplicación móvil** (si inició sesión), **número de teléfono** externo o **teléfono de escritorio VoIP**. |
+| **Grabación de llamadas** | Activa o desactiva la grabación y, si quieres, un mensaje de aviso al inicio, por ejemplo "Esta llamada será grabada con fines de calidad". |
+
+<Warning>
+  Grabar llamadas tiene requisitos legales que cambian según el país. Antes de quitar el aviso de grabación, confirma qué exige tu jurisdicción.
+</Warning>
+
+## Pestaña Desvío de llamadas
+
+### Las llamadas van a (orden de prioridad)
+
+| Destino | Prioridad |
+| --- | --- |
+| **IVR** | Si un IVR controla el número, las demás opciones quedan deshabilitadas y se gestionan desde el IVR. |
+| **Miembro del equipo** | Primera prioridad. |
+| **Número de teléfono externo** | Segunda prioridad. |
+| **IA de voz** | Tercera prioridad. |
+
+Solo suena un destino a la vez, según su prioridad.
+
+### Sonar a más miembros del equipo
+
+Activa **Sonar a más miembros del equipo** para que la llamada suene al mismo tiempo en **hasta 6 usuarios adicionales**. Junto a cada nombre verás el icono del dispositivo que ese usuario tiene configurado para recibir llamadas (computadora, móvil, etc.).
+
+### Tiempo de espera de llamadas entrantes
+
+Define cuántos segundos suena una llamada antes de pasar al destino de respaldo (IA de voz o buzón de voz).
+
+| Valor | Qué puede pasar |
+| --- | --- |
+| **Más de 20 segundos aprox.** | La llamada puede caer en el **buzón del operador** en lugar del buzón de Chateea, y su estado puede quedar como **Completada** en vez de **Buzón de voz**. |
+| **Menos de 15 segundos aprox.** | La llamada suena muy poco o no llega a conectar, y quien la recibe no alcanza a contestar. |
+| **Recomendado: unos 20 segundos** | Tiempo suficiente para contestar y para que el respaldo funcione bien. |
+
+Si escribes un valor fuera de ese rango, verás un aviso. Es solo una recomendación: puedes guardarlo igualmente, pero puede afectar el buzón de voz y la precisión de los estados de llamada.
+
+El **tiempo de espera de llamadas salientes** se configura aparte, en la misma pestaña, y no se ve afectado por este aviso. Para llamadas salientes se recomienda un mínimo de 20 segundos.
+
+### Respaldo
+
+Cuando se cumple el tiempo de espera, la llamada va a:
+
+- **IA de voz:** un agente de IA atiende la llamada.
+- **Buzón de voz:** la persona deja un mensaje en el buzón de voz de tu cuenta.
+
+## Orden en que se evalúa una llamada entrante
+
+El sistema revisa los destinos en este orden fijo y solo suena el de mayor prioridad disponible:
+
+| Orden | Qué evalúa |
+| --- | --- |
+| 1 | Flujo de trabajo, IVR u otra automatización conectada al número |
+| 2 | Usuario asignado directamente al número |
+| 3 | Usuario asignado al contacto que llama |
+| 4 | Sonar a varios usuarios a la vez |
+| 5 | Número de reenvío |
+
+Por ejemplo, si el número tiene un IVR activo, la llamada entra al IVR aunque también haya un usuario asignado.
+
+<Tip>
+  Para recibir llamadas de números privados u ocultos, ve a **Configuración → Sistema telefónico → Voz → Otras configuraciones → Llamadas entrantes** y activa **Permitir llamadas privadas**.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Quién puede ver y editar esta configuración?">
+    Cualquier usuario con permiso para administrar números de teléfono.
+  </Accordion>
+  <Accordion title="¿El aviso del tiempo de espera cambia mi configuración automáticamente?">
+    No. Solo muestra una recomendación. Tu configuración no se modifica ni se bloquea.
+  </Accordion>
+  <Accordion title="¿Por qué algunas llamadas aparecían como Completadas en lugar de Buzón de voz?">
+    Si el tiempo de espera era demasiado alto, la llamada llegaba al buzón del operador en vez del buzón de Chateea, y por eso el estado quedaba mal registrado.
+  </Accordion>
+  <Accordion title="¿Esto afecta a las llamadas salientes?">
+    No. El tiempo de espera de llamadas salientes es un ajuste independiente.
+  </Accordion>
+  <Accordion title="¿Qué pasa si hay varias reglas activas a la vez?">
+    Se sigue el orden de prioridad fijo. Las reglas de menor prioridad se ignoran en cuanto una de mayor prioridad atiende la llamada.
+  </Accordion>
+  <Accordion title="¿Puedo usar tiempos de espera muy altos o muy bajos?">
+    Sí, pero no es recomendable por los problemas de buzón de voz y de estados de llamada que pueden aparecer.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Sonar llamadas en varios usuarios" icon="users" href="/telefonia/sonar-llamadas-en-varios-usuarios">
+    Haz que un número suene a la vez en todo tu equipo.
+  </Card>
+  <Card title="Conexión de llamada" icon="phone" href="/telefonia/conexion-de-llamada-estado-preciso">
+    Confirma que una persona contestó antes de conectar la llamada.
+  </Card>
+  <Card title="Recibir llamadas en la app móvil" icon="mobile" href="/telefonia/recibir-llamadas-en-la-app-movil">
+    Configura a tu equipo para contestar desde el celular.
+  </Card>
+  <Card title="Guía de IVR" icon="diagram-project" href="/automatizaciones/guia-de-ivr-disparadores-y-acciones">
+    Menús telefónicos con disparadores y acciones.
+  </Card>
+</CardGroup>

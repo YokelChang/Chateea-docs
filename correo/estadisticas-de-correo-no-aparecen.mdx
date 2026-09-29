@@ -1,0 +1,85 @@
+---
+title: "Las estadísticas de correo no aparecen"
+description: "Descubre por qué faltan aperturas, clics, entregados o rebotes y cómo corregirlo según tu proveedor de envío."
+icon: "chart-line"
+---
+
+Si no ves las estadísticas de tus correos (aperturas, clics, entregados o rebotes), normalmente se debe a una de tres cosas: estás buscando en el lugar equivocado según cómo enviaste el correo, tu proveedor de envío no reporta todos los eventos, o falta alguna configuración técnica como el CNAME de seguimiento. Revisa estos puntos en orden.
+
+## 1. Revisa cómo enviaste el correo
+
+Cada forma de envío guarda sus estadísticas en su propia sección:
+
+| Forma de envío | Dónde ver las estadísticas |
+| --- | --- |
+| Campaña desde el constructor de correos (envío masivo) | En la campaña, dentro de **Marketing → Correos** |
+| Acción masiva desde una lista inteligente | En el historial de acciones masivas de **Contactos** |
+| Acción **Enviar correo** en un flujo de trabajo | En las estadísticas de esa acción dentro del flujo |
+
+<Note>
+  Si abres una plantilla de correo en el constructor, solo verás estadísticas si esa plantilla se envió como campaña masiva desde ahí. Los correos que envía un flujo de trabajo muestran sus datos en el flujo, no en la plantilla.
+</Note>
+
+## 2. Revisa qué proveedor envía el correo
+
+No todos los proveedores reportan los mismos eventos:
+
+| Proveedor | Estadísticas disponibles |
+| --- | --- |
+| El correo de Chateea | Aperturas, clics, entregados, rebotes y bajas |
+| Proveedor de envío externo conectado por API | Aperturas, clics, entregados, rebotes y bajas, si el CNAME y los webhooks están bien configurados |
+| Proveedor SMTP | Solo aperturas y clics. Los entregados y rebotes no se pueden obtener |
+
+<Tip>
+  Para tener estadísticas completas y confiables, envía con el correo de Chateea. Consulta [¿Qué es el correo de Chateea?](/correo/que-es-el-correo-de-chateea).
+</Tip>
+
+Si tu cuenta usaba antes un proveedor SMTP y el flujo de trabajo conserva estadísticas de esa época, pueden no mostrarse bien. Duplica el flujo y sigue enviando desde la copia para que las estadísticas nuevas se registren correctamente.
+
+## 3. Si usas un proveedor de envío externo
+
+### Vuelve a conectar la clave API
+
+En **Configuración → Servicios de correo**, elimina la integración de tu proveedor y vuelve a conectarla con tu clave API. Esto vuelve a crear la conexión y los webhooks. Consulta [Conectar un proveedor de envío externo con clave API](/correo/conectar-proveedor-de-envio-externo-con-clave-api).
+
+### Revisa el registro CNAME
+
+El CNAME de seguimiento es el que permite registrar aperturas, clics y bajas. La revisión es la misma que cuando los enlaces no abren: consulta [Los enlaces de mis correos no abren](/correo/enlaces-del-correo-no-abren).
+
+### Revisa los webhooks
+
+1. En el panel de tu proveedor, abre **Sending → Webhooks**.
+2. Selecciona el dominio o subdominio que usa tu cuenta de Chateea.
+3. Confirma que haya un webhook configurado para **cada tipo de evento** (entregado, abierto, clic, rebote, baja, queja, etc.).
+4. Si falta alguno, agrégalo con **Add Webhook**. Si no sabes qué URL usar, vuelve a conectar la clave API o escribe a soporte de Chateea en **help@chateea.com**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no veo entregados ni rebotes con mi proveedor SMTP?">
+    La conexión SMTP solo permite registrar aperturas y clics. Los eventos de entrega y rebote requieren acceso a la información del proveedor en el momento del envío, que solo está disponible con el correo de Chateea o con un proveedor conectado por API.
+  </Accordion>
+  <Accordion title="Si cambio de SMTP a otro proveedor, ¿se completan las estadísticas anteriores?">
+    No. Los correos que ya salieron por SMTP no ganan datos de entrega después. Solo los envíos nuevos tendrán estadísticas completas.
+  </Accordion>
+  <Accordion title="¿Qué pasa si solo falta un webhook?">
+    Solo faltarán los datos de ese evento (por ejemplo, rebotes). Los demás eventos se siguen registrando con normalidad.
+  </Accordion>
+  <Accordion title="¿Cómo sé si mi CNAME está bien configurado?">
+    Consulta el nombre `email.` seguido de tu dominio de envío en la herramienta de CNAME de MXToolbox. Si no resuelve, no se registrarán aperturas, clics ni bajas.
+  </Accordion>
+  <Accordion title="¿Con el correo de Chateea tengo que configurar webhooks?">
+    No. El correo de Chateea registra todas las estadísticas sin que tengas que administrar webhooks. Solo necesitas que tu dominio de envío esté verificado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Estadísticas de entregabilidad" icon="chart-line" href="/correo/estadisticas-de-entregabilidad-de-correo">
+    Qué métricas revisar y cómo interpretarlas.
+  </Card>
+  <Card title="Detección de bots en aperturas y clics" icon="robot" href="/correo/deteccion-de-bots-en-aperturas-y-clics">
+    Por qué algunas aperturas y clics no se cuentan.
+  </Card>
+</CardGroup>

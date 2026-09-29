@@ -1,0 +1,70 @@
+---
+title: "Eliminar un dominio asignado a campañas programadas"
+description: "Desvincula un dominio de envío de sus campañas programadas para poder eliminarlo sin errores."
+icon: "trash"
+---
+
+Si intentas eliminar un dominio de envío y Chateea no te deja porque todavía está asignado a una campaña programada, primero tienes que desvincularlo de esas campañas. Esta guía te muestra cómo hacerlo en menos de dos minutos, sin afectar a las campañas que se están enviando.
+
+## El error que verás
+
+Al hacer clic en **Eliminar dominio**, aparece un aviso como este:
+
+```text
+The domain is currently assigned to a scheduled Campaign Domain (except test campaign). Try again after the campaign has finished sending, or remove the domain from the Campaign Domain (except test campaign).
+```
+
+Quiere decir que el dominio sigue asignado a una o más campañas programadas (sin contar las campañas de prueba). Tienes dos opciones: esperar a que esas campañas terminen de enviarse o quitarles el dominio.
+
+## Desvincular el dominio y eliminarlo
+
+<Steps>
+  <Step title="Abre la configuración de dominios">
+    Ve a **Configuración → Servicios de correo** y entra en el configurador de dominios. Busca el dominio que te da el error.
+  </Step>
+  <Step title="Abre Administrar campañas">
+    Haz clic en **Administrar campañas** (Manage Campaign) en ese dominio para ver todas las campañas vinculadas.
+  </Step>
+  <Step title="Quita el dominio de todas las campañas">
+    Selecciona todas las campañas de la lista y usa la opción **Quitar** (Remove).
+
+    <Warning>
+      Quita el dominio de **todas** las campañas. Si queda una sola vinculada, la eliminación volverá a fallar.
+    </Warning>
+  </Step>
+  <Step title="Aplica los cambios">
+    Haz clic en **Aplicar** para guardar la desvinculación.
+  </Step>
+  <Step title="Comprueba que no quede ninguna">
+    Vuelve a **Administrar campañas** y confirma que la lista está vacía.
+  </Step>
+  <Step title="Elimina el dominio">
+    Regresa a la lista de dominios. Ahora sí aparece la opción de eliminarlo. Escribe el texto de confirmación que te pide (por ejemplo, `delete`) y haz clic en **Eliminar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Desvincular antes de eliminar evita pérdidas de configuración por accidente y mantiene tus campañas activas funcionando sin interrupciones.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo eliminar el dominio sin tocar las campañas?">
+    Sí, si esperas a que las campañas programadas terminen de enviarse. Mientras sigan programadas con ese dominio, no podrás eliminarlo.
+  </Accordion>
+  <Accordion title="¿Las campañas de prueba bloquean la eliminación?">
+    No. El aviso excluye las campañas de prueba.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+    Cómo funcionan los dominios y los registros DNS.
+  </Card>
+  <Card title="Configura correo, teléfono y SMS" icon="gear" href="/primeros-pasos/configura-correo-telefono-y-sms">
+    Agrega y verifica tu dominio de envío.
+  </Card>
+</CardGroup>

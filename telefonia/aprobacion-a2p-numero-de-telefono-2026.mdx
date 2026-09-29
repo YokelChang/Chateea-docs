@@ -1,0 +1,136 @@
+---
+title: "Cómo conseguir la aprobación A2P de tu número en 2026"
+description: "Requisitos actuales de formularios, casillas de consentimiento, política de privacidad, términos, DBA y subdominios para aprobar tu registro A2P."
+icon: "badge-check"
+---
+
+El registro A2P 10DLC es el proceso con el que los operadores de EE. UU. (Verizon, AT&T, T-Mobile y otros) verifican **quién** envía SMS a sus clientes y **qué** les envía. Es obligatorio para cualquier negocio que envíe mensajes de aplicación a persona en EE. UU. con números locales. Esta guía reúne los requisitos que más rechazos provocan hoy y cómo cumplirlos a la primera: formularios de suscripción, pie de página, política de privacidad, términos y condiciones, nombres comerciales y subdominios.
+
+## Formulario de suscripción
+
+Da igual si el campo de teléfono es obligatorio u opcional en tu formulario, encuesta, cuestionario, widget de chat o calendario de reservas: **nadie puede verse obligado a aceptar SMS para poder enviar el formulario**. Dar el teléfono y aceptar mensajes son decisiones separadas.
+
+### Casillas separadas para marketing y para mensajes informativos
+
+Usa dos casillas de consentimiento distintas, para que la persona pueda aceptar una, las dos o ninguna. Los operadores revisan este texto en inglés, así que usa estas frases exactas y cambia lo que está entre corchetes:
+
+```text
+I consent to receive marketing text messages, about special offers, discounts, and service updates, from [BUSINESS NAME] at the phone number provided. Message frequency may vary. Message & data rates may apply. Text HELP for assistance, reply STOP to opt out.
+```
+
+```text
+I consent to receive non-marketing text messages from [BUSINESS NAME] about [USE_CASE_FROM_CAMPAIGN_DESCRIPTION]. Message frequency may vary, message & data rates may apply. Text HELP for assistance, reply STOP to opt out.
+```
+
+`[BUSINESS NAME]` debe coincidir con el nombre que aparece en tu carta CP-575 o 147C del IRS. Si envías con un nombre comercial distinto, sigue las reglas de la sección de nombre comercial (DBA) más abajo.
+
+### Reglas del formulario
+
+- **Ninguna casilla viene marcada.** La persona tiene que marcarlas ella misma.
+- **El consentimiento siempre es opcional.** Aunque el teléfono sea obligatorio, marcar la casilla no puede ser condición para enviar el formulario.
+- **Respeta lo que eligió.** Después del envío, comunícate solo por los canales que la persona aceptó.
+- **Enlaces en el pie.** Todos los formularios deben tener enlaces a la **Política de privacidad** y a los **Términos y condiciones**.
+
+## La descripción de la campaña debe coincidir con las casillas
+
+Los tipos de mensaje que describes en la campaña tienen que aparecer de forma explícita en el texto de la casilla de consentimiento.
+
+- **Mensajes informativos**: si la campaña habla de recordatorios de citas, actualizaciones de pedidos o avisos de servicio, la casilla debe nombrar esos mismos mensajes, no algo genérico como "mensajes no promocionales".
+- **Mensajes promocionales**: si la campaña habla de ofertas especiales o descuentos, la casilla debe mencionarlos, no solo "mensajes de marketing".
+
+La campaña también debe encajar con tu tipo de negocio, porque los revisores comprueban que tu sitio web respalda el caso de uso. Por ejemplo, una pizzería que registra recordatorios de citas no encaja con su modelo de negocio.
+
+## Requisitos del pie de página de los formularios
+
+| Elemento | Qué exige |
+| --- | --- |
+| Política de privacidad | Enlace claro y directo en el pie de cada formulario |
+| Términos y condiciones | Enlace visible en el pie |
+| Accesibilidad | Los enlaces legales no pueden quedar tapados por otros elementos o ventanas emergentes |
+| Transparencia | La persona debe poder revisar cómo se usarán sus datos **antes** de enviar, sin pasos adicionales |
+
+## Lo esencial de la política de privacidad
+
+- Nunca debe hablar de afiliación, venta ni compra de clientes potenciales (leads).
+- Los datos de contacto de la política y de los términos deben coincidir con los que diste en el registro de la marca.
+- Debe incluir esta cláusula de no divulgación, tal cual:
+
+```text
+No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
+```
+
+## Cláusulas obligatorias de los términos y condiciones
+
+Tus términos deben identificar al remitente, explicar cómo darse de baja y pedir ayuda, indicar la frecuencia y enlazar tu política de privacidad.
+
+**Identidad del negocio**: el nombre de tu negocio y una breve descripción de los mensajes que recibirá la persona.
+
+**Baja y soporte**:
+
+```text
+You can cancel the SMS service at any time. Just text "STOP" to the [Phone Number]. After you send the SMS message "STOP" to us, we will send you an SMS message to confirm that you have been unsubscribed. After this, you will no longer receive SMS messages from us. If you want to join again, just sign up as you did the first time and we will start sending SMS messages to you again. If you are experiencing issues with the messaging program you can reply with the keyword HELP for more assistance, or you can get help directly at [support email address or toll-free number].
+```
+
+**Responsabilidad del operador**:
+
+```text
+Carriers are not liable for delayed or undelivered messages.
+```
+
+**Frecuencia de mensajes**:
+
+```text
+As always, message and data rates may apply for any messages sent to you from us and to us from you. You will receive [message frequency]. If you have any questions about your text plan or data plan, it is best to contact your wireless provider.
+```
+
+**Enlace a la política de privacidad**:
+
+```text
+If you have any questions regarding privacy, please read our privacy policy: [link to privacy policy]
+```
+
+<Warning>
+  Estos textos cubren los requisitos de los operadores, pero no sustituyen una revisión legal. Consulta con tu asesor antes de publicar tus páginas legales. Si usas valores personalizados como `{{business.phone}}`, `{{business.email}}` o `{{business.website}}`, comprueba que coinciden con los datos del registro de tu marca.
+</Warning>
+
+## Nombre comercial (DBA)
+
+Si tu empresa tiene EIN pero quieres enviar mensajes con otro nombre de marca, añade esta frase en la descripción del caso de uso de la campaña:
+
+```text
+We are doing DBA as [Business_Name]
+```
+
+El resto del registro (sitio web, política de privacidad, términos y el nombre que aparece en las casillas) debe coincidir con **[Nombre legal] DBA [Nombre comercial]**.
+
+La relación entre ambos nombres debe ser **muy clara en el sitio web**: el DBA debe aparecer fuera de las dos casillas, en el pie o en el encabezado de la página. Si no se entiende o no se encuentra, pueden rechazar la campaña. Los logotipos del sitio sí pueden mostrar la marca comercial.
+
+## Usar un subdominio para el registro
+
+Los operadores aceptan subdominios (por ejemplo, formulario.tusitio.com), pero necesitan entender dos cosas:
+
+1. **Cómo se relaciona el subdominio con la marca principal.** Si tusitio.com y formulario.tusitio.com muestran marcas muy distintas, la campaña se bloqueará salvo que la relación sea evidente.
+2. **Cómo llega la gente a la página de suscripción.** Decir solo que la suscripción ocurre en el subdominio, sin mostrar cómo se llega, es arriesgado. Si el camino está claro (correo de marketing, redes sociales, anuncios o navegación desde el sitio principal), no hay problema. Si no, parece una página creada solo para aprobar el registro.
+
+Antes de registrar con un subdominio, responde:
+
+- ¿El subdominio coincide con tu marca (nombre, logotipo, estilo)?
+- ¿Es evidente cómo llegan las personas a él?
+- ¿La página tiene todos los avisos de la CTIA y un caso de uso adecuado?
+
+Si las tres respuestas son sí, puedes registrar con el subdominio.
+
+## Cómo pedir ayuda
+
+Si tienes dudas sobre tu registro A2P, escribe a soporte de Chateea en **help@chateea.com** y pide ayuda con A2P. El equipo puede revisar tu solicitud antes de enviarla.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registrar la campaña con el widget de chat" icon="comments" href="/telefonia/registro-campana-a2p-con-widget-de-chat">
+    El widget genera los textos de consentimiento por ti.
+  </Card>
+  <Card title="Error 30034: vincular tu número a la campaña" icon="link" href="/diccionario-codigos-error/30034-numero-no-cumple-requisitos-a2p-registrese-en-a2p">
+    Asocia cada número local a tu campaña aprobada.
+  </Card>
+</CardGroup>

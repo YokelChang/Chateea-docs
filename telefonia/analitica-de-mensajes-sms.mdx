@@ -1,0 +1,141 @@
+---
+title: "Analítica de mensajería: entregas, fallos y bajas de tus SMS"
+description: "Mide tus SMS enviados, entregados, fallidos, recibidos y bajas, descubre por qué fallan y cómo mejorar tu entregabilidad."
+icon: "chart-line"
+---
+
+La analítica de mensajería reúne en un solo panel el rendimiento de tus SMS: cuántos enviaste, cuántos se entregaron, cuántos fallaron y por qué, cuántos recibiste y cuántos contactos se dieron de baja. Además de los totales, te muestra **cuándo** cambió el rendimiento y te deja abrir cada mensaje para ver su estado y su código de error.
+
+Revisarla con frecuencia te ayuda a detectar problemas de entrega antes de que afecten a tus campañas y automatizaciones, y a proteger la reputación de tus números.
+
+## Para qué te sirve
+
+- **Visibilidad del rendimiento:** enviados, entregados, fallidos, recibidos y tasa de bajas en un mismo lugar.
+- **Detección de tendencias:** compara el periodo actual con el anterior y ve los cambios día a día.
+- **Diagnóstico de fallos:** agrupa los motivos de fallo y muestra el código de error de cada mensaje.
+- **Análisis por origen:** separa lo que envías desde campañas, flujos de trabajo y envíos masivos.
+- **Control de bajas:** vigila si tus contactos se cansan de tus mensajes o si hay problemas de consentimiento.
+
+## Dónde encontrarla
+
+Ve a **Configuración → Sistema telefónico**, abre la pestaña **Mensajería** y selecciona **Analítica de mensajería** (Messaging Analytics).
+
+## Periodo y filtros
+
+- El panel se abre con los **últimos 30 días**.
+- Puedes ampliar el periodo hasta **90 días** para ver tendencias más largas.
+- Con el filtro de origen puedes ver solo una parte de tu actividad:
+
+| Filtro | Qué muestra |
+| --- | --- |
+| **Todos** | La actividad de todos los orígenes. |
+| **Campaña** | Mensajes enviados desde campañas. |
+| **Flujo de trabajo** | Mensajes enviados por tus automatizaciones. |
+| **Envío masivo** | Mensajes enviados con acciones masivas. |
+
+<Note>
+  La **tasa de bajas** desaparece cuando filtras por Campaña, Flujo de trabajo o Envío masivo. Es normal: las bajas se calculan con los mensajes entrantes y esos filtros solo muestran mensajes salientes. Vuelve a **Todos** para verla.
+</Note>
+
+## Indicadores del panel
+
+En la parte superior verás cinco tarjetas:
+
+| Indicador | Qué representa | Cómo usarlo |
+| --- | --- | --- |
+| **Enviados** | Mensajes que el sistema intentó enviar. | Es la base para evaluar tu volumen y tu tasa de entrega. |
+| **Entregados** | Mensajes que llegaron al destinatario. | Compara la entrega entre periodos y orígenes. |
+| **Fallidos** | Mensajes que no se pudieron entregar (números no válidos, filtrado de operadores, bajas o restricciones de cumplimiento). | Ábrelo y revisa los códigos de error para encontrar la causa. |
+| **Recibidos** | Mensajes y respuestas que te enviaron tus contactos. | Te da contexto sobre la actividad entrante. |
+| **Tasa de bajas** | Porcentaje de contactos que respondieron STOP u otra palabra de baja. | Un aumento puede indicar cansancio de la audiencia o problemas de consentimiento. |
+
+Cada tarjeta se compara con el periodo anterior equivalente. El **verde** indica mejora y el **rojo**, empeoramiento, así detectas cambios sin hacer cálculos.
+
+### Ver el detalle de los mensajes
+
+Haz clic en cualquier tarjeta para abrir el registro de mensajes que la componen. Verás:
+
+| Dato | Para qué sirve |
+| --- | --- |
+| **Nombre del contacto** | Saber a quién iba o de quién venía el mensaje. |
+| **Número de teléfono** | Detectar problemas de un destino o de calidad de los números. |
+| **Estado** | Ver en qué estado de entrega quedó el mensaje. |
+| **Fecha de actividad** | Relacionar el mensaje con los picos de los gráficos. |
+| **Código de error** | Conocer el motivo técnico de un fallo. |
+
+## Gráficos de tendencia
+
+### Tendencia de la tasa de fallos
+
+Cada barra muestra el porcentaje de mensajes fallidos de un día del periodo. Te permite ver en qué días se dispararon los fallos y si se repiten patrones. El gráfico incluye una **línea de referencia del 10 %**: si la superas, conviene revisar tu envío cuanto antes, porque los fallos repetidos dañan la reputación de tu número y pueden acabar en restricciones.
+
+### Desglose de motivos de fallo
+
+Un gráfico circular agrupa los fallos por causa y muestra el porcentaje de cada una, comparado con el periodo anterior. Los motivos más comunes son:
+
+- Números gratuitos sin verificar.
+- Números no válidos o que no son móviles.
+- Filtrado o protecciones de los operadores.
+- Diferencias de país o problemas de enrutamiento.
+
+Empieza siempre por el motivo con mayor porcentaje: es el que más mejora tu entrega.
+
+### Tendencia de la tasa de bajas
+
+Muestra cómo evolucionan las bajas en el tiempo, con un **marcador de referencia del 2 %**. Una tasa de bajas saludable suele estar entre el 0 % y el 1 %.
+
+<Warning>
+  Las líneas del 10 % y del 2 % son marcadores de referencia del panel. No significan que tu cuenta se suspenda automáticamente al alcanzarlas. Los avisos, límites y suspensiones de la política de mensajería usan criterios propios, como el volumen de envío, el nivel de calentamiento del número, la cantidad de errores y las bajas.
+</Warning>
+
+## Cómo convertir los datos en mejoras
+
+| Lo que ves | Qué hacer |
+| --- | --- |
+| La tasa de fallos sube de golpe | Revisa el desglose de motivos, abre la tarjeta **Fallidos** y mira los códigos de error más repetidos. |
+| Aparece mucho el error 30007 | Es filtrado de operadores. Revisa el contenido, la identificación del remitente, el consentimiento y tu registro A2P. |
+| Predominan los números no válidos o no móviles | Limpia tu lista: corrige o elimina contactos que no pueden recibir SMS. |
+| Sube la tasa de bajas | Revisa el consentimiento, la segmentación, la frecuencia de envío y el texto de baja. |
+| Un origen rinde peor que los demás | Filtra por Campaña, Flujo de trabajo o Envío masivo y compáralo con el total. |
+| Los fallos o las bajas siguen altos | Pausa o ajusta el envío problemático antes de seguir enviando grandes volúmenes. |
+
+## Solución de problemas
+
+- **Veo menos actividad de la esperada:** revisa el periodo seleccionado y pon el filtro de origen en **Todos**.
+- **No aparece la tasa de bajas:** tienes activo un filtro de origen saliente. Cámbialo a **Todos**.
+- **La tasa de fallos es alta:** mira primero el desglose de motivos y luego los códigos de error en **Fallidos**. Resuelve la causa principal antes de reenviar o aumentar el volumen.
+- **El error 30007 ya no tiene tarjeta propia:** ahora se revisa dentro de los mensajes fallidos, en el desglose de motivos y en los códigos de error.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué periodo muestra por defecto?">
+    Los últimos 30 días. Puedes ampliarlo hasta 90 días.
+  </Accordion>
+  <Accordion title="¿Por qué desaparece la tasa de bajas al filtrar por Campaña o Flujo de trabajo?">
+    Porque las bajas se calculan con mensajes entrantes y esos filtros solo muestran mensajes salientes.
+  </Accordion>
+  <Accordion title="¿Mi cuenta se suspende si supero el 10 % de fallos?">
+    No automáticamente. El 10 % es un marcador del panel. Las advertencias y suspensiones dependen de otros criterios, como el volumen, el nivel de calentamiento y el número de errores. Aun así, superarlo de forma repetida es una señal clara de que debes actuar.
+  </Accordion>
+  <Accordion title="¿Qué significa el marcador del 2 % de bajas?">
+    Señala una tasa de bajas elevada que conviene revisar. Lo saludable suele estar entre el 0 % y el 1 %.
+  </Accordion>
+  <Accordion title="¿Qué veo al hacer clic en una tarjeta?">
+    El registro de mensajes con nombre del contacto, número, estado, fecha de actividad y código de error cuando corresponde.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solucionar problemas de entrega de SMS" icon="screwdriver-wrench" href="/telefonia/solucionar-problemas-de-entrega-de-sms">
+    Pasos para encontrar por qué no llegan tus mensajes.
+  </Card>
+  <Card title="Errores comunes de entrega de SMS" icon="triangle-exclamation" href="/telefonia/errores-comunes-de-entrega-de-sms">
+    Qué significa cada error y cómo resolverlo.
+  </Card>
+  <Card title="Error 30007: filtrado de operadores" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Cómo evitar que los operadores bloqueen tus mensajes.
+  </Card>
+</CardGroup>

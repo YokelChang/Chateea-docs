@@ -1,0 +1,168 @@
+---
+title: "Seguimiento de llamadas con grupos de números"
+description: "Muestra un número distinto según la fuente de cada visitante y descubre qué campaña, página y palabra clave generó cada llamada."
+icon: "chart-line"
+---
+
+Con un **grupo de números** (number pool) cada visitante de tu sitio ve un número de teléfono distinto según de dónde llegó. Cuando llama, Chateea sabe qué campaña, página y hasta qué palabra clave generó esa llamada. Es la forma de medir cuántas llamadas trae cada anuncio y decidir con datos dónde invertir.
+
+## Cómo funciona
+
+1. Creas un grupo con varios números de seguimiento.
+2. Pegas un fragmento de código en tu sitio o embudo.
+3. Cuando llega un visitante, el código cambia el número visible de tu página por uno del grupo.
+4. Si el visitante llama a ese número, Chateea cruza la llamada con los datos de su visita y atribuye la fuente, la página y la palabra clave.
+5. La llamada se desvía al número de tu negocio que elijas.
+
+## Crear un grupo de números
+
+<Steps>
+  <Step title="Abre tus números">
+    Ve a **Configuración → Sistema telefónico → Números de teléfono**.
+  </Step>
+  <Step title="Agrega un grupo">
+    En el menú **+ Agregar número**, elige **Agregar grupo de números**.
+  </Step>
+  <Step title="Elige Actividad de visitantes">
+    Selecciona **Actividad de visitantes** (Visitors Activity) y luego qué visitantes quieres rastrear. Te recomendamos **Todos los visitantes**. Haz clic en **Siguiente: crear grupo**.
+
+    Si eliges **Búsqueda de pago** (PPC), el número solo cambiará cuando el visitante llegue desde un anuncio pagado.
+  </Step>
+  <Step title="Nombra el grupo y define su tamaño">
+    - **Nombre:** un nombre para identificar el grupo, por ejemplo "Google Ads marzo".
+    - **Tamaño del grupo:** cada grupo tiene como mínimo **4 números**. Cuantas más llamadas y visitas simultáneas esperes, más números necesitarás.
+  </Step>
+  <Step title="Define el número de desvío y el número a reemplazar">
+    - **Número de desvío:** el número de tu negocio donde quieres recibir las llamadas que entren por los números de seguimiento.
+    - **Número a reemplazar:** el número que aparece hoy en tu sitio y que el código sustituirá. Puede ser el mismo que el de desvío, o desmarcar la casilla para indicar otro.
+
+    Al marcar la casilla de confirmación aceptas la compra de los números del grupo. Haz clic en **Siguiente: elegir números**.
+
+    <Warning>
+      No uses como número de desvío un número de Chateea. Crearía un bucle de llamadas. Usa un número externo distinto.
+    </Warning>
+  </Step>
+  <Step title="Elige los números de seguimiento">
+    Tienes tres opciones:
+
+    - **Número local:** números del mismo prefijo que tu número de desvío.
+    - **Números gratuitos:** útil cuando no hay números disponibles en tu prefijo. Elige el prefijo en el desplegable.
+    - **Números de cualquier prefijo:** escribe el prefijo y haz clic en **Comprobar disponibilidad**.
+
+    Luego haz clic en **Siguiente: funciones del número**.
+  </Step>
+  <Step title="Configura mensaje susurrado y grabación">
+    - **Mensaje susurrado:** lo escuchas tú al contestar, el cliente no. Por ejemplo, si lo configuras como "Llamada de [Fuente]", escucharás algo como "Llamada de campaña de anuncios".
+    - **Grabación de llamadas:** marca la casilla para grabar y personaliza el aviso que escucha quien llama, por ejemplo "Esta llamada será grabada con fines de calidad".
+  </Step>
+  <Step title="Activa el grupo">
+    Haz clic en **Activar número**.
+  </Step>
+</Steps>
+
+## Instalar el código en tu sitio o embudo
+
+<Steps>
+  <Step title="Copia el código">
+    Ve a **Grupos de números**, haz clic en los tres puntos del grupo y elige **Información del grupo de números**. Copia el **Código normal** (Normal Snippet Code).
+  </Step>
+  <Step title="Pégalo en todo el embudo o sitio">
+    Ve a **Sitios**, abre el embudo o sitio web, entra en la pestaña **Configuración** y pega el código al final del campo **Código de seguimiento del body**. Haz clic en **Guardar**. El número cambiará en todas las páginas.
+  </Step>
+  <Step title="O pégalo solo en una página">
+    Si solo quieres que cambie en una página, ábrela en el editor, haz clic en el icono de **código de seguimiento**, elige **Código de seguimiento del pie de página** y pega el código. Haz clic en **Guardar**.
+  </Step>
+  <Step title="Cambia el número a reemplazar si lo necesitas">
+    Desde los tres puntos del grupo, elige **Editar configuración**, desmarca **Número a reemplazar igual al número de desvío**, escribe el número que aparece en tu sitio y haz clic en **Agregar**.
+  </Step>
+</Steps>
+
+## Ver la atribución en tus reportes
+
+Con el grupo funcionando, ve al **Reporte de llamadas** en **Informes**. En la columna **Palabra clave** verás qué búsqueda llevó al visitante a llamar. Si desplazas la tabla a la derecha y abres el detalle, también verás la página que estaba visitando. Haz clic en el nombre del contacto para ver toda su actividad.
+
+## Probar que el número cambia
+
+1. Abre una ventana de incógnito en tu navegador.
+2. Escribe la dirección de tu página, por ejemplo `tusitio.com/pagina-de-destino`.
+3. Comprueba que aparece un número del grupo en lugar de tu número habitual.
+
+Si elegiste **Todos excepto directos**, entrar escribiendo la dirección no cuenta. Enlaza la página desde otra web y entra haciendo clic en ese enlace.
+
+<Note>
+  Para simular tráfico de Google Ads no sirve añadir manualmente el parámetro `gclid` a la dirección. Tiene que venir de un anuncio real.
+</Note>
+
+## Seguimiento de palabras clave
+
+Para ver la palabra clave que buscó el visitante, añade este parámetro a la URL de destino de tus anuncios de Google Ads:
+
+```text
+?keyword={keyword}
+```
+
+Por ejemplo, si tu anuncio lleva a `tusitio.com/pagina`, la URL quedaría:
+
+```text
+tusitio.com/pagina/?keyword={keyword}
+```
+
+## Cambiar el número en un botón
+
+Para que también cambie el número en un botón o enlace de llamada, usa un enlace `tel:` con el número en el mismo formato que el número visible:
+
+```html
+<a href="tel:(972) 421-5139" class="btn btn-blue">Llámanos</a>
+```
+
+<Warning>
+  El número dentro de `href="tel:..."` debe tener **exactamente el mismo formato** que el número visible y el número a reemplazar. El sistema no considera iguales el formato local y el internacional: por ejemplo, `(02) 6193 4089` y `+61261934089` se tratan como números distintos. Elige un formato y úsalo igual en todos lados.
+</Warning>
+
+## ID de grupo
+
+El **ID de grupo** sirve cuando tienes varios grupos en la misma página y quieres que solo cambie un número, el del grupo que mejor coincida con la fuente del visitante.
+
+Ejemplo: tienes dos anuncios. Quien llega por el primero ve un número y quien llega por el segundo ve otro. Para lograrlo, ajusta la fuente de cada grupo según el anuncio y asígnales un ID de grupo:
+
+1. Edita el grupo de números.
+2. Haz clic en **Agregar o editar ID de grupo**.
+3. Escribe el nombre del ID y haz clic en **Actualizar**.
+4. Con el icono de información, copia el código del grupo y pégalo en el pie de página de tu sitio.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué conviene usar grupos de números para rastrear llamadas?">
+    Porque es la única forma de saber de qué fuente vino una llamada. El código detecta la fuente del visitante (por ejemplo, el parámetro que añade Google Ads a sus anuncios), cambia el número y, cuando llaman, cruza la llamada con los datos de la visita.
+  </Accordion>
+  <Accordion title="¿Cuánto cuesta un grupo de números?">
+    Cada número del grupo se cobra igual que un número normal de tu cuenta, y el mínimo son 4 números por grupo. Los cargos se descuentan de tu billetera. Consulta las tarifas en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). Elige el tamaño del grupo según tu volumen de tráfico.
+  </Accordion>
+  <Accordion title="¿Puedo recibir las llamadas del grupo en la app web o móvil?">
+    Por ahora no. Las llamadas a un grupo de números solo se desvían al número de desvío que configuraste.
+  </Accordion>
+  <Accordion title="¿El número visible y el enlace tel: tienen que tener el mismo formato?">
+    Sí. Si usan formatos distintos, puede cambiar el número visible pero no el enlace. Por ejemplo, si muestras `(02) 6193 4089`, el enlace debe ser `tel:(02) 6193 4089`.
+  </Accordion>
+  <Accordion title="¿Puedo usar formato internacional (E.164)?">
+    Sí, siempre que lo uses igual en el número a reemplazar, en el número visible y en el enlace `tel:`. Si configuras `+61261934089`, tu página debe mostrar `+61261934089` y el enlace debe ser `tel:+61261934089`.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestionar los números de un grupo" icon="list" href="/telefonia/gestionar-numeros-de-un-grupo-de-numeros">
+    Mueve, agrega o elimina números de tus grupos.
+  </Card>
+  <Card title="Disparador Detalles de llamada" icon="bolt" href="/telefonia/disparador-detalles-de-llamada">
+    Automatiza acciones para las llamadas de un grupo concreto.
+  </Card>
+  <Card title="Códigos de seguimiento y píxeles" icon="code" href="/sitios/codigos-de-seguimiento-y-pixeles">
+    Dónde pegar códigos en tus sitios y embudos.
+  </Card>
+  <Card title="Enlaces de llamada, SMS y correo" icon="link" href="/sitios/enlaces-de-llamada-sms-y-correo">
+    Crea botones que abren una llamada.
+  </Card>
+</CardGroup>

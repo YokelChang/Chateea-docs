@@ -1,0 +1,129 @@
+---
+title: "Solucionar problemas de entrega de SMS"
+description: "Método paso a paso para encontrar por qué un SMS no llega y resolverlo: destinatario, remitente, registro, límites y contenido."
+icon: "screwdriver-wrench"
+---
+
+Cuando un SMS no llega, casi siempre hay una razón concreta: el contacto se dio de baja, el número no admite SMS, tu registro A2P no está completo, la operadora filtró el mensaje o tu cuenta alcanzó un límite. Esta guía te da un método ordenado para encontrar la causa y resolverla sin enviar el mismo mensaje una y otra vez.
+
+Úsala como punto de partida. Para el significado de cada código de error, consulta el artículo de errores comunes de SMS y el diccionario de códigos de error.
+
+## Cómo viaja un SMS
+
+Antes de llegar al destinatario, cada mensaje pasa por tres capas. Saber en cuál falló te ayuda a encontrar la solución.
+
+| Capa | Qué hace | Ejemplos de fallo |
+| --- | --- | --- |
+| **1. Chateea** | Valida el formato del mensaje, revisa si el contacto se dio de baja, aplica las reglas del flujo de trabajo y los límites de la cuenta (límite diario, periodo de calentamiento). | Contacto dado de baja, límite diario alcanzado. |
+| **2. Sistema telefónico** | Valida el número remitente, revisa el registro A2P o la verificación del número gratuito, aplica los permisos geográficos y puede filtrar por contenido o política. | Número sin registro A2P, número gratuito sin verificar. |
+| **3. Operadora móvil** | Entrega el mensaje al teléfono del destinatario. Puede filtrar mensajes, bloquear números inválidos o inactivos, o rechazarlos por problemas del dispositivo. | Filtrado por spam, número inactivo. |
+
+La mayoría de los fallos devuelven un **código de error** que indica la capa y el motivo.
+
+## Dónde ver el error
+
+- **Conversaciones:** abre la conversación del contacto. Los mensajes fallidos muestran un indicador rojo con el código o la descripción del error.
+- **Actividad del contacto:** en la ficha del contacto, revisa el historial de comunicaciones.
+- **Historial del flujo de trabajo:** si el SMS salió de una automatización, revisa el historial de ejecución para ver el fallo y su código.
+
+<Tip>
+Anota siempre el código exacto. Es lo que te dice la causa y la solución.
+</Tip>
+
+## Lista de verificación
+
+<Steps>
+  <Step title="Define el alcance">
+    ¿Falla con un solo contacto, con un solo número remitente o con todos los mensajes salientes? Eso reduce mucho las posibles causas.
+  </Step>
+  <Step title="Revisa el mensaje fallido">
+    Abre el mensaje en **Conversaciones** y anota su estado (fallido, no entregado) y el código de error.
+  </Step>
+  <Step title="Revisa al destinatario">
+    Confirma que sea un número móvil válido, con el formato correcto, que admita SMS y que no esté dado de baja ni en No molestar.
+  </Step>
+  <Step title="Revisa el remitente">
+    Confirma que tu número admita SMS, esté activo, pertenezca a tu cuenta y tenga el registro A2P o la verificación de número gratuito aprobados, si aplica.
+  </Step>
+  <Step title="Revisa las restricciones de tu cuenta">
+    Comprueba si alcanzaste el límite diario, si estás en periodo de calentamiento, si la cuenta está suspendida o si faltan permisos geográficos para el país de destino.
+  </Step>
+  <Step title="Revisa el contenido">
+    Verifica la longitud del mensaje, que los adjuntos MMS pesen menos de 5 MB, que los enlaces funcionen y que el contenido cumpla la política de mensajería.
+  </Step>
+  <Step title="Busca el código en el diccionario">
+    Consulta el significado exacto y la solución recomendada del código.
+  </Step>
+  <Step title="Prueba una vez después de corregir">
+    Envía un mensaje de prueba. No reintentes una y otra vez sin haber resuelto la causa.
+  </Step>
+  <Step title="Escala con ejemplos si sigue fallando">
+    Escribe a soporte de Chateea en **help@chateea.com** con el número remitente, el número destinatario, la fecha y hora, y el código de error.
+  </Step>
+</Steps>
+
+## Fallos más comunes
+
+<AccordionGroup>
+  <Accordion title="El contacto se dio de baja">
+    Si respondió STOP u otra palabra de baja, no podrás escribirle hasta que vuelva a suscribirse enviando START (u otra palabra de alta) al mismo número. Revisa cómo obtienes el consentimiento para evitar bajas futuras. Código habitual: 21610.
+  </Accordion>
+  <Accordion title="El número del destinatario no es válido o no admite SMS">
+    El mensaje falla si el número es fijo, no existe, está desconectado o tiene un formato incorrecto. Usa un número móvil válido y con formato internacional. Códigos habituales: 21211, 21614, 21635, 30005, 30006.
+  </Accordion>
+  <Accordion title="El registro A2P o la verificación del número gratuito no están completos">
+    Los números locales y gratuitos de EE. UU. necesitan registro o verificación para enviar mensajes. Confirma que tu número esté vinculado a la campaña o verificación aprobada. Códigos habituales: 30032 (número gratuito sin verificar), 30033 (campaña A2P suspendida) y 30034 (número sin registro A2P completo).
+  </Accordion>
+  <Accordion title="El mensaje fue filtrado">
+    Chateea o la operadora pueden bloquear mensajes que parecen spam, incumplen la política de mensajería o usan contenido prohibido. Revisa el consentimiento, el contenido y los enlaces antes de reenviar. Código habitual: 30007.
+  </Accordion>
+  <Accordion title="Límites de envío o cuenta suspendida">
+    Chateea aplica límites diarios y periodos de calentamiento, sobre todo en números o campañas nuevos. Revisa tu límite actual. Si tu cuenta está suspendida, escribe a **help@chateea.com**. Códigos habituales: 30023, 30002, 30037.
+  </Accordion>
+  <Accordion title="Faltan permisos geográficos">
+    Para enviar a otros países necesitas tener habilitado el país de destino. Actívalo en la configuración de tu cuenta o pídelo a soporte. Código habitual: 21408.
+  </Accordion>
+  <Accordion title="Problemas con MMS o el tamaño del archivo">
+    Los MMS fallan si el adjunto supera el límite de la operadora (normalmente 5 MB) o si el destinatario no admite MMS. Reduce el archivo o envíalo como enlace. Código habitual: 30011.
+  </Accordion>
+  <Accordion title="Tu número remitente no admite SMS">
+    El número puede no tener mensajería activada, estar inactivo o mal configurado. Si es nuevo, confirma que haya terminado de activarse. Código habitual: 21661.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde busco un código de error de SMS?">
+    Abre el mensaje fallido en Conversaciones, anota el código y búscalo en el diccionario de códigos de error.
+  </Accordion>
+  <Accordion title="El contacto dice que no recibió el mensaje, pero no aparece ningún error. ¿Qué hago?">
+    Si el mensaje figura como enviado sin error final, la operadora aún puede haberlo filtrado, el teléfono puede haber estado apagado o la entrega puede haberse retrasado. Revisa el contenido y tus prácticas de consentimiento. Si se repite, escribe a soporte con ejemplos.
+  </Accordion>
+  <Accordion title="¿Qué significa que la operadora filtró un mensaje?">
+    Que la operadora del destinatario lo bloqueó por sospecha de spam, contenido prohibido o incumplimiento de políticas.
+  </Accordion>
+  <Accordion title="¿Cómo sé si mi registro A2P o de número gratuito está completo?">
+    Revisa en la configuración de tus números que estén vinculados a una campaña A2P o a una verificación aprobada. Los errores 30032, 30033 o 30034 indican que falta algo o que hay una suspensión.
+  </Accordion>
+  <Accordion title="¿Puedo reintentar un mensaje fallido de inmediato?">
+    Sí, pero solo después de resolver la causa. Reintentar sin corregir puede provocar más fallos, restricciones en tu cuenta o más filtrado.
+  </Accordion>
+  <Accordion title="¿Cómo evito problemas de entrega en el futuro?">
+    Consigue consentimiento antes de escribir, evita contenido que parezca spam, cumple las políticas de las operadoras, completa tu registro A2P o de número gratuito y vigila tus límites de envío.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Errores comunes de entrega de SMS" icon="triangle-exclamation" href="/telefonia/errores-comunes-de-entrega-de-sms">
+    Qué significa cada código y qué hacer.
+  </Card>
+  <Card title="Error 30007: filtrado por la operadora" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Cómo evitar que filtren tus mensajes.
+  </Card>
+  <Card title="Error 21661: el número no admite SMS" icon="comment-slash" href="/diccionario-codigos-error/21661-el-numero-de-origen-no-admite-sms">
+    Cuando tu número remitente no puede enviar SMS.
+  </Card>
+</CardGroup>

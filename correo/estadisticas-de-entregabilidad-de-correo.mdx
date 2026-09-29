@@ -1,0 +1,174 @@
+---
+title: "Qué estadísticas de entregabilidad de correo vigilar"
+description: "Qué mide cada estadística de correo y qué rangos son sanos, de vigilancia o de alerta para proteger tu reputación."
+icon: "chart-line"
+---
+
+Las estadísticas de correo te dicen si tus mensajes llegan, si la gente los abre y si tu reputación de remitente está sana. El problema es saber cuándo un número es bueno y cuándo es una alarma. Esta guía explica qué mide cada estadística y qué rangos considerar sanos, de vigilancia o de alerta.
+
+<Note>
+  Las estadísticas disponibles varían según la herramienta y el servicio de envío, y los rangos de referencia son promedios de la industria. Cada negocio, audiencia y campaña es distinta: úsalos como guía, no como regla.
+</Note>
+
+## Qué significa cada estadística
+
+Antes de juzgar un número, asegúrate de entender qué mide exactamente.
+
+| Estadística | Qué mide |
+| --- | --- |
+| **Procesados** | Todas las solicitudes de mensaje que recibió el servidor de envío, salientes y entrantes (incluye las que llegan por webhooks). |
+| **Aceptados** | Solicitudes de envío salientes que el servidor aceptó para enviar. Es lo que intentaste enviar. |
+| **Entregados** | Mensajes que llegaron al servidor de correo del destinatario. No garantiza que lleguen a la bandeja principal. |
+| **Abiertos** | Veces que un mensaje entregado registró una apertura. No siempre significa que una persona lo leyó. |
+| **Clics** | Veces que un mensaje entregado registró un clic. |
+| **Respuestas** | Veces que el destinatario respondió un mensaje entregado. |
+| **Rebotes definitivos** (hard bounce) | Mensajes aceptados que no se pudieron entregar por direcciones inválidas o cuentas inactivas. |
+| **Rebotes temporales** (soft bounce) | Fallos de entrega pasajeros. El sistema reintenta el envío automáticamente. |
+| **Quejas** | Mensajes entregados que el destinatario marcó como spam o correo no deseado. |
+| **Bajas** | Mensajes entregados que provocaron que el destinatario cancelara su suscripción. |
+| **Supresiones** | Mensajes aceptados que no se enviaron porque la dirección ya había rebotado, presentado una queja o dado de baja. |
+
+<Tip>
+  La diferencia entre **Aceptados** y **Entregados** son los rebotes, los rechazos y las supresiones. Si esa brecha crece, tienes un problema de calidad de lista o de reputación.
+</Tip>
+
+## Tabla de referencia rápida
+
+| Estadística | Sano | Vigilar | Alerta |
+| --- | --- | --- | --- |
+| Entregados | 98 % o más | Entre 97 % y 98 % | Menos de 97 % |
+| Abiertos | 40 % a 60 % o más | 16 % a 26 % | Menos de 15 % |
+| Clics | Más de 10 % | 7 % a 9 % | Menos de 5 % |
+| Respuestas | 30 % o más | 15 % a 25 % | Menos de 10 % |
+| Quejas | Lo más cerca posible de 0 % | Menos de 0,04 % | 0,04 % o más |
+| Rebotes definitivos | Menos de 1 % | 1 % a 2 % | Más de 2 % a 2,5 % |
+| Rebotes temporales | Menos de 2 % | 2 % a 5 % | Más de 5 % |
+
+Revisa tus estadísticas **cada semana**. Es suficiente para detectar problemas a tiempo sin confundir la variación normal con una crisis.
+
+## Entregados: la base de todo
+
+Mide el porcentaje de correos que llegaron al servidor del destinatario. Vigílalo tanto a nivel de **dominio** como de **cada correo** individual.
+
+- Lo contrario de entregado es **no entregado**: fallido, rebotado o rechazado.
+- Entregado solo significa que llegó al servidor, no a la bandeja principal. Una tasa menor al 97 % suele indicar que gran parte de lo entregado termina en spam o en promociones.
+- Una tasa baja casi nunca tiene una sola causa: normalmente combina reputación, autenticación y calidad de la lista.
+- Entre 97 % y 98 % todavía puede haber problemas, sobre todo si otras estadísticas también están en alerta.
+
+## Abiertos: la primera señal de interés
+
+Vigila la tasa de apertura a nivel de **cada correo**.
+
+- Todo lo que el destinatario ve antes de abrir influye: el nombre del remitente, la dirección de envío, el reconocimiento de tu marca, el asunto y el texto de vista previa (las primeras líneas del cuerpo).
+- Abrir un correo es, en parte, una cuestión de confianza. Preséntate de una forma familiar y reconocible.
+
+<Warning>
+  **Cuidado con Apple Mail.** Desde iOS 15, la protección de privacidad de Apple Mail precarga las imágenes y registra aperturas automáticas, aunque la persona no lea el correo. Si buena parte de tu lista usa Apple Mail, tu tasa de apertura estará inflada. Combínala con los clics y las respuestas, o fíjate en la tendencia más que en el número exacto.
+</Warning>
+
+## Clics: acción sobre tu llamado
+
+Vigila la tasa de clics a nivel de **cada correo**, sobre todo en los que buscan un clic.
+
+- Lo que motiva un clic es muy distinto de lo que motiva una respuesta. No los mezcles.
+- Haz que el llamado a la acción sea claro y fácil. Nada de adivinar.
+- En mensajes cortos (tres a cinco líneas), pon un único llamado claro al final.
+- En textos largos, repite el mismo llamado en varios puntos del correo.
+- Di exactamente qué obtiene la persona al hacer clic.
+- Evita competir con varios enlaces: el clic que te importa debe ser el protagonista.
+
+## Respuestas: la conversación
+
+Vigila la tasa de respuesta a nivel de **cada correo**, sobre todo en los que buscan una respuesta.
+
+- Haz que responder sea fácil: preguntas simples de sí o no funcionan muy bien.
+- Ofrece algo de valor a cambio de la respuesta.
+- No distraigas con enlaces si lo que buscas es que te respondan.
+
+## Quejas: la que más daña tu reputación
+
+Vigílala a nivel de **dominio** y de **cada correo**. Lo ideal es que esté lo más cerca posible de 0 %.
+
+- Siguiendo buenas prácticas, deberías mantenerte muy por debajo de 0,03 %.
+- Al acercarte a 0,04 % empieza a verse afectada la reputación de tu dominio y de tu IP.
+- Los servicios de envío suelen fijar un límite máximo de 0,05 % en su política de uso aceptable, es decir, más o menos **una queja por cada 2.000 correos**. Si te estás acercando, tu dominio ya tiene problemas.
+- Una tasa alta puede provocar que el servicio de envío desactive tu dominio o tu cuenta, y puede llevarte a listas negras.
+
+<Tip>
+  Dale a la gente una forma fácil de salir: un enlace de baja visible o una página de preferencias. Una baja no daña tu reputación; una queja por spam sí.
+</Tip>
+
+## Rebotes definitivos: la higiene de tu lista
+
+Vigílalos a nivel de **dominio** y de **cada correo**.
+
+- Con una buena limpieza de la lista (al importarla y de forma continua) deberías mantenerte muy por debajo del 1 %.
+- A partir de 2 % a 2,5 % tu reputación empieza a sufrir.
+- Los servicios de envío suelen tolerar como máximo alrededor de un 5 %. Una tasa alta puede desactivar tu dominio o tu cuenta y llevarte a listas negras.
+
+## Rebotes temporales: entrega en curso
+
+Un rebote temporal significa que el servidor del destinatario rechazó el correo por ahora, pero podría aceptarlo más tarde. Causas comunes: buzón lleno, servidor no disponible por un momento o mensaje demasiado pesado.
+
+### Cómo se ve en Chateea
+
+| Momento | Estado del correo |
+| --- | --- |
+| Mientras se reintenta | Aparece como **Enviado** y en el detalle del correo verás **Entrega en curso** (Delivery in Progress). |
+| Cuando terminan los reintentos | Cambia a **Entregado** si tuvo éxito, o a **Fallido** si no se logró entregar. |
+
+<Note>
+  "Entrega en curso" no es un error. Solo indica que el sistema sigue dentro de la ventana de reintentos. No reenvíes el correo a mano: espera a que el estado se resuelva.
+</Note>
+
+- Si una misma dirección rebota temporalmente en varias campañas seguidas, trátala como un rebote definitivo y sácala de tu lista activa. Suele ser un buzón abandonado.
+- Un pico de rebotes temporales en un envío puede indicar que el servidor receptor está limitando tu dominio por volumen o reputación. Revísalo junto con las quejas y los entregados.
+
+## El objetivo real
+
+No se trata de alcanzar un número mágico. Mira tus cifras actuales, fija metas y cambia **una sola cosa a la vez** para medir su efecto. Lo importante es mejorar desde donde empezaste y, al final, mejorar los resultados de tu negocio.
+
+Los valores de referencia dependen del tipo de campaña, de la audiencia y de la oferta. No todos tus correos van a rendir igual, y un diagnóstico de entregabilidad siempre requiere analizar varios factores a la vez.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuál es la estadística más importante?">
+    La tasa de **quejas**, seguida de cerca por la de **rebotes**. Las dos dañan tu reputación de forma directa y rápida, y pueden hacer que el servicio de envío tome medidas sobre tu cuenta. Las aperturas y los clics fluctúan; las quejas y los rebotes se acumulan.
+  </Accordion>
+  <Accordion title="¿Qué significa Entrega en curso en el detalle del correo?">
+    Que el correo tuvo un rebote temporal y el sistema está reintentando la entrega. Mientras tanto aparece como **Enviado**. Si la entrega funciona, pasa a **Entregado**; si se agotan los reintentos, pasa a **Fallido**. No lo reenvíes manualmente.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre un rebote definitivo y uno temporal?">
+    El **definitivo** es permanente: la dirección no existe, es inválida o la cuenta se cerró, y no se reintenta. El **temporal** es pasajero: servidor caído, buzón lleno o rechazo momentáneo, y se reintenta automáticamente. Si una dirección rebota temporalmente una y otra vez, trátala como definitiva.
+  </Accordion>
+  <Accordion title="¿Por qué mi tasa de apertura sube y baja tanto?">
+    Probablemente por la protección de privacidad de Apple Mail, que registra aperturas automáticas. Combina la apertura con los clics y las respuestas, o fíjate en la tendencia.
+  </Accordion>
+  <Accordion title="¿Una tasa de entrega baja siempre es un problema de reputación?">
+    No siempre. También puede deberse a la calidad de la lista (direcciones malas, cuentas genéricas, trampas de spam) o a la autenticación (SPF, DKIM o DMARC ausentes o mal configurados). Si la tasa es baja de forma crónica, casi siempre hay varias causas y conviene hacer una revisión completa.
+  </Accordion>
+  <Accordion title="¿Qué es peor, una baja o una queja?">
+    La queja, por mucho. Una baja solo saca a alguien que no está interesado. Una queja le dice al proveedor de correo que tu mensaje no es deseado y pesa mucho en tu reputación. Por eso conviene que darse de baja sea siempre fácil.
+  </Accordion>
+  <Accordion title="Mi campaña superó los umbrales de alerta. ¿Qué hago?">
+    Pausa los envíos a esa lista, elimina los rebotes y las quejas, revisa qué tenían en común el contenido y la audiencia, y comprueba tus registros de autenticación. Si las quejas o los rebotes están cerca del límite máximo, baja el volumen y vuelve a crecer empezando por tus contactos más activos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Encabezado de baja en un clic" icon="envelope-open" href="/correo/encabezado-list-unsubscribe">
+    Cómo el botón de baja del encabezado reduce tus quejas por spam.
+  </Card>
+  <Card title="Requisitos de Google y Yahoo" icon="shield-check" href="/correo/requisitos-de-google-y-yahoo-para-remitentes">
+    Lo que debes cumplir para que Gmail y Yahoo acepten tus correos.
+  </Card>
+  <Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+    Autentica tu dominio con SPF, DKIM y DMARC.
+  </Card>
+  <Card title="Gestión de preferencias de suscripción" icon="sliders" href="/correo/gestion-de-preferencias-de-suscripcion">
+    Deja que tus contactos elijan qué correos quieren recibir.
+  </Card>
+</CardGroup>

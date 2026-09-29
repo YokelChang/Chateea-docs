@@ -1,0 +1,94 @@
+---
+title: "Recibir correos entrantes con un proveedor externo"
+description: "Recibe en Conversaciones los correos que tus contactos escriben a tu dominio y evita conflictos de registros MX."
+icon: "inbox"
+---
+
+Además de capturar las respuestas a tus correos, puedes hacer que Chateea reciba los correos que un contacto escribe **por primera vez** a una dirección de tu dominio (por ejemplo, `ventas@envios.tunegocio.com`) y los muestre en **Conversaciones**. Esto es útil para campañas de prospección en frío, donde el contacto a veces escribe directamente en lugar de responder.
+
+Para que funcione con un proveedor de envío externo, tienes que entender una limitación clave de los registros MX y elegir bien entre dominio principal y subdominio.
+
+## La limitación: un dominio, un solo juego de registros MX
+
+Los registros MX indican qué servidor recibe el correo de un dominio. Un dominio solo puede tener **un** juego de registros MX, así que no puede recibir correo en dos proveedores a la vez.
+
+| Si los MX apuntan a... | Resultado |
+| --- | --- |
+| Tu proveedor de envío externo | El proveedor procesa los correos entrantes y los reenvía a Chateea. No tienes bandeja de entrada tradicional. |
+| Google Workspace, Outlook u otro buzón | Los correos llegan a tu bandeja habitual y el proveedor de envío no los recibe. |
+
+<Note>
+  Los proveedores de envío por API no ofrecen una bandeja de entrada. Solo enrutan, reenvían o procesan los correos entrantes mediante rutas y webhooks.
+</Note>
+
+Si agregas los MX del proveedor de envío junto a los que ya tienes de Google Workspace en tu dominio principal, la entrega se vuelve impredecible y pueden perderse correos.
+
+## Configuración recomendada: usa un subdominio
+
+Mantén tu dominio principal con tu buzón de siempre y usa un subdominio solo para el envío y la recepción en Chateea.
+
+- Dominio principal `tunegocio.com`: sigue en Google Workspace u Outlook.
+- Subdominio `envios.tunegocio.com`: configurado en tu proveedor de envío externo.
+
+Así envías desde Chateea, recibes en Conversaciones y no pierdes tu buzón habitual.
+
+| Objetivo | Configuración recomendada |
+| --- | --- |
+| Solo enviar | Subdominio en el proveedor de envío |
+| Enviar y seguir recibiendo en tu buzón | Dominio principal en tu buzón, subdominio en el proveedor de envío |
+| Recibir todo mediante rutas del proveedor | MX del dominio apuntando al proveedor (sin buzón) |
+
+<Warning>
+  Si decides usar tu dominio principal con el proveedor de envío, tendrás que apuntar sus MX al proveedor. Tu buzón actual (Gmail, Outlook) dejará de recibir correos de ese dominio.
+</Warning>
+
+## Pasos para recibir correos entrantes
+
+<Steps>
+  <Step title="Configura el dominio en tu proveedor de envío">
+    Crea el dominio o subdominio en tu proveedor, agrega todos sus registros DNS (incluidos los dos MX) y verifícalo. Luego conéctalo a Chateea con tu clave API. Consulta [Conectar un proveedor de envío externo con clave API](/correo/conectar-proveedor-de-envio-externo-con-clave-api).
+  </Step>
+  <Step title="Usa ese dominio en una sola cuenta de Chateea">
+    Para que Chateea sepa a qué cuenta entregar un correo nuevo, el dominio o subdominio debe estar configurado en **una sola** cuenta. Si tienes varias cuentas de Chateea, usa un subdominio distinto para cada una, por ejemplo `sucursal-norte.tunegocio.com` y `sucursal-sur.tunegocio.com`.
+
+    Si el dominio está en una sola cuenta y aun así no funciona, revisa que no esté configurado también como dominio de otro servicio dentro de Chateea. Si crees que una cuenta eliminada usaba el mismo dominio, escribe a soporte de Chateea en **help@chateea.com**.
+  </Step>
+  <Step title="Prueba la recepción">
+    Desde otro correo, escribe a cualquier dirección del dominio configurado. Por ejemplo, si configuraste `envios.tunegocio.com`, escribe a `hola@envios.tunegocio.com`. El mensaje debe aparecer en **Conversaciones**.
+  </Step>
+</Steps>
+
+## Errores comunes
+
+- Agregar los MX del proveedor sin quitar los que ya existían en el dominio.
+- Intentar recibir en Gmail y en el proveedor de envío con el mismo dominio.
+- Esperar que el proveedor de envío funcione como buzón.
+- Usar el mismo dominio de recepción en varias cuentas de Chateea.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar Gmail y el proveedor de envío en el mismo dominio?">
+    Para recibir, no. Un dominio solo tiene un juego de registros MX. Si apuntan a Gmail, el proveedor de envío no recibe esos correos, y al revés.
+  </Accordion>
+  <Accordion title="¿Puedo enviar desde mi dominio principal aunque lo tenga en Google Workspace?">
+    Sí. Los registros MX solo afectan la recepción. Puedes enviar con el proveedor externo aunque tu dominio reciba en otro servicio, siempre que SPF y DKIM estén configurados.
+  </Accordion>
+  <Accordion title="¿Por qué se recomienda un subdominio?">
+    Evita conflictos con tu buzón principal, protege la reputación de tu dominio y hace más estable la entrega.
+  </Accordion>
+  <Accordion title="¿Esto es lo mismo que recibir respuestas?">
+    No. Las respuestas a correos que tú enviaste se capturan con la dirección de respuesta técnica. Esta configuración es para correos nuevos que el contacto escribe directamente a tu dominio. Si las respuestas no llegan, consulta [Las respuestas de correo no llegan a Conversaciones](/correo/respuestas-no-llegan-a-conversaciones).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Reenvío y direcciones de respuesta" icon="reply" href="/correo/reenvio-y-direcciones-de-respuesta">
+    Decide a dónde van las respuestas de tus contactos.
+  </Card>
+  <Card title="Registros DNS de correo en SiteGround" icon="globe" href="/correo/registros-dns-de-correo-en-siteground">
+    Ejemplo completo de configuración de registros.
+  </Card>
+</CardGroup>

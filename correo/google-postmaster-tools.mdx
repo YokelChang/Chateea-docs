@@ -1,0 +1,138 @@
+---
+title: "Google Postmaster Tools"
+description: "Conecta Google Postmaster Tools a Chateea para seguir tu reputación, tasa de spam y autenticación en Gmail."
+icon: "chart-line"
+---
+
+Google Postmaster Tools es una herramienta gratuita de Google que te muestra cómo ve Gmail tus correos: la reputación de tu dominio y de tu IP, tu tasa de spam, si tu autenticación funciona y qué errores impiden la entrega. Si conectas tu cuenta de Postmaster a Chateea, puedes consultar todos esos datos sin salir de tu cuenta.
+
+## Por qué usarla
+
+Gmail decide si tus correos llegan a la bandeja de entrada según tu reputación como remitente. Postmaster Tools te da visibilidad sobre los factores clave:
+
+- **Reputación de dominio e IP:** qué tanto confía Gmail en tu dominio y en la infraestructura desde la que envías.
+- **Tasa de spam:** cuántos de tus correos marcan como spam los usuarios de Gmail. Si es alta, tu reputación baja.
+- **Autenticación:** si tus correos pasan SPF, DKIM y DMARC.
+- **Errores de entrega:** qué problemas impiden que tus correos lleguen.
+
+Con estos datos puedes corregir problemas antes de que afecten a tus campañas.
+
+## Paso 1: configura Google Postmaster Tools
+
+<Steps>
+<Step title="Inicia sesión">
+Entra a [postmaster.google.com](https://postmaster.google.com) con tu cuenta de Google.
+</Step>
+<Step title="Agrega tu dominio de envío">
+Agrega el dominio con el que envías. Debe ser un dominio que controles y que tenga bien configurados SPF, DKIM y DMARC.
+</Step>
+<Step title="Verifica que el dominio es tuyo">
+Google te dará un registro TXT. Agrégalo en la configuración DNS de tu dominio y completa la verificación.
+</Step>
+<Step title="Espera los primeros datos">
+Pueden pasar algunos días hasta que veas datos de reputación, tasa de spam y demás métricas.
+</Step>
+</Steps>
+
+<Note>
+Postmaster Tools necesita un volumen de envío significativo a direcciones de Gmail para mostrar datos confiables. Si envías pocos correos, los paneles pueden aparecer vacíos o incompletos hasta que tu volumen crezca.
+</Note>
+
+## Paso 2: conecta Postmaster Tools a Chateea
+
+<Steps>
+<Step title="Abre las herramientas de Postmaster">
+Ve a **Configuración → Servicios de correo → Herramientas de Postmaster → Google Postmaster Tool**.
+</Step>
+<Step title="Haz clic en Conectar">
+Haz clic en **Conectar con Google Postmaster** (Connect to Google Postmaster).
+</Step>
+<Step title="Elige tu cuenta de Google">
+Selecciona la cuenta de Google que tiene acceso a los dominios registrados en Postmaster Tools.
+</Step>
+<Step title="Concede el permiso">
+En la pantalla de permisos, marca la casilla para ver las métricas de tráfico de correo de los dominios registrados en Gmail Postmaster Tools y haz clic en **Continuar**.
+</Step>
+</Steps>
+
+Una vez conectada, tus dominios dedicados verificados empezarán a mostrar las métricas de Google Postmaster dentro de Chateea.
+
+## Qué datos te muestra
+
+| Panel | Qué muestra |
+| --- | --- |
+| **Tasa de spam** | Porcentaje de tus correos que los usuarios de Gmail marcaron como spam. |
+| **Reputación del dominio** | Cómo percibe Google tus prácticas de envío con ese dominio. |
+| **Reputación de IP** | Reputación de las IP desde las que envías. Mayor reputación, mejor entregabilidad. |
+| **Autenticación** | Porcentaje de correos que pasan SPF, DKIM y DMARC. |
+| **Cifrado** | Porcentaje de correos entregados por conexiones cifradas. |
+| **Errores de entrega** | Detalle de los problemas que impiden entregar tus correos. |
+| **Ciclo de retroalimentación** | Quejas de spam reportadas por los usuarios, para ayudarte a reducirlas. |
+
+## Volver a autenticar para usar la versión 2 de la API
+
+Google lanzó una nueva versión de la API de Postmaster Tools. Para pasarte a ella no necesitas desconectar y volver a conectar: basta con volver a autenticarte.
+
+<Steps>
+<Step title="Busca el aviso">
+En la pestaña de Google Postmaster verás un aviso de que hay datos nuevos disponibles, con el botón **Volver a autenticar** (Re-Authenticate) junto a **Revocar** (Revoke).
+</Step>
+<Step title="Vuelve a autenticarte con Google">
+Haz clic en **Volver a autenticar**. Te llevará a tu cuenta de Google para confirmar el acceso, igual que en la conexión original.
+</Step>
+<Step title="Listo">
+Tu conexión pasa automáticamente a la versión 2. El aviso y el botón desaparecen, y cada dominio conectado muestra su estado de cumplimiento, su tasa de errores de entrega y su proporción de spam.
+</Step>
+</Steps>
+
+Con la versión 2 tienes una nueva pestaña de **Estado de cumplimiento** (Compliance Status) que indica si cada requisito de Gmail para remitentes se cumple o no, tanto en el subdominio como en el dominio principal: SPF y DKIM, alineación del encabezado From, DMARC, cifrado, tasa de spam, registros DNS y baja con un clic. Las demás pestañas (spam reportado por usuarios, retroalimentación de spam, tráfico autenticado, tráfico cifrado y errores de entrega) se mantienen igual.
+
+<Info>
+Google anunció que dejará de ofrecer los paneles de reputación de IP y de dominio, sin fecha confirmada. Más información en el [aviso de Google sobre el panel de reputación](https://support.google.com/mail/answer/16594218?hl=es).
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Google Postmaster Tools es gratis?">
+Sí, es completamente gratuito para cualquier remitente que tenga un dominio de envío verificable y alcance el volumen mínimo que exige Google.
+</Accordion>
+<Accordion title="¿Por qué no veo datos?">
+Postmaster Tools necesita un volumen de envío significativo a Gmail. Si solo envías unos cientos de correos, los paneles pueden quedar incompletos o vacíos hasta que tu volumen crezca.
+</Accordion>
+<Accordion title="¿Necesito un dominio de envío dedicado?">
+Sí. Los datos solo son útiles si el dominio de envío es tuyo y controlas sus registros SPF, DKIM y DMARC. Con un dominio compartido no obtendrás información específica de tu negocio.
+</Accordion>
+<Accordion title="¿Qué tasa de spam es saludable?">
+Google considera crítica una tasa superior al 0,1 %. Lo ideal es mantenerse muy por debajo: menos del 0,05 % es un buen rango.
+</Accordion>
+<Accordion title="¿Cada cuánto se actualizan los datos?">
+Google actualiza la mayoría de los paneles una vez al día. Los valores de reputación suelen ir 1 o 2 días por detrás de tu actividad real.
+</Accordion>
+<Accordion title="¿Conectar Postmaster le da a Google acceso a mis contactos?">
+No. La conexión solo pide permiso de lectura sobre las métricas de tráfico de tus dominios registrados en Postmaster Tools. No comparte listas de contactos, destinatarios ni contenido de campañas.
+</Accordion>
+<Accordion title="¿Puedo desconectarlo después?">
+Sí. Puedes revocar el acceso cuando quieras desde los permisos de tu cuenta de Google o desde **Configuración → Servicios de correo → Herramientas de Postmaster**.
+</Accordion>
+<Accordion title="¿Tengo que volver a autenticarme para seguir usándolo?">
+Tu conexión actual sigue funcionando, pero sin volver a autenticarte no verás la pestaña de Estado de cumplimiento ni los informes por rango de fechas de la versión 2.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Microsoft SNDS: monitoreo de tu IP dedicada" icon="chart-line" href="/correo/microsoft-snds">
+Revisa la salud de tu IP en Outlook y Hotmail.
+</Card>
+<Card title="¿Por qué mis correos llegan a spam?" icon="circle-question" href="/correo/por-que-mis-correos-llegan-a-spam">
+Guía de diagnóstico paso a paso.
+</Card>
+<Card title="Calentamiento de dominio por etapas" icon="fire" href="/correo/calentamiento-de-dominio-por-etapas">
+Postmaster ayuda a definir tu etapa inicial.
+</Card>
+<Card title="DMARC: qué es y cómo configurarlo" icon="shield-check" href="/correo/dmarc-autenticacion-de-correo">
+Mejora tu autenticación.
+</Card>
+</CardGroup>

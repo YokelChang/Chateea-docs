@@ -1,0 +1,193 @@
+---
+title: "DMARC: qué es y cómo configurarlo"
+description: "Entiende el registro DMARC, sus etiquetas y políticas, y resuelve el error de DMARC al enviar desde el dominio compartido."
+icon: "shield-check"
+---
+
+DMARC es el registro DNS que les dice a Gmail, Outlook, Yahoo y demás proveedores qué hacer con los correos que dicen venir de tu dominio pero no pasan la autenticación. Configurarlo bien protege tu marca contra la suplantación (spoofing) y mejora la llegada de tus correos a la bandeja de entrada.
+
+En esta guía verás qué es DMARC, cómo leer y escribir un registro, cómo funciona la validación y cómo resolver el error de DMARC que aparece cuando envías desde el dominio compartido del correo de Chateea.
+
+<Warning>
+Desde febrero de 2024, [Gmail](https://blog.google/products/gmail/gmail-security-authentication-spam-protection/) y [Yahoo](https://blog.postmaster.yahooinc.com/post/730172167494483968/more-secure-less-spam) exigen DKIM y DMARC a los remitentes, y son obligatorios para quienes envían más de 5.000 correos al día. Configura ambos aunque envíes menos: tu entregabilidad lo agradecerá.
+</Warning>
+
+## Qué es DMARC
+
+DMARC (Domain-based Message Authentication, Reporting and Conformance) es un estándar gratuito que combina los resultados de **SPF** y **DKIM** para verificar que un correo realmente sale de quien dice enviarlo. Con la etiqueta de política `p=` decides qué pasa con los correos que no superan la verificación:
+
+| Política | Qué hace | Cuándo usarla |
+| --- | --- | --- |
+| `p=none` | Solo monitorea. No se toma ninguna acción sobre los correos que fallan. | Al empezar, para conocer tu tráfico sin afectar entregas. |
+| `p=quarantine` | Envía los correos que fallan a la carpeta de spam o correo no deseado. | Fase intermedia, cuando ya validaste tus fuentes legítimas. |
+| `p=reject` | Bloquea por completo los correos que fallan. Nunca llegan al destinatario. | Objetivo final: máxima protección de tu dominio. |
+
+## Cómo es un registro DMARC
+
+El registro DMARC es una entrada DNS de tipo **TXT** con el nombre `_dmarc`. Está formado por etiquetas con valores, separadas por punto y coma. El registro mínimo válido es:
+
+```text
+v=DMARC1; p=none;
+```
+
+Estas son todas las etiquetas disponibles y sus valores por defecto:
+
+| Etiqueta | Nombre | Valor por defecto | Descripción |
+| --- | --- | --- | --- |
+| `v` | Versión | DMARC1 | Siempre debe ser `DMARC1`. Si falta o es incorrecta, se ignora todo el registro. |
+| `p` | Política | none | Acción para los correos que fallan: `none` (monitorear), `quarantine` (spam) o `reject` (bloquear). |
+| `adkim` | Alineación DKIM | r | `r` (relajada): pasan los dominios DKIM que comparten el mismo dominio organizacional. `s` (estricta): exige coincidencia exacta. |
+| `aspf` | Alineación SPF | r | Igual que `adkim`, pero para SPF: compara el dominio SPF con el dominio del remitente (From). |
+| `sp` | Política de subdominios | valor de `p` | Política específica para los subdominios. Si no la defines, heredan la de `p`. |
+| `fo` | Opciones de informes forenses | 0 | `0`: informa si fallan todos los mecanismos. `1`: si falla alguno. `d`: si falla DKIM. `s`: si falla SPF. |
+| `ruf` | Destino de informes forenses | ninguno | Dirección que recibe los informes de fallos individuales. Formato: `mailto:direccion@tudominio.com` |
+| `rua` | Destino de informes agregados | ninguno | Dirección que recibe los informes XML periódicos. Formato: `mailto:direccion@tudominio.com` |
+| `rf` | Formato de informes | afrf | Formato de los informes forenses individuales. |
+| `pct` | Porcentaje | 100 | Porcentaje de correos fallidos al que se aplica la política. Solo válido con `quarantine` o `reject`. |
+| `ri` | Intervalo de informes | 86400 | Cada cuántos segundos recibes informes agregados. 86400 equivale a 24 horas. |
+
+<Tip>
+Si no estás seguro de cómo armar tu registro, usa un generador gratuito como el [asistente de registros DMARC de dmarcian](https://dmarcian.com/dmarc-record-wizard/).
+</Tip>
+
+## Cómo funciona DMARC
+
+### 1. Autenticación
+
+El servidor que recibe tu correo hace tres comprobaciones:
+
+- **SPF o DKIM:** verifica que al menos uno de los dos métodos de autenticación pase.
+- **Alineación de dominio:** comprueba que el dominio de SPF (Return-Path) o el de DKIM (`d=`) coincida con el dominio del remitente que ve el destinatario (From).
+- **Política DMARC:** lee el registro DMARC del dominio del remitente y aplica la política definida.
+
+Ejemplos:
+
+```text
+v=DMARC1; p=none; aspf=r;
+```
+SPF pasa y está alineado con el dominio del remitente: DMARC pasa.
+
+```text
+v=DMARC1; p=none; adkim=s;
+```
+DKIM pasa y coincide exactamente con el dominio del remitente: DMARC pasa.
+
+```text
+v=DMARC1; p=reject;
+```
+Si SPF y DKIM fallan, DMARC falla y el correo se bloquea.
+
+### 2. Modos de alineación
+
+- **Relajado (`r`):** acepta subdominios. Por ejemplo, un DKIM firmado por `mail.tudominio.com` se alinea con un remitente `hola@tudominio.com`.
+- **Estricto (`s`):** exige que el dominio de SPF o DKIM sea exactamente igual al del remitente, sin excepciones para subdominios.
+
+### 3. Informes
+
+- **Informes agregados (`rua`):** resúmenes XML periódicos con los resultados de aprobación y fallo.
+- **Informes forenses (`ruf`):** detalle de cada fallo. Muchos proveedores los limitan por privacidad.
+- **Intervalo (`ri`):** frecuencia de los informes agregados.
+
+```text
+v=DMARC1; p=none; rua=mailto:postmaster@tudominio.com; ri=86400;
+```
+Informes agregados cada 24 horas.
+
+```text
+v=DMARC1; p=none; ruf=mailto:postmaster@tudominio.com; ri=604800;
+```
+Informes forenses cada 7 días.
+
+### 4. Cumplimiento de la política
+
+- **Política (`p`):** define qué hace el servidor receptor con los correos que fallan.
+- **Porcentaje (`pct`):** aplica la política solo a una parte de los correos fallidos, ideal para un despliegue gradual.
+
+```text
+v=DMARC1; p=quarantine; pct=50;
+```
+Prueba: envía a spam solo la mitad de los correos que fallan.
+
+```text
+v=DMARC1; p=reject;
+```
+Cumplimiento total.
+
+## Cómo llegar a p=reject paso a paso
+
+<Steps>
+<Step title="Empieza en modo monitoreo">
+Publica `v=DMARC1; p=none; rua=mailto:tu-direccion@tudominio.com;` y revisa los informes agregados durante algunas semanas para identificar todas las fuentes legítimas que envían con tu dominio (Chateea, tu correo corporativo, tu facturador, etc.).
+</Step>
+<Step title="Pasa a cuarentena de forma gradual">
+Cuando todas tus fuentes legítimas pasen SPF o DKIM alineado, cambia a `p=quarantine; pct=25` y ve subiendo el porcentaje.
+</Step>
+<Step title="Activa el rechazo">
+Cuando tengas la certeza de que todo tu correo legítimo pasa, cambia a `p=reject` para tener la máxima protección.
+</Step>
+</Steps>
+
+## Error de DMARC al enviar desde el dominio compartido
+
+Si todavía no configuraste un dominio de envío dedicado (ni tu propio SMTP), tus correos salen desde un **dominio compartido** del correo de Chateea. Para enviar desde el dominio compartido no necesitas DMARC. Pero si el dominio de tu dirección de remitente tiene una política estricta (`p=reject` o `p=quarantine`), verás un aviso como este:
+
+```text
+El dominio de tu dirección de remitente tiene una política DMARC p=reject. Sin un dominio de envío dedicado, la mayoría de los proveedores rechazarán tus mensajes y aumentarán los rebotes.
+```
+
+Esto pasa porque el correo sale desde un dominio distinto al de tu remitente, así que no puede alinearse con tu política DMARC.
+
+### Cómo solucionarlo
+
+<Steps>
+<Step title="Configura un dominio de envío dedicado (solución recomendada)">
+Agrega y verifica tu propio dominio o subdominio de envío. Así tus correos quedan alineados con tu DMARC y puedes mantener una política estricta. Sigue la guía [Agregar y verificar tu dominio de envío](/correo/agregar-y-verificar-dominio-de-envio).
+</Step>
+<Step title="Mientras tanto, relaja tu política temporalmente">
+Entra al panel de tu proveedor DNS y cambia tu registro TXT `_dmarc` para que la política sea `p=none`. Así tus mensajes se entregarán aunque DMARC falle mientras terminas de configurar tu dominio dedicado.
+</Step>
+</Steps>
+
+<Warning>
+Cambiar a `p=none` reduce la protección de tu dominio contra la suplantación. Úsalo solo como medida temporal y vuelve a una política estricta en cuanto tengas tu dominio dedicado funcionando.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Necesito DMARC para poder enviar correos?">
+No es estrictamente obligatorio para enviar, pero Gmail y Yahoo lo exigen a quienes envían más de 5.000 correos al día. Aunque envíes menos, configurarlo mejora tu entregabilidad y protege tu dominio.
+</Accordion>
+<Accordion title="¿Qué diferencia hay entre p=quarantine y p=reject?">
+Con `p=quarantine` los correos que fallan van a la carpeta de spam: el destinatario todavía puede encontrarlos. Con `p=reject` el servidor receptor los bloquea y nunca llegan.
+</Accordion>
+<Accordion title="¿Dónde agrego mi registro DMARC?">
+En la configuración DNS de tu dominio, como un registro **TXT**. En el campo de nombre o host escribe `_dmarc` y en el valor tu política, por ejemplo `v=DMARC1; p=none;`.
+</Accordion>
+<Accordion title="¿Por qué falla DMARC si ya tengo SPF y DKIM?">
+DMARC exige autenticación y además alineación. SPF o DKIM pueden pasar técnicamente, pero si el dominio autenticado no coincide con el dominio del remitente, DMARC falla. Revisa que el dominio del Return-Path o el `d=` de DKIM coincida con tu dominio de envío.
+</Accordion>
+<Accordion title="¿Puedo usar una dirección de Gmail o Yahoo como remitente?">
+No es recomendable. Gmail y Yahoo aplican `p=reject` a sus propios dominios, así que los correos enviados desde plataformas externas con una dirección `@gmail.com` o `@yahoo.com` pueden ser rechazados. Usa siempre un dominio propio.
+</Accordion>
+<Accordion title="¿Cuánto tarda en aplicarse un cambio en DMARC?">
+Normalmente entre 15 minutos y 1 hora, aunque la propagación completa puede tardar hasta 48 horas según tu proveedor DNS y el TTL del registro.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Agregar y verificar tu dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+Configura SPF, DKIM y DMARC para tu dominio dedicado.
+</Card>
+<Card title="Buenas prácticas y calentamiento de correo" icon="envelope" href="/correo/buenas-practicas-y-calentamiento-de-correo">
+Todo lo que necesitas para llegar a la bandeja de entrada.
+</Card>
+<Card title="¿Por qué mis correos llegan a spam?" icon="circle-question" href="/correo/por-que-mis-correos-llegan-a-spam">
+Guía de diagnóstico paso a paso.
+</Card>
+<Card title="Google Postmaster Tools" icon="chart-line" href="/correo/google-postmaster-tools">
+Monitorea tu reputación y autenticación en Gmail.
+</Card>
+</CardGroup>

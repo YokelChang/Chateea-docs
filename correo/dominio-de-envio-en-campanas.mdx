@@ -1,0 +1,115 @@
+---
+title: "Elegir el dominio de envío de una campaña"
+description: "Elige con qué dominio sale cada campaña de correo y resuelve los avisos de alineación del remitente."
+icon: "paper-plane"
+---
+
+Al enviar o programar una campaña de correo, Chateea te permite elegir con qué **dominio de envío** sale y comprueba en tiempo real que tu dirección de remitente sea compatible con ese dominio. Así evitas campañas que fallan al enviarse, proteges la reputación de tu dominio y mejoras la llegada a la bandeja de entrada.
+
+<Note>
+La selección del dominio de envío aplica cuando envías con el **correo de Chateea**. Si envías a través de tu propio SMTP, se mantienen las reglas de dominio de tu proveedor.
+</Note>
+
+## Para qué sirve
+
+Los proveedores de correo esperan que el dominio de envío y la dirección de remitente estén alineados para autenticar los mensajes. Si no coinciden, la campaña puede fallar o terminar en spam. Con esta configuración:
+
+- **Reduces los fallos de envío:** Chateea impide lanzar campañas con dominios que no cumplen los requisitos.
+- **Mejoras la entregabilidad:** la alineación del dominio ayuda a los proveedores a autenticar tus mensajes.
+- **Controlas cada campaña:** eliges el dominio más adecuado en lugar de depender siempre del predeterminado.
+- **Tienes protecciones automáticas:** Chateea ajusta los remitentes compatibles y te avisa cuando tienes que actuar.
+- **Ves los problemas al instante:** la validación en tiempo real te lleva directo a la configuración del dominio.
+
+Una vez enviada o programada la campaña, el dominio elegido queda fijo para esa campaña.
+
+## Cómo se comporta según tu configuración
+
+### Dominio compartido
+
+Si la campaña sale por el dominio compartido de Chateea, puedes usar direcciones públicas como Gmail o Yahoo en el remitente. Chateea ajusta la dirección de envío de forma interna para cumplir los requisitos, y la campaña se envía sin que tengas que hacer nada.
+
+### Un solo dominio dedicado
+
+Si tu cuenta tiene un dominio dedicado verificado, se selecciona automáticamente al enviar o programar. La dirección de remitente debe pertenecer a ese dominio, y la validación en tiempo real confirma que todo esté en orden antes de enviar.
+
+### Varios dominios dedicados
+
+Si tienes varios dominios verificados, puedes elegir uno específico o seleccionar **Todos los dominios** (All Domains). Con esta opción, Chateea reparte el envío entre los dominios que cumplen los requisitos, siguiendo reglas internas para cuidar tu entregabilidad a gran escala.
+
+| Situación | Lo que ingresas | Qué pasa |
+| --- | --- | --- |
+| Dominio compartido y dirección pública | `nombre@gmail.com` | La dirección se ajusta automáticamente para cumplir los requisitos. |
+| Un dominio dedicado | Una dirección de ese dominio | El dominio se selecciona y valida automáticamente. |
+| Varios dominios, uno elegido | Eliges un dominio | Se usa solo ese dominio. |
+| Varios dominios, Todos los dominios | Tu campaña de marketing | Los dominios se alternan automáticamente. |
+| Dominio dedicado que no coincide | Dominio distinto al del remitente | El envío se bloquea. |
+| Dominio sin verificar | DNS incompleto | Aparece un aviso con un enlace para corregirlo. |
+
+## Cómo elegir el dominio de envío de una campaña
+
+No hay nada que activar por adelantado: la selección forma parte del envío o la programación de la campaña.
+
+<Steps>
+<Step title="Abre tus campañas">
+Ve a **Marketing → Correos → Campañas**.
+</Step>
+<Step title="Abre una campaña">
+Crea una campaña nueva o abre un borrador existente.
+</Step>
+<Step title="Revisa los detalles de envío">
+En el editor de la campaña, haz clic en **Enviar** o **Programar**.
+</Step>
+<Step title="Confirma el remitente">
+En la sección **Datos del remitente** (Sender Details), revisa el **nombre del remitente** y el **correo del remitente**.
+</Step>
+<Step title="Elige el dominio de envío">
+Abre el desplegable **Dominio de envío** (Sender Domain). Las opciones cambian según tu configuración: dominio compartido, un dominio dedicado preseleccionado o varios dominios con la opción **Todos los dominios**.
+</Step>
+<Step title="Resuelve avisos o errores">
+Si aparece un aviso o un error, usa el enlace **Revisar configuración del dominio** (Review Domain Configuration) para comprobar la verificación, el estado de calentamiento o la asignación de IP.
+</Step>
+<Step title="Envía o programa">
+Cuando todo esté correcto, termina de enviar o programar la campaña.
+</Step>
+</Steps>
+
+<Info>
+**Avisos y errores no son lo mismo.** Un **aviso** señala un posible problema, como que el remitente no coincide con el dominio de envío: la campaña se puede enviar, pero conviene que coincidan para reducir el riesgo de spam. Un **error** es un problema que bloquea el envío hasta que lo corrijas.
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Por qué veo un aviso si la campaña se puede enviar?">
+Porque hay un posible problema de entregabilidad, como un remitente que no coincide con el dominio. Puedes enviar, pero es mejor que coincidan para evitar filtros de spam.
+</Accordion>
+<Accordion title="¿Qué pasa si mi dominio no está verificado o calentado?">
+La campaña no se puede enviar con ese dominio hasta que esté verificado y cumpla los requisitos. El mensaje de aviso o error te guiará para completar la configuración. Consulta [Agregar y verificar tu dominio de envío](/correo/agregar-y-verificar-dominio-de-envio).
+</Accordion>
+<Accordion title="¿Puedo usar una dirección de respuesta distinta?">
+Sí. La dirección de respuesta (Reply-To) es independiente del dominio de envío y puede ser cualquier dirección válida.
+</Accordion>
+<Accordion title="¿Elegir Todos los dominios afecta a mi entregabilidad?">
+No de forma negativa. Chateea solo envía desde dominios verificados y calentados, y los alterna según reglas internas para cuidar tu reputación.
+</Accordion>
+<Accordion title="¿Puedo cambiar el dominio después de programar la campaña?">
+No. El dominio queda fijo al enviar o programar. Para usar otro, cámbialo en el borrador antes de programar, o duplica la campaña y elige un dominio nuevo.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Agregar y verificar tu dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+Configura tu dominio dedicado paso a paso.
+</Card>
+<Card title="Lanza tu primera campaña de correo" icon="paper-plane" href="/primeros-pasos/lanza-tu-primera-campana-de-correo">
+Crea y envía tu primera campaña.
+</Card>
+<Card title="Calentamiento de dominio por etapas" icon="fire" href="/correo/calentamiento-de-dominio-por-etapas">
+Cómo crece tu volumen diario.
+</Card>
+<Card title="DMARC: qué es y cómo configurarlo" icon="shield-check" href="/correo/dmarc-autenticacion-de-correo">
+Alinea tu remitente con tu dominio.
+</Card>
+</CardGroup>

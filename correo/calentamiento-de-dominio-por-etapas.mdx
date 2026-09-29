@@ -1,0 +1,120 @@
+---
+title: "Calentamiento de dominio por etapas"
+description: "Cómo funciona el calentamiento automático de tu dominio dedicado, los límites diarios de cada etapa y cómo avanzar."
+icon: "fire"
+---
+
+El calentamiento de dominio consiste en aumentar poco a poco tu volumen diario de correos para ganarte la confianza de Gmail, Outlook y Yahoo. Chateea automatiza este proceso con un modelo de etapas fijas: cada etapa tiene un límite diario y tu dominio avanza a medida que envías de forma constante.
+
+## Por qué calentar tu dominio
+
+Un dominio nuevo no tiene historial ni reputación. Si empiezas enviando mucho de golpe, es más probable que:
+
+- Tus correos se marquen como spam.
+- Tengas tasas altas de rebote o de quejas.
+- Los proveedores bloqueen o retrasen tus envíos.
+
+## Cómo funciona el modelo por etapas
+
+- Cada etapa tiene un límite diario predefinido.
+- Tu dominio solo avanza de etapa cuando alcanzas el límite diario completo de la etapa actual.
+- Si no alcanzas el límite, el dominio se queda en la misma etapa.
+- No hay límites por hora.
+- Debes enviar correos a través del dominio que está en calentamiento para que se registre el progreso.
+
+| Etapa | Límite diario |
+| --- | --- |
+| 1 | 1.000 |
+| 2 | 2.500 |
+| 3 | 5.000 |
+| 4 | 6.500 |
+| 5 | 8.000 |
+| 6 | 10.000 |
+| 7 | 14.000 |
+| 8 | 20.000 |
+| 9 | 25.000 |
+| 10 | 35.000 |
+| 11 | 50.000 |
+| 12 | 80.000 |
+| 13 | 125.000 |
+| 14 | 175.000 |
+| 15 | 250.000 |
+
+<Tip>
+Alcanzar el límite diario de tu etapa no bloquea tus envíos: los correos se siguen enviando. Llegar al límite completo es simplemente lo que activa el paso a la siguiente etapa.
+</Tip>
+
+## Cuándo empieza el calentamiento
+
+- **Dominios nuevos:** el calentamiento se activa automáticamente al crear y verificar el dominio. No tienes que hacer nada.
+- **Dominios existentes:** debes activarlo de forma manual. Al hacerlo, Chateea analiza tu actividad de envío anterior y, si lo tienes conectado, los datos de reputación de Google Postmaster, y te recomienda la etapa inicial más adecuada.
+
+## Cómo activar el calentamiento en un dominio existente
+
+<Steps>
+<Step title="Abre tus dominios dedicados">
+Ve a **Configuración → Servicios de correo → Servicio SMTP** y entra a la pestaña **Dominio dedicado e IP**.
+</Step>
+<Step title="Inicia el calentamiento">
+Elige tu dominio y haz clic en **Iniciar calentamiento** (Start Warmup).
+</Step>
+</Steps>
+
+## Conecta Google Postmaster (recomendado)
+
+Integrar tu dominio con Google Postmaster Tools te da datos clave durante el calentamiento:
+
+- Reputación del dominio (alta, media, baja o mala).
+- Tasa de quejas de spam.
+- Estado de la autenticación.
+- Métricas de entrega y errores.
+
+Si Postmaster todavía no está conectado o no hay datos, el panel del dominio te avisará y te guiará en la configuración. Consulta [Google Postmaster Tools](/correo/google-postmaster-tools).
+
+## Buenas prácticas durante el calentamiento
+
+- Envía correos todos los días, de forma constante.
+- Usa listas verificadas de contactos que se suscribieron.
+- Evita los picos repentinos de volumen.
+- No cambies de dominio de envío en medio de una campaña.
+- Respeta los límites diarios para evitar bloqueos futuros.
+
+Encontrarás más recomendaciones en [Buenas prácticas y calentamiento de correo](/correo/buenas-practicas-y-calentamiento-de-correo).
+
+## Cuándo termina el calentamiento
+
+Tu dominio completa el calentamiento al llegar a la **etapa 15** (250.000 correos al día). En ese momento verás la etiqueta **Calentamiento completo** (Warmup Complete) en el panel del dominio y podrás enviar a gran escala.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿El calentamiento es obligatorio?">
+Se activa automáticamente en los dominios nuevos y se recomienda mucho en los existentes. Enviar a todo volumen desde el primer día aumenta mucho el riesgo de spam, bloqueos y retrasos.
+</Accordion>
+<Accordion title="¿Qué pasa si no envío correos todos los días?">
+Tu dominio simplemente se queda en su etapa actual. Como solo avanzas al completar el límite diario, los días sin envío pausan el progreso, pero no lo reinician ni te penalizan.
+</Accordion>
+<Accordion title="¿Puedo saltar a una etapa más alta?">
+No. Las etapas avanzan automáticamente según tu volumen diario. La única excepción es al activar el calentamiento en un dominio existente, donde tu historial y los datos de Google Postmaster pueden ubicarte en una etapa inicial más alta.
+</Accordion>
+<Accordion title="¿El calentamiento aplica a los dominios compartidos?">
+No, solo a los dominios dedicados. Los dominios compartidos tienen su propio sistema de límites. Consulta [Límite de envío diario en el dominio compartido](/correo/limite-de-envio-dominio-compartido).
+</Accordion>
+<Accordion title="¿Qué pasa si conecto Google Postmaster con el calentamiento ya iniciado?">
+El panel del dominio empezará a mostrar reputación, quejas, autenticación y datos de entrega desde ese momento. No cambia tu etapa actual, pero te da más visibilidad durante el resto del calentamiento.
+</Accordion>
+<Accordion title="¿Mis contactos notarán algo durante el calentamiento?">
+No. El calentamiento solo define cuánto volumen necesitas para avanzar de etapa. No cambia cómo se ven ni cómo se entregan tus correos.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Agregar y verificar tu dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+Configura tu dominio dedicado paso a paso.
+</Card>
+<Card title="Buenas prácticas y calentamiento de correo" icon="envelope" href="/correo/buenas-practicas-y-calentamiento-de-correo">
+Todo lo que necesitas para llegar a la bandeja de entrada.
+</Card>
+</CardGroup>

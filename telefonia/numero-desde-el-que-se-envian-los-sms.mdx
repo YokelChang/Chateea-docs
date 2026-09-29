@@ -1,0 +1,122 @@
+---
+title: "Desde qué número reciben tus contactos los SMS"
+description: "El orden de prioridad que usa Chateea para elegir el número remitente de cada SMS y cómo controlarlo en usuarios y flujos."
+icon: "phone"
+---
+
+Si tu cuenta de Chateea tiene más de un número de teléfono, es normal preguntarse desde cuál recibe tu contacto cada SMS. Chateea no lo elige al azar: sigue un orden de prioridad para usar siempre el número más adecuado y mantener la continuidad de cada conversación. Conocer ese orden te permite predecir y controlar qué número ven tus clientes.
+
+## La versión corta
+
+Chateea revisa esta lista en orden y usa el **primer** número que aplique:
+
+1. **Un número elegido para ese mensaje:** el que seleccionas tú o una automatización.
+2. **El número asignado al usuario** que envía el mensaje.
+3. **El número que ya se usa en esa conversación.**
+4. **El número saliente predeterminado** de tu cuenta.
+
+## El orden de prioridad, explicado
+
+### 1. Un número elegido para ese mensaje
+
+Si tú o una automatización indican un número **De** concreto (por ejemplo, al elegirlo en la acción **Enviar SMS** de un flujo o al indicarlo por la API de Chateea), se usa siempre ese número. Es la opción que te da control total.
+
+<Note>
+  El número elegido tiene que pertenecer a tu cuenta.
+</Note>
+
+### 2. El número asignado al usuario
+
+Si no se eligió un número, Chateea mira qué usuario envía el mensaje. Si ese usuario forma parte de tu equipo y tiene un número propio asignado, el SMS sale desde ese número. Es ideal cuando cada vendedor tiene su línea: las respuestas se sienten personales y vuelven a la persona correcta.
+
+Si el número asignado al usuario no puede enviar SMS, Chateea usa el número saliente predeterminado.
+
+### 3. El número de la conversación
+
+Si no hay número asignado, Chateea revisa si la conversación con ese contacto ya está ligada a uno de tus números (el primero que se usó con él). Si es así, sigue enviando desde el mismo número para que el contacto siempre te vea igual. Si ese número se eliminó de tu cuenta, pasa al siguiente paso.
+
+### 4. El número saliente predeterminado
+
+Si nada de lo anterior aplica, el mensaje sale desde el número saliente predeterminado de tu cuenta. Es el que se usa en la mayoría de los mensajes automáticos y del sistema cuando no se indica otro.
+
+<Tip>
+  Configura como predeterminado el número que más te interesa que vean tus contactos cuando no se especifica ningún otro.
+</Tip>
+
+## Asignar un número a un usuario
+
+<Steps>
+  <Step title="Abre tu equipo">
+    Ve a **Configuración → Mi equipo**.
+  </Step>
+  <Step title="Edita al usuario">
+    Haz clic en **Editar** junto al usuario.
+  </Step>
+  <Step title="Despliega la configuración de llamadas">
+    Abre la sección **Configuración de llamadas y buzón de voz**.
+  </Step>
+  <Step title="Asigna el número">
+    Elige el número de teléfono de tu cuenta que usará ese usuario y guarda los cambios.
+  </Step>
+</Steps>
+
+Más detalles en [Asignar números a usuarios](/telefonia/asignar-numeros-a-usuarios).
+
+## Elegir el número en un flujo de trabajo
+
+En el constructor de flujos de trabajo, la acción **Enviar SMS** tiene un desplegable **Número de origen** (From Number). Si eliges un número ahí, todos los SMS de esa acción saldrán desde él, sin importar el usuario asignado ni el número de la conversación.
+
+## Comprobar desde qué número se envió un SMS
+
+1. En **Conversaciones**, abre la conversación del contacto.
+2. Pasa el cursor sobre el SMS.
+3. Haz clic en los tres puntos y elige **Detalles**.
+4. Verás el número desde el que se envió ese mensaje.
+
+## Cómo controlar qué número ven tus contactos
+
+| Si quieres... | Haz esto |
+| --- | --- |
+| Un número concreto siempre | Elígelo en el mensaje o en la acción del flujo: siempre gana |
+| Mensajes personales por vendedor | Asigna a cada usuario su propio número |
+| Mantener la misma línea en cada conversación | No tienes que hacer nada: ocurre automáticamente |
+| Todo lo demás | Define un buen número saliente predeterminado |
+
+Para elegir el número manualmente en una conversación, consulta [Elegir el número de envío y de destino de un SMS](/conversaciones/numeros-sms-de-envio-y-destino).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Compré un número nuevo, pero mis SMS siguen saliendo del antiguo. ¿Por qué?">
+    Por la regla de continuidad: cuando una conversación ya está ligada a un número, Chateea sigue usándolo. Para cambiarlo, elige el nuevo número en el mensaje o en la automatización, o actualiza el número asignado al usuario.
+  </Accordion>
+  <Accordion title="¿Puedo obligar a que todos los SMS de un flujo salgan de un número?">
+    Sí. En la acción **Enviar SMS**, elige el número en el desplegable **Número de origen**. Tiene prioridad sobre el número del usuario y el de la conversación.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el número asignado a un usuario no puede enviar SMS?">
+    Chateea usa automáticamente el número saliente predeterminado para que el mensaje salga igual.
+  </Accordion>
+  <Accordion title="¿Puedo usar cualquier número como remitente?">
+    No. Debe ser un número de tu cuenta de Chateea.
+  </Accordion>
+  <Accordion title="¿Qué número usan los mensajes automáticos?">
+    Si no se indica un número y no aplican ni el del usuario ni el de la conversación, se usa el número saliente predeterminado de tu cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Elegir el número De y Para" icon="phone" href="/conversaciones/numeros-sms-de-envio-y-destino">
+    Elige el remitente manualmente en Conversaciones.
+  </Card>
+  <Card title="Asignar números a usuarios" icon="user" href="/telefonia/asignar-numeros-a-usuarios">
+    Da a cada miembro del equipo su propia línea.
+  </Card>
+  <Card title="SMS automático por llamada perdida" icon="phone-slash" href="/telefonia/sms-automatico-por-llamada-perdida">
+    Cómo se elige el número del mensaje de respuesta.
+  </Card>
+  <Card title="SMS en México desde otro número" icon="mobile-screen" href="/telefonia/sms-en-mexico-remitente-diferente">
+    Cuando el operador cambia tu remitente.
+  </Card>
+</CardGroup>

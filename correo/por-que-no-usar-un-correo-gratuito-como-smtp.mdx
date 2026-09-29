@@ -1,0 +1,79 @@
+---
+title: "Por qué no usar un correo gratuito para enviar tus correos"
+description: "Por qué Gmail, Yahoo y otros correos gratuitos bloquean los envíos masivos y cómo tener una dirección con tu propio dominio."
+icon: "circle-question"
+---
+
+Muchos negocios intentan enviar sus correos de marketing desde una dirección gratuita como @gmail.com, @hotmail.com o @yahoo.com, o desde la que les dio su proveedor de internet. Casi siempre termina en bloqueos o en la carpeta de spam. La razón es simple: cuando envías desde una dirección gratuita usas la reputación de ese proveedor, no la tuya. La solución es enviar desde una dirección de tu propio dominio.
+
+## Por qué necesitas tu propio dominio
+
+Todos tus correos de marketing deberían salir de un dominio que te pertenece (`hola@tunegocio.com`), no de una cuenta personal en un dominio ajeno.
+
+El factor más importante de la entregabilidad es la **reputación del dominio**. Los proveedores gratuitos bloquean los envíos masivos que salen desde sus dominios, porque protegen su propia reputación. Y aunque hoy tu proveedor no te bloquee, lo más probable es que acabe haciéndolo: todos se están volviendo más estrictos.
+
+Además, Gmail y Yahoo aplican una política que marca como sospechoso cualquier correo que diga venir de @gmail.com o @yahoo.com pero no salga de sus servidores. Ver [Requisitos de Google y Yahoo para remitentes](/correo/requisitos-de-google-y-yahoo-para-remitentes).
+
+<Tip>
+  Piénsalo como el correo postal. Chateea es la empresa de mensajería que transporta tu carta, pero la carta sigue siendo tuya, y el destinatario la acepta con más confianza si viene de alguien que conoce. Tu dominio es tu nombre en el remitente: con él construyes tu propia reputación.
+</Tip>
+
+## Tres formas de tener correo con tu dominio
+
+<CardGroup cols={3}>
+  <Card title="Donde compraste el dominio" icon="globe">
+    Casi todos los registradores (Namecheap, Hover, GoDaddy y otros) ofrecen agregar correo a tu dominio. Aunque no uses una bandeja completa, puedes reenviar los mensajes a tu Gmail o Yahoo de siempre.
+  </Card>
+  <Card title="Donde alojas tu sitio web" icon="server">
+    Proveedores como Bluehost, HostGator o GoDaddy incluyen dominio, alojamiento y correo. Squarespace y Wix también permiten agregar correo desde su panel.
+  </Card>
+  <Card title="Google Workspace" icon="google">
+    Sigues usando la interfaz de Gmail, pero con tu dominio, además de Docs, Sheets y otras herramientas. Es de pago, con planes mensuales por usuario.
+  </Card>
+</CardGroup>
+
+<Tip>
+  La forma más rápida de encontrar los pasos es buscar "[nombre de tu proveedor] crear cuenta de correo con dominio".
+</Tip>
+
+## Después de crear tu dirección
+
+Tener una dirección con tu dominio es el primer paso. Después:
+
+1. **Autentica tu dominio** con SPF, DKIM y DMARC. Ver [Dominios y correo](/dominios/introduccion).
+2. **Decide cómo vas a enviar:** con el correo de Chateea usando tu dominio, o conectando el SMTP de tu proveedor. Ver [Agregar tu propio servicio SMTP](/correo/agregar-tu-propio-servicio-smtp).
+3. **Calienta tu dominio** empezando con volúmenes pequeños y subiendo poco a poco.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo reenviar el correo de mi dominio a mi Gmail personal?">
+    Sí, para recibir. Pero para enviar necesitas autenticar y enviar desde tu propio dominio: el reenvío por sí solo no construye la reputación de tu dominio.
+  </Accordion>
+  <Accordion title="Mi proveedor gratuito todavía no me bloqueó. ¿Igual tengo que cambiar?">
+    Conviene hacerlo cuanto antes. Los proveedores gratuitos son cada vez más estrictos con los envíos masivos, y construir la reputación de un dominio lleva tiempo: cuanto antes empieces, mejor te irá cuando la necesites.
+  </Accordion>
+  <Accordion title="¿Cuál es la forma más económica de tener correo con mi dominio?">
+    Normalmente, agregarlo en tu registrador de dominio o en tu proveedor de alojamiento, que suele costar poco al mes. Google Workspace cuesta más, pero incluye la interfaz de Gmail y las herramientas de productividad.
+  </Accordion>
+  <Accordion title="¿Qué es exactamente la reputación del dominio?">
+    Es una puntuación que los proveedores de correo asignan a tu dominio de envío según las quejas por spam, los rebotes y la interacción de tus destinatarios. Con buena reputación llegas a la bandeja principal; con mala, terminas en spam o bloqueado.
+  </Accordion>
+  <Accordion title="¿Puedo seguir usando Gmail con mi dominio?">
+    Sí. Con Google Workspace usas la bandeja de Gmail de siempre, pero envías y recibes desde tu propio dominio.
+  </Accordion>
+  <Accordion title="Ya tengo correo con mi dominio. ¿Tengo que configurar algo más?">
+    Sí. Además de autenticar el dominio, tienes que decidir si envías con el correo de Chateea o conectas el SMTP de tu proveedor.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+    Autentica tu dominio con SPF, DKIM y DMARC.
+  </Card>
+  <Card title="Gmail o Google Workspace como SMTP" icon="google" href="/smtp/gmail-google-workspace">
+    Conecta tu cuenta de Google para enviar desde tu dirección.
+  </Card>
+</CardGroup>

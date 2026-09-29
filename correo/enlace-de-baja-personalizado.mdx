@@ -1,0 +1,112 @@
+---
+title: "Crear un enlace de baja personalizado"
+description: "Reemplaza el enlace de baja predeterminado por una página con tu marca que active No molestar de forma automática."
+icon: "link"
+---
+
+Puedes reemplazar el enlace de baja predeterminado de tus correos por uno personalizado que lleve a tus contactos a una página con tu marca y, al mismo tiempo, active **No molestar** (DND) para el canal de correo de forma automática. Es útil si quieres despedirte con tu propio mensaje, ofrecer opciones de preferencias o registrar la baja con etiquetas en tu CRM.
+
+El proceso tiene cinco partes: crear la página de baja, crear un enlace de disparo, construir el flujo de trabajo que activa No molestar, publicarlo y colocar el enlace en el pie de tus correos.
+
+## Paso 1: crea la página de baja
+
+Crea en tus embudos o sitios web una página sencilla que confirme la baja, agradezca al contacto o le ofrezca gestionar sus preferencias. Es la página a la que llegará quien haga clic en tu enlace de baja.
+
+<Note>
+Publica la página y copia su URL: la necesitarás en el siguiente paso. La página debe estar publicada en un dominio conectado y accesible desde internet. Si todavía no tienes un dominio, configúralo primero en **Configuración → Dominios**.
+</Note>
+
+## Paso 2: crea el enlace de disparo
+
+Un [enlace de disparo](/marketing/enlaces-de-disparo-casos-de-uso) (Trigger Link) es un enlace con seguimiento que registra cada clic y puede activar un flujo de trabajo. Así Chateea sabe exactamente cuándo alguien hace clic en tu enlace de baja.
+
+<Steps>
+<Step title="Abre los enlaces de disparo">
+Ve a **Marketing → Enlaces de disparo** y haz clic en **Agregar enlace** (Add Link).
+</Step>
+<Step title="Completa los datos">
+En **Nombre**, escribe `Enlace de baja`. En **URL del enlace**, pega la URL de tu página de baja.
+</Step>
+<Step title="Guarda">
+Haz clic en **Guardar**.
+</Step>
+</Steps>
+
+## Paso 3: crea el flujo de trabajo que activa No molestar
+
+Este flujo escucha los clics en tu enlace de baja y activa No molestar para el canal de correo del contacto.
+
+<Steps>
+<Step title="Crea un flujo desde cero">
+Ve a **Automatización**, haz clic en **Crear flujo de trabajo** y elige **Empezar desde cero**.
+</Step>
+<Step title="Nombra el flujo y agrega el disparador">
+Ponle un nombre como `Baja por enlace de disparo`. Haz clic en **Agregar disparador** (Add Trigger), busca y selecciona **Clic en enlace de disparo** (Trigger Link Clicked).
+</Step>
+<Step title="Filtra por tu enlace de baja">
+Haz clic en **Agregar filtros** y, en **Enlace de disparo**, elige **Enlace de baja**, el que creaste en el paso 2.
+</Step>
+<Step title="Agrega la acción de No molestar">
+Haz clic en **+** para agregar la primera acción. Busca la acción para activar **No molestar** (Set Contact DND), elige **Activar No molestar para canales específicos**, selecciona **Correo** y haz clic en **Guardar acción**.
+</Step>
+<Step title="Guarda y publica">
+Haz clic en **Guardar** y cambia el flujo a **Publicado**. El flujo no se ejecuta hasta que lo publicas.
+</Step>
+</Steps>
+
+<Tip>
+Puedes agregar más acciones después de No molestar, por ejemplo **Agregar etiqueta** con el valor `dado-de-baja`, para segmentar a esos contactos en tus informes o listas de supresión.
+</Tip>
+
+## Paso 4: coloca el enlace en el pie de tus correos
+
+<Steps>
+<Step title="Abre tu plantilla de correo">
+Busca el texto de baja en el pie de página.
+</Step>
+<Step title="Selecciona el texto del enlace">
+Resalta la palabra que funcionará como enlace, por ejemplo **aquí**.
+</Step>
+<Step title="Inserta el enlace de disparo">
+Haz clic en el ícono de **enlace** de la barra del editor, elige **Enlace de baja** en la lista de enlaces y haz clic en **Guardar**.
+</Step>
+</Steps>
+
+Listo: quien haga clic en el enlace de baja de tus correos llegará a tu página personalizada y quedará con No molestar activado para el correo, sin que tengas que hacer nada a mano.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Sigo necesitando el enlace de baja predeterminado?">
+El enlace de disparo cumple la función del enlace de baja en el pie de tus correos. Pero las normas antispam, como CAN-SPAM, exigen un mecanismo de baja que funcione en todo correo comercial, así que confirma siempre que tu enlace funciona y que el flujo está publicado antes de enviar.
+</Accordion>
+<Accordion title="¿Qué pasa si un contacto hace clic y el flujo no está publicado?">
+El contacto llega a tu página de baja, pero la acción de No molestar no se ejecuta y su estado no cambia. Revisa que el flujo esté **Publicado** antes de enviar campañas.
+</Accordion>
+<Accordion title="¿Puedo activar No molestar en otros canales?">
+Sí. En la acción, elige **Activar No molestar para canales específicos** y selecciona cualquier combinación de canales: SMS, llamadas, correo y más. Consulta [No molestar (DND)](/contactos/no-molestar-dnd).
+</Accordion>
+<Accordion title="¿Afecta a los contactos que ya se dieron de baja con el enlace predeterminado?">
+No. El flujo solo actúa con los clics futuros en tu enlace de disparo. Quienes se dieron de baja antes mantienen su estado actual.
+</Accordion>
+<Accordion title="¿Puedo usar enlaces de baja distintos para cada campaña?">
+Sí. Crea varios enlaces de disparo, uno por campaña o lista, cada uno con su propia página si quieres. En el filtro del flujo, indica el enlace exacto para que la acción solo se aplique a quienes hicieron clic en ese enlace.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Enlaces de disparo: qué son y cómo usarlos" icon="link" href="/marketing/enlaces-de-disparo-casos-de-uso">
+Registra clics y activa automatizaciones.
+</Card>
+<Card title="No molestar (DND)" icon="bell-slash" href="/contactos/no-molestar-dnd">
+Bloquea canales por contacto.
+</Card>
+<Card title="Buenas prácticas y calentamiento de correo" icon="envelope" href="/correo/buenas-practicas-y-calentamiento-de-correo">
+El enlace de baja es clave para tu entregabilidad.
+</Card>
+<Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+Todos los disparadores disponibles.
+</Card>
+</CardGroup>

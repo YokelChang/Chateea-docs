@@ -1,0 +1,87 @@
+---
+title: "Enviar un correo de prueba desde Conversaciones"
+description: "Comprueba el envío, el remitente y las respuestas de tu cuenta con un correo de prueba a un contacto."
+icon: "paper-plane"
+---
+
+Enviarte un correo de prueba desde **Conversaciones** es la forma más rápida de comprobar que tu cuenta envía bien, que el remitente es el correcto y que las respuestas regresan a Chateea. Hazlo cada vez que configures un dominio, cambies de proveedor o notes algo raro en tus envíos.
+
+## 1. Crea un contacto de prueba
+
+<Steps>
+  <Step title="Abre Contactos">
+    En el menú lateral, entra a **Contactos**.
+  </Step>
+  <Step title="Agrega el contacto">
+    Haz clic en **Agregar contacto**, escribe un **nombre** y un **correo al que tengas acceso** (por ejemplo, tu correo personal) y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Puedes reutilizar el mismo contacto de prueba cada vez que necesites revisar tus envíos.
+</Tip>
+
+## 2. Envía el correo
+
+Al guardar el contacto se abre su conversación. Elige el canal **Correo**, escribe un asunto y un mensaje corto y haz clic en **Enviar**.
+
+## 3. Revisa el remitente
+
+En el campo del remitente (De) aparece por defecto el correo del usuario con el que iniciaste sesión. Qué conviene poner depende de tu proveedor de envío:
+
+### Si envías con el correo de Chateea
+
+Usa una dirección de tu dominio de envío verificado. Chateea se encarga del resto. Consulta [Remitente de tus correos](/correo/remitente-de-tus-correos).
+
+### Si envías con un proveedor externo conectado por API
+
+Si pones como remitente una dirección de otro dominio (por ejemplo, `hola@gmail.com`), la dirección de respuesta se muestra con tu subdominio de envío, algo como `hola@replies.tunegocio.com`. Es normal: así Chateea captura la respuesta y la coloca en la conversación del contacto.
+
+Para mejorar la entregabilidad, usa como remitente una dirección de tu subdominio de envío (por ejemplo, `hola@replies.tunegocio.com`). Así el dominio del remitente y el de la respuesta coinciden.
+
+### Si envías con un proveedor SMTP
+
+En **Configuración → Servicios de correo**, copia la dirección que conectaste como remitente SMTP y úsala como remitente en la conversación. Si quieres enviar desde otras direcciones, configura un alias o un remitente verificado en tu proveedor:
+
+- [Gmail o Google Workspace como proveedor SMTP](/smtp/gmail-google-workspace)
+- [Zoho Mail como proveedor SMTP](/correo/usar-zoho-mail-como-proveedor-smtp)
+- [SendGrid como proveedor SMTP](/correo/usar-sendgrid-como-proveedor-smtp)
+
+## 4. Si el correo no llega
+
+1. Revisa la carpeta de **spam** o **promociones**.
+2. Si el mensaje muestra un ícono de error en la conversación, haz clic en él. Chateea muestra el error que devuelve tu proveedor de envío o tu servidor SMTP, y normalmente explica por qué no se envió.
+3. Si el error no es claro y usas SMTP, abre un ticket con tu proveedor SMTP para que te den el estado de entrega de ese correo.
+4. Si usas un proveedor externo por API, busca el correo en sus registros. Consulta [Revisar los registros de envío en tu proveedor externo](/correo/revisar-registros-de-envio-en-proveedor-externo).
+
+## 5. Comprueba que las respuestas regresan
+
+Cuando recibas el correo de prueba, respóndelo y revisa que la respuesta aparezca en la conversación del contacto. Si no aparece, consulta [Las respuestas de correo no llegan a Conversaciones](/correo/respuestas-no-llegan-a-conversaciones).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="No veo la opción para enviar correo en la conversación">
+    Confirma que el contacto tiene un correo válido guardado y que elegiste el canal **Correo** (no SMS u otro canal) en la conversación.
+  </Accordion>
+  <Accordion title="¿Puedo usar mi correo personal como remitente para probar?">
+    Para una prueba rápida, sí. Para tus envíos reales, usa una dirección de tu dominio verificado, así la entregabilidad y la captura de respuestas funcionan como deben. Consulta [Por qué no usar un correo gratuito como remitente](/correo/por-que-no-usar-un-correo-gratuito-como-smtp).
+  </Accordion>
+  <Accordion title="¿Cómo sé si el fallo es mío o del servidor del destinatario?">
+    Abre el error en la conversación. Si menciona un rechazo del servidor que recibe, el problema suele estar de su lado. Si menciona tu dominio o tu autenticación, revisa tus registros DNS (SPF, DKIM, MX y CNAME).
+  </Accordion>
+  <Accordion title="¿Cambia algo si uso el correo de Chateea?">
+    Los pasos para crear el contacto y enviar son los mismos. La configuración del remitente es más sencilla, porque no necesitas subdominios de un proveedor externo ni alias SMTP.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Error en la acción Enviar correo" icon="triangle-exclamation" href="/correo/error-en-accion-enviar-correo">
+    Qué revisar cuando un flujo no envía el correo.
+  </Card>
+  <Card title="Por qué mis correos llegan a spam" icon="envelope" href="/correo/por-que-mis-correos-llegan-a-spam">
+    Causas comunes y cómo evitarlas.
+  </Card>
+</CardGroup>

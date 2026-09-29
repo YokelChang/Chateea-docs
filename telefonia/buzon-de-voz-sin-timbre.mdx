@@ -1,0 +1,131 @@
+---
+title: "Buzón de voz sin timbre en flujos de trabajo"
+description: "Deja mensajes de voz pregrabados en el buzón de tus contactos sin que suene su teléfono, con requisitos, pasos, pruebas y límites."
+icon: "voicemail"
+---
+
+El **buzón de voz sin timbre** (ringless voicemail o voicemail drop) deja un mensaje de voz pregrabado directamente en el buzón de tu contacto sin que su teléfono suene. Se configura como una acción dentro de un flujo de trabajo y sirve para recordatorios, seguimientos y reactivación de clientes que te dieron su consentimiento, sin necesidad de hacer una llamada en vivo.
+
+## Qué es
+
+Es la acción **Buzón de voz** de los flujos de trabajo. El contacto no recibe una llamada normal: simplemente encuentra un mensaje nuevo en su buzón.
+
+<Info>
+  No lo confundas con el buzón de voz de tu negocio o de tus usuarios. Ese es para llamadas **entrantes**: es donde dejan mensaje quienes te llaman y no los atiendes. El buzón de voz sin timbre es una acción **saliente** que envía tu mensaje grabado.
+</Info>
+
+## Cómo funciona
+
+- **Secuencia de llamadas:** el sistema hace una primera llamada al número y, poco después, una segunda que se desvía al buzón, donde queda depositado el mensaje.
+- **Depende del operador:** el resultado depende del operador del destinatario, de su red y de cómo tenga configurado el buzón. No todos procesan la secuencia igual.
+- **Entrega no garantizada:** como depende del operador y del dispositivo, no siempre llega a todos los destinatarios. Prueba siempre antes de usarlo con una audiencia grande.
+
+## Para qué te sirve
+
+- **No interrumpe:** el teléfono no suena, pero el mensaje llega.
+- **Escala:** envías el mismo mensaje a muchos contactos desde un solo flujo, sin marcar a mano.
+- **Mensaje consistente:** todos escuchan el mismo tono y la misma información.
+- **Ahorra tiempo** en seguimientos que no necesitan una conversación en vivo.
+
+| Uso | Ejemplo |
+| --- | --- |
+| Recordatorios de citas | Un recordatorio grabado 24 horas antes de la cita. |
+| Seguimiento de leads | Un mensaje para quienes pidieron información. |
+| Avisos de eventos | Recordar a los inscritos un seminario web o evento. |
+| Reactivación con consentimiento | Volver a contactar a clientes que aceptaron recibir llamadas automatizadas. |
+
+## Antes de empezar
+
+- Un **número de teléfono activo** en tu cuenta de Chateea.
+- Un **audio pregrabado en MP3 o WAV a 64 kbps**.
+- El **consentimiento necesario** para enviar llamadas pregrabadas o automatizadas.
+- Un **disparador** que defina cuándo se envía el mensaje.
+- Un **teléfono válido** en la ficha del contacto.
+- Un **contacto de prueba** para validar el flujo antes de publicarlo.
+
+<Warning>
+  Los mensajes de voz sin timbre pueden estar sujetos a leyes federales, estatales o provinciales, a reglas de los operadores y a normas de cada sector sobre llamadas pregrabadas o automatizadas. Consigue el consentimiento que corresponda antes de enviarlos y confirma que tu caso de uso cumple la normativa aplicable.
+</Warning>
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y abre el flujo donde quieres añadir el mensaje.
+  </Step>
+  <Step title="Agrega la acción Buzón de voz">
+    Haz clic en el **+** donde quieras insertarla, elige **Buzón de voz** en la lista de acciones y haz clic en **Listo**.
+  </Step>
+  <Step title="Ponle nombre (opcional)">
+    En **Nombre de la acción**, escribe una etiqueta descriptiva, por ejemplo "Recordatorio 24 h". Solo la ves tú en el constructor.
+  </Step>
+  <Step title="Sube o elige el audio">
+    Haz clic en **Agregar adjuntos** para subir un archivo nuevo o elige una grabación existente del desplegable. Confirma que está en MP3 o WAV a 64 kbps.
+  </Step>
+  <Step title="Asigna el contacto a un usuario (opcional)">
+    Si la propiedad del contacto forma parte de tu proceso, puedes asignarlo a un miembro del equipo antes del envío. Si no lo necesitas, deja el campo vacío.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Probar el flujo
+
+Antes de publicarlo, ejecútalo con un contacto de prueba y comprueba que:
+
+- Se usa el audio correcto.
+- El audio se escucha con claridad.
+- El flujo se dispara en el momento esperado.
+- El mensaje llega al buzón.
+
+## Solución de problemas
+
+- Confirma que el contacto tiene un teléfono válido.
+- Confirma que el contacto entró realmente al flujo.
+- Confirma que el flujo llegó a la acción **Buzón de voz**.
+- Confirma que el archivo es MP3 o WAV a 64 kbps. Si no se reproduce bien, vuelve a exportarlo a 64 kbps y súbelo de nuevo.
+- Prueba con otro contacto u otro número.
+- Confirma que el destinatario tiene el buzón de voz activado.
+- Revisa si tu cuenta alcanzó su límite de envíos de buzón de voz.
+
+## Límites de envío
+
+Los límites de envío de mensajes de voz sin timbre pueden aumentar a medida que tu cuenta acumula historial de uso. Pueden cambiar según la actividad de la cuenta y los requisitos de los operadores. Si llegas al límite o necesitas más capacidad, escribe a **help@chateea.com**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito consentimiento antes de enviarlos?">
+    Sí. Consigue el nivel de consentimiento que exija tu caso de uso y tu jurisdicción antes de enviar mensajes pregrabados o automatizados.
+  </Accordion>
+  <Accordion title="¿Qué formato de audio debo usar?">
+    MP3 o WAV, exportado a 64 kbps. Si no se reproduce bien, vuelve a exportarlo, súbelo de nuevo, guarda la acción y prueba con un contacto de prueba.
+  </Accordion>
+  <Accordion title="¿Por qué no se entrega mi mensaje?">
+    Puede deberse al operador, a la configuración del dispositivo o a que el destinatario no tenga buzón. Revisa que el teléfono sea válido, que el contacto entró al flujo, que se ejecutó la acción y que el audio tiene el formato correcto. Prueba con otro número para aislar el problema.
+  </Accordion>
+  <Accordion title="¿Puedo ver cuándo se entregó?">
+    En el historial del flujo ves cuándo se ejecutó la acción. Como la entrega depende del operador, la confirmación no siempre está disponible.
+  </Accordion>
+  <Accordion title="¿Necesito algún registro especial, como el de A2P?">
+    No usa el mismo registro que los SMS A2P. Aun así, las reglas sobre llamadas pregrabadas y telemarketing varían según el lugar y el caso de uso. Confirma que tienes el consentimiento y cumples los requisitos aplicables.
+  </Accordion>
+  <Accordion title="¿Cuántos puedo enviar al día?">
+    Los límites pueden crecer a medida que tu cuenta acumula historial. Si necesitas más capacidad, escribe a **help@chateea.com**.
+  </Accordion>
+  <Accordion title="¿Puedo usarlo para prospección en frío?">
+    Solo con contactos que te hayan dado el consentimiento necesario para llamadas pregrabadas o automatizadas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Detener al responder y detección de buzón" icon="phone" href="/automatizaciones/detener-al-responder-y-deteccion-de-buzon">
+    Ajusta cómo se comportan las llamadas automáticas.
+  </Card>
+  <Card title="Disparador Detalles de llamada" icon="bolt" href="/telefonia/disparador-detalles-de-llamada">
+    Automatiza seguimientos según el resultado de cada llamada.
+  </Card>
+</CardGroup>

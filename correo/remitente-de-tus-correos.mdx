@@ -1,0 +1,131 @@
+---
+title: "Qué remitente ven tus contactos en cada correo"
+description: "Orden de prioridad del nombre y correo remitente en correos manuales y automáticos, y dónde configurarlo."
+icon: "envelope"
+---
+
+El remitente (nombre y dirección "De") es lo primero que ve un contacto antes de decidir si abre tu correo. En Chateea, la dirección que aparece depende de dos cosas: si el correo es **manual** o **automático**, y si el contacto tiene o no un **usuario asignado**. Aquí tienes el orden de prioridad que sigue la plataforma y todos los lugares donde puedes definir el remitente.
+
+## Qué remitente se usa en cada caso
+
+Chateea revisa las fuentes en orden y usa la primera que tenga un valor.
+
+| Tipo de correo | Fuente del remitente | Contacto sin asignar | Contacto asignado |
+| --- | --- | --- | --- |
+| **Manual** (desde Conversaciones) | Correo del usuario que tiene la sesión iniciada | 1.ª prioridad | 1.ª prioridad |
+| **Automático** (plantillas, envíos masivos, campañas, flujos) | Remitente configurado en la campaña o el flujo de trabajo | 1.ª prioridad | 1.ª prioridad |
+| | Correo del usuario asignado | No aplica | 2.ª prioridad |
+| | Correo del negocio (**Configuración → Perfil del negocio**) | 2.ª prioridad | 3.ª prioridad |
+
+Hay dos tipos de correo con reglas propias:
+
+- **Solicitudes de reseña:** siempre salen con el correo del usuario que tiene la sesión iniciada.
+- **Confirmaciones de cita** (**Configuración → Calendarios**, pestaña de confirmación): salen desde una dirección del sistema del tipo `do-not-reply@` sobre tu subdominio de envío. Si tienes un proveedor SMTP conectado, se usa ese correo.
+
+<Tip>
+  Si quieres que tus contactos siempre vean el mismo remitente, define el nombre y el correo "De" en cada flujo de trabajo o campaña. Así no dependes de si el contacto está asignado o no.
+</Tip>
+
+## Cómo saber si un contacto está asignado
+
+<Steps>
+  <Step title="Busca el contacto">
+    Ve a **Contactos → Listas inteligentes** y localiza al contacto.
+  </Step>
+  <Step title="Abre su panel de detalles">
+    Abre la conversación del contacto en **Conversaciones** y haz clic en el ícono del panel derecho para ver sus datos.
+  </Step>
+  <Step title="Revisa el usuario asignado">
+    Mira el campo **Usuario asignado**. Si tiene un nombre, el contacto está asignado. Si está vacío, no lo está.
+  </Step>
+</Steps>
+
+## Dónde configurar el remitente
+
+### Correos manuales desde Conversaciones
+
+Cuando escribes un correo individual desde **Conversaciones**, el campo "De" usa por defecto el correo del usuario que tiene la sesión iniciada.
+
+<Note>
+  Si conectaste tu Gmail u Outlook con sincronización bidireccional, el remitente será ese correo conectado.
+</Note>
+
+### Plantillas de correo
+
+Ve a **Marketing → Correos → Plantillas** y crea una plantilla nueva. En su configuración puedes definir el nombre y el correo del remitente.
+
+### Envío masivo desde Contactos
+
+<Steps>
+  <Step title="Selecciona los contactos">
+    Ve a **Contactos → Listas inteligentes**, marca los contactos a los que quieres escribir y haz clic en **Enviar correo**.
+  </Step>
+  <Step title="Completa el remitente">
+    En la ventana de envío, completa **Nombre del remitente** y **Correo del remitente**. Estos datos reemplazan al remitente predeterminado solo para este envío.
+  </Step>
+</Steps>
+
+### Configuración general del flujo de trabajo
+
+<Steps>
+  <Step title="Abre o crea un flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre un flujo o crea uno nuevo desde cero.
+  </Step>
+  <Step title="Configura la dirección del remitente">
+    En el editor, entra en **Configuración → Configurar dirección del remitente** (Configure Sender Address). Los datos que pongas aquí se aplican a todos los correos que envíe ese flujo.
+  </Step>
+</Steps>
+
+### Acción Enviar correo dentro del flujo
+
+<Steps>
+  <Step title="Agrega la acción">
+    Haz clic en **+** dentro del flujo y elige **Enviar correo**.
+  </Step>
+  <Step title="Define el remitente de esa acción">
+    Completa **Nombre del remitente** y **Correo del remitente**. Estos datos tienen prioridad sobre la dirección configurada a nivel de flujo.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué en Outlook el remitente aparece largo y extraño?">
+    Outlook muestra información adicional cuando el remitente técnico del envío no coincide con la dirección "De" visible. Si envías el mismo correo a una cuenta de Gmail, el remitente se ve normal. Para evitarlo, usa un correo remitente del mismo dominio con el que envías.
+  </Accordion>
+  <Accordion title="¿Cómo quito el aviso 'a través de' (via) que muestra Gmail?">
+    Usa un correo remitente cuyo dominio coincida con tu dominio de envío verificado. Gmail muestra ese aviso cuando el dominio del remitente no está alineado con la autenticación SPF y DKIM del envío. Más detalles en la [ayuda de Gmail](https://support.google.com/mail/answer/1311182).
+  </Accordion>
+  <Accordion title="Si el flujo tiene remitente general y la acción Enviar correo tiene el suyo, ¿cuál gana?">
+    Gana el de la acción **Enviar correo**. El remitente general del flujo funciona como respaldo para las acciones que no tienen uno propio.
+  </Accordion>
+  <Accordion title="Mi contacto no está asignado y le envío una campaña automática. ¿Qué correo verá?">
+    Primero el remitente configurado en la campaña o el flujo. Si está vacío, el correo del negocio de tu **Perfil del negocio**.
+  </Accordion>
+  <Accordion title="¿Puedo usar el correo del usuario asignado en un correo manual?">
+    No. Los correos manuales siempre salen con el correo de quien los escribe. Si quieres que el remitente sea el usuario asignado, pídele que envíe el correo desde su sesión o usa un flujo de trabajo automático, donde el usuario asignado sube en la prioridad.
+  </Accordion>
+  <Accordion title="¿Por qué las solicitudes de reseña siempre salen con el usuario que tiene la sesión iniciada?">
+    Porque una solicitud de reseña funciona mejor cuando llega de una persona conocida del equipo y no de un alias genérico. Si quieres que salga del usuario asignado al contacto, usa la acción **Enviar solicitud de reseña** en un flujo de trabajo.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el remitente de las confirmaciones de cita?">
+    Salen desde la dirección del sistema de tu subdominio de envío. Si necesitas otro remitente, conecta un proveedor SMTP propio y ese correo pasará a usarse.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configura correo, teléfono y SMS" icon="gear" href="/primeros-pasos/configura-correo-telefono-y-sms">
+    Verifica tu dominio de envío y define el remitente.
+  </Card>
+  <Card title="Conecta tu correo de Gmail u Outlook" icon="envelope" href="/primeros-pasos/conecta-tu-correo-personal">
+    Sincroniza tu bandeja personal con Conversaciones.
+  </Card>
+  <Card title="Verificar el correo del remitente" icon="shield-check" href="/correo/verificar-correo-del-remitente">
+    Confirma que eres dueño del correo "De" antes de enviar campañas.
+  </Card>
+  <Card title="Solucionar problemas de entrega SMTP" icon="circle-question" href="/smtp/solucion-de-problemas">
+    Qué revisar si tus correos no salen.
+  </Card>
+</CardGroup>

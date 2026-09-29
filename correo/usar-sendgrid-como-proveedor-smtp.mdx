@@ -1,0 +1,103 @@
+---
+title: "Usar SendGrid como proveedor SMTP"
+description: "Conecta tu cuenta de SendGrid con una clave de API, verifica tu remitente y resuelve el error 550 de identidad."
+icon: "paper-plane"
+---
+
+Si ya usas SendGrid para enviar correo, puedes conectarlo a tu cuenta de Chateea como proveedor SMTP. Tus correos saldrán a través de SendGrid con tu propia reputación de envío. Sigue los pasos en orden, desde la clave de API hasta la verificación del remitente, para evitar los errores de conexión más comunes.
+
+<Note>
+  Antes de cambiar de proveedor, revisa qué funciones de entregabilidad dejas de tener al usar un SMTP propio en [Agregar tu propio servicio SMTP](/correo/agregar-tu-propio-servicio-smtp).
+</Note>
+
+## Antes de empezar
+
+- Una cuenta de SendGrid. Si no tienes, créala en [signup.sendgrid.com](https://signup.sendgrid.com/). El plan gratuito incluye todo lo que necesita esta integración.
+- La **autenticación en dos pasos** activada en SendGrid. SendGrid la exige para crear y usar claves de API con acceso completo.
+
+## Conectar SendGrid
+
+<Steps>
+  <Step title="Abre los servicios de correo en Chateea">
+    Ve a **Configuración → Servicios de correo** (Email Services), pulsa **+ Agregar servicio** y elige **SendGrid** en el menú de proveedores. Deja esta ventana abierta.
+  </Step>
+  <Step title="Crea una clave de API en SendGrid">
+    En SendGrid, ve a **Settings → API Keys → Create API Key**. Ponle un nombre que reconozcas (por ejemplo, `Chateea`), deja los permisos en **Full Access** y haz clic en **Create & View**.
+  </Step>
+  <Step title="Copia la clave">
+    SendGrid muestra la clave completa **una sola vez**. Cópiala en ese momento.
+  </Step>
+  <Step title="Pega los datos en Chateea">
+    Completa el formulario con estos valores y pulsa **Guardar**:
+
+    | Campo | Valor |
+    | --- | --- |
+    | **Usuario** | `apikey` (literal, siempre igual) |
+    | **Correo** | El correo con el que inicias sesión en SendGrid |
+    | **Contraseña** | La clave de API que copiaste |
+  </Step>
+  <Step title="Activa la autenticación en dos pasos en SendGrid">
+    Si todavía no la tienes, actívala desde la configuración de tu cuenta de SendGrid. Sin ella, SendGrid no da acceso completo a la API.
+  </Step>
+  <Step title="Verifica tu remitente en SendGrid">
+    En SendGrid, crea un remitente único (**Single Sender**) con el **mismo correo con el que inicias sesión en SendGrid**, y confirma la verificación desde el correo que te envían.
+  </Step>
+  <Step title="Guarda de nuevo en Chateea">
+    Vuelve a Chateea y pulsa **Guardar** otra vez para terminar la integración. SendGrid aparecerá como tu proveedor SMTP activo. Si no lo está, pulsa **Establecer como activo**.
+  </Step>
+</Steps>
+
+<Tip>
+  Envía un correo de prueba desde **Conversaciones** a una dirección tuya, con el remitente igual al correo que conectaste. Si llega, la integración está lista.
+</Tip>
+
+## Error de identidad del remitente
+
+Si al enviar un correo de prueba desde **Conversaciones** aparece un error, haz clic en el **triángulo rojo** junto al mensaje para ver el detalle. El error más común es este:
+
+```text
+550 The from address does not match a verified Sender Identity. Mail cannot be sent until this error is resolved.
+```
+
+Significa que SendGrid rechazó el correo porque la dirección de remitente no está verificada en tu cuenta de SendGrid. Para resolverlo:
+
+- Envía desde la **misma dirección que conectaste** en Chateea, o
+- Verifica la dirección que quieres usar como remitente adicional en SendGrid. Consulta los [requisitos de identidad del remitente de SendGrid](https://sendgrid.com/docs/for-developers/sending-email/sender-identity/) y cómo [verificar remitentes](https://docs.sendgrid.com/ui/sending-email/senders).
+
+<Warning>
+  Si personalizas el nombre y la dirección del remitente en tus campañas, flujos o calendarios, la dirección debe coincidir con la conectada por SMTP o estar verificada en SendGrid. Si no, verás este mismo error.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un plan de pago de SendGrid?">
+    No. El plan gratuito incluye claves de API y verificación de remitentes, que es todo lo que necesita la integración. Si envías mucho volumen, con el tiempo puede que necesites un plan de pago.
+  </Accordion>
+  <Accordion title="¿Por qué tengo que verificar un remitente en SendGrid?">
+    SendGrid bloquea cualquier correo cuyo remitente no esté verificado en tu cuenta. Así evita la suplantación y protege la entregabilidad de todos sus clientes.
+  </Accordion>
+  <Accordion title="¿Qué pongo en el campo de contraseña?">
+    Tu clave de API completa de SendGrid, no la contraseña con la que inicias sesión. El usuario siempre es `apikey`.
+  </Accordion>
+  <Accordion title="¿Puedo usar otro remitente distinto al conectado?">
+    Sí, siempre que esa dirección coincida con la conectada por SMTP o esté verificada como remitente en SendGrid. Si no, aparece el error de identidad del remitente.
+  </Accordion>
+  <Accordion title="¿La autenticación en dos pasos es obligatoria?">
+    Sí. SendGrid exige tenerla activa para crear y usar claves de API con acceso completo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si regenero la clave de API?">
+    La clave anterior deja de funcionar al instante. Actualiza el campo de contraseña en **Configuración → Servicios de correo** con la nueva clave para seguir enviando.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar tu propio servicio SMTP" icon="server" href="/correo/agregar-tu-propio-servicio-smtp">
+    Cómo funciona el SMTP propio y qué limitaciones tiene.
+  </Card>
+  <Card title="Solucionar problemas de entrega SMTP" icon="wrench" href="/smtp/solucion-de-problemas">
+    Qué revisar cuando tus correos no salen.
+  </Card>
+</CardGroup>

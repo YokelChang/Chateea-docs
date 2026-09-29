@@ -1,0 +1,69 @@
+---
+title: "Disparador de aperturas y clics de correo"
+description: "Inicia un flujo de trabajo cuando un contacto abre o hace clic en uno de tus correos con el disparador Eventos de correo."
+icon: "bolt"
+---
+
+El disparador **Eventos de correo** (Email Events) inicia un flujo de trabajo en el momento en que un contacto abre o hace clic en uno de tus correos. Es la base para hacer seguimientos más inteligentes: por ejemplo, enviar una oferta a quien hizo clic en tu promoción, avisar a tu vendedor cuando un prospecto abre la propuesta o etiquetar a los contactos más comprometidos.
+
+## Cómo agregar el disparador
+
+<Steps>
+<Step title="Agrega un disparador y busca «correo»">
+Abre tu flujo de trabajo, haz clic en **Agregar disparador** (Add New Trigger) y escribe `correo` en el buscador para ver los disparadores relacionados.
+</Step>
+<Step title="Elige Eventos de correo">
+Selecciona **Eventos de correo** en la lista. Este disparador escucha aperturas, clics, rebotes y otras señales de interacción.
+</Step>
+<Step title="Agrega un filtro">
+Haz clic en **Agregar filtros** para indicar exactamente a qué eventos debe responder.
+</Step>
+<Step title="Elige el filtro de evento">
+En las opciones de filtro, selecciona **Eventos de correo** y luego **Evento** para ver la lista de tipos de evento.
+</Step>
+<Step title="Elige Clic o Apertura">
+Selecciona **Clic** (Clicked) o **Apertura** (Opened), según la acción que debe activar el flujo. Guarda el disparador.
+</Step>
+</Steps>
+
+Desde ese momento, cada contacto que realice el evento elegido entrará automáticamente en el flujo.
+
+<Note>
+Para que el seguimiento sea preciso y tu reputación de envío se mantenga sana, asegúrate de tener activado el seguimiento de **aperturas y clics** para tu dominio de envío. Estos eventos son los datos de interacción que usan los proveedores de correo para decidir tu entregabilidad.
+</Note>
+
+## Ideas de uso
+
+| Evento | Ejemplo de automatización |
+| --- | --- |
+| **Clic** en el enlace de una promoción | Envía un segundo correo con un cupón o crea una oportunidad en tu pipeline. |
+| **Apertura** de una propuesta | Crea una tarea para que tu vendedor llame al contacto ese mismo día. |
+| **Clic** en cualquier campaña | Agrega la etiqueta `comprometido` para segmentar a tus contactos más activos. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué diferencia hay entre Clic y Apertura?">
+**Apertura** se registra cuando el destinatario carga el píxel de seguimiento del correo. **Clic** se registra cuando hace clic en un enlace con seguimiento. El clic es una señal de interés más fuerte, porque requiere una acción deliberada.
+</Accordion>
+<Accordion title="¿Puedo limitar el disparador a una campaña o flujo concreto?">
+Sí. Después del filtro de evento, agrega filtros como **Nombre de la campaña** u **Origen** para que el disparador solo se active con las aperturas o clics de los envíos que te interesan.
+</Accordion>
+<Accordion title="¿Por qué no se activa mi disparador?">
+La causa más común es que el seguimiento de aperturas y clics está desactivado en tu dominio de envío. Revisa la configuración de tu servicio de correo y vuelve a activarlo. Confirma también que el flujo esté **publicado** y que el filtro coincida con el tipo de evento y el origen correctos.
+</Accordion>
+<Accordion title="¿Las aperturas o clics de bots activan el flujo?">
+Si tienes activada la detección de bots en la configuración de tu **Perfil del negocio**, las aperturas y clics generados por bots se filtran y no activan el flujo.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+Todos los disparadores disponibles.
+</Card>
+<Card title="Introducción a la entregabilidad del correo" icon="envelope-open-text" href="/correo/introduccion-a-la-entregabilidad">
+Por qué la interacción es clave.
+</Card>
+</CardGroup>

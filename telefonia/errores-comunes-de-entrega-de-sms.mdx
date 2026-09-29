@@ -1,0 +1,165 @@
+---
+title: "Errores comunes de entrega de SMS"
+description: "Qué significa cada código de error de SMS y MMS, qué revisar y qué hacer, más cómo monitorearlos con flujos de trabajo."
+icon: "triangle-exclamation"
+---
+
+Cuando un SMS o MMS falla, normalmente trae un código de error que indica dónde se detuvo la entrega: el número del destinatario, su consentimiento, el filtrado de la operadora, el registro de mensajería, la configuración del remitente, el estado de tu cuenta o un archivo no compatible. Esta guía de referencia rápida te ayuda a encontrar el código, entender la causa, corregirla y, cuando corresponda, volver a intentar.
+
+Si el código no explica el problema, sigue la guía completa para solucionar problemas de entrega de SMS.
+
+<Warning>
+**No reenvíes un mensaje fallido sin saber por qué falló.** Insistir con destinatarios dados de baja, números inválidos, mensajes filtrados o remitentes sin registro genera más fallos y perjudica la salud de tu mensajería. Un SMS fallido tampoco se reintenta solo: corrige la causa primero y reenvía solo cuando tenga sentido.
+</Warning>
+
+## Por qué conviene entender los códigos
+
+- **Diagnóstico rápido:** sabes dónde está el problema sin adivinar.
+- **Reintentos seguros:** sabes cuándo reintentar y cuándo dejar de escribir.
+- **Mejor entregabilidad:** corriges números inválidos, filtrado y registros incompletos antes de que se repitan.
+- **Cumplimiento:** respetas bajas, No molestar y requisitos de registro.
+- **Monitoreo automático:** puedes reaccionar a errores concretos con flujos de trabajo.
+
+## Cómo encontrar el código de error
+
+<Steps>
+  <Step title="Abre la conversación">
+    Ve a **Conversaciones**, busca al contacto y abre la conversación. Ubica el mensaje marcado como **No enviado**.
+  </Step>
+  <Step title="Abre el detalle del error">
+    Pasa el cursor o haz clic sobre el indicador rojo junto al mensaje. Verás el código numérico y una breve descripción.
+  </Step>
+  <Step title="Anota el código">
+    Por ejemplo **30034**, **30007** o **21610**, y búscalo en la tabla de abajo.
+  </Step>
+</Steps>
+
+## Códigos de error frecuentes
+
+| Código | Qué significa | Qué revisar | Qué hacer |
+| --- | --- | --- | --- |
+| **21211** | Número de destino no válido | Número incorrecto, mal escrito o que no es un destino válido. | Corrige el número y usa el formato internacional E.164: `+[código de país][número]`. |
+| **21408** | No se permite enviar a esa región | El país de destino no está habilitado o no es compatible. | Confirma que el destino esté habilitado. Si debería estarlo, escribe a soporte. |
+| **21606** | Número remitente no válido o no disponible | Capacidad, titularidad, formato, estado de portabilidad o restricciones del país. | Usa un número activo, con SMS y que pertenezca a tu cuenta. |
+| **21610** | El destinatario se dio de baja o tiene No molestar | Si respondió STOP u otra palabra de baja, o si tiene No molestar activo. | No sigas escribiendo. Debe volver a suscribirse, por ejemplo enviando START. |
+| **21612** | La combinación de remitente y destino no es válida | Formato E.164, restricciones del país, tipo de remitente y rutas disponibles. | Corrige el formato o usa un remitente local compatible con el destino. |
+| **21614** | El destino no es un móvil válido | Número inválido, mal escrito o fijo. | Verifica que sea un móvil válido. |
+| **21635** | El destino es un teléfono fijo | El número se identificó como fijo y no recibe SMS. | Usa otro número del contacto que admita SMS. Si sabes que es móvil, escribe a soporte. |
+| **21661** | Tu número remitente no admite SMS | Capacidades de tu número de Chateea. | Elige o compra un número con SMS. |
+| **30002** | Cuenta suspendida | Suspensión por saldo o por política. | Escribe a soporte de Chateea en **help@chateea.com**. |
+| **30003** | Número inaccesible o fuera de servicio | Teléfono apagado o sin señal, capacidad móvil, operadora o filtrado recurrente. | Verifica el número y reintenta más tarde. Si se repite, reúne al menos 3 ejemplos y escribe a soporte. |
+| **30004** | Destino bloqueado o no disponible | No molestar, baja, señal, fijo, operadora o listas de «No llamar» regionales. | Revisa el estado de No molestar del contacto. Si pasa con varios destinatarios válidos, reúne 3 ejemplos para soporte. |
+| **30005** | El número no existe o está inactivo | Número correcto, formato E.164, servicio activo y capacidad móvil. | Corrige o elimina los números inválidos. |
+| **30006** | Fijo u operadora inaccesible | Si el destino puede recibir SMS con tu tipo de número. | Usa un móvil válido u otra ruta compatible. |
+| **30007** | Mensaje filtrado | Contenido, identificación del remitente, consentimiento, enlaces, contenido prohibido y reglas de la operadora. | Corrige el problema de contenido o cumplimiento antes de reenviar. Si mensajes que cumplen siguen fallando, reúne 3 o más ejemplos para soporte. |
+| **30008** | Error desconocido | Longitud, codificación de caracteres, contenido y si afecta a varios destinatarios. | Prueba con un mensaje corto y sencillo. Si sigue fallando, envía 3 o más ejemplos a soporte. |
+| **30011** | El destino no admite MMS | Capacidad MMS del teléfono y disponibilidad en la región. | Envía solo texto o usa otro canal. |
+| **30023** | Límite diario alcanzado | Volumen diario de tu marca A2P y límite de las operadoras. | Pausa los envíos. Si el límite te sorprende, escribe a soporte. |
+| **30024** | Identificador numérico de remitente no habilitado | Si el país exige registrar el remitente y si ya se completó. | Si debería estar registrado, reúne al menos 3 ejemplos y escribe a soporte. |
+| **30032** | Número gratuito sin verificar | Estado de la verificación del número gratuito. | Completa la verificación y espera el estado **Verificado (aprobado)** antes de enviar. |
+| **30033** | Campaña A2P 10DLC suspendida | Estado de la campaña y problemas de cumplimiento o registro. | Escribe a soporte para conocer el motivo y los pasos para recuperarla. |
+| **30034** | Número sin registro A2P completo | Campaña aprobada, vínculo del número con la campaña, tiempo de activación y límites de empresa unipersonal. | Vincula el número a la campaña aprobada y espera hasta 24 horas tras la aprobación. Las campañas de empresa unipersonal admiten un solo número local. |
+| **30037** | Mensajería saliente desactivada | Si la mensajería saliente está desactivada en tu cuenta. | Escribe a soporte si debería estar activa. |
+
+Si tu código no aparece aquí, búscalo en el diccionario de códigos de error.
+
+## Errores de archivos y adjuntos
+
+Los fallos de MMS pueden deberse al tamaño, al tipo de archivo, a la capacidad del destino o a un problema para descargar el archivo. Diagnostícalos por separado de los fallos normales de SMS.
+
+| Código | Qué significa | Qué hacer |
+| --- | --- | --- |
+| **11751** | El archivo supera el tamaño permitido | Comprime el archivo o envíalo como enlace. Para máxima compatibilidad, mantén los adjuntos MMS por debajo de unos **500 KB**, aunque algunas operadoras aceptan más. |
+| **11200** | No se pudo descargar el recurso | Es un problema al obtener una imagen u otro archivo alojado, no un fallo de la operadora. Si usas un dominio propio para los enlaces del sistema, revisa su configuración en el perfil del negocio. |
+
+## Monitorea los errores automáticamente
+
+El disparador **Error de mensajería: SMS** te permite reaccionar cuando un SMS no se entrega con un código concreto: avisar a tu equipo, etiquetar al contacto o cambiar el camino de una automatización.
+
+<Steps>
+  <Step title="Crea o abre un flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Elige **Error de mensajería: SMS**.
+  </Step>
+  <Step title="Filtra por código">
+    Agrega un filtro de **Código de error** y elige el que te interesa, como 30007, 30034, 30032 o 21610.
+  </Step>
+  <Step title="Agrega las acciones">
+    Por ejemplo, una notificación interna, una etiqueta, una actualización de oportunidad o una bifurcación.
+  </Step>
+  <Step title="Guarda y publica">
+    Activa el flujo.
+  </Step>
+</Steps>
+
+<Note>
+Un flujo de control de errores debe detectar y reaccionar, no reenviar a ciegas todos los SMS fallidos. Diseña la recuperación según el error y según si el contacto todavía puede recibir mensajes.
+</Note>
+
+## Por dónde empezar según lo que ves
+
+| Lo que ves | Empieza por |
+| --- | --- |
+| **Falla con un solo contacto** | Su número, su estado de baja o No molestar, el tipo de número y el código exacto. |
+| **Fallan varios contactos de una misma operadora** | Filtrado, problemas de esa operadora y patrones repetidos de 30003 o 30007. |
+| **De repente fallan todos los SMS de números locales** | Estado de la campaña A2P, vínculo de los números, restricciones de la cuenta y errores 30033, 30034 o 30037. |
+| **Fallan todos los SMS desde números gratuitos** | Verificación del número gratuito y error 30032. |
+| **Solo fallan los MMS** | Tamaño y tipo del adjunto, capacidad MMS del destino y errores 11751 o 30011. |
+| **Fallan los SMS de un flujo, pero los manuales funcionan** | La ejecución del flujo, el número remitente, el estado de No molestar del contacto y el contenido en el momento en que se ejecutó la acción. |
+
+### Buenas prácticas
+
+- **Usa remitentes bien registrados:** tus números locales de EE. UU. deben estar vinculados a la campaña A2P aprobada, y tus números gratuitos deben tener la verificación aprobada antes de escribir a EE. UU. y Canadá.
+- **Cuida el consentimiento y tu lista:** escribe solo a quien te dio permiso, respeta las bajas, corrige números inválidos y deja de enviar a destinos que fallan siempre.
+- **Escala con evidencia:** cuando escribas a soporte, incluye el código de error, los números remitente y destinatario, la fecha y hora, los identificadores de los mensajes y varios ejemplos recientes.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué falla con un contacto y con los demás no?">
+    Suele ser un problema del destinatario: su número, su estado de baja o No molestar, su capacidad móvil o su operadora. Revisa el código exacto en esa conversación.
+  </Accordion>
+  <Accordion title="¿Qué reviso si de repente dejan de salir todos los SMS?">
+    Mira si todos los fallos comparten el mismo código. Los problemas generales suelen deberse a restricciones de la cuenta, suspensión, mensajería saliente desactivada o al estado del registro A2P.
+  </Accordion>
+  <Accordion title="¿Reintento enseguida un mensaje con error 30007?">
+    No. Primero revisa el contenido, la identificación del remitente, el consentimiento y los enlaces. Si mensajes que cumplen siguen fallando, reúne al menos tres ejemplos y escribe a soporte.
+  </Accordion>
+  <Accordion title="Tengo la campaña A2P aprobada, ¿por qué veo el error 30034?">
+    Puede que el número aún no esté vinculado a la campaña o que la activación en las operadoras no haya terminado. Espera hasta 24 horas y confirma el vínculo. Las campañas de empresa unipersonal admiten un solo número local.
+  </Accordion>
+  <Accordion title="¿El SMS se reenvía solo cuando se resuelve el problema?">
+    No. Revisa el fallo y reenvía solo cuando la causa esté resuelta y el contacto pueda recibir mensajes.
+  </Accordion>
+  <Accordion title="¿Chateea puede avisar a mi equipo cuando falla un SMS?">
+    Sí. Usa el disparador **Error de mensajería: SMS**, filtra por código y agrega una notificación interna u otras acciones.
+  </Accordion>
+  <Accordion title="¿Qué datos envío a soporte?">
+    El código de error, el número remitente y el destinatario, la fecha y hora, los identificadores de los mensajes, capturas de pantalla y varios ejemplos recientes cuando se soliciten. Escribe a **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solucionar problemas de entrega de SMS" icon="screwdriver-wrench" href="/telefonia/solucionar-problemas-de-entrega-de-sms">
+    Guía completa paso a paso.
+  </Card>
+  <Card title="Disparador de error de mensajería SMS" icon="bolt" href="/automatizaciones/disparador-error-de-mensajeria-sms">
+    Reacciona automáticamente a los fallos.
+  </Card>
+  <Card title="Error 30007: filtrado por la operadora" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Cómo evitar que filtren tus mensajes.
+  </Card>
+  <Card title="Error 30034: número sin registro A2P" icon="link" href="/diccionario-codigos-error/30034-numero-no-cumple-requisitos-a2p-registrese-en-a2p">
+    Vincula tu número a la campaña aprobada.
+  </Card>
+  <Card title="Error 30032: número gratuito sin verificar" icon="circle-check" href="/diccionario-codigos-error/30032-numero-gratuito-no-verificado">
+    Completa la verificación de tu número gratuito.
+  </Card>
+  <Card title="Archivos adjuntos en Conversaciones" icon="paperclip" href="/conversaciones/archivos-adjuntos">
+    Tamaños y formatos admitidos.
+  </Card>
+</CardGroup>

@@ -1,0 +1,109 @@
+---
+title: "Marcación con presencia local"
+description: "Chateea elige automáticamente el número de tu cuenta más cercano al contacto para que tus llamadas salientes se vean locales."
+icon: "location-dot"
+---
+
+La marcación con presencia local elige automáticamente, para cada llamada saliente, el número de tu cuenta que mejor coincide con la ubicación del contacto. Si llamas a alguien de Dallas y tienes un número de Dallas, la llamada sale con ese número. Un número local resulta familiar y aumenta la probabilidad de que contesten.
+
+Funciona con coincidencia por ubicación en **EE. UU., Canadá, Reino Unido y Australia**, y en todas las llamadas salientes compatibles: el marcador web, la aplicación móvil y los teléfonos de escritorio. Si no hay coincidencia local o faltan datos de ubicación del contacto, Chateea usa el número predeterminado de tu cuenta para que la llamada salga igual.
+
+## Beneficios
+
+- **Más respuestas:** un número local genera más confianza que uno desconocido.
+- **Mejor imagen de marca:** una presencia local constante reduce la sensación de spam.
+- **Selección automática:** no tienes que cambiar de número a mano en cada llamada.
+- **Respaldo regional:** si no hay coincidencia exacta de código de área, se usa otro número de la misma región.
+- **Identificador constante:** los reintentos al mismo contacto usan el mismo número.
+- **Control de números reservados:** puedes excluir hasta 50 números de la selección automática.
+
+## Cómo elige el número
+
+Cuando inicias una llamada saliente, Chateea compara el código de área del contacto con tus números disponibles, en este orden:
+
+1. **Coincidencia exacta:** si tienes un número con el mismo código de área, usa ese.
+2. **Otros criterios de cercanía:** revisa códigos superpuestos de la misma zona y el número disponible más cercano.
+3. **Misma región:** si no hay coincidencia exacta, usa un número de la misma zona geográfica.
+4. **Número predeterminado:** si nada coincide, usa el número predeterminado de tu cuenta.
+
+La selección ocurre en tiempo real, sin que tengas que hacer nada.
+
+**Ejemplo:** llamas a un contacto con código de área 214 (Dallas).
+- Si tienes un número con código 214, la llamada sale con ese número.
+- Si no, pero tienes un número de Dallas con código 972, se usa el 972.
+- Si no tienes ningún número de Dallas, se usa el número predeterminado de tu cuenta.
+
+## Cómo activar la presencia local
+
+<Steps>
+  <Step title="Abre los ajustes de llamadas salientes">
+    Ve a **Configuración → Sistema telefónico → Voz → Otros ajustes** y selecciona **Llamadas salientes**.
+  </Step>
+  <Step title="Elige la preferencia de número">
+    Busca **Preferencia de número predeterminado para llamadas salientes** y selecciona **Marcación con presencia local**.
+  </Step>
+</Steps>
+
+## Reservar números para que no se usen automáticamente
+
+Los números reservados quedan fuera de la selección automática, pero puedes seguir usándolos para marcar a mano. Es útil, por ejemplo, para un número de soporte que no quieres usar en llamadas comerciales. Puedes reservar **hasta 50 números** por cuenta.
+
+<Steps>
+  <Step title="Abre los ajustes de llamadas salientes">
+    Ve a **Configuración → Sistema telefónico → Voz → Otros ajustes → Llamadas salientes**.
+  </Step>
+  <Step title="Agrega los números reservados">
+    En la sección de marcación con presencia local, dentro de **Números reservados**, haz clic en **+ Reservar un número** y elige los números que quieres excluir.
+  </Step>
+</Steps>
+
+## Cambiar el número en una llamada puntual
+
+Antes de llamar, haz clic en **Cambiar** en la barra superior del marcador y elige el número que quieras. Después de esa llamada, el sistema vuelve a usar la presencia local. Si prefieres elegir siempre tú el número, desactiva la marcación con presencia local.
+
+<Tip>
+La presencia local funciona mejor si cuentas con números en las zonas donde están tus clientes. Aun así, no uses números locales solo para aparentar cercanía con cada prospecto: mantén un volumen razonable y sigue las buenas prácticas de reputación para que tus números no terminen marcados como spam.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si ningún número coincide con el código de área del contacto?">
+    Chateea revisa códigos superpuestos, el número disponible más cercano y la misma región. Si nada coincide, usa el número predeterminado de tu cuenta.
+  </Accordion>
+  <Accordion title="¿Puedo elegir otro número para una llamada concreta?">
+    Sí. Haz clic en **Cambiar** en la barra superior del marcador antes de llamar. Después, el sistema vuelve a la presencia local.
+  </Accordion>
+  <Accordion title="¿Hay un límite de números que puedo usar?">
+    No. Se consideran todos los números y los identificadores de llamadas verificados de tu cuenta. El único límite es el de números reservados (hasta 50).
+  </Accordion>
+  <Accordion title="¿Funciona con identificadores de llamadas verificados?">
+    Sí. El código de área de tus identificadores verificados también se tiene en cuenta para elegir el número.
+  </Accordion>
+  <Accordion title="¿Puedo desactivarla para un usuario concreto?">
+    No. Se activa o desactiva para toda la cuenta, no por usuario.
+  </Accordion>
+  <Accordion title="¿Funciona fuera de EE. UU.?">
+    La coincidencia por ubicación funciona en EE. UU., Canadá, Reino Unido y Australia.
+  </Accordion>
+  <Accordion title="¿Garantiza que me contesten más?">
+    No hay garantía, pero un número local conocido aumenta la probabilidad de que el contacto conteste.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Llamadas con marca" icon="circle-check" href="/telefonia/llamadas-con-marca">
+    Cómo se combinan SHAKEN/STIR, CNAM y Voice Integrity.
+  </Card>
+  <Card title="Llamadas con SIM en la app móvil" icon="mobile" href="/telefonia/llamadas-con-sim-en-la-app-movil">
+    Llama con tu línea móvil desde la aplicación.
+  </Card>
+  <Card title="Marcador telefónico" icon="phone" href="/telefonia/marcador-telefonico">
+    Todo sobre el marcador web de Chateea.
+  </Card>
+  <Card title="Asignar números a usuarios" icon="users" href="/telefonia/asignar-numeros-a-usuarios">
+    Define qué número usa cada miembro del equipo.
+  </Card>
+</CardGroup>

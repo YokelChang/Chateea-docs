@@ -1,0 +1,180 @@
+---
+title: "Diccionario de códigos de error de SMS"
+description: "Qué significa cada código de error de tus SMS, por qué ocurre y qué hacer para resolverlo."
+icon: "book"
+---
+
+Cuando un SMS no se entrega, el sistema telefónico de Chateea le asigna un **código de error** que explica qué pasó. Conocer estos códigos te permite encontrar la causa en minutos, corregirla tú mismo en la mayoría de los casos y, si necesitas ayuda, darle a soporte la información exacta para resolverlo más rápido.
+
+Esta página reúne todos los códigos con su significado, sus causas habituales y qué hacer. Cada código enlaza a un artículo con más detalle.
+
+## Dónde ver el código de error
+
+Abre la conversación del contacto en **Conversaciones** y pasa el cursor sobre el mensaje fallido, o revisa la tarjeta **Fallidos** en la analítica de mensajería (**Configuración → Sistema telefónico → Mensajería**). Ahí verás el código de cada mensaje.
+
+## Resumen rápido
+
+| Código | Qué significa | Qué hacer primero |
+| --- | --- | --- |
+| [21211](/diccionario-codigos-error/21211-numero-de-telefono-de-destino-no-valido) | El número de destino no es válido o tiene mal formato. | Corrige el número en formato internacional (E.164). |
+| [21408](/diccionario-codigos-error/21408-cuenta-sin-permiso-para-enviar-sms-a-este-pais-o-region) | Tu cuenta no tiene permiso para enviar SMS a ese país. | Pide a soporte que habilite el país. |
+| [21606](/diccionario-codigos-error/21606-numero-remitente-no-valido-con-capacidad-para-mensajes) | El número remitente no puede enviar SMS a ese destino. | Revisa que el número tenga SMS y esté activo en tu cuenta. |
+| [21610](/diccionario-codigos-error/21610-intento-de-envio-a-destinatario-no-suscrito) | El contacto se dio de baja o tiene No molestar activado. | No le escribas hasta que vuelva a suscribirse. |
+| [21612](/diccionario-codigos-error/21612-mensajes-a-to-country-no-permitidos-con-numeros-de-from-country) | La combinación de número de origen y destino no está permitida. | Usa un número del mismo país que el destinatario. |
+| [21614](/diccionario-codigos-error/21614-numero-para-no-es-un-numero-de-movil-valido) | El destino no es un móvil válido. | Verifica que sea un celular y esté bien escrito. |
+| [21635](/diccionario-codigos-error/21635-numero-para-es-un-telefono-fijo-y-no-puede-recibir-sms) | El destino es un teléfono fijo. | Usa otro canal o pide un número móvil. |
+| [21661](/diccionario-codigos-error/21661-el-numero-de-origen-no-admite-sms) | Tu número de origen no admite SMS. | Envía desde un número con capacidad de SMS. |
+| [30002](/diccionario-codigos-error/30002-mensaje-fallido-su-cuenta-esta-suspendida) | La cuenta se suspendió antes de enviar el mensaje. | Revisa tu saldo y escribe a soporte. |
+| [30003](/diccionario-codigos-error/30003-numero-inaccesible-o-fuera-de-servicio) | El teléfono de destino está apagado o fuera de servicio. | Reintenta más tarde y revisa el filtrado si se repite. |
+| [30004](/diccionario-codigos-error/30004-destinatario-ha-optado-por-no-recibir-o-tiene-no-molestar) | El mensaje fue bloqueado para ese destinatario. | Revisa bajas previas y, en India, el registro No llamar. |
+| [30005](/diccionario-codigos-error/30005-numero-del-destinatario-inactivo-o-no-existe) | El número de destino no existe o está inactivo. | Confirma el número con el contacto. |
+| [30006](/diccionario-codigos-error/30006-linea-fija-o-operador-inaccesible) | Línea fija u operador inaccesible. | Usa otro canal para ese contacto. |
+| [30007](/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores) | El mensaje fue filtrado como spam o contenido no permitido. | Revisa contenido, consentimiento y registro A2P. |
+| [30008](/diccionario-codigos-error/30008-error-desconocido) | El operador devolvió un error sin detalles. | Prueba con un mensaje corto y sin caracteres especiales. |
+| [30011](/diccionario-codigos-error/30011-numero-receptor-no-admite-mms-en-esta-region) | El número no admite MMS en esa región. | Envía solo texto o avisa al contacto. |
+| [30023](/diccionario-codigos-error/30023-limite-diario-de-mensajes-alcanzado) | Se alcanzó el límite diario de tu marca. | Espera al día siguiente o pide revisar tu límite. |
+| [30032](/diccionario-codigos-error/30032-numero-gratuito-no-verificado) | El número gratuito no está verificado. | Completa la verificación del número gratuito. |
+| [30033](/diccionario-codigos-error/30033-us-a2p-10dlc-campana-suspendida) | Tu campaña A2P 10DLC está suspendida. | Escribe a soporte para conocer el motivo. |
+| [30034](/diccionario-codigos-error/30034-numero-no-cumple-requisitos-a2p-registrese-en-a2p) | El número no está vinculado a una campaña A2P aprobada. | Vincula el número a tu campaña aprobada. |
+| [30035](/diccionario-codigos-error/30035-numero-no-registrado-completamente-para-mensajeria-a2p) | El número aún se está registrando para A2P. | Espera hasta 24 horas tras la aprobación. |
+| [30037](/diccionario-codigos-error/30037-mensajeria-saliente-deshabilitada) | Los mensajes salientes están deshabilitados en la cuenta. | Escribe a soporte si crees que es un error. |
+
+<Tip>
+  El formato **E.164** es: signo más, código de país y número completo con código de área, sin espacios ni guiones. Por ejemplo: `+5215512345678` o `+13055551234`.
+</Tip>
+
+## Errores del número de destino
+
+### 21211: número de destino no válido
+
+El número al que intentas llamar o escribir no es válido o está mal formateado. Suele pasar si el formato no es E.164, si el código de país es incorrecto, si envías desde un número de Chateea a sí mismo o si intentas escribir a un código corto o a un remitente alfanumérico (no pueden recibir mensajes). Revisa el número, corrige el formato y confirma que no haya errores de escritura.
+
+### 21614: el destino no es un móvil válido
+
+El número parece ser una línea fija o no es válido. Confirma que sea un celular y que esté en formato E.164. Si envías a números de dispositivos conectados (IoT o M2M), pueden usar formatos no estándar que el validador aún no reconoce. En ese caso, escribe a soporte.
+
+### 21635: el destino es un teléfono fijo
+
+Las líneas fijas no reciben SMS. Contacta a esa persona por llamada, correo o WhatsApp. Si sabes con certeza que el número no es fijo, escribe a soporte.
+
+### 30005: número inactivo o inexistente
+
+El número puede haber dejado de existir, estar apagado, sin señal, ser fijo, o haber un problema con el operador. Revisa que el número sea correcto y esté en formato E.164.
+
+### 30006: línea fija u operador inaccesible
+
+El destino no puede recibir el mensaje, normalmente porque es una línea fija o el operador no es accesible para ese tipo de número.
+
+## Errores de entrega y filtrado
+
+### 30003: número inaccesible o fuera de servicio
+
+El teléfono de destino está apagado, sin señal, en roaming fuera de su red o es una línea fija. A veces es un fallo puntual: reintenta. Si se repite, revisa:
+
+- ¿El teléfono está encendido y con señal? Pide al contacto que lo reinicie.
+- ¿Recibe SMS de otros números?
+- ¿Recibe un mensaje más corto, de un solo segmento?
+- ¿Otros contactos del mismo operador reciben tus mensajes?
+
+Si el 30003 se repite en muchos mensajes desde números normales o gratuitos, puede tratarse de **filtrado del operador** (revisa el error 30007).
+
+### 30004: mensaje bloqueado
+
+El destino tiene bloqueada la recepción del mensaje. Causas habituales: el contacto respondió STOP antes a tu número gratuito de EE. UU. o Canadá, el teléfono no tiene señal o no admite SMS, o hay un problema del operador. En mensajes a **India**, puede deberse a que el número está en el registro nacional **No llamar** (DNC).
+
+### 30007: mensaje filtrado
+
+El mensaje se bloqueó por parecer spam, phishing, fraude o por incumplir las reglas del operador o del país de destino. Revisa que tu caso de uso cumpla la política de mensajería, que tengas consentimiento, que identifiques a tu negocio y que tu registro A2P esté aprobado. Si crees que tus mensajes cumplen las normas, escribe a soporte con ejemplos.
+
+### 30008: error desconocido
+
+El operador devolvió un error genérico sin más detalles. Prueba a enviar un mensaje corto, sin emojis ni caracteres especiales: así se descarta un problema de mensajes largos o de codificación. Si sigue fallando, escribe a soporte con ejemplos de **menos de 48 horas**.
+
+### 30011: MMS no admitido en esa región
+
+- **Mensaje entrante:** te enviaron un MMS desde una región donde no se admite su recepción. Responde al contacto para avisarle que no puedes recibir imágenes por ese medio.
+- **Mensaje saliente:** el teléfono de destino no admite MMS o los tiene desactivados. Envía solo texto.
+
+## Errores de tu número o tu cuenta
+
+### 21408: país o región no habilitado
+
+Intentaste enviar un SMS o MMS a un país que no está habilitado en tu cuenta. Esta restricción evita cargos inesperados. Si necesitas escribir a ese país, pide a soporte que lo habilite.
+
+<Note>
+  Por requisitos regulatorios, desde el 15 de marzo de 2025 no se entrega tráfico de voz, mensajería ni correo a destinatarios en Irán.
+</Note>
+
+### 21606 y 21661: número remitente sin capacidad de SMS
+
+Solo puedes enviar SMS desde números de tu cuenta de Chateea que tengan capacidad de SMS. Revisa:
+
+- Que el número admita SMS en **Configuración → Sistema telefónico → Administrar números**. Si no, compra uno que sí lo admita.
+- Que el número esté en formato E.164.
+- Si usas un código corto, que esté registrado en el **mismo país** que el destinatario.
+- Si estás portando o alojando el número, que el proceso haya terminado (revisa **Solicitudes de portabilidad**).
+
+### 21612: combinación de origen y destino no permitida
+
+Puede deberse al formato de los números, a que no hay conexión con el operador de destino o a restricciones del país de destino sobre qué remitentes se aceptan. Revisa el formato E.164, consulta las normas de SMS del país de destino y prueba con un número de origen del mismo país que el contacto.
+
+### 30002: cuenta suspendida
+
+La cuenta se suspendió después de poner el mensaje en cola, por falta de saldo o por incumplir la política de uso aceptable. Recarga tu billetera si es el caso y escribe a soporte.
+
+### 30037: mensajería saliente deshabilitada
+
+Tu cuenta está configurada para no enviar mensajes salientes. Si crees que es un error, escribe a soporte.
+
+## Errores de registro y cumplimiento
+
+### 21610: destinatario dado de baja
+
+El contacto respondió STOP (u otra palabra de baja), tiene activado **No molestar** para SMS o para todos los canales, o el número cambió de dueño hace poco. No podrás escribirle hasta que responda **START**. Quítalo de tus envíos y asegúrate de tener consentimiento antes de escribir a cualquier contacto.
+
+### 30023: límite diario alcanzado
+
+Tu marca alcanzó el máximo de mensajes diarios permitido por el operador. El límite es **por marca (por EIN)** y cuenta todos los segmentos SMS y MMS enviados a T-Mobile (incluidos Sprint y MetroPCS) desde cualquier plataforma donde esté registrada tu marca. Escribe a soporte si necesitas revisarlo.
+
+### 30032: número gratuito no verificado
+
+Los números gratuitos de EE. UU. y Canadá deben estar verificados para enviar mensajes. Si tu verificación está pendiente, restringida o fue rechazada, los mensajes se bloquean. Completa o corrige la verificación del número gratuito.
+
+### 30033: campaña A2P 10DLC suspendida
+
+Estás enviando desde una campaña A2P 10DLC suspendida. Escribe a soporte para conocer el motivo y cómo resolverlo.
+
+### 30034: número no registrado para A2P
+
+El número de EE. UU. no está vinculado a una campaña A2P aprobada. También ocurre si un registro de **propietario único** (Sole Proprietor) tiene más de un número local, porque ese tipo de registro solo admite uno por campaña. Qué hacer:
+
+- Vincula el número a tu campaña aprobada.
+- Si la campaña se acaba de aprobar, espera hasta 24 horas antes de enviar.
+- Revisa el estado del registro en el centro de confianza (Trust Center) o en la configuración del número.
+- Si el error sigue después de 24 horas, escribe a soporte.
+
+### 30035: número aún en configuración
+
+El registro o la baja del número en A2P todavía se está procesando. Espera hasta unas 24 horas y vuelve a intentarlo.
+
+## Cómo pedir ayuda a soporte
+
+Si el error persiste, escribe a soporte de Chateea en **help@chateea.com** con:
+
+- El código de error.
+- **Al menos 3 ejemplos** de mensajes fallidos de las últimas 24 horas (48 horas como máximo para el 30008).
+- El número de origen, el número de destino y la fecha y hora de cada envío.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Errores comunes de entrega de SMS" icon="triangle-exclamation" href="/telefonia/errores-comunes-de-entrega-de-sms">
+    Los fallos más habituales y cómo evitarlos.
+  </Card>
+  <Card title="Solucionar problemas de entrega de SMS" icon="screwdriver-wrench" href="/telefonia/solucionar-problemas-de-entrega-de-sms">
+    Guía paso a paso para encontrar la causa.
+  </Card>
+  <Card title="Analítica de mensajería" icon="chart-line" href="/telefonia/analitica-de-mensajes-sms">
+    Mide entregas, fallos y bajas de tus SMS.
+  </Card>
+</CardGroup>

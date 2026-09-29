@@ -1,0 +1,175 @@
+---
+title: "Monitoreo de calidad de mensajería SMS: avisos y restricciones"
+description: "Cómo se miden tu tasa de bajas y el error 30007, cuándo se pausan los SMS masivos y cómo recuperar los envíos."
+icon: "gauge-high"
+---
+
+El sistema telefónico de Chateea vigila la calidad de tus envíos de SMS para proteger la reputación de tus números frente a los operadores. Mide dos cosas en tu cuenta: cuántas personas responden **STOP** y cuántos de tus mensajes bloquean los operadores por considerarlos spam. Si alguna de esas cifras sube demasiado, recibes un correo de aviso. Si sigue subiendo, los envíos masivos y automáticos se pausan por un tiempo mientras corriges la causa.
+
+<Info>
+  Responder uno a uno a tus contactos desde **Conversaciones** nunca se pausa, ni siquiera durante una restricción.
+</Info>
+
+Este artículo trata solo del monitoreo de calidad (tasa de bajas y errores 30007). Las reglas de consentimiento, lenguaje de baja, identificación del remitente y límites diarios están en la **Política de mensajería** del sistema telefónico de Chateea.
+
+## Por qué se monitorea la calidad
+
+Quien decide si tus SMS llegan son los operadores móviles, no Chateea. Cuando muchas personas responden STOP o muchos mensajes se marcan como spam, los operadores empiezan a limitar tus números o los bloquean de forma permanente. Esos bloqueos son difíciles de revertir.
+
+El monitoreo te avisa cuando el problema todavía tiene arreglo, frena los envíos masivos de alto riesgo antes de que el daño crezca y te ayuda a volver a tasas de entrega sanas antes de que el operador tome la decisión por ti.
+
+## Qué se mide
+
+| Métrica | Qué mide |
+| --- | --- |
+| Tasa de bajas | Porcentaje de contactos que responden con una palabra de baja estándar (por ejemplo, STOP) después de recibir tu SMS |
+| Tasa de error 30007 | Porcentaje de mensajes que los operadores filtraron o bloquearon (error 30007, "mensaje filtrado") |
+
+- Ambas tasas se calculan sobre una **ventana móvil de 7 días**.
+- Solo se evalúan cuando tu cuenta envió al menos **500 SMS** en esa ventana. Por debajo de ese volumen no se generan avisos ni restricciones.
+- Los mensajes **RCS** no cuentan para estos cálculos ni para las restricciones.
+
+## Qué provoca un aviso o una restricción
+
+Los umbrales dependen de cuánto tiempo lleva tu cuenta enviando SMS. Un remitente nuevo no tiene historial con los operadores, así que se le aplican límites más estrictos.
+
+- **Nueva**: menos de 7 días de historial de envío de SMS.
+- **Establecida**: 7 días o más de historial.
+
+| Tipo de cuenta y métrica | Aviso a partir de | Restricción a partir de |
+| --- | --- | --- |
+| Nueva, tasa de bajas | 3 % | 10 % |
+| Nueva, tasa de error 30007 | 10 % | 50 % |
+| Establecida, tasa de bajas | 4 % | 6 % |
+| Establecida, tasa de error 30007 | 15 % | 25 % |
+
+Cada métrica se evalúa por separado: cualquiera de las dos puede provocar un aviso o una restricción. Tu cuenta pasa de Nueva a Establecida de forma automática, no tienes que configurar nada.
+
+## Cómo escalan las medidas
+
+La primera restricción es corta. Si los problemas se repiten, las pausas se alargan y al final hace falta una revisión manual del equipo de soporte.
+
+| Etapa | Efecto en los envíos | Cómo termina |
+| --- | --- | --- |
+| Aviso | Ninguno. Todo sigue enviándose y recibes un correo. | Desaparece solo cuando tus tasas bajan |
+| Primera restricción | Se pausan los SMS masivos, de flujos de trabajo y de campañas | A las **12 horas**, o antes si soporte la levanta |
+| Siguiente restricción | Se pausan los SMS masivos, de flujos de trabajo y de campañas | A las **24 horas**, o antes si soporte la levanta |
+| Problemas repetidos | Se pausan los SMS masivos, de flujos de trabajo y de campañas | Solo con una **revisión de soporte**. No caduca sola. |
+
+Cuando se levanta una restricción, tus tasas se vigilan más de cerca durante **72 horas**. Si se mantienen sanas, no pasa nada más. Si vuelven a subir en ese periodo, la siguiente restricción se aplica de inmediato. Por eso conviene corregir la causa antes de reanudar los envíos masivos.
+
+<Warning>
+  Si tu cuenta tiene menos de 7 días de historial de envío, **no** se recupera sola después de su primera restricción. Tendrás que pedir una revisión de soporte para que se restablezcan los envíos masivos y automáticos.
+</Warning>
+
+## Qué sigue funcionando durante una restricción
+
+Una restricción frena los envíos salientes masivos, pero no te impide atender a quien ya te está escribiendo.
+
+| Sigue funcionando | Queda en pausa |
+| --- | --- |
+| Mensajes uno a uno en **Conversaciones** | Acciones masivas desde **Contactos** |
+| Mensaje automático por llamada perdida (si lo tienes configurado) | Acciones **Enviar SMS** de los flujos de trabajo |
+| Mensajería RCS | Campañas |
+
+## Cómo recuperar los envíos
+
+Antes de nada, corrige lo que causó la restricción: pausa los flujos de trabajo o campañas que dispararon la tasa y limpia la lista a la que estaban enviando. Si restableces los envíos sin corregir la causa, lo normal es que llegue otra restricción más larga.
+
+<Steps>
+  <Step title="Espera a que caduque">
+    Las restricciones de 12 y 24 horas se levantan solas y los envíos se reanudan automáticamente, salvo que haya una revisión de soporte abierta.
+  </Step>
+  <Step title="Pide que se levante antes">
+    Si necesitas reanudar antes de que caduque una restricción de 12 o 24 horas, escribe a soporte de Chateea en **help@chateea.com**. Ten en cuenta que levantarla restablece los envíos pero **no reinicia tus tasas**: si vuelven a salir los mismos mensajes, la siguiente restricción llegará rápido. No es posible hacerlo mientras haya una revisión manual abierta.
+  </Step>
+  <Step title="Solicita una revisión manual">
+    Es obligatoria cuando una cuenta Nueva no se recupera tras su primera restricción o cuando los problemas se repiten en una cuenta Establecida. También se abre automáticamente si la tasa de bajas llega al **12 %** o más, o la de error 30007 al **45 %** o más.
+
+    Ve a **Configuración → Sistema telefónico → Números de teléfono** y envía el formulario **Revisión de calidad de mensajería** (Messaging Quality Review). El formulario crea la solicitud de soporte por ti. Solo puede haber una revisión abierta a la vez.
+  </Step>
+</Steps>
+
+<Note>
+  Enviar la solicitud de revisión no garantiza que los envíos se restablezcan de inmediato. Soporte revisa primero tus prácticas de mensajería, el consentimiento de tus contactos y tu historial reciente. Solo soporte puede cerrar una restricción por revisión, y los envíos masivos siguen en pausa hasta entonces.
+</Note>
+
+## Cómo evitar restricciones
+
+Casi todas las restricciones tienen el mismo origen: escribir a personas que no pidieron claramente saber de ti. Estos hábitos mantienen bajas ambas tasas:
+
+- **Envía solo con consentimiento**: escribe a contactos que se suscribieron, nunca a listas compradas o extraídas de internet.
+- **Di quién eres**: identifica tu negocio por su nombre en el primer mensaje.
+- **Incluye cómo darse de baja** y respeta cada solicitud de baja al instante.
+- **Limpia tus listas**: quita números no válidos, líneas fijas y bajas anteriores antes de un envío masivo.
+- **Cuida el contenido**: el lenguaje muy promocional en mensajes en frío es justo lo que buscan los filtros de los operadores.
+- **No satures**: los mensajes repetitivos son la forma más rápida de acumular bajas.
+- **Actúa con el primer aviso**: pausa la campaña que lo provocó antes de volver a escalar los envíos.
+
+<Tip>
+  El aviso es tu oportunidad gratuita de corregir. Las cuentas que actúan con el primer correo casi nunca llegan a una restricción.
+</Tip>
+
+## Dónde ver tu historial de restricciones
+
+Ve a **Configuración → Sistema telefónico → Mensajería → Historial de restricciones** (Restriction History). Cada registro muestra:
+
+- Fecha y hora del evento.
+- Tipo de restricción: temporal o por revisión de soporte.
+- El motivo y la tasa o cantidad que la provocó.
+- Cómo terminó, incluido si se levantó antes de tiempo.
+
+Puedes filtrar por fechas para revisar un periodo concreto.
+
+## Correos que recibirás
+
+Los tres correos llegan a los administradores de tu cuenta. Asegúrate de que esas direcciones se revisen a diario: son la primera señal de que una campaña va camino de una restricción.
+
+| Correo | Qué significa |
+| --- | --- |
+| Alerta de calidad de mensajería | Una tasa superó el umbral de aviso. No se pausó nada: es el momento de corregir. |
+| SMS en pausa temporal | Se aplicó una restricción. Los envíos masivos y automáticos están en pausa. |
+| Revisión de soporte necesaria | Tu cuenta necesita una revisión de soporte, o el resultado de una revisión requiere tu atención. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo seguir respondiendo a mis contactos durante una restricción?">
+    Sí. Los mensajes uno a uno en **Conversaciones** siempre funcionan, igual que el mensaje por llamada perdida y RCS. Solo se pausan las acciones masivas, los SMS de flujos de trabajo y las campañas.
+  </Accordion>
+  <Accordion title="¿Cuánto dura una restricción?">
+    La primera dura **12 horas** y la siguiente **24 horas**. Una restricción por revisión de soporte no tiene duración fija: dura hasta que soporte la cierra.
+  </Accordion>
+  <Accordion title="¿Hay un volumen mínimo para que se aplique?">
+    Sí. Tu cuenta debe haber enviado al menos **500 SMS** en la ventana móvil de 7 días. Por debajo de ese volumen, las tasas no se evalúan.
+  </Accordion>
+  <Accordion title="¿Por qué una cuenta nueva tiene límites más estrictos?">
+    Los números nuevos no tienen historial con los operadores, que los revisan con más dureza y los bloquean antes. Los umbrales más bajos de los primeros 7 días detectan problemas antes de que un número quede bloqueado para siempre.
+  </Accordion>
+  <Accordion title="Si levantan la restricción, ¿ya está todo resuelto?">
+    No necesariamente. Levantarla restablece los envíos pero no reinicia tus tasas. Si la misma campaña se reanuda sin cambios, la tasa sigue alta y llega otra restricción, más larga. Corrige la causa primero.
+  </Accordion>
+  <Accordion title="¿A qué tasas tengo que volver?">
+    Un **aviso** desaparece cuando la tasa de bajas baja del **4 %** y la de error 30007 del **15 %**. Una **restricción** se despeja cuando las bajas bajan del **10 %** y el error 30007 del **40 %**. Apunta muy por debajo: son techos, no metas sanas.
+  </Accordion>
+  <Accordion title="¿Los mensajes RCS se ven afectados?">
+    No. RCS queda fuera de los cálculos y de las restricciones, y sigue enviándose durante una pausa.
+  </Accordion>
+  <Accordion title="Acabo de recibir un correo de aviso. ¿Qué hago ahora?">
+    1. Pausa los flujos de trabajo, campañas y acciones masivas dirigidos a contactos sin consentimiento claro.
+    2. Revisa que tus mensajes incluyan el nombre del negocio y cómo darse de baja.
+    3. Limpia la lista de contactos: números no válidos, líneas fijas y bajas anteriores.
+    4. Reanuda los envíos masivos solo cuando hayas corregido la causa.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Error 30007: filtrado de SMS" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Por qué los operadores filtran mensajes y cómo evitarlo.
+  </Card>
+  <Card title="Errores comunes de entrega de SMS" icon="triangle-exclamation" href="/telefonia/errores-comunes-de-entrega-de-sms">
+    Qué significa cada error de entrega y cómo resolverlo.
+  </Card>
+</CardGroup>

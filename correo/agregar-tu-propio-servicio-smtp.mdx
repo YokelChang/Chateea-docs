@@ -1,0 +1,202 @@
+---
+title: "Agregar tu propio servicio de correo SMTP"
+description: "Conecta Gmail, SendGrid, Amazon SES, Zoho u otro SMTP a tu cuenta de Chateea y conoce sus límites y estadísticas."
+icon: "server"
+---
+
+Por defecto, tus correos salen por **el correo de Chateea**, el servicio de envío integrado de la plataforma. Si ya tienes un proveedor de correo con buena reputación, necesitas más volumen o prefieres gestionar tu propia infraestructura, puedes conectar tu propio servicio SMTP (Gmail, SendGrid, Amazon SES, Zoho, Postmark u otro compatible) y enviar desde tu cuenta de Chateea a través de él.
+
+<Warning>
+  **Antes de usar SMTP, revisa si te conviene.** Si trabajas con Gmail, Google Workspace u Outlook, lo recomendable es la integración directa con sincronización bidireccional: ver [Conecta tu correo personal](/primeros-pasos/conecta-tu-correo-personal). SMTP es un caso de uso avanzado, no la forma en que la mayoría de negocios debería enviar desde Chateea, y la ayuda para configurarlo se da en la medida de lo posible.
+</Warning>
+
+## Correo de Chateea o SMTP propio
+
+| | Correo de Chateea (predeterminado) | SMTP propio |
+| --- | --- | --- |
+| **Gestión** | La gestiona Chateea | La gestionas tú con tu proveedor |
+| **Herramientas de entregabilidad** | Todas disponibles | Algunas no están disponibles |
+| **Configuración** | Ninguna adicional | Necesitas las credenciales SMTP de tu proveedor |
+| **Estadísticas** | Completas, incluida la entrega | Parciales (ver más abajo) |
+| **Recomendado para** | La mayoría de negocios | Quien ya tiene infraestructura de envío propia |
+
+## Proveedores que puedes elegir
+
+Al agregar un servicio, el menú **Proveedor SMTP** ofrece:
+
+- **Gmail**: Google Workspace o Gmail personal. Guía: [Usar Gmail o Google Workspace como proveedor SMTP](/smtp/gmail-google-workspace).
+- **Yahoo Mail**. El envío por SMTP de Yahoo puede estar deshabilitado temporalmente.
+- **SendGrid**. Guía: [Usar SendGrid como proveedor SMTP](/correo/usar-sendgrid-como-proveedor-smtp).
+- **Otro**: cualquier servicio compatible con SMTP, como Amazon SES, Postmark o Zoho. Guía de Zoho: [Usar Zoho Mail como proveedor SMTP](/correo/usar-zoho-mail-como-proveedor-smtp).
+
+<Tip>
+  Si no conoces los datos de servidor de tu proveedor, esta [lista de servidores SMTP e IMAP](https://www.arclab.com/en/kb/email/list-of-smtp-and-imap-servers-mailserver-list.html) te sirve de referencia.
+</Tip>
+
+## Agregar tu servicio SMTP
+
+<Steps>
+  <Step title="Abre los servicios de correo">
+    Ve a **Configuración → Servicios de correo** (Email Services) y entra a la pestaña **Servicio SMTP** (SMTP Service). Según la versión de la interfaz, puede aparecer como **Configuración avanzada** (Advanced Settings); ambas llevan al mismo lugar.
+  </Step>
+  <Step title="Haz clic en Agregar servicio">
+    En la esquina superior derecha, pulsa **+ Agregar servicio** (Add Service). Se abre la ventana **Agrega tu propio servicio de correo**.
+  </Step>
+  <Step title="Elige tu proveedor">
+    En el menú **Proveedor SMTP**, selecciona Gmail, Yahoo Mail, SendGrid u **Otro**.
+  </Step>
+  <Step title="Completa las credenciales">
+    Copia los datos desde el panel de tu proveedor:
+
+    | Campo | Qué poner |
+    | --- | --- |
+    | **Servidor SMTP** | La dirección del servidor de salida, por ejemplo `smtp.sendgrid.net` |
+    | **Puerto** | Normalmente `587` (TLS) o `465` (SSL) |
+    | **Usuario** | Tu usuario SMTP o el identificador de tu clave de API |
+    | **Contraseña o clave de API** | La contraseña SMTP o la clave de API que te dio el proveedor |
+    | **Nombre del remitente** | El nombre que verán tus destinatarios |
+    | **Correo del remitente** | La dirección desde la que se enviarán los correos |
+  </Step>
+  <Step title="Guárdalo y actívalo">
+    El servicio aparece en la lista de proveedores. Búscalo, haz clic en **Establecer como activo** (Set as active) y confirma.
+  </Step>
+</Steps>
+
+<Note>
+  Puedes guardar varios servicios SMTP y cambiar entre ellos cuando quieras, pero solo uno puede estar activo a la vez. No puedes agregar dos veces las mismas credenciales (la misma dirección en integraciones distintas) ni dos servicios del mismo proveedor, por ejemplo dos de Gmail.
+</Note>
+
+## Datos SMTP de los proveedores más comunes
+
+Verifica siempre los valores en el panel de tu proveedor antes de pegarlos.
+
+| Proveedor | Servidor SMTP | Puerto | Notas |
+| --- | --- | --- | --- |
+| Gmail | `smtp.gmail.com` | 587 o 465 | Requiere contraseña de aplicación si tienes la verificación en dos pasos |
+| SendGrid | `smtp.sendgrid.net` | 587 | El usuario siempre es `apikey` |
+| Amazon SES | `email-smtp.[región].amazonaws.com` | 587 o 465 | Requiere credenciales SMTP de IAM |
+| Postmark | `smtp.postmarkapp.com` | 587 | Usa el token de API del servidor como credenciales |
+| Yahoo Mail | `smtp.mail.yahoo.com` | 587 | Requiere contraseña de aplicación |
+| Zoho Mail | `smtp.zoho.com` o `smtppro.zoho.com` | 587 o 465 | Ver la guía de Zoho |
+
+### Amazon SES
+
+- Usa el nombre de servidor exacto que aparece en la página **SMTP Settings** de tu consola de Amazon SES.
+- Usa el puerto `465`.
+- Usa el **usuario y la contraseña SMTP de IAM** que creaste. Guárdalos al crearlos: no se pueden volver a consultar.
+- Como correo, usa la dirección de correo del usuario raíz de tu cuenta de AWS.
+
+Recursos oficiales: [guía de inicio rápido de Amazon SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/quick-start.html), [cuotas de envío](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-quotas.html) y [cómo salir del entorno de pruebas (sandbox)](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html).
+
+### Outlook y Microsoft 365
+
+Es habitual ver el error **Authentication unsuccessful** aunque la verificación en dos pasos esté desactivada. Microsoft exige ahora que la **autenticación SMTP** esté habilitada explícitamente para las aplicaciones externas. Sigue la [guía de Microsoft para habilitar la autenticación SMTP](https://learn.microsoft.com/es-es/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365). Si aun así no funciona, contacta con el soporte de Microsoft para que autoricen la cuenta.
+
+## El remitente debe coincidir con la cuenta SMTP
+
+La dirección de remitente con la que envías debe ser **la misma que conectaste por SMTP**, o estar verificada en tu proveedor. Si no coincide, el correo **no se entrega**.
+
+Cuando envíes un correo manual desde **Conversaciones**, el remitente aparece por defecto con tu correo de inicio de sesión: cámbialo por la dirección conectada por SMTP. Revisa también el remitente de tus campañas, flujos de trabajo y calendarios. Más detalles en [Solucionar problemas de entrega SMTP](/smtp/solucion-de-problemas).
+
+## Límites de envío diarios
+
+Tu proveedor SMTP puede limitar cuántos correos envías al día. Gmail, por ejemplo, permite [alrededor de 100 a 150 correos diarios](https://support.google.com/a/answer/166852?hl=es) cuando se conecta desde un cliente de correo externo. Consulta los límites de tu plan antes de programar envíos grandes, y lee [Por qué no usar un correo gratuito como SMTP](/correo/por-que-no-usar-un-correo-gratuito-como-smtp).
+
+## Estadísticas: por qué los correos se quedan en Enviado
+
+Con un SMTP propio, Chateea solo recibe los eventos de **enviado**, **abierto**, **clic** y **rebote**. Los proveedores SMTP no informan el evento de **entregado**.
+
+Por eso, Chateea marca un correo como entregado **solo cuando recibe un evento de apertura**. Hasta entonces, el correo aparece como **Enviado**. Cuando el destinatario lo abre, el estado se actualiza.
+
+<Tip>
+  Si necesitas estadísticas de entrega completas, usa el correo de Chateea.
+</Tip>
+
+## Funciones que no están disponibles con SMTP propio
+
+Al enviar por un servicio externo pierdes estas herramientas de entregabilidad del correo de Chateea:
+
+- Crear un dominio de envío dedicado desde la aplicación
+- Integración con Google Postmaster Tools
+- Integración con Microsoft Postmaster (SNDS)
+- Evaluación de riesgo de listas
+- Clasificación de rebotes
+- Pruebas de ubicación en bandeja de entrada
+- Verificador de puntuación de spam
+- Monitor de listas negras
+- Dominios e IP administrados
+
+Si alguna de estas funciones es importante para tu estrategia, quédate con el correo de Chateea.
+
+## Recibir respuestas en Conversaciones
+
+Al ver tu servicio SMTP activo encontrarás la casilla **Habilitar respuestas** (Enable reply). Actívala para que las respuestas a los correos enviados por tu SMTP lleguen y se registren en **Conversaciones**. Si necesitas comunicación de ida y vuelta con tus contactos, asegúrate de tenerla marcada.
+
+## Volver al correo de Chateea
+
+<Steps>
+  <Step title="Abre la pestaña de servicios SMTP">
+    Ve a **Configuración → Servicios de correo → Servicio SMTP**.
+  </Step>
+  <Step title="Selecciona el correo de Chateea">
+    Haz clic en el servicio de correo de Chateea y pulsa **Establecer como activo**.
+  </Step>
+</Steps>
+
+Tus servicios SMTP quedan guardados y puedes reactivarlos más adelante. El cambio solo afecta a los correos futuros; los ya enviados no cambian.
+
+## Problemas frecuentes
+
+<AccordionGroup>
+  <Accordion title="La conexión SMTP falla">
+    - Verifica que el servidor, el puerto, el usuario y la contraseña sean correctos.
+    - Comprueba que el puerto 587 o 465 no esté bloqueado; si uno falla, prueba el otro.
+    - En Gmail, usa una **contraseña de aplicación**, no tu contraseña normal, si tienes la verificación en dos pasos activa.
+    - En SendGrid, confirma que tu remitente o dominio esté verificado en tu cuenta.
+    - Confirma que la dirección de envío esté autorizada en tu proveedor.
+    - Prueba tus credenciales con una herramienta externa como el [test SMTP de GMass](https://www.gmass.co/smtp-test).
+  </Accordion>
+  <Accordion title="No veo el botón Agregar servicio">
+    Es posible que la opción de agregar servicios de correo no esté habilitada en tu cuenta. Escribe a soporte de Chateea en **help@chateea.com** y te ayudamos a activarla.
+  </Accordion>
+  <Accordion title="Mis correos se quedan en estado Enviado">
+    Es normal con SMTP: el proveedor no informa la entrega, así que el estado cambia cuando el destinatario abre el correo.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo tener varios servicios SMTP guardados?">
+    Sí, todos los que quieras. Solo uno puede estar activo a la vez para los correos salientes.
+  </Accordion>
+  <Accordion title="¿Mis contactos ven qué proveedor SMTP uso?">
+    No. Solo ven el nombre y el correo del remitente que configuraste.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los correos ya enviados si cambio de proveedor?">
+    Nada. El cambio solo afecta a los correos que envíes a partir de ese momento.
+  </Accordion>
+  <Accordion title="¿Qué puerto uso, 587 o 465?">
+    El `587` con TLS es el que recomiendan la mayoría de proveedores modernos; el `465` usa SSL. Si tu red bloquea uno, prueba el otro.
+  </Accordion>
+  <Accordion title="¿Las respuestas llegan a Chateea?">
+    Solo si activas **Habilitar respuestas** en tu servicio SMTP activo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gmail o Google Workspace como SMTP" icon="google" href="/smtp/gmail-google-workspace">
+    Configura tu cuenta de Google paso a paso.
+  </Card>
+  <Card title="SendGrid como SMTP" icon="paper-plane" href="/correo/usar-sendgrid-como-proveedor-smtp">
+    Conecta SendGrid con tu clave de API.
+  </Card>
+  <Card title="Zoho Mail como SMTP" icon="envelope" href="/correo/usar-zoho-mail-como-proveedor-smtp">
+    Datos de servidor para cuentas personales y de dominio.
+  </Card>
+  <Card title="Solucionar problemas de entrega SMTP" icon="wrench" href="/smtp/solucion-de-problemas">
+    Qué revisar cuando tus correos no salen.
+  </Card>
+</CardGroup>

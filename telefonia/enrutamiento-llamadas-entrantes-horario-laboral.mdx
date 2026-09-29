@@ -1,0 +1,126 @@
+---
+title: "Recibir llamadas solo en tu horario laboral"
+description: "Haz que las llamadas entrantes solo suenen a cada usuario dentro de su horario y sigan el respaldo del número fuera de él."
+icon: "clock"
+---
+
+Con el enrutamiento por horario laboral, las llamadas entrantes solo suenan a cada usuario dentro de su horario de disponibilidad. Fuera de ese horario (noches, fines de semana, festivos o vacaciones) la llamada se salta a esa persona y sigue la ruta de respaldo del número, sin que el usuario tenga que cambiar ajustes en su teléfono ni desinstalar la aplicación móvil.
+
+<Note>
+  La opción está **desactivada por defecto**. Nada cambia hasta que la actives.
+</Note>
+
+## Para qué te sirve
+
+- **Sin interrupciones fuera de horario:** tu equipo deja de recibir llamadas de trabajo cuando no está disponible.
+- **Usa los horarios que ya tienes:** se basa en un horario de disponibilidad, no en cambios manuales.
+- **Funciona en equipo:** si una persona no está disponible, las demás siguen recibiendo las llamadas.
+- **Festivos y días libres:** los días específicos sin horas disponibles bloquean las llamadas esas fechas.
+- **Respeta tu respaldo:** la llamada sigue el camino que ya configuraste (buzón de voz, IA de voz, otros miembros del equipo o pasos del IVR).
+
+## Cómo decide Chateea si te suena una llamada
+
+1. ¿Tienes activada **Solo sonar durante el horario laboral**? Si no, la llamada suena como siempre.
+2. Si está activada, ¿estás dentro de tu horario? Si sí, suena con normalidad.
+3. Si estás fuera de tu horario, se te omite y la llamada continúa hacia el respaldo del número.
+
+### Qué pasa en cada tipo de enrutamiento
+
+| Escenario | Dentro del horario | Fuera del horario |
+| --- | --- | --- |
+| **Usuario o contacto asignado** | Le suena al usuario. | Se omite al usuario y la llamada va al respaldo del número (buzón de voz o IA de voz). |
+| **Timbrar a todos** | Suena a todos los usuarios elegibles. | Se omite a quien está fuera de horario; los disponibles siguen recibiendo la llamada. |
+| **Menú de llamada o IVR** | Suena a los destinatarios configurados. | Se omite al usuario no disponible; los demás siguen recibiendo la llamada. |
+| **Único destinatario en un paso de conexión del IVR** | Le suena al usuario. | No se conecta a nadie y el flujo de llamada avanza al siguiente paso. |
+| **Llamada transferida** | Se aplica la transferencia normal. | Por ahora el horario laboral no filtra las transferencias. |
+
+**Ejemplo:** tu IVR tiene la opción "2 para soporte", que conecta con dos agentes. Si uno ya terminó su jornada, la opción 2 sigue funcionando y solo le suena al que está disponible. Si los dos terminaron, ese paso no conecta con nadie y el flujo pasa al siguiente paso configurado.
+
+## Quién puede configurarlo
+
+| Quién | Dónde | Permiso necesario |
+| --- | --- | --- |
+| Un usuario para sí mismo | **Configuración → Mi perfil** | **Gestionar calendarios** |
+| Un administrador o gerente para otra persona | **Configuración → Mi equipo → Editar usuario → Disponibilidad del usuario** | **Gestionar calendarios** |
+
+Si se quita el permiso **Gestionar calendarios** del rol de un usuario, la tarjeta **Enrutamiento de llamadas entrantes** desaparece y no podrá ver ni cambiar este ajuste.
+
+## Configurarlo para ti
+
+<Steps>
+  <Step title="Abre tu perfil">
+    Ve a **Configuración → Mi perfil** y baja hasta la tarjeta **Enrutamiento de llamadas entrantes**.
+  </Step>
+  <Step title="Activa la opción">
+    Enciende **Solo sonar durante el horario laboral** (Only ring during working hours).
+  </Step>
+  <Step title="Elige tu horario">
+    En **Horario de enrutamiento de llamadas**, selecciona el horario que define tu jornada. Es el que Chateea revisará antes de hacerte sonar. El cambio se guarda automáticamente.
+  </Step>
+</Steps>
+
+## Configurarlo para un miembro del equipo
+
+<Steps>
+  <Step title="Abre el usuario">
+    Ve a **Configuración → Mi equipo** y haz clic en el ícono de edición de la persona.
+  </Step>
+  <Step title="Ve a su disponibilidad">
+    Selecciona **Disponibilidad del usuario** y busca la tarjeta **Enrutamiento de llamadas entrantes**.
+  </Step>
+  <Step title="Activa y elige el horario">
+    Enciende **Solo sonar durante el horario laboral** y selecciona el horario de esa persona.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios del usuario cuando se te pida.
+  </Step>
+</Steps>
+
+<Tip>
+  Antes de activarlo, revisa el horario elegido: las horas semanales, los días específicos (festivos, vacaciones) y la **zona horaria**. Son lo que determina si Chateea te considera disponible.
+</Tip>
+
+## Números de desvío
+
+Si el número personal de un usuario coincide con un número de desvío o con el número de teléfono del negocio, fuera de su horario Chateea también omite ese número. Así nadie le hace llegar la llamada por otra vía y se respeta su horario.
+
+## Limitaciones
+
+- **Las llamadas transferidas** no se filtran por horario por ahora.
+- **No crea un destino especial fuera de horario:** las llamadas siguen la ruta o el respaldo que ya tiene el número.
+- **Es un ajuste por usuario:** cada persona que no deba recibir llamadas fuera de su horario necesita tenerlo activado con su horario.
+- **Depende del horario:** las horas semanales, los días específicos y la zona horaria del horario deciden la disponibilidad.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cambia algo si dejo la opción desactivada?">
+    No. El enrutamiento sigue igual hasta que la actives.
+  </Accordion>
+  <Accordion title="¿Qué horario usa Chateea?">
+    El que elegiste en **Horario de enrutamiento de llamadas**. Puedes cambiarlo cuando quieras.
+  </Accordion>
+  <Accordion title="¿Cómo evito que me suenen llamadas un día festivo?">
+    Agrega a tu horario un día específico sin horas disponibles para esa fecha. Ese día reemplaza tu horario semanal habitual.
+  </Accordion>
+  <Accordion title="¿Puedo enviar las llamadas fuera de horario a un compañero concreto o a mi buzón personal?">
+    Por ahora no. Las llamadas fuera de tu horario siguen el respaldo que ya tiene el número.
+  </Accordion>
+  <Accordion title="Lo activé y me siguen llegando llamadas fuera de horario. ¿Por qué?">
+    Revisa que elegiste el horario correcto, que la hora actual está realmente fuera de ese horario, que la zona horaria es la adecuada y que activaste la opción en el perfil correcto. Si pruebas con un festivo, confirma que ese día no tiene horas disponibles. Recuerda que las llamadas transferidas no se filtran.
+  </Accordion>
+  <Accordion title="¿Afecta al enrutamiento durante mi horario laboral?">
+    No. Dentro de tu horario las llamadas siguen exactamente la misma ruta de siempre.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Hacer sonar las llamadas en varios usuarios" icon="users" href="/telefonia/sonar-llamadas-en-varios-usuarios">
+    Configura Timbrar a todos para tu equipo.
+  </Card>
+  <Card title="Recibir llamadas en la app móvil" icon="mobile" href="/telefonia/recibir-llamadas-en-la-app-movil">
+    Atiende las llamadas de Chateea desde tu celular.
+  </Card>
+</CardGroup>

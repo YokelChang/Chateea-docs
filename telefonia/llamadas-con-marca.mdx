@@ -1,0 +1,104 @@
+---
+title: "Llamadas con marca: mejora la reputación de tu número"
+description: "Cómo se combinan SHAKEN/STIR, CNAM y Voice Integrity para que tus llamadas se reconozcan como legítimas."
+icon: "circle-check"
+---
+
+Las «llamadas con marca» (branded calling) combinan varias señales de confianza para que las operadoras y tus contactos reconozcan que la llamada viene de un negocio legítimo. En Chateea se construyen con tres registros del Centro de confianza: **SHAKEN/STIR** (autenticación), **CNAM** (nombre de quien llama) y **Voice Integrity** (reputación del número).
+
+Completar estos registros mejora tus señales de confianza, pero no garantiza más respuestas ni evita etiquetas de spam en el futuro. Tu forma de llamar, las quejas de los destinatarios, el volumen y las políticas de cada operadora siguen influyendo en la reputación de tus números.
+
+<Note>
+Las llamadas con marca no garantizan que todos vean el nombre de tu negocio, un indicador de llamada verificada o una llamada sin etiqueta de spam. Lo que se muestra depende de la operadora, el dispositivo, el plan, los ajustes del contacto y el proveedor de análisis del destinatario.
+</Note>
+
+## Cómo se complementan los tres registros
+
+| Capa | Registro | Qué hace | Estado | Limitación |
+| --- | --- | --- | --- | --- |
+| Autenticación | **SHAKEN/STIR** | Autentica tu identificador y confirma que puedes usar el número. | Obligatorio antes de Voice Integrity | No elimina etiquetas de spam |
+| Identificación | **CNAM** | Asocia tu número de EE. UU. con el nombre de tu negocio o tu nombre personal. | Opcional para Voice Integrity, pero muy recomendado | No garantiza que el nombre se muestre |
+| Reputación | **Voice Integrity** | Registra tus números de EE. UU. con First Orion, Hiya y TNS para revisar su reputación. | Recomendado para números de EE. UU. | Las revisiones y los cambios pueden tardar |
+
+Orden recomendado: primero SHAKEN/STIR, luego CNAM y por último Voice Integrity. Todos se gestionan en **Configuración → Sistema telefónico → Centro de confianza**.
+
+<Warning>
+SHAKEN/STIR y CNAM exigen un **EIN**. Si tu negocio no tiene EIN, puedes usar el **Free Caller Registry** como alternativa para pedir que revisen la reputación de tus números de EE. UU. No reemplaza a SHAKEN/STIR ni a CNAM.
+</Warning>
+
+## SHAKEN/STIR: autenticación
+
+Es la base de las llamadas con marca. Usa certificados digitales para que las operadoras confirmen que tu identificador es legítimo y que estás autorizado a usar el número.
+
+- Autentica tu identificador de llamadas.
+- Ayuda a prevenir la suplantación y el fraude.
+- Aumenta la confianza de las operadoras en tus llamadas.
+- Puede hacer que tus llamadas muestren un indicador de verificada, según la operadora.
+- Es requisito para Voice Integrity.
+
+Un número autenticado puede seguir marcado como spam por sus patrones de llamada, quejas o historial. Si tienes un registro A2P elegible, tus números pueden inscribirse de forma automática; si no, regístralos manualmente en el Centro de confianza.
+
+## CNAM: nombre de quien llama
+
+CNAM asocia tu número de EE. UU. con un nombre registrado. La operadora del destinatario puede consultarlo y mostrarlo cuando llamas.
+
+- Asocia tu número con un nombre reconocible.
+- Ayuda a que tus contactos identifiquen a tu negocio.
+- Suma una capa de identificación a la autenticación de SHAKEN/STIR.
+
+## Voice Integrity: reputación del número
+
+Voice Integrity envía tus números de EE. UU. a los principales proveedores de análisis de identificación de llamadas: **First Orion, Hiya y TNS**. Ellos evalúan tu reputación y comparten esa información con operadoras y aplicaciones, que deciden si etiquetan una llamada.
+
+- Ayuda a corregir etiquetas de «Posible spam» incorrectas.
+- Repara la reputación de números ya marcados.
+- Da a los proveedores información precisa sobre tu negocio y tu uso de llamadas.
+- Aumenta la probabilidad de que tus llamadas legítimas lleguen sin advertencias.
+
+Cada proveedor revisa por separado. Las solicitudes suelen procesarse en **unos 2 días hábiles**, pero el cambio de etiqueta puede tardar más en verse en todas las redes.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito los tres registros?">
+    SHAKEN/STIR es obligatorio antes de Voice Integrity. CNAM es opcional pero muy recomendado. Con los tres tienes autenticación, identificación y reputación.
+  </Accordion>
+  <Accordion title="¿Se verá siempre el nombre de mi negocio?">
+    No. CNAM asocia el nombre a tu número, pero la operadora y el dispositivo del destinatario deciden si lo muestran.
+  </Accordion>
+  <Accordion title="¿El EIN es obligatorio?">
+    Sí, para SHAKEN/STIR y para CNAM.
+  </Accordion>
+  <Accordion title="¿SHAKEN/STIR elimina la etiqueta «Posible spam»?">
+    No. Autentica tu identificador, pero no quita etiquetas de spam.
+  </Accordion>
+  <Accordion title="¿Puedo registrarme en Voice Integrity antes de tener SHAKEN/STIR?">
+    No. Debes tener SHAKEN/STIR configurado primero.
+  </Accordion>
+  <Accordion title="¿Voice Integrity funciona con números internacionales?">
+    No. Por ahora solo admite números de EE. UU.
+  </Accordion>
+  <Accordion title="¿Mi número puede volver a marcarse como spam después de registrarlo?">
+    Sí. Las operadoras y los proveedores de análisis siguen evaluando tu volumen, quejas, respuestas y patrones de llamada.
+  </Accordion>
+  <Accordion title="¿El identificador de llamadas verificado es lo mismo que SHAKEN/STIR?">
+    No. Verificar un identificador de llamadas define qué número aprobado se muestra. SHAKEN/STIR autentica, por separado, que tienes autorización para usar ese número.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Marcación con presencia local" icon="location-dot" href="/telefonia/marcacion-con-presencia-local">
+    Llama con un número local según el contacto.
+  </Card>
+  <Card title="Cumplimiento en llamadas salientes con IA" icon="scale-balanced" href="/ia/cumplimiento-llamadas-salientes-ia">
+    Reglas de consentimiento para llamadas automatizadas.
+  </Card>
+  <Card title="Marcador telefónico" icon="phone" href="/telefonia/marcador-telefonico">
+    Todo sobre el marcador web de Chateea.
+  </Card>
+  <Card title="Fin de llamada inteligente y antispam" icon="shield-halved" href="/ia/fin-de-llamada-inteligente-y-antispam">
+    Protege a tu agente de voz de llamadas no deseadas.
+  </Card>
+</CardGroup>

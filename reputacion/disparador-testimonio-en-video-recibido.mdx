@@ -1,0 +1,132 @@
+---
+title: "Disparador: testimonio en video recibido"
+description: "Inicia un flujo de trabajo cada vez que un cliente envía un testimonio en video y usa sus datos en tus acciones."
+icon: "bolt"
+---
+
+El disparador **Testimonio en video recibido** (Video Testimonial Received) inicia un flujo de trabajo cada vez que un cliente envía un video a través de uno de tus recopiladores de testimonios. Así puedes avisar a tu equipo, agradecer al cliente o crear tareas de forma automática, sin tener que revisar a mano si llegó algo nuevo.
+
+Además, el disparador pone a tu disposición los datos del testimonio (nombre del cliente, recopilador, consentimiento de marketing, enlace al video y más) para que los uses en las acciones siguientes.
+
+## Para qué te sirve
+
+- **Avisos al instante:** tu equipo se entera en cuanto llega un testimonio nuevo.
+- **Seguimiento automático:** envía un correo o SMS de agradecimiento al cliente.
+- **Flujos según el consentimiento:** trata de forma distinta los testimonios con y sin permiso de uso en marketing.
+- **Flujos por recopilador:** cada campaña de testimonios puede tener su propia automatización.
+- **Acceso directo al video:** usa el enlace del video y los datos del cliente en notas, notificaciones o mensajes.
+- **Combinable:** funciona con cualquier acción de flujo de trabajo, como notificaciones internas, notas, tareas, webhooks o correos.
+
+## Cómo configurar el disparador
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo**. Abre un flujo existente o haz clic en **Crear flujo de trabajo** para empezar uno nuevo.
+  </Step>
+  <Step title="Agrega el disparador">
+    En el editor del flujo, haz clic en **Agregar disparador** (Add Trigger).
+  </Step>
+  <Step title="Busca el disparador">
+    Busca y selecciona **Testimonio en video recibido** (Video Testimonial Received).
+  </Step>
+  <Step title="Ponle un nombre claro">
+    Escribe un nombre descriptivo, por ejemplo "Testimonio recibido: aviso al equipo" o "Testimonios con consentimiento de marketing". Te ayudará a identificarlo cuando tengas varios disparadores.
+  </Step>
+  <Step title="Agrega filtros (opcional)">
+    Sin filtros, el flujo se ejecuta con cada testimonio nuevo. Usa los filtros de la sección siguiente para limitarlo.
+  </Step>
+  <Step title="Guarda y agrega acciones">
+    Haz clic en **Guardar disparador** y agrega las acciones debajo. Prueba el flujo con un envío de ejemplo antes de publicarlo.
+  </Step>
+</Steps>
+
+## Filtros disponibles
+
+| Filtro | Para qué sirve | Ejemplo |
+| --- | --- | --- |
+| **Consentimiento de marketing** | Ejecutar el flujo solo si el cliente dio (o no dio) permiso para usar su testimonio en marketing. | Consentimiento de marketing **es** Otorgado |
+| **Recopilador de video** | Ejecutar el flujo solo para los testimonios de un recopilador concreto. | Recopilador de video **es** Testimonios de clientes |
+
+El filtro por recopilador es útil si tienes varios recopiladores, por ejemplo para clientes, comentarios de producto, eventos, socios o campañas específicas. Así cada uno tiene su propia automatización.
+
+## Datos del testimonio que puedes usar
+
+Cuando el flujo se ejecuta, estos valores del testimonio están disponibles para insertarlos en las acciones compatibles:
+
+| Valor | Descripción |
+| --- | --- |
+| **Nombre del cliente** | Nombre que indicó quien envió el testimonio. |
+| **Correo del cliente** | Correo indicado en el envío. |
+| **Teléfono del cliente** | Teléfono indicado en el envío. |
+| **Consentimiento de marketing** | Estado del permiso de uso en marketing. |
+| **Fecha de envío** | Fecha y hora en que se envió el testimonio. |
+| **Nombre del recopilador** | Recopilador por el que llegó el video. |
+| **Enlace del video** | Enlace al video enviado. |
+
+Por ejemplo, una notificación interna podría decir:
+
+```text
+Nuevo testimonio en video recibido
+Cliente: [Nombre del cliente]
+Recopilador: [Nombre del recopilador]
+Consentimiento de marketing: [Consentimiento de marketing]
+Video: [Enlace del video]
+```
+
+Inserta cada valor desde el selector de valores del editor de la acción.
+
+## Ideas de uso
+
+### Avisar al equipo cuando llega un testimonio
+
+**Testimonio en video recibido → Notificación interna.** Tu equipo de marketing o de atención al cliente revisa el video en cuanto llega.
+
+### Flujo solo para testimonios aprobados para marketing
+
+**Testimonio en video recibido** con el filtro **Consentimiento de marketing = Otorgado**. Luego envía el testimonio al equipo de marketing para que lo publique o lo reutilice.
+
+### Automatizaciones distintas por recopilador
+
+**Testimonio en video recibido** con el filtro **Recopilador de video = Testimonios de éxito**. Cada campaña sigue su propio camino.
+
+### Guardar el testimonio en una nota
+
+Usa los valores del testimonio para crear automáticamente una nota con los datos del cliente, el recopilador, la fecha y el enlace al video.
+
+<Tip>
+  Una secuencia completa podría ser: **Testimonio en video recibido → Notificación interna → Agregar nota → Crear tarea → Enviar correo de agradecimiento**.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuándo se activa el disparador?">
+    Cuando un cliente envía con éxito un testimonio en video a través de un recopilador.
+  </Accordion>
+  <Accordion title="¿Puedo limitarlo a un solo recopilador?">
+    Sí. Agrega el filtro **Recopilador de video** y elige el recopilador que quieres vigilar.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar según el consentimiento de marketing?">
+    Sí. Usa el filtro **Consentimiento de marketing** para crear flujos según el permiso asociado al envío.
+  </Accordion>
+  <Accordion title="¿Puedo usar el enlace del video en las acciones?">
+    Sí. El **Enlace del video** está disponible como valor del testimonio y puedes insertarlo en las acciones compatibles.
+  </Accordion>
+  <Accordion title="¿Un mismo flujo puede recibir testimonios de varios recopiladores?">
+    Sí. Deja sin configurar el filtro de recopilador para capturar todos los envíos, o crea flujos separados si cada recopilador necesita una automatización distinta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Testimonios en video" icon="video" href="/reputacion/testimonios-en-video">
+    Crea recopiladores y muestra los videos en tu sitio.
+  </Card>
+  <Card title="Lista completa de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles en Chateea.
+  </Card>
+  <Card title="Disparador: nueva reseña recibida" icon="star" href="/reputacion/disparador-nueva-resena-recibida">
+    Automatiza acciones cuando llega una reseña.
+  </Card>
+</CardGroup>

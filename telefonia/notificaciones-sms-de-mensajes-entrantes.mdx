@@ -1,0 +1,136 @@
+---
+title: "Recibir avisos por SMS cuando un contacto te escribe"
+description: "Crea un flujo de trabajo que avise a tu equipo por SMS cada vez que un contacto responde, con el texto de su mensaje."
+icon: "bell"
+---
+
+Los SMS que te envían tus contactos llegan a **Conversaciones**. El desvío de llamadas de tu número no reenvía los mensajes de texto a otro teléfono. Si quieres que tu equipo reciba un aviso por SMS cada vez que un contacto responde, puedes crear un flujo de trabajo con el disparador **Cliente respondió** que envíe una notificación interna con el contenido del mensaje.
+
+Así nadie se pierde una respuesta, aunque no esté mirando Conversaciones en ese momento.
+
+## Cómo funciona
+
+El mensaje original se queda en Conversaciones. El flujo de trabajo crea un **aviso nuevo e independiente** para tu equipo:
+
+1. Un contacto te envía un SMS.
+2. El mensaje aparece en Conversaciones.
+3. El disparador **Cliente respondió** detecta la respuesta.
+4. El filtro **Canal de respuesta = SMS** confirma que llegó por SMS.
+5. El flujo envía una **notificación interna** con los datos del mensaje.
+
+<Note>
+El flujo no reenvía el hilo original: envía un SMS nuevo a tu equipo con la información que elijas.
+</Note>
+
+## Beneficios
+
+- **Respuestas más rápidas:** tu equipo se entera en cuanto un contacto escribe.
+- **Contexto en el aviso:** incluyes el nombre del contacto y el texto de su mensaje.
+- **Destinatarios flexibles:** avisas a los usuarios, roles o equipos que admita la notificación interna.
+- **Control por canal:** con el filtro de canal, las respuestas por otros medios no disparan este aviso.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo → Crear flujo de trabajo**, elige **Empezar desde cero** y crea el flujo.
+  </Step>
+  <Step title="Agrega el disparador Cliente respondió">
+    Haz clic en **Agregar disparador** y selecciona **Cliente respondió** (Customer Replied).
+  </Step>
+  <Step title="Filtra solo las respuestas por SMS">
+    Haz clic en **Agregar filtros**, elige **Canal de respuesta** y selecciona **SMS**. Guarda el disparador.
+  </Step>
+  <Step title="Agrega la notificación interna">
+    Debajo del disparador, agrega la acción **Enviar notificación interna**, elige **SMS** como tipo de notificación y selecciona a quién avisar.
+  </Step>
+  <Step title="Inserta el texto del mensaje">
+    En el cuerpo de la notificación, abre el selector de valores personalizados y elige **Mensaje → Cuerpo del mensaje**. Se inserta `{{message.body}}`, que contiene lo que escribió el contacto.
+  </Step>
+  <Step title="Agrega los datos del contacto">
+    Suma valores como **Contacto → Nombre** para saber quién escribió. Por ejemplo:
+
+    ```text
+    Nuevo SMS de {{contact.first_name}}:
+    {{message.body}}
+    ```
+  </Step>
+  <Step title="Publica y prueba">
+    Guarda la acción, publica el flujo y envía un SMS de prueba desde un contacto. Confirma que el mensaje aparece en Conversaciones y que el destinatario interno recibe el aviso.
+  </Step>
+</Steps>
+
+<Warning>
+Cada notificación interna por SMS es un envío saliente y se descuenta de la **billetera** de tu cuenta. Si esperas muchos avisos, considera una notificación dentro de la aplicación o por correo.
+</Warning>
+
+## Permite que el contacto vuelva a entrar
+
+Un contacto puede responder varias veces, así que revisa la opción **Permitir reingreso** en la configuración del flujo:
+
+- **Activada:** el contacto puede volver a entrar al flujo después de completarlo o de haber sido retirado.
+- **Desactivada:** el contacto solo puede pasar por el flujo una vez.
+
+Un contacto no puede volver a entrar mientras siga activo dentro del flujo. Mantén este flujo corto para que termine antes de la siguiente respuesta.
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="El flujo no se dispara">
+    - Confirma que el disparador sea **Cliente respondió**.
+    - Confirma el filtro **Canal de respuesta = SMS**.
+    - Confirma que el flujo esté publicado.
+    - Si el contacto ya completó el flujo, revisa que **Permitir reingreso** esté activado.
+  </Accordion>
+  <Accordion title="La acción se ejecuta pero el usuario no recibe el SMS">
+    - Confirma que el usuario tenga un número de teléfono válido en su perfil.
+    - Revisa el historial de ejecución del flujo en busca de errores.
+    - Busca el SMS fallido en Conversaciones y revisa su código de error.
+  </Accordion>
+  <Accordion title="La notificación es demasiado larga">
+    Si el SMS supera unos **1.600 caracteres**, puede no enviarse. Pasa cuando el contacto escribe un mensaje muy largo y se inserta completo con `{{message.body}}`. Mantén la plantilla breve o usa otro canal de notificación si esperas textos largos.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se cobra cada notificación interna por SMS?">
+    Sí. Son SMS salientes y generan consumo en tu billetera. Para avisos frecuentes, usa notificaciones dentro de la aplicación o por correo.
+  </Accordion>
+  <Accordion title="¿Se reenvía el SMS original?">
+    No. El mensaje original queda en Conversaciones y el flujo crea un aviso aparte que puede incluir su contenido.
+  </Accordion>
+  <Accordion title="¿Me avisará cada vez que el mismo contacto escriba?">
+    Solo si puede volver a entrar al flujo. Activa **Permitir reingreso** para que eso ocurra.
+  </Accordion>
+  <Accordion title="¿Qué contiene el valor del cuerpo del mensaje?">
+    El texto de la respuesta que disparó el flujo. Si el aviso resulta demasiado largo, puede fallar.
+  </Accordion>
+  <Accordion title="¿Puedo avisar a varias personas?">
+    Sí. La notificación interna puede dirigirse a varios usuarios, roles o equipos. Cada SMS enviado suma consumo.
+  </Accordion>
+  <Accordion title="¿Puedo recibir avisos de respuestas por correo o chat?">
+    Sí. El disparador **Cliente respondió** admite otros canales. Configura los filtros de canal que necesites o crea flujos separados para cada canal.
+  </Accordion>
+  <Accordion title="¿El contacto recibe alguna confirmación?">
+    No. La notificación interna solo avisa a tu equipo. Si quieres responder automáticamente al contacto, agrega una acción **Enviar SMS**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configuración del flujo de trabajo" icon="gear" href="/flujo-de-trabajo/configuracion-del-flujo-de-trabajo-descripcion-general">
+    Reingreso y otros ajustes del flujo.
+  </Card>
+  <Card title="Solucionar problemas de entrega de SMS" icon="screwdriver-wrench" href="/telefonia/solucionar-problemas-de-entrega-de-sms">
+    Si tus avisos no llegan.
+  </Card>
+  <Card title="Errores comunes de entrega de SMS" icon="triangle-exclamation" href="/telefonia/errores-comunes-de-entrega-de-sms">
+    Qué significa cada código de error.
+  </Card>
+  <Card title="Acciones manuales de llamada y SMS" icon="message" href="/conversaciones/acciones-manuales-llamada-y-sms">
+    Tareas de seguimiento para tu equipo.
+  </Card>
+</CardGroup>

@@ -1,0 +1,132 @@
+---
+title: "Requisitos de Google y Yahoo para remitentes de correo"
+description: "Los seis pasos para cumplir las exigencias de autenticación, baja fácil y tasa de spam de Gmail y Yahoo."
+icon: "shield-check"
+---
+
+Desde febrero de 2024, [Google](https://blog.google/products/gmail/gmail-security-authentication-spam-protection/) y [Yahoo](https://blog.postmaster.yahooinc.com/post/730172167494483968/more-secure-less-spam) exigen a quienes envían correo que autentiquen su dominio, faciliten la baja y mantengan bajas las quejas por spam. Si no cumples, tus correos a direcciones de Gmail y Yahoo pueden retrasarse, ir a spam o ser rechazados. En la práctica son buenas prácticas de entregabilidad que llevan años recomendándose; esta lista te ayuda a dejar tu cuenta de Chateea en regla.
+
+## Resumen de los requisitos
+
+| Requisito | Qué hacer |
+| --- | --- |
+| Dominio de envío propio | Configura un subdominio de envío dedicado con tu marca. |
+| DMARC | Publica un registro DMARC en el DNS de tu dominio. |
+| Coherencia de marca | Envía desde una dirección del mismo dominio raíz que tu dominio de envío. |
+| No suplantar a Gmail o Yahoo | Nunca uses una dirección @gmail.com o @yahoo.com como remitente. |
+| Baja fácil | Incluye un enlace de baja visible en todos tus correos de marketing. |
+| Tasa de spam baja | Mantén las quejas por debajo de 0,30 %, idealmente por debajo de 0,10 %. |
+
+<Steps>
+  <Step title="Configura un subdominio de envío dedicado">
+    Un subdominio de envío con tu marca (por ejemplo, `correo.tunegocio.com`) te da control sobre tu propia reputación y elimina el aviso genérico de "enviado a través de" que muestran algunos clientes de correo. Es una buena práctica de entregabilidad y una parte clave de estos requisitos.
+
+    Después de activarlo, planifica un **calentamiento gradual** de dos a cuatro semanas: empieza con volúmenes pequeños y sube poco a poco.
+
+    Para hacerlo paso a paso, consulta [Agregar y verificar tu dominio de envío](/correo/agregar-y-verificar-dominio-de-envio) y [Buenas prácticas y calentamiento de correo](/correo/buenas-practicas-y-calentamiento-de-correo).
+  </Step>
+  <Step title="Publica un registro DMARC">
+    DMARC (Domain-based Message Authentication, Reporting and Conformance) se apoya en SPF y DKIM y le dice a los proveedores qué hacer con los correos que no pasan la autenticación. Protege tu dominio contra la suplantación y el phishing.
+
+    Google lo exige a quienes envían más de 5.000 correos al día a sus usuarios, pero conviene que lo tengas siempre.
+
+    1. **Comprueba si ya tienes uno.** Usa un verificador gratuito como [Dmarcian](https://dmarcian.com/dmarc-inspector/): escribe tu dominio raíz (por ejemplo, `tunegocio.com`) y pulsa **Inspect**. Si indica que tu registro DMARC es válido, ya cumples este punto.
+    2. **Crea un registro TXT** en el panel de DNS de tu proveedor de dominio (Cloudflare, GoDaddy, Namecheap, etc.) con estos valores:
+
+    | Campo | Valor |
+    | --- | --- |
+    | Tipo | `TXT` |
+    | Host o nombre | `_dmarc` |
+    | Valor o contenido | `v=DMARC1; p=none;` |
+
+    3. **Guarda y verifica.** Vuelve a comprobarlo en Dmarcian (puede tardar unos minutos en propagarse). También puedes enviarte un correo de prueba a Gmail, abrir el menú de tres puntos y elegir **Mostrar original**: debe aparecer `DMARC: PASS`.
+
+    <Tip>
+      Google recomienda endurecer la política DMARC de forma gradual, de `p=none` a `p=quarantine` y luego a `p=reject`. Consulta su [guía de implementación de DMARC](https://support.google.com/a/answer/10032473?hl=es). Más detalles en [DMARC y autenticación de correo](/correo/dmarc-autenticacion-de-correo).
+    </Tip>
+  </Step>
+  <Step title="Alinea tu remitente con tu dominio de envío">
+    Para cumplir con DMARC, el dominio de tu dirección de remitente debe coincidir con el dominio raíz de tu dominio de envío.
+
+    Por ejemplo, si tu dominio de envío es `correo.tunegocio.com`, el dominio raíz es `tunegocio.com`. Envía desde direcciones como `hola@tunegocio.com` o `ventas@tunegocio.com`.
+
+    <Warning>
+      Revisa las direcciones de remitente de **todas** tus campañas y de los correos de tus flujos de trabajo. Una sola acción con otro dominio puede fallar la alineación.
+    </Warning>
+  </Step>
+  <Step title="No uses direcciones de Gmail o Yahoo como remitente">
+    Gmail y Yahoo aplican una política DMARC de cuarentena en sus propios dominios. Si tu remitente dice ser `algo@gmail.com` o `algo@yahoo.com` pero el correo no sale de sus servidores, lo más probable es que se bloquee o vaya a spam.
+
+    La solución es simple: usa siempre una dirección de tu propio dominio. Si todavía no tienes una, lee [Por qué no usar un correo gratuito como SMTP](/correo/por-que-no-usar-un-correo-gratuito-como-smtp).
+  </Step>
+  <Step title="Facilita la baja">
+    Google y Yahoo exigen que darse de baja sea evidente y sin fricción.
+
+    **Baja en un clic en el encabezado:** Chateea la agrega automáticamente a todos los correos que envías, salvo los correos uno a uno. Cómo se muestra depende del cliente de correo del destinatario; en Gmail aparece como **Cancelar suscripción** junto al remitente. Ver [Encabezado List-Unsubscribe](/correo/encabezado-list-unsubscribe).
+
+    **Enlace en el cuerpo del correo:** revisa tus plantillas de campañas y los correos de tus flujos de trabajo y confirma que todos incluyan un enlace de baja visible, normalmente en el pie. No tiene que ser de un clic, pero sí fácil de encontrar. Con el correo de Chateea puedes activar que el enlace de baja se agregue automáticamente al pie de todos tus correos; ver [Enlace de baja personalizado](/correo/enlace-de-baja-personalizado).
+  </Step>
+  <Step title="Mantén tu tasa de spam por debajo de 0,30 %">
+    Envía solo a personas que te dieron permiso. Escribir a listas compradas o a contactos que nunca interactúan provoca quejas, y demasiadas quejas causan retrasos, envíos a spam o rechazos.
+
+    | Tasa de spam | Impacto |
+    | --- | --- |
+    | Menos de 0,10 % | Sana: buena llegada a la bandeja principal |
+    | Entre 0,10 % y 0,30 % | Zona de alerta: toma medidas para reducir quejas |
+    | Más de 0,30 % | Tus correos pueden retrasarse, ir a spam o bloquearse |
+  </Step>
+</Steps>
+
+## Cómo vigilar las quejas por spam
+
+Yahoo y Gmail informan las quejas de forma distinta:
+
+- **Yahoo:** las quejas aparecen en los informes de spam de Chateea.
+- **Gmail:** Google no comparte los datos de quejas con plataformas de envío, así que no los verás en tus estadísticas de correo. Para conocerlos, usa [Google Postmaster Tools](https://postmaster.google.com/), una herramienta gratuita que muestra cómo trata Gmail tus correos.
+
+<Tip>
+  Configura Google Postmaster Tools antes de tener un problema, no después. Te da visibilidad temprana sobre tu reputación en Gmail. Ver [Google Postmaster Tools](/correo/google-postmaster-tools).
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Estos requisitos aplican a todos o solo a quienes envían mucho?">
+    El requisito de DMARC está pensado para quienes envían más de 5.000 correos al día. El resto (dominio de envío propio, coherencia de marca, baja fácil y tasa de spam baja) aplica a todos los remitentes, sin importar el volumen.
+  </Accordion>
+  <Accordion title="¿Qué pasa si no cumplo?">
+    Tus correos a usuarios de Gmail o Yahoo pueden retrasarse, ir a spam o ser rechazados. El impacto crece con el tiempo, a medida que los proveedores aplican estas políticas con más rigor.
+  </Accordion>
+  <Accordion title="¿Cuánto dura el calentamiento del subdominio de envío?">
+    Planifica entre dos y cuatro semanas. Empieza con volúmenes pequeños y auméntalos gradualmente para construir una reputación sana.
+  </Accordion>
+  <Accordion title="Ya tengo SPF y DKIM. ¿Igual necesito DMARC?">
+    Sí. SPF y DKIM autentican cada mensaje, pero DMARC le dice al proveedor qué hacer cuando esas comprobaciones fallan. Sin DMARC, un correo que suplante tu dominio no tiene ninguna política que lo frene. Los tres registros funcionan juntos.
+  </Accordion>
+  <Accordion title="¿Puedo usar mi Gmail como remitente si la cuenta es mía?">
+    No. Aunque la bandeja te pertenezca, si envías desde una plataforma externa con una dirección @gmail.com, el correo fallará la alineación DMARC porque no sale de los servidores de Google. Usa siempre una dirección de tu dominio.
+  </Accordion>
+  <Accordion title="¿La baja en un clic aumenta mis bajas?">
+    Puede aumentarlas un poco, porque es más visible y cómoda. Pero es una buena señal: cada baja limpia es una posible queja por spam menos, y eso protege tu reputación.
+  </Accordion>
+  <Accordion title="¿Solo Gmail y Yahoo exigen esto?">
+    Los anuncios de 2024 fueron de Google y Yahoo, pero la autenticación, la alineación del remitente, la baja fácil y las quejas bajas son estándares que todos los grandes proveedores exigen o valoran.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+    Qué son SPF, DKIM y DMARC y cómo cuidar tu reputación.
+  </Card>
+  <Card title="Estadísticas de entregabilidad" icon="chart-line" href="/correo/estadisticas-de-entregabilidad-de-correo">
+    Rangos sanos y de alerta para cada métrica.
+  </Card>
+  <Card title="Encabezado List-Unsubscribe" icon="envelope-open" href="/correo/encabezado-list-unsubscribe">
+    La baja en un clic desde la bandeja de entrada.
+  </Card>
+  <Card title="Registros DNS de correo por proveedor" icon="server" href="/correo/registros-dns-de-correo-por-proveedor-de-dominio">
+    Cómo crear registros TXT, MX y CNAME en tu proveedor de dominio.
+  </Card>
+</CardGroup>

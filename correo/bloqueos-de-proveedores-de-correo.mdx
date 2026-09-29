@@ -1,0 +1,176 @@
+---
+title: "Bloqueos de proveedores de correo: avisos y restricciones"
+description: "Entiende los avisos y bloqueos por rechazos de Gmail, Yahoo y Outlook, y qué hacer para recuperar tus envíos."
+icon: "ban"
+---
+
+Cuando Gmail, Yahoo, Outlook u otros proveedores rechazan tus correos por problemas de reputación, autenticación o contenido, se produce un **bloqueo de proveedor** (ESP block). Si la proporción de estos rechazos sube demasiado, Chateea restringe temporalmente los envíos de correo de tu cuenta para proteger tu reputación y la del resto de remitentes. Esta guía explica cómo funciona el sistema de avisos y bloqueos, qué verás si te afecta y qué hacer para recuperar tus envíos.
+
+<Warning>
+Si recibiste un aviso o tu cuenta ya tiene los envíos restringidos, actúa en las próximas 24 a 48 horas. Cuanto antes corrijas la causa, menos riesgo tendrás de llegar a una suspensión permanente.
+</Warning>
+
+## Qué son los bloqueos de proveedor
+
+Son rechazos que hacen los grandes proveedores de correo por motivos como:
+
+- Fallos de autenticación (DMARC, SPF o DKIM).
+- Mala reputación del remitente.
+- Contenido que parece spam.
+- Infracciones de políticas.
+- Problemas de configuración técnica.
+
+A diferencia de los rebotes normales (direcciones inválidas, buzones llenos), los bloqueos de proveedor se calculan por separado y tienen su propio sistema de restricciones, porque dañan tu reputación de forma mucho más seria.
+
+## Cómo funciona el sistema de bloqueos
+
+El sistema escala en tres niveles, con un aviso por correo antes de cada bloqueo:
+
+| Tasa de bloqueos de proveedor | Acción | Duración | Nivel |
+| --- | --- | --- | --- |
+| 3 % | Correo de aviso | Notificación inmediata | Aviso previo |
+| 5 % | Envío de correos suspendido | 12 horas | Primer bloqueo |
+| 3 % (después del primer bloqueo) | Correo de aviso crítico | Notificación inmediata | Aviso previo al segundo bloqueo |
+| 5 % (después del primer bloqueo) | Envío de correos suspendido | 24 horas | Segundo bloqueo |
+| 3 % (después del segundo bloqueo) | Correo de aviso final | Notificación inmediata | Aviso final |
+| 5 % (después del segundo bloqueo) | Suspensión permanente | Permanente | Tercer bloqueo |
+
+<Info>
+Todos los bloqueos se reinician si mantienes una tasa de bloqueos de proveedor por debajo del 1 % durante **7 días consecutivos**. Si acumulas 3 bloqueos dentro de un mismo periodo de 7 días, la suspensión pasa a ser permanente.
+</Info>
+
+### Cuándo se evalúa un bloqueo
+
+Para evitar que un pico puntual de envío dispare un bloqueo por error, el sistema solo actúa cuando hay evidencia suficiente:
+
+| Parámetro | Umbral |
+| --- | --- |
+| Envíos mínimos antes de evaluar | Escalonado, hasta 500 envíos según la tasa de bloqueos |
+| Bloqueos de proveedor mínimos | 25 |
+
+Así, un envío masivo legítimo que genera un pico aislado tiene muchas menos probabilidades de provocar un bloqueo. Las cuentas con un patrón sostenido de bloqueos sí se restringen.
+
+## Qué verás si tu cuenta está bloqueada
+
+En la parte superior de tu cuenta aparecerá un aviso como este:
+
+```text
+El envío de correos está bloqueado por un número elevado de bloqueos de spam de los proveedores de correo.
+```
+
+El bloqueo protege tu entregabilidad y evita más daño a tu reputación con los proveedores. Además, los correos de aviso tienen asuntos distintos según tu situación, para que sepas de inmediato si se trata de un bloqueo de 12 horas, uno de 24 horas o una suspensión permanente pendiente de revisión.
+
+## Qué hacer ahora
+
+<Steps>
+<Step title="Revisa la clasificación de rebotes">
+Ve a **Configuración → Servicios de correo → Clasificación de rebotes** (Bounce Classification). Ahí verás:
+
+- Las categorías de bloqueo de proveedor (fallos de DMARC, problemas de reputación, etc.).
+- El volumen de errores por proveedor (Gmail, Yahoo, Outlook).
+- Los mensajes de error detallados, con el motivo exacto de cada bloqueo.
+- Acciones recomendadas para cada tipo de bloqueo.
+</Step>
+<Step title="Identifica tus problemas principales">
+Ubica las 3 categorías de bloqueo con más volumen. Son las que más te conviene corregir primero.
+</Step>
+<Step title="Corrige la causa">
+Según lo que encuentres, trabaja en la autenticación (SPF, DKIM, DMARC), el contenido y las plantillas, la limpieza de tu lista y cualquier problema de configuración técnica. Más abajo tienes una lista de verificación.
+</Step>
+<Step title="Monitorea y verifica">
+Sigue tu evolución en la clasificación de rebotes y confirma que los cambios funcionan antes de volver a tu ritmo normal de envío.
+</Step>
+</Steps>
+
+### Plazos recomendados
+
+| Momento | Qué hacer |
+| --- | --- |
+| **En las 24 horas siguientes a un aviso** | Revisa la clasificación de rebotes, identifica tus 3 categorías principales y empieza con las correcciones críticas (autenticación y problemas graves de contenido). |
+| **En las 48 horas siguientes a un bloqueo** | Completa las correcciones técnicas, limpia tus listas, elimina el contenido problemático y haz envíos de prueba a los principales proveedores. |
+| **De forma continua** | Revisa la clasificación de rebotes a diario, mantén las buenas prácticas y vigila la interacción de tu lista. |
+
+## Lista de verificación para corregir la causa
+
+### Autenticación
+
+- Configura SPF, DKIM y DMARC en tu dominio de envío. Consulta [Agregar y verificar tu dominio de envío](/correo/agregar-y-verificar-dominio-de-envio).
+- Si estás empezando con DMARC, usa `p=none` para monitorear. Consulta [DMARC: qué es y cómo configurarlo](/correo/dmarc-autenticacion-de-correo).
+- Verifica que todos tus registros DNS estén bien configurados.
+
+### Calidad de la lista
+
+- Elimina todas las direcciones que rebotaron o son inválidas.
+- Usa doble confirmación (double opt-in) para los nuevos suscriptores.
+- Segmenta tus listas según la interacción.
+- Deja de enviar a quienes no interactúan desde hace 6 meses o más.
+- Activa la [verificación de correos](/correo/verificacion-de-correos).
+
+### Contenido
+
+- Evita palabras que disparan filtros de spam y el lenguaje demasiado promocional.
+- Mantén una proporción de texto e imágenes de aproximadamente 60:40.
+- Incluye siempre un enlace visible para darse de baja.
+- Usa plantillas profesionales y con tu marca.
+- Prueba tu contenido con herramientas de detección de spam antes de enviar.
+
+### Pruebas y monitoreo
+
+- Envía correos de prueba a Gmail, Yahoo y Outlook.
+- Vigila tus tasas de entrega, aperturas, clics y bajas.
+- Confirma que la autenticación funciona en los encabezados de tus correos de prueba.
+
+## Cómo solicitar el desbloqueo de una suspensión permanente
+
+Una suspensión permanente **no se puede levantar automáticamente**. Escribe a soporte de Chateea en **help@chateea.com** e incluye:
+
+- Los datos de tu cuenta.
+- Capturas de pantalla de la clasificación de rebotes.
+- Los mensajes de error que estás viendo.
+- Qué cambios hiciste para corregir la causa.
+
+El equipo revisa cada solicitud de forma manual. El desbloqueo no está garantizado: depende de que hayas corregido los problemas de fondo y cumplas las buenas prácticas de envío.
+
+## Por qué es importante
+
+- Los bloqueos de proveedor dañan tu reputación de forma duradera, y una mala reputación manda tus correos a spam.
+- Una menor entregabilidad afecta directamente a tus ventas.
+- Sin las acciones correctas, recuperarse puede llevar semanas o meses.
+- Los proveedores son cada vez más estrictos: la autenticación ya es obligatoria y sus filtros de contenido son más sofisticados.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cómo se reinician los bloqueos?">
+Se reinician después de **7 días consecutivos** con una tasa de bloqueos de proveedor por debajo del 1 %. Si acumulas 3 bloqueos dentro de un periodo de 7 días, la suspensión es permanente.
+</Accordion>
+<Accordion title="¿Recibiré un aviso antes de cada bloqueo?">
+Sí. Recibes un correo de aviso cuando tu tasa llega al 3 %, para que tengas tiempo de corregir antes de que el 5 % active el bloqueo.
+</Accordion>
+<Accordion title="¿Se puede revertir una suspensión permanente?">
+Solo mediante una revisión manual del equipo de soporte. Escribe a **help@chateea.com**. El desbloqueo no está garantizado y depende de que cumplas las buenas prácticas de envío.
+</Accordion>
+<Accordion title="¿En qué se diferencia de la gestión normal de rebotes?">
+Los rebotes normales se deben a direcciones inválidas o buzones llenos. Los bloqueos de proveedor se deben a reputación, autenticación o políticas, se calculan por separado y tienen su propio sistema de restricciones.
+</Accordion>
+<Accordion title="¿Un envío masivo grande puede bloquear mi cuenta?">
+Es poco probable si es un pico aislado. El sistema exige un mínimo de envíos (escalonado hasta 500) y al menos 25 bloqueos de proveedor antes de actuar. Las cuentas con un patrón sostenido de bloqueos sí se restringen.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="¿Por qué mis correos llegan a spam?" icon="circle-question" href="/correo/por-que-mis-correos-llegan-a-spam">
+Guía de diagnóstico paso a paso.
+</Card>
+<Card title="Buenas prácticas y calentamiento de correo" icon="envelope" href="/correo/buenas-practicas-y-calentamiento-de-correo">
+Evita llegar a un bloqueo.
+</Card>
+<Card title="Límite de envío diario en el dominio compartido" icon="gauge" href="/correo/limite-de-envio-dominio-compartido">
+Cómo funcionan las etapas y los límites.
+</Card>
+<Card title="Verificación de correos" icon="envelope-circle-check" href="/correo/verificacion-de-correos">
+Reduce rebotes enviando solo a direcciones válidas.
+</Card>
+</CardGroup>

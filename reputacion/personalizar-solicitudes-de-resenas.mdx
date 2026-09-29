@@ -1,0 +1,185 @@
+---
+title: "Personaliza las solicitudes de reseñas por SMS y correo"
+description: "Configura el enlace, el remitente, los recordatorios y las plantillas de cada envío de tus solicitudes de reseñas por SMS y correo."
+icon: "pen-to-square"
+---
+
+Las solicitudes de reseñas son los mensajes por SMS y correo que Chateea envía a tus clientes para pedirles una opinión pública. Desde **Reputación → Configuración** decides a dónde lleva el enlace, cuándo sale el primer mensaje, cuántas veces se repite si el cliente no hace clic y qué plantilla se usa en cada envío. Bien configuradas, trabajan solas y te traen reseñas de forma constante sin que tu equipo tenga que acordarse de pedirlas.
+
+## Qué puedes controlar
+
+| Ajuste | Para qué sirve |
+| --- | --- |
+| **Enlace de reseñas** | Define a dónde llega el cliente: Google, un reparto entre plataformas o un enlace propio. |
+| **Momento del primer envío** | Cuánto tiempo después de disparar la solicitud sale el primer mensaje. |
+| **Repetición hasta el clic** | Cada cuánto se reenvía la solicitud mientras el cliente no haga clic en el enlace. |
+| **Máximo de reintentos** | Cuántos recordatorios como máximo recibe el cliente. |
+| **Plantillas** | El texto (SMS) o el diseño (correo) de cada mensaje, con tu tono y tu marca. |
+| **Remitente predeterminado** | El número de teléfono o la dirección de correo desde la que salen las solicitudes. |
+| **Secuencia de plantillas** | Qué plantilla se usa en el primer envío y cuál en cada reintento. |
+
+## Desde dónde se envían las solicitudes
+
+Una vez configurados los mensajes, puedes pedir reseñas desde varios lugares:
+
+- **Reputación → Solicitudes**: envíos individuales o en bloque, con seguimiento de cada uno.
+- **Ficha del contacto**: abre el contacto y elige **Enviar solicitud de reseña**.
+- **Flujos de trabajo**: la acción **Enviar solicitud de reseña** las envía de forma automática, por ejemplo cuando una cita se marca como completada.
+- **WhatsApp**: se configura aparte en **Reputación → Configuración → Solicitudes por WhatsApp**.
+
+<Note>
+  Cuando la configuración habla de "después del check-in" se refiere al momento en que se dispara la solicitud, ya sea a mano (desde la ficha del contacto o desde **Reputación → Solicitudes**) o desde un flujo de trabajo con la acción **Enviar solicitud de reseña**. El tiempo que elijas se cuenta a partir de ese momento.
+</Note>
+
+## Paso 1: configura el enlace de reseñas
+
+El enlace de reseñas es la dirección que se inserta en cada solicitud. Sin él no se pueden enviar solicitudes.
+
+<Steps>
+  <Step title="Abre la configuración de Reputación">
+    En el menú lateral entra en **Reputación** y abre la pestaña **Configuración**. Ve a la sección **Enlace de reseñas** (Review Link).
+  </Step>
+  <Step title="Elige a dónde enviar a tus clientes">
+    - **Balanceo de reseñas**: activa el interruptor para repartir los clics entre las plataformas que tengas conectadas (por ejemplo, Google y Facebook).
+    - **Obtener reseñas en Google**: conecta tu Perfil de empresa de Google para dirigir a los clientes a tu ficha.
+    - **Enlace personalizado**: selecciona esta opción y pega una URL propia si quieres enviar a todos a una sola página.
+  </Step>
+  <Step title="Guarda los cambios">
+    El enlace que configures aquí es el que usa la variable `{{reputation.review_link}}` en todas tus plantillas.
+  </Step>
+</Steps>
+
+<Tip>
+  Si usas un enlace personalizado, comprueba que abra directamente el formulario de reseña y no la página principal del sitio. Si usas el balanceo, asegúrate de que las integraciones estén conectadas.
+</Tip>
+
+## Paso 2: configura las solicitudes por SMS
+
+El SMS es rápido y personal: suele ser el canal con más clics. Ve a **Reputación → Configuración → Solicitudes por SMS**.
+
+<Steps>
+  <Step title="Activa las solicitudes por SMS">
+    Enciende el interruptor de la esquina superior derecha.
+  </Step>
+  <Step title="Define el ritmo de envío">
+    - **Cuándo enviar el SMS después del check-in**: por ejemplo, **Inmediatamente**.
+    - **Hasta que haga clic, repetir cada**: elige un intervalo o usa **Personalizado** con un número de días.
+    - **Máximo de reintentos**: cuántos recordatorios se envían como máximo si el cliente no hace clic.
+  </Step>
+  <Step title="Elige el número remitente">
+    Selecciona el número de teléfono de tu cuenta que se usará como remitente predeterminado de las solicitudes por SMS.
+  </Step>
+  <Step title="Crea o edita una plantilla">
+    Haz clic en **Crear nueva** o en el ícono de lápiz de una plantilla existente. Elige **Crear desde cero** o **Seleccionar de plantillas prediseñadas** (por ejemplo, **Solicitar una reseña**, que muestra el conteo de caracteres) y haz clic en **Editar plantilla**.
+  </Step>
+  <Step title="Escribe el mensaje">
+    Ponle un **Nombre de plantilla**, escribe el texto e incluye la variable `{{reputation.review_link}}`. Si quieres, activa **Solicitud con imagen** para subir una imagen o pegar su URL. Revisa la vista previa del teléfono a la derecha y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Warning>
+  Si activas **Solicitud con imagen**, el mensaje puede enviarse como MMS, que tiene una tarifa distinta a la de un SMS de texto. El consumo se descuenta de la billetera de tu cuenta; revisa las tarifas vigentes en **Configuración → Facturación**.
+</Warning>
+
+Ejemplo de mensaje:
+
+```text
+Hola {{contact.first_name}}, gracias por elegirnos. ¿Nos cuentas cómo te fue? Tu opinión nos ayuda muchísimo y toma menos de un minuto: {{reputation.review_link}}
+```
+
+## Paso 3: configura las solicitudes por correo
+
+El correo te permite usar tu marca, imágenes y más de un botón de reseña. Ve a **Reputación → Configuración → Solicitudes por correo**.
+
+<Steps>
+  <Step title="Activa las solicitudes por correo">
+    Enciende el interruptor de la esquina superior derecha.
+  </Step>
+  <Step title="Define el ritmo de envío">
+    - **Cuándo enviar el correo después del check-in**: por ejemplo, **1 hora**.
+    - **Hasta que haga clic, repetir cada**: el intervalo entre recordatorios (admite **Personalizado** en días).
+    - **Máximo de reintentos**: cuántos recordatorios como máximo.
+  </Step>
+  <Step title="Elige el correo remitente">
+    En **Correo remitente predeterminado** selecciona la dirección desde la que saldrán las solicitudes.
+  </Step>
+  <Step title="Crea o importa una plantilla">
+    Abre el menú **Crear nueva** y elige **Crear nueva plantilla** o **Importar desde la biblioteca de plantillas**. Para modificar un diseño existente, abre el menú **⋯** de la tarjeta de la plantilla y elige **Editar plantilla**.
+  </Step>
+  <Step title="Diseña el correo">
+    En el editor de arrastrar y soltar agrega textos, imágenes y botones desde el panel **Elementos**. Arrastra el elemento **Enlace de reseña** (Review Link) al diseño, o configura el botón principal para que use el enlace de reseñas. Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Paso 4: asigna la secuencia de plantillas
+
+Activar las solicitudes no basta: también tienes que decirle a Chateea qué plantilla se envía primero y cuál en cada recordatorio. Así evitas que el cliente reciba el mismo mensaje una y otra vez.
+
+<Steps>
+  <Step title="Abre el selector de plantillas">
+    En solicitudes por correo haz clic en **Configurar plantillas de correo**. En SMS, haz clic en **Configurar plantillas de SMS**.
+  </Step>
+  <Step title="Elige la plantilla del primer envío">
+    Selecciona la plantilla **En vivo** (Live): es la que recibe el cliente en la primera solicitud.
+  </Step>
+  <Step title="Asigna una plantilla a cada reintento">
+    En cada espacio de **Reintento** elige una plantilla distinta. En correo puedes revisar y editar el **asunto** de cada envío en el panel derecho.
+  </Step>
+  <Step title="Guarda la secuencia">
+    Haz clic en **Guardar**. A partir de ese momento, cada recordatorio usará la plantilla que le asignaste.
+  </Step>
+</Steps>
+
+<Tip>
+  Varía el enfoque en cada recordatorio: el primero agradece, el segundo recuerda que toma un minuto y el último es breve y amable. Mensajes distintos se sienten menos insistentes y suelen convertir mejor.
+</Tip>
+
+## Buenas prácticas
+
+- Empieza con 2 o 3 reintentos. El número ideal depende de tu sector y de cómo respondan tus clientes.
+- Envía la primera solicitud poco después de que el cliente recibió el servicio, cuando la experiencia está fresca.
+- Mantén el SMS corto y con el enlace visible. En el correo, usa un solo botón principal muy claro.
+- Revisa en **Reputación → Solicitudes** qué canal y qué plantilla generan más clics, y ajusta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa cuando el cliente hace clic en el enlace?">
+    Los recordatorios de ese canal se detienen para ese contacto en cuanto se detecta el clic. No recibirá más reintentos.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre el balanceo de reseñas y un enlace personalizado?">
+    El balanceo reparte a los clientes entre las plataformas de reseñas que tengas conectadas, como Google y Facebook. El enlace personalizado envía a todos a un único destino que tú eliges.
+  </Accordion>
+  <Accordion title="¿Qué variable uso para el enlace en un SMS?">
+    Usa `{{reputation.review_link}}`. Toma automáticamente el enlace configurado en **Reputación → Configuración → Enlace de reseñas**.
+  </Accordion>
+  <Accordion title="¿Un correo puede incluir más de un destino de reseña?">
+    Sí. En el editor de correo puedes usar el elemento **Enlace de reseña** y, en algunos diseños, añadir varios botones de reseña.
+  </Accordion>
+  <Accordion title="¿Puedo usar una plantilla distinta en cada recordatorio por correo?">
+    Sí. Con **Configurar plantillas de correo** asignas una plantilla y un asunto diferentes a cada reintento. Puedes partir de la biblioteca de plantillas prediseñadas o crear las tuyas, y ver la vista previa antes de guardar.
+  </Accordion>
+  <Accordion title="¿Necesito tener conectado mi Perfil de empresa de Google?">
+    Solo si quieres dirigir a los clientes a Google, ya sea directamente o con el balanceo. Si prefieres otra plataforma o una página propia, usa un enlace personalizado.
+  </Accordion>
+  <Accordion title="¿Puedo enviar solicitudes sin hacerlo a mano?">
+    Sí. Agrega la acción **Enviar solicitud de reseña** a un flujo de trabajo para que se envíen solas, por ejemplo cuando se completa una cita o se paga una factura.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enviar solicitudes de reseñas" icon="paper-plane" href="/reputacion/enviar-solicitudes-de-resenas">
+    Envía solicitudes a mano o de forma automática y entiende sus estados.
+  </Card>
+  <Card title="Enlace de reseñas y balanceo" icon="link" href="/gestion-reputacion/como-configurar-un-enlace-para-resenas-en-tu-correo-electronico-de-solicitud-de-resenas">
+    Elige a qué plataforma llegan tus clientes y reparte las reseñas.
+  </Card>
+  <Card title="Solicitudes de reseñas por WhatsApp" icon="whatsapp" href="/reputacion/solicitudes-de-resenas-por-whatsapp">
+    Pide reseñas por el canal que más usan tus clientes.
+  </Card>
+  <Card title="Solicitudes multicanal" icon="layer-group" href="/reputacion/solicitudes-de-resenas-multicanal">
+    Combina SMS, correo y WhatsApp en una sola solicitud.
+  </Card>
+</CardGroup>

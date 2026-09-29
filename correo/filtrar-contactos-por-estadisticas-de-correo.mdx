@@ -1,0 +1,104 @@
+---
+title: "Filtrar contactos por estadísticas de correo"
+description: "Encuentra qué contactos abrieron, hicieron clic, rebotaron o se quejaron en cada campaña, flujo o envío masivo."
+icon: "filter"
+---
+
+Los resúmenes de una campaña te dicen cuántos abrieron o hicieron clic, pero no **quiénes**. La analítica de correo de Chateea te lleva directo a la lista de contactos detrás de cada métrica: los que abrieron, los que hicieron clic, los que rebotaron o los que marcaron tu correo como spam. Así puedes darles seguimiento, reactivar a los inactivos o limpiar tu lista en minutos.
+
+<Note>
+  El filtrado de contactos por estadísticas de correo solo está disponible si tu cuenta envía con el correo de Chateea. No funciona con proveedores SMTP externos.
+</Note>
+
+## Para qué te sirve
+
+- **Seguimiento dirigido:** arma segmentos con quienes abrieron o hicieron clic y envíales una oferta de seguimiento.
+- **Limpieza de lista:** encuentra rápido a los contactos que rebotaron, se quejaron o fallaron, y protege tu reputación de envío.
+- **Ventanas de tiempo precisas:** filtra por fechas para analizar una campaña o una prueba concreta.
+- **Origen del envío:** separa los resultados de campañas, flujos de trabajo y envíos masivos.
+
+## Métricas disponibles
+
+| Métrica | Qué significa |
+| --- | --- |
+| **Enviados** | Correos que salieron de tu cuenta. |
+| **Entregados** | Correos aceptados por el servidor del destinatario. |
+| **Abiertos** | Correos que el contacto abrió. |
+| **Clics** | Contactos que hicieron clic en algún enlace. |
+| **Quejas** | El destinatario marcó el correo como spam. |
+| **Rebotados** | El servidor del destinatario rechazó el correo. |
+| **Bajas** | El contacto se dio de baja. |
+| **Fallidos** | Hubo un error antes de intentar la entrega. |
+
+## Cómo filtrar contactos por estadísticas
+
+<Steps>
+  <Step title="Abre la analítica de correo">
+    Ve a **Configuración → Servicios de correo → Analítica de correo** (Email Analytics).
+  </Step>
+  <Step title="Elige el rango de fechas">
+    Usa el selector de **Rango de fechas** para definir el periodo que quieres analizar.
+  </Step>
+  <Step title="Filtra por origen">
+    Haz clic en **Filtros**, elige **Origen del correo** y selecciona el tipo de envío: **Campaña**, **Flujo de trabajo** o **Envío masivo**.
+  </Step>
+  <Step title="Selecciona el nombre del origen">
+    Elige el **Nombre del origen**: la campaña, el flujo o el envío masivo concreto que quieres revisar.
+
+    <Warning>
+      Este paso es obligatorio. Si solo eliges el tipo de origen y no su nombre, no aparecerán resultados.
+    </Warning>
+  </Step>
+  <Step title="Haz clic en una métrica">
+    Haz clic en cualquier recuadro de métrica (por ejemplo, **Entregados**) para ver la lista de contactos que cumplen esa métrica en el origen y periodo elegidos.
+  </Step>
+  <Step title="Ajusta y actualiza">
+    Cambia la paginación (20, 50 o 100 por página), modifica el rango de fechas si hace falta y pulsa **Actualizar** para volver a cargar la lista.
+  </Step>
+  <Step title="Abre la ficha del contacto">
+    Haz clic en cualquier contacto para abrir su ficha completa, revisar su historial y decidir el siguiente paso.
+  </Step>
+</Steps>
+
+## Ideas para aprovecharlo
+
+- Filtra **Clics** de tu última promoción y agrégales una etiqueta para enviarles un seguimiento con descuento.
+- Filtra **Rebotados** y **Quejas** después de cada campaña grande y excluye esos contactos de tus próximos envíos.
+- Compara **Abiertos** de dos flujos de bienvenida distintos en el mismo periodo para ver cuál funciona mejor.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Elegí una campaña en los filtros y no veo resultados. ¿Por qué?">
+    Asegúrate de haber seleccionado también el **Nombre del origen** y de que la campaña realmente se haya enviado dentro del rango de fechas.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar varias campañas o flujos a la vez?">
+    Puedes elegir un tipo de origen y, dentro de él, seleccionar varios nombres de origen.
+  </Accordion>
+  <Accordion title="¿Las aperturas y los clics necesitan seguimiento activado?">
+    Sí. Si el seguimiento de enlaces o de aperturas está desactivado, las métricas de **Abiertos** y **Clics** pueden estar incompletas o vacías.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre rebotado, fallido y queja?">
+    **Rebotado**: el servidor del destinatario rechazó el correo. **Fallido**: ocurrió un error antes de intentar la entrega. **Queja**: el destinatario marcó el correo como spam.
+  </Accordion>
+  <Accordion title="¿Funciona si envío con un proveedor SMTP propio?">
+    No. Esta función solo está disponible cuando envías con el correo de Chateea.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Exportar las estadísticas de tus correos" icon="chart-line" href="/marketing/exportar-estadisticas-de-correo">
+    Descarga los resultados de tus envíos.
+  </Card>
+  <Card title="Listas inteligentes" icon="users" href="/contactos/listas-inteligentes">
+    Guarda segmentos de contactos para reutilizarlos.
+  </Card>
+  <Card title="Detección de bots en aperturas y clics" icon="robot" href="/correo/deteccion-de-bots-en-aperturas-y-clics">
+    Evita que la actividad automática infle tus métricas.
+  </Card>
+  <Card title="Qué es el correo de Chateea" icon="envelope" href="/correo/que-es-el-correo-de-chateea">
+    El servicio de envío incluido en tu cuenta.
+  </Card>
+</CardGroup>

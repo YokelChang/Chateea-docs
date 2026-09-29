@@ -1,0 +1,100 @@
+---
+title: "Límite de envío diario en el dominio compartido"
+description: "Consulta tu límite diario, tu etapa y el historial de cambios cuando envías desde el dominio compartido de Chateea."
+icon: "gauge"
+---
+
+Si tu cuenta envía correos desde el dominio compartido de Chateea, tiene un límite diario de envío que crece por etapas a medida que demuestras buenas prácticas. La reputación de un dominio compartido la comparten todos los remitentes que lo usan, así que este sistema protege tu entregabilidad y la de los demás. En **Configuración → Servicios de correo** puedes ver en todo momento tu límite, cuánto llevas enviado, tu etapa actual y el historial de cambios.
+
+## El panel de límite de envío
+
+En la parte superior de **Configuración → Servicios de correo** verás el panel **Límite de envío** (Sending Limit) con tres cifras:
+
+| Cifra | Qué indica |
+| --- | --- |
+| **Límite diario** | Máximo de correos que tu cuenta puede enviar hoy según su etapa. |
+| **Enviados hoy** | Contador en vivo de los correos de campañas y envíos masivos de hoy. |
+| **Restantes** | Diferencia entre las dos anteriores, actualizada en tiempo real. |
+
+Cuando llegas al límite, el panel cambia a un estado rojo de **Límite diario alcanzado**, con la nota de que se reinicia a la medianoche UTC, y aparece un aviso en la parte superior de la página.
+
+<Info>
+Los correos individuales (uno a uno), las confirmaciones de pago, las invitaciones de calendario y las notificaciones del sistema **no cuentan** para el límite diario y se siguen entregando con normalidad aunque lo alcances.
+</Info>
+
+## Etapas y límites diarios
+
+Cada cuenta en el dominio compartido está en una etapa, que se muestra como una insignia junto al límite diario. Las cuentas nuevas empiezan en la etapa 1 con el estado **Calentando** (Warming up) y avanzan automáticamente mientras su envío se mantenga sano.
+
+| Etapa | Límite diario |
+| --- | --- |
+| 1 (inicial) | 1.000 |
+| 2 | 2.500 |
+| 3 | 5.000 |
+| 4 | 6.500 |
+| 5 | 8.000 |
+| 6 | 10.000 |
+| 7 | 14.000 |
+| 8 | 15.000 |
+| 9 (máxima) | 25.000 |
+
+Si necesitas enviar más que el máximo, o quieres una reputación que dependa solo de ti, configura un [dominio de envío dedicado](/correo/agregar-y-verificar-dominio-de-envio). Mientras uses el dominio compartido, verás un aviso que te invita a agregar uno.
+
+## Avisos según la salud de tu envío
+
+La página se adapta a la situación real de tu cuenta y te muestra un aviso con pasos concretos para recuperarte:
+
+| Situación | Qué verás | En qué se centran las recomendaciones |
+| --- | --- | --- |
+| **Rebotes altos** | Aviso rojo de tasa de rebote alta cuando los rebotes duros superan el umbral. | Limpiar la lista. Las recomendaciones cambian según tengas o no activada la [verificación de correos](/correo/verificacion-de-correos). |
+| **Entrega baja** | Aviso de que la tasa de entrega bajó del 95 %. | Pausar campañas a contactos que no interactúan y afinar la segmentación. |
+| **Quejas de spam** | Aviso cuando las quejas superan el umbral. | Calidad de las suscripciones, limpieza de la lista y visibilidad del enlace de baja. |
+| **Cuenta marcada** | Si estás en la etapa 1 y además hay problemas críticos. | Qué contactos suprimir. Los correos transaccionales e individuales se siguen entregando. |
+| **Suspendida** | Las cifras de uso aparecen como "no disponible". | El envío está detenido por completo hasta que se revise la cuenta. |
+
+Los correos de aviso tienen asuntos distintos según la situación, para que sepas enseguida si se trata de un primer bloqueo de 12 horas, un segundo bloqueo de 24 horas o una suspensión permanente pendiente de revisión. Consulta [Bloqueos de proveedores de correo](/correo/bloqueos-de-proveedores-de-correo).
+
+## Historial de etapas
+
+La sección desplegable **Historial de etapas** (Stage History) muestra cada subida y bajada de etapa con su fecha y su motivo:
+
+- **Etapa mejorada:** incluye el nuevo límite diario.
+- **Etapa reducida:** indica la causa (pico de rebotes, problema sostenido de entrega o pico de quejas de spam).
+- Las cuentas nuevas ven el historial vacío hasta que se registra suficiente actividad.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Dónde veo mi etapa actual?">
+En **Configuración → Servicios de correo**. El panel de límite de envío muestra la insignia de tu etapa junto al límite diario, los enviados hoy y los restantes. Despliega **Historial de etapas** en la misma página para ver todos los cambios.
+</Accordion>
+<Accordion title="¿Puedo pedir que me suban el límite manualmente?">
+No. El límite lo define el sistema de etapas. La forma más rápida de subirlo es enviar de forma constante y sana. Si necesitas más volumen antes, agrega un dominio dedicado.
+</Accordion>
+<Accordion title="¿Qué pasa cuando llego al límite?">
+Los correos de campañas y envíos masivos que intentes enviar después fallan: no quedan en cola ni se reintentan. Los correos individuales, las confirmaciones de pago, las invitaciones de calendario y las notificaciones del sistema se siguen entregando. El límite se reinicia a las 00:00 UTC.
+</Accordion>
+<Accordion title="¿Por qué bajé de etapa?">
+La entrada del historial de etapas indica la causa (pico de rebotes, problema sostenido de entrega o pico de quejas de spam) y la fecha. El aviso de la página también te muestra recomendaciones específicas para ese problema.
+</Accordion>
+<Accordion title="No veo el panel de límite de envío. ¿Por qué?">
+El panel aparece en las cuentas que envían desde el dominio compartido con el sistema de etapas activo. Si tienes dudas sobre el límite de tu cuenta, escribe a soporte de Chateea en **help@chateea.com**.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Agregar y verificar tu dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+Pasa a un dominio dedicado para enviar más.
+</Card>
+<Card title="Bloqueos de proveedores de correo" icon="ban" href="/correo/bloqueos-de-proveedores-de-correo">
+Qué hacer si tus envíos se restringen.
+</Card>
+<Card title="Buenas prácticas y calentamiento de correo" icon="envelope" href="/correo/buenas-practicas-y-calentamiento-de-correo">
+Sube de etapa enviando de forma sana.
+</Card>
+<Card title="Verificación de correos" icon="envelope-circle-check" href="/correo/verificacion-de-correos">
+Reduce los rebotes antes de enviar.
+</Card>
+</CardGroup>

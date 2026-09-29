@@ -1,0 +1,112 @@
+---
+title: "Cómo un contacto vuelve a suscribirse a tus correos"
+description: "Permite que un contacto que se dio de baja por error recupere tus correos desde el formulario de baja, y verifica el cambio."
+icon: "rotate-left"
+---
+
+A veces un contacto se da de baja de tus correos por error. Chateea le ofrece una salida sencilla: justo después de darse de baja, en el cuestionario de motivos, puede elegir **Me di de baja por error, suscribirme de nuevo** (Unsubscribed by mistake, subscribe again) y enviar el formulario. Chateea restablece su suscripción al correo sin que tu equipo tenga que hacer nada.
+
+## Para qué te sirve
+
+- **Recuperas el consentimiento sin fricción.** El propio contacto corrige su error desde el formulario de baja.
+- **Tu CRM queda limpio.** Se actualiza el estado de correo del contacto, sin que tengas que tocar el No molestar (DND) a mano.
+- **Puedes retomar la relación.** Una vez que vuelve a suscribirse, puedes incluirlo en secuencias de reactivación.
+- **Tienes respaldo de cumplimiento.** Queda registrada una acción positiva iniciada por el contacto.
+- **Ahorras tiempo.** Menos mensajes del tipo "por favor, vuelvan a agregarme".
+
+## Dónde aparece la opción
+
+Cuando un contacto hace clic en el enlace de baja de uno de tus correos y confirma, ve un cuestionario de comentarios con varios motivos. Uno de ellos es **Me di de baja por error, suscribirme de nuevo**. Si lo selecciona y pulsa **Enviar**, vuelve a estar suscrito.
+
+<Note>
+  La opción restablece solo el canal de **correo**. Las preferencias de SMS, WhatsApp y otros canales se gestionan por separado en la configuración de No molestar del contacto.
+</Note>
+
+## Cómo probarlo
+
+Haz una prueba antes de confiar en el flujo con contactos reales.
+
+<Steps>
+  <Step title="Prepara un contacto de prueba">
+    Crea un contacto con una dirección de correo a la que tengas acceso, o usa uno existente. Confirma que puede recibir correos (que no esté suprimido ni en No molestar para correo).
+  </Step>
+  <Step title="Envíale un correo de prueba">
+    Asegúrate de que incluya el enlace de baja predeterminado en el pie, o el método de baja que tengas configurado. Envíaselo al contacto de prueba.
+  </Step>
+  <Step title="Date de baja desde el correo">
+    Abre el correo, haz clic en **Cancelar suscripción** y completa el proceso hasta llegar a la página de confirmación.
+  </Step>
+  <Step title="Vuelve a suscribirte desde el cuestionario">
+    En el cuestionario de comentarios, selecciona **Me di de baja por error, suscribirme de nuevo** y pulsa **Enviar**.
+  </Step>
+  <Step title="Verifica el contacto">
+    Abre el contacto en **Contactos** y confirma que el correo vuelve a estar habilitado: revisa la pestaña **DND** y las entradas recientes de **Actividad**. Si quieres, agrega una nota o una etiqueta como `Resuscrito` con la fecha para tu control interno.
+  </Step>
+</Steps>
+
+<Tip>
+  Compara el contacto **antes** (correo dado de baja o bloqueado) y **después** (correo habilitado, fuera de No molestar) para confirmar que el cambio se aplicó correctamente.
+</Tip>
+
+## Qué pasa con los informes
+
+Las estadísticas de campañas pueden tardar en reflejar la baja y la nueva suscripción:
+
+- Algunas estadísticas pueden seguir mostrando al contacto como **dado de baja** durante un tiempo, aunque ya se haya vuelto a suscribir.
+- Para validar, compara los datos **por mensaje** con los datos **por contacto**.
+- Para tus próximos envíos, segmenta por el **estado actual** del contacto, no por el historial de la campaña.
+
+## Ideas de automatización
+
+Puedes complementar el proceso con un flujo de trabajo que se active cuando cambie el estado de [No molestar](/contactos/no-molestar-dnd) del contacto:
+
+- **Correo de confirmación:** un mensaje corto de "bienvenido de nuevo" con un enlace a sus preferencias.
+- **Etiqueta de auditoría:** agrega una etiqueta como `Resuscrito` con la fecha para facilitar las revisiones de consentimiento.
+- **Reactivación suave:** una secuencia de pocos correos antes de volver a incluirlo en envíos masivos. Respeta el consentimiento recién recuperado.
+- **Aviso al equipo:** notifica al responsable del contacto cuando un cliente potencial inactivo vuelve a suscribirse.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si el contacto se vuelve a suscribir y luego se da de baja otra vez?">
+    Manda la acción más reciente. Los informes históricos pueden mostrar estados anteriores, pero para tus próximos envíos usa siempre el estado actual del contacto.
+  </Accordion>
+  <Accordion title="¿Puedo activar un flujo de trabajo cuando alguien se vuelve a suscribir?">
+    Sí. Usa un disparador de cambio de estado de No molestar del contacto para enviar un correo de confirmación y agregar etiquetas.
+  </Accordion>
+  <Accordion title="¿Afecta a SMS u otros canales?">
+    No. Solo restablece el correo. Los demás canales se gestionan de forma independiente en la configuración de No molestar.
+  </Accordion>
+  <Accordion title="¿Cuánto tardan en actualizarse los informes?">
+    Algunas estadísticas pueden seguir mostrando al contacto como dado de baja durante un tiempo. Para conciliar, usa el estado del contacto y su actividad reciente.
+  </Accordion>
+  <Accordion title="¿Funciona si personalicé la experiencia de baja?">
+    Si modificaste el proceso de baja, haz una prueba rápida para confirmar que la opción de volver a suscribirse sigue apareciendo.
+  </Accordion>
+  <Accordion title="¿Puedo volver a suscribir contactos de forma masiva?">
+    No desde esta función: la nueva suscripción la inicia el propio contacto desde el cuestionario de baja. Para excepciones manuales, sigue tus procedimientos de consentimiento y cumplimiento.
+  </Accordion>
+  <Accordion title="¿Qué conviene hacer después de que alguien se vuelve a suscribir?">
+    Envía una confirmación breve, ofrécele un enlace a sus preferencias y empieza con una secuencia suave en lugar de meterlo de inmediato en envíos masivos.
+  </Accordion>
+  <Accordion title="¿Volver a suscribirse borra el historial de consentimiento?">
+    No. Se registra como un nuevo consentimiento positivo sobre el historial existente. Las acciones anteriores siguen visibles en la actividad del contacto para auditoría.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestión de preferencias de suscripción" icon="sliders" href="/correo/gestion-de-preferencias-de-suscripcion">
+    Bajas por categoría para no perder al contacto por completo.
+  </Card>
+  <Card title="Enlace de baja personalizado" icon="link" href="/correo/enlace-de-baja-personalizado">
+    Configura cómo se dan de baja tus contactos.
+  </Card>
+  <Card title="Encabezado List-Unsubscribe" icon="envelope-open" href="/correo/encabezado-list-unsubscribe">
+    La baja en un clic desde la bandeja de entrada.
+  </Card>
+  <Card title="No molestar (DND)" icon="bell-slash" href="/contactos/no-molestar-dnd">
+    Cómo funcionan los bloqueos por canal en cada contacto.
+  </Card>
+</CardGroup>

@@ -1,0 +1,82 @@
+---
+title: "Usar Zoho Mail como proveedor SMTP"
+description: "Datos del servidor de salida de Zoho Mail para cuentas personales y con dominio propio, y cómo evitar errores comunes."
+icon: "envelope"
+---
+
+Si tu correo de trabajo está en Zoho Mail, puedes usar su servidor SMTP para enviar los correos de tu cuenta de Chateea desde tu propia dirección. Aquí tienes los datos exactos del servidor de salida, tanto para cuentas personales de Zoho como para cuentas con dominio propio, y los detalles que suelen causar errores.
+
+<Note>
+  Antes de cambiar de proveedor, revisa cómo funciona el SMTP propio y qué funciones dejas de tener en [Agregar tu propio servicio SMTP](/correo/agregar-tu-propio-servicio-smtp).
+</Note>
+
+## Qué datos usar
+
+Ve a **Configuración → Servicios de correo** (Email Services), pulsa **+ Agregar servicio**, elige **Otro** como proveedor y usa los datos que correspondan a tu tipo de cuenta.
+
+### Cuentas personales (usuario@zoho.com)
+
+| Campo | Valor |
+| --- | --- |
+| **Servidor SMTP** | `smtp.zoho.com` |
+| **Puerto** | `465` con SSL, o `587` con TLS |
+| **Autenticación** | Sí |
+| **Usuario** | Tu dirección de Zoho completa |
+| **Contraseña** | Tu contraseña de Zoho, o una contraseña de aplicación si usas verificación en dos pasos |
+
+<Tip>
+  Una dirección gratuita no es buena idea para enviar correos de marketing. Te explicamos por qué en [Por qué no usar un correo gratuito como SMTP](/correo/por-que-no-usar-un-correo-gratuito-como-smtp).
+</Tip>
+
+### Cuentas con dominio propio (tu@tunegocio.com)
+
+| Campo | Valor |
+| --- | --- |
+| **Servidor SMTP** | `smtppro.zoho.com` |
+| **Puerto** | `465` con SSL, o `587` con TLS |
+| **Autenticación** | Sí |
+| **Usuario** | Tu usuario de Zoho o tu dirección completa (`tu@tunegocio.com`) |
+| **Correo del remitente** | Tu dirección de Zoho Mail (`tu@tunegocio.com`) |
+| **Contraseña** | Tu contraseña de Zoho, o una contraseña de aplicación si usas verificación en dos pasos |
+
+<Warning>
+  Si tienes activada la **verificación en dos pasos** en Zoho, tu contraseña normal no funciona por SMTP. Genera una [contraseña específica de aplicación](https://www.zoho.com/mail/help/adminconsole/two-factor-authentication.html#alink5) y úsala en el campo de contraseña.
+</Warning>
+
+Guarda el servicio, pulsa **Establecer como activo** y envía un correo de prueba desde **Conversaciones** con el remitente igual a tu dirección de Zoho.
+
+Si también necesitas los datos de correo entrante, consulta los [datos del servidor IMAP de Zoho Mail](https://www.zoho.com/mail/help/imap-access.html).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Uso smtp.zoho.com o smtppro.zoho.com?">
+    `smtp.zoho.com` para una dirección personal @zoho.com. `smtppro.zoho.com` si tu dominio está alojado en Zoho y tu dirección usa tu propio dominio.
+  </Accordion>
+  <Accordion title="¿Uso el puerto 465 o el 587?">
+    Los dos funcionan: el 465 usa SSL y el 587 usa TLS. Si uno no conecta, prueba el otro. Casi siempre es una restricción de red o de firewall, no un problema de Zoho.
+  </Accordion>
+  <Accordion title="¿Necesito una contraseña de aplicación?">
+    Solo si tienes activada la verificación en dos pasos en Zoho. En ese caso, tu contraseña normal no sirve para SMTP.
+  </Accordion>
+  <Accordion title="¿Puedo usar una dirección gratuita de Zoho como remitente?">
+    Puedes conectarla, pero enviar volúmenes altos o correos automatizados desde una dirección gratuita tiene más probabilidades de chocar con los límites del proveedor y de terminar en spam que una cuenta con dominio propio.
+  </Accordion>
+  <Accordion title="¿Zoho tiene límite de envío?">
+    Sí. Zoho aplica límites diarios que dependen de tu plan. Revísalos si vas a enviar volumen.
+  </Accordion>
+  <Accordion title="¿Puedo enviar desde un alias de Zoho?">
+    Por lo general sí, siempre que el alias esté verificado en tu cuenta de Zoho. Conéctate con tus credenciales principales y usa el alias como dirección de remitente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar tu propio servicio SMTP" icon="server" href="/correo/agregar-tu-propio-servicio-smtp">
+    Pasos generales y limitaciones del SMTP propio.
+  </Card>
+  <Card title="Solucionar problemas de entrega SMTP" icon="wrench" href="/smtp/solucion-de-problemas">
+    Qué revisar cuando tus correos no salen.
+  </Card>
+</CardGroup>

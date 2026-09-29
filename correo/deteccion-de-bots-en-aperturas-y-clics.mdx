@@ -1,0 +1,67 @@
+---
+title: "Detección de bots en aperturas y clics"
+description: "Evita que las aperturas y clics automáticos de bots inflen tus estadísticas o disparen tus flujos de trabajo."
+icon: "robot"
+---
+
+Muchos servidores de correo y filtros de seguridad abren los mensajes y revisan sus enlaces de forma automática antes de que llegue la persona. Esa actividad de bots infla tus tasas de apertura y de clic, y puede disparar flujos de trabajo que en realidad nadie activó. La detección de bots de Chateea identifica esa actividad no humana y evita que cuente en tus estadísticas o ponga en marcha tus automatizaciones.
+
+<Note>
+  Esta función solo está disponible si tu cuenta envía con el correo de Chateea. No funciona con otros proveedores SMTP.
+</Note>
+
+## Qué hace
+
+Cuando Chateea detecta que una apertura o un clic viene de un bot:
+
+| Protección | Resultado |
+| --- | --- |
+| **No suma a las estadísticas** | Los contadores de aperturas y clics no aumentan, así tus métricas reflejan solo interacciones reales. |
+| **No ejecuta automatizaciones** | Los disparadores basados en aperturas o clics de correo no se activan, así tus flujos de trabajo no avanzan por error. |
+
+Esto es especialmente útil si tienes flujos que, por ejemplo, etiquetan como "interesado" a quien hace clic, o que envían un seguimiento cuando alguien abre un correo.
+
+## Cómo activarla o desactivarla
+
+La detección de bots viene **desactivada** por defecto.
+
+<Steps>
+  <Step title="Abre el perfil del negocio">
+    Ve a **Configuración → Perfil del negocio**.
+  </Step>
+  <Step title="Busca la sección General">
+    Desplázate hasta la sección **General**, donde están las casillas de detección de bots.
+  </Step>
+  <Step title="Marca o desmarca las casillas">
+    Marca las casillas para activar la protección o desmárcalas para desactivarla. El cambio se aplica a los envíos a partir de ese momento.
+  </Step>
+</Steps>
+
+<Tip>
+  Si notas tasas de apertura sospechosamente altas o clics que ocurren segundos después del envío, activa esta opción antes de sacar conclusiones de tus campañas.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se corrigen las estadísticas de correos que ya envié?">
+    No. La protección se aplica a la actividad que ocurra después de activarla.
+  </Accordion>
+  <Accordion title="¿Afecta a la entrega de mis correos?">
+    No. Solo cambia cómo se cuentan las aperturas y los clics y si disparan automatizaciones. Tus correos se entregan igual.
+  </Accordion>
+  <Accordion title="¿Funciona con un proveedor SMTP propio?">
+    No. Solo está disponible cuando envías con el correo de Chateea.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Filtrar contactos por estadísticas de correo" icon="filter" href="/correo/filtrar-contactos-por-estadisticas-de-correo">
+    Descubre quién abrió, hizo clic o rebotó.
+  </Card>
+  <Card title="Estadísticas de flujos de trabajo" icon="chart-line" href="/automatizaciones/estadisticas-de-flujos">
+    Revisa el rendimiento de tus automatizaciones.
+  </Card>
+</CardGroup>

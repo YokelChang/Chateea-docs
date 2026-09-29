@@ -1,0 +1,97 @@
+---
+title: "Conexión de llamada para registrar bien qué llamadas se atienden"
+description: "Pide pulsar una tecla antes de conectar para que las llamadas al buzón de voz no cuenten como atendidas en tus reportes y automatizaciones."
+icon: "phone"
+---
+
+**Conexión de llamada** (Call Connect) hace que, antes de conectar una llamada, la persona que la recibe tenga que pulsar una tecla para aceptarla. Con ese pequeño paso, Chateea sabe con certeza que contestó un ser humano y no un buzón de voz, y tus reportes y automatizaciones solo cuentan como atendidas las conversaciones reales.
+
+## Por qué el estado "Completada" puede engañar
+
+Por defecto, una llamada queda marcada como **Completada** cuando termina su recorrido, aunque nadie haya contestado. Una llamada que cayó en el buzón de voz, que tu vendedor no atendió o que agotó el tiempo de espera puede aparecer como conectada.
+
+Esto es muy común cuando desvías las llamadas a un **número externo o personal**: si el celular de tu vendedor manda la llamada a su buzón, para el sistema la llamada "se contestó".
+
+Con Conexión de llamada activada:
+
+- Quien recibe la llamada escucha un **mensaje susurrado** que le pide pulsar una tecla para aceptarla.
+- Si no pulsa ninguna tecla, la llamada **no se conecta** y no se marca como atendida.
+
+## Para qué te sirve
+
+- **Estados de llamada fiables:** solo cuentan como atendidas las llamadas que una persona aceptó.
+- **Reportes limpios:** las llamadas perdidas y los buzones no inflan tus métricas.
+- **Automatizaciones precisas:** los flujos de trabajo reaccionan solo a llamadas realmente conectadas.
+- **Filtra los buzones de voz:** separas las respuestas reales de los desvíos al buzón.
+- **Más responsabilidad en el equipo:** ves con claridad quién atiende y quién deja pasar llamadas.
+- **Mejor seguimiento de leads:** tus seguimientos se basan en conversaciones reales, no en intentos.
+
+## Cuándo usarla
+
+| Dónde se contesta la llamada | ¿Necesitas Conexión de llamada? |
+| --- | --- |
+| **Número externo o personal** (desvío) | Sí. Es su uso principal: distingue a una persona de un buzón de voz o contestador. |
+| **Aplicación web de Chateea** | Normalmente no. Chateea ya sabe que una persona contestó desde la aplicación. |
+| **Aplicación móvil de Chateea** | Normalmente no, por el mismo motivo. |
+
+## Cómo activarla
+
+<Steps>
+  <Step title="Abre la configuración del número">
+    Ve a **Configuración → Sistema telefónico**. Haz clic en los **tres puntos** junto al número y selecciona **Editar configuración**.
+  </Step>
+  <Step title="Ve a la configuración avanzada">
+    Abre la sección **Configuración avanzada**.
+  </Step>
+  <Step title="Activa Conexión de llamada">
+    Activa **Conexión de llamada** (Call Connect).
+  </Step>
+  <Step title="Activa el mensaje susurrado">
+    Activa **Reproducir mensaje susurrado** y personaliza el texto para indicar que hay que pulsar una tecla, por ejemplo:
+
+    ```text
+    Tienes una llamada nueva. Pulsa cualquier tecla para conectar.
+    ```
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Haz una llamada de prueba a tu número y deja que el teléfono de desvío mande la llamada al buzón. Comprueba que ya no aparece como atendida.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mis llamadas aparecen como Completadas si nadie contestó?">
+    Porque, por defecto, cualquier llamada que termina su recorrido se marca como completada, aunque haya ido al buzón de voz o nadie la haya atendido.
+  </Accordion>
+  <Accordion title="¿Cómo lo soluciona Conexión de llamada?">
+    Exige que una persona pulse una tecla para aceptar la llamada. Así el sistema sabe si de verdad se conectó.
+  </Accordion>
+  <Accordion title="¿Funciona en llamadas entrantes y salientes?">
+    Sí, en ambas direcciones. Es especialmente útil en llamadas entrantes y para responder rápido a los leads.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la persona no pulsa ninguna tecla?">
+    La llamada no se considera conectada, lo que mantiene tus reportes limpios.
+  </Accordion>
+  <Accordion title="¿Afecta a mis automatizaciones?">
+    Sí, para bien: podrás disparar flujos de trabajo solo con las llamadas realmente conectadas.
+  </Accordion>
+  <Accordion title="¿Funciona si desvío mi número de Chateea a mi celular personal?">
+    Sí, y es justo el caso principal. Al contestar en tu celular, se te pide pulsar una tecla antes de conectar, lo que distingue a una persona de un buzón o contestador.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador Detalles de llamada" icon="bolt" href="/telefonia/disparador-detalles-de-llamada">
+    Automatiza seguimientos según el estado de cada llamada.
+  </Card>
+  <Card title="Sonar llamadas en varios usuarios" icon="users" href="/telefonia/sonar-llamadas-en-varios-usuarios">
+    Haz que un número suene a la vez en varias personas.
+  </Card>
+</CardGroup>

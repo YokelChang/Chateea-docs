@@ -1,0 +1,90 @@
+---
+title: "DNS inverso (rDNS) de tu IP dedicada"
+description: "Configura el registro PTR de tu IP dedicada para que se identifique con tu propio dominio y mejore tu entregabilidad."
+icon: "server"
+---
+
+Si tienes una IP de envío dedicada, configurar su DNS inverso (rDNS) hace que esa IP se identifique con un nombre de tu propio dominio, como `mail.tunegocio.com`, en lugar del nombre genérico de un servicio de terceros. Los proveedores de correo usan esta comprobación para confirmar que el servidor que envía es legítimo, así que un rDNS correcto mejora tu entregabilidad, reduce el riesgo de spam y refuerza la imagen de tu marca.
+
+<Note>
+El DNS inverso solo se puede configurar en una **IP dedicada**. Las IP compartidas no lo admiten, porque cada IP solo puede resolver a un único nombre de host.
+</Note>
+
+## Qué es el DNS inverso
+
+Una consulta DNS normal traduce un nombre de dominio a una dirección IP. El DNS inverso hace lo contrario: traduce una dirección IP (IPv4 o IPv6) al nombre de host asociado, mediante un registro **PTR** (puntero).
+
+Cuando tu correo llega, el proveedor del destinatario consulta el rDNS de la IP que lo envió para confirmar que pertenece a un dominio legítimo. Si la respuesta es un nombre de tu dominio, tu identidad como remitente queda respaldada.
+
+<Info>
+Configurar el rDNS de tu IP dedicada no es lo mismo que los registros CNAME que agregas al verificar tu dominio de envío. Son configuraciones distintas: el rDNS solo controla qué nombre de host aparece cuando alguien consulta tu IP de envío.
+</Info>
+
+## Errores comunes
+
+| Error | Qué pasa | Cómo evitarlo |
+| --- | --- | --- |
+| **Registro PTR incorrecto o ausente** | El proveedor no puede confirmar que el servidor coincide con la IP del correo. | Asegúrate de que el PTR devuelva un nombre de host válido para tu IP. |
+| **Nombre de host que no coincide (falla de FCrDNS)** | El nombre que devuelve el PTR debe resolver de vuelta a la misma IP. Si no coinciden, la consulta falla y baja la confianza. | Si el PTR de la IP `203.0.113.10` devuelve `mail.tunegocio.com`, ese nombre debe resolver a `203.0.113.10`. |
+| **Nombre de host que no resuelve** | Si el nombre del PTR no apunta a ninguna IP, el proveedor lo considera un problema grave de confianza y puede rechazar tus correos. | Publica el registro A antes de solicitar la configuración del rDNS. |
+
+En resumen: el PTR debe apuntar a un nombre de host válido, y el registro A de ese nombre debe resolver a la misma IP. Ambas direcciones deben ser coherentes.
+
+## Cómo configurar el DNS inverso
+
+<Steps>
+<Step title="Elige el nombre de host">
+Usa un subdominio de tu dominio de envío, por ejemplo `mail.tunegocio.com`. No tiene que ser idéntico a tu dominio de remitente, pero sí debe ser un dominio que controles.
+</Step>
+<Step title="Crea un registro A en tu proveedor DNS">
+Entra al panel de tu proveedor DNS y agrega un registro A que apunte ese nombre de host a tu IP dedicada:
+
+```text
+Tipo: A
+Nombre: mail
+Valor: 203.0.113.10 (tu IP dedicada)
+```
+</Step>
+<Step title="Solicita la actualización del registro PTR">
+Escribe a soporte de Chateea en **help@chateea.com** indicando tu IP dedicada y el nombre de host que configuraste en el registro A. El equipo actualizará el registro PTR para que tu IP apunte a ese nombre.
+</Step>
+<Step title="Comprueba el resultado">
+Cuando el cambio esté aplicado, haz una consulta inversa de tu IP con [MXToolbox](https://mxtoolbox.com/ReverseLookup.aspx) o desde la línea de comandos. Debe devolver tu nombre de host, y una consulta normal de ese nombre debe devolver tu IP.
+
+```text
+dig -x 203.0.113.10
+nslookup mail.tunegocio.com
+```
+</Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo configurar rDNS en una IP compartida?">
+No. Una IP solo puede resolver a un nombre de host, y las IP compartidas las usan varios remitentes. Necesitas una IP dedicada.
+</Accordion>
+<Accordion title="¿El rDNS reemplaza a SPF o DKIM?">
+No, se complementan. DKIM firma el contenido del correo, SPF autoriza las IP que pueden enviar por tu dominio y el rDNS verifica la identidad de la IP que envía. Para la mejor entregabilidad, configura los tres.
+</Accordion>
+<Accordion title="¿Cuánto tarda en aplicarse el cambio?">
+La actualización del PTR suele aplicarse rápido, pero la propagación DNS puede tardar desde unos minutos hasta 48 horas, según el TTL y la caché de los servidores.
+</Accordion>
+<Accordion title="¿Mis contactos notarán la diferencia?">
+Con un rDNS correcto, tu dominio aparece en los encabezados técnicos del correo en lugar del nombre de un proveedor externo. Esto mejora la legitimidad percibida, sobre todo en los clientes de correo que muestran los datos del servidor de envío.
+</Accordion>
+<Accordion title="¿Cómo consigo una IP dedicada?">
+Es un servicio adicional con costo mensual. Escribe a soporte de Chateea en **help@chateea.com** para solicitarla.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Microsoft SNDS: monitoreo de tu IP dedicada" icon="chart-line" href="/correo/microsoft-snds">
+Revisa la salud de tu IP en Outlook y Hotmail.
+</Card>
+<Card title="Buenas prácticas y calentamiento de correo" icon="envelope" href="/correo/buenas-practicas-y-calentamiento-de-correo">
+Todo lo que necesitas para llegar a la bandeja de entrada.
+</Card>
+</CardGroup>

@@ -1,0 +1,205 @@
+---
+title: "Crear fragmentos RCS y enviar mensajes RCS"
+description: "Crea plantillas RCS de texto, tarjeta o carrusel y envíalas por acciones masivas, conversaciones uno a uno o flujos de trabajo."
+icon: "layer-group"
+---
+
+Los **fragmentos RCS** son plantillas de mensajes enriquecidos que diseñas una vez y reutilizas en todas tus campañas: textos con tu marca, tarjetas con imagen y botones, o carruseles deslizables. En este artículo aprendes a crear un fragmento RCS, a enviarlo a tus contactos con acciones masivas, a mandarlo en una conversación uno a uno y a automatizar RCS desde tus flujos de trabajo.
+
+<Info>
+  Esta guía da por hecho que RCS ya está activo en tu cuenta y que tu remitente RCS está aprobado. Si no es así, empieza por [RCS: mensajes enriquecidos con tu marca](/telefonia/rcs-mensajes-enriquecidos). Algunas funciones, como enviar fragmentos desde Conversaciones, están en disponibilidad limitada y pueden no aparecer en todas las cuentas.
+</Info>
+
+## Por qué empezar por el fragmento
+
+Los fragmentos RCS son la base de tus campañas: sin uno no puedes enviar una campaña RCS enriquecida. Los creas una vez y los reutilizas tantas veces como quieras.
+
+## Parte 1: crear un fragmento RCS
+
+Los fragmentos RCS se crean desde **Conversaciones → Fragmentos**, con el botón **Agregar fragmento RCS**. Primero eliges uno de estos tres formatos:
+
+| Formato | Qué incluye | Botones | SMS de respaldo |
+| --- | --- | --- | --- |
+| **Texto plano** | Solo texto, con vista previa en vivo | No | No aplica |
+| **Tarjeta individual** | Título, descripción, imagen o archivo multimedia | Hasta 3 | Obligatorio |
+| **Carrusel** | De 2 a 10 tarjetas deslizables, cada una con título, descripción y multimedia | Hasta 2 por tarjeta | Obligatorio |
+
+### Texto plano
+
+Un mensaje de texto sin imágenes ni botones. Ideal para confirmaciones, recordatorios y avisos cortos. Aunque se parece a un SMS, se beneficia de la marca de RCS: tu contacto ve el nombre de tu negocio en lugar de un número. Además, las plantillas simples tienen menos probabilidades de fallar en teléfonos poco comunes.
+
+### Tarjeta individual
+
+Una sola tarjeta enriquecida con título, descripción, una imagen y hasta tres botones. Es la opción para experiencias más cuidadas: una oferta, un anuncio o un recordatorio de cita con un botón **Reservar**. Los botones pueden llamar a un número, abrir un enlace o insertar una respuesta sugerida, y puedes usar emojis y etiquetas personalizadas en el título y la descripción.
+
+El **SMS de respaldo es obligatorio**: es la versión en texto que recibe quien no admite RCS. Sin él no podrás guardar la plantilla.
+
+<Tip>
+  Escribe primero el SMS de respaldo. Si la versión en texto no transmite el mensaje por sí sola, la tarjeta tampoco está lista.
+</Tip>
+
+### Carrusel
+
+Varias tarjetas en una fila deslizable: mínimo 2 y máximo 10. Cada una lleva su título, descripción, multimedia y hasta dos botones. Úsalo para mostrar opciones en paralelo: una línea de productos, paquetes de servicios, tu equipo o varias propiedades. También exige un SMS de respaldo. Mantén los títulos y descripciones breves para que se lean bien en pantalla.
+
+### Paso a paso
+
+El ejemplo usa una tarjeta individual, pero el proceso es el mismo para los tres formatos.
+
+<Steps>
+  <Step title="Abre el creador">
+    Ve a **Conversaciones → Fragmentos → Agregar fragmento RCS** y elige el formato **Tarjeta individual**.
+  </Step>
+  <Step title="Ponle nombre">
+    Usa un nombre claro y único, porque después lo elegirás en un desplegable. "Promo muebles primavera" se encuentra mejor que "Plantilla 1".
+  </Step>
+  <Step title="Completa la tarjeta">
+    Añade el título, la descripción y, si quieres, códigos promocionales o etiquetas personalizadas. La descripción es lo primero que lee tu contacto: que vaya al grano.
+  </Step>
+  <Step title="Sube la imagen">
+    Añade una imagen o archivo de buena calidad que represente la oferta. Es el ancla visual de la tarjeta.
+  </Step>
+  <Step title="Añade botones">
+    Agrega hasta tres botones (dos en cada tarjeta de un carrusel). Configura cada uno para llamar, abrir un enlace o insertar una respuesta sugerida, y guarda cada acción antes de pasar a la siguiente.
+  </Step>
+  <Step title="Escribe el SMS de respaldo">
+    Escribe la versión en texto plano. Debe transmitir lo mismo que la tarjeta, sin imágenes ni botones.
+  </Step>
+  <Step title="Crea la plantilla">
+    Haz clic en **Crear plantilla**. El fragmento queda en tu biblioteca, listo para reutilizarse.
+  </Step>
+</Steps>
+
+## Parte 2: enviar un fragmento RCS con acciones masivas
+
+Las acciones masivas son la forma de enviar fragmentos RCS enriquecidos a muchos contactos a la vez.
+
+<Steps>
+  <Step title="Selecciona los contactos">
+    Ve a **Contactos**, abre tus **Listas inteligentes** y selecciona los contactos o una lista completa.
+  </Step>
+  <Step title="Abre el envío RCS">
+    Haz clic en **Más → Enviar SMS y RCS** para abrir la configuración de la campaña.
+  </Step>
+  <Step title="Configura la campaña">
+    Completa los campos de la tabla de abajo.
+  </Step>
+  <Step title="Revisa la vista previa">
+    Comprueba cómo verán el mensaje quienes reciben RCS: título, descripción, botones e imagen.
+  </Step>
+  <Step title="Envía">
+    Haz clic en **Enviar RCS**. Con **Ver progreso** vas a la página de acciones masivas para seguir el envío.
+  </Step>
+</Steps>
+
+| Campo | Qué hacer |
+| --- | --- |
+| **Nombre de la acción** (obligatorio) | Ponle un nombre que reconozcas en la página de acciones masivas |
+| **Remitente RCS** | Elige tu remitente aprobado. Solo aparecen los registrados y aprobados. Si no ves el tuyo, consulta con soporte |
+| **Plantilla RCS** (obligatorio) | Elige el fragmento que creaste. Solo aparecen los fragmentos guardados |
+| **Modo de envío** | **Enviar todo a la vez**, **Enviar a una hora programada** o **Enviar en modo goteo** (repartido en un periodo) |
+| **Casilla de consentimiento** (obligatoria) | Confirma que tus contactos aceptaron recibir mensajes. Sin marcarla no se activa el botón de envío |
+
+En la página de acciones masivas verás cuántos mensajes se enviaron, cuántos se entregaron y cuántos pasaron al respaldo por SMS.
+
+### Cómo se ve después del envío
+
+En la conversación del contacto, el mensaje aparece con la etiqueta **RCS** y el remitente con el que salió. Los estados (**Enviado**, **Entregado**, **Abierto**) se actualizan a medida que avanza. Si pasó al respaldo, la conversación muestra el SMS entregado.
+
+**Abierto** significa que el contacto vio el mensaje en un teléfono que admite confirmaciones de lectura. No todos las admiten y el usuario puede desactivarlas: es una buena señal, no una métrica para toda tu audiencia.
+
+## Parte 3: enviar RCS en una conversación uno a uno
+
+### Mensaje de texto
+
+Abre la conversación del contacto, escribe tu mensaje, elige tu remitente RCS aprobado en el selector de remitente y envíalo. Llegará como RCS si el teléfono lo admite, o como SMS si no.
+
+### Fragmento RCS
+
+<Steps>
+  <Step title="Abre la conversación">
+    Ve a **Conversaciones** y abre la conversación con el contacto.
+  </Step>
+  <Step title="Elige el fragmento">
+    En el editor, haz clic en la opción **Fragmento RCS** para abrir la ventana de selección. El número **De** debe ser tu remitente RCS. Elige un fragmento de la lista de plantillas.
+  </Step>
+  <Step title="Revisa la vista previa">
+    Confirma el título, la descripción y los botones. Si es un carrusel, revisa cada tarjeta. Comprueba también el mensaje de respaldo.
+  </Step>
+  <Step title="Envía">
+    Haz clic en **Enviar**.
+  </Step>
+</Steps>
+
+<Note>
+  Solo puedes elegir fragmentos ya creados. Si necesitas uno nuevo, créalo primero en **Conversaciones → Fragmentos** y vuelve a la conversación.
+</Note>
+
+## Parte 4: RCS en flujos de trabajo
+
+Con las acciones **Enviar RCS** y **Mensaje interactivo RCS** puedes automatizar recorridos enriquecidos: recordatorios, promociones, seguimientos y ramas que cambian según el botón que toque el contacto.
+
+<Steps>
+  <Step title="Abre tus flujos">
+    Ve a **Automatización → Flujos de trabajo**.
+  </Step>
+  <Step title="Crea o edita un flujo">
+    Crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Añade la acción RCS">
+    Agrega **Enviar RCS** o **Mensaje interactivo RCS**.
+  </Step>
+  <Step title="Configura el mensaje">
+    Define el mensaje o la experiencia interactiva.
+  </Step>
+  <Step title="Publica">
+    Publica el flujo.
+  </Step>
+</Steps>
+
+<Tip>
+  Empieza con un fragmento y envíalo a una lista pequeña. Revisa en la conversación cómo llega y después escala.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un fragmento para enviar cualquier mensaje RCS?">
+    No. Solo para formatos enriquecidos como tarjetas o carruseles. Un mensaje RCS de texto lo puedes enviar directamente desde una conversación.
+  </Accordion>
+  <Accordion title="¿Puedo enviar una tarjeta o un carrusel a un solo contacto?">
+    Sí, eligiendo un fragmento RCS desde el editor de la conversación, si tu cuenta tiene acceso a esta función.
+  </Accordion>
+  <Accordion title="¿Puedo editar el fragmento antes de enviarlo desde la conversación?">
+    No. Solo puedes elegirlo y previsualizarlo. Para cambiar el contenido, edita el fragmento y vuelve a la conversación.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el teléfono del contacto no admite RCS?">
+    Recibe el mensaje de respaldo que configuraste.
+  </Accordion>
+  <Accordion title="¿Cuántos botones puedo añadir?">
+    Hasta tres en una tarjeta individual y hasta dos por tarjeta en un carrusel. Los fragmentos de texto plano no admiten botones.
+  </Accordion>
+  <Accordion title="¿Puedo reutilizar un fragmento en varias campañas?">
+    Sí. Queda guardado en tu biblioteca y puedes usarlo en acciones masivas, flujos de trabajo y conversaciones.
+  </Accordion>
+  <Accordion title="¿Por qué no veo la opción de fragmento RCS en Conversaciones?">
+    Enviar fragmentos RCS desde Conversaciones está en disponibilidad limitada. Si no ves la opción, tu cuenta todavía no tiene acceso; escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="RCS: mensajes enriquecidos con tu marca" icon="comment-dots" href="/telefonia/rcs-mensajes-enriquecidos">
+    Qué es RCS, requisitos y cómo activarlo.
+  </Card>
+  <Card title="Cómo se cobran los mensajes RCS" icon="file-invoice" href="/telefonia/como-se-cobran-los-mensajes-rcs">
+    Tipos de mensaje, segmentos y país de facturación.
+  </Card>
+  <Card title="Acciones masivas" icon="users" href="/contactos/acciones-masivas">
+    Envía acciones a muchos contactos a la vez.
+  </Card>
+  <Card title="Modo goteo en acciones masivas" icon="droplet" href="/contactos/modo-goteo-en-acciones-masivas">
+    Reparte tus envíos a lo largo del tiempo.
+  </Card>
+</CardGroup>

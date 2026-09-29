@@ -1,0 +1,100 @@
+---
+title: "Llamadas o mensajes que se ven mal en Conversaciones"
+description: "Por qué aparecen llamadas agrupadas, respuestas grupales separadas, mensajes inesperados o SMS entrantes perdidos, y qué hacer."
+icon: "comments"
+---
+
+A veces una llamada o un mensaje se ve raro en **Conversaciones**: varias personas distintas aparecen bajo el mismo número, las respuestas a un mensaje grupal llegan en hilos separados, aparece un mensaje que nadie de tu equipo envió, o un SMS entrante no aparece o se muestra como llamada. En la mayoría de los casos no es un fallo de Chateea, sino la información que envían las operadoras, el tipo de número o una integración conectada.
+
+Revisa estos casos antes de escribir a soporte.
+
+## Por qué pasa
+
+Conversaciones organiza cada llamada y mensaje según la identidad del remitente y el origen que informan las operadoras, los proveedores de mensajería y las integraciones conectadas. Si esa información falta, es limitada o llega por otra vía, las conversaciones pueden agruparse, dividirse o mostrar actividad inesperada aunque todo funcione como debe.
+
+## Varias personas con número oculto aparecen bajo el mismo número
+
+Cuando varias personas llaman con el número oculto o bloqueado, sus llamadas pueden aparecer todas bajo un mismo número genérico en Conversaciones. La operadora no envía el número real, así que Chateea las agrupa bajo el mismo identificador, que varía según la operadora.
+
+- **No significa que sean la misma persona.** Cada llamada puede ser de alguien distinto.
+- **No se puede desenmascarar** un número oculto: ni Chateea ni la operadora pueden recuperar el número real.
+- **Qué hacer:** si necesitas identificar a quien llama, pídele que desactive la llamada anónima en su teléfono o con su operadora antes de volver a llamar.
+
+## Las respuestas a un mensaje grupal llegan en conversaciones separadas
+
+Si envías un SMS grupal y cada respuesta aparece en su propio hilo, lo más probable es que tu número no admita mensajes grupales.
+
+- Los mensajes grupales funcionan con **números locales +1 de EE. UU. y Canadá**.
+- Los **números gratuitos, los códigos cortos y los números internacionales** no los admiten: cada respuesta se trata como un mensaje individual.
+- **Qué hacer:** usa un número local +1 de EE. UU. o Canadá para tus mensajes grupales. Si necesitas escribir a muchas personas con otro tipo de número, usa un envío masivo, donde es normal que cada respuesta llegue por separado.
+
+## Aparece un mensaje que nadie de tu equipo envió
+
+Algunos mensajes los envía una integración conectada, un proveedor de mensajería personalizado, una aplicación del Marketplace o una automatización. Antes de reportarlo como error, revisa el origen:
+
+<Steps>
+  <Step title="Abre los detalles del mensaje">
+    En Conversaciones, haz clic en el mensaje y abre **Detalles del mensaje**.
+  </Step>
+  <Step title="Revisa el campo de origen">
+    Verás si lo envió una aplicación del Marketplace, una integración, un flujo de trabajo o un proveedor de mensajería.
+  </Step>
+</Steps>
+
+Si el origen es una integración que no esperabas, revisa tus aplicaciones conectadas y tus flujos de trabajo para confirmar si el envío era intencional.
+
+## Un SMS entrante no aparece o se muestra como llamada
+
+Si un contacto te escribió y el mensaje no aparece en Conversaciones, o aparece registrado como llamada:
+
+1. **Confirma que tu número admite SMS**, y también MMS si el mensaje traía una imagen o archivo. Revísalo en **Configuración → Sistema telefónico → Números de teléfono**.
+2. **Pide al contacto que vuelva a escribir** y confirma a qué número exacto lo hace.
+3. **Si sigue sin aparecer**, escribe a soporte de Chateea en **help@chateea.com**. La recepción de mensajes de los números del sistema telefónico de Chateea se gestiona desde nuestro lado, así que el equipo de soporte lo revisará por ti. Incluye el número del contacto, tu número, la fecha y hora exactas del mensaje y lo que ves en Conversaciones.
+
+## Cuándo escribir a soporte
+
+Si descartaste los casos anteriores y el problema continúa, escribe a **help@chateea.com** con esta información:
+
+| Dato | Detalle |
+| --- | --- |
+| **Contacto** | Nombre o número del contacto donde ocurre. |
+| **Fecha y hora** | Incluida la zona horaria. |
+| **Canal** | Llamada, SMS, correo u otro. |
+| **Alcance** | Si afecta a uno o a varios contactos. |
+| **Capturas de pantalla** | De Conversaciones y de los detalles del mensaje. |
+| **Origen del mensaje** | Lo que indica el campo de origen en los detalles, si está disponible. |
+| **Frecuencia** | Si pasa siempre o a veces, y si puedes reproducirlo con pasos concretos. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué llamadas de personas distintas muestran el mismo número?">
+    Porque llamaron con el número oculto y la operadora no envió su número real. Chateea las agrupa bajo el mismo identificador genérico.
+  </Accordion>
+  <Accordion title="¿Ese número genérico significa que es la misma persona?">
+    No. Pueden ser personas distintas cuyo número no se informó.
+  </Accordion>
+  <Accordion title="¿Por qué las respuestas a mi mensaje grupal llegan por separado?">
+    Porque los mensajes grupales solo funcionan con números locales +1 de EE. UU. y Canadá. Con números gratuitos, códigos cortos o internacionales, cada respuesta llega como mensaje individual.
+  </Accordion>
+  <Accordion title="¿Esto también afecta a los SMS individuales?">
+    Los números ocultos afectan sobre todo a las llamadas, y la limitación de grupos afecta a los SMS grupales. Los mensajes enviados por integraciones pueden aparecer en cualquier canal, incluido el SMS.
+  </Accordion>
+  <Accordion title="¿Cómo confirmo que un mensaje lo envió una integración?">
+    Abre **Detalles del mensaje** en Conversaciones y revisa el campo de origen. Si coincide con una integración conectada, es un comportamiento esperado.
+  </Accordion>
+  <Accordion title="¿Puedo arreglar yo mismo un SMS entrante que no aparece?">
+    En los números del sistema telefónico de Chateea no hace falta configurar nada por tu cuenta. Confirma que el número tenga SMS y escribe a soporte con los datos del mensaje para que lo revisemos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Chat grupal por SMS" icon="users" href="/conversaciones/chat-grupal-sms">
+    Cómo funcionan los mensajes grupales.
+  </Card>
+  <Card title="Solucionar problemas de entrega de SMS" icon="screwdriver-wrench" href="/telefonia/solucionar-problemas-de-entrega-de-sms">
+    Cuando tus mensajes salientes no llegan.
+  </Card>
+</CardGroup>

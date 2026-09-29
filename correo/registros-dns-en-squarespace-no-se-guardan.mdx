@@ -1,0 +1,56 @@
+---
+title: "Los registros DNS no se guardan en Squarespace"
+description: "Si Squarespace no guarda tus registros DNS, cambia de navegador: Chrome no permite guardar esos cambios."
+icon: "globe"
+---
+
+Si tu dominio está en Squarespace y los registros DNS que agregas para tu dominio de envío no se guardan, lo más probable es que estés usando **Google Chrome**. Según el propio soporte de Squarespace, los cambios de DNS hechos desde Chrome pueden no guardarse, y muchas veces la pantalla no muestra ningún error claro.
+
+## La solución: cambia de navegador
+
+<Steps>
+  <Step title="Abre Squarespace en otro navegador">
+    Entra a la configuración de dominio y DNS de Squarespace desde **Firefox**, **Safari** o **Microsoft Edge**.
+  </Step>
+  <Step title="Vuelve a agregar los registros">
+    Crea de nuevo los registros que necesitas (TXT, MX, CNAME) con los valores que te muestra la pantalla de verificación de tu dominio de envío, y guarda.
+  </Step>
+  <Step title="Confirma que quedaron guardados">
+    Recarga la página de DNS de Squarespace y revisa que los registros aparezcan en la lista. Después vuelve a Chateea y verifica el dominio.
+  </Step>
+</Steps>
+
+<Tip>
+  Una vez guardados, los registros se quedan en su lugar. No necesitas seguir usando ese navegador para nada más.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El problema es de Squarespace o de Chateea?">
+    Es de Squarespace. Su equipo de soporte ha confirmado que las ediciones de DNS hechas en Google Chrome no siempre se guardan.
+  </Accordion>
+  <Accordion title="¿Qué navegadores funcionan?">
+    Firefox, Safari y Microsoft Edge funcionan correctamente. Chrome es el único con esta limitación conocida.
+  </Accordion>
+  <Accordion title="Ya intenté agregar los registros en Chrome. ¿Tengo que rehacer todo?">
+    Solo vuelve a agregarlos desde otro navegador. Si el intento anterior no se guardó, no hay nada que deshacer.
+  </Accordion>
+  <Accordion title="¿Pasa lo mismo con Chrome en el celular?">
+    El problema se ha reportado en Chrome de escritorio. Si te ocurre en el celular, cambiar de navegador también debería resolverlo.
+  </Accordion>
+  <Accordion title="¿Cuánto tardan en propagarse los registros?">
+    Suele ser rápido, pero puede tardar desde unos minutos hasta 24 o 48 horas, según la configuración TTL de tu dominio. Puedes revisar la propagación con una herramienta de consulta DNS como MXToolbox o WhatsMyDNS.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar y verificar un dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+    Configura tu dominio para enviar con el correo de Chateea.
+  </Card>
+  <Card title="Registros DNS por proveedor de dominio" icon="server" href="/correo/registros-dns-de-correo-por-proveedor-de-dominio">
+    Guías para otros proveedores de dominio.
+  </Card>
+</CardGroup>

@@ -1,0 +1,219 @@
+---
+title: "Buenas prácticas y calentamiento de correo"
+description: "Configura tu dominio, calienta tus envíos y usa herramientas gratuitas para que tus correos lleguen a la bandeja de entrada."
+icon: "envelope"
+---
+
+Llegar a la bandeja de entrada no depende de un solo ajuste: es la suma de una buena configuración técnica, una lista sana y un ritmo de envío constante. Esta guía reúne las buenas prácticas que debes aplicar antes de enviar tus primeras campañas, cómo calentar un dominio nuevo, las herramientas gratuitas para medir tu salud de envío y qué revisar si tus correos llegan a spam.
+
+<Warning>
+Ignorar estas prácticas es la causa más común de que los correos terminen en spam. Léelas y aplícalas antes de empezar a enviar.
+</Warning>
+
+## Para quién es esta guía
+
+Sirve para cualquiera que envíe correos desde Chateea, pero está pensada sobre todo para quienes usan el **correo de Chateea** con un **dominio dedicado**. Si envías con tu propio proveedor SMTP, la configuración, el cumplimiento y la entregabilidad dependen de ese proveedor, y el soporte de Chateea podrá ayudarte de forma más limitada.
+
+## Buenas prácticas de envío
+
+### 1. Configura un dominio de envío dedicado
+
+**Qué es:** en lugar de compartir un dominio con otros remitentes, usas uno propio (idealmente un subdominio, como `mail.tunegocio.com`) solo para tus envíos.
+
+**Por qué importa:** sin un dominio dedicado es habitual que los correos terminen en spam aunque hagas todo bien. Con uno propio controlas tu reputación de principio a fin.
+
+**Cómo hacerlo:** sigue la guía [Agregar y verificar tu dominio de envío](/correo/agregar-y-verificar-dominio-de-envio).
+
+<Tip>
+Si ya tienes un dominio dedicado y tus correos siguen yendo a spam después del calentamiento, suele ser mejor crear un subdominio nuevo que intentar reparar la reputación de uno dañado.
+</Tip>
+
+### 2. Considera una IP de envío dedicada
+
+**Qué es:** una dirección IP exclusiva para tus correos, que no compartes con nadie más. Los proveedores de correo también evalúan la reputación de la IP.
+
+**Por qué importa:** aunque tengas dominio dedicado, por defecto la IP de envío es compartida. Una IP dedicada aísla por completo tu reputación, algo especialmente útil si envías más de 200.000 correos por semana.
+
+**Cómo obtenerla:** es un servicio adicional con costo mensual. Escribe a soporte de Chateea en **help@chateea.com** para solicitarla. Después, configura el [DNS inverso de tu IP dedicada](/correo/dns-inverso-ip-dedicada).
+
+### 3. Activa la verificación de correos
+
+**Qué es:** revisa si una dirección es válida antes de enviarle el primer correo.
+
+**Por qué importa:** enviar a direcciones inexistentes genera rebotes, daña la reputación de tu dominio y puede hacer que tus correos se rechacen o vayan a spam.
+
+**Cómo hacerlo:** en **Configuración → Perfil del negocio**, activa la casilla para verificar la dirección cuando se envía el primer correo a un contacto nuevo. El costo se descuenta de tu billetera. Consulta [Verificación de correos](/correo/verificacion-de-correos).
+
+### 4. Agrega tu registro DMARC
+
+**Qué es:** un registro DNS que indica a los servidores qué hacer con los correos que no pasan SPF y DKIM alineados.
+
+**Por qué importa:** un DMARC ausente o mal configurado resta puntos a tu reputación y empuja tus correos a spam.
+
+**Cómo hacerlo:** en tu proveedor DNS, agrega este registro:
+
+| Campo | Valor |
+| --- | --- |
+| Tipo | TXT |
+| Nombre | `_dmarc` |
+| Contenido | `v=DMARC1; p=reject` |
+
+Si nunca configuraste DMARC, puedes empezar con `p=none` y endurecerla después. Comprueba tu registro con el [verificador de dominios de dmarcian](https://dmarcian.com/domain-checker/) y consulta [DMARC: qué es y cómo configurarlo](/correo/dmarc-autenticacion-de-correo). Google también tiene guías útiles sobre [cómo agregar tu registro DMARC](https://support.google.com/a/answer/2466563) y [los informes DMARC](https://support.google.com/a/answer/10032472).
+
+### 5. Usa la dirección de remitente correcta
+
+**Qué es:** la dirección que ven tus contactos en el campo "De". Tu dominio de envío puede ser `mail.tunegocio.com` y tu remitente `tu@tunegocio.com` o `tu@mail.tunegocio.com`.
+
+**Por qué importa:** si el remitente es de un dominio distinto al de envío, DMARC no se alinea y la entregabilidad cae.
+
+**Regla:** usa un remitente del mismo dominio organizacional que tu dominio de envío. Con SPF, DKIM y DMARC bien configurados, la entregabilidad es la misma con el dominio raíz o con el subdominio.
+
+| Dominio de envío | Remitente | ¿Válido? |
+| --- | --- | --- |
+| `respuestas.tunegocio.com` | `ventas@tunegocio.com` | Sí |
+| `respuestas.tunegocio.com` | `ventas@respuestas.tunegocio.com` | Sí |
+| `mail.tunegocio.com` | `hola@otramarca.com` | No |
+
+### 6. Incluye un enlace para darse de baja
+
+**Qué es:** un enlace para que el destinatario deje de recibir tus correos.
+
+**Por qué importa:** no incluirlo perjudica gravemente tu entregabilidad y puede hacer que te marquen como spam.
+
+**Cómo hacerlo:** usa el elemento **Pie de página** del editor de correos, que incluye el enlace de baja predeterminado. Si quieres una página de baja con tu marca, sigue [Crear un enlace de baja personalizado](/correo/enlace-de-baja-personalizado).
+
+### 7. Usa doble confirmación (double opt-in)
+
+**Qué es:** el suscriptor confirma dos veces su interés, por ejemplo llenando un formulario y luego haciendo clic en un enlace de confirmación por correo.
+
+**Por qué importa:** quien confirma dos veces abre, hace clic e interactúa más, y esas son señales positivas para los proveedores.
+
+### 8. Deja de enviar a contactos que no interactúan
+
+**Qué es:** dejar de enviar a quien no abre ni hace clic durante varias campañas.
+
+**Por qué importa:** la baja interacción empuja tus correos a spam. Si alguien no reacciona después de varias semanas, reduce la frecuencia o sácalo de tu lista.
+
+**Es mejor dejar de enviarle a alguien que no interactúa que esperar a que se dé de baja o te marque como spam.**
+
+### 9. Envía con regularidad, pero sin exagerar
+
+Enviar muy poco (una vez al mes) o demasiado (varias veces al día) perjudica tu reputación, sobre todo si cambias de ritmo de golpe. Una cadencia recomendada:
+
+- Contactos recién suscritos: envíos diarios durante un periodo corto para impulsar la conversión.
+- Sin interacción después de 1 o 2 semanas: baja a envíos semanales.
+- Sin interacción después de 2 meses de envíos semanales: deja de enviarle.
+- Promociones masivas: espaciadas y breves. Siempre es mejor quedarse corto que pasarse.
+
+## Calentamiento del correo
+
+Los proveedores suelen mandar a spam los correos de dominios nuevos, porque cualquiera, incluso un spammer, puede registrar un dominio. Calentar el dominio significa aumentar el volumen poco a poco para ganar su confianza.
+
+Los dominios dedicados nuevos empiezan en la **etapa 1** (hasta 1.000 correos al día) y suben de etapa a medida que envías de forma sana: la etapa 2 permite 2.500 al día, y así sucesivamente. La etapa no depende solo del tiempo que llevas con el dominio, sino de tu fase de envío y de la salud del dominio en ese momento. Consulta la tabla completa en [Calentamiento de dominio por etapas](/correo/calentamiento-de-dominio-por-etapas).
+
+Recomendaciones para tus primeros envíos:
+
+- Aplica todas las buenas prácticas anteriores.
+- Mantente dentro del volumen de tu etapa, y si puedes, envía menos del máximo.
+- Reparte los envíos a lo largo del día en lugar de mandarlos todos juntos (en la primera etapa, idealmente no más de 100 por hora). Usa el envío por lotes de las acciones masivas o de tus automatizaciones.
+- Envía solo a contactos que se suscribieron y con alta probabilidad de interactuar. El correo en frío durante el calentamiento suele perjudicar la entregabilidad.
+- Mantén el contenido breve y directo, con una imagen adecuada si aplica.
+- No uses acortadores de enlaces públicos (bit.ly, tinyurl, etc.): son una señal clásica de spam.
+
+## Herramientas gratuitas
+
+### Mide qué tan "spam" es tu correo
+
+El propio contenido afecta la entregabilidad: demasiado texto, palabras gatillo o acortadores de enlaces pueden activar filtros. Usa [mail-tester.com](https://www.mail-tester.com/):
+
+<Steps>
+<Step title="Copia la dirección de prueba">
+Entra a Mail-Tester y copia la dirección de correo que te muestra.
+</Step>
+<Step title="Crea un contacto de prueba">
+En **Contactos**, crea un contacto con esa dirección.
+</Step>
+<Step title="Envía tu correo">
+Envía a ese contacto el correo que quieres evaluar.
+</Step>
+<Step title="Revisa tu puntuación">
+Vuelve a Mail-Tester, haz clic en el botón para ver tu puntuación y aplica las mejoras que te sugiere.
+</Step>
+</Steps>
+
+### Revisa la salud de tu dominio
+
+Escribe tu dominio de envío en el [informe de salud de correo de MXToolbox](https://mxtoolbox.com/emailhealth) para detectar listas negras, DMARC ausente, errores MX y otros problemas comunes. Es un buen punto de partida para cualquier diagnóstico.
+
+### Monitorea tu reputación en Gmail
+
+[Google Postmaster Tools](https://postmaster.google.com/) usa los datos de todos los usuarios de Gmail a los que envías y te informa sobre tasa de spam, reputación de IP y de dominio, autenticación, cifrado y errores de entrega. Puedes conectarlo a Chateea para ver esos datos dentro de tu cuenta: consulta [Google Postmaster Tools](/correo/google-postmaster-tools).
+
+<Note>
+Google puede tardar hasta dos días en mostrar datos. Si no ves nada, actualiza la página, borra la caché o prueba en una ventana de incógnito.
+</Note>
+
+## Si tus correos llegan a spam
+
+<Steps>
+<Step title="Revisa cuánto tiempo llevas enviando">
+Un dominio puede tardar hasta 4 semanas en calentarse. Si estás dentro de ese periodo, mantén la constancia y las buenas prácticas, y monitorea tu progreso con las herramientas anteriores.
+</Step>
+<Step title="Comprueba tus registros MX">
+Confirma que tus registros MX estén instalados y resuelvan bien con el [informe de salud de MXToolbox](https://mxtoolbox.com/emailhealth).
+</Step>
+<Step title="Asegúrate de tener DMARC">
+Confirma que tu registro DMARC esté publicado y sea válido.
+</Step>
+<Step title="Escribe a soporte">
+Si revisaste todo lo anterior y el problema continúa, escribe a soporte de Chateea en **help@chateea.com**.
+</Step>
+</Steps>
+
+Para un diagnóstico más detallado, consulta [¿Por qué mis correos llegan a spam?](/correo/por-que-mis-correos-llegan-a-spam).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo enviar correo en frío?">
+En general no es recomendable, y menos con un dominio nuevo. Si lo haces: verifica las direcciones, envía en lotes pequeños y lentos, calienta el dominio primero y nunca uses tu dominio de envío principal para prospección en frío. Existen herramientas externas especializadas en correo en frío que te ayudan a calificar prospectos antes de pasarlos a Chateea.
+</Accordion>
+<Accordion title="Mi IP está en una lista negra. ¿Qué hago?">
+Escribe a soporte de Chateea en **help@chateea.com** para revisar tu caso.
+</Accordion>
+<Accordion title="¿Puedo usar el mismo dominio de envío para varios negocios?">
+No es recomendable. Cada negocio debe tener su propio dominio dedicado para que la reputación de uno no afecte a los demás.
+</Accordion>
+<Accordion title="¿Cuánto tarda un dominio en calentarse por completo?">
+En general, unas 4 semanas de envíos constantes. Sigue las buenas prácticas durante todo el proceso y usa las herramientas gratuitas para monitorear tu reputación.
+</Accordion>
+<Accordion title="¿Qué pasa si envío más del volumen recomendado?">
+Enviar demasiado y demasiado pronto puede dañar la reputación de tu dominio y hacer que tu dominio o IP terminen en una lista negra. Respeta el volumen de tu etapa.
+</Accordion>
+<Accordion title="¿Qué diferencia hay entre el correo de Chateea y un proveedor SMTP propio?">
+El correo de Chateea es la solución integrada: incluye herramientas de entregabilidad, verificación de correos, configuración de dominio dedicado y acompañamiento de soporte. Con un proveedor SMTP propio eres responsable de toda la configuración y resolución de problemas, y el soporte de Chateea puede ayudarte de forma más limitada.
+</Accordion>
+<Accordion title="¿Qué es un rebote?">
+Es un correo que no se pudo entregar. Un **rebote duro** significa que la dirección no existe o es inválida: elimina ese contacto de inmediato. Un **rebote suave** es un problema temporal, como un buzón lleno o un retraso del servidor, y el envío puede reintentarse.
+</Accordion>
+<Accordion title="¿Qué es la reputación de dominio?">
+Es la calificación de confianza que los proveedores de correo le dan a tu dominio como remitente. Una buena reputación te lleva a la bandeja de entrada y una mala, a spam. Se construye con envíos constantes a contactos que interactúan.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Agregar y verificar tu dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+Configura tu dominio dedicado paso a paso.
+</Card>
+<Card title="Calentamiento de dominio por etapas" icon="fire" href="/correo/calentamiento-de-dominio-por-etapas">
+Límites diarios de cada etapa y cómo avanzar.
+</Card>
+<Card title="DMARC: qué es y cómo configurarlo" icon="shield-check" href="/correo/dmarc-autenticacion-de-correo">
+Protege tu dominio y mejora tu entregabilidad.
+</Card>
+<Card title="Verificación de correos" icon="envelope-circle-check" href="/correo/verificacion-de-correos">
+Evita enviar a direcciones inválidas.
+</Card>
+</CardGroup>

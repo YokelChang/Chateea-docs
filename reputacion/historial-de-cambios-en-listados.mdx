@@ -1,0 +1,72 @@
+---
+title: "Historial de cambios en Listados"
+description: "Consulta en los registros de auditoría qué cambió en cada ficha de Listados, quién lo hizo y cuándo."
+icon: "clock-rotate-left"
+---
+
+El historial de entidades registra cada cambio que se hace en tus fichas de Listados: qué se modificó, quién lo hizo y cuándo. Se consulta desde los registros de auditoría de tu cuenta y es la forma más rápida de aclarar por qué un dato cambió o de demostrar control de cambios si tu negocio lo necesita.
+
+Se registran tanto los cambios hechos por usuarios de tu equipo como los que hace el sistema de forma automática.
+
+## Para qué te sirve
+
+- Ver la línea de tiempo completa de cambios de cada ficha.
+- Saber qué usuario (o proceso automático) hizo cada cambio.
+- Comparar el valor anterior y el nuevo de cada campo.
+- Apoyar auditorías internas y revisiones de cumplimiento.
+- Coordinar mejor a tu equipo cuando varias personas editan las fichas.
+
+## Cómo consultar el historial
+
+<Steps>
+  <Step title="Abre los registros de auditoría">
+    En el menú lateral, entra a **Configuración → Registros de auditoría** (Audit Logs).
+  </Step>
+  <Step title="Filtra por Listados">
+    En el filtro **Módulo**, selecciona **Listados**.
+  </Step>
+  <Step title="Acota la búsqueda">
+    Usa los filtros para ordenar o buscar por ID de entidad, fecha y hora o usuario.
+  </Step>
+  <Step title="Abre una entidad">
+    Haz clic en un registro para ver la línea de tiempo completa de la ficha y el detalle de los datos que cambiaron.
+  </Step>
+</Steps>
+
+## Qué información registra
+
+| Dato | Descripción |
+| --- | --- |
+| **Usuario** | Quién hizo el cambio, identificado con su ID único. Los cambios automáticos aparecen señalados como tales. |
+| **Fecha y hora** | Momento exacto del cambio. |
+| **ID de entidad** | La ficha afectada. |
+| **Antes y después** | El valor anterior y el nuevo de cada campo modificado. |
+| **Acciones de Listados** | Además de los eventos habituales de auditoría, se registran acciones propias de Listados, como las solicitudes de sincronización forzada. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo exportar el historial?">
+    No. Por ahora no es posible exportar el historial de entidades mediante la API pública.
+  </Accordion>
+  <Accordion title="¿Quién puede ver estos registros?">
+    Solo los usuarios de tu cuenta con permiso para acceder a los registros de auditoría.
+  </Accordion>
+  <Accordion title="¿Se registran las fichas eliminadas?">
+    Sí. Las eliminaciones quedan registradas con el estado anterior y posterior de la ficha.
+  </Accordion>
+  <Accordion title="¿Veo también los cambios hechos por automatizaciones?">
+    Sí. Los cambios originados por automatizaciones o flujos de trabajo aparecen etiquetados como tales.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Sincronización forzada de listados" icon="rotate" href="/reputacion/sincronizacion-forzada-de-listados">
+    Prioriza actualizaciones atascadas y revisa el resultado en el historial.
+  </Card>
+  <Card title="Registro de auditoría de objetos" icon="clock-rotate-left" href="/crm/registro-de-auditoria-de-objetos">
+    Auditoría de objetos personalizados en el CRM.
+  </Card>
+</CardGroup>

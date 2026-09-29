@@ -1,0 +1,161 @@
+---
+title: "Cómo reducir las llamadas de spam entrantes"
+description: "Combina inteligencia numérica, disposiciones, No molestar y un IVR sencillo para detectar y bloquear llamadas de spam."
+icon: "phone-slash"
+---
+
+Las llamadas de spam interrumpen a tu equipo y hacen más difícil atender a los clientes reales. En Chateea puedes combinar varias herramientas para detectarlas y frenarlas: la **inteligencia numérica** marca las llamadas sospechosas, una **disposición** permite que tu equipo las etiquete, un **flujo de trabajo** activa **No molestar** entrante para bloquear a quien insiste y, si lo necesitas, un **IVR** sencillo filtra las llamadas automáticas antes de que lleguen a tu equipo.
+
+<Note>
+  La inteligencia numérica **marca** las llamadas como posible spam, pero no las bloquea. Para impedir llamadas futuras necesitas configurar No molestar o un filtro en tu enrutamiento.
+</Note>
+
+## Antes de empezar
+
+- Tu cuenta ya bloquea las llamadas con número oculto o privado.
+- Muchos spammers **falsifican números locales**, así que bloquear números sueltos a mano no es una solución fiable.
+- Lo más eficaz es combinar **detección** con algo de **fricción** para quien llama de forma sospechosa.
+
+## Cómo funciona la estrategia
+
+1. Un número desconocido llama a tu número de Chateea.
+2. La inteligencia numérica revisa la llamada.
+3. Si parece sospechosa, se muestra como **Spam probable** (Spam Likely).
+4. Al terminar, tu agente marca la llamada con la disposición **Llamada spam**.
+5. Un flujo de trabajo detecta esa disposición y activa No molestar entrante para el contacto.
+6. Las siguientes llamadas de ese contacto ya no le suenan a tu equipo.
+
+Opcionalmente, puedes poner un IVR de "pulsa 1" delante de tu enrutamiento para frenar las llamadas automatizadas.
+
+| Capa | Qué hace | Dónde se configura |
+| --- | --- | --- |
+| Inteligencia numérica | Detecta números sospechosos | **Configuración → Sistema telefónico → Configuración adicional** |
+| Disposición y No molestar | Bloquea a quien ya marcaste como spam | **Configuración → Sistema telefónico → Voz** y **Automatización** |
+| Filtro IVR (opcional) | Obliga a pulsar una tecla, lo que detiene a los robots | Flujo de trabajo con disparador **Iniciar IVR** |
+
+## Paso 1: activa la inteligencia numérica
+
+La inteligencia numérica revisa las llamadas entrantes de números desconocidos de EE. UU. y marca las que probablemente son spam.
+
+<Steps>
+  <Step title="Abre la configuración adicional">
+    Ve a **Configuración → Sistema telefónico → Configuración adicional → Inteligencia numérica**.
+  </Step>
+  <Step title="Actívala">
+    Marca **Recopilar información de números desconocidos** (Gather Intelligence on Unknown Phone Numbers) y guarda.
+  </Step>
+</Steps>
+
+Es un servicio de pago por uso: el consumo se descuenta de tu billetera y la tarifa vigente está en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). La etiqueta **Spam probable** también aparece en la lista y el detalle de llamadas de la aplicación móvil de Chateea, siempre que la tengas actualizada.
+
+## Paso 2: crea la disposición "Llamada spam"
+
+<Steps>
+  <Step title="Abre las disposiciones">
+    Ve a **Configuración → Sistema telefónico → Voz → Disposiciones de llamadas**.
+  </Step>
+  <Step title="Agrega la disposición">
+    Haz clic en **Agregar disposición**, escribe **Llamada spam** como nombre y guarda.
+  </Step>
+</Steps>
+
+Después de una llamada sospechosa, tu agente elige **Llamada spam** en la pantalla de resumen. Explica a tu equipo cuándo usarla para que todos la apliquen igual.
+
+## Paso 3: bloquea a quien vuelve a llamar con No molestar
+
+<Steps>
+  <Step title="Crea un flujo de trabajo">
+    Ve a **Automatización** y crea un flujo nuevo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Elige **Detalles de la llamada** con estos filtros: **Dirección de la llamada = Entrante** y **Disposición personalizada = Llamada spam**.
+  </Step>
+  <Step title="Agrega la acción de No molestar">
+    Añade **Activar/desactivar No molestar**, con dirección **Entrante** y solo el canal de **llamadas**.
+  </Step>
+  <Step title="Publica">
+    Guarda y publica el flujo.
+  </Step>
+</Steps>
+
+<Tip>
+  Empieza bloqueando solo **llamadas entrantes**. Si activas No molestar en todos los canales, podrías dejar de recibir SMS o correos legítimos. Amplía el alcance solo si el spam continúa.
+</Tip>
+
+### Protege a tus contactos importantes
+
+Los falsos positivos ocurren. Dos patrones te ayudan a corregirlos:
+
+- **Lista segura (VIP):** pon la etiqueta **VIP** a clientes y proveedores clave. En el flujo de No molestar, agrega una condición **Si/Si no** antes de la acción: si el contacto tiene la etiqueta VIP, no se aplica No molestar.
+- **Levantar el bloqueo automáticamente:** crea otro flujo con el disparador de No molestar del contacto, una espera de, por ejemplo, **30 días** y la acción que desactiva No molestar (o que avisa a alguien para revisarlo).
+
+## Paso 4 (opcional): filtra con un IVR de "pulsa 1"
+
+Un IVR mínimo frena las llamadas automáticas y apenas molesta a los clientes reales. Mantenlo corto si tu negocio atiende urgencias.
+
+<Steps>
+  <Step title="Crea el flujo IVR">
+    En **Automatización**, crea un flujo con el disparador **Iniciar IVR** y, en los filtros, elige el número público que quieres proteger. Cada número solo puede estar asignado a un flujo IVR a la vez: si no aparece, ya lo usa otro flujo.
+  </Step>
+  <Step title="Pide una tecla">
+    Añade **Recopilar respuesta en la llamada** con un mensaje breve, por ejemplo: "Gracias por llamar a [tu negocio]. Para comunicarte, pulsa 1". Elige idioma y voz, deja una sola repetición y configura un tiempo de espera de 3 a 5 segundos con un reintento. Acepta solo la tecla **1**.
+  </Step>
+  <Step title="Conecta a quien pulsa 1">
+    Para la opción **1**, añade **Conectar llamada** hacia tus usuarios o un número. Si quieres, activa la detección de buzón de voz y la grabación, y define un tiempo de espera razonable.
+  </Step>
+  <Step title="Define qué pasa si no pulsan">
+    Para quien no responde o pulsa otra tecla, añade un mensaje breve ("No recibimos tu respuesta") y termina la llamada, o envíala al buzón de voz.
+  </Step>
+  <Step title="Publica y prueba">
+    Publica el flujo y haz llamadas de prueba desde un celular y un fijo para confirmar que "pulsa 1" conecta y que la ruta alternativa termina bien.
+  </Step>
+</Steps>
+
+Si prefieres un menú con opciones, puedes usar dos: "Para soporte, pulsa 1. Para nuevas consultas, pulsa 2", y conectar cada una con el equipo correspondiente.
+
+## Paso 5: valida y ajusta
+
+1. Abre la configuración del número en **Configuración → Sistema telefónico → Administrar números** y revisa los ajustes de llamadas entrantes: confirma el flujo asignado y un tiempo de timbre razonable (por ejemplo, unos 20 segundos).
+2. Haz entre 3 y 5 llamadas de prueba: desde un número desconocido, desde uno marcado como spam y desde uno VIP.
+3. Cada semana, revisa el registro de llamadas, el uso de la disposición, cuántas personas no pulsan en el IVR y qué contactos tienen No molestar entrante. Ajusta mensajes, tiempos y la formación de tu equipo según lo que veas.
+
+<Note>
+  Si son **tus** números los que aparecen como "Spam probable" cuando llamas a clientes, es otro problema: la reputación de tus llamadas salientes. Se resuelve con buenas prácticas de reputación y el registro de tu identificador de llamadas.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La inteligencia numérica bloquea las llamadas?">
+    No. Solo las marca como Spam probable. El bloqueo lo hacen tus flujos de No molestar o tu IVR.
+  </Accordion>
+  <Accordion title="¿Activo No molestar en todos los canales?">
+    Empieza con entrante y solo llamadas. Bloquear todos los canales puede impedir SMS o correos legítimos.
+  </Accordion>
+  <Accordion title="¿Y si un agente marca por error a un cliente real?">
+    Desactiva No molestar en la ficha del contacto (o deja que tu flujo lo levante pasados los días que definiste), agrega una nota y ponle la etiqueta VIP.
+  </Accordion>
+  <Accordion title="¿Puedo mandar las llamadas de spam directo al buzón de voz?">
+    Sí. Usa la ruta de tiempo agotado o respuesta no válida del IVR, o agrega una rama en tu flujo que envíe al buzón las llamadas marcadas como Llamada spam.
+  </Accordion>
+  <Accordion title="¿Afecta a mis llamadas salientes?">
+    No. No molestar configurado solo como entrante no bloquea tus llamadas salientes a ese contacto.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar también el spam por SMS?">
+    Sí, aplicando No molestar al canal de SMS. Evalúa antes el impacto y usa una lógica separada para SMS y para llamadas.
+  </Accordion>
+  <Accordion title="¿El IVR es obligatorio?">
+    No. Muchos negocios usan solo inteligencia numérica, disposición y No molestar, sobre todo si atienden urgencias.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador Detalles de la llamada" icon="bolt" href="/telefonia/disparador-detalles-de-llamada">
+    Automatiza acciones según el resultado de cada llamada.
+  </Card>
+  <Card title="El marcador telefónico de Chateea" icon="phone" href="/telefonia/marcador-telefonico">
+    Haz y recibe llamadas desde el navegador.
+  </Card>
+</CardGroup>

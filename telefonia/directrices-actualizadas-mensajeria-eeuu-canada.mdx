@@ -1,0 +1,130 @@
+---
+title: "Requisitos de mensajería en Estados Unidos y Canadá: A2P y verificación"
+description: "Cuándo necesitas registro A2P o verificación de identidad según la ruta del SMS, y cómo resolver los errores 30034, 1002 y 21612."
+icon: "flag-usa"
+---
+
+Los requisitos para enviar SMS desde números de Estados Unidos y Canadá dependen de la **ruta** del mensaje: si va a un número del mismo país o región, o a otro país. En algunos casos necesitas el registro **A2P 10DLC** y en otros basta con la **verificación de identidad** (Persona). Esta guía resume qué se exige en cada ruta y qué hacer si ves los errores 30034, 1002 o 21612.
+
+## Mensajes nacionales (Estados Unidos, Canadá y Puerto Rico)
+
+Para los mensajes entre números de Estados Unidos, Canadá o Puerto Rico, el **registro A2P es obligatorio**. Rutas como Estados Unidos → Estados Unidos, Estados Unidos → Canadá o Canadá → Estados Unidos o Puerto Rico deben salir desde un número con registro A2P aprobado. Así lo exigen los operadores para frenar el spam y los mensajes no autorizados.
+
+Si el número no tiene registro A2P, el mensaje falla con este error:
+
+<Warning>
+  **Error 30034:** el número no cumple los requisitos A2P. Regístralo en A2P.
+</Warning>
+
+**Ejemplos:**
+
+- De un número de negocio de Estados Unidos a un cliente de Estados Unidos: **requiere A2P**.
+- De un número de Estados Unidos a uno de Canadá, o al revés: **requiere A2P**.
+
+### Excepción: de Canadá a Canadá
+
+| Fecha de compra del número canadiense | Requisito para enviar a Canadá |
+| --- | --- |
+| Antes del 26 de marzo de 2025 | No necesita registro A2P. Envía con normalidad |
+| Desde el 26 de marzo de 2025 | Puede enviar con registro A2P o, si no lo tiene, solo con la verificación de identidad (Persona) |
+
+## Mensajes internacionales (de Estados Unidos o Canadá a otros países)
+
+Para enviar desde un número de Estados Unidos o Canadá a otros países **no necesitas registro A2P**. Basta con la **verificación de identidad** (Persona), que confirma que los datos del remitente están autenticados y aprobados.
+
+- Si tu identidad está verificada, el mensaje se entrega con normalidad.
+- Si no tienes ni registro A2P ni verificación de identidad, el mensaje se bloquea con este error:
+
+<Warning>
+  **Error 1002:** mensaje bloqueado. Se necesita el registro A2P o la verificación de identidad.
+</Warning>
+
+**Ejemplos:**
+
+- De un número de Estados Unidos a un cliente en Francia: **permitido** con verificación de identidad.
+- De un número de Canadá a un cliente en Australia: **permitido** con verificación de identidad.
+- Sin verificación de identidad: **bloqueado** con el error 1002.
+
+### Cómo solucionar el error 1002
+
+Si la verificación de identidad no se inició al comprar tu número, puedes lanzarla a mano:
+
+<Steps>
+  <Step title="Abre la IA de voz">
+    Ve a **IA** y selecciona **IA de voz**.
+  </Step>
+  <Step title="Habilita las llamadas salientes">
+    Haz clic en **Habilitar llamadas salientes** (Enable Outbound Calls).
+  </Step>
+  <Step title="Inicia la verificación">
+    Marca la casilla **Persona** para iniciar la verificación de identidad.
+  </Step>
+</Steps>
+
+Cuando la verificación se apruebe, tus mensajes volverán a enviarse con normalidad.
+
+## Excepción: el Reino Unido
+
+El Reino Unido tiene reglas propias:
+
+- Los mensajes **de Estados Unidos al Reino Unido no están permitidos** y fallan automáticamente.
+- Los mensajes **del Reino Unido al Reino Unido** sí están permitidos.
+
+<Warning>
+  **Error 21612:** el mensaje no se puede enviar con la combinación actual de números de origen y destino.
+</Warning>
+
+Consulta los requisitos completos en [SMS internacionales: Reino Unido y Turquía](/telefonia/sms-internacional-reino-unido-y-turquia).
+
+## Resumen
+
+| Ruta | Requisito |
+| --- | --- |
+| Nacional (Estados Unidos, Canadá, Puerto Rico) | Registro A2P obligatorio |
+| De Canadá a Canadá | Números anteriores al 26/03/2025: nada. Números posteriores: A2P o verificación de identidad |
+| Internacional (de Estados Unidos o Canadá a otros países) | Solo verificación de identidad |
+| Sin A2P ni verificación de identidad | Mensaje bloqueado con el error 1002 |
+| De Estados Unidos al Reino Unido | No admitido. Error 21612 |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre el registro A2P y la verificación de identidad?">
+    El registro A2P aprueba tu campaña de mensajería ante los operadores y es obligatorio para los mensajes nacionales en Estados Unidos, Canadá y Puerto Rico. La verificación de identidad (Persona) autentica al remitente y es lo que habilita los mensajes internacionales desde números de Estados Unidos o Canadá.
+  </Accordion>
+  <Accordion title="Veo el error 30034. ¿Qué hago?">
+    Tu número no tiene registro A2P. Complétalo antes de enviar mensajes nacionales; la entrega se reanudará cuando se apruebe.
+  </Accordion>
+  <Accordion title="¿Cómo inicio la verificación de identidad si no se hizo al comprar el número?">
+    Ve a **IA → IA de voz**, haz clic en **Habilitar llamadas salientes** y marca la casilla **Persona**. Cuando se apruebe, tus mensajes se enviarán con normalidad.
+  </Accordion>
+  <Accordion title="¿Necesito A2P para escribir a clientes de otros países?">
+    No. Los mensajes internacionales desde números de Estados Unidos o Canadá solo requieren la verificación de identidad.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo enviar SMS de Estados Unidos al Reino Unido?">
+    Esa ruta no está admitida y falla con el error 21612. Para escribir al Reino Unido necesitas un remitente británico.
+  </Accordion>
+  <Accordion title="¿Los números canadienses están exentos de A2P?">
+    Solo para mensajes de Canadá a Canadá y solo si el número se compró antes del 26 de marzo de 2025. Los comprados después pueden enviar con A2P o, si no lo tienen, con la verificación de identidad.
+  </Accordion>
+  <Accordion title="¿Qué pasa si un número no tiene ni A2P ni verificación de identidad?">
+    El mensaje se bloquea con el error 1002. Completa el registro A2P (rutas nacionales) o la verificación de identidad (rutas internacionales).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Error 30034" icon="triangle-exclamation" href="/diccionario-codigos-error/30034-numero-no-cumple-requisitos-a2p-registrese-en-a2p">
+    El número no cumple los requisitos A2P.
+  </Card>
+  <Card title="Error 21612" icon="triangle-exclamation" href="/diccionario-codigos-error/21612-mensajes-a-to-country-no-permitidos-con-numeros-de-from-country">
+    Combinación de país de origen y destino no permitida.
+  </Card>
+  <Card title="SMS internacionales: Reino Unido y Turquía" icon="globe" href="/telefonia/sms-internacional-reino-unido-y-turquia">
+    Requisitos de remitente y contenido por país.
+  </Card>
+  <Card title="Configura correo, teléfono y SMS" icon="gear" href="/primeros-pasos/configura-correo-telefono-y-sms">
+    Primeros pasos con tu sistema telefónico.
+  </Card>
+</CardGroup>

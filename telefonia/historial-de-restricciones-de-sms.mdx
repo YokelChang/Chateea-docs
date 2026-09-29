@@ -1,0 +1,110 @@
+---
+title: "Historial de restricciones de SMS"
+description: "Consulta las advertencias y restricciones temporales de SMS de tu cuenta, su motivo y los umbrales de bajas y errores."
+icon: "clock-rotate-left"
+---
+
+El **historial de restricciones** te muestra todas las advertencias y restricciones temporales que se aplicaron a los SMS de tu cuenta de Chateea: qué pasó, cuándo y por qué. Con esa información puedes corregir el problema rápido, evitar que se repita y mantener tus envíos en regla con las normas de los operadores.
+
+## Qué registra el historial
+
+Es un registro de solo lectura con las advertencias y los bloqueos temporales que se activan al superar umbrales de los operadores o de la política de mensajería. Las causas más habituales son:
+
+- Superar el límite de envío diario o semanal.
+- Una tasa de bajas alta.
+- Una tasa de errores de entrega alta, incluido el filtrado de operadores como el error 30007.
+
+**Ejemplo:** si una campaña genera un 6 % de bajas, muy por encima del 2 a 3 % que conviene no superar, tu cuenta puede recibir una restricción temporal. El historial guarda la fecha, la hora y los detalles para que investigues qué pasó.
+
+## Dónde encontrarlo
+
+<Steps>
+  <Step title="Abre el sistema telefónico">
+    Ve a **Configuración → Sistema telefónico**.
+  </Step>
+  <Step title="Entra en Mensajería">
+    Abre la pestaña **Mensajería**.
+  </Step>
+  <Step title="Abre el historial">
+    Haz clic en la pestaña **Historial de restricciones** (Restriction History), la última de la derecha.
+  </Step>
+</Steps>
+
+A la derecha de la tabla tienes los filtros **Fecha de inicio** y **Fecha de fin** para ver un periodo concreto. Si hay muchos registros, usa la paginación de la parte inferior.
+
+## Cómo leer la tabla
+
+Cada evento muestra:
+
+| Columna | Qué indica |
+| --- | --- |
+| **Fecha** | Cuándo se produjo la advertencia o la restricción |
+| **Tipo de restricción** | Advertencia o restricción temporal |
+| **Motivo** | Por ejemplo, tasa de bajas por encima del umbral |
+| **Porcentaje o cantidad** | El valor medido en ese momento |
+| **Detalles adicionales** | Métricas relacionadas, como la tasa de errores |
+
+<Note>
+  Las fechas y horas del historial se muestran en **UTC**. Conviértelas a tu hora local cuando las compares con tus envíos.
+</Note>
+
+## Umbrales de referencia
+
+| Métrica | Buena | Objetivo | Bloqueo de 24 horas |
+| --- | --- | --- | --- |
+| Tasa de bajas | 0 a 1 % | Menos del 2 a 3 % | Al llegar al 3 % |
+| Tasa de errores de entrega | 0 a 6 % | Menos del 10 % | Al llegar al 10 % |
+
+### Qué significan estas tasas
+
+- **Tasa de bajas alta:** los contactos se oponen a tus mensajes, se quejan o los marcan como spam. Cuando llega al **3 %**, tu cuenta no puede enviar SMS durante 24 horas.
+- **Tasa de errores alta:** envías a números fuera de servicio, inaccesibles o que no reciben SMS (como los fijos). También puede indicar que los filtros de los operadores rechazan tus mensajes por malas prácticas anteriores. Cuando llega al **10 %**, tu cuenta no puede enviar SMS durante 24 horas.
+
+<Warning>
+  Después de un bloqueo, revisa tus envíos recientes, el contenido, la limpieza de tus listas y la configuración de cumplimiento antes de volver a enviar en volumen.
+</Warning>
+
+## Cómo bajar tus tasas
+
+- Limpia tus listas con regularidad y quita los teléfonos fijos.
+- Verifica los números al capturarlos y activa la inteligencia numérica.
+- Envía solo a contactos que dieron su consentimiento.
+- Incluye tu identificación y el texto de baja en el primer mensaje.
+- Evita los contenidos y enlaces que activan los filtros de los operadores.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El historial muestra datos en tiempo real?">
+    Registra eventos con su fecha y hora. Usa los filtros de fecha para revisar un periodo concreto.
+  </Accordion>
+  <Accordion title="¿Veo tanto advertencias como restricciones?">
+    Sí. El registro incluye advertencias y restricciones temporales, con el motivo y los valores medidos.
+  </Accordion>
+  <Accordion title="¿Cuánto dura una restricción temporal?">
+    Cuando tu cuenta llega a un umbral de bloqueo (3 % de bajas o 10 % de errores), no puede enviar SMS durante 24 horas. Aprovecha ese tiempo para revisar tus envíos.
+  </Accordion>
+  <Accordion title="¿Por qué las horas están en UTC?">
+    Para que los registros sean coherentes entre zonas horarias. Convierte la hora a tu zona local al compararla con tu actividad.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar por fechas?">
+    Sí, con los filtros **Fecha de inicio** y **Fecha de fin**, y la paginación para moverte entre páginas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Límite diario de SMS y rampa de envío" icon="gauge" href="/telefonia/limite-diario-de-sms-y-rampa-de-envio">
+    Cuántos SMS puedes enviar al día y cómo subir de nivel.
+  </Card>
+  <Card title="Error 30007: filtrado del operador" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Cómo evitar el filtrado de tus mensajes.
+  </Card>
+  <Card title="Disparador: Error de mensajería SMS" icon="bolt" href="/automatizaciones/disparador-error-de-mensajeria-sms">
+    Reacciona automáticamente cuando un SMS falla.
+  </Card>
+  <Card title="No molestar (DND)" icon="bell-slash" href="/contactos/no-molestar-dnd">
+    Bloqueo de canales por contacto.
+  </Card>
+</CardGroup>

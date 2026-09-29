@@ -1,0 +1,152 @@
+---
+title: "Disparador de flujo: Detalles de llamada"
+description: "Inicia flujos de trabajo según la dirección, el estado, el número, el grupo de números o la disposición de cada llamada."
+icon: "bolt"
+---
+
+El disparador **Detalles de llamada** (Call Details) inscribe a un contacto en un flujo de trabajo cuando una llamada cumple las condiciones que tú defines: dirección, estado, número de teléfono, grupo de números o disposición. Así automatizas lo que pasa después de cada llamada, como devolver una llamada perdida, avisar al equipo o crear una tarea, sin revisar el registro de llamadas a mano.
+
+## Qué es
+
+Es un disparador de eventos. Cada vez que se registra una llamada, Chateea compara sus datos con los filtros del disparador y, si coinciden, el contacto entra al flujo.
+
+**Ejemplo:** inscribir al contacto solo cuando una llamada **entrante** termina como **ocupado**, **buzón de voz** o **sin respuesta**. El flujo puede avisar al equipo, crear una tarea para devolver la llamada, poner una etiqueta o enviar un mensaje de seguimiento.
+
+## Para qué te sirve
+
+- **Seguimiento automático:** devoluciones de llamada, avisos, tareas, etiquetas o mensajes cuando ocurre una llamada que cumple las condiciones.
+- **Precisión:** filtras por dirección, estado, número, grupo de números y disposición.
+- **Respuesta consistente:** cada llamada perdida o buzón recibe siempre el mismo tratamiento.
+- **Menos vigilancia manual:** los flujos reaccionan solos, sin que nadie revise el registro de llamadas todo el día.
+- **Ventas y soporte a medida:** flujos distintos para leads entrantes, llamadas de venta, llamadas perdidas o pedidos de devolución.
+
+## Cómo funciona
+
+1. **Ocurre una llamada:** Chateea registra la llamada y sus datos.
+2. **Se evalúan los filtros:** la llamada se compara con la dirección, el estado, el grupo de números, la disposición, el número y cualquier otra condición.
+3. **El contacto califica:** si cumple las condiciones y la configuración de inscripción del flujo lo permite, entra al flujo.
+4. **Se ejecutan las acciones:** mensajes, tareas, avisos, cambios en la ficha, etiquetas o lo que hayas configurado.
+
+Cada tipo de filtro que añades **restringe** más las llamadas que califican.
+
+### Estado de llamada o disposición
+
+| Filtro | Qué representa | Ejemplos |
+| --- | --- | --- |
+| **Estado de la llamada** | El resultado que registra el sistema automáticamente. | Ocupado, buzón de voz, sin respuesta, completada |
+| **Disposición personalizada** | La clasificación que tu equipo elige después de la llamada. | Seguimiento, Calificado, Sin respuesta, Buzón de voz, Pidió devolución de llamada |
+
+<Note>
+  Las disposiciones personalizadas son independientes de los estados del sistema. Si tu automatización debe reaccionar al resultado que elige tu vendedor, usa el filtro **Disposición personalizada**.
+</Note>
+
+## Filtros disponibles
+
+| Filtro | Para qué sirve | Ejemplo |
+| --- | --- | --- |
+| **Dirección de la llamada** | Separa llamadas entrantes y salientes. | Entrante |
+| **Estado de la llamada** | Coincide con los resultados del sistema que elijas. | Ocupado, buzón de voz, sin respuesta |
+| **En grupo de números** | Limita el disparador a las llamadas de un grupo de seguimiento concreto. | Grupo de búsqueda pagada |
+| **Disposición personalizada** | Coincide con la clasificación registrada tras la llamada. | Sin respuesta, Buzón de voz |
+| **En número de teléfono** | Limita el disparador a uno o varios números concretos. | Número principal de ventas |
+
+Por ejemplo, con **Dirección = Entrante** y **Estado** que incluye ocupado, buzón de voz y sin respuesta, la llamada tiene que ser entrante **y** tener uno de esos estados para que el contacto entre.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre o crea un flujo">
+    Ve a **Automatización → Flujos de trabajo**. Abre un flujo o haz clic en **Crear flujo de trabajo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y, en la categoría de eventos, elige **Detalles de llamada**.
+  </Step>
+  <Step title="Ponle nombre">
+    Escribe un nombre claro, como "Llamada entrante perdida" o "Seguimiento de buzón de voz". No cambia cómo funciona, pero facilita mantener tus flujos.
+  </Step>
+  <Step title="Filtra por dirección">
+    Añade **Dirección de la llamada** si el flujo debe aplicar solo a llamadas entrantes o solo a salientes.
+  </Step>
+  <Step title="Filtra por estado">
+    Añade **Estado de la llamada** y elige los resultados que deben calificar, por ejemplo ocupado, buzón de voz o sin respuesta. Puedes elegir varios.
+  </Step>
+  <Step title="Filtra por grupo de números (si lo necesitas)">
+    Usa **En grupo de números** para que el flujo aplique solo a llamadas atribuidas a un grupo de seguimiento concreto. Te permite separar automatizaciones por campaña o fuente de tráfico.
+  </Step>
+  <Step title="Filtra por disposición (si lo necesitas)">
+    Usa **Disposición personalizada** para reaccionar a la clasificación que tu equipo registra, como Seguimiento o Pidió devolución de llamada.
+  </Step>
+  <Step title="Filtra por número (si lo necesitas)">
+    Usa **En número de teléfono** cuando cada línea del negocio necesita su propia automatización.
+  </Step>
+  <Step title="Guarda, prueba y publica">
+    Guarda el disparador, añade las acciones del flujo y pruébalo con una llamada representativa. Cuando funcione como esperas, cambia el flujo de **Borrador** a **Publicado**.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+| Situación | Configuración del disparador | Acciones posibles |
+| --- | --- | --- |
+| Llamada entrante perdida | Dirección = Entrante; Estado = ocupado o sin respuesta | Avisar al equipo, crear tarea de devolución, enviar un mensaje |
+| Seguimiento de buzón de voz | Estado = buzón de voz | Avisar al usuario asignado o crear una tarea |
+| Seguimiento de ventas por disposición | Disposición = Seguimiento o Pidió devolución de llamada | Crear tarea, mover la oportunidad, enviar mensaje |
+| Llamadas de una campaña | En grupo de números = grupo de la campaña | Etiquetas de campaña o reparto interno |
+| Línea de un departamento | En número de teléfono = línea elegida | Un flujo exclusivo para ese departamento |
+
+## Pruebas y solución de problemas
+
+1. **Confirma que el flujo está publicado.** Los flujos en borrador no procesan llamadas reales.
+2. **Compara la llamada con cada filtro.** Revisa dirección, estado, grupo, número y disposición.
+3. **Revisa la disposición.** Un disparador por disposición necesita que esa disposición se haya registrado realmente en la llamada.
+4. **Revisa Permitir reingreso.** Que haya otra llamada que califica no significa que el contacto pueda volver a entrar. Depende de la configuración del flujo.
+5. **Comprueba si el contacto sigue activo en el flujo.** Normalmente no puede volver a entrar mientras siga dentro.
+6. **Revisa el historial de inscripciones y los registros de ejecución** para ver si el contacto entró y si alguna acción se omitió o falló.
+7. **Simplifica temporalmente el disparador.** Quita filtros para encontrar cuál impide la inscripción y luego vuelve a añadirlos.
+
+<Tip>
+  Si tu automatización depende de que **Completada** signifique que una persona contestó de verdad, activa la **Conexión de llamada** en el número. Mejora mucho la precisión de los estados.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se dispara con cada llamada?">
+    No. La llamada tiene que cumplir las condiciones del disparador. Cuantos más filtros añadas, menos llamadas califican.
+  </Accordion>
+  <Accordion title="¿Un mismo contacto puede entrar varias veces?">
+    Cada llamada que califica genera un evento, pero volver a entrar depende de **Permitir reingreso** en la configuración del flujo. Con el reingreso activado, el contacto puede volver a entrar tras terminar el flujo o ser retirado manualmente. No puede volver a entrar mientras siga activo en el mismo flujo.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre estado de la llamada y disposición personalizada?">
+    El estado lo registra el sistema (ocupado, buzón de voz, sin respuesta, completada). La disposición la elige tu equipo después de la llamada (Seguimiento, Calificado, Pidió devolución de llamada).
+  </Accordion>
+  <Accordion title="¿Puedo elegir varios estados?">
+    Sí. Puedes seleccionar varios valores dentro del filtro de estado. Los demás filtros siguen restringiendo el resultado.
+  </Accordion>
+  <Accordion title="¿Por qué no se dispara mi flujo por disposición?">
+    Confirma que la disposición se registró en la llamada y que todavía existe en tu cuenta. Si se eliminó, actualiza el filtro con una disposición válida.
+  </Accordion>
+  <Accordion title="¿Una llamada puede activar varios flujos?">
+    Sí. Cada flujo evalúa su propio disparador. Una llamada puede calificar en varios si cumple las condiciones de cada uno y sus reglas de inscripción lo permiten.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre En grupo de números y En número de teléfono?">
+    **En grupo de números** apunta a las llamadas de un grupo de seguimiento. **En número de teléfono** apunta a uno o varios números concretos. Elige según cómo organizas las fuentes de llamadas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conexión de llamada" icon="phone" href="/telefonia/conexion-de-llamada-estado-preciso">
+    Estados de llamada más precisos para tus automatizaciones.
+  </Card>
+  <Card title="Gestionar los números de un grupo" icon="list" href="/telefonia/gestionar-numeros-de-un-grupo-de-numeros">
+    Organiza tus grupos de seguimiento de llamadas.
+  </Card>
+  <Card title="Configuración del flujo de trabajo" icon="gear" href="/flujo-de-trabajo/configuracion-del-flujo-de-trabajo-descripcion-general">
+    Reingreso y otras opciones del flujo.
+  </Card>
+  <Card title="Acciones manuales de llamada y SMS" icon="phone-volume" href="/conversaciones/acciones-manuales-llamada-y-sms">
+    Crea tareas de llamada para tu equipo desde un flujo.
+  </Card>
+</CardGroup>

@@ -1,0 +1,275 @@
+---
+title: "Llamadas entrantes: IVR, IA de voz, enrutamiento y flujo completo"
+description: "Entiende en qué orden se atiende cada llamada entrante: IVR, IA de voz, propietarios, equipo, desvío, tiempo de espera y respaldo."
+icon: "phone-arrow-down-left"
+---
+
+Cuando alguien marca al número de tu negocio, Chateea decide quién atiende la llamada siguiendo un orden: un menú IVR o un agente de IA de voz, el usuario responsable del contacto o del número, tu equipo, un número de desvío y, si nadie contesta, un respaldo como el buzón de voz. Entender ese orden te ayuda a diseñar un flujo predecible y a encontrar rápido por qué una llamada llegó a quien no esperabas.
+
+<Warning>
+Un número de desvío configurado **no** recibe todas las llamadas primero. Si quien llama es un contacto asignado a un usuario, o si el número llamado tiene un usuario asignado, esa asignación puede tener prioridad sobre el número de desvío general.
+</Warning>
+
+## El flujo en resumen
+
+1. **IVR o IA de voz en modo principal:** si el número tiene un IVR o un agente de IA de voz configurado para contestar directamente, ellos atienden la llamada.
+2. **Enrutamiento por propietario:** Chateea revisa si hay un propietario del número o del contacto que deba recibir la llamada.
+3. **Timbre simultáneo al equipo:** suenan a la vez los dispositivos del usuario, los usuarios adicionales y un número de desvío.
+4. **Tiempo de espera:** si nadie contesta en el tiempo configurado, la llamada pasa al respaldo.
+5. **Respaldo:** la IA de voz en modo respaldo o el buzón de voz atienden la llamada.
+
+Chateea deja de avanzar en el flujo en cuanto alguien atiende la llamada.
+
+## Beneficios de entender el flujo
+
+- **Enrutamiento predecible:** sabes qué usuario o destino recibe la llamada primero.
+- **Menos llamadas perdidas:** combinas usuarios, desvíos y respaldos para cubrir todos los casos.
+- **Diagnóstico más rápido:** identificas por qué una llamada llegó a un usuario asignado y no al número de desvío.
+- **Mejor experiencia para quien llama:** llega a la persona correcta sin transferencias innecesarias.
+
+## Dónde se configura
+
+| Qué | Dónde |
+| --- | --- |
+| Desvío por número (IVR, miembro del equipo, número externo, IA de voz, número comercial, más miembros del equipo, tiempo de espera y respaldo) | **Configuración → Sistema telefónico → Números de teléfono → Editar configuración**, pestaña de desvío de llamadas |
+| Ajustes avanzados por número (conexión de llamada, mensaje susurrado, identificador, preferencia de propietario, grabación) | La misma ventana, pestaña **Configuración avanzada** |
+| Ajustes generales de llamadas entrantes para toda tu cuenta | **Configuración → Sistema telefónico → Voz → Otros ajustes → Llamadas entrantes** |
+| Modo de la IA de voz | **IA → IA de voz → tu agente → Implementar** (Deploy) |
+| Menús IVR | **Automatización → Flujos de trabajo** |
+
+## Orden de prioridad
+
+| Capa | Qué ocurre |
+| --- | --- |
+| **IVR o flujo de trabajo** | Si un IVR controla el número, su lógica atiende la llamada. |
+| **IA de voz: contestar directamente** | El agente contesta antes del enrutamiento a personas. |
+| **Enrutamiento por propietario** | El propietario del número o del contacto puede recibir la llamada antes que el desvío general. |
+| **Equipo y dispositivos** | Suenan los dispositivos del usuario y los miembros adicionales. |
+| **Número de desvío** | Se usa el número externo o comercial si ninguna capa anterior atendió. |
+| **Respaldo** | Tras el tiempo de espera, la llamada pasa a la IA de voz o al buzón de voz. |
+
+La prioridad define qué regla se aplica. El timbre simultáneo describe cómo suenan los dispositivos una vez elegido ese camino.
+
+## IVR e IA de voz
+
+### IVR
+
+El IVR (respuesta de voz interactiva) es un menú en el que quien llama elige una opción con el teclado, por ejemplo: «Marca 1 para Ventas, marca 2 para Soporte». Puede reproducir mensajes, recoger opciones y enviar la llamada a distintos usuarios, departamentos o destinos.
+
+Se crea en **Automatización → Flujos de trabajo** y luego se conecta al número en la configuración de desvío. Cuando hay un IVR activo, controla la llamada antes que el resto del flujo.
+
+### IA de voz: contestar directamente o como respaldo
+
+| Modo | Comportamiento |
+| --- | --- |
+| **Contestar llamadas directamente** | El agente contesta de inmediato. El timbre a tu equipo no se ejecuta. |
+| **Usar como respaldo** | El agente contesta solo si nadie del equipo atendió antes del tiempo de espera. |
+
+Cámbialo en **IA → IA de voz → tu agente → Implementar**. También puedes definir un **horario de atención** para que el agente solo atienda en ciertas horas.
+
+## Enrutamiento por propietario
+
+Sirve para que la llamada llegue a la persona que ya es responsable del contacto o del número. En **Configuración avanzada → Preferir desviar llamadas a** eliges:
+
+- **Propietario del contacto:** si quien llama es un contacto asignado a un usuario, Chateea puede priorizar a ese usuario antes del desvío general.
+- **Propietario del número:** Chateea puede priorizar al usuario asignado al número que se marcó.
+
+Además, en **Configuración → Sistema telefónico → Voz → Otros ajustes → Llamadas entrantes** tienes dos interruptores para toda la cuenta:
+
+| Interruptor | Activado | Desactivado |
+| --- | --- | --- |
+| **Hacer sonar al usuario asignado al número llamado** | Se intenta primero con el usuario asignado al número marcado. | Se usa el propietario del contacto o el desvío general. |
+| **Desviar llamadas al número comercial** | El número comercial de tu negocio queda como último recurso de desvío. Viene activado por defecto. | Las llamadas no caen a tu línea comercial. |
+
+<Note>
+Ninguno de estos ajustes aplica cuando el número tiene un IVR o una IA de voz en modo principal: esos siempre van primero.
+</Note>
+
+## Equipo, dispositivos y timbre simultáneo
+
+Cuando la llamada llega a tu equipo, Chateea hace **una sola marcación a todos los destinos a la vez**. No es secuencial: todo suena al mismo tiempo y **quien contesta primero se queda con la llamada**. Los demás dejan de sonar.
+
+### Dispositivos de cada usuario
+
+| Dispositivo | Cómo recibe la llamada | Requisito |
+| --- | --- | --- |
+| **Aplicación web** | Aparece una alerta en el navegador. | Tener la sesión abierta. |
+| **Aplicación móvil** | Llega una notificación a la aplicación móvil de Chateea. | Permisos de llamadas y notificaciones activados. |
+| **Número de teléfono** | Chateea llama al número personal del usuario. | Tener un número personal configurado. |
+| **Teléfono de escritorio VoIP** | Suena el teléfono SIP del usuario. | Configurarlo antes en la fila del usuario. |
+
+### Llamar a más miembros del equipo
+
+Activa **Llamar a más miembros del equipo** (Ring More Team Members) para que suenen usuarios adicionales en la misma marcación:
+
+- Hasta **6 usuarios adicionales**.
+- Cada uno suena en sus dispositivos preferidos.
+- El primero que contesta se queda con la llamada.
+- Si un usuario rechaza la llamada, los demás siguen sonando.
+- No aplica cuando el IVR o la IA de voz en modo principal están activos.
+
+### Qué número de teléfono se incluye
+
+En el timbre simultáneo solo entra **un** número de teléfono, elegido en este orden:
+
+| Prioridad | Número | Cuándo se usa |
+| --- | --- | --- |
+| **1.ª** | Teléfono personal del miembro del equipo | Si su dispositivo **Número de teléfono** está marcado. En ese caso no se usan ni el externo ni el comercial. |
+| **2.ª** | Número externo | Si el teléfono del miembro no está marcado y hay un número externo configurado. |
+| **3.ª** | Número comercial | Como último recurso, si está activado. |
+
+Si no hay ninguno, solo suenan los dispositivos digitales (web y móvil). Las etiquetas de prioridad que ves en la pantalla de desvío indican qué número entra en la marcación, no un orden de timbre.
+
+## Tiempo de espera y respaldo
+
+### Tiempo de espera de llamadas entrantes
+
+Define cuánto tiempo suena tu equipo antes de pasar al respaldo. El valor predeterminado es de **20 segundos** y puedes cambiarlo en **Tiempo de espera de llamadas entrantes** (Incoming Call Timeout).
+
+- Si es muy corto, tu equipo no alcanza a contestar.
+- Si es muy largo, el buzón de voz de la operadora de un teléfono externo puede contestar antes que el respaldo de Chateea.
+
+### Opciones de respaldo
+
+Si nadie contesta, la llamada pasa a:
+
+1. **IA de voz en modo respaldo**, si la tienes configurada.
+2. La sección **Respaldo**: **buzón de voz** (quien llama deja un mensaje, que queda en Conversaciones) o **IA de voz**.
+
+### Saludo del buzón de voz
+
+Chateea usa el primer saludo que encuentra en este orden:
+
+| Orden | Saludo | Dónde se configura |
+| --- | --- | --- |
+| 1 | Buzón de voz personal del usuario | Perfil del usuario, ajustes de llamadas y buzón de voz |
+| 2 | Buzón de voz de la cuenta | **Configuración → Sistema telefónico**, ajustes de llamadas y buzón de voz |
+| 3 | Saludo predeterminado del sistema | Automático |
+
+Para que el audio se reproduzca bien, sube un archivo **MP3 o WAV**, idealmente a 64 kbps.
+
+## Configuración avanzada
+
+| Ajuste | Qué hace | Cuándo usarlo |
+| --- | --- | --- |
+| **Conexión de llamada** (Call Connect) | Quien recibe debe pulsar una tecla para confirmar que es una persona. Si no la pulsa, la llamada pasa al respaldo. | Números externos o comerciales, donde un contestador automático podría «contestar» por ti. |
+| **Mensaje susurrado** (Whisper Message) | Reproduce un mensaje solo para quien recibe (por ejemplo, el nombre del contacto o el origen) antes de conectar. Quien llama escucha música de espera. | Para dar contexto al agente antes de hablar. |
+| **Identificador mostrado** | Define qué número ve el usuario cuando recibe una llamada desviada. | Para saber de un vistazo de qué línea o quién llama. |
+| **Preferir desviar llamadas a** | Prioriza al propietario del contacto o del número. | Revísalo si una llamada parece saltarse el desvío general. |
+| **Grabación de llamadas** | Graba ambos lados de la llamada. Las grabaciones quedan en Conversaciones. | Revisión y calidad. Cumple las leyes de consentimiento y aviso de grabación de tu región. |
+
+## Cómo configurar el enrutamiento de llamadas entrantes
+
+<Steps>
+  <Step title="Abre la configuración del número">
+    Ve a **Configuración → Sistema telefónico → Números de teléfono** y haz clic en **Editar configuración** en el número.
+  </Step>
+  <Step title="Revisa los propietarios">
+    Comprueba si el número está asignado a un usuario y si tus contactos habituales tienen un usuario asignado.
+  </Step>
+  <Step title="Configura el IVR si lo necesitas">
+    Si quien llama debe pasar por un menú, crea el IVR en un flujo de trabajo y conéctalo al número.
+  </Step>
+  <Step title="Configura al miembro del equipo">
+    Elige al usuario principal y los dispositivos en los que debe sonar.
+  </Step>
+  <Step title="Agrega más usuarios si hace falta">
+    Activa **Llamar a más miembros del equipo** y elige hasta seis usuarios adicionales.
+  </Step>
+  <Step title="Define el número de desvío">
+    Agrega un número externo o usa el número comercial si las llamadas deben salir del equipo principal.
+  </Step>
+  <Step title="Ajusta el tiempo de espera">
+    Empieza con unos 20 segundos y ajústalo según cómo contesta tu equipo.
+  </Step>
+  <Step title="Elige el respaldo">
+    Selecciona IA de voz o buzón de voz para las llamadas sin contestar.
+  </Step>
+  <Step title="Revisa la configuración avanzada">
+    Confirma conexión de llamada, mensaje susurrado, identificador y **Preferir desviar llamadas a**.
+  </Step>
+  <Step title="Configura la IA de voz aparte">
+    Si la usas, entra a **IA → IA de voz → tu agente → Implementar** y elige **Contestar directamente** o **Usar como respaldo**.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz una llamada de prueba desde un contacto que tenga usuario asignado y otra desde un número desconocido, y confirma que cada una sigue el camino esperado.
+  </Step>
+</Steps>
+
+## Escenarios comunes
+
+| Objetivo | Cómo configurarlo |
+| --- | --- |
+| **Que cada contacto hable con su asesor** | Asigna el contacto al usuario, elige **Propietario del contacto** en **Preferir desviar llamadas a** y define un desvío o respaldo por si el asesor no contesta. |
+| **Que un número dedicado suene a su dueño** | Asigna el número al usuario, elige **Propietario del número** y agrega usuarios adicionales o respaldo. |
+| **Que suenen varias personas a la vez** | Configura al miembro principal, activa **Llamar a más miembros del equipo**, revisa sus dispositivos y ajusta tiempo de espera y respaldo. |
+| **Que la IA de voz conteste todas las llamadas** | En el agente, pestaña **Implementar**, elige **Contestar directamente**, asigna el número y define el horario. |
+| **Primero personas, luego IA de voz** | Configura usuarios y desvíos, define el tiempo de espera y pon la IA de voz en **Usar como respaldo**. Prueba que solo conteste cuando nadie atiende. |
+| **Menú de opciones** | Crea el IVR en **Automatización → Flujos de trabajo** y conéctalo al número. |
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="La llamada la recibe otro usuario o no llega al número de desvío">
+    - Revisa si quien llama es un contacto existente y si tiene usuario asignado.
+    - Revisa si el número llamado tiene un usuario asignado.
+    - Revisa **Preferir desviar llamadas a** y el interruptor **Hacer sonar al usuario asignado al número llamado**.
+    - Revisa **Llamar a más miembros del equipo**.
+    - Confirma el número externo o comercial configurado. Si marcaste el dispositivo **Número de teléfono** de un usuario, ese ocupa el lugar del número externo.
+  </Accordion>
+  <Accordion title="Un miembro del equipo no recibe llamadas">
+    - Confirma que está asignado al número, al contacto o a los miembros adicionales.
+    - Revisa sus dispositivos activos.
+    - Si usa la aplicación móvil, confirma los permisos de llamadas y notificaciones.
+    - Comprueba que un IVR o la IA de voz no estén atendiendo primero.
+  </Accordion>
+  <Accordion title="Las llamadas llegan al buzón de voz demasiado rápido">
+    - Revisa el tiempo de espera.
+    - Confirma que el usuario o el número de desvío estén disponibles.
+    - Si usas conexión de llamada con un número externo, recuerda que sin pulsar una tecla la llamada pasa al respaldo.
+    - Revisa el respaldo elegido.
+  </Accordion>
+  <Accordion title="Contesta el buzón de voz de la operadora en lugar del de Chateea">
+    El teléfono externo sonó tanto que su propio buzón contestó. Baja el tiempo de espera (empieza con 20 segundos), mide cuánto tarda en saltar el buzón de ese teléfono y activa la conexión de llamada.
+  </Accordion>
+  <Accordion title="La IA de voz no contesta">
+    - En **IA → IA de voz → tu agente → Implementar**, revisa si está en **Contestar directamente** o **Usar como respaldo**.
+    - Confirma que el número o grupo de números correcto esté asignado.
+    - Revisa el horario de atención del agente.
+    - En modo respaldo, verifica que el flujo anterior realmente llegue al tiempo de espera sin respuesta.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si quien llama no está guardado como contacto?">
+    El enrutamiento por propietario del contacto no aplica y la llamada sigue con las siguientes reglas del flujo.
+  </Accordion>
+  <Accordion title="¿El número externo siempre recibe la llamada antes que los demás destinos?">
+    No. El enrutamiento por propietario y otras reglas de mayor prioridad se evalúan antes.
+  </Accordion>
+  <Accordion title="¿El tiempo de espera tiene que ser de 20 segundos?">
+    No. Es el valor predeterminado y un buen punto de partida, pero puedes cambiarlo.
+  </Accordion>
+  <Accordion title="¿La IA de voz puede atender solo en ciertas horas?">
+    Sí. Define su horario de atención en la configuración del agente.
+  </Accordion>
+  <Accordion title="¿Las llamadas tienen una duración máxima?">
+    Sí. Las llamadas se cortan automáticamente a las **2 horas**. Si necesitas seguir hablando, inicia una llamada nueva.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Flujo de llamadas entrantes con IA de voz" icon="robot" href="/ia/flujo-de-llamadas-entrantes-voz-ia">
+    Configura el agente para contestar o respaldar.
+  </Card>
+  <Card title="Guía de IVR" icon="diagram-project" href="/automatizaciones/guia-de-ivr-disparadores-y-acciones">
+    Disparadores y acciones para crear menús telefónicos.
+  </Card>
+  <Card title="Límites de llamadas entrantes" icon="gauge-high" href="/telefonia/limites-de-llamadas-entrantes">
+    Cuántas llamadas por minuto admite cada tipo de número.
+  </Card>
+</CardGroup>

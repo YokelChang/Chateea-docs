@@ -1,0 +1,149 @@
+---
+title: "Agregar y verificar tu dominio de envío"
+description: "Agrega tu dominio o subdominio de envío y verifica sus registros SPF, DKIM y DMARC de forma automática o manual."
+icon: "globe"
+---
+
+Agregar y verificar tu propio dominio de envío es el paso más importante para que tus correos lleguen a la bandeja de entrada. Al autenticarlo con SPF, DKIM y DMARC demuestras a Gmail, Outlook y Yahoo que tus correos son legítimos, proteges tu marca contra la suplantación y construyes una reputación que es solo tuya.
+
+## Antes de empezar
+
+Necesitas:
+
+- Acceso al panel de tu proveedor DNS (Cloudflare, GoDaddy, AWS Route 53, Namecheap, Hostinger, etc.), es decir, donde está alojado tu dominio.
+- Permisos para agregar y editar registros DNS.
+- El dominio o subdominio que usarás para enviar.
+- Nociones básicas de los tipos de registro DNS (TXT, CNAME, MX).
+
+<Tip>
+Usa un **subdominio**, como `mail.tunegocio.com`, en lugar de tu dominio raíz. Si algún día tienes problemas de entregabilidad, quedan aislados en el subdominio y no afectan a tu dominio principal.
+</Tip>
+
+## Paso 1: agrega tu dominio
+
+<Steps>
+<Step title="Abre tus dominios dedicados">
+Ve a **Configuración → Servicios de correo → Dominio dedicado e IP** (Dedicated Domain & IP).
+</Step>
+<Step title="Agrega el dominio">
+Dentro de **Dominios dedicados**, haz clic en **+ Agregar dominio** (Add Domain), arriba a la derecha.
+</Step>
+<Step title="Escribe el dominio o subdominio">
+Ingresa el dominio o subdominio que usarás para enviar y haz clic en **Agregar y verificar** (Add & Verify).
+</Step>
+</Steps>
+
+## Paso 2: verifica tu dominio
+
+La verificación consiste en publicar en tu DNS los registros que Chateea te indica. Estos son los que hacen la autenticación:
+
+| Registro | Para qué sirve |
+| --- | --- |
+| **SPF** | Autoriza qué servidores pueden enviar correos en nombre de tu dominio. |
+| **DKIM** | Agrega una firma digital que prueba que el correo no se alteró en el camino. |
+| **DMARC** | Define qué hacer con los correos que no pasan la autenticación y te envía informes. |
+
+Además, la lista puede incluir registros **CNAME** y **MX** necesarios para el seguimiento y los rebotes.
+
+Para ver los registros, abre el **menú de tres puntos** junto a tu dominio y haz clic en **Verificar dominio** (Verify domain). Verás todos los registros que tu dominio necesita, con su estado de verificación y un botón **Copiar** para pegar cada valor en tu proveedor DNS.
+
+### Opción 1: configuración automática
+
+Es el método más sencillo si tu proveedor DNS es compatible.
+
+<Steps>
+<Step title="Continúa después de agregar el dominio">
+Haz clic en **Continuar**. Chateea detectará tu proveedor DNS (por ejemplo, Cloudflare, GoDaddy o Namecheap).
+</Step>
+<Step title="Autoriza la conexión">
+Inicia sesión en tu proveedor DNS y autoriza a Chateea a crear los registros por ti.
+</Step>
+<Step title="Listo">
+Al terminar, tu dominio aparecerá como **Verificado**.
+</Step>
+</Steps>
+
+<Note>
+Si tu proveedor no es compatible con la configuración automática, se te pedirá que agregues los registros de forma manual.
+</Note>
+
+### Opción 2: configuración manual
+
+Agrega en tu proveedor DNS cada registro que te muestra Chateea, siguiendo estas reglas:
+
+- **Tipo:** TXT, CNAME o MX, exactamente como se indica.
+- **Nombre o host:** para un dominio raíz usa `@`. Para un subdominio como `mail.tunegocio.com`, escribe solo la parte del subdominio (por ejemplo, `mail`), ya que la mayoría de los proveedores agregan el dominio automáticamente.
+- **Valor:** copia y pega el valor tal cual, sin modificarlo.
+- **TTL:** 5 minutos (300 segundos) si tu proveedor lo permite.
+
+#### Instrucciones por proveedor
+
+| Proveedor | Dónde agregar los registros |
+| --- | --- |
+| **Cloudflare** | Entra a la configuración **DNS** de tu dominio y agrega los registros. Déjalos en **Solo DNS** (nube gris), nunca en **Proxy** (nube naranja). |
+| **GoDaddy** | Ve a **Dominios → Administrar DNS** y haz clic en **Agregar** para cada registro. |
+| **AWS Route 53** | Abre **Route 53 → Zonas alojadas** y crea los conjuntos de registros. |
+| **Namecheap** | Ve a **Domain List → Manage → Advanced DNS** y agrega los registros. |
+
+Cuando termines, espera unos minutos y vuelve a hacer clic en **Verificar dominio** desde el menú de tres puntos.
+
+## Después de la verificación
+
+- **Certificado SSL:** se emite automáticamente, normalmente entre 1 y 10 minutos después de la verificación. Consulta [Certificado SSL de tu dominio dedicado](/correo/certificado-ssl-dominio-dedicado).
+- **Estado del dominio:** aparece como **Verificado** o **Activo**.
+- **Calentamiento:** los dominios nuevos inician automáticamente el [calentamiento por etapas](/correo/calentamiento-de-dominio-por-etapas).
+- **Prueba de envío:** envía correos de prueba y revisa en los encabezados que SPF y DKIM den **PASS**.
+- **Monitoreo:** revisa tus informes DMARC y conecta [Google Postmaster Tools](/correo/google-postmaster-tools) para seguir tu reputación.
+
+## Solución de problemas
+
+Si la verificación falla, revisa:
+
+- Que cada registro coincida exactamente con el valor indicado. Un solo carácter distinto hace que falle.
+- Que elegiste el **tipo** correcto (TXT, CNAME o MX).
+- Que el campo **nombre o host** sea correcto: sin `@` de más y sin omitir la parte del subdominio.
+- Que el **TTL** no sea muy alto. Bájalo a 300 segundos para acelerar la propagación.
+- Que haya pasado suficiente tiempo: la propagación DNS puede tardar entre 24 y 48 horas en algunos proveedores.
+- Que tengas **un solo registro DMARC** por dominio. Varios registros hacen que la autenticación falle.
+- Que tengas **un solo registro SPF**. Si ya tenías uno, combina los valores en un único registro TXT en lugar de crear otro.
+- En Cloudflare, que los registros estén en **Solo DNS** y no en **Proxy**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Uso mi dominio raíz o un subdominio?">
+Un subdominio, como `mail.tunegocio.com`. Así proteges la reputación de tu dominio principal si surgen problemas de entregabilidad.
+</Accordion>
+<Accordion title="¿Cuánto tarda la verificación?">
+Normalmente entre 1 y 10 minutos, pero en casos poco frecuentes la propagación DNS puede tardar entre 24 y 48 horas según el TTL de tu proveedor.
+</Accordion>
+<Accordion title="¿Necesito un registro DMARC en el dominio raíz y en el subdominio?">
+No. Si tu dominio raíz ya tiene DMARC, su política se aplica por defecto a los subdominios.
+</Accordion>
+<Accordion title="¿Qué pasa si configuro mal SPF o DKIM?">
+Tus correos pueden fallar la autenticación o terminar en spam, lo que reduce mucho tu entregabilidad. Revisa siempre los valores antes de verificar.
+</Accordion>
+<Accordion title="¿Puedo agregar varios dominios?">
+Sí. Puedes agregar y verificar varios dominios o subdominios desde **Configuración → Servicios de correo → Dominio dedicado e IP**. Cada uno pasa por el mismo proceso.
+</Accordion>
+<Accordion title="¿Por qué falla la verificación en Cloudflare?">
+Porque el proxy de Cloudflare (nube naranja) no es compatible con los registros CNAME de autenticación de correo. Cámbialos a **Solo DNS** (nube gris) y vuelve a verificar.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="DMARC: qué es y cómo configurarlo" icon="shield-check" href="/correo/dmarc-autenticacion-de-correo">
+Entiende y ajusta tu política DMARC.
+</Card>
+<Card title="Certificado SSL de tu dominio dedicado" icon="lock" href="/correo/certificado-ssl-dominio-dedicado">
+Mantén seguros los enlaces de tus correos.
+</Card>
+<Card title="Calentamiento de dominio por etapas" icon="fire" href="/correo/calentamiento-de-dominio-por-etapas">
+Cómo crece tu volumen diario de envío.
+</Card>
+<Card title="Dominio de envío en campañas" icon="paper-plane" href="/correo/dominio-de-envio-en-campanas">
+Elige qué dominio usa cada campaña.
+</Card>
+</CardGroup>

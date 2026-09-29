@@ -1,0 +1,112 @@
+---
+title: "Evaluación de riesgo de listas de correo"
+description: "Conoce qué porcentaje de tus contactos importados es entregable y qué hacer con las direcciones de riesgo."
+icon: "shield-check"
+---
+
+La evaluación de riesgo analiza las direcciones de correo de cada lista de contactos que importas y te dice qué porcentaje es entregable y cuántas direcciones son riesgosas. Así sabes, antes de lanzar una campaña, si tu lista puede generar rebotes y dañar tu reputación de envío.
+
+<Note>
+La evaluación de riesgo está disponible cuando tu cuenta envía con el correo de Chateea.
+</Note>
+
+## Cómo funciona
+
+Cuando importas un archivo CSV de contactos y tu cuenta aún no tiene activada la [verificación de correos](/correo/verificacion-de-correos), Chateea analiza en segundo plano las direcciones de esa importación. Al terminar:
+
+- Aparece una ventana emergente con el resultado.
+- Los miembros de tu equipo reciben un correo con el análisis, por ejemplo: **Entregables: 71,84 %** y **Alto riesgo: 17,81 %**.
+
+Ambos avisos te recomiendan activar la verificación de correos. Con ella activa, Chateea no intentará enviar correos a ninguna dirección marcada como inválida.
+
+<Info>
+La verificación de correos se activa automáticamente cuando se cumplen estas dos condiciones:
+
+- Tu cuenta tiene menos de 30 días.
+- El porcentaje de direcciones entregables de una importación es menor al 90 %.
+</Info>
+
+## Categorías de riesgo
+
+El análisis clasifica cada dirección como **entregable**, **no entregable**, **catch-all** o **desconocida**, y además le asigna un nivel de riesgo:
+
+| Riesgo | Descripción |
+| --- | --- |
+| **Alto** | Muy probablemente no se puede entregar: la cuenta no existe, el dominio no tiene registros MX o el buzón está lleno. |
+| **Medio** | Puede o no entregarse: el servidor respondió de forma ambigua, el dominio es catch-all o la dirección parece generada al azar. |
+| **Bajo** | Probablemente se entrega: el servidor respondió de forma positiva y la dirección está bien formada y asociada a un dominio legítimo. |
+| **Desconocido** | No se pudo verificar por errores imprevistos o problemas temporales del servidor del destinatario. |
+
+## Revisar el historial de evaluaciones
+
+Todas tus importaciones analizadas quedan registradas en **Configuración → Servicios de correo → Evaluación de riesgo** (Risk Assessment).
+
+| Campo | Qué muestra |
+| --- | --- |
+| **Registros** | Cuántos análisis se muestran en pantalla. |
+| **Rango de fechas** | Periodo de los análisis mostrados. |
+| **Nombre de la importación** | Nombre de cada importación, tomado de la importación masiva de contactos. Usa nombres únicos para identificarlas fácilmente. |
+| **Creado el** | Fecha y hora en que se creó el análisis. |
+| **N.º de correos** | Total de direcciones analizadas en esa importación. |
+| **Entregables (%)** | Porcentaje de direcciones válidas y alcanzables. |
+| **No entregables (%)** | Porcentaje de direcciones inválidas o inalcanzables. |
+| **Desconocidas (%)** | Porcentaje de direcciones que no se pudieron verificar de forma concluyente. |
+
+Cada porcentaje se calcula dividiendo la cantidad de direcciones de esa categoría entre el total del análisis y multiplicando por 100. Si hay más registros de los que caben en una página, usa la paginación al final de la tabla.
+
+## Cuándo te sirve
+
+- **Campañas de marketing:** limpia tu lista antes de un boletín o promoción para no disparar rebotes.
+- **Registros de usuarios:** detecta errores de escritura y direcciones falsas que entran por tus formularios.
+- **Limpieza del CRM:** las personas cambian de trabajo y abandonan cuentas; revisar tus contactos mantiene tus datos al día.
+- **Tiendas en línea:** asegura que las confirmaciones de pedido y avisos de envío lleguen a tus clientes.
+- **Comunidades, escuelas y asociaciones:** garantiza que los avisos importantes y con fecha límite lleguen a todos.
+- **Encuestas e investigación:** evita envíos perdidos y datos sesgados.
+
+## Qué hacer con el resultado
+
+<Steps>
+<Step title="Activa la verificación de correos">
+Así Chateea dejará de enviar a direcciones inválidas de forma automática. Consulta [Verificación de correos](/correo/verificacion-de-correos).
+</Step>
+<Step title="Depura las direcciones problemáticas">
+Antes de tu próxima campaña, elimina o vuelve a revisar las direcciones **no entregables** y **desconocidas**.
+</Step>
+<Step title="Mejora la calidad de tus fuentes">
+Recoge correos solo de fuentes confiables, actualiza tus listas con frecuencia y usa doble confirmación (double opt-in) en tus formularios.
+</Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Por qué no se pueden verificar todas las direcciones?">
+Algunos servidores tienen restricciones, configuraciones de privacidad o problemas de red que impiden confirmar la dirección. También puede pasar que el servidor no responda a tiempo. En esos casos la dirección queda como **desconocida**.
+</Accordion>
+<Accordion title="Tengo muchas direcciones desconocidas. ¿Qué hago?">
+Puede deberse a problemas temporales de los servidores. Vuelve a verificar más tarde. Si el problema continúa, revisa el formato de las direcciones y del archivo CSV, y si lo necesitas escribe a soporte de Chateea en **help@chateea.com**.
+</Accordion>
+<Accordion title="¿Por qué cada importación tiene porcentajes distintos?">
+Depende de la calidad de cada lista. Una lista con direcciones antiguas suele tener más no entregables que una con contactos recientes.
+</Accordion>
+<Accordion title="¿Por qué una dirección entregable puede rebotar?">
+Porque el buzón puede llenarse, el servidor puede estar temporalmente caído o el proveedor del destinatario puede marcar el correo como spam. La verificación confirma que la dirección existe, no que el correo vaya a ser aceptado.
+</Accordion>
+<Accordion title="¿Cada cuánto debo verificar mis listas?">
+Depende de cuánto crezca tu lista y de tu tasa de rebote, pero como regla general verifícala antes de cualquier campaña importante.
+</Accordion>
+<Accordion title="¿La verificación lee el contenido de mis correos?">
+No. Solo comprueba si la dirección es válida y puede recibir correo. Los datos se procesan por conexiones seguras.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Verificación de correos" icon="envelope-circle-check" href="/correo/verificacion-de-correos">
+Verifica direcciones automáticamente antes de enviar.
+</Card>
+<Card title="Introducción a la entregabilidad del correo" icon="envelope-open-text" href="/correo/introduccion-a-la-entregabilidad">
+Los factores que deciden si llegas a la bandeja de entrada.
+</Card>
+</CardGroup>

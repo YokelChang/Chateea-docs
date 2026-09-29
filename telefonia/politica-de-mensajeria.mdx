@@ -1,0 +1,208 @@
+---
+title: "Política de mensajería de Chateea"
+description: "Reglas de consentimiento, bajas y remitente, límites de envío, restricciones por cumplimiento, DND y cómo recuperarte si tus SMS se bloquean."
+icon: "scale-balanced"
+---
+
+La política de mensajería de Chateea reúne las reglas y protecciones que mantienen tus SMS en regla y con buena entregabilidad. Aplica a todos los mensajes de aplicación a persona (A2P) que envías con el sistema telefónico de Chateea: conversaciones uno a uno, flujos de trabajo, acciones masivas y cualquier otro envío automático. Entenderla te ayuda a evitar bloqueos y, si llegan a ocurrir, a recuperarte rápido sin rehacer tus automatizaciones.
+
+## Los cinco principios de la política
+
+- **Consentimiento:** solo envía SMS a contactos que te dieron permiso. El consentimiento no se compra, no se vende y no se transfiere.
+- **Baja:** tus contactos deben tener una forma clara de dejar de recibir mensajes, por ejemplo respondiendo STOP.
+- **Identificación del remitente:** los primeros mensajes deben identificar al negocio que obtuvo el consentimiento.
+- **Contenido aceptable:** los mensajes deben cumplir las normas de los operadores, de la industria y de la ley.
+- **Sin evasión de filtros:** están prohibidas las prácticas que buscan esquivar los filtros de los operadores.
+
+Seguir estas reglas mejora tu reputación ante los operadores, reduce los bloqueos y evita interrupciones en tus conversaciones y automatizaciones.
+
+## Tipos de restricción de envío
+
+No todas las restricciones tienen la misma causa. Saber cuál te afecta te dice qué hacer a continuación.
+
+| Tipo | Qué la provoca | Efecto |
+| --- | --- | --- |
+| **Límite de envío (rampa)** | Llegaste al límite diario de SMS de tu nivel | Los SMS y MMS salientes adicionales fallan mientras dura la restricción |
+| **Restricción por cumplimiento** | Tu tasa de bajas, tu tasa de errores de entrega u otra señal de la política superó el umbral | Los SMS salientes fallan hasta que se levante la restricción temporal |
+| **No molestar (DND) del contacto** | El contacto se dio de baja o su número no puede recibir SMS | Se bloquean los SMS solo para ese contacto, no para toda tu cuenta |
+
+<Note>
+  El límite de envío controla el **volumen**. La restricción por cumplimiento responde a la **salud** de tus envíos. Son cosas distintas y se resuelven de forma distinta.
+</Note>
+
+## Límite diario de envío (rampa)
+
+Las cuentas nuevas empiezan con un límite diario que sube por niveles a medida que demuestras buenos hábitos de envío. El límite se aplica a todos los SMS salientes: manuales, masivos y automáticos.
+
+| Nivel | Límite de SMS en 24 horas |
+| --- | --- |
+| 1 | 500 |
+| 2 | 750 |
+| 3 | 1.000 |
+| 4 | 1.500 |
+| 5 | 2.000 |
+| 6 | 3.500 |
+| 7 | 5.000 |
+| 8 | Más de 5.000 |
+
+Cuando llegas al límite, los SMS salientes adicionales aparecen como **no enviados** hasta que vuelva a haber capacidad. Si lanzas una acción masiva que supera el límite disponible, la ventana de confirmación te avisa cuántos mensajes fallarán si continúas.
+
+<Info>
+  Los mensajes entrantes siguen llegando aunque tengas restringido el envío. Tampoco se pierden conversaciones ni contactos.
+</Info>
+
+Consulta el detalle de cada nivel y cómo subir en [Límite diario de SMS y rampa de envío](/telefonia/limite-diario-de-sms-y-rampa-de-envio).
+
+## Qué pasa con tus flujos de trabajo durante una restricción
+
+Una restricción afecta la salida de SMS, pero no pausa todo el motor de automatizaciones. Tenlo presente si hay contactos dentro de tus flujos:
+
+- Si un flujo llega a una acción **Enviar SMS** mientras el envío está restringido, ese SMS puede fallar.
+- Los SMS fallidos **no se reintentan** solos cuando termina la restricción.
+- No des por hecho que el contacto se queda esperando en la acción de SMS hasta que se reanude el envío.
+- El resto de las acciones del flujo sigue según cómo lo diseñaste.
+
+Los contactos nuevos pueden seguir entrando en tus embudos y avanzar por la lógica del flujo. Para recorridos urgentes, añade alternativas como un correo, una notificación interna, una espera o una rama que gestione los errores de entrega, para que el recorrido del cliente no dependa de un SMS que no se va a reenviar.
+
+### Encontrar los contactos afectados
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre el flujo afectado.
+  </Step>
+  <Step title="Revisa los registros de ejecución">
+    Abre **Registros de ejecución** (Execution Logs) y localiza los contactos cuya acción de SMS se ejecutó durante la restricción.
+  </Step>
+  <Step title="Consulta el detalle">
+    Abre la ejecución para ver el resultado de la acción y el camino que siguió cada contacto.
+  </Step>
+</Steps>
+
+Más información en [Registros de ejecución e historial de inscripción](/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion).
+
+## Cómo recuperarte después de una restricción
+
+1. **Identifica el tipo de restricción.** Revisa tu nivel de rampa y el historial de restricciones para saber si es por volumen o por cumplimiento.
+2. **Espera a que termine.** No intentes envíos masivos repetidos mientras el envío esté restringido.
+3. **Corrige la causa.** Si fue por cumplimiento, revisa el consentimiento, la calidad de la lista, la identificación del remitente, el texto de baja, el contenido y los errores de entrega.
+4. **Revisa los registros de ejecución** para encontrar las acciones de SMS que fallaron.
+5. **Reenvía o reinscribe solo donde tenga sentido,** evitando mensajes duplicados.
+6. **Vigila los siguientes envíos** y confirma que se entregan antes de volver a volúmenes altos.
+
+<Tip>
+  No necesitas reconstruir un flujo porque el SMS estuvo restringido un tiempo. Revisa las ejecuciones afectadas y recupera solo los contactos que necesitan seguimiento.
+</Tip>
+
+## Restricciones por cumplimiento
+
+Una tasa alta de bajas o de errores de entrega suele indicar problemas de consentimiento, números inválidos o filtrado de los operadores. Chateea vigila estas señales y puede restringir temporalmente tus SMS salientes cuando se alcanzan estos umbrales:
+
+| Métrica | Lo recomendable | Restricción temporal |
+| --- | --- | --- |
+| Tasa de bajas | 0 a 1 % | Alrededor del 3 % |
+| Tasa de errores de entrega | 0 a 6 % | Alrededor del 10 % |
+
+Para ver el motivo exacto, ve a **Configuración → Sistema telefónico → Mensajería** y abre la pestaña **Historial de restricciones**. Allí verás el tipo, el motivo, la fecha y las métricas de cada evento. Más detalles en [Historial de restricciones de SMS](/telefonia/historial-de-restricciones-de-sms).
+
+## No molestar (DND) y errores de entrega
+
+El modo No molestar protege a cada contacto: bloquea los SMS hacia él sin afectar al resto de tu cuenta.
+
+- **Por canal:** puedes desactivar los SMS de un contacto sin tocar su correo, llamadas u otros canales.
+- **Por baja:** si el contacto responde con una palabra de baja estándar, se activa el DND de SMS.
+- **Bloqueo saliente:** con el DND activo, los siguientes SMS a ese contacto se bloquean y muestran un error de DND.
+
+Además, Chateea usa los códigos de error de los mensajes no entregados para activar el DND automáticamente y dejar de gastar en números que no pueden recibir SMS:
+
+| Código | Significado | Qué hace Chateea |
+| --- | --- | --- |
+| 30003 | Número inaccesible o fuera de servicio | Activa DND temporal |
+| 30004 | El destinatario no quiere recibir SMS | Activa DND permanente |
+| 30005 | Número inactivo o inexistente | Activa DND temporal |
+| 30006 | Línea fija o sin capacidad de SMS | Activa DND temporal |
+| 30008 | Error desconocido | No hace nada |
+
+- **DND temporal:** puedes quitarlo tú desde la ficha del contacto.
+- **DND permanente:** no se puede quitar desde la interfaz, porque el contacto se dio de baja. Solo se elimina si el contacto responde a tu número con **START**, **YES** o **UNSTOP**. Si aun así los mensajes siguen fallando, escribe a soporte de Chateea en **help@chateea.com**.
+
+Cuando un contacto responde **STOP** u otra palabra de baja, se revoca su consentimiento: los mensajes pendientes o en cola hacia él fallan y se activa el DND permanente. Los flujos y envíos masivos omiten automáticamente a los contactos con DND.
+
+## Identificación del remitente, consentimiento y bajas
+
+- **El consentimiento debe ser tuyo:** no uses listas compradas ni transferidas.
+- **Identifícate:** el primer mensaje debe dejar claro qué negocio obtuvo el consentimiento.
+- **Incluye cómo darse de baja:** el primer mensaje debe ofrecer una forma clara de dejar de recibir mensajes.
+- **Respeta las bajas:** cuando alguien se da de baja, no le escribas más por SMS salvo que vuelva a suscribirse de forma válida.
+
+### Configurar el cumplimiento automático de SMS
+
+Chateea puede añadir por ti la identificación del remitente y el texto de baja:
+
+<Steps>
+  <Step title="Abre la configuración de cumplimiento">
+    Ve a **Configuración → Sistema telefónico**, abre la pestaña **Mensajería** y entra en **Cumplimiento de mensajería** (Messaging Compliance).
+  </Step>
+  <Step title="Activa el texto de baja">
+    Activa **Hacer el SMS conforme añadiendo un mensaje de baja** y haz clic en **Personalizar** si quieres cambiar el texto.
+  </Step>
+  <Step title="Activa la información del remitente">
+    Activa **Hacer el SMS conforme añadiendo información del remitente**. Personaliza el identificador del remitente y el texto que lo acompaña. Si editas el texto general, conserva la variable `{{senderID}}` para que se inserte tu identificador.
+  </Step>
+  <Step title="Elige la frecuencia">
+    Define cada cuántos días se vuelven a incluir el identificador y el texto de baja en conversaciones en curso.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda los cambios y envía un SMS de prueba a tu teléfono para confirmar que el primer mensaje incluye tu identificación y las instrucciones de baja.
+  </Step>
+</Steps>
+
+Si tu mensaje ya contiene una palabra de baja, Chateea no añade otra.
+
+## Solución de problemas
+
+| Síntoma | Qué revisar |
+| --- | --- |
+| Los SMS salientes dejaron de salir tras llegar a cierto volumen | Tu nivel de rampa y el límite disponible del día |
+| Un SMS de un flujo falló durante la restricción | Los registros de ejecución del flujo. Recuerda que no se reintenta solo |
+| La cuenta quedó restringida por cumplimiento | El **Historial de restricciones**: motivo y métricas. Corrige la causa antes de volver a enviar en volumen |
+| Solo un contacto no recibe SMS | El estado DND de SMS de ese contacto y el error del mensaje fallido |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Pierdo los contactos que entran a un flujo durante una restricción?">
+    No. La restricción no borra contactos. Pero las acciones de SMS que se ejecuten mientras no hay envío pueden fallar, así que revisa los registros de ejecución.
+  </Accordion>
+  <Accordion title="¿Los SMS fallidos se envían solos cuando termina la restricción?">
+    No. Los SMS fallidos no se reintentan. Revisa las ejecuciones afectadas y reenvía o reinscribe contactos solo cuando corresponda.
+  </Accordion>
+  <Accordion title="¿Se pausa todo el flujo cuando el SMS está restringido?">
+    No lo des por hecho. La restricción controla los SMS salientes. Usa los registros de ejecución para ver cómo avanzó cada contacto.
+  </Accordion>
+  <Accordion title="¿Mis contactos pueden seguir escribiéndome?">
+    Sí. Los SMS entrantes siguen llegando aunque tu envío esté restringido.
+  </Accordion>
+  <Accordion title="¿Cómo sé por qué se restringió mi envío?">
+    Ve a **Configuración → Sistema telefónico → Mensajería → Historial de restricciones** y revisa el motivo y las métricas.
+  </Accordion>
+  <Accordion title="¿Tengo que reconstruir mis flujos después de una restricción?">
+    No. Revisa los registros de ejecución, identifica las acciones de SMS que fallaron y decide si esos contactos necesitan un reenvío o una reinscripción.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Límite diario de SMS y rampa de envío" icon="gauge" href="/telefonia/limite-diario-de-sms-y-rampa-de-envio">
+    Niveles, límites y cómo aumentar tu capacidad.
+  </Card>
+  <Card title="Historial de restricciones de SMS" icon="clock-rotate-left" href="/telefonia/historial-de-restricciones-de-sms">
+    Consulta advertencias y bloqueos temporales.
+  </Card>
+  <Card title="No molestar (DND)" icon="bell-slash" href="/contactos/no-molestar-dnd">
+    Bloquea canales por contacto.
+  </Card>
+  <Card title="Error 30007: filtrado del operador" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Cómo evitar que los operadores bloqueen tus SMS.
+  </Card>
+</CardGroup>

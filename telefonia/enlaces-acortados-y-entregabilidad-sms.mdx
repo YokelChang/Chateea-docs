@@ -1,0 +1,86 @@
+---
+title: "Enlaces acortados y entregabilidad de tus SMS"
+description: "Por qué los acortadores públicos como bit.ly bloquean tus SMS y cómo usar enlaces con tu dominio para que tus mensajes lleguen."
+icon: "link"
+---
+
+Los enlaces acortados son muy populares en campañas de SMS: ahorran caracteres y permiten medir clics. Pero los acortadores públicos, como bit.ly o rb.gy, son una de las causas más frecuentes de que un SMS no llegue. Los operadores los asocian con fraude y phishing, y cada vez los filtran o bloquean más. La solución es usar enlaces con el dominio de tu propio negocio.
+
+## Por qué los enlaces acortados dan problemas
+
+### Redirecciones múltiples
+
+Los acortadores públicos suelen pasar por varias redirecciones antes de llegar al destino. Los operadores lo consideran sospechoso, porque es una técnica habitual para esconder sitios fraudulentos.
+
+### Falta de transparencia
+
+Un dominio genérico como bit.ly no dice nada de quién envía el mensaje. Sin una conexión clara con tu marca, aumenta la probabilidad de que el operador filtre el SMS.
+
+### Políticas de los operadores
+
+- **T-Mobile** (Estados Unidos), en su código de conducta para mensajería comercial vigente desde septiembre de 2020, pide que los programas de mensajería estén vinculados al dominio web del negocio. Prefiere la URL completa, pero acepta enlaces cortos con marca propia. Además, prohíbe dos prácticas:
+  - **Rotar dominios** (URL cycling) para esquivar los filtros de spam. Por eso los acortadores públicos suelen bloquearse.
+  - **Enlaces con varias redirecciones**, que ocultan el destino real. Sus filtros los buscan de forma específica.
+- **AT&T** bloquea por completo los acortadores públicos por su relación con fraudes y phishing.
+
+<Warning>
+  Aunque no todos los operadores han llegado tan lejos como AT&T, la tendencia va en esa dirección. Conviene ajustar tus enlaces desde ya.
+</Warning>
+
+## Qué significa para tu negocio
+
+Estos cambios buscan reducir el spam, el fraude y el abuso. El inconveniente es que complican la medición de clics, que es una de las formas principales de evaluar tus campañas. La clave es equilibrar la entrega de tus mensajes con tus necesidades de seguimiento.
+
+## Tres formas de mejorar la entrega de SMS con enlaces
+
+<Steps>
+  <Step title="Limita las redirecciones">
+    Cuantos más saltos da un enlace hasta la página final, más sospechas genera. Apunta directamente a tu página de destino y, para medir, usa parámetros UTM en lugar de cadenas de redirecciones.
+  </Step>
+  <Step title="Usa la URL completa cuando el enlace sea crítico">
+    Es lo que más recomiendan los operadores. Ocupa espacio del SMS, que además debe incluir la identificación de tu negocio y el contexto, y puede sumar segmentos. Para enlaces importantes, compensa pagar un segmento extra a cambio de una entrega fiable.
+  </Step>
+  <Step title="Usa un enlace corto con tu marca cuando falte espacio">
+    Elige un dominio corto que se identifique con tu negocio. No es cosa solo de grandes marcas: un dominio propio suele costar poco, mucho menos que los mensajes bloqueados que igual pagas.
+  </Step>
+</Steps>
+
+<Tip>
+  Pagas cada SMS que envías, no solo los que se entregan. Invertir en un dominio propio y evitar acortadores públicos y cadenas de redirecciones protege tu marca y hace que tus clientes reciban tus mensajes.
+</Tip>
+
+Si tienes un registro A2P 10DLC, usa en tus SMS enlaces del mismo dominio que declaraste en tu campaña.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no se entregan mis SMS con enlaces?">
+    La causa más común es un acortador público (bit.ly, rb.gy) en el mensaje. T-Mobile y AT&T filtran o bloquean estos enlaces porque redirigen varias veces y ocultan el destino. Cambiar a un enlace con tu dominio o a la URL completa suele resolverlo.
+  </Accordion>
+  <Accordion title="¿Los operadores permiten enlaces cortos con marca propia?">
+    Sí. T-Mobile acepta expresamente los enlaces cortos vinculados al dominio de tu negocio. Lo prohibido es rotar dominios para esquivar filtros y las cadenas de redirecciones.
+  </Accordion>
+  <Accordion title="¿Sale caro un dominio propio para enlaces cortos?">
+    Normalmente no. Suele costar mucho menos que los mensajes no entregados que igual pagas cuando un acortador público se bloquea.
+  </Accordion>
+  <Accordion title="¿Cómo mido clics sin un acortador público?">
+    Usa un dominio corto propio que permita seguimiento, o añade parámetros UTM a la URL completa. Ambas opciones te dejan medir sin activar los filtros de los operadores.
+  </Accordion>
+  <Accordion title="¿Las URL completas cuentan para el límite de caracteres?">
+    Sí. Una URL completa ocupa más espacio del segmento de 160 caracteres y puede sumar segmentos y costo. Para enlaces críticos, muchos negocios aceptan ese costo a cambio de una entrega fiable.
+  </Accordion>
+  <Accordion title="¿De verdad AT&T bloquea todos los acortadores públicos?">
+    Sí. AT&T los bloquea por completo por su asociación con fraude y phishing. Otros operadores todavía no, pero es mejor adelantarse.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Error 30007: filtrado del operador" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Por qué los operadores bloquean mensajes y cómo evitarlo.
+  </Card>
+  <Card title="SMS internacionales: Reino Unido y Turquía" icon="globe" href="/telefonia/sms-internacional-reino-unido-y-turquia">
+    En Turquía no se permiten enlaces en SMS internacionales.
+  </Card>
+</CardGroup>

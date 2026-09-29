@@ -1,0 +1,103 @@
+---
+title: "Microsoft SNDS: monitoreo de tu IP dedicada"
+description: "Revisa la salud de tu IP dedicada en Outlook y Hotmail: filtrado, bloqueos, trampas de spam y quejas."
+icon: "chart-line"
+---
+
+Si tienes una IP de envío dedicada, puedes monitorear su salud en Outlook y Hotmail gracias a la integración con Microsoft SNDS (Smart Network Data Services). Te muestra si Microsoft filtra tus correos como spam, si tu IP está bloqueada, cuántas quejas recibes y si caíste en trampas de spam, para que detectes los problemas antes de que afecten a tu tasa de llegada a la bandeja de entrada.
+
+<Note>
+El monitoreo con Microsoft SNDS está incluido sin costo adicional cuando tienes una IP dedicada.
+</Note>
+
+## Qué es Microsoft SNDS
+
+Es una herramienta de Microsoft que informa sobre la actividad de tus IP en sus servicios de correo, como Outlook y Hotmail: salud de la IP, quejas de spam, resultados de filtrado y estado de bloqueo.
+
+## Cómo revisar el estado de tu IP
+
+<Steps>
+<Step title="Abre el panel">
+Ve a **Configuración → Servicios de correo → Herramientas de Postmaster → Microsoft SNDS**.
+</Step>
+<Step title="Revisa tus IP">
+Verás la lista de tus IP con estas métricas:
+
+- **Resultados de filtrado:** porcentaje de mensajes marcados como spam.
+- **Estado de bloqueo:** si la IP está bloqueada en los servicios de Microsoft.
+- **Trampas de spam:** cantidad de mensajes detectados por trampas de spam.
+- **Tasa de quejas:** porcentaje de destinatarios que marcaron tus correos como spam.
+</Step>
+<Step title="Consulta el detalle">
+Haz clic en **Ver detalles** (View Details) para ver el periodo de actividad, los comandos RCPT y DATA (volumen de mensajes procesados) y las tasas de spam y quejas.
+</Step>
+<Step title="Descarga el informe">
+Haz clic en **Descargar CSV** (Download CSV) para exportar la actividad y analizarla en detalle.
+</Step>
+</Steps>
+
+## Cómo interpretar las métricas
+
+| Métrica | Rango saludable | Qué significa |
+| --- | --- | --- |
+| **Resultados de filtrado** | Menos del 10 % de spam | Un 10 % o más indica que parte de tus correos se clasifican como spam. Revisa tus prácticas, contenido y listas. |
+| **Estado de bloqueo** | No | "Sí" significa que tu IP está bloqueada por posible spam o infracción de políticas. Requiere atención inmediata. |
+| **Trampas de spam** | 0 | Uno o más impactos indican que tu lista tiene direcciones inválidas o sospechosas que debes limpiar. |
+| **Tasa de quejas** | Menos del 0,1 % | Por encima del 0,1 %, los destinatarios te están marcando como spam. Revisa el contenido y confirma que se suscribieron. |
+| **Comandos RCPT** | Acorde a tu volumen | Total de destinatarios que recibieron tus correos. Debe coincidir con el tamaño esperado de tus campañas. |
+| **Comandos DATA** | Acorde a tu volumen | Total de mensajes transmitidos. Mantenlo en línea con tus envíos planificados para no activar filtros. |
+| **Periodo con trampas** | 0 días | Días en que tus correos fueron detectados por trampas de spam. Cualquier valor distinto de cero requiere investigación inmediata. |
+| **Días en rojo** | 0 | Días con tasas de spam más altas o problemas de entrega. Revisa qué enviaste esos días. |
+
+<Tip>
+Revisa estas métricas con regularidad y no solo cuando aparece un problema. Detectar a tiempo una tasa de quejas en aumento o un día en rojo hace que sea mucho más fácil corregirlo.
+</Tip>
+
+## Qué hacer si tu IP está bloqueada o tiene mucho spam
+
+<Steps>
+<Step title="Analiza tus métricas">
+Revisa la actividad reciente, sobre todo los impactos en trampas de spam y las quejas.
+</Step>
+<Step title="Limpia tus listas">
+Elimina direcciones inválidas o inactivas y confirma que todos tus destinatarios se suscribieron.
+</Step>
+<Step title="Solicita el desbloqueo">
+Si tu IP está bloqueada, envía una solicitud de desbloqueo en la [página de soporte de Outlook para remitentes](https://olcsupport.office.com/).
+</Step>
+</Steps>
+
+<Warning>
+Una IP bloqueada o un periodo con trampas distinto de cero exigen acción inmediata. Cuanto más tiempo pase sin resolverse, más difícil será recuperar tu reputación con Microsoft.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Por qué todavía no veo datos de mi IP?">
+Microsoft SNDS solo informa sobre IP con actividad reciente en sus servicios. Si tu IP es nueva o ha enviado poco a destinatarios de Outlook o Hotmail, los datos pueden tardar unos días en aparecer.
+</Accordion>
+<Accordion title="¿También cubre Gmail o Yahoo?">
+No. Solo informa sobre los servicios de correo de Microsoft, como Outlook y Hotmail. Para Gmail, usa [Google Postmaster Tools](/correo/google-postmaster-tools).
+</Accordion>
+<Accordion title="¿Cada cuánto se actualiza?">
+Los datos de SNDS suelen actualizarse una vez al día. Revísalos con frecuencia, sobre todo después de campañas grandes.
+</Accordion>
+<Accordion title="Tengo un impacto en una trampa de spam. ¿Qué hago primero?">
+Averigua cómo entró esa dirección a tu lista. Elimínala junto con los contactos que no interactúan o no están verificados, y confirma que el resto se suscribió antes de tu próximo envío.
+</Accordion>
+<Accordion title="¿Cuánto tarda el desbloqueo?">
+Depende del caso, porque Microsoft revisa cada solicitud de forma individual. Mientras tanto, sigue limpiando tus listas y monitoreando tus métricas.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="DNS inverso de tu IP dedicada" icon="server" href="/correo/dns-inverso-ip-dedicada">
+Identifica tu IP con tu propio dominio.
+</Card>
+<Card title="Google Postmaster Tools" icon="chart-line" href="/correo/google-postmaster-tools">
+Monitorea tu reputación en Gmail.
+</Card>
+</CardGroup>

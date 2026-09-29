@@ -1,0 +1,189 @@
+---
+title: "¿Por qué mis correos llegan a spam?"
+description: "Causas más comunes de que tus correos terminen en spam, cómo corregirlas y un diagnóstico paso a paso."
+icon: "circle-question"
+---
+
+Gmail, Outlook y Yahoo analizan decenas de señales antes de decidir si un correo llega a la bandeja de entrada. Si tus correos están terminando en spam, casi siempre la causa está en uno de estos puntos: el dominio desde el que envías, la autenticación, la calidad de tu lista, tu ritmo de envío, el contenido o tu reputación.
+
+Esta guía repasa las causas más comunes con su solución y termina con un diagnóstico paso a paso: cómo leer los encabezados de un correo para revisar SPF, DKIM y DMARC, y cómo comprobar tu reputación con Google Postmaster Tools.
+
+## Causas comunes y cómo resolverlas
+
+### 1. Envías desde un dominio público
+
+Si tu remitente es una dirección de **gmail.com**, **yahoo.com** u **outlook.com**, la mayoría de los proveedores enviarán tus correos a spam, porque sus políticas DMARC prohíben que otros envíen en nombre de esos dominios.
+
+**Solución:** envía desde un dominio propio que coincida con tu marca, como `hola@tunegocio.com`. Consulta [Agregar y verificar tu dominio de envío](/correo/agregar-y-verificar-dominio-de-envio).
+
+### 2. Falta autenticación SPF, DKIM o DMARC
+
+Si tu dominio tiene una política DMARC pero no lo autenticaste para enviar desde Chateea, tus correos no se alinearán y terminarán en spam.
+
+| Registro | Qué hace |
+| --- | --- |
+| **SPF** | Indica qué servidores pueden enviar correos con tu dominio. |
+| **DKIM** | Firma tus correos para demostrar que no se alteraron en el camino. |
+| **DMARC** | Indica a los receptores qué hacer si SPF o DKIM fallan (`none`, `quarantine` o `reject`). |
+
+**Solución:** verifica tu dominio en **Configuración → Servicios de correo**, agrega los registros SPF y DKIM en tu DNS y confirma que DMARC esté alineado. Consulta [DMARC: qué es y cómo configurarlo](/correo/dmarc-autenticacion-de-correo).
+
+### 3. Tu lista no está sana
+
+Con la parte técnica resuelta, la **calidad de tu lista** pasa a ser el factor más importante. Una lista sucia o sin consentimiento hunde incluso a un remitente perfectamente autenticado. Revisa que:
+
+- Todos en tu lista dieron su **consentimiento directo** para recibir correos de marketing.
+- Depuras a los suscriptores inactivos con regularidad.
+- Tus formularios usan **doble confirmación** o reCAPTCHA para evitar bots.
+
+**Solución:** nunca compres listas. Elimina los rebotes duros de inmediato. Suprime a quienes no interactúan desde hace más de 90 días y prueba antes una campaña de reactivación. Consulta [Introducción a la entregabilidad del correo](/correo/introduccion-a-la-entregabilidad).
+
+### 4. Envías correos internos
+
+Enviar desde y hacia el mismo dominio (por ejemplo, de `info@tunegocio.com` a `ana@tunegocio.com`) suele terminar en spam. Tu servidor ve un mensaje "de sí mismo" que en realidad envió Chateea, y lo trata como **suplantación**.
+
+**Solución:** para pruebas, usa una bandeja gratuita como Gmail. Si necesitas enviar correos internos legítimos, pide al administrador de tu correo que agregue a la lista de permitidos los servidores de envío que usas.
+
+### 5. Problemas de volumen o frecuencia
+
+Los proveedores vigilan cuánto y con qué frecuencia envías. Los picos repentinos, sobre todo desde un dominio nuevo o inactivo, parecen spam.
+
+**Solución:**
+
+- Calienta tu dominio de forma **gradual**. Consulta [Calentamiento de dominio por etapas](/correo/calentamiento-de-dominio-por-etapas).
+- Mantén un **calendario de envío constante**, sin periodos de silencio seguidos de envíos masivos.
+- Divide las listas grandes y envía por lotes.
+
+### 6. El contenido activa los filtros
+
+Incluso con la autenticación perfecta, el **contenido** puede activar filtros, sobre todo en dominios nuevos o con poca reputación. Lo que más problemas causa:
+
+- Exceso de palabras promocionales ("Gratis", "Actúa ya", "Tiempo limitado", "Garantizado").
+- Muchas imágenes y poco texto.
+- Acortadores de enlaces como bit.ly o tinyurl.
+- Adjuntos pesados o formatos poco comunes.
+- HTML roto, etiquetas sin cerrar o estilos copiados de Word.
+- Asuntos en MAYÚSCULAS, exceso de signos (!!!) o de emojis.
+
+**Solución:** escribe en un tono **claro y cercano**, equilibra imágenes y texto (tu mensaje debe entenderse aunque las imágenes no carguen), enlaza directamente a tu sitio y prueba tu correo con un verificador de spam antes de enviarlo.
+
+### 7. Mala reputación y quejas altas
+
+Cada dominio e IP tiene una reputación que los proveedores calculan según tu historial. Si tu **tasa de quejas de spam** supera aproximadamente el **0,3 %** o tu **tasa de rebote** pasa del 5 %, los proveedores empiezan a filtrar con fuerza.
+
+**Solución:**
+
+- Monitorea tu reputación con [Google Postmaster Tools](/correo/google-postmaster-tools) y, si tienes IP dedicada, con [Microsoft SNDS](/correo/microsoft-snds).
+- Suprime de inmediato a quienes te marcan como spam.
+- Envía solo a contactos que interactúan y reduce la audiencia si las quejas suben.
+- Revisa si tu dominio está en listas negras con [MXToolbox](https://mxtoolbox.com/blacklists.aspx).
+
+### 8. Asuntos engañosos o remitente poco claro
+
+Los asuntos tramposos como "Re: Tu pedido #2095642" pueden subir las aperturas un momento, pero destruyen la confianza y generan quejas. Un nombre de remitente genérico o vacío tiene el mismo efecto.
+
+**Solución:** usa asuntos claros y honestos que reflejen el contenido, un nombre de remitente reconocible (por ejemplo, "Sara de Tu Negocio" en lugar de "noreply") y asuntos de menos de unos 50 caracteres para que se lean bien en el celular.
+
+### 9. Falta el enlace de baja
+
+Gmail y Yahoo **exigen** a los remitentes masivos un encabezado de baja con un clic (List-Unsubscribe). Sin él, o sin un enlace de baja visible, tus mensajes se limitan o van a spam.
+
+**Solución:** incluye siempre un enlace de baja visible en el pie de tus correos de marketing. El correo de Chateea agrega automáticamente el encabezado de baja con un clic. Si quieres una página de baja con tu marca, consulta [Crear un enlace de baja personalizado](/correo/enlace-de-baja-personalizado).
+
+### 10. Envías a direcciones genéricas o trampas de spam
+
+Las direcciones genéricas como `info@`, `admin@`, `ventas@` o `soporte@` suelen ser listas de distribución que nunca se suscribieron. Las **trampas de spam**, direcciones abandonadas que los proveedores reactivan para detectar listas viejas, hacen todavía más daño.
+
+**Solución:** filtra las direcciones genéricas o pide un consentimiento explícito, verifica tu lista antes de envíos grandes con la [verificación de correos](/correo/verificacion-de-correos) y nunca importes listas que no hayas reunido tú.
+
+## Diagnóstico paso a paso
+
+Si tus correos siguen llegando a spam, revisa primero la autenticación en los encabezados y después tu reputación en Google Postmaster Tools.
+
+### Revisa los encabezados del correo
+
+<Steps>
+<Step title="Envía un correo de prueba a Gmail">
+Envía un correo desde tu dominio de envío a una cuenta de Gmail que controles.
+</Step>
+<Step title="Abre el mensaje original">
+En Gmail, haz clic en los tres puntos junto al botón **Responder** y elige **Mostrar original**. Se abrirá una ventana con los encabezados completos.
+</Step>
+<Step title="Comprueba los resultados">
+Verifica que SPF, DKIM y DMARC muestren **PASS**.
+</Step>
+</Steps>
+
+- Si ves `SPF: FAIL`, el servidor que envió no está autorizado en el registro SPF del dominio.
+- Si ves `DMARC: FAIL`, aunque SPF o DKIM pasen por separado, la alineación con el dominio del remitente está rota.
+
+Si los tres muestran PASS, la autenticación está bien: pasa directamente a revisar tu reputación.
+
+### Corrige los fallos de autenticación
+
+**Si fallan SPF o DKIM:** agrega en tu DNS los registros que te indica Chateea y vuelve a verificar el dominio en **Configuración → Servicios de correo**. Espera hasta 24 horas de propagación antes de volver a probar.
+
+**Si falla DMARC porque el dominio de envío y el del remitente son distintos:** cuando no coinciden y alguno tiene una política `reject` o `quarantine`, la autenticación falla. Envía desde el mismo dominio del remitente o, como medida temporal, cambia la política DMARC a `v=DMARC1; p=none;`.
+
+**Si falla DMARC aunque los dominios coinciden:** suele ser un error en el propio registro DMARC. Analízalo con [dmarcian](https://dmarcian.com/domain-checker/) para obtener un diagnóstico completo y, si es necesario, deja temporalmente el registro del dominio raíz y del subdominio de envío en `v=DMARC1; p=none;`.
+
+### Revisa tu reputación con Google Postmaster Tools
+
+Si la autenticación está bien y aun así llegas a spam, el problema probablemente es tu reputación: una reputación baja o mala manda los correos a spam sin importar la autenticación.
+
+<Steps>
+<Step title="Abre Google Postmaster Tools en Chateea">
+Ve a **Configuración → Servicios de correo → Herramientas de Postmaster → Google Postmaster Tool**. Si aún no lo conectaste, sigue [Google Postmaster Tools](/correo/google-postmaster-tools).
+</Step>
+<Step title="Revisa los datos">
+Explora la reputación de dominio e IP, la tasa de spam, la autenticación y los errores de entrega. Busca cualquier valor en las categorías **Mala** o **Baja**.
+</Step>
+</Steps>
+
+<Warning>
+La causa más frecuente de una reputación **mala** es que los destinatarios marcan tus correos como spam. Es la señal que más daño hace. Para recuperarte:
+
+- Detén de inmediato cualquier envío en frío.
+- Calienta de nuevo tu dominio siguiendo [Buenas prácticas y calentamiento de correo](/correo/buenas-practicas-y-calentamiento-de-correo).
+- Durante varias semanas, envía solo a destinatarios que interactúan.
+- Revisa tu contenido: asuntos engañosos, falta de enlace de baja o frecuencia demasiado alta.
+</Warning>
+
+Si después de todo esto el problema continúa, escribe a soporte de Chateea en **help@chateea.com**. Ten conectado Google Postmaster Tools antes de escribir: sin esos datos, el equipo no puede revisar tu reputación ni tu tasa de spam en Gmail.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cómo sé si mi correo llegará a spam antes de enviarlo a mi lista?">
+Usa herramientas como Mail-Tester, GlockApps o Litmus para analizar tu contenido y reputación. Envía también pruebas a Gmail, Yahoo y Outlook para ver dónde llega en cada uno.
+</Accordion>
+<Accordion title="Mi dominio tiene mala reputación. ¿Qué hago?">
+Aumenta tu volumen de forma gradual, elimina a los suscriptores inactivos y concéntrate en generar interacción (aperturas, clics y respuestas). Monitorea tu evolución con Google Postmaster Tools y cuenta con varias semanas para recuperarte.
+</Accordion>
+<Accordion title="¿Cada cuánto debo limpiar mi lista?">
+Como mínimo cada 6 a 12 meses. Elimina a quienes no abren ni hacen clic desde hace más de 90 días y todos los rebotes duros.
+</Accordion>
+<Accordion title="Mi autenticación está bien. ¿Por qué sigo en spam?">
+Porque la autenticación es necesaria, pero no suficiente. Revisa la interacción, la calidad del contenido, la limpieza de tu lista y la constancia de tus envíos. Comprueba también si tu dominio está en una lista negra con [MXToolbox](https://mxtoolbox.com/blacklists.aspx).
+</Accordion>
+<Accordion title="¿Cuánto tarda en recuperarse la reputación?">
+Normalmente de **4 a 8 semanas** de buenas prácticas constantes. Reduce el volumen, envía solo a quienes interactúan y crea contenido que invite a responder y hacer clic. No hay atajos.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Buenas prácticas y calentamiento de correo" icon="envelope" href="/correo/buenas-practicas-y-calentamiento-de-correo">
+Todo lo que necesitas para llegar a la bandeja de entrada.
+</Card>
+<Card title="Introducción a la entregabilidad del correo" icon="envelope-open-text" href="/correo/introduccion-a-la-entregabilidad">
+Los factores que deciden dónde llega tu correo.
+</Card>
+<Card title="Evaluación de riesgo de listas de correo" icon="shield-check" href="/correo/evaluacion-de-riesgo-de-listas">
+Analiza la calidad de tus importaciones.
+</Card>
+<Card title="Bloqueos de proveedores de correo" icon="ban" href="/correo/bloqueos-de-proveedores-de-correo">
+Qué hacer si tus envíos se restringen.
+</Card>
+</CardGroup>

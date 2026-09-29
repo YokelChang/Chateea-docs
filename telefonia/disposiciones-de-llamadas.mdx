@@ -1,0 +1,160 @@
+---
+title: "Disposiciones de llamadas"
+description: "Registra el resultado de cada llamada con etiquetas propias y úsalas para automatizar el seguimiento y analizar tus llamadas."
+icon: "phone-flip"
+---
+
+Las disposiciones de llamada son etiquetas que tu equipo elige al terminar una llamada para registrar **cómo salió**: por ejemplo, **Seguimiento**, **Calificado**, **Cita solicitada** o **No interesado**. Así todas las llamadas quedan clasificadas con los mismos criterios y puedes usar ese resultado para disparar automatizaciones de seguimiento.
+
+## Para qué te sirven
+
+- **Resultados estandarizados:** todo el equipo registra las llamadas con las mismas opciones.
+- **Menos trabajo después de la llamada:** eliges el resultado en un clic, sin anotarlo en otro sitio.
+- **Seguimiento automático:** con el disparador **Detalles de la llamada** puedes enviar mensajes, crear tareas o mover oportunidades según el resultado.
+- **Mejores informes:** en **Informes → Informe de llamadas** puedes analizar los resultados por usuario o por equipo.
+- **Web y móvil:** funcionan en el marcador web y en la aplicación móvil de Chateea.
+
+## Disposiciones predeterminadas
+
+Tu cuenta empieza con un conjunto de disposiciones que puedes editar o ampliar:
+
+| Disposición | Uso habitual |
+| --- | --- |
+| **Sin respuesta** (No Answer) | Nadie contestó. |
+| **Buzón de voz** (Voicemail) | La llamada fue al buzón. |
+| **Seguimiento** (Follow Up) | Hay que volver a contactar. |
+| **Cita solicitada** (Requested Appointment) | El contacto pidió una cita. |
+| **No interesado** (Not Interested) | El contacto no está interesado. |
+| **Número incorrecto** (Incorrect Number) | El número no corresponde. |
+
+## Crear y administrar disposiciones
+
+Solo los **administradores** de tu cuenta pueden crear, editar, reordenar o eliminar disposiciones. Puedes tener hasta **10**.
+
+<Steps>
+  <Step title="Abre las disposiciones">
+    Ve a **Configuración → Sistema telefónico → Voz → Disposiciones de llamadas**.
+  </Step>
+  <Step title="Agrega o edita">
+    Revisa las disposiciones actuales. Haz clic en **Agregar disposición** para crear una nueva, escribe su nombre y guarda, o edita una existente.
+  </Step>
+  <Step title="Ordénalas">
+    Reordena la lista para que las opciones más usadas aparezcan primero.
+  </Step>
+  <Step title="Guarda los cambios">
+    Guarda para que tu equipo vea las opciones actualizadas.
+  </Step>
+</Steps>
+
+<Tip>
+  Usa nombres cortos y orientados a la acción, que digan claramente qué pasó y qué toca hacer después: "Enviar propuesta" es más útil que "Llamada ok".
+</Tip>
+
+<Note>
+  Si **renombras** una disposición, los flujos de trabajo que la usan siguen funcionando, porque se identifica internamente por su ID. Si la **eliminas**, esos flujos dejan de dispararse con ella: actualízalos para usar una disposición válida.
+</Note>
+
+## Elegir una disposición después de una llamada
+
+1. Termina la llamada.
+2. En la pantalla de resumen de la llamada, elige la disposición que mejor describe el resultado.
+3. La disposición se guarda con la llamada y queda disponible para tus flujos de trabajo e informes.
+
+Solo puedes elegir **una disposición por llamada**. Es opcional, pero usarla siempre mantiene tus registros limpios y hace que las automatizaciones funcionen.
+
+### En la aplicación móvil
+
+En la aplicación móvil de Chateea (iOS y Android) eliges la disposición en la pantalla de fin de llamada o en la vista posterior. Si tu usuario tiene acceso a varias cuentas, las disposiciones solo aparecen cuando la cuenta abierta es la misma de la llamada. Usa la opción **Cambiar** para abrir la cuenta correcta antes de elegir.
+
+## Usar disposiciones en flujos de trabajo
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización** y crea o abre un flujo de trabajo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Agrega el disparador **Detalles de la llamada** (Call Details).
+  </Step>
+  <Step title="Filtra por disposición">
+    Añade el filtro **Disposición personalizada** y elige una o varias disposiciones.
+  </Step>
+  <Step title="Define las acciones">
+    Añade lo que debe pasar después según el resultado.
+  </Step>
+</Steps>
+
+Algunas ideas de acciones:
+
+- Enviar un SMS o correo de seguimiento.
+- Crear una tarea para el vendedor.
+- Crear o actualizar una oportunidad.
+- Agregar o quitar etiquetas.
+- Volver a poner al contacto en la cola del marcador automático.
+
+## Estado de la llamada frente a disposición
+
+| Campo | Qué representa | Ejemplos |
+| --- | --- | --- |
+| **Estado de la llamada** | El resultado técnico que registra el sistema automáticamente. | Ocupado, Buzón de voz, Sin respuesta, Completada |
+| **Disposición personalizada** | El resultado de negocio que elige tu equipo al terminar. | Seguimiento, Calificado, Pidió que le devuelvan la llamada |
+
+Los dos se pueden usar como filtros en el disparador **Detalles de la llamada**, según quieras automatizar por lo que pasó técnicamente o por lo que decidió tu equipo.
+
+## Llamadas compatibles y límites
+
+| Compatible | Límites |
+| --- | --- |
+| Llamadas hechas o recibidas en el marcador web de Chateea | Una sola disposición por llamada |
+| Llamadas hechas o recibidas en la aplicación móvil | Máximo 10 disposiciones por cuenta |
+| Llamadas de WhatsApp compatibles hechas desde Chateea | No hay disposiciones anidadas ni selección múltiple |
+| | Las llamadas contestadas en un teléfono personal o en un teléfono de escritorio no admiten disposición |
+
+## Si antes usabas el estado de llamada manual
+
+La selección manual de **Estado de la llamada** en las acciones manuales del marcador automático fue reemplazada por las **disposiciones**:
+
+- Usa las disposiciones para registrar el resultado después de cada llamada.
+- El historial de estados anteriores sigue disponible.
+- Revisa los flujos antiguos que dependían del estado elegido a mano y cámbialos al filtro **Disposición personalizada**.
+
+<Warning>
+  Los estados que registra el sistema (Ocupado, Buzón de voz, Sin respuesta, Completada) siguen disponibles en el disparador **Detalles de la llamada**. No los reemplaces si tu automatización depende del resultado técnico de la llamada.
+</Warning>
+
+## Permisos
+
+| Rol | Qué puede hacer |
+| --- | --- |
+| **Administrador** | Crear, editar, reordenar y eliminar disposiciones. |
+| **Usuario** | Elegir una disposición después de una llamada. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Es obligatorio elegir una disposición en cada llamada?">
+    No, es opcional. Pero si no la eliges, los flujos basados en disposiciones no se dispararán para esa llamada.
+  </Accordion>
+  <Accordion title="¿Puedo elegir varias disposiciones para una llamada?">
+    No. Solo una por llamada.
+  </Accordion>
+  <Accordion title="¿Qué pasa si renombro una disposición que usa un flujo?">
+    Nada: el flujo sigue funcionando porque la disposición se identifica por su ID interno.
+  </Accordion>
+  <Accordion title="¿Y si la elimino?">
+    El flujo deja de dispararse con ella. Edita el flujo para quitarla o sustituirla y vuelve a probarlo.
+  </Accordion>
+  <Accordion title="¿Dónde veo los resultados?">
+    En **Informes → Informe de llamadas**, donde puedes filtrar y analizar las llamadas por disposición.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador Detalles de la llamada" icon="bolt" href="/telefonia/disparador-detalles-de-llamada">
+    Automatiza acciones según el resultado de cada llamada.
+  </Card>
+  <Card title="El marcador telefónico de Chateea" icon="phone" href="/telefonia/marcador-telefonico">
+    Haz y recibe llamadas desde el navegador.
+  </Card>
+</CardGroup>

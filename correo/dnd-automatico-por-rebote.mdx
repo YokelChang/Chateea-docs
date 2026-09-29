@@ -1,0 +1,101 @@
+---
+title: "Activar DND automático cuando un correo rebota"
+description: "Crea un flujo de trabajo que active el No molestar de correo para cada contacto cuyo correo rebote."
+icon: "ban"
+---
+
+Cada vez que un correo rebota, esa dirección no está recibiendo tus mensajes, ya sea de forma permanente (el buzón no existe) o temporal (bandeja llena, error del servidor). Seguir enviando a direcciones que rebotan daña tu reputación como remitente. Con un flujo de trabajo muy simple puedes activar automáticamente el **No molestar (DND)** de correo para cada contacto cuyo correo rebote, sin tocar sus otros canales.
+
+## Por qué conviene activar DND al rebotar
+
+- **Reputación de envío:** los proveedores de correo usan la tasa de rebote como señal de spam.
+- **Entregabilidad:** una tasa de rebote alta puede frenar o bloquear tu dominio, y eso afecta también a los contactos válidos.
+- **Envíos desperdiciados:** cada correo a una dirección muerta no llega a nadie.
+- **Datos limpios:** tu lista se mantiene sana sin revisarla a mano.
+
+## Crear el flujo de trabajo
+
+Solo necesitas dos piezas: el disparador **Eventos de correo** filtrado a "Rebotado" y la acción **DND del contacto** limitada a correo saliente.
+
+<Steps>
+  <Step title="Agrega el disparador Eventos de correo">
+    Ve a **Automatización → Flujos de trabajo**, crea un flujo nuevo (o abre uno existente) y haz clic en **Agregar disparador**. Busca y elige **Eventos de correo** (Email Events). Este disparador se activa con aperturas, clics, rebotes o respuestas.
+  </Step>
+  <Step title="Filtra solo los rebotes">
+    Ponle un nombre claro al disparador. En **Filtros**, agrega un filtro por **Evento** y elige **Rebotado** (Bounced). Así el flujo solo se ejecuta cuando el correo rebota.
+  </Step>
+  <Step title="Agrega la acción DND del contacto">
+    Haz clic en **+** debajo del disparador y agrega la acción **DND del contacto** (en el lienzo aparece como **Activar/desactivar DND**).
+  </Step>
+  <Step title="Configura la acción">
+    Completa estos campos:
+    - **Dirección del DND:** **Saliente**, porque quieres dejar de enviar al contacto, no bloquear lo que él te envía.
+    - **DND:** **Activar DND para canales específicos**, para que solo se afecte el correo.
+    - **Canales:** **Correo**.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda el disparador y la acción. Cuando el flujo muestre Eventos de correo (Rebotado) → Activar/desactivar DND → Fin, cambia el estado de **Borrador** a **Publicado**.
+  </Step>
+</Steps>
+
+<Tip>
+  Agrega también una acción que ponga una etiqueta como "correo rebotado". Así podrás filtrar, medir y revisar más adelante a estos contactos.
+</Tip>
+
+## Rebotes duros y rebotes blandos
+
+No todos los rebotes significan que la dirección no sirve:
+
+| Tipo | Ejemplos | Qué pasa |
+| --- | --- | --- |
+| **Rebote duro** | Buzón inexistente, dominio que no existe. | Chateea marca automáticamente el correo como **inválido**. Es el caso más claro para activar DND. |
+| **Rebote blando** | Bandeja llena, error temporal del servidor. | Suele ser temporal y puede resolverse solo. |
+
+<Warning>
+  Este flujo activa DND para **todos** los rebotes por igual, y la validación de correo no quita el DND después. Si quieres distinguir rebotes duros de blandos, agrega un filtro adicional o una condición antes de la acción, y planifica una revisión periódica para quitar el DND a los contactos cuyas direcciones vuelvan a funcionar.
+</Warning>
+
+## Ejemplo
+
+Un negocio envía un boletín mensual a toda su base. Con el tiempo, algunas direcciones dejaron de existir. En lugar de limpiar la lista a mano cada mes:
+
+- **Disparador:** Eventos de correo, con el filtro Evento es Rebotado.
+- **Acción:** DND del contacto, saliente, activado solo para el canal Correo.
+- **Resultado:** en cuanto un correo rebota, ese contacto deja de recibir correos, pero sigue disponible por SMS, llamadas y otros canales.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El flujo quita el DND si el correo vuelve a ser válido?">
+    No. Ni la validación de correo ni un envío exitoso posterior lo quitan. Para reactivar el correo de un contacto, usa otro flujo o hazlo a mano con la opción de desactivar DND de la misma acción.
+  </Accordion>
+  <Accordion title="¿Afecta a SMS, llamadas u otros canales?">
+    No. Como el DND se limita al canal Correo, el contacto sigue disponible por los demás canales.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre DND entrante y saliente?">
+    El **saliente** controla si puedes enviarle comunicaciones al contacto. El **entrante** controla si se aceptan mensajes o llamadas que llegan de él. Para los rebotes siempre usa saliente.
+  </Accordion>
+  <Accordion title="¿Puedo esperar a que rebote varias veces antes de activar DND?">
+    Sí. El disparador se activa en cada rebote, así que puedes agregar una condición o un contador (por ejemplo, un campo que sume uno en cada rebote) y ejecutar la acción de DND solo cuando llegue al número que definas.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los contactos que están en otros flujos?">
+    Con el DND de correo activo, cualquier paso de envío de correo de cualquier flujo se salta para ese contacto. Los pasos que no son de correo (SMS, tareas, etiquetas) siguen funcionando.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="No molestar (DND)" icon="ban" href="/contactos/no-molestar-dnd">
+    Cómo bloquear canales por contacto.
+  </Card>
+  <Card title="Suspensión de envíos por rebotes" icon="triangle-exclamation" href="/correo/suspension-por-rebotes">
+    Umbrales de rebote y cómo evitar bloqueos.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="diagram-project" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Crea tu primera automatización.
+  </Card>
+  <Card title="Acción Verificación de correo en flujos" icon="shield-check" href="/automatizaciones/accion-verificacion-de-correo">
+    Revisa direcciones antes de enviarles.
+  </Card>
+</CardGroup>

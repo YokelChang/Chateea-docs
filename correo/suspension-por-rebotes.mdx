@@ -1,0 +1,166 @@
+---
+title: "Suspensión de envíos por alta tasa de rebote"
+description: "Qué provoca la suspensión de envíos por rebotes, cuánto dura, cómo desbloquear tu cuenta y cómo evitarla."
+icon: "triangle-exclamation"
+---
+
+Los proveedores de correo y las redes antispam vigilan cuántos de tus correos rebotan. Una tasa de rebote alta indica que envías a direcciones que no existen o que los filtros rechazan tus mensajes, y eso daña tu entregabilidad. Para proteger tu reputación y la de la plataforma, Chateea suspende temporalmente el envío de correos de una cuenta cuando su tasa de rebote supera los límites. Aquí ves qué lo provoca, cuánto dura, qué hacer ahora y cómo evitar que vuelva a pasar.
+
+## Qué es un rebote
+
+Un rebote ocurre cuando el proveedor del destinatario no entrega o rechaza tu correo.
+
+| Tipo | Qué significa | Qué hacer |
+| --- | --- | --- |
+| **Rebote duro** | La dirección no existe o el dominio no es válido. Es permanente. | No vuelvas a enviar a esa dirección. |
+| **Rebote blando** | Falla temporal: el servidor está caído, la bandeja está llena o el mensaje es demasiado grande. | Puede resolverse solo, pero si se repite se vuelve un problema. |
+
+Una tasa de rebote sana está entre **0 % y 3 %**.
+
+<Info>
+  Durante una suspensión solo se detiene el envío de correos. SMS, llamadas, flujos de trabajo, calendarios y el resto de funciones siguen operando con normalidad.
+</Info>
+
+## Cómo escalan los bloqueos
+
+Los bloqueos avanzan en tres niveles. Los dos primeros duran 12 horas. El tercero es permanente y solo lo puede levantar el equipo de soporte.
+
+| Tasa de rebote | Qué pasa | Duración | Nivel |
+| --- | --- | --- | --- |
+| 3 % | Recibes un correo de advertencia | Aviso inmediato | Advertencia previa |
+| 5 % | Se suspende el envío de correos | 12 horas | 1.er bloqueo |
+| 3 % (después del 1.er bloqueo) | Advertencia crítica | Aviso inmediato | Advertencia antes del 2.º bloqueo |
+| 5 % (después del 1.er bloqueo) | Se suspende el envío de correos | 12 horas | 2.º bloqueo |
+| 3 % (después del 2.º bloqueo) | Advertencia final | Aviso inmediato | Última advertencia |
+| 5 % (después del 2.º bloqueo) | **Suspensión permanente** | Permanente | 3.er bloqueo |
+
+Si se aplica el bloqueo permanente, verás este error:
+
+```text
+Email sending is blocked due to a high bounce rate. Unblock email sending by enabling the Email Verification Service.
+```
+
+Indica que el envío está bloqueado por la alta tasa de rebote y que debes activar el servicio de verificación de correos.
+
+### Cuántos envíos se necesitan para bloquear
+
+Para no castigar a quien envía poco volumen, el bloqueo solo se evalúa con una muestra suficiente:
+
+- **Mínimo de envíos escalonado:** la cantidad de correos enviados que se necesita antes de poder bloquear depende de la tasa de rebote. Las tasas muy altas se detectan antes, y las que están en el límite necesitan hasta 500 envíos para confirmarse.
+- **Mínimo de rebotes:** deben ocurrir al menos 25 rebotes antes de que se considere un bloqueo.
+
+Así, una cuenta que envía 60 correos y tiene 3 rebotes ya no se bloquea por esa muestra tan pequeña, pero una lista realmente mala sigue bloqueándose. Los umbrales de 3 % y 5 % no cambian.
+
+## Qué hacer si tu envío está suspendido
+
+Cuando se suspende el envío, el correo de tu negocio recibe una alerta. A partir de ahí:
+
+<Steps>
+  <Step title="Limpia tu lista con verificación de correos">
+    Activa el servicio de verificación de correos para detectar y descartar direcciones inválidas o inexistentes que volverían a rebotar. También puedes usar la [acción Verificación de correo](/automatizaciones/accion-verificacion-de-correo) en tus flujos.
+  </Step>
+  <Step title="Pausa los envíos masivos">
+    No envíes campañas masivas ni correos en frío hasta que el problema esté resuelto.
+  </Step>
+  <Step title="Espera o reactiva antes">
+    El bloqueo temporal se levanta a las 12 horas. Puedes volver a enviar antes si activas la verificación de correos. Después, sube el volumen poco a poco y empieza por tus contactos más activos.
+  </Step>
+</Steps>
+
+<Warning>
+  Si no aplicas estas medidas y tus tasas de quejas, bajas o rebotes duros siguen empeorando, tu cuenta puede quedar bloqueada.
+</Warning>
+
+### Reenviar a quienes no recibieron el correo
+
+No hay una forma directa de ver qué contactos se quedaron sin recibir un envío cuando se aplicó el bloqueo. Puedes resolverlo así:
+
+1. [Exporta las estadísticas del correo](/marketing/exportar-estadisticas-de-correo).
+2. Vuelve a importar ese archivo para poner una etiqueta a los contactos que sí lo recibieron.
+3. Crea una [lista inteligente](/contactos/listas-inteligentes) con los contactos que **no** tienen esa etiqueta y reenvía.
+
+## Solicitar el desbloqueo permanente
+
+El desbloqueo de un bloqueo permanente **no es automático**: requiere una revisión manual.
+
+<Steps>
+  <Step title="Escribe a soporte">
+    Envía un correo a soporte de Chateea en **help@chateea.com** pidiendo la revisión.
+  </Step>
+  <Step title="Incluye los datos necesarios">
+    - El nombre de tu cuenta de Chateea.
+    - Una captura o el texto exacto del mensaje de error.
+  </Step>
+  <Step title="Espera la revisión">
+    El equipo revisará tu historial de envíos, tus tasas de rebote y de quejas, y cómo consigues tus contactos y envías tus correos.
+  </Step>
+</Steps>
+
+El resultado puede ser el desbloqueo o una lista de medidas adicionales antes de reactivar el envío. La aprobación **no está garantizada** y depende de que cumplas las buenas prácticas de correo.
+
+## Cómo evitar futuras suspensiones
+
+<AccordionGroup>
+  <Accordion title="1. Verifica tus contactos">
+    Si importaste contactos hace tiempo, verifícalos todos antes de enviar. Los correos que rebotan se marcan como inválidos y quedan fuera de campañas, envíos masivos y flujos de trabajo.
+  </Accordion>
+  <Accordion title="2. Configura un dominio dedicado">
+    Enviar desde tu propio dominio te separa de la infraestructura compartida y te da control sobre tu reputación. Mira cómo hacerlo en [Configura correo, teléfono y SMS](/primeros-pasos/configura-correo-telefono-y-sms).
+  </Accordion>
+  <Accordion title="3. Usa un remitente que coincida con tu dominio">
+    Si configuraste `envios.tunegocio.com`, envía desde una dirección como `hola@tunegocio.com`. Así la autenticación queda alineada entre el dominio de envío y el de respuesta. Revisa [qué remitente ven tus contactos](/correo/remitente-de-tus-correos).
+  </Accordion>
+  <Accordion title="4. Envía en lotes pequeños">
+    Evita picos de envío de gran volumen: disparan los rebotes y los filtros de spam. Usa las [acciones masivas](/contactos/acciones-masivas) con envío por goteo.
+  </Accordion>
+  <Accordion title="5. Usa doble confirmación">
+    Agrega una casilla de consentimiento en tus formularios de registro. Por ejemplo:
+
+    ```text
+    Al enviar tus datos, aceptas recibir comunicaciones de NOMBRE_DEL_NEGOCIO por correo electrónico, SMS o llamada. Tu consentimiento no es condición para comprar. Puedes darte de baja en cualquier momento escribiendo a CORREO_DEL_NEGOCIO.
+    ```
+  </Accordion>
+  <Accordion title="6. Incluye un enlace de baja visible">
+    Un enlace de baja claro reduce las quejas por spam, que también cuentan para la suspensión. Revisa cómo configurar el [enlace de baja predeterminado](/correo/enlace-de-baja-predeterminado).
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuál es una tasa de rebote sana?">
+    Entre 0 % y 3 %. Al 3 % recibes una advertencia y al 5 % se suspende el envío.
+  </Accordion>
+  <Accordion title="¿Cuánto dura un bloqueo temporal?">
+    El primero y el segundo duran 12 horas cada uno. Puedes reanudar antes activando la verificación de correos. Un tercer bloqueo es permanente y requiere revisión de soporte.
+  </Accordion>
+  <Accordion title="¿La suspensión afecta a otras funciones?">
+    No. Solo se detiene el envío de correos.
+  </Accordion>
+  <Accordion title="¿Qué hace el servicio de verificación de correos?">
+    Revisa cada dirección (sintaxis, dominio, existencia del buzón y detección de dominios que aceptan todo) y marca las inválidas para que queden fuera de campañas, envíos masivos y flujos. Así tu tasa de rebote se mantiene lejos del umbral.
+  </Accordion>
+  <Accordion title="¿Puedo apelar un bloqueo permanente?">
+    Sí. Escribe a **help@chateea.com** con el nombre de tu cuenta y una captura del error. La revisión es manual y la aprobación depende de que tu cuenta cumpla las buenas prácticas.
+  </Accordion>
+  <Accordion title="Mi tasa ya está bien. ¿Puedo volver a enviar de inmediato?">
+    Espera a que termine el bloqueo de 12 horas o activa la verificación de correos para reanudar antes. Después, sube el volumen de forma gradual.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Activar DND automático cuando un correo rebota" icon="ban" href="/correo/dnd-automatico-por-rebote">
+    Deja de enviar a direcciones que rebotan.
+  </Card>
+  <Card title="Salud del dominio de envío" icon="heart-pulse" href="/correo/salud-del-dominio-de-envio">
+    Métricas y estados de tu dominio.
+  </Card>
+  <Card title="Dominios de destinatario bloqueados" icon="shield-check" href="/correo/dominios-de-destinatario-bloqueados">
+    Envíos que se frenan antes de salir.
+  </Card>
+  <Card title="Qué es el correo de Chateea" icon="envelope" href="/correo/que-es-el-correo-de-chateea">
+    Límites de envío y calentamiento.
+  </Card>
+</CardGroup>

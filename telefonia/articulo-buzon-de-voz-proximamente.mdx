@@ -1,0 +1,135 @@
+---
+title: "Configurar el buzón de voz"
+description: "Sube tu saludo de buzón de voz para la cuenta, para cada usuario o como mensaje de voz en un flujo, con el formato correcto."
+icon: "voicemail"
+---
+
+Con un buzón de voz bien configurado, quien te llama fuera de horario o cuando tu equipo está ocupado escucha un saludo profesional y puede dejarte un mensaje. En Chateea puedes subir tu propia grabación para usarla como **buzón de voz de la cuenta**, como **buzón de voz de un usuario** o como **mensaje de voz** que envías desde un flujo de trabajo.
+
+Para que se reproduzca bien en todas las operadoras, prepara el audio en el formato y la calidad adecuados antes de subirlo.
+
+## Requisitos del archivo de audio
+
+| Requisito | Recomendación |
+| --- | --- |
+| **Formato** | MP3 o WAV |
+| **Calidad** | 64 kbps |
+| **Contenido** | Un mensaje de voz claro y grabado previamente |
+
+<Warning>
+Más calidad no siempre es mejor para el buzón de voz. Si tu grabación no se reproduce bien, conviértela o expórtala a **64 kbps** y vuelve a subirla.
+</Warning>
+
+## Dónde usar la grabación
+
+### Buzón de voz de la cuenta
+
+Es el saludo predeterminado de tu negocio.
+
+<Steps>
+  <Step title="Abre el sistema telefónico">
+    Ve a **Configuración → Sistema telefónico** y baja hasta los ajustes de **llamadas y buzón de voz**.
+  </Step>
+  <Step title="Sube el audio">
+    Sube tu archivo MP3 o WAV y guarda los cambios.
+  </Step>
+  <Step title="Pruébalo">
+    Llama a tu número de Chateea desde otro teléfono y deja que la llamada llegue al buzón.
+  </Step>
+</Steps>
+
+### Buzón de voz de un usuario
+
+Cada miembro del equipo puede tener su propio saludo.
+
+<Steps>
+  <Step title="Edita al usuario">
+    Ve a **Configuración → Mi equipo**, busca al usuario y haz clic en editar.
+  </Step>
+  <Step title="Sube el audio">
+    Despliega los ajustes de **llamadas y buzón de voz**, sube el archivo MP3 o WAV y guarda.
+  </Step>
+  <Step title="Prueba el flujo de llamadas del usuario">
+    Llama y confirma que suena el saludo correcto.
+  </Step>
+</Steps>
+
+El buzón de voz de un usuario tiene prioridad cuando el contacto o el número llamado están asignados a ese usuario. El orden completo es: primero el buzón del usuario, luego el de la cuenta y, si no hay ninguno, el saludo predeterminado del sistema.
+
+### Mensaje de voz desde un flujo de trabajo
+
+Úsalo para dejar un mensaje grabado en el buzón de tus contactos de forma automática.
+
+<Steps>
+  <Step title="Abre el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y abre el flujo.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+**, busca **Buzón de voz** (Voicemail) y selecciónala.
+  </Step>
+  <Step title="Sube el audio">
+    Sube tu grabación en **MP3 o WAV a 64 kbps** y haz clic en **Guardar acción**.
+  </Step>
+  <Step title="Publica y prueba">
+    Guarda o publica el flujo y pruébalo con un contacto de prueba antes de usarlo con tus clientes.
+  </Step>
+</Steps>
+
+## Cómo preparar tu grabación
+
+Puedes grabar con cualquier aplicación que te permita exportar a un formato compatible. Para un mejor resultado:
+
+- Graba en un lugar silencioso.
+- Habla claro y a un volumen constante.
+- Reduce al mínimo el ruido de fondo.
+- Exporta en **MP3 o WAV**.
+- Usa **64 kbps** para asegurar la compatibilidad.
+
+Si ya tienes una grabación, no hace falta volver a grabarla: basta con convertirla al formato y la calidad adecuados.
+
+<Tip>
+Un buen saludo dice el nombre de tu negocio, invita a dejar nombre, número y motivo de la llamada, e indica cuándo devolverás la llamada. Por ejemplo: «Hola, llamaste a Clínica Aurora. En este momento no podemos atenderte. Déjanos tu nombre, tu número y el motivo de tu llamada, y te llamamos hoy mismo».
+</Tip>
+
+### Ejemplo con un editor de audio
+
+Puedes usar cualquier herramienta externa de grabación o conversión; lo importante es que el archivo final cumpla los requisitos. Por ejemplo, con un editor de escritorio como **Audacity**:
+
+1. Abre o importa tu archivo de audio.
+2. Configura la frecuencia del proyecto en **8000 Hz**.
+3. Remuestrea la pista a **8000 Hz** si hace falta.
+4. Exporta la grabación como **WAV** con codificación **U-Law**.
+5. Sube el archivo exportado al buzón de voz que corresponda.
+
+Las herramientas de terceros cambian con el tiempo; consulta su documentación si algo no coincide.
+
+## Prueba el audio después de subirlo
+
+**Para el buzón de la cuenta o de un usuario:**
+
+1. Llama a tu número de Chateea desde otro teléfono.
+2. Deja que la llamada llegue al buzón de voz.
+3. Confirma que suena la grabación correcta.
+4. Escucha si hay distorsión, volumen bajo o cortes.
+
+**Para un mensaje de voz en un flujo:** ejecuta el flujo con un contacto de prueba y confirma que llega la grabación esperada.
+
+## Si el audio no se reproduce bien
+
+1. Confirma que el archivo sea **MP3 o WAV**.
+2. Conviértelo o vuelve a exportarlo a **64 kbps**.
+3. Súbelo de nuevo y guarda los cambios.
+4. Vuelve a probar la llamada o el flujo.
+
+Si se trata del buzón de la cuenta o de un usuario, revisa también el **tiempo de espera de llamadas entrantes**. Si es demasiado largo, el buzón de voz de la operadora del número de desvío puede contestar antes de que Chateea reproduzca tu saludo.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Buzón de voz sin timbre" icon="voicemail" href="/telefonia/buzon-de-voz-sin-timbre">
+    Deja mensajes de voz sin que suene el teléfono del contacto.
+  </Card>
+  <Card title="Detener al responder y detección de buzón" icon="robot" href="/automatizaciones/detener-al-responder-y-deteccion-de-buzon">
+    Controla qué pasa cuando contesta un buzón.
+  </Card>
+</CardGroup>

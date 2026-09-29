@@ -1,0 +1,112 @@
+---
+title: "Ajustes de cumplimiento de SMS: remitente y texto de baja"
+description: "Añade automáticamente la identificación de tu negocio y el texto para darse de baja a tus SMS y evita el filtrado de operadores."
+icon: "shield-check"
+---
+
+Los ajustes de cumplimiento de SMS agregan automáticamente a tus mensajes dos elementos que los operadores esperan ver: **quién envía el mensaje** (identificación del remitente) y **cómo darse de baja** (texto de exclusión voluntaria). Con ellos activos, tus contactos reconocen a tu negocio, confían más en tus mensajes y se reduce el riesgo de que los operadores filtren o bloqueen tus SMS.
+
+Por ejemplo, al primer mensaje de una conversación se le puede añadir "Gracias, Alex de Clínica Dental Centro" y "Responde STOP para darte de baja" si no los incluiste tú.
+
+## Para qué te sirve
+
+- **Cumplimiento por defecto:** el primer mensaje de cada conversación lleva siempre remitente y texto de baja.
+- **Menos filtrado de operadores:** tus mensajes incluyen los elementos que exigen las normas de mensajería comercial.
+- **Marca reconocible:** quien recibe el SMS sabe quién le escribe, lo que mejora la confianza y las respuestas.
+- **Recordatorio periódico:** puedes volver a incluir remitente y texto de baja cada cierto número de días en conversaciones largas.
+- **Sin duplicados:** si tu mensaje ya trae una instrucción de baja completa, no se vuelve a añadir.
+
+## Cómo funcionan
+
+### Primer mensaje saliente
+
+El primer SMS saliente de cada conversación incluye siempre la información del remitente y el texto de baja, aunque tengas desactivado el recordatorio periódico. Esto también aplica a los mensajes automáticos, como la respuesta por SMS a llamadas perdidas y las solicitudes de reseña.
+
+### Conversaciones en curso
+
+Después del primer mensaje, el texto de cumplimiento no se repite, salvo que actives el **recordatorio periódico de remitente y baja**. En ese caso, Chateea revisa si el mensaje ya incluye esa información antes de añadirla de nuevo.
+
+### Detección inteligente
+
+Chateea no duplica el texto de baja si detecta en tu mensaje una **instrucción completa** para darse de baja. Una palabra suelta no basta.
+
+| Texto en tu mensaje | ¿Evita que se añada el texto de baja? |
+| --- | --- |
+| "Responde STOP para darte de baja." | Sí |
+| "Envía STOP para no recibir más mensajes." | Sí |
+| "Si hoy no puedes, stop por la tienda mañana." | No, es una palabra suelta en otro contexto |
+
+## Configurar los ajustes
+
+<Steps>
+  <Step title="Abre la mensajería del sistema telefónico">
+    Ve a **Configuración → Sistema telefónico** y abre la pestaña **Mensajería** en el menú superior.
+  </Step>
+  <Step title="Activa el texto de baja">
+    Enciende **Hacer que los SMS cumplan la normativa añadiendo un mensaje de baja** (Make SMS compliant by adding an opt-out message). Haz clic en **Personalizar** si quieres cambiar el texto predeterminado ("Reply STOP to unsubscribe").
+  </Step>
+  <Step title="Activa la información del remitente">
+    Enciende **Hacer que los SMS cumplan la normativa añadiendo la información del remitente** (Make SMS compliant by adding sender information). Con **Personalizar** puedes escribir tu propia firma, por ejemplo "Gracias, Jamie de Café Roble".
+  </Step>
+  <Step title="Configura el recordatorio periódico (opcional)">
+    Enciende **Habilitar baja e información del remitente periódicas** (Enable periodic opt-out & sender info). En el campo **Incluir identificador del remitente y mensaje de baja cada [1 a 60] días**, escribe un número entre **1 y 60**.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para aplicar los cambios a tus SMS.
+  </Step>
+</Steps>
+
+## Ejemplo del recordatorio periódico
+
+Si configuras el intervalo en **30 días**:
+
+1. El primer SMS a un contacto se envía el 1 de junio: incluye remitente y texto de baja.
+2. Los mensajes que envíes durante junio no reciben texto adicional.
+3. El siguiente mensaje saliente que envíes a partir del 1 de julio vuelve a incluir remitente y texto de baja, **solo si no los contiene ya**.
+
+## Valores predeterminados y casos en que no puedes desactivarlos
+
+| Situación | Comportamiento |
+| --- | --- |
+| Cuentas nuevas | Los ajustes vienen activados. |
+| Cuentas existentes | Los ajustes vienen desactivados hasta que los enciendas. |
+| Cuenta en período de prueba | No se pueden desactivar. |
+| Cuenta creada hace menos de 15 días | No se pueden desactivar. |
+| Usuarios sin permiso para cambiar estos ajustes | No pueden desactivarlos ni ver el botón **Personalizar**. |
+
+Si no ves el botón **Personalizar** o las casillas están bloqueadas, lo más probable es que estés en uno de estos casos. Pide ayuda al administrador de tu cuenta o escribe a soporte de Chateea en **help@chateea.com**.
+
+## Buenas prácticas para el texto
+
+- Usa frases simples y directas. Evita mayúsculas excesivas, muchos emojis y acortadores de enlaces.
+- Identifica a tu negocio con su nombre real, no con referencias vagas. Ejemplos: "Gracias, Jamie de Café Roble" o "Equipo Gimnasio Acme".
+- Para el texto de baja, usa palabras clave que los operadores reconocen: **STOP**, **STOPALL**, **CANCEL**, **UNSUBSCRIBE**, **END** o **QUIT**.
+- Mantén los ajustes activados aunque puedas apagarlos. Son la forma más sencilla de proteger la entregabilidad de tus SMS.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo desactivar el remitente o el texto de baja?">
+    Depende de tu cuenta. Si está en período de prueba, se creó hace menos de 15 días o tu usuario no tiene permiso, no podrás. En cualquier caso, te recomendamos mantenerlos activos.
+  </Accordion>
+  <Accordion title="¿Qué pasa si mi mensaje ya incluye el texto de baja?">
+    Chateea no lo duplica. Solo añade la línea si falta una instrucción de baja completa.
+  </Accordion>
+  <Accordion title="¿Cómo personalizo los textos?">
+    En **Configuración → Sistema telefónico → Mensajería**, haz clic en **Personalizar** junto a cada ajuste y escribe tu texto. Guarda al terminar.
+  </Accordion>
+  <Accordion title="¿Se aplica a las respuestas automáticas por llamadas perdidas?">
+    Sí. El primer mensaje de cualquier conversación, incluidas las respuestas a llamadas perdidas y las solicitudes de reseña, lleva remitente y texto de baja.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Errores comunes de entrega de SMS" icon="triangle-exclamation" href="/telefonia/errores-comunes-de-entrega-de-sms">
+    Qué significan los errores más frecuentes y cómo resolverlos.
+  </Card>
+  <Card title="Error 30007: filtrado de operadores" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Cómo evitar que los operadores bloqueen tus mensajes.
+  </Card>
+</CardGroup>

@@ -1,0 +1,114 @@
+---
+title: "Evitar bucles de llamadas al desviar a tus números de Chateea"
+description: "Por qué una llamada puede quedar dando vueltas en tu enrutamiento, dónde aparece la advertencia y cómo configurar desvíos seguros."
+icon: "arrows-spin"
+---
+
+En Chateea puedes usar tus números de teléfono en muchos lugares: como número de tu negocio, en el perfil de tus usuarios, en grupos de números y en reglas de desvío. Esa flexibilidad es útil, pero si una llamada termina redirigida al mismo número por el que entró, se crea un **bucle de llamadas**: la llamada da vueltas en lugar de llegar a alguien y acaba fallando o cortándose.
+
+Esta guía explica cómo se produce un bucle, dónde verás la advertencia y cómo configurar tu enrutamiento para evitarlo.
+
+## Qué es un bucle de llamadas
+
+Un bucle ocurre cuando una llamada entrante se envía de vuelta al mismo número o a la misma ruta por la que entró. En vez de avanzar hacia un destino final, la llamada repite una y otra vez las mismas instrucciones.
+
+```text
+Cliente → Número del negocio → Otro número de Chateea → Número del negocio (vuelve a empezar)
+```
+
+### Qué consecuencias tiene
+
+| Consecuencia | Cómo se nota |
+| --- | --- |
+| Llamadas entrantes fallidas | El cliente no logra comunicarse. |
+| Cortes inesperados | La llamada se cae sin motivo aparente. |
+| Llamadas que no llegan | Tu equipo nunca ve la llamada. |
+| Intentos repetidos | El registro muestra varios intentos para una sola llamada. |
+| Informes inexactos | Las métricas de llamadas se inflan o distorsionan. |
+
+## Usar tu número de Chateea como número del negocio sí está permitido
+
+Poner tu número de Chateea como **número de teléfono del negocio** en tu perfil **no crea un bucle** por sí solo. La advertencia aparece porque ese mismo número también participa en tu enrutamiento de llamadas entrantes. El bucle solo existe si, después de pasar por varios pasos, la llamada vuelve a ese número.
+
+Por ejemplo:
+
+1. Un cliente llama al número de tu negocio.
+2. La llamada sigue la ruta configurada.
+3. Un paso de la ruta la desvía a otro número de Chateea.
+4. Ese número la desvía de nuevo al número del negocio.
+5. El sistema la recibe como una llamada nueva y todo vuelve a empezar.
+
+<Warning>
+  El problema no es el número en sí, sino **la ruta completa** que sigue la llamada.
+</Warning>
+
+## La advertencia de bucle
+
+Cuando Chateea detecta que un número podría crear un bucle, muestra este aviso:
+
+> Usar aquí el número de teléfono de tu CRM puede hacer que algunas llamadas fallen porque puede crear un bucle de llamadas.
+
+Es **solo informativo**: puedes guardar la configuración igualmente. Úsalo como recordatorio para revisar la ruta antes de guardar.
+
+### Dónde aparece
+
+| Lugar | Por qué avisa |
+| --- | --- |
+| **Configuración del número** (desvío de llamadas) | Si desvías las llamadas a un número de Chateea que las devuelve al origen, se forma un bucle. |
+| **Perfil del negocio** (número de teléfono del negocio) | Ese número puede formar parte de tu enrutamiento entrante. |
+| **Perfil del usuario** (teléfono del usuario) | El teléfono de un usuario debe ser un móvil, fijo o VoIP externo. Usar aquí un número entrante de Chateea crea un bucle inmediato, por eso puede quedar bloqueado con el mensaje "No puedes usar aquí tu número entrante porque crearía un bucle de llamadas". |
+| **Grupo de números** (desvío) | Si el destino del desvío devuelve las llamadas al grupo o a uno de sus números, se produce un bucle. |
+| **Prioridades de enrutamiento del número** | Al ordenar miembros del equipo, números externos, IA de voz o el número del negocio, el sistema revisa si algún destino podría devolver la llamada al número de entrada. |
+
+## Cómo evitar bucles
+
+Antes de guardar cualquier cambio de enrutamiento:
+
+1. Identifica qué número recibe primero la llamada.
+2. Revisa cada destino: usuarios, números de desvío, IVR, flujos de trabajo, IA de voz, grupos de timbre y rutas de respaldo.
+3. Confirma que ningún paso devuelve la llamada al número de entrada.
+4. Usa números **externos** (móvil, fijo o VoIP de otro proveedor) como destino de desvío siempre que puedas.
+5. Haz una llamada de prueba desde un teléfono externo después de cada cambio.
+
+<Tip>
+  Un buen flujo de llamada siempre termina en su destino final y nunca vuelve a su punto de partida.
+</Tip>
+
+## Buenas prácticas
+
+- Nunca desvíes un número hacia sí mismo.
+- Revisa los teléfonos del perfil del negocio y de los usuarios cada vez que cambies el enrutamiento.
+- Revisa IVR, reglas de desvío, flujos de trabajo y destinos de respaldo.
+- Consulta el registro de llamadas después de cada cambio para detectar llamadas fallidas o cortadas.
+- Documenta las rutas complejas para que sea más fácil resolver problemas después.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar un número de Chateea como destino de desvío?">
+    Sí, siempre que la ruta no devuelva la llamada al número de entrada. Revisa la ruta completa y pruébala.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo guardar mi número entrante en el perfil de un usuario?">
+    Ese campo indica dónde recibe llamadas el usuario. Si pones un número entrante de Chateea, la llamada volvería al sistema de inmediato y se crearía un bucle, por eso se bloquea.
+  </Accordion>
+  <Accordion title="¿Cuál es el destino de desvío más seguro?">
+    Un móvil, un fijo o un número VoIP externo, porque saca la llamada de la ruta original.
+  </Accordion>
+  <Accordion title="¿Un bucle puede producirse de forma indirecta?">
+    Sí. La llamada puede pasar por varios pasos antes de volver al origen. Por eso hay que revisar toda la ruta, no solo el siguiente destino.
+  </Accordion>
+  <Accordion title="Mis llamadas siguen fallando. ¿Qué envío a soporte?">
+    Escribe a soporte de Chateea en **help@chateea.com** con capturas de tu configuración de enrutamiento y desvío, del perfil del negocio y de los usuarios, y ejemplos del registro de llamadas afectadas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Hacer sonar las llamadas en varios usuarios" icon="users" href="/telefonia/sonar-llamadas-en-varios-usuarios">
+    Reparte las llamadas entrantes entre tu equipo.
+  </Card>
+  <Card title="Gestionar los números de un grupo" icon="list" href="/telefonia/gestionar-numeros-de-un-grupo-de-numeros">
+    Administra los números de tus grupos de seguimiento.
+  </Card>
+</CardGroup>

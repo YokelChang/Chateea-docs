@@ -1,0 +1,63 @@
+---
+title: "Error al enviar correo desde una campaña o flujo de trabajo"
+description: "Revisa variables, valores personalizados y direcciones cuando la acción Enviar correo falla o muestra un error."
+icon: "triangle-exclamation"
+---
+
+Si al enviar un correo de prueba desde el paso de correo de una campaña o desde la acción **Enviar correo** de un flujo de trabajo ves el mensaje "Ocurrió un error, inténtalo de nuevo" (An error occurred, please try again), o si la acción simplemente no se ejecuta, casi siempre hay un problema de formato en el contenido o en las direcciones. Revisa estos cuatro puntos.
+
+## Lista de revisión
+
+<Steps>
+  <Step title="Sintaxis de las variables">
+    Las variables (campos de combinación) usan dos llaves de apertura y dos de cierre, por ejemplo `{{contact.first_name}}`. Revisa el contenido del correo (y del SMS, si lo hay) y busca:
+
+    - Una llave de cierre que falta: `{{contact.first_name}`
+    - Llaves de más: `{{{contact.first_name}}`
+
+    Si una variable está mal escrita, el sistema no puede resolverla y la acción falla.
+  </Step>
+  <Step title="Valores personalizados válidos">
+    Comprueba que los valores personalizados que usas existen y están bien escritos, sobre todo los que contienen enlaces. Consulta [Variables](/variables/introduccion) para ver la sintaxis correcta.
+  </Step>
+  <Step title="Direcciones de correo válidas">
+    Revisa que las direcciones de destino, CC y CCO tengan un formato correcto. Un error típico es escribir una coma en lugar de un punto: `prueba@gmail,com` hace que la acción falle.
+  </Step>
+  <Step title="Remitente con formato de correo">
+    El campo **Correo del remitente** (From) debe contener una dirección de correo real, no un nombre. Por ejemplo, cambia `Mi Empresa` por `info@miempresa.com`. El nombre de tu negocio va en el campo **Nombre del remitente**.
+  </Step>
+</Steps>
+
+<Warning>
+  Una sola variable o un solo valor personalizado mal escrito puede impedir que se envíe **todo** el correo, no solo la línea donde está. Revisa cada variable, no solo la que sospechas.
+</Warning>
+
+## Si el problema continúa
+
+- Revisa las condiciones del disparador y los pasos anteriores del flujo: puede que el contacto nunca llegue a la acción de correo. Consulta [Registros de ejecución e historial de inscripción](/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion).
+- Si todo parece correcto, escribe a soporte de Chateea en **help@chateea.com** con el nombre del flujo o de la campaña y una captura del error.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Esta revisión también sirve para la acción Enviar SMS?">
+    Sí, en parte. La sintaxis de variables y la validez de los valores personalizados (los dos primeros puntos) aplican igual a los SMS. Los dos últimos puntos son específicos del correo.
+  </Accordion>
+  <Accordion title="¿El nombre del remitente tiene que coincidir con el correo del remitente?">
+    No. Lo importante es que el campo del correo del remitente tenga una dirección con formato válido. Un nombre junto a un correo válido está bien; un nombre sin correo, no.
+  </Accordion>
+  <Accordion title="¿Dónde veo las variables disponibles?">
+    En el editor del correo, usa el selector de variables para insertarlas sin errores de escritura. También puedes consultar [Variables](/variables/introduccion).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solución de problemas de flujos de trabajo" icon="diagram-project" href="/automatizaciones/solucion-de-problemas">
+    Otras causas por las que un flujo no avanza.
+  </Card>
+  <Card title="Enviar un correo de prueba desde Conversaciones" icon="paper-plane" href="/correo/enviar-correo-de-prueba-desde-conversaciones">
+    Descarta problemas de envío en tu cuenta.
+  </Card>
+</CardGroup>

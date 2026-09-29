@@ -1,0 +1,89 @@
+---
+title: "Certificado SSL de tu dominio dedicado"
+description: "Revisa el estado del certificado SSL de tu dominio de envío y vuelve a emitirlo si los enlaces de tus correos fallan."
+icon: "lock"
+---
+
+Cuando envías con un dominio dedicado, todos los enlaces que el correo de Chateea genera (seguimiento de aperturas, clics y enlaces de baja) usan ese dominio. El certificado SSL cifra esos enlaces para que funcionen de forma segura. Si el certificado no está emitido, tus contactos verán errores al hacer clic en lugar de tu contenido.
+
+La buena noticia: el certificado se emite de forma automática y sin costo cuando agregas y verificas tu dominio dedicado. Aquí verás cómo revisar su estado y qué hacer si algo falla.
+
+## Por qué necesitas un certificado SSL
+
+- **Evita enlaces rotos:** sin SSL, al hacer clic aparece el error "Este sitio no puede proporcionar una conexión segura".
+- **Protege a tus contactos:** los enlaces de seguimiento, apertura y clic viajan cifrados de punta a punta.
+- **Mantiene la interacción:** menos advertencias de seguridad significa más clics y mejor reputación como remitente.
+
+## Estados del certificado
+
+| Estado | Qué significa | Qué hacer |
+| --- | --- | --- |
+| **SSL emitido** (SSL Issued) | El certificado está activo. | Nada, tu dominio ya está protegido. |
+| **SSL pendiente** (SSL Pending) | El certificado se está generando. | Si sigue así después de 15 a 30 minutos, vuelve a verificar el dominio. |
+| **SSL desconocido** (SSL Unknown) | El certificado aún no se ha generado ni emitido. | Repite la verificación del dominio y revisa tus registros DNS. |
+
+## Dónde ver el estado del certificado
+
+<Steps>
+<Step title="Abre la configuración de correo">
+Ve a **Configuración → Servicios de correo** (Email Services).
+</Step>
+<Step title="Entra a tus dominios dedicados">
+Haz clic en el botón **Dominio dedicado e IP** (Dedicated Domain And IP), a la derecha de la pantalla.
+</Step>
+<Step title="Revisa el estado">
+Junto a cada dominio verás el estado de su certificado SSL.
+</Step>
+</Steps>
+
+## Cómo emitir o volver a emitir el certificado
+
+<Steps>
+<Step title="Verifica los registros DNS de tu dominio">
+En **Configuración → Servicios de correo → Dominio dedicado e IP**, haz clic en **Verificar ahora** (Verify Now) junto a tu dominio. Se abrirá la lista de registros DNS que tu dominio necesita. Confirma que todos estén configurados y verificados en tu proveedor DNS.
+</Step>
+<Step title="Haz clic en Verificar dominio">
+Con todos los registros en verde, haz clic en **Verificar dominio** (Verify domain). Esto dispara la emisión o reemisión del certificado.
+</Step>
+<Step title="Comprueba el estado">
+Si aparece **SSL emitido**, listo. Si sigue en **pendiente** o **desconocido**, repite la verificación y revisa de nuevo tus registros DNS.
+</Step>
+</Steps>
+
+<Tip>
+¿No sabes dónde editar tus registros DNS? Estas son las guías oficiales de los proveedores más comunes: [GoDaddy](https://www.godaddy.com/help/manage-dns-zone-files-680), [Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/), [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/9214/31/cpanel-email-deliverability-tool--spf-and-dkim-records/), [AWS Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-editing.html), [Hostinger](https://www.hostinger.com/tutorials/how-to-use-hostinger-dns-zone-editor), [Bluehost](https://www.bluehost.com/help/article/dns-management-add-edit-or-delete-dns-entries), [Squarespace](https://support.squarespace.com/hc/en-us/articles/205812348-Opening-Advanced-DNS-settings), [HostGator](https://www.hostgator.com/help/article/manage-dns-records-with-hostgatorenom).
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="Los enlaces de mis correos están rotos. ¿Qué hago?">
+Ve a **Configuración → Servicios de correo → Dominio dedicado e IP** y haz clic en **Verificar dominio** para volver a emitir el certificado. Cuando el estado cambie a **SSL emitido**, los enlaces funcionarán.
+</Accordion>
+<Accordion title="¿Qué significa el error «Este sitio no puede proporcionar una conexión segura»?">
+Que el certificado SSL de tu dominio no está emitido correctamente. Vuelve a verificar el dominio desde la pantalla **Dominio dedicado e IP**.
+</Accordion>
+<Accordion title="¿El certificado SSL tiene costo?">
+No. Se emite automáticamente y sin costo adicional al agregar y verificar tu dominio dedicado. No necesitas comprar ni configurar nada por separado.
+</Accordion>
+<Accordion title="¿Cuánto tarda en emitirse?">
+Normalmente unos minutos después de verificar el dominio. Si sigue **pendiente** más de 15 a 30 minutos, vuelve a verificar el dominio.
+</Accordion>
+<Accordion title="¿El certificado cubre todos los enlaces del correo?">
+Sí. Cubre todas las URL que genera el sistema de correo en tu dominio dedicado: seguimiento, píxel de apertura, clics y enlaces de baja.
+</Accordion>
+<Accordion title="¿Mis contactos notarán algo si tengo que volver a emitirlo?">
+La reemisión es casi instantánea y ocurre en segundo plano. Quien haga clic en un correo anterior justo durante esos minutos podría ver un error breve, pero los enlaces vuelven a funcionar en cuanto el nuevo certificado está activo.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Agregar y verificar tu dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+Configura los registros DNS de tu dominio dedicado.
+</Card>
+<Card title="Credenciales SMTP de tu dominio dedicado" icon="key" href="/correo/credenciales-smtp-dominio-dedicado">
+Envía desde otras herramientas con tu dominio.
+</Card>
+</CardGroup>

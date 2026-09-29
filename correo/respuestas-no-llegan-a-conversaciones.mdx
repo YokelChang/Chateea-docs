@@ -1,0 +1,78 @@
+---
+title: "Las respuestas de correo no llegan a Conversaciones"
+description: "Revisa registros MX, conflictos de dominio y la ruta de recepción cuando las respuestas no aparecen en Conversaciones."
+icon: "reply"
+---
+
+Cuando un contacto responde a un correo que enviaste desde Chateea, la respuesta debería aparecer en **Conversaciones**. Si no llega, la causa suele estar en los registros MX del dominio de envío, en un conflicto con Google Workspace u Outlook, o (si usas un proveedor de envío externo) en la ruta de recepción de ese proveedor. Sigue estas revisiones en orden.
+
+<Tip>
+  Antes de empezar, confirma que el problema es real: envíate un correo de prueba y respóndelo. Consulta [Enviar un correo de prueba desde Conversaciones](/correo/enviar-correo-de-prueba-desde-conversaciones).
+</Tip>
+
+## Revisiones paso a paso
+
+<Steps>
+  <Step title="Revisa la configuración de respuesta">
+    En **Configuración → Servicios de correo**, revisa si tienes una **dirección de respuesta** configurada. Si la tienes, las respuestas van a esa dirección en lugar de llegar a Conversaciones. Consulta [Reenvío y direcciones de respuesta](/correo/reenvio-y-direcciones-de-respuesta).
+  </Step>
+  <Step title="Revisa los registros MX del dominio de envío">
+    Los registros MX son los que permiten capturar las respuestas.
+
+    1. En **Configuración → Servicios de correo**, copia el dominio o subdominio que usa tu cuenta para enviar.
+    2. Consulta sus registros MX en [MXToolbox](https://mxtoolbox.com/). Si configuraste `replies.tunegocio.com`, consulta `replies.tunegocio.com`; si configuraste el dominio principal, consulta `tunegocio.com`.
+    3. Comprueba que aparezcan los **dos registros MX** que indica la pantalla de verificación de tu dominio de envío, ambos con prioridad `10`.
+    4. Si faltan, agrégalos en tu proveedor de dominio.
+  </Step>
+  <Step title="Descarta un conflicto con tu buzón en el dominio principal">
+    Un dominio solo puede recibir correo en un servidor. Si al consultar los MX del dominio ves registros de tu proveedor de envío **y** de otro servidor (por ejemplo, Google Workspace), tienes un conflicto. Tienes que elegir: usa un subdominio para el envío o deja de usar ese dominio en tu otro buzón. Consulta [Recibir correos entrantes con un proveedor externo](/correo/recibir-correos-entrantes-con-proveedor-externo).
+  </Step>
+  <Step title="Verifica de nuevo todos los registros DNS">
+    Abre la pantalla de verificación de tu dominio de envío y haz clic en **Verificar**. Todos los registros (sobre todo los MX) deben aparecer en verde. A veces el estado se muestra en verde aunque un registro cambió; vuelve a verificar para refrescarlo.
+  </Step>
+  <Step title="Si usas un proveedor de envío externo, revisa la ruta de recepción">
+    Tu proveedor necesita una **ruta de recepción** que reenvíe los correos entrantes a Chateea. Esa ruta se crea automáticamente cuando conectas tu clave API.
+
+    1. En el panel de tu proveedor, abre la sección **Receiving → Routes**.
+    2. Debe existir una ruta de tipo **Catch All**, con reenvío (Forward) hacia Chateea y prioridad `99`.
+    3. Si hay otras rutas que no corresponden a Chateea, prueba a eliminarlas: pueden interceptar los correos antes.
+    4. Si la ruta de Chateea no existe, elimina la integración en **Configuración → Servicios de correo** y vuelve a conectarla con tu clave API. Después recarga la página de rutas de tu proveedor para confirmar que se creó.
+
+    Si aun así la ruta no aparece, escribe a soporte de Chateea en **help@chateea.com** para que te indiquen cómo crearla manualmente.
+  </Step>
+  <Step title="Si usas un proveedor SMTP">
+    Con un proveedor SMTP, las respuestas dependen de la configuración de ese proveedor y del buzón del remitente. Consulta [Solucionar problemas de entrega SMTP](/smtp/solucion-de-problemas).
+  </Step>
+</Steps>
+
+<Note>
+  Si nada de lo anterior funciona, toma una captura de todos los registros DNS de tu dominio (en GoDaddy, Namecheap, Wix o el proveedor que uses) y escribe a soporte de Chateea en **help@chateea.com**. También puedes pedirle a tu proveedor de dominio que revise qué falta.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuánto tardan en aplicarse los cambios en los MX?">
+    La propagación DNS puede tardar hasta 24 o 48 horas. Vuelve a consultar en MXToolbox: si todavía no aparecen los registros nuevos, espera un poco más.
+  </Accordion>
+  <Accordion title="¿Tengo que repetir esto en cada cuenta de Chateea?">
+    Sí. Los registros MX y las rutas de recepción se configuran por dominio o subdominio, así que cada cuenta con su propio dominio de envío necesita su propia revisión.
+  </Accordion>
+  <Accordion title="¿Puedo elegir a qué dirección llegan las respuestas?">
+    Sí, con la dirección de respuesta o la dirección de reenvío. Ten en cuenta que la dirección de respuesta hace que las respuestas ya no aparezcan en Conversaciones.
+  </Accordion>
+  <Accordion title="Tengo reglas de respuesta automática en mi proveedor externo. ¿Afectan?">
+    Pueden hacerlo. Cualquier ruta o regla adicional en tu proveedor puede capturar los correos antes que la ruta de Chateea. Si tienes dudas, desactívalas temporalmente y vuelve a probar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar un proveedor de envío externo con clave API" icon="key" href="/correo/conectar-proveedor-de-envio-externo-con-clave-api">
+    Cómo se conecta y qué proveedor usa tu cuenta.
+  </Card>
+  <Card title="Reenvío y direcciones de respuesta" icon="reply" href="/correo/reenvio-y-direcciones-de-respuesta">
+    Controla a dónde van las respuestas.
+  </Card>
+</CardGroup>

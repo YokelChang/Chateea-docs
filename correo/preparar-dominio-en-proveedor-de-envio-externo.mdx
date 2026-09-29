@@ -1,0 +1,112 @@
+---
+title: "Preparar tu dominio en un servicio de envío externo"
+description: "Crea tu dominio de envío en un servicio externo, elige subdominio o dominio principal, publica sus registros DNS y verifícalo."
+icon: "server"
+---
+
+Si decides enviar tus correos a través de tu propia cuenta en un servicio de envío masivo externo, en lugar del correo de Chateea, primero tienes que preparar tu dominio en ese servicio: crear la cuenta, agregar un dominio de envío, publicar sus registros DNS y verificarlo. Esta guía te explica el proceso completo y las decisiones que conviene tomar antes de empezar.
+
+<Note>
+  La mayoría de negocios no necesita esto: el correo de Chateea ya funciona desde el primer día y solo requiere verificar tu dominio. Usa un servicio externo si ya tienes uno con buena reputación o necesitas gestionar tu propia infraestructura. Revisa antes las limitaciones en [Agregar tu propio servicio SMTP](/correo/agregar-tu-propio-servicio-smtp).
+</Note>
+
+## Antes de empezar
+
+- Solo puedes agregar **dominios que te pertenecen**. El servicio te pedirá publicar registros DNS para comprobar que eres el dueño o un remitente autorizado.
+- Necesitas acceso al panel de DNS de tu dominio (donde lo compraste o donde gestionas sus registros).
+- Consulta las tarifas directamente en el sitio del proveedor: los planes se cobran según el volumen de envío y pueden cambiar.
+
+## Dominio principal o subdominio
+
+Supongamos que tu dominio es `tunegocio.com`. Puedes configurar el dominio principal o un subdominio.
+
+| Opción | Ejemplo | Cuándo usarla |
+| --- | --- | --- |
+| **Subdominio** (recomendado) | `mg.tunegocio.com`, `envios.tunegocio.com`, `respuestas.tunegocio.com` | Casi siempre. Separa la reputación de tus envíos masivos de la de tu dominio principal. |
+| **Dominio principal** | `tunegocio.com` | Solo si ese dominio **no** recibe correo en Google Workspace ni en ningún otro proveedor. |
+
+<Tip>
+  Con un subdominio puedes seguir enviando desde direcciones de tu dominio principal, como `hola@tunegocio.com`. Configura también los registros MX del subdominio para una entrega óptima.
+</Tip>
+
+<Warning>
+  Si tu dominio principal ya recibe correo en Google Workspace, Microsoft 365 u otro proveedor, **no** lo uses como dominio de envío en el servicio externo. Cambiar sus registros MX interrumpiría la recepción de tu correo de trabajo. Usa un subdominio.
+</Warning>
+
+## Paso a paso
+
+<Steps>
+  <Step title="Crea tu cuenta en el servicio de envío">
+    Regístrate en el proveedor y confirma tu dirección de correo desde el mensaje de verificación que te envían.
+  </Step>
+  <Step title="Agrega un dominio de envío">
+    En el panel del proveedor, busca la opción para agregar un nuevo dominio de envío y escribe el subdominio o el dominio que elegiste. Si te pide elegir región, selecciona **Estados Unidos** (US), no la Unión Europea (EU).
+  </Step>
+  <Step title="Averigua dónde se gestiona tu DNS">
+    Si no sabes quién administra el DNS de tu dominio, búscalo en [MXToolbox](https://mxtoolbox.com/SuperTool.aspx). Escribe solo el dominio, sin `http://` delante. Al final de los resultados verás una nota del tipo "reported by" con el nombre de tu proveedor de DNS.
+  </Step>
+  <Step title="Publica los registros DNS">
+    El servicio te mostrará los registros que debes crear. Lo habitual son cinco:
+
+    | Registro | Tipo | Para qué sirve |
+    | --- | --- | --- |
+    | SPF | `TXT` | Autoriza al servicio a enviar en nombre de tu dominio |
+    | DKIM | `TXT` | Firma tus correos para probar que son legítimos |
+    | MX (dos registros) | `MX` | Permiten recibir rebotes y respuestas en el dominio de envío |
+    | Seguimiento | `CNAME` | Registra aperturas y clics |
+
+    Créalos en el panel de tu proveedor de DNS copiando los valores exactos que te da el servicio. Si necesitas ayuda con la interfaz, sigue la guía de [registros DNS de correo por proveedor de dominio](/correo/registros-dns-de-correo-por-proveedor-de-dominio) (GoDaddy, HostGator, Namecheap y Cloudflare).
+  </Step>
+  <Step title="Verifica el dominio">
+    Vuelve al servicio de envío y pulsa el botón para verificar la configuración DNS. Si algún registro no aparece en verde, espera unos minutos y vuelve a verificar. La propagación suele tardar menos de una hora, aunque puede llegar a 48 horas.
+  </Step>
+  <Step title="Conecta el servicio a Chateea">
+    Con el dominio verificado, copia las credenciales de envío que te da el proveedor (usuario y contraseña SMTP, o la clave de API privada según el tipo de integración) y agrégalas en **Configuración → Servicios de correo**. Ver [Agregar tu propio servicio SMTP](/correo/agregar-tu-propio-servicio-smtp).
+  </Step>
+  <Step title="Envía un correo de prueba">
+    Desde **Conversaciones**, envíate un correo a una dirección personal y confirma que llega y que el remitente se ve bien.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Uso mi dominio principal o un subdominio?">
+    Un subdominio es casi siempre la opción más segura. Mantiene tus envíos masivos separados de la reputación de tu dominio principal y no interfiere con el correo que ya recibes en Google Workspace u otro proveedor.
+  </Accordion>
+  <Accordion title="¿Por qué importa elegir la región de Estados Unidos?">
+    La región determina qué infraestructura del proveedor envía tus correos. Para la integración con Chateea, elige siempre Estados Unidos al agregar el dominio.
+  </Accordion>
+  <Accordion title="No sé quién es mi proveedor de DNS. ¿Cómo lo averiguo?">
+    Busca tu dominio en MXToolbox. En los resultados aparece una nota "reported by" con el nombre de tu proveedor de DNS. Luego busca "[nombre del proveedor] registros DNS" para encontrar su panel.
+  </Accordion>
+  <Accordion title="Mi proveedor de dominio no aparece en las guías. ¿Qué hago?">
+    Usa cualquiera de las guías como referencia. Crear registros TXT, MX y CNAME es muy parecido en todos los proveedores; solo cambian los nombres de los campos.
+  </Accordion>
+  <Accordion title="¿Cuánto tardan en verificarse los registros?">
+    Entre unos minutos y 48 horas, aunque la mayoría se verifican en menos de una hora.
+  </Accordion>
+  <Accordion title="Mi correo de prueba no llegó. ¿Qué reviso primero?">
+    Que los cinco registros aparezcan verificados en el servicio de envío y que hayas copiado bien las credenciales en Chateea. Después, revisa [Solucionar problemas de entrega SMTP](/smtp/solucion-de-problemas).
+  </Accordion>
+  <Accordion title="¿Puedo cambiar de dominio de envío más adelante?">
+    Sí, pero tendrás que agregar el nuevo dominio en el servicio, publicar sus registros DNS y verificarlo otra vez. Recuerda calentarlo con volúmenes pequeños al principio.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registros DNS de correo por proveedor" icon="server" href="/correo/registros-dns-de-correo-por-proveedor-de-dominio">
+    Cómo crear los registros en GoDaddy, HostGator, Namecheap y Cloudflare.
+  </Card>
+  <Card title="Agregar tu propio servicio SMTP" icon="plug" href="/correo/agregar-tu-propio-servicio-smtp">
+    Conecta el servicio a tu cuenta de Chateea.
+  </Card>
+  <Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+    Qué son SPF, DKIM y DMARC.
+  </Card>
+  <Card title="Requisitos de Google y Yahoo" icon="shield-check" href="/correo/requisitos-de-google-y-yahoo-para-remitentes">
+    Lo que debes cumplir para llegar a Gmail y Yahoo.
+  </Card>
+</CardGroup>

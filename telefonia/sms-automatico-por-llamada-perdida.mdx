@@ -1,0 +1,129 @@
+---
+title: "Mensaje automático por llamada perdida"
+description: "Envía un SMS automático a quien te llamó y no pudo hablar contigo, configura el buzón de voz y entiende qué número se usa."
+icon: "phone-slash"
+---
+
+Una llamada que no contestas puede ser un cliente que se va a la competencia. El **mensaje por llamada perdida** envía automáticamente un SMS a quien te llamó y no pudo hablar contigo, para que sepa que viste su llamada y pueda seguir la conversación por texto. Es especialmente útil fuera de horario, en momentos de mucho volumen o cuando quieres responder rápido sin depender de devolver cada llamada.
+
+## Ventajas
+
+- **Respuesta inmediata:** el cliente recibe un mensaje al instante y sabe que su llamada no se perdió.
+- **Mejor experiencia:** le das otra vía para continuar la conversación mientras tu equipo está ocupado.
+- **Mensajes personalizados:** puedes incluir el nombre del contacto o de tu negocio con valores personalizados.
+- **Más leads atendidos:** mantienes el interés de los clientes potenciales cuando no puedes contestar.
+- **Más mensajes entregados:** Chateea elige automáticamente un número que pueda enviar SMS.
+
+<Warning>
+  El mensaje se envía en **cada** llamada perdida, aunque la misma persona llame varias veces en pocos minutos. Si quieres evitar mensajes repetidos, crea tu propia automatización de llamada perdida en **Automatización → Flujos de trabajo** y añade, por ejemplo, una espera de unos 20 minutos o filtros por etiquetas como "1.ª llamada" y "2.ª llamada".
+</Warning>
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre la configuración">
+    En tu cuenta, haz clic en **Configuración**, abajo a la izquierda.
+  </Step>
+  <Step title="Ve a la sección de llamada perdida">
+    Entra en **Sistema telefónico**, abre la pestaña **Voz**, luego **Buzón de voz y mensaje por llamada perdida**, y en el panel lateral haz clic en **Mensaje por llamada perdida** (Missed Call Text Back).
+  </Step>
+  <Step title="Activa la función">
+    Marca la casilla **Habilitar mensaje por llamada perdida** y haz clic en **Personalizar**.
+  </Step>
+  <Step title="Escribe el mensaje">
+    En la ventana emergente, escribe el texto en el campo **Introducir mensaje**. Con el ícono de valores personalizados puedes insertar datos como el nombre del contacto. Ten en cuenta que solo se completan si Chateea ya conoce al contacto por una interacción anterior.
+  </Step>
+  <Step title="Envía una prueba y guarda">
+    Debajo del editor, elige un número y envíate un mensaje de prueba para ver cómo lo recibirá el cliente. Después haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+A partir de ese momento, cada llamada entrante que no se conteste dentro del tiempo de espera recibirá tu mensaje automáticamente.
+
+### Ejemplo de mensaje
+
+```text
+Hola, somos Clínica Sonrisa. Vimos tu llamada y no pudimos atenderte. ¿En qué te ayudamos? Responde a este mensaje y te contestamos enseguida.
+```
+
+## Configuración del buzón de voz
+
+En la misma sección puedes ajustar qué pasa cuando no se contesta una llamada:
+
+- **Tiempo de espera de la llamada entrante:** cuánto suena el teléfono antes de considerar la llamada como perdida y enviar el mensaje. Se recomienda entre **10 y 20 segundos**.
+- **Audio del buzón de voz (opcional):** sube una grabación propia en MP3, WAV u otro formato similar para que suene en lugar del saludo genérico del operador.
+
+<Note>
+  El tiempo de espera define cuándo una llamada cuenta como perdida. Si es muy largo, el mensaje tarda en salir. Si es muy corto, puedes cortar llamadas que alguien iba a contestar.
+</Note>
+
+## Desde qué número se envía el mensaje
+
+Chateea intenta enviar el SMS desde **el número al que llamó el cliente**, siempre que ese número pueda enviar SMS. Si no puede, busca la siguiente mejor opción en este orden:
+
+| Prioridad | Número que envía el mensaje |
+| --- | --- |
+| 1 | El número al que llamó el cliente, si puede enviar SMS |
+| 2 | Un número desde el que ya escribiste con éxito a ese contacto |
+| 3 | Tu número saliente predeterminado |
+| 4 | Otro número de tu cuenta habilitado para mensajes |
+
+Esto es muy útil cuando las llamadas entran por **grupos de números, números de seguimiento de llamadas, números gratuitos sin verificar** u otros números que no pueden enviar SMS. En lugar de dejar que el mensaje falle, Chateea usa un número válido.
+
+<Info>
+  Por eso, en algunos casos el cliente puede recibir el SMS desde un número distinto al que marcó. Es intencional: se prioriza que el mensaje llegue.
+</Info>
+
+### Bueno saber
+
+- Las llamadas contestadas no activan el mensaje.
+- Si desactivas el mensaje por llamada perdida, no se envía nada.
+- Se respetan siempre las preferencias de comunicación y el modo No molestar (DND) de tus contactos.
+- Si no hay ningún número válido disponible, verás el intento fallido en la conversación con el motivo.
+- Estos SMS cuentan para tu límite diario de envío.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Desde qué número se envía el mensaje por llamada perdida?">
+    Primero desde el número al que llamó el cliente, si puede enviar SMS. Si no, desde un número con el que ya escribiste al contacto, luego tu número saliente predeterminado y, por último, cualquier otro número de tu cuenta habilitado para mensajes.
+  </Accordion>
+  <Accordion title="¿Por qué el mensaje llegó desde otro número?">
+    Es lo esperado. El número marcado probablemente no puede enviar SMS (por ejemplo, un número de un grupo de números, uno de seguimiento de llamadas o un número gratuito sin verificar), así que Chateea usó otro número válido.
+  </Accordion>
+  <Accordion title="¿Qué pasa si no hay ningún número disponible para enviar?">
+    El intento queda registrado en la conversación con el motivo. Para solucionarlo, asegúrate de tener al menos un número verificado y habilitado para SMS: con registro A2P 10DLC en números locales o con verificación de número gratuito en números gratuitos.
+  </Accordion>
+  <Accordion title="¿Estos mensajes cuentan para mi límite de SMS?">
+    Sí. Cuentan como cualquier otro SMS saliente.
+  </Accordion>
+  <Accordion title="¿Se envía el mensaje si el contacto tiene DND?">
+    No. Siempre se respetan las preferencias y el modo No molestar del contacto.
+  </Accordion>
+  <Accordion title="¿Tengo que activar algo para la selección inteligente del número?">
+    No. Funciona automáticamente mientras el mensaje por llamada perdida esté activado en **Configuración → Sistema telefónico → Voz**.
+  </Accordion>
+  <Accordion title="¿Puedo responder por WhatsApp en lugar de SMS?">
+    No con esta función, que envía SMS. Para escribir por WhatsApp a quien te llamó, usa el [WhatsApp automático por llamada perdida](/whatsapp/whatsapp-por-llamada-perdida).
+  </Accordion>
+  <Accordion title="¿Funciona fuera del horario laboral?">
+    Sí. Es justo cuando más ayuda: el cliente recibe una respuesta aunque tu equipo no esté disponible.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="WhatsApp automático por llamada perdida" icon="whatsapp" href="/whatsapp/whatsapp-por-llamada-perdida">
+    Responde por WhatsApp a quien no pudiste atender.
+  </Card>
+  <Card title="Flujos esenciales" icon="diagram-project" href="/automatizaciones/flujos-esenciales">
+    Incluye una automatización de llamada perdida lista para usar.
+  </Card>
+  <Card title="Desde qué número se envían tus SMS" icon="phone" href="/telefonia/numero-desde-el-que-se-envian-los-sms">
+    Cómo elige Chateea el número remitente.
+  </Card>
+  <Card title="Límite diario de SMS y rampa de envío" icon="gauge" href="/telefonia/limite-diario-de-sms-y-rampa-de-envio">
+    Cuántos SMS puedes enviar al día.
+  </Card>
+</CardGroup>

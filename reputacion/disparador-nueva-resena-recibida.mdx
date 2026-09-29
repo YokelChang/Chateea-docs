@@ -1,0 +1,78 @@
+---
+title: "Disparador Nueva reseña recibida en flujos de trabajo"
+description: "Automatiza acciones cuando llega una reseña de Google o Facebook y filtra por calificación, fuente o spam."
+icon: "bolt"
+---
+
+El disparador **Nueva reseña recibida** inicia un flujo de trabajo cada vez que llega una reseña nueva de Google o Facebook. Con él puedes avisar a tu equipo de una reseña negativa al instante, celebrar las de cinco estrellas, enviar los datos de la reseña a otra herramienta por webhook o registrar cada opinión en una hoja de cálculo.
+
+<Note>
+  Este disparador no está vinculado a un contacto: la reseña entra al flujo sin asociarse a ningún contacto específico. Por eso, las acciones que necesitan un contacto (como enviarle un SMS al autor) no aplican; úsalo para notificaciones internas, webhooks y registros.
+</Note>
+
+## Paso 1: agrega el disparador
+
+<Steps>
+  <Step title="Abre Automatización">
+    Entra en **Automatización** y crea un flujo de trabajo nuevo o edita uno existente.
+  </Step>
+  <Step title="Elige el disparador">
+    Haz clic en **Agregar disparador** y selecciona **Nueva reseña recibida** (Review Received).
+  </Step>
+</Steps>
+
+## Paso 2: filtra las reseñas
+
+Los filtros hacen que el flujo solo se active con las reseñas que te interesan.
+
+| Filtro | Valores | Uso típico |
+| --- | --- | --- |
+| **Reseña spam** | Sí / No | Excluir las reseñas marcadas como spam, o tratarlas aparte. |
+| **Fuente de la reseña** | Google / Facebook | Crear acciones distintas según la plataforma. |
+| **Calificación de la reseña** | 1 a 5 estrellas | Separar reseñas positivas de negativas. |
+
+<Tip>
+  Crea dos flujos: uno para reseñas de 1 y 2 estrellas que avise de inmediato al responsable, y otro para las de 5 estrellas que comparta la buena noticia con el equipo.
+</Tip>
+
+## Paso 3: usa los datos de la reseña en tus acciones
+
+Los detalles de la reseña (fuente, calificación, texto y demás) quedan disponibles para las acciones del flujo. Puedes:
+
+- Incluirlos en una notificación interna por correo o SMS a tu equipo.
+- Enviarlos a un webhook para conectarlos con otros sistemas.
+- Pasarlos a otras acciones del flujo, como agregar una fila en Google Sheets o crear una tarea.
+
+## Paso 4: guarda y prueba
+
+<Steps>
+  <Step title="Guarda el flujo">
+    Cuando termines de configurar filtros y acciones, haz clic en **Guardar** y publica el flujo.
+  </Step>
+  <Step title="Pruébalo">
+    Prueba el flujo con una reseña real o simulando una, y comprueba que se active como esperas.
+  </Step>
+  <Step title="Ajusta">
+    Si algo no funciona, revisa los filtros y las acciones según el resultado de la prueba.
+  </Step>
+</Steps>
+
+## Ideas de uso
+
+| Objetivo | Filtros | Acción |
+| --- | --- | --- |
+| Reaccionar rápido a críticas | Calificación 1 o 2, spam = No | Notificación interna al gerente. |
+| Celebrar reseñas excelentes | Calificación 5 | Mensaje al canal del equipo o correo interno. |
+| Llevar un registro | Sin filtros | Agregar una fila en una hoja de cálculo. |
+| Integrar con otra herramienta | Fuente = Google | Webhook con los datos de la reseña. |
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles en los flujos.
+  </Card>
+  <Card title="Detección de reseñas spam" icon="shield-halved" href="/reputacion/deteccion-de-resenas-spam">
+    Cómo se marcan las reseñas como spam.
+  </Card>
+</CardGroup>

@@ -1,0 +1,93 @@
+---
+title: "Salud del dominio de envío"
+description: "Entiende las métricas, los seis estados de salud y el historial de tu dominio de envío para proteger tu entregabilidad."
+icon: "heart-pulse"
+---
+
+La salud de tu dominio de envío determina si tus correos llegan a la bandeja principal, a spam o si directamente se frenan. En **Configuración → Servicios de correo** Chateea te muestra las métricas clave de tu dominio, un estado de salud que se calcula automáticamente y el historial de cambios. Revisarlo con regularidad te permite detectar problemas antes de que afecten a tus campañas.
+
+## Métricas del dominio
+
+Si envías con un dominio dedicado, verás cuatro métricas con estos objetivos de referencia:
+
+| Métrica | Qué mide | Objetivo |
+| --- | --- | --- |
+| **Tasa de entrega** | Porcentaje de correos entregados con éxito. | Más de 95 % |
+| **Tasa de rebote** | Porcentaje de correos que no se pudieron entregar. | Menos de 2 % |
+| **Tasa de quejas por spam** | Porcentaje de correos entregados que se marcaron como spam. | Menos de 0,1 % |
+| **Tasa de apertura** | Porcentaje de correos entregados que se abrieron. | Más de 20 % |
+
+Las métricas se actualizan normalmente dentro de las 24 horas posteriores a cada envío.
+
+## Cómo se calcula el estado de salud
+
+Chateea evalúa de forma continua tres señales de tu actividad reciente:
+
+| Señal | Para subir de estado | Baja de estado si |
+| --- | --- | --- |
+| **Tasa de rebote** | Menos de 2 % | Supera el 2 % |
+| **Tasa de quejas por spam** | Menos de 0,1 % | Supera el 0,1 % |
+| **Tasa de apertura** | Más de 15 % | Cae por debajo del 15 % (señal de poco interés) |
+
+El dominio **sube** de estado cuando las tres señales se mantienen dentro de los umbrales en el tiempo, y **baja** cuando se superan. Un dominio que mejora después de estar en estado crítico pasa primero por **En recuperación** antes de volver a **Saludable**.
+
+## Los seis estados
+
+| Estado | Qué significa | Qué hacer |
+| --- | --- | --- |
+| **Saludable** | Todas las métricas están dentro de los umbrales. | Sigue monitoreando para mantenerlo así. |
+| **En riesgo** | Una o más métricas se acercan al límite. Los rebotes o las quejas pueden estar subiendo. | Revisa tus prácticas de envío y limpia tu lista antes de que empeore. |
+| **Crítico** | Las métricas superaron los umbrales críticos. Tu capacidad de envío puede quedar restringida. | Actúa de inmediato: baja los rebotes y las quejas antes de intentar recuperarte. |
+| **Nuevo** | El dominio se configuró hace poco y está en calentamiento. | Pueden aplicarse límites de envío mientras se construye el historial. Aumenta el volumen poco a poco. |
+| **En recuperación** | El dominio está mejorando después de un estado crítico. | Mantén las métricas dentro de los umbrales y evita envíos que puedan volver a bajarlo. |
+| **Dominio compartido** | Tu cuenta envía desde una infraestructura compartida. | Ves la salud agregada del dominio, no métricas propias. Con un dominio dedicado tienes salud independiente y métricas completas. |
+
+## Historial de salud
+
+El panel de historial muestra cómo cambió el estado de tu dominio con el tiempo:
+
+- **Indicadores verdes:** el estado mejoró.
+- **Indicadores naranjas:** el estado empeoró.
+
+<Tip>
+  Pasa el cursor sobre cualquier indicador de la línea de tiempo para ver qué provocó la mejora o el empeoramiento en ese momento.
+</Tip>
+
+Para subir de estado, mantén la tasa de rebote por debajo del 2 %, las quejas por debajo del 0,1 % y la tasa de apertura por encima del 15 %.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre un dominio dedicado y uno compartido?">
+    Un dominio dedicado es solo tuyo: su salud depende únicamente de cómo envías tú y ves todas sus métricas. Un dominio compartido agrupa envíos de varias cuentas, así que su salud también depende de otros remitentes.
+  </Accordion>
+  <Accordion title="Mi dominio está en estado crítico. ¿Por dónde empiezo?">
+    Revisa tus tasas de rebote y de quejas. Limpia tu lista: quita direcciones inválidas, bajas y contactos que no interactúan. Evita campañas masivas hasta que las métricas mejoren. Cuando vuelvan a estar por debajo de los umbrales, el dominio pasa solo a **En recuperación**.
+  </Accordion>
+  <Accordion title="¿Cuánto tarda en pasar de En recuperación a Saludable?">
+    Depende de cuán constantes sean tus métricas dentro de los umbrales. El historial irá mostrando indicadores verdes a medida que avances.
+  </Accordion>
+  <Accordion title="Mi dominio nuevo no muestra métricas. ¿Es normal?">
+    Sí. Los dominios nuevos están en calentamiento y las métricas aparecen a medida que envías. Aumenta el volumen de forma gradual antes de escalar.
+  </Accordion>
+  <Accordion title="Mi tasa de apertura está debajo del 20 %. ¿Afecta al estado?">
+    El umbral que cuenta para el estado es 15 %. El 20 % es una referencia de buena interacción. Si estás por debajo del 15 %, revisa tus asuntos, tu frecuencia de envío y tu segmentación, y depura contactos inactivos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Suspensión de envíos por rebotes" icon="triangle-exclamation" href="/correo/suspension-por-rebotes">
+    Qué pasa si tu tasa de rebote sube demasiado.
+  </Card>
+  <Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+    SPF, DKIM y DMARC explicados.
+  </Card>
+  <Card title="Filtrar contactos por estadísticas de correo" icon="filter" href="/correo/filtrar-contactos-por-estadisticas-de-correo">
+    Encuentra a los contactos que rebotaron o se quejaron.
+  </Card>
+  <Card title="Qué es el correo de Chateea" icon="envelope" href="/correo/que-es-el-correo-de-chateea">
+    Límites de envío y calentamiento de tu cuenta.
+  </Card>
+</CardGroup>

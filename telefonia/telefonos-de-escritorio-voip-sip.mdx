@@ -1,0 +1,233 @@
+---
+title: "Teléfonos de escritorio VoIP (SIP)"
+description: "Conecta un teléfono físico SIP a Chateea, asígnalo a un usuario, pruébalo y resuelve problemas de registro, audio o llamadas en un solo sentido."
+icon: "headset"
+---
+
+Si tu equipo prefiere trabajar con un teléfono físico de escritorio, puedes conectar un teléfono VoIP compatible con SIP a Chateea. Tus usuarios hacen y reciben llamadas desde el auricular de siempre, y toda la actividad queda registrada en el sistema telefónico de Chateea y en la ficha de cada contacto.
+
+Para que funcione bien no basta con escribir las credenciales SIP en el teléfono: el aparato debe registrarse, el usuario asignado debe tener activado el teléfono de escritorio para recibir llamadas y la red debe dejar pasar el tráfico SIP y de audio. Esta guía cubre todo el proceso, desde la configuración hasta la solución de problemas.
+
+<Tip>
+  ¿Solo funciona una dirección de llamada? Ve directo a la sección **Solución de problemas cuando solo funciona una dirección**, más abajo.
+</Tip>
+
+## Qué puedes hacer con un teléfono de escritorio
+
+- **Llamar desde un auricular físico** las llamadas del sistema telefónico de Chateea.
+- **Mantener todo conectado al CRM:** las llamadas quedan en el historial del contacto y en tus informes.
+- **Enrutar por usuario:** cada teléfono se asigna a un usuario y tú decides si recibe llamadas directas, de **Timbrar a todos** (Ring All) o de IVR.
+- **Marcar por extensión** a otro teléfono de escritorio configurado.
+- **Transferir llamadas** (transferencia ciega) a la extensión de un compañero.
+- **Probar antes de usar:** la sección de llamadas de prueba verifica la salida y el timbre de entrada.
+
+La grabación y la transcripción de llamadas siguen funcionando si las tienes activadas. La transcripción requiere grabación y es un servicio de pago aparte.
+
+## Quién puede configurarlo
+
+Solo los **administradores** de tu cuenta pueden crear y gestionar teléfonos de escritorio, porque se modifican credenciales y enrutamiento. Los demás usuarios tienen acceso de solo lectura y verán un aviso para pedir ayuda a un administrador.
+
+## Requisitos técnicos
+
+### Red y protocolo
+
+| Requisito | Detalle |
+| --- | --- |
+| Transporte SIP | UDP, TCP o TLS. |
+| Señalización SIP | Permite la salida por los puertos **5060 y 5061**. |
+| Audio (RTP) | Permite UDP del **10000 al 20000**. |
+| SIP ALG | Desactívalo en el router o firewall si interfiere con el registro, el audio, la respuesta o las llamadas entrantes. |
+| Alimentación | Conexión de red con PoE o el adaptador de corriente del teléfono. |
+
+<Warning>
+  Los puertos 5060 y 5061 son de **salida**. No abras puertos SIP a internet ni crees reglas de reenvío de puertos entrantes solo porque una llamada falla. Revisa primero el registro, el enrutamiento en Chateea, el Keep Alive, el SIP ALG y la configuración del aparato.
+</Warning>
+
+### Cómo elegir el teléfono
+
+- Que admita **SIP abierto** estándar.
+- Con **PoE** si tu oficina lo usa.
+- Con al menos **dos teclas de línea programables** si tu equipo las aprovecha.
+- Evita equipos bloqueados por un operador o con aprovisionamiento propietario que impidan configurar la cuenta SIP a mano.
+
+Algunos modelos usados con frecuencia son **Yealink T54W / T58W**, **Poly VVX 450**, **Grandstream GXP 2170**, **Snom D785** y **Cisco 7841**. No es una lista cerrada: la mayoría de los teléfonos con registro SIP estándar funcionan. Si reutilizas un teléfono, restablécelo a valores de fábrica antes de configurarlo.
+
+### Datos que pide el teléfono
+
+Cada fabricante nombra los campos a su manera, pero todos necesitan estos datos generados en Chateea:
+
+| Campo en el teléfono | Qué escribir |
+| --- | --- |
+| Registrar, Servidor SIP, Server o Proxy | El **dominio SIP** (SIP Endpoint) creado en Chateea. |
+| Usuario, Extensión o User ID | El usuario o extensión SIP exacto. Distingue mayúsculas y minúsculas. |
+| Contraseña | La contraseña del usuario SIP. Guárdala: Chateea no puede mostrarla después. |
+| Transporte | UDP, TCP o TLS, según lo que permita tu red. |
+| Keep Alive | Si el teléfono lo tiene, actívalo con el tipo **Options**. |
+
+## Configurar un teléfono de escritorio
+
+<Steps>
+  <Step title="Abre la configuración de teléfonos SIP">
+    Ve a **Configuración → Sistema telefónico → Configuración avanzada**, selecciona **Teléfono de escritorio VoIP (SIP)** y haz clic en **Comenzar** (Get Started).
+  </Step>
+  <Step title="Configura el dominio SIP">
+    En **Configurar SIP** (Setup SIP), revisa el dominio sugerido y elige el prefijo de tu negocio antes de guardar.
+
+    <Warning>
+      El dominio SIP solo se puede definir **una vez**. Revísalo bien antes de guardar.
+    </Warning>
+  </Step>
+  <Step title="Crea el usuario SIP">
+    Define la extensión o el nombre de usuario y una contraseña segura:
+
+    - Usa extensiones numéricas de **3 a 5 dígitos**.
+    - No empieces por **0**, **1** ni **9**.
+    - Un buen truco es usar los últimos dígitos del número directo del usuario.
+
+    Guarda la contraseña en un lugar seguro. Si la pierdes, tendrás que restablecerla.
+  </Step>
+  <Step title="Asigna el teléfono a un usuario">
+    Con **Asignar a usuario**, vincula el dispositivo SIP con la persona del equipo que lo usará. Cada teléfono necesita su propio usuario: dos teléfonos no pueden apuntar al mismo usuario.
+  </Step>
+  <Step title="Activa las llamadas entrantes en el usuario">
+    Ve a **Configuración → Mi equipo**, edita al usuario y abre **Configuración de llamadas y buzón de voz**:
+
+    - En **Desviar llamadas a**, activa **Teléfono de escritorio (SIP)** para que le suenen las llamadas directas.
+    - En **Canal predeterminado para Timbrar a todos**, elige **Teléfono de escritorio (SIP)** si recibe llamadas compartidas.
+    - En **Canal predeterminado para IVR**, elige **Teléfono de escritorio (SIP)** si le llegan llamadas enrutadas por IVR.
+  </Step>
+  <Step title="Configura el teléfono físico">
+    En el menú de cuenta SIP del teléfono, escribe el dominio SIP, el usuario o extensión y la contraseña. Guarda y comprueba que el teléfono muestre la cuenta como **Registrada** (Registered) o un indicador equivalente.
+  </Step>
+  <Step title="Haz las llamadas de prueba">
+    Ve a **Teléfono de escritorio VoIP (SIP) → Llamadas de prueba** y elige el usuario SIP:
+
+    - **Prueba de salida:** marca desde el teléfono físico el número de prueba que aparece. Si todo va bien, escucharás un mensaje de confirmación.
+    - **Prueba de entrada:** usa **Probar timbre** (Test Ring) y confirma que el teléfono suena.
+  </Step>
+</Steps>
+
+## Gestionar los dispositivos
+
+### Restablecer la contraseña de un usuario SIP
+
+Ve a **Configuración → Sistema telefónico → Configuración avanzada → Teléfono de escritorio VoIP (SIP) → Administrar dispositivos** y haz clic en el **lápiz** del usuario SIP. Escribe la nueva contraseña, guarda y **actualiza también la contraseña en el teléfono físico**. Si no lo haces, el teléfono dejará de registrarse.
+
+### Eliminar un dispositivo
+
+En **Administrar dispositivos**, haz clic en la **papelera** junto al usuario SIP. Sus credenciales se eliminan al instante y el teléfono ya no podrá registrarse con ellas.
+
+## Llamadas internas y transferencias
+
+### Marcar por extensión
+
+Para llamar a otro teléfono de escritorio configurado, marca su extensión. Si la extensión de tu compañero es **201**, marca **201**. No necesitas un número externo, pero ambos teléfonos deben estar configurados y registrados. Esta función solo está disponible entre teléfonos de escritorio.
+
+### Transferencia ciega
+
+Durante una llamada, incluidas las que llegan por IVR:
+
+1. Pulsa la función de transferencia del teléfono.
+2. Marca la extensión de tu compañero.
+3. Completa la transferencia desde el teléfono.
+
+<Note>
+  Desde el teléfono de escritorio solo se admiten **transferencias ciegas**. Las transferencias asistidas (warm transfer) están disponibles desde el marcador web.
+</Note>
+
+## Solución de problemas cuando solo funciona una dirección
+
+### Recibo llamadas pero no puedo llamar
+
+1. **Confirma que el teléfono está registrado.** Si no lo está, revisa dominio, usuario y contraseña antes que nada.
+2. **Verifica los datos exactos:** el dominio SIP como servidor y el usuario y contraseña creados en Chateea.
+3. **Revisa la salida por los puertos 5060 y 5061.**
+4. **Revisa el rango de audio UDP 10000 a 20000.** Si la llamada conecta pero no hay audio o solo se oye en un sentido, el problema suele estar aquí o en el SIP ALG.
+5. **Desactiva el SIP ALG** si está alterando el tráfico SIP.
+6. **Haz la prueba de salida** en **Llamadas de prueba**.
+7. **Si ves errores 401 o 403,** el usuario o la contraseña no coinciden. Vuelve a escribirlos.
+8. **Si la prueba sigue fallando,** reúne los datos de la lista de más abajo y escribe a soporte.
+
+### Puedo llamar pero no me suena el teléfono
+
+1. **Haz la prueba de timbre** en **Llamadas de prueba**.
+2. **Si no suena,** confirma que el teléfono sigue registrado y que los datos son correctos.
+3. **Comprueba el usuario asignado** en **Configurar SIP** o **Administrar dispositivos**.
+4. **Revisa la configuración de llamadas del usuario** en **Configuración → Mi equipo → Editar usuario → Configuración de llamadas y buzón de voz**: **Teléfono de escritorio (SIP)** debe estar activo en **Desviar llamadas a**.
+5. **Revisa los canales de Timbrar a todos e IVR** si la llamada llega por esas vías.
+6. **Revisa el enrutamiento del número llamado:** el usuario debe formar parte del flujo de llamada y ninguna otra ruta (como un IVR o la IA de voz) debe atender la llamada antes.
+7. **Activa el Keep Alive** con el tipo **Options**. En muchos teléfonos está en **Cuenta → Avanzado**, aunque depende del fabricante.
+8. **Desactiva el SIP ALG** si el problema continúa.
+9. **Repite la prueba de timbre y una llamada real.** Si la prueba suena pero las llamadas reales no, el problema está en el enrutamiento del número en Chateea, no en el teléfono.
+
+### Qué enviar a soporte
+
+Si después de estas comprobaciones sigue fallando, escribe a soporte de Chateea en **help@chateea.com** con:
+
+- Dominio SIP y usuario o extensión (**nunca envíes la contraseña**).
+- Usuario de Chateea asignado.
+- Marca, modelo y versión de firmware del teléfono.
+- Estado de registro que muestra el teléfono.
+- Resultado de la prueba de salida y de la prueba de timbre.
+- Fecha, hora y zona horaria de una llamada fallida.
+- Número que llamó y número de Chateea llamado.
+- Código de error que aparezca.
+- Capturas de la configuración de enrutamiento.
+- Si el SIP ALG está activado o desactivado en tu red.
+
+## Tabla rápida de síntomas
+
+| Síntoma | Qué revisar |
+| --- | --- |
+| **401 / 403 Unauthorized** | Usuario y contraseña exactos (mayúsculas, espacios al copiar y pegar). |
+| **El teléfono no se registra** | Dominio SIP, credenciales, transporte, salida por 5060 y 5061, SIP ALG. |
+| **Recibe pero no llama** | Prueba de salida, puertos 5060 y 5061, credenciales, transporte, SIP ALG. |
+| **Llama pero no le suena** | Prueba de timbre, usuario asignado, canal del teléfono de escritorio, Keep Alive en Options, SIP ALG. |
+| **Sin audio o audio en un solo sentido** | UDP 10000 a 20000 abierto y SIP ALG desactivado. |
+| **Suena pero no se puede contestar** | NAT, SIP ALG y tráfico RTP permitido. |
+| **La prueba suena pero las llamadas reales no** | Enrutamiento del número, usuarios asignados, IVR o IA de voz, Timbrar a todos. |
+| **No se puede guardar el dominio SIP** | El nombre ya está en uso. Acepta la sugerencia o elige otro disponible. |
+| **Dejó de registrarse tras cambiar la contraseña** | Actualiza la nueva contraseña en el teléfono físico. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué teléfonos son compatibles?">
+    La mayoría de los teléfonos con registro SIP abierto estándar. Algunos ejemplos son Yealink T54W/T58W, Poly VVX 450, Grandstream GXP 2170, Snom D785 y Cisco 7841.
+  </Accordion>
+  <Accordion title="¿Puedo conectar mi centralita (PBX) por troncal SIP?">
+    No. La función crea extensiones SIP individuales y no ofrece troncales SIP para conectar una centralita existente, como Asterisk.
+  </Accordion>
+  <Accordion title="¿Puedo tener varios dominios SIP?">
+    No por ahora. Cada cuenta usa un solo dominio SIP, que se define una vez.
+  </Accordion>
+  <Accordion title="¿Dos teléfonos pueden usar el mismo usuario?">
+    No. Crea un usuario distinto en Chateea para cada teléfono de escritorio.
+  </Accordion>
+  <Accordion title="¿Las llamadas se graban y transcriben?">
+    Depende de tu configuración de voz. La transcripción necesita grabación y es un servicio de pago. Revisa los requisitos de consentimiento de grabación de tu país antes de activarla.
+  </Accordion>
+  <Accordion title="¿Usar un teléfono de escritorio tiene costo?">
+    Las llamadas se cobran con las tarifas de voz habituales, igual que desde el marcador web o la app. Las transferencias desde el teléfono de escritorio, la grabación, su almacenamiento y la transcripción pueden tener cargos adicionales. El consumo se descuenta de tu billetera y las tarifas vigentes están en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+  </Accordion>
+  <Accordion title="¿El botón de buzón de voz del teléfono abre el buzón de Chateea?">
+    No. El buzón del propio teléfono es independiente. Los mensajes de voz de Chateea se revisan en **Conversaciones** y en los informes de llamadas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Asignar números a usuarios" icon="user-tag" href="/telefonia/asignar-numeros-a-usuarios">
+    Da a cada persona de tu equipo su propio número.
+  </Card>
+  <Card title="Solucionar la mala calidad de las llamadas" icon="signal" href="/telefonia/solucionar-mala-calidad-de-llamadas">
+    Qué revisar si el audio se corta o suena mal.
+  </Card>
+  <Card title="Hacer sonar las llamadas en varios usuarios" icon="users" href="/telefonia/sonar-llamadas-en-varios-usuarios">
+    Configura Timbrar a todos para tu equipo.
+  </Card>
+  <Card title="El marcador telefónico de Chateea" icon="phone" href="/telefonia/marcador-telefonico">
+    Todo sobre el marcador telefónico de Chateea.
+  </Card>
+</CardGroup>

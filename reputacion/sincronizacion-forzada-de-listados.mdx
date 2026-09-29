@@ -1,0 +1,114 @@
+---
+title: "Sincronización forzada de listados"
+description: "Prioriza una actualización atascada o urgente de tu ficha para que llegue antes a los directorios."
+icon: "rotate"
+---
+
+La sincronización forzada te permite dar prioridad a una actualización de tu ficha que está tardando demasiado en verse en los directorios. En lugar de esperar al ciclo normal de sincronización, le indicas al motor de Listados que procese tus datos más recientes cuanto antes.
+
+Es útil cuando el cambio es urgente, como un horario de feriado, una corrección de dirección o un nuevo teléfono. Ten en cuenta que mejora la prioridad, pero el momento final de publicación depende de cada directorio.
+
+## Para qué te sirve
+
+- **Procesamiento más rápido** de cambios pendientes.
+- **Más control** para escalar cambios urgentes cuando lo necesites.
+- **Menos retrasos** en actualizaciones que parecen atascadas.
+- **Tranquilidad** cuando un dato incorrecto está afectando a tus clientes.
+
+## Tipos de sincronización forzada
+
+| Alcance | Qué hace | Cuándo usarlo | Disponible con |
+| --- | --- | --- | --- |
+| **Por entidad** | Prioriza la sincronización con todos los directorios conectados de esa ficha. | Tras cambios generales, como horarios, categorías o descripción. | Yext y Uberall |
+| **Por directorio** | Prioriza la sincronización con un solo directorio de esa ficha. | Cuando un directorio (por ejemplo, Bing o Apple Maps) va atrasado y los demás están al día. | Solo Yext |
+
+## Requisitos
+
+- Tener Listados activo en tu cuenta.
+- Una ficha con los datos obligatorios completos (nombre, dirección o teléfono y horarios, según corresponda).
+- Permisos de usuario para gestionar Listados. Si no ves la opción, pide a un administrador de tu cuenta que te asigne un rol con acceso de edición a Listados.
+
+## Cómo solicitar una sincronización forzada
+
+<Steps>
+  <Step title="Elige la ficha">
+    Ve a **Reputación → Listados** y abre la entidad (ubicación) que necesita la actualización urgente.
+  </Step>
+  <Step title="Elige el alcance">
+    Decide si quieres forzar la sincronización para toda la entidad o, si tu ficha usa Yext, solo para un directorio de la lista.
+  </Step>
+  <Step title="Solicita la sincronización">
+    Haz clic en **Solicitar sincronización forzada** (Request Force Sync).
+  </Step>
+  <Step title="Confirma">
+    Revisa los detalles y haz clic en **Confirmar**. Verás una notificación de que la solicitud quedó en cola.
+  </Step>
+  <Step title="Da seguimiento">
+    Revisa el estado de la ficha y el historial de la entidad en los registros de auditoría para confirmar qué se envió y cuándo.
+  </Step>
+</Steps>
+
+## Qué no puede hacer
+
+- **No garantiza la publicación inmediata.** Cada directorio tiene su propia cola y sus procesos de revisión.
+- **No resuelve problemas de políticas**, como suspensiones del Perfil de empresa de Google, duplicados o categorías restringidas.
+- **No se salta los campos obligatorios.** Si faltan nombre, dirección, teléfono, categorías u otros datos exigidos, la publicación puede quedar bloqueada.
+- **Puede quedar en cola** si ya hay una sincronización en curso o el directorio está en mantenimiento.
+- **Se hace ficha por ficha.** Las acciones en bloque pueden estar limitadas.
+
+## Cómo verificar el resultado
+
+- Busca las entradas de sincronización forzada en el historial de la entidad dentro de **Configuración → Registros de auditoría**, filtrando por **Listados**.
+- Compara la fecha y hora de la solicitud con los cambios de estado posteriores en cada directorio.
+- Si un directorio devuelve un error o no cambia durante mucho tiempo, pasa a la solución de problemas.
+
+## Solución de problemas
+
+Si la sincronización forzada no surte efecto, revisa en este orden:
+
+1. **Datos obligatorios:** nombre, dirección, teléfono, categorías, horarios y demás campos requeridos.
+2. **Problemas en el directorio:** suspensiones, duplicados o categorías restringidas se resuelven directamente en el sistema del directorio.
+3. **Sugerencias pendientes:** acepta o rechaza las sugerencias relacionadas para evitar que el dato se revierta.
+4. **Conexiones caducadas:** vuelve a conectar Google o Facebook si la autorización venció.
+5. **Historial de la entidad:** busca errores recientes en los registros de auditoría.
+6. **Soporte:** si el error persiste después de varios intentos, escribe a soporte de Chateea en **help@chateea.com** con el nombre de la ficha y el directorio afectado.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La sincronización forzada publica al instante?">
+    No. Da prioridad a tus cambios, pero el tiempo final depende de la cola y la revisión de cada directorio.
+  </Accordion>
+  <Accordion title="¿Sirve para reactivar un Perfil de empresa de Google suspendido?">
+    No. Las suspensiones y los problemas de políticas se resuelven directamente con Google. Usa la sincronización forzada cuando el perfil ya esté en regla.
+  </Accordion>
+  <Accordion title="Solo veo la opción por entidad. ¿Dónde está la opción por directorio?">
+    La sincronización por directorio solo existe para fichas publicadas con Yext. Con Uberall solo está disponible por entidad.
+  </Accordion>
+  <Accordion title="¿Se vuelven a enviar fotos, atributos y categorías?">
+    Se vuelve a priorizar la sincronización de la ficha o del directorio, pero lo que se publica puede variar según el directorio. Asegúrate de que tus datos y fotos cumplan sus normas.
+  </Accordion>
+  <Accordion title="¿Puedo deshacer una sincronización forzada?">
+    No. Puedes corregir los datos y solicitar otra sincronización, pero la acción en sí no se puede deshacer.
+  </Accordion>
+  <Accordion title="¿Cada cuánto puedo usarla?">
+    Úsala cuando una actualización esté retrasada o atascada. Si varios intentos fallan, revisa la solución de problemas antes de volver a intentarlo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Historial de cambios en Listados" icon="clock-rotate-left" href="/reputacion/historial-de-cambios-en-listados">
+    Consulta qué cambió, quién lo hizo y cuándo.
+  </Card>
+  <Card title="Sugerencias de los directorios" icon="lightbulb" href="/reputacion/sugerencias-de-editores-en-listados">
+    Acepta o rechaza los cambios propuestos.
+  </Card>
+  <Card title="Conectar Google y Facebook en Listados" icon="link" href="/reputacion/conectar-google-y-facebook-en-listados">
+    Vuelve a conectar si la autorización caducó.
+  </Card>
+  <Card title="Configuración guiada de Listados" icon="list-check" href="/reputacion/configuracion-guiada-de-listados">
+    Completa los datos obligatorios de tu ficha.
+  </Card>
+</CardGroup>

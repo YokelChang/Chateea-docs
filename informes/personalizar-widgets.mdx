@@ -1,0 +1,110 @@
+---
+title: "Personalizar los widgets del panel"
+description: "Ajusta el gráfico, las métricas, las fechas y los filtros de cada widget para ver justo lo que necesitas."
+icon: "sliders"
+---
+
+Personalizar un widget te permite ajustar exactamente qué datos muestra y cómo los presenta: el tipo de gráfico, las métricas, la agrupación, el periodo y los filtros. Un widget bien configurado responde una pregunta concreta del negocio de un solo vistazo.
+
+## Por qué personalizar tus widgets
+
+- **Datos relevantes:** destacas las métricas que importan para tus objetivos.
+- **Más claridad:** títulos, filtros y agrupaciones bien pensados hacen que cualquiera entienda el dato.
+- **Mejores comparaciones:** comparas periodos o segmentos con filtros y condiciones.
+- **Menos tiempo perdido:** vas directo a la información sin recorrer datos que no te sirven.
+
+## Dónde están las opciones
+
+1. Abre el panel en **Panel de control** y entra en modo de edición con el ícono de lápiz.
+2. Elige el widget que quieres modificar.
+3. Haz clic en el widget (o en su menú) para abrir la configuración.
+
+## Cómo personalizar un widget
+
+<Steps>
+  <Step title="Elige el tipo de gráfico">
+    Cada widget trae un tipo de gráfico preseleccionado. Para cambiarlo, abre **Configurar**, elige otro en **Tipo de gráfico** (barras, líneas, dona, etc.) y revisa la **vista previa en vivo**.
+  </Step>
+  <Step title="Configura el widget">
+    En la pestaña **Configurar** ajusta estas opciones:
+
+    | Opción | Qué hace |
+    | --- | --- |
+    | **Título** | Cambia el nombre para que quede claro qué mide. |
+    | **Métricas** | Define los datos que muestra. En gráficos de líneas, barras y barras horizontales puedes agregar varias métricas. |
+    | **Agrupar** | Define cómo se agrupan los datos, por ejemplo en gráficos de dona. |
+    | **Ver por** | Elige la dimensión secundaria en gráficos de líneas o barras. |
+    | **Desglose** | Ajusta la frecuencia temporal (día, semana, mes). |
+    | **Propiedad de fecha** | Elige qué fecha usar para traer los resultados, como fecha de creación o de actualización. |
+    | **Rango de fechas propio** | Usa un periodo distinto al rango general del panel solo para este widget. |
+    | **Orden** | Ordena los resultados de forma ascendente o descendente. |
+    | **Límite** | Fija la cantidad máxima de resultados que se muestran. |
+    | **Propiedad de fecha de comparación** | Agrega un porcentaje de comparación con otro periodo para dar contexto. |
+
+    También hay ajustes avanzados, opcionales, para afinar todavía más la presentación.
+  </Step>
+  <Step title="Agrega condiciones">
+    En la pestaña **Condiciones**, haz clic en **Agregar filtro** y elige el campo, el operador y el valor. Puedes combinar varios filtros o eliminar los que sobren. Más abajo tienes cómo funcionan los grupos.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para actualizar el widget. Si hace falta, ajusta su tamaño o su posición y luego haz clic en **Guardar cambios** para conservar el diseño del panel.
+  </Step>
+</Steps>
+
+<Note>
+  Si ningún dato cumple el filtro, no podrás guardar el widget hasta que ajustes o quites ese filtro.
+</Note>
+
+## Grupos de filtros (lógica Y / O)
+
+Los grupos te permiten crear segmentos complejos:
+
+- Dentro de un mismo grupo, los filtros se combinan con **Y**: se deben cumplir todos.
+- Entre grupos distintos, se combinan con **O**: basta con que se cumpla uno de los grupos.
+
+<Steps>
+  <Step title="Crea el primer grupo">
+    En **Condiciones**, haz clic en **Agregar filtro** para crear el grupo 1.
+  </Step>
+  <Step title="Suma filtros al grupo">
+    Usa **+Y** para agregar más filtros dentro del mismo grupo.
+  </Step>
+  <Step title="Crea otro grupo">
+    Haz clic otra vez en **+Agregar filtro** para crear el grupo 2, que se evalúa como una condición **O**.
+  </Step>
+  <Step title="Guarda">
+    Repite lo que necesites y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+### Repetir un mismo campo
+
+A veces necesitas el mismo campo dos veces, por ejemplo "origen = Google **o** origen = Facebook". Hazlo con grupos separados:
+
+- **Grupo 1:** Origen = google
+- **Grupo 2:** Origen = facebook
+
+<Note>
+  Los widgets de **datos de visitantes** solo admiten **un** grupo de filtros.
+</Note>
+
+### Avisos de filtros vinculados
+
+Algunos filtros dependen de otros, como **Pipeline** y **Etapa**. Si eliges una combinación incompatible, verás un aviso dentro de **Condiciones**. Ajusta uno de los dos filtros para resolverlo y guarda.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear y agregar widgets" icon="chart-column" href="/informes/crear-y-agregar-widgets">
+    Configura cada widget paso a paso.
+  </Card>
+  <Card title="Filtros rápidos" icon="filter" href="/informes/filtros-rapidos-en-paneles">
+    Deja que tu equipo filtre sin editar el panel.
+  </Card>
+  <Card title="Cambiar el tamaño y mover widgets" icon="up-down-left-right" href="/informes/cambiar-tamano-y-mover-widgets">
+    Organiza el diseño del panel.
+  </Card>
+  <Card title="Qué son los widgets del panel" icon="shapes" href="/informes/que-son-los-widgets-del-panel">
+    Categorías, gráficos y widgets disponibles.
+  </Card>
+</CardGroup>

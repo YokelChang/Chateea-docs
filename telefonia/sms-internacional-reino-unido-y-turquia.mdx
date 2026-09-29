@@ -1,0 +1,171 @@
+---
+title: "SMS internacionales: requisitos para Reino Unido y Turquía"
+description: "Remitentes y registro exigidos para enviar SMS al Reino Unido y la prohibición de enlaces en SMS internacionales a Turquía."
+icon: "globe"
+---
+
+Que un SMS internacional llegue depende de las reglas que fijan los reguladores y operadores del país de destino. Un remitente que funciona en un país puede no ser válido en otro. En esta guía ves los requisitos que más afectan a los envíos hacia el **Reino Unido** (tipo de remitente y registro de números británicos) y hacia **Turquía** (prohibición de enlaces en SMS internacionales desde el 1 de abril de 2026), qué hacer para cumplirlos y qué errores verás si un mensaje se bloquea.
+
+## Por qué importa el cumplimiento por país
+
+- **Mejor entrega:** usas tipos de remitente y formatos que aceptan los operadores del país.
+- **Menos fallos:** evitas rutas no admitidas, remitentes sin registrar y contenido prohibido.
+- **Diagnóstico más claro:** reconoces errores como el 21612 o el 30007 y sabes qué indican.
+- **Automatizaciones seguras:** ajustas tus flujos, campañas y plantillas antes de que empiecen a fallar.
+
+## Reino Unido
+
+Los operadores británicos restringen los SMS A2P que llegan desde números largos internacionales y exigen que los números británicos estén vinculados a información de cumplimiento regulatorio aprobada.
+
+### Calendario de aplicación
+
+| Fecha | Requisito |
+| --- | --- |
+| 1 de junio de 2023 | Los operadores británicos empiezan a bloquear el tráfico A2P desde números largos internacionales |
+| 27 de mayo de 2024 | La compra de números británicos nuevos exige un paquete regulatorio aprobado |
+| 30 de julio de 2024 | Aplicación completa del bloqueo de números internacionales en todas las redes británicas |
+| 30 de septiembre de 2024 | Todos los números británicos, nuevos y existentes, deben estar vinculados a un paquete regulatorio aprobado |
+
+### Tipos de remitente admitidos
+
+- **Número largo británico:** requiere datos de verificación de identidad (KYC) y un paquete regulatorio aprobado. Es la opción para conversaciones de ida y vuelta.
+- **Identificador alfanumérico:** sirve para mensajes de marca en un solo sentido, en los casos de uso admitidos.
+- **Código corto:** para volúmenes altos, con aprovisionamiento dedicado.
+
+<Warning>
+  Los SMS desde un número de Estados Unidos hacia un destinatario del Reino Unido **no están admitidos** y fallan con el [error 21612](/diccionario-codigos-error/21612-mensajes-a-to-country-no-permitidos-con-numeros-de-from-country). Para escribir al Reino Unido, usa un remitente británico.
+</Warning>
+
+### Datos de verificación (KYC)
+
+La información exacta depende del tipo de número (local, nacional, móvil o gratuito) y de si quien lo registra es una persona o una empresa. Suele incluir nombre del titular, razón social, dirección registrada, datos de registro mercantil, representante autorizado, datos de contacto y documentos de respaldo cuando se piden.
+
+### Registrar un número británico en Chateea
+
+<Steps>
+  <Step title="Abre el sistema telefónico">
+    Ve a **Configuración → Sistema telefónico**.
+  </Step>
+  <Step title="Entra en el paquete regulatorio">
+    Abre **Paquete regulatorio / Dirección** (Regulatory Bundle / Address).
+  </Step>
+  <Step title="Crea o abre el paquete del Reino Unido">
+    Crea un paquete nuevo para el Reino Unido o abre el que ya tengas.
+  </Step>
+  <Step title="Completa los datos">
+    Introduce la información KYC solicitada y sube los documentos de respaldo si te los piden.
+  </Step>
+  <Step title="Envía a revisión">
+    Envía el paquete para su aprobación.
+  </Step>
+  <Step title="Vincula el paquete al número">
+    Cuando esté aprobado, asócialo al número británico que vas a usar.
+  </Step>
+</Steps>
+
+<Tip>
+  Al comprar un número británico, revisa antes sus capacidades y los requisitos de dirección. Los números que exigen información regulatoria deben quedar vinculados a un paquete aprobado como parte de la configuración.
+</Tip>
+
+## Turquía
+
+Desde el **1 de abril de 2026**, la autoridad turca de telecomunicaciones (BTK) obliga a los operadores a bloquear los SMS A2P internacionales que contengan enlaces. La regla se aplica al contenido del mensaje, no solo al tráfico promocional.
+
+<Warning>
+  Los SMS A2P internacionales enviados a destinatarios en Turquía no pueden contener URL, hipervínculos, enlaces acortados ni enlaces de seguimiento.
+</Warning>
+
+### Qué debes quitar
+
+Revisa cada plantilla, flujo de trabajo, campaña y notificación automática que pueda llegar a un contacto en Turquía. Trata igual los enlaces escritos a mano y los que inserta un valor personalizado.
+
+- URL completas de sitios web
+- Enlaces acortados, públicos o con tu marca
+- Enlaces de seguimiento
+- Hipervínculos o direcciones de internet
+- Campos dinámicos que generan una URL
+
+### Mensajes afectados
+
+La restricción no se limita al marketing. Se pueden bloquear:
+
+- Confirmaciones de pedido
+- Avisos de envío
+- Recordatorios de citas
+- Notificaciones transaccionales
+- Códigos de un solo uso (OTP)
+
+### El error 30007 y Turquía
+
+Un mensaje bloqueado por un operador turco por contener un enlace puede devolver el [error 30007](/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores). Pero el 30007 es un error general de filtrado: también aparece por el contenido, la identidad del remitente, el consentimiento u otros requisitos. Revisa siempre el país de destino, el texto, el remitente y las normas aplicables antes de concluir la causa.
+
+### Si tienes una empresa registrada en Turquía
+
+Las empresas constituidas formalmente en Turquía que necesiten seguir enviando SMS con enlaces tienen una vía local. Requiere cumplir los requisitos de empresa local y una configuración adicional:
+
+1. Firma un contrato directo con Posta Güvercini.
+2. Autoriza a Posta Güvercini como proveedor de servicio en el sistema turco de gestión de mensajes (IYS).
+3. Escribe a soporte de Chateea en **help@chateea.com** para completar la configuración técnica y el enrutamiento.
+
+<Note>
+  Si no tienes una empresa local en Turquía que cumpla los requisitos, elimina los enlaces de todos los SMS internacionales que envíes a destinatarios turcos.
+</Note>
+
+## Cómo prepararte
+
+1. **Identifica a qué países envías.** Confirma si tus flujos, campañas o usuarios escriben a contactos del Reino Unido o de Turquía.
+2. **Revisa el remitente para el Reino Unido.** No dependas de una ruta internacional no admitida. Usa un remitente británico válido y completa el registro.
+3. **Completa el KYC y el paquete regulatorio** de tus números británicos desde **Configuración → Sistema telefónico**.
+4. **Revisa las rutas de Estados Unidos al Reino Unido.** Si envías desde un número estadounidense, cambia la ruta: esa combinación no está admitida.
+5. **Audita el contenido que llega a Turquía.** Busca enlaces en flujos, campañas, plantillas, valores personalizados y notificaciones automáticas.
+6. **Sustituye los enlaces** por instrucciones sin URL, un número de teléfono u otro canal cuando el contacto necesite más información.
+7. **Prueba y vigila la entrega.** Envía mensajes de prueba controlados y revisa los errores para detectar a tiempo rutas no admitidas o filtrado.
+
+## Solución de problemas
+
+| Síntoma | Qué revisar |
+| --- | --- |
+| Error 21612 al escribir al Reino Unido | El país del remitente y del destinatario. De Estados Unidos al Reino Unido no está admitido: usa un remitente británico |
+| Un número británico no envía | Que el tipo de número sea válido y que el paquete regulatorio esté aprobado y vinculado al número |
+| Error 30007 al escribir a Turquía | Busca enlaces, enlaces cortos, de seguimiento o valores dinámicos que generen una URL. Si no hay ninguno, investiga otras causas de filtrado |
+| Los mensajes fallan solo en un país | Las reglas de remitente y contenido cambian por país. Una plantilla que funciona en otro lugar puede bloquearse en ese destino |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo enviar SMS desde un número de Estados Unidos al Reino Unido?">
+    No. Esa ruta no está admitida y falla con el error 21612. Usa un remitente británico.
+  </Accordion>
+  <Accordion title="¿Todos los números británicos necesitan aprobación regulatoria?">
+    Sí. Los números británicos, nuevos y existentes, deben estar vinculados a un paquete regulatorio aprobado.
+  </Accordion>
+  <Accordion title="¿Puedo usar un acortador de enlaces en SMS a Turquía?">
+    No. La restricción incluye enlaces acortados, URL completas, enlaces de seguimiento y cualquier dirección de internet.
+  </Accordion>
+  <Accordion title="¿La regla de Turquía afecta a los OTP y mensajes transaccionales?">
+    Sí. Los SMS A2P internacionales con enlaces se pueden bloquear sin importar si son promocionales, transaccionales o de autenticación.
+  </Accordion>
+  <Accordion title="¿El error 30007 siempre significa que Turquía bloqueó un enlace?">
+    No. El 30007 indica filtrado del operador y puede tener varias causas. Para mensajes a Turquía, un enlace es una de las primeras cosas que debes revisar.
+  </Accordion>
+  <Accordion title="¿La regla de Turquía bloquea también WhatsApp o el correo?">
+    No. La norma descrita aquí aplica a los SMS A2P internacionales. Los demás canales tienen sus propias políticas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Error 21612" icon="triangle-exclamation" href="/diccionario-codigos-error/21612-mensajes-a-to-country-no-permitidos-con-numeros-de-from-country">
+    Combinación de país de origen y destino no permitida.
+  </Card>
+  <Card title="Error 30007: filtrado del operador" icon="filter" href="/diccionario-codigos-error/30007-como-evitar-el-filtrado-de-sms-por-los-operadores">
+    Cómo evitar que los operadores bloqueen tus SMS.
+  </Card>
+  <Card title="SMS en México desde otro número" icon="mobile-screen" href="/telefonia/sms-en-mexico-remitente-diferente">
+    Por qué el remitente puede cambiar en México.
+  </Card>
+  <Card title="Enlaces acortados y entregabilidad" icon="link" href="/telefonia/enlaces-acortados-y-entregabilidad-sms">
+    Buenas prácticas con enlaces en SMS.
+  </Card>
+</CardGroup>

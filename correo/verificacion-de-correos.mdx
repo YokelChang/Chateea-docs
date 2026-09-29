@@ -1,0 +1,138 @@
+---
+title: "Verificación de correos"
+description: "Activa la verificación de direcciones antes del primer envío para reducir rebotes y proteger tu reputación de envío."
+icon: "envelope-circle-check"
+---
+
+La verificación de correos revisa si una dirección de correo es real y está activa antes de enviarle el primer mensaje. Funciona en segundo plano: una vez activada, no tienes que hacer nada más. Al filtrar direcciones falsas o inactivas reduces los rebotes, mantienes limpia tu lista y proteges la reputación de tu dominio de envío.
+
+<Note>
+La verificación de correos es un servicio de pago disponible cuando envías con el correo de Chateea. Cada verificación se descuenta de la **billetera** de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Cómo activar la verificación de correos
+
+<Steps>
+<Step title="Abre el perfil del negocio">
+Ve a **Configuración → Perfil del negocio → General**.
+</Step>
+<Step title="Activa la verificación">
+Marca la casilla **Verificar correo** (Verify Email Address when the first email is sent to a new contact).
+</Step>
+<Step title="Guarda los cambios">
+Desde ahora, cada dirección nueva se verificará antes de recibir su primer correo.
+</Step>
+</Steps>
+
+### Volver a verificar cada 90 días
+
+Una dirección que era válida hace seis meses puede estar abandonada hoy. Si quieres que las verificaciones caduquen a los 90 días y las direcciones se vuelvan a revisar antes del siguiente envío, escribe a soporte de Chateea en **help@chateea.com** para activar la reverificación cada 90 días en tu cuenta.
+
+## Cómo funciona
+
+- Cuando la verificación está activa, cada dirección se verifica **antes del primer correo** que le envías, si todavía no se había verificado.
+- Si además tienes activada la reverificación cada 90 días, las verificaciones con más de 90 días caducan y la dirección se revisa de nuevo antes del siguiente envío.
+- Los correos que ya enviaste no se ven afectados: la verificación solo actúa antes del próximo envío.
+
+<Info>
+Si tu cuenta tiene menos de 30 días y una importación de contactos arroja menos del 90 % de direcciones entregables, la verificación de correos se activa automáticamente para proteger tu reputación de envío. Consulta [Evaluación de riesgo de listas de correo](/correo/evaluacion-de-riesgo-de-listas).
+</Info>
+
+## Ver el estado de verificación de un contacto
+
+<Steps>
+<Step title="Abre el contacto">
+Ve a **Contactos** y haz clic en el contacto que quieres revisar.
+</Step>
+<Step title="Despliega la sección Contacto">
+En el panel de detalles, abre la sección **Contacto**.
+</Step>
+<Step title="Revisa el campo de correo">
+Junto al campo **Correo** verás el estado de verificación de la dirección.
+</Step>
+</Steps>
+
+| Estado | Significado |
+| --- | --- |
+| **No verificado** | La dirección todavía no pasó por la verificación. |
+| **Inválido** | La dirección falló la verificación. No se enviarán correos a ella. |
+| **Verificado** | La dirección pasó la verificación. Es segura para enviar. |
+
+<Tip>
+Si quieres verificar direcciones dentro de una automatización, por ejemplo justo antes de un correo importante, usa la [acción Verificación de correo en flujos](/automatizaciones/accion-verificacion-de-correo).
+</Tip>
+
+## Qué revisa la verificación
+
+| Revisión | Qué comprueba |
+| --- | --- |
+| **Sintaxis** | Que la dirección tenga un formato correcto (nombre@dominio.com) y no le falten caracteres como la @. |
+| **Dominio y registros MX** | Que el dominio (por ejemplo, gmail.com) tenga registros MX activos, es decir, que esté configurado para recibir correo. |
+| **Existencia del buzón** | Se conecta con el servidor de correo y pregunta si el buzón existe, sin enviar ningún mensaje. |
+| **Riesgo y tipo de dirección** | Que la dirección no esté en listas conocidas de direcciones problemáticas, no sea de alto riesgo y no sea genérica (como info@ o admin@). |
+
+Superar estas revisiones significa que la dirección **parece existir en el momento de la verificación**. No garantiza que tu correo llegue a la bandeja de entrada.
+
+## Lo que la verificación no garantiza
+
+La verificación es una revisión previa al envío y no controla lo que pasa después:
+
+- Que el correo no rebote: una dirección válida puede rechazar el mensaje después.
+- Que llegue a la bandeja de entrada y no a spam.
+- Que el buzón siga activo: puede desactivarse después de verificarse.
+- Que tu dominio o IP de envío no esté en una lista negra.
+- Que el buzón del destinatario no esté lleno o su servidor tenga problemas temporales.
+
+Piénsalo como confirmar que una dirección postal existe en el mapa: no garantiza que alguien reciba el paquete ni que nadie se haya mudado.
+
+## Por qué una dirección verificada puede rebotar
+
+| Causa | Por qué la verificación no la detecta |
+| --- | --- |
+| Dominio catch-all | El servidor acepta cualquier dirección durante la revisión y rechaza los buzones inexistentes después de la entrega. |
+| Buzón desactivado después de verificar | La dirección era válida al revisarla, pero la cuenta se eliminó o suspendió después. |
+| Reputación del remitente o lista negra | La verificación revisa al destinatario, no si tu dominio o IP son de confianza. |
+| Filtros de spam o contenido | El servidor rechaza el mensaje por su contenido o por fallos de DMARC, SPF o DKIM. |
+| Filtros de direcciones genéricas | Direcciones como info@, admin@ o noreply@ pueden ser válidas pero rechazar correo de marketing por política. |
+| Rebote temporal | El servidor estaba caído, sin espacio o aplicando listas grises en el momento de la entrega. |
+
+<Warning>
+Los dominios catch-all son la causa más común. No hay forma fiable de distinguir un buzón real de uno catch-all, porque el servidor acepta todo a propósito durante la revisión.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Por qué es importante verificar los correos?">
+Porque los rebotes dañan la reputación de tu dominio e IP. Cuando muchos correos no se pueden entregar, los proveedores empiezan a desconfiar de ti y tus siguientes correos terminan en spam o bloqueados. Verificar antes de enviar reduce los rebotes y mejora tus métricas de apertura y clics.
+</Accordion>
+<Accordion title="¿Por qué mi cuenta tiene la verificación activada automáticamente?">
+Se activa en cuentas creadas hace menos de 30 días cuando una lista importada tiene menos del 90 % de direcciones entregables. Es una protección mientras se establece la calidad de tu lista.
+</Accordion>
+<Accordion title="¿Cuándo conviene verificar mi lista?">
+Si heredaste una lista que no conoces, si tu lista creció mucho o si hace tiempo que no la limpias. Comprar listas no es recomendable, pero si lo hiciste, verifícala sin falta antes de enviar.
+</Accordion>
+<Accordion title="¿Dónde veo cuánto he gastado en verificaciones?">
+Cada verificación se registra como un movimiento de tu billetera. Revísalo en **Configuración → Facturación**.
+</Accordion>
+<Accordion title="¿La verificación afecta a contactos a los que ya les envié correos?">
+No. Solo se ejecuta antes del próximo envío a cada contacto. Si tienes la reverificación cada 90 días, el estado caduca a los 90 días y la dirección se revisa antes del siguiente envío.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Evaluación de riesgo de listas de correo" icon="shield-check" href="/correo/evaluacion-de-riesgo-de-listas">
+Analiza la calidad de tus importaciones de contactos.
+</Card>
+<Card title="Acción Verificación de correo en flujos" icon="envelope-circle-check" href="/automatizaciones/accion-verificacion-de-correo">
+Verifica direcciones dentro de tus automatizaciones.
+</Card>
+<Card title="Buenas prácticas y calentamiento de correo" icon="envelope" href="/correo/buenas-practicas-y-calentamiento-de-correo">
+Todo lo que necesitas para llegar a la bandeja de entrada.
+</Card>
+<Card title="¿Por qué mis correos llegan a spam?" icon="circle-question" href="/correo/por-que-mis-correos-llegan-a-spam">
+Guía de diagnóstico paso a paso.
+</Card>
+</CardGroup>

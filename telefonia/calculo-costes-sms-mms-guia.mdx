@@ -1,0 +1,155 @@
+---
+title: "Cómo calcular el costo de tus SMS y MMS"
+description: "Estima cuánto cuesta un SMS o MMS según segmentos, emojis, imágenes, tarifas de operador y país, y aprende a reducir el gasto."
+icon: "calculator"
+---
+
+Cada SMS o MMS que envías o recibes consume saldo de la **billetera** de tu cuenta de Chateea. El costo final no depende solo de cuántos mensajes mandas: influyen la cantidad de segmentos, el país de destino, si adjuntas una imagen, las tarifas de los operadores y hasta los emojis. En esta guía aprendes a estimar cuánto te costará un mensaje antes de enviarlo y cómo reducir ese gasto.
+
+<Info>
+  Este artículo explica cómo se calcula el costo, no las tarifas en sí. Las tarifas vigentes para tu país las ves en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Info>
+
+## Qué determina el costo de un SMS
+
+Estos son los factores que más influyen:
+
+| Factor | Cómo afecta el costo |
+| --- | --- |
+| **Número de segmentos** | Se cobra por segmento. Un mensaje de 5 segmentos cuesta unas cinco veces más que uno de 1 segmento. |
+| **Tarifa por segmento** | Depende del país de destino y del tipo de número (local, gratuito o código corto). |
+| **Tarifas de operador** | En Estados Unidos y Canadá, los operadores cobran un cargo adicional por segmento. |
+| **Imagen o archivo (MMS)** | Al adjuntar contenido multimedia el mensaje pasa a tarifa MMS, que es más alta. |
+| **Codificación del texto** | Emojis y caracteres especiales reducen el tamaño del segmento de 160 a 70 caracteres. |
+| **Dirección** | Los mensajes entrantes (respuestas de tus contactos) también tienen costo. |
+| **Validación del número** | La primera vez que escribes a un contacto se puede cobrar una consulta de operador. |
+
+## Qué es un segmento
+
+El segmento es la unidad con la que se cobran los SMS. Con la codificación estándar (GSM-7), cada segmento admite **160 caracteres**. Si el texto es más largo, se divide en varios segmentos:
+
+| Caracteres del mensaje (GSM-7) | Segmentos |
+| --- | --- |
+| 1 a 160 | 1 |
+| 161 a 320 | 2 |
+| 321 a 480 | 3 |
+
+La longitud del segmento puede variar según el país y la codificación. La mayoría de los países usan 160 o 70 caracteres por segmento.
+
+### Emojis y caracteres especiales (codificación UCS-2)
+
+Cuando tu mensaje incluye un carácter que no existe en el alfabeto GSM-7 (un emoji, letras de alfabetos no latinos o ciertos símbolos), el mensaje completo se envía con codificación **UCS-2**. Esto cambia las reglas:
+
+- Un mensaje UCS-2 admite solo **70 caracteres** en un segmento.
+- Si supera los 70 caracteres, se divide en partes de hasta **67 caracteres** cada una, porque parte del espacio se reserva para unir los segmentos.
+
+Chateea cambia a UCS-2 de forma automática en cuanto detecta uno de estos caracteres. Por eso un solo emoji puede convertir un mensaje de 1 segmento en uno de 3 o 4.
+
+### Caracteres ocultos al copiar y pegar
+
+Si copias el texto de un SMS desde Word, Google Docs o una página web, a veces se cuelan caracteres invisibles (espacios especiales, saltos de formato). No los ves, pero cuentan y pueden forzar la codificación UCS-2. Un simple "Hola" copiado de una web puede terminar ocupando varios segmentos.
+
+<Tip>
+  Pega siempre como texto sin formato: **Ctrl + Shift + V** en Windows o **Cmd + Shift + V** en Mac.
+</Tip>
+
+<Warning>
+  Si el mensaje falla por un error interno antes de entregarse al operador, no se cobra. Pero una vez que se intenta la entrega, el cargo se aplica aunque el mensaje no llegue: incluye mensajes desde números gratuitos, números A2P y mensajes bloqueados por restricciones del país de destino. No hay reembolsos por SMS no entregados, así que revisa tus mensajes antes de enviarlos.
+</Warning>
+
+## Cómo estimar el costo de un SMS saliente
+
+El mayor gasto suele estar en los SMS salientes. Para estimarlo usa esta fórmula:
+
+```text
+Costo estimado = (segmentos × tarifa por segmento) + (segmentos × tarifa de operador)
+```
+
+<Steps>
+  <Step title="Cuenta los segmentos">
+    Copia el texto final del mensaje y pégalo en una calculadora de segmentos SMS (hay varias gratuitas en internet que muestran la codificación y el número de segmentos). Anota el número de segmentos.
+  </Step>
+  <Step title="Consulta la tarifa por segmento">
+    Revisa en **Configuración → Facturación** la tarifa de SMS saliente para el país de destino y el tipo de número desde el que envías.
+  </Step>
+  <Step title="Estima la tarifa de operador">
+    En Estados Unidos y Canadá, cada operador cobra un cargo distinto por segmento y varía según el tipo de número (local, gratuito o código corto). Como no sabes de antemano el operador de cada contacto, usa como referencia el cargo más alto para no quedarte corto.
+  </Step>
+  <Step title="Calcula">
+    Multiplica los segmentos por la tarifa por segmento, multiplica los segmentos por la tarifa de operador y suma ambos resultados.
+  </Step>
+</Steps>
+
+**Ejemplo:** un mensaje de 5 segmentos cuesta 5 veces la tarifa por segmento más 5 veces la tarifa de operador. Si lo reduces a 1 segmento, pagas una sola vez cada concepto: el mismo mensaje sale unas cinco veces más barato.
+
+<Note>
+  Es una estimación. El costo definitivo solo se conoce después del envío, porque influyen imágenes, emojis, caracteres ocultos y otros factores.
+</Note>
+
+## Otros factores que cambian el costo
+
+### Imágenes y archivos (MMS)
+
+Al adjuntar una imagen el mensaje se cobra con tarifa MMS, que incluye su propio cargo por mensaje y su propia tarifa de operador, ambos más altos que los de un SMS. Un mensaje puede llevar hasta **10 archivos** con un total de **5 MB**. Si el contenido supera ese tamaño, Chateea lo sube a la biblioteca de medios y envía un enlace corto al contacto.
+
+### Tarifas de operador
+
+Los operadores de Estados Unidos y Canadá cobran por cada segmento que entregan a sus usuarios. Como se multiplican por el número de segmentos, reducir segmentos también reduce este cargo. Las tarifas de operador de MMS son distintas a las de SMS.
+
+### Consulta de operador (validación de número)
+
+La consulta de operador se cobra la **primera vez** que intentas enviar un SMS a un contacto, como parte de la validación de números. Esa comprobación confirma que el número existe y puede recibir SMS. A la larga te ahorra dinero, porque evitas pagar mensajes completos a números falsos o fijos.
+
+### Mensajes entrantes
+
+Las respuestas de tus contactos también se cobran. Para estimarlas, usa la misma fórmula con las tarifas de SMS o MMS **entrantes** de tu país.
+
+### Mensajes internacionales
+
+Si escribes a un número de otro país, se aplica la tarifa del país de destino, que puede ser varias veces más alta que la local. En algunos casos pueden aplicarse cargos adicionales según las normas del país. Enviar un SMS de prueba es la mejor forma de conocer el costo real.
+
+## Cómo reducir tus costos de SMS
+
+- **Acorta el mensaje** para que quepa en 1 segmento siempre que puedas.
+- **Evita los emojis** en envíos masivos, o úsalos sabiendo que reducen el segmento a 70 caracteres.
+- **Pega como texto sin formato** para no arrastrar caracteres ocultos.
+- **Usa MMS solo cuando la imagen aporte**, por ejemplo en promociones visuales.
+- **Limpia tus listas** y activa la validación de números para no pagar mensajes a números inválidos.
+- **Haz una prueba** antes de un envío masivo internacional.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Me cobran los mensajes que no se entregan?">
+    Si el mensaje falla por un error interno antes de llegar al operador, no. Una vez que se entrega al operador, el cargo se aplica aunque el mensaje no llegue al destinatario.
+  </Accordion>
+  <Accordion title="¿Por qué mis SMS cuestan tanto?">
+    La causa más común es que el mensaje se divide en varios segmentos, casi siempre por la longitud, los emojis o caracteres ocultos al copiar y pegar. Pasa el texto por una calculadora de segmentos y ajústalo antes de enviarlo.
+  </Accordion>
+  <Accordion title="¿Cómo reduzco el número de segmentos?">
+    Acorta el texto, quita emojis y símbolos especiales y pega el contenido como texto sin formato. Comprueba el resultado en una calculadora de segmentos antes del envío.
+  </Accordion>
+  <Accordion title="¿La consulta de operador se cobra cada vez que escribo a un contacto?">
+    No. Solo se cobra en el primer SMS que intentas enviar a cada contacto.
+  </Accordion>
+  <Accordion title="¿Dónde veo las tarifas de mi país?">
+    En **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Imágenes y archivos por SMS (MMS)" icon="image" href="/telefonia/mms-imagenes-y-archivos-en-sms">
+    Límites de tamaño y cómo se ven en cada teléfono.
+  </Card>
+  <Card title="Cómo se cobran los mensajes RCS" icon="file-invoice" href="/telefonia/como-se-cobran-los-mensajes-rcs">
+    Segmentos, tipos de mensaje y país de facturación en RCS.
+  </Card>
+  <Card title="Límite diario de SMS y rampa de envío" icon="gauge" href="/telefonia/limite-diario-de-sms-y-rampa-de-envio">
+    Cuántos SMS puedes enviar al día y cómo subir de nivel.
+  </Card>
+  <Card title="Enlaces acortados y entregabilidad" icon="link" href="/telefonia/enlaces-acortados-y-entregabilidad-sms">
+    Por qué los acortadores públicos bloquean tus SMS.
+  </Card>
+</CardGroup>
