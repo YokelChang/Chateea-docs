@@ -1,0 +1,101 @@
+---
+title: "Cálculos matemáticos en formularios y encuestas"
+description: "Suma y combina respuestas con el campo Puntuación para crear cotizadores, cuestionarios y calificación de leads en tiempo real."
+icon: "calculator"
+---
+
+Los cálculos matemáticos te permiten sumar, restar o combinar las respuestas de un formulario o una encuesta para obtener una puntuación en tiempo real. Sirven para cotizadores, calculadoras de presupuesto, autoevaluaciones, cuestionarios de conocimiento o para calificar leads según lo que responden.
+
+Todo gira alrededor del campo **Puntuación** (Score): un campo personalizado que guarda el resultado de la fórmula que tú definas.
+
+## Qué campos puedes usar en una fórmula
+
+| Tipo de campo | Cómo aporta al cálculo |
+| --- | --- |
+| **Número** | Usa el valor que escribe la persona |
+| **Monetario** | Usa el importe que escribe la persona |
+| **Opción única** (Radio) | Cada opción tiene su propia puntuación |
+| **Casillas de verificación** (Checkbox) | Cada casilla marcada suma su puntuación |
+| **Desplegable simple** | Cada opción tiene su propia puntuación |
+| **Desplegable múltiple** | Cada opción elegida suma su puntuación |
+
+Puedes combinar campos numéricos y monetarios con campos de opciones para crear lógicas de puntuación más completas. Las puntuaciones de cada opción admiten valores **decimales** y **negativos**.
+
+## Cómo configurar un cálculo
+
+<Steps>
+  <Step title="Agrega los campos que vas a calcular">
+    Abre tu formulario o encuesta en **Sitios → Formularios** (o **Encuestas**). Desde el menú de **Agregar rápido** (Quick Add), arrastra los campos numéricos, monetarios o de opciones que formarán parte del cálculo.
+  </Step>
+  <Step title="Asigna una puntuación a cada opción">
+    En los campos de opción única, casillas y desplegables, haz clic en el campo y asigna un valor a cada opción. Ese valor es el que se usará en la fórmula cuando la persona la elija.
+  </Step>
+  <Step title="Agrega el campo Puntuación">
+    Arrastra el campo **Puntuación** (Score) desde **Agregar rápido**. Este campo es el que muestra y guarda el resultado.
+  </Step>
+  <Step title="Define la fórmula en la calculadora">
+    Abre la configuración del campo **Puntuación** y usa la calculadora para indicar qué campos se suman, se restan o se combinan y con qué reglas.
+  </Step>
+  <Step title="Prueba en la vista previa">
+    Pulsa **Vista previa** y llena el formulario. La puntuación se recalcula al instante con cada respuesta, así validas la lógica antes de publicar.
+  </Step>
+</Steps>
+
+### Editar la fórmula con el cursor
+
+No necesitas borrar toda la fórmula para corregirla. Coloca el cursor en cualquier punto de la expresión y edita ahí mismo:
+
+- Las **flechas** mueven el cursor un carácter a la vez.
+- **Inicio** (Home) salta al principio de la fórmula.
+- **Fin** (End) salta al final.
+
+Los cambios se aplican exactamente donde está el cursor.
+
+## Usar la puntuación para tomar decisiones
+
+La puntuación se puede usar en la **lógica condicional** del formulario para:
+
+- Redirigir a una URL distinta según el resultado.
+- Descalificar a quien no cumpla un mínimo.
+- Mostrar u ocultar campos.
+
+Para acciones de seguimiento más elaboradas (enviar un mensaje distinto, asignar a un vendedor, mover una oportunidad), guarda la puntuación en un campo personalizado y úsala en un flujo de trabajo con el disparador de formulario enviado.
+
+<Tip>
+  Para calificar leads, asigna puntuaciones altas a las respuestas que indican intención de compra (presupuesto definido, urgencia, tamaño del negocio) y crea en tu automatización ramas distintas para leads "calientes" y "fríos".
+</Tip>
+
+## Ejemplos de uso
+
+- **Cuestionarios y pruebas de conocimiento:** calcula automáticamente cuántas respuestas acertó la persona.
+- **Cotizadores y presupuestos:** suma los servicios o productos que elige el cliente y muestra un total estimado.
+- **Calificación de leads:** puntúa las respuestas para priorizar a quién llamar primero.
+- **Autoevaluaciones:** devuelve un resultado inmediato según las opciones elegidas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar puntuaciones decimales o negativas?">
+    Sí. Las opciones admiten valores decimales y negativos, lo que te permite restar puntos por ciertas respuestas.
+  </Accordion>
+  <Accordion title="¿El cálculo funciona solo en la vista previa?">
+    La vista previa te muestra el resultado en tiempo real mientras configuras. En el formulario publicado, decide cómo quieres usar el resultado: guardarlo en un campo personalizado o en un campo oculto, usarlo en la lógica condicional o mostrarlo en la página de confirmación.
+  </Accordion>
+  <Accordion title="¿Mis formularios anteriores cambian con esta función?">
+    No. Los formularios existentes siguen funcionando igual. Si quieres usar cálculos en ellos, edítalos y agrega los campos y la fórmula.
+  </Accordion>
+  <Accordion title="¿Funciona también en encuestas?">
+    Sí. Los cálculos matemáticos están disponibles tanto en formularios como en encuestas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un formulario de contacto" icon="address-card" href="/sitios/crear-formulario-de-contacto">
+    Crea, configura y publica tu primer formulario.
+  </Card>
+  <Card title="Edición en línea de formularios" icon="pen-to-square" href="/sitios/edicion-en-linea-de-formularios">
+    Cambia textos directamente en la vista previa del editor.
+  </Card>
+</CardGroup>

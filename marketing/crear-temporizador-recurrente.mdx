@@ -1,0 +1,127 @@
+---
+title: "Crear un temporizador recurrente"
+description: "Configura una cuenta regresiva que se reinicia sola para ofertas semanales, clases periódicas o promociones repetidas."
+icon: "rotate"
+---
+
+Un temporizador recurrente cuenta durante un tiempo definido (por ejemplo, siete días), llega a cero y vuelve a empezar solo, las veces que tú indiques. Es perfecto para promociones, clases o eventos que se repiten: mantienes la urgencia activa sin tener que crear ni duplicar temporizadores cada semana.
+
+## Cómo funciona
+
+A diferencia de un temporizador fijo, que vence una sola vez, el recurrente pasa por estos estados en cada ciclo:
+
+| Estado | Qué ocurre |
+| --- | --- |
+| **Activo** | La cuenta regresiva está visible y corriendo |
+| **Vencido** | La cuenta llega a cero y se aplica la redirección o se oculta el contenido |
+| **Espera** (opcional) | Una pausa configurable antes de que empiece el siguiente ciclo |
+
+Como el plazo es el mismo para todos, cada persona que lo ve percibe la misma urgencia en cada ciclo.
+
+## Ventajas
+
+- **Automático:** se reinicia solo según el calendario, sin reconstruirlo.
+- **Urgencia constante:** los visitantes siempre ven una cuenta activa.
+- **Reutilizable:** el mismo temporizador sirve en embudos, correos y sitios externos.
+- **Ciclos flexibles:** tú decides cuántas veces se repite.
+- **Con tu marca:** personalizas fuentes y colores.
+
+## Dónde usar un temporizador recurrente
+
+- **Ofertas semanales:** recuerda a tus clientes la promoción de cada semana en tu sitio, correos y redes.
+- **Renovaciones mensuales:** avisa de la próxima fecha de renovación de una suscripción o membresía.
+- **Webinars o clases periódicas:** muestra el tiempo que falta para la próxima sesión (por ejemplo, cada martes) en la página de registro o en los correos.
+- **Ofertas diarias o relámpago:** genera urgencia en promociones que se repiten cada día o cada semana.
+
+## Qué son las repeticiones (Loop Events)
+
+El campo de repeticiones define cuántos ciclos hace el temporizador en total, contando el primero. Si pones 3, el temporizador cuenta, se reinicia y vuelve a contar hasta completar tres ciclos.
+
+Ejemplo para un reinicio semanal durante un mes:
+
+- **Fecha de inicio:** el próximo lunes a las 8:00.
+- **Duración de la cuenta regresiva:** 7 días.
+- **Repeticiones:** 4.
+
+<Note>
+Cada ciclo empieza cuando termina por completo el anterior, según la zona horaria configurada. El temporizador no se reinicia cada día salvo que la duración sea de 1 día.
+</Note>
+
+## Cómo crear un temporizador recurrente
+
+<Steps>
+<Step title="Abre la sección de temporizadores">
+En el menú lateral, entra en **Marketing** y, en la barra superior, selecciona **Temporizadores de cuenta regresiva**.
+</Step>
+<Step title="Crea o edita un temporizador">
+Para crear uno, haz clic en **Nuevo** y elige una plantilla para ahorrar tiempo de diseño. Para editar uno existente, haz clic en el ícono de **lápiz** junto a él.
+</Step>
+<Step title="Elige el tipo Recurrente">
+En la pestaña **General** del panel de configuración, selecciona **Recurrente** como tipo de temporizador.
+</Step>
+<Step title="Configura el tiempo">
+- **Fecha y hora de inicio:** cuándo empieza el primer ciclo.
+- **Repeticiones:** cuántos ciclos hará en total.
+- **Duración de la cuenta regresiva:** cuánto dura cada ciclo (por ejemplo, 7 días).
+- **El temporizador espera** (Countdown Timer Waits For): pausa opcional entre ciclos.
+- **Ocultar el temporizador en el sitio durante la espera:** si lo desactivas, el temporizador se muestra en cero durante la pausa.
+</Step>
+<Step title="Agrega los enlaces">
+- **Enlace activo:** la página a la que llegan mientras el tiempo corre.
+- **Enlace vencido:** la página a la que llegan cuando el ciclo terminó.
+</Step>
+<Step title="Personaliza y guarda">
+Ajusta colores, fuentes, imagen de vencido y formato de las unidades de tiempo. Ponle un nombre descriptivo y haz clic en **Guardar**.
+</Step>
+</Steps>
+
+## Tiempo de espera entre ciclos
+
+El ajuste **El temporizador espera** introduce una pausa entre un ciclo y el siguiente. Así se comporta en cada canal:
+
+**En correos**
+
+- El temporizador se muestra en cero.
+- Al hacer clic, la persona va a la página de vencido.
+
+**En embudos y sitios**
+
+- El temporizador puede ocultarse durante la espera, si activaste esa opción.
+- Si pasa de activo a espera mientras la persona está en la página, se queda en ella (no hay redirección automática).
+- Si recarga la página durante la espera, se la redirige a la página de vencido.
+
+Para ver ejemplos y límites de esta pausa, consulta [Tiempo de espera en el temporizador recurrente](/marketing/tiempo-de-espera-en-temporizador-recurrente).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Para qué sirve el tiempo de espera?">
+Es una pausa opcional entre ciclos, por ejemplo 24 horas entre ofertas semanales. Evita que el temporizador se reinicie de inmediato y le da a tu equipo tiempo para actualizar la oferta o el inventario.
+</Accordion>
+<Accordion title="¿Puedo cambiar la espera o las repeticiones con el temporizador ya publicado?">
+Sí. Edítalo en **Marketing → Temporizadores de cuenta regresiva**; los cambios se aplican en todos los lugares donde está insertado.
+</Accordion>
+<Accordion title="¿Se adapta a la zona horaria de cada visitante?">
+Por defecto, todos ven el reloj de la zona horaria que elegiste. Si activas **Adaptar a la zona horaria del contacto**, el inicio se ajusta a la zona de cada persona y el fin se calcula según las reglas de recurrencia. Consulta [Zona horaria en los temporizadores](/marketing/zona-horaria-en-temporizadores).
+</Accordion>
+<Accordion title="¿Hay un límite de temporizadores recurrentes activos?">
+No hay un límite fijo, pero cada temporizador genera imágenes bajo demanda. Mantén tu lista ordenada y elimina los que ya no uses.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Tiempo de espera en el temporizador recurrente" icon="pause" href="/marketing/tiempo-de-espera-en-temporizador-recurrente">
+Pausas entre ciclos, ejemplos y límites.
+</Card>
+<Card title="Crear un temporizador fijo" icon="hourglass-end" href="/marketing/crear-temporizador-fijo">
+Una fecha límite igual para todos.
+</Card>
+<Card title="Temporizador en correos" icon="envelope" href="/marketing/temporizador-en-correos">
+Añade urgencia a tus campañas de correo.
+</Card>
+<Card title="Temporizador en embudos y sitios" icon="globe" href="/marketing/temporizador-en-embudos-y-sitios">
+Muestra la cuenta regresiva en tus páginas.
+</Card>
+</CardGroup>

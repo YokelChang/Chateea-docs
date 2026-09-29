@@ -1,0 +1,165 @@
+---
+title: "Tipos de dominios: sitios, correo, WordPress y más"
+description: "Qué tipo de dominio necesitas para cada producto de Chateea y cómo conectarlo sin romper tu web ni tu correo."
+icon: "globe"
+---
+
+En Chateea usas dominios y subdominios para cosas distintas: publicar sitios web y embudos, enviar correos con tu propia marca, alojar WordPress o dar una dirección propia a tu portal del cliente. Cada uso necesita sus propios registros DNS, así que conviene saber qué tipo de dominio necesitas antes de tocar la configuración de tu proveedor.
+
+Esta guía te ayuda a elegir el tipo correcto y te explica los conceptos básicos para no romper un sitio o un buzón de correo que ya tengas funcionando.
+
+## ¿Qué dominio necesito?
+
+| Tipo de dominio | Para qué sirve | Dónde se configura |
+| --- | --- | --- |
+| Dominio de sitios y embudos | Publicar sitios web, embudos, tiendas, blogs y otras páginas de **Sitios** | **Configuración → Dominios** |
+| Dominio comprado en Chateea | Usar un dominio que compraste y gestionas directamente desde Chateea | **Configuración → Dominios** |
+| Dominio de marca | Personalizar los enlaces que genera el sistema (formularios, encuestas, calendarios) | **Configuración → Perfil del negocio → Dominio de marca** |
+| Dominio dedicado de envío | Autenticar el dominio con el que envías correos desde el correo de Chateea | **Configuración → Servicios de correo → Dominio dedicado** |
+| Dominio del portal del cliente | Dar una dirección propia al portal donde tus clientes acceden a cursos y comunidades | **Sitios → Portal del cliente → Configuración** |
+| Dominio de WordPress | Publicar un sitio WordPress alojado en Chateea | **Sitios → WordPress** |
+
+<Warning>
+Los registros DNS de un tipo de dominio no sirven para otro. Usa siempre los valores que Chateea te muestra para el producto concreto que estás conectando, y no copies registros de otra configuración o de un dominio anterior.
+</Warning>
+
+## Dominio raíz y subdominio
+
+Antes de conectar nada, distingue estos dos conceptos:
+
+- **Dominio raíz** (por ejemplo, `minegocio.com`): es la dirección principal de tu sitio. En `www.minegocio.com`, el dominio raíz es `minegocio.com`.
+- **Subdominio** (por ejemplo, `ofertas.minegocio.com`): es una extensión del dominio raíz que apunta a una zona concreta. Sirve para landing pages, campañas o secciones independientes sin afectar al sitio principal.
+
+<Warning>
+Ten cuidado al conectar un dominio raíz. Si ese dominio ya está en uso para tu web o tu correo, puedes dejarlos sin funcionar. Si tu dominio raíz ya se usa en otro lugar, conecta un subdominio.
+</Warning>
+
+## Cómo se conectan los dominios
+
+### Conexión automática
+
+Si tu proveedor de dominio es compatible (por ejemplo, GoDaddy, Cloudflare o Google), Chateea puede crear los registros DNS por ti. Solo tienes que seguir las indicaciones en pantalla y autorizar la conexión con tu proveedor.
+
+### Conexión manual
+
+Si tu proveedor no admite la conexión automática, Chateea te muestra los registros que debes crear. Después:
+
+<Steps>
+<Step title="Abre el gestor de DNS de tu proveedor">
+Entra en el panel de tu proveedor de dominio y busca la opción para agregar un registro.
+</Step>
+<Step title="Elige el tipo de registro">
+Selecciona el tipo de registro que te indica Chateea (por ejemplo, A, CNAME o TXT).
+</Step>
+<Step title="Copia el nombre y el valor">
+Pega el nombre de host en el campo **Nombre** (Name) y el valor en el campo **Destino** o **Valor** (Target / Value).
+</Step>
+<Step title="Guarda el registro">
+Guarda los cambios. Si usas Cloudflare, desactiva el proxy (nube naranja) para ese registro.
+</Step>
+<Step title="Verifica en Chateea">
+Vuelve a Chateea y verifica el dominio. Los cambios de DNS pueden tardar un tiempo en propagarse.
+</Step>
+</Steps>
+
+## Tipos de dominio en detalle
+
+### Dominio de sitios y embudos
+
+Es la dirección pública de tus sitios web, embudos, tiendas y blogs. Se gestiona en **Configuración → Dominios**. Agrega los registros DNS que te muestra Chateea en tu proveedor y luego vuelve para verificar y conectar el dominio.
+
+### Dominio comprado en Chateea
+
+Si compraste el dominio directamente en Chateea, puedes gestionarlo desde la misma plataforma, sin necesidad de entrar a otro registrador. Lo encuentras en **Configuración → Dominios**.
+
+### Dominio de marca
+
+Sirve para que los enlaces que genera el sistema (formularios, encuestas, calendarios y otros) muestren tu propio dominio. Eso mejora el reconocimiento de marca y la entregabilidad de tus enlaces. Se configura en **Configuración → Perfil del negocio → Dominio de marca**.
+
+<Tip>
+Usa siempre un subdominio para el dominio de marca (por ejemplo, `links.minegocio.com`). Si usas el dominio raíz, tu web dejará de apuntar a donde debe.
+</Tip>
+
+### Dominio dedicado de envío
+
+Un dominio dedicado autentica el dominio desde el que envías correos con el correo de Chateea. Te da más control sobre tu reputación como remitente, refuerza la credibilidad de tu marca y reduce el riesgo de caer en spam.
+
+Se configura en **Configuración → Servicios de correo → Dominio dedicado** con **Agregar dominio**. Chateea genera los registros DNS que necesitas. Agrégalos en tu proveedor y vuelve para verificar.
+
+<Tip>
+Configura el dominio de envío con un subdominio (por ejemplo, `correo.minegocio.com`) para no interferir con el correo que ya usas en tu dominio principal.
+</Tip>
+
+### Dominio del portal del cliente
+
+El portal del cliente centraliza el acceso de tus clientes a cursos, comunidades y otras áreas privadas. Puedes darle un dominio propio desde **Sitios → Portal del cliente → Configuración**.
+
+### Dominio de WordPress
+
+Si alojas un sitio WordPress en Chateea (nuevo o migrado), su dominio se gestiona por separado de los dominios de sitios y embudos. Ve a **Sitios → WordPress**, abre tu sitio y usa sus opciones de dominio. Sigue los registros DNS que Chateea genera para esa configuración concreta.
+
+## Glosario
+
+| Término | Ejemplo | Qué es |
+| --- | --- | --- |
+| Dominio | `www.minegocio.com` | La dirección digital de tu web, correo y otros servicios |
+| Dominio raíz | `minegocio.com` | La dirección principal, sin prefijos |
+| Subdominio | `ayuda.minegocio.com` | Una extensión del dominio raíz para una zona concreta |
+| Nombre de host | `ayuda` | El nombre que se usa en el registro, normalmente el subdominio |
+| Valor o destino | | El dato al que apunta el registro para mostrar el contenido correcto |
+| Servidores de nombres (nameservers) | GoDaddy, Cloudflare | Indican qué proveedor controla los registros DNS del dominio |
+| DNS | | Los registros que dicen a internet qué mostrar al visitar una dirección y desde dónde se puede enviar correo |
+| TXT | | Registro de texto usado para verificar dominios y proteger el envío de correo |
+| MX | | Indica a dónde se entregan los correos que recibe el dominio |
+| CNAME | | Apunta un nombre a otro dominio. Muy usado en subdominios |
+| A | | Apunta el dominio a una dirección IP. Muy usado en el dominio raíz |
+| DMARC | | Registro TXT que protege tu dominio contra la suplantación de correo |
+
+## Solución de problemas
+
+Si un dominio no se conecta, revisa lo siguiente:
+
+1. **Producto correcto:** confirma para qué producto estás conectando el dominio (sitio, correo, WordPress o portal).
+2. **Registros exactos:** compara los registros de tu proveedor con los que muestra Chateea en este momento.
+3. **Registros duplicados:** busca registros A o CNAME en conflicto con el mismo nombre de host y elimina los que sobren.
+4. **Proveedor correcto:** asegúrate de editar los DNS en el proveedor que controla los servidores de nombres actuales del dominio.
+5. **Propagación:** espera a que los cambios se propaguen y vuelve a verificar en Chateea.
+
+Si el problema continúa, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué hago si no tengo un dominio?">
+Puedes comprar uno directamente en Chateea o en cualquier registrador externo. Después, conéctalo al producto que necesites siguiendo su proceso de configuración.
+</Accordion>
+<Accordion title="¿Puedo usar un dominio que ya tengo para enviar correos?">
+Sí. Te recomendamos usar un subdominio para el envío de correos desde Chateea, así no afectas al correo que ya funciona en tu dominio.
+</Accordion>
+<Accordion title="¿Puedo usar un dominio gestionado en Wix para el dominio dedicado de envío?">
+Wix no permite agregar varios registros MX con la misma prioridad. Para usar ese dominio, tendrás que cambiar sus servidores de nombres a otro proveedor de DNS.
+</Accordion>
+<Accordion title="Mi registro CNAME no se reconoce en Cloudflare">
+Asegúrate de que el proxy esté desactivado para ese registro. Con el proxy activo, el registro no apunta correctamente.
+</Accordion>
+<Accordion title="Ya tengo un dominio conectado a otra web. ¿Qué hago?">
+Si quieres mantener tu web actual, usa un subdominio para el producto de Chateea. Así ambos servicios funcionan de forma independiente.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+Todo lo que necesitas saber sobre dominios en Chateea.
+</Card>
+<Card title="Solucionar errores de conexión de dominio" icon="circle-question" href="/dominios/errores-de-conexion">
+Qué revisar cuando un dominio no se conecta.
+</Card>
+<Card title="Redirecciones 301" icon="arrow-right" href="/sitios/redirecciones-301">
+Envía el tráfico de una URL antigua a una nueva.
+</Card>
+<Card title="Mapas de sitio XML" icon="sitemap" href="/sitios/mapas-de-sitio-xml">
+Ayuda a Google a rastrear las páginas de tu dominio.
+</Card>
+</CardGroup>

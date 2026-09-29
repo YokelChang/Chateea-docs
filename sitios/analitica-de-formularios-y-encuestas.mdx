@@ -1,0 +1,120 @@
+---
+title: "Analítica de formularios y encuestas"
+description: "Mide vistas, respuestas, tasa de finalización y abandono por diapositiva para mejorar tus formularios."
+icon: "chart-line"
+---
+
+La analítica de formularios y encuestas te muestra cómo rinden tus formularios a lo largo del tiempo: cuántas personas los ven, cuántas los completan, cuánto tardan y, en las encuestas, en qué paso abandonan. Con esos datos detectas dónde está la fricción y compruebas si tus cambios mejoran la conversión.
+
+## Qué puedes ver
+
+- **Rendimiento general:** vistas totales, respuestas, tasa de finalización y tiempo promedio.
+- **Comparación con el periodo anterior:** para confirmar tendencias y detectar anomalías.
+- **Abandono por diapositiva (encuestas):** qué paso pierde más personas.
+- **Filtros flexibles:** un formulario concreto o todos, en el rango de fechas que elijas.
+
+## Cómo abrir el panel
+
+<Steps>
+  <Step title="Entra a la analítica">
+    En el menú lateral, ve a **Sitios** y, en la navegación superior, abre **Analítica**.
+  </Step>
+  <Step title="Elige los filtros">
+    Selecciona el **Tipo** (Formularios o Encuestas) en la esquina superior izquierda, el **Recurso** (todos o uno en concreto) y el **Rango de fechas** (últimos 7, 14, 30, 60 o 90 días, o personalizado).
+  </Step>
+  <Step title="Lee los datos">
+    Revisa las tarjetas de métricas, la gráfica y, si elegiste una sola encuesta, la tabla por diapositiva.
+  </Step>
+</Steps>
+
+## Métricas disponibles
+
+| Métrica | Qué significa |
+| --- | --- |
+| **Vistas totales** | Cuántas veces se vio el formulario o la encuesta en el periodo elegido |
+| **Respuestas** | Envíos completados |
+| **Tiempo promedio** | Lo que tarda en promedio una persona en completarlo |
+| **Tasa de finalización** | Porcentaje de respuestas frente a vistas, con comparación automática con el periodo anterior |
+| **Gráfica de vistas** | Línea de tiempo para ver subidas y bajadas |
+| **Desglose por recurso** | Tabla con las vistas de cada formulario o encuesta (solo cuando eliges **Todos**) |
+| **Vistas por diapositiva** | Solo en encuestas y solo cuando eliges una encuesta concreta |
+
+<Tip>
+  La comparación con el periodo anterior usa un periodo de la misma duración justo antes del elegido. Por ejemplo, los últimos 14 días frente a los 14 días previos.
+</Tip>
+
+## Abandono por diapositiva en encuestas
+
+Cuando seleccionas **una sola encuesta**, aparece una tabla con tres columnas:
+
+- **Diapositiva:** número o título del paso.
+- **Vistas:** sesiones que llegaron a ese paso.
+- **Abandono:** diferencia con la diapositiva anterior, en cantidad y en porcentaje.
+
+### Cómo se calcula
+
+Para cualquier diapositiva a partir de la segunda:
+
+```text
+Abandono (cantidad) = Vistas de la diapositiva anterior - Vistas de la diapositiva actual
+Abandono (%) = Abandono (cantidad) / Vistas de la diapositiva anterior x 100
+```
+
+- La primera diapositiva no tiene anterior, así que su abandono aparece como **N/A**.
+- Un abandono **positivo** significa que llegaron menos personas que al paso anterior.
+- Un abandono **negativo** significa que llegaron más personas que al paso anterior.
+
+### Por qué el abandono puede ser negativo
+
+Ocurre cuando una diapositiva recibe más vistas que la anterior. Las causas más comunes son:
+
+- **Lógica de salto:** reglas condicionales que llevan a la persona directamente a esa diapositiva.
+- **Salto por opción (método anterior):** la configuración antigua de "ir a la diapositiva según la opción" en campos de opción única o casillas.
+- **Reordenar diapositivas:** si cambiaste el orden después de recibir respuestas, cambia cuál cuenta como "anterior".
+
+**Ejemplo:**
+
+| Diapositiva | Vistas | Abandono |
+| --- | --- | --- |
+| 1 | 100 | N/A |
+| 2 | 93 | 7 (7 %) |
+| 3 | 98 | -5 (-5,4 %), porque 5 personas saltaron de la 1 a la 3 |
+
+### Qué revisar si ves abandonos negativos
+
+1. Si usas lógica condicional que salta a esa diapositiva.
+2. Si tienes configurado el salto por opción del método anterior.
+3. Si reordenaste diapositivas dentro del rango de fechas que estás analizando.
+4. Si el rango de fechas coincide con el periodo que quieres analizar, sobre todo después de cambios recientes en la lógica o el orden.
+
+<Tip>
+  Cuando una diapositiva concentra el abandono, prueba a simplificarla: menos campos, preguntas más claras o dividirla en dos pasos. Luego compara el abandono del periodo siguiente.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no veo el desglose por formulario?">
+    Solo aparece cuando el filtro de recurso está en **Todos**. Si eliges un formulario concreto, el desglose se oculta.
+  </Accordion>
+  <Accordion title="Elegí una encuesta pero no veo la tabla por diapositiva">
+    La tabla solo aparece cuando el filtro de recurso tiene seleccionada una encuesta específica. Si está en **Todas las encuestas**, cámbialo a la encuesta que quieres analizar.
+  </Accordion>
+  <Accordion title="¿Qué otros tipos puedo analizar desde el mismo desplegable?">
+    Además de formularios y encuestas, el desplegable de tipo incluye embudos, sitios web, códigos QR y blogs.
+  </Accordion>
+  <Accordion title="¿Qué significa un abandono negativo?">
+    Que la diapositiva actual tuvo más vistas que la anterior. Suele deberse a lógica de salto, al salto por opción del método anterior o a que se reordenaron las diapositivas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Análisis de sitios y embudos" icon="chart-line" href="/sitios/analisis-de-sitios-y-embudos">
+    Mide el rendimiento de tus páginas y embudos.
+  </Card>
+  <Card title="Envíos de formularios y encuestas" icon="inbox" href="/sitios/envios-de-formularios-y-encuestas">
+    Revisa, filtra y exporta las respuestas.
+  </Card>
+</CardGroup>

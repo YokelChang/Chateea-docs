@@ -1,0 +1,122 @@
+---
+title: "Metadatos SEO y etiquetas meta personalizadas"
+description: "Configura el título, la descripción, la imagen y las etiquetas meta de cada página para buscadores y redes sociales."
+icon: "magnifying-glass"
+---
+
+Los metadatos SEO le dicen a Google, a los navegadores y a las redes sociales de qué trata cada página: el título que aparece en los resultados de búsqueda, la descripción, la imagen al compartir el enlace y otras instrucciones para los buscadores. En Chateea los configuras página por página desde el editor de embudos y sitios web, sin tocar código.
+
+## Qué puedes configurar
+
+Desde el panel **Metadatos SEO** (SEO Meta Data) de cada página puedes definir, entre otros:
+
+- **Título:** el texto que aparece como título en Google y en la pestaña del navegador.
+- **Descripción:** el resumen que suele mostrarse bajo el título en los resultados de búsqueda.
+- **Palabras clave:** los términos principales de la página.
+- **Imagen para compartir:** la imagen que se ve al compartir el enlace en redes sociales o apps de mensajería.
+- **Enlaces y etiquetas:** opciones avanzadas, como las **etiquetas meta personalizadas**.
+
+<Tip>
+Escribe un título y una descripción únicos para cada página. Incluye la palabra clave principal de forma natural, y piensa en el texto como un anuncio: tiene que invitar a hacer clic.
+</Tip>
+
+## Editar los metadatos SEO de una página
+
+<Steps>
+<Step title="Abre la página">
+Ve a **Sitios → Embudos** o **Sitios → Sitios web**, abre el embudo o sitio y entra en el paso o la página que quieres editar.
+</Step>
+<Step title="Abre el panel de SEO">
+En la barra superior del editor, haz clic en el ícono de **Metadatos SEO**.
+</Step>
+<Step title="Completa los campos">
+Escribe el título, la descripción, las palabras clave y sube la imagen para compartir.
+</Step>
+<Step title="Guarda">
+Haz clic en **Actualizar metadatos SEO** (Update SEO Meta) y publica la página para que los cambios lleguen a la versión en vivo.
+</Step>
+</Steps>
+
+## Etiquetas meta personalizadas
+
+Las etiquetas meta personalizadas son fragmentos HTML ocultos que envían instrucciones concretas a buscadores, navegadores y redes sociales. Te sirven, por ejemplo, para:
+
+- Evitar que Google indexe una página de borrador, privada o de agradecimiento.
+- Controlar el título, la descripción y la imagen cuando se comparte la página.
+- Verificar la propiedad de tu dominio ante Google u otros servicios.
+- Ajustar comportamientos del navegador, como la caché.
+
+Google publica la [lista de etiquetas meta que admite](https://developers.google.com/search/docs/crawling-indexing/special-tags).
+
+### Agregar una etiqueta meta personalizada
+
+<Steps>
+<Step title="Abre el panel de Metadatos SEO">
+Abre la página en el editor y haz clic en el ícono de **Metadatos SEO**.
+</Step>
+<Step title="Despliega Enlaces y etiquetas">
+Baja hasta la sección **Enlaces y etiquetas** (Links and Tags) y despliégala.
+</Step>
+<Step title="Agrega la etiqueta">
+Haz clic en **+ Agregar** junto a **Etiquetas meta personalizadas**. Escribe el nombre de la etiqueta y su contenido, y haz clic en **Agregar**.
+</Step>
+<Step title="Guarda los cambios">
+Haz clic en **Actualizar metadatos SEO** y publica la página.
+</Step>
+</Steps>
+
+### Ejemplo: evitar que Google indexe una página
+
+Crea una etiqueta con estos valores:
+
+| Nombre | Contenido |
+| --- | --- |
+| `robots` | `noindex` |
+
+El resultado en la página será equivalente a:
+
+```html
+<meta name="robots" content="noindex">
+```
+
+Es útil para páginas de agradecimiento, ofertas privadas o páginas de prueba que no quieres que aparezcan en Google.
+
+## Comprobar cómo se ve tu página
+
+- Usa una herramienta de vista previa de metadatos (por ejemplo, metatags.io) para ver cómo aparecerá tu página en Google y en redes sociales.
+- Si cambiaste la imagen o el título y las redes siguen mostrando la versión antigua, borra la caché de vista previa con la herramienta de depuración de cada red (por ejemplo, el depurador de enlaces de Meta).
+- Para que Google vuelva a leer la página antes, usa la herramienta de [inspección de URLs de Search Console](https://support.google.com/webmasters/answer/9012289) y solicita la indexación.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cuánto tarda Google en ver los cambios?">
+Desde unas horas hasta varios días, según cuándo vuelva a rastrear tu página. Puedes acelerarlo solicitando la indexación en Search Console.
+</Accordion>
+<Accordion title="¿Puedo agregar varias etiquetas meta personalizadas a una página?">
+Sí, puedes agregar todas las que necesites.
+</Accordion>
+<Accordion title="¿Me perjudica no tener metadatos?">
+Sí. Si faltan la descripción o los datos para compartir en redes, Google y las redes sociales generan los suyos a partir del contenido, y el resultado suele ser menos atractivo y menos relevante.
+</Accordion>
+<Accordion title="¿Qué pasa si agrego la etiqueta noindex?">
+Los buscadores como Google dejan de indexar esa página y no la muestran en sus resultados.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Etiquetas de encabezado (H1, H2...)" icon="heading" href="/sitios/etiquetas-de-encabezado">
+Estructura tus títulos para buscadores y lectores.
+</Card>
+<Card title="Mapas de sitio XML" icon="sitemap" href="/sitios/mapas-de-sitio-xml">
+Ayuda a Google a encontrar tus páginas.
+</Card>
+<Card title="Generador de marcado Schema" icon="code" href="/embudos-sitios-web/embudos-y-sitios-web-generador-de-marcado-schema">
+Agrega datos estructurados a tus páginas.
+</Card>
+<Card title="Indexación de URLs en embudos" icon="circle-question" href="/sitios/indexacion-de-urls-en-embudos">
+Qué hacer si Google no indexa tus páginas.
+</Card>
+</CardGroup>

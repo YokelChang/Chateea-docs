@@ -1,36 +1,28 @@
 ---
-title: "Seguimiento externo: captura automática de formularios"
-description: "Lleva los envíos de formularios de tu sitio web externo directo al CRM, sin configuración manual."
+title: "Seguimiento externo: captura formularios de otros sitios web"
+description: "Instala un script en tu sitio externo para registrar visitas y enviar al CRM los formularios de WordPress, Shopify, Wix y más."
 icon: "radar"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+El seguimiento externo es un script ligero que conecta tu sitio web externo con tu cuenta de Chateea. Registra las visitas a tus páginas y captura automáticamente los envíos de los formularios que ya tienes en WordPress, Shopify, Wix, Webflow o un sitio hecho a medida, sin configurar nada a mano.
 
-El seguimiento externo es un **script ligero** que conecta la actividad de tu sitio web con tu CRM. Registra las visitas a las páginas y captura automáticamente los envíos de formularios que ocurren en sitios de terceros.
+Cada envío crea o actualiza el contacto en tu CRM al instante. No necesitas herramientas intermedias, webhooks ni integraciones personalizadas.
 
-Con la mejora más reciente, detecta solo los formularios que se renderizan en la página y captura los envíos **sin configuración manual**. Eso hace mucho más simple seguir los leads que llegan desde WordPress, Shopify, Wix o un sitio hecho a medida.
-
-<Info>
-  Lo que esto elimina: herramientas de terceros, webhooks y mapeos manuales. Antes, capturar un formulario de WordPress en tu CRM requería un intermediario. Ahora es pegar un script y listo.
-</Info>
-
-## Qué te aporta
+## Ventajas
 
 | Ventaja | Qué significa |
 | --- | --- |
-| **Detección automática** | Reconoce solo formularios compatibles como Gravity Forms, WPForms y HTML personalizado |
-| **Captura en tiempo real** | Los envíos entran al instante, sin retrasos ni integraciones |
-| **Creación automática de contactos** | Crea o actualiza el contacto justo después del envío |
-| **Mapeo inteligente de campos** | Asigna los datos a las propiedades de contacto y campos personalizados existentes |
-| **Atribución** | Captura parámetros UTM, URL de la página y datos de sesión |
-| **Varios formularios por página** | Cada uno se rastrea de forma independiente |
-| **Cero configuración** | Sin herramientas externas, webhooks ni mapeo manual |
+| **Detección automática** | Reconoce formularios compatibles como Gravity Forms, WPForms, Contact Form 7 y HTML personalizado |
+| **Captura en tiempo real** | Los envíos llegan al instante |
+| **Contactos automáticos** | Crea o actualiza el contacto justo después del envío |
+| **Asignación inteligente de campos** | Relaciona los datos con las propiedades del contacto y tus campos personalizados |
+| **Atribución** | Guarda parámetros UTM, URL de la página y datos de la sesión |
+| **Varios formularios por página** | Cada uno se rastrea por separado |
+| **Cero configuración** | Sin herramientas externas, webhooks ni asignaciones manuales |
 
-## Detección automática de formularios
+## Cómo funciona la detección
 
-El script escanea tu sitio buscando formularios compatibles que se rendericen directamente en la página. Por eso la mayoría de los constructores modernos funcionan al instante tras la instalación.
+El script busca en tu página los formularios que existen como elementos HTML legibles (es decir, en el DOM). Por eso la mayoría de los constructores modernos funcionan en cuanto instalas el script.
 
 <CardGroup cols={2}>
   <Card title="Compatibles" icon="circle-check">
@@ -38,133 +30,124 @@ El script escanea tu sitio buscando formularios compatibles que se rendericen di
     - Formularios HTML personalizados
     - Constructores de sitios sin código
   </Card>
-
   <Card title="No compatibles" icon="circle-xmark">
-    - Formularios incrustados mediante iframe
-    - Widgets emergentes sin un formulario real
-    - Scripts de terceros que no exponen los campos
+    - Formularios insertados mediante iframe
+    - Ventanas emergentes sin un formulario real
+    - Widgets de terceros que no exponen sus campos en la página
   </Card>
 </CardGroup>
 
 <Warning>
-  Los formularios dentro de un **iframe** no se detectan, y es la limitación que más sorprende. Si tu formulario viene incrustado desde otra herramienta, el script no puede verlo aunque se muestre perfectamente en tu página.
-
-  Compruébalo antes de instalar: si el formulario procede de un servicio externo pegado como bloque, es probable que sea un iframe.
+  Los formularios dentro de un **iframe** no se detectan, aunque se vean perfectamente en tu página. Si tu formulario viene de otra herramienta y lo pegaste como bloque incrustado, lo más probable es que sea un iframe.
 </Warning>
 
-## Mapeo inteligente de campos
+## Asignación inteligente de campos
 
-La asignación es automática. El sistema hace coincidir los datos capturados con tus registros de contacto sin que configures nada.
+La asignación de datos es automática:
 
-- Empareja por nombre del campo, por etiqueta y contra tus campos personalizados existentes
-- Guarda de forma segura los campos que no logró asignar, para usarlos después
-- Admite varios tipos de campo: texto, listas desplegables, casillas, fechas y más
-- Muestra en la interfaz solo los campos relevantes
+- Relaciona los campos por su nombre, su etiqueta y tus campos personalizados existentes.
+- Guarda de forma segura los campos que no pudo asignar, para que los uses después.
+- Admite varios tipos de campo: texto, desplegables, casillas, fechas y más.
+- Muestra en la interfaz solo los campos relevantes.
 
 ## Cómo configurarlo
 
 <Steps>
-  <Step title="Obtén tu script">
-    Ve a **Configuración → Seguimiento externo** y pulsa **Copiar script**.
+  <Step title="Copia tu script">
+    Ve a **Configuración → Seguimiento externo** y haz clic en **Copiar script**. El script es único para tu cuenta.
 
     <Warning>
-      El script es exclusivo de tu cuenta y su identificador de seguimiento es lo que conecta tu sitio con tu CRM. **No lo modifiques.** Si cambias ese valor, los envíos dejan de llegar.
+      No modifiques el identificador de seguimiento (`data-tracking-id`). Es lo que conecta tu sitio con tu cuenta. Si lo cambias, los envíos dejan de llegar.
     </Warning>
   </Step>
-  <Step title="Instálalo en tu sitio web">
-    Pégalo justo antes de la etiqueta de cierre `</body>` para que cargue en todas las páginas y pueda detectar los formularios solo.
+  <Step title="Instálalo en tu sitio">
+    Pega el script justo antes de la etiqueta de cierre `</body>`, para que cargue en todas las páginas. El script tiene esta forma:
 
     ```html
-    <script src="https://[tu-dominio]/js/external-tracking.js"
+    <script src="https://tu-dominio.com/js/external-tracking.js"
             data-tracking-id="tk_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></script>
     ```
 
-    Funciona en WordPress, Shopify, Wix, Webflow o cualquier sitio HTML personalizado.
+    Usa siempre el script exacto que copiaste de tu cuenta. Funciona en WordPress, Shopify, Wix, Webflow y cualquier sitio HTML.
   </Step>
-  <Step title="Opcional: insértalo solo en un formulario">
-    Aunque la instalación global es lo recomendado, también puedes insertar el script directamente en un formulario mediante un bloque HTML.
-
-    Se usa a menudo en constructores de páginas o editores de formularios cuando quieres una implementación rápida sin tocar la plantilla del sitio.
+  <Step title="Opcional: agrégalo dentro de un formulario">
+    Aunque lo recomendado es instalarlo en todo el sitio, también puedes pegarlo en un bloque HTML dentro del propio formulario (por ejemplo, en el editor de formularios de WordPress). Es útil para una implementación rápida sin tocar la plantilla del sitio.
   </Step>
-  <Step title="Envía el formulario">
-    Después de instalar, llena y envía el formulario como lo haría un visitante.
-
-    El sistema lo detecta y captura los campos compatibles sin configuración adicional. Desde el punto de vista del usuario el formulario funciona igual que siempre; en segundo plano, los datos viajan a tu CRM.
+  <Step title="Haz un envío de prueba">
+    Llena y envía el formulario como lo haría un visitante. Para la persona, el formulario funciona igual que siempre; en segundo plano, los datos viajan a Chateea.
   </Step>
   <Step title="Revisa los envíos">
     Ve a **Sitios → Formularios → Envíos** y filtra por **Formularios externos**.
   </Step>
-  <Step title="Consulta el contacto y su actividad">
-    Cada envío queda adjunto a un registro de contacto, con los datos recogidos y la actividad del visitante. Eso te permite segmentar, automatizar y dar seguimiento.
+  <Step title="Consulta el contacto">
+    Cada envío queda asociado a un contacto, con los datos capturados, los campos no asignados y su actividad. Desde ahí puedes segmentar, automatizar y dar seguimiento.
   </Step>
 </Steps>
 
 ## Requisitos del formulario
 
-Para que la detección funcione, el formulario debe cumplir cuatro condiciones estructurales:
-
 | Requisito | Detalle |
 | --- | --- |
-| Elemento `<form>` válido | Debe ser un formulario HTML real |
-| Atributos `name` | Cada campo debe tenerlos |
-| Campo de correo | Es obligatorio |
-| Visible en la página | Los campos deben renderizarse, no estar ocultos tras un script |
+| Elemento `form` válido | Debe ser un formulario HTML real |
+| Atributo `name` | Cada campo debe tenerlo |
+| Campo de correo | Necesario para crear o encontrar el contacto |
+| Campos visibles | Deben estar presentes en la página, no ocultos dentro de un iframe o un widget cerrado |
 
 <Tip>
-  Si un formulario no se está capturando, revisa estas cuatro cosas antes que ninguna otra. En la práctica, el fallo más común es un campo sin atributo `name`.
+  Si un formulario no se captura, revisa primero estos cuatro puntos. El fallo más común es un campo sin atributo `name`.
 </Tip>
 
 ## Automatiza con los datos capturados
 
-El seguimiento externo habilita dos disparadores de flujo:
+El seguimiento externo habilita dos disparadores para tus flujos de trabajo:
 
 | Disparador | Cuándo se activa |
 | --- | --- |
-| **Visualización de página** | Cuando alguien llega a una página con el script, incluso de forma anónima |
-| **Envío de formulario** | Cuando se detecta un formulario enviado |
+| **Visita a página** | Cuando alguien llega a una página con el script, incluso de forma anónima |
+| **Envío de formulario** | Cuando se detecta el envío de un formulario |
 
 Ambos admiten filtros por **dominio**, **ruta de la página**, **nombre del formulario externo** y **parámetros UTM**.
 
 <Tip>
-  El disparador de visualización de página es el más subestimado. Te permite reaccionar a un comportamiento concreto — por ejemplo, alguien que visitó tu página de precios tres veces sin escribir — antes de que llene ningún formulario.
+  El disparador de visita a página es muy útil y poco aprovechado: te permite reaccionar a un comportamiento, por ejemplo cuando un contacto conocido visita tu página de precios, antes de que llene cualquier formulario.
 </Tip>
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
   <Accordion title="¿Tengo que configurar algo después de instalar el script?">
-    No. La detección y la captura de envíos ocurren automáticamente.
+    No. La detección de formularios y la captura de envíos son automáticas.
   </Accordion>
-
   <Accordion title="¿Funciona con Gravity Forms y WPForms?">
-    Sí. La mayoría de los formularios de WordPress que se renderizan en la página son compatibles de forma predeterminada.
+    Sí. La mayoría de los formularios de WordPress que se muestran directamente en la página son compatibles.
   </Accordion>
-
   <Accordion title="¿Puedo rastrear varios formularios en la misma página?">
-    Sí. Cada uno se detecta y se rastrea de forma independiente.
+    Sí. Cada uno se detecta y se rastrea por separado.
   </Accordion>
-
   <Accordion title="¿Se admiten formularios en iframe?">
-    No. Solo los que se renderizan directamente en la página.
+    No. Solo los formularios que están directamente en la página.
   </Accordion>
-
   <Accordion title="¿Dónde veo los envíos?">
-    En **Formularios → Envíos**, y también dentro de los registros de contacto y de actividad.
+    En **Sitios → Formularios → Envíos**, filtrando por formularios externos, y también en la ficha y la actividad de cada contacto.
   </Accordion>
-
   <Accordion title="¿Qué pasa con los campos que no se asignaron?">
-    Se guardan de forma segura y puedes usarlos después para mapeo o para flujos de trabajo.
+    Se guardan de forma segura y puedes usarlos después para asignarlos o en tus flujos de trabajo.
   </Accordion>
 </AccordionGroup>
 
-## Continúa
+## Artículos relacionados
 
 <CardGroup cols={2}>
-  <Card title="Formularios y encuestas" icon="clipboard-list" href="/formularios/introduccion">
+  <Card title="Formularios, encuestas y QR" icon="clipboard-list" href="/formularios/introduccion">
     Los formularios propios de Chateea.
   </Card>
-
-  <Card title="Reportes y atribución" icon="chart-line" href="/reportes/introduccion">
-    Saca provecho de los datos UTM que captura el script.
+  <Card title="Insertar formularios en sitios externos" icon="code" href="/sitios/insertar-formularios-en-sitios-externos">
+    Usa un formulario de Chateea en lugar del de tu sitio.
+  </Card>
+  <Card title="Envíos de formularios y encuestas" icon="inbox" href="/sitios/envios-de-formularios-y-encuestas">
+    Revisa, filtra y exporta las respuestas.
+  </Card>
+  <Card title="Disparador de visita a página" icon="eye" href="/sitios/disparador-de-visita-a-pagina">
+    Automatiza según las páginas que visitan tus contactos.
   </Card>
 </CardGroup>

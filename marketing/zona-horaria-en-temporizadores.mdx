@@ -1,0 +1,97 @@
+---
+title: "Adaptar los temporizadores a la zona horaria"
+description: "Haz que la cuenta regresiva termine en la hora local de cada contacto o visitante, con una zona horaria de respaldo."
+icon: "clock"
+---
+
+La adaptación de zona horaria hace que la hora de fin de tu temporizador se ajuste a la zona horaria de quien lo ve. Así, si vendes en varios países, cada contacto o visitante ve terminar la cuenta regresiva en el momento correcto de su hora local, en lugar de depender de una sola zona horaria fija.
+
+**Ejemplo:** si una cuenta regresiva de Navidad termina el 25 de diciembre, una persona en Ciudad de México la verá terminar el 25 de diciembre en su hora local y otra en Madrid, el 25 de diciembre en la hora de Madrid.
+
+## Ventajas
+
+- **Cuentas precisas:** cada persona ve el tiempo restante según su zona horaria, cuando ese dato está disponible.
+- **Experiencia personalizada:** los plazos se sienten más cercanos porque coinciden con la hora local.
+- **Promociones internacionales sin confusión:** evitas dudas sobre cuándo termina realmente la oferta.
+- **Respaldo seguro:** si no hay datos de zona horaria, se usa la zona que elegiste al crear el temporizador.
+
+## Cómo activar la adaptación de zona horaria
+
+<Steps>
+<Step title="Abre el temporizador">
+Ve a **Marketing → Temporizadores de cuenta regresiva** y abre el temporizador que quieres modificar, o crea uno nuevo. Si aún no sabes cómo, consulta [Introducción a los temporizadores](/marketing/introduccion-temporizador-de-cuenta-regresiva).
+</Step>
+<Step title="Elige la zona horaria de respaldo">
+En la configuración del temporizador, selecciona la **zona horaria** que se usará cuando no se conozca la del contacto o visitante.
+</Step>
+<Step title="Activa la adaptación">
+Marca la casilla **Adaptar a la zona horaria del contacto** (Adapt to Contact Time Zone).
+</Step>
+<Step title="Guarda">
+Guarda el temporizador. Ya puedes insertarlo en tus correos, embudos o sitios web; la lógica de zona horaria se aplica automáticamente.
+</Step>
+</Steps>
+
+## Cómo funciona en los correos
+
+Los temporizadores de correo usan primero la **zona horaria guardada en la ficha del contacto**.
+
+| Situación | Qué ocurre |
+| --- | --- |
+| El contacto tiene zona horaria | La hora de fin se convierte a la zona del contacto |
+| El contacto no tiene zona horaria | Se mantiene la zona elegida al crear el temporizador (respaldo) |
+
+**Ejemplo:** si creas un temporizador con la zona de Bogotá y activas la adaptación, un contacto con zona de Madrid verá un tiempo restante distinto al de un contacto con zona de Bogotá.
+
+<Tip>
+Para que la adaptación funcione bien en tus correos, procura que tus contactos tengan su zona horaria completada.
+</Tip>
+
+## Cómo funciona en embudos y sitios web
+
+Los embudos y sitios web usan la **zona horaria detectada por la IP** del visitante.
+
+| Situación | Qué ocurre |
+| --- | --- |
+| Se detecta la zona del visitante por su IP | La cuenta se adapta a la hora local detectada |
+| No se puede detectar la zona | Se usa la zona elegida al crear el temporizador (respaldo) |
+
+Más detalles sobre cómo insertarlo en [Temporizador en correos](/marketing/temporizador-en-correos) y [Temporizador en embudos y sitios](/marketing/temporizador-en-embudos-y-sitios).
+
+<Warning>
+Activa la adaptación solo si quieres que la oferta termine a una hora local en cada país. Si necesitas que termine en el mismo instante exacto para todo el mundo, déjala desactivada.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué pasa si un contacto no tiene zona horaria?">
+El temporizador usa la zona horaria que elegiste en la configuración (la de respaldo).
+</Accordion>
+<Accordion title="¿Cómo funcionan los temporizadores recurrentes con la adaptación?">
+La hora de inicio se adapta a la zona horaria de cada persona y la hora de fin se calcula automáticamente según las reglas de recurrencia.
+</Accordion>
+<Accordion title="¿Sigue importando la zona horaria elegida si activo la adaptación?">
+Sí. Es la zona de respaldo que se usa cuando no hay datos de zona horaria del contacto o del visitante.
+</Accordion>
+<Accordion title="¿Cómo saben los embudos y sitios la zona del visitante?">
+La detectan a partir de su dirección IP. Si no pueden detectarla, usan la zona configurada en el temporizador.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Introducción a los temporizadores" icon="hourglass-half" href="/marketing/introduccion-temporizador-de-cuenta-regresiva">
+Tipos, usos y buenas prácticas.
+</Card>
+<Card title="Temporizador en correos" icon="envelope" href="/marketing/temporizador-en-correos">
+Añade urgencia a tus campañas de correo.
+</Card>
+<Card title="Temporizador en embudos y sitios" icon="globe" href="/marketing/temporizador-en-embudos-y-sitios">
+Muestra la cuenta regresiva en tus páginas.
+</Card>
+<Card title="Sincronizar correos y embudos" icon="arrows-rotate" href="/marketing/sincronizar-temporizador-en-correos-y-embudos">
+El mismo plazo del correo a la página.
+</Card>
+</CardGroup>

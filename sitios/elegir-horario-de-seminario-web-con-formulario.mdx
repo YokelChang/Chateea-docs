@@ -1,0 +1,120 @@
+---
+title: "Elegir horario de seminario web con un formulario"
+description: "Deja que cada persona elija su sesión en el formulario de registro y envíale una confirmación automática por correo."
+icon: "calendar-check"
+---
+
+Si das el mismo seminario web en varios horarios, puedes usar un solo formulario de registro donde cada persona elige la sesión que prefiere y recibe al instante un correo de confirmación con su horario. Esta guía te muestra cómo hacerlo con un campo personalizado, un formulario y una automatización.
+
+## Resumen del proceso
+
+1. Crea un campo personalizado para guardar el horario elegido.
+2. Agrega ese campo a tu formulario de registro.
+3. Crea una automatización que envíe el correo de confirmación al enviar el formulario.
+4. (Opcional) Agrega recordatorios antes del seminario.
+
+## Paso 1: crea el campo personalizado
+
+<Steps>
+  <Step title="Abre los campos personalizados">
+    Ve a **Configuración → Campos personalizados** y haz clic en **+ Agregar campo**.
+  </Step>
+  <Step title="Elige el tipo de campo">
+    Selecciona **Desplegable** (Dropdown) o **Selección única** (Radio Select).
+  </Step>
+  <Step title="Configura el campo">
+    Ponle un nombre claro, como **Elige tu horario del seminario**, y asigna el objeto **Contacto**.
+  </Step>
+  <Step title="Agrega las opciones">
+    Escribe cada sesión como una opción, por ejemplo:
+
+    - Martes 7:00 p. m.
+    - Jueves 2:00 p. m.
+    - Sábado 11:00 a. m.
+  </Step>
+  <Step title="Limita las respuestas y guarda">
+    Deja **desmarcada** la opción **Permitir valores personalizados** para que solo se puedan elegir tus horarios. Guarda el campo.
+  </Step>
+</Steps>
+
+<Tip>
+Incluye la zona horaria en cada opción (por ejemplo, "Martes 7:00 p. m., hora de Bogotá") si tu audiencia está en varios países.
+</Tip>
+
+## Paso 2: agrega el campo al formulario
+
+1. Ve a **Sitios → Formularios** y crea un formulario nuevo o edita uno existente.
+2. En la pestaña **Campos personalizados**, arrastra el campo **Elige tu horario del seminario** al formulario.
+3. Agrega los demás campos que necesites (nombre, apellido, correo, etc.).
+4. Guarda el formulario y colócalo en la página de registro de tu seminario.
+
+A partir de aquí, cada persona elige su horario al registrarse.
+
+## Paso 3: envía el correo de confirmación
+
+La configuración del formulario solo controla lo que pasa en la página después del envío (mensaje de agradecimiento, redirección o píxeles). Para enviar un correo necesitas una automatización.
+
+<Steps>
+  <Step title="Crea el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Agrega el disparador **Formulario enviado** y selecciona tu formulario de registro.
+  </Step>
+  <Step title="Agrega la acción de correo">
+    Agrega la acción **Enviar correo** con un asunto como "Tu registro al seminario está confirmado" y un cuerpo como este:
+
+    ```text
+    Hola {{contact.first_name}},
+
+    Gracias por registrarte. Elegiste esta sesión: {{contact.elige_tu_horario_del_seminario}}
+
+    Este es el enlace para unirte: [pega aquí tu enlace de Zoom u otra plataforma]
+
+    ¡Nos vemos pronto!
+    ```
+
+    El nombre exacto del campo de combinación depende de la clave de tu campo personalizado. Insértalo desde el selector de campos del editor de correo para no equivocarte.
+  </Step>
+  <Step title="Publica">
+    Guarda y publica el flujo.
+  </Step>
+</Steps>
+
+Desde ese momento, cada persona que se registre recibirá un correo personalizado con la sesión que eligió.
+
+## Paso 4 (opcional): recordatorios por correo o SMS
+
+Si quieres enviar recordatorios antes del seminario:
+
+1. En el mismo flujo, agrega una condición **Si/No** basada en el valor del campo **Elige tu horario del seminario**, con una rama por sesión.
+2. En cada rama, agrega acciones de espera hasta el momento adecuado antes de esa sesión.
+3. Envía los recordatorios por correo o SMS, por ejemplo:
+   - 24 horas antes.
+   - 1 hora antes.
+   - 10 minutos antes.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Debo permitir valores personalizados en el campo?">
+    No. Déjalo desmarcado para que las personas solo puedan elegir entre tus horarios.
+  </Accordion>
+  <Accordion title="¿Puedo hacerlo sin automatización?">
+    Solo si te basta con un mensaje de agradecimiento en la página. Para enviar correos de confirmación siempre necesitas una automatización.
+  </Accordion>
+  <Accordion title="¿Puedo enviar recordatorios distintos según el horario?">
+    Sí. Usa una condición **Si/No** en el flujo basada en el valor del campo de horario.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Guía para crear seminarios web" icon="video" href="/sitios/guia-para-crear-seminarios-web">
+    Crea seminarios en vivo y bajo demanda.
+  </Card>
+  <Card title="Formularios, encuestas y QR" icon="file-lines" href="/formularios/introduccion">
+    Todo sobre los formularios de Chateea.
+  </Card>
+</CardGroup>

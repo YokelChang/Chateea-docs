@@ -1,0 +1,110 @@
+---
+title: "Opciones de inserción: presentación, disparadores y desactivación"
+description: "Elige cómo aparece un formulario insertado, cuándo se muestra y cuándo deja de mostrarse en tu sitio."
+icon: "window-restore"
+---
+
+Cuando insertas un formulario de Chateea en tu sitio web o embudo, puedes decidir cómo se presenta, cuándo aparece, a partir de qué visita se activa y cuándo deja de mostrarse. Estas opciones te ayudan a captar leads sin molestar al visitante y a montar campañas con fecha límite o con cupos.
+
+## Casos de uso
+
+- **Campañas por tiempo limitado:** deja de mostrar el formulario después de cierto número de apariciones para reforzar la urgencia de una promoción de temporada.
+- **Gestión de leads:** oculta el formulario en cuanto la persona ya dejó sus datos, para no volver a pedírselos.
+- **Visitantes recurrentes:** muestra el formulario solo a quien vuelve por segunda o tercera vez, cuando ya hay más interés.
+
+<Warning>
+  El código de inserción es estático. Si cambias la presentación, los disparadores o la desactivación, tienes que copiar el código nuevo y reemplazar el que ya pegaste en tu sitio.
+</Warning>
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre la integración">
+    Abre tu formulario en **Sitios → Formularios**, espera a que termine de cargar y haz clic en **Integrar**. Luego elige **Código de inserción**.
+  </Step>
+  <Step title="Elige el tipo de presentación">
+    Decide cómo se mostrará el formulario (ver la tabla de presentaciones más abajo).
+  </Step>
+  <Step title="Configura el disparador">
+    Indica cuándo aparece el formulario: al desplazarse un porcentaje de la página, después de unos segundos o siempre.
+  </Step>
+  <Step title="Define la activación">
+    Elige si se activa desde la primera visita o solo a partir de cierta visita.
+  </Step>
+  <Step title="Define la desactivación">
+    Decide cuándo deja de mostrarse: tras cierto número de apariciones, cuando se captura el lead o nunca.
+  </Step>
+  <Step title="Copia y pega">
+    Pulsa **Copiar código de inserción** y pégalo en el HTML de tu sitio donde quieras que aparezca. Si prefieres compartirlo como enlace (en correos, redes sociales o mensajes), usa **Copiar enlace del formulario**.
+  </Step>
+</Steps>
+
+## Tipos de presentación
+
+| Presentación | Cómo se ve | Cuándo usarla |
+| --- | --- | --- |
+| **Barra lateral fija** (Sticky Sidebar) | Queda fija a la izquierda o a la derecha mientras la persona se desplaza. Se puede minimizar y maximizar | Ofertas permanentes o contacto rápido |
+| **Deslizante discreto** (Polite Slide-In) | Entra deslizándose desde un lado sin tapar la página. Se puede minimizar | Invitaciones suaves, suscripción a novedades |
+| **Ventana emergente** (Popup) | Aparece en una ventana sobre el contenido. Hay que cerrarla para seguir navegando | Ofertas importantes que necesitan atención inmediata |
+| **En línea** (Inline) | Se integra en el contenido como parte de la página | Formularios de contacto, páginas de captura |
+
+### Altura de la ventana
+
+En las presentaciones **Ventana emergente**, **Deslizante discreto** y **Barra lateral fija** puedes definir la **Altura de la ventana** (Modal height) para que el formulario no se vea demasiado grande ni se desborde en tu página.
+
+- El valor predeterminado es **500 px**.
+- Acepta cualquier número entero igual o mayor que 1.
+- Los formularios ya insertados sin este ajuste siguen funcionando igual.
+- La opción no aparece en la presentación **En línea**.
+
+## Disparadores: cuándo aparece
+
+| Opción | Comportamiento |
+| --- | --- |
+| **Mostrar al desplazarse X %** | Aparece cuando la persona recorre ese porcentaje de la página (por ejemplo, 50 %) |
+| **Mostrar después de X segundos** | Aparece tras el tiempo indicado (por ejemplo, 5 segundos) |
+| **Mostrar siempre** | Está visible desde el inicio, sin esperar ninguna acción |
+
+## Activación: a partir de cuándo
+
+| Opción | Comportamiento |
+| --- | --- |
+| **Activar en la visita X** | Solo se muestra a partir de cierta visita (por ejemplo, la tercera) |
+| **Siempre activado** | Se muestra desde la primera visita |
+
+## Desactivación: cuándo deja de mostrarse
+
+| Opción | Comportamiento |
+| --- | --- |
+| **Desactivar después de mostrarse X veces** | Deja de aparecer tras el número de apariciones indicado |
+| **Desactivar al capturar el lead** | Deja de aparecer en cuanto la persona envía sus datos |
+| **Nunca desactivar** | Se sigue mostrando indefinidamente |
+
+<Tip>
+  Para ventanas emergentes, una combinación que suele funcionar bien es: mostrar al desplazarse 50 %, siempre activado y desactivar al capturar el lead. Aparece cuando ya hay interés y nunca vuelve a molestar a quien ya se registró.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo trabajan juntos los disparadores y la desactivación?">
+    Los disparadores deciden cuándo aparece el formulario y la desactivación decide cuándo deja de aparecer. Ambos funcionan a la vez.
+  </Accordion>
+  <Accordion title="¿Tengo que actualizar los códigos que ya pegué?">
+    Sí. Para usar estas opciones en un formulario ya insertado, genera el código nuevo desde **Integrar** y reemplaza el anterior en tu sitio.
+  </Accordion>
+  <Accordion title="Si cambio las opciones, ¿mi sitio se actualiza solo?">
+    No. El código pegado es estático. Cada vez que cambies la presentación, los disparadores o la desactivación, copia el código nuevo y reemplázalo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Insertar formularios en sitios externos" icon="code" href="/sitios/insertar-formularios-en-sitios-externos">
+    Pasos para WordPress, Wix, Shopify, Squarespace y Duda.
+  </Card>
+  <Card title="Analítica de formularios y encuestas" icon="chart-line" href="/sitios/analitica-de-formularios-y-encuestas">
+    Mide si tu nueva configuración mejora la conversión.
+  </Card>
+</CardGroup>

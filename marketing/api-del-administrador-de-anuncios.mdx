@@ -1,0 +1,118 @@
+---
+title: "API del Administrador de anuncios: campañas e informes"
+description: "Automatiza la creación de campañas y la descarga de informes de Meta, Google y LinkedIn con la API de Chateea."
+icon: "code"
+---
+
+La API del Administrador de anuncios permite que tu propio software se comunique directamente con el Administrador de anuncios de Chateea. En lugar de configurar cada campaña a mano, tu equipo técnico puede escribir código que cree campañas, defina presupuestos y públicos, publique anuncios y descargue informes de rendimiento en **Facebook e Instagram**, **Google Ads** y **LinkedIn Ads**, todo de forma automática.
+
+No necesitas ser desarrollador para entender lo que permite. Este artículo te explica qué puedes automatizar para que lo planifiques con tu equipo técnico o con quien desarrolle tus integraciones.
+
+## Para qué sirve
+
+- **Control unificado:** gestiona Meta, Google y LinkedIn desde un mismo sistema, sin saltar entre tres paneles distintos.
+- **Campañas a escala:** crea, actualiza, pausa, reanuda y duplica campañas, conjuntos o grupos de anuncios y anuncios por código. Convierte tus estructuras ganadoras en plantillas y lánzalas en segundos.
+- **Conexión de cuentas automatizada:** vincula páginas, cuentas publicitarias y recursos sin pasos manuales.
+- **Informes centralizados:** extrae impresiones, clics, gasto y conversiones con un formato uniforme para tus propios paneles o tu almacén de datos.
+- **Lanzamientos más rápidos:** publica campañas complejas en varias plataformas desde tus scripts o aplicaciones.
+- **Automatización de extremo a extremo:** combina la API con tu CRM, facturación u onboarding para crear campañas automáticamente cuando abres una sucursal, lanzas un producto o entras a un nuevo mercado.
+
+## Autenticación y acceso
+
+La API del Administrador de anuncios forma parte de la API de Chateea. Cada solicitud usa **autenticación Bearer** con un token de acceso (JWT): es la llave que demuestra que tu software tiene permiso para operar sobre tus cuentas publicitarias. Para usarla con tu cuenta, lo habitual es un **token de integración privada** de tu cuenta.
+
+Para obtener tus credenciales, la URL base y la documentación completa de los endpoints, escribe a soporte de Chateea en **help@chateea.com**.
+
+<Warning>
+  Guarda el token en un lugar seguro de tu servidor, como variables de entorno o un gestor de secretos. Nunca lo publiques en el código de tu sitio web ni lo compartas por chat o correo.
+</Warning>
+
+## Qué puedes hacer por plataforma
+
+### Creación de campañas y anuncios
+
+| Plataforma | Capacidades |
+| --- | --- |
+| **Facebook e Instagram** | Buscar opciones de segmentación (ubicaciones, intereses). Crear o actualizar campañas, conjuntos de anuncios y anuncios. Pausar, reanudar, duplicar y eliminar campañas. Gestionar píxeles de conversión y públicos personalizados, incluidas actualizaciones masivas de miembros. Publicar campañas. |
+| **Google Ads** | Publicar campañas y anuncios. Gestionar conversiones y objetivos de conversión, recursos creativos, campañas, grupos de anuncios y anuncios. Buscar ubicaciones, ideas de palabras clave e intereses (afinidad y en el mercado). Gestionar públicos: listas de usuarios offline, segmentos y públicos combinados. |
+| **LinkedIn Ads** | Crear o actualizar grupos de campañas (con sus campañas y anuncios) y publicarlos. Buscar segmentación por ubicación, industria o cargo. Obtener o crear formularios de clientes potenciales. Pausar o reanudar anuncios, campañas o grupos de anuncios. |
+
+### Integración de cuentas
+
+- **Facebook:** obtener el usuario de Facebook conectado a tu cuenta; listar páginas, cuentas de Instagram vinculadas, cuentas publicitarias, formularios de clientes potenciales y formularios de conversación; crear, consultar o eliminar la integración de anuncios de Facebook; definir la página predeterminada y quitar páginas conectadas.
+- **Google:** consultar y gestionar conversiones, recursos, públicos y campañas de Google Ads.
+- **LinkedIn:** trabajar con cuentas publicitarias mediante grupos de campañas y formularios de clientes potenciales, y aplicar criterios de segmentación.
+
+Estas opciones complementan las conexiones que ya puedes hacer desde la interfaz del Administrador de anuncios.
+
+### Informes
+
+La API de informes te da métricas de rendimiento de las tres plataformas a través del Administrador de anuncios, sin tener que llamar a cada red publicitaria por separado:
+
+- Impresiones, clics y gasto.
+- Conversiones y métricas relacionadas.
+- Otros indicadores según la plataforma, como costo por clic, costo por adquisición, tasa de conversión o retorno de la inversión.
+
+Por ejemplo, para Google existen tres consultas principales: datos agregados de la cuenta, lista de campañas y grupos de anuncios con sus totales, e informe detallado de una campaña. Facebook y LinkedIn siguen un esquema similar. Los campos exactos varían según la plataforma, así que tu aplicación puede normalizarlos en un modelo propio de "rendimiento de campaña".
+
+## Flujo típico de creación
+
+```text
+Integración → Segmentación → Campaña → Conjunto o grupo de anuncios → Anuncio → Publicación
+```
+
+1. Comprueba con las llamadas de integración que la cuenta de la plataforma está conectada.
+2. Usa las búsquedas de segmentación, palabras clave o intereses para definir el público.
+3. Crea o actualiza la campaña con su objetivo, presupuesto y estado.
+4. Crea o actualiza los conjuntos o grupos de anuncios con segmentación, ubicaciones y programación.
+5. Crea o actualiza los anuncios con sus creatividades y URL de destino.
+6. Publica la campaña con la llamada de publicación correspondiente.
+
+## Cómo empezar
+
+<Steps>
+  <Step title="Confirma que tienes el Administrador de anuncios">
+    Verifica que en tu cuenta aparezca **Marketing → Administrador de anuncios**. Si no lo tienes activo, consulta las opciones en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+  </Step>
+  <Step title="Obtén acceso a la API">
+    Escribe a soporte de Chateea en **help@chateea.com** para recibir las credenciales, la URL base y la documentación de la API. Guarda el token de forma segura en tu servidor y configura tu cliente para enviar el encabezado `Authorization: Bearer` en cada solicitud.
+  </Step>
+  <Step title="Conecta tus cuentas publicitarias">
+    Conecta Facebook, Google y LinkedIn desde el Administrador de anuncios o mediante las llamadas de integración. Después, verifica la conexión con una consulta sencilla, como obtener tus páginas de Facebook, tus cuentas publicitarias o tus conversiones de Google.
+  </Step>
+  <Step title="Haz tu primera llamada de prueba">
+    Empieza con una consulta de solo lectura usando Postman, curl o el cliente HTTP de tu lenguaje. Confirma que recibes los datos esperados antes de pasar a crear campañas o descargar informes.
+  </Step>
+  <Step title="Construye tus automatizaciones">
+    Con la autenticación y la integración funcionando, tu equipo puede crear campañas automáticamente, programar descargas de informes, hacer cambios masivos (pausar, reanudar, ajustar presupuestos) o armar paneles con el rendimiento consolidado.
+  </Step>
+</Steps>
+
+<Note>
+  Revisa en la documentación de la API los detalles de cada endpoint, los esquemas de solicitud y respuesta, los límites de uso y el manejo de errores.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito ser desarrollador para usar la API?">
+    Hace falta alguien que escriba código para conectar tus sistemas. No tiene que ser tú: puedes trabajar con tu equipo técnico o contratar a un desarrollador que construya la integración.
+  </Accordion>
+  <Accordion title="¿Qué plataformas publicitarias admite?">
+    Facebook e Instagram (Meta), Google Ads y LinkedIn Ads.
+  </Accordion>
+  <Accordion title="¿Puedo seguir usando la interfaz si automatizo con la API?">
+    Sí. La API complementa la interfaz, así que puedes combinar la configuración manual con la automatizada según lo que te convenga en cada caso.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Anuncios de clientes potenciales en Facebook e Instagram" icon="bullhorn" href="/marketing-leads/anuncios-facebook-instagram">
+    Crea campañas para captar clientes potenciales en Meta.
+  </Card>
+  <Card title="Ask AI en el Administrador de anuncios" icon="wand-magic-sparkles" href="/marketing/ask-ai-en-el-administrador-de-anuncios">
+    Crea y gestiona campañas conversando con la IA.
+  </Card>
+</CardGroup>

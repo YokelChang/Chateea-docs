@@ -1,0 +1,142 @@
+---
+title: "Automatizar eventos con flujos de trabajo"
+description: "Activa flujos con registros y check-ins, usa datos del evento en condiciones y programa esperas según la fecha."
+icon: "bolt"
+---
+
+Al conectar tus Eventos con los flujos de trabajo puedes automatizar todo el recorrido del asistente: la confirmación cuando se registra, los recordatorios antes del evento, las acciones cuando hace check-in y el seguimiento posterior. Los flujos se activan con la actividad del evento, usan sus datos en condiciones y pueden esperar tomando como referencia la fecha del evento.
+
+## Qué puedes automatizar
+
+- **Recorridos completos:** confirmaciones con tu marca, recordatorios y seguimientos sin intervención manual.
+- **Tiempos relativos al evento:** mensajes días u horas antes del evento, o campañas después de que termine.
+- **Experiencias personalizadas:** caminos distintos para asistentes VIP, de pago o gratuitos, o para cada evento.
+- **Conexión con tu CRM:** mueve asistentes a un pipeline, crea oportunidades, avisa a tu equipo o activa el seguimiento comercial.
+
+## Disparadores de eventos
+
+| Disparador | Cuándo se activa | Usos habituales |
+| --- | --- | --- |
+| **Registro en evento** (Event Registration) | Cuando un contacto se registra en un evento. | Confirmación con tu marca, etiquetas, secuencia previa al evento. |
+| **Check-in en evento** (Event Checked In) | Cuando un asistente hace check-in en el evento. | Mensaje de bienvenida, contenido exclusivo, aviso al equipo, seguimiento posterior. |
+
+Ambos disparadores admiten filtros para afinar cuándo arranca el flujo:
+
+- Estado del registro
+- Evento concreto
+- Quién hizo la reserva del registro
+- Tipo de entrada
+- Datos del check-in
+
+Con los filtros puedes tener flujos distintos por evento, tipo de entrada o comportamiento sin duplicar la configuración del evento.
+
+## Datos del evento en las condiciones
+
+Dentro del flujo puedes crear ramas usando los datos del evento que lo activó:
+
+- Tipo de evento
+- Nombre del evento
+- Fechas de inicio y fin
+- Zona horaria
+- Ubicación
+- Información de la entrada
+- Información del check-in
+
+Por ejemplo, puedes enviar contenido exclusivo a quienes tienen entrada VIP, llevar a los compradores de entradas de pago a un pipeline de ventas o usar cadencias de recordatorio distintas según la fecha del evento.
+
+## Esperar según la fecha del evento
+
+La acción **Esperar** puede tomar como referencia la fecha del evento que activó el flujo, sin cálculos manuales ni un flujo por cada fecha:
+
+| Opción | Qué hace | Ejemplo |
+| --- | --- | --- |
+| **En la fecha y hora del evento** | Continúa justo cuando empieza el evento. | Instrucciones de último momento. |
+| **Antes del evento** | Espera hasta cierto tiempo antes del inicio. | Recordatorios 7 días, 3 días o 2 horas antes. |
+| **Después del evento** | Espera hasta cierto tiempo después del final. | Agradecimiento, encuesta, grabación u oferta de seguimiento. |
+
+Ejemplo: alguien se registra el lunes para un evento del viernes. Con **Esperar** configurado en "3 días antes del evento", el flujo se pausa hasta el martes y entonces continúa con el recordatorio.
+
+## Crear un flujo basado en eventos
+
+<Steps>
+<Step title="Crea el flujo">
+Ve a **Automatización → Flujos de trabajo** y haz clic en **Crear flujo de trabajo**. Empieza desde cero o desde una plantilla.
+</Step>
+<Step title="Elige el disparador">
+Haz clic en **Agregar disparador** y elige **Registro en evento** o **Check-in en evento**.
+</Step>
+<Step title="Agrega filtros (opcional)">
+Limita el disparador por evento, tipo de entrada, estado del registro o quién hizo la reserva.
+</Step>
+<Step title="Agrega las acciones">
+Envía correos, SMS o WhatsApp, actualiza campos, agrega etiquetas, crea oportunidades o asigna tareas.
+</Step>
+<Step title="Crea condiciones con datos del evento">
+Agrega ramas según el nombre del evento, el tipo de entrada, la ubicación o las fechas.
+</Step>
+<Step title="Configura las esperas">
+Agrega una acción **Esperar** y elige: X días u horas antes del evento, en la fecha y hora del evento, o X días u horas después.
+</Step>
+<Step title="Prueba y publica">
+Usa el modo de prueba o haz un registro de prueba para comprobar que todo funciona. Después haz clic en **Publicar** para activarlo en los próximos registros o check-ins.
+</Step>
+</Steps>
+
+<Tip>
+Combina disparadores, condiciones y esperas en un único flujo para responder a cualquier evento o tipo de entrada, en lugar de crear un flujo por cada evento.
+</Tip>
+
+## Ideas de automatización
+
+- **Confirmación con tu marca:** correo o SMS inmediato tras el registro con los detalles del evento y enlace de calendario.
+- **Secuencia de recordatorios:** mensajes 7 días, 3 días y unas horas antes, sin importar cuándo se registró la persona.
+- **Recorridos por tipo de entrada:** contenido exclusivo para VIP, oferta de mejora para entradas gratuitas o paso a ventas para las de pago.
+- **Acciones al hacer check-in:** mensaje de bienvenida, acceso a material o aviso al equipo.
+- **Seguimiento posterior:** agradecimiento, encuesta, grabación u oferta tras el evento.
+- **Ventas y CRM:** crea oportunidades, asigna responsables y agrega etiquetas según la actividad del evento.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Necesito un flujo por cada evento?">
+No. Un solo flujo puede atender todos tus eventos usando filtros del disparador o ramas con los datos del evento.
+</Accordion>
+<Accordion title="¿Puedo usar datos del evento en los mensajes?">
+Sí. El nombre, la fecha, la ubicación y los datos de la entrada están disponibles como valores personalizados en las acciones de correo y SMS del flujo.
+</Accordion>
+<Accordion title="¿Qué pasa si alguien se registra a un evento cuya fecha ya pasó?">
+Las esperas configuradas para antes del evento no se ejecutan y las configuradas para después del evento continúan de inmediato.
+</Accordion>
+<Accordion title="¿Puedo enviar recordatorios distintos según el tipo de entrada?">
+Sí. Usa la información de la entrada en una condición para crear ramas por tipo.
+</Accordion>
+<Accordion title="¿Funciona con eventos recurrentes?">
+Sí. Cada fecha se trata como un evento independiente y las esperas se calculan con la fecha concreta en la que se registró el contacto.
+</Accordion>
+<Accordion title="¿Puedo combinar disparadores de eventos con otros?">
+Puedes crear varios flujos con disparadores distintos (por ejemplo, uno para registros y otro para envíos de formularios) y conectarlos mediante acciones o actividad del CRM para gestionar todo el recorrido.
+</Accordion>
+<Accordion title="¿Cómo saco del flujo a quien cancela su registro?">
+Usa condiciones de salida u objetivos del flujo basados en el cambio del estado del registro. Cuando el registro pasa a cancelado, el contacto sale del recorrido.
+</Accordion>
+<Accordion title="¿Hay límite de flujos basados en eventos?">
+Siguen los mismos límites que cualquier otro flujo de tu cuenta. Si tienes dudas sobre tu plan, escribe a soporte de Chateea en **help@chateea.com**.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crear y gestionar eventos" icon="calendar-days" href="/marketing/crear-y-gestionar-eventos">
+Configura tu evento de principio a fin.
+</Card>
+<Card title="Check-in de asistentes" icon="qrcode" href="/marketing/check-in-de-asistentes-en-eventos">
+El check-in que activa tus automatizaciones.
+</Card>
+<Card title="Registro de varios asistentes" icon="users" href="/marketing/registro-de-varios-asistentes-en-eventos">
+Datos individuales para cada entrada.
+</Card>
+<Card title="Reembolsos y cancelaciones" icon="money-bill-transfer" href="/marketing/reembolsos-y-cancelaciones-de-eventos">
+Gestiona cambios en los registros.
+</Card>
+</CardGroup>

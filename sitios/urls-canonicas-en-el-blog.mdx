@@ -1,0 +1,122 @@
+---
+title: "URL canónicas en tu blog"
+description: "Configura enlaces canónicos en el blog y en cada artículo para evitar contenido duplicado en Google."
+icon: "link"
+---
+
+Una URL canónica le dice a Google cuál es la versión "oficial" de una página cuando el mismo contenido aparece en varias direcciones. En un blog esto pasa constantemente: un artículo se ve en su propia página, en el inicio del blog, en su categoría y en la página del autor. Configurar bien las URL canónicas en tu blog de Chateea evita que tu posicionamiento se reparta entre copias y concentra todo el valor en la página que te interesa.
+
+## Qué son las URL canónicas
+
+Son una etiqueta que declara qué versión de una página es la principal cuando existe contenido duplicado o casi idéntico. Ayudan a los buscadores a:
+
+- Entender dónde está el contenido original.
+- Evitar problemas por contenido duplicado.
+- Sumar en una sola página el valor de todos los enlaces que apuntan a las distintas versiones.
+
+**Ejemplo:** publicas "Cinco tendencias de automatización para tu negocio". El artículo aparece en el inicio del blog, en la portada con las últimas entradas, en el archivo de su categoría y en la página del autor. Si marcas la URL del artículo como canónica, Google sabe que esa es la que debe indexar.
+
+## Por qué importan para tu SEO
+
+- **Evitas penalizaciones:** el contenido duplicado puede diluir tu posicionamiento.
+- **Concentras la autoridad:** los enlaces a distintas versiones suman para una sola.
+- **Guías a los buscadores:** priorizan la página correcta.
+
+## Cómo configurarlas
+
+### Para todo el blog, las categorías y los autores
+
+<Steps>
+<Step title="Abre la configuración del blog">
+Ve a **Sitios → Blogs**, selecciona tu blog y continúa hasta su configuración.
+</Step>
+<Step title="Entra en Enlaces canónicos">
+Elige la opción **Enlaces canónicos**.
+</Step>
+<Step title="Completa los campos">
+- **Ruta de URL:** el dominio principal del blog, por ejemplo `https://tunegocio.com/blog`.
+- **URL de categoría:** dónde está el contenido de las categorías.
+- **URL de autor:** la página principal de biografía del autor.
+</Step>
+</Steps>
+
+Esto evita duplicados cuando aparecen extractos en varias páginas, por ejemplo la biografía del autor incluida dentro de cada artículo.
+
+### Para un artículo concreto
+
+Útil cuando varios artículos tratan temas muy parecidos o cuando publicas el mismo contenido en más de un dominio.
+
+<Steps>
+<Step title="Abre el artículo">
+En **Sitios → Blogs**, crea una entrada nueva o edita una existente.
+</Step>
+<Step title="Pasa al paso final">
+Agrega el contenido y los metadatos y haz clic en **Continuar**.
+</Step>
+<Step title="Indica la URL canónica">
+En el campo **Enlace canónico**, pega la URL de la versión original o preferida del contenido.
+</Step>
+<Step title="Guarda">
+Haz clic en **Guardar**, **Programar** o **Publicar**.
+</Step>
+</Steps>
+
+### En artículos ya publicados
+
+1. Busca en la lista del blog el artículo que quieres actualizar.
+2. Haz clic en **Actualizar configuración**.
+3. Escribe el nuevo enlace canónico y guarda.
+
+## Cómo comprobar que funciona
+
+1. Abre el artículo publicado, haz clic derecho y elige **Ver código fuente de la página**.
+2. Busca una etiqueta como esta:
+
+```html
+<link rel="canonical" href="https://tunegocio.com/url-preferida" />
+```
+
+3. Confirma que el valor de `href` apunta a la URL que elegiste.
+
+También puedes revisarlo con herramientas de SEO como Screaming Frog o extensiones del navegador que muestran las etiquetas meta.
+
+## Buenas prácticas
+
+- Usa siempre **URL absolutas**, con el dominio completo.
+- Asegúrate de que la URL canónica exista y sea accesible.
+- No apuntes todas las páginas al inicio del sitio: sé específico.
+- Mantén el contenido de la página canónica y de sus versiones lo más parecido posible.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué pasa si no uso etiquetas canónicas?">
+Los buscadores pueden tratar las páginas parecidas como independientes, repartir el posicionamiento entre ellas y reducir tu visibilidad.
+</Accordion>
+<Accordion title="¿Puedo usar URL canónicas entre dominios distintos?">
+Sí, son válidas siempre que seas dueño del contenido en ambos dominios.
+</Accordion>
+<Accordion title="¿Debo poner una URL canónica en cada artículo?">
+Solo cuando haya riesgo de duplicado. Si el artículo es único y no aparece en otro sitio, no hace falta.
+</Accordion>
+<Accordion title="¿Mejoran directamente mi posición en Google?">
+No de forma directa, pero concentran la autoridad de los enlaces y evitan problemas de SEO por contenido duplicado.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crear entradas de blog" icon="pen-to-square" href="/sitios/crear-entradas-de-blog">
+Escribe y publica tus artículos.
+</Card>
+<Card title="Crear un blog" icon="newspaper" href="/sitios/crear-un-blog">
+Configura tu blog y la estructura de sus URL.
+</Card>
+<Card title="Metadatos SEO y etiquetas meta" icon="tags" href="/sitios/metadatos-seo-y-etiquetas-meta">
+Optimiza títulos y descripciones de tus páginas.
+</Card>
+<Card title="Mapa del sitio del blog" icon="sitemap" href="/sitios/mapa-del-sitio-del-blog">
+Ayuda a Google a descubrir tus artículos.
+</Card>
+</CardGroup>

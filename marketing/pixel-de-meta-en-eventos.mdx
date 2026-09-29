@@ -1,0 +1,110 @@
+---
+title: "Píxel de Meta en eventos"
+description: "Conecta un píxel de Meta a tu evento y mide cada paso, desde la visita hasta el RSVP o la compra de entradas."
+icon: "chart-line"
+---
+
+Si promocionas tus eventos con anuncios en Facebook o Instagram, conectar un píxel de Meta a cada evento te permite medir cómo avanzan los visitantes desde que ven la página hasta que confirman su asistencia o compran su entrada. Tú decides qué evento de Meta se envía en cada paso y, en los eventos con entradas, también se envían los datos de la compra: importe, moneda, cantidad e identificadores de las entradas.
+
+## Ventajas
+
+- **Visibilidad de conversiones:** mide desde la visita a la página hasta el RSVP o la compra completada.
+- **Mapeo flexible:** eliges qué evento de Meta se dispara en cada acción del asistente.
+- **Configuración por evento:** cada evento tiene su propio píxel y su propio mapeo.
+- **Todo el embudo de compra:** sigue varias etapas del proceso de pago de entradas.
+- **Contexto de ingresos:** los pedidos completados envían datos de la compra.
+- **Protección contra duplicados:** la deduplicación por sesión evita señales repetidas.
+
+## Acciones que se pueden medir
+
+Los eventos RSVP y los eventos con entradas tienen recorridos distintos, por eso cada uno tiene sus propias acciones:
+
+| Tipo de evento | Acción del asistente | Cuándo se dispara |
+| --- | --- | --- |
+| RSVP | Página del evento vista | Al cargar la página publicada del evento. |
+| RSVP | RSVP iniciado | Al abrir el formulario de RSVP. |
+| RSVP | RSVP completado | Al confirmarse el RSVP. |
+| Con entradas | Página del evento vista | Al cargar la página publicada del evento. |
+| Con entradas | Pago iniciado | Cuando el asistente empieza el proceso de pago. |
+| Con entradas | Selección de entradas completada | Al terminar de elegir las entradas. |
+| Con entradas | Formulario de registro enviado | Al enviar el formulario de registro. |
+| Con entradas | Datos de pago enviados | Al enviar los datos de pago. |
+| Con entradas | Pedido de entradas completado | Al completarse el pedido. |
+
+Los pedidos completados se registran tanto en entradas de pago como en pedidos de importe cero.
+
+### Datos de compra que se envían a Meta
+
+Cuando un pedido de entradas se completa, puede incluir:
+
+- **Valor del pedido.**
+- **Moneda.**
+- **Cantidad de entradas.**
+- **Identificadores de las entradas.**
+
+Así puedes evaluar tus campañas por ingresos generados y no solo por número de registros.
+
+### Deduplicación
+
+Chateea usa deduplicación por sesión para que una misma acción no se reporte varias veces por volver atrás en el navegador, recargar la página, redirecciones del pago o comprobaciones repetidas.
+
+## Configurar el píxel en un evento
+
+<Steps>
+<Step title="Consigue el ID del píxel">
+En el Administrador de eventos de Meta, localiza el ID del conjunto de datos (dataset) que usarás como ID del píxel.
+</Step>
+<Step title="Abre la configuración de seguimiento">
+Ve a **Membresías → Eventos**, abre el evento y entra en **Configuración → Enlace y seguimiento**. Busca la sección **Píxel de Meta**.
+</Step>
+<Step title="Pega el ID del píxel">
+Escribe el **ID del píxel de Meta**. Como cada evento se configura por separado, confirma que estás en el evento correcto.
+</Step>
+<Step title="Mapea las acciones">
+En **Mapeo de eventos**, elige qué evento de Meta debe dispararse en cada acción. En eventos RSVP: página vista, RSVP iniciado y RSVP completado. En eventos con entradas: página vista, pago iniciado, selección de entradas completada, formulario de registro enviado, datos de pago enviados y pedido completado.
+</Step>
+<Step title="Prueba el recorrido">
+Haz las pruebas en la página **publicada**, ya que la acción de página vista solo se dispara con la página publicada. En un evento RSVP, prueba la visita, la apertura del formulario y un RSVP completo. En un evento con entradas, recorre todas las etapas hasta completar un pedido, incluido un pedido de importe cero si lo usas.
+</Step>
+</Steps>
+
+<Tip>
+Revisa en el Administrador de eventos de Meta que las señales llegan con el nombre de evento que esperabas antes de lanzar tu campaña.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Es lo mismo que el píxel de conversiones del Administrador de anuncios?">
+No. El píxel de Eventos se configura dentro de cada evento en **Configuración → Enlace y seguimiento**. El seguimiento de conversiones de anuncios se configura por separado.
+</Accordion>
+<Accordion title="¿Necesito instalar el código de seguimiento de embudos?">
+No. La integración de Eventos funciona con el ID del píxel y el mapeo dentro del propio evento. El código de seguimiento de embudos y sitios web es otra configuración distinta.
+</Accordion>
+<Accordion title="¿Se registran los pedidos de importe cero?">
+Sí. Los pedidos gratuitos completados cuentan como pedidos completados.
+</Accordion>
+<Accordion title="¿Se puede enviar el check-in a Meta?">
+No. El check-in no es una acción que se envíe al píxel. Para automatizar acciones con el check-in, usa los disparadores de eventos en tus flujos de trabajo.
+</Accordion>
+<Accordion title="¿La vista previa de un evento sin publicar dispara la página vista?">
+No. La acción de página vista está definida para la carga de la página publicada.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crear y gestionar eventos" icon="calendar-days" href="/marketing/crear-y-gestionar-eventos">
+Configura tu evento de principio a fin.
+</Card>
+<Card title="Eventos y flujos de trabajo" icon="bolt" href="/marketing/eventos-y-flujos-de-trabajo">
+Automatiza acciones con registros y check-ins.
+</Card>
+<Card title="Insertar eventos con código" icon="code" href="/marketing/insertar-eventos-con-codigo">
+Muestra el evento en tu propio sitio.
+</Card>
+<Card title="Anuncios de leads en Facebook e Instagram" icon="bullhorn" href="/marketing-leads/anuncios-facebook-instagram">
+Capta leads con anuncios de Meta.
+</Card>
+</CardGroup>

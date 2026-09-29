@@ -1,0 +1,127 @@
+---
+title: "CSS personalizado en las páginas de tus eventos"
+description: "Da estilo a las páginas públicas de un evento con el editor de CSS en vivo, selección con clic y estilos rápidos."
+icon: "palette"
+---
+
+El editor de CSS personalizado te permite dar estilo a las páginas públicas de tus eventos sin tener que inspeccionar el código de la página en el navegador. Haces clic sobre cualquier elemento de la vista previa, obtienes su selector, insertas una regla de partida con un clic y ves el resultado al instante.
+
+## Qué es el editor de CSS personalizado
+
+Es una herramienta de estilos en vivo dentro de **Páginas y diseño** de cada evento. Antes, para cambiar el aspecto de un elemento tenías que abrir las herramientas del navegador y buscar su selector. Ahora el editor lo hace por ti y te ofrece fragmentos de CSS listos para ajustar.
+
+Sus funciones principales son:
+
+| Función | Qué hace |
+| --- | --- |
+| **Editor de CSS en vivo** | Escribe reglas que se aplican a todas las páginas públicas del evento, con vista previa inmediata. |
+| **Selección de elementos con clic** | Haz clic en un elemento de la vista previa para ver su selector, copiarlo o insertar una regla inicial. |
+| **Estilos rápidos** | Genera CSS de partida para bordes, fondos, color de texto, botones, esquinas, espaciado, sombras y tipografía. |
+| **Cobertura completa** | El CSS se aplica a todas las páginas públicas del evento. |
+| **Se conserva al duplicar** | El CSS se mantiene al duplicar un evento o al copiar la configuración de otro. |
+
+## Cómo usar el editor
+
+<Steps>
+<Step title="Abre el editor">
+Entra en tu evento y ve a **Páginas y diseño → CSS personalizado**. A la izquierda verás el panel para escribir CSS y a la derecha la vista previa de la página.
+</Step>
+<Step title="Selecciona un elemento">
+Haz clic en cualquier elemento de la vista previa. Aparece una ventana con su selector y opciones para copiarlo o insertar una regla CSS inicial en el editor.
+</Step>
+<Step title="Escribe o inserta el CSS">
+Escribe tus reglas a mano o usa uno de los estilos rápidos para generar código de partida. Los cambios se ven de inmediato en la vista previa.
+</Step>
+<Step title="Revisa y guarda">
+Comprueba el resultado en la vista previa y guarda. Los estilos se aplican automáticamente a todas las páginas públicas del evento.
+</Step>
+</Steps>
+
+<Tip>
+La selección con clic es especialmente útil con elementos anidados, que son difíciles de identificar a mano.
+</Tip>
+
+## Estilos rápidos
+
+Después de seleccionar un elemento, elige un estilo rápido para insertar reglas CSS preconfiguradas. Luego ajusta los valores a los colores y medidas de tu marca.
+
+| Estilo rápido | Qué genera |
+| --- | --- |
+| **Borde** | Ancho, estilo y color del borde. |
+| **Fondo** | Color o imagen de fondo. |
+| **Color de texto** | Color del texto del elemento. |
+| **Color de botón** | Color de fondo y de texto de los botones. |
+| **Radio del borde** | Redondeo de las esquinas. |
+| **Espaciado** | Relleno (padding) y margen. |
+| **Sombra** | Sombra del elemento (box-shadow). |
+| **Tipografía** | Familia, tamaño, grosor e interlineado de la fuente. |
+
+## Páginas a las que se aplica
+
+El CSS personalizado se aplica a todas las páginas públicas del evento, para que la marca se vea igual de principio a fin:
+
+- **Detalles:** información general del evento.
+- **Agenda:** programa y horarios de las sesiones.
+- **Pago:** registro o compra de entradas.
+- **Pago con tarjeta:** procesamiento del pago en eventos de pago.
+- **Confirmación:** pantalla tras completar el registro o la compra.
+- **Salida del pago:** página que se muestra si la persona abandona el proceso de pago.
+- **Evento en línea:** página de acceso para eventos virtuales.
+
+## Duplicar eventos con CSS personalizado
+
+No tienes que volver a escribir tu CSS en cada evento:
+
+- **Al duplicar un evento**, todo el CSS personalizado del original se copia al nuevo.
+- **Al copiar la configuración de otro evento**, el CSS se incluye entre los ajustes copiados.
+
+Después puedes modificar el CSS del nuevo evento sin afectar al original.
+
+## Ejemplo de estilos para móvil
+
+El CSS se aplica en todos los tamaños de pantalla. Si quieres reglas solo para móviles, usa media queries:
+
+```css
+@media (max-width: 768px) {
+  .mi-selector {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+```
+
+Sustituye `.mi-selector` por el selector que obtengas al hacer clic en el elemento.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿El CSS se aplica a todos los eventos de mi cuenta?">
+No. Cada evento tiene su propio CSS. Para reutilizarlo, duplica el evento, copia la configuración desde otro evento o copia y pega el código en el editor del otro evento.
+</Accordion>
+<Accordion title="¿Puedo ver los cambios antes de guardar?">
+Sí. La vista previa se actualiza al instante mientras escribes.
+</Accordion>
+<Accordion title="¿Necesito saber CSS?">
+Ayuda tener nociones básicas, pero no es imprescindible. Los estilos rápidos generan el código por ti y la selección con clic te da los selectores.
+</Accordion>
+<Accordion title="¿Qué pasa si mi CSS choca con los estilos predeterminados?">
+Tu CSS se aplica después de los estilos predeterminados de Chateea, así que normalmente los reemplaza. Si una regla no se aplica, usa un selector más específico o agrega `!important`.
+</Accordion>
+<Accordion title="¿Cómo quito el CSS personalizado?">
+Borra el código del editor y guarda. Las páginas vuelven al estilo predeterminado.
+</Accordion>
+<Accordion title="¿Los estilos rápidos sirven para cualquier elemento?">
+Se generan según el elemento seleccionado. Tipografía funciona mejor con textos; Borde o Fondo, con la mayoría de contenedores. Siempre puedes editar el código generado.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crear y gestionar eventos" icon="calendar-days" href="/marketing/crear-y-gestionar-eventos">
+Configura tu evento de principio a fin.
+</Card>
+<Card title="Duplicar eventos" icon="copy" href="/marketing/duplicar-eventos">
+Reutiliza diseño, contenido y entradas.
+</Card>
+</CardGroup>

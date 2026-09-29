@@ -1,0 +1,101 @@
+---
+title: "Pruebas A/B en embudos"
+description: "Compara una página de tu embudo contra variaciones, reparte el tráfico y descubre qué versión convierte mejor."
+icon: "flask"
+---
+
+Las pruebas A/B (split testing) te permiten comparar una página de tu embudo contra una o más versiones distintas. Chateea reparte el tráfico entre la página original (control) y la variación, y mide cuál convierte mejor. Así decides con datos qué título, imagen, formulario o diseño te trae más ventas o registros, en lugar de adivinar.
+
+Las pruebas A/B en embudos están disponibles en todos los planes.
+
+## Para qué te sirven
+
+- **Más conversiones:** identificas la versión que consigue más registros, compras o reservas.
+- **Mejor experiencia:** descubres qué prefiere tu público y lo aplicas en todo el embudo.
+- **Decisiones con datos:** dejas de depender de suposiciones o gustos personales.
+- **Menos rebote:** las páginas ganadoras suelen retener mejor a los visitantes.
+- **Más retorno de tu publicidad:** con la misma inversión en anuncios consigues más resultados.
+- **Mejora continua:** siempre puedes probar una idea nueva contra la versión ganadora.
+
+## Antes de empezar
+
+- El embudo debe tener un **dominio conectado**. Sin dominio no podrás crear la prueba.
+- Haz cambios **notorios** en la variación. Si las diferencias son mínimas, el resultado no te dirá cuál versión es mejor.
+- **No modifiques la página de control** mientras la prueba esté activa, o los resultados perderán precisión.
+
+## Cómo crear una prueba A/B
+
+<Steps>
+  <Step title="Abre tu embudo">
+    Ve a **Sitios → Embudos** y abre el embudo donde quieres hacer la prueba.
+  </Step>
+  <Step title="Crea la variación">
+    Selecciona el paso que quieres probar y haz clic en **Crear variación**. Elige una de las opciones disponibles para generar la nueva versión y edítala con los cambios que quieres probar.
+  </Step>
+  <Step title="Reparte el tráfico">
+    Mueve el control deslizante para definir qué porcentaje de visitas va a la página de control y qué porcentaje a la variación. Por ejemplo, 50 % y 50 %.
+  </Step>
+  <Step title="Inicia la prueba">
+    Haz clic en **Iniciar prueba A/B** (Start Split Test) y confirma con **Aplicar**.
+  </Step>
+</Steps>
+
+### Cómo se reparte el tráfico
+
+Todo el tráfico llega a la URL principal del paso. Desde ahí, Chateea envía a cada visitante a la URL propia de la página de control o de la variación según el porcentaje que configuraste. Puedes editar la ruta de cada una con el ícono de **engranaje** que aparece debajo de la página de control y debajo de la variación.
+
+La prueba funciona con **cookies del navegador**. La primera vez que alguien abre la URL, queda asignado a una versión y seguirá viendo esa misma. Si quieres revisar la otra versión tú mismo, abre la URL en una ventana de incógnito o en otro navegador.
+
+## Ver los resultados
+
+A medida que llegan visitas, los resultados de cada versión aparecen en el paso del embudo. Para ver el detalle:
+
+1. Haz clic en la pestaña **Estadísticas** del embudo.
+2. Haz clic en el paso donde corre la prueba para desplegar las métricas de la **página de control** y de la **variación**.
+
+Cuando tengas suficiente tráfico para ver una diferencia clara, quédate con la versión ganadora y, si quieres, empieza una nueva prueba contra ella.
+
+## Ideas de pruebas
+
+| Tipo de embudo | Qué probar |
+| --- | --- |
+| Venta de un curso en línea | Dos títulos distintos, imagen del curso vs. foto de un estudiante, texto del botón de compra |
+| Registro a un seminario web | Titular, diseño del formulario (sencillo vs. más visual), imagen promocional |
+| Pago en una tienda | Pago en una sola página vs. en varios pasos, color del botón, sellos de confianza |
+| Imán de leads | Portada del recurso gratuito, cantidad de campos del formulario |
+
+Por ejemplo, una academia de idiomas podría comparar "Aprende inglés en 30 días" contra "Habla inglés con confianza en tu trabajo" y quedarse con el título que consiga más inscripciones.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Todo el tráfico va a la página de control y nada a la variación">
+    Revisa que tus anuncios y enlaces usen el mismo dominio y la misma URL del paso donde corre la prueba. Si los visitantes llegan a tu dominio raíz y no a la página de la prueba, el reparto no se aplica. Una solución sencilla es configurar como página predeterminada de tu dominio el paso donde está la prueba.
+  </Accordion>
+  <Accordion title="Las estadísticas no coinciden con el porcentaje que configuré">
+    Es probable que el enlace directo de la página de control o de la variación se esté usando en otro embudo, en un anuncio o en otro lugar. Esas visitas entran sin pasar por la lógica de la prueba y descuadran los números. Usa siempre la URL principal del paso.
+  </Accordion>
+  <Accordion title="Las políticas de Google Ads o Meta no permiten la redirección de rutas de la prueba">
+    Algunas políticas de anuncios no aceptan que la URL de destino redirija a otra ruta. En ese caso, lleva los anuncios al primer paso del embudo (por ejemplo, una página con contenido educativo) y haz la prueba A/B en el segundo paso. Así separas la captación del experimento y cumples las políticas.
+  </Accordion>
+  <Accordion title="¿Puedo hacer pruebas A/B en un sitio web?">
+    Las pruebas A/B están disponibles en embudos. Si quieres probar una página de tu sitio web, impórtala en un embudo y crea la prueba allí.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar páginas entre embudos y sitios" icon="file-import" href="/sitios/importar-paginas-entre-embudos-y-sitios">
+    Lleva una página de tu sitio web a un embudo.
+  </Card>
+  <Card title="Análisis de sitios y embudos" icon="chart-line" href="/sitios/analisis-de-sitios-y-embudos">
+    Entiende las métricas de tus páginas.
+  </Card>
+  <Card title="Lanza tu primer embudo" icon="rocket" href="/primeros-pasos/lanza-tu-primer-embudo">
+    Crea y publica un embudo paso a paso.
+  </Card>
+  <Card title="Parámetros de URL" icon="link" href="/sitios/parametros-de-url">
+    Usa parámetros en los enlaces de tus páginas.
+  </Card>
+</CardGroup>

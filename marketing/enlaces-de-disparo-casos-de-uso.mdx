@@ -1,0 +1,109 @@
+---
+title: "Enlaces de disparo: qué son y cómo usarlos"
+description: "Registra los clics de tus contactos en SMS, correo y mensajes, y activa automatizaciones según su interés."
+icon: "link"
+---
+
+Un enlace de disparo (Trigger Link) es un enlace con seguimiento que envías en tus mensajes. Cuando un contacto hace clic, lo lleva a la página que elegiste, registra el clic en el historial de actividad del contacto y puede activar un flujo de trabajo. Así sabes quién mostró interés y reaccionas en el momento justo, sin revisar nada a mano.
+
+Si todavía no has creado ninguno, empieza por [Enlaces de disparo en Conversaciones](/conversaciones/enlaces-de-disparo), donde se explica cómo crearlos y administrarlos. Aquí verás para qué usarlos y cómo sacarles provecho en tus campañas y automatizaciones.
+
+## Canales compatibles
+
+Los enlaces de disparo funcionan **solo** en estos canales:
+
+- SMS
+- Correo electrónico
+- Perfil de empresa de Google (mensajes)
+- Mensajes directos de Facebook e Instagram
+- WhatsApp
+
+## Casos de uso
+
+| Caso | Cómo te ayuda |
+| --- | --- |
+| **Automatizar según el clic** | Un flujo reacciona cuando el contacto hace clic. Por ejemplo, tras hacer clic en el recordatorio de su cita, le envías una encuesta o una solicitud de reseña. |
+| **URL dinámicas en campañas** | Si haces promociones mensuales, el enlace apunta a un valor personalizado. Cambias el valor y reutilizas la misma plantilla sin editar los mensajes. |
+| **Seguimiento de interés** | Cada clic queda en el historial del contacto, así mides el interés real y la efectividad de cada campaña. |
+| **Contenido educativo** | Comparte tutoriales o artículos y detecta qué temas le interesan a cada contacto para personalizar tus siguientes mensajes. |
+| **Eventos e inscripciones** | Quien hace clic para confirmar asistencia recibe automáticamente los detalles del evento. |
+| **Recomendaciones personalizadas** | Envía a cada contacto a productos según sus preferencias y usa el clic para ajustar tus próximas ofertas. |
+| **Bajas por canal** | Da a tus contactos un enlace para dejar de recibir mensajes de un canal concreto y cumple con las normas de consentimiento. |
+
+## Enlaces de disparo en flujos de trabajo
+
+Hay dos formas principales de usarlos en tus automatizaciones:
+
+- **Como disparador:** crea un flujo con el disparador de clic en enlace de disparo y elige el enlace. El flujo se activa para cada contacto que haga clic. Por ejemplo, etiqueta como "interesado" a quien abrió tu página de precios y crea una tarea para tu vendedor.
+- **Como espera dentro de un flujo:** usa la acción **Esperar** para detener el flujo hasta que el contacto haga clic en un enlace de disparo. Cuando hace clic, el flujo continúa con el siguiente paso.
+
+<Tip>
+  En la acción **Esperar**, activa la opción de **tiempo límite** (Timeout) para que el flujo siga adelante si el contacto no hace clic en el plazo que definas. Así puedes enviar un recordatorio o tomar otro camino en lugar de dejar al contacto detenido.
+</Tip>
+
+### Ejemplo: confirmación, recordatorio, encuesta y reseña
+
+1. El contacto agenda una cita y el flujo le envía la confirmación.
+2. Antes de la cita recibe un recordatorio con un enlace de disparo.
+3. Una acción **Esperar** aguarda el clic en ese enlace.
+4. Cuando hace clic, el flujo le envía una encuesta de satisfacción o una solicitud de reseña.
+
+## Usa valores personalizados para cambiar la URL
+
+Si reutilizas el mismo flujo o la misma plantilla en cada promoción, apunta el enlace de disparo a un valor personalizado con la URL de la oferta. Cuando cambie la promoción, solo actualizas el valor personalizado y el enlace lleva a la nueva página.
+
+<Steps>
+  <Step title="Crea el valor personalizado">
+    Crea un valor personalizado con la URL de tu oferta actual.
+  </Step>
+  <Step title="Crea el enlace de disparo">
+    Crea el enlace de disparo y, como URL de destino, asígnale ese valor personalizado.
+  </Step>
+  <Step title="Inserta el enlace en el mensaje">
+    En el cuerpo de tu SMS o correo, inserta el **enlace de disparo**, no el valor personalizado.
+  </Step>
+</Steps>
+
+<Warning>
+  Si pegas el valor personalizado directamente en el mensaje, el clic no activará el enlace de disparo ni quedará registrado. Además, cambiar el valor no modifica retroactivamente los enlaces de campañas ya enviadas.
+</Warning>
+
+## Bajas por canal
+
+Puedes crear un enlace de disparo de baja para cada canal (SMS, correo, Perfil de empresa de Google, Facebook o Instagram) y un flujo con el disparador de clic que active **No molestar** (DND) en ese canal para el contacto. Así cada persona deja de recibir mensajes solo por el canal que eligió.
+
+En SMS, además, los operadores ya reconocen palabras de baja automáticas: `STOP`, `STOPALL`, `UNSUBSCRIBE`, `CANCEL`, `END` y `QUIT`. Si el contacto responde con alguna, se da de baja sola. Para volver a suscribirse, debe responder `START`.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde veo los clics de un contacto?">
+    Ve a **Contactos**, busca al contacto, abre su ficha y revisa la pestaña **Actividad**. Cada clic en un enlace de disparo aparece en su historial.
+  </Accordion>
+  <Accordion title="¿Qué hace el tiempo límite en la acción Esperar?">
+    Si lo activas, el flujo salta la espera cuando pasa el tiempo que indiques, aunque el contacto no haya hecho clic. El campo para definir ese tiempo aparece al activar la opción.
+  </Accordion>
+  <Accordion title="¿Puedo usar mi propio dominio en los enlaces de disparo?">
+    Escribe a soporte de Chateea en **help@chateea.com** para revisar las opciones de dominio de tus enlaces.
+  </Accordion>
+  <Accordion title="¿Funcionan en todos los canales?">
+    No. Solo en SMS, correo, mensajes del Perfil de empresa de Google, mensajes directos de Facebook e Instagram, y WhatsApp.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enlaces de disparo en Conversaciones" icon="link" href="/conversaciones/enlaces-de-disparo">
+    Crea, edita y mide tus enlaces de disparo.
+  </Card>
+  <Card title="Enlaces de disparo en plantillas de WhatsApp" icon="whatsapp" href="/whatsapp/enlaces-de-disparo-en-plantillas">
+    Mide los clics en los botones de tus plantillas.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="diagram-project" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Aprende a construir tus automatizaciones.
+  </Card>
+  <Card title="Campañas de correo, SMS y WhatsApp" icon="envelope" href="/campanas/introduccion">
+    Envía campañas con enlaces de seguimiento.
+  </Card>
+</CardGroup>

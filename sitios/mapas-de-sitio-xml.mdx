@@ -1,0 +1,138 @@
+---
+title: "Mapas de sitio XML"
+description: "Crea sitemaps XML para tus dominios, elige qué páginas incluir y envíalos a Google Search Console."
+icon: "sitemap"
+---
+
+Un mapa de sitio XML (sitemap) es un archivo que le dice a los buscadores qué páginas de tu sitio son importantes, cuándo se actualizaron y cómo se relacionan entre sí. En Chateea puedes crear sitemaps para cada dominio y elegir exactamente qué páginas de tus sitios web y embudos incluir.
+
+## ¿Necesitas un sitemap?
+
+Si las páginas de tu sitio están bien enlazadas entre sí, Google suele encontrarlas sin ayuda. Aun así, un sitemap mejora el rastreo en muchos casos y nunca te penaliza tenerlo. Enviarlo no garantiza que Google indexe todas las páginas, pero le facilita el trabajo.
+
+| Probablemente lo necesitas si... | Probablemente no lo necesitas si... |
+| --- | --- |
+| Tu sitio es grande y Google podría pasar por alto páginas nuevas | Tu sitio es pequeño (unas 500 páginas o menos que quieras en buscadores) |
+| Tienes muchas páginas aisladas o poco enlazadas entre sí | Todas tus páginas importantes se enlazan desde la página de inicio |
+| Tu sitio es nuevo y tiene pocos enlaces externos | No tienes muchos videos, imágenes o noticias que quieras posicionar |
+| Tienes mucho contenido multimedia (videos, imágenes) | |
+
+En la práctica, si usas tus sitios y embudos para captar clientes desde Google, vale la pena crearlo.
+
+## Antes de empezar
+
+Necesitas tener al menos un dominio conectado en tu cuenta. Si todavía no lo tienes, conéctalo primero en **Configuración → Dominios**.
+
+## Dónde encontrar la configuración del sitemap
+
+<Steps>
+<Step title="Abre la sección de dominios">
+Ve a **Sitios** y haz clic en el ícono de engranaje de la esquina superior derecha. También puedes entrar desde **Configuración → Dominios**.
+</Step>
+<Step title="Gestiona el dominio">
+Junto al dominio que quieres configurar, haz clic en **Gestionar** (Manage). Se abre la página de productos conectados a ese dominio.
+</Step>
+<Step title="Abre la opción de sitemap">
+Junto al recurso que quieres configurar, haz clic en el menú de tres puntos y elige **Sitemap XML**.
+</Step>
+</Steps>
+
+Verás la lista de todos los sitios web y embudos conectados a ese dominio. En esta vista:
+
+- Cada sitio o embudo aparece en su propio desplegable con su nombre.
+- La **casilla** de la izquierda selecciona el sitio o embudo completo, con todas sus páginas.
+- La **flecha** de la derecha despliega sus páginas para que elijas una por una cuáles incluir.
+
+<Note>
+Como puedes conectar varios sitios y embudos al mismo dominio, elige con cuidado. Incluye solo las páginas que quieres que Google rastree y asocie con ese dominio.
+</Note>
+
+<Warning>
+Dejar una página fuera del sitemap no impide que un buscador la rastree. Si hay enlaces que apuntan a ella, puede aparecer igualmente. Para bloquear su indexación, usa una etiqueta meta `robots` con el valor `noindex`. Consulta la [guía de Google para bloquear la indexación](https://developers.google.com/search/docs/crawling-indexing/block-indexing).
+</Warning>
+
+## Crear o editar un sitemap
+
+<Steps>
+<Step title="Selecciona las páginas">
+Despliega cada sitio o embudo con la flecha y marca las páginas que quieres incluir. Revisa todos los sitios y embudos conectados antes de continuar.
+</Step>
+<Step title="Continúa">
+Haz clic en **Continuar** (Proceed). Si es tu primer sitemap para este dominio, haz clic en **Agregar nuevo** (Add New).
+</Step>
+<Step title="Revisa los datos del sitemap">
+En la ventana verás la lista de sitemaps del dominio con su **ruta personalizada**, la **fecha de última modificación** y un menú de tres puntos para **editar** o **eliminar** cada uno.
+</Step>
+<Step title="Genera y guarda">
+Haz clic en **Generar y guardar** (Generate & Save). Chateea te confirma que el sitemap se creó y te muestra su URL.
+</Step>
+</Steps>
+
+<Tip>
+La ruta del sitemap suele ser `sitemap.xml`, por ejemplo `https://www.minegocio.com/sitemap.xml`. Puedes cambiarla cuando quieras, pero si lo haces, vuelve a enviar el sitemap a Google.
+</Tip>
+
+## Enviar el sitemap a Google
+
+Google no revisa tu sitemap cada vez que rastrea tu sitio. Lo lee la primera vez que lo detecta y después solo cuando le avisas de que cambió. Por eso, envíalo cuando sea nuevo o cuando lo actualices, y no lo reenvíes si no hubo cambios.
+
+La forma recomendada es usar el informe de Sitemaps de Google Search Console, que además te da datos útiles como el estado del sitemap, las páginas rastreadas y los errores de rastreo.
+
+<Steps>
+<Step title="Abre Google Search Console">
+Entra en [Google Search Console](https://search.google.com/search-console) con tu cuenta de Google. Puedes consultar la [ayuda oficial del informe de Sitemaps](https://support.google.com/webmasters/answer/7451001).
+</Step>
+<Step title="Agrega tu propiedad">
+Si todavía no tienes tu dominio en Search Console, agrégalo como nueva propiedad.
+</Step>
+<Step title="Verifica la propiedad">
+Verifica que el dominio es tuyo siguiendo el método que Google te indique, para que pueda mostrarte los datos de búsqueda.
+</Step>
+<Step title="Ve a Sitemaps">
+En el menú de Search Console, abre la sección **Sitemaps**.
+</Step>
+<Step title="Envía la URL del sitemap">
+Pega la ruta de tu sitemap (la que te dio Chateea al generarlo) y envíala.
+</Step>
+</Steps>
+
+Después de enviarlo, espera a que Google rastree tu sitio. Cuando lo haga, verás la información en la sección **Páginas** de Search Console. También puedes llegar desde **Sitemaps** con el menú de tres puntos de cada sitemap.
+
+### Alternativa: robots.txt
+
+Si no puedes usar Search Console, agrega la URL completa de tu sitemap en tu archivo robots.txt. Por ejemplo:
+
+```text
+Sitemap: https://www.minegocio.com/sitemap.xml
+```
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo tener más de un sitemap por dominio?">
+Sí. En la ventana de sitemaps verás todos los que existen para ese dominio, cada uno con su ruta y su fecha de modificación.
+</Accordion>
+<Accordion title="¿Qué pasa si cambio la ruta del sitemap?">
+El sitemap pasa a estar en la nueva dirección. Envía la nueva URL a Google Search Console para que la tenga en cuenta.
+</Accordion>
+<Accordion title="No veo la opción Gestionar en mis dominios">
+Primero tienes que agregar un dominio a tu cuenta en **Configuración → Dominios**.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Tipos de dominios en Chateea" icon="globe" href="/sitios/tipos-de-dominios">
+Qué dominio necesitas para cada producto.
+</Card>
+<Card title="Metadatos SEO y etiquetas meta" icon="magnifying-glass" href="/sitios/metadatos-seo-y-etiquetas-meta">
+Controla cómo aparecen tus páginas en buscadores.
+</Card>
+<Card title="Redirecciones 301" icon="arrow-right" href="/sitios/redirecciones-301">
+Conserva el tráfico cuando cambias una URL.
+</Card>
+<Card title="Indexación de URLs en embudos" icon="circle-question" href="/sitios/indexacion-de-urls-en-embudos">
+Qué revisar si Google no indexa tus páginas.
+</Card>
+</CardGroup>

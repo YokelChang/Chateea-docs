@@ -1,0 +1,109 @@
+---
+title: "Mi plan de Stripe no aparece en los productos del embudo"
+description: "Qué precios de Stripe se pueden importar, cómo usarlos en tus embudos y qué revisar si un plan no aparece."
+icon: "credit-card"
+---
+
+Un plan o precio que existe en Stripe no aparece automáticamente en tus embudos. Para poder venderlo en un formulario de pedido, primero tienes que importarlo a tu cuenta de Chateea como producto. Si no lo ves, lo más probable es que todavía no se haya importado, que esté en modo de prueba, que ya se haya importado antes o que no cumpla los requisitos.
+
+Esta guía te explica qué precios de Stripe se pueden importar, cómo hacerlo y qué revisar cuando un plan no aparece.
+
+## Requisitos para importar un precio de Stripe
+
+La opción **Importar desde Stripe** sirve para precios recurrentes (suscripciones). Comprueba que tu precio cumpla todo esto:
+
+| Requisito | Qué significa |
+| --- | --- |
+| **Precio recurrente** | El precio debe ser de suscripción, con cobro recurrente. |
+| **Modo en vivo** | El precio debe existir en el modo en vivo (Live) de Stripe. Los precios en modo de prueba no se pueden importar. |
+| **No medido** | Los precios recurrentes medidos por uso (metered) no se pueden importar. |
+| **No importado antes** | Un precio que ya importaste deja de aparecer en la lista de **Importar desde Stripe**. |
+| **Cuenta de Stripe conectada** | Tu cuenta de Chateea debe estar conectada a la misma cuenta de Stripe donde está el precio. |
+
+<Note>
+Los precios de pago único de Stripe no se importan con esta opción. Crea el producto o el precio de pago único directamente en Chateea, en **Pagos → Productos**.
+</Note>
+
+## Importar un plan de Stripe y usarlo en un embudo
+
+<Steps>
+<Step title="Abre tus productos">
+En el menú lateral, ve a **Pagos → Productos**.
+</Step>
+<Step title="Importa desde Stripe">
+Haz clic en **Importar desde Stripe**.
+</Step>
+<Step title="Busca el producto">
+Busca el producto de Stripe y revisa los precios recurrentes disponibles.
+</Step>
+<Step title="Selecciona e importa">
+Selecciona el producto y el precio que quieres importar y completa la importación.
+</Step>
+<Step title="Confirma que se importó">
+Comprueba que el producto aparece en **Pagos → Productos**.
+</Step>
+<Step title="Agrégalo al embudo">
+Ve a **Sitios → Embudos**, abre el embudo y el paso donde está el formulario de pedido. En la pestaña **Productos**, agrega el producto importado y su precio recurrente.
+</Step>
+<Step title="Prueba y publica">
+Prueba el pago en vista previa y, cuando todo funcione, publica el embudo.
+</Step>
+</Steps>
+
+## Solución de problemas
+
+Primero identifica dónde falta el plan: no es lo mismo que no aparezca en la lista de importación que no aparezca en el embudo después de importarlo.
+
+| Problema | Qué revisar |
+| --- | --- |
+| **El precio ya se importó** | Los precios importados desaparecen de la lista de **Importar desde Stripe**. Búscalo en **Pagos → Productos** antes de pensar que la importación falló. |
+| **El precio está en modo de prueba** | La importación necesita un precio en modo en vivo. Crea o usa el precio en el modo Live de Stripe. |
+| **El precio es de pago único** | No se importa con esta opción. Crea el producto de pago único directamente en Chateea. |
+| **El precio es medido por uso** | Los precios medidos (metered) no son compatibles con la importación. |
+| **Otra cuenta de Stripe** | Revisa en **Pagos → Integraciones** qué cuenta de Stripe está conectada y confirma que es la misma donde creaste el precio. |
+| **Cambiaste el precio en Stripe** | Los cambios hechos en Stripe no actualizan el producto en Chateea. Importa el nuevo precio como un precio o producto nuevo. |
+| **El producto está en Productos pero no en el embudo** | Confirma que lo agregaste en la pestaña **Productos** del mismo paso del embudo donde está el formulario. |
+
+<Tip>
+Diagnóstico rápido: si ves el producto en **Pagos → Productos** pero no en el embudo, el problema está en la configuración del embudo. Si no ves el precio en **Importar desde Stripe**, revisa si es recurrente, si está en modo en vivo, si ya se importó y qué cuenta de Stripe está conectada.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Por qué veo el producto en Stripe pero no en mi embudo?">
+Porque primero hay que importar el precio recurrente a tu cuenta de Chateea. Revisa **Pagos → Productos** antes de configurar el embudo.
+</Accordion>
+<Accordion title="¿Por qué no encuentro mi precio en Importar desde Stripe?">
+Comprueba que sea recurrente, que esté en modo en vivo, que no sea medido por uso y que no lo hayas importado antes. Revisa también que tu cuenta esté conectada a la cuenta de Stripe correcta.
+</Accordion>
+<Accordion title="¿Puedo importar un precio de pago único?">
+No con esta opción. Crea los productos o precios de pago único directamente en Chateea.
+</Accordion>
+<Accordion title="¿Puedo importar un precio medido por uso?">
+No. Los precios recurrentes medidos no son compatibles con la importación desde Stripe.
+</Accordion>
+<Accordion title="Cambié el precio en Stripe. ¿Se actualiza solo en Chateea?">
+No. Los cambios en Stripe no se sincronizan con el precio ya importado. Importa el nuevo precio.
+</Accordion>
+<Accordion title="¿Por qué desapareció un precio de la lista de importación?">
+Porque ya lo importaste. Lo encontrarás en **Pagos → Productos**.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Conecta Stripe" icon="credit-card" href="/primeros-pasos/conecta-stripe">
+Conecta tu cuenta de Stripe a Chateea.
+</Card>
+<Card title="Crea y vende productos" icon="box" href="/primeros-pasos/crea-y-vende-productos">
+Crea productos y precios en Chateea.
+</Card>
+<Card title="Formulario de pedido en dos pasos" icon="cart-shopping" href="/sitios/formulario-de-pedido-en-dos-pasos">
+Vende tus productos desde un embudo.
+</Card>
+<Card title="Integración de pagos con Stripe" icon="credit-card" href="/comercio/integracion-stripe">
+Cómo funciona Stripe con Chateea.
+</Card>
+</CardGroup>

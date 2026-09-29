@@ -1,0 +1,147 @@
+---
+title: "Configurar redirecciones 301"
+description: "Redirige un dominio o una ruta a una URL, un paso de embudo o una página de sitio web sin perder tráfico ni SEO."
+icon: "arrow-right"
+---
+
+Una redirección 301 envía de forma permanente a visitantes y buscadores desde una URL antigua a un destino nuevo. En Chateea puedes redirigir un dominio completo o una ruta concreta hacia una URL personalizada, un paso de embudo o una página de tu sitio web. Así nadie llega a una página de error y conservas el posicionamiento que ya tenías.
+
+## Ventajas
+
+- **Mejor experiencia:** los visitantes que usan enlaces antiguos llegan automáticamente al lugar correcto.
+- **Menos enlaces rotos:** evitas errores 404 cuando renombras, eliminas o mueves una página.
+- **Continuidad en SEO:** le dices a Google que la página se ha mudado de forma permanente.
+- **Unificar dominios:** puedes enviar todo el tráfico de una versión del dominio a otra, por ejemplo de `www` al dominio raíz.
+- **Destinos flexibles:** URL personalizada, paso de embudo o página de sitio web.
+
+## Cuándo usar una redirección 301
+
+- Cambiaste la ruta de un paso de embudo o de una página.
+- Moviste un contenido a otra URL.
+- Eliminaste o reemplazaste una página que todavía recibe visitas.
+- Migraste tu contenido a otro dominio.
+- Quieres que la URL de una campaña antigua lleve a la página actual.
+- Quieres que una versión de tu dominio apunte siempre a otra.
+
+<Note>
+Si varias URLs deben seguir accesibles pero quieres que Google considere una sola como principal, usa una URL canónica en lugar de una redirección 301.
+</Note>
+
+## Configurar una redirección 301
+
+<Steps>
+<Step title="Abre las redirecciones">
+Ve a **Configuración → Dominios y redirecciones de URL** y selecciona la pestaña **Redirecciones de URL** en la parte superior. Ahí puedes crear, buscar, editar y eliminar redirecciones.
+</Step>
+<Step title="Agrega una redirección">
+Haz clic en **+ Agregar redirección** arriba a la derecha. Si todavía no tienes ninguna, también verás la opción para crear la primera en el centro de la pantalla.
+</Step>
+<Step title="Elige el dominio de origen">
+En la sección **Origen**, abre el desplegable **Redirigir desde** y selecciona el dominio. El dominio debe estar ya agregado a tu cuenta de Chateea.
+</Step>
+<Step title="Elige qué quieres redirigir">
+Decide si redirigir una ruta concreta o el dominio completo (se explica más abajo).
+</Step>
+<Step title="Elige el destino">
+En la sección **Destino**, elige a dónde enviar a los visitantes: URL personalizada, embudo o sitio web. Luego haz clic en **Agregar redirección**.
+</Step>
+</Steps>
+
+### Qué redirigir
+
+| Opción | Cuándo usarla | Ejemplo |
+| --- | --- | --- |
+| **Ruta concreta** | Para redirigir una sola página del dominio | Para `minegocio.com/contacto`, escribe `/contacto` |
+| **Dominio completo** | Para que todo el tráfico del dominio vaya al destino elegido | Todo `minegocio.com` redirige al destino |
+
+Chateea admite rutas anidadas. Para redirigir una página anidada, escribe la ruta completa, por ejemplo `/recursos/guias/primeros-pasos`.
+
+<Warning>
+No uses caracteres especiales como `?`, `%`, `&`, `=` o `#` en la ruta de origen, porque pueden impedir que la redirección funcione. Usa rutas limpias con letras minúsculas, números, guiones y barras.
+
+- Recomendado: `/oferta-especial`
+- Evitar: `/oferta?promo=verano&utm_source=email`
+
+Si la URL original tiene parámetros, escribe solo la ruta limpia, sin la parte que empieza por `?`.
+</Warning>
+
+### Tipos de destino
+
+| Destino | Cómo configurarlo |
+| --- | --- |
+| **URL personalizada** | Elige **URL personalizada** y escribe la URL completa de destino. Sirve para cualquier web, interna o externa. |
+| **Embudo** | Elige **Embudo**, selecciona el embudo y luego el paso donde debe llegar el visitante. Solo aparecen los embudos vinculados al dominio de origen, y puedes elegir un paso por redirección. |
+| **Sitio web** | Elige **Sitio web**, selecciona el sitio y luego la página de destino. Solo aparecen los sitios vinculados al dominio de origen. |
+
+## Redirección 301 o URL canónica
+
+| Situación | Redirección 301 | URL canónica |
+| --- | --- | --- |
+| Los visitantes deben ir automáticamente a otra página | Sí | No |
+| La URL antigua se muda para siempre a una nueva | Sí | No |
+| Varias URLs deben seguir accesibles | No | Sí |
+| Indicar a Google qué URL accesible es la preferida | Indirectamente | Sí |
+| Cambia la URL en el navegador | Sí | No |
+
+## Buenas prácticas
+
+- **Usa URLs absolutas** en los destinos personalizados, por ejemplo `https://nuevositio.com/pagina`.
+- **Evita cadenas de redirecciones:** en lugar de redirigir A a B y B a C, redirige A directamente a C.
+- **Revisa tus redirecciones** de vez en cuando para confirmar que siguen funcionando.
+- **Crea la redirección al cambiar una ruta** que ya estaba en uso, para que los enlaces antiguos sigan funcionando.
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| **La redirección no funciona** | Confirma que el dominio de origen está conectado y que la ruta coincide exactamente con la URL visitada. |
+| **Bucle de redirección** | Asegúrate de que el destino no redirige de vuelta al origen. |
+| **Error 404 tras cambiar una ruta** | Comprueba que existe una redirección desde la ruta antigua y que la página de destino está publicada. |
+| **El embudo no aparece como destino** | Confirma que el embudo está vinculado al dominio de origen. |
+| **El sitio web no aparece como destino** | Confirma que el sitio está vinculado al dominio de origen. |
+| **Falla la redirección de una ruta concreta** | Quita los parámetros o caracteres especiales y usa la ruta limpia. |
+| **Comportamiento inesperado** | Busca otras redirecciones que afecten al mismo origen o destino. |
+| **Google sigue mostrando la URL antigua** | Los buscadores tardan en volver a rastrear. Usa Google Search Console para inspeccionar la URL y solicitar la indexación. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo editar o eliminar una redirección?">
+Sí. Ve a **Configuración → Dominios y redirecciones de URL → Redirecciones de URL** para gestionar las que ya tienes.
+</Accordion>
+<Accordion title="¿El dominio de origen tiene que estar en Chateea?">
+Sí. Solo puedes crear redirecciones desde dominios que ya hayas agregado a tu cuenta.
+</Accordion>
+<Accordion title="¿Puedo redirigir un dominio entero?">
+Sí. Al crear la redirección, elige redirigir el dominio completo y todo su tráfico irá al destino que selecciones.
+</Accordion>
+<Accordion title="¿Puedo redirigir solo una página?">
+Sí. Elige redirigir una ruta concreta y escribe la ruta, por ejemplo `/prueba-uno`.
+</Accordion>
+<Accordion title="¿Por qué no aparece mi embudo o sitio web en el destino?">
+Solo se muestran los embudos y sitios web vinculados al dominio de origen que elegiste.
+</Accordion>
+<Accordion title="¿Debo crear una redirección si cambio la ruta de una página?">
+Sí, si la URL anterior ya se estaba usando. Así los visitantes con enlaces antiguos llegan a la página nueva en lugar de a un error.
+</Accordion>
+<Accordion title="¿Qué problemas pueden causar las redirecciones?">
+Los más comunes son los bucles, los errores 404 y la carga lenta por exceso de redirecciones. Evita redirigir una URL a sí misma, confirma que el destino existe y no encadenes redirecciones.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Tipos de dominios en Chateea" icon="globe" href="/sitios/tipos-de-dominios">
+Qué dominio necesitas para cada producto.
+</Card>
+<Card title="Rutas URL anidadas" icon="sitemap" href="/embudos-sitios-web/guia-de-soporte-para-rutas-url-anidadas">
+Organiza tus páginas en rutas con varios niveles.
+</Card>
+<Card title="Indexación de URLs en embudos" icon="circle-question" href="/sitios/indexacion-de-urls-en-embudos">
+Qué hacer si Google no indexa tus páginas.
+</Card>
+<Card title="Mapas de sitio XML" icon="sitemap" href="/sitios/mapas-de-sitio-xml">
+Ayuda a Google a encontrar tus páginas.
+</Card>
+</CardGroup>

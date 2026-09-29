@@ -1,0 +1,98 @@
+---
+title: "Agregar un temporizador a plantillas de WhatsApp"
+description: "Añade un botón con temporizador de cuenta regresiva a tus plantillas de WhatsApp y redirige según el estado de la oferta."
+icon: "message"
+---
+
+Puedes añadir urgencia real a tus campañas de WhatsApp colocando un temporizador de cuenta regresiva en un botón de tus plantillas de mensaje. Es el mismo temporizador que usas en correos, embudos y sitios web: cuando el contacto toca el botón, Chateea lo envía al enlace activo o al enlace vencido según el estado del temporizador en ese momento.
+
+## Ventajas
+
+- **Más urgencia y conversiones:** un plazo visible motiva a actuar y comprar enseguida.
+- **Varios tipos de temporizador:** fijo, recurrente o dinámico, según tu promoción.
+- **Redirección automática:** el contacto llega a la página correcta antes y después del vencimiento.
+- **Ramas en automatizaciones:** puedes dividir tus flujos de trabajo según los clics en el botón.
+
+## Tipos de temporizador compatibles
+
+| Tipo | Cómo funciona | Ideal para |
+| --- | --- | --- |
+| **Fijo** | Termina en una fecha y hora concretas | Campañas puntuales con fecha límite, como una venta de fin de temporada |
+| **Recurrente** | Se repite según un calendario (diario o semanal) | Ofertas permanentes o "especial de la semana" |
+| **Dinámico** | Cada contacto tiene su propia duración, que empieza con un disparador como el envío o la entrega del mensaje | Ofertas personales, por ejemplo "canjéalo en las 12 horas siguientes a recibir este mensaje" |
+
+## Cómo añadir un temporizador a una plantilla de WhatsApp
+
+<Steps>
+<Step title="Abre las plantillas de WhatsApp">
+Ve a **Configuración → WhatsApp** y, en la barra secundaria, selecciona la pestaña **Plantillas**.
+</Step>
+<Step title="Crea o abre una plantilla">
+Haz clic en **Crear plantilla** o selecciona una existente para editarla. Completa los detalles: nombre, categoría, idioma, encabezado, cuerpo y pie.
+</Step>
+<Step title="Agrega el botón de temporizador">
+En la sección **Botón**, haz clic en **Agregar botón** y elige **Temporizador de cuenta regresiva** en el menú desplegable.
+</Step>
+<Step title="Elige o crea el temporizador">
+Abre el desplegable **Temporizador** y selecciona uno existente o haz clic en **Crear nuevo**.
+</Step>
+<Step title="Configura el temporizador">
+Con el temporizador seleccionado, haz clic en **Editar temporizador**, debajo de **URL del temporizador**. Ahí puedes ajustar:
+
+- **Tipo de temporizador:** fijo, recurrente o dinámico.
+- **Duración:** la duración de la cuenta o la hora de fin.
+- **Iniciar el temporizador cuando** (solo dinámicos): elige el disparador, por ejemplo **se envía el mensaje de WhatsApp** o **se entrega el mensaje de WhatsApp**.
+- **Enlace activo:** la página de la oferta, de pago o de reservas que se usa **antes** del vencimiento.
+- **Enlace vencido:** la página que se muestra **después** del vencimiento, como una lista de espera o una oferta alternativa.
+</Step>
+<Step title="Revisa y crea la plantilla">
+Revisa la **vista previa del mensaje** y haz clic en **Crear** para guardar la plantilla.
+</Step>
+</Steps>
+
+<Tip>
+Pon el mismo temporizador en la página de la oferta. Así la página vencerá al mismo tiempo que el botón de WhatsApp y redirigirá automáticamente a la página de vencido.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo usar más de un temporizador en un mismo mensaje?">
+Puedes añadir hasta dos botones de temporizador, combinados con botones de tipo **Visitar sitio web** o **Sitio web rastreable**.
+</Accordion>
+<Accordion title="¿Qué pasa cuando el temporizador vence?">
+Cuando el contacto toca el botón, se le redirige a la página de oferta vencida que configuraste en el temporizador.
+</Accordion>
+<Accordion title="¿Puedo modificar el temporizador después de crearlo?">
+Sí. Haz clic en **Editar temporizador** para cambiar la duración, el estilo o los disparadores cuando quieras.
+</Accordion>
+<Accordion title="¿Los temporizadores dinámicos muestran una cuenta distinta a cada contacto?">
+Sí. Cada contacto recibe su propia cuenta según su evento disparador, por ejemplo el momento en que se le envió el mensaje de WhatsApp.
+</Accordion>
+<Accordion title="¿Por qué veo 'No se encontró enlace' en la URL del temporizador?">
+Significa que el temporizador todavía no tiene un enlace de redirección. Haz clic en **Editar temporizador** y agrega el enlace activo y el vencido.
+</Accordion>
+<Accordion title="¿Qué son los enlaces activo y vencido?">
+El enlace activo lleva a la página con la oferta (descuento, promoción, registro gratuito, etc.). El enlace vencido lleva a la página donde quieres que llegue el contacto cuando la oferta terminó.
+</Accordion>
+<Accordion title="¿Puedo crear ramas en un flujo de trabajo según el clic en el botón?">
+Sí. Usa un enlace de disparo como URL del temporizador para registrar los clics y usarlos en las ramas de tus flujos. Consulta [Enlaces de disparo en plantillas](/whatsapp/enlaces-de-disparo-en-plantillas).
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Introducción a los temporizadores" icon="hourglass-half" href="/marketing/introduccion-temporizador-de-cuenta-regresiva">
+Tipos, usos y buenas prácticas.
+</Card>
+<Card title="Enlaces de disparo en plantillas" icon="link" href="/whatsapp/enlaces-de-disparo-en-plantillas">
+Registra clics y úsalos en tus flujos.
+</Card>
+<Card title="Acción de WhatsApp en flujos" icon="diagram-project" href="/whatsapp/accion-whatsapp-v2">
+Envía plantillas desde tus automatizaciones.
+</Card>
+<Card title="Temporizador en embudos y sitios" icon="globe" href="/marketing/temporizador-en-embudos-y-sitios">
+Muestra la cuenta regresiva en tus páginas.
+</Card>
+</CardGroup>

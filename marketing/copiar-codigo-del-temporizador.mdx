@@ -1,0 +1,108 @@
+---
+title: "Copiar el código de un temporizador"
+description: "Inserta tu temporizador en sitios o correos externos con Copiar código y ajusta startDate y uniqueID según el caso."
+icon: "code"
+---
+
+La función **Copiar código** te da un fragmento de código para insertar tu temporizador de cuenta regresiva fuera de los editores de Chateea: en un sitio web hecho con otra plataforma, en el HTML de un correo enviado desde otra herramienta o en un bloque de código de cualquier constructor. Así puedes mostrar la misma cuenta regresiva en todos tus canales.
+
+## Cuándo usar Copiar código
+
+- **En sitios web externos:** pegas el fragmento en el HTML de tu página para mostrar ofertas con plazo, cuentas regresivas a eventos o lanzamientos.
+- **En correos enviados desde otra plataforma:** insertas el código en el HTML del correo para que tus destinatarios vean la cuenta regresiva.
+- **En un bloque de código:** dentro de los editores de Chateea no lo necesitas, porque puedes insertar el temporizador directamente, pero sí puedes usarlo en un elemento de código.
+
+## Qué datos necesita cada tipo de temporizador
+
+| Tipo | Cómo funciona | Datos que usa el código |
+| --- | --- | --- |
+| **Fijo** | Termina siempre a la misma hora | Fecha de fin |
+| **Recurrente** | Cuenta, se reinicia y vuelve a contar | Fecha de inicio, duración y número de repeticiones |
+| **Dinámico** | Cada persona tiene su propio plazo | Identificador único (`uniqueID`) y duración; la fecha de inicio depende de cuándo lo activa cada persona |
+
+## ¿Tengo que editar el código?
+
+| Dónde lo vas a usar | ¿Editar `startDate`? | ¿Editar `uniqueID`? | Motivo |
+| --- | --- | --- | --- |
+| Sitio web o página de aterrizaje (cualquier constructor) | No, pégalo tal cual | Opcional; deja el valor por defecto salvo que quieras analítica por página | Todos los visitantes ven el mismo plazo |
+| Correo estático (mismo plazo para todos) | Sí, con el momento de envío, por ejemplo `2025-01-01T15:30:00Z` | Puedes borrarlo o ignorarlo | Todos comparten el mismo plazo |
+| Correo dinámico enviado desde Chateea | Sí, con `{{right_now.date_time_iso}}` | Deja `{{contact.id}}` o usa otro campo del contacto | Chateea rellena estas variables al enviar, así cada contacto tiene su propio reloj |
+| Correo dinámico desde otra plataforma | Sí, con la variable de "fecha y hora actual" de esa plataforma (por ejemplo `*NOW*`) | Usa la variable de identificador de contacto de esa plataforma | Cada destinatario necesita su propio inicio y su propio identificador |
+
+<Info>
+**Conceptos clave**
+
+- **Temporizador estático:** un único plazo compartido por todos.
+- **Temporizador dinámico:** un plazo calculado para cada destinatario; por eso necesita un `startDate` y un `uniqueID` propios de cada persona.
+- **`startDate`** es el botón de inicio del cronómetro. Si el constructor no puede calcular "ahora" automáticamente, tienes que indicarlo tú.
+- **`uniqueID`** es el número de serie del cronómetro. Evita que la caché haga que todos los destinatarios vean la misma imagen.
+</Info>
+
+## Cómo usar Copiar código
+
+<Steps>
+<Step title="Crea el temporizador">
+Configura tu temporizador con la fecha y hora de fin, la apariencia y el formato (días, horas, minutos y segundos).
+</Step>
+<Step title="Copia el código">
+Abre el temporizador en **Marketing → Temporizadores de cuenta regresiva** y haz clic en **Copiar código**, arriba a la derecha.
+</Step>
+<Step title="Elige el destino y la alineación">
+Selecciona si el código se usará en un **correo** o en un **sitio web** y elige la alineación que mejor encaje con tu diseño.
+</Step>
+<Step title="Ajusta el identificador único (temporizadores dinámicos)">
+En los temporizadores dinámicos, sustituye `contact.id` dentro de las llaves por el identificador único que quieras usar para personalizar la cuenta de cada persona. Por ejemplo, si tu identificador es `contact.no`, el fragmento quedaría así:
+
+```text
+...uniqueID={{contact.no}}&...
+```
+</Step>
+<Step title="Indica la fecha de inicio correcta">
+El campo `startDate` es obligatorio cuando el temporizador se usa en un bloque de código.
+
+- **Correos enviados fuera de Chateea:** pon la fecha en que se envió el correo, aunque el disparador sea la apertura o el clic. Si enviaste el correo el 1 de enero de 2025 a las 15:30 (UTC), reemplaza `startDate=YYYY-MM-DDTHH:mm:ss.sssZ` por `startDate=2025-01-01T15:30:00Z`.
+- **Temporizador dinámico en el editor de correos de Chateea:** reemplaza `startDate=YYYY-MM-DDTHH:mm:ss.sssZ` por `startDate={{right_now.date_time_iso}}`.
+</Step>
+</Steps>
+
+## Lista de comprobación
+
+| Problema | Qué revisar |
+| --- | --- |
+| El temporizador nunca empieza | Que `startDate` tenga una fecha ISO real o una variable válida entre llaves dobles |
+| Todos ven el mismo tiempo | Que `uniqueID` sea distinto para cada destinatario (una variable, no un valor fijo) |
+| La zona horaria es incorrecta | Que la fecha termine en `Z` (UTC) o incluya el desfase horario, por ejemplo `-05:00` |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Tengo que modificar el código para usarlo en un sitio web de Chateea?">
+No. El fragmento por defecto ya funciona porque todos los visitantes comparten el mismo plazo.
+</Accordion>
+<Accordion title="¿El identificador único es realmente opcional?">
+Solo en los temporizadores estáticos. En los dinámicos es necesario; si no, todos los destinatarios compartirán la misma imagen en caché.
+</Accordion>
+<Accordion title="¿Puedo probar un temporizador dinámico en un correo antes de enviarlo?">
+Sí. Envíate una prueba: las variables se rellenan con los datos de tu propio contacto y verás exactamente lo mismo que tus destinatarios.
+</Accordion>
+<Accordion title="¿Necesito Copiar código dentro de los editores de Chateea?">
+No, porque puedes insertar el temporizador directamente con su elemento. Aun así, puedes usar el código en un elemento de código si lo prefieres.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Temporizador en embudos y sitios" icon="globe" href="/marketing/temporizador-en-embudos-y-sitios">
+Inserta el temporizador en tus páginas.
+</Card>
+<Card title="Temporizador en correos" icon="envelope" href="/marketing/temporizador-en-correos">
+Añade urgencia a tus campañas de correo.
+</Card>
+<Card title="Introducción a los temporizadores" icon="hourglass-half" href="/marketing/introduccion-temporizador-de-cuenta-regresiva">
+Tipos, usos y buenas prácticas.
+</Card>
+<Card title="Zona horaria en los temporizadores" icon="clock" href="/marketing/zona-horaria-en-temporizadores">
+Plazos en la hora local de cada persona.
+</Card>
+</CardGroup>

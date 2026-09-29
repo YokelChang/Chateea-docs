@@ -1,0 +1,129 @@
+---
+title: "Por qué el código de seguimiento no se copia al duplicar una página"
+description: "Entiende por qué la copia no incluye el código de la página y cómo volver a configurarlo sin duplicar eventos."
+icon: "code"
+---
+
+Cuando copias un paso de embudo o una página de sitio web, el código de seguimiento que estaba agregado directamente en esa página **no se copia**. Es intencional: así evitas que píxeles antiguos, scripts de analítica o eventos de conversión terminen funcionando en la página equivocada. Aquí te explicamos por qué pasa, cuál es la diferencia entre el seguimiento por página y el de todo el embudo o sitio, y cómo volver a configurarlo con seguridad.
+
+## Qué pasa al copiar una página
+
+El diseño y el contenido de la página se duplican, pero la copia empieza con el área de **Código de seguimiento** vacía. Si abres el código de seguimiento de la página copiada, no verás el script que tenía la original.
+
+<Warning>
+Antes de agregar código a la página copiada, revisa si ese mismo script ya está configurado a nivel de embudo o sitio web. Si lo instalas en los dos niveles, tendrás visitas, eventos o conversiones duplicadas.
+</Warning>
+
+## Por qué no se copia
+
+Los scripts de una página suelen estar ligados a algo concreto: una campaña, un evento de conversión, una propiedad de analítica o una cuenta publicitaria. Si se copiaran automáticamente, podrías:
+
+- **Duplicar eventos:** la misma visita o conversión se registraría más de una vez.
+- **Ejecutar scripts donde no toca:** un evento pensado para una página funcionaría en otra.
+- **Atribuir mal los resultados:** los datos de anuncios y analítica dejarían de corresponder a la página correcta.
+- **Compartir identificadores sin querer:** píxeles o ID de seguimiento podrían acabar en páginas que se reutilizan con otro fin.
+
+Al empezar de cero, decides con calma qué debe medir la nueva página y en qué nivel conviene instalar el código.
+
+## Seguimiento por página o para todo el embudo o sitio
+
+| Tipo | Úsalo para | Dónde se agrega |
+| --- | --- | --- |
+| **Por página** | Scripts o eventos que solo deben ejecutarse en un paso o una página concreta, como una conversión en la página de gracias. | En el creador, con el icono de **Código de seguimiento**: **Seguimiento en el encabezado** o **Seguimiento en el pie de página**. |
+| **Para todo el embudo o sitio** | Scripts que deben ejecutarse en todas las páginas, como el código base de Google Analytics o del píxel de Meta. | En la **Configuración** del embudo o sitio web, en los campos de código de seguimiento del **Head** o del **Body**. |
+
+## Cómo agregar el código después de copiar una página
+
+### Solo en una página
+
+<Steps>
+<Step title="Abre la página copiada">
+Ve a **Sitios → Embudos** o **Sitios → Sitios web**, abre el embudo o sitio y entra en el creador de la página copiada.
+</Step>
+<Step title="Abre el código de seguimiento">
+Haz clic en el icono de **Código de seguimiento** del creador.
+</Step>
+<Step title="Pega el script">
+Pega el script propio de esa página en **Seguimiento en el encabezado** o en **Seguimiento en el pie de página**, según indique el proveedor.
+</Step>
+<Step title="Guarda y prueba">
+Haz clic en **Guardar** y prueba la página antes de enviarle tráfico real.
+</Step>
+</Steps>
+
+### En todo el embudo o sitio web
+
+<Steps>
+<Step title="Abre la configuración">
+Entra en el embudo o sitio web y abre su **Configuración**.
+</Step>
+<Step title="Pega el script">
+Busca los campos de código de seguimiento del **Head** o del **Body** y pega el script donde indique el proveedor.
+</Step>
+<Step title="Guarda y verifica">
+Guarda los cambios y comprueba el script en las páginas publicadas que deben usarlo.
+</Step>
+</Steps>
+
+<Tip>
+Si el script base ya está en la configuración del embudo o sitio, no lo repitas en la página. Agrega en la página solo el código del evento específico que necesite, si lo hay.
+</Tip>
+
+## Cómo comprobar que el seguimiento funciona
+
+1. Guarda y publica la página copiada cuando esté lista para probar.
+2. Ábrela publicada en una ventana nueva del navegador.
+3. Haz la acción que quieres medir: ver la página, enviar un formulario o llegar a la confirmación.
+4. Usa la herramienta de prueba de tu proveedor de analítica o publicidad, si la tiene, para confirmar que recibió el evento.
+5. Comprueba que el evento está asociado a la página o URL correcta.
+6. Verifica que el evento se registra solo las veces que corresponde.
+7. Si necesitas investigar más, usa las herramientas de desarrollador del navegador y la actividad de red.
+
+<Note>
+El código de seguimiento puede inyectarse de forma dinámica en el navegador, así que quizá no lo veas en **Ver código fuente**. Para validarlo, usa las herramientas de prueba del proveedor o la pestaña de red del navegador.
+</Note>
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| El seguimiento desapareció al copiar la página | Es lo esperado. Abre la página copiada y agrega el script correcto si todavía lo necesitas. |
+| La página copiada no registra eventos | Revisa tanto el código de seguimiento de la página como la configuración del embudo o sitio para confirmar dónde está instalado. |
+| Los eventos se registran dos veces | Comprueba si el mismo script está instalado en la página y en la configuración del embudo o sitio. |
+| En la copia se dispara la conversión equivocada | Verifica que la página use el código de evento, el ID de seguimiento, la propiedad de analítica, el píxel y la URL de destino correctos. |
+| El código no aparece en el código fuente | Puede inyectarse dinámicamente. Prueba con las herramientas de red del navegador o del proveedor. |
+| Un código personalizado afecta a cómo se ve la página | Quita temporalmente el código personalizado, el código de seguimiento de la página y el CSS personalizado para aislar el script que causa el problema. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Siempre tengo que volver a agregar el script?">
+No. Si el script está configurado a nivel de embudo o sitio web, la página copiada ya recibe el seguimiento base sin necesidad de otra copia.
+</Accordion>
+<Accordion title="¿Puedo usar seguimiento por página en una página de gracias?">
+Sí. Es justo el caso ideal: un evento de conversión que solo debe ejecutarse en esa página.
+</Accordion>
+<Accordion title="¿Puedo configurar Google Analytics o el píxel de Meta para todo el sitio?">
+Sí. Si el script base debe ejecutarse en todas las páginas, usa la configuración de seguimiento del embudo o sitio web y agrega los eventos específicos solo donde hagan falta.
+</Accordion>
+<Accordion title="¿Al copiar una página también se copian sus estadísticas?">
+No. La copia es una página o un paso independiente. Las estadísticas históricas de la página original no se transfieren.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Códigos de seguimiento y píxeles" icon="code" href="/sitios/codigos-de-seguimiento-y-pixeles">
+Instala scripts y píxeles en tus embudos y sitios.
+</Card>
+<Card title="Pixel ID para el seguimiento de eventos" icon="bullseye" href="/embudos-sitios-web/comprender-el-pixel-id-para-el-seguimiento-de-eventos-en-tu-embudo-sitio-web">
+Entiende cómo se identifican tus eventos.
+</Card>
+<Card title="Token de acceso de la API de conversiones de Meta" icon="key" href="/embudos-sitios-web/configurar-el-token-de-acceso-a-la-api-de-meta-conversions">
+Envía conversiones a Meta desde el servidor.
+</Card>
+<Card title="Importar páginas entre embudos y sitios" icon="file-import" href="/sitios/importar-paginas-entre-embudos-y-sitios">
+Reutiliza páginas en otros embudos o sitios.
+</Card>
+</CardGroup>

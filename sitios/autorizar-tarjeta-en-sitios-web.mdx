@@ -1,0 +1,88 @@
+---
+title: "Autorizar tarjetas antes de cobrar suscripciones"
+description: "Verifica la tarjeta del cliente con un monto temporal antes de activar suscripciones o planes de pago en tu sitio."
+icon: "credit-card"
+---
+
+La autorización de tarjeta verifica que la tarjeta de tu cliente es válida y tiene fondos antes de activar una suscripción o un plan de pagos. Chateea retiene un monto pequeño que tú defines y luego lo devuelve. Es muy útil cuando ofreces días de prueba: te aseguras de que la tarjeta funciona antes de que empiece el periodo gratuito.
+
+## Cómo funciona la autorización
+
+- Viene **desactivada** por defecto. Tienes que activarla en cada plan.
+- El sistema retiene de la cuenta del cliente el monto que definas como "monto autorizado" y después se lo reembolsa.
+- Si la cuenta no tiene fondos suficientes, el cliente no puede avanzar al siguiente paso.
+- Cuando la autorización se aprueba, el monto retenido se devuelve al cliente.
+- Si el plan tiene **días de prueba**, estos empiezan a contar en cuanto se autoriza la tarjeta.
+- El reembolso puede tardar **hasta 5 días hábiles** en reflejarse en la cuenta del cliente.
+- **Solo** funciona con **suscripciones y planes de pago**. No aplica a pagos únicos.
+
+<Note>
+La autorización se configura por plan. Si tu formulario de pedido tiene varios planes (por ejemplo, mensual y anual), repite el proceso en cada uno.
+</Note>
+
+## Activar la autorización de tarjeta
+
+<Steps>
+  <Step title="Abre la página con el formulario de pedido">
+    Entra en **Sitios**, abre tu sitio web o embudo y localiza la página o paso donde está el formulario de pedido. Haz clic en el menú de **tres puntos** de esa página.
+  </Step>
+  <Step title="Entra en Productos">
+    Haz clic en **Productos**. Si la página todavía no tiene productos, agrégalos antes de continuar.
+  </Step>
+  <Step title="Edita el plan">
+    Haz clic en el ícono de **Editar** del primer plan para abrir su configuración.
+  </Step>
+  <Step title="Abre las opciones adicionales">
+    Desplázate hasta abajo y haz clic en **Opciones adicionales**.
+  </Step>
+  <Step title="Define el monto de autorización">
+    Activa **Autorización personalizada** (Custom Authorization) y escribe el monto que se retendrá.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Después repite los pasos con cada plan adicional del formulario.
+  </Step>
+</Steps>
+
+### Reglas del monto
+
+| Regla | Detalle |
+| --- | --- |
+| Valor mínimo | Igual o mayor que 1 |
+| Decimales | Máximo dos |
+| Negativos | No se permiten |
+
+<Warning>
+El monto que escribas se retiene de la cuenta del cliente. Si no tiene fondos disponibles, no podrá completar la compra. Usa un monto bajo (por ejemplo, 1 unidad de tu moneda) para no generar fricción.
+</Warning>
+
+## Si usas el creador de páginas anterior
+
+En la versión anterior del creador, el proceso es casi igual, con dos diferencias:
+
+1. Tras editar el plan, haz clic en **Autorizar tarjeta** (Authorize Card) y escribe el monto.
+2. Elige la **moneda** en el campo correspondiente y haz clic en **Actualizar**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El cliente pierde el dinero autorizado?">
+    No. El monto se retiene temporalmente y se devuelve. El reembolso puede tardar hasta 5 días hábiles en verse en su cuenta, según el banco.
+  </Accordion>
+  <Accordion title="¿Puedo autorizar tarjetas en productos de pago único?">
+    No. La autorización solo funciona con suscripciones y planes de pago.
+  </Accordion>
+  <Accordion title="¿Cuándo empiezan los días de prueba?">
+    En cuanto la tarjeta queda autorizada.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Vista general de los sitios web" icon="globe" href="/sitios/vista-general-de-sitios-web">
+    Configuración, productos y pagos de tu sitio.
+  </Card>
+  <Card title="Crear un embudo de ventas" icon="filter" href="/embudos-sitios-web/como-crear-un-embudo-de-ventas-utilizando-plantillas-formularios-y-un-dominio-personalizado">
+    Plantillas, formularios y dominio propio.
+  </Card>
+</CardGroup>

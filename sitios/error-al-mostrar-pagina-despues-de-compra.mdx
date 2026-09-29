@@ -1,0 +1,66 @@
+---
+title: "Error al mostrar la página después de una compra"
+description: "Soluciona el error que aparece tras un pago cuando el formulario de pedido no tiene una página siguiente a la cual enviar al cliente."
+icon: "triangle-exclamation"
+---
+
+Si tus clientes completan una compra y luego ven un mensaje como el siguiente, el pago sí se procesó, pero Chateea no encontró a qué página enviarlos después:
+
+```text
+Order successfully placed!
+However, Something went wrong while displaying this webpage, please contact the seller.
+```
+
+## Por qué ocurre
+
+Por defecto, el formulario de pedido envía al cliente al **siguiente paso** del embudo o a la siguiente página del sitio web después del pago. Si la página donde está el formulario es la última y no hay un paso siguiente, el sistema no tiene nada que mostrar y aparece el error.
+
+El pedido queda registrado correctamente. Lo único que falla es la página que el cliente ve tras pagar.
+
+## Cómo solucionarlo
+
+Tienes dos opciones. Elige la que mejor encaje con tu proceso de venta.
+
+### Opción 1: Agrega una página siguiente
+
+Crea un paso nuevo después de la página de pago, por ejemplo una página de agradecimiento o de confirmación del pedido.
+
+<Steps>
+  <Step title="Abre tu embudo o sitio web">
+    Ve a **Sitios → Embudos** (o **Sitios web**) y abre el que tiene el formulario de pedido.
+  </Step>
+  <Step title="Agrega un paso después de la página de pago">
+    Haz clic en **Agregar nuevo paso** y crea una página de agradecimiento. Asegúrate de que quede ubicada justo después del paso con el formulario de pedido.
+  </Step>
+  <Step title="Diseña y publica la página">
+    Incluye un mensaje de confirmación, los siguientes pasos para el cliente y tus datos de contacto. Guarda y publica.
+  </Step>
+</Steps>
+
+### Opción 2: Cambia la acción del formulario de pedido
+
+Si no quieres un paso adicional, cambia a dónde se envía al cliente después de pagar.
+
+1. Abre la página con el formulario de pedido en el editor.
+2. Selecciona el elemento **formulario de pedido** y revisa su configuración.
+3. En la acción posterior al envío, elige otra opción, como redirigir a una URL específica (por ejemplo, una página de agradecimiento de tu sitio).
+4. Guarda y publica los cambios.
+
+<Tip>
+Una página de agradecimiento es una buena oportunidad para confirmar el pedido, explicar cuándo recibirá el producto o el acceso, y ofrecer un producto complementario.
+</Tip>
+
+## Comprueba la solución
+
+Haz una compra de prueba y verifica que, después de pagar, el cliente llegue a la página que configuraste.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar productos a embudos y sitios" icon="box" href="/sitios/agregar-productos-a-embudos-y-sitios">
+    Configura los productos de tu formulario de pedido.
+  </Card>
+  <Card title="Embudos, páginas y sitios web" icon="globe" href="/embudos/introduccion">
+    Conoce cómo se organizan los pasos de un embudo.
+  </Card>
+</CardGroup>

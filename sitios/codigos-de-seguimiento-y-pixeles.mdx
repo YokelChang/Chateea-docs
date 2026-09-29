@@ -1,0 +1,103 @@
+---
+title: "Códigos de seguimiento y píxeles"
+description: "Instala scripts de seguimiento y píxeles en todo un embudo o sitio web, o solo en una página concreta."
+icon: "chart-line"
+---
+
+Los códigos de seguimiento (scripts) y píxeles te permiten medir lo que pasa en tus embudos y sitios web: visitas, registros, compras o cualquier evento que quieras enviar a herramientas como Google Analytics, Google Tag Manager o el píxel de Meta. En Chateea puedes instalarlos en todas las páginas a la vez o solo en una página concreta.
+
+## ¿Dónde instalar cada código?
+
+| Alcance | Cuándo usarlo | Dónde se configura |
+| --- | --- | --- |
+| **Todo el embudo o sitio** | Scripts que deben cargarse en todas las páginas, como el código base de Google Analytics o del píxel de Meta | En la pestaña **Configuración** del embudo o sitio web, campos **Código de seguimiento del head** y **Código de seguimiento del body** |
+| **Una sola página** | Eventos que solo deben dispararse en un paso concreto, como una conversión en la página de agradecimiento | Dentro del editor de la página, en el ícono de **Código de seguimiento** (encabezado o pie) |
+
+<Tip>
+Un buen esquema: el código base del píxel o de Analytics a nivel de embudo o sitio, y los eventos de conversión (por ejemplo, `Purchase` o `Lead`) solo en la página donde ocurren.
+</Tip>
+
+## Instalar un código en todo el embudo o sitio
+
+<Steps>
+<Step title="Abre el embudo o sitio">
+Ve a **Sitios**, elige **Embudos** o **Sitios web** y abre el que quieres configurar.
+</Step>
+<Step title="Entra en Configuración">
+Haz clic en la pestaña **Configuración** del embudo o sitio.
+</Step>
+<Step title="Pega el código">
+Pega el script en **Código de seguimiento del head** o en **Código de seguimiento del body**, según lo que indique el proveedor de la herramienta.
+</Step>
+<Step title="Guarda y verifica">
+Guarda los cambios y comprueba que el script funciona en las páginas publicadas.
+</Step>
+</Steps>
+
+## Instalar un código en una página concreta
+
+<Steps>
+<Step title="Abre la página en el editor">
+Abre el embudo o sitio, selecciona el paso o la página y haz clic en **Editar**.
+</Step>
+<Step title="Abre el código de seguimiento">
+En la barra superior del editor, haz clic en el ícono de **Código de seguimiento** (el ícono de código).
+</Step>
+<Step title="Pega el código">
+Pega el script en el encabezado (header) o en el pie (footer) de la página, según indique el proveedor.
+</Step>
+<Step title="Guarda y publica">
+Guarda la página y publícala para que el código quede activo.
+</Step>
+</Steps>
+
+## Cómo comprobar que funciona
+
+- Usa la herramienta de prueba de cada proveedor, como Meta Pixel Helper o la vista de depuración de Google Tag Manager.
+- Revisa la actividad de red en las herramientas de desarrollo de tu navegador si necesitas más detalle.
+- No te fíes solo de **Ver código fuente**: los códigos del head y del body pueden insertarse de forma dinámica en el navegador y no aparecer en el código estático.
+
+## Píxel de Meta y usuarios de California (CCPA)
+
+Por la Ley de Privacidad del Consumidor de California (CCPA), si haces seguimiento de visitantes de California con el píxel de Meta, puede que necesites activar la opción de uso limitado de datos (Limited Data Use). Se hace agregando una línea antes de la inicialización del píxel, por ejemplo:
+
+```html
+<script>
+  fbq('dataProcessingOptions', ['LDU'], 0, 0);
+  fbq('init', 'TU_PIXEL_ID');
+  fbq('track', 'PageView');
+</script>
+```
+
+Los valores exactos dependen de cómo quieras aplicar la opción. Consulta la [documentación de Meta sobre opciones de procesamiento de datos](https://developers.facebook.com/docs/marketing-apis/data-processing-options/) antes de configurarlo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Head o body?">
+Sigue siempre la indicación del proveedor. La mayoría de los códigos base (Analytics, píxel de Meta) van en el head. Algunos complementos, como el fragmento `noscript` de Google Tag Manager, van en el body.
+</Accordion>
+<Accordion title="¿Se duplica el evento si pongo el mismo código en el embudo y en la página?">
+Sí. Si el mismo script está a nivel de embudo y también en una página, se cargará dos veces en esa página. Instala cada código en un solo lugar.
+</Accordion>
+<Accordion title="He guardado el código pero no veo datos">
+Asegúrate de haber publicado la página, prueba en una ventana de incógnito sin bloqueadores de anuncios y revisa con la herramienta de prueba del proveedor.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Pixel ID para el seguimiento de eventos" icon="chart-line" href="/embudos-sitios-web/comprender-el-pixel-id-para-el-seguimiento-de-eventos-en-tu-embudo-sitio-web">
+Cómo funciona el Pixel ID en tus embudos y sitios.
+</Card>
+<Card title="Token de la API de conversiones de Meta" icon="bolt" href="/embudos-sitios-web/configurar-el-token-de-acceso-a-la-api-de-meta-conversions">
+Envía eventos del servidor a Meta.
+</Card>
+<Card title="Metadatos SEO y etiquetas meta" icon="magnifying-glass" href="/sitios/metadatos-seo-y-etiquetas-meta">
+Controla cómo aparecen tus páginas en buscadores.
+</Card>
+<Card title="Banner de consentimiento de cookies" icon="shield-check" href="/embudos-sitios-web/como-utilizar-el-banner-de-consentimiento-de-cookies-en-embudos-de-venta-y-sitios-web">
+Cumple con la normativa de privacidad.
+</Card>
+</CardGroup>

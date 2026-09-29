@@ -1,0 +1,183 @@
+---
+title: "Sincronizar el temporizador en correos y embudos"
+description: "Usa el mismo temporizador en tu correo y en la página de destino para mostrar un plazo coherente de principio a fin."
+icon: "arrows-rotate"
+---
+
+Cuando un correo promociona una oferta con fecha límite, el temporizador del correo y el de la página de destino deberían mostrar el mismo plazo. Sincronizarlos consiste en usar **el mismo temporizador guardado** en tu campaña de correo y en el embudo o sitio web al que llega el contacto. Así la experiencia es coherente desde la bandeja de entrada hasta la página de la oferta, y el contacto sabe exactamente cuánto tiempo le queda.
+
+## Cómo funciona la sincronización
+
+1. El contacto recibe un correo con un temporizador para una oferta limitada.
+2. Hace clic en la llamada a la acción del correo.
+3. La página de destino muestra el mismo temporizador.
+4. Cuando el tiempo se agota, se aplica el comportamiento de vencido que configuraste.
+
+<Note>
+No crees dos temporizadores distintos con los mismos ajustes copiados a mano. Usa el mismo temporizador guardado en ambos lugares: cualquier cambio que hagas se reflejará en todos los sitios donde esté insertado.
+</Note>
+
+## Cuándo conviene sincronizar
+
+Siempre que un correo dirija a una página con plazo, por ejemplo:
+
+- Ventas y promociones por tiempo limitado
+- Lanzamientos de producto
+- Inscripciones a eventos o webinars
+- Ofertas de compra anticipada
+- Promociones permanentes (evergreen)
+- Ofertas para captar clientes potenciales
+
+## Antes de empezar
+
+1. Crea las páginas del embudo o sitio web a las que llegarán los contactos.
+2. Decide a dónde deben ir mientras el temporizador está activo y qué debe pasar cuando venza.
+3. Crea el temporizador en **Marketing → Temporizadores de cuenta regresiva**, eligiendo el tipo que encaje con tu campaña.
+4. Configura el tiempo, la zona horaria, los enlaces y el diseño, y guárdalo antes de insertarlo.
+
+## Qué tipo de temporizador elegir
+
+| Tipo | Cuándo usarlo |
+| --- | --- |
+| **Fijo** | Todos comparten la misma fecha límite: cierre de una venta, fin de inscripciones, lanzamiento, promoción de temporada |
+| **Recurrente** | La cuenta se reinicia según un calendario o intervalo repetido |
+| **Dinámico** | Cada contacto tiene su propia ventana de tiempo, según cuándo se le envió o abrió el correo; ideal para campañas permanentes |
+
+## Cómo sincronizar el temporizador entre un correo y un embudo
+
+### Prepara el temporizador
+
+<Steps>
+<Step title="Crea el temporizador">
+Ve a **Marketing → Temporizadores de cuenta regresiva**, haz clic en **Nuevo**, elige una plantilla y selecciona el tipo (fijo, recurrente o dinámico). Configura los tiempos que correspondan.
+</Step>
+<Step title="Configura los enlaces activo y vencido">
+- **Enlace activo:** la página donde el contacto puede aprovechar la oferta mientras corre el tiempo. Por ejemplo, correo → página de oferta.
+- **Enlace vencido:** la página a la que llega cuando la oferta terminó. Por ejemplo, oferta vencida → página de "oferta finalizada".
+</Step>
+<Step title="Personaliza y guarda">
+Ajusta colores, fuente, tamaño, fondo, unidades de tiempo visibles e imagen de vencido. Ponle un nombre descriptivo para encontrarlo fácilmente y haz clic en **Guardar**.
+</Step>
+</Steps>
+
+### Añádelo al correo
+
+<Steps>
+<Step title="Abre el editor de correos">
+Ve a **Marketing → Correos → Plantillas**, crea o edita una plantilla y ábrela en el **Editor de diseño**.
+</Step>
+<Step title="Inserta el temporizador">
+Agrega el elemento **Temporizador de cuenta regresiva** y selecciona el temporizador que creaste. Colócalo en el lugar adecuado y ajusta alineación, fondo y relleno.
+</Step>
+<Step title="Configura la llamada a la acción">
+Añade un botón u otra llamada a la acción y usa como destino el enlace activo del temporizador. Así el contacto entra en la misma experiencia con plazo.
+</Step>
+</Steps>
+
+### Añádelo al embudo
+
+<Steps>
+<Step title="Abre el editor de embudos">
+Ve a **Sitios → Embudos**, elige el embudo, abre el paso correspondiente y haz clic en **Editar página**.
+</Step>
+<Step title="Inserta el mismo temporizador">
+Haz clic en el ícono **+**, selecciona el elemento **Temporizadores de cuenta regresiva** y elige el temporizador de la campaña. No crees otro solo para la página.
+</Step>
+<Step title="Revisa la experiencia">
+Comprueba que el temporizador correcto esté seleccionado, que la oferta coincida con la del correo, que los enlaces activo y vencido sean los correctos, que el temporizador se vea bien y que la página esté publicada.
+</Step>
+</Steps>
+
+Si necesitas una implementación personalizada, también puedes insertar el temporizador con su código. Consulta [Copiar el código del temporizador](/marketing/copiar-codigo-del-temporizador).
+
+## Sincronizar un temporizador dinámico
+
+Con un temporizador dinámico, cada contacto recibe su propia cuenta según su interacción. Por ejemplo, con el disparador **Correo abierto** y una duración de dos horas:
+
+- El contacto A abre el correo a las 14:00 y recibe su propia ventana de dos horas.
+- El contacto B lo abre más tarde y su cuenta empieza en ese momento.
+
+Si usas ese mismo temporizador en la página de destino, el contacto sigue viendo su cuenta personal al llegar. Es muy útil para promociones permanentes, descuentos personalizados, campañas de seguimiento, ofertas para convertir prospectos y ventanas de inscripción individuales.
+
+## Adaptación a la zona horaria
+
+Si activas **Adaptar a la zona horaria del contacto** en el temporizador:
+
+- **En correos:** se usa la zona horaria del contacto. Si no la tiene, se usa la zona elegida al crear el temporizador.
+- **En embudos y sitios:** se usa la zona horaria detectada por la IP del visitante. Si no se puede detectar, se usa la zona configurada en el temporizador.
+
+<Warning>
+Piensa en tu campaña antes de activar esta opción. Si la oferta debe terminar en el mismo instante para todo el mundo, no la actives. Si debe terminar a una hora local concreta en cada país, actívala.
+</Warning>
+
+Más información en [Zona horaria en los temporizadores](/marketing/zona-horaria-en-temporizadores).
+
+## Diferencias de visualización en el correo
+
+En los correos, el temporizador es una imagen animada que se genera al abrir el mensaje, y su comportamiento depende del cliente de correo:
+
+- Algunos clientes guardan la imagen en caché.
+- Otros limitan cuánto se refresca el contenido animado.
+- Apple Mail puede mostrar una imagen en caché en lugar de actualizarla.
+
+Por eso el temporizador del correo puede verse distinto al de la página en vivo sin que la configuración esté mal. Prueba siempre el correo y la página de destino antes de enviar la campaña.
+
+## Solución de problemas
+
+<AccordionGroup>
+<Accordion title="El correo y el embudo muestran horas distintas">
+Confirma que usas el mismo temporizador guardado, revisa el tipo, la zona horaria configurada y si está activa la adaptación a la zona del contacto. Al probar el correo, verifica la zona horaria del contacto de prueba y ten en cuenta la caché del cliente de correo.
+</Accordion>
+<Accordion title="El temporizador del correo deja de actualizarse">
+Es normal: al ser una imagen animada, algunos clientes la guardan en caché o limitan su animación. Volver a abrir el correo puede refrescarla, según el cliente. Prueba en varios clientes antes de un envío grande.
+</Accordion>
+<Accordion title="El embudo muestra otra zona horaria">
+Con la adaptación activa, los embudos usan la zona detectada por IP y los correos la del contacto. Si alguna no se puede determinar, se usa la zona configurada en el temporizador.
+</Accordion>
+<Accordion title="El temporizador no aparece en el editor del embudo">
+Comprueba que el temporizador esté guardado, que estés usando el elemento **Temporizadores de cuenta regresiva** y que estés trabajando en la cuenta correcta.
+</Accordion>
+<Accordion title="El temporizador ya venció pero el correo sigue mostrando tiempo">
+Probablemente el cliente de correo guardó la imagen en caché. Revisa la página de destino en vivo y la configuración del temporizador antes de suponer que falló.
+</Accordion>
+<Accordion title="La llamada a la acción abre la página equivocada">
+Revisa los enlaces activo y vencido del temporizador, confirma que el botón del correo usa el destino correcto y que la página de destino esté publicada.
+</Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Necesito un temporizador distinto para el correo y para el embudo?">
+Por lo general, no. Reutiliza el mismo temporizador guardado en ambos lugares.
+</Accordion>
+<Accordion title="¿Puedo usar el mismo temporizador en varios embudos o sitios?">
+Sí, los temporizadores guardados se pueden reutilizar en todos tus embudos y sitios web.
+</Accordion>
+<Accordion title="Si edito un temporizador, ¿tengo que reemplazarlo en todas partes?">
+No. Los cambios se reflejan en todos los lugares donde se usa. Aun así, prueba los correos y páginas afectados después de cambios importantes en un temporizador en uso.
+</Accordion>
+<Accordion title="¿Qué pasa cuando termina la cuenta regresiva?">
+Depende de la configuración y de dónde se vea. Configura el enlace vencido y la imagen de vencido antes de usar el temporizador en una campaña.
+</Accordion>
+<Accordion title="¿Puedo usar un temporizador fuera de Chateea?">
+Sí, con la opción **Copiar código** para implementaciones personalizadas o de terceros.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Temporizador en correos" icon="envelope" href="/marketing/temporizador-en-correos">
+Añade urgencia a tus campañas de correo.
+</Card>
+<Card title="Temporizador en embudos y sitios" icon="globe" href="/marketing/temporizador-en-embudos-y-sitios">
+Muestra la cuenta regresiva en tus páginas.
+</Card>
+<Card title="Zona horaria en los temporizadores" icon="clock" href="/marketing/zona-horaria-en-temporizadores">
+Plazos en la hora local de cada persona.
+</Card>
+<Card title="Introducción a los temporizadores" icon="hourglass-half" href="/marketing/introduccion-temporizador-de-cuenta-regresiva">
+Tipos, usos y buenas prácticas.
+</Card>
+</CardGroup>

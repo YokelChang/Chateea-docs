@@ -1,0 +1,89 @@
+---
+title: "Proteger tus formularios contra el spam"
+description: "Evita envíos falsos con CAPTCHA, validación de correo y teléfono y permisos de SMS por país."
+icon: "shield-check"
+---
+
+Los formularios de Chateea ya incluyen protecciones integradas contra envíos falsos: analizan señales como la dirección IP, la ubicación geográfica y otros parámetros avanzados, y cuentan con protección contra ataques DDoS. Aun así, conviene reforzar la seguridad con algunas buenas prácticas, sobre todo si tus formularios disparan mensajes automáticos.
+
+## Por qué importa
+
+Un formulario sin protección puede recibir cientos de envíos falsos en poco tiempo. Eso provoca:
+
+- **Contactos basura** que ensucian tu CRM y tus informes.
+- **Automatizaciones disparadas sin sentido** que envían SMS, WhatsApp o correos a números y direcciones falsas.
+- **Consumo innecesario** de la billetera de tu cuenta por esos mensajes.
+
+## 1. Agrega un CAPTCHA
+
+El CAPTCHA es una de las formas más efectivas de frenar a los bots que envían formularios en masa.
+
+<Steps>
+  <Step title="Abre el formulario">
+    Ve a **Sitios → Formularios** y abre el formulario en el editor.
+  </Step>
+  <Step title="Agrega el campo CAPTCHA">
+    En el panel de elementos, busca en los campos personalizados el campo **Captcha** y arrástralo al formulario, normalmente justo antes del botón de envío.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda el formulario y haz un envío de prueba desde la vista previa.
+  </Step>
+</Steps>
+
+<Tip>
+  El CAPTCHA es casi obligatorio si el formulario inicia un flujo que envía SMS, WhatsApp o correos. Sin él, cada envío falso se convierte en un mensaje que pagas.
+</Tip>
+
+## 2. Valida el correo y el teléfono
+
+Activa la **validación de correo** y la **validación de teléfono** en los campos correspondientes. Así:
+
+- Bloqueas correos temporales, inválidos o inventados.
+- Evitas que datos fraudulentos contaminen tus métricas de marketing y ventas.
+- Reduces el gasto en envíos que nunca llegarán a una persona real.
+
+## 3. Limita los SMS por país
+
+Si tu formulario dispara SMS, revisa los **permisos geográficos** del sistema telefónico de Chateea para que no se envíen mensajes a regiones de alto riesgo de fraude.
+
+Los permisos se gestionan por cuenta. De forma predeterminada, la mayoría de los países están habilitados, excepto algunos de alto riesgo que se mantienen desactivados:
+
+| País | Prefijo |
+| --- | --- |
+| Somalia | +252 |
+| Corea del Norte | +850 |
+| Cuba | +53 |
+| Siria | +963 |
+| Irán | +98 |
+| Sudán | +249 |
+| Liberia | +231 |
+| Zimbabue | +263 |
+| Afganistán | +93 |
+| Yemen | +967 |
+
+Para cambiar los países habilitados para SMS o llamadas, escribe a soporte de Chateea en **help@chateea.com** con el nombre de tu cuenta y la lista de países que quieres activar o desactivar.
+
+<Warning>
+  La práctica más segura es habilitar SMS **solo** en los países donde realmente tienes clientes. Ten mucho cuidado antes de activar regiones de alto riesgo.
+</Warning>
+
+## Resumen
+
+| Medida | Qué evita |
+| --- | --- |
+| **CAPTCHA** | Envíos automáticos masivos de bots |
+| **Validación de correo y teléfono** | Datos inventados, temporales o inválidos |
+| **Permisos geográficos de SMS** | Mensajes a regiones de alto riesgo y gastos por fraude |
+
+Combinadas con las protecciones integradas, estas medidas aseguran que solo los envíos reales lleguen a tu CRM y a tus automatizaciones.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un formulario de contacto" icon="address-card" href="/sitios/crear-formulario-de-contacto">
+    Configura tu formulario paso a paso.
+  </Card>
+  <Card title="Envíos de formularios y encuestas" icon="inbox" href="/sitios/envios-de-formularios-y-encuestas">
+    Revisa y elimina envíos sospechosos.
+  </Card>
+</CardGroup>

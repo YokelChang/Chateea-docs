@@ -1,94 +1,112 @@
 ---
-title: "Guía de soporte para rutas URL anidadas"
-description: "Cómo crear URL jerárquicas en embudos, sitios web y seminarios web, con la lista de rutas del sistema reservadas y las mejores prácticas de estructura."
-icon: "link"
+title: "Rutas URL anidadas en embudos y sitios web"
+description: "Crea direcciones jerárquicas con barras en embudos, sitios web, tiendas y seminarios web, con sus límites y reglas."
+icon: "sitemap"
 ---
 
-<Info>
-  Documentado el 15 de agosto de 2026.
-</Info>
+Las rutas URL anidadas te permiten organizar tus páginas con direcciones jerárquicas, usando barras (/) como si fueran carpetas. En lugar de `/oferta-black-friday`, puedes tener `/campanas/navidad/oferta-black-friday`. Funcionan en embudos, sitios web, tiendas en línea y seminarios web, y ayudan tanto a tus visitantes como a los buscadores a entender la estructura de tu sitio.
 
-## Tabla de contenido
+<Note>
+Esta función está en fase beta y puede recibir mejoras.
+</Note>
 
-- Descripción general
-- Cómo usar rutas URL anidadas
-- Validación de ruta y restricciones
-- Mejores prácticas
-- Conclusión
-
-## Descripción general
-
-La función **Rutas de URL Anidadas** te permite crear URL jerárquicas para tus embudos de conversión, sitios web y seminarios web utilizando barras diagonales ( `/` ) para representar la estructura del sitio. En lugar de que las barras diagonales se conviertan en guiones, ahora puedes definir rutas anidadas significativas que reflejen la organización de tu contenido y mejoren el SEO.
-
-### Ejemplos de rutas anidadas
+## Ejemplos de rutas anidadas
 
 ```text
 /recursos/cursos/embudo-de-ventas
-/webinars/2025/sesión-de-verano
-/campañas/vacaciones/oferta-black-friday
-/funnels/product-launch/step-1
+/seminarios/2026/sesion-de-verano
+/campanas/navidad/oferta-black-friday
+/lanzamiento/producto-nuevo/paso-1
 ```
 
-## Cómo usar rutas URL anidadas
+## Ventajas
+
+- **Mejor SEO**: una estructura clara y jerárquica ayuda a los buscadores a indexar y entender tu contenido.
+- **Mejor experiencia**: el visitante ve direcciones ordenadas y fáciles de leer en la barra del navegador.
+- **Edición flexible**: puedes crear páginas y pasos con varios segmentos, ideal para catálogos, secciones de contenido o embudos de varios pasos.
+- **Mapas del sitio correctos**: tu sitemap refleja las rutas anidadas, lo que facilita la indexación en Google.
+- **Consistencia**: funciona igual en embudos, sitios web, tiendas y seminarios web.
+
+## Cómo crear una ruta anidada
 
 <Steps>
-  <Step title="Abre la página o el paso">
-    Ve a cualquier página o paso de un embudo de ventas, sitio web, comercio electrónico o seminario web.
+  <Step title="Abre la página o paso">
+    Ve a **Sitios** y abre el embudo, sitio web, tienda o seminario web. Elige la página o paso.
   </Step>
-  <Step title="Haz clic en Editar">
+  <Step title="Edita la ruta">
+    Haz clic en **Editar** en los detalles de la página o paso.
   </Step>
-  <Step title="Introduce la ruta anidada">
-    Introduzca la ruta URL anidada que desee, utilizando `/` para crear estructuras jerárquicas.
+  <Step title="Escribe la ruta con barras">
+    En el campo de ruta, escribe la estructura que quieras usando `/` entre cada nivel, por ejemplo `/blog/marketing/consejos-seo`. Guarda los cambios.
   </Step>
 </Steps>
 
-<Note>
-  📸 _Espacio para captura: ventana "New Step in Funnel" con el campo Path y la etiqueta "Nested paths are now supported in URLs"._
-</Note>
+<Info>
+Antes, al escribir una barra en la ruta, se convertía automáticamente en guion para crear una ruta plana. Ahora las barras se conservan para que puedas crear una jerarquía real.
+</Info>
 
-## Validación de ruta y restricciones
+## Límites y restricciones
 
-### Senderos reservados
+### Profundidad máxima
 
-Ciertas rutas están reservadas para el funcionamiento del sistema y no se pueden utilizar. Intentar utilizarlas generará un mensaje de error.
+Puedes usar hasta **5 niveles**, por ejemplo `/nivel1/nivel2/nivel3/nivel4/nivel5`. Cada segmento entre barras cuenta como un nivel; el dominio y el subdominio no cuentan. Si intentas guardar una ruta más profunda, el editor bloquea el guardado y muestra el mensaje "URL path is too deep. Maximum 5 levels allowed."
 
-### Rutas del sistema
+### Rutas reservadas
+
+Estas rutas están reservadas para funciones del sistema y no puedes usarlas. Si lo intentas, verás un mensaje de error.
 
 | Ruta | Reservada para |
-| :-- | :-- |
-| `/b/` | La funcionalidad de blogs |
+| --- | --- |
+| `/b/` | Blogs |
 | `/c/` | Categorías |
-| `/producto/` | Páginas de productos |
-| `/colecciones/` | Las páginas de colecciones |
-| `/post/` | Entradas de blog |
-| `/categoría/` | Páginas de categorías |
-| `/autor/` | Las páginas de autor |
+| `/product/` | Páginas de producto |
+| `/collections/` | Colecciones |
+| `/post/` | Entradas del blog |
+| `/category/` | Páginas de categoría |
+| `/author/` | Páginas de autor |
 | `/tag/` | Páginas de etiquetas |
-| `/store/account` | La funcionalidad de la cuenta de la tienda |
+| `/store/account` | Cuenta de la tienda |
+
+## Buenas prácticas
+
+- **Sin barra final**: usa `/ruta/subruta`, no `/ruta/subruta/`.
+- **Sin barras dobles ni segmentos vacíos**: usa `/categoria/articulo`, no `/categoria//articulo`.
+- **Minúsculas, números y guiones**: evita mayúsculas y espacios.
+- **Rutas descriptivas**: `/blog/consejos-seo` es mejor que `/b/123`.
+- **Orden lógico**: haz que la estructura refleje la navegación de tu sitio.
+- **Palabras clave**: rutas bien anidadas y con palabras relevantes ayudan al posicionamiento.
 
 <Warning>
-  Si introduces una ruta reservada, el editor mostrará el mensaje **"This URL contains a reserved path that cannot be used"** y no te dejará guardar.
+Si cambias la ruta de una página que ya está publicada, los enlaces antiguos dejarán de funcionar. Configura una redirección 301 desde la dirección anterior a la nueva para conservar el posicionamiento y evitar errores 404.
 </Warning>
 
-<Note>
-  📸 _Espacio para captura: ventana "Edit page details" con el campo Path en rojo y el mensaje de ruta reservada._
-</Note>
+## Preguntas frecuentes
 
-## Mejores prácticas
+<AccordionGroup>
+  <Accordion title="Antes mis barras se convertían en guiones, ¿por qué ya no pasa?">
+    Con las rutas anidadas, las barras se conservan para que puedas crear una estructura de carpetas real.
+  </Accordion>
+  <Accordion title="¿Cambiar una URL publicada rompe los enlaces existentes?">
+    Sí. Crea una redirección 301 desde la dirección antigua para no perder posicionamiento ni tráfico.
+  </Accordion>
+  <Accordion title="¿Puedo usar mayúsculas o espacios?">
+    No es recomendable. Usa minúsculas, números y guiones para tener rutas limpias y fáciles de rastrear.
+  </Accordion>
+  <Accordion title="¿Puedo usar guiones o números dentro de cada segmento?">
+    Sí. Rutas como `/blog/2026/novedades-de-julio` o `/curso/leccion-1` son válidas.
+  </Accordion>
+  <Accordion title="¿Puedo combinar rutas anidadas y planas en el mismo sitio?">
+    Sí. Puedes tener `/nosotros` en un solo nivel y `/blog/tema/articulo` anidada dentro del mismo sitio o embudo.
+  </Accordion>
+</AccordionGroup>
 
-| Práctica | Detalle |
-| :-- | :-- |
-| **Evite las barras diagonales finales** | Utilice rutas limpias y canónicas sin una barra diagonal final (por ejemplo, `/ruta/subruta` en lugar de `/ruta/subruta/`). |
-| **Elimine las barras dobles** | Asegúrese de que no haya barras duplicadas en sus rutas (por ejemplo, `/ruta/subruta`, no `/ruta//subruta`). |
-| **No deje segmentos vacíos** | Evite dejar segmentos en blanco entre las barras (por ejemplo, use `/categoría/elemento`, no `/categoría//elemento`). |
-| **Utilice rutas descriptivas y significativas** | Comunique claramente el contenido y su jerarquía con URL legibles e intuitivas (por ejemplo, `/blog/seo-tips` en lugar de `/b/123`). |
-| **Organízate de forma lógica** | Estructura las rutas de forma que tengan sentido para los visitantes y reflejen la navegación o la jerarquía de contenido de tu sitio web. |
-| **Optimización para SEO** | Las rutas bien estructuradas y ricas en palabras clave pueden mejorar el posicionamiento en los motores de búsqueda al indicar relaciones de contenido claras. |
+## Artículos relacionados
 
-## Conclusión
-
-Las rutas URL anidadas ofrecen una gran flexibilidad para organizar el contenido y mejorar el SEO del sitio. Siguiendo estas directrices y evitando las rutas reservadas, se puede crear un sitio web jerárquico y bien estructurado, fácil de usar y optimizado para los motores de búsqueda.
-
-<Tip>
-  **Pruebe siempre a fondo sus rutas anidadas y asegúrese de que se ajusten a la arquitectura general de su sitio web y a sus objetivos de marketing.**
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Parámetros de URL" icon="link" href="/sitios/parametros-de-url">
+    Personaliza el contenido con datos del enlace.
+  </Card>
+  <Card title="Indexación de URL en embudos" icon="magnifying-glass" href="/sitios/indexacion-de-urls-en-embudos">
+    Resuelve problemas de indexación en buscadores.
+  </Card>
+</CardGroup>

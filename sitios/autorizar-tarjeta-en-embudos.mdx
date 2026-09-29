@@ -1,0 +1,92 @@
+---
+title: "Autorizar la tarjeta antes del cobro en embudos"
+description: "Valida la tarjeta del cliente con un monto temporal antes de activar suscripciones o planes de pago en tus embudos."
+icon: "credit-card"
+---
+
+La autorización de tarjeta te permite comprobar que la tarjeta de un cliente es válida y tiene fondos antes de activar una suscripción o un plan de pagos desde tu embudo. Chateea retiene un monto pequeño que tú defines y luego lo devuelve. Así reduces los cobros fallidos y los registros con tarjetas inválidas, sobre todo cuando ofreces días de prueba gratis.
+
+## Cómo funciona la autorización
+
+- Viene **desactivada** por defecto. Debes activarla en cada precio donde la necesites.
+- Al pagar, se retiene de la cuenta bancaria del cliente el monto que configures como autorización.
+- Si la tarjeta no tiene fondos suficientes para ese monto, el cliente no puede avanzar al siguiente paso del embudo.
+- Cuando la autorización se aprueba, el monto retenido se devuelve al cliente. El reembolso puede tardar **hasta 5 días hábiles** en reflejarse en su banco.
+- Si el plan tiene **días de prueba**, la prueba empieza en cuanto la tarjeta queda autorizada.
+- Solo funciona con **suscripciones** y **planes de pago**. No aplica a productos de pago único.
+
+<Note>
+La autorización se configura por precio. Si tu formulario de pedido ofrece varios planes (por ejemplo, uno mensual y otro anual) y quieres autorizar la tarjeta en todos, repite el proceso en cada uno.
+</Note>
+
+## Antes de empezar
+
+- Tu embudo debe tener un paso con un **formulario de pedido**.
+- Ese paso debe tener al menos un producto con precio recurrente o plan de pagos. Si todavía no has agregado productos al paso, hazlo primero.
+
+## Activar la autorización en un embudo
+
+<Steps>
+  <Step title="Abre el paso con el formulario de pedido">
+    Ve a **Sitios → Embudos**, abre tu embudo y selecciona el paso donde está el formulario de pedido.
+  </Step>
+  <Step title="Entra a la pestaña Productos">
+    Haz clic en **Productos** para ver los productos y precios vinculados a ese paso.
+  </Step>
+  <Step title="Edita el precio">
+    Haz clic en el ícono de **editar** (lápiz) del precio donde quieres activar la autorización. Se abre la configuración del producto.
+  </Step>
+  <Step title="Abre las opciones adicionales">
+    Desplázate hasta el final y haz clic en **Opciones adicionales** (Additional Options).
+  </Step>
+  <Step title="Escribe el monto de autorización">
+    En el campo **Autorización personalizada** (Custom Authorization), escribe el monto que quieres retener. Por ejemplo, 1 en la moneda de tu cuenta.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Si tienes más precios en el mismo formulario, repite los pasos 3 a 6 en cada uno.
+  </Step>
+</Steps>
+
+### Reglas del monto
+
+| Regla | Detalle |
+| --- | --- |
+| Valor mínimo | Igual o mayor que 1 |
+| Decimales | Máximo dos |
+| Valores negativos | No se permiten |
+
+<Warning>
+El monto de autorización se descuenta temporalmente de la cuenta del cliente. Si eliges un valor alto, más clientes podrían quedar bloqueados por falta de fondos. Un monto simbólico, como 1, suele ser suficiente para validar la tarjeta.
+</Warning>
+
+## Si usas el creador de páginas anterior
+
+En las versiones antiguas del creador de embudos, la opción se encontraba en otro lugar: dentro de la edición del producto había un botón **Autorizar tarjeta** (Authorize Card), donde escribías el monto, elegías la **moneda** y hacías clic en **Actualizar**. Las reglas son las mismas: solo aplica a suscripciones y planes de pago, y debes repetirlo en cada plan.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El cliente ve un cargo en su estado de cuenta?">
+    Puede ver una retención temporal por el monto de autorización. Ese monto se libera automáticamente, aunque el banco puede tardar hasta 5 días hábiles en reflejarlo.
+  </Accordion>
+  <Accordion title="¿Puedo autorizar la tarjeta en un producto de pago único?">
+    No. La autorización solo funciona con suscripciones y planes de pago. En un pago único el cobro se hace de inmediato, por lo que la validación ocurre en ese momento.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los días de prueba?">
+    La prueba comienza en cuanto la tarjeta se autoriza. El primer cobro del plan se hará al terminar el periodo de prueba.
+  </Accordion>
+  <Accordion title="No veo productos en el paso de mi embudo">
+    Debes agregar primero los productos al paso del embudo desde la pestaña **Productos**. Después podrás editar cada precio y activar la autorización.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Autorizar tarjeta en sitios web" icon="credit-card" href="/sitios/autorizar-tarjeta-en-sitios-web">
+    Activa la misma validación en los formularios de pedido de tus sitios web.
+  </Card>
+  <Card title="Agregar productos a embudos y sitios" icon="box" href="/sitios/agregar-productos-a-embudos-y-sitios">
+    Vincula productos de pago único o recurrentes a tus páginas.
+  </Card>
+</CardGroup>

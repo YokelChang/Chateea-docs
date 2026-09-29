@@ -1,0 +1,67 @@
+---
+title: "Evento hydrationDone para código personalizado"
+description: "Ejecuta tu JavaScript personalizado en el momento correcto escuchando el evento hydrationDone en embudos y sitios web."
+icon: "code"
+---
+
+Si agregas JavaScript personalizado a tus embudos o sitios web, puede que tu código se ejecute antes de que la página termine de cargarse por completo y no encuentre los elementos que quiere modificar. Para evitarlo, las páginas de Chateea emiten el evento `hydrationDone` cuando terminan su proceso de carga (hidratación). Si escuchas ese evento, tu código se ejecuta en el momento correcto.
+
+## Qué es la hidratación
+
+Cuando una página se abre, primero se muestra el contenido y luego se "activa" la parte interactiva: botones, formularios, animaciones y demás componentes. A ese último paso se le llama hidratación.
+
+Si tu script se ejecuta antes de que termine, puede fallar o comportarse de forma inesperada, sobre todo si intenta leer o cambiar elementos de la página (el DOM). El evento `hydrationDone` se dispara justo cuando la hidratación termina, así eliminas ese problema de tiempos.
+
+## Cómo usarlo
+
+<Steps>
+  <Step title="Agrega un elemento de código">
+    En el editor de tu embudo o sitio web, arrastra un elemento de **Código** (HTML personalizado) a la página.
+  </Step>
+  <Step title="Escucha el evento">
+    Envuelve tu código dentro de un listener del evento `hydrationDone`, como en el ejemplo de abajo.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda, abre la vista previa o la página publicada y comprueba que tu código se ejecuta como esperas.
+  </Step>
+</Steps>
+
+Así debe verse tu código dentro del elemento:
+
+```html
+<script>
+  document.addEventListener("hydrationDone", () => {
+    // Escribe aquí tu JavaScript personalizado
+    // Por ejemplo, modificar un elemento de la página:
+    // document.querySelector("#mi-elemento").classList.add("activo");
+  });
+</script>
+```
+
+Una vez que el contenido de la página está cargado y se recibe el evento, tu código se ejecuta sin conflictos de tiempo.
+
+## La opción Optimizar JavaScript
+
+Si tu página tiene activada la opción **Optimizar JavaScript**, la hidratación puede retrasarse hasta que el visitante interactúe con la página (por ejemplo, al hacer scroll o tocar la pantalla). En ese caso, el evento `hydrationDone` también se retrasa.
+
+<Warning>
+Si tu código es crítico y debe ejecutarse apenas carga la página, desactiva **Optimizar JavaScript** en la configuración del embudo o sitio web. Ten en cuenta que esto puede afectar un poco la velocidad de carga.
+</Warning>
+
+## Buenas prácticas
+
+- Usa `hydrationDone` siempre que tu script lea o cambie elementos de la página.
+- Prueba tu código en la página publicada, no solo en el editor.
+- Revisa la consola del navegador si algo no funciona: los errores de JavaScript aparecen ahí.
+- Mantén tus scripts pequeños y documentados para que tu equipo pueda entenderlos.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Marketplace de widgets" icon="puzzle-piece" href="/sitios/marketplace-de-widgets">
+    Agrega funciones sin escribir código.
+  </Card>
+  <Card title="Parámetros de URL" icon="link" href="/sitios/parametros-de-url">
+    Usa parámetros en los enlaces de tus páginas.
+  </Card>
+</CardGroup>

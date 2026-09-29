@@ -1,0 +1,94 @@
+---
+title: "Conectar tu dominio automáticamente con Domain Connect"
+description: "Conecta tu dominio o subdominio a Chateea en pocos clics, sin crear registros DNS a mano, si tu proveedor es compatible."
+icon: "globe"
+---
+
+Domain Connect es la forma más rápida de conectar tu dominio a Chateea. En lugar de entrar al panel de tu proveedor y crear los registros DNS a mano, autorizas la conexión con un clic y Chateea configura los registros por ti. Funciona tanto con dominios raíz (`tudominio.com`) como con subdominios (`www.tudominio.com` o `ofertas.tudominio.com`).
+
+## Por qué usarlo
+
+- **Rápido:** conectas el dominio en unos pocos clics.
+- **Sin errores de configuración:** los registros DNS se crean automáticamente, así evitas equivocarte en valores o tipos de registro.
+- **Seguro:** la autorización se hace directamente en el sitio de tu proveedor de dominios.
+
+## Antes de empezar
+
+<Note>
+Domain Connect **conecta** un dominio, no lo registra ni lo aloja. Debes haber comprado el dominio antes en un proveedor compatible, como GoDaddy, Cloudflare o IONOS.
+</Note>
+
+- Ten a mano el usuario y la contraseña de tu proveedor de dominios, porque tendrás que iniciar sesión allí para autorizar.
+- Si usas **Cloudflare**, asegúrate de que los registros DNS que se creen automáticamente tengan el **proxy desactivado** (nube gris).
+
+## Cómo conectar tu dominio
+
+<Steps>
+  <Step title="Abre la configuración de dominios">
+    Ve a **Configuración → Dominios** y haz clic en **Agregar dominio**.
+  </Step>
+  <Step title="Escribe tu dominio">
+    Ingresa el dominio raíz o el subdominio que quieres conectar. Si agregas el subdominio `www`, verás la opción de agregar también el dominio raíz.
+  </Step>
+  <Step title="Continúa">
+    Haz clic en **Continuar**. Si tu dominio está en un proveedor compatible, aparecerá el botón **Autorizar**.
+  </Step>
+  <Step title="Autoriza en tu proveedor">
+    Haz clic en **Autorizar**. Se abre una pestaña con el sitio de tu proveedor: inicia sesión y sigue las instrucciones para aprobar la conexión. Los registros DNS necesarios se agregan automáticamente.
+  </Step>
+  <Step title="Cierra la pestaña del proveedor">
+    Cuando termines de autorizar, **cierra esa pestaña** y vuelve a Chateea. La verificación del dominio continúa al regresar.
+  </Step>
+  <Step title="Verifica la conexión">
+    Chateea confirma que el dominio quedó conectado. Abre tu dominio en el navegador para comprobarlo. Los cambios pueden tardar desde unos 30 segundos hasta más tiempo en reflejarse.
+  </Step>
+</Steps>
+
+<Warning>
+Con algunos proveedores la autorización no termina hasta que cierras la pestaña del proveedor y vuelves a tu cuenta de Chateea. Si la verificación parece detenida, cierra esa pestaña.
+</Warning>
+
+## Si tu proveedor no es compatible
+
+Si no aparece el botón **Autorizar**, tu proveedor todavía no es compatible con Domain Connect. En ese caso, la pantalla te muestra los registros DNS que debes crear manualmente en el panel de tu proveedor. El proceso manual sigue disponible para cualquier dominio.
+
+## Si aparece un error
+
+Si la autorización falla, verás un mensaje de error en la pantalla de conexión. Revisa que:
+
+- Iniciaste sesión en la cuenta correcta del proveedor, la que es dueña del dominio.
+- Aprobaste todos los permisos que pidió el proveedor.
+- En Cloudflare, el proxy de los registros creados está desactivado.
+
+Después, vuelve a intentarlo o configura los registros manualmente.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo seguir configurando mis dominios de forma manual?">
+    Sí. La configuración manual de registros DNS sigue disponible si la prefieres o si tu proveedor no es compatible con Domain Connect.
+  </Accordion>
+  <Accordion title="Mi proveedor no aparece como compatible, ¿qué hago?">
+    Agrega manualmente los registros DNS que te indica la pantalla de conexión. El proceso manual es el mismo de siempre.
+  </Accordion>
+  <Accordion title="Activé la opción de agregar también www, pero mi www apunta a otro servicio">
+    Se creará un registro CNAME para tu subdominio `www` apuntando a Chateea, pero no se borrará el registro CNAME o A que ya tengas apuntando a otro servicio. Debes eliminar ese registro anterior en tu proveedor para que `www` funcione con Chateea.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Migración de dominios existentes" icon="arrow-right-arrow-left" href="/embudos-sitios-web/migracion-de-dominios-existentes">
+    Trae un dominio que ya usas en otro servicio.
+  </Card>
+  <Card title="Página de error 404 personalizada" icon="triangle-exclamation" href="/embudos-sitios-web/como-configurar-tu-propia-pagina-de-error-404-personalizable">
+    Asigna una página 404 a tu dominio.
+  </Card>
+  <Card title="Rutas URL anidadas" icon="sitemap" href="/embudos-sitios-web/guia-de-soporte-para-rutas-url-anidadas">
+    Organiza las rutas de tus páginas.
+  </Card>
+  <Card title="Guardar borradores y publicar versiones" icon="upload" href="/sitios/guardar-borradores-y-publicar-versiones">
+    Conecta un dominio al publicar desde el editor.
+  </Card>
+</CardGroup>

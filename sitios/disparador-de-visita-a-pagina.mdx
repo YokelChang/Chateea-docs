@@ -1,0 +1,85 @@
+---
+title: "Disparador de visita a página de embudos y sitios web"
+description: "Inicia flujos de trabajo cuando un contacto visita tus embudos o sitios web, con filtros por página, URL y parámetros UTM."
+icon: "bolt"
+---
+
+El disparador de visita a página te permite iniciar un flujo de trabajo cuando un contacto ve una página de tus embudos o sitios web. Así puedes reaccionar al interés real de tus clientes: por ejemplo, avisar a tu equipo cuando alguien visita la página de precios, enviar un mensaje de seguimiento a quien vio una oferta o etiquetar a quien llegó desde una campaña concreta.
+
+<Note>
+El disparador funciona con **contactos**, es decir, visitantes que Chateea ya puede identificar (por ejemplo, porque llenaron un formulario antes). Las visitas anónimas no inician el flujo.
+</Note>
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea un flujo de trabajo">
+    Ve a **Automatización** y crea un flujo de trabajo nuevo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Visita a página de embudo o sitio web** (Funnel/Website PageView).
+  </Step>
+  <Step title="Filtra por embudo o sitio web">
+    Selecciona el embudo o sitio web cuyas visitas quieres detectar. Puedes elegir varios.
+  </Step>
+  <Step title="Limita a páginas concretas (opcional)">
+    Si no quieres que el flujo se active con cualquier página, filtra por páginas específicas del embudo o sitio, o por la URL o ruta de una página.
+  </Step>
+  <Step title="Filtra por parámetros UTM (opcional)">
+    Agrega condiciones de parámetros UTM para que el flujo se active solo con visitas de una campaña, fuente o medio determinados.
+  </Step>
+  <Step title="Agrega las acciones y publica">
+    Define qué debe pasar después de la visita, guarda y publica el flujo.
+  </Step>
+</Steps>
+
+## Filtros disponibles
+
+| Filtro | Para qué sirve |
+| --- | --- |
+| Embudo o sitio web | Detecta visitas en uno o varios embudos o sitios. |
+| Página específica | Limita el disparador a ciertas páginas o pasos. |
+| URL o ruta de la página | Detecta visitas a una dirección concreta. |
+| Parámetros UTM | Filtra por campaña, fuente, medio u otros valores UTM de la visita. |
+
+## Ideas de uso
+
+- **Interés en precios:** cuando un contacto visita tu página de precios, crea una tarea para que tu equipo lo llame.
+- **Oferta sin compra:** si alguien ve la página de pago pero no compra, envíale un recordatorio por WhatsApp o correo.
+- **Campañas:** etiqueta a los contactos que llegan con un `utm_campaign` específico para medir el resultado de cada campaña.
+- **Contenido educativo:** cuando un contacto lee una guía o artículo, agrégalo a una secuencia de seguimiento sobre ese tema.
+
+<Tip>
+Combina este disparador con una espera y una condición. Por ejemplo, espera una hora después de la visita a la página de pago y, si el contacto no tiene la etiqueta de cliente, envíale un mensaje.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo detectar visitas en varios embudos o sitios a la vez?">
+    Sí. Puedes seleccionar varios embudos o sitios web en el mismo disparador.
+  </Accordion>
+  <Accordion title="¿Puedo activar el flujo solo con ciertas páginas?">
+    Sí. Filtra por páginas específicas o por la URL de la página para tener un control más preciso.
+  </Accordion>
+  <Accordion title="¿Puedo usar parámetros UTM?">
+    Sí. Añade filtros de parámetros UTM para que el flujo se active solo con visitas de campañas concretas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="diagram-project" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Crea tu primera automatización.
+  </Card>
+  <Card title="Parámetros de URL" icon="link" href="/sitios/parametros-de-url">
+    Usa parámetros en los enlaces de tus páginas.
+  </Card>
+  <Card title="Análisis de sitios y embudos" icon="chart-line" href="/sitios/analisis-de-sitios-y-embudos">
+    Mide el tráfico de tus páginas.
+  </Card>
+</CardGroup>

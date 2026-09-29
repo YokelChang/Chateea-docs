@@ -1,0 +1,170 @@
+---
+title: "CSS personalizado en formularios, encuestas y cuestionarios"
+description: "Dónde agregar CSS propio, ejemplos listos para copiar y cómo resolver estilos que no se aplican."
+icon: "paintbrush"
+---
+
+Con CSS personalizado puedes cambiar el aspecto de tus formularios, encuestas y cuestionarios más allá de lo que permiten los estilos y los temas: bordes, sombras, colores de enfoque, botones, etiquetas y ajustes específicos para celulares.
+
+<Note>
+  Antes de recurrir a CSS, revisa si lo que quieres ya existe en **Estilos y opciones**. Por ejemplo, el espacio sobre el formulario se ajusta con el margen superior en **Estilos → Diseño**. Deja el CSS para los ajustes que no ofrece el editor.
+</Note>
+
+## Dónde agregar el CSS
+
+### Opción 1: dentro del formulario (recomendada)
+
+Es la única forma de cambiar el aspecto de los campos y los botones del formulario.
+
+<Steps>
+  <Step title="Abre el editor">
+    Ve a **Sitios → Formularios** (o **Encuestas** o **Cuestionarios**) y abre el que quieres personalizar.
+  </Step>
+  <Step title="Ve a CSS personalizado">
+    Haz clic en **Estilos y opciones**, abre la pestaña **Avanzado** y busca la sección **CSS personalizado**.
+  </Step>
+  <Step title="Pega tu código">
+    Pega tus reglas CSS.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar** y después en **Publicar**.
+  </Step>
+</Steps>
+
+### Opción 2: en la página del embudo o sitio web
+
+Si el formulario está dentro de una página de Chateea, puedes ir a **Configuración → CSS personalizado** de esa página o embudo. Desde ahí solo das estilo al **contenedor** que rodea el formulario (márgenes, relleno, color de fondo).
+
+### Opción 3: en un sitio externo
+
+En sitios como WordPress también puedes dar estilo al contenedor del formulario, pero no a los campos de dentro.
+
+<Warning>
+  El formulario se carga dentro de un iframe. Por eso, el CSS de la página (en Chateea o en un sitio externo) nunca llega a los campos ni a los botones. Para eso, usa siempre el CSS personalizado del propio formulario.
+</Warning>
+
+## Ejemplos básicos
+
+### Campos de entrada
+
+```css
+input, textarea, select {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input:focus, textarea:focus {
+  border-color: #7C3AED;
+  box-shadow: 0 0 4px rgba(124, 58, 237, 0.3);
+}
+```
+
+### Botón de envío
+
+```css
+button[type="submit"] {
+  background-color: #7C3AED;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #6931d4;
+}
+```
+
+### Etiquetas
+
+```css
+label {
+  font-weight: 600;
+  color: #111827;
+}
+```
+
+### Ajustes para celulares
+
+```css
+@media (max-width: 480px) {
+  form {
+    padding: 0 10px;
+  }
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+```
+
+Cambia los códigos de color por los de tu marca.
+
+## Botones de navegación, mensajes de error y barra de progreso
+
+Los botones **Anterior**, **Siguiente** y **Enviar** del pie de las encuestas, los mensajes de error y la barra de progreso usan sus propias clases. Para encontrarlas:
+
+1. Abre la vista previa del formulario o la encuesta en el navegador.
+2. Haz clic derecho sobre el elemento y elige **Inspeccionar**.
+3. Copia el nombre de la clase y úsalo en tu regla CSS.
+
+Si una regla no se aplica porque el estilo predeterminado tiene prioridad, puedes agregar `!important`, pero úsalo solo cuando sea necesario.
+
+## Plantilla lista para copiar
+
+Pega esto en el **CSS personalizado** de tu formulario y ajusta los colores:
+
+```css
+input, textarea, select {
+  width: 100%;
+  border: 1px solid #D0D5DD;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+label {
+  font-weight: 600;
+  color: #111827;
+}
+
+button[type="submit"] {
+  background: #7C3AED;
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: #6931d4;
+}
+```
+
+## Si el CSS no funciona
+
+- Comprueba que lo pegaste en el **CSS personalizado del formulario**, no en el de la página.
+- Haz clic en **Publicar** y recarga la página, o ábrela en una ventana de incógnito para evitar la caché.
+- Si el formulario está insertado, recuerda que el CSS de la página no afecta su interior.
+- Recuerda que el CSS personalizado tiene prioridad sobre los estilos y los temas: si cambias de tema y algo no se ve como esperas, revisa tu CSS.
+
+## Buenas prácticas
+
+- Guarda y publica siempre después de editar.
+- Usa **Inspeccionar** para encontrar los nombres de las clases.
+- Evita abusar de `!important`.
+- Revisa el resultado en escritorio y en celular.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Barra lateral del editor de formularios" icon="sliders" href="/sitios/barra-lateral-del-editor-de-formularios">
+    Estilos, temas y opciones avanzadas sin código.
+  </Card>
+  <Card title="Color primario en formularios" icon="palette" href="/sitios/color-primario-en-formularios">
+    Aplica tu color de marca a las interacciones.
+  </Card>
+</CardGroup>

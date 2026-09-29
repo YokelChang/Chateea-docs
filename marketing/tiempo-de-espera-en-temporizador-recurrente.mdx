@@ -1,0 +1,123 @@
+---
+title: "Tiempo de espera en el temporizador recurrente"
+description: "Añade una pausa entre ciclos de un temporizador recurrente para ventas de cada viernes, webinars semanales o lanzamientos mensuales."
+icon: "pause"
+---
+
+El tiempo de espera personalizado hace que un temporizador recurrente se pause durante un periodo definido después de llegar a `00 : 00 : 00` y que luego empiece el siguiente ciclo solo. Con esto puedes montar una "venta de cada viernes", una cuenta regresiva al webinar semanal o un lanzamiento mensual sin reconstruir el temporizador cada vez.
+
+## Ventajas
+
+- **Promociones recurrentes automáticas:** ventas de cada viernes, retos semanales o lanzamientos mensuales.
+- **Webinars siempre activos:** la cuenta regresiva apunta a la siguiente sesión cada semana.
+- **Control de visibilidad:** puedes ocultar el temporizador en tus embudos fuera del horario de la oferta.
+- **Un solo temporizador:** lo reutilizas en correos y embudos sin clonarlo.
+- **Lógica coherente:** correos y páginas comparten el mismo comportamiento en cero y las mismas redirecciones.
+
+## Cómo configurar la espera en un temporizador recurrente
+
+<Steps>
+<Step title="Crea un temporizador">
+Ve a **Marketing → Temporizadores de cuenta regresiva** y haz clic en **Nuevo**.
+</Step>
+<Step title="Elige una plantilla">
+Selecciona un diseño y haz clic en **Continuar con esta plantilla**.
+</Step>
+<Step title="Configura el ciclo">
+Selecciona **Recurrente** como tipo de temporizador y define el inicio y el fin de cada ciclo.
+</Step>
+<Step title="Indica las repeticiones">
+En **Repeticiones** (Loop Events) escribe cuántas veces se repetirá el ciclo en total.
+</Step>
+<Step title="Define el tiempo de espera">
+Establece la duración de la pausa, por ejemplo 5 días y 12 horas.
+</Step>
+<Step title="Decide si se oculta durante la espera (opcional)">
+Activa **Ocultar el temporizador durante la espera** si quieres que desaparezca de tus embudos mientras dura la pausa. Esta opción solo afecta a embudos y sitios: en los correos siempre se muestra en cero.
+</Step>
+<Step title="Elige la página de vencido">
+Selecciona la URL a la que llegarán las personas si hacen clic en el temporizador o recargan el embudo durante la espera.
+</Step>
+<Step title="Guarda e insértalo">
+Guarda el temporizador e insértalo en tus embudos, correos o ambos.
+</Step>
+</Steps>
+
+## Ciclo de vida del temporizador
+
+El temporizador repite esta secuencia de forma automática:
+
+```text
+Ciclo activo
+   │ llega a 00:00:00
+   ▼
+Espera (duración personalizada)
+   │ se reinicia solo
+   ▼
+Siguiente ciclo activo → ... (se repite)
+```
+
+| Estado | En correos | En embudos y sitios |
+| --- | --- | --- |
+| **Activo** | Cuenta regresiva en marcha | Cuenta regresiva en marcha |
+| **Espera** | Se muestra `00 : 00 : 00`; al hacer clic se va a la página de vencido | Se oculta o se muestra en cero, según tu ajuste. Si se recarga la página durante la espera, se redirige a la página de vencido |
+| **Reinicio** | Empieza un nuevo ciclo automáticamente | Empieza un nuevo ciclo automáticamente |
+
+## Ejemplos listos para usar
+
+| Escenario | Inicio → fin | Espera | Resultado |
+| --- | --- | --- | --- |
+| Venta de cada viernes | Viernes 00:00 → viernes 23:59 | 6 días y 1 minuto | Se reactiva el siguiente viernes a medianoche |
+| Webinar semanal | Lunes 09:00 → jueves 17:00 | 3 días y 16 horas | La cuenta vuelve cada lunes por la mañana |
+| Lanzamiento mensual | Día 1, 00:00 → día 3, 23:59 | 27 días | Corre los tres primeros días de cada mes |
+
+## Comportamientos que debes conocer
+
+- **En correos, el estado en cero no lleva estilo:** se muestra `00 : 00 : 00` con la fuente y el color predeterminados. Tus estilos personalizados no se aplican durante la espera.
+- **Ocultar el temporizador solo afecta a embudos y sitios.** En los correos siempre se muestra en cero.
+- **Sin redirección automática en la misma visita:** si alguien está en la página cuando el temporizador pasa de activo a espera, se queda en ella hasta que la recargue.
+- **Límites de la espera:** mínimo 1 minuto y máximo 365 días.
+- **Evento de vencimiento:** en el momento en que empieza la espera se registra un evento de temporizador vencido. Puedes usarlo para disparar automatizaciones posteriores a la promoción.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿La espera funciona si hay un cambio de horario de verano?">
+Sí. El temporizador guarda duraciones, no fechas fijas, y recalcula los desfases cuando cambia el horario.
+</Accordion>
+<Accordion title="¿Qué pasa si cambio el tiempo de espera más adelante?">
+La nueva duración se aplica la próxima vez que el temporizador entre en espera. El ciclo actual no se ve afectado.
+</Accordion>
+<Accordion title="¿Puedo dar estilo al estado en cero en los correos?">
+Por ahora no. Usa la fuente y el color predeterminados para asegurar que se muestre correctamente en todos los clientes de correo.
+</Accordion>
+<Accordion title="Si no oculto el temporizador, ¿se redirige igual al recargar el embudo?">
+Sí. Recargar la página durante la espera siempre redirige a la página de vencido, esté visible o no el temporizador.
+</Accordion>
+<Accordion title="¿Cuántos ciclos puede hacer un temporizador?">
+Los que definas en el campo de repeticiones. Los ciclos continúan hasta completar ese número o hasta que archives o elimines el temporizador.
+</Accordion>
+<Accordion title="¿Los contactos verán horas distintas si su correo guarda la imagen en caché?">
+El temporizador del correo se genera con datos actualizados cada vez que se abre. Aun así, algunos clientes de correo guardan imágenes en caché; prueba tu envío antes de lanzarlo.
+</Accordion>
+<Accordion title="¿Puedo poner espera en un temporizador que no sea recurrente?">
+No. El tiempo de espera es exclusivo del tipo recurrente.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crear un temporizador recurrente" icon="rotate" href="/marketing/crear-temporizador-recurrente">
+Configura ciclos y repeticiones.
+</Card>
+<Card title="Temporizador en correos" icon="envelope" href="/marketing/temporizador-en-correos">
+Añade urgencia a tus campañas de correo.
+</Card>
+<Card title="Temporizador en embudos y sitios" icon="globe" href="/marketing/temporizador-en-embudos-y-sitios">
+Muestra la cuenta regresiva en tus páginas.
+</Card>
+<Card title="Sincronizar correos y embudos" icon="arrows-rotate" href="/marketing/sincronizar-temporizador-en-correos-y-embudos">
+El mismo plazo del correo a la página.
+</Card>
+</CardGroup>

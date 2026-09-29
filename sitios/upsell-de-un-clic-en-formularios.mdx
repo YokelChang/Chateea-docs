@@ -1,0 +1,101 @@
+---
+title: "Upsell de un clic después de comprar con un formulario"
+description: "Ofrece un producto extra tras la compra y cóbralo con un clic reutilizando el pago del cliente."
+icon: "arrow-up-right-dots"
+---
+
+El upsell de un clic te permite ofrecer un producto adicional justo después de que el cliente compra desde un formulario. Como el sistema reutiliza el método de pago de la primera compra, el cliente acepta la oferta con un solo clic, sin volver a escribir sus datos de pago ni sus datos personales.
+
+Es ideal para aumentar el valor promedio de cada pedido en el momento en que el comprador está más dispuesto: recién decidió comprarte.
+
+<Info>
+  El upsell de un clic funciona solo en **embudos V2** con el elemento **Formulario** nativo. No está disponible en embudos V1 ni en sitios web.
+</Info>
+
+## Ventajas
+
+- **Pedidos de mayor valor:** ofreces un complemento relevante en el mejor momento.
+- **Compra sin fricción:** el cliente no vuelve a ingresar datos de pago ni personales.
+- **Compatible con varios tipos de producto:** productos normales y productos adicionales (order bump).
+- **Varias pasarelas:** funciona con Stripe, Authorize.net, NMI, PayPal, Square y los proveedores aprobados del Marketplace de aplicaciones compatibles con embudos V2.
+- **Formularios reutilizables:** el mismo formulario nativo sirve en varios embudos.
+- **Fácil de automatizar:** cada compra, la principal y la del upsell, activa el disparador **Pedido enviado**.
+
+## Las piezas del flujo
+
+| Pieza | Función |
+| --- | --- |
+| **Elemento Vender productos** (en el formulario) | Cobra la compra principal y guarda el método de pago que se reutiliza en el upsell. Admite precio, imagen, variantes, impuestos e inventario |
+| **Botón de upsell** (en el paso siguiente del embudo) | Con la acción de upsell de un clic, cobra el producto elegido usando el pago de la primera compra |
+| **Resumen o confirmación del pedido** (en la página final) | Muestra al cliente el producto principal y los upsells que aceptó |
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Prepara el formulario con Vender productos">
+    Abre o crea el formulario en **Sitios → Formularios**. Desde la sección de pagos, arrastra el elemento **Vender productos**. En su panel, pulsa **Agregar producto**, elige un producto existente o crea uno nuevo, indica si es producto principal o producto adicional y decide qué mostrar (descripción, imagen o cantidad). Pulsa **Guardar**.
+  </Step>
+  <Step title="Agrega el formulario a un embudo V2">
+    En el creador del embudo, abre el panel de elementos y agrega el elemento **Formulario**. Selecciona el formulario que acabas de configurar.
+  </Step>
+  <Step title="Envía al cliente al paso del upsell">
+    En la configuración del elemento Formulario, dentro de las acciones al enviar, elige **Ir al siguiente paso**. Así, al completar la compra, el cliente pasa directamente a la página del upsell.
+  </Step>
+  <Step title="Revisa los productos del embudo">
+    En la pestaña **Productos** del paso del embudo, verifica que aparecen los productos correctos de la compra principal.
+  </Step>
+  <Step title="Configura el botón de upsell">
+    En la página del upsell, agrega un **Botón**. En su acción, elige la opción de **upsell o downsell de un clic** y selecciona el producto que quieres ofrecer.
+  </Step>
+  <Step title="Agrega la confirmación del pedido">
+    En la página final del embudo, agrega desde los elementos de pedido el componente **Confirmación del pedido**, que muestra el resumen de todo lo comprado, incluidos los upsells aceptados.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- Mantén todos los pasos del upsell en el **mismo dominio** para evitar problemas con cookies de terceros.
+- Evita **esperas** largas en los flujos de trabajo de **Pedido enviado** si dependes de los upsells.
+- Si el producto del upsell controla inventario, asegúrate de tener existencias: sin stock, el cobro no se puede realizar.
+- Ofrece algo que complemente la compra y cueste menos que el producto principal.
+
+<Tip>
+  Para enviar un mensaje distinto a quien acepta el upsell, usa el disparador **Pedido enviado** con un **filtro de producto** que apunte al producto del upsell.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo ofrecer más de un upsell?">
+    Sí. Cada paso admite un producto de upsell, pero puedes encadenar varios pasos del embudo para crear una secuencia de ofertas.
+  </Accordion>
+  <Accordion title="¿Funciona en embudos V1 o en sitios web?">
+    No. Solo en embudos V2 con el elemento Formulario nativo.
+  </Accordion>
+  <Accordion title="¿En qué se diferencia de un order bump?">
+    El order bump aparece en el mismo formulario, antes de pagar. El upsell aparece después de la compra, en el siguiente paso del embudo.
+  </Accordion>
+  <Accordion title="¿El cliente verá dos cargos?">
+    Sí, verá dos cargos, pero ambos quedan en el mismo registro de pedido y en un recibo unificado.
+  </Accordion>
+  <Accordion title="¿Puedo disparar automatizaciones solo cuando compran el upsell?">
+    Sí. Usa el disparador **Pedido enviado** con un filtro de producto.
+  </Accordion>
+  <Accordion title="¿El cliente puede cambiar la cantidad del upsell?">
+    No. El botón de upsell siempre vende exactamente una unidad.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Order bumps en formularios" icon="cart-plus" href="/sitios/order-bumps-en-formularios">
+    Ofertas adicionales dentro del propio formulario de pago.
+  </Card>
+  <Card title="Agregar productos a embudos y sitios" icon="box" href="/sitios/agregar-productos-a-embudos-y-sitios">
+    Crea productos y asígnalos a tus pasos de embudo.
+  </Card>
+  <Card title="Disparador de pedido enviado" icon="bolt" href="/automatizaciones/disparador-pedido-enviado">
+    Automatiza el seguimiento de cada compra.
+  </Card>
+</CardGroup>

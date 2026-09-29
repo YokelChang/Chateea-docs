@@ -1,0 +1,122 @@
+---
+title: "Notificaciones de correo y en la app para Servicios"
+description: "Configura avisos automáticos para cada evento de una reserva de servicio, con plantillas y valores del servicio."
+icon: "bell"
+---
+
+Las notificaciones de Servicios te permiten decidir cómo se avisa a tus clientes y a tu equipo en cada momento de una reserva de servicio: cuando se agenda, se confirma, se cancela, se reprograma, antes de la cita y después de ella. Se configuran una sola vez desde la configuración global de Servicios y se aplican automáticamente a todas las reservas, sin necesidad de crear flujos de trabajo.
+
+<Note>
+Esta función se está habilitando de forma gradual. Si no la ves en tu cuenta, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Qué puedes configurar
+
+Cada notificación combina un evento (el disparador), uno o varios destinatarios y una plantilla. Puedes enviarlas por correo electrónico y como notificación dentro de la aplicación.
+
+### Eventos disponibles
+
+| Evento | Cuándo se envía |
+| --- | --- |
+| Cita reservada (sin confirmar) | El cliente reserva un servicio y la cita queda pendiente de confirmación. |
+| Cita reservada (confirmada) | La reserva se confirma automáticamente o alguien de tu equipo la aprueba. |
+| Cancelación | Se cancela la reserva. |
+| Reprogramación | La reserva se mueve a otra fecha u hora. |
+| Recordatorio | Antes de la cita, para reducir las inasistencias. |
+| Seguimiento | Después de la cita, para mantener el contacto o pedir una opinión. |
+
+### Destinatarios
+
+Cada notificación puede ir a uno o varios de estos destinatarios:
+
+- **El contacto:** el cliente que reservó el servicio.
+- **El usuario asignado:** la persona de tu equipo que atiende el servicio.
+- **Correos adicionales:** otras personas de tu equipo, como recepción o gerencia.
+
+### Plantillas
+
+El editor integrado te permite personalizar el asunto, el contenido del mensaje, el formato y el diseño. Si quieres ir rápido, parte de una de las plantillas prediseñadas y ajústala a tu marca.
+
+### Valores personalizados de servicio
+
+Puedes insertar datos propios de la reserva para que cada aviso refleje exactamente lo que el cliente agendó:
+
+- Nombre del servicio.
+- Duración.
+- Precio.
+- Complementos.
+- Datos del personal asignado.
+- Otros atributos del servicio.
+
+## Cómo configurar las notificaciones
+
+<Steps>
+<Step title="Abre la configuración global de Servicios">
+Ve a **Calendarios → Configuración de calendarios → Servicios → Configuración global → Notificaciones**.
+</Step>
+<Step title="Elige el evento">
+Selecciona el disparador que quieres configurar, por ejemplo **Recordatorio**.
+</Step>
+<Step title="Personaliza la plantilla">
+Edita el asunto y el contenido, o elige una plantilla prediseñada como punto de partida.
+</Step>
+<Step title="Selecciona los destinatarios">
+Indica si el aviso va al contacto, al usuario asignado, a correos adicionales o a varios de ellos.
+</Step>
+<Step title="Inserta los valores del servicio">
+Agrega los valores personalizados que necesites, como el nombre del servicio, la duración o el precio.
+</Step>
+<Step title="Guarda los cambios">
+A partir de ese momento, la notificación se envía automáticamente en cada reserva de servicio.
+</Step>
+</Steps>
+
+## Cómo funcionan una vez activadas
+
+- Se envían solas cuando ocurre el evento correspondiente.
+- Usan la misma plantilla en todas las reservas, así tu comunicación es coherente.
+- Si una reserva incluye **varios servicios**, se envía **una sola notificación** para toda la reserva. Así nadie recibe correos repetidos por la misma cita.
+
+## Lo que no cambia
+
+- Tus flujos de trabajo siguen funcionando. Estas notificaciones son una alternativa integrada, no los reemplazan.
+- Las citas de calendarios que no son de Servicios no se ven afectadas.
+- La disponibilidad y las reglas de reserva siguen igual.
+
+<Tip>
+Si ya envías avisos de reserva con un flujo de trabajo, desactívalo o ajusta sus condiciones antes de activar estas notificaciones. Así evitas que tus clientes reciban dos mensajes por el mismo evento.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Sirven para cualquier cita de calendario?">
+No. Solo se aplican a las reservas hechas con Servicios.
+</Accordion>
+<Accordion title="¿Puedo enviar correo y notificación en la aplicación a la vez?">
+Sí. Servicios admite ambos canales.
+</Accordion>
+<Accordion title="¿Se envía una notificación por servicio o por reserva?">
+Por reserva. Si el cliente reserva varios servicios juntos, recibe un solo aviso.
+</Accordion>
+<Accordion title="¿Sigo necesitando flujos de trabajo?">
+No para las comunicaciones habituales de una reserva. Los flujos siguen disponibles si necesitas algo más avanzado, como enviar un WhatsApp o mover una oportunidad.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Introducción a Servicios" icon="bell-concierge" href="/calendarios/servicios-introduccion">
+Qué puedes hacer con Servicios y cómo empezar.
+</Card>
+<Card title="Configuración global de servicios" icon="gear" href="/calendarios/configuracion-global-de-servicios">
+Reglas comunes para todos tus servicios.
+</Card>
+<Card title="Crear servicios" icon="plus" href="/calendarios/crear-servicios">
+Define duración, precio y personal de cada servicio.
+</Card>
+<Card title="Notificaciones de citas" icon="bell" href="/calendarios/notificaciones-de-citas">
+Avisos para las citas de calendarios tradicionales.
+</Card>
+</CardGroup>

@@ -1,0 +1,118 @@
+---
+title: "Entradas de eventos en Apple Wallet y Google Wallet"
+description: "Permite que tus asistentes guarden su entrada con código QR en Apple Wallet o Google Wallet."
+icon: "wallet"
+---
+
+Tus asistentes pueden guardar su entrada para eventos presenciales en Apple Wallet o Google Wallet después de registrarse. El pase incluye los datos del evento y del asistente, además del mismo código QR que tu equipo escanea en la puerta. Así nadie tiene que buscar el correo de confirmación al llegar.
+
+## Cómo funciona
+
+- En iPhone la entrada se guarda en **Apple Wallet**; en Android, en **Google Wallet**.
+- El pase usa el **mismo código QR** del check-in, no uno nuevo.
+- **Cada entrada tiene su propio pase**, con el nombre del asistente y el tipo de entrada correctos, también en pedidos de varias entradas.
+- Los enlaces para agregar a la billetera digital aparecen en la entrada en PDF y puedes incluirlos en las confirmaciones por correo, SMS o WhatsApp.
+
+## Requisitos y limitaciones
+
+- El evento debe ser **presencial**.
+- El asistente debe completar su registro o la compra de su entrada.
+- Apple Wallet se usa en iPhone y Google Wallet en Android. En otros dispositivos aparece la opción **Agregar a la billetera** (Add to Wallet), aunque el comportamiento exacto puede variar según el dispositivo.
+
+<Note>
+Los eventos en línea no usan pases de billetera ni check-in con QR. Sus asistentes acceden a la página del evento en línea o al enlace para unirse.
+</Note>
+
+## Qué muestra el pase
+
+| Dato | Detalle |
+| --- | --- |
+| Nombre del evento | El título del evento. |
+| Fecha y hora | En la zona horaria del evento. |
+| Lugar | La dirección del evento. |
+| Tipo de entrada | Por ejemplo, General o VIP. |
+| Nombre del asistente | La persona asignada a esa entrada. |
+| Código QR | El mismo que se escanea para el check-in. |
+
+## Cómo lo guarda el asistente
+
+<Steps>
+<Step title="Se registra">
+Compra su entrada o confirma su asistencia a un evento presencial y completa el proceso.
+</Step>
+<Step title="Elige su billetera">
+En la pantalla posterior al registro, toca la opción de billetera disponible para su dispositivo: **Apple Wallet** en iPhone, **Google Wallet** en Android o **Agregar a la billetera** en otros dispositivos.
+</Step>
+<Step title="Presenta el pase">
+Al llegar, abre el pase guardado y muestra el código QR para el check-in.
+</Step>
+</Steps>
+
+También puede guardarlo desde la **entrada en PDF**: basta con tocar la insignia de Apple Wallet o Google Wallet que aparece en el documento y seguir las indicaciones del móvil.
+
+## Agregar los enlaces a la confirmación de registro
+
+Incluye los enlaces de billetera en tus confirmaciones para que los asistentes guarden su entrada en cuanto se registran.
+
+<Steps>
+<Step title="Abre el evento">
+Ve a **Membresías → Eventos** y abre el evento presencial.
+</Step>
+<Step title="Entra en las notificaciones">
+Ve a **Configuración → Notificaciones**. En **Recorrido del asistente**, dentro de **Cuando se registran**, busca **Confirmación de registro** y haz clic en el ícono del lápiz.
+</Step>
+<Step title="Elige el canal">
+Selecciona la pestaña **Correo**, **SMS** o **WhatsApp** del mensaje que quieres modificar.
+</Step>
+<Step title="Inserta el campo de enlaces">
+Agrega el campo combinado de enlaces de billetera al contenido del mensaje: `{{event.ticket.wallet_links}}`.
+</Step>
+<Step title="Guarda">
+Haz clic en **Guardar** arriba a la derecha.
+</Step>
+</Steps>
+
+<Tip>
+Si también quieres enviar la entrada en PDF, deja marcada la opción **Incluir la entrada en PDF en el correo**. El PDF ya trae las insignias de Apple Wallet y Google Wallet.
+</Tip>
+
+## Pedidos con varias entradas
+
+Cuando una persona registra a varios asistentes, las entradas no comparten un pase genérico: cada una recibe su propio enlace y su propio pase, con el nombre y el tipo de entrada correspondientes. Esto encaja con el registro de varios asistentes, que ya crea un registro individual por entrada.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿El pase de billetera tiene un código QR distinto?">
+No. Usa el mismo código QR de check-in que tu equipo escanea en la puerta.
+</Accordion>
+<Accordion title="¿Se pueden guardar entradas de eventos en línea?">
+No. Los pases de billetera y el check-in con QR son solo para eventos presenciales.
+</Accordion>
+<Accordion title="¿Cada entrada de un pedido tiene su propio pase?">
+Sí. Cada entrada recibe su enlace para que el pase muestre el asistente y el tipo de entrada correctos.
+</Accordion>
+<Accordion title="¿Dónde reciben los asistentes los enlaces?">
+En la entrada en PDF y en las confirmaciones por correo, SMS o WhatsApp donde agregues el campo `{{event.ticket.wallet_links}}`.
+</Accordion>
+<Accordion title="¿Qué pasa en dispositivos que no son iPhone ni Android?">
+Aparece la opción **Agregar a la billetera**. El comportamiento concreto depende del dispositivo.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Check-in de asistentes" icon="qrcode" href="/marketing/check-in-de-asistentes-en-eventos">
+Escanea los códigos QR en la puerta.
+</Card>
+<Card title="Registro de varios asistentes" icon="users" href="/marketing/registro-de-varios-asistentes-en-eventos">
+Datos individuales para cada entrada.
+</Card>
+<Card title="Crear y gestionar eventos" icon="calendar-days" href="/marketing/crear-y-gestionar-eventos">
+Configura tu evento de principio a fin.
+</Card>
+<Card title="Eventos y flujos de trabajo" icon="bolt" href="/marketing/eventos-y-flujos-de-trabajo">
+Automatiza confirmaciones y recordatorios.
+</Card>
+</CardGroup>

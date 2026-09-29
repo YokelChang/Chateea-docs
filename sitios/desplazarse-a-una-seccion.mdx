@@ -1,0 +1,103 @@
+---
+title: "Desplazarse a una sección de la página"
+description: "Haz que botones, textos y menús lleven al visitante a una sección concreta de la misma página."
+icon: "arrow-down"
+---
+
+Con la función de desplazarse a un elemento, cualquier botón, texto o elemento del menú puede llevar al visitante directamente a una sección concreta de la misma página, sin recargarla. Es ideal para páginas largas y landing pages: botones como "Ver precios", "Reservar ahora" o "Más información" que bajan justo a donde está la información.
+
+## Ventajas
+
+- **Navegación guiada:** llevas al visitante a la parte de la página que le interesa.
+- **Mejor experiencia:** reduce el abandono en páginas largas.
+- **Funciona en todo:** botones, textos y menús de navegación.
+- **Ideal para llamadas a la acción:** "Ir a precios", "Ver planes", "Contactar".
+- **Adaptable a móvil:** funciona igual en todos los dispositivos.
+
+## Desplazamiento suave
+
+El desplazamiento es suave: la página se mueve de forma fluida hasta la sección elegida, sin saltos bruscos. Se aplica automáticamente en todos tus embudos y sitios web, sin configurar nada.
+
+## Paso 1: copia el selector CSS de la sección
+
+Todos los métodos, salvo el del botón con la acción **Desplazarse al elemento**, necesitan el selector CSS de la sección de destino.
+
+<Steps>
+<Step title="Abre la página en el editor">
+Abre tu embudo o sitio web en el editor.
+</Step>
+<Step title="Selecciona la sección de destino">
+Haz clic en la sección a la que quieres llevar al visitante.
+</Step>
+<Step title="Copia el selector">
+En el panel derecho, abre la pestaña **Avanzado** y copia el valor del campo **Selector CSS**. Tendrá un formato parecido a `#section-abc12`.
+</Step>
+</Steps>
+
+## Paso 2: elige un método
+
+### Método 1: botón con la acción Desplazarse al elemento
+
+Es el método más sencillo y no necesita copiar el selector.
+
+1. Selecciona el botón en el editor.
+2. En **Acciones del botón**, abre el desplegable **Enlazar a** y elige **Desplazarse al elemento** (Scroll to Element).
+3. En el desplegable que aparece, selecciona la sección de destino.
+
+### Método 2: enlace en un texto
+
+1. Resalta el texto que quieres convertir en enlace.
+2. Haz clic en el ícono de **enlace** de la barra de formato.
+3. Escribe la URL completa de la página seguida del selector que copiaste. Por ejemplo: `https://www.minegocio.com/#section-abc12`.
+
+### Método 3: botón con URL
+
+1. Selecciona el botón en el editor.
+2. En **Acciones del botón**, abre **Enlazar a** y elige **URL del sitio web** (Website URL).
+3. Escribe la URL completa de la página seguida del selector. Por ejemplo: `https://www.minegocio.com/#section-abc12`.
+
+### Método 4: elemento del menú de navegación
+
+1. Selecciona el **Menú de navegación**.
+2. Haz clic en los tres puntos junto al elemento del menú.
+3. Cambia el campo **Ir a** a **URL del sitio web**.
+4. Escribe la URL completa de la página seguida del selector. Por ejemplo: `https://www.minegocio.com/#section-abc12`.
+5. Haz clic en **Enviar**.
+
+<Tip>
+Pon a tus secciones de destino nombres fáciles de reconocer en el editor (por ejemplo, "Precios" o "Contacto"). Así te será más sencillo encontrarlas en el desplegable del método 1.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo desplazarme a una sección de otro paso del embudo?">
+No. El desplazamiento solo funciona dentro de la misma página.
+</Accordion>
+<Accordion title="¿Funciona en móvil?">
+Sí, funciona en todos los dispositivos.
+</Accordion>
+<Accordion title="El desplazamiento no funciona. ¿Qué reviso?">
+Comprueba que el selector sea correcto y que empiece por `#`. Actualiza la página y vuelve a probar.
+</Accordion>
+<Accordion title="¿Qué pasa si varias secciones tienen el mismo selector?">
+Solo se usará la primera coincidencia. Asegúrate de que cada sección de destino tenga un selector único.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Menús de navegación" icon="bars" href="/sitios/menus-de-navegacion">
+Crea y organiza el menú de tu sitio.
+</Card>
+<Card title="Enlaces de llamada, SMS y correo" icon="phone" href="/sitios/enlaces-de-llamada-sms-y-correo">
+Otras acciones para tus botones y enlaces.
+</Card>
+<Card title="Mostrar y ocultar elementos con un botón" icon="eye" href="/sitios/mostrar-y-ocultar-elementos-con-boton">
+Haz tus páginas más interactivas.
+</Card>
+<Card title="Embudos, páginas y sitios web" icon="globe" href="/embudos/introduccion">
+Todo sobre el creador de sitios y embudos.
+</Card>
+</CardGroup>

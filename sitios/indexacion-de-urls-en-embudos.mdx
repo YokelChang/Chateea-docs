@@ -1,0 +1,156 @@
+---
+title: "Solucionar problemas de indexación de URLs en embudos"
+description: "Quita números aleatorios de tus URLs y usa rutas únicas, etiquetas canónicas y redirecciones 301 para el SEO."
+icon: "magnifying-glass"
+---
+
+A veces Google indexa una versión de la URL de tu embudo que no es la que quieres: aparecen números al final de la dirección, rutas duplicadas en Google Search Console o una variante distinta a la preferida. Esta guía te explica por qué pasa y cómo solucionarlo en Chateea con rutas únicas, etiquetas canónicas y redirecciones 301.
+
+## Qué es la indexación de URLs
+
+La indexación es el proceso con el que los buscadores descubren, rastrean y guardan las URLs de tus páginas para mostrarlas en los resultados. Si tus URLs son limpias y coherentes, el buscador entiende cuál es la versión preferida de cada página.
+
+Los problemas suelen aparecer cuando:
+
+- La URL de un embudo tiene números aleatorios al final.
+- Google indexa una variante en lugar de la URL preferida.
+- Hay varias versiones accesibles de la misma página.
+- La ruta de un embudo choca con otra página o paso del mismo dominio.
+- Falta una redirección o una etiqueta canónica, o está mal configurada.
+
+Resolverlo te da URLs más limpias, más claridad para el SEO, informes más fáciles de leer en Google Search Console y enlaces más confiables para tus visitantes.
+
+## Entender las URLs de un embudo
+
+| Nivel | Qué es |
+| --- | --- |
+| **URL del embudo** | La URL principal del embudo. Normalmente carga el primer paso |
+| **URL del paso** | La URL de cada paso o página del embudo |
+| **Ruta anidada** | Una ruta más profunda para organizar páginas, embudos, tiendas o seminarios web |
+
+Como la URL del embudo y la de cada paso son niveles independientes, cambiar una no actualiza automáticamente las demás.
+
+## Quitar los números aleatorios de la URL
+
+Los números aparecen cuando la ruta que elegiste ya la usa otra página o paso en el mismo dominio. Chateea agrega una cadena única para evitar el conflicto.
+
+<Steps>
+  <Step title="Abre el embudo">
+    Ve a **Sitios → Embudos** y abre el embudo afectado.
+  </Step>
+  <Step title="Elige el paso">
+    Selecciona el paso donde aparecen los números.
+  </Step>
+  <Step title="Edita la ruta">
+    Abre la configuración del paso y localiza el campo **Ruta**. Escribe una ruta que no use ninguna otra página del mismo dominio.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios. Con la ruta única, los números dejan de aparecer.
+  </Step>
+</Steps>
+
+<Warning>
+Cada ruta debe ser única dentro del mismo dominio. Si dos pasos de embudo, páginas de sitio web u otras páginas publicadas usan la misma ruta, Chateea puede modificar la URL para evitar el conflicto.
+</Warning>
+
+## Usar una etiqueta canónica
+
+La etiqueta canónica le dice a los buscadores cuál URL es la preferida cuando existen versiones duplicadas o parecidas. No redirige a los visitantes ni cambia la URL que se ve en el navegador.
+
+```html
+<link rel="canonical" href="https://www.tudominio.com/url-preferida" />
+```
+
+### Cómo agregarla
+
+<Steps>
+  <Step title="Abre el embudo">
+    Ve a **Sitios → Embudos**, abre el embudo y haz clic en **Editar** en el paso correspondiente.
+  </Step>
+  <Step title="Ve a la configuración de SEO">
+    Abre la configuración de SEO y entra en **Metadatos de SEO**.
+  </Step>
+  <Step title="Agrega la etiqueta">
+    En el área de etiquetas meta personalizadas, pega la etiqueta canónica con la URL preferida.
+  </Step>
+  <Step title="Guarda">
+    Guarda y publica.
+  </Step>
+</Steps>
+
+## Usar una redirección 301
+
+Una redirección 301 envía a visitantes y buscadores de una URL antigua a una nueva. Úsala cuando:
+
+- Cambiaste la ruta de una página del embudo.
+- La URL antigua ya no debe usarse y quieres que lleve automáticamente a la nueva.
+- Todavía hay enlaces, anuncios o publicaciones que apuntan a la ruta anterior.
+- Quieres evitar que alguien llegue a una página obsoleta o que no existe.
+
+Las redirecciones se configuran en **Sitios → Redirecciones de URL**.
+
+### Etiqueta canónica o redirección 301
+
+| Situación | Usa |
+| --- | --- |
+| Varias URLs siguen accesibles, pero una debe ser la preferida para los buscadores | Etiqueta canónica |
+| El visitante debe pasar automáticamente de la URL vieja a la nueva | Redirección 301 |
+
+## Revisar en Google Search Console
+
+Después de cambiar una ruta, agregar una etiqueta canónica o crear una redirección, Google necesita tiempo para volver a rastrear la página.
+
+1. Abre Google Search Console.
+2. Usa la herramienta **Inspección de URLs**.
+3. Escribe la URL preferida del embudo.
+4. Revisa la URL indexada y la URL canónica que eligió Google.
+5. Si hace falta, solicita la indexación de la URL preferida.
+
+<Note>
+Chateea te permite configurar rutas, redirecciones y etiquetas, pero es Google quien decide cuándo rastrea y actualiza sus resultados.
+</Note>
+
+## Cuidado con la etiqueta noindex
+
+La etiqueta noindex le pide a los buscadores que no indexen una página. Úsala solo cuando quieras que una página no aparezca en los resultados, nunca para arreglar URLs duplicadas de una página que sí debe posicionar.
+
+```html
+<meta name="robots" content="noindex">
+```
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué aparecen números al final de la URL de mi embudo?">
+    Porque la ruta ya la usa otra página o paso del mismo dominio. Chateea agrega una cadena única para evitar el conflicto.
+  </Accordion>
+  <Accordion title="¿Cómo quito esos números?">
+    Abre el paso afectado, busca el campo **Ruta**, escribe una ruta única en ese dominio y guarda.
+  </Accordion>
+  <Accordion title="¿Chateea puede obligar a Google a indexar una URL?">
+    No. Puedes configurar rutas, redirecciones y etiquetas canónicas, pero Google controla el rastreo y la indexación.
+  </Accordion>
+  <Accordion title="¿Cuánto tarda Google en actualizar la URL indexada?">
+    Varía. Después de hacer los cambios, solicita la indexación de la URL preferida desde la herramienta de inspección de Google Search Console.
+  </Accordion>
+  <Accordion title="¿Cambiar la ruta rompe los enlaces existentes?">
+    Los enlaces con la ruta antigua pueden dejar de funcionar si no creas una redirección. Agrega una redirección 301 si esa URL ya está en anuncios, correos, redes sociales u otros enlaces compartidos.
+  </Accordion>
+  <Accordion title="¿Importa si uso www o no?">
+    Sí. Los buscadores pueden tratar `www.tudominio.com/pagina` y `tudominio.com/pagina` como URLs distintas. Usa siempre el mismo formato y apóyate en etiquetas canónicas o redirecciones cuando sea necesario.
+  </Accordion>
+  <Accordion title="¿Debo usar noindex para arreglar URLs duplicadas?">
+    No, a menos que quieras sacar la página de los resultados de búsqueda. Para duplicados, usa una ruta única, una etiqueta canónica o una redirección, según el caso.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Rutas URL anidadas" icon="sitemap" href="/embudos-sitios-web/guia-de-soporte-para-rutas-url-anidadas">
+    Organiza tus páginas con rutas más profundas.
+  </Card>
+  <Card title="Generador de marcado Schema" icon="code" href="/embudos-sitios-web/embudos-y-sitios-web-generador-de-marcado-schema">
+    Mejora cómo Google entiende tus páginas.
+  </Card>
+</CardGroup>

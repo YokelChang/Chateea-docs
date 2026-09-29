@@ -1,0 +1,104 @@
+---
+title: "Video alojado en embudos y sitios web"
+description: "Sube tus videos a Chateea, codifícalos y configura el reproductor con calidades, velocidad y controles en tus páginas."
+icon: "video"
+---
+
+El video alojado (Hosted Video) te permite subir tus videos directamente a Chateea y reproducirlos en tus embudos y sitios web sin depender de YouTube o Vimeo. Tienes control total del reproductor, tus visitantes no ven recomendaciones de otros canales y, además, puedes medir cuánto ve cada contacto para activar automatizaciones.
+
+## Qué ofrece el reproductor
+
+- Reproducción en varias calidades: **480p, 720p, 1080p** y **Automática**.
+- Velocidad de reproducción ajustable: **0,5x, 0,75x, 1x y 2x**.
+- Modo **imagen en imagen** (PiP), para que el visitante siga viendo el video mientras navega.
+- Controles configurables: pantalla completa, tiempo restante, barra de progreso y reproducción automática.
+- Opción de impedir que el visitante adelante o retroceda el video.
+- Videos de **hasta 4 GB** en los formatos más comunes.
+- Compatible con los principales navegadores.
+
+## Cómo agregar un video alojado
+
+<Steps>
+  <Step title="Agrega el elemento Video">
+    En el editor de tu embudo o sitio web, arrastra el elemento **Video** a la sección donde quieres mostrarlo.
+  </Step>
+  <Step title="Elige el tipo de video">
+    Selecciona el elemento y, en **Configuración del video**, busca **Tipo de video** y elige **Video alojado** (Hosted Video).
+  </Step>
+  <Step title="Abre la biblioteca de medios">
+    Haz clic en **Seleccionar video**. Se abre tu biblioteca de **Medios**.
+  </Step>
+  <Step title="Sube el video si aún no lo tienes">
+    Haz clic en **Subir** y elige el archivo. Puede estar en cualquier formato de video común, siempre que pese menos de 4 GB.
+  </Step>
+  <Step title="Codifica el video">
+    Cuando termine de subir, haz doble clic en el archivo para iniciar la **codificación**. Al terminar, selecciónalo para insertarlo en la página.
+  </Step>
+</Steps>
+
+### Por qué hay que codificar el video
+
+La codificación prepara el video para el reproductor de Chateea. Es necesaria para:
+
+- Que el visitante pueda elegir entre varias calidades. Un video sin codificar solo se reproduce en una calidad.
+- Que el video aparezca en los filtros del disparador de seguimiento de video en tus flujos de trabajo.
+
+Si la codificación falla, vuelve a seleccionar el video para reintentarlo. Los videos que llevan más de un día en proceso se marcan automáticamente como fallidos.
+
+## Controles de reproducción
+
+En la configuración del elemento, dentro de **Controles de reproducción**, encontrarás estas opciones:
+
+| Opción | Qué hace |
+| --- | --- |
+| Reproducción automática | El video empieza solo al cargar la página. |
+| Permitir reproducir y pausar | Muestra el botón para pausar y reanudar. |
+| Permitir control de velocidad | Deja que el visitante cambie la velocidad de reproducción. |
+| Mostrar tiempo restante | Muestra cuánto falta para que termine el video. |
+| Mostrar botón de pantalla completa | Permite ver el video en pantalla completa. |
+| Mostrar barra de progreso | Muestra la barra de avance. Si la desactivas, el visitante no puede adelantar ni retroceder. |
+| Redirigir visitantes no registrados | Envía a una página con formulario a quien llega al video sin ser contacto. |
+
+### Reproducción automática y sonido
+
+Los navegadores (Safari en iOS y macOS, Chrome, Android, Firefox y Edge) exigen que los videos con reproducción automática comiencen **silenciados**. Es una política de los fabricantes de navegadores y aplica a cualquier servicio de video.
+
+Chrome puede permitir la reproducción automática con sonido en computadoras de escritorio cuando el visitante suele reproducir contenido multimedia en tu sitio (lo que Chrome llama índice de interacción con medios). Los videos que no se reproducen automáticamente empiezan con sonido.
+
+Si quieres conocer el detalle de cada política, consulta la [guía de reproducción automática de Chrome](https://developer.chrome.com/blog/autoplay/) y la [guía de reproducción automática de Mozilla](https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide).
+
+### Redirigir visitantes no registrados
+
+Si mides el progreso de visualización con un flujo de trabajo, necesitas saber quién está viendo el video. Cuando alguien entra directamente a la URL del video sin haber llenado un formulario, Chateea no puede asociar su progreso a un contacto y el flujo podría crear registros vacíos.
+
+Con esta opción activada, esos visitantes se envían a la página que elijas (normalmente una con formulario de registro). Después de registrarse, vuelven al video. Debes indicar a qué paso o página quieres redirigirlos.
+
+<Note>
+Si el visitante bloquea las cookies en su navegador, la redirección puede no funcionar correctamente.
+</Note>
+
+## Solución de problemas: el video codificado no se puede seleccionar
+
+Si el video aparece como codificado en **Medios** pero no puedes insertarlo en la página:
+
+1. **Espera unos minutos.** La codificación puede seguir terminando en segundo plano.
+2. **Recarga la página** del editor o de la biblioteca de medios.
+3. **Reintenta la codificación** volviendo a seleccionar el archivo en la biblioteca.
+4. **Revisa el formato y el tamaño.** Usa un formato común, como MP4, y un archivo de menos de 4 GB.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Seguimiento del progreso de video" icon="chart-line" href="/sitios/seguimiento-de-progreso-de-video">
+    Activa flujos de trabajo según cuánto ve cada contacto.
+  </Card>
+  <Card title="Captar leads con videos alojados" icon="user-plus" href="/sitios/captar-leads-con-videos-alojados">
+    Pide un formulario en un momento del video.
+  </Card>
+  <Card title="Disparador de seguimiento de video" icon="bolt" href="/automatizaciones/disparador-seguimiento-de-video">
+    Configura el disparador en tus automatizaciones.
+  </Card>
+  <Card title="Video de fondo" icon="film" href="/sitios/video-de-fondo">
+    Usa un video como fondo de secciones, filas o columnas.
+  </Card>
+</CardGroup>

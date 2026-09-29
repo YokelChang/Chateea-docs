@@ -1,0 +1,139 @@
+---
+title: "Parámetros de URL en embudos y sitios web"
+description: "Personaliza textos y botones de tus páginas con datos que llegan en el enlace, con valor predeterminado y formato."
+icon: "link"
+---
+
+Los parámetros de URL te permiten personalizar el contenido de una página con datos que llegan en el enlace. Por ejemplo, si alguien abre tu página con `?ciudad=Bogota`, puedes mostrar "Bogota" en el titular. Chateea incluye una opción nativa de **Parámetro de URL** en el selector de valores personalizados, con valor predeterminado, transformación de mayúsculas y minúsculas, y limpieza automática de guiones, sin escribir sintaxis a mano.
+
+## Qué es un parámetro de URL
+
+Es un par nombre y valor que se agrega al final de la dirección de una página. Si la página se abre así:
+
+```text
+https://tudominio.com/oferta?ciudad=Bogota
+```
+
+Un parámetro de URL configurado con el nombre `ciudad` mostrará **Bogota** dentro del contenido de la página.
+
+Es muy útil para anuncios segmentados, campañas por ciudad o servicio, correos personalizados y páginas de aterrizaje que se adaptan a cada visitante.
+
+## Ventajas
+
+- **Sin código**: lo insertas y configuras desde el selector de valores personalizados.
+- **Valor predeterminado**: muestras un texto alternativo si el parámetro no llega o viene vacío.
+- **Formato del texto**: MAYÚSCULAS, minúsculas, Tipo Título o Tipo oración.
+- **Texto más limpio**: los guiones y guiones bajos se convierten en espacios.
+- **Amplia cobertura**: funciona en textos de botones y en muchos otros elementos.
+- **Seguro**: el valor que llega en la URL se limpia antes de mostrarse.
+
+## Dónde puedes usarlos
+
+| Creadores compatibles | Textos compatibles |
+| --- | --- |
+| Embudos, sitios web, tiendas y seminarios web | Texto y subtexto de botones, titulares, párrafos, texto enriquecido, listas de viñetas, preguntas frecuentes y ventanas emergentes |
+
+## Cómo configurar un parámetro de URL
+
+<Steps>
+  <Step title="Abre el editor de páginas">
+    Abre la página del embudo, sitio web, tienda o seminario web que quieres personalizar y edita un texto o botón compatible.
+  </Step>
+  <Step title="Elige Parámetro de URL">
+    Abre el **selector de valores personalizados** (Custom Value Picker) y selecciona **Parámetro de URL** (URL Parameter).
+  </Step>
+  <Step title="Configura el parámetro">
+    Escribe el **nombre del parámetro** (por ejemplo, `ciudad`), define un **valor predeterminado** si lo necesitas y, si quieres, elige una **transformación de texto**.
+  </Step>
+  <Step title="Inserta el token">
+    El parámetro aparece en el editor como una etiqueta visual, no como código. Haz clic en ella cuando quieras cambiar su configuración.
+  </Step>
+  <Step title="Guarda, publica y prueba">
+    Publica la página y ábrela agregando el parámetro al final de la URL, por ejemplo `?ciudad=Bogota`.
+  </Step>
+</Steps>
+
+## Valor predeterminado
+
+El valor predeterminado es lo que ve el visitante cuando el parámetro esperado no está en la URL o llega vacío. Así evitas huecos en tu página. Para un token configurado con `ciudad`, se muestra el valor predeterminado cuando:
+
+- La URL no incluye el parámetro `ciudad`.
+- La URL lo incluye pero vacío, como `?ciudad=`.
+
+Cada token tiene su propio valor predeterminado. Puedes escribir un texto o usar un valor personalizado existente de tu cuenta.
+
+<Tip>
+Usa valores predeterminados genéricos y naturales. Por ejemplo, si el titular dice "Plomeros de confianza en [ciudad]", un buen valor predeterminado es "tu ciudad".
+</Tip>
+
+## Formato del texto
+
+Las transformaciones cambian la capitalización del valor que llega, sin modificar el parámetro:
+
+| Transformación | Ejemplo |
+| --- | --- |
+| **MAYÚSCULAS** | CIUDAD DE MEXICO |
+| **minúsculas** | ciudad de mexico |
+| **Tipo Título** | Ciudad De Mexico |
+| **Tipo oración** | Ciudad de mexico |
+
+**Limpieza de separadores**: los guiones y guiones bajos del valor se convierten automáticamente en espacios. Por ejemplo, `plomero-de-emergencia` se muestra como "plomero de emergencia", y con **Tipo Título** como "Plomero De Emergencia". Esto hace que los valores tipo UTM se lean bien.
+
+## Cómo se comportan
+
+- **No distinguen mayúsculas en el nombre**: `?Ciudad=` y `?ciudad=` coinciden con el mismo parámetro.
+- **Configuración independiente por token**: puedes usar el mismo parámetro en varios elementos con una transformación distinta en cada uno.
+- **Valores ausentes o vacíos**: se muestra el valor predeterminado del token.
+- **Mostrado seguro**: si alguien intenta enviar código en la URL, no se interpreta como parte de la página.
+
+## Pasar parámetros en tus enlaces
+
+Enviar el valor en el enlace y mostrarlo en la página son dos partes del mismo flujo: el enlace aporta el dato y el token decide dónde y cómo se muestra.
+
+Un enlace puede llevar un valor fijo:
+
+```text
+https://tudominio.com/pagina?ciudad=Bogota
+```
+
+O un campo de combinación, para que el valor cambie según cada contacto (por ejemplo, en un correo o SMS de una campaña):
+
+```text
+https://tudominio.com/pagina?first_name={{contact.first_name}}
+```
+
+En la página de destino, configura un parámetro de URL llamado `first_name` donde quieras mostrar ese dato.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si falta el parámetro en la URL?">
+    Se muestra el valor predeterminado configurado. Lo mismo ocurre si el parámetro está en la URL pero sin valor.
+  </Accordion>
+  <Accordion title="¿El nombre del parámetro distingue mayúsculas?">
+    No. `?Ciudad=Bogota` y `?ciudad=Bogota` coinciden con el mismo parámetro.
+  </Accordion>
+  <Accordion title="¿Puedo usar el mismo parámetro varias veces en la página?">
+    Sí. Puedes insertarlo en varios elementos y cada token puede tener su propia transformación.
+  </Accordion>
+  <Accordion title="¿Puedo usar un valor personalizado como valor predeterminado?">
+    Sí. El valor predeterminado puede ser un texto o un valor personalizado existente.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los guiones y guiones bajos?">
+    Se convierten en espacios al mostrarse. Además, puedes aplicar una transformación de mayúsculas o minúsculas.
+  </Accordion>
+  <Accordion title="¿Funciona en el texto de los botones?">
+    Sí. Funciona en el texto y el subtexto de los botones, además de en los demás textos compatibles.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Guía para crear seminarios web" icon="video" href="/sitios/guia-para-crear-seminarios-web">
+    Personaliza también tus páginas de seminarios web.
+  </Card>
+  <Card title="Rutas URL anidadas" icon="sitemap" href="/embudos-sitios-web/guia-de-soporte-para-rutas-url-anidadas">
+    Organiza tus páginas con URL jerárquicas.
+  </Card>
+</CardGroup>

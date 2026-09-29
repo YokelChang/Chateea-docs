@@ -1,0 +1,118 @@
+---
+title: "Temporizador dinámico: cuenta regresiva personalizada por contacto"
+description: "Crea una cuenta regresiva que empieza cuando cada contacto recibe o abre tu correo, con hora de finalización opcional."
+icon: "stopwatch"
+---
+
+El temporizador dinámico es una cuenta regresiva personalizada: en lugar de mostrar la misma fecha límite a todos, empieza a contar para cada contacto en el momento en que recibe o abre tu correo. Así cada persona tiene su propia ventana para aprovechar la oferta, y la urgencia se siente real aunque abra el correo horas después que los demás.
+
+## Cómo funciona
+
+Un temporizador fijo termina a la misma hora para todos los destinatarios. Un temporizador dinámico, en cambio, se calcula por contacto a partir de un disparador:
+
+| Disparador | Cuándo empieza la cuenta regresiva |
+| --- | --- |
+| **Correo enviado** | En el momento en que el correo sale hacia ese contacto. |
+| **Correo abierto** | En el momento en que ese contacto abre el correo por primera vez. |
+
+Después eliges cuánto dura la cuenta regresiva y, si quieres, una hora de finalización fija.
+
+### Ejemplo sin hora de finalización
+
+Duración de 2 horas con el disparador **Correo abierto**:
+
+- El contacto A abre el correo a las 2:00 p. m. y su temporizador corre de 2:00 p. m. a 4:00 p. m.
+- El contacto B lo abre a las 5:00 p. m. y su temporizador corre de 5:00 p. m. a 7:00 p. m.
+
+### Ejemplo con hora de finalización
+
+Duración de 2 horas, disparador **Correo abierto** y hora de finalización a las 12:00 a. m.:
+
+- El contacto A abre a las 2:00 p. m. y su temporizador corre hasta las 12:00 a. m.
+- El contacto B abre a las 5:00 p. m. y su temporizador también corre hasta las 12:00 a. m.
+
+## Hora de finalización opcional
+
+La opción **Establecer hora de finalización** (Set End Time) hace que el temporizador termine a una hora concreta en lugar de hacerlo justo cuando se cumple la duración.
+
+- **Con hora de finalización:** la duración funciona como ventana mínima y el temporizador cierra a la hora que definiste. Evita que la oferta parezca "estirada" a la medida de cada persona. Por ejemplo, si alguien abre a las 11:07 p. m. con una duración de 2 horas, sin hora fija su temporizador terminaría a la 1:07 a. m.; con hora fija a las 12:00 a. m., la oferta cierra a una hora creíble y coherente para todos.
+- **Sin hora de finalización:** el temporizador termina exactamente cuando se cumple la duración contada desde el envío o la apertura. Es la opción más flexible para ofertas del tipo "tienes 2 horas desde que lo lees".
+
+<Tip>
+Mientras configuras el temporizador, revisa el texto de ayuda dinámico que aparece debajo de los campos. Te describe con un ejemplo cómo se comportará la cuenta regresiva con la duración y la hora que elegiste.
+</Tip>
+
+## Casos de uso habituales
+
+| Caso | Configuración sugerida | Resultado |
+| --- | --- | --- |
+| **Oferta de cumpleaños** | Disparador **Correo enviado**, duración de 24 horas, correo programado a las 11:59 p. m. del día anterior. | Cada contacto tiene el día completo de su cumpleaños para usar el descuento. |
+| **Venta de Black Friday** | Disparador **Correo abierto**, duración mínima de 2 horas, hora de finalización a las 11:00 p. m. | Quien abre a las 6:00 p. m. tiene hasta las 11:00 p. m. Quien abre a las 10:00 p. m. no alcanza las 2 horas mínimas, así que su ventana se extiende hasta las 11:00 p. m. del día siguiente. |
+| **Carrito abandonado** | Disparador **Correo abierto**, duración de 2 horas, sin hora de finalización. | El descuento dura 2 horas desde que la persona lee el correo. |
+| **Venta relámpago** | Disparador **Correo abierto**, sin hora de finalización. | La cuenta regresiva solo arranca cuando el correo se lee, así nadie recibe una oferta ya vencida. |
+
+## Crear un temporizador dinámico
+
+<Steps>
+<Step title="Abre los temporizadores">
+Ve a **Marketing → Temporizador de cuenta regresiva** y haz clic en **Crear nuevo temporizador**.
+</Step>
+<Step title="Elige el tipo dinámico">
+Selecciona la opción **Dinámico** y elige el disparador: **Correo enviado** o **Correo abierto**.
+</Step>
+<Step title="Define la duración y la hora de finalización">
+Indica la duración (por ejemplo, 2 horas). Activa **Establecer hora de finalización** si quieres que termine a una hora fija (por ejemplo, 12:00 p. m.) o déjala desactivada para que termine al cumplirse la duración. Comprueba el comportamiento con el texto de ayuda.
+</Step>
+<Step title="Personaliza el diseño">
+Ajusta colores, tipografía y estilo para que el temporizador combine con tus correos.
+</Step>
+<Step title="Agrega los enlaces activo y vencido">
+Define a qué página se envía a quien haga clic mientras el temporizador está activo y a cuál cuando ya venció.
+</Step>
+<Step title="Guarda y úsalo">
+Guarda el temporizador e insértalo en tus correos o embudos, o copia su código para usarlo en plantillas personalizadas.
+</Step>
+</Steps>
+
+## Aspectos importantes
+
+<Warning>
+Un temporizador dinámico se activa **una sola vez por contacto**. Si quieres usarlo de nuevo con los mismos contactos en otra plantilla o campaña, clónalo primero y usa la copia.
+</Warning>
+
+- Puedes usar temporizadores dinámicos dentro de campañas y de flujos de trabajo con secuencias de correo.
+- Si pones varios temporizadores dinámicos en el mismo correo, cada uno funciona de forma independiente.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué pasa si el contacto abre el correo varias veces?">
+La cuenta regresiva empieza con la primera apertura. En las aperturas siguientes el contacto ve el tiempo que le queda, no un temporizador reiniciado.
+</Accordion>
+<Accordion title="¿Puedo poner varios temporizadores dinámicos en un correo?">
+Sí. Cada uno se calcula por separado según su propia configuración y el momento de envío o apertura.
+</Accordion>
+<Accordion title="¿Puedo reutilizar un temporizador dinámico en otra campaña?">
+No con los mismos contactos, porque se activa una sola vez por contacto. Clona el temporizador antes de usarlo en otra campaña o plantilla.
+</Accordion>
+<Accordion title="¿Funciona en flujos de trabajo automatizados?">
+Sí. Los temporizadores dinámicos funcionan en correos enviados desde flujos de trabajo y secuencias automatizadas.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Introducción al temporizador de cuenta regresiva" icon="hourglass-half" href="/marketing/introduccion-temporizador-de-cuenta-regresiva">
+Tipos de temporizador y para qué sirve cada uno.
+</Card>
+<Card title="Enlaces de redirección del temporizador" icon="link" href="/marketing/enlaces-de-redireccion-del-temporizador">
+Envía a cada persona a la página correcta según el estado de la oferta.
+</Card>
+<Card title="Temporizador en correos" icon="envelope" href="/marketing/temporizador-en-correos">
+Inserta tu temporizador en una plantilla de correo.
+</Card>
+<Card title="Editar un temporizador" icon="pen" href="/marketing/editar-temporizador-de-cuenta-regresiva">
+Qué puedes cambiar y cuándo.
+</Card>
+</CardGroup>

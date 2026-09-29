@@ -1,0 +1,84 @@
+---
+title: "Error de fingerprint en el formulario de pedido en WordPress"
+description: "Resuelve el error de fingerprint al pagar en un embudo insertado en WordPress configurando cookies y subdominios correctamente."
+icon: "wrench"
+---
+
+Si insertaste un embudo de Chateea con formulario de pedido dentro de tu sitio de WordPress y el formulario muestra un error de **fingerprint** al intentar pagar, casi siempre se debe a cómo están configurados los dominios o a los permisos de cookies del navegador. Aquí te explicamos cómo identificar el caso y resolverlo.
+
+## Por qué ocurre
+
+Cuando muestras una página de embudo dentro de WordPress, se carga en un **iframe**. Para procesar el pago, el formulario necesita acceder al almacenamiento del navegador (cookies). Los navegadores no permiten ese acceso entre dominios distintos, así que si el embudo y WordPress usan dominios diferentes, el pago falla.
+
+## Identifica tu caso
+
+| Síntoma | Causa probable |
+| --- | --- |
+| El error aparece solo a algunos clientes, en ciertos navegadores | La configuración del navegador de esos clientes bloquea las cookies. |
+| El error aparece siempre, en todos los dispositivos y navegadores | El dominio del embudo no está bien configurado respecto al de WordPress. |
+
+## Caso 1: Solo le pasa a algunos clientes
+
+Es poco frecuente. El navegador del cliente tiene bloqueado el acceso a cookies o al almacenamiento.
+
+**Solución rápida:** pide al cliente que permita las cookies en la configuración de su navegador (o que desactive el bloqueo de cookies de terceros para tu sitio) y vuelva a intentar el pago.
+
+## Caso 2: Le pasa a todos
+
+El embudo y el sitio de WordPress deben compartir el **mismo dominio**, pero usar **subdominios distintos**.
+
+Por ejemplo, si tu sitio de WordPress está en `www.tudominio.com` (dominio `tudominio.com`, subdominio `www`):
+
+- No uses `www.tudominio.com` ni `tudominio.com` para el embudo.
+- Usa otro subdominio del mismo dominio, por ejemplo `pagos.tudominio.com` o `embudos.tudominio.com`.
+
+### Conecta el subdominio al embudo
+
+<Steps>
+  <Step title="Agrega el subdominio">
+    Ve a **Configuración → Dominios** y agrega un subdominio del mismo dominio de tu sitio de WordPress. Asegúrate de que ese subdominio no esté usándose para otro sitio.
+  </Step>
+  <Step title="Asígnalo al embudo">
+    Abre la configuración del embudo que usas en WordPress, elige el nuevo dominio y guarda.
+  </Step>
+  <Step title="Verifica la conexión">
+    Abre el embudo desde su nuevo subdominio y confirma que carga correctamente.
+  </Step>
+</Steps>
+
+### Actualiza la página en WordPress
+
+Después de cambiar el dominio del embudo, actualiza las páginas que ya tenías insertadas en WordPress:
+
+<Steps>
+  <Step title="Refresca la configuración del plugin">
+    En WordPress, abre la configuración del plugin de Chateea para WordPress. Si ya la tenías abierta, recarga la página por completo. Haz clic en **Guardar** junto a la clave de API.
+  </Step>
+  <Step title="Edita la página del embudo">
+    En la lista de páginas del plugin, haz clic en **Editar** en la página del embudo que quieres corregir.
+  </Step>
+  <Step title="Espera a que cargue">
+    Espera a que termine de cargar. El paso del embudo se completa automáticamente.
+  </Step>
+  <Step title="Guarda">
+    En la URL de vista previa verás el mismo dominio de tu WordPress con el subdominio nuevo. Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+Haz una compra de prueba después del cambio, desde un navegador en modo incógnito y desde el celular, para confirmar que el formulario de pedido ya funciona.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="WordPress: agregar dominios a tu sitio" icon="server" href="/embudos-sitios-web/wordpress-agregar-dominios-a-tu-sitio">
+    Configura dominios en tu sitio de WordPress.
+  </Card>
+  <Card title="Conectar un dominio automáticamente" icon="globe" href="/sitios/conectar-dominio-automaticamente">
+    Conecta tu subdominio en pocos clics.
+  </Card>
+  <Card title="Agregar productos a embudos y sitios" icon="box" href="/sitios/agregar-productos-a-embudos-y-sitios">
+    Configura el formulario de pedido.
+  </Card>
+</CardGroup>

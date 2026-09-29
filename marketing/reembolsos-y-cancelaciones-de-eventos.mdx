@@ -1,0 +1,141 @@
+---
+title: "Reembolsos, cancelaciones y check-in por estado de pago"
+description: "Reembolsa total o parcialmente, cancela registros y decide qué estados de pago pueden entrar con QR."
+icon: "money-bill-transfer"
+---
+
+Desde la pestaña **Registros** de cada evento puedes devolver dinero, cancelar inscripciones o hacer ambas cosas a la vez, sin saltar entre la sección de pagos y la del evento. También puedes consultar el historial de reembolsos y decidir qué estados de pago pueden entrar al evento con código QR.
+
+## Reembolso y cancelación no son lo mismo
+
+| Acción | Qué afecta | Consecuencias |
+| --- | --- | --- |
+| **Reembolso** | El pago | Devuelve dinero al método de pago original. El registro sigue activo salvo que también lo canceles. |
+| **Cancelación** | El registro | La plaza vuelve al inventario, los pases QR dejan de funcionar, se avisa al asistente y **no se puede deshacer**. |
+
+Puedes reembolsar sin cancelar, cancelar sin reembolsar o hacer ambas cosas en un solo paso. Tener claras las diferencias evita dejar fuera a alguien a quien solo querías devolverle dinero, o mantener activo un registro que querías anular.
+
+## Dónde se gestionan
+
+<Steps>
+<Step title="Abre los registros">
+Ve a **Membresías → Eventos**, abre el evento, entra en la pestaña **Registros** y busca al asistente.
+</Step>
+<Step title="Abre el menú de acciones">
+Haz clic en el menú **Acciones** del asistente y elige **Iniciar reembolso** o **Cancelar registro**.
+</Step>
+</Steps>
+
+## Reembolsar sin cancelar
+
+Úsalo cuando quieres devolver dinero y que la persona siga inscrita, por ejemplo por una compensación o un ajuste de precio.
+
+1. En **Acciones**, elige **Iniciar reembolso**.
+2. Selecciona la entrada o entradas que vas a reembolsar.
+3. Indica el importe. Si es menor que el total reembolsable, será un **reembolso parcial**.
+4. Agrega notas si lo necesitas. Se guardan en el registro de pago y aparecen en el historial de reembolsos.
+5. Deja sin marcar **Cancelar también este registro**.
+6. Confirma el reembolso.
+
+El dinero vuelve al método de pago original según los plazos de tu procesador de pagos. La ventana puede mostrar un plazo estimado, por ejemplo de 4 a 6 días hábiles, pero el tiempo real depende del proveedor.
+
+## Reembolsar y cancelar a la vez
+
+Úsalo cuando la persona no asistirá y debe recibir su dinero.
+
+1. En **Acciones**, elige **Iniciar reembolso**.
+2. Indica el importe.
+3. Marca **Cancelar también este registro**.
+4. Lee el aviso de cancelación.
+5. Confirma la acción combinada.
+
+## Cancelar sin reembolsar
+
+Úsalo cuando quieres dar de baja a un asistente sin devolver el pago.
+
+1. En **Acciones**, elige **Cancelar registro**.
+2. Lee el aviso de cancelación.
+3. Escribe un motivo si quieres. Se guarda en el registro y **no** se envía al asistente.
+4. Deja sin marcar **Reembolsar también este registro**.
+5. Haz clic en **Cancelar registro**.
+
+<Warning>
+Al cancelar un registro, la plaza vuelve al inventario, los pases QR del asistente dejan de funcionar, se le notifica y la cancelación no se puede deshacer. Si solo quieres devolver dinero, usa el reembolso sin marcar la cancelación.
+</Warning>
+
+## Ver el estado y el historial de reembolsos
+
+Abre el detalle del registro del asistente y ve a **Detalles del pago**. Ahí encontrarás:
+
+- Datos del pedido y de la transacción.
+- Total del pedido.
+- Estado del pago.
+- Historial de reembolsos con importe, estado, fecha y hora.
+
+## Ingresos más precisos
+
+Los ingresos del evento reflejan lo que los asistentes pagaron realmente, con los descuentos aplicados. Antes se calculaban como precio de la entrada por número de ventas, lo que inflaba el total cuando había cupones. Ahora el cálculo usa el importe real de cada venta.
+
+## Check-in con QR según el estado de pago
+
+Puedes decidir qué estados de pago pueden entrar con código QR. Es útil si, por ejemplo, hiciste un reembolso parcial como compensación y la persona debe poder asistir.
+
+<Steps>
+<Step title="Abre la configuración de registro">
+En el evento, ve a **Configuración → Registro**.
+</Step>
+<Step title="Elige los estados permitidos">
+En **Estados de pago permitidos para el check-in**, marca los que quieras: **Completado**, **Reembolsado parcialmente** o **Reembolsado**.
+</Step>
+<Step title="Guarda">
+Guarda los cambios.
+</Step>
+</Steps>
+
+Si solo marcas **Completado**, las personas con pagos reembolsados no podrán entrar con QR. Si también marcas **Reembolsado** o **Reembolsado parcialmente**, esos registros siguen siendo válidos para el check-in, siempre que no estén cancelados.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo reembolsar sin cancelar el registro?">
+Sí. Deja sin marcar **Cancelar también este registro** al procesar el reembolso.
+</Accordion>
+<Accordion title="¿Puedo cancelar sin reembolsar?">
+Sí. Usa **Cancelar registro** y deja sin marcar **Reembolsar también este registro**.
+</Accordion>
+<Accordion title="¿Puedo hacer un reembolso parcial?">
+Sí. Indica un importe menor que el total reembolsable.
+</Accordion>
+<Accordion title="¿Qué pasa con la plaza al cancelar?">
+Vuelve al inventario del evento y queda disponible para otra persona.
+</Accordion>
+<Accordion title="¿Puedo deshacer una cancelación?">
+No. Si fue un error, tendrás que volver a registrar a la persona, por ejemplo con **Agregar asistente**.
+</Accordion>
+<Accordion title="¿Cuánto tarda un reembolso?">
+Depende de tu procesador de pagos. La ventana de reembolso puede mostrar un plazo estimado, como 4 a 6 días hábiles.
+</Accordion>
+<Accordion title="¿Un asistente reembolsado puede hacer check-in?">
+Sí, si su estado de pago está entre los permitidos para el check-in y su registro no fue cancelado.
+</Accordion>
+<Accordion title="¿Cancelar o despublicar el evento reembolsa a todos?">
+No. Los reembolsos se hacen de forma manual desde **Registros**.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crear y gestionar eventos" icon="calendar-days" href="/marketing/crear-y-gestionar-eventos">
+Configura tu evento de principio a fin.
+</Card>
+<Card title="Check-in de asistentes" icon="qrcode" href="/marketing/check-in-de-asistentes-en-eventos">
+Registra la llegada con QR o de forma manual.
+</Card>
+<Card title="Agregar asistentes manualmente" icon="user-plus" href="/marketing/agregar-asistentes-manualmente-a-eventos">
+Registra personas desde el panel.
+</Card>
+<Card title="Eventos y flujos de trabajo" icon="bolt" href="/marketing/eventos-y-flujos-de-trabajo">
+Automatiza el recorrido del asistente.
+</Card>
+</CardGroup>

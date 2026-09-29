@@ -1,0 +1,84 @@
+---
+title: "Alto y ancho de los elementos en el creador de páginas"
+description: "Define el tamaño exacto de cada elemento con distintas unidades y valores específicos para móvil."
+icon: "up-right-and-down-left-from-center"
+---
+
+El control **Tamaño del contenedor** te permite definir el alto y el ancho exactos de cualquier elemento directamente en el creador de páginas. Estos valores determinan cuánto espacio ocupa el elemento dentro de su contenedor (columna, fila o sección). Puedes elegir la unidad de medida que mejor se adapte a tu diseño y poner valores distintos para computadora y para celular, sin escribir CSS.
+
+## Para qué te sirve
+
+- **Diseños precisos:** ajusta el tamaño de cada elemento al milímetro.
+- **Control por dispositivo:** usa valores diferentes en escritorio y en móvil.
+- **Flexibilidad de unidades:** elige la unidad adecuada para cada caso.
+- **Páginas más limpias:** consigues el resultado desde la interfaz, sin código personalizado.
+
+## Unidades disponibles
+
+Cada unidad calcula el tamaño de una forma distinta:
+
+| Unidad | Cómo calcula el tamaño | Cuándo usarla |
+| --- | --- | --- |
+| **px** | Número fijo de píxeles. | Cuando necesitas una medida exacta, como un logotipo o un icono. |
+| **%** | Porcentaje del contenedor padre. | Para elementos que deben adaptarse al ancho de la columna. |
+| **em / rem** | Relativo al tamaño de la fuente. | Para que el elemento escale junto con el texto. |
+| **vh / vw** | Relativo al alto o al ancho de la pantalla. | Para bloques que deben ocupar toda la pantalla, como una portada. |
+| **auto** | El navegador decide el tamaño óptimo. | Para volver al tamaño natural del elemento. |
+
+## Cómo cambiar el tamaño de un elemento
+
+<Steps>
+<Step title="Abre el creador de páginas">
+Ve a **Sitios → Embudos** o **Sitios → Sitios web**, abre el embudo o sitio y entra en el editor de la página.
+</Step>
+<Step title="Selecciona el elemento">
+Haz clic en el elemento que quieres redimensionar: texto, botón, imagen, formulario, etc.
+</Step>
+<Step title="Ve a Tamaño del contenedor">
+En la barra lateral derecha, abre la pestaña **Estilos** y baja hasta la sección **Tamaño del contenedor** (Container Size).
+</Step>
+<Step title="Define alto y ancho">
+Elige la unidad en el menú junto a **Alto** y **Ancho** (px, %, etc.) y escribe el valor que quieres.
+</Step>
+<Step title="Ajusta la versión móvil">
+Usa el selector de dispositivo junto a **Tamaño del contenedor** para cambiar a la vista móvil y escribe un valor específico para celulares si lo necesitas.
+</Step>
+</Steps>
+
+<Tip>
+Combina el tamaño del contenedor con los márgenes y el relleno (padding) para tener control total del diseño. Los tres ajustes funcionan juntos.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo usar decimales, como 33.33 %?">
+Sí. Se admiten decimales para un control fino, por ejemplo tres tarjetas al 33.33 % cada una. Revisa la vista móvil para evitar saltos de línea inesperados.
+</Accordion>
+<Accordion title="¿Cómo deshago un cambio de tamaño?">
+Cambia la unidad a **auto** y el elemento volverá a su tamaño natural.
+</Accordion>
+<Accordion title="¿Los valores de móvil afectan a la versión de escritorio?">
+No. Lo que configuras en la vista móvil solo se aplica a celulares y tu configuración de escritorio se mantiene.
+</Accordion>
+<Accordion title="¿Se pueden usar valores cero o negativos?">
+No. Si escribes 0 o un número negativo, el elemento conserva su tamaño actual.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Tamaño de imágenes en móvil y escritorio" icon="image" href="/sitios/tamano-de-imagenes-movil-y-escritorio">
+Ajustes avanzados de imagen por dispositivo.
+</Card>
+<Card title="Barra lateral del creador" icon="table-columns" href="/sitios/barra-lateral-del-creador">
+Conoce la barra lateral derecha del creador.
+</Card>
+<Card title="Diseños anidados" icon="layer-group" href="/sitios/disenos-anidados">
+Organiza elementos dentro de otros contenedores.
+</Card>
+<Card title="Arrastrar y soltar con estructura automática" icon="arrows-up-down-left-right" href="/sitios/arrastrar-y-soltar-con-estructura-automatica">
+Coloca elementos y deja que el creador arme la estructura.
+</Card>
+</CardGroup>
