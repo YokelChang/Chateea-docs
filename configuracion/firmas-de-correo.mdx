@@ -1,0 +1,94 @@
+---
+title: "Firmas de correo por usuario"
+description: "Configura una firma de correo para cada usuario, aplícala automáticamente o insértala con un valor personalizado."
+icon: "signature"
+---
+
+La firma de correo le da a cada mensaje de tu equipo un cierre profesional y coherente con tu marca: nombre, cargo, teléfono y enlaces siempre correctos. En Chateea cada usuario tiene su propia firma, que puede agregarse sola a los correos que envía o insertarse donde tú quieras mediante un valor personalizado.
+
+## Para qué te sirve
+
+- **Imagen profesional:** todos los correos terminan con los datos y enlaces correctos de tu negocio.
+- **Personalizada por usuario:** cada persona firma con su nombre, cargo y datos de contacto.
+- **Flexible:** se aplica sola a los correos salientes o la colocas donde quieras con un valor personalizado.
+- **Respuestas más limpias:** decides si la firma aparece antes del texto citado al responder un hilo.
+
+## Configurar o editar una firma
+
+<Steps>
+  <Step title="Abre Mi personal">
+    Ve a **Configuración → Mi personal**.
+  </Step>
+  <Step title="Edita al usuario">
+    Busca a la persona y haz clic en el ícono de **lápiz**.
+  </Step>
+  <Step title="Escribe la firma">
+    Desplázate hasta la sección **Firma**. Escribe el texto y dale formato con el editor: negritas, enlaces y demás. Si necesitas más control, también puedes pegar código HTML.
+  </Step>
+  <Step title="Elige las opciones">
+    - Activa **Habilitar firma en todos los mensajes salientes** si quieres que se agregue sola a los correos que envía este usuario.
+    - Marca **Incluir esta firma antes del texto citado en las respuestas** si quieres que aparezca encima del hilo anterior al responder.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Siguiente** y luego en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Mantén la firma corta: nombre, cargo, un teléfono o WhatsApp y un enlace. Las firmas con muchas imágenes pesan más, se ven mal en el celular y pueden afectar la entrega de tus correos.
+</Tip>
+
+## Insertar la firma con un valor personalizado
+
+Colocar la firma con un valor personalizado te permite decidir exactamente dónde aparece. Es útil en plantillas de campañas y en correos individuales.
+
+<Steps>
+  <Step title="Abre el editor de correo">
+    Por ejemplo, el de una campaña o el redactor de correos de **Conversaciones**.
+  </Step>
+  <Step title="Abre el selector de valores">
+    Haz clic en **Valores personalizados**.
+  </Step>
+  <Step title="Elige la firma">
+    Ve a **Usuario** y selecciona **Firma**.
+  </Step>
+</Steps>
+
+Se insertará este valor:
+
+```text
+{{user.email_signature}}
+```
+
+### Usar la firma en una campaña
+
+En una campaña, `{{user.email_signature}}` inserta la firma guardada del usuario que corresponde a ese correo. Colócalo, por ejemplo, debajo de tu frase de despedida.
+
+<Warning>
+  Los valores del usuario dependen del usuario asociado al correo en el momento de enviarlo, como el remitente o el usuario asignado al contacto. Si la firma sale en blanco o con los datos de otra persona, revisa quién es el remitente o el usuario asignado y confirma que esa persona tiene una firma configurada.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La firma es por usuario o para toda la cuenta?">
+    Por usuario. Cada miembro de tu equipo puede tener una firma distinta.
+  </Accordion>
+  <Accordion title="Actualicé la firma pero no aparece en mis correos. ¿Qué reviso?">
+    Confirma que editaste al usuario correcto y que la opción **Habilitar firma en todos los mensajes salientes** está activada.
+  </Accordion>
+  <Accordion title="¿Puedo darle formato a la firma?">
+    Sí. El editor permite formato básico, como negritas y enlaces, y también acepta código para más personalización.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestionar los usuarios de tu equipo" icon="users" href="/configuracion/gestionar-usuarios-del-equipo">
+    Agrega, edita y da de baja usuarios.
+  </Card>
+  <Card title="Gestionar valores personalizados" icon="brackets-curly" href="/configuracion/gestionar-valores-personalizados">
+    Crea y organiza tus valores reutilizables.
+  </Card>
+</CardGroup>

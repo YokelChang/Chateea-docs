@@ -1,0 +1,131 @@
+---
+title: "Preguntas frecuentes sobre informes"
+description: "Por qué no coinciden los números entre informes: llamadas, zonas horarias, ingresos, anuncios, SMTP y GA4."
+icon: "circle-question"
+---
+
+Cuando dos informes muestran números distintos para lo mismo, casi nunca es un error: cada informe mide con reglas diferentes. Aquí tienes las respuestas a las dudas más comunes sobre tus datos en Chateea, agrupadas por tema.
+
+## Informe de llamadas e informe de usuarios
+
+<AccordionGroup>
+  <Accordion title="¿En qué se diferencian?">
+    El [informe de llamadas](/informes/informe-de-llamadas) cuenta las llamadas según el número de teléfono. El [informe de usuarios](/informes/informe-de-usuarios) las cuenta según la persona del equipo.
+  </Accordion>
+  <Accordion title="¿Cómo cambian los filtros?">
+    En el informe de llamadas filtras por número de teléfono (que puede tener un nombre, por ejemplo "Max"). En el informe de usuarios filtras por usuario.
+  </Accordion>
+  <Accordion title="¿Por qué no coinciden los datos?">
+    El informe de usuarios incluye las llamadas hechas o recibidas por Max y también las de todos los contactos asignados a Max. En el informe de llamadas, una llamada a un contacto asignado a Max pudo atenderla otra persona. Por eso las cifras pueden diferir.
+  </Accordion>
+  <Accordion title="¿Cómo comparo ambos informes sin confundirme?">
+    Ten presentes los filtros de cada uno y el criterio con el que cuenta las llamadas. Compara siempre el mismo rango de fechas y define de antemano qué pregunta quieres responder: rendimiento por número o rendimiento por persona.
+  </Accordion>
+  <Accordion title="¿Por qué el número de llamadas de Google Ads no coincide con el informe de llamadas?">
+    Chateea no muestra el conteo de llamadas de la plataforma de Google Ads. Para rastrear en Chateea las llamadas que vienen de Google Ads, configura un grupo de números de seguimiento y agrega su script en el sitio donde quieres medir. Si ya lo tienes y los datos no cuadran, revisa que el script esté bien instalado en todas las páginas.
+  </Accordion>
+</AccordionGroup>
+
+## Datos distintos entre usuarios
+
+<AccordionGroup>
+  <Accordion title="¿Por qué dos usuarios ven datos diferentes?">
+    Una causa frecuente es la zona horaria. Si los usuarios están en zonas horarias distintas, los eventos se agrupan por días diferentes y los totales de un mismo rango pueden variar.
+  </Accordion>
+  <Accordion title="¿Cómo afecta la zona horaria?">
+    Los eventos con hora, como llamadas o actividades, se registran según la hora local. Al comparar entre usuarios de distintas zonas horarias, un evento puede caer en un día para uno y en otro día para el otro. Revisa la [zona horaria del panel](/informes/zona-horaria-del-panel).
+  </Accordion>
+</AccordionGroup>
+
+## Ingresos en informes y paneles
+
+<AccordionGroup>
+  <Accordion title="¿Por qué los ingresos del informe de Facebook no coinciden con Facebook?">
+    Los ingresos, las ventas y los leads del informe de anuncios de Facebook salen de tus oportunidades en Chateea, no de la plataforma de anuncios de Facebook. Para que se llenen correctamente, configura los flujos de trabajo que envían los eventos de lead a la API de conversiones de Facebook.
+  </Accordion>
+  <Accordion title="¿Cómo se calculan los ingresos del panel de tu cuenta?">
+    Son la suma del valor monetario de las oportunidades **ganadas**, no de los pagos recibidos. Esta métrica depende de las oportunidades y no está vinculada con tus pasarelas de pago.
+  </Accordion>
+</AccordionGroup>
+
+## Seguimiento de Google Ads
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el conteo de leads está en cero?">
+    Un lead de Google Ads es un contacto cuya primera atribución es "Búsqueda pagada", con `utm_source=adwords` y un `gclid`. Si falta la plantilla de seguimiento o el script preventivo, los leads no se atribuyen. También pasa si el nombre real de la campaña es distinto del guardado en el contacto o si el nombre supera los 250 caracteres.
+  </Accordion>
+  <Accordion title="¿Por qué las ventas están en cero?">
+    Las ventas son los leads de Google Ads cuya oportunidad está marcada como **ganada**. Si la oportunidad cambió a otro estado, o si los leads están en cero, las ventas también lo estarán. Las ventas son siempre un subconjunto de los leads.
+  </Accordion>
+  <Accordion title="¿Por qué cambian las ventas de un rango de fechas pasado?">
+    Si una oportunidad se marcó como ganada varias veces o cambió de estado, el conteo se ajusta. Se toma la fecha del último cambio a ganada, y una oportunidad que deja de estar ganada sale del conteo.
+  </Accordion>
+  <Accordion title="¿Por qué no funcionan las conversiones de Google?">
+    Suele faltar la plantilla de seguimiento o el script preventivo, lo que deja datos incompletos. También pueden fallar si los datos que se envían a Google Ads no coinciden con los reales. Revisa que ambos scripts estén instalados y consulta [Acciones de conversión offline en Google Ads](/informes/acciones-de-conversion-offline-en-google-ads).
+  </Accordion>
+</AccordionGroup>
+
+## Informe de anuncios de Facebook
+
+<AccordionGroup>
+  <Accordion title="¿Por qué las ventas están en cero?">
+    Las ventas son los leads de Facebook cuya oportunidad está marcada como **ganada** y dependen directamente del conteo de leads. Solo aparecen si el flujo de trabajo del evento de lead está bien configurado. Si la oportunidad cambia de ganada a otro estado, o si los leads están en cero, las ventas serán cero.
+  </Accordion>
+  <Accordion title="¿Por qué cambian las ventas de un rango de fechas pasado?">
+    Por los cambios de estado de las oportunidades. Se toma la fecha del último cambio a ganada, y una oportunidad que deja de estar ganada sale del conteo.
+  </Accordion>
+  <Accordion title="Los contactos se repiten en varias campañas, conjuntos o anuncios">
+    El informe agrupa leads y ventas por nombre de campaña, de conjunto de anuncios y de anuncio. Si dos tienen el mismo nombre, el contacto aparece en ambos. Usa nombres únicos. Más detalles en [Solucionar problemas del informe de Facebook](/informes/solucionar-problemas-de-anuncios-de-facebook).
+  </Accordion>
+</AccordionGroup>
+
+## Estadísticas de correo enviado por SMTP
+
+<AccordionGroup>
+  <Accordion title="¿Qué eventos se registran con tu propio SMTP?">
+    Aperturas, clics, respuestas y rebotes.
+  </Accordion>
+  <Accordion title="¿Por qué no aparecen entregados ni bajas?">
+    Las integraciones SMTP no informan todos los eventos del correo, así que Chateea solo recibe aperturas, clics, respuestas y rebotes.
+  </Accordion>
+  <Accordion title="¿Cómo se completan los eventos que faltan?">
+    Chateea deduce algunos eventos a partir de otros. Por ejemplo, si un correo se abrió, se asume que se entregó y se suma a los entregados.
+  </Accordion>
+  <Accordion title="¿Por qué abiertos y entregados muestran el mismo número?">
+    Por esa misma deducción: cada apertura cuenta también como entrega, así que ambos conteos pueden coincidir.
+  </Accordion>
+</AccordionGroup>
+
+## Eventos de GA4 desde flujos de trabajo
+
+<AccordionGroup>
+  <Accordion title="¿Puedo enviar pares de parámetro y valor con un evento de GA4?">
+    Por ahora no hay una forma directa de enviar nombre y valor de parámetros personalizados en la acción de GA4 de los flujos. Consulta [Enviar eventos a Google Analytics 4](/informes/enviar-eventos-a-google-analytics-4).
+  </Accordion>
+  <Accordion title="¿Qué es el valor del evento en GA4?">
+    Un número que le asignas al evento para indicar su importancia o su valor monetario. Sirve para medir el impacto de cada interacción en tus objetivos.
+  </Accordion>
+</AccordionGroup>
+
+## General
+
+<AccordionGroup>
+  <Accordion title="¿Por qué un usuario no ve datos en los widgets del panel?">
+    Revisa tres cosas:
+
+    - **Permisos:** el rol del usuario debe tener activos los permisos del módulo. Por ejemplo, para ver widgets de contactos necesita permiso de contactos. Consulta [permisos de paneles](/informes/permisos-de-paneles).
+    - **Solo datos asignados:** si está activa la opción de ver solo lo asignado, el usuario solo verá los datos vinculados a él. Consulta [datos asignados en paneles](/informes/datos-asignados-en-paneles).
+    - **Rango de fechas:** si comparas el panel con otra página, como Contactos, usa el mismo rango de fechas en ambas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Reportes y atribución" icon="chart-line" href="/reportes/introduccion">
+    Cómo leer tus números sin engañarte.
+  </Card>
+  <Card title="Términos del informe de Facebook" icon="book" href="/informes/terminos-de-informes-de-anuncios-de-facebook">
+    Qué significa cada métrica.
+  </Card>
+</CardGroup>

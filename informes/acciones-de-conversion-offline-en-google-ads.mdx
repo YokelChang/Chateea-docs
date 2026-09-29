@@ -1,0 +1,114 @@
+---
+title: "Crea acciones de conversión offline en Google Ads"
+description: "Configura en Google Ads la acción de conversión offline que luego alimentarás con ventas y leads desde Chateea."
+icon: "google"
+---
+
+Una acción de conversión es la regla que le dice a Google Ads qué resultado quieres medir: un lead calificado, una cita agendada o una venta cerrada en tu CRM. Cuando Chateea le envía esas conversiones "offline" (las que ocurren fuera de la página, por ejemplo al marcar una oportunidad como ganada), Google puede atribuir el resultado al anuncio y a la palabra clave correctos, y optimizar tus pujas hacia lo que de verdad te trae dinero.
+
+Esta guía cubre solo la configuración que haces **dentro de Google Ads**. Cuando la termines, conecta la acción desde Chateea con el **Administrador de anuncios** o con la acción de flujo de trabajo **Agregar a Google Ads**.
+
+## Para qué te sirve
+
+- **Mejor optimización:** Smart Bidding recibe señales limpias de resultados reales, no solo de clics.
+- **Informes más claros:** separas los resultados principales (por ejemplo, leads calificados) de los eventos secundarios.
+- **Control del conteo:** decides si se cuenta cada conversión o solo una por interacción con el anuncio.
+- **Atribución flexible:** eliges el modelo que mejor se adapta a tu embudo y a tu volumen de datos.
+- **Compatible con tu CRM:** Google empareja las conversiones usando los identificadores de clic GCLID, GBRAID o WBRAID.
+
+## Antes de empezar
+
+- Acceso de administrador o estándar a la cuenta de **Google Ads** correcta.
+- Una convención clara de nombres para tus objetivos (por ejemplo, "Lead", "Envío de formulario" o "Lead calificado").
+- Decidir si esta acción será una **acción principal** usada para optimizar las pujas.
+- Tener claro qué identificador vas a enviar después desde Chateea (GCLID, GBRAID o WBRAID).
+
+<Warning>
+Chateea solo admite **conversiones offline**. Las fuentes de conversión de sitio web, aplicación, llamadas telefónicas y otras no se pueden alimentar desde Chateea.
+</Warning>
+
+## Crear la acción de conversión offline en Google Ads
+
+<Steps>
+  <Step title="Entra a Google Ads">
+    Abre [ads.google.com](https://ads.google.com) e inicia sesión. Si aún no tienes cuenta, créala desde **Comenzar ahora**.
+  </Step>
+  <Step title="Crea una nueva acción de conversión">
+    Haz clic en el botón **+** y elige **Acción de conversión** en el menú.
+  </Step>
+  <Step title="Elige la fuente offline">
+    Cuando Google te pida la fuente de datos para medir conversiones, selecciona **Conversiones offline**.
+  </Step>
+  <Step title="Deja la fuente de datos para después">
+    Haz clic en **Editar fuentes de datos** y elige la opción para omitir este paso y configurar la fuente de datos más tarde. Luego haz clic en **Guardar y continuar**.
+  </Step>
+  <Step title="Selecciona la categoría de conversión">
+    Define qué quieres medir. Usa **Ver todo** para ver la lista completa de categorías. Después agrega la fuente de datos a la categoría elegida.
+  </Step>
+  <Step title="Configura los detalles">
+    Haz clic en **Editar configuración**. En la optimización de la acción, deja marcada la opción **Acción principal usada para la optimización de las pujas**.
+  </Step>
+  <Step title="Ponle nombre a la conversión">
+    Escribe un nombre descriptivo, por ejemplo "Venta cerrada CRM". Cópialo y guárdalo: lo necesitarás tal cual al conectar la conversión desde Chateea.
+  </Step>
+  <Step title="Define el valor">
+    Elige si cada conversión tiene el mismo valor, valores distintos o ningún valor. Consulta la [guía de Google sobre valores de conversión](https://support.google.com/google-ads/answer/3419241) si tienes dudas.
+  </Step>
+  <Step title="Elige cómo se cuentan">
+    Selecciona **Cada una** o **Una**. Más abajo te explicamos cuándo conviene cada opción.
+  </Step>
+  <Step title="Ajusta la ventana y el modelo de atribución">
+    Configura la ventana de conversión por clic en **90 días**, elige la ventana de conversión por vista con interacción y selecciona el modelo **Basado en datos** (recomendado) o **Último clic**.
+  </Step>
+  <Step title="Guarda y termina">
+    Haz clic en **Listo**, luego en **Guardar y continuar** y finalmente en **Finalizar**. Si necesitas medir otros resultados, usa **Agregar otra categoría** antes de terminar.
+  </Step>
+</Steps>
+
+## ¿Cada una o una?
+
+| Opción | Cuándo usarla |
+| --- | --- |
+| **Una** | Generación de leads. Evita inflar resultados cuando el mismo contacto repite el evento. |
+| **Cada una** | Eventos con ingresos, como compras. Cada venta cuenta. |
+
+## Siguientes pasos en Chateea
+
+Con la acción creada, tienes dos formas de enviarle conversiones:
+
+- **Administrador de anuncios:** ideal si prefieres un espacio centralizado de anuncios con mapeo integrado.
+- **Flujos de trabajo:** usa la acción **Agregar a Google Ads** si necesitas lógica personalizada, por ejemplo enviar la conversión solo cuando una oportunidad pasa a ganada en un pipeline concreto.
+
+Ambas opciones pueden enviar datos a la misma acción de conversión.
+
+<Tip>
+Guarda el GCLID (o GBRAID/WBRAID) del contacto desde el primer contacto. Sin ese identificador, Google no puede emparejar la conversión con el clic del anuncio.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuánto tardan en aparecer las conversiones en Google Ads?">
+    Entre unas horas y 24 a 48 horas, según el volumen y el método de envío. Es una demora normal. Al revisar informes, usa fechas absolutas.
+  </Accordion>
+  <Accordion title="¿Necesito GCLID, GBRAID o WBRAID?">
+    Sí. Necesitas al menos uno de estos identificadores para que el emparejamiento sea confiable. Guarda el que esté disponible en el primer contacto e inclúyelo al enviar la conversión desde Chateea.
+  </Accordion>
+  <Accordion title="¿Dónde verifico que se están registrando?">
+    En Google Ads, entra a **Herramientas y configuración → Conversiones** y revisa las columnas de conversiones en los informes de campaña. En Chateea, revisa los informes del Administrador de anuncios una vez que el envío esté configurado.
+  </Accordion>
+  <Accordion title="Mis envíos no coinciden o no muestran resultados">
+    Las causas más comunes son: falta el identificador de clic, la zona horaria es incorrecta, la moneda o el valor no coinciden, o estás enviando a otra acción de conversión. Confirma el nombre exacto de la conversión, que el identificador esté presente y las marcas de tiempo de los eventos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Reportes y atribución" icon="chart-line" href="/reportes/introduccion">
+    Descubre de dónde vienen realmente tus clientes.
+  </Card>
+  <Card title="Filtros de atribución y UTM en widgets" icon="filter" href="/informes/filtros-de-atribucion-y-utm-en-widgets">
+    Analiza resultados por campaña y fuente en tus paneles.
+  </Card>
+</CardGroup>

@@ -1,0 +1,104 @@
+---
+title: "Crear y gestionar valores personalizados"
+description: "Crea datos reutilizables de tu negocio, organízalos en carpetas y edítalos en bloque para actualizarlos en toda la plataforma."
+icon: "brackets-curly"
+---
+
+Los valores personalizados son datos de tu negocio que escribes una sola vez y reutilizas en toda la plataforma: el enlace de reservas, el horario de atención, la dirección de la sucursal, el precio de una promoción. En lugar de repetir ese dato en cada correo, plantilla o flujo, insertas su clave. Si mañana el dato cambia, lo actualizas en un solo lugar y se actualiza en todas partes.
+
+## Cómo funcionan
+
+Cada valor personalizado tiene dos partes:
+
+| Parte | Qué es | Ejemplo |
+| --- | --- | --- |
+| **Clave** | El código que insertas en tus mensajes y páginas | `{{custom_values.enlace_de_reservas}}` |
+| **Valor** | El dato real que se muestra en su lugar | `https://chateea.com/reservas` |
+
+La clave se genera automáticamente a partir del nombre. Por ejemplo, un valor llamado **Mi valor personalizado** tendrá la clave `{{custom_values.mi_valor_personalizado}}`.
+
+<Tip>
+  Úsalos para todo dato del negocio que aparece en más de un lugar y que podría cambiar: teléfonos, enlaces, horarios, nombres de promociones o precios. Te ahorra revisar decenas de correos y páginas cada vez que algo cambia.
+</Tip>
+
+## Crear un valor personalizado
+
+<Steps>
+  <Step title="Abre los valores personalizados">
+    Ve a **Configuración → Valores personalizados**.
+  </Step>
+  <Step title="Crea uno nuevo">
+    Haz clic en **Nuevo valor personalizado**, en la esquina superior derecha.
+  </Step>
+  <Step title="Completa los campos">
+    - **Nombre:** a partir de él se genera la clave.
+    - **Valor:** el dato que se mostrará.
+    - **Carpeta** (opcional): para mantenerlos organizados.
+  </Step>
+  <Step title="Guarda">
+    El valor queda disponible de inmediato en los selectores de valores personalizados de toda la plataforma.
+  </Step>
+</Steps>
+
+## Organizar con carpetas
+
+Cuando tienes muchos valores, las carpetas te ayudan a encontrarlos rápido. Por ejemplo, una carpeta por sucursal o por campaña.
+
+- Para crear una carpeta, entra a la pestaña **Carpetas** y haz clic en **Agregar nueva carpeta**.
+- Las carpetas que contienen valores aparecen en la columna **Carpeta** de la lista **Todos los valores**. En la pestaña **Carpetas** ves todas las carpetas creadas.
+
+<Note>
+  Cada valor personalizado puede estar en una sola carpeta a la vez, y las carpetas no se pueden anidar dentro de otras.
+</Note>
+
+### Renombrar o eliminar una carpeta
+
+Haz clic en el menú de **tres puntos** a la derecha de la carpeta y elige:
+
+- **Renombrar carpeta:** escribe el nuevo nombre.
+- **Eliminar carpeta:** confirma la acción en la ventana que aparece.
+
+## Buscar valores
+
+En la parte superior derecha de la lista **Todos los valores** está el buscador. Escribe una palabra y la lista se filtra para mostrar solo los valores que coinciden.
+
+## Acciones sobre un valor
+
+Haz clic en el menú de **tres puntos** a la izquierda del valor para ver sus opciones:
+
+| Acción | Qué hace |
+| --- | --- |
+| **Mover a carpeta** | Elige la carpeta de destino y haz clic en **Mover** |
+| **Editar valor personalizado** | Cambia el nombre, el valor o la carpeta |
+| **Eliminar valor personalizado** | Borra el valor tras pedirte confirmación |
+
+<Warning>
+  Cambiar el **nombre** de un valor personalizado **no** cambia su clave. Tus correos y páginas siguen funcionando, pero ten presente que el nombre y la clave pueden dejar de coincidir.
+</Warning>
+
+<Warning>
+  Antes de eliminar un valor, revisa dónde lo usas. Los mensajes y páginas que tengan su clave ya no mostrarán el dato.
+</Warning>
+
+## Acciones en bloque
+
+Para trabajar con varios valores a la vez:
+
+1. Marca las casillas de los valores que quieres modificar. Aparecerá el botón **Acciones en bloque**.
+2. Haz clic en el botón y elige una acción, o pulsa **Deseleccionar todo** para empezar de nuevo.
+
+Las acciones disponibles son:
+
+- **Mover a carpeta:** elige la carpeta de destino. Los valores movidos mostrarán esa carpeta en la columna **Carpeta**.
+- **Eliminar valor personalizado:** confirma en la ventana que te pregunta si quieres borrar los valores seleccionados.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Variables y campos personalizados" icon="code" href="/variables/introduccion">
+    Personaliza mensajes con los datos de cada contacto.
+  </Card>
+  <Card title="Valores personalizados en calendarios" icon="calendar" href="/calendarios/valores-personalizados-en-calendarios">
+    Usa tus valores en la configuración de calendarios.
+  </Card>
+</CardGroup>

@@ -1,0 +1,137 @@
+---
+title: "Configura el informe de anuncios de Facebook"
+description: "Agrega parámetros UTM y nombra bien tus campañas para atribuir leads y ventas a cada anuncio de Facebook."
+icon: "facebook"
+---
+
+Chateea intenta atribuir cada lead a la campaña, el conjunto de anuncios y el anuncio de Facebook que lo trajo. Para que esa atribución sea precisa y puedas identificar tus campañas ganadoras, agrega parámetros UTM a tus anuncios, nombra bien tus campañas y, si llevas tráfico a una página, configura el píxel de Facebook y la API de conversiones en tus flujos de trabajo.
+
+## Antes de empezar
+
+- Si envías tráfico a una página de destino, configura el píxel de Facebook y la API de conversiones de Facebook en tus flujos de trabajo.
+- No uses caracteres especiales ni emojis en los parámetros UTM ni en ningún parámetro que quieras rastrear.
+- Facebook no agrega los parámetros UTM a los enlaces cuando ves el anuncio en vista previa. Es normal no verlos al probar.
+
+### Puntos de entrada que registran la primera atribución
+
+Los datos de la primera atribución del anuncio solo se guardan cuando el contacto llega por uno de estos puntos de entrada. En cualquier otro caso, la primera atribución queda vacía.
+
+- Envío de formularios
+- Envío de encuestas
+- Calendarios
+- Formularios de clientes potenciales de Facebook
+- Formulario de pedido de dos pasos
+- Widget de chat
+- Llamadas entrantes desde un enlace de clic para llamar (no funciona si el lead marca directamente a un número del grupo de números)
+
+### Parámetros disponibles en el contacto
+
+Estos datos de atribución quedan guardados en cada contacto y puedes usarlos como variables:
+
+| Dato | Variable |
+| --- | --- |
+| Nombre de la campaña | `{{contact.attributionSource.utmCampaign}}` |
+| Nombre del conjunto de anuncios | `{{contact.attributionSource.utmMedium}}` |
+| Nombre del anuncio | `{{contact.attributionSource.utmContent}}` |
+| ID de la campaña | `{{contact.attributionSource.campaignId}}` |
+| fbclid | `{{contact.attributionSource.fbclid}}` |
+| gclid | `{{contact.attributionSource.gclid}}` |
+| Página de referencia | `{{contact.attributionSource.referrer}}` |
+
+La **fuente** del contacto se asigna automáticamente según reglas de clasificación del tráfico (orgánico, pago, redes sociales, directo, referencia).
+
+## Nombra tus campañas para que el informe sea exacto
+
+<Warning>
+- Los nombres de campañas, conjuntos de anuncios y anuncios deben ser **únicos**.
+- No cambies esos nombres mientras la campaña esté activa. Si necesitas otro nombre, crea una nueva campaña, conjunto o anuncio.
+- Si cambias el nombre sin crear uno nuevo, Chateea seguirá asociando los datos a la campaña original.
+</Warning>
+
+Ejemplo de una estructura correcta:
+
+| Nivel | Nombre |
+| --- | --- |
+| Campaña | Campaña - Sonrisa Feliz |
+| Conjunto de anuncios | Campaña 1 - Sonrisa Feliz - Público 1 (Monterrey, 30 km, H y M) |
+| Anuncio 1 | Sonrisa Feliz - Carrusel - Público 1 |
+| Anuncio 2 | Sonrisa Feliz - Video - Público 1 |
+| Anuncio 3 | Sonrisa Feliz - Imagen - Público 1 |
+
+## Agrega los parámetros UTM en el Administrador de anuncios de Meta
+
+<Steps>
+  <Step title="Abre el anuncio">
+    Entra al [Administrador de anuncios de Meta](https://business.facebook.com/adsmanager/manage/ads/), selecciona la campaña y ve a **Anuncios**. Elige el anuncio y haz clic en **Editar**.
+  </Step>
+  <Step title="Busca la sección Seguimiento">
+    Desplázate hasta la sección **Seguimiento** (Tracking).
+  </Step>
+  <Step title="Crea los parámetros de URL">
+    Haz clic en **Crear un parámetro de URL** (Build a URL parameter).
+  </Step>
+  <Step title="Completa los parámetros">
+    Llena los campos así:
+
+    1. **Fuente de la campaña** (Campaign Source): escribe `fb_ad`.
+    2. **Medio de la campaña** (Campaign Medium): elige `{{adset.name}}` en el menú.
+    3. **Nombre de la campaña** (Campaign Name): elige `{{campaign.name}}`.
+    4. **Contenido de la campaña** (Campaign Content): elige `{{ad.name}}`.
+    5. Haz clic en **Agregar parámetro**.
+    6. En **Nombre del parámetro** escribe `campaign_id` y como valor elige `{{campaign.id}}`.
+    7. Haz clic en **Aplicar** para guardar.
+  </Step>
+</Steps>
+
+<Note>
+Meta tarda un tiempo en revisar y aprobar tus anuncios. Una vez aprobados, empiezan a registrar los parámetros UTM en Chateea.
+</Note>
+
+Si usas un solo sitio de destino, el resultado se verá parecido a esto:
+
+```text
+https://tusitio.com/?utm_source=fb_ad&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}&campaign_id={{campaign.id}}
+```
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="No veo los parámetros UTM en la vista previa del anuncio">
+    Es normal. Facebook no agrega los parámetros UTM cuando ves el anuncio en vista previa. Aparecen cuando alguien hace clic en el anuncio publicado.
+  </Accordion>
+  <Accordion title="Mis contactos no tienen datos de primera atribución">
+    La primera atribución solo se registra en los puntos de entrada de la lista de arriba. Si el contacto llegó por otro camino, por ejemplo una importación o una llamada directa a un número del grupo de números, queda vacía.
+  </Accordion>
+  <Accordion title="Cambié algo en mi anuncio y ahora el informe no cuadra">
+    Los nombres de campaña, conjunto y anuncio deben ser únicos y no deben cambiar durante su vida. Si cambias un nombre sin crear un elemento nuevo, los datos siguen asociados al original.
+  </Accordion>
+  <Accordion title="No tengo cuenta comercial ni Administrador de anuncios">
+    Crea primero tu [portfolio comercial de Meta](https://www.facebook.com/business/help/1710077379203657) y luego tu [cuenta publicitaria](https://www.facebook.com/business/help/407323696966570).
+  </Accordion>
+  <Accordion title="Uso anuncios de clientes potenciales, ¿también necesito UTM?">
+    Sí. Te recomendamos agregar los parámetros UTM también en los anuncios de clientes potenciales para tener informes más completos.
+  </Accordion>
+  <Accordion title="¿Pongo los UTM en el seguimiento o en la URL de destino?">
+    En la sección **Seguimiento**. Así se registra cada clic o visita con su fbclid único.
+  </Accordion>
+  <Accordion title="¿Para qué sirve el menú Objetivos del informe?">
+    El menú **Objetivos**, arriba a la izquierda del informe de anuncios, indica qué objetivo tenía el negocio al crear la campaña, para que filtres y compares campañas con el mismo propósito.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Términos del informe de Facebook" icon="book" href="/informes/terminos-de-informes-de-anuncios-de-facebook">
+    Qué significa cada métrica del informe.
+  </Card>
+  <Card title="Solucionar problemas del informe de Facebook" icon="circle-question" href="/informes/solucionar-problemas-de-anuncios-de-facebook">
+    Revisa tu configuración paso a paso.
+  </Card>
+  <Card title="La API de conversiones de Facebook no funciona" icon="bolt" href="/automatizaciones/conversion-api-de-facebook-no-funciona">
+    Diagnostica el envío de eventos desde tus flujos.
+  </Card>
+  <Card title="Reportes y atribución" icon="chart-line" href="/reportes/introduccion">
+    Por qué marcar el origen es la base de todo.
+  </Card>
+</CardGroup>

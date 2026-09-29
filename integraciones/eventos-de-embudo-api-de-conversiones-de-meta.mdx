@@ -1,0 +1,113 @@
+---
+title: "Eventos de embudo con la API de conversiones de Meta"
+description: "Crea el píxel en Meta, agrégalo a tu embudo o sitio y envía eventos desde un flujo con la API de conversiones."
+icon: "chart-line"
+---
+
+La API de conversiones de Meta (Conversions API o CAPI) envía los eventos de tu sitio directamente desde el servidor a Meta, sin depender solo de las cookies del navegador. Combinada con el píxel de Meta en tus embudos y sitios web de Chateea, le da a Meta datos más completos sobre quién se registra, reserva o compra, y eso ayuda a que tus anuncios se optimicen mejor, bajen tu costo por resultado y midan con más precisión.
+
+En esta guía configuras un **evento de embudo** (Funnel Event): eventos de tu sitio como el envío de un formulario, una reserva o un pedido, enviados a Meta desde un flujo de trabajo.
+
+<Info>
+Chateea admite dos tipos de eventos para la API de conversiones: **eventos de embudo** (lo que pasa en tu sitio web) y **eventos de lead** (cómo avanza un lead por tu pipeline). Para los segundos, consulta [Leads de conversión de Meta](/integraciones/leads-de-conversion-de-meta).
+</Info>
+
+## Paso 1: Crea el píxel (conjunto de datos) en Meta
+
+<Steps>
+  <Step title="Abre el Administrador de eventos">
+    Entra a [Meta Business Suite](https://business.facebook.com) y abre el [Administrador de eventos](https://www.facebook.com/events_manager2/). Confirma que estás en la cuenta publicitaria correcta y que tienes acceso total a la página.
+  </Step>
+  <Step title="Conecta un origen de datos">
+    En la barra lateral, haz clic en **Conectar orígenes de datos**, elige **Web** y haz clic en **Siguiente**.
+  </Step>
+  <Step title="Crea o elige el píxel">
+    Haz clic en **Crear nuevo píxel** o elige uno que ya tengas, y luego en **Continuar**.
+  </Step>
+  <Step title="Agrega tu dominio">
+    Escribe el dominio del embudo o sitio web de Chateea donde vas a poner el píxel y haz clic en **Comprobar**. Si aparece la marca verde, haz clic en **Siguiente**.
+  </Step>
+  <Step title="Elige el método de conexión">
+    Selecciona **Píxel de Meta y API de conversiones**. Luego, en API de conversiones, haz clic en **Ver instrucciones**; se abre la implementación manual. Lee la descripción general y haz clic en **Continuar**.
+  </Step>
+  <Step title="Selecciona los eventos">
+    Elige el sector de tu negocio y marca los eventos que quieres enviar a Meta. Haz clic en **Continuar**.
+  </Step>
+  <Step title="Selecciona los parámetros">
+    En **Parámetros de detalles del evento**, marca también **ID del evento** (Meta lo recomienda para evitar duplicados). En **Parámetros de información del cliente**, además del agente de usuario que ya viene marcado, marca **dirección IP del cliente**, **nombre**, **apellido**, **correo**, **ID de cliente** e **ID del negocio**.
+  </Step>
+  <Step title="Revisa y termina">
+    Revisa los parámetros de cada evento, haz clic en **Continuar** y luego en **Finalizar**.
+  </Step>
+  <Step title="Copia el código del píxel">
+    Haz clic en **Configurar el píxel de Meta**, elige **Instalar código manualmente** y haz clic en **Copiar código**. Deja esta pestaña abierta.
+  </Step>
+</Steps>
+
+## Paso 2: Agrega el píxel a tu embudo o sitio web
+
+<Steps>
+  <Step title="Abre tu sitio en Chateea">
+    Ve a **Sitios** y entra a **Embudos** o **Sitios web**, según dónde creaste la página que usa el dominio que registraste en Meta.
+  </Step>
+  <Step title="Elige dónde medir">
+    - **Solo en una página o paso**: haz clic en **Editar** (mejor en una pestaña nueva) para abrir el constructor, haz clic en el ícono de código y pega el código en **Código de seguimiento del encabezado** (Header Tracking). Guarda.
+    - **En todas las páginas**: abre la configuración del embudo o sitio web y pega el código en **Código de seguimiento del encabezado** (Head tracking code).
+  </Step>
+  <Step title="Guarda los cambios">
+    Guarda y publica tu embudo o sitio.
+  </Step>
+</Steps>
+
+## Paso 3: Crea el flujo de la API de conversiones
+
+<Steps>
+  <Step title="Crea un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y usa uno o varios de estos: **Formulario enviado**, **Cliente reservó una cita**, **Encuesta enviada** o **Envío de formulario de pedido**. Agrega filtros para elegir el formulario, calendario, encuesta o formulario de pedido concreto que quieres medir.
+  </Step>
+  <Step title="Agrega la acción">
+    Agrega la acción **API de conversiones de Facebook** (Facebook Conversion API). Si quieres, ponle un nombre y, en **Tipo de evento**, elige **Evento de embudo** (Funnel Event).
+  </Step>
+  <Step title="Pega el token de acceso">
+    En el Administrador de eventos, entra a tu origen de datos, abre **Configuración**, desplázate hacia abajo y haz clic en **Generar token de acceso**. Cópialo y pégalo en el campo **Token de acceso** de la acción.
+  </Step>
+  <Step title="Pega el ID del píxel">
+    En la misma pantalla de **Configuración**, copia el **ID del conjunto de datos** (es el ID del píxel) y pégalo en el campo **ID del píxel** de la acción.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda la acción y luego guarda y publica el flujo.
+  </Step>
+</Steps>
+
+<Tip>
+Si no vendes online, asigna un valor estimado a cada lead (por ejemplo, 1000 o 2000). Así puedes ver en Meta cuánto aporta cada lead a tu pipeline y comparar campañas por valor, no solo por volumen.
+</Tip>
+
+## Mapeo personalizado de parámetros
+
+La acción de la API de conversiones permite un mapeo personalizado de los parámetros de seguimiento, igual que en Google Ads.
+
+- Viene **desactivado** por defecto. Actívalo con el interruptor para usarlo.
+- Con el mapeo activo puedes indicar de dónde tomar el **FBCLID** (identificador de clic de Facebook) en los eventos de embudo, o el **ID del lead de Facebook** en los eventos de lead.
+- Si llenas estos campos, tienen prioridad sobre los valores del sistema.
+- Si los dejas vacíos, Chateea usa sus valores internos por defecto.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="API de conversiones de Meta en flujos" icon="bolt" href="/integraciones/api-de-conversiones-de-meta-en-flujos">
+    Disparadores compatibles, parámetros y preguntas frecuentes.
+  </Card>
+  <Card title="Configurar el token de acceso de la API de conversiones" icon="key" href="/embudos-sitios-web/configurar-el-token-de-acceso-a-la-api-de-meta-conversions">
+    Genera el token y ubica las opciones en el Administrador de eventos.
+  </Card>
+  <Card title="Códigos de seguimiento y píxeles" icon="code" href="/sitios/codigos-de-seguimiento-y-pixeles">
+    Dónde pegar códigos de seguimiento en tus sitios.
+  </Card>
+  <Card title="La API de conversiones no funciona" icon="circle-question" href="/automatizaciones/conversion-api-de-facebook-no-funciona">
+    Causas comunes cuando no llegan los eventos.
+  </Card>
+</CardGroup>

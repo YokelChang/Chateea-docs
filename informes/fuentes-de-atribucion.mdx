@@ -1,0 +1,152 @@
+---
+title: "Fuentes de atribución de tus contactos"
+description: "Entiende la primera y la última atribución, qué significa cada fuente y cómo Chateea decide cuál asignar."
+icon: "route"
+---
+
+La atribución te dice de qué canal o fuente llegó cada contacto. Con ese dato sabes qué canales traen más clientes y dónde conviene invertir. Por ejemplo, si anuncias en Facebook y en Google, la atribución te muestra cuál de los dos genera más leads en Chateea.
+
+En esta guía verás qué es la primera y la última atribución, dónde consultarlas, qué significa cada fuente y cómo decide Chateea cuál asignar.
+
+## Primera atribución y atribución más reciente
+
+Cada contacto guarda siempre las dos:
+
+- **Primera atribución:** la primera interacción registrada del contacto con tu negocio, por ejemplo cuando envía tu formulario de contacto. No cambia nunca.
+- **Atribución más reciente:** la última interacción registrada. Por ejemplo, si después de llenar el formulario compra a través de un formulario de pedido en dos pasos, esa compra queda como atribución más reciente. Cambia con cada nueva interacción registrada.
+
+Al crearse el contacto:
+
+- La **primera atribución** es su primera interacción registrada, normalmente su primera visita a tu sitio o una interacción con cualquiera de las fuentes de abajo.
+- La **atribución más reciente** es su última interacción antes de convertirse en contacto.
+
+## Dónde ver la atribución de un contacto
+
+Ve a **Contactos**, abre la ficha del contacto y, en la pestaña **Actividad**, busca los datos de atribución en la columna derecha, en la parte inferior.
+
+## Tipos de fuente
+
+| Fuente | De dónde viene el contacto |
+| --- | --- |
+| **Búsqueda pagada** (Paid Search) | Campañas de búsqueda pagada, como Google Ads |
+| **Redes sociales pagadas** (Paid Social) | Anuncios pagados en redes, como Facebook e Instagram |
+| **Tráfico directo** | Sin indicación de origen: escribió la URL a mano o entró sin parámetros |
+| **Búsqueda orgánica** | Resultados no pagados de buscadores como Google, Bing, Yahoo o DuckDuckGo |
+| **Redes sociales** | Sitios o apps de redes sociales, por ejemplo cuando alguien comparte tu contenido y sus seguidores hacen clic |
+| **Referencia** | Otros sitios web que enlazan al tuyo (que no son buscadores ni redes sociales) |
+| **Otros** | Llamadas entrantes, SMS, correos, WhatsApp, mensajes de Facebook u otras fuentes no cubiertas |
+| **Interfaz del CRM** (CRM UI) | Contactos creados a mano dentro de Chateea |
+| **Terceros** | Contactos creados por una integración externa, como Zapier |
+
+### Búsqueda pagada (Google Ads)
+
+Para que un contacto se atribuya a Google Ads, la URL de destino debe llevar los parámetros UTM exactos. Distinguen entre mayúsculas y minúsculas:
+
+```text
+https://tupagina.com?utm_source=adwords&utm_medium={adname}&utm_campaign={campaignname}&utm_content={adgroupname}&utm_keyword={keyword}&utm_matchtype={matchtype}&campaign_id={campaignid}&ad_group_id={adgroupid}&ad_id={creative}
+```
+
+| Nombre | Parámetro | Valor |
+| --- | --- | --- |
+| UTM Source | `utm_source` | `adwords` |
+| UTM Medium | `utm_medium` | `{adname}` |
+| UTM Campaign | `utm_campaign` | `{campaignname}` |
+| UTM Content | `utm_content` | `{adgroupname}` |
+| UTM Keyword | `utm_keyword` | `{keyword}` |
+| Match Type | `utm_matchtype` | `{matchtype}` |
+| Campaign ID | `campaign_id` | `{campaignid}` |
+| Ad Group ID | `ad_group_id` | `{adgroupid}` |
+| Ad ID | `ad_id` | `{creative}` |
+
+Los valores entre llaves los completa Google Ads automáticamente. La configuración completa está en [Configurar informes de Google Ads](/informes/configurar-informes-de-google-ads).
+
+### Redes sociales pagadas (Facebook e Instagram)
+
+Para los anuncios de Meta, usa estos parámetros exactos:
+
+```text
+https://tupagina.com?utm_source=fb_ad&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}&campaign_id={{campaign.id}}
+```
+
+| Nombre | Parámetro | Valor |
+| --- | --- | --- |
+| UTM Source | `utm_source` | `fb_ad` |
+| UTM Medium | `utm_medium` | `{{adset.name}}` |
+| UTM Campaign | `utm_campaign` | `{{campaign.name}}` |
+| UTM Content | `utm_content` | `{{ad.name}}` |
+| Campaign ID | `campaign_id` | `{{campaign.id}}` |
+
+Mira [Configurar informes de anuncios de Facebook](/informes/configurar-informes-de-anuncios-de-facebook).
+
+### Tráfico directo y búsqueda orgánica
+
+- En **tráfico directo**, haz clic en la fuente para ver las URL de origen de esas visitas.
+- En **búsqueda orgánica**, haz clic en la fuente para ver las palabras clave. Si aparece "Desconocido (SSL)", es porque el buscador cifra los términos de búsqueda de sus usuarios, como hace Google.
+
+## Qué acciones registran atribución
+
+En la misma sesión, el contacto debe hacer al menos una de estas acciones:
+
+1. Enviar un formulario o una encuesta.
+2. Reservar en un calendario.
+3. Enviar sus datos en el widget de chat.
+4. Enviar un formulario de pedido (de uno o dos pasos).
+
+Los formularios, encuestas, calendarios, widgets de chat y formularios de pedido de Chateea registran la atribución automáticamente. Los formularios de otros sitios también pueden hacerlo si usas el [seguimiento externo](/sitio-web/seguimiento-externo), que detecta formularios compatibles y captura parámetros UTM, URL de página y datos de sesión.
+
+## Cómo decide Chateea la fuente
+
+Chateea revisa la URL completa de la página y el dominio de referencia (si existe) y aplica estas reglas en orden. Se queda con la primera que se cumple:
+
+| Orden | Regla | Fuente |
+| --- | --- | --- |
+| 1 | `utm_source` contiene `adwords` | Búsqueda pagada |
+| 2 | Hay un identificador de clic de Google (`gclid`, `wbraid` o `gbraid`) o de Microsoft para Bing/Yahoo (`msclkid`) | Búsqueda pagada |
+| 3 | Hay `utm_source`, `utm_medium` o `utm_campaign` y el dominio de referencia es google.com | Búsqueda pagada |
+| 4 | `utm_source` contiene `fb_ad` (Facebook), `linkedin_ad` (LinkedIn), `twitter_ad` (X/Twitter) o `reddit_ad` (Reddit), o hay `ctwa_clid` (conversaciones de WhatsApp desde anuncios) | Redes sociales pagadas |
+| 5 | El dominio de referencia es una red social | Redes sociales |
+| 6 | El dominio de referencia es un buscador (Google, Yahoo, Bing, DuckDuckGo) | Búsqueda orgánica |
+| 7 | El dominio de referencia no es red social ni buscador | Referencia |
+| 8 | No hay dominio de referencia ni URL con parámetros | Tráfico directo |
+| 9 | El lead llegó por llamada, SMS, correo, WhatsApp, mensaje de Facebook u otra fuente no cubierta | Otros |
+| 10 | El lead se creó a mano en el CRM | Interfaz del CRM |
+| 11 | El lead se creó con una integración de terceros, como Zapier | Terceros |
+
+<Warning>
+  `utm_source=facebook` ya no se usa para anuncios de Meta. Usa siempre `fb_ad`.
+</Warning>
+
+## Si la atribución no se registra
+
+<AccordionGroup>
+  <Accordion title="Revisa espacios, errores de escritura y mayúsculas">
+    Los parámetros distinguen mayúsculas y minúsculas. Copia y pega las plantillas de esta guía en la **URL final** (la página a la que llega la persona al hacer clic en el anuncio) y revisa que no haya espacios de más.
+  </Accordion>
+  <Accordion title="Haz que la conversión ocurra en la URL final">
+    Los parámetros solo se registran si la persona envía el formulario en la misma página a la que llegó desde el anuncio. Si hace clic en un botón que la lleva a otra página para llenar el formulario, se pierden. Usa una ventana emergente o una sección con el formulario en la propia página de destino.
+  </Accordion>
+  <Accordion title="No agregues parámetros UTM propios">
+    No modifiques ni añadas parámetros a las plantillas de Google Ads y Meta. Hacerlo puede causar datos incompletos o que no se registre nada.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Para configuraciones avanzadas de seguimiento y atribución fuera de Chateea, puede convenirte el apoyo de un especialista en publicidad digital.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar informes de Google Ads" icon="google" href="/informes/configurar-informes-de-google-ads">
+    Conecta tu cuenta y agrega la plantilla UTM.
+  </Card>
+  <Card title="Filtros de atribución y UTM en widgets" icon="filter" href="/informes/filtros-de-atribucion-y-utm-en-widgets">
+    Usa la atribución en tus paneles.
+  </Card>
+  <Card title="Fuentes de tráfico en la analítica" icon="chart-column" href="/sitios/fuentes-de-trafico-en-analisis">
+    Cómo se clasifican las visitas a tus sitios.
+  </Card>
+  <Card title="Reportes y atribución" icon="chart-line" href="/reportes/introduccion">
+    Cómo leer tus números para decidir mejor.
+  </Card>
+</CardGroup>

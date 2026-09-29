@@ -1,0 +1,169 @@
+---
+title: "Conecta tu tienda de Shopify a Chateea"
+description: "Conecta Shopify, elige qué importar y sincronizar, y conoce los campos de compra que se agregan a tus contactos."
+icon: "cart-shopping"
+---
+
+Conecta tu tienda de Shopify a Chateea para traer productos, colecciones, clientes, pedidos y transacciones a tu cuenta. Con esos datos puedes dar seguimiento a tus compradores por correo, SMS y WhatsApp, activar automatizaciones de comercio electrónico (como el checkout abandonado) y ver la actividad de tu tienda desde tu CRM.
+
+En esta guía verás cómo conectar Shopify, qué datos importar al inicio, qué mantener sincronizado y qué límites conviene conocer antes de empezar.
+
+## Qué ganas con la integración
+
+- **Conexión sencilla:** autorizas la conexión desde Shopify, sin crear una aplicación personalizada ni copiar tokens.
+- **Importación del historial:** traes productos, colecciones, contactos, pedidos y transacciones que ya existen en Shopify.
+- **Sincronización continua:** la información elegida se sigue actualizando después de conectar.
+- **Automatizaciones de tienda:** usas la actividad de Shopify en disparadores como checkout abandonado o pedido recibido.
+- **Seguimiento más relevante:** personalizas tus mensajes según lo que compró cada cliente.
+- **Contactos enriquecidos:** cada contacto sincronizado muestra su historial de compras (gasto total, número de pedidos, primera y última compra, exención de impuestos) sin configuración extra.
+
+## Métodos de conexión
+
+| Método | Para quién | Cómo se configura |
+| --- | --- | --- |
+| **Aplicación con OAuth** (recomendado) | Conexiones nuevas | Autorizas la conexión desde la pantalla de instalación de Shopify |
+| **Aplicación personalizada** (anterior) | Tiendas conectadas hace tiempo | Se creaba una aplicación personalizada en Shopify y se copiaba un token de acceso de la API de administración |
+
+<Warning>
+  Si tu tienda ya está conectada con el método anterior, esa conexión puede seguir sincronizando. No la desconectes a menos que estés listo para reconectar con el método actual: una vez desconectada, tendrás que usar la aplicación con OAuth.
+</Warning>
+
+## Importación inicial y sincronización continua
+
+Son dos cosas distintas y se configuran en pantallas separadas:
+
+| | Importar elementos | Configuración de sincronización |
+| --- | --- | --- |
+| **Qué hace** | Trae una sola vez los datos históricos que ya existen en Shopify | Mantiene actualizados los datos elegidos a partir de ahora |
+| **Opciones** | Contactos, pedidos, transacciones, productos y colecciones | Contactos, pedidos, disparador de pedido recibido, transacciones, disparador de pago recibido, productos y colecciones |
+
+Elige solo lo que tu equipo va a usar. Por ejemplo, importar productos y colecciones pone tu catálogo a disposición en Chateea, mientras que importar contactos y pedidos sirve para el seguimiento a clientes y los informes.
+
+<Note>
+  Si más adelante apagas una opción de sincronización, se detiene la sincronización futura, pero los registros que ya se importaron se quedan en tu cuenta.
+</Note>
+
+## Conecta tu tienda
+
+<Steps>
+  <Step title="Abre la integración de Shopify">
+    Ve a **Configuración → Integraciones → Shopify** y pulsa **Conectar**.
+  </Step>
+  <Step title="Indica tu tienda">
+    Escribe la URL o el nombre exacto de tu tienda de Shopify y pulsa **Siguiente**.
+  </Step>
+  <Step title="Elige qué importar">
+    En **Importar elementos**, marca los datos históricos que quieres traer una sola vez: contactos, pedidos, transacciones, productos y colecciones.
+  </Step>
+  <Step title="Elige qué sincronizar">
+    Pulsa **Siguiente** para ir a **Configuración de sincronización** y marca lo que quieres mantener actualizado: sincronización de contactos, de pedidos, de transacciones, de productos y de colecciones, además de los disparadores de **pedido recibido** y **pago recibido**.
+  </Step>
+  <Step title="Guarda y autoriza en Shopify">
+    Pulsa **Guardar**. Se abre Shopify con la pantalla **Instalar aplicación**. Revisa los permisos y pulsa **Instalar**.
+  </Step>
+  <Step title="Listo">
+    Al aprobar, vuelves a Chateea con tu tienda conectada.
+  </Step>
+</Steps>
+
+<Tip>
+  Si estás migrando toda tu tienda, marca todas las opciones de importación y sincronización, salvo que tu plan de migración necesite solo algunos datos. Así traes el historial completo y la actividad nueva sigue llegando.
+</Tip>
+
+### Detalles de la importación
+
+- Los impuestos no se asocian a los productos al importarlos o sincronizarlos.
+- Por cada pedido se crea una sola transacción en tu cuenta.
+- Los pedidos sincronizados quedan con estado **Completado** o **Cancelado**.
+- Si fusionas contactos en Shopify, se actualiza el contacto principal en Chateea.
+- Si no cambiaste los datos de SEO en Shopify (valores por defecto), llegan vacíos.
+
+## Campos que Shopify agrega a tus contactos
+
+Cuando un contacto se importa o sincroniza desde Shopify, la integración crea y actualiza sola una serie de campos en su ficha.
+
+### Campos estándar
+
+Shopify solo los completa si están vacíos. Nunca reemplaza un dato que ya tengas.
+
+| Campo | Se completa con |
+| --- | --- |
+| Nombre y apellido | El nombre del cliente en Shopify |
+| Correo | El correo principal del cliente. Sirve para relacionar el cliente de Shopify con el contacto y nunca se sobrescribe |
+| Teléfono | El teléfono principal del cliente |
+| Dirección | La dirección principal del cliente |
+
+### Campos personalizados de Shopify
+
+| Campo | Qué muestra | Cuándo se actualiza |
+| --- | --- | --- |
+| ID de cliente de Shopify | La referencia interna del cliente en Shopify | Una vez, al crearse el contacto |
+| Nombre de la tienda de Shopify | De qué tienda conectada viene el contacto | Una vez, al conectar la tienda |
+| Valor de vida en Shopify | El total que el cliente ha gastado en esa tienda | Tras cada pedido completado y pagado |
+| Número de pedidos en Shopify | El total de pedidos completados | Tras cada pedido completado y pagado |
+| Fecha del último pedido en Shopify | La fecha de su pedido completado más reciente | Tras cada pedido completado |
+| Valor del último pedido en Shopify | El importe de su pedido completado más reciente | Tras cada pedido completado |
+| Fecha del primer pedido en Shopify | La fecha de su primer pedido completado | Una vez, tras su primer pedido completado |
+| Exento de impuestos en Shopify | Si Shopify lo marca como exento de impuestos (señal habitual de compradores mayoristas) | Cada vez que se actualiza el cliente en Shopify |
+| Consentimiento de correo en Shopify (próximamente) | Su estado de consentimiento para marketing por correo | Cada vez que cambia en Shopify |
+| Consentimiento de SMS en Shopify (próximamente) | Su estado de consentimiento para marketing por SMS | Cada vez que cambia en Shopify |
+
+Las etiquetas de cliente de Shopify se sincronizan con las etiquetas del contacto.
+
+<Tip>
+  Usa estos campos como filtros en tus listas inteligentes (por ejemplo, clientes cuyo último pedido fue hace más de 90 días) o como condiciones en tus flujos de trabajo para enviar mensajes distintos según el comportamiento de compra.
+</Tip>
+
+## Límites y notas importantes
+
+- Los datos ya importados se quedan en Chateea aunque después apagues su sincronización.
+- Con el plan Basic de Shopify pueden existir limitaciones en algunos tipos de datos, según el acceso que Shopify da a su API.
+- Usa el nombre o la URL exacta de tu tienda al conectar.
+- Los campos de contacto de Shopify se sincronizan todos automáticamente: no puedes activar o desactivar campos individuales. Si ya tenías Shopify conectado, actualiza la configuración de la integración para que empiecen a sincronizarse.
+- Un reembolso o un pedido cancelado **no** reduce el número de pedidos, porque el pedido sí se hizo. El valor de vida sí se ajusta al reembolso.
+- Los pedidos en borrador de Shopify (por ejemplo, una cotización manual) no afectan ningún campo. Solo cuentan los pedidos completados y pagados.
+- El valor de vida en Shopify refleja solo compras de esa tienda.
+- Algunos disparadores antiguos específicos de Shopify, como **Carrito abandonado de Shopify** y **Pedido de Shopify preparado** (Shopify Order Fulfilled), se retirarán pronto. Para automatizaciones nuevas, usa los disparadores actuales de tienda, como [Checkout abandonado](/automatizaciones/disparador-checkout-abandonado).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que crear una aplicación personalizada en Shopify?">
+    No. Las conexiones nuevas usan la aplicación con OAuth. El método de aplicación personalizada con token de la API de administración es el camino anterior y solo aplica a tiendas que ya estaban conectadas así.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre importar elementos y la sincronización?">
+    Importar elementos trae el historial una sola vez al conectar. La sincronización mantiene actualizados los datos elegidos después de la conexión.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar la sincronización después?">
+    Sí. Los cambios afectan la sincronización futura. Lo que ya se importó se queda en tu cuenta.
+  </Accordion>
+  <Accordion title="¿Puedo usar los datos de Shopify en flujos de trabajo?">
+    Sí. Por ejemplo, el disparador de checkout abandonado funciona con tu tienda de Chateea y con tiendas externas conectadas como Shopify.
+  </Accordion>
+  <Accordion title="¿Debo usar el disparador Carrito abandonado de Shopify?">
+    Para automatizaciones nuevas, usa el disparador de checkout abandonado actual. El de Shopify se retirará pronto.
+  </Accordion>
+  <Accordion title="¿Qué pasa si desconecto mi conexión antigua con aplicación personalizada?">
+    Mientras esté conectada puede seguir funcionando. Si la desconectas, tendrás que reconectar con la aplicación con OAuth.
+  </Accordion>
+  <Accordion title="¿Dónde encuentro el nombre de mi tienda?">
+    Usa el nombre o la URL de la tienda asociada a la cuenta de administración de Shopify que quieres conectar. Confírmalo en Shopify antes de autorizar.
+  </Accordion>
+  <Accordion title="¿Puedo elegir qué campos de Shopify se sincronizan en el contacto?">
+    No. Todos los campos se sincronizan automáticamente con la tienda conectada.
+  </Accordion>
+  <Accordion title="¿El valor de vida incluye ventas de otros canales?">
+    No. Refleja solo compras hechas en la tienda de Shopify conectada y se mantiene separado de otros ingresos del contacto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Migrar tu tienda desde Shopify" icon="cart-shopping" href="/tienda/migrar-tienda-desde-shopify">
+    Pasa tu tienda completa a Chateea paso a paso.
+  </Card>
+  <Card title="Correos de carrito abandonado" icon="envelope" href="/tienda/correos-de-carrito-abandonado">
+    Recupera ventas con recordatorios automáticos.
+  </Card>
+</CardGroup>

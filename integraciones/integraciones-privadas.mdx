@@ -1,6 +1,6 @@
 ---
 title: "Integraciones privadas"
-description: "Conecta Chateea con tus propios sistemas mediante tokens con permisos controlados."
+description: "Conecta Chateea con tus propios sistemas mediante tokens con permisos controlados, y rótalos o revócalos con seguridad."
 icon: "key"
 ---
 
@@ -8,7 +8,7 @@ icon: "key"
   **Disponible en los planes Pro y Business.**
 </Note>
 
-Las integraciones privadas te permiten conectar tu cuenta de Chateea con cualquier aplicación externa, mediante un token que tú generas y cuyos permisos tú decides.
+Las integraciones privadas te permiten conectar tu cuenta de Chateea con cualquier aplicación externa o sistema interno mediante un token que tú generas y cuyos permisos tú decides. Son ideales para herramientas propias, sincronizaciones internas y automatizaciones a medida que necesitan acceso a la API sin construir una aplicación pública.
 
 ## Cuándo la necesitas
 
@@ -16,7 +16,7 @@ Si quieres conectar tu cuenta con una aplicación externa, tienes dos caminos:
 
 <CardGroup cols={2}>
   <Card title="Instalar una aplicación existente" icon="puzzle-piece">
-    Buscas la aplicación en el marketplace y la instalas. No requiere desarrollo.
+    Buscas la aplicación en el Marketplace de aplicaciones y la instalas. No requiere desarrollo.
 
     Si existe, es siempre la opción más simple.
   </Card>
@@ -41,10 +41,17 @@ Las integraciones privadas son la alternativa moderna y más segura a las claves
 | --- | --- | --- |
 | **Seguridad** | Restringes los permisos a los que puede acceder un desarrollador en tu cuenta | El desarrollador obtiene acceso sin restricciones a todos los datos de tu cuenta |
 | **Tecnología** | Acceden a la API v2.0, la versión actual y mantenida | Funcionan con la API v1.0, que llegó al final de su ciclo de vida y ya no recibe mantenimiento |
-| **Funciones** | La v2.0 es más potente y admite webhooks, que notifican a una aplicación externa cuando ocurre algo en tu cuenta | La v1.0 tiene funcionalidad limitada y no admite webhooks |
+| **Funciones** | La v2.0 es más potente y admite webhooks, que notifican a una aplicación externa cuando ocurre algo en tu cuenta | La v1.0 tiene funcionalidad limitada |
+
+### Por qué usar tokens de integración privada para credenciales nuevas
+
+Los tokens de integración privada son el reemplazo recomendado de las claves API heredadas:
+
+- **Ya no se pueden crear claves v1 nuevas.** Cualquier credencial nueva debe ser un token de integración privada.
+- **Las claves heredadas sin uso caducan.** Una clave API que pasa más de 90 días sin usarse puede aparecer como **Caducada** en la configuración.
 
 <Warning>
-  Si todavía usas una clave API, migra a una integración privada. La v1.0 no recibe mantenimiento, y una clave filtrada expone **toda** tu cuenta sin que puedas limitar el daño.
+  Si todavía dependes de una clave API, migra esa conexión a una integración privada en cuanto puedas. La v1.0 no recibe mantenimiento, y una clave filtrada expone **toda** tu cuenta sin que puedas limitar el daño.
 </Warning>
 
 ## Diferencia con los tokens OAuth2
@@ -62,19 +69,23 @@ En pocas palabras: una integración privada **es** un token de acceso OAuth2, pe
 
 ## Cómo se usa el token
 
-El token viaja en el encabezado de autorización de cada petición, igual que cualquier otro token de acceso.
+El token viaja en el encabezado de autorización de cada petición a la API de Chateea, igual que cualquier otro token de acceso.
+
+<Note>
+  Para obtener la URL base de la API de Chateea y la documentación de los endpoints disponibles, escribe a soporte en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**. En los ejemplos, reemplaza `URL_BASE_DE_LA_API` por esa dirección.
+</Note>
 
 Ejemplo consultando un contacto:
 
 ```bash
 curl --request GET \
-  --url https://services.leadconnectorhq.com/contacts/ocQHyuzHvysMo5N5VsXc \
+  --url https://URL_BASE_DE_LA_API/contacts/ID_DEL_CONTACTO \
   --header 'Accept: application/json' \
-  --header 'Authorization: <TU TOKEN DE INTEGRACIÓN PRIVADA>' \
+  --header 'Authorization: Bearer TU_TOKEN_DE_INTEGRACION_PRIVADA' \
   --header 'Version: 2021-07-28'
 ```
 
-Tres elementos son obligatorios en cada llamada:
+Tres encabezados son obligatorios en cada llamada:
 
 | Encabezado | Para qué sirve |
 | --- | --- |
@@ -85,6 +96,33 @@ Tres elementos son obligatorios en cada llamada:
 <Warning>
   Si omites el encabezado `Version`, la petición falla. Es el error más común al hacer la primera llamada.
 </Warning>
+
+## Prueba tu integración creando un contacto
+
+Una forma sencilla de comprobar que el token funciona es crear un contacto de prueba:
+
+```bash
+curl --request POST \
+  --url https://URL_BASE_DE_LA_API/contacts/ \
+  --header 'Authorization: Bearer TU_TOKEN_DE_INTEGRACION_PRIVADA' \
+  --header 'Content-Type: application/json' \
+  --header 'Version: 2021-07-28' \
+  --data '{
+    "firstName": "Juan",
+    "lastName": "Pérez",
+    "email": "juan.perez@ejemplo.com",
+    "phone": "+18095550123",
+    "locationId": "ID_DE_TU_CUENTA"
+  }'
+```
+
+Antes de ejecutarlo:
+
+- Reemplaza `ID_DE_TU_CUENTA` por el identificador de tu cuenta de Chateea.
+- Reemplaza `TU_TOKEN_DE_INTEGRACION_PRIVADA` por el token que generaste.
+- Asegúrate de que el token tenga permiso de escritura de contactos.
+
+Si la llamada funciona, el contacto aparece en **Contactos**. Bórralo después de la prueba.
 
 ## Quién puede crearlas
 
@@ -98,7 +136,7 @@ Puedes restringir ese permiso usuario por usuario en **Configuración → Mi per
 
 ## Dónde encontrarlas
 
-En **Configuración**, desplázate hasta la sección **Otras configuraciones** del menú lateral izquierdo.
+En **Configuración**, desplázate hasta la sección **Otras configuraciones** del menú lateral izquierdo y abre **Integraciones privadas**.
 
 <Note>
   Si no aparece la opción, verifica que la función esté habilitada en **Labs**.
@@ -132,6 +170,10 @@ En **Configuración**, desplázate hasta la sección **Otras configuraciones** d
     </Warning>
   </Step>
 </Steps>
+
+<Info>
+  Puedes tener hasta **20 tokens de integración privada** por cuenta.
+</Info>
 
 ## Rota tus tokens cada 90 días
 
@@ -244,7 +286,7 @@ Cuando dejes de usar la aplicación externa, elimina la integración desde el me
   </Accordion>
 
   <Accordion title="Revisa la lista cada seis meses">
-    Y elimina lo que ya no se usa.
+    Y elimina lo que ya no se usa. Recuerda que el límite es de 20 tokens por cuenta.
   </Accordion>
 </AccordionGroup>
 
@@ -267,6 +309,14 @@ Cuando dejes de usar la aplicación externa, elimina la integración desde el me
     Revisa si alguien rotó o eliminó el token, si pasaron los 7 días de una rotación pendiente, o si la cuenta cambió a un plan que no incluye esta función.
   </Accordion>
 
+  <Accordion title="Mi clave API antigua aparece como caducada">
+    Las claves API heredadas que pasan más de 90 días sin uso pueden marcarse como caducadas, y ya no se pueden crear claves nuevas. Crea una integración privada con los permisos necesarios y actualiza tu sistema con el nuevo token.
+  </Accordion>
+
+  <Accordion title="No puedo crear más tokens">
+    Llegaste al límite de 20 tokens por cuenta. Elimina los que ya no se usan.
+  </Accordion>
+
   <Accordion title="No veo la opción en Configuración">
     Busca en la sección **Otras configuraciones** del menú lateral. Si sigue sin aparecer, habilita la función en **Labs**, o confirma que tu usuario tenga el permiso activado.
   </Accordion>
@@ -274,4 +324,4 @@ Cuando dejes de usar la aplicación externa, elimina la integración desde el me
 
 ## ¿Necesitas ayuda?
 
-Esta función requiere conocimientos técnicos. Si no tienes un desarrollador, escríbenos por WhatsApp al **\+1 829-580-7071** y evaluamos si lo que necesitas se resuelve con una [automatización](/automatizaciones/introduccion) o una [integración existente](/integraciones/introduccion), que casi siempre es más simple y no requiere mantenimiento.
+Esta función requiere conocimientos técnicos. Si no tienes un desarrollador, escríbenos a **help@chateea.com** o por WhatsApp al **+1 829-580-7071** y evaluamos si lo que necesitas se resuelve con una [automatización](/automatizaciones/introduccion), con [Zapier](/integraciones/conectar-zapier) o con una [integración existente](/integraciones/introduccion), que casi siempre es más simple y no requiere mantenimiento.

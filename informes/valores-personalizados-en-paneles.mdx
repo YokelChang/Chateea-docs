@@ -1,0 +1,159 @@
+---
+title: "Valores personalizados en paneles e informes"
+description: "Inserta datos dinámicos de tu cuenta, del usuario o tus valores personalizados en widgets y elementos del panel."
+icon: "code"
+---
+
+Los valores personalizados te permiten insertar datos dinámicos en tus paneles de control e informes personalizados. En lugar de escribir a mano el nombre del negocio, una dirección o un enlace, insertas un marcador como `{{ location.name }}` y Chateea lo reemplaza por el valor real cuando alguien abre el panel.
+
+Así un mismo panel se adapta solo a la cuenta y al usuario que lo está viendo, y cuando un dato cambia lo actualizas en un único lugar.
+
+## Quién puede usarlos
+
+Solo quienes pueden **editar** el panel o el informe pueden insertar valores personalizados. Quienes solo tienen acceso de lectura ven el valor ya resuelto.
+
+## Para qué te sirven
+
+- **Reutilizar un panel:** el mismo diseño muestra la información correcta sin crear copias.
+- **Mostrar datos de tu cuenta:** nombre, dirección, teléfono o sitio web se completan solos.
+- **Personalizar por usuario:** muestra el nombre o el rol de quien está viendo el panel.
+- **Usar tus propios valores:** los que ya creaste en **Configuración → Valores personalizados**.
+- **Menos mantenimiento:** cambias el valor de origen una vez y se actualiza en todos los paneles que lo usan.
+
+## Dónde se pueden usar
+
+Siempre que veas el botón `{}` junto a un campo de texto, ese campo admite valores personalizados:
+
+| Lugar | Ejemplo |
+| --- | --- |
+| **Condiciones de widgets** | En el valor de una condición, en lugar de un texto fijo |
+| **Elemento Incrustar** | Dentro de la URL, por ejemplo `https://tuherramienta.com/embed/{{ location.id }}/inicio` |
+| **Elemento Título** | `{{ location.name }}: panel de rendimiento` |
+| **Elemento Cuadro de texto** | Dentro del editor de texto; el valor aparece como texto normal |
+
+<Note>
+  El elemento Imagen no admite valores personalizados. Si la imagen está disponible en una URL, puedes mostrarla con un elemento **Incrustar** que use un valor personalizado.
+</Note>
+
+## Valores disponibles
+
+Al hacer clic en `{}` se abre un selector con tres categorías y un buscador que busca en todas:
+
+### Cuenta
+
+Datos de la cuenta de Chateea desde la que se ve el panel: ID, nombre, correo, teléfono, sitio web, dirección, ciudad, estado o provincia, país, código postal y zona horaria. Por ejemplo, `{{ location.address }}` muestra la dirección de tu cuenta.
+
+### Usuario
+
+Datos del usuario que ha iniciado sesión: ID, correo, teléfono, rol, tipo, nombre, apellido, nombre y nombre completo.
+
+### Valores personalizados
+
+Todos los valores que creaste en **Configuración → Valores personalizados**, organizados por carpeta. Por ejemplo, un horario de atención, un teléfono de soporte, un enlace interno o el tema semanal de una capacitación: `{{ custom_values.tema_semanal }}`.
+
+## Insertar un valor en una condición de widget
+
+<Steps>
+  <Step title="Entra en modo de edición">
+    Abre el panel y activa el modo de edición.
+  </Step>
+  <Step title="Abre las condiciones del widget">
+    Agrega o edita un widget y ve a la pestaña **Condiciones**.
+  </Step>
+  <Step title="Define la condición">
+    Elige el campo (por ejemplo, **Dirección**) y el operador (por ejemplo, **Es**).
+  </Step>
+  <Step title="Inserta el valor">
+    Haz clic en `{}` en el campo de valor, busca o navega por **Cuenta**, **Usuario** o **Valores personalizados** y selecciona el que quieras. El marcador aparecerá en el campo.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** en el widget y luego guarda los cambios del panel.
+  </Step>
+</Steps>
+
+## Insertar un valor en un elemento del panel
+
+<Steps>
+  <Step title="Entra en modo de edición">
+    Abre el panel y activa el modo de edición.
+  </Step>
+  <Step title="Agrega o edita un elemento">
+    Haz clic en **Agregar elemento** y elige **Incrustar**, **Título** o **Cuadro de texto**, o edita uno existente.
+  </Step>
+  <Step title="Inserta el valor">
+    Haz clic en `{}` junto al campo, elige la categoría y el valor. Puedes combinar texto fijo con varios marcadores.
+  </Step>
+  <Step title="Guarda y revisa">
+    Guarda el elemento y el panel. Cambia al modo de visualización para ver el valor ya resuelto.
+  </Step>
+</Steps>
+
+## Crear un valor personalizado nuevo
+
+Si el dato que necesitas no existe todavía:
+
+<Steps>
+  <Step title="Ve a la configuración">
+    Entra en **Configuración → Valores personalizados**.
+  </Step>
+  <Step title="Crea el valor">
+    Haz clic en **+ Agregar valor personalizado**, escribe el nombre y el valor y, si quieres, asígnalo a una carpeta.
+  </Step>
+  <Step title="Guarda y úsalo">
+    Haz clic en **Crear**. El valor aparecerá en el selector `{}` dentro de **Valores personalizados**.
+  </Step>
+</Steps>
+
+## Qué pasa si un valor está vacío
+
+Si un marcador no tiene valor, se muestra **en blanco** en el modo de visualización. Para evitarlo:
+
+- Para los datos de **Cuenta** y **Usuario**, completa el perfil del negocio y el perfil de usuario en **Configuración**.
+- Para tus **valores personalizados**, confirma que el valor existe y tiene contenido en **Configuración → Valores personalizados**.
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| No aparece el botón `{}` | Ese campo no admite valores personalizados. |
+| No encuentro mi valor personalizado | Confirma que está creado y guardado en **Configuración → Valores personalizados**. |
+| Se ve un espacio en blanco | El valor está vacío en tu cuenta o en el perfil del usuario. |
+| Aparecen datos de otra cuenta | Los datos de cuenta se toman de la cuenta que está abierta; confirma que estás en la correcta. |
+| Aparecen datos de otro usuario | Los datos de usuario siempre corresponden a quien ha iniciado sesión. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo mezclar texto fijo y marcadores en el mismo campo?">
+    Sí. Por ejemplo: `Bienvenido a {{ location.name }}. Nuestra dirección es {{ location.address }}.`
+  </Accordion>
+  <Accordion title="¿Puedo usar valores de cuenta, de usuario y personalizados en el mismo panel?">
+    Sí, en cualquier campo que tenga el botón `{}`.
+  </Accordion>
+  <Accordion title="¿Se actualizan si abro el panel desde otra cuenta?">
+    Sí. Los marcadores siempre se resuelven con los datos de la cuenta activa.
+  </Accordion>
+  <Accordion title="¿Quienes solo ven el panel pueden insertar valores?">
+    No. Solo los editores. Los demás ven los valores ya resueltos.
+  </Accordion>
+  <Accordion title="¿Funcionan en los informes personalizados?">
+    Sí, en los campos compatibles de los informes personalizados.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Títulos, textos e imágenes" icon="heading" href="/informes/titulos-textos-e-imagenes-en-el-panel">
+    Agrega elementos al panel.
+  </Card>
+  <Card title="Incrustar contenido externo" icon="window-maximize" href="/informes/incrustar-contenido-externo-en-el-panel">
+    Muestra páginas externas dentro del panel.
+  </Card>
+  <Card title="Personalizar widgets" icon="sliders" href="/informes/personalizar-widgets">
+    Configura condiciones y filtros.
+  </Card>
+  <Card title="Variables y campos personalizados" icon="code" href="/variables/introduccion">
+    Cómo funcionan las variables en Chateea.
+  </Card>
+</CardGroup>

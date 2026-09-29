@@ -1,0 +1,181 @@
+---
+title: "Métricas personalizadas en paneles e informes"
+description: "Crea tus propios KPI con fórmulas, filtros por métrica y datos de tu CRM, Meta Ads y Google Analytics."
+icon: "calculator"
+---
+
+Las **métricas personalizadas** te permiten crear tus propios indicadores (KPI) dentro del panel y de los informes. Combinas datos de distintas fuentes, aplicas tu fórmula y ves el resultado al instante: tasa de conversión, costo por oportunidad, ingreso por llamada o lo que tu negocio necesite medir. Se acabó exportar a hojas de cálculo para hacer las cuentas a mano.
+
+<Note>
+  Las métricas personalizadas dependen del plan de tu cuenta. Revisa qué incluye el tuyo en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Qué puedes hacer
+
+- **Crear KPI a tu medida:** combina hasta cuatro métricas de distintas fuentes con operadores y constantes.
+- **Empezar de cero o clonar:** reutiliza una métrica existente para ahorrar tiempo y mantener la coherencia.
+- **Validar la fórmula en vivo:** el editor te avisa si la fórmula tiene errores.
+- **Elegir el formato:** número entero, decimal, moneda o porcentaje.
+- **Definir qué es "bueno":** indica si subir o bajar es positivo, para que las tendencias se muestren con el color correcto.
+- **Filtrar cada métrica por separado:** por ejemplo, contactos con una etiqueta o oportunidades de un pipeline.
+- **Usar datos de anuncios y web:** Meta Ads y Google Analytics también sirven como fuentes.
+- **Usarlas en todas partes:** tus métricas quedan disponibles como widget en paneles e informes personalizados.
+
+## Crear una métrica personalizada
+
+<Steps>
+  <Step title="Abre el panel en modo edición">
+    En **Panel de control**, haz clic en **Editar panel** y luego en **Agregar widget**.
+  </Step>
+  <Step title="Ve a Métricas personalizadas">
+    Abre la pestaña **Métricas personalizadas** y haz clic en **+ Crear métrica personalizada**.
+  </Step>
+  <Step title="Elige cómo empezar">
+    Selecciona **Empezar de cero** o **Clonar existente** y haz clic en **Seleccionar**. La métrica se abre en un editor de página completa.
+  </Step>
+  <Step title="Completa los datos básicos">
+    - **Nombre de la métrica:** un nombre claro, por ejemplo "Tasa de crecimiento de ingresos".
+    - **Tipo de dato:** entero, decimal, porcentaje o moneda.
+    - **Descripción:** una frase que explique para qué sirve.
+  </Step>
+  <Step title="Escribe la fórmula">
+    En el campo **Fórmula**, combina hasta cuatro métricas con operadores (suma, resta, multiplicación, división) y constantes. Ejemplo: oportunidades ganadas dividido entre leads nuevos, multiplicado por 100, para obtener la tasa de conversión en porcentaje.
+  </Step>
+  <Step title="Ajusta la configuración avanzada">
+    Elige la **propiedad de fecha** de cada métrica de la fórmula (lo explicamos abajo).
+  </Step>
+  <Step title="Define el valor de comparación">
+    Indica si **subir es positivo** o **bajar es positivo**.
+  </Step>
+  <Step title="Crea la métrica">
+    Haz clic en **Crear**. La métrica ya está disponible para agregarla como widget en tus paneles e informes.
+  </Step>
+</Steps>
+
+### Propiedad de fecha de cada métrica
+
+Cada métrica de la fórmula tiene su propia fecha de referencia, y las opciones cambian según la métrica que elegiste. Por ejemplo:
+
+| Métrica | Propiedad de fecha |
+| --- | --- |
+| Visitas a páginas | **Visitado el** (cuándo se vio la página) |
+| Citas | **Creado el** (cuándo se agendó la cita) |
+
+Elegir bien la fecha asegura que la fórmula compare eventos del mismo periodo. Con las dos fechas del ejemplo puedes medir cuántas visitas se convirtieron en citas en el mismo rango de tiempo.
+
+### Valor de comparación
+
+| Opción | Úsala cuando | Ejemplos |
+| --- | --- | --- |
+| **Subir es positivo** | Un número mayor es mejor | Ingresos, citas, leads nuevos |
+| **Bajar es positivo** | Un número menor es mejor | Tiempo de respuesta, cancelaciones, reclamos |
+
+<Warning>
+  Si marcas "subir es positivo" en una métrica como el tiempo de respuesta, el panel mostrará como buena noticia que tus clientes esperan más. Revisa siempre esta opción.
+</Warning>
+
+## Filtrar cada métrica de la fórmula
+
+Cada métrica de la fórmula puede tener su propio filtro, independiente del resto. Por ejemplo, contar solo los contactos con la etiqueta "cliente", solo las oportunidades de un pipeline o solo las llamadas de un vendedor.
+
+<Steps>
+  <Step title="Abre el editor de la métrica">
+    Desde el panel en modo edición, abre **Agregar widget** y crea o edita una métrica personalizada.
+  </Step>
+  <Step title="Haz clic en una métrica de la fórmula">
+    Al hacer clic en una métrica de la fórmula se abre el panel de **Configuración** a la derecha, con la pestaña **Filtros**.
+  </Step>
+  <Step title="Define el filtro">
+    - El campo **Aplicado a** confirma qué métrica estás filtrando.
+    - Elige la **Propiedad de fecha** (por ejemplo, Creado el).
+    - Elige el **atributo** del filtro (etiqueta, pipeline, responsable, origen, etc.).
+    - Elige el **operador** (por ejemplo, Es uno de o No es).
+    - Escribe o selecciona el **valor**.
+    - Usa **+ AND** para sumar condiciones a la misma métrica, o **+ Agregar filtro** para otra fila de filtro.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Actualizar**. Las métricas con filtros activos muestran un ícono de filtro en su etiqueta.
+  </Step>
+</Steps>
+
+## Usar métricas de Meta Ads
+
+1. En el editor, haz clic dentro del campo de fórmula para abrir el selector de métricas.
+2. Elige la categoría **Meta Ads**.
+3. Selecciona la métrica y combínala con otras.
+
+Métricas disponibles de Meta Ads:
+
+- Suma de gasto
+- Suma de clics en anuncios
+- Suma de impresiones
+- Suma de conversiones
+- Suma de alcance
+- Suma de compras en el sitio web
+- Promedio, mínimo y máximo de costo por clic (CPC)
+- Promedio, mínimo y máximo de costo por conversión
+- Promedio, mínimo y máximo de costo por mil impresiones (CPM)
+- Promedio, mínimo y máximo de tasa de clics (CTR)
+
+**Ejemplo:** `Suma de gasto (Meta) / Suma de conversiones` te da el **costo por conversión** de tus campañas de Meta directamente en el panel.
+
+## Usar métricas de Google Analytics
+
+1. En el editor, haz clic dentro del campo de fórmula para abrir el selector de métricas.
+2. Elige la categoría **Google Analytics**.
+3. Selecciona la métrica y combínala con tus métricas del CRM.
+
+<Note>
+  Las métricas de Meta Ads y Google Analytics solo aparecen si la integración correspondiente está conectada en **Configuración → Integraciones**.
+</Note>
+
+## Ejemplos de métricas
+
+| Métrica | Fórmula | Filtro sugerido |
+| --- | --- | --- |
+| Tasa de cierre de oportunidades | Oportunidades ganadas / Oportunidades totales × 100 | Por pipeline o responsable |
+| Proporción de clientes | Contactos con etiqueta "cliente" / Contactos totales × 100 | Etiqueta = cliente |
+| Conversión de leads por origen | Oportunidades ganadas / Contactos × 100 | Origen del contacto = Facebook o Google |
+| Costo por oportunidad | Gasto (Google Analytics) / Número de oportunidades | Sin filtro |
+| Costo por conversión | Gasto (Meta) / Conversiones | Sin filtro |
+| Ingreso por llamada | Ingresos totales / Número de llamadas | Por quien hizo la llamada |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo combinar métricas que usan fechas distintas?">
+    Sí. Cada métrica de la fórmula muestra sus propias opciones de fecha, por ejemplo fecha de creación para contactos y fecha de cierre para oportunidades. Elige las que correspondan al resultado que quieres medir; si no, el KPI puede no reflejar lo que buscas.
+  </Accordion>
+  <Accordion title="¿El filtro afecta a toda la fórmula?">
+    No. Cada filtro se aplica solo a la métrica donde lo configuraste. Las demás métricas de la fórmula no cambian.
+  </Accordion>
+  <Accordion title="¿Cuántas condiciones puedo poner en una métrica?">
+    Varias. Se combinan con lógica AND y cada una es una fila de atributo, operador y valor.
+  </Accordion>
+  <Accordion title="¿Las métricas de Meta Ads y Google Analytics respetan el rango de fechas del panel?">
+    Sí. Como cualquier métrica de la fórmula, se calculan según el rango de fechas del panel o informe.
+  </Accordion>
+  <Accordion title="No veo Meta Ads ni Google Analytics en el selector">
+    Conecta la integración en **Configuración → Integraciones**. Sin la conexión, sus métricas no aparecen.
+  </Accordion>
+  <Accordion title="¿Qué pasa si clono una métrica y luego cambia un campo que usa?">
+    La métrica clonada sigue ligada a las fuentes y campos originales. Si un campo se elimina, cambia de nombre o de tipo, la métrica puede dar error. Edita la fórmula y vuelve a elegir los campos afectados.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Widgets de anuncios de Meta" icon="bullhorn" href="/informes/widgets-de-anuncios-de-meta">
+    Métricas de tus campañas de Facebook e Instagram en el panel.
+  </Card>
+  <Card title="Widgets de Google Analytics" icon="chart-simple" href="/informes/widgets-de-google-analytics">
+    El tráfico de tu sitio junto a tus ventas.
+  </Card>
+  <Card title="Crear y agregar widgets" icon="plus" href="/informes/crear-y-agregar-widgets">
+    Agrega widgets a tu panel paso a paso.
+  </Card>
+  <Card title="Filtros rápidos en paneles" icon="filter" href="/informes/filtros-rapidos-en-paneles">
+    Filtra todos los widgets del panel a la vez.
+  </Card>
+</CardGroup>

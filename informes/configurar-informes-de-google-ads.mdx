@@ -1,0 +1,103 @@
+---
+title: "Configurar el informe de Google Ads"
+description: "Conecta Google Ads, elige la MCC y la cuenta correctas y agrega la plantilla UTM para atribuir tus leads."
+icon: "gear"
+---
+
+El informe de Google Ads de Chateea te muestra en tiempo real el rendimiento de tus campañas y las conecta con los leads, ventas e ingresos que generan en tu CRM. Para que los datos lleguen completos y bien atribuidos, necesitas conectar la cuenta correcta, elegir los identificadores adecuados y agregar la plantilla de seguimiento UTM en Google Ads.
+
+## Antes de empezar
+
+- Ten a mano acceso a tu cuenta de Google Ads.
+- La cuenta de Google que vas a conectar debe tener el máximo nivel de permisos en Google Ads: rol de administrador o [acceso a través de una cuenta de administrador](https://support.google.com/google-ads/answer/6139186).
+
+## Paso 1: conecta la cuenta correcta de Google Ads
+
+<Steps>
+  <Step title="Abre las integraciones">
+    Ve a **Configuración → Integraciones** y busca **Google Ads**.
+  </Step>
+  <Step title="Conecta tu cuenta de Google">
+    Inicia sesión con la cuenta de Google que tiene permisos de administrador sobre tu cuenta de Google Ads.
+  </Step>
+</Steps>
+
+## Paso 2: elige el ID de MCC y el ID de la cuenta cliente
+
+La **MCC** (My Client Center) es la cuenta de administrador de Google Ads, la que se usa para gestionar varias cuentas publicitarias. Al conectar, elige:
+
+- **ID de la MCC:** aparece en la esquina superior derecha de Google Ads.
+- **ID de la cuenta cliente:** la cuenta publicitaria concreta. Lo encuentras en la sección de ayuda de Google Ads.
+
+Si no usas una cuenta de administrador, elige directamente tu cuenta publicitaria.
+
+## Paso 3: agrega la plantilla de seguimiento UTM
+
+La plantilla de seguimiento hace que cada clic llegue a tu página con los parámetros que Chateea necesita para atribuir el lead a la campaña, el grupo de anuncios y el anuncio correctos.
+
+Puedes agregarla a nivel de cuenta, de campaña o de grupo de anuncios. Te recomendamos hacerlo **a nivel de cuenta**.
+
+<Steps>
+  <Step title="Copia la plantilla">
+    ```text
+    {lpurl}?utm_source=adwords&utm_medium={adname}&utm_campaign={campaignname}&utm_content={adgroupname}&utm_keyword={keyword}&utm_matchtype={matchtype}&campaign_id={campaignid}&ad_group_id={adgroupid}&ad_id={creative}
+    ```
+  </Step>
+  <Step title="Abre la configuración de seguimiento">
+    En Google Ads, ve a **Configuración de la cuenta → Seguimiento**.
+  </Step>
+  <Step title="Pega la plantilla">
+    Pega el texto en el campo **Plantilla de seguimiento** y guarda.
+  </Step>
+  <Step title="Haz una prueba">
+    Usa la opción de prueba de Google Ads. La mayoría de las campañas deben indicar que la página de destino se encontró. Si alguna campaña activa da error, corrígela.
+  </Step>
+</Steps>
+
+### Cómo funciona la plantilla
+
+Las plantillas de seguimiento deben incluir un [parámetro ValueTrack](https://support.google.com/google-ads/answer/6305348) que inserte tu URL final, como `{lpurl}`. Si no lo incluyes, **tu página de destino dejará de funcionar**.
+
+Los demás parámetros entre llaves los completa Google Ads al momento del clic. Si quisieras agregar más parámetros ValueTrack, se encadenan con `&`, por ejemplo `{lpurl}?matchtype={matchtype}&device={device}`. Aun así, para la atribución en Chateea usa la plantilla tal cual.
+
+### Ejemplo
+
+- **URL final:** `https://ejemplo.com`
+- **Plantilla de seguimiento:** la del paso anterior.
+- **URL de destino tras el clic:**
+
+```text
+https://ejemplo.com?utm_source=adwords&utm_medium=black_friday&utm_campaign=blackday10&utm_content=marketingbanner&utm_keyword=getdiscounteddeal&utm_matchtype=e&campaign_id=12345&ad_group_id=2394984903&ad_id=93844980940&gclid=84843ewhfb834nedhj4u49
+```
+
+<Warning>
+  Antes se usaba `utm_source=google`, pero ya no es válido: muchos bloqueadores de anuncios reconocen ese valor y eliminan los parámetros UTM. Usa siempre `utm_source=adwords`.
+</Warning>
+
+## Paso 4: agrega el script preventivo (recomendado)
+
+El script de seguimiento preventivo actúa como respaldo por si la plantilla UTM no logra capturar los datos de atribución. Sigue los pasos de [Script preventivo de seguimiento para Google Ads](/informes/script-preventivo-de-seguimiento-google-ads).
+
+## Buenas prácticas
+
+1. **Nombres únicos:** cada campaña, grupo de anuncios y anuncio debe tener un nombre distinto.
+2. **No cambies los nombres durante la vida de la campaña.** Si necesitas cambiar un nombre, crea una campaña, grupo o anuncio nuevo.
+3. **Si cambias un nombre sin crear uno nuevo**, los datos del CRM seguirán asociados al nombre original, porque Google Ads sigue enviando el nombre antiguo en los parámetros y el informe se distorsiona.
+4. **Usa el menú de objetivos** del informe (arriba a la izquierda) para indicar qué objetivo tenía la campaña al crearla.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Términos de los informes de Google Ads" icon="book" href="/informes/terminos-de-informes-de-google-ads">
+    Qué significa cada métrica.
+  </Card>
+  <Card title="Solucionar problemas de Google Ads" icon="wrench" href="/informes/solucionar-problemas-informes-de-google-ads">
+    Qué revisar si faltan datos.
+  </Card>
+  <Card title="Fuentes de atribución" icon="route" href="/informes/fuentes-de-atribucion">
+    Cómo se clasifica el origen de cada contacto.
+  </Card>
+  <Card title="Conversiones offline en Google Ads" icon="arrow-right-arrow-left" href="/informes/acciones-de-conversion-offline-en-google-ads">
+    Envía tus ventas de vuelta a Google Ads.
+  </Card>
+</CardGroup>

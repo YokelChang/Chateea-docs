@@ -1,0 +1,141 @@
+---
+title: "Incrustar contenido externo en el panel"
+description: "Muestra videos, documentos y páginas externas en tu panel, con datos dinámicos del usuario o de tu cuenta en la URL."
+icon: "code"
+---
+
+Puedes mostrar contenido de otras plataformas directamente en tu **Panel de control**: páginas web, informes de Looker Studio (antes Google Data Studio), documentos de Google, presentaciones, calendarios, videos de YouTube o Loom, publicaciones de redes sociales y más. Así tu equipo tiene en un solo lugar las métricas de Chateea y la información que vive fuera de la plataforma.
+
+<Note>
+  Solo puedes incrustar contenido de plataformas que lo permitan. Algunos sitios bloquean que su contenido se muestre dentro de otras páginas; en ese caso el elemento aparecerá vacío o con un error.
+</Note>
+
+## Agregar contenido incrustado
+
+<Steps>
+  <Step title="Abre el panel en modo edición">
+    Ve a **Panel de control** y haz clic en el ícono de lápiz (**Editar panel**).
+  </Step>
+  <Step title="Abre la pestaña Elementos">
+    Haz clic en **Agregar widget** y cambia a la pestaña **Elementos**.
+  </Step>
+  <Step title="Elige Incrustar">
+    Haz clic en **Incrustar** (Embed).
+  </Step>
+  <Step title="Configura el elemento">
+    Escribe un título y elige el tipo de contenido:
+
+    - **URL:** pega solo una dirección completa, sin nada más. Por ejemplo: `https://www.instagram.com/p/C04TE0DsEkW/embed/`
+    - **IFRAME:** pega el fragmento de código iframe completo que te da la otra plataforma.
+
+    En la configuración avanzada puedes mostrar u ocultar el título del elemento.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para agregar el elemento al panel.
+  </Step>
+</Steps>
+
+Ejemplo de un iframe con un mapa de OpenStreetMap:
+
+```html
+<iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-0.0040%2C51.4761%2C0.0003%2C51.4785&layer=mapnik"></iframe>
+```
+
+## Cómo preparar enlaces de plataformas populares
+
+Muchas plataformas necesitan una dirección especial de "embed" en lugar del enlace normal.
+
+### YouTube
+
+Toma el identificador del video (lo que va después de `v=` en el enlace) y agrégalo a `https://www.youtube.com/embed/`.
+
+| Enlace normal | Enlace para incrustar |
+| --- | --- |
+| `https://www.youtube.com/watch?v=bFTIQDCvIrc` | `https://www.youtube.com/embed/bFTIQDCvIrc` |
+
+### TikTok
+
+Toma el número del video (lo que aparece después de `/video/` en el enlace) y agrégalo a `https://www.tiktok.com/embed/`.
+
+### Publicaciones de Instagram
+
+1. Copia el enlace para compartir de la publicación. Se verá parecido a `https://www.instagram.com/p/C04TE0DsEkW/?utm_source=ig_web_copy_link`
+2. Reemplaza `?utm_source=ig_web_copy_link` por `/embed/`. Te quedará `https://www.instagram.com/p/C04TE0DsEkW/embed/`
+3. Pega esa dirección final en el elemento **Incrustar**.
+
+## Enviar datos del usuario o de tu cuenta al contenido incrustado
+
+Puedes agregar parámetros dinámicos a la URL del contenido incrustado. Chateea reemplaza cada variable por el dato real de quien está viendo el panel o de tu cuenta. Esto sirve, por ejemplo, para mostrar un informe externo filtrado por usuario o para abrir una página de tu sistema con el vendedor ya identificado.
+
+### Variables de la cuenta
+
+| Variable | Qué inserta |
+| --- | --- |
+| `{{location.id}}` | El identificador de tu cuenta de Chateea |
+| `{{location.name}}` | El nombre de tu cuenta |
+
+Ejemplo de una URL que abre las conversaciones de tu propia cuenta:
+
+```text
+https://app.chateea.com/v2/location/{{location.id}}/conversations
+```
+
+### Variables del usuario
+
+Usa el formato `{{user.propiedad}}` con cualquiera de estas propiedades:
+
+| Propiedad | Ejemplo |
+| --- | --- |
+| `companyId` | `{{user.companyId}}` |
+| `email` | `{{user.email}}` |
+| `phone` | `{{user.phone}}` |
+| `role` | `{{user.role}}` |
+| `type` | `{{user.type}}` |
+| `firstName` | `{{user.firstName}}` |
+| `lastName` | `{{user.lastName}}` |
+| `name` | `{{user.name}}` |
+| `fullName` | `{{user.fullName}}` |
+
+Ejemplo para enviar el nombre del usuario a tu propia página:
+
+```text
+https://tusitio.com/?user={{user.firstName}}
+```
+
+### Pasos
+
+<Steps>
+  <Step title="Agrega un elemento Incrustar">
+    Entra al modo edición del panel, abre **Agregar widget → Elementos** y elige **Incrustar**.
+  </Step>
+  <Step title="Escribe la URL base">
+    Pega la dirección del contenido que quieres mostrar.
+  </Step>
+  <Step title="Agrega los parámetros">
+    Añade los parámetros que necesite esa página, usando las variables de la cuenta o del usuario donde corresponda.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda el panel y ábrelo con distintos usuarios para confirmar que cada uno ve su propia información.
+  </Step>
+</Steps>
+
+<Warning>
+  Los datos que pones en la URL viajan a la plataforma externa. Envía solo lo necesario y únicamente a sitios de tu confianza.
+</Warning>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Títulos, textos e imágenes en el panel" icon="heading" href="/informes/titulos-textos-e-imagenes-en-el-panel">
+    Organiza tu panel con encabezados, notas e imágenes.
+  </Card>
+  <Card title="Editar un panel" icon="pen-to-square" href="/informes/editar-un-panel">
+    Cambia el diseño y el contenido de tus paneles.
+  </Card>
+  <Card title="Cambiar tamaño y mover widgets" icon="up-down-left-right" href="/informes/cambiar-tamano-y-mover-widgets">
+    Acomoda cada elemento donde lo necesitas.
+  </Card>
+  <Card title="Eliminar un widget" icon="trash" href="/informes/eliminar-un-widget">
+    Quita del panel lo que ya no usas.
+  </Card>
+</CardGroup>

@@ -1,0 +1,103 @@
+---
+title: "Integra TikTok Lead Ads con tu CRM"
+description: "Conecta tu cuenta de TikTok for Business, asocia los campos del formulario y automatiza el seguimiento de cada lead."
+icon: "tiktok"
+---
+
+Con la integración de TikTok Lead Ads, cada persona que llena el formulario instantáneo de tus anuncios en TikTok entra directo a tu CRM de Chateea. Así puedes responderle al momento con un flujo de trabajo, asignarla a tu equipo y darle seguimiento sin exportar archivos.
+
+Para crear los anuncios y formularios dentro de TikTok, consulta la [guía oficial de TikTok for Business](https://ads.tiktok.com/help/article?aid=10010204).
+
+## Antes de empezar
+
+- Necesitas una **cuenta de TikTok for Business** con al menos una cuenta publicitaria.
+- Debes tener creado al menos un **formulario instantáneo** en TikTok.
+- Solo se admiten **anuncios de generación de leads en el feed** (in-feed).
+- La integración no funciona en países donde el gobierno bloquea TikTok.
+
+<Warning>
+  Por ahora no se admiten las preguntas de **selección múltiple** en los formularios de TikTok. Si tu formulario las usa, esas respuestas no se sincronizan.
+</Warning>
+
+## Cómo funciona
+
+Una vez conectada tu cuenta y asociados los campos del formulario, la página queda suscrita y cada lead nuevo llega a Chateea automáticamente.
+
+## Conecta TikTok Lead Ads
+
+<Steps>
+  <Step title="Abre las integraciones">
+    Ve a **Configuración → Integraciones** y busca la tarjeta de **TikTok**.
+
+    <Note>
+      Si no ves la tarjeta, revisa si la función está disponible en **Configuración → Labs** y actívala.
+    </Note>
+  </Step>
+  <Step title="Inicia sesión en tu cuenta de TikTok for Business">
+    Revisa los permisos (vienen marcados por defecto) y pulsa **Confirmar**.
+  </Step>
+  <Step title="Elige la cuenta publicitaria">
+    Si tienes varias cuentas publicitarias, selecciona la que quieres conectar. Si solo tienes una, se elige automáticamente.
+
+    La pestaña se cierra sola y tu cuenta de TikTok queda integrada. Puedes cambiar de cuenta publicitaria cuando quieras con el botón **Cambiar cuenta publicitaria**.
+  </Step>
+  <Step title="Asocia los campos del formulario">
+    Abre la pestaña de **asociación de formularios de TikTok**. Verás todas las páginas y formularios que creaste en TikTok. Pulsa **Asociar campos** (Map Fields), relaciona cada pregunta con un campo de Chateea y pulsa **Actualizar** para guardar y suscribir la página.
+
+    Si una pregunta no tiene un campo equivalente, crea antes un [campo personalizado](/contactos/introduccion) y luego asócialo.
+  </Step>
+  <Step title="Crea el flujo de trabajo">
+    En **Automatización**, crea un flujo con el disparador **Formulario de TikTok enviado** (TikTok Form Submitted), pulsa **Agregar filtro** y elige el formulario.
+  </Step>
+  <Step title="Haz una prueba">
+    Envía el formulario de TikTok y confirma que el lead aparece en **Contactos**.
+  </Step>
+</Steps>
+
+### Tipos de campo personalizado compatibles
+
+| Tipo en Chateea | Nombre técnico |
+| --- | --- |
+| Texto corto | `TEXT` |
+| Texto largo | `LARGE_TEXT` |
+| Numérico | `NUMERICAL` |
+| Teléfono | `PHONE` |
+| Monetario | `MONETARY` |
+| Opción única | `SINGLE_OPTIONS` |
+| Fecha | `DATE` |
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="Aparece el mensaje de que no hay páginas para esta cuenta">
+    Tu cuenta de TikTok for Business todavía no tiene un formulario instantáneo. Créalo siguiendo [los pasos de TikTok](https://ads.tiktok.com/help/article?aid=9525) y vuelve a intentarlo.
+  </Accordion>
+  <Accordion title="El token de acceso de TikTok caducó">
+    Desconecta la cuenta desde la tarjeta de TikTok en **Configuración → Integraciones** y vuelve a conectarla. Al reconectar se genera un token nuevo. Si el problema sigue, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+  </Accordion>
+  <Accordion title="Cambié una pregunta del formulario con la campaña activa">
+    Crea un campo personalizado para la nueva respuesta. Luego vuelve a la pestaña de **asociación de formularios de TikTok**, pulsa editar en ese formulario y asigna el campo nuevo.
+
+    Si quieres dejar de recibir leads de un formulario, desactiva su interruptor de estado.
+  </Accordion>
+  <Accordion title="¿Puedo conectar la misma cuenta de TikTok a más de una cuenta de Chateea?">
+    Sí, siempre que cada cuenta de Chateea tenga asociados los campos del formulario de TikTok.
+  </Accordion>
+  <Accordion title="¿Qué permisos debe mantener la persona que conectó la integración?">
+    Ninguno especial. El permiso que necesita Chateea se concede al conectar la integración. Los permisos o accesos del usuario en TikTok no afectan la conexión.
+  </Accordion>
+  <Accordion title="¿Por qué podría caducar la integración?">
+    TikTok entrega a Chateea un token de acceso permanente, así que la conexión se mantiene salvo que alguien la desconecte manualmente. Si llegara a caducar, verás el aviso de integración caducada en la tarjeta de TikTok en **Configuración → Integraciones**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Mensajes y comentarios automáticos de TikTok" icon="tiktok" href="/integraciones/tiktok-mensajes-y-comentarios-automaticos">
+    Responde comentarios y mensajes directos con flujos de trabajo.
+  </Card>
+  <Card title="Conectar TikTok al Planificador social" icon="calendar" href="/marketing/conectar-tiktok">
+    Programa videos y gestiona comentarios.
+  </Card>
+</CardGroup>

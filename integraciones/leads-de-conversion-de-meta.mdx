@@ -1,0 +1,172 @@
+---
+title: "Leads de conversión de Meta con la API de conversiones"
+description: "Envía a Meta cómo avanzan tus leads por el pipeline para que optimice tus anuncios por calidad de lead."
+icon: "filter"
+---
+
+Los leads de conversión de Meta (Conversion Leads) enseñan a Meta qué leads de tus anuncios terminan convirtiéndose en clientes. Chateea le envía a Meta cómo avanza cada lead por tu pipeline (por ejemplo, de "Nuevo" a "Cita agendada" o "Venta cerrada"), y Meta usa esa información para optimizar tus anuncios de formulario instantáneo por **calidad** de lead en lugar de por cantidad.
+
+Es la forma de dejar de pagar por leads que nunca contestan y empezar a atraer más personas parecidas a las que sí te compran.
+
+## Eventos de embudo y eventos de lead
+
+Chateea envía dos tipos de eventos a la API de conversiones de Meta:
+
+| Tipo | Qué envía | Fuente de datos |
+| --- | --- | --- |
+| **Evento de embudo** | Lo que pasa en tu sitio: visitas, formularios, reservas, compras, suscripciones. | Tu embudo o sitio web. Ver [Eventos de embudo con la API de conversiones](/integraciones/eventos-de-embudo-api-de-conversiones-de-meta). |
+| **Evento de lead** | Cómo avanza el lead entre las etapas de tu pipeline. | Tu CRM de Chateea. Es lo que usan los leads de conversión. |
+
+## ¿Tu negocio encaja?
+
+Meta recomienda esta integración si cumples con esto:
+
+- Usas anuncios de clientes potenciales de Facebook o Instagram (formularios instantáneos) con el mapeo de formularios de Facebook en Chateea.
+- El **ID del lead de Meta** (15 o 16 dígitos) queda guardado en tu CRM.
+- Generas **al menos 250 leads al mes**.
+- Puedes enviar datos **al menos una vez al día**.
+- La etapa que quieres optimizar ocurre **dentro de los 28 días** siguientes a la creación del lead.
+- Esa etapa tiene una tasa de conversión de **entre el 1 % y el 40 %**.
+
+## Antes de empezar
+
+- Facebook está conectado en **Configuración → Integraciones** con un usuario que es administrador de la página. Ver [Conectar Facebook Lead Ads y varias páginas](/integraciones/facebook-lead-ads-y-varias-paginas).
+- El formulario de tu anuncio está mapeado y con estado activo en **Configuración → Integraciones → Mapeo de campos de formularios de Facebook**.
+- Tienes un pipeline con las etapas por las que pasan tus leads. Ver [Crear un pipeline](/oportunidades/crear-un-pipeline).
+
+## Paso 1: Conecta tu CRM en el Administrador de eventos
+
+<Steps>
+  <Step title="Abre el Administrador de eventos">
+    En Meta Business Suite, abre el **Administrador de eventos**. Confirma que estás en la cuenta publicitaria correcta y con acceso total a la página.
+  </Step>
+  <Step title="Conecta un origen de datos">
+    Haz clic en **Conectar orígenes de datos**, elige **CRM** y haz clic en **Siguiente**. Verás unas buenas prácticas de Meta; haz clic en **Siguiente** otra vez.
+  </Step>
+  <Step title="Crea o elige el píxel">
+    Crea un píxel nuevo o elige uno existente y haz clic en **Continuar**.
+  </Step>
+  <Step title="Elige el socio de CRM">
+    Elige en la lista el socio de CRM con el que trabaja Chateea y haz clic en **Siguiente**. Si Meta te pide iniciar sesión en el sitio del socio, puedes ignorarlo: los eventos los enviarás desde los flujos de trabajo de Chateea. Si no sabes cuál elegir, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+  </Step>
+  <Step title="Deja la pestaña abierta">
+    Verás tu CRM seleccionado. Deja abierta la pestaña **Administrador de eventos → Orígenes de datos → Configuración**; la necesitarás para copiar el token y el ID del píxel.
+  </Step>
+</Steps>
+
+## Paso 2: Crea dos flujos de trabajo
+
+Necesitas dos flujos:
+
+1. El primero recibe el lead, lo envía a Meta y crea su oportunidad en la etapa correcta del pipeline.
+2. El segundo avisa a Meta cada vez que ese lead cambia de etapa.
+
+### Datos que vas a necesitar
+
+- **Token de acceso**: en el Administrador de eventos, entra a **Orígenes de datos → Configuración**, desplázate hacia abajo y haz clic en **Generar token de acceso**. Cópialo.
+- **ID del píxel**: en la misma pantalla, copia el **ID del conjunto de datos**. Ese es el ID del píxel.
+
+Puedes guardar ambos como valores personalizados para reutilizarlos en varios flujos.
+
+### Flujo 1: Crear o actualizar la oportunidad
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Usa **Formulario de lead de Facebook enviado** (Facebook Lead Form Submitted). Agrega un filtro para que solo se active con el formulario de tu anuncio.
+  </Step>
+  <Step title="Agrega la acción de la API de conversiones">
+    Agrega la acción **API de conversiones de Meta**, elige el tipo **Evento de lead** y completa **Token de acceso**, **ID del píxel** y **Nombre de la etapa**.
+  </Step>
+  <Step title="Crea la oportunidad">
+    Agrega la acción **Crear o actualizar oportunidad** y elige el pipeline y la etapa inicial. Como nombre de la oportunidad puedes usar el nombre completo del lead con el selector de valores personalizados.
+  </Step>
+  <Step title="Permite oportunidades duplicadas">
+    Activa **Permitir oportunidades duplicadas** en esta acción.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda y publica el flujo.
+  </Step>
+</Steps>
+
+### Flujo 2: Enviar a Meta los cambios de etapa
+
+<Steps>
+  <Step title="Crea otro flujo">
+    Agrega el disparador **Cambio de etapa del pipeline** (Pipeline Stage Change).
+  </Step>
+  <Step title="Agrega la acción de la API de conversiones">
+    Agrega la acción **API de conversiones de Meta**, elige **Evento de lead** y completa **Token de acceso** e **ID del píxel**.
+  </Step>
+  <Step title="Define el nombre de la etapa">
+    En **Nombre de la etapa**, usa el ícono de etiqueta al final del campo para insertar el valor personalizado del pipeline y la etapa de la oportunidad. Así Meta recibe el nombre real de cada etapa y tus informes quedan claros.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda la acción y luego guarda y publica el flujo.
+  </Step>
+</Steps>
+
+<Warning>
+En la configuración de **ambos** flujos, activa **Permitir múltiples** (Allow Multiple) para que un mismo contacto pueda pasar por el flujo más de una vez.
+</Warning>
+
+## Paso 3: Prueba la integración
+
+<Steps>
+  <Step title="Crea un lead de prueba">
+    Abre la [herramienta de prueba de anuncios de clientes potenciales de Meta](https://developers.facebook.com/tools/lead-ads-testing), elige tu página y tu formulario, y haz clic en **Crear lead**.
+  </Step>
+  <Step title="Mueve el lead de etapa">
+    En **Oportunidades**, mueve la oportunidad de prueba a otra etapa de las que configuraste.
+  </Step>
+  <Step title="Revisa los resultados">
+    Confirma que los flujos aparecen como ejecutados y que el evento llega al Administrador de eventos. Meta puede tardar hasta un día en registrar el primer evento.
+  </Step>
+  <Step title="Sigue el progreso">
+    En la pestaña **Configuración** del Administrador de eventos puedes ver el avance de la integración de leads de conversión.
+  </Step>
+</Steps>
+
+### Si Meta se queda en "Esperando siete días de eventos del CRM"
+
+- Envía datos **todos los días**, de forma constante.
+- Asegúrate de sumar **al menos 50 eventos en 7 días**.
+- Los eventos de prueba **no cuentan** como eventos reales.
+- Al menos **dos etapas** de tu pipeline deben tener eventos enviados al píxel.
+
+## Usar cambios de etapa con eventos de embudo
+
+Los cambios de etapa del pipeline suelen usarse con eventos de lead, pero también puedes enviar **eventos de embudo** desde un flujo con el disparador **Cambio de etapa del pipeline**, siempre que tengas los datos de atribución necesarios:
+
+1. Guarda el **FBCLID** (identificador de clic de Facebook) cuando el lead entra a tu cuenta, por ejemplo en un campo personalizado.
+2. En la acción de la API de conversiones, activa el **mapeo personalizado** y envía ese FBCLID guardado.
+3. Así Meta puede atribuir la conversión aunque el flujo se dispare por un cambio de etapa.
+
+Ejemplo: alguien envía un formulario de tu anuncio, su FBCLID queda guardado, el lead avanza por el pipeline y, al llegar a la etapa elegida, la acción envía un evento de embudo con ese FBCLID.
+
+<Note>
+Sin un FBCLID válido (u otro dato de atribución equivalente), Meta puede no emparejar la conversión con el anuncio correcto.
+</Note>
+
+### Mapeo personalizado
+
+El mapeo personalizado viene desactivado. Al activarlo puedes indicar el **FBCLID** para eventos de embudo y el **ID del lead de Facebook** para eventos de lead. Si llenas estos campos, tienen prioridad sobre los valores del sistema; si los dejas vacíos, Chateea usa sus valores internos.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="API de conversiones de Meta en flujos" icon="bolt" href="/integraciones/api-de-conversiones-de-meta-en-flujos">
+    Disparadores compatibles, parámetros y preguntas frecuentes.
+  </Card>
+  <Card title="Eventos de embudo con la API de conversiones" icon="chart-line" href="/integraciones/eventos-de-embudo-api-de-conversiones-de-meta">
+    Mide lo que pasa en tus embudos y sitios.
+  </Card>
+  <Card title="Conectar Facebook Lead Ads y varias páginas" icon="facebook" href="/integraciones/facebook-lead-ads-y-varias-paginas">
+    Conexión y mapeo de formularios.
+  </Card>
+  <Card title="La API de conversiones no funciona" icon="circle-question" href="/automatizaciones/conversion-api-de-facebook-no-funciona">
+    Causas comunes cuando no llegan los eventos.
+  </Card>
+</CardGroup>

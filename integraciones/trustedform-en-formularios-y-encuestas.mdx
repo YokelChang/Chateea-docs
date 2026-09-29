@@ -1,0 +1,113 @@
+---
+title: "Seguimiento de consentimiento con TrustedForm en formularios y encuestas"
+description: "Agrega TrustedForm de ActiveProspect a tus formularios y encuestas para guardar el certificado de consentimiento de cada lead."
+icon: "shield-check"
+---
+
+TrustedForm, de ActiveProspect, genera un certificado que documenta el consentimiento de cada persona que llena tu formulario. Es muy usado por negocios que compran o venden leads, o que necesitan demostrar que el contacto aceptó ser llamado o recibir mensajes.
+
+En esta guía verás cómo agregar el seguimiento de TrustedForm a un formulario o encuesta de Chateea para que la URL del certificado se guarde en un campo personalizado del contacto.
+
+## Antes de empezar
+
+- Necesitas una cuenta activa de ActiveProspect con TrustedForm.
+- Ten el formulario o la encuesta ya construidos en **Sitios → Formularios** (o **Encuestas**).
+- Usarás Google Chrome para inspeccionar el formulario y copiar el ID de un campo.
+
+## Configura TrustedForm en tu formulario
+
+<Steps>
+  <Step title="Crea el campo del certificado">
+    Crea un campo personalizado de **texto corto** llamado `xxTrustedFormCertUrl`. Arrástralo al formulario, **encima del botón de enviar**.
+  </Step>
+  <Step title="Guarda y abre el formulario en otra pestaña">
+    Guarda el formulario, pulsa **Integrar formulario**, abre la pestaña **Enlace** y copia la URL. Ábrela en otra pestaña de Chrome: volverás a ella en el paso 5.
+  </Step>
+  <Step title="Agrega un elemento HTML">
+    De vuelta en el constructor, arrastra un elemento **HTML** debajo del botón de enviar. Selecciónalo, pulsa **Editar script** y pega el script de la sección siguiente. Todavía no guardes.
+  </Step>
+  <Step title="Copia el ID del campo">
+    En la pestaña donde abriste el formulario, haz clic derecho y elige **Inspeccionar**. Usa el selector de elementos (el ícono del puntero), haz clic en el campo `xxTrustedFormCertUrl` y copia su ID.
+  </Step>
+  <Step title="Pega el ID en el script">
+    Vuelve a la ventana de **Editar script** y reemplaza `ID_DEL_CAMPO` en **los dos lugares** donde aparece por el ID que copiaste. Guarda.
+  </Step>
+  <Step title="Oculta el campo con CSS">
+    Abre la pestaña **Estilos** y pega el CSS correspondiente en **CSS personalizado**. Cambia el número entre paréntesis por la posición del campo `xxTrustedFormCertUrl` dentro del formulario.
+  </Step>
+  <Step title="Guarda el formulario">
+    Guarda los cambios y haz un envío de prueba para confirmar que el campo del contacto recibe la URL del certificado.
+  </Step>
+</Steps>
+
+## Script
+
+```html
+<script type="text/javascript">
+  (function() {
+      var field = 'xxTrustedFormCertUrl';
+      var provideReferrer = false;
+      var invertFieldSensitivity = false;
+      var tf = document.createElement('script');
+      tf.type = 'text/javascript'; tf.async = true;
+      tf.src = 'http' + ('https:' == document.location.protocol ? 's' : '') +
+        '://api.trustedform.com/trustedform.js?provide_referrer=' + escape(provideReferrer) + '&field=' + escape(field) + '&l='+new Date().getTime()+Math.random() + '&invert_field_sensitivity=' + invertFieldSensitivity;
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(tf, s); }
+  )();
+function trustedFormCertUrlCallback(certificateUrl) {
+    document.getElementsByName('ID_DEL_CAMPO')[0].value = certificateUrl;
+  document.getElementsByName('ID_DEL_CAMPO')[0].dispatchEvent(new Event("input"));
+}
+</script>
+<noscript>
+    <img src="http://api.trustedform.com/ns.gif" />
+</noscript>
+```
+
+## CSS para ocultar el campo
+
+El campo `xxTrustedFormCertUrl` debe llenarse solo, sin que el visitante lo vea. Para eso se oculta con CSS.
+
+**En formularios:**
+
+```css
+.form-field-wrapper:nth-child(n) {
+  display: none;
+}
+```
+
+**En encuestas:**
+
+```css
+.slide-no-SlideNumber .form-field-wrapper:nth-child(n) {
+  display: none;
+}
+```
+
+Reemplaza los valores de ejemplo:
+
+- `n` es la posición del campo que quieres ocultar.
+- `SlideNumber` es el número de la diapositiva de la encuesta donde está el campo.
+
+Por ejemplo, si `xxTrustedFormCertUrl` está en la diapositiva 2 y es el cuarto elemento:
+
+```css
+.slide-no-2 .form-field-wrapper:nth-child(4) {
+  display: none;
+}
+```
+
+<Warning>
+  Coloca `xxTrustedFormCertUrl` **por encima de cualquier otro campo oculto** de la diapositiva o del formulario. Si no, la posición que indicas en el CSS no coincide y podrías ocultar el campo equivocado.
+</Warning>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="CSS personalizado en formularios" icon="code" href="/sitios/css-personalizado-en-formularios">
+    Ajusta el diseño de tus formularios con tu propio CSS.
+  </Card>
+  <Card title="Formularios" icon="file-lines" href="/formularios/introduccion">
+    Crea formularios para captar leads.
+  </Card>
+</CardGroup>

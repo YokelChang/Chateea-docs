@@ -1,0 +1,104 @@
+---
+title: "Registrar visitas de embudos y sitios en Google Analytics 4"
+description: "Crea una propiedad en GA4 e instala la etiqueta de Google en tus embudos y sitios para medir las páginas vistas."
+icon: "chart-line"
+---
+
+Si quieres medir en Google Analytics 4 (GA4) las visitas a tus embudos y sitios web de Chateea, necesitas crear una propiedad y un flujo de datos web en GA4 e instalar la etiqueta de Google (gtag.js) en tu embudo o sitio. Una vez instalada, GA4 registra automáticamente cada página vista.
+
+Esta guía supone que conoces lo básico de Google Analytics. Si es tu primera vez, revisa antes la [guía de inicio de GA4 de Google](https://support.google.com/analytics/answer/10089681).
+
+## Paso 1: crea la propiedad y el flujo de datos en GA4
+
+<Steps>
+  <Step title="Inicia sesión en Google Analytics">
+    Entra en tu cuenta de Google Analytics.
+  </Step>
+  <Step title="Abre la administración">
+    Haz clic en **Administrar** (el ícono de engranaje).
+  </Step>
+  <Step title="Crea una propiedad">
+    Haz clic en **Crear propiedad** y escribe el nombre de la propiedad, por ejemplo el nombre de tu negocio o de tu embudo.
+  </Step>
+  <Step title="Abre los flujos de datos">
+    En el menú izquierdo de la propiedad, entra en **Flujos de datos**.
+  </Step>
+  <Step title="Crea un flujo web">
+    Elige **Web**, escribe la URL del embudo o sitio que quieres medir, ponle un nombre al flujo y haz clic en **Crear flujo**.
+  </Step>
+  <Step title="Copia la etiqueta de Google">
+    En los detalles del flujo, abre las instrucciones de instalación manual y copia el fragmento de código de la etiqueta de Google (gtag.js). Tiene este aspecto, con tu propio ID de medición:
+
+    ```html
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    ```
+  </Step>
+</Steps>
+
+## Paso 2: instala la etiqueta en tu embudo o sitio
+
+<Steps>
+  <Step title="Abre el embudo o sitio">
+    En Chateea, ve a **Sitios**, elige **Embudos** o **Sitios web** y abre el que quieres medir.
+  </Step>
+  <Step title="Entra en Configuración">
+    Haz clic en la pestaña **Configuración**.
+  </Step>
+  <Step title="Pega el código en el head">
+    Pega el fragmento de gtag.js en **Código de seguimiento del head** y guarda.
+  </Step>
+  <Step title="Publica y verifica">
+    Asegúrate de que las páginas estén publicadas, visita tu embudo o sitio y comprueba en el informe **En tiempo real** de GA4 que aparece tu visita.
+  </Step>
+</Steps>
+
+Al instalarla a nivel de embudo o sitio, la etiqueta se carga en todas sus páginas. Más detalles en [Códigos de seguimiento y píxeles](/sitios/codigos-de-seguimiento-y-pixeles).
+
+## Alternativa: Google Tag Manager
+
+Si ya gestionas tus etiquetas con Google Tag Manager:
+
+1. Instala el contenedor de Tag Manager en tu embudo o sitio: el fragmento principal en **Código de seguimiento del head** y el fragmento `noscript` en **Código de seguimiento del body**.
+2. En Tag Manager, crea una etiqueta de Google con tu ID de medición de GA4 que se active en todas las páginas.
+3. Publica el contenedor y verifica las visitas en el informe **En tiempo real** de GA4.
+
+<Warning>
+  Usa solo uno de los dos métodos. Si instalas gtag.js directamente y también la etiqueta de GA4 en Tag Manager, cada visita se contará dos veces.
+</Warning>
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="No veo visitas en GA4">
+    Confirma que publicaste las páginas, que el ID de medición es el correcto y prueba en una ventana de incógnito sin bloqueadores de anuncios. Los informes estándar de GA4 pueden tardar en mostrar datos; usa el informe **En tiempo real** para comprobar la instalación.
+  </Accordion>
+  <Accordion title="Las visitas aparecen duplicadas">
+    Revisa que la etiqueta no esté instalada a la vez a nivel de embudo y en una página concreta, ni dos veces por gtag.js y Tag Manager.
+  </Accordion>
+  <Accordion title="¿Tengo que pedir consentimiento de cookies?">
+    Depende de las leyes que apliquen a tus visitantes. Si lo necesitas, activa un banner de consentimiento en tu embudo o sitio. Mira [Banner de consentimiento de cookies](/embudos-sitios-web/como-utilizar-el-banner-de-consentimiento-de-cookies-en-embudos-de-venta-y-sitios-web).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Códigos de seguimiento y píxeles" icon="code" href="/sitios/codigos-de-seguimiento-y-pixeles">
+    Dónde instalar cada script.
+  </Card>
+  <Card title="Enviar eventos a Google Analytics 4" icon="bolt" href="/informes/enviar-eventos-a-google-analytics-4">
+    Envía eventos desde tus automatizaciones.
+  </Card>
+  <Card title="Widgets de Google Analytics" icon="chart-line" href="/informes/widgets-de-google-analytics">
+    Lleva los datos de GA4 a tu panel.
+  </Card>
+  <Card title="Widget de chat con GA4" icon="comments" href="/sitios/widget-de-chat-con-google-analytics-4">
+    Mide las interacciones del chat.
+  </Card>
+</CardGroup>

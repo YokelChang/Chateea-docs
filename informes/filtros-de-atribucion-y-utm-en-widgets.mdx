@@ -1,0 +1,201 @@
+---
+title: "Filtros de atribución y UTM en widgets"
+description: "Filtra y agrupa tus widgets de contactos y oportunidades por origen, medio y parámetros UTM de tus campañas."
+icon: "bullseye"
+---
+
+Los filtros de atribución y UTM te permiten analizar tus contactos y oportunidades según cómo te conocieron o cómo volvieron a interactuar contigo. En los widgets compatibles puedes filtrar por origen, agrupar gráficos por canal o medio, mostrar valores UTM como columnas de una tabla y exportar el detalle. Así respondes preguntas como "¿cuántas oportunidades trajo mi campaña de verano en Google?" sin salir del panel.
+
+<Info>
+  Los filtros de atribución y UTM están disponibles en los widgets de **Contactos** y **Oportunidades**. No aparecen en todos los tipos de widget.
+</Info>
+
+## Lo que necesitas saber antes de empezar
+
+- Usa un widget de **Contactos** u **Oportunidades**.
+- Los registros deben tener datos de atribución guardados. Si tus enlaces no llevan parámetros UTM, no habrá nada que filtrar. Revisa [Reportes y atribución](/reportes/introduccion) para marcar bien el origen.
+- Decide si vas a trabajar con **Primera atribución** o **Última atribución**.
+- Agrega siempre el tipo de atribución en las **Condiciones** del widget **antes** de buscar los campos UTM. Sin ese paso, no aparecen.
+
+<Note>
+  Algunos widgets de contactos predeterminados ya usan la última atribución. Crea condiciones propias cuando necesites otra lógica, filtrar una campaña concreta o segmentar más.
+</Note>
+
+## Primera atribución o última atribución
+
+Un mismo contacto puede tener datos distintos en su primer y en su último punto de contacto.
+
+| Tipo | Qué evalúa |
+| --- | --- |
+| **Primera atribución** | El primer punto de contacto registrado. Responde "¿qué canal me trajo a este cliente?". |
+| **Última atribución** | El punto de contacto más reciente. Responde "¿qué lo hizo volver o convertir?". |
+
+**Ejemplo:** un contacto te conoce por un anuncio de Google Ads y semanas después vuelve por una campaña de correo. Con **Primera atribución**, el widget lo asigna a Google Ads. Con **Última atribución**, lo asigna a la campaña de correo.
+
+## Campos disponibles
+
+| Campo | Qué representa | Operadores |
+| --- | --- | --- |
+| **Medio** (Medium) | Tipo de interacción registrada en Chateea | Es, No es, Es uno de, No es ninguno de |
+| **Fuente de sesión** (Session Source) | Clasificación del canal de tráfico | Es uno de, No es ninguno de |
+| **UTM Medium** | Valor capturado de `utm_medium` | Contiene |
+| **UTM Source** | Valor capturado de `utm_source` | Contiene |
+| **UTM Campaign** | Valor capturado de `utm_campaign` | Contiene |
+| **UTM Campaign ID** | Identificador de la campaña | Es, No es |
+| **UTM Keyword** | Palabra clave capturada | Contiene |
+| **UTM Content** | Contenido capturado | Contiene |
+| **UTM Matchtype** | Tipo de concordancia capturado | Contiene |
+| **UTM Ad ID** | Identificador del anuncio | Es, No es |
+| **UTM Ad Group ID** | Identificador del grupo de anuncios | Es, No es |
+
+### Medio, Fuente de sesión y UTM Source no son lo mismo
+
+- **Medio:** el tipo de interacción que registró Chateea, por ejemplo un formulario, una encuesta, un calendario, la API o una red social.
+- **Fuente de sesión:** la categoría del canal de tráfico, por ejemplo tráfico directo, búsqueda orgánica, búsqueda pagada, redes sociales o referido.
+- **UTM Source:** el valor exacto de `utm_source` que traía el enlace.
+
+Elige el campo según el nivel de detalle que necesites.
+
+## Filtrar un widget por atribución o UTM
+
+<Steps>
+  <Step title="Abre el widget">
+    En **Panel de control**, abre el panel, entra en modo edición y agrega o edita un widget de **Contactos** u **Oportunidades**.
+  </Step>
+  <Step title="Agrega la atribución">
+    En la pestaña **Condiciones**, haz clic en **Agregar filtro**, elige **Atribución** y selecciona **Primera atribución** o **Última atribución**.
+  </Step>
+  <Step title="Agrega el campo UTM">
+    Dentro del mismo grupo de filtros, haz clic en **+AND** y elige el campo que quieres usar (Medio, Fuente de sesión, UTM Source, UTM Campaign, etc.).
+  </Step>
+  <Step title="Define la condición">
+    Elige el operador disponible y escribe o selecciona el valor.
+  </Step>
+  <Step title="Suma más condiciones si hace falta">
+    Agrega más condiciones con **+AND** cuando todas deban cumplirse a la vez.
+  </Step>
+  <Step title="Revisa y guarda">
+    Revisa el resultado del widget y guarda los cambios.
+  </Step>
+</Steps>
+
+### Cómo funcionan AND y OR
+
+Las condiciones dentro de un mismo grupo usan **AND**: el registro debe cumplirlas todas.
+
+```text
+Primera atribución
+AND UTM Source contiene "google"
+AND UTM Campaign contiene "verano"
+```
+
+Si creas otro grupo de filtros, los grupos se combinan con **OR**:
+
+```text
+Grupo 1: Primera atribución AND UTM Source contiene "google"
+OR
+Grupo 2: Última atribución AND UTM Source contiene "facebook"
+```
+
+<Warning>
+  Usar varios grupos de filtros desactiva la agrupación por **Fuente de sesión** y **Medio**. Si quieres agrupar por esos campos, mantén todo en un solo grupo.
+</Warning>
+
+## Agrupar un widget por Fuente de sesión o Medio
+
+Agrupar te permite comparar resultados entre canales en lugar de ver un solo total. Para que las opciones aparezcan:
+
+- El gráfico debe admitir agrupación.
+- El widget debe tener **Atribución = Primera atribución** o **Última atribución**.
+- Todas las condiciones deben estar en **un solo grupo de filtros**.
+
+<Steps>
+  <Step title="Edita el widget">
+    Abre el widget de contactos u oportunidades en modo edición y ve a **Condiciones**.
+  </Step>
+  <Step title="Agrega la atribución">
+    Agrega **Atribución** con primera o última atribución, en el mismo grupo que el resto de condiciones.
+  </Step>
+  <Step title="Elige la agrupación">
+    Abre el control **Agrupar por** o **Ver por** (Group By / View By) y selecciona **Fuente de sesión** o **Medio**.
+  </Step>
+  <Step title="Guarda">
+    Revisa el gráfico y guarda el widget.
+  </Step>
+</Steps>
+
+## Mostrar columnas de atribución y UTM en una tabla
+
+<Steps>
+  <Step title="Agrega la atribución">
+    Edita un widget de **Contactos** u **Oportunidades**, abre **Condiciones** y agrega **Atribución** con primera o última atribución.
+  </Step>
+  <Step title="Cambia a tabla">
+    Cambia el tipo de gráfico a **Tabla**.
+  </Step>
+  <Step title="Elige las columnas">
+    Abre **Seleccionar columnas**, marca los campos de atribución y UTM que quieres ver y ordénalos.
+  </Step>
+  <Step title="Guarda">
+    Guarda el widget.
+  </Step>
+</Steps>
+
+Si no ves los campos de atribución en **Seleccionar columnas**, vuelve a **Condiciones** y confirma que agregaste la atribución. Más sobre tablas en [Widgets en formato de tabla](/informes/widgets-en-formato-de-tabla).
+
+## Ver y exportar el detalle
+
+1. Guarda el widget y vuelve a la vista normal del panel.
+2. Haz clic en el widget para abrir el detalle de los registros.
+3. Revisa la información de atribución y UTM disponible.
+4. Usa **Exportar** si quieres analizar los datos fuera del panel.
+
+Los campos que ves en el detalle dependen de cómo configuraste el widget y de los datos que tenga cada registro.
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="No aparecen los campos UTM en Condiciones">
+    Confirma que estás editando un widget de contactos u oportunidades, que agregaste **Atribución** primero y que elegiste primera o última atribución.
+  </Accordion>
+  <Accordion title="No puedo agrupar por Fuente de sesión o Medio">
+    Verifica que el tipo de atribución esté en el grupo de filtros, que uses un solo grupo y que no hayas agregado grupos OR adicionales.
+  </Accordion>
+  <Accordion title="El widget queda vacío al agregar un filtro UTM">
+    Revisa que tus registros tengan ese valor UTM, que el tipo de atribución sea el que buscas y que el valor coincida con lo capturado. Recuerda que los campos de texto (UTM Source, UTM Campaign) usan **Contiene**, y los de identificador (UTM Campaign ID, UTM Ad ID) usan **Es / No es**.
+  </Accordion>
+  <Accordion title="El informe muestra un origen distinto al que esperaba">
+    Comprueba si el widget usa primera o última atribución. Un mismo contacto puede tener un origen distinto en su primera y en su última interacción.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué widgets admiten filtros de atribución y UTM?">
+    Los widgets de **Contactos** y **Oportunidades**.
+  </Accordion>
+  <Accordion title="¿Puedo exportar los datos de atribución?">
+    Sí. Desde el detalle del widget puedes usar **Exportar**. Los campos incluidos dependen de la configuración del widget y de los datos de cada registro.
+  </Accordion>
+  <Accordion title="¿Cuál conviene usar para medir mis anuncios?">
+    Si quieres saber qué canal genera clientes nuevos, usa **Primera atribución**. Si quieres saber qué acción provoca la conversión final, usa **Última atribución**. Muchas veces vale la pena tener los dos widgets lado a lado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Reportes y atribución" icon="chart-line" href="/reportes/introduccion">
+    Cómo marcar el origen de tus contactos y leer tus reportes.
+  </Card>
+  <Card title="Widgets en formato de tabla" icon="table" href="/informes/widgets-en-formato-de-tabla">
+    Muestra registros con las columnas que elijas.
+  </Card>
+  <Card title="Crear y agregar widgets" icon="plus" href="/informes/crear-y-agregar-widgets">
+    Construye tus propios widgets paso a paso.
+  </Card>
+  <Card title="Filtros rápidos en paneles" icon="filter" href="/informes/filtros-rapidos-en-paneles">
+    Filtra todos los widgets del panel a la vez.
+  </Card>
+</CardGroup>

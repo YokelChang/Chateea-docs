@@ -1,0 +1,109 @@
+---
+title: "Widgets de SMS en el panel"
+description: "Sigue entregas, fallos, remitentes, origen y volumen de tus SMS con widgets y filtros en tu panel."
+icon: "message"
+---
+
+Los widgets de **SMS** te muestran cómo rinden tus mensajes de texto: cuántos se entregan, cuántos fallan, quién los envía, qué los origina y cómo cambia el volumen con el tiempo. Tienen el mismo nivel de detalle y filtros que los widgets de correo y de llamadas, así que ya no necesitas revisar **Conversaciones** a mano para entender tu mensajería.
+
+## Para qué te sirven
+
+- **Salud de entrega:** ve de un vistazo cuántos mensajes quedaron enviados, entregados, fallidos, pendientes o sin entregar.
+- **Responsabilidad del equipo:** mide cuántos SMS envía cada persona.
+- **Origen del volumen:** separa lo que envían tus flujos de trabajo, tus campañas y tus acciones masivas.
+- **Tendencias:** sigue el volumen por día, semana o mes para planificar y controlar el consumo.
+
+## Widgets disponibles
+
+| Widget | Qué muestra |
+| --- | --- |
+| **SMS por estado** | Distribución de los SMS salientes por estado de entrega: enviado, entregado, fallido, pendiente, no entregado, con clic y leído. |
+| **SMS entrantes** | Cantidad de SMS recibidos en el rango de fechas. Con el filtro de dirección puedes medir el volumen de conversación en ambos sentidos. |
+| **SMS por tipo de origen** | SMS salientes separados por origen: flujo de trabajo, campaña, acción masiva u otro. |
+| **SMS por remitente** | SMS salientes por miembro del equipo. |
+| **Volumen de SMS en el tiempo** | Evolución de los SMS enviados por día, semana o mes. |
+
+Todos están disponibles en el **Panel de control**, en los **Informes** y en las **métricas personalizadas**.
+
+## Agregar un widget de SMS
+
+<Steps>
+  <Step title="Abre o crea un panel">
+    Ve a **Panel de control** y abre el panel donde quieres ver tus datos de SMS, o crea uno nuevo.
+  </Step>
+  <Step title="Agrega el widget">
+    Haz clic en **Editar panel** y luego en **Agregar widget**. Baja hasta la sección **SMS** y elige el widget que necesitas.
+  </Step>
+  <Step title="Configúralo">
+    En el panel **Editar widget**:
+
+    - En **Configurar**, elige el tipo de gráfico, la agrupación y el rango de fechas.
+    - En **Condiciones**, agrega filtros con lógica AND y OR.
+    - En **Temas**, ajusta la apariencia.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar cambios**. Repite para sumar más widgets de SMS.
+  </Step>
+</Steps>
+
+<Tip>
+  Combina **SMS por estado** con **Volumen de SMS en el tiempo**. Si los fallidos suben justo cuando sube el volumen, revisa el contenido y la frecuencia de tus envíos masivos.
+</Tip>
+
+## Filtros disponibles
+
+| Filtro | Para qué sirve |
+| --- | --- |
+| **Estado** | Aislar un resultado de entrega: enviado, entregado, fallido, pendiente, no entregado, con clic o leído. |
+| **Dirección** | Ver solo entrantes o solo salientes. |
+| **Origen** | Atribuir el volumen a flujo de trabajo, campaña, acción masiva u otro. |
+| **Enviado por** | Medir la actividad de cada miembro del equipo. |
+| **Flujo de trabajo** | Ver cuántos SMS envía cada automatización. |
+
+### Combinar filtros con AND y OR
+
+- **AND:** todas las condiciones deben cumplirse. Ejemplo: `Estado = Entregado AND Origen = Flujo de trabajo` muestra los SMS de automatizaciones que sí llegaron.
+- **OR:** basta con que se cumpla una. Ejemplo: `Enviado por = Ana OR Enviado por = Luis` compara la actividad de dos vendedores.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre Enviado y Entregado?">
+    **Enviado** significa que el SMS salió hacia el operador. **Entregado** significa que el operador confirmó que llegó al teléfono del destinatario. Un mensaje puede quedar como enviado y no entregado si el teléfono está apagado o el número no es válido. Para mejorar tus entregas, revisa [Buenas prácticas de entregabilidad de SMS](/telefonia/buenas-practicas-entregabilidad-sms).
+  </Accordion>
+  <Accordion title="¿Los widgets cuentan los MMS?">
+    Cuentan los SMS estándar. Si un MMS se registra como SMS en **Conversaciones**, también aparecerá en los widgets.
+  </Accordion>
+  <Accordion title="¿Puedo exportar los datos?">
+    Sí. Usa la opción de exportar del widget para descargar los datos en CSV.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar por varios flujos de trabajo a la vez?">
+    Sí. Usa lógica OR en el filtro de flujo de trabajo para incluir varios en el mismo widget.
+  </Accordion>
+  <Accordion title="¿Se ven en el móvil?">
+    Sí. Los widgets de SMS se adaptan a pantallas pequeñas.
+  </Accordion>
+  <Accordion title="¿Puedo elegir el rango de fechas?">
+    Sí. En la pestaña **Configurar** puedes elegir un rango personalizado o uno predefinido, como los últimos 7 días, los últimos 30 días o este mes.
+  </Accordion>
+  <Accordion title="¿Los datos son en tiempo real?">
+    Los widgets se actualizan periódicamente. Si necesitas lo más reciente, actualiza el panel.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lanza tu primera campaña de SMS" icon="message" href="/primeros-pasos/lanza-tu-primera-campana-de-sms">
+    Envía tu primera campaña paso a paso.
+  </Card>
+  <Card title="Buenas prácticas de entregabilidad de SMS" icon="shield-check" href="/telefonia/buenas-practicas-entregabilidad-sms">
+    Consigue que más mensajes lleguen a destino.
+  </Card>
+  <Card title="Analítica de mensajería" icon="chart-line" href="/telefonia/analitica-de-mensajes-sms">
+    Entregas, fallos y bajas de tus SMS con detalle por mensaje.
+  </Card>
+  <Card title="Métricas personalizadas" icon="calculator" href="/informes/metricas-personalizadas">
+    Crea KPI con tus datos de SMS.
+  </Card>
+</CardGroup>

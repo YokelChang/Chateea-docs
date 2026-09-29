@@ -1,0 +1,111 @@
+---
+title: "Automatiza mensajes directos y comentarios de TikTok"
+description: "Configura disparadores y acciones para responder automáticamente comentarios y mensajes directos de TikTok con flujos de trabajo."
+icon: "tiktok"
+---
+
+TikTok tiene millones de usuarios activos, pero no ofrece herramientas para gestionar contactos y conversaciones a escala. Al integrar tu cuenta de TikTok con Chateea, los comentarios y mensajes directos se gestionan desde tu CRM y puedes automatizar las respuestas con flujos de trabajo.
+
+Esta guía explica las piezas que intervienen (disparadores y acciones) y cómo combinarlas para responder comentarios y mensajes directos.
+
+## Disponibilidad
+
+<Warning>
+  La automatización de mensajes y comentarios de TikTok **solo está disponible para cuentas de empresa registradas en Estados Unidos**. Todavía no funciona en el Espacio Económico Europeo, Suiza ni el Reino Unido. La limitación viene de las API públicas de TikTok.
+</Warning>
+
+## Antes de empezar
+
+Conecta tu cuenta de TikTok desde **Configuración → Integraciones → TikTok**.
+
+## Piezas de la automatización
+
+| Tipo | Nombre | Para qué sirve |
+| --- | --- | --- |
+| Disparador | **TikTok: comentarios en una publicación** | Inicia el flujo cuando alguien comenta una publicación tuya |
+| Disparador | **Cliente respondió** (Customer Replied) | Inicia el flujo cuando alguien te escribe por el canal que elijas, en este caso TikTok |
+| Acción | **Responder en comentarios** | Publica una respuesta debajo del comentario |
+| Acción | **Mensajero interactivo de TikTok** | Envía un mensaje directo automático |
+
+## Automatiza respuestas a comentarios
+
+### Configura el disparador
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En tu flujo de trabajo, pulsa **Agregar disparador** y busca **TikTok: comentarios en una publicación**. Está en la categoría de comunicación.
+  </Step>
+  <Step title="Elige la cuenta">
+    Selecciona la cuenta de TikTok. Si no eliges ninguna, el disparador se aplica a todas las cuentas de TikTok conectadas a tu cuenta de Chateea.
+  </Step>
+  <Step title="Elige el tipo de publicación">
+    - **Publicadas:** muestra en una lista todas las publicaciones de tu cuenta. Si una publicación no tiene descripción, verás su ID y su fecha de publicación para identificarla.
+    - **Personalizada:** defines la publicación pegando su URL.
+
+    Si no seleccionas ninguna publicación, se incluyen todas las de la cuenta conectada.
+  </Step>
+  <Step title="Define qué buscar en el comentario">
+    Elige entre **Coincidencia exacta** o **Contiene la frase** y escribe el texto.
+  </Step>
+</Steps>
+
+Así se comportan las dos opciones:
+
+| Condición | Texto configurado | Comentario recibido | Resultado |
+| --- | --- | --- | --- |
+| Coincidencia exacta | Precio | Precio | Se activa |
+| Coincidencia exacta | Comparte el precio | Comparte el precio | Se activa |
+| Coincidencia exacta | Comparte el precio | Por favor comparte el precio | No se activa |
+| Contiene la frase | Te compré | Te compré | Se activa |
+| Contiene la frase | Te compré | Te compré ayer | Se activa |
+| Contiene la frase | Te compré | Te compré uno | No se activa |
+
+<Note>
+  La persona que comenta se guarda como contacto con su nombre y apellido.
+</Note>
+
+### Configura la acción Responder en comentarios
+
+1. En las acciones de comunicación, elige **Responder en comentarios**.
+2. Escribe hasta **10 respuestas distintas**. En cada ejecución se elige una al azar, para que tus respuestas no se vean repetidas.
+
+## Automatiza mensajes directos
+
+### Configura el disparador Cliente respondió
+
+<Steps>
+  <Step title="Agrega el disparador">
+    Pulsa **Agregar disparador** y elige **Cliente respondió**, en la categoría de eventos.
+  </Step>
+  <Step title="Filtra por canal">
+    En el filtro **Canal de respuesta**, elige **TikTok**.
+  </Step>
+  <Step title="Define las condiciones">
+    Si quieres reaccionar solo a ciertos mensajes, agrega una condición de **Contiene la frase** o **Coincidencia exacta**.
+  </Step>
+</Steps>
+
+### Configura la acción Mensajero interactivo de TikTok
+
+En la categoría de comunicación, elige **Mensajero interactivo de TikTok**, escribe el mensaje que quieres enviar y guarda la acción.
+
+## Limitaciones actuales
+
+A diferencia de Facebook e Instagram, el mensajero interactivo de TikTok todavía no admite:
+
+- El campo **Tipo de respuesta** (responder por mensaje directo o responder a un comentario por mensaje directo).
+- Plantillas.
+- Archivos adjuntos, botones ni respuestas rápidas.
+
+Estas opciones dependen de que las API de TikTok las permitan.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="TikTok en la IA conversacional" icon="robot" href="/integraciones/tiktok-en-ia-conversacional">
+    Deja que un bot responda tus mensajes directos de TikTok.
+  </Card>
+  <Card title="Automatizar mensajes y comentarios de TikTok" icon="tiktok" href="/marketing/automatizar-mensajes-y-comentarios-de-tiktok">
+    TikTok en Conversaciones y ejemplos de automatización.
+  </Card>
+</CardGroup>

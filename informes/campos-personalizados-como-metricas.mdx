@@ -1,0 +1,144 @@
+---
+title: "Usar campos personalizados como métricas"
+description: "Suma, promedia o calcula el mínimo y máximo de tus campos numéricos y monetarios en paneles e informes."
+icon: "calculator"
+---
+
+Los campos personalizados numéricos y monetarios de contactos y oportunidades pueden usarse como métricas en tus paneles, informes personalizados y métricas personalizadas. Si guardas datos propios de tu negocio, como el costo de un tratamiento, el valor de una propiedad o el tamaño estimado de un proyecto, ahora puedes sumarlos, promediarlos o ver su mínimo y su máximo sin exportar nada.
+
+## Qué son las métricas de campos personalizados
+
+En lugar de usar un campo personalizado solo para filtrar o agrupar, eliges el campo y un cálculo (suma, mínimo, máximo o promedio) y el resultado se muestra en el widget.
+
+Por ejemplo, si tus oportunidades tienen un campo monetario **Valor de la propiedad**, puedes calcular el valor total de las propiedades ganadas o encontrar la propiedad de mayor valor del periodo.
+
+## Para qué te sirven
+
+- **Medir lo que es único de tu negocio:** valores que no encajan en los campos estándar.
+- **Elegir el cálculo adecuado:** el mismo campo responde preguntas distintas según el cálculo.
+- **Usarlo en todas partes:** paneles, informes personalizados y métricas personalizadas.
+- **Menos trabajo manual:** analizas los valores directamente en Chateea.
+- **Sin configuración extra:** los campos compatibles aparecen como métricas en cuanto los creas.
+
+## Campos y cálculos compatibles
+
+| Elemento | Opciones |
+| --- | --- |
+| **Objetos** | Contactos y oportunidades |
+| **Tipos de campo** | Número y monetario |
+| **Cálculos** | **Suma** (suma todos los valores), **Mín.** (el valor más bajo), **Máx.** (el valor más alto), **Promedio** (la media de los valores) |
+
+Al configurar la métrica verás dos menús separados:
+
+1. **Campo:** el campo personalizado que quieres medir, por ejemplo **Valor de la propiedad**.
+2. **Cálculo** (Aggregation): cómo calcularlo, por ejemplo **Suma**.
+
+No busques una opción combinada como "Suma de Valor de la propiedad" en el menú de campos: siempre eliges el campo y el cálculo por separado.
+
+<Note>
+  Si el campo aún no existe, créalo en **Configuración → Campos personalizados**. Elige bien el objeto (contacto u oportunidad), porque después no se puede cambiar. Mira [Campos personalizados de oportunidades](/oportunidades/campos-personalizados-de-oportunidades).
+</Note>
+
+## Usar un campo personalizado en un widget o informe
+
+<Steps>
+  <Step title="Confirma que el campo es compatible">
+    Debe pertenecer a contactos u oportunidades y ser de tipo número o monetario.
+  </Step>
+  <Step title="Abre el widget o el informe">
+    Entra en modo de edición del panel o del informe personalizado y agrega o edita un widget.
+  </Step>
+  <Step title="Elige el campo">
+    En la configuración de la métrica, selecciona el campo personalizado que quieres medir.
+  </Step>
+  <Step title="Elige el cálculo">
+    Selecciona **Suma**, **Mín.**, **Máx.** o **Promedio**.
+  </Step>
+  <Step title="Agrega filtros o agrupación">
+    Si lo necesitas, filtra (por ejemplo, solo oportunidades ganadas) o usa **Ver por** para agrupar por otro campo.
+  </Step>
+  <Step title="Guarda">
+    Guarda el widget o el informe.
+  </Step>
+</Steps>
+
+## Usar un campo personalizado en una métrica personalizada
+
+Las métricas personalizadas combinan varias métricas en una fórmula.
+
+<Steps>
+  <Step title="Crea la métrica">
+    Abre **Métricas personalizadas** y crea una nueva.
+  </Step>
+  <Step title="Nombre y formato">
+    Escribe el nombre de la métrica y elige el formato de visualización.
+  </Step>
+  <Step title="Agrega una métrica a la fórmula">
+    En el constructor de fórmulas, selecciona la métrica. Los campos personalizados compatibles aparecen como opción.
+  </Step>
+  <Step title="Agrega más componentes">
+    Haz clic en **+** y elige **Métricas**, **Operador** o **Número**. Los operadores disponibles son `+`, `-`, `*`, `/`, `(` y `)`. Puedes combinar varias métricas en la misma fórmula.
+  </Step>
+  <Step title="Define qué es positivo">
+    Indica si un aumento o una disminución de la métrica se considera positivo.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Crear** o **Actualizar**.
+  </Step>
+</Steps>
+
+Más detalles en [Métricas personalizadas](/informes/metricas-personalizadas).
+
+## Ejemplo: valor de la propiedad
+
+Una inmobiliaria guarda **Valor de la propiedad** como campo monetario en cada oportunidad. Con ese único campo puede responder varias preguntas:
+
+| Pregunta | Configuración |
+| --- | --- |
+| ¿Cuánto suman las propiedades ganadas este mes? | Campo **Valor de la propiedad**, cálculo **Suma**, filtro de oportunidades ganadas y rango de fechas del mes actual |
+| ¿Cuál es la propiedad de mayor valor? | Campo **Valor de la propiedad**, cálculo **Máx.** |
+| ¿Cómo se reparte el valor por tipo de propiedad? | Campo **Valor de la propiedad** y **Ver por → Tipo de propiedad** |
+
+<Info>
+  Un campo monetario personalizado es distinto del **valor de la oportunidad** estándar. El campo personalizado guarda un dato propio de tu proceso, mientras que los widgets estándar de valor de oportunidades usan el valor integrado de cada oportunidad.
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mi campo no aparece en el menú de campos?">
+    Confirma que pertenece a contactos u oportunidades y que es de tipo número o monetario. La disponibilidad también puede depender del componente de informes que estés configurando.
+  </Accordion>
+  <Accordion title="¿Puedo convertir un campo de contacto en uno de oportunidad?">
+    No. El objeto de un campo personalizado no se puede cambiar. Crea un campo nuevo en el objeto correcto.
+  </Accordion>
+  <Accordion title="¿Un campo monetario de oportunidad es lo mismo que el valor de la oportunidad?">
+    No. El valor de la oportunidad es el campo estándar que usan los informes de oportunidades. Un campo monetario personalizado es un dato adicional, como el valor de la propiedad o el costo estimado del proyecto.
+  </Accordion>
+  <Accordion title="¿Puedo combinar la métrica con filtros o agrupación?">
+    Sí. Por ejemplo, sumar el valor de la propiedad de las oportunidades ganadas y verlo por tipo de propiedad.
+  </Accordion>
+  <Accordion title="¿Paneles, informes y métricas personalizadas tienen la misma disponibilidad por plan?">
+    No necesariamente. Cada función de informes puede tener requisitos de plan distintos. Si tienes dudas, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+  <Accordion title="¿Puedo calcular el mismo campo de varias formas?">
+    Sí. Usa el mismo campo con distintos cálculos: **Suma** para el total y **Máx.** para el valor más alto, por ejemplo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Métricas personalizadas" icon="calculator" href="/informes/metricas-personalizadas">
+    Crea KPI con fórmulas.
+  </Card>
+  <Card title="Widgets de oportunidades" icon="bars-progress" href="/informes/widgets-de-oportunidades">
+    Analiza tu pipeline.
+  </Card>
+  <Card title="Campos personalizados de oportunidades" icon="list-check" href="/oportunidades/campos-personalizados-de-oportunidades">
+    Crea y gestiona tus campos.
+  </Card>
+  <Card title="Crear y programar informes" icon="calendar" href="/informes/crear-y-programar-informes-personalizados">
+    Comparte tus métricas por correo.
+  </Card>
+</CardGroup>

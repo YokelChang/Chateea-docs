@@ -1,0 +1,96 @@
+---
+title: "API de conversiones de Meta en flujos de trabajo"
+description: "Disparadores compatibles, parámetros, deduplicación y preguntas frecuentes de la acción API de conversiones de Facebook."
+icon: "bolt"
+---
+
+La acción **API de conversiones de Facebook** de los flujos de trabajo envía tus conversiones directamente a Meta desde el servidor, sin depender de que el visitante tenga la cookie del píxel en su navegador. Así Meta recibe conversiones que de otro modo se perderían (por bloqueadores, navegadores con privacidad reforzada o compras que ocurren fuera de tu sitio) y optimiza mejor tus anuncios.
+
+Aquí encuentras qué disparadores puedes usar, qué parámetros se envían y las respuestas a las dudas más comunes.
+
+<Info>
+Para configurarla paso a paso, consulta [Eventos de embudo con la API de conversiones](/integraciones/eventos-de-embudo-api-de-conversiones-de-meta) o [Leads de conversión de Meta](/integraciones/leads-de-conversion-de-meta).
+</Info>
+
+## Qué disparadores puedes usar
+
+### Eventos de embudo
+
+Usa alguno de estos disparadores:
+
+- **Formulario enviado**
+- **Encuesta enviada**
+- **Cliente reservó una cita** (Customer Booked Appointment)
+- **Envío de formulario de pedido** (Order Form Submission)
+
+<Note>
+Para citas, funciona con **Cliente reservó una cita**, que se activa cuando el cliente reserva desde el widget de tu calendario. No funciona con el disparador general de citas.
+</Note>
+
+### Eventos de lead
+
+Los disparadores más usados son **Formulario de lead de Facebook enviado** y **Cambio de etapa del pipeline**, pero no son los únicos. También puedes usar **Etiqueta de contacto agregada**, **Estado de oportunidad cambiado**, **Contacto modificado** u otros disparadores basados en el contacto, siempre que el contacto tenga datos de atribución de Facebook, por ejemplo:
+
+- el `fbclid` o identificador de clic de Facebook (`fbc`), o
+- una atribución de redes sociales pagadas (Facebook) asociada al contacto.
+
+<Warning>
+El disparador no crea los datos de atribución. El contacto ya debe tenerlos de una interacción previa con Facebook. Si no los tiene, el flujo se ejecuta en Chateea, pero Meta puede no recibir la conversión o no atribuirla correctamente.
+</Warning>
+
+### Ejemplos
+
+**Contacto que llega por un anuncio de Facebook.** El contacto se crea al enviar un formulario de Facebook, así que su primera fuente de atribución es redes sociales pagadas (Facebook) y tiene `fbclid`. Un flujo con el disparador **Formulario de lead de Facebook enviado** envía el evento a Meta. Más adelante, cuando ese contacto se convierte en oportunidad y cambia de estado, otro flujo con **Estado de oportunidad cambiado** también puede enviar la conversión, porque el contacto conserva su `fbclid`.
+
+**Contacto que llega por otro canal y después interactúa con Facebook.** El contacto entra por Google Ads, búsqueda orgánica o tráfico directo. Tiempo después llena un formulario de Facebook, y su atribución más reciente pasa a ser redes sociales pagadas (Facebook), con `fbclid`. Desde ese momento, los flujos con **Formulario de lead de Facebook enviado** o con **Estado de oportunidad cambiado** pueden enviar sus conversiones a Meta.
+
+## Qué parámetros se usan
+
+| Tipo | Parámetros |
+| --- | --- |
+| Detalles del evento | URL de origen del evento |
+| Información del cliente | Dirección IP del cliente (sin cifrar), agente de usuario del cliente (sin cifrar), correo, nombre, apellido, ID del navegador o cookie `fbp` (sin cifrar), ID de clic o cookie `fbc` (sin cifrar) |
+
+## Eliminación de eventos duplicados
+
+Chateea la gestiona automáticamente. Tus embudos generan un `eventId` y lo guardan con los datos de atribución del contacto. Cuando se ejecuta la acción de la API de conversiones, se envía ese mismo `eventId` a Meta (si existe), y Meta puede reconocer que el evento del navegador y el del servidor son el mismo. No tienes que configurar nada.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar valores personalizados en el token de acceso y el ID del píxel?">
+    Sí. Los valores personalizados funcionan en ambos campos, lo que te facilita reutilizarlos en varios flujos.
+  </Accordion>
+  <Accordion title="¿Por qué el valor del pedido no funciona con el disparador Envío de formulario de pedido?">
+    El valor personalizado `{{Order.Amount}}` solo funciona con el disparador **Pedido enviado** (Order Submitted), porque depende de un pago completado. El disparador **Envío de formulario de pedido** se activa antes de procesar el pago, así que el monto todavía no está definido.
+  </Accordion>
+  <Accordion title="No veo mis eventos de prueba en Meta">
+    Revisa la pestaña **Diagnóstico** del Administrador de eventos. Un problema frecuente es que Meta haya bloqueado tu dominio: en **Configuración**, desplázate hasta **Dominios en tu lista de permitidos** y aprueba el dominio.
+  </Accordion>
+  <Accordion title="¿Funciona el botón Probar flujo con la API de conversiones?">
+    Sí.
+  </Accordion>
+  <Accordion title="Elegí Lead pero Meta lo muestra como evento personalizado">
+    Pasa con los datos de prueba. Con conversiones reales, Meta lo muestra como **Lead**.
+  </Accordion>
+  <Accordion title="¿Puedo enviar eventos offline con disparadores como llamadas, etiquetas o cambios de estado de oportunidad?">
+    Sí, siempre que el contacto ya tenga datos de atribución de Facebook. Chateea usa esos datos para enviar la conversión a Meta. Por ejemplo, un contacto entra por un anuncio de Facebook y, tiempo después, se le agrega una etiqueta: un flujo con ese disparador puede enviar la conversión usando la atribución que ya tiene.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Eventos de embudo con la API de conversiones" icon="chart-line" href="/integraciones/eventos-de-embudo-api-de-conversiones-de-meta">
+    Píxel en tus embudos y flujo paso a paso.
+  </Card>
+  <Card title="Leads de conversión de Meta" icon="filter" href="/integraciones/leads-de-conversion-de-meta">
+    Envía las etapas de tu pipeline a Meta.
+  </Card>
+  <Card title="La API de conversiones no funciona" icon="circle-question" href="/automatizaciones/conversion-api-de-facebook-no-funciona">
+    Causas comunes cuando no llegan los eventos.
+  </Card>
+  <Card title="Configurar el token de acceso" icon="key" href="/embudos-sitios-web/configurar-el-token-de-acceso-a-la-api-de-meta-conversions">
+    Genera el token en el Administrador de eventos.
+  </Card>
+</CardGroup>

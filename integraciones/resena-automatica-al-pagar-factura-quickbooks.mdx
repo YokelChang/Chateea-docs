@@ -1,0 +1,63 @@
+---
+title: "Solicitud de reseña automática al pagar una factura en QuickBooks"
+description: "Entiende cómo la integración con QuickBooks pide una reseña al pagar la primera factura y cómo activarla o desactivarla."
+icon: "star"
+---
+
+La integración con QuickBooks incluye una automatización propia: cuando un contacto paga por completo su **primera factura** en QuickBooks (el saldo llega a cero), Chateea le envía automáticamente una solicitud de reseña. Puedes dejarla activa o apagarla cuando quieras.
+
+Esta automatización funciona aparte de las solicitudes de reseña que envías a mano o desde tus flujos de trabajo.
+
+## Qué es y cómo funciona
+
+Una solicitud de reseña es un mensaje prediseñado (por correo o SMS) que invita a tu cliente a calificar tu servicio. La integración con QuickBooks sincroniza información entre ambas plataformas y, cuando detecta que un contacto liquidó su primera factura, dispara esa solicitud.
+
+<Note>
+  Esta automatización está integrada en la conexión con QuickBooks y **no usa los disparadores ni las acciones de los flujos de trabajo**. El disparador **Factura pagada** de los flujos solo reacciona a facturas pagadas en Chateea, no a las que se pagan en QuickBooks.
+</Note>
+
+Puedes [personalizar el mensaje de la solicitud de reseña](/gestion-reputacion/como-configurar-un-enlace-para-resenas-en-tu-correo-electronico-de-solicitud-de-resenas) desde la configuración de Reputación.
+
+## Por qué conviene
+
+Casi todos los negocios piden menos reseñas de las que deberían. Uno de los mejores momentos para pedirla es justo después de cerrar la primera venta, cuando el cliente acaba de recibir tu servicio y lo tiene fresco. Con QuickBooks conectado, ese momento se detecta solo.
+
+## Activa o desactiva la solicitud automática
+
+<Steps>
+  <Step title="Abre la integración con QuickBooks">
+    Ve a **Configuración → Integraciones** y abre la integración de **QuickBooks**.
+  </Step>
+  <Step title="Cambia la opción de reseñas">
+    Desmarca **Enviar solicitudes de reseña a los contactos** (Send Review Requests for contacts) para apagarla, o márcala para volver a activarla.
+  </Step>
+</Steps>
+
+<Tip>
+  Si ya tienes un flujo de trabajo que pide reseñas después de cada venta, apaga esta opción para que tus clientes no reciban dos solicitudes.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se envía con cada factura pagada?">
+    No. Solo la primera vez que el contacto paga una factura por completo.
+  </Accordion>
+  <Accordion title="¿Puedo usar un flujo de trabajo para reaccionar a pagos hechos en QuickBooks?">
+    El disparador **Factura pagada** no responde a facturas pagadas en QuickBooks. Para pedir reseñas por pagos en QuickBooks, usa esta automatización de la integración.
+  </Accordion>
+  <Accordion title="Si la desactivo, ¿puedo volver a activarla?">
+    Sí. Vuelve a marcar la opción en la integración cuando quieras.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integración con QuickBooks" icon="file-invoice" href="/pagos-facturas/integracion-quickbooks">
+    Conecta QuickBooks y sincroniza clientes, facturas y recibos.
+  </Card>
+  <Card title="Reputación" icon="star" href="/reputacion/introduccion">
+    Consigue y gestiona las reseñas de tu negocio.
+  </Card>
+</CardGroup>

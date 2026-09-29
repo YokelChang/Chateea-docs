@@ -1,0 +1,86 @@
+---
+title: "Solucionar problemas del informe de Google Ads"
+description: "Revisa la integración, la plantilla UTM y los nombres de campañas cuando faltan datos en el informe de Google Ads."
+icon: "wrench"
+---
+
+Si tu informe de Google Ads en Chateea no muestra leads, muestra datos incompletos o repite anuncios, casi siempre se debe a uno de tres motivos: la integración, la plantilla de seguimiento o los nombres de tus campañas. Revisa estos puntos en orden.
+
+## 1. Revisa la integración con Google Ads
+
+<Steps>
+  <Step title="Confirma que está conectada">
+    Ve a **Configuración → Integraciones → Google Ads** y verifica que la integración aparezca conectada.
+  </Step>
+  <Step title="Revisa el correo conectado">
+    El correo de Gmail conectado debe ser el mismo que está asociado a tu cuenta de Google Ads.
+  </Step>
+  <Step title="Revisa los permisos">
+    Ese usuario debe tener el máximo nivel de permisos (administrador) en tu cuenta de Google Ads.
+  </Step>
+</Steps>
+
+<Note>
+  La cuenta de Google conectada debe figurar como **usuario** (con rol estándar o de administrador) dentro de la cuenta de Google Ads. No puede tener solo un rol de administrador de cuentas (manager).
+</Note>
+
+## 2. Usa la plantilla de seguimiento en un solo lugar
+
+La plantilla UTM puede agregarse en la configuración de la cuenta, de la campaña o del anuncio, pero debe estar **solo en uno** de esos niveles. Si está en varios, Google Ads aplica la jerarquía cuenta → campaña → anuncio y puedes obtener resultados inesperados.
+
+<Warning>
+  La plantilla distingue mayúsculas y minúsculas. Cópiala **exactamente** como aparece en [Configurar informes de Google Ads](/informes/configurar-informes-de-google-ads), sin letras mayúsculas.
+</Warning>
+
+## 3. Usa nombres únicos
+
+Los nombres de campañas, grupos de anuncios y anuncios deben ser únicos. Si se repiten, el informe mostrará duplicados en distintos grupos o anuncios.
+
+### Configuración incorrecta
+
+| Campaña | ID | Grupo de anuncios | Anuncio |
+| --- | --- | --- | --- |
+| Zapatos de invierno | 12345 | Zapatos deportivos 1 | Nike Sport Shoes 1 |
+| Zapatos de invierno | 12345 | Zapatos deportivos 2 | Nike Sport Shoes 1 |
+
+El anuncio "Nike Sport Shoes 1" está escrito igual en dos grupos. Si el **Cliente A** llega por búsqueda pagada, aparecerá en la columna de leads del informe con ese anuncio en los dos grupos, porque el nombre se repite. Así se vería su URL:
+
+```text
+https://ejemplo.com?utm_source=adwords&utm_medium=NikeSportShoes1&utm_campaign=Wintershoes&utm_content=sportshoes1&utm_keyword=sports&utm_matchtype=e&campaign_id=12345&ad_group_id=123456789&ad_id=sportshoes
+```
+
+### Configuración correcta
+
+| Campaña | ID | Grupo de anuncios | Anuncio |
+| --- | --- | --- | --- |
+| Zapatos de invierno | 12345 | Zapatos deportivos 1 York | Nike Sport Shoes 1.1 logo York |
+| Zapatos de invierno | 12345 | Zapatos deportivos 2 John | Nike Sport Shoes 1.2 logo John |
+
+Cada grupo y cada anuncio tiene un nombre distinto, así que cada lead se atribuye sin ambigüedad.
+
+## 4. No cambies nombres de campañas activas
+
+Si cambias el nombre de una campaña, un grupo de anuncios o un anuncio, los parámetros UTM que ya se generaron no cambian: los leads se siguen atribuyendo a los parámetros antiguos. En la lista del informe de Google Ads verás el nombre nuevo, pero los datos dejarán de sumar ventas, leads y ROI porque siguen llegando con el nombre anterior.
+
+<Tip>
+  Si necesitas otro nombre, crea una campaña, un grupo de anuncios o un anuncio nuevo en lugar de renombrar el existente.
+</Tip>
+
+## Otros puntos a revisar
+
+- **La conversión debe ocurrir en la página de destino.** Si la persona navega a otra página antes de enviar el formulario, se pierden los parámetros UTM. Mira [Fuentes de atribución](/informes/fuentes-de-atribucion).
+- **Instala el script preventivo** como respaldo de la plantilla UTM. Mira [Script preventivo de seguimiento para Google Ads](/informes/script-preventivo-de-seguimiento-google-ads).
+- **Carga el valor de tus oportunidades ganadas** para que el informe calcule ingresos y ROI. Mira [Términos de los informes de Google Ads](/informes/terminos-de-informes-de-google-ads).
+
+Si revisaste todo y el problema sigue, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar informes de Google Ads" icon="gear" href="/informes/configurar-informes-de-google-ads">
+    Conecta tu cuenta y agrega la plantilla UTM.
+  </Card>
+  <Card title="Fuentes de atribución" icon="route" href="/informes/fuentes-de-atribucion">
+    Cómo se clasifica el origen de cada contacto.
+  </Card>
+</CardGroup>

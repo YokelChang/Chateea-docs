@@ -1,0 +1,167 @@
+---
+title: "Widgets de oportunidades en paneles e informes"
+description: "Analiza tu pipeline con los 17 widgets de oportunidades: valores, estados, motivos de pérdida y filtros."
+icon: "bars-progress"
+---
+
+Los widgets de oportunidades te muestran la salud de tu pipeline directamente en tus paneles e informes personalizados. Desde el total de oportunidades y la evolución de los ingresos hasta los motivos de pérdida y lo ganado en el mes, tienes el panorama completo de tus ventas sin salir del panel.
+
+Todos admiten varios tipos de gráfico y se pueden filtrar por pipeline, etapa, estado, usuario asignado o fuente de atribución.
+
+## Widgets disponibles
+
+Hay 17 widgets de oportunidades. Cada uno se abre con un gráfico predeterminado, que puedes cambiar en su configuración.
+
+| # | Widget | Gráfico | Métrica | Filtro incluido | Rango de fechas |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Cantidad de oportunidades** | Número | Conteo | Ninguno | Rango del panel |
+| 2 | **Oportunidades abiertas** | Número | Conteo | Estado = Abierta | Rango del panel |
+| 3 | **Valor de oportunidades abiertas** | Número | Suma del valor | Estado = Abierta | Rango del panel |
+| 4 | **Oportunidades ganadas** | Número | Conteo | Estado = Ganada | Rango del panel |
+| 5 | **Valor de oportunidades ganadas** | Número | Suma del valor | Estado = Ganada | Rango del panel |
+| 6 | **Oportunidades perdidas** | Número | Conteo | Estado = Perdida | Rango del panel |
+| 7 | **Valor de oportunidades perdidas** | Número | Suma del valor | Estado = Perdida | Rango del panel |
+| 8 | **Oportunidades perdidas por motivo** | Dona | Conteo | Estado = Perdida | Rango del panel |
+| 9 | **Oportunidades abandonadas** | Número | Conteo | Estado = Abandonada | Rango del panel |
+| 10 | **Valor de oportunidades abandonadas** | Número | Suma del valor | Estado = Abandonada | Rango del panel |
+| 11 | **Valor total de oportunidades** | Número | Suma del valor | Ninguno | Rango del panel |
+| 12 | **Oportunidades por estado** | Dona | Conteo | Ninguno | Rango del panel |
+| 13 | **Oportunidades a lo largo del tiempo** | Línea | Conteo | Ninguno | Rango del panel |
+| 14 | **Ingresos de oportunidades a lo largo del tiempo** | Línea | Suma del valor | Ninguno | Rango del panel |
+| 15 | **Oportunidades ganadas este mes (para ti)** | Número | Conteo | Ganada + usuario que ha iniciado sesión | Este mes (fijo) |
+| 16 | **Valor ganado este mes** | Número | Suma del valor | Estado = Ganada | Este mes (fijo) |
+| 17 | **Valor ganado este mes (para ti)** | Número | Suma del valor | Ganada + usuario que ha iniciado sesión | Este mes (fijo) |
+
+<Note>
+  Los widgets 15, 16 y 17 usan un rango fijo (este mes) y no siguen el rango de fechas del panel, salvo que lo cambies en **Configurar**.
+</Note>
+
+<Note>
+  Los widgets 15 y 17 son widgets "para ti": filtran por el usuario que ha iniciado sesión. En un informe programado muestran los datos del dueño del informe, no los de quien lo recibe.
+</Note>
+
+## Tipos de gráfico
+
+| Tipo | Ideal para |
+| --- | --- |
+| **Número** | Un indicador, conteo o valor |
+| **Dona** | Reparto por categoría (por estado o por motivo de pérdida) |
+| **Barras** | Comparar valores entre categorías |
+| **Línea** | Tendencias en el tiempo |
+| **Barras horizontales** | Muchas categorías con nombres largos |
+| **Tabla** | Detalle fila por fila |
+
+## Opciones de agrupación
+
+Los widgets 8, 12, 13 y 14 permiten agrupar por:
+
+| Agrupar por | Qué agrupa |
+| --- | --- |
+| **Estado** | Abierta, Ganada, Perdida o Abandonada |
+| **Usuario asignado** | La persona responsable de la oportunidad |
+| **Seguidores** | Los usuarios que siguen la oportunidad |
+| **Fuente** | El campo de fuente de la oportunidad |
+| **Pipeline** | El pipeline al que pertenece |
+| **Etapa** | La etapa dentro del pipeline |
+| **Motivo de pérdida** | El motivo registrado al marcarla como perdida |
+| **Fuente de la sesión** | El canal de tráfico de la sesión (por ejemplo, búsqueda orgánica) |
+| **Medio** | El medio de atribución (por ejemplo, formulario o calendario) |
+
+<Tip>
+  Combina agrupación y condiciones para ir al detalle. Por ejemplo, filtra por **Estado = Perdida** y agrupa por **Motivo de pérdida** para ver exactamente dónde se caen los negocios.
+</Tip>
+
+## Propiedades de fecha
+
+| Propiedad | Descripción |
+| --- | --- |
+| **Fecha de creación** | Cuándo se creó la oportunidad (predeterminada en la mayoría de widgets) |
+| **Fecha de actualización** | La última vez que se modificó |
+| **Cambio de estado** | La última vez que cambió su estado (por ejemplo, al marcarla como ganada o perdida) |
+
+<Warning>
+  **Cambio de estado** refleja el cambio más reciente, no la primera vez que la oportunidad entró en un estado. Si reabres una oportunidad perdida, la fecha se reinicia, y las cifras históricas basadas en esta propiedad pueden variar con el tiempo. Para informes históricos estables, usa **Fecha de creación** y filtra por estado.
+</Warning>
+
+## Filtrar con condiciones
+
+Hay 24 campos de condición, divididos entre filtros estándar y de atribución.
+
+### Filtros estándar
+
+| Campo | Operadores | Notas |
+| --- | --- | --- |
+| **Estado** | Es, No es, Es uno de, No es ninguno de | Al elegir Perdida se habilita **Motivo de pérdida** |
+| **Usuario asignado** | Es, No es, Es uno de, No es ninguno de, Está vacío, No está vacío | |
+| **Seguidores** | Es, No es, Es uno de, No es ninguno de, Está vacío, No está vacío | |
+| **Nombre del negocio** | Es, No es, Está vacío, No está vacío | |
+| **Etiquetas** | Es, No es, Es uno de, No es ninguno de, Está vacío, No está vacío, Es todos de | |
+| **Nombre del contacto principal** | Es, No es, Es uno de, No es ninguno de, Está vacío, No está vacío | |
+| **Pipeline** | Es, No es, Es uno de, No es ninguno de | Al elegir un pipeline se habilita **Etapa** |
+| **Valor del lead** | Es, No es, Mayor que, Mayor o igual que, Menor que, Menor o igual que, Está vacío, No está vacío | |
+| **Motivo de pérdida** | Es, No es, Es uno de, No es ninguno de, Está vacío, No está vacío | Requiere Estado = Perdida |
+| **Etapa** | Es, No es, Es uno de, No es ninguno de | Requiere elegir un pipeline |
+| **Fuente** | Es, No es | |
+| **Campos personalizados** | Según el tipo de campo | |
+
+### Filtros de atribución
+
+Primero eliges **Atribución** con el valor **Primera atribución** o **Atribución más reciente**, y después se habilitan los demás campos.
+
+| Campo | Operadores | Valores |
+| --- | --- | --- |
+| **Medio** | Es, No es, Es uno de, No es ninguno de | Formulario, Encuesta, Calendario, Widget de chat, Importación CSV, Manual, API, Formulario de pedido, Formulario de pedido en dos pasos, Facebook, TikTok, Membresía, Conversación, Zapier, Otro |
+| **Fuente de la sesión** | Es uno de, No es ninguno de | Tráfico directo, Búsqueda orgánica, Búsqueda pagada, Redes sociales, Redes sociales pagadas, Referencia, Terceros, Interfaz del CRM, Email marketing, Enlaces disparadores, Otro |
+| **UTM Medium, UTM Source, UTM Campaign, UTM Keyword, UTM Content, UTM Matchtype** | Contiene | Texto libre |
+| **UTM Campaign ID, UTM Ad ID, UTM Ad Group ID** | Es, No es | Texto libre |
+
+<Info>
+  Si usas **Fuente de la sesión** o **Medio** en **Agrupar por** o **Ver por**, solo se permite un grupo de filtros y debe incluir el tipo de atribución. Si agregas varios grupos de filtros, esos campos se desactivan en el menú.
+</Info>
+
+## Dónde puedes usarlos
+
+Los 17 widgets están disponibles en los **paneles de control**, para el seguimiento diario del pipeline, y en los **informes personalizados**, para envíos programados y exportaciones.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre Valor de oportunidades ganadas y Valor ganado este mes?">
+    El primero sigue el rango de fechas del panel. El segundo siempre muestra el mes calendario actual, sin importar el rango elegido.
+  </Accordion>
+  <Accordion title="¿Por qué cambian mis números de ganadas o perdidas del mes pasado?">
+    Si usas **Cambio de estado** como propiedad de fecha, es lo esperado: al reabrir o volver a perder una oportunidad, su fecha se actualiza. Para cifras estables, usa **Fecha de creación** y filtra por estado.
+  </Accordion>
+  <Accordion title="¿Puedo ver las oportunidades por etapa del pipeline?">
+    Sí. Usa **Oportunidades por estado** u **Oportunidades a lo largo del tiempo** y agrupa por **Etapa**. Para limitarlo a un pipeline, agrega primero la condición **Pipeline**.
+  </Accordion>
+  <Accordion title="¿Qué muestra Perdidas por motivo si no se registró el motivo?">
+    Esas oportunidades aparecen como un segmento vacío o "Ninguno". Para tener datos limpios, haz obligatorio el motivo de pérdida en la configuración de tu pipeline.
+  </Accordion>
+  <Accordion title="¿Cómo funcionan los widgets para ti si el equipo usa distintos pipelines?">
+    Filtran por el usuario asignado y suman todos los pipelines. Agrega una condición de pipeline si quieres acotar.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar por etapa sin elegir el pipeline?">
+    No. **Etapa** depende de **Pipeline**: primero eliges el pipeline y luego aparecen sus etapas.
+  </Accordion>
+  <Accordion title="¿Funcionan con los filtros rápidos del panel?">
+    Sí. Los filtros rápidos se aplican encima de las condiciones del widget. Por ejemplo, si el widget filtra por ganadas, un filtro rápido por usuario mostrará las ganadas de esa persona.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Widgets de contactos" icon="address-book" href="/informes/widgets-de-contactos">
+    Analiza tu base de contactos.
+  </Card>
+  <Card title="Estados de las oportunidades" icon="flag" href="/oportunidades/estados-de-las-oportunidades">
+    Abierta, ganada, perdida y abandonada.
+  </Card>
+  <Card title="Widgets de embudo y distribución por etapas" icon="filter" href="/informes/widgets-de-embudo-y-distribucion-por-etapas">
+    Visualiza cómo avanzan tus oportunidades.
+  </Card>
+  <Card title="Campos personalizados como métricas" icon="calculator" href="/informes/campos-personalizados-como-metricas">
+    Suma o promedia tus propios campos numéricos.
+  </Card>
+</CardGroup>

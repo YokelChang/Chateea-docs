@@ -1,0 +1,140 @@
+---
+title: "Solucionar problemas de Facebook Lead Ads"
+description: "Qué revisar cuando los leads de Facebook no llegan, faltan permisos o la conexión con Facebook expiró."
+icon: "circle-question"
+---
+
+Si los leads de tus anuncios de Facebook no llegan a Chateea, si recibiste un aviso de que la conexión con Facebook expiró o si faltan permisos, esta guía te lleva paso a paso por las causas más comunes y cómo resolverlas. En casi todos los casos el problema está en los permisos de Facebook, no en tu cuenta de Chateea.
+
+<Info>
+Si todavía no conectaste Facebook, empieza por [Conectar Facebook Lead Ads y varias páginas](/integraciones/facebook-lead-ads-y-varias-paginas).
+</Info>
+
+## Los leads no llegan a Chateea
+
+Revisa estos puntos en orden:
+
+<Steps>
+  <Step title="Confirma que tienes control total de la página">
+    La persona que conectó Facebook debe tener acceso de **control total** (administrador) a la página. Si no lo tiene, [agrégala al portafolio comercial y asígnale la página](https://www.facebook.com/business/help/2169003770027706).
+  </Step>
+  <Step title="Revisa que el formulario esté activo en Chateea">
+    En **Configuración → Integraciones → Mapeo de campos de formularios de Facebook**, busca el formulario que usa tu anuncio en el Administrador de anuncios y confirma que su estado esté activo y que sus campos estén mapeados.
+  </Step>
+  <Step title="Revisa el acceso de la aplicación a tu página">
+    Entra a las [integraciones comerciales de Facebook](https://www.facebook.com/settings?tab=business_tools&ref=settings). Confirma que la aplicación de Chateea aparece conectada, haz clic en **Ver y editar** y verifica que tenga activados todos los permisos de acceso a la página y a los clientes potenciales.
+  </Step>
+  <Step title="Haz una prueba">
+    Usa la [herramienta de prueba de anuncios de clientes potenciales de Meta](https://developers.facebook.com/tools/lead-ads-testing). Elige la página, elige el formulario y crea un lead de prueba. Luego revisa si el contacto aparece en Chateea.
+  </Step>
+  <Step title="Asigna el acceso a clientes potenciales si hace falta">
+    Si la prueba muestra que la aplicación de Chateea no tiene acceso a los leads de tu página, asígnalo manualmente (ver la sección siguiente).
+  </Step>
+</Steps>
+
+<Tip>
+Al hacer pruebas, usa cada vez un correo y un teléfono distintos. Si repites los mismos datos, puede parecer que el lead no llegó cuando en realidad se actualizó un contacto existente.
+</Tip>
+
+### Asignar el acceso a clientes potenciales a Chateea
+
+<Steps>
+  <Step title="Abre la configuración de tu negocio">
+    Entra a Meta Business Suite y elige tu portafolio comercial en el menú de la esquina superior izquierda. Si no tienes acceso a Business Suite, entra directamente a la **Configuración del negocio** y selecciona tu negocio.
+  </Step>
+  <Step title="Ve a Acceso a clientes potenciales">
+    Haz clic en **Configuración** (abajo a la izquierda), luego en **Más configuraciones del negocio**. En el menú izquierdo, entra a **Integraciones → Acceso a clientes potenciales** (Leads Access).
+  </Step>
+  <Step title="Asigna el CRM">
+    Haz clic en **Asignar CRM**. Verás la lista de CRM integrados con tu página. Marca la aplicación de Chateea y haz clic en **Asignar**.
+  </Step>
+</Steps>
+
+Si ya estaba asignada y los leads siguen sin llegar, haz clic en **Restaurar acceso predeterminado** (Restore Default Access) y vuelve a probar.
+
+<Warning>
+El administrador de la página que dio los permisos a Chateea debe conservar su acceso a la página. Si se le quita el acceso, Chateea deja de recibir los datos.
+</Warning>
+
+### Lista de verificación en tu portafolio comercial
+
+Entra a la [configuración de tu portafolio comercial](https://business.facebook.com/latest/settings) y comprueba:
+
+1. En **Usuarios → Personas**, el usuario que conectó Facebook está agregado con control total (rol de administrador o empleado en el portafolio).
+2. En **Cuentas → Páginas**, ese usuario aparece en la página con acceso de control total.
+3. En **Integraciones → Acceso a clientes potenciales**, la aplicación de Chateea aparece como CRM conectado.
+4. La página pertenece al mismo propietario que la cuenta publicitaria.
+
+## Faltan permisos
+
+<Steps>
+  <Step title="Mira qué permisos faltan">
+    En Chateea, entra a **Configuración → Integraciones** y haz clic en **Solucionar problemas** en la tarjeta de Facebook. En **Permisos faltantes** verás cada permiso que falta y las funciones que se ven afectadas.
+  </Step>
+  <Step title="Activa los permisos en Facebook">
+    Abre las [integraciones comerciales de Facebook](https://www.facebook.com/settings?tab=business_tools&ref=settings), entra a la aplicación de Chateea y activa los permisos que faltan para todas tus páginas. Revisa también las [aplicaciones y sitios web conectados](https://www.facebook.com/settings?tab=applications&ref=settings).
+  </Step>
+</Steps>
+
+Una forma rápida de detectar un permiso faltante es intentar traer el mensaje o el lead más reciente: si falta un permiso, Facebook devuelve un error que indica cuál.
+
+## La conexión con Facebook expiró
+
+Si recibiste un correo que dice que la conexión con Facebook expiró, tu integración se desconectó. Las causas más comunes son:
+
+- El usuario que conectó Facebook cambió su contraseña.
+- El token de acceso de Facebook caducó con el tiempo (es normal).
+- El usuario quitó la autorización a la aplicación.
+- El usuario cerró sesión en Facebook.
+- Cambiaron los permisos de la página o se agregó o quitó a alguien.
+- Alguien inició sesión en Facebook desde otro país y Facebook lo consideró sospechoso.
+
+### Cómo reconectar
+
+<Steps>
+  <Step title="Abre la cuenta afectada">
+    Si manejas varias cuentas de Chateea, cambia a la que indica el correo.
+  </Step>
+  <Step title="Desconecta la integración">
+    Ve a **Configuración → Integraciones** y desconecta Facebook desde su tarjeta.
+  </Step>
+  <Step title="Vuelve a conectar">
+    Haz clic en **Conectar**, continúa con tu usuario de Facebook, selecciona la página y confirma.
+  </Step>
+</Steps>
+
+## Otros errores comunes
+
+### Problema de calidad de la página
+
+Si Facebook marca tu página con un problema de calidad, solo Facebook puede resolverlo. Cambia a tu página en Facebook, entra a la [calidad de la página](https://www.facebook.com/settings?tab=profile_quality) y, si hay una restricción, apela o abre un caso con el soporte de Facebook. Consulta la [ayuda de Meta](https://www.facebook.com/help/1985220725104252).
+
+### La página no aparece al conectar
+
+Consulta [Páginas de Facebook que no aparecen](/integraciones/paginas-de-facebook-que-no-aparecen).
+
+### Los mensajes de Messenger o Instagram no llegan
+
+Consulta [Mensajes de Facebook e Instagram](/integraciones/mensajes-de-facebook-e-instagram).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo recibir los leads de Facebook con una herramienta externa?">
+    Sí, puedes usar herramientas como Zapier o Pabbly Connect, pero no es necesario: la integración directa de Chateea sincroniza tus leads sin intermediarios y es la opción recomendada.
+  </Accordion>
+  <Accordion title="Hice todo y los leads siguen sin llegar">
+    Escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**. Indica el nombre de tu página, el formulario y la fecha y hora de un lead que no llegó.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar Facebook Lead Ads y varias páginas" icon="facebook" href="/integraciones/facebook-lead-ads-y-varias-paginas">
+    Requisitos, conexión y mapeo de formularios.
+  </Card>
+  <Card title="Páginas de Facebook que no aparecen" icon="circle-question" href="/integraciones/paginas-de-facebook-que-no-aparecen">
+    Qué hacer si tu página no está en la lista.
+  </Card>
+</CardGroup>

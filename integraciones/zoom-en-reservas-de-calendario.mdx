@@ -1,0 +1,165 @@
+---
+title: "Zoom en las reservas de tus calendarios"
+description: "Conecta Zoom a tu usuario para generar un enlace único por cita y envía recordatorios con ese enlace desde tus flujos."
+icon: "video"
+---
+
+Al conectar Zoom a tu usuario de Chateea, cada cita que se reserva en tus calendarios genera automáticamente su propio enlace de reunión de Zoom. No tienes que crear la reunión a mano ni copiar enlaces: el cliente recibe el enlace en su confirmación y la cita queda registrada en tu calendario.
+
+<Note>
+  Los enlaces dinámicos de Zoom funcionan en calendarios **personales**, **round robin** y **colectivos**.
+</Note>
+
+## Qué ganas
+
+- **Reuniones automáticas:** cada cita crea una reunión nueva con un enlace único.
+- **Más seguridad:** al ser un enlace distinto por reunión, es más difícil que entren personas no invitadas.
+- **Todo en un solo lugar:** agendas, reprogramas y cancelas desde Chateea.
+- **Sin dobles reservas:** las reuniones quedan en tu calendario de Chateea.
+- **Cambios reflejados:** si reprogramas o cancelas en Chateea, la reunión de Zoom se actualiza.
+- **Recordatorios con el enlace:** tus flujos de trabajo envían el enlace correcto en cada mensaje.
+
+Sirve para consultas con clientes, sesiones de coaching, reuniones de equipo, clases en línea, telemedicina, visitas virtuales a propiedades y cualquier servicio que atiendas por video.
+
+## Cómo funciona la conexión
+
+- Cualquier usuario puede usar la integración.
+- **Cada usuario conecta Zoom en su propio perfil.** Luego se genera un enlace único en cada reserva de los calendarios donde ese usuario está asignado.
+- La conexión está ligada al **ID interno del usuario**, no a su correo.
+
+### Usar una misma cuenta de Zoom en varios usuarios o cuentas
+
+- Puedes conectar la misma cuenta de Zoom en varias cuentas de Chateea.
+- Varios usuarios pueden conectar y usar la misma cuenta de Zoom.
+- Límite: cada usuario puede conectar **una cuenta de Zoom por cuenta de Chateea**.
+
+Estas conexiones se gestionan en **Calendarios → Configuración → Conexiones → Videoconferencias**.
+
+<Tip>
+  Aunque se puede compartir, lo más fácil de mantener es que cada persona conecte su propia cuenta de Zoom. Así cada quien controla sus reuniones y evitas conflictos de horario en la misma cuenta.
+</Tip>
+
+<Warning>
+  Si un usuario se elimina y luego se restaura, recibe un ID interno nuevo aunque conserve el mismo correo. En ese caso, su cuenta de Zoom sigue ligada al ID anterior y puede que no le deje reconectar. Si te pasa, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+</Warning>
+
+## Paso 1: conecta Zoom
+
+Tienes tres caminos. Todos terminan en el mismo inicio de sesión de Zoom.
+
+<Tabs>
+  <Tab title="Integraciones del perfil">
+    1. Ve a **Perfil → Integraciones → Zoom** y pulsa **Conectar**.
+    2. En la ventana, pulsa **Conectar con Zoom**.
+    3. Inicia sesión en Zoom y pulsa **Permitir** para dar acceso.
+    4. Vuelves a Chateea y Zoom aparece en las integraciones de tu perfil.
+  </Tab>
+  <Tab title="Ubicación predeterminada">
+    1. Ve a **Perfil → Ubicación predeterminada de la reunión → Zoom** y pulsa **Conectar**.
+    2. Conecta tu cuenta de Zoom como en la otra opción.
+    3. Elige **Zoom** en la lista y pulsa **Guardar**. Te preguntará si quieres que las ubicaciones de reunión de tus demás calendarios pasen a Zoom.
+  </Tab>
+  <Tab title="Configuración del calendario">
+    1. Ve a **Configuración → Calendarios**, abre el usuario y busca **Ubicación de la reunión**.
+    2. Conecta tu cuenta de Zoom si aún no lo hiciste.
+    3. Elige **Zoom** en la lista para que cada reserva incluya su enlace.
+  </Tab>
+</Tabs>
+
+<Note>
+  Debes haber iniciado sesión **como el propio usuario** para conectar Zoom en su perfil. Si no ves la opción de perfil, revisa las preguntas frecuentes.
+</Note>
+
+### Configura Zoom para otros usuarios como administrador
+
+Si un usuario ya conectó su Zoom, un administrador puede elegir Zoom como su **ubicación predeterminada de la reunión** desde **Configuración → Mi personal**, editando a ese usuario. La conexión con Zoom, en cambio, la tiene que hacer cada usuario con su propia sesión.
+
+### Cambia o quita la cuenta de Zoom conectada
+
+1. Ve a **Calendarios → Configuración → Conexiones → Videoconferencias**.
+2. Quita la conexión actual o conecta otra cuenta de Zoom.
+3. Revisa la ubicación de la reunión en los calendarios que deben generar enlaces dinámicos.
+
+<Note>
+  Los enlaces dinámicos solo se crean cuando la cuenta de Zoom conectada está elegida como ubicación de la reunión en el calendario.
+</Note>
+
+## Paso 2: envía recordatorios con el enlace de Zoom
+
+Con un flujo de trabajo, tus clientes reciben la confirmación y los recordatorios con su enlace único.
+
+<Steps>
+  <Step title="Agrega el disparador">
+    Crea un flujo de trabajo con el disparador **Estado de la cita** y estos filtros:
+
+    - **Tipo de evento:** cita única, recurrente o cualquiera.
+    - **Estado de la cita:** por ejemplo, confirmada. Si tu calendario confirma las citas automáticamente, todas pasarán este filtro.
+    - **En el calendario:** opcional, para limitarlo a ciertos calendarios o usuarios.
+  </Step>
+  <Step title="Espera un minuto">
+    Agrega una acción **Esperar** de **1 minuto**. Da tiempo a que se guarde el enlace de Zoom en la cita.
+  </Step>
+  <Step title="Envía la confirmación">
+    Agrega **Enviar correo** o **Enviar SMS** e incluye el valor personalizado `{{appointment.meeting_location}}`, que contiene el enlace dinámico de Zoom.
+  </Step>
+  <Step title="Avisa a tu equipo (opcional)">
+    Con la acción **Notificación interna**, envía un correo, SMS o aviso en la aplicación al usuario asignado.
+
+    <Tip>
+      Si envías correos internos, usa un remitente como `noresponder@tunegocio.com` o `notificaciones@tunegocio.com` para no confundirlos con conversaciones de clientes.
+    </Tip>
+  </Step>
+  <Step title="Programa los recordatorios">
+    Agrega una espera de tipo **Hora del evento o cita** y, después, más acciones de envío. Por ejemplo, espera hasta 24 horas antes de la cita y envía un recordatorio con el enlace.
+
+    Si la hora ya pasó cuando el contacto llega a esa espera, puedes elegir:
+
+    - **Pasar al siguiente paso** y seguir el flujo en orden.
+    - **Ir a un paso específico** del flujo.
+    - **Saltar las comunicaciones hasta la siguiente espera**, sin enviar correos ni SMS en ese tramo.
+  </Step>
+</Steps>
+
+## Qué pasa con el enlace cuando cambia la cita
+
+| Situación | Qué ocurre con el enlace |
+| --- | --- |
+| Editas la cita sin cambiar fecha ni hora | El enlace sigue funcionando |
+| Cancelas o eliminas la cita | El enlace se elimina, salvo que otra cita en el mismo horario use ese mismo enlace |
+| Reprogramas a otra hora | Se genera un enlace nuevo, salvo que ya exista otra cita en ese horario, en cuyo caso se reutiliza su enlace |
+| Varias citas en el mismo horario | Si el calendario permite varias citas por horario, todas comparten el mismo enlace |
+
+<Warning>
+  Zoom permite a cada usuario hasta **100 solicitudes por día** para crear, actualizar o eliminar reuniones. El conteo se reinicia a las 00:00 UTC, no a la medianoche de tu zona horaria.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="No veo la opción Perfil">
+    No eres usuario de esa cuenta. Pide a un administrador que te agregue desde **Configuración → Mi personal → Agregar empleado** y vuelve a intentarlo con tu propia sesión.
+  </Accordion>
+  <Accordion title="Mis eventos creados en Zoom no aparecen en el calendario">
+    La integración no importa eventos de Zoom ni usa enlaces de reuniones creadas directamente en Zoom. Solo genera enlaces para las citas que se reservan en Chateea.
+  </Accordion>
+  <Accordion title="¿Qué calendarios admiten enlaces dinámicos?">
+    Los calendarios personales, round robin y colectivos.
+  </Accordion>
+  <Accordion title="¿Cómo uso Zoom en un calendario sin usuario asignado?">
+    Los calendarios sin asignar no generan enlaces dinámicos. Usa un enlace fijo de Zoom: pégalo manualmente como ubicación de la reunión en la configuración del calendario.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integrar Zoom con tus calendarios" icon="video" href="/calendarios/integrar-zoom-con-calendarios">
+    Tipos de calendario compatibles y cómo comprobar la conexión.
+  </Card>
+  <Card title="Recordatorios de citas" icon="bell" href="/calendarios/recordatorios">
+    Reduce las inasistencias con recordatorios automáticos.
+  </Card>
+  <Card title="Valores personalizados en calendarios" icon="calendar" href="/calendarios/valores-personalizados-en-calendarios">
+    Inserta datos de la cita en tus mensajes.
+  </Card>
+</CardGroup>

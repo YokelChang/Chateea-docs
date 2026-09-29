@@ -1,0 +1,106 @@
+---
+title: "Envía eventos a Google Analytics 4 desde flujos de trabajo"
+description: "Usa la acción Agregar a Google Analytics con tu ID de medición y secreto de API para registrar eventos en GA4."
+icon: "chart-line"
+---
+
+Con la acción **Agregar a Google Analytics** de los flujos de trabajo puedes enviar a Google Analytics 4 (GA4) eventos que van más allá de una visita a la página: un formulario enviado, una cita agendada, una llamada de soporte o una compra. Así ves en GA4 los resultados que ocurren dentro de Chateea junto con el resto del comportamiento de tus visitantes.
+
+La acción usa el **ID de medición** y un **secreto de API** de tu flujo de datos de GA4 (Measurement Protocol).
+
+<Note>
+Después de que el flujo de trabajo se ejecuta, los datos pueden tardar entre 24 y 48 horas en aparecer en Google Analytics.
+</Note>
+
+## Antes de empezar
+
+- Una propiedad de GA4 con al menos un flujo de datos web. Si aún no la tienes, sigue la [guía de Google para configurar Analytics](https://support.google.com/analytics/answer/9304153).
+- Acceso de edición o administrador a esa propiedad para poder crear el secreto de API.
+
+## Configurar la acción en tu flujo de trabajo
+
+<Steps>
+  <Step title="Agrega la acción">
+    Crea un flujo de trabajo nuevo o abre uno existente en **Automatización**. Elige el disparador que quieras (por ejemplo, **Formulario enviado**) y agrega la acción **Agregar a Google Analytics**.
+  </Step>
+  <Step title="Elige Google Analytics 4">
+    En **Tipo de acción** selecciona **Google Analytics 4**.
+  </Step>
+  <Step title="Copia el ID de medición">
+    En Google Analytics entra a **Administrar → Flujos de datos** y selecciona tu flujo de datos. Copia el **ID de medición** (empieza con `G-`) y pégalo en el campo **ID de medición** de la acción.
+  </Step>
+  <Step title="Escribe el nombre del evento">
+    Escribe el nombre del evento que quieres registrar, por ejemplo `cita_agendada`. Aparecerá en GA4 junto con los eventos estándar. Respeta las [reglas de nombres de eventos de Google](https://support.google.com/analytics/answer/13316687): usa letras, números y guiones bajos, y empieza con una letra.
+  </Step>
+  <Step title="Agrega un valor (opcional)">
+    Usa el campo **Valor del evento** para enviar un número con el evento, por ejemplo el total de un pedido o una puntuación. Puedes escribir un número fijo o usar un valor dinámico del flujo. Si no lo necesitas, déjalo vacío.
+  </Step>
+  <Step title="Crea el secreto de API">
+    En Google Analytics, dentro del mismo flujo de datos, abre **Secretos de API de Measurement Protocol**. Acepta las condiciones de privacidad de Google sobre la recopilación de datos si te lo pide, haz clic en **Crear**, ponle un nombre y confirma. Google genera el **valor del secreto** automáticamente.
+  </Step>
+  <Step title="Pega el secreto">
+    Copia el valor del secreto y pégalo en el campo **Secreto de API** de la acción.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar acción**, luego guarda el flujo de trabajo y publícalo cuando esté listo.
+  </Step>
+</Steps>
+
+<Warning>
+Al pegar el secreto de API, asegúrate de que no quede ningún espacio antes ni después. Un espacio extra hace que la acción falle.
+</Warning>
+
+## Comprobar que funciona
+
+En tu propiedad de GA4 ve a **Informes → Tiempo real** para ver eventos recientes, o a **Informes → Adquisición** y agrega filtros de fuente y medio. Recuerda que los informes estándar pueden tardar de 24 a 48 horas en mostrar los datos.
+
+## Cómo clasifica Chateea la fuente del tráfico
+
+Cuando un contacto llega a tus páginas, Chateea revisa la URL completa y el dominio de referencia para asignarle una fuente. Si la URL trae `utm_source` y `utm_medium`, se usan esos valores. Si falta alguno, se aplican estas reglas:
+
+| Fuente | Regla | utm_medium | utm_source |
+| --- | --- | --- | --- |
+| Google orgánico | El dominio de referencia es el buscador de Google | organic | google |
+| Búsqueda pagada | `utm_source` es google y el referente es google.com | cpc | google |
+| Facebook | Referente facebook.com | referral | facebook |
+| Social pagado | `utm_medium` contiene cpc y la fuente es facebook.com | cpc | facebook |
+| Directo o marcador | No hay dominio de referencia ni URL con seguimiento | none | direct |
+| Referencia | Otro sitio, por ejemplo ejemplo.com | referral | el dominio |
+| Redes sociales | Referente de redes como Instagram, YouTube, X, Pinterest | social | la red social |
+| Display | Tráfico de banners o display | cmp, banner, display | el dominio |
+
+Chateea también guarda el `gclid` (identificador de clic de Google) para reconocer cada clic único.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde están Categoría, Acción y Etiqueta en GA4?">
+    En GA4 no existen. Esos campos pertenecían a Universal Analytics, que Google ya dejó de procesar. En GA4 todo es un evento con un nombre y parámetros. Piensa tus eventos con el modelo de GA4 en lugar de copiar la estructura antigua.
+  </Accordion>
+  <Accordion title="¿Puedo enviar pares de parámetro y valor con el evento?">
+    Por ahora la acción no permite enviar parámetros personalizados con nombre y valor. Puedes enviar el nombre del evento y, opcionalmente, un valor numérico.
+  </Accordion>
+  <Accordion title="¿Qué es el valor del evento?">
+    Es un número que le asignas al evento para indicar su importancia o su valor monetario, por ejemplo el total de una compra. Te permite medir el impacto de cada interacción en tus objetivos.
+  </Accordion>
+  <Accordion title="La acción falla o no veo los eventos">
+    Revisa que el ID de medición sea del flujo de datos correcto, que el secreto de API no tenga espacios y que hayan pasado al menos 24 horas. Para pruebas inmediatas, usa el informe **Tiempo real** de GA4.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Widgets de Google Analytics" icon="chart-line" href="/informes/widgets-de-google-analytics">
+    Muestra tus datos de GA4 en los paneles de Chateea.
+  </Card>
+  <Card title="Widget de chat con Google Analytics 4" icon="comments" href="/sitios/widget-de-chat-con-google-analytics-4">
+    Mide las interacciones del chat en GA4.
+  </Card>
+  <Card title="Códigos de seguimiento y píxeles" icon="code" href="/sitios/codigos-de-seguimiento-y-pixeles">
+    Instala GA4 y otros píxeles en tus páginas.
+  </Card>
+  <Card title="Reportes y atribución" icon="chart-line" href="/reportes/introduccion">
+    Descubre de dónde vienen tus clientes.
+  </Card>
+</CardGroup>

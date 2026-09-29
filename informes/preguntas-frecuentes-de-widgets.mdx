@@ -1,0 +1,98 @@
+---
+title: "Preguntas frecuentes sobre los widgets del panel"
+description: "Resuelve dudas sobre permisos, planes, fechas y datos que no coinciden en los widgets de tu panel de control."
+icon: "circle-question"
+---
+
+Los widgets del **Panel de control** te muestran en un vistazo cómo van tus contactos, oportunidades, citas y ventas. Aquí reunimos las dudas más comunes sobre quién puede verlos, cómo se controlan los permisos y por qué a veces los números no coinciden con lo que ves en otras partes de Chateea.
+
+## Acceso y planes
+
+<AccordionGroup>
+  <Accordion title="¿Qué planes incluyen paneles y widgets personalizados?">
+    Los paneles múltiples, los widgets personalizados y los informes personalizados dependen del plan de tu cuenta. Revisa qué incluye el tuyo en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). Si tienes dudas sobre tu plan, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+
+  <Accordion title="¿Quién puede editar y quién solo puede ver el panel?">
+    Depende de los permisos de cada miembro del equipo. Los administradores de tu cuenta suelen tener acceso completo, y los usuarios ven lo que sus permisos les permiten. Puedes ajustar el nivel de acceso de cada panel (ver, editar o sin acceso) como se explica en [Permisos de paneles](/informes/permisos-de-paneles).
+  </Accordion>
+</AccordionGroup>
+
+## Permisos del panel
+
+Para cambiar lo que un miembro del equipo puede ver en el panel:
+
+<Steps>
+  <Step title="Abre la configuración del equipo">
+    Ve a **Configuración → Mi equipo**.
+  </Step>
+  <Step title="Edita al usuario">
+    Haz clic en **Editar** junto al miembro del equipo que quieres ajustar.
+  </Step>
+  <Step title="Ajusta los permisos">
+    En la sección **Permisos de usuario**, activa o desactiva los permisos relacionados con el panel y guarda los cambios.
+  </Step>
+</Steps>
+
+Estos son los permisos que afectan a los widgets:
+
+| Permiso | Qué controla |
+| --- | --- |
+| **Estadísticas del panel** (Dashboard Stats) | Acceso al panel completo. |
+| **Contactos** | Acceso a los contactos y a los widgets de contactos. |
+| **Oportunidades** | Acceso a las oportunidades y a sus widgets. |
+| **Citas** | Acceso a las citas y a sus widgets. |
+| **Valor del lead** | Acceso a los widgets que muestran importes de dinero. |
+| **Solo datos asignados** | Si está activo, el usuario no verá datos en los widgets personalizados. |
+
+<Note>
+  Si un miembro del equipo ve widgets vacíos, revisa primero si tiene activado **Solo datos asignados** o si le falta el permiso del módulo correspondiente (contactos, oportunidades o citas). Más detalles en [Datos asignados en paneles](/informes/datos-asignados-en-paneles).
+</Note>
+
+## Mostrar a cada persona solo sus datos
+
+Si quieres que cada vendedor vea únicamente su propia actividad en el mismo panel, agrega una condición a cada widget:
+
+1. Edita el widget y abre la pestaña **Condiciones**.
+2. Agrega un filtro por **Usuario** y elige **Usuario conectado** (Logged in user).
+3. Guarda el widget.
+
+Así, cada persona que abra el panel verá solo sus contactos, oportunidades o citas, sin que tengas que crear un panel por vendedor.
+
+## Fechas y datos que no coinciden
+
+<AccordionGroup>
+  <Accordion title="¿Por qué los widgets muestran otro formato de fecha u hora?">
+    Los widgets usan una zona horaria y un formato de fecha del sistema para que los cálculos sean consistentes. Por eso pueden verse distintos a otras secciones de Chateea. Revisa [Zona horaria del panel](/informes/zona-horaria-del-panel) para entender cómo afecta a tus números.
+  </Accordion>
+
+  <Accordion title="¿Por qué el número de oportunidades no coincide con el que esperaba?">
+    Los widgets de oportunidades toman como referencia la fecha del **último cambio de estado** de cada oportunidad, no su fecha de creación. Si se actualizaron oportunidades antiguas dentro del periodo que estás mirando, también se suman al conteo.
+
+    Para cambiarlo:
+
+    - **Widgets generales:** haz clic en el ícono de filtro del widget y cambia la propiedad de fecha. El cambio se aplica automáticamente al resto de filtros generales.
+    - **Widgets personalizados:** elige la propiedad de fecha que prefieras en la configuración del widget.
+  </Accordion>
+
+  <Accordion title="¿Por qué no puedo agrupar por Fuente de sesión o Medio?">
+    Esto pasa cuando el widget tiene más de un grupo de filtros. Para agrupar por **Fuente de sesión** (Session Source) o **Medio** (Medium) solo se permite un grupo de filtros, y ese grupo debe incluir el filtro de tipo de atribución (**Primera atribución** o **Última atribución**). Si agregas un segundo grupo, las agrupaciones por atribución se desactivan. Lo explicamos paso a paso en [Filtros de atribución y UTM en widgets](/informes/filtros-de-atribucion-y-utm-en-widgets).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Qué son los widgets del panel" icon="chart-pie" href="/informes/que-son-los-widgets-del-panel">
+    Tipos de widgets y para qué sirve cada uno.
+  </Card>
+  <Card title="Crear y agregar widgets" icon="plus" href="/informes/crear-y-agregar-widgets">
+    Construye tus propios widgets paso a paso.
+  </Card>
+  <Card title="Permisos de paneles" icon="shield-check" href="/informes/permisos-de-paneles">
+    Controla quién ve y quién edita cada panel.
+  </Card>
+  <Card title="Filtros rápidos en paneles" icon="filter" href="/informes/filtros-rapidos-en-paneles">
+    Filtra todos los widgets del panel a la vez.
+  </Card>
+</CardGroup>

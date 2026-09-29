@@ -1,0 +1,139 @@
+---
+title: "Conectar Facebook Lead Ads y varias páginas"
+description: "Conecta una o varias páginas de Facebook para recibir leads de tus anuncios, mensajes y reseñas en Chateea."
+icon: "facebook"
+---
+
+La integración con Facebook conecta una o varias páginas de Facebook a tu cuenta de Chateea. Con ella, los leads de tus anuncios de clientes potenciales (Facebook Lead Ads) entran solos a tu CRM, los mensajes de Messenger e Instagram llegan a **Conversaciones** y puedes automatizar el seguimiento de cada página. Es ideal si tienes varias sucursales, marcas o páginas y quieres gestionarlas todas desde un solo lugar.
+
+## Qué puedes hacer con varias páginas conectadas
+
+| Función | Qué hace |
+| --- | --- |
+| Sincronización de leads | Los leads de Facebook Lead Ads de todas tus páginas llegan automáticamente, indicando de qué página vienen. |
+| Conversaciones | Chateas con tus clientes de cada página por Facebook Messenger e Instagram. |
+| Automatización | Creas flujos de trabajo para responder y dar seguimiento en cada página. |
+| Reputación | Gestionas las reseñas de tus páginas de Facebook y sus respuestas. |
+
+Automatizar la captura de leads te ahorra la carga manual de datos, evita errores y te permite responder mientras el interés del cliente todavía está caliente.
+
+<Note>
+Por ahora, la aplicación móvil de Chateea y la IA conversacional no admiten conversaciones de varias páginas de Facebook a la vez.
+</Note>
+
+## Requisitos en Facebook
+
+Revisa esto antes de conectar. La mayoría de los problemas de sincronización vienen de aquí.
+
+- **Acceso total a la página**: la persona que conecta la página debe tener acceso de **control total** (administrador) a la página de Facebook, no solo acceso parcial. Consulta cómo [dar acceso a una página](https://www.facebook.com/help/187316341316631).
+- **Mismo propietario**: la página y la cuenta publicitaria deben pertenecer al mismo usuario o portafolio comercial.
+- **Permisos de anuncios y de leads**: la persona que conecta necesita permisos sobre la página y la cuenta publicitaria, y el **permiso de acceso a clientes potenciales** (Lead Access) que exige Meta. Revisa los [roles de la página](https://www.facebook.com/help/323502271070625), los [permisos de anuncios](https://www.facebook.com/business/help/187316341316631?id=520795622598421) y el [acceso a clientes potenciales](https://www.facebook.com/business/help/540596413257598?id=735435806665862).
+- **Página vinculada a la cuenta publicitaria**: confirma en la configuración de tu cuenta publicitaria que la página correcta está conectada. Más información en la [ayuda de Meta](https://www.facebook.com/business/help/337584869654348).
+- **Usuario agregado al portafolio comercial**: en el portafolio comercial (Business Manager), ve a **Usuarios → Personas** y comprueba que la persona que hará la conexión aparece con rol de **administrador** o **empleado**. Si no está, [agrégala](https://www.facebook.com/business/help/2169003770027706?id=2190812977867143). Este rol es distinto al de la página: en la página debe seguir teniendo control total.
+
+<Info>
+Las páginas que ves al conectar dependen de los permisos del usuario de Facebook con el que inicias sesión. Chateea no se conecta directamente al portafolio comercial ni a las cuentas publicitarias: solo ve las páginas a las que ese usuario tiene acceso.
+</Info>
+
+## Campos personalizados compatibles
+
+Si tu formulario de Facebook pide datos propios, crea antes los campos personalizados en Chateea usando alguno de estos tipos:
+
+| Tipo de campo | Uso habitual |
+| --- | --- |
+| Texto | Respuestas cortas |
+| Texto largo | Comentarios o descripciones |
+| Numérico | Cantidades |
+| Teléfono | Números de contacto |
+| Monetario | Presupuestos |
+| Opción única | Una sola respuesta de una lista |
+| Fecha | Fechas |
+| Desplegable (una opción) | Listas desplegables |
+
+<Warning>
+Evita cambiar los nombres de los campos del formulario en Facebook después de mapearlo. Puede romper el mapeo en Chateea y los datos dejarían de guardarse en el campo correcto.
+</Warning>
+
+## Conectar Facebook
+
+Solo el usuario que hace la conexión puede elegir qué páginas se conectan, y necesita acceso total a ellas en Facebook.
+
+<Steps>
+  <Step title="Abre las integraciones">
+    Entra a **Configuración → Integraciones**.
+  </Step>
+  <Step title="Conecta Facebook">
+    Haz clic en **Conectar** en la tarjeta de Facebook.
+  </Step>
+  <Step title="Acepta todos los permisos">
+    Concede todos los permisos que te pide Facebook. Si desmarcas alguno, algunas funciones (leads o mensajes) no van a funcionar.
+  </Step>
+  <Step title="Elige tus páginas">
+    Selecciona las páginas que quieres conectar a tu cuenta de Chateea. Puedes buscar páginas (y cuentas publicitarias, cuando aparezcan) por nombre; el buscador se habilita cuando terminan de cargar todas, así que la carga inicial puede tardar un poco si administras muchas páginas.
+  </Step>
+  <Step title="Mapea tus formularios">
+    Con las páginas conectadas, configura tus formularios y relaciona sus campos con los de Chateea (ver la sección siguiente).
+  </Step>
+</Steps>
+
+## Administrar la integración
+
+Todas estas opciones están en **Configuración → Integraciones**, en la tarjeta de Facebook.
+
+### Mapear o desactivar formularios
+
+<Steps>
+  <Step title="Abre el mapeo de formularios">
+    Haz clic en **Mapeo de campos de formularios de Facebook** (Facebook Form Field Mapping), en la parte superior de la pantalla.
+  </Step>
+  <Step title="Edita el formulario">
+    Busca el formulario, actualiza el mapeo de sus campos o desactívalo. Solo se sincronizan los leads de formularios con estado activo.
+  </Step>
+</Steps>
+
+### Agregar o quitar páginas
+
+Haz clic en **Administrar páginas**, marca o desmarca las páginas que quieres vincular y haz clic en **Actualizar**.
+
+### Activar mensajes de Facebook e Instagram
+
+Abre **Configuración** desde el menú de la tarjeta de Facebook y activa Facebook Messenger e Instagram para cada página conectada. Si algo no funciona, revisa [Mensajes de Facebook e Instagram](/integraciones/mensajes-de-facebook-e-instagram).
+
+### Revisar permisos y sincronizar leads manualmente
+
+Haz clic en **Solucionar problemas** (Troubleshoot). Ahí ves qué permisos faltan, qué funciones se ven afectadas y puedes sincronizar leads manualmente.
+
+### Desconectar Facebook
+
+Haz clic en los tres puntos de la tarjeta de Facebook y luego en **Desconectar**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="No aparece la página que quiero conectar">
+    Casi siempre es un tema de permisos. Confirma que tienes acceso de administrador (control total) a la página, que iniciaste sesión con el perfil de Facebook correcto y que aceptaste todos los permisos. Si cambiaste accesos hace poco, desconecta y vuelve a conectar Facebook. Más detalles en [Páginas de Facebook que no aparecen](/integraciones/paginas-de-facebook-que-no-aparecen).
+  </Accordion>
+  <Accordion title="¿Otro miembro de mi equipo puede ver las páginas que conecté?">
+    Solo el usuario que conectó Facebook puede seleccionar las páginas en la lista. Si otra persona necesita cambiarlas, tendrá que tener acceso total a esas páginas en Facebook y reconectar con su propio usuario.
+  </Accordion>
+  <Accordion title="Los leads no llegan a Chateea">
+    Revisa la guía [Solucionar problemas de Facebook Lead Ads](/integraciones/solucionar-problemas-de-facebook-lead-ads).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solucionar problemas de Facebook Lead Ads" icon="circle-question" href="/integraciones/solucionar-problemas-de-facebook-lead-ads">
+    Qué revisar cuando los leads no llegan o la conexión se cae.
+  </Card>
+  <Card title="Mensajes de Facebook e Instagram" icon="message" href="/integraciones/mensajes-de-facebook-e-instagram">
+    Configura y soluciona la mensajería en Conversaciones.
+  </Card>
+  <Card title="Anuncios de clientes potenciales en Facebook e Instagram" icon="bullhorn" href="/primeros-pasos/anuncios-de-clientes-potenciales-en-meta">
+    Crea anuncios con formulario integrado.
+  </Card>
+  <Card title="Leads de conversión de Meta" icon="chart-line" href="/integraciones/leads-de-conversion-de-meta">
+    Enseña a Meta qué leads terminan en venta.
+  </Card>
+</CardGroup>

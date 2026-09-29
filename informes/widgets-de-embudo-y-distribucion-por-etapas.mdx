@@ -1,0 +1,154 @@
+---
+title: "Widgets de embudo y distribución por etapas"
+description: "Entiende cómo cuentan tus oportunidades los widgets Embudo y Distribución por etapas, y cuándo usar cada uno."
+icon: "filter"
+---
+
+Los widgets **Embudo** (Funnel) y **Distribución por etapas** (Stages Distribution) muestran tus oportunidades de dos formas distintas. El embudo te dice cómo avanzan por las etapas de tu pipeline y dónde se caen. La distribución por etapas te dice dónde está cada oportunidad abierta hoy. Elegir el correcto te ayuda a separar el análisis de conversión del seguimiento diario de tu pipeline.
+
+<Info>
+  Una misma oportunidad puede aparecer de forma distinta en cada widget. El embudo mide **progreso acumulado**; la distribución por etapas mide **ubicación actual**.
+</Info>
+
+## Para qué sirve cada uno
+
+| Widget | Úsalo para | Cómo cuenta las oportunidades |
+| --- | --- | --- |
+| **Embudo** | Analizar la conversión entre etapas | Una oportunidad que llegó a una etapa avanzada también cuenta en las etapas anteriores, porque pasó por ellas. |
+| **Distribución por etapas** | Vigilar el estado actual del pipeline | Cada oportunidad abierta aparece solo en la etapa donde está ahora. Las ganadas y perdidas se muestran aparte. |
+
+**Ejemplo:** si una oportunidad abierta está en **Propuesta enviada**, la distribución por etapas la muestra solo en Propuesta enviada. El embudo, en cambio, también la cuenta en las etapas visibles anteriores, porque ya las superó.
+
+## Antes de empezar
+
+- Ten al menos un pipeline creado con sus etapas. Si aún no lo tienes, sigue [Crear un pipeline](/oportunidades/crear-un-pipeline).
+- Ordena las etapas en el orden real en que avanzan tus oportunidades. El embudo depende de ese orden.
+- Activa la visibilidad de las etapas que quieras ver en cada widget (lo explicamos más abajo).
+- El usuario necesita el permiso **Estadísticas del panel** y acceso al panel donde está el widget.
+
+<Note>
+  **Ganada** y **Perdida** son estados de la oportunidad, no etapas. No necesitas crearlas en tu pipeline. Consulta [Estados de las oportunidades](/oportunidades/estados-de-las-oportunidades).
+</Note>
+
+## Cómo funciona el widget Embudo
+
+El embudo usa lógica acumulada: cada sección representa las oportunidades que llegaron a esa etapa **o la superaron**.
+
+```text
+Oportunidades en una sección = oportunidades desde esa etapa visible hasta la última etapa visible, más las ganadas
+```
+
+A medida que avanzas por el embudo:
+
+- Las oportunidades que siguen en etapas tempranas desaparecen de las secciones posteriores.
+- Las que llegaron a etapas avanzadas suman en todas las secciones anteriores.
+- **Ganada** aparece como el resultado final y cuenta en todas las secciones previas, porque completó el proceso.
+
+### Tasas de conversión
+
+El embudo te da dos lecturas:
+
+| Conversión | Qué compara |
+| --- | --- |
+| **Acumulada** | Cada sección contra el inicio del embudo. Te dice qué porcentaje del total llega hasta ahí. |
+| **Al siguiente paso** | Cada sección contra la sección anterior. Te dice en qué paso concreto pierdes más oportunidades. |
+
+<Tip>
+  Mira la conversión al siguiente paso para encontrar el cuello de botella. Si de **Cita agendada** a **Propuesta enviada** pierdes la mitad, ahí es donde conviene mejorar tu seguimiento.
+</Tip>
+
+### Ingresos en el embudo
+
+El valor de las oportunidades sigue la misma lógica acumulada. El valor de las oportunidades en etapas avanzadas y de las ganadas suma en las secciones anteriores.
+
+### Qué fecha usa
+
+El embudo evalúa el periodo seleccionado según la **fecha del último cambio de estado** de cada oportunidad, no su fecha de creación.
+
+## Cómo funciona el widget Distribución por etapas
+
+Este widget no acumula: te muestra una foto del momento.
+
+- Cada oportunidad abierta aparece en la etapa visible donde está ahora.
+- Las oportunidades **ganadas** se muestran por separado.
+- Las oportunidades **perdidas** se muestran por separado.
+- También incluye información de conversión sobre la distribución mostrada.
+
+Es el más útil para etapas de espera o seguimiento, como **No asistió**, **Esperando al cliente** o **Seguimiento pendiente**, donde necesitas saber exactamente cuántas oportunidades hay estancadas.
+
+## Elegir qué etapas aparecen en cada widget
+
+<Steps>
+  <Step title="Abre tus pipelines">
+    Ve a **Oportunidades → Pipelines**.
+  </Step>
+  <Step title="Edita el pipeline">
+    Abre el pipeline que quieres configurar y ubica sus etapas.
+  </Step>
+  <Step title="Activa la visibilidad">
+    Usa el **ícono de embudo** de cada etapa para mostrarla u ocultarla en el widget Embudo, y el **ícono de gráfico circular** para mostrarla u ocultarla en Distribución por etapas.
+  </Step>
+  <Step title="Guarda los cambios">
+    Guarda el pipeline. Los widgets se actualizan con las etapas visibles.
+  </Step>
+</Steps>
+
+## Agregar el widget a tu panel
+
+<Steps>
+  <Step title="Abre el panel en modo edición">
+    En **Panel de control**, abre el panel que quieres modificar y haz clic en **Editar panel**.
+  </Step>
+  <Step title="Agrega el widget">
+    Haz clic en **Agregar widget**, busca la categoría **General** y elige **Embudo** o **Distribución por etapas**.
+  </Step>
+  <Step title="Configúralo y ubícalo">
+    Ajusta las opciones disponibles, mueve y cambia el tamaño del widget donde prefieras.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar cambios**.
+  </Step>
+</Steps>
+
+Dentro del widget puedes cambiar de pipeline con el selector desplegable, sin editar el panel.
+
+<Tip>
+  Pon los dos widgets uno junto al otro. Con el embudo ves dónde se pierden oportunidades y con la distribución ves cuántas están detenidas hoy en cada etapa.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el embudo cuenta una oportunidad en una etapa donde ya no está?">
+    Porque usa lógica acumulada. Una oportunidad que llegó a una etapa posterior cuenta en las anteriores, ya que pasó por ellas.
+  </Accordion>
+  <Accordion title="¿Tengo que crear etapas Ganada y Perdida?">
+    No. Son estados de la oportunidad y Chateea los gestiona automáticamente.
+  </Accordion>
+  <Accordion title="Falta una etapa en el widget. ¿Qué hago?">
+    Ve a **Oportunidades → Pipelines**, edita el pipeline y confirma que el ícono de embudo o de gráfico circular esté activado para esa etapa.
+  </Accordion>
+  <Accordion title="¿Por qué estos totales no coinciden con otro informe de oportunidades?">
+    Cada widget puede usar cálculos, propiedades de fecha, filtros y etapas visibles distintos. Compara esas configuraciones antes de comparar totales.
+  </Accordion>
+  <Accordion title="¿Hay widgets de oportunidades más configurables?">
+    Sí. Los widgets de oportunidades personalizados permiten elegir tipo de gráfico, condiciones, etapas, estados, responsables, datos de atribución y otros filtros. Consulta [Crear y agregar widgets](/informes/crear-y-agregar-widgets).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un pipeline" icon="diagram-project" href="/oportunidades/crear-un-pipeline">
+    Define las etapas por las que avanzan tus oportunidades.
+  </Card>
+  <Card title="Crear y agregar widgets" icon="plus" href="/informes/crear-y-agregar-widgets">
+    Arma tus propios widgets en el panel.
+  </Card>
+  <Card title="Permisos de paneles" icon="shield-check" href="/informes/permisos-de-paneles">
+    Quién puede ver y editar cada panel.
+  </Card>
+  <Card title="Velocidad de ventas" icon="gauge-high" href="/ventas-conversaciones/velocidad-de-ventas">
+    Mide qué tan rápido conviertes tu pipeline en ingresos.
+  </Card>
+</CardGroup>

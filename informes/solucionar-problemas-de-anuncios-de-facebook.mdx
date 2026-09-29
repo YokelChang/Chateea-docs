@@ -1,0 +1,92 @@
+---
+title: "Soluciona problemas del informe de anuncios de Facebook"
+description: "Revisa integración, UTM, nombres únicos y mapeo de formularios cuando el informe de Facebook no cuadra."
+icon: "circle-question"
+---
+
+Si el informe de anuncios de Facebook muestra leads duplicados, ventas en cero o campañas que no aparecen, casi siempre el problema está en la configuración y no en los datos. Revisa estos cinco puntos en orden: resuelven la gran mayoría de los casos.
+
+## 1. La integración con tu cuenta publicitaria debe estar activa
+
+Confirma que la cuenta publicitaria de Facebook conectada en **Configuración → Integraciones** está activa y que la persona que la conectó tiene permisos de administrador.
+
+- Para anunciar con una página de Facebook o una cuenta de Instagram en el Administrador de anuncios, necesitas ser administrador de la página o que un administrador te asigne un rol de administrador (recomendado), editor, moderador, anunciante o gestor de empleos. Consulta la [guía de Meta sobre roles de página](https://www.facebook.com/help/187316341316631).
+- Si usas la nueva experiencia de páginas con acceso por tareas, puedes gestionar anuncios desde el Administrador de anuncios o Meta Business Suite.
+- Si tu página no aparece en la sección de integraciones, revisa que tu usuario tenga acceso a clientes potenciales y que Chateea tenga permiso de acceso a la página en la configuración de tu portfolio comercial de Meta. Consulta la [ayuda de Meta sobre el acceso de CRM a clientes potenciales](https://www.facebook.com/business/help/1588743581429919).
+
+<Tip>
+Las cuentas publicitarias tienen distintos roles con permisos distintos. Si alguien de tu equipo gestiona los anuncios, asegúrate de que su rol le permita ver el rendimiento y administrar campañas.
+</Tip>
+
+## 2. La plantilla UTM va en Seguimiento, no en el destino
+
+Los parámetros UTM deben agregarse en la sección **Seguimiento** del anuncio, no en la URL de destino. Así cada clic o visita se registra con su propio identificador. Revisa el paso a paso en [Configurar el informe de anuncios de Facebook](/informes/configurar-informes-de-anuncios-de-facebook).
+
+## 3. Los nombres de campaña, conjunto y anuncio deben ser únicos
+
+Si dos anuncios o dos conjuntos tienen el mismo nombre, el informe mostrará el mismo contacto en varios lugares a la vez.
+
+**Así no:**
+
+| Nivel | Nombre |
+| --- | --- |
+| Campaña | Nuevo restaurante en la ciudad (ID 12345) |
+| Conjunto 1 | Platillo 1 |
+| Anuncio del conjunto 1 | Pasta roja fresca |
+| Conjunto 2 | Platillo 2 |
+| Anuncio del conjunto 2 | Pasta roja fresca |
+
+Aquí, un cliente que llega por el anuncio "Pasta roja fresca" aparece en la columna de leads de los dos conjuntos, porque la URL que recibe Chateea no distingue entre ambos:
+
+```text
+https://ejemplo.com?utm_source=fb_ad&utm_medium=platillo1&utm_campaign=nuevorestauranteenlaciudad&utm_content=pastarojafresca&campaign_id=12345
+```
+
+**Así sí:**
+
+| Nivel | Nombre |
+| --- | --- |
+| Campaña | Nuevo restaurante en la ciudad (ID 12345) |
+| Conjunto 1 | Platillo 1 Entrada |
+| Anuncio del conjunto 1 | 1.1 Pasta roja fresca con salsa extra |
+| Conjunto 2 | Platillo 2 Plato fuerte |
+| Anuncio del conjunto 2 | 2.1 Pasta roja fresca sin salsa |
+
+## 4. Cambiar el nombre no cambia los UTM ya enviados
+
+Si renombras una campaña, un conjunto o un anuncio en Facebook, la vista de lista del informe en Chateea mostrará el nombre nuevo, pero los leads, las ventas y el ROI dejarán de atribuirse, porque los UTM siguen asociados al nombre anterior.
+
+- No cambies los nombres durante la vida de la campaña, el conjunto o el anuncio.
+- Si necesitas otro nombre, crea una campaña, un conjunto o un anuncio nuevo.
+- Si cambias el nombre sin crear uno nuevo, los datos seguirán apuntando al original.
+
+## 5. Elige la página correcta en el mapeo de formularios de clientes potenciales
+
+Al conectar el mapeo de campos de los formularios de clientes potenciales de Facebook, selecciona la página de Facebook correcta y deja el mapeo activo para recibir los leads.
+
+<Note>
+- Puedes mapear campos de texto y campos personalizados sin problema.
+- Los campos personalizados de tipo botón de opción (radio) no se pueden mapear con formularios de clientes potenciales de Facebook.
+- No es posible mapear un campo de zona horaria.
+</Note>
+
+## ¿Sigue sin cuadrar?
+
+Si revisaste los cinco puntos y el informe sigue mostrando datos extraños, escribe a soporte de Chateea en **help@chateea.com** con el nombre de la campaña, un contacto de ejemplo y el rango de fechas que estás revisando.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configurar el informe de anuncios de Facebook" icon="facebook" href="/informes/configurar-informes-de-anuncios-de-facebook">
+    UTM, nombres y puntos de entrada.
+  </Card>
+  <Card title="Términos del informe de Facebook" icon="book" href="/informes/terminos-de-informes-de-anuncios-de-facebook">
+    Qué mide cada columna.
+  </Card>
+  <Card title="Conectar páginas de Facebook" icon="link" href="/marketing/conectar-paginas-de-facebook">
+    Vincula tus páginas con Chateea.
+  </Card>
+  <Card title="Preguntas frecuentes de informes" icon="circle-question" href="/informes/preguntas-frecuentes-de-informes">
+    Ventas en cero, contactos repetidos y más.
+  </Card>
+</CardGroup>
