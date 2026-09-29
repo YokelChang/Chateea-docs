@@ -1,0 +1,65 @@
+---
+title: "IA conversacional: bot inactivo (en reposo)"
+description: "Todos los motivos por los que el bot deja de responder en una conversación, agrupados por origen."
+icon: "moon"
+---
+
+En la IA conversacional hay varios eventos que pueden hacer que el bot "se duerma" en una conversación: deja de responder automáticamente hasta que algo lo reactiva.
+
+Saber de dónde viene cada pausa te ahorra horas de diagnóstico cuando alguien pregunta _"¿por qué mi bot dejó de responder?"_. Casi siempre es uno de estos motivos, agrupados según su origen.
+
+## Desde la configuración del bot
+
+| Evento | Cuándo ocurre |
+| --- | --- |
+| **Mensajes máximos** | Cuando el total de mensajes de la conversación llega al límite que definiste |
+
+## Desde los objetivos del bot
+
+| Evento | Cuándo ocurre |
+| --- | --- |
+| **Detener bot** | Cuando se cumple la condición de parada configurada |
+| **Después de reservar una cita** | Cuando una cita se reserva correctamente |
+| **Transferencia humana** | Cuando la conversación pasa a una persona del equipo |
+| **Transferir bot** | Cuando se cumple la condición para pasar la conversación a otro bot |
+
+## Desde la conversación
+
+| Evento | Cuándo ocurre |
+| --- | --- |
+| **Mensaje manual** | Cuando alguien del equipo envía un mensaje en la conversación |
+| **Cambio manual a inactivo** | Cuando, desde **Conversaciones**, cambias la IA de activa a inactiva |
+
+<Tip>
+  El mensaje manual es el motivo más frecuente y el más malinterpretado: en cuanto alguien de tu equipo escribe en la conversación, el bot se calla. Es intencional (evita que el bot y tu vendedor respondan a la vez), pero sorprende a quien no lo sabe.
+</Tip>
+
+## Desde un flujo de trabajo
+
+| Evento | Cuándo ocurre |
+| --- | --- |
+| **Acción** | Cuando una acción de un flujo pone la conversación en estado inactivo o suspendido |
+| **Mensaje enviado** | Cuando un flujo envía un mensaje en la conversación |
+
+## Cómo usar esta lista
+
+Cuando un bot deje de responder sin que lo esperes, revisa en este orden:
+
+<Steps>
+  <Step title="¿Se alcanzó el límite de mensajes?">
+    Compara el total de la conversación con el máximo que configuraste.
+  </Step>
+  <Step title="¿Se cumplió algún objetivo?">
+    Una cita reservada, una transferencia o una condición de parada duermen el bot a propósito.
+  </Step>
+  <Step title="¿Alguien escribió manualmente?">
+    Si alguien del equipo intervino, el bot se pausa. Es lo más común.
+  </Step>
+  <Step title="¿Un flujo lo puso inactivo?">
+    Revisa si algún flujo activo incluye una acción que suspende la conversación.
+  </Step>
+</Steps>
+
+<Card title="Gestionar el estado del bot a nivel de contacto" icon="user-gear" href="/ia/estado-nivel-contacto">
+  Cómo activar o pausar el bot manualmente para un contacto.
+</Card>

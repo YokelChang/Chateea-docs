@@ -1,0 +1,168 @@
+---
+title: "Acción premium de funciones de matriz"
+sidebarTitle: "Funciones de matriz"
+description: "Guía completa de la acción premium Funciones de matriz y sus cinco tipos: Buscar, Filtrar, Buscar por índice, Partidas individuales y Matemáticas."
+icon: "brackets-square"
+---
+
+La acción premium **Funciones de matriz** (Array Functions) te permite trabajar con listas de datos (matrices o arrays) dentro de un flujo de trabajo: buscar un elemento, filtrar la lista, tomar una posición concreta, reorganizar sus campos o hacer cálculos.
+
+Es muy útil en flujos que reciben varios elementos a la vez, como los productos de un pedido, la respuesta de un webhook con varios registros o cualquier estructura que devuelva más de un objeto. Si solo necesitas una visión rápida, consulta la [versión resumida](/automatizaciones/accion-premium-funciones-de-matriz-resumen).
+
+## Cómo agregar la acción
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo de trabajo, pulsa **+** para agregar una acción. Busca **Funciones de matriz** o desplázate hasta encontrarla en la lista de acciones. Se identifica como acción premium.
+  </Step>
+  <Step title="Elige el tipo de acción">
+    En el desplegable **Tipo de acción** (Action Type), selecciona una de las cinco opciones que se explican abajo.
+  </Step>
+</Steps>
+
+## Tipos de acción
+
+| Tipo de acción | Qué devuelve | Cuándo usarlo |
+| --- | --- | --- |
+| **Buscar** (Find) | El objeto que coincide con el par clave-valor indicado | Comprobar si un producto concreto forma parte del pedido |
+| **Buscar por índice** (Find by index) | El objeto que ocupa la posición indicada en la matriz | Tomar siempre el primer artículo del carrito (índice 0) |
+| **Filtrar** (Filter) | Una matriz con todos los objetos que coinciden con la clave-valor | Quedarte solo con los productos de una categoría antes de enviarlos por webhook |
+| **Partidas individuales** (Line Items) | Una matriz nueva reconstruida con claves personalizadas | Adaptar la estructura a la que espera un sistema externo o el carrito del creador de correos |
+| **Matemáticas** (Math Functions) | Cálculos sobre la matriz: suma, mínimo, máximo, promedio y recuento | Calcular el subtotal o la cantidad total de artículos del carrito |
+
+**Ejemplo:** para saber cuántas unidades lleva un pedido, usa **Matemáticas** con la operación **Suma** sobre la clave `quantity`. Para saber si un producto puntual está en el pedido, usa **Buscar**.
+
+### De dónde salen las matrices
+
+En **Seleccionar campo** (Select Field) aparecen todos los campos de tipo matriz disponibles en el flujo. Provienen de:
+
+- los disparadores de **Shopify**,
+- el disparador de **webhook entrante**,
+- las respuestas de las acciones de **webhook personalizado**.
+
+## Buscar
+
+Encuentra, dentro de una lista de objetos, el que coincide con uno o varios pares clave-valor, y lo devuelve completo.
+
+En este ejemplo se usa el disparador de **pedido realizado de Shopify** para comprobar si el producto con ID `zGhad23wfadfa` forma parte de los artículos del pedido.
+
+<Steps>
+  <Step title="Selecciona el campo de matriz">
+    En **Seleccionar campo**, despliega el grupo **Shopify** y elige **Artículos de línea** (Line Items).
+  </Step>
+  <Step title="Define el filtro">
+    En el bloque **Filtros**, elige la clave (**Key**) y escribe el valor (**Value**). Por ejemplo, clave `id` y valor `zGhad23wfadfa`.
+  </Step>
+  <Step title="Agrega más condiciones (opcional)">
+    Si necesitas afinar la búsqueda, pulsa **Agregar otro elemento** (Add another item) y añade otro par clave-valor.
+  </Step>
+</Steps>
+
+Estas son las claves disponibles en los artículos de línea de Shopify:
+
+| Clave | Qué contiene |
+| --- | --- |
+| `id` | Identificador del producto en la línea |
+| `title` | Nombre del producto |
+| `price` | Precio unitario |
+| `quantity` | Cantidad pedida de ese producto |
+| `image` | Imagen del producto |
+| `line_price` | Importe total de la línea (precio por cantidad) |
+
+Con la clave `id` y el valor `zGhad23wfadfa`, la acción devuelve el objeto completo de ese producto, con su `title`, `price`, `quantity` y el resto de claves.
+
+A partir de ahí puedes usar esos datos como valores en correos, SMS, condiciones **Si/Sino** (if/else) y otras acciones. En el menú de valores personalizados aparecen bajo el grupo **Funciones de matriz**, con el número del paso que los generó (por ejemplo, `#2 Array Functions`).
+
+## Filtrar
+
+Filtra la matriz y devuelve una nueva lista solo con los objetos que cumplen los pares clave-valor que indiques.
+
+**Caso de uso:** filtrar los productos de un pedido por grupo y enviar solo esos por un **webhook personalizado**.
+
+<Steps>
+  <Step title="Selecciona el campo de matriz">
+    En **Seleccionar campo**, elige por ejemplo **Shopify → Artículos de línea**.
+  </Step>
+  <Step title="Elige la clave">
+    Selecciona la clave por la que quieres filtrar. Verás la lista de claves del campo elegido.
+  </Step>
+  <Step title="Escribe el valor">
+    Puede ser un valor fijo o una variable, como `{{user.name}}`.
+  </Step>
+  <Step title="Agrega más condiciones (opcional)">
+    Añade otros pares clave-valor si necesitas un filtro más preciso.
+  </Step>
+</Steps>
+
+<Tip>
+  La diferencia con **Buscar**: **Buscar** devuelve **un** objeto y **Filtrar** devuelve **una matriz** con todos los objetos que cumplen la condición.
+</Tip>
+
+## Buscar por índice
+
+Devuelve el objeto que está en una posición concreta de la matriz.
+
+1. En **Seleccionar campo**, elige por ejemplo **Shopify → Artículos de línea**.
+2. Escribe en **Índice** (Index) la posición que quieres recuperar.
+
+<Warning>
+  Los índices empiezan en **0**: el primer elemento es el índice `0`, el segundo el `1`, y así sucesivamente. Si el índice no existe en la matriz, no se devuelve ningún objeto.
+</Warning>
+
+## Partidas individuales
+
+Reconstruye la matriz con **claves personalizadas**, para que tenga la estructura que necesita otro sistema.
+
+**Casos de uso:**
+
+- Ajustar la estructura antes de enviarla por un webhook personalizado.
+- Preparar la matriz antes de guardarla en Google Sheets con la acción **Crear filas**.
+- Adaptarla a la estructura del bloque de carrito de compras del creador de correos.
+
+<Steps>
+  <Step title="Selecciona el campo de matriz">
+    En **Seleccionar campo**, elige por ejemplo **Shopify → Artículos de línea**.
+  </Step>
+  <Step title="Define las claves personalizadas">
+    En el bloque **Campos** (Fields), escribe el nombre de la nueva clave en **Clave** (Key) y elige en **Valor** (Value) el dato de origen.
+  </Step>
+  <Step title="Agrega más pares (opcional)">
+    Añade tantos pares clave-valor como necesite la estructura de destino.
+  </Step>
+</Steps>
+
+Ejemplo de reconstrucción:
+
+| Clave personalizada | Valor de origen | Resultado |
+| --- | --- | --- |
+| `product_id` | `id` | La nueva matriz muestra el identificador con el nombre que espera el sistema de destino |
+
+Si el sistema externo espera recibir `product_id` y no `id`, esta acción hace la conversión sin que tengas que cambiar nada en el origen.
+
+## Matemáticas
+
+Calcula suma, mínimo, máximo, promedio y recuento sobre una clave de la matriz.
+
+**Caso de uso:** calcular el subtotal del pedido, las líneas del carrito o el total de artículos.
+
+<Steps>
+  <Step title="Selecciona el campo de matriz">
+    En **Seleccionar campo**, elige por ejemplo **Shopify → Artículos de línea**.
+  </Step>
+  <Step title="Elige la clave">
+    Selecciona la clave sobre la que se hará el cálculo, por ejemplo `quantity`.
+  </Step>
+  <Step title="Marca las operaciones">
+    En el bloque **Operaciones** (Operations), marca o desmarca las que necesites.
+  </Step>
+</Steps>
+
+| Operación | Qué devuelve | Ejemplo sobre `quantity` |
+| --- | --- | --- |
+| **Suma** (Sum) | La suma de todos los valores de la clave | Unidades totales del pedido |
+| **Mínimo** (Min) | El valor más bajo | La línea con menos unidades |
+| **Máximo** (Max) | El valor más alto | La línea con más unidades |
+| **Promedio** (Average) | El promedio de los valores | Unidades promedio por línea |
+| **Recuento** (Count) | La cantidad de elementos | Número de líneas distintas del carrito |
+
+**Ejemplo:** en un pedido con 3 líneas de 2, 1 y 5 unidades, **Suma** devuelve 8, **Mínimo** 1, **Máximo** 5, **Promedio** 2,67 y **Recuento** 3.

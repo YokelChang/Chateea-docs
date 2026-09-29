@@ -1,0 +1,115 @@
+---
+title: "Pagos fallidos y reintentos de suscripciones"
+description: "Qué pasa cuando falla el cobro de una suscripción y cómo configurar reintentos automáticos y cancelación."
+icon: "rotate-right"
+---
+
+Cuando falla el cobro de una suscripción, casi nunca es porque el cliente se quiera ir: suele ser una tarjeta vencida, un límite temporal o falta de saldo. Chateea te da varias vías para recuperar ese pago sin intervención manual: una factura que el cliente puede pagar con otro método y reintentos automáticos del cobro según la configuración que elijas.
+
+## Qué pasa cuando falla un pago
+
+<Steps>
+  <Step title="Se genera una factura">
+    Chateea crea automáticamente una factura por el cobro fallido y se la envía al cliente, junto con la notificación del fallo.
+  </Step>
+  <Step title="El cliente puede pagarla">
+    Desde el enlace de la factura, el cliente paga con un método guardado o con uno nuevo. Si usa una tarjeta nueva, pasa a ser el método de pago predeterminado para los siguientes cobros de la suscripción.
+  </Step>
+  <Step title="Chateea reintenta el cobro">
+    Al mismo tiempo, el sistema vuelve a intentar el cobro según tu configuración de reintentos. Si el cliente paga la factura antes de un reintento, los reintentos se detienen.
+  </Step>
+  <Step title="La suscripción vuelve a estar activa">
+    Si el pago se completa, ya sea por un reintento o por la factura, la suscripción pasa a **Activa**, siempre que no tenga otra factura pendiente.
+  </Step>
+  <Step title="Si todos los reintentos fallan">
+    La suscripción queda como **impaga**, salvo que hayas configurado la cancelación automática.
+  </Step>
+</Steps>
+
+## Configura los reintentos
+
+<Steps>
+  <Step title="Abre la configuración de suscripciones">
+    Ve a **Pagos → Configuración → Suscripciones** y busca la sección **Administrar pagos fallidos de suscripciones**.
+  </Step>
+  <Step title="Elige cuántos reintentos">
+    Puedes configurar 1, 2 o 3 reintentos. Por defecto son 3.
+  </Step>
+  <Step title="Define el intervalo de cada uno">
+    Elige cuánto esperar después del intento anterior: 1, 3, 5 o 7 días. Por defecto es 1 día. Cada reintento puede tener su propio intervalo.
+  </Step>
+  <Step title="Decide qué pasa si todos fallan">
+    Activa la opción para **cancelar automáticamente la suscripción** si fallan todos los intentos, o déjala desactivada para que la suscripción quede impaga.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+| Ajuste | Opciones | Valor predeterminado |
+| --- | --- | --- |
+| Número de reintentos | 1, 2 o 3 | 3 |
+| Intervalo entre intentos | 1, 3, 5 o 7 días | 1 día |
+| Si fallan todos | Cancelar automáticamente o dejar impaga | Tú lo eliges |
+
+<Tip>
+Escalonar los intervalos suele recuperar más cobros que repetir el mismo. Un patrón de 1, 3 y 7 días cubre el fallo puntual, el saldo que entra a mitad de semana y el siguiente día de pago, en lugar de intentar tres veces con la misma tarjeta en tres días seguidos.
+</Tip>
+
+## Los cambios se aplican de inmediato
+
+Cualquier cambio en la configuración de reintentos se aplica a las suscripciones nuevas y a las existentes, incluidas las que ya están en proceso de reintento.
+
+<Warning>
+Si bajas de 3 reintentos a 1 mientras hay suscripciones en reintento, esas suscripciones pierden los intentos que les quedaban. Revisa cuántos cobros están en curso antes de recortar la configuración.
+</Warning>
+
+## Proveedores compatibles
+
+La configuración de reintentos está disponible para:
+
+- NMI
+- Authorize.net
+- Square
+
+<Note>
+Si una suscripción se creó con un proveedor que no está en esta lista, la configuración no se aplicará a sus cobros aunque la hayas guardado. Verifica con qué proveedor se creó cada suscripción.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Mi cliente se entera de que falló el pago?">
+    Sí. Recibe la notificación del pago fallido y la factura para pagarla.
+  </Accordion>
+  <Accordion title="¿Los reintentos y la factura funcionan a la vez?">
+    Sí. Ambos corren en paralelo para darte más oportunidades de cobrar. Si el cliente paga la factura primero, los reintentos se detienen.
+  </Accordion>
+  <Accordion title="Si el cliente paga con una tarjeta nueva, ¿se usa en los próximos cobros?">
+    Sí. La tarjeta nueva pasa a ser el método predeterminado de la suscripción.
+  </Accordion>
+  <Accordion title="¿Cuántos reintentos puedo configurar?">
+    Hasta 3, con intervalos de 1, 3, 5 o 7 días.
+  </Accordion>
+  <Accordion title="¿Los cambios afectan a suscripciones que ya están en reintento?">
+    Sí. Se aplican de inmediato a todas las suscripciones, nuevas y existentes.
+  </Accordion>
+  <Accordion title="¿Qué pasa si fallan todos los reintentos?">
+    La suscripción queda impaga, o se cancela automáticamente si activaste esa opción.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Si tienes dudas sobre cómo configurar los reintentos o cómo afectan a tus suscripciones, escribe a soporte de Chateea en **help@chateea.com** indicando tu proveedor de pago y la configuración que tienes guardada.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparadores de suscripción y reembolso" icon="bolt" href="/pagos/activadores-suscripcion-reembolso">
+    Avisa automáticamente cuando un cobro falla o se cancela una suscripción.
+  </Card>
+  <Card title="Estados de suscripción" icon="list-check" href="/pagos/gestionar-suscripciones">
+    Entiende cada estado y su seguimiento.
+  </Card>
+</CardGroup>

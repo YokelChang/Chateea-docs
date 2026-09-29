@@ -1,0 +1,215 @@
+---
+title: "Solucionar problemas de entrega SMTP"
+description: "Por qué no salen tus correos por SMTP y cómo arreglarlo, empezando por el remitente que no coincide con tu proveedor."
+icon: "wrench"
+---
+
+Si conectaste tu propio proveedor SMTP (Gmail, Google Workspace, SendGrid, Zoho u otro) y tus correos no salen o no llegan, esta guía te lleva de la causa más frecuente a las menos comunes. En la mayoría de los casos el problema se resuelve en minutos.
+
+## La causa número uno
+
+Si tu SMTP está conectado pero la mayoría de tus correos no se entregan, revisa esto primero:
+
+<Warning>
+  **La dirección del remitente no coincide con la dirección conectada en tu proveedor SMTP.**
+
+  Tu proveedor solo permite enviar desde la dirección con la que te autenticaste, o desde direcciones que verificaste en él. Si configuraste el SMTP con `contacto@tunegocio.com` pero un flujo, un calendario o un usuario envía desde `ventas@tunegocio.com`, el proveedor rechaza el envío.
+</Warning>
+
+Lo confuso es que la configuración se ve correcta: el correo de prueba funcionó y la conexión aparece activa. El problema está en que **otra parte de la plataforma está enviando desde una dirección distinta**.
+
+### Dónde se esconden las direcciones que no coinciden
+
+| Lugar | Qué revisar |
+| --- | --- |
+| Correos manuales en **Conversaciones** | El remitente aparece por defecto con tu correo de inicio de sesión: cámbialo por la dirección conectada |
+| Acciones de correo en tus flujos de trabajo | Cada acción puede tener su propio remitente |
+| Campañas de correo | El remitente de cada campaña |
+| Confirmaciones y recordatorios de calendario | Suelen usar el correo del dueño del calendario |
+| Usuarios del equipo | Cada usuario puede enviar desde su propia dirección |
+| Correos de facturas y presupuestos | Pueden tener un remitente distinto configurado |
+
+### Cómo solucionarlo
+
+Tienes dos caminos:
+
+1. **Unificar:** cambia el remitente en todos esos lugares para que coincida con la dirección conectada por SMTP.
+2. **Verificar la dirección adicional en tu proveedor**, si quieres seguir enviando desde otras direcciones. Cada proveedor lo hace a su manera:
+
+| Proveedor | Cómo autorizar otro remitente |
+| --- | --- |
+| Gmail o Google Workspace | Agrega la dirección como alias ("Enviar como") en tu cuenta de Google |
+| SendGrid | Verifica la dirección como identidad de remitente. Ver [Usar SendGrid como proveedor SMTP](/correo/usar-sendgrid-como-proveedor-smtp) |
+| Zoho Mail | Verifica el alias en tu cuenta de Zoho. Ver [Usar Zoho Mail como proveedor SMTP](/correo/usar-zoho-mail-como-proveedor-smtp) |
+
+## Cómo ver el error exacto
+
+Cuando un correo falla, Chateea te muestra el motivo que devolvió tu proveedor.
+
+<Steps>
+  <Step title="Envía un correo de prueba desde Conversaciones">
+    A una dirección personal a la que tengas acceso, con el remitente igual a la dirección conectada por SMTP.
+  </Step>
+  <Step title="Haz clic en el triángulo rojo">
+    Si el envío falla, aparece un ícono de **triángulo rojo** junto al mensaje. Haz clic para ver el detalle del error.
+  </Step>
+  <Step title="Lee el mensaje del proveedor">
+    El texto viene directamente de tu proveedor SMTP y casi siempre señala la causa, por ejemplo un remitente no verificado.
+  </Step>
+</Steps>
+
+<Note>
+  Si ya envías desde la dirección conectada y el error persiste, abre un caso con el soporte de **tu proveedor SMTP**. Ellos pueden consultar el estado de entrega del correo en sus registros y decirte si el problema está en el envío o en la bandeja del destinatario.
+</Note>
+
+## Diagnóstico por síntoma
+
+| Síntoma | Causa probable | Solución |
+| --- | --- | --- |
+| Nada sale, error de autenticación | Contraseña, contraseña de aplicación o clave de API incorrecta o revocada | Genera una nueva y actualízala |
+| El correo de prueba funciona, los automáticos no | Remitente distinto al conectado | Unifica las direcciones o verifícalas en tu proveedor |
+| Funcionaba y dejó de funcionar de golpe | Contraseña de la cuenta cambiada, clave regenerada o límite diario alcanzado | Actualiza las credenciales o espera a que se reinicie el límite |
+| Los correos se quedan en **Enviado** | Los proveedores SMTP no informan la entrega | Es normal: el estado cambia cuando el destinatario abre el correo |
+| Llegan, pero a spam | Falta autenticación del dominio o mala reputación | Verifica SPF, DKIM y DMARC |
+| Solo fallan los envíos masivos | Límite diario del proveedor superado | Usa el correo de Chateea para campañas |
+| No conecta con el servidor | Puerto bloqueado | Prueba 465 con SSL en vez de 587 con TLS, o al revés |
+| Error 550 de identidad del remitente en SendGrid | Remitente no verificado en SendGrid | Verifica el remitente en SendGrid |
+| Aparece un remitente que no reconozco | Un flujo o calendario con dirección propia | Revisa la tabla de lugares de arriba |
+
+## Por qué mis correos se quedan en Enviado
+
+Con un SMTP propio, Chateea solo recibe los eventos de **enviado**, **abierto**, **clic** y **rebote**. Los proveedores SMTP no informan cuándo un correo se **entregó**.
+
+Por eso Chateea marca el correo como entregado **solo cuando recibe una apertura**. Hasta entonces, se queda en **Enviado**. No significa que haya fallado. Si necesitas estadísticas de entrega completas, usa el correo de Chateea.
+
+## Error de autenticación
+
+<AccordionGroup>
+  <Accordion title="¿Estás usando la contraseña correcta?">
+    Con Gmail y Google Workspace, la contraseña normal **no funciona**: necesitas una contraseña de aplicación de 16 caracteres. Ver [Usar Gmail como proveedor SMTP](/correo/gmail-google-workspace). Con SendGrid, la contraseña es tu clave de API y el usuario siempre es `apikey`. Con Zoho, si tienes verificación en dos pasos, necesitas una contraseña de aplicación.
+  </Accordion>
+  <Accordion title="¿Copiaste espacios de más?">
+    Un espacio al inicio o al final es invisible y rompe la autenticación. Borra el campo y vuelve a pegar la contraseña con cuidado.
+  </Accordion>
+  <Accordion title="¿Cambiaste la contraseña de tu cuenta?">
+    En Google, al cambiar la contraseña principal se **revocan todas las contraseñas de aplicación**. En SendGrid, al regenerar la clave de API la anterior deja de funcionar. En ambos casos, genera una nueva y actualízala en **Configuración → Servicios de correo**.
+  </Accordion>
+  <Accordion title="¿Pusiste la dirección completa como usuario?">
+    Debe incluir el dominio: `contacto@tunegocio.com`, no solo `contacto`.
+  </Accordion>
+  <Accordion title="¿Sigue activa la verificación en dos pasos?">
+    En Google, si se desactiva, las contraseñas de aplicación dejan de existir.
+  </Accordion>
+  <Accordion title="¿Usas Outlook o Microsoft 365?">
+    Microsoft exige habilitar la autenticación SMTP para aplicaciones externas. Si ves "Authentication unsuccessful", revisa esa opción. Ver [Agregar tu propio servicio SMTP](/correo/agregar-tu-propio-servicio-smtp).
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Para descartar un problema de credenciales, pruébalas con una herramienta externa como el [test SMTP de GMass](https://www.gmass.co/smtp-test).
+</Tip>
+
+## Los correos llegan a spam
+
+Que el envío salga no garantiza que llegue a la bandeja principal. Son dos problemas distintos.
+
+<Steps>
+  <Step title="Verifica la autenticación de tu dominio">
+    SPF, DKIM y DMARC deben estar configurados y verificados. Ver [Dominios y correo](/configuracion/introduccion).
+  </Step>
+  <Step title="No envíes desde una dirección gratuita">
+    Una dirección @gmail.com o @yahoo.com usa la reputación del proveedor, no la tuya. Ver [Por qué no usar un correo gratuito como SMTP](/correo/por-que-no-usar-un-correo-gratuito-como-smtp).
+  </Step>
+  <Step title="Revisa el contenido del mensaje">
+    El exceso de mayúsculas, signos de exclamación y palabras de promoción agresiva dispara los filtros.
+  </Step>
+  <Step title="Revisa la proporción de imagen y texto">
+    Un correo que es solo una imagen grande sin texto se marca como sospechoso.
+  </Step>
+  <Step title="Comprueba a quién le escribes">
+    Si envías a contactos antiguos que no interactúan desde hace años, los rebotes y la falta de aperturas dañan tu reputación.
+  </Step>
+  <Step title="Baja el volumen unas semanas">
+    Escribe solo a contactos activos hasta que tu reputación se recupere.
+  </Step>
+</Steps>
+
+## Límite diario alcanzado
+
+Los proveedores SMTP limitan cuántos correos puedes enviar al día. Gmail, por ejemplo, bloquea el envío temporalmente al superar la cuota, normalmente durante unas 24 horas.
+
+<Warning>
+  Con Gmail, el bloqueo afecta a **toda** tu cuenta de Google, no solo a Chateea: tu correo de trabajo normal también deja de enviar. Por eso no conviene usar un SMTP personal para campañas masivas.
+</Warning>
+
+Qué hacer:
+
+- Espera a que se levante el bloqueo.
+- Pasa las campañas al correo de Chateea y deja el SMTP para correos individuales.
+- Recuerda que el límite cuenta **destinatarios**, no mensajes: un correo a 50 personas consume 50.
+
+## Lista de verificación
+
+Cuando algo falle, recórrela en este orden:
+
+<AccordionGroup>
+  <Accordion title="1. ¿El correo de prueba funciona?">
+    Si no, el problema es de conexión o de autenticación. Si sí, el problema está en alguna dirección de remitente que no coincide.
+  </Accordion>
+  <Accordion title="2. ¿Qué dice el triángulo rojo?">
+    Lee el error que devolvió tu proveedor. Suele indicar la causa exacta.
+  </Accordion>
+  <Accordion title="3. ¿Las credenciales siguen vigentes?">
+    Contraseña de aplicación, clave de API o verificación en dos pasos.
+  </Accordion>
+  <Accordion title="4. ¿Todas las direcciones de envío coinciden con la conectada?">
+    Conversaciones, flujos, campañas, calendarios, usuarios y facturas.
+  </Accordion>
+  <Accordion title="5. ¿El dominio está autenticado?">
+    SPF, DKIM y DMARC en verde.
+  </Accordion>
+  <Accordion title="6. ¿Superaste el límite diario?">
+    Revisa cuántos destinatarios acumulaste hoy.
+  </Accordion>
+  <Accordion title="7. ¿El puerto está bloqueado?">
+    Prueba el puerto alternativo.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué significa que el remitente no coincide con mi SMTP?">
+    Que la dirección que aparece como remitente es distinta de la que está autenticada en tu proveedor SMTP. La mayoría de los proveedores rechazan esos envíos.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar el remitente y evitar el error?">
+    Sí, siempre que la dirección personalizada coincida con la conectada por SMTP o esté verificada en tu proveedor.
+  </Accordion>
+  <Accordion title="¿La verificación del remitente es igual en todos los proveedores?">
+    No. Google usa alias, SendGrid usa identidades de remitente y Zoho verifica los alias en tu cuenta. Revisa la tabla de proveedores de esta guía.
+  </Accordion>
+  <Accordion title="¿A quién contacto si el error sigue después de corregir el remitente?">
+    Al soporte de tu proveedor SMTP. Puede revisar el estado de entrega en sus registros y confirmar si el problema está en el envío o en la bandeja del destinatario.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Sigue sin funcionar?
+
+Escríbenos a **help@chateea.com** o por WhatsApp al **\+1 829-580-7071** con esta información:
+
+- Qué proveedor SMTP usas y qué dirección configuraste como remitente
+- Si el correo de prueba funciona o no
+- El mensaje de error exacto que muestra el triángulo rojo
+- Desde dónde salió el correo que falló (un flujo, un calendario, una campaña, una factura)
+- Hora aproximada del intento
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar tu propio servicio SMTP" icon="server" href="/correo/agregar-tu-propio-servicio-smtp">
+    Cómo conectar un SMTP y qué limitaciones tiene.
+  </Card>
+  <Card title="Gmail o Google Workspace como SMTP" icon="google" href="/correo/gmail-google-workspace">
+    Configura tu cuenta de Google paso a paso.
+  </Card>
+</CardGroup>

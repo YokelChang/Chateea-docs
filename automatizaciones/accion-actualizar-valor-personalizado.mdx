@@ -1,0 +1,94 @@
+---
+title: "Acción: Actualizar valor personalizado"
+sidebarTitle: "Acción: Actualizar valor personalizado"
+description: "Actualiza automáticamente los valores personalizados de tu cuenta desde un flujo de trabajo, para campañas, suscripciones y seguimientos."
+icon: "pen-to-square"
+---
+
+La acción **Actualizar valor personalizado** (Update Custom Value) cambia automáticamente el contenido de un valor personalizado de tu cuenta desde un flujo de trabajo. Como los valores personalizados se comparten en toda la cuenta, un solo cambio se refleja en todos los flujos, correos, SMS y páginas que los usan.
+
+## Qué es un valor personalizado
+
+Los valores personalizados son marcadores que guardas a nivel de tu cuenta (por ejemplo, el nombre de la oferta vigente, un enlace o un correo de notificaciones) y que puedes insertar en mensajes, páginas y automatizaciones. Esta acción te permite actualizarlos sin entrar a editarlos a mano y usar el nuevo valor en los pasos siguientes.
+
+<Tip>
+  **Diferencia clave:** **Actualizar campo de contacto** cambia un dato de una sola persona. **Actualizar valor personalizado** cambia un dato compartido por toda tu cuenta, así que todos los flujos, correos y SMS que lo usen mostrarán el nuevo contenido.
+</Tip>
+
+## Casos de uso
+
+| Caso de uso | Ejemplo práctico |
+| --- | --- |
+| **Origen de los leads** | Si captas contactos con anuncios de Facebook, anuncios de Google y campañas de correo, actualiza un valor por cada fuente para saber cuál genera más leads. |
+| **Programa de referidos** | Actualiza un valor cada vez que un cliente refiere a otro para medir el rendimiento del programa. |
+| **Rendimiento de ventas** | Lleva un valor por representante para detectar áreas de mejora. |
+| **Interacción con clientes** | Tu equipo de atención puede actualizar un valor en cada interacción para medir el compromiso. |
+| **Suscripciones** | Guarda información de renovaciones, cancelaciones o mejoras de plan y dispara acciones según su estado. |
+| **Inscripciones a eventos** | Actualiza un valor por cada registro para medir la asistencia. |
+| **Opiniones de clientes** | Actualiza un valor por cada encuesta o formulario enviado para detectar tendencias. |
+| **Campañas de marketing** | Lleva un valor por campaña (correo, redes sociales, anuncios de pago) para saber cuál genera más leads o ventas. |
+
+## Cómo usar la acción
+
+<Steps>
+  <Step title="Crea o edita un flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y pulsa **Crear flujo de trabajo**, o abre uno existente para editarlo.
+  </Step>
+  <Step title="Agrega la acción">
+    Pulsa **+** para añadir una acción y elige **Actualizar valor personalizado** en la lista.
+  </Step>
+  <Step title="Elige el valor y el nuevo contenido">
+    Selecciona en el desplegable el valor personalizado que quieres actualizar. El panel muestra tres campos:
+
+    | Campo | Qué contiene | Ejemplo |
+    | --- | --- | --- |
+    | **Valor personalizado** (Custom Value) | El valor que vas a actualizar | Canal preferido |
+    | **Valor actual** (Current Value) | El contenido que tiene ahora. Es solo informativo, no se edita aquí | sms |
+    | **Nuevo valor** (New Value) | El contenido nuevo | email |
+
+    El nuevo valor puede ser **estático** (un texto fijo que escribes en la acción) o **dinámico** (una variable que insertas con el selector de variables, tomada de otros datos del flujo).
+  </Step>
+  <Step title="Guarda, prueba y publica">
+    - **Guarda** la acción y las demás acciones o condiciones del flujo.
+    - **Prueba** el flujo con un contacto de prueba o con el botón **Probar flujo de trabajo** para confirmar que funciona como esperas.
+    - **Publica** el flujo para que se ejecute automáticamente cuando se cumplan sus condiciones.
+  </Step>
+</Steps>
+
+<Warning>
+  Revisa el flujo antes de publicarlo. Un valor personalizado actualizado por error afecta a toda tu cuenta y **no se puede deshacer** automáticamente.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo combinar esta acción con otras en el mismo flujo?">
+    Sí. Por ejemplo, puedes usarla después de un disparador para actualizar un valor cuando ocurre un evento concreto.
+  </Accordion>
+
+  <Accordion title="¿Puedo actualizar varios valores personalizados a la vez?">
+    Sí, pero cada acción actualiza un solo valor. Agrega una acción **Actualizar valor personalizado** por cada valor que quieras cambiar.
+  </Accordion>
+
+  <Accordion title="¿Con qué frecuencia puedo actualizar un valor?">
+    Con la frecuencia que necesites. No hay límite de actualizaciones con esta acción.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar variables en el nuevo valor?">
+    Sí. Las variables te permiten actualizar el valor de forma dinámica según otros datos del flujo, lo que abre la puerta a automatizaciones más completas.
+  </Accordion>
+
+  <Accordion title="¿Puedo deshacer una actualización?">
+    No. Una vez que la acción actualiza el valor, el cambio queda aplicado. Si te equivocas, tendrás que volver a editar el valor manualmente en **Configuración → Valores personalizados**. Por eso conviene probar el flujo antes de publicarlo.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Actualizar el campo de contacto" icon="user-pen" href="/automatizaciones/accion-actualizar-el-campo-de-contacto">
+    La acción equivalente para el dato de un contacto individual.
+  </Card>
+
+  <Card title="Disparador premium de webhook entrante" icon="arrow-right-to-bracket" href="/automatizaciones/activador-premium-webhook-entrante">
+    Alimenta el valor personalizado con datos que lleguen de un sistema externo.
+  </Card>
+</CardGroup>

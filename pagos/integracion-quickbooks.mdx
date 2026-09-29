@@ -1,0 +1,150 @@
+---
+title: "Integración con QuickBooks"
+description: "Sincroniza clientes, facturas y recibos de venta entre Chateea y QuickBooks, y resuelve facturas que no se sincronizan."
+icon: "book"
+---
+
+La integración con QuickBooks conecta tu cuenta de Chateea con tu contabilidad para que clientes, facturas y pagos se mantengan sincronizados sin trabajo manual. Es **bidireccional**: una parte de la información viaja de Chateea a QuickBooks y otra en sentido contrario.
+
+| Dirección | Qué viaja |
+| --- | --- |
+| **Chateea → QuickBooks** | Clientes, recibos de venta y facturas |
+| **QuickBooks → Chateea** | Contactos, facturas históricas (opcional) y el disparo de solicitudes de reseña |
+
+## De Chateea a QuickBooks
+
+### Clientes
+
+Se crea un cliente en QuickBooks cuando un contacto tiene actividad de cobro en Chateea. Si en QuickBooks ya existe un cliente con el **mismo correo electrónico**, se actualiza ese registro en lugar de duplicarlo.
+
+<Tip>
+  El correo electrónico es la llave de cruce. Si tus contactos tienen correos vacíos o inconsistentes, ahí aparecerán los duplicados. Vale la pena limpiar esos datos antes de conectar.
+</Tip>
+
+### Recibos de venta
+
+Cada pago cobrado en Chateea genera un **recibo de venta** en QuickBooks, asociado al cliente por su correo. Aplica a pagos de:
+
+- Formularios de pedido
+- Suscripciones
+- Pagos de membresías
+- Pagos de calendarios
+
+### Facturas
+
+Cuando una factura pasa a **enviada** en Chateea, se crea en QuickBooks y, desde ahí, se siguen sincronizando sus cambios:
+
+| Campo sincronizado | Detalle |
+| --- | --- |
+| **Número de factura** | Se conserva la numeración |
+| **Estado** | Pagada, anulada, etc. |
+| **Fechas** | Emisión y vencimiento |
+| **Contacto** | Se crea en QuickBooks si todavía no existe |
+| **Correo de facturación** | La dirección a la que se emite |
+| **Total de la factura** | Importe completo |
+| **Monto pagado** | Útil para pagos parciales |
+| **Nombre de cada línea** | Los conceptos facturados |
+| **Descuentos e impuestos** | En cuentas de Estados Unidos se ajustan dentro del precio del artículo; en otras regiones se sincronizan como campos propios |
+
+<Warning>
+  Solo se sincronizan las facturas creadas **después** de conectar la integración. Las facturas en **borrador** tampoco se envían: solo las que están Enviadas, Pendientes o Pagadas.
+</Warning>
+
+## De QuickBooks a Chateea
+
+### Contactos
+
+Al conectar, se importan a Chateea los contactos que ya tienes en QuickBooks, y los nuevos se siguen sincronizando. Un contacto nuevo puede tardar **hasta 5 minutos** en aparecer.
+
+### Solicitud de reseña automática (opcional)
+
+Cuando QuickBooks registra la **primera factura pagada por completo** de un cliente (saldo en cero), Chateea puede enviarle automáticamente una solicitud de reseña. Lo activas o desactivas en la tarjeta de la integración.
+
+<Tip>
+  Es uno de los mejores momentos para pedir una reseña: el cliente acaba de pagar y todo salió bien. Si vendes servicios, activarlo suele rendir más que cualquier campaña de reseñas posterior.
+</Tip>
+
+### Facturas históricas (opcional)
+
+Si activas la opción al conectar, Chateea importa las facturas que ya existían en QuickBooks.
+
+| Comportamiento | Detalle |
+| --- | --- |
+| **Cambios en facturas importadas** | Lo que edites en Chateea no vuelve a QuickBooks, y viceversa |
+| **Sin bucles** | Las facturas que Chateea envió a QuickBooks no se vuelven a importar |
+
+## Cómo conectar QuickBooks
+
+<Steps>
+  <Step title="Abre las integraciones">
+    Ve a **Configuración → Integraciones** y busca QuickBooks.
+  </Step>
+  <Step title="Haz clic en conectar">
+    Pulsa el botón de conexión de QuickBooks.
+  </Step>
+  <Step title="Elige si importas facturas">
+    Activa **Importar facturas** si quieres traer las facturas que ya tienes en QuickBooks. Esta decisión se toma solo en la conexión inicial.
+  </Step>
+  <Step title="Activa la solicitud de reseñas (opcional)">
+    Marca la opción si quieres enviar una solicitud de reseña cuando se pague la primera factura de un cliente.
+  </Step>
+  <Step title="Inicia sesión en QuickBooks">
+    Haz clic en conectar, entra con tus credenciales de QuickBooks y acepta todos los permisos.
+  </Step>
+</Steps>
+
+<Warning>
+  Piensa bien si quieres importar las facturas históricas antes de continuar. Es la diferencia entre tener todo tu historial en Chateea o empezar desde cero.
+</Warning>
+
+## Ejemplo de una venta de principio a fin
+
+| Momento | En Chateea | En QuickBooks |
+| --- | --- | --- |
+| 1. Un contacto nuevo compra en un formulario de pedido | Se registra el pago | Se crean el cliente y su **recibo de venta** |
+| 2. Emites una factura y la envías | La factura queda Enviada | Se crea la **factura** con sus líneas, impuestos y descuentos |
+| 3. El cliente paga la factura completa | La factura pasa a Pagada | Se actualiza el estado y el saldo queda en cero |
+| 4. Es su primera factura pagada | Se envía la **solicitud de reseña** (si está activada) | Sin cambios |
+
+## Si una factura no aparece en QuickBooks
+
+<Steps>
+  <Step title="Revisa que no esté en borrador">
+    Abre la factura en Chateea. Si está en borrador, haz clic en **Enviar**. Solo se sincronizan las enviadas, pendientes o pagadas.
+  </Step>
+  <Step title="Confirma que el cliente exista en QuickBooks">
+    Si no existe, puede que tengas que crearlo primero en QuickBooks. Aceptar un presupuesto en Chateea no crea el cliente en QuickBooks.
+  </Step>
+  <Step title="Espera la sincronización">
+    Una vez enviada, la factura debería aparecer automáticamente.
+  </Step>
+  <Step title="Revisa la conexión">
+    Si sigue sin aparecer, verifica que la integración siga conectada en **Configuración → Integraciones**.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué hace exactamente la integración?">
+    Sincroniza los contactos de QuickBooks con Chateea, envía opcionalmente una solicitud de reseña cuando se paga la primera factura de un cliente, registra recibos de venta en QuickBooks por los pagos cobrados en Chateea, y crea y actualiza en QuickBooks las facturas que envías o modificas en Chateea.
+  </Accordion>
+  <Accordion title="¿Se importan las facturas que ya tenía en QuickBooks?">
+    Solo si activas **Importar facturas** al conectar. Los cambios que hagas a esas facturas en Chateea no se sincronizan de vuelta, y viceversa. Si no la activas, solo se sincronizan las facturas nuevas creadas en Chateea.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los clientes que ya existen en QuickBooks?">
+    Si hay un cliente con el mismo correo, se actualiza ese registro y se le asocian las transacciones. Si no hay coincidencia, se crea uno nuevo.
+  </Accordion>
+  <Accordion title="¿Las facturas sincronizadas incluyen impuestos y descuentos?">
+    Sí, con los totales, impuestos y descuentos. En cuentas de Estados Unidos se ajustan dentro del precio del artículo; en otras regiones van como campos separados.
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={2}>
+  <Card title="Integración con Xero" icon="file-invoice-dollar" href="/pagos/integracion-xero">
+    La alternativa contable con Xero.
+  </Card>
+  <Card title="Integración con Wave" icon="wave-square" href="/pagos/integracion-wave">
+    Una opción más ligera para sincronizar facturas.
+  </Card>
+</CardGroup>

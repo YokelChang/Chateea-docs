@@ -1,0 +1,78 @@
+---
+title: "Especificaciones técnicas de transmisiones en vivo"
+description: "Resolución, tasa de bits, códecs y audio del video en vivo de comunidades y cursos, para preparar tu equipo o codificador."
+icon: "sliders"
+---
+
+Estas son las especificaciones técnicas del video en vivo de Chateea para comunidades y cursos. Te sirven para preparar tu equipo, configurar un codificador externo o entender por qué la calidad cambia según la conexión de cada asistente.
+
+## Resumen
+
+| Parámetro | Valor |
+| --- | --- |
+| Resolución | 1280 × 720 (HD) |
+| Cuadros por segundo | 30 FPS |
+| Tasa de bits de video | 1,2 Mbps (1.200 Kbps) |
+| Relación de aspecto | 16:9 |
+| Canal de audio | Mono |
+| Duración del video | Sin límite |
+
+## Transmisión
+
+- **Protocolo:** WebRTC (tiempo real, baja latencia).
+- **Intervalo de fotogramas clave (key frame):** 2 segundos (recomendado).
+- **Configuración actual:** 720p a 30 FPS (HD).
+- **Simulcast:** activado. Chateea genera automáticamente varias calidades de la misma señal.
+
+## Calidades que recibe cada asistente
+
+Gracias al simulcast, cada persona recibe la calidad que su conexión soporta:
+
+| Calidad | Resolución | Tasa de bits | Cuadros por segundo |
+| --- | --- | --- | --- |
+| Alta | 1280 × 720 | 1.200 Kbps | 30 FPS |
+| Media | aprox. 640 × 360 | aprox. 500 Kbps | 30 FPS |
+| Baja | aprox. 320 × 180 | aprox. 150 Kbps | 30 FPS |
+
+## Video
+
+- **Códecs compatibles:** H.264 (predeterminado), VP8, VP9 y AV1.
+- **Duración:** sin límite (se puede configurar por sesión).
+- **Tipo de cuadro:** escaneo progresivo.
+- **Codificación:** tasa de bits variable (VBR) con simulcast.
+- **Relación de aspecto:** 16:9 de forma predeterminada. También admite 4:3 y 9:16 (vertical).
+- **Orientación:** se adapta automáticamente al girar el dispositivo.
+
+## Audio
+
+- **Frecuencia de muestreo:** 48 kHz.
+- **Canales:** mono (1 canal), optimizado para la voz.
+- **Códec:** Opus.
+- **Tasa de bits de audio:** 96 Kbps.
+
+## Funciones de calidad activadas
+
+| Función | Qué hace |
+| --- | --- |
+| Simulcast | Adapta la calidad al ancho de banda de cada asistente. |
+| Dynacast | Ajusta la tasa de bits de forma dinámica para cada participante. |
+| DTX (transmisión discontinua) | Ahorra ancho de banda durante los silencios. |
+| RED (codificación redundante) | Mejora la recuperación cuando se pierden paquetes de datos. |
+| Cancelación de eco | Reduce el eco y la retroalimentación. |
+| Supresión de ruido | Minimiza el ruido de fondo. |
+| Control automático de ganancia | Normaliza el volumen del audio. |
+
+<Tip>
+  Si transmites desde un programa externo, configura tu salida en 1280 × 720 a 30 FPS, con un fotograma clave cada 2 segundos, para que coincida con la configuración de Chateea. Usa una conexión estable, de preferencia por cable.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Video en vivo y videollamadas" icon="video" href="/cursos/video-en-vivo-y-videollamadas">
+    Qué ofrecen las salas interactivas y las transmisiones.
+  </Card>
+  <Card title="Transmisiones en vivo en comunidades" icon="tower-broadcast" href="/cursos/transmisiones-en-vivo-en-comunidades">
+    Inicia una reunión o transmisión desde un grupo.
+  </Card>
+</CardGroup>

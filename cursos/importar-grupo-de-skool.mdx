@@ -1,0 +1,71 @@
+---
+title: "Importa tu grupo de Skool a Chateea"
+description: "Migra los miembros y las publicaciones de tu grupo de Skool a un grupo de comunidad de Chateea paso a paso."
+icon: "file-import"
+---
+
+Si tienes tu comunidad en Skool y quieres pasarla a Chateea, el importador de Skool te permite traer los **miembros** y las **publicaciones** de tu grupo a un grupo de comunidad de Chateea. El proceso tiene dos etapas (primero miembros, luego publicaciones), muestra el progreso en tiempo real y te avisa de cualquier dato que falte.
+
+## Antes de empezar
+
+- Necesitas un grupo de comunidad creado en Chateea y ser su propietario o administrador.
+- Ten a mano estos datos de tu grupo en Skool:
+  - El **identificador del grupo** (group slug): la parte de la URL de tu grupo en Skool que lo identifica.
+  - El **correo de administrador** que usas en Skool.
+  - La **contraseña** de esa cuenta de Skool.
+
+## Importar tu grupo
+
+<Steps>
+  <Step title="Conecta tu grupo de Skool">
+    En Chateea, entra al grupo de destino y abre su **Configuración**. En el menú lateral, selecciona la pestaña **Importar**. Escribe el identificador del grupo, el correo de administrador y la contraseña de Skool, y haz clic en **Confirmar**.
+  </Step>
+  <Step title="Descarga y completa el archivo de miembros">
+    El sistema genera un archivo CSV con estas columnas: `profileSlug`, `firstName`, `lastName` y `email`. Descárgalo y completa los correos que falten, porque algunos miembros pueden venir sin correo.
+
+    Si entraron miembros nuevos a tu grupo de Skool mientras tanto, usa **Actualizar lista de usuarios** (Refresh user list) antes de descargar el archivo.
+
+    <Warning>
+      No cambies la columna `profileSlug`. El sistema la usa para identificar a cada miembro, y si la modificas, la importación falla.
+    </Warning>
+  </Step>
+  <Step title="Sube el archivo completo">
+    Haz clic en **Seleccionar archivo** y sube el CSV actualizado. Los miembros válidos se importan automáticamente y verás cuántos se agregaron y cuántos fallaron. Por ejemplo: "2 miembros no se pudieron agregar porque les falta el correo".
+
+    Si hubo errores, corrige el CSV y haz clic en **Intentar de nuevo**.
+  </Step>
+  <Step title="Importa las publicaciones">
+    Cuando los miembros se importan correctamente, el sistema te propone importar las publicaciones del grupo. Puedes seguir el avance en tiempo real. Cada publicación queda vinculada a su autor.
+  </Step>
+</Steps>
+
+## Consejos para una migración sin errores
+
+- **Actualiza la lista antes de descargar** si tu grupo de Skool sigue activo, para no dejar fuera a los miembros más recientes.
+- **Revisa bien los correos.** Los correos que faltan o están mal escritos son la causa más común de errores.
+- **Importa los miembros primero.** Las publicaciones solo se pueden migrar después de que los miembros se importaron correctamente.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo volver a intentar con los miembros que fallaron?">
+    Sí. Corrige el CSV y haz clic en **Intentar de nuevo**.
+  </Accordion>
+  <Accordion title="¿Qué pasa si cambio el profileSlug?">
+    No lo hagas. El sistema usa ese dato para identificar a cada miembro, y cambiarlo puede romper la importación.
+  </Accordion>
+  <Accordion title="¿Se importan las publicaciones de los miembros que no se agregaron?">
+    No. Las publicaciones están vinculadas a su autor, así que solo se traen las de los miembros importados correctamente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Filtrar contactos por grupos de comunidad" icon="filter" href="/cursos/filtrar-contactos-por-grupos-de-comunidad">
+    Encuentra en tu CRM a los miembros importados.
+  </Card>
+  <Card title="Cursos, membresías y comunidades" icon="book-open" href="/cursos/introduccion">
+    Qué puedes construir con Membresías.
+  </Card>
+</CardGroup>

@@ -1,0 +1,57 @@
+---
+title: "Cómo configurar la acción Eliminar contacto"
+sidebarTitle: "Cómo configurar la acción Eliminar contacto"
+description: "Borra contactos automáticamente desde un flujo de trabajo: cómo configurar la acción, por qué debe ir en el último paso y casos de uso."
+icon: "user-xmark"
+---
+
+La acción **Eliminar contacto** (Delete Contact) borra un contacto de tu cuenta y lo saca de todos los flujos de trabajo. Te ayuda a mantener tu base de contactos limpia y a enfocarte solo en leads y clientes relevantes.
+
+<Warning>
+  El contacto se retira de todos los flujos de trabajo y se elimina de tu cuenta. Prueba siempre el flujo con un contacto de prueba antes de publicarlo.
+</Warning>
+
+## Cómo configurar la acción
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo de trabajo, pulsa **+** para agregar una acción. Busca **Eliminar contacto** o desplázate por la lista de acciones hasta encontrarla.
+  </Step>
+  <Step title="Guarda la acción">
+    Pulsa **Guardar acción** para terminar.
+  </Step>
+</Steps>
+
+Al añadirla, el panel muestra:
+
+| Elemento del panel | Qué indica |
+| --- | --- |
+| **Descripción** | La acción elimina el contacto de tu cuenta y de todos los flujos de trabajo. |
+| **Nombre de la acción** (Action Name) | El nombre con el que aparece en el lienzo. Por defecto es "Delete Contact" y puedes cambiarlo. |
+| **Aviso de ubicación** | Esta acción solo puede ser el **último paso** del flujo o de la rama. |
+
+**Ejemplo:** si una rama termina con un correo de despedida y después quieres borrar el contacto, coloca **Eliminar contacto** justo después de ese correo, como último bloque de la rama.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo poner la acción en cualquier parte del flujo?">
+    No. Solo puede ir como último paso, al final de una rama, porque después de ella el contacto ya no existe.
+  </Accordion>
+
+  <Accordion title="¿Puedo recuperar un contacto eliminado?">
+    Sí, puedes restaurarlo manualmente desde **Contactos**. Consulta [cómo restaurar contactos eliminados](/contactos/restaurar-contactos-eliminados).
+  </Accordion>
+</AccordionGroup>
+
+## Casos de uso
+
+<CardGroup cols={2}>
+  <Card title="Limpieza automática de spam" icon="broom">
+    Elimina automáticamente los contactos de spam detectados por etiqueta, origen o un campo del formulario.
+  </Card>
+
+  <Card title="Eliminación desde otro sistema" icon="webhook">
+    Borra contactos a partir de un webhook entrante o personalizado cuando otro sistema decide qué registros deben desaparecer.
+  </Card>
+</CardGroup>

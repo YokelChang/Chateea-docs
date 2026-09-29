@@ -1,0 +1,137 @@
+---
+title: "Primeros pasos con los cupones"
+description: "Crea cupones porcentuales o de monto fijo con vigencia, límites de uso y duración en suscripciones."
+icon: "ticket"
+---
+
+Los cupones te ayudan a cerrar más ventas: un descuento bien planteado convence al cliente que duda, premia a los fieles y te permite medir qué promociones funcionan. En Chateea creas cupones porcentuales o de monto fijo, para productos de pago único y recurrentes, y controlas dónde, cuándo y cuántas veces se pueden usar.
+
+## Qué puedes hacer con los cupones
+
+- Ofrecer descuentos **porcentuales** o de **monto fijo**.
+- Aplicar el descuento al **carrito completo** o solo a **productos concretos**.
+- Limitar el uso con topes de canjes, vigencia y un uso por cliente.
+- Descontar **suscripciones** durante un tiempo definido o para siempre.
+- Consultar el uso y el historial de canjes de cada cupón.
+
+## Dónde se pueden usar
+
+| Proceso de cobro | Detalle |
+| --- | --- |
+| **Embudos** | En los formularios de pedido |
+| **Tiendas** | En el checkout de la tienda en línea |
+| **Sitios web** | En los elementos de cobro de tus páginas |
+| **Enlaces de pago** | Al pagar desde el enlace |
+| **Calendarios** | En las citas con pago |
+| **Servicios** | En el menú de servicios |
+| **Eventos** | Con los cupones creados en **Pagos → Cupones** o con cupones propios de cada evento, creados desde el evento |
+| **Página de venta de tarjetas de regalo** | Al comprar una tarjeta de regalo |
+| **Crear suscripción** | Cuando tú creas la suscripción para el cliente desde tu cuenta |
+
+<Warning>
+Los cupones **no** funcionan en presupuestos ni facturas. Si necesitas rebajar una factura, usa un descuento dentro del propio documento. Además, algunas configuraciones de cupones no son compatibles con suscripciones cobradas con PayPal (lo verás en las preguntas frecuentes).
+</Warning>
+
+## Cómo crear un cupón
+
+<Steps>
+  <Step title="Abre los cupones">
+    Ve a **Pagos → Cupones** y haz clic en **Crear cupón**.
+  </Step>
+  <Step title="Escribe el nombre y el código">
+    - **Nombre del cupón:** es una referencia interna para tu equipo. Ejemplo: `VERANO 2026`.
+    - **Código del cupón:** es lo que el cliente escribe al pagar. Solo admite letras y números, sin espacios ni caracteres especiales. No distingue mayúsculas de minúsculas (se convierte a mayúsculas automáticamente). Si prefieres, haz clic en **Generar** para crear un código automático.
+  </Step>
+  <Step title="Elige el tipo de descuento">
+    - **Porcentual:** descuenta un porcentaje del total. Carrito de 100 con cupón del 25 % = 75.
+    - **Monto fijo:** descuenta una cantidad fija sin importar el tamaño del pedido. Carrito de 100 con cupón de 25 = 75.
+
+    La moneda del cupón es la de tu cuenta y no se puede cambiar.
+  </Step>
+  <Step title="Define la vigencia (opcional)">
+    Indica la **fecha y hora de inicio** (cuándo empieza a funcionar) y la **fecha y hora de fin** (cuándo vence). Si no pones fecha de fin, el cupón queda activo indefinidamente.
+  </Step>
+  <Step title="Configura las restricciones de uso">
+    - **Limitar el total de canjes:** por ejemplo, solo los primeros 100 usos.
+    - **Limitar a productos seleccionados:** el cupón solo funciona con los productos que elijas. También puedes restringirlo a precios o variantes concretos de un producto.
+    - **Limitar a un uso por cliente:** evita que la misma persona lo use varias veces.
+  </Step>
+  <Step title="Configura las suscripciones (si aplica)">
+    Para productos recurrentes, en **Aplicar a pagos futuros** elige:
+    - **Para siempre:** el descuento se aplica en todos los ciclos de cobro.
+    - **Varios meses:** el descuento dura un número fijo de meses.
+
+    Ejemplo: suscripción de 100 al mes con cupón del 20 % durante 3 meses. El cliente paga 80 los tres primeros meses y después vuelve a 100. Esto funciona igual sea cual sea la frecuencia de cobro.
+  </Step>
+  <Step title="Crea el cupón">
+    Haz clic en **Crear**. El cupón queda activo, o programado si pusiste una fecha de inicio futura.
+  </Step>
+</Steps>
+
+<Tip>
+Usa un nombre descriptivo para tu equipo ("Promo lanzamiento septiembre Instagram") y un código corto y fácil de escribir para el cliente (`SEPT20`). Los códigos largos se escriben mal y generan dudas en el checkout.
+</Tip>
+
+## Cómo funcionan en el checkout
+
+- El campo para escribir el cupón **solo aparece cuando existe un cupón válido** para ese checkout. Si no hay ninguno aplicable, el campo se oculta.
+- El descuento se muestra en el resumen de compra, se reparte proporcionalmente entre los productos a los que aplica y queda visible en los detalles del pedido.
+- Muchos procesos de cobro, como embudos y enlaces de pago, tienen en su editor una opción para mostrar u ocultar el campo de cupones.
+
+## Comportamientos y límites
+
+| Punto | Detalle |
+| --- | --- |
+| **Tipos de producto** | Se aplican a productos de pago único y recurrentes. |
+| **Ventas adicionales de un clic** | Los cupones **no** se aplican a las ventas adicionales de un clic de los embudos. |
+| **Pedidos en 0** | Un cupón puede dejar el carrito en 0. Si el editor tiene una opción para pedidos de 0, el cliente solo debe ingresar su tarjeta cuando esa opción lo exige. Si el editor no tiene esa opción, la tarjeta siempre se pide. |
+| **Descuentos del 100 %** | Funcionan con la mayoría de los proveedores de pago, excepto PayPal. |
+| **Códigos** | Son únicos y no distinguen mayúsculas de minúsculas. |
+| **Reparto del descuento** | Se distribuye proporcionalmente entre los productos. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo regalar un producto con un cupón?">
+    Sí. Crea un cupón del 100 % de descuento. Recuerda que no funciona con PayPal cuando hay suscripciones en el pedido.
+  </Accordion>
+  <Accordion title="¿Puedo editar o eliminar un cupón después?">
+    Sí. Puedes editarlo, eliminarlo o ver su historial de uso en cualquier momento.
+  </Accordion>
+  <Accordion title="¿Un cupón se aplica a productos únicos y de suscripción en el mismo pedido?">
+    Sí. Se aplica a ambos. En las suscripciones, el descuento dura lo que configuraste (varios meses o para siempre).
+  </Accordion>
+  <Accordion title="¿Cómo se calcula el descuento si el cliente compra varias unidades?">
+    Sobre el valor total de ese producto (cantidad por precio). Si un producto cuesta 20 y el cliente compra 5 unidades con un cupón del 10 %, el descuento es de 10 (el 10 % de 100).
+  </Accordion>
+  <Accordion title="¿Qué pasa si cambio un cupón que ya se usó?">
+    Puedes cambiar ajustes como el nombre, los límites o la vigencia, pero los cambios solo afectan a los usos futuros. Los pedidos anteriores no cambian.
+  </Accordion>
+  <Accordion title="¿El cupón descuenta también la tarifa de configuración?">
+    Sí. En los productos de suscripción, el cupón se aplica también a la tarifa de configuración.
+  </Accordion>
+  <Accordion title="¿Qué configuraciones no funcionan con PayPal?">
+    - Un descuento de suscripción por **varios meses** en lugar de **Para siempre**: PayPal aplica el descuento durante toda la suscripción, no solo los meses definidos.
+    - Un cupón que deja el pedido en 0 (del 100 % o de monto fijo igual al total) cuando hay productos de suscripción en el checkout.
+  </Accordion>
+  <Accordion title="Mi cupón no aparece en el checkout. ¿Qué reviso?">
+    Comprueba que el cupón esté vigente, que no haya alcanzado su límite de canjes, que esté permitido para los productos de ese checkout y que el campo de cupones esté activado en el editor. Si todo está bien y sigue sin aparecer, escribe a soporte de Chateea en **help@chateea.com** con el código del cupón y el producto afectado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cupones en productos de suscripción" icon="repeat" href="/pagos/cupones-productos-suscripcion">
+    Cómo se comporta la duración del descuento en productos recurrentes.
+  </Card>
+  <Card title="Segmentación de cupones" icon="filter" href="/pagos/segmentacion-cupones">
+    Limita cupones por producto, precio y variante.
+  </Card>
+  <Card title="Enlaces de pago" icon="link" href="/pagos/enlaces-de-pago">
+    Cobra con un enlace y acepta cupones.
+  </Card>
+  <Card title="Primeros pasos con las tarjetas de regalo" icon="gift" href="/pagos/tarjetas-regalo-primeros-pasos">
+    Otra forma de premiar a tus clientes.
+  </Card>
+</CardGroup>

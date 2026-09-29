@@ -1,0 +1,91 @@
+---
+title: "Acción: Webhook personalizado"
+description: "Envía datos de tus flujos a cualquier URL con el método, la autorización y los encabezados que necesites."
+icon: "code"
+---
+
+La acción **Webhook personalizado** (Custom Webhook) envía datos desde tu flujo de trabajo a cualquier URL en tiempo real. Con ella conectas Chateea con otras aplicaciones y servicios sin programar ni mantener un servidor: puedes elegir el método HTTP, la autorización, los encabezados, los parámetros de consulta y la estructura exacta de los datos que envías.
+
+<Note>
+  **Webhook personalizado** es una acción premium: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Para qué te sirve
+
+- **Integraciones precisas:** reemplaza la copia manual de datos entre sistemas, que es lenta y propensa a errores.
+- **Flexibilidad total:** eliges método, autorización, encabezados y parámetros para adaptarte a lo que pida la otra aplicación.
+- **Actualizaciones al instante:** la otra herramienta recibe los datos en cuanto el contacto llega al paso.
+- **Escala contigo:** funciona igual con 10 que con 10.000 contactos, siempre que el servidor de destino lo soporte.
+
+Es especialmente útil si tienes un equipo de marketing, un desarrollador o un proveedor de sistemas que necesita llevar datos de tus contactos a otras plataformas.
+
+## Configurar la acción
+
+<Steps>
+  <Step title="Agrega la acción">
+    En **Automatización → Flujos de trabajo**, abre el flujo, haz clic en **+** donde quieras la acción y elige **Webhook personalizado**.
+  </Step>
+  <Step title="Escribe la URL">
+    Pega la URL de destino a la que quieres enviar los datos.
+  </Step>
+  <Step title="Elige el método">
+    Selecciona el método HTTP que pide el servicio de destino: **POST**, **GET**, **PUT** o **DELETE**.
+  </Step>
+  <Step title="Elige el tipo de autorización">
+    Selecciona el método de autorización que requiere el servicio de destino y completa sus datos (por ejemplo, un token o usuario y contraseña de esa API).
+  </Step>
+  <Step title="Agrega encabezados y parámetros (opcional)">
+    - **Encabezados:** información adicional sobre la petición, como credenciales, tipo de contenido o control de caché.
+    - **Parámetros de consulta:** valores que se añaden a la URL para filtrar o modificar la respuesta del servicio.
+  </Step>
+  <Step title="Configura los datos que envías">
+    Arma el cuerpo de la petición con la estructura que necesites. El cuadro de texto te sugiere automáticamente todos los valores personalizados disponibles, incluidos los datos que llegaron por un **Webhook entrante**, para que mapear sea más rápido y sin errores.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda la acción y prueba el flujo con un contacto de prueba antes de publicarlo.
+  </Step>
+</Steps>
+
+Ejemplo de cuerpo de petición:
+
+```json
+{
+  "nombre": "{{contact.first_name}}",
+  "correo": "{{contact.email}}",
+  "telefono": "{{contact.phone}}",
+  "origen": "Chateea"
+}
+```
+
+## Solución de problemas
+
+La acción depende de que el servicio de destino responda correctamente:
+
+- **Si el servicio devuelve un error**, se refleja en la ejecución del flujo del contacto: la acción puede marcarse como **Fallida** (y se omite) o **reintentarse** con esperas cada vez más largas entre intentos.
+- **Respeta los límites del servidor de destino.** La acción se ejecuta en cuanto cada contacto llega al paso. Si agregas muchos contactos al flujo a la vez, el servidor puede alcanzar su límite de peticiones y devolver errores. Agrega contactos de forma escalonada si el destino tiene límites bajos.
+- **Revisa el historial de ejecución** del flujo para ver la respuesta del servicio y el motivo del error.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué métodos HTTP puedo usar?">
+    **POST**, **GET**, **PUT** y **DELETE**.
+  </Accordion>
+  <Accordion title="¿Puedo enviar datos que llegaron por un webhook entrante?">
+    Sí. Los valores del disparador **Webhook entrante** aparecen en las sugerencias del cuadro de datos, junto con los campos del contacto y demás valores personalizados.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el servicio de destino está caído?">
+    La acción recibirá un error y, según el caso, se marcará como fallida o se reintentará. Revisa el historial de ejecución para ver el detalle.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador: Webhook entrante" icon="plug" href="/automatizaciones/activador-premium-webhook-entrante">
+    Recibe datos de otras aplicaciones para iniciar tus flujos.
+  </Card>
+  <Card title="Acción de Slack" icon="slack" href="/automatizaciones/accion-workflow-premium-de-slack">
+    Envía avisos a Slack desde tus flujos.
+  </Card>
+</CardGroup>

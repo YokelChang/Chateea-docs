@@ -1,0 +1,248 @@
+---
+title: "Migrar desde Kajabi a Chateea"
+description: "Importa tus cursos y plantillas de Kajabi y recrea contactos, goteo, ofertas, calendarios, flujos y sitio en Chateea."
+icon: "right-left"
+---
+
+Si vendes cursos en Kajabi, puedes mudarte a Chateea y reunir en una sola plataforma tus cursos, tus contactos, tus ofertas, tus calendarios, tus automatizaciones y tu sitio. Chateea tiene importadores para tus cursos y tus plantillas de correo de Kajabi, así que buena parte del trabajo se hace en pocos clics. Esta guía te lleva por todo el proceso, desde la preparación hasta la cancelación de Kajabi.
+
+## Qué vas a migrar
+
+| En Kajabi | En Chateea | Cómo se migra |
+| --- | --- | --- |
+| Cursos y lecciones publicadas | **Membresías → Cursos** | Importador de Kajabi |
+| Cuestionarios y tareas | Evaluaciones del curso | Se recrean a mano |
+| Contactos | Contactos | Exportación e importación en CSV |
+| Coaching y citas | Calendarios | Se recrean |
+| Plantillas de correo | Plantillas de correo | Importador de plantillas de Kajabi |
+| Ofertas | Ofertas de curso y productos | Se recrean |
+| Automatizaciones | Flujos de trabajo | Se reconstruyen |
+| Sitio y embudos | Sitios web y embudos | Se reconstruyen |
+
+## 1. Prepara la migración
+
+<Steps>
+  <Step title="Revisa tu cuenta de Kajabi">
+    Haz una lista de cursos, ofertas, automatizaciones, campañas de correo, integraciones y demás activos digitales. Calcula el volumen de contenido (videos, adjuntos) y de datos (contactos, pedidos).
+  </Step>
+  <Step title="Define objetivos y prioridades">
+    Decide qué contenido y qué flujos migrar primero. Normalmente, los cursos activos y el acceso de tus alumnos.
+  </Step>
+  <Step title="Respalda todo">
+    Guarda una copia de tus temas y del contenido de tus cursos antes de empezar.
+  </Step>
+</Steps>
+
+## 2. Migra tus cursos
+
+El importador de Kajabi trae tus cursos con sus videos, textos e imágenes. Detecta y expande automáticamente las secciones **Mostrar más** y captura las lecciones dentro de categorías y subcategorías anidadas, así que funciona bien con cursos grandes.
+
+<Warning>
+  Solo se importan las lecciones **publicadas**. Publica en Kajabi todo lo que quieras migrar. Los cuestionarios y las tareas no se transfieren y debes recrearlos en Chateea.
+</Warning>
+
+<Steps>
+  <Step title="Prepárate">
+    Respalda tus temas y el contenido, y programa la importación en horas de poco tráfico para no afectar a tus alumnos.
+  </Step>
+  <Step title="Abre el importador">
+    En Chateea, ve a **Membresías → Cursos → Productos → Crear producto → Importar**.
+  </Step>
+  <Step title="Conecta Kajabi y elige los cursos">
+    Introduce los datos de acceso que te pide el importador, elige los cursos que quieres traer y haz clic en **Importar**. Puede tardar unos minutos según el tamaño del curso.
+  </Step>
+</Steps>
+
+Encontrarás el paso a paso completo, con requisitos y solución de problemas, en [Importa tus cursos desde Kajabi](/cursos/importar-cursos-desde-kajabi).
+
+### Recrea cuestionarios y tareas
+
+<Steps>
+  <Step title="Elige el producto">
+    Ve a **Membresías → Cursos → Productos** y abre el curso. Haz clic en el ícono **+** junto al título de la categoría y elige **Agregar evaluación**.
+  </Step>
+  <Step title="Crea la evaluación">
+    Escribe un título y haz clic en **Guardar**.
+  </Step>
+  <Step title="Define la calificación mínima (opcional)">
+    Si la evaluación requiere aprobarse, indica la puntuación mínima.
+  </Step>
+  <Step title="Personaliza los mensajes">
+    Crea mensajes de aprobado y reprobado según la puntuación del alumno.
+  </Step>
+  <Step title="Agrega las preguntas">
+    Elige **Opción única** (una respuesta correcta) u **Opción múltiple** (varias correctas). Escribe la pregunta, usa **Agregar opción** para las respuestas y marca las correctas con la casilla **Opción correcta**.
+  </Step>
+  <Step title="Publica">
+    Vuelve a la página de edición del producto y haz clic en **Publicar** junto a la evaluación. A partir de ahí la verán todos los alumnos del curso.
+  </Step>
+</Steps>
+
+Más detalles en [Cuestionarios y tareas en cursos](/cursos/cuestionarios-y-tareas-en-cursos).
+
+### Configura el goteo de contenido
+
+Si en Kajabi liberabas lecciones de forma progresiva, configura el goteo en cada lección o categoría. El retraso debe ser **mayor que 0**: Chateea rechaza valores no válidos como `0`. Si una lección debe estar disponible desde el primer día, simplemente no le configures goteo. Ver [Vista previa de lecciones y goteo](/cursos/vista-previa-de-lecciones-y-goteo).
+
+## 3. Migra tus contactos
+
+<Steps>
+  <Step title="Exporta desde Kajabi">
+    En la pestaña **Contacts** de Kajabi, selecciona todos los contactos y usa el menú de acciones masivas para exportarlos en CSV. Kajabi envía el archivo al correo de la cuenta: descárgalo pronto, porque el enlace vence en 3 días.
+  </Step>
+  <Step title="Prepara el archivo">
+    Pon las fechas en formato `AAAA-MM-DD`, guarda el archivo en UTF-8 y quita saltos de línea, emojis y caracteres innecesarios. Crea en **Configuración → Campos personalizados** los campos que necesites.
+  </Step>
+  <Step title="Importa en Chateea">
+    Ve a **Contactos → Importar contactos**, sube el CSV y asigna cada columna a su campo. Aplica etiquetas que indiquen el origen o el curso, como `importado-kajabi` o `curso-a-inscrito`, y haz clic en **Importar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Si algo falla, revisa [Solucionar errores de importación](/contactos/solucionar-errores-importacion-csv).
+</Tip>
+
+## 4. Migra tus calendarios
+
+Kajabi, igual que Chateea, admite citas únicas y recurrentes. Si agendas con Calendly, sigue también la guía [Migrar desde Calendly](/guias/migrar-desde-calendly).
+
+<Steps>
+  <Step title="Revisa tus calendarios en Kajabi">
+    En Kajabi, ve a **Products → Coaching → Settings** para ver tus calendarios de Google y Outlook conectados. Anota para qué sirve cada uno, dónde se usa (sitio web, reuniones de Zoom) y si alguno cobra.
+  </Step>
+  <Step title="Crea los calendarios en Chateea">
+    Ve a **Configuración → Calendarios** y crea cada calendario con sus recordatorios, usuarios asignados y ubicaciones de reunión. Configura las citas recurrentes con sus reglas de repetición.
+  </Step>
+  <Step title="Conecta tus calendarios externos">
+    En **Calendarios → Configuración de calendarios → Conexiones**, sincroniza Google u Outlook para evitar reservas dobles.
+  </Step>
+  <Step title="Prueba">
+    Compara cada calendario con tu configuración de Kajabi.
+  </Step>
+</Steps>
+
+Chateea ofrece varios tipos de calendario: round robin para repartir citas entre tu equipo, clases para sesiones grupales, citas recurrentes y opciones de color, disponibilidad y permisos. Ver [Introducción a calendarios](/calendarios/introduccion).
+
+## 5. Migra ofertas, correos y automatizaciones
+
+### Revisa lo que tienes
+
+Anota todas tus ofertas gratuitas y de pago (productos, precios y cobro) y todas tus automatizaciones: secuencias de correo, etiquetas y disparadores que controlan el acceso a los cursos.
+
+### Importa tus plantillas de correo
+
+<Steps>
+  <Step title="Inicia la importación">
+    Ve a **Marketing → Correos → Plantillas**, haz clic en **Nuevo → Importar plantillas** y elige **Kajabi**.
+  </Step>
+  <Step title="Copia la dirección">
+    Copia la dirección de correo que te muestra Chateea.
+  </Step>
+  <Step title="Envía el correo desde Kajabi">
+    Envía la plantilla como correo de prueba o como campaña a esa dirección.
+  </Step>
+  <Step title="Crea la plantilla">
+    Vuelve a Chateea, haz clic en **Continuar**, ponle nombre y haz clic en **Crear plantilla**.
+  </Step>
+</Steps>
+
+Ver [Importar plantillas de correo desde Kajabi](/marketing/importar-plantillas-de-correo-desde-kajabi).
+
+### Recrea tus ofertas
+
+<Steps>
+  <Step title="Crea la oferta">
+    Ve a **Membresías → Cursos → Ofertas**, escribe el título, elige los cursos, define el precio y haz clic en **Crear**. La oferta queda en borrador hasta que la publiques.
+  </Step>
+  <Step title="Vincúlala a un producto de pago">
+    Ve a **Pagos → Productos → Crear producto**, completa la información y el precio (nombre, tipo y monto). En **Opciones adicionales**, activa **Membresías** y elige la oferta.
+  </Step>
+</Steps>
+
+<Note>
+  La oferta debe estar publicada para aparecer en la lista. Ver [Vincular un producto a una oferta de curso](/cursos/vincular-producto-a-oferta-de-curso).
+</Note>
+
+### Reconstruye tus automatizaciones
+
+En **Automatización → Flujos de trabajo**, replica tus automatizaciones de Kajabi con disparadores, acciones y condiciones equivalentes. Las acciones más útiles son:
+
+- **Otorgar oferta de curso:** da acceso a los cursos. Ver [Dar acceso a cursos con flujos de trabajo](/cursos/dar-acceso-a-cursos-con-flujos).
+- **Enviar correo:** replica tus secuencias.
+- **Si/Sino:** gestiona etiquetas y recorridos de tus alumnos.
+
+Prueba cada flujo: disparadores, correos y acceso a los cursos.
+
+## 6. Migra tu sitio y tus embudos
+
+<Steps>
+  <Step title="Reconstruye las páginas">
+    Ve a **Sitios → Sitios web** o **Sitios → Embudos**. Parte de una plantilla parecida a tus páginas de Kajabi y recrea la página de inicio, las de producto, las de venta y la de contacto con bloques prediseñados.
+  </Step>
+  <Step title="Guarda, previsualiza y publica">
+    Guarda tu trabajo, revisa la vista previa y publica cuando esté listo.
+  </Step>
+  <Step title="Configura los registros DNS">
+    En tu proveedor de dominio, agrega los registros que te indica Chateea: un registro **A** para el dominio raíz o un **CNAME** para subdominios.
+    <Note>
+      Si usas Cloudflare, pon el estado del proxy en **Solo DNS**, porque el proxy de Cloudflare no es compatible.
+    </Note>
+  </Step>
+  <Step title="Agrega el dominio en Chateea">
+    Ve a **Configuración → Dominios**, haz clic en **+ Agregar dominio**, escribe tu dominio (por ejemplo, `midominio.com`) o subdominio (por ejemplo, `oferta.midominio.com`) y elige agregar los registros manualmente. Para dominios raíz, activa la redirección de **www**.
+  </Step>
+  <Step title="Vincula el dominio">
+    Tras verificar el DNS, elige el embudo o sitio web y la página predeterminada, y haz clic en **Vincular dominio**. El certificado SSL se agrega automáticamente en unos minutos.
+  </Step>
+</Steps>
+
+Ver [Conectar un dominio raíz o subdominio](/sitios/conectar-dominio-raiz-o-subdominio) para los valores exactos de los registros.
+
+## 7. Verificación final y cierre de Kajabi
+
+- **Valida los datos:** contactos, contenido de los cursos y ofertas.
+- **Valida los flujos:** confirma que todas las automatizaciones funcionan.
+- **Capacita a tu equipo** en el CRM, la gestión de cursos y las automatizaciones.
+- **Opera en paralelo** un tiempo y reduce el uso de Kajabi de forma gradual.
+- **Haz un respaldo final** y sigue el proceso de cancelación de Kajabi.
+- **Revisa el resultado** y documenta lo aprendido.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué es el goteo en los cursos?">
+    Es la forma de programar cuándo se liberan las lecciones o categorías para cada alumno, de forma progresiva.
+  </Accordion>
+  <Accordion title="¿Puedo poner 0 como valor de goteo?">
+    No. Chateea bloquea valores no válidos como `0` para evitar problemas de programación. Usa un valor mayor que 0, o no configures goteo si la lección debe estar disponible de inmediato.
+  </Accordion>
+  <Accordion title="¿Por qué no se guardó mi configuración de goteo?">
+    Chateea valida los valores antes de guardar y rechaza automáticamente los que no son válidos. Revisa que el retraso sea mayor que 0.
+  </Accordion>
+  <Accordion title="¿Esta validación afecta a mis goteos existentes?">
+    No. Los goteos válidos que ya tenías siguen funcionando igual.
+  </Accordion>
+  <Accordion title="¿El goteo funciona en cursos y membresías?">
+    Sí. Está disponible en los productos de curso y membresía.
+  </Accordion>
+  <Accordion title="¿Se importan los cuestionarios de Kajabi?">
+    No. Debes recrearlos como evaluaciones en el curso de Chateea.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importa tus cursos desde Kajabi" icon="file-import" href="/cursos/importar-cursos-desde-kajabi">
+    El paso a paso del importador.
+  </Card>
+  <Card title="Importar plantillas de correo desde Kajabi" icon="envelope" href="/marketing/importar-plantillas-de-correo-desde-kajabi">
+    Reutiliza tus correos.
+  </Card>
+  <Card title="Cuestionarios y tareas en cursos" icon="list-check" href="/cursos/cuestionarios-y-tareas-en-cursos">
+    Recrea tus evaluaciones.
+  </Card>
+  <Card title="Migrar desde Kartra" icon="right-left" href="/guias/migrar-desde-kartra">
+    Otra guía para cursos y embudos.
+  </Card>
+</CardGroup>

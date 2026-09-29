@@ -1,0 +1,131 @@
+---
+title: "Cómo crear un embudo de ventas con plantillas, formularios y tu dominio"
+description: "Crea un embudo desde una plantilla, añade o elige un formulario y conecta tu dominio personalizado para publicarlo con tu propia URL."
+icon: "filter"
+---
+
+Un embudo de ventas guía a tus visitantes por una serie de páginas, captura sus datos de contacto y los lleva a una acción concreta, como reservar, comprar o pedir información. En esta guía verás cómo crear un embudo a partir de una plantilla, añadir o elegir un formulario y conectar tu dominio para compartirlo públicamente.
+
+## Antes de empezar
+
+Asegúrate de que puedes:
+
+- Acceder a **Sitios** en tu cuenta de Chateea.
+- Iniciar sesión en tu proveedor de dominio (donde administras los registros DNS), si vas a conectar un dominio personalizado.
+
+## Crea el embudo desde una plantilla
+
+Las plantillas te dan un diseño listo para editar, así no empiezas desde cero.
+
+<Steps>
+  <Step title="Pulsa Nuevo embudo">
+    Ve a **Sitios → Embudos** y pulsa **+ Nuevo embudo** en la esquina superior derecha.
+  </Step>
+  <Step title="Elige Desde plantillas">
+    En la ventana **Crear nuevo embudo**, selecciona **Desde plantillas** y pulsa **Continuar**.
+  </Step>
+  <Step title="Busca la plantilla">
+    Usa los **filtros**, la **barra de búsqueda** y el menú de **ordenación** para encontrar la plantilla que mejor encaje con lo que quieres crear.
+  </Step>
+  <Step title="Revisa la vista previa">
+    Abre la plantilla, revisa la vista previa y pulsa **Continuar** en la esquina superior derecha.
+  </Step>
+  <Step title="Espera la carga">
+    Mantén la ventana abierta mientras se carga la plantilla. Al terminar se abrirá el editor de embudos para que la personalices y la guardes.
+  </Step>
+</Steps>
+
+En la ventana **Crear nuevo embudo** tienes tres opciones:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Desde cero** (From blank) | Diseñas el embudo desde cero con el editor |
+| **IA de embudos** (Funnel AI, beta) | Crea el embudo con IA en segundos |
+| **Desde plantillas** (From templates) | Empiezas rápido con un embudo prediseñado (más de 1000 plantillas) |
+
+## Añade un formulario
+
+Los formularios recogen los datos de tus visitantes, como nombre, correo o teléfono.
+
+### Crear un formulario nuevo
+
+<Steps>
+  <Step title="Agrega el formulario">
+    Ve a **Sitios → Formularios** y pulsa **Agregar formulario** en la esquina superior derecha.
+  </Step>
+  <Step title="Ajusta y guarda">
+    Configura los campos y el estilo que necesites, y **guarda** el formulario.
+  </Step>
+</Steps>
+
+### Usar un formulario existente
+
+Si ya tienes un formulario, ábrelo desde la lista de formularios para revisarlo o actualizarlo y confirma que los campos son los correctos antes de usarlo en tu embudo.
+
+## Conecta tu dominio personalizado
+
+Con un dominio propio, tu embudo se publica en una URL que tú controlas y que tus clientes reconocen.
+
+<Steps>
+  <Step title="Pulsa Conectar un dominio">
+    Ve a **Configuración → Dominios** y pulsa **Conectar un dominio** en la esquina superior derecha.
+  </Step>
+  <Step title="Escribe tu dominio">
+    Escribe tu dominio en el campo **Dominio** y pulsa **Continuar**.
+  </Step>
+  <Step title="Crea los registros DNS">
+    Copia cada registro que aparece en pantalla y créalo en la configuración DNS de tu proveedor de dominio:
+
+    | Registro | Host | Valor |
+    | --- | --- | --- |
+    | A | `@` | La dirección IP que muestra la pantalla |
+    | CNAME | `www` | El destino que muestra la pantalla |
+
+    Copia los valores con el botón de copiar de cada campo para evitar errores.
+  </Step>
+  <Step title="Verifica los registros">
+    Después de guardar los cambios en tu proveedor, vuelve a esta pantalla y pulsa **Verificar registros**.
+  </Step>
+  <Step title="Termina y publica">
+    Cuando la verificación sea correcta, termina la conexión y elige el dominio conectado al publicar tu embudo.
+  </Step>
+</Steps>
+
+<Warning>
+  Si aparece el aviso **"AAAA record conflict. Please remove All AAAA records"**, elimina todos los registros AAAA del dominio en tu proveedor y vuelve a verificar.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Para qué sirve un embudo?">
+    Guía a tus visitantes por un recorrido concreto, por ejemplo para captar sus datos de contacto o llevarlos a comprar o reservar.
+  </Accordion>
+
+  <Accordion title="¿Tengo que usar una plantilla?">
+    No. Las plantillas son opcionales, pero te ahorran tiempo porque te dan un diseño listo para editar.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar un formulario que ya tengo?">
+    Sí. Ábrelo desde tu lista de formularios, revísalo o actualízalo y úsalo en el embudo.
+  </Accordion>
+
+  <Accordion title="¿Por qué conectar un dominio personalizado?">
+    Tu embudo se publica en una URL que tú controlas, con enlaces coherentes y fáciles de reconocer para tus clientes.
+  </Accordion>
+
+  <Accordion title="¿Qué hago si falla la verificación del dominio?">
+    Comprueba que cada registro DNS coincida exactamente. Si todo está bien, espera a que se propaguen los cambios y vuelve a intentarlo.
+  </Accordion>
+</AccordionGroup>
+
+## Solución de problemas
+
+| Problema | Qué hacer |
+| --- | --- |
+| **No ves alguna opción del menú** | Es posible que tu usuario no tenga permiso para esa sección. Pide al administrador de tu cuenta que revise tus permisos. |
+| **La página no carga o los botones no responden** | Actualiza la página, prueba en una ventana de incógnito o borra la caché del navegador. |
+| **La plantilla parece bloqueada al cargar** | Espera un poco más, actualiza la página e inténtalo de nuevo. Si sigue igual, prueba con otro navegador. |
+| **Falla la verificación del dominio** | Confirma que el tipo de registro, el host y el valor coincidan exactamente, que guardaste los cambios en tu proveedor y que ya se propagaron. |
+
+Si el problema continúa, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.

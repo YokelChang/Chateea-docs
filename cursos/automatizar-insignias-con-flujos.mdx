@@ -1,0 +1,131 @@
+---
+title: "Automatizar la entrega de insignias con flujos"
+description: "Entrega insignias automáticamente con flujos de trabajo y lanza acciones de seguimiento cuando se emiten."
+icon: "bolt"
+---
+
+Con los flujos de trabajo puedes entregar insignias automáticamente cuando un alumno o cliente alcanza un logro, y además lanzar acciones de seguimiento en cuanto recibe una. Así conviertes el reconocimiento en parte de tu estrategia: felicitas en el momento justo, ofreces el siguiente paso y mantienes al contacto enganchado sin trabajo manual.
+
+## Las piezas de la automatización
+
+| Pieza | Tipo | Para qué sirve |
+| --- | --- | --- |
+| **Emitir insignia** (Issue Badge) | Acción | Entrega la insignia elegida al contacto que está en el flujo. |
+| **Insignia emitida** (Badge Issued) | Disparador | Inicia un flujo cada vez que un contacto recibe una insignia concreta. |
+| **Emitir certificado** (Issue Certificate) | Acción | También acepta plantillas de insignia: si eliges una insignia en lugar de un certificado, la entrega igual. |
+
+Juntas te permiten crear recorridos completos: la insignia se entrega sola al cumplir una condición y, a continuación, otro flujo envía una felicitación, actualiza el contacto o lo inscribe en la siguiente etapa.
+
+## Antes de empezar
+
+Las insignias deben estar creadas en tu cuenta antes de usarlas en un flujo. Si aún no tienes ninguna, consulta [Crear insignias de logros](/cursos/crear-insignias-de-logros).
+
+## Entregar una insignia automáticamente
+
+<Steps>
+  <Step title="Abre o crea un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo desde cero o abre uno existente.
+  </Step>
+  <Step title="Elige el disparador">
+    Agrega el disparador que representa el logro, por ejemplo **Lección completada** o **Producto completado** (ver ejemplos más abajo).
+  </Step>
+  <Step title="Agrega la acción Emitir insignia">
+    Haz clic para añadir una acción y busca **Emitir insignia**.
+  </Step>
+  <Step title="Selecciona la insignia">
+    En el desplegable, elige qué insignia se entregará. Solo aparecen las insignias activas de tu cuenta.
+  </Step>
+  <Step title="Guarda y activa">
+    Guarda los cambios y publica el flujo. La insignia se entregará cada vez que un contacto llegue a esta acción.
+  </Step>
+</Steps>
+
+<Tip>
+Combina la acción con filtros y condiciones para premiar solo a quien cumpla de verdad el criterio, por ejemplo superar una puntuación mínima o completar varias actividades.
+</Tip>
+
+<Note>
+Si prefieres, puedes usar la acción **Emitir certificado** y elegir una **plantilla de insignia** en lugar de un certificado. El resultado es el mismo: el contacto recibe la insignia como imagen descargable.
+</Note>
+
+## Ideas de disparadores para entregar insignias
+
+| Disparador | Ejemplo de insignia |
+| --- | --- |
+| **Lección completada** | "Lección 1 superada" |
+| **Categoría completada** | "Maestro del módulo" |
+| **Producto completado** | "Profesional certificado" |
+| **Cuestionario enviado** | "As del cuestionario" |
+| **Encuesta enviada** | "Gran colaborador" |
+| **Formulario enviado** | "Acción rápida" |
+| **Tarea completada** | "Hito desbloqueado" |
+
+Encontrarás estos disparadores en el menú de disparadores del flujo, en los grupos de cursos, contacto y actividad de formularios. También puedes usar otros eventos, como compras o cambios en campos personalizados.
+
+## Hacer algo después de entregar una insignia
+
+El disparador **Insignia emitida** inicia un flujo cada vez que se entrega la insignia que elijas, **sin importar cómo se entregó**: a mano, con la acción Emitir insignia o de cualquier otra forma.
+
+<Steps>
+  <Step title="Crea un flujo nuevo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo aparte para el seguimiento.
+  </Step>
+  <Step title="Agrega el disparador Insignia emitida">
+    Elige **Insignia emitida** y selecciona la insignia que iniciará el flujo.
+  </Step>
+  <Step title="Añade las acciones de seguimiento">
+    Por ejemplo, un correo o SMS de felicitación, una etiqueta, la actualización de un campo personalizado, mover al contacto a otra etapa del pipeline o iniciar otra automatización.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda y publica el flujo.
+  </Step>
+</Steps>
+
+Puedes tener varios flujos con el mismo disparador **Insignia emitida** para distintos escenarios de seguimiento.
+
+<Tip>
+Aprovecha el momento de mayor motivación: cuando un alumno recibe la insignia "Profesional certificado", envíale un mensaje personalizado con un descuento para tu curso avanzado.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo entregar varias insignias en un mismo flujo?">
+    Sí. Añade varias acciones **Emitir insignia** para entregar insignias distintas en diferentes etapas o condiciones del flujo.
+  </Accordion>
+  <Accordion title="¿El disparador Insignia emitida funciona con insignias entregadas a mano?">
+    Sí. Se activa siempre que se entrega la insignia seleccionada, sea de forma manual, con la acción o por cualquier otro método.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el contacto ya tiene la insignia?">
+    El flujo sigue sin entregar un duplicado. Cada insignia solo se puede entregar una vez por contacto.
+  </Accordion>
+  <Accordion title="¿Puedo usar filtros con el disparador Insignia emitida?">
+    Sí. Añade filtros y condiciones para controlar cuándo se ejecutan las acciones de seguimiento, por ejemplo según etiquetas o campos personalizados.
+  </Accordion>
+  <Accordion title="¿Qué acciones puedo añadir después de Insignia emitida?">
+    Cualquier acción de flujo: enviar correos o SMS, actualizar campos, añadir o quitar etiquetas, mover oportunidades en el pipeline, crear tareas o iniciar otros flujos.
+  </Accordion>
+  <Accordion title="¿Puedo probar la automatización antes de activarla?">
+    Sí. Usa las herramientas de prueba de los flujos para verificar que la insignia se entrega y que las acciones de seguimiento funcionan antes de activarlo para tus contactos.
+  </Accordion>
+  <Accordion title="¿Hay un límite de insignias que puedo entregar con flujos?">
+    No hay un límite específico, más allá de los límites generales de insignias y flujos de tu plan.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear insignias de logros" icon="medal" href="/cursos/crear-insignias-de-logros">
+    Diseña las insignias que vas a entregar.
+  </Card>
+  <Card title="Insignia de bienvenida en cursos" icon="hand" href="/cursos/insignia-de-bienvenida-en-cursos">
+    Recibe a cada alumno nuevo con una insignia.
+  </Card>
+  <Card title="Certificados en flujos de trabajo" icon="award" href="/automatizaciones/certificados-en-flujos-de-trabajo">
+    Disparador y acción de certificados.
+  </Card>
+  <Card title="Descargar y compartir" icon="download" href="/cursos/descargar-y-compartir-certificados-e-insignias">
+    Cómo descargan y comparten sus insignias tus alumnos.
+  </Card>
+</CardGroup>

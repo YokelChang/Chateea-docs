@@ -1,0 +1,126 @@
+---
+title: "Condiciones de parada: cuándo debe dejar de responder tu bot"
+description: "Configura cuándo el bot debe dejar de responder para cerrar la conversación con naturalidad."
+icon: "hand"
+---
+
+La acción **Detener bot** pausa automáticamente las respuestas de tu bot de IA conversacional cuando se cumplen ciertas condiciones en la conversación.
+
+Así las conversaciones terminan de forma natural y evitas que el bot siga respondiendo cuando el cliente ya se despidió.
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Conversaciones más inteligentes** | Evita respuestas innecesarias o repetidas |
+| **Mejor experiencia** | Cierra la conversación de forma natural y respetuosa |
+| **Control de la automatización** | Defines exactamente cuándo se detienen las respuestas |
+| **Condiciones flexibles** | Usa frases o comportamientos del cliente como señal |
+| **Reactivación opcional** | Reanuda las respuestas tras un tiempo definido |
+
+## Dónde se configura
+
+En **IA → IA conversacional → Lista de agentes**, edita tu bot, abre la pestaña **Objetivos del bot** y pulsa **Detener bot** dentro de **Configura tus acciones**.
+
+## Cómo configurar las condiciones
+
+<Steps>
+  <Step title="Activa el escenario">
+    Enciende el interruptor del escenario y confirma que quedó activo.
+  </Step>
+  <Step title="Nombra el escenario">
+    Por ejemplo: **Detección de despedida**.
+  </Step>
+  <Step title="Define la condición">
+    Por ejemplo: el cliente da por terminada la conversación.
+  </Step>
+  <Step title="Agrega frases de ejemplo">
+    Varias formas de expresar la misma intención:
+
+    ```text
+    Adiós
+    Gracias, que tengas buen día
+    Hasta luego
+    Listo, eso era todo
+    ```
+  </Step>
+  <Step title="Escribe el mensaje final">
+    Por ejemplo:
+
+    ```text
+    Gracias por tu tiempo. Cualquier cosa,
+    aquí estamos.
+    ```
+
+    <Warning>
+      Si no defines un mensaje final, la conversación termina de golpe y al cliente le resulta poco natural.
+    </Warning>
+  </Step>
+  <Step title="Configura el temporizador de reactivación (opcional)">
+    Actívalo y define la duración si quieres que el bot vuelva a responder pasado un tiempo.
+  </Step>
+  <Step title="Guarda y prueba">
+    Escribe al bot con una de tus frases de ejemplo y confirma que se detiene.
+  </Step>
+</Steps>
+
+## Qué revisar al probar
+
+En una conversación de prueba, confirma que:
+
+- La frase de despedida **detiene** las respuestas.
+- Se envía el mensaje final.
+- El estado del bot pasa a inactivo.
+- Se aplican las etiquetas, si las configuraste.
+
+## Buenas prácticas
+
+<AccordionGroup>
+  <Accordion title="Usa frases específicas y realistas">
+    Las que tus clientes escriben de verdad, no las que suenan bien en teoría.
+  </Accordion>
+
+  <Accordion title="Agrega varias formas de decir lo mismo">
+    "Adiós", "hasta luego" y "gracias, eso era todo" son la misma señal escrita de tres maneras.
+  </Accordion>
+
+  <Accordion title="Evita condiciones demasiado amplias">
+    Una condición muy general detiene el bot cuando la conversación todavía debía continuar.
+  </Accordion>
+
+  <Accordion title="Incluye siempre un mensaje final">
+    Un cierre amable deja buena impresión y le confirma al cliente que la conversación terminó.
+  </Accordion>
+
+  <Accordion title="Prueba los escenarios antes de usarlos con clientes">
+    Una prueba de dos minutos evita que el bot se detenga en medio de una venta.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa cuando se cumple una condición de parada?">
+    El bot envía el mensaje final y deja de responder a ese contacto.
+  </Accordion>
+
+  <Accordion title="¿El bot puede volver a responder después de detenerse?">
+    Sí. Si activaste el temporizador de reactivación, las respuestas se reanudan tras el tiempo definido.
+  </Accordion>
+
+  <Accordion title="¿Qué ocurre si no pongo mensaje final?">
+    La conversación puede terminar de forma abrupta, lo que resulta poco natural.
+  </Accordion>
+
+  <Accordion title="¿Puedo usar varias condiciones de parada?">
+    Sí. Puedes crear varios escenarios con condiciones distintas.
+  </Accordion>
+
+  <Accordion title="¿Esto afecta a todos los contactos?">
+    No. El bot solo se detiene en la conversación del contacto que cumplió la condición.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Bot inactivo (en reposo)" icon="moon" href="/ia/bot-inactivo">
+  Todos los motivos por los que el bot puede dejar de responder.
+</Card>

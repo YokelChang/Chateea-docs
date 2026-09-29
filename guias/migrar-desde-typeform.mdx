@@ -1,0 +1,151 @@
+---
+title: "Migrar desde Typeform a Chateea"
+description: "Recrea tus formularios, importa respuestas como contactos y conserva automatizaciones, dominio, códigos QR e informes."
+icon: "right-left"
+---
+
+Si capturas datos con Typeform, puedes pasar tus formularios y encuestas a Chateea y conectar cada respuesta directamente con tu CRM, tus automatizaciones y tus informes. Esta guía te explica cómo recrear formularios y preguntas, importar las respuestas como contactos, reconstruir tus automatizaciones, mantener tu dominio y tus códigos QR, y conservar tus reportes.
+
+<Info>
+  Migra estos cinco componentes: formularios, contactos, automatizaciones, dominios y códigos QR, e informes.
+</Info>
+
+## 1. Migra tus formularios
+
+Typeform recopila información con formularios, encuestas y sondeos. Las preguntas se recrean como campos personalizados y luego se arman los formularios.
+
+<Steps>
+  <Step title="Revisa tus formularios en Typeform">
+    Entra a tu espacio de trabajo, abre cada formulario y anota sus preguntas (aparecen a la izquierda de la vista previa). Documenta también la lógica, los cálculos, la validación de correo y las notificaciones.
+  </Step>
+  <Step title="Crea las preguntas como campos personalizados">
+    En Chateea, ve a **Configuración → Campos personalizados**. Crea una carpeta por formulario para mantener el orden y agrega cada pregunta como campo, con el tipo de dato que corresponda.
+  </Step>
+  <Step title="Arma los formularios y encuestas">
+    En **Sitios → Formularios** (o **Sitios → Encuestas** si el formulario tiene varios pasos), crea cada formulario y agrega sus preguntas. Ajusta el diseño para que coincida con tu marca.
+  </Step>
+  <Step title="Configura la lógica en el editor">
+    Muchas funciones se configuran dentro del propio editor: lógica condicional, cálculos, validación de correo y teléfono, y notificaciones. Lo que no se pueda hacer ahí lo construirás con flujos de trabajo (paso 3). Ver [Cálculos matemáticos en formularios](/sitios/calculos-matematicos-en-formularios).
+  </Step>
+  <Step title="Prueba">
+    Envía cada formulario y confirma que guarda los datos correctamente.
+  </Step>
+</Steps>
+
+## 2. Migra tus contactos
+
+A diferencia de Chateea, Typeform no exige correo ni teléfono en cada respuesta. Solo podrás importar como contactos las respuestas que tengan correo o teléfono.
+
+<Steps>
+  <Step title="Exporta las respuestas">
+    En Typeform, abre el formulario, ve a **Results → Responses**, selecciona todas las respuestas con la casilla y haz clic en el ícono de descarga (arriba a la derecha) para bajar el CSV.
+  </Step>
+  <Step title="Prepara el archivo">
+    - Fechas en formato `AAAA-MM-DD`.
+    - Codificación UTF-8.
+    - Sin saltos de línea, emojis ni caracteres innecesarios.
+    - Quita las filas sin correo ni teléfono.
+  </Step>
+  <Step title="Importa en Chateea">
+    Ve a **Contactos → Importar contactos**, sube el CSV y asigna cada columna a su campo, incluidos los campos personalizados que creaste para las preguntas. Aplica una etiqueta como `importado-typeform` y haz clic en **Importar**.
+  </Step>
+  <Step title="Revisa">
+    Compara lo importado con los datos de Typeform para confirmar que no falta nada.
+  </Step>
+</Steps>
+
+## 3. Migra automatizaciones y seguimiento
+
+En Typeform, las automatizaciones se construyen dentro de la app o con Slack, Zapier o webhooks.
+
+<Steps>
+  <Step title="Revisa lo que queda por migrar">
+    En Typeform, abre la configuración (ícono de engranaje) y anota las automatizaciones que no pudiste replicar en el editor de formularios: mensajes de seguimiento, integraciones y webhooks.
+  </Step>
+  <Step title="Recréalas en Chateea">
+    En **Automatización → Flujos de trabajo**, usa el disparador de envío de formulario para enviar correos de seguimiento, actualizar el contacto, crear oportunidades o llamar a un webhook. Ver [Primeros pasos con flujos de trabajo](/automatizaciones/primeros-pasos-con-flujos-de-trabajo).
+  </Step>
+  <Step title="Prueba">
+    Envía cada formulario y confirma que las automatizaciones se activan como esperas.
+  </Step>
+</Steps>
+
+<Tip>
+  Si durante la transición necesitas que Typeform siga enviando datos a Chateea, puedes conectarlo a tus flujos. Ver [Typeform en flujos de trabajo](/automatizaciones/typeform-en-flujos-de-trabajo).
+</Tip>
+
+## 4. Migra tu dominio y tus códigos QR
+
+Migrar el dominio permite seguir usándolo para tus formularios y que los enlaces que ya compartiste sigan funcionando.
+
+<Steps>
+  <Step title="Documenta y quita el dominio de Typeform">
+    En Typeform, haz clic en el avatar de la organización (arriba a la izquierda) y ve a **Admin settings**. Anota tu dominio personalizado, haz clic en **Change URL**, cambia la opción de dominio personalizado y confirma.
+  </Step>
+  <Step title="Crea redirecciones 301">
+    Ve a **Configuración → Dominios y redirecciones de URL → Redirecciones de URL** y redirige los enlaces antiguos a tus nuevos formularios. Ver [Redirecciones 301](/sitios/redirecciones-301).
+  </Step>
+  <Step title="Conecta tu dominio">
+    Conecta tu dominio en **Configuración → Dominios** para que tus formularios usen tu marca. Ver [Conectar un dominio raíz o subdominio](/sitios/conectar-dominio-raiz-o-subdominio).
+  </Step>
+  <Step title="Documenta tus códigos QR de Typeform">
+    Abre cada formulario y haz clic en **Share**. El último ícono muestra el código QR del formulario.
+  </Step>
+  <Step title="Crea los códigos QR en Chateea">
+    Ve a **Sitios → Códigos QR → Crear código QR**, ponle nombre, elige el tipo **Sitio web** y haz clic en **Siguiente**. Pega la URL de tu formulario de Chateea. Puedes cambiar esa URL después sin reimprimir el código. Ver [Crear y descargar códigos QR](/sitios/crear-y-descargar-codigos-qr).
+  </Step>
+  <Step title="Prueba y comparte">
+    Prueba cada formulario en distintos dispositivos. Consulta las estadísticas de escaneo en **Códigos QR → Analítica**.
+  </Step>
+</Steps>
+
+## 5. Conserva tus informes
+
+<Warning>
+  Si cancelas tu plan de pago de Typeform, dejas de poder ver y crear reportes cuando la cancelación entra en vigor. Genera y guarda tus reportes antes de cancelar.
+</Warning>
+
+Los reportes de Typeform solo incluyen respuestas agregadas y no admiten las preguntas de tipo información de contacto ni dirección.
+
+<Steps>
+  <Step title="Genera el reporte">
+    Abre el formulario, ve a **Results → Summary** y haz clic en **Generate a report**. Activa la opción para mostrar las respuestas abiertas para que se incluyan en el reporte.
+  </Step>
+  <Step title="Guárdalo en PDF">
+    Haz clic en el botón de imprimir y elige **Guardar como PDF** en la pestaña que se abre. Súbelo a tu almacenamiento en la nube.
+  </Step>
+  <Step title="Sigue midiendo en Chateea">
+    Consulta los envíos de cada formulario y crea widgets en tus paneles para seguir tus métricas. Ver [Envíos de formularios y encuestas](/sitios/envios-de-formularios-y-encuestas) y [Crear un panel personalizado](/informes/crear-panel-personalizado).
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo importar mis formularios de Typeform automáticamente?">
+    No. Las preguntas se recrean como campos personalizados y los formularios se arman en **Sitios → Formularios**. Las respuestas sí se pueden importar como contactos en CSV.
+  </Accordion>
+  <Accordion title="¿Por qué algunas respuestas no se importaron?">
+    Chateea necesita correo o teléfono para crear un contacto. Las respuestas de Typeform que no tienen ninguno de los dos no se pueden importar.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los enlaces antiguos de mis formularios?">
+    Crea redirecciones 301 desde tu dominio hacia los nuevos formularios de Chateea para que los enlaces que ya compartiste sigan funcionando.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un formulario de contacto" icon="rectangle-list" href="/sitios/crear-formulario-de-contacto">
+    Arma tu primer formulario.
+  </Card>
+  <Card title="Crear y descargar códigos QR" icon="qrcode" href="/sitios/crear-y-descargar-codigos-qr">
+    Comparte tus formularios en físico.
+  </Card>
+  <Card title="Redirecciones 301" icon="arrow-right" href="/sitios/redirecciones-301">
+    Conserva tus enlaces antiguos.
+  </Card>
+  <Card title="Migrar desde Jotform" icon="right-left" href="/guias/migrar-desde-jotform">
+    Otra guía para migrar formularios.
+  </Card>
+</CardGroup>

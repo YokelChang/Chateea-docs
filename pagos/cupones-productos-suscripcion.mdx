@@ -1,0 +1,106 @@
+---
+title: "Cupones en productos de suscripción"
+description: "Define si el descuento de un cupón dura un pago, varios meses o toda la vida de la suscripción."
+icon: "repeat"
+---
+
+Cuando aplicas un cupón a un producto de suscripción, puedes decidir cuánto dura el descuento: solo el primer pago, un número de meses o toda la vida de la suscripción. Es la diferencia entre "20 % de descuento en tu primer mes" y "20 % de descuento para siempre", y la controlas al crear el cupón.
+
+## Configura la duración del descuento
+
+<Steps>
+  <Step title="Abre el cupón">
+    Ve a **Pagos → Cupones** y haz clic en **Crear cupón**, o abre un cupón existente y elige **Editar**.
+  </Step>
+  <Step title="Marca la casilla de pagos recurrentes">
+    En la configuración del descuento, activa la casilla **Aplicar también a pagos recurrentes/futuros según una duración o para siempre, si corresponde**.
+  </Step>
+  <Step title="Elige la duración">
+    Con la casilla marcada, selecciona una opción:
+    - **Para siempre:** el descuento se aplica a todos los pagos recurrentes.
+    - **Varios meses:** el descuento se aplica durante la cantidad de meses que indiques. Al elegirla aparece un campo para escribir el número de meses.
+  </Step>
+  <Step title="Guarda el cupón">
+    La duración queda registrada en los detalles del cupón y en la lista de cupones.
+  </Step>
+</Steps>
+
+## Cómo se aplica según el tipo de producto
+
+Si el cupón se usa en un **producto de pago único**, la duración no cambia nada: el descuento se aplica una sola vez.
+
+Si se usa en un **producto de suscripción**, el descuento sigue la duración elegida:
+
+| Duración | Comportamiento |
+| --- | --- |
+| **Una vez** | El descuento se aplica solo al primer pago |
+| **Para siempre** | El descuento se aplica a todos los pagos recurrentes |
+| **Varios meses** | El descuento se aplica durante los meses definidos y luego se detiene |
+
+<Warning>
+**Varios meses** cuenta meses de calendario, no ciclos de cobro. La frecuencia de la suscripción (diaria, semanal, mensual, trimestral o anual) no cambia la regla: solo cuenta la duración que definiste. En un producto anual, un cupón de 4 meses solo alcanza al primer pago.
+</Warning>
+
+## Ejemplos
+
+<AccordionGroup>
+  <Accordion title="Suscripción mensual de 10 meses con cupón de 4 meses">
+    El descuento se aplica durante 4 meses desde la fecha en que se aplicó el cupón. No importa si la suscripción empieza activa o pasa primero por un periodo de prueba.
+  </Accordion>
+  <Accordion title="Suscripción anual de 3 años">
+    - Con un cupón **Para siempre**, el descuento se aplica durante toda la vida de la suscripción.
+    - Con un cupón de **Varios meses** con valor 4, el descuento **no** se aplica a la renovación de los 12 meses, porque solo cubre los pagos que caen dentro de los próximos 4 meses.
+  </Accordion>
+  <Accordion title="Suscripción semanal de 6 meses con cupón de 2 meses">
+    El descuento se aplica durante 2 meses desde la fecha de aplicación del cupón, empiece la suscripción activa o en prueba. Como el cobro es semanal, el descuento se aplica aproximadamente 8 veces.
+  </Accordion>
+</AccordionGroup>
+
+## Dónde ves el descuento aplicado
+
+La duración aparece en los **detalles del cupón** y en las vistas de gestión de cupones. En los **detalles de la suscripción** y en los **detalles del pedido**, el descuento se muestra junto a los datos de pago con textos como:
+
+- "10 % de descuento durante los primeros 4 meses"
+- "10 USD de descuento en el primer mes"
+- "10 % de descuento en todos los pagos"
+- "10 USD de descuento en el primer pago"
+
+## Detalles a tener en cuenta
+
+- **Suscripciones programadas:** el cupón se aplica desde la fecha de inicio de la suscripción (activa o de prueba), es decir, la fecha programada que indicaste al crearla.
+- **Cupones creados antes de esta opción:** conservan su comportamiento. Si la casilla ya estaba marcada, la duración predeterminada es **Para siempre**; si no lo estaba, es **Una vez**.
+
+<Tip>
+Para productos anuales casi siempre te conviene **Una vez** o **Para siempre**. Reserva **Varios meses** para suscripciones mensuales o semanales, donde el número de pagos con descuento es fácil de prever.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La frecuencia de cobro cambia cuántos pagos reciben el descuento?">
+    No directamente. Solo cuenta la duración en meses. Una suscripción semanal recibe más pagos con descuento en 2 meses que una mensual, porque se cobra más veces en ese periodo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si aplico el cupón a un producto de pago único?">
+    El descuento se aplica una sola vez, sin importar la duración configurada.
+  </Accordion>
+  <Accordion title="¿Cuenta el periodo de prueba dentro de la duración?">
+    La duración empieza a contar desde la fecha en que se aplicó el cupón, tanto si la suscripción inicia activa como si empieza en prueba.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con los cupones" icon="ticket" href="/pagos/primeros-pasos-cupones">
+    Cómo crear cupones, sus tipos, límites y restricciones.
+  </Card>
+  <Card title="Segmentación de cupones por producto, precio y variante" icon="tags" href="/pagos/segmentacion-cupones">
+    Limita el cupón al producto, precio o variante exacta.
+  </Card>
+  <Card title="Estados de suscripción" icon="repeat" href="/pagos/gestionar-suscripciones">
+    Entiende en qué estado está cada suscripción.
+  </Card>
+  <Card title="Modificar suscripciones existentes" icon="pen-to-square" href="/pagos/modificar-suscripciones-existentes">
+    Cambia productos, precios o fechas de una suscripción activa.
+  </Card>
+</CardGroup>

@@ -1,0 +1,157 @@
+---
+title: "Migrar desde Salesforce a Chateea"
+description: "Migra leads, contactos, cuentas y oportunidades de Salesforce y reconstruye pipelines, flujos y documentos en Chateea."
+icon: "right-left"
+---
+
+Si tu equipo trabaja en Salesforce y quieres simplificar, puedes pasar tus datos y procesos a Chateea y reunir CRM, marketing, sitios, documentos y automatizaciones en una sola plataforma. Esta guía te explica cómo migrar leads, contactos, cuentas y oportunidades, cómo reconstruir pipelines, páginas y flujos, y cómo cerrar Salesforce con seguridad.
+
+## Equivalencias
+
+| En Salesforce | En Chateea |
+| --- | --- |
+| Leads | Contactos (con etiqueta o campo de estado) |
+| Contacts | Contactos |
+| Accounts | Empresas |
+| Opportunities | Oportunidades |
+| Etapas de venta | Etapas del pipeline |
+| Flows y reglas de automatización | Flujos de trabajo |
+| Plantillas de documentos | Documentos y contratos |
+
+## 1. Prepara la migración
+
+<Steps>
+  <Step title="Revisa tu organización de Salesforce">
+    Haz un catálogo de leads, contactos, cuentas, oportunidades y automatizaciones. Calcula el volumen de registros, campos personalizados y reglas.
+  </Step>
+  <Step title="Define objetivos y prioridades">
+    Aclara por qué migras (costos, automatización, marketing y CRM unificados) y empieza por los datos del CRM, las oportunidades clave y las automatizaciones esenciales.
+  </Step>
+  <Step title="Respalda tus datos">
+    Exporta contactos, cuentas, leads y oportunidades en CSV o Excel y guarda una copia segura.
+  </Step>
+</Steps>
+
+## 2. Exporta y migra tus datos
+
+### Exporta desde Salesforce
+
+<Steps>
+  <Step title="Contactos">
+    Desde la pestaña **Contacts**, exporta todos los contactos con nombres, correos, teléfonos y campos personalizados.
+  </Step>
+  <Step title="Cuentas y oportunidades">
+    Desde las pestañas **Accounts** y **Opportunities**, exporta todos los registros con etapas, valores y contactos clave.
+  </Step>
+  <Step title="Leads">
+    Desde la pestaña **Leads**, exporta los leads activos y cerrados con sus estados.
+  </Step>
+</Steps>
+
+### Importa en Chateea
+
+<Steps>
+  <Step title="Crea tus campos personalizados">
+    En **Configuración → Campos personalizados**, crea los campos que necesitas para no perder datos, incluido uno para el estado del lead si lo usabas.
+  </Step>
+  <Step title="Importa las cuentas como empresas">
+    Ver [Importar empresas con CSV](/crm/importar-empresas-csv). Para vincular empresas, contactos y oportunidades en la misma importación, ver [Importar registros con asociaciones](/crm/importar-registros-con-asociaciones).
+  </Step>
+  <Step title="Importa contactos y leads">
+    Ve a **Contactos → Importar contactos**, sube los archivos y asigna cada columna a su campo. Etiqueta los leads (por ejemplo, `lead-salesforce`) y conserva su estado en el campo que creaste. Ver [Importar contactos desde un archivo CSV](/contactos/importar-contactos-desde-csv).
+  </Step>
+</Steps>
+
+## 3. Reconstruye oportunidades, sitios y automatizaciones
+
+### Oportunidades
+
+- **Crea tus pipelines** en **Oportunidades → Pipelines** con las mismas etapas que en Salesforce. Ver [Crear un pipeline](/oportunidades/crear-un-pipeline).
+- **Carga las oportunidades** en la etapa que les corresponde para no perder el seguimiento de tus ventas. Ver [Importar oportunidades desde CSV](/oportunidades/importar-oportunidades-desde-csv).
+
+### Páginas y tienda
+
+- **Reconstruye tus páginas** en **Sitios → Sitios web** o **Sitios → Embudos**, incluidas las páginas de destino y los pasos de tus embudos.
+- **Si vendes en línea,** crea tus productos en **Pagos → Productos** y tu tienda en **Sitios → Tiendas**. Ver [Crear una tienda en línea](/tienda/crear-tienda-en-linea).
+
+### Automatizaciones
+
+- **Recrea tus flujos** en **Automatización → Flujos de trabajo**, con disparadores como conversión de leads o cambios en oportunidades, y acciones como enviar correos o actualizar estados. Ver [Automatizar oportunidades](/oportunidades/automatizar-oportunidades).
+- **Integra tus canales:** configura correo y SMS dentro de tus flujos para mantener el contacto con leads y clientes.
+
+## 4. Documentos, contratos y formularios
+
+<Steps>
+  <Step title="Descarga tus plantillas">
+    Descarga de Salesforce las plantillas de documentos y contratos que usas.
+  </Step>
+  <Step title="Recréalas en Chateea">
+    Ve a **Pagos → Documentos y contratos** y crea tus contratos, propuestas y presupuestos. Ver [Cómo usar documentos y contratos](/documentos/como-usar-documentos-y-contratos).
+  </Step>
+  <Step title="Configura firma y seguimiento">
+    Agrega firma electrónica y revisa cuándo se abren, se ven o se firman tus documentos. Ver [Tipos de firma](/documentos/tipos-de-firma).
+  </Step>
+  <Step title="Crea tus formularios">
+    Ve a **Sitios → Formularios** y crea tus formularios desde una plantilla o en blanco, y publícalos. Ver [Crear un formulario de contacto](/sitios/crear-formulario-de-contacto).
+  </Step>
+</Steps>
+
+## 5. Prueba y valida
+
+- **Oportunidades:** mueve registros de prueba por todas las etapas del pipeline.
+- **Integridad de los datos:** confirma que contactos, empresas, leads y oportunidades se ven correctamente y conservan sus relaciones.
+- **Automatizaciones:** prueba cada flujo y verifica que correos, SMS y demás acciones se ejecuten bien.
+
+## 6. Capacita a tu equipo
+
+- Organiza sesiones para que tu equipo conozca la interfaz y las funciones de Chateea.
+- Entrega guías internas con tus procesos.
+- Revisa el rendimiento de tus pipelines y automatizaciones y ajusta según los comentarios del equipo.
+
+## 7. Cierra Salesforce
+
+<Steps>
+  <Step title="Opera en paralelo">
+    Mantén ambas plataformas un periodo corto y reduce el uso de Salesforce a medida que tu equipo gana confianza.
+  </Step>
+  <Step title="Haz un respaldo final">
+    Asegúrate de tener guardado todo lo necesario.
+  </Step>
+  <Step title="Cancela tu suscripción">
+    Sigue el proceso de cancelación de Salesforce.
+  </Step>
+  <Step title="Revisa el resultado">
+    Documenta los retos y soluciones, y sigue optimizando tus procesos en Chateea.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo diferencio leads de contactos en Chateea?">
+    En Chateea todos son contactos. Usa una etiqueta o un campo personalizado de estado para identificar los leads y crea listas inteligentes para trabajarlos. Ver [Listas inteligentes](/contactos/listas-inteligentes).
+  </Accordion>
+  <Accordion title="¿Se conservan las relaciones entre cuentas, contactos y oportunidades?">
+    Sí, si importas las cuentas como empresas y usas la importación con asociaciones, o si vinculas los registros al importarlos. Revisa las relaciones críticas al terminar.
+  </Accordion>
+  <Accordion title="¿Se migran mis flujos de Salesforce?">
+    No. Documéntalos y recréalos en **Automatización → Flujos de trabajo**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar registros con asociaciones" icon="link" href="/crm/importar-registros-con-asociaciones">
+    Conserva las relaciones entre registros.
+  </Card>
+  <Card title="Importar empresas con CSV" icon="building" href="/crm/importar-empresas-csv">
+    Trae tus cuentas como empresas.
+  </Card>
+  <Card title="Migrar desde Pipedrive" icon="right-left" href="/guias/migrar-desde-pipedrive">
+    Otra guía de migración de CRM.
+  </Card>
+  <Card title="Migrar desde Zoho" icon="right-left" href="/guias/migrar-desde-zoho">
+    Migra desde la suite de Zoho.
+  </Card>
+</CardGroup>

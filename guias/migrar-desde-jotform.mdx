@@ -1,0 +1,148 @@
+---
+title: "Migrar desde Jotform a Chateea"
+description: "Recrea tus formularios, importa los envíos y reconstruye notificaciones, flujos e integraciones de Jotform en Chateea."
+icon: "right-left"
+---
+
+Si capturas información con Jotform, puedes pasar tus formularios a Chateea y conectar cada envío con tu CRM, tus automatizaciones y tus notificaciones sin herramientas intermedias. Esta guía te explica cómo preparar la migración, mover tus datos, recrear formularios y flujos, reconectar integraciones y cerrar Jotform.
+
+## Qué vas a migrar
+
+| En Jotform | En Chateea |
+| --- | --- |
+| Formularios y plantillas | Formularios en **Sitios → Formularios** |
+| Envíos con datos de contacto | Contactos |
+| Campos del formulario | Campos personalizados |
+| Notificaciones y autorespuestas | Flujos de trabajo |
+| Integraciones | Integraciones nativas o Zapier |
+
+## 1. Prepara la migración
+
+<Steps>
+  <Step title="Revisa tu cuenta de Jotform">
+    Haz una lista de tus formularios activos con sus envíos, notificaciones por correo e integraciones. Documenta cómo se conecta cada formulario con tus procesos y calcula cuántos envíos y contactos vas a migrar.
+  </Step>
+  <Step title="Define objetivos y prioridades">
+    Decide qué formularios y datos son más críticos y empieza por ellos.
+  </Step>
+  <Step title="Respalda tus datos">
+    Exporta envíos, plantillas y configuraciones, y guarda una copia segura antes de empezar.
+  </Step>
+</Steps>
+
+## 2. Migra tus datos
+
+<Steps>
+  <Step title="Exporta los envíos">
+    En Jotform, entra a cada formulario, selecciona los envíos y expórtalos en CSV. Guarda también una copia de tus plantillas como referencia.
+  </Step>
+  <Step title="Crea los campos personalizados">
+    En Chateea, ve a **Configuración → Campos personalizados** y crea los campos para guardar la información que recogías en Jotform.
+  </Step>
+  <Step title="Importa los contactos">
+    Si tus envíos tienen datos de contacto, ve a **Contactos → Importar contactos**, sube el CSV y asigna cada columna a su campo. Aplica una etiqueta como `importado-jotform`. Ver [Importar contactos desde un archivo CSV](/contactos/importar-contactos-desde-csv).
+  </Step>
+</Steps>
+
+<Tip>
+  Chateea necesita al menos un nombre, correo o teléfono para crear cada contacto. Revisa el formato del archivo en [Formato del CSV para importar](/contactos/formato-csv-para-importar).
+</Tip>
+
+## 3. Recrea tus formularios y flujos
+
+### Formularios
+
+Ve a **Sitios → Formularios** y usa el editor para recrear cada formulario con los mismos campos que en Jotform. Ver [Crear un formulario de contacto](/sitios/crear-formulario-de-contacto).
+
+### Flujos
+
+<Steps>
+  <Step title="Documenta los flujos de Jotform">
+    Identifica todo lo que ocurre al recibir un envío: notificaciones, envío de datos a otras herramientas e integraciones. Evalúa la complejidad de cada uno.
+  </Step>
+  <Step title="Crea los disparadores">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo con el disparador de envío de formulario para cada formulario.
+  </Step>
+  <Step title="Recrea acciones y condiciones">
+    Agrega correos de confirmación, etiquetas, actualizaciones del contacto y ramas condicionales que repliquen tu lógica actual.
+  </Step>
+  <Step title="Prueba antes de activar">
+    Envía cada formulario con datos de prueba y ajusta lo necesario.
+  </Step>
+</Steps>
+
+## 4. Migra integraciones y notificaciones
+
+<Steps>
+  <Step title="Identifica tus integraciones">
+    Anota con qué herramientas conectabas Jotform: pasarelas de pago, email marketing o CRM.
+  </Step>
+  <Step title="Reconéctalas en Chateea">
+    Usa las integraciones nativas en **Configuración → Integraciones** o conecta otras aplicaciones con Zapier. Ver [Conectar Zapier](/integraciones/conectar-zapier).
+  </Step>
+  <Step title="Recrea las notificaciones internas">
+    En **Automatización → Flujos de trabajo**, agrega una notificación interna para avisar a tu equipo cada vez que llega un envío.
+  </Step>
+  <Step title="Recrea las autorespuestas">
+    Configura correos automáticos que se envíen al contacto cuando completa el formulario.
+  </Step>
+</Steps>
+
+<Tip>
+  Si durante la transición quieres que Jotform siga enviando datos a Chateea, puedes conectarlo a tus flujos. Ver [Jotform en flujos de trabajo](/automatizaciones/jotform-en-flujos-de-trabajo).
+</Tip>
+
+## 5. Verificación final y capacitación
+
+- **Valida los datos:** compara los registros de Jotform con los de Chateea.
+- **Valida formularios y flujos:** confirma que todo funciona.
+- **Capacita a tu equipo** en el editor de formularios y las automatizaciones, sobre todo en lo que cambia respecto a Jotform.
+- **Monitorea y mejora** formularios, flujos e integraciones según tus objetivos.
+
+## 6. Cierra Jotform
+
+<Steps>
+  <Step title="Opera en paralelo">
+    Mantén Jotform activo durante la transición y reemplaza los formularios de tu sitio por los de Chateea poco a poco.
+  </Step>
+  <Step title="Haz un respaldo final">
+    Exporta los últimos envíos y guarda todo antes de cancelar.
+  </Step>
+  <Step title="Cancela tu suscripción">
+    Sigue el proceso de cancelación de Jotform.
+  </Step>
+  <Step title="Revisa el resultado">
+    Documenta lo aprendido y sigue vigilando tu cuenta.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo importar mis formularios de Jotform automáticamente?">
+    No. Los formularios se recrean en **Sitios → Formularios**. Lo que sí puedes importar son los envíos con datos de contacto, en CSV.
+  </Accordion>
+  <Accordion title="¿Dónde veo los envíos de mis nuevos formularios?">
+    En **Sitios → Formularios → Envíos** y en la ficha de cada contacto. Ver [Envíos de formularios y encuestas](/sitios/envios-de-formularios-y-encuestas).
+  </Accordion>
+  <Accordion title="¿Cómo reemplazo un formulario incrustado en mi sitio?">
+    Copia el código de inserción del nuevo formulario y ponlo en lugar del de Jotform. Ver [Insertar formularios en sitios externos](/sitios/insertar-formularios-en-sitios-externos).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un formulario de contacto" icon="rectangle-list" href="/sitios/crear-formulario-de-contacto">
+    Arma tu primer formulario.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="bolt" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Automatiza lo que pasa tras cada envío.
+  </Card>
+  <Card title="Migrar desde Typeform" icon="right-left" href="/guias/migrar-desde-typeform">
+    Otra guía para migrar formularios.
+  </Card>
+  <Card title="Proteger formularios contra spam" icon="shield-check" href="/sitios/proteger-formularios-contra-spam">
+    Evita envíos falsos.
+  </Card>
+</CardGroup>

@@ -1,0 +1,169 @@
+---
+title: "IA conversacional: transferir la conversación a otro bot"
+description: "Deja que un bot pase la conversación a otro bot especializado según lo que pide el cliente."
+icon: "arrow-right-arrow-left"
+---
+
+La acción **Transferir bot** (Transfer Bot) permite que un bot de IA conversacional pase la conversación a otro bot cuando detecta una intención, una frase o una condición específica.
+
+En lugar de construir un único bot gigante que atienda todos los escenarios posibles, creas bots especializados por servicio, departamento, idioma o necesidad, y los conectas entre sí.
+
+<Info>
+  Un ejemplo lo deja claro: un contacto escribe a tu bot de servicios general y dice "mi aire acondicionado no funciona". El bot detecta la intención y pasa la conversación al bot especializado en reparación de aire acondicionado. El cliente no nota el cambio; solo recibe respuestas más precisas.
+</Info>
+
+## Beneficios clave
+
+| Beneficio | Detalle |
+| --- | --- |
+| **Mejor experiencia** | Lleva al contacto al bot más adecuado para lo que necesita |
+| **Flujos más simples** | Transfiere entre bots sin ramificar flujos de trabajo sin necesidad |
+| **Bots modulares** | Bots independientes por servicio, equipo, departamento o idioma |
+| **Más precisión** | Cada bot se mantiene enfocado en un tema |
+| **Conversación continua** | El bot de destino sigue la conversación con naturalidad |
+| **Mantenimiento simple** | Actualizas bots pequeños en vez de uno enorme |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Abre la lista de agentes">
+    Ve a **IA → IA conversacional → Lista de agentes**.
+  </Step>
+  <Step title="Edita el bot de origen">
+    Haz clic en el menú de tres puntos junto al bot y selecciona **Editar**.
+  </Step>
+  <Step title="Abre Objetivos del bot">
+    En **Configura tus acciones**, haz clic en **Transferir bot**.
+  </Step>
+  <Step title="Nombra la acción">
+    Usa un nombre que explique a dónde va la conversación, como "Transferir al bot de reparación de aire acondicionado".
+  </Step>
+  <Step title="Selecciona el bot de destino">
+    Elígelo en el desplegable **Seleccionar bot al que transferir**.
+  </Step>
+  <Step title="Confirma la compatibilidad">
+    Ambos bots deben estar activos en el mismo canal y los dos en modo **Piloto automático** (Auto Pilot).
+  </Step>
+  <Step title="Define la condición">
+    Por ejemplo: "El cliente dice que necesita reparar su aire acondicionado".
+  </Step>
+  <Step title="Agrega frases de ejemplo">
+    Las que un contacto usaría de verdad:
+
+    ```text
+    Reparación de aire acondicionado
+    Mi aire no funciona
+    Necesito que reparen el aire
+    ```
+  </Step>
+  <Step title="Guarda">
+    La transferencia queda activa en el bot de origen.
+  </Step>
+</Steps>
+
+## Requisitos
+
+<Warning>
+  La transferencia depende de que el bot de origen y el de destino sean compatibles. Si no se cumplen estos requisitos, no funciona:
+
+  - Ambos bots **activos en el mismo canal** (si el origen está en el chat en vivo, el destino también).
+  - Ambos en modo **Piloto automático**.
+  - El bot de destino **publicado y probado** antes de usarlo con clientes.
+  - Condiciones y frases lo bastante específicas para evitar transferencias accidentales.
+</Warning>
+
+## Cuándo conviene transferir a otro bot
+
+Cuando tu negocio tiene varios servicios, departamentos o tipos de consulta que atiende mejor un bot separado. Ejemplos comunes:
+
+| Bot de origen | Bot de destino |
+| --- | --- |
+| Bot de recepción general | Bot de ventas |
+| Bot de soporte | Bot de facturación |
+| Bot de servicios del hogar | Bot de climatización, plomería, electricidad o techos |
+| Bot multilingüe | Bot en un idioma específico |
+| Bot de citas general | Bot de reservas de un servicio concreto |
+
+## Frases y condiciones
+
+Las frases de ejemplo ayudan al bot a entender qué mensajes deben activar la transferencia. Que sean claras y realistas:
+
+```text
+Mi aire no funciona
+Necesito ayuda con facturación
+¿Puedo agendar una limpieza dental?
+Quiero hablar con alguien sobre el techo
+¿Hacen plomería de emergencia?
+```
+
+<Warning>
+  Evita condiciones vagas que coincidan con demasiadas conversaciones. Cuanto más específicos los ejemplos, más precisa la transferencia.
+</Warning>
+
+## Si también usas flujos de trabajo
+
+<Warning>
+  Si usas la acción de flujo **Actualizar bot de IA conversacional y estado**, agrega un paso de **espera** antes o después de esa acción, según el caso.
+
+  Sin esa espera, el bot original puede volver a reasignarse la conversación y **romper la transferencia**.
+</Warning>
+
+## Buenas prácticas
+
+<AccordionGroup>
+  <Accordion title="Nombres de acción descriptivos">
+    Que digan a qué bot va la conversación.
+  </Accordion>
+
+  <Accordion title="Cada bot enfocado en un tema">
+    Un servicio, departamento o idioma por bot.
+  </Accordion>
+
+  <Accordion title="Publica los bots de destino antes de seleccionarlos">
+    Un bot sin publicar no puede recibir la conversación.
+  </Accordion>
+
+  <Accordion title="Confirma el mismo canal y el modo Piloto automático en ambos">
+    Es la causa más común de transferencias que no funcionan.
+  </Accordion>
+
+  <Accordion title="Prueba cada escenario antes de usarlo con clientes">
+    Escribe las frases de ejemplo tú mismo y confirma que la conversación llega al bot correcto.
+  </Accordion>
+
+  <Accordion title="Suficientes frases de ejemplo, sin condiciones que se solapen">
+    Así la IA entiende la intención sin transferencias cruzadas.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué hace la acción Transferir bot?">
+    Pasa una conversación de un bot de IA conversacional a otro, según la intención del cliente, las condiciones o las frases de ejemplo.
+  </Accordion>
+
+  <Accordion title="¿Puedo transferir a cualquier bot?">
+    A cualquier bot compatible: ambos activos en el mismo canal y en modo Piloto automático.
+  </Accordion>
+
+  <Accordion title="¿Se conserva el historial tras la transferencia?">
+    Sí. El contexto se conserva para que el bot de destino continúe con naturalidad.
+  </Accordion>
+
+  <Accordion title="¿Por qué no funciona mi transferencia?">
+    Las causas más comunes: canales distintos, uno de los bots fuera de Piloto automático, el bot de destino sin publicar o condiciones demasiado vagas.
+  </Accordion>
+
+  <Accordion title="¿Puedo usarla en vez de flujos complejos?">
+    Sí. Reduce la necesidad de enrutar por flujos, porque un bot le entrega la conversación directamente a otro.
+  </Accordion>
+
+  <Accordion title="¿Sirve para departamentos o servicios distintos?">
+    Sí. Creas bots separados para ventas, soporte, facturación, reservas u otras áreas, y transfieres según la necesidad.
+  </Accordion>
+
+  <Accordion title="¿Debo probar el bot de destino antes de usarlo?">
+    Sí. Publica y prueba siempre el bot de destino antes de usarlo en una transferencia con clientes reales.
+  </Accordion>
+</AccordionGroup>

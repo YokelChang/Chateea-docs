@@ -1,0 +1,195 @@
+---
+title: "Migrar desde HubSpot a Chateea"
+description: "Importa contactos, negocios, empresas y pipelines de HubSpot y reconstruye flujos, campañas, páginas y canales en Chateea."
+icon: "right-left"
+---
+
+Si vienes de HubSpot, puedes traer tus datos y tus procesos a Chateea sin empezar de cero. El importador de HubSpot mueve directamente contactos, negocios, empresas, campos, pipelines, notas y tareas, y el resto (automatizaciones, campañas, páginas, formularios, telefonía y bandeja de entrada) se reconstruye con las herramientas de Chateea. Esta guía te lleva por toda la migración, de la preparación al cierre de HubSpot.
+
+<Note>
+  El importador de HubSpot puede no estar disponible en todas las cuentas. Si no ves la opción **Importar datos** con la tarjeta de HubSpot, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**. Mientras tanto, puedes migrar con archivos CSV.
+</Note>
+
+## Qué se importa y qué se reconstruye
+
+| En HubSpot | En Chateea | Cómo se migra |
+| --- | --- | --- |
+| Contactos | Contactos | Importador de HubSpot o CSV |
+| Negocios y pipelines | Oportunidades y pipelines, con sus etapas | Importador de HubSpot |
+| Empresas | Empresas | Importador de HubSpot o CSV |
+| Propiedades | Campos personalizados | Importador de HubSpot |
+| Notas y tareas | Notas y tareas | Importador de HubSpot |
+| Workflows | Flujos de trabajo | Se reconstruyen |
+| Correos y campañas | Plantillas y campañas de correo | Se reconstruyen |
+| Páginas de destino y formularios | Embudos, sitios web y formularios | Se reconstruyen |
+| Productos y facturas | Productos y facturas | Se recrean |
+| Llamadas, SMS y bandeja | Sistema telefónico y Conversaciones | Se configuran |
+
+## 1. Prepara la migración
+
+<Steps>
+  <Step title="Revisa tu cuenta de HubSpot">
+    Haz una lista de todo lo que usas: CRM, workflows, campañas, llamadas, SMS y herramientas de comercio. Documenta tus workflows, pipelines y campañas, y calcula cuántos contactos, negocios y correos vas a migrar.
+  </Step>
+  <Step title="Define objetivos y prioridades">
+    Decide qué datos y funciones son críticos y migra eso primero.
+  </Step>
+  <Step title="Limpia y respalda">
+    Elimina duplicados en HubSpot y exporta una copia de seguridad de contactos, empresas, negocios, tickets y demás registros importantes.
+  </Step>
+  <Step title="Prepara tu cuenta de Chateea">
+    - **Usa una cuenta limpia si puedes:** sin datos creados a mano, los errores y duplicados son mucho más fáciles de revisar.
+    - **Activa Permitir duplicados** en contactos y oportunidades antes de importar. El bloqueo de duplicados provoca muchos errores evitables; vuelve a activarlo al terminar.
+    - **Idioma:** se recomienda tener la cuenta en inglés mientras dura la importación.
+  </Step>
+</Steps>
+
+## 2. Importa tus datos del CRM
+
+<Steps>
+  <Step title="Abre la importación">
+    Desde **Contactos** (o **Empresas** u **Oportunidades**), abre el menú **Importar** arriba a la derecha y elige **Importar datos**.
+  </Step>
+  <Step title="Conecta HubSpot">
+    Haz clic en **Conectar HubSpot**, inicia sesión y autoriza el acceso.
+  </Step>
+  <Step title="Elige qué traer">
+    Marca **Contactos**, **Tareas**, **Negocios** y **Empresas**. Si eliges Negocios, Contactos se marca automáticamente porque es obligatorio. El asistente agrega solo los datos relacionados necesarios (propiedades, pipelines con sus etapas, notas y asociaciones).
+  </Step>
+  <Step title="Confirma e inicia">
+    Revisa la tabla con los registros encontrados, ajusta con el ícono de lápiz qué propiedades incluir y haz clic en **Confirmar e iniciar la importación**.
+  </Step>
+  <Step title="Revisa los resultados">
+    La importación corre en segundo plano y puedes cerrar la ventana. En el **Historial de importaciones** abre los detalles para ver totales, éxitos, errores y advertencias. Filtra por **Error** y descarga el CSV para corregir en HubSpot y volver a ejecutar.
+  </Step>
+</Steps>
+
+Encontrarás el paso a paso completo, los límites y la solución de errores en [Importar datos desde HubSpot](/crm/importar-datos-desde-hubspot).
+
+<Warning>
+  **Dos causas habituales de error en campos personalizados:**
+
+  1. **Choque de claves.** Los campos se relacionan por su clave interna. Si en tu cuenta ya existe un campo con la misma clave, ese campo falla. Renómbralo o elimínalo antes de importar.
+  2. **Nombre y etiqueta distintos.** Si en HubSpot el nombre interno y la etiqueta visible de un campo no coinciden, alinéalos antes de importar.
+</Warning>
+
+### Límites que conviene conocer
+
+| Área | Qué debes saber |
+| --- | --- |
+| Oportunidades | Se asocian hasta con 10 contactos adicionales. Una oportunidad sin contacto no se importa |
+| Campos calculados | Llegan como texto de una línea |
+| Archivos en campos | Un archivo guardado dentro de un campo puede hacer fallar el registro. Quítalo, importa y vuelve a adjuntarlo después |
+| Contactos eliminados | Si borras un contacto importado y vuelves a ejecutar el importador, se importa de nuevo |
+| Tareas | Las recurrentes no se admiten |
+| Asociaciones | Algunas pueden no importarse. Valida las críticas al terminar |
+
+### Si migras con CSV
+
+Si prefieres archivos, exporta desde HubSpot contactos y empresas (**Contacts → Contacts** y **CRM → Companies**) y negocios (**Sales → Deals**) en CSV. Luego impórtalos con [Importar contactos desde CSV](/contactos/importar-contactos-desde-csv), [Importar empresas con CSV](/crm/importar-empresas-csv) e [Importar oportunidades desde CSV](/oportunidades/importar-oportunidades-desde-csv), después de crear tus pipelines en **Oportunidades → Pipelines**.
+
+### Productos y facturas
+
+Exporta tu catálogo desde HubSpot y recrea los productos en **Pagos → Productos**. Para cobrar, usa las facturas y los enlaces de pago de Chateea. Ver [Importar productos desde CSV](/pagos/importar-productos-csv).
+
+## 3. Reconstruye tus workflows
+
+<Steps>
+  <Step title="Documenta tus workflows de HubSpot">
+    Anota cada workflow activo con sus disparadores, acciones y esperas, y evalúa su complejidad.
+  </Step>
+  <Step title="Crea los disparadores">
+    Ve a **Automatización → Flujos de trabajo** y configura disparadores equivalentes, como envío de formulario o cambio en un contacto.
+  </Step>
+  <Step title="Recrea acciones y esperas">
+    Agrega acciones como enviar correo o SMS, aplicar etiquetas o mover la etapa de una oportunidad, con sus esperas y condiciones.
+  </Step>
+  <Step title="Prueba antes de activar">
+    Ejecuta cada flujo con un contacto de prueba y ajusta según el resultado.
+  </Step>
+</Steps>
+
+## 4. Reconstruye tus campañas de marketing
+
+<Steps>
+  <Step title="Correos">
+    Guarda copias en HTML de tus plantillas de HubSpot y recréalas en **Marketing → Correos → Plantillas**. Prueba el formato antes de enviar a tu lista. Ver [Lanza tu primera campaña de correo](/primeros-pasos/lanza-tu-primera-campana-de-correo).
+  </Step>
+  <Step title="Páginas de destino y formularios">
+    Descarga el HTML de tus páginas y reconstrúyelas en **Sitios → Embudos** o **Sitios → Sitios web**. Recrea tus formularios en **Sitios → Formularios** y conecta cada formulario y botón con tus flujos de trabajo.
+  </Step>
+  <Step title="Campañas">
+    Vincula correos, páginas y formularios de cada campaña y configura el seguimiento que necesitas.
+  </Step>
+</Steps>
+
+## 5. Configura llamadas, SMS y bandeja de entrada
+
+- **Llamadas y SMS:** configura tus números en **Configuración → Sistema telefónico** y crea en **Automatización → Flujos de trabajo** las automatizaciones de SMS y llamadas, de modo que toda la comunicación quede registrada en el contacto.
+- **Bandeja de entrada:** en **Conversaciones**, conecta tus canales (correo, SMS, WhatsApp, Facebook Messenger) y verifica que los mensajes lleguen a la bandeja correcta.
+
+## 6. Verificación final y capacitación
+
+- **Valida los datos:** compara registros entre HubSpot y Chateea, incluidas las asociaciones críticas.
+- **Marca el origen:** etiqueta los contactos importados para que tus informes de atribución los distingan. Ver [Importa tus contactos](/primeros-pasos/importa-tus-contactos).
+- **Reactiva el bloqueo de duplicados** en contactos y oportunidades.
+- **Valida flujos y campañas** y prueba cada canal de comunicación.
+- **Capacita a tu equipo** en lo que cambia respecto a HubSpot.
+
+## 7. Cierra HubSpot
+
+<Steps>
+  <Step title="Opera en paralelo">
+    Mantén HubSpot activo durante la transición y reduce su uso poco a poco.
+  </Step>
+  <Step title="Haz un respaldo final">
+    Asegúrate de tener guardado todo antes de cancelar.
+  </Step>
+  <Step title="Cancela tu suscripción">
+    Sigue el proceso de cancelación de HubSpot.
+  </Step>
+  <Step title="Revisa el resultado">
+    Documenta lo aprendido y sigue monitoreando tu cuenta de Chateea.
+  </Step>
+</Steps>
+
+<Tip>
+  Si necesitas que HubSpot y Chateea compartan contactos durante la transición, puedes usar la integración de HubSpot en tus flujos. Ver [HubSpot en flujos de trabajo](/automatizaciones/hubspot-en-flujos-de-trabajo).
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La importación sobrescribe mis registros existentes?">
+    No. Los registros importados se agregan junto a los que ya tienes. Por eso se recomienda una cuenta limpia y tener activado **Permitir duplicados** durante la importación.
+  </Accordion>
+  <Accordion title="¿Puedo volver a importar o continuar donde me quedé?">
+    Sí. Inicia una nueva importación desde **Importar datos**. Cada ejecución queda registrada por separado, así que puedes comparar intentos y revisar el CSV de errores anterior.
+  </Accordion>
+  <Accordion title="¿Por qué hay menos registros encontrados que en HubSpot?">
+    El conteo solo incluye lo que el importador puede relacionar y traer. Una diferencia pequeña, sobre todo en campos personalizados, es normal.
+  </Accordion>
+  <Accordion title="¿Se migran mis workflows de HubSpot?">
+    No. Los workflows se documentan y se reconstruyen en **Automatización → Flujos de trabajo**.
+  </Accordion>
+  <Accordion title="¿Debo cancelar HubSpot en cuanto termine la importación?">
+    No. Opera en paralelo un tiempo, confirma que todo funciona, haz un respaldo final y luego cancela.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar datos desde HubSpot" icon="cloud-arrow-down" href="/crm/importar-datos-desde-hubspot">
+    El paso a paso del importador.
+  </Card>
+  <Card title="Importar contactos desde CSV" icon="file-csv" href="/contactos/importar-contactos-desde-csv">
+    Trae contactos desde cualquier herramienta.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="bolt" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Reconstruye tus automatizaciones.
+  </Card>
+  <Card title="Migrar desde Salesforce" icon="right-left" href="/guias/migrar-desde-salesforce">
+    Otra guía de migración de CRM.
+  </Card>
+</CardGroup>

@@ -1,0 +1,126 @@
+---
+title: "Disparadores de flujos para la actividad en comunidades"
+description: "Automatiza moderación y seguimiento con disparadores de solicitudes rechazadas, publicaciones, comentarios y registros a eventos."
+icon: "bolt"
+---
+
+Cuatro disparadores de flujos de trabajo reaccionan en tiempo real a lo que pasa en los grupos de tu comunidad: cuando se rechaza una solicitud para unirse, cuando alguien publica, cuando alguien comenta y cuando un miembro se registra en un evento. Con ellos automatizas la moderación, el seguimiento y la participación sin revisar el grupo a mano.
+
+## Para qué te sirve
+
+- **Más automatización:** inicias flujos a partir de la actividad del grupo sin exportar datos ni revisar manualmente.
+- **Filtros precisos:** grupo, canal, título o contenido de la publicación, contenido del comentario y título del evento.
+- **Moderación más rápida:** avisa a tu equipo cuando aparece una publicación o un comentario delicado.
+- **Escala con tu comunidad:** reemplaza tareas repetitivas de seguimiento y etiquetado por flujos estándar.
+- **Recorridos completos:** combínalos con los disparadores que ya existen, como **Acceso a grupo concedido**, **Acceso a grupo revocado** o los de la clasificación, para cubrir todo el ciclo del miembro.
+
+## Los cuatro disparadores
+
+| Disparador | Se activa cuando | Filtros |
+| --- | --- | --- |
+| Solicitud para unirse al grupo rechazada (Group Joining Request Rejected) | Se rechaza la solicitud de alguien para unirse a un grupo. | Grupo (obligatorio) |
+| Publicación creada en el grupo (Group Post Created) | Alguien publica una nueva entrada en un grupo. Solo publicaciones principales, no comentarios. | Grupo (obligatorio), canal, título de la publicación, contenido de la publicación |
+| Comentario creado en el grupo (Group Comment Created) | Alguien comenta una publicación existente. | Grupo (obligatorio), canal, título de la publicación, contenido de la publicación, contenido del comentario |
+| Miembro registrado en un evento del grupo (Member Registered for Group Event) | Un miembro se registra en un evento de un grupo. | Grupo (obligatorio), título del evento |
+
+### Solicitud para unirse al grupo rechazada
+
+Mantén a los solicitantes rechazados en un seguimiento ordenado.
+
+- Envía un mensaje amable que explique cómo cumplir los requisitos o qué alternativas tiene.
+- Crea una tarea para que alguien de tu equipo revise la solicitud.
+- Agrega una etiqueta como `comunidad-solicitud-rechazada` para segmentar y hacer seguimiento después.
+
+### Publicación creada en el grupo
+
+Ideal para automatizar la participación y moderar según el contenido.
+
+- Responde con una guía cuando alguien publica una pregunta de ayuda o soporte.
+- Avisa a tu equipo cuando un cliente importante publica en un canal clave.
+- Inicia un flujo de bienvenida cuando alguien se presenta en el canal de presentaciones.
+- Marca para revisión las publicaciones que contienen ciertas palabras.
+
+### Comentario creado en el grupo
+
+Te ayuda a no perder respuestas importantes en conversaciones con mucha actividad.
+
+- Crea una tarea de soporte cuando un comentario incluye palabras como "cancelar", "reembolso" o "problema".
+- Avisa al responsable de la cuenta cuando un cliente valioso deja una pregunta.
+- Reconoce o premia a los miembros que dan respuestas útiles.
+- Envía a revisión los comentarios que podrían incumplir tus normas.
+
+### Miembro registrado en un evento del grupo
+
+Un punto de partida limpio para recordatorios y seguimiento.
+
+- Envía una secuencia de confirmación con enlaces de calendario y material previo.
+- Agrega a los registrados a una campaña que después envíe la repetición y una oferta.
+- Avisa al anfitrión cuando se registran miembros de un segmento concreto.
+- Etiqueta a los contactos según el tipo de evento, por ejemplo `asistente-webinar-demo`.
+
+## Configurar un disparador de comunidades
+
+<Steps>
+  <Step title="Abre el constructor de flujos">
+    Ve a **Automatización → Flujos de trabajo** y pulsa **Crear flujo de trabajo**, o abre uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Pulsa **Agregar disparador** (Add New Trigger), busca la categoría **Comunidades** y elige uno de los cuatro disparadores.
+  </Step>
+  <Step title="Configura los filtros">
+    Selecciona el **Grupo** (obligatorio). Si quieres afinar, agrega filtros opcionales: **Canal**, **Título de la publicación**, **Contenido de la publicación**, **Contenido del comentario** o **Título del evento**, según el disparador. Pulsa **Guardar disparador**.
+  </Step>
+  <Step title="Agrega las acciones">
+    Define qué debe pasar: enviar un correo, SMS o notificación interna; crear una tarea; agregar o quitar etiquetas; agregar el contacto a otro flujo; o actualizar campos del contacto.
+  </Step>
+  <Step title="Prueba y publica">
+    Con un contacto o un miembro de prueba, rechaza una solicitud, crea una publicación o un comentario, o regístrate en un evento. Comprueba que el contacto entra al flujo y que las acciones se ejecutan. Después, activa el flujo con **Publicar**.
+  </Step>
+</Steps>
+
+<Tip>
+  En flujos de moderación, usa solo notificaciones internas (sin mensajes al contacto). Así tu equipo revisa el caso antes de responder.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde encuentro estos disparadores?">
+    En la lista de **Agregar disparador** del constructor de flujos, dentro de la categoría **Comunidades**, junto a disparadores como **Acceso a grupo concedido** y **Acceso a grupo revocado**.
+  </Accordion>
+  <Accordion title="¿El filtro de grupo es obligatorio?">
+    Sí. En estos cuatro disparadores debes elegir al menos un grupo. Si quieres la misma automatización en varios grupos, selecciona varios (si está disponible) o crea un flujo por grupo.
+  </Accordion>
+  <Accordion title="¿Funcionan en grupos públicos y privados?">
+    Sí. Se basan en la actividad del grupo, sin importar su visibilidad.
+  </Accordion>
+  <Accordion title="¿Puedo combinar varios filtros?">
+    Sí. Puedes exigir un grupo, un canal y ciertas palabras en la publicación o el comentario. El flujo solo se inicia cuando se cumplen todas las condiciones.
+  </Accordion>
+  <Accordion title="¿Se vuelven a activar si alguien edita una publicación o un comentario?">
+    No. Se activan cuando ocurre el evento (rechazo, publicación, comentario o registro). Las ediciones posteriores no los vuelven a activar.
+  </Accordion>
+  <Accordion title="¿Puedo usarlos junto con otros disparadores de comunidades?">
+    Sí. Puedes diseñar flujos con varias ramas: por ejemplo, **Acceso a grupo concedido** inicia la bienvenida y **Publicación creada en el grupo** o **Miembro registrado en un evento del grupo** gestionan la participación continua.
+  </Accordion>
+  <Accordion title="¿Los miembros tienen que existir como contactos?">
+    Los miembros de la comunidad están vinculados a contactos de tu CRM. El flujo actúa sobre ese contacto, así que puedes enviarle mensajes, etiquetarlo y actualizar sus campos como en cualquier otro flujo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Automatizar el acceso a grupos" icon="bolt" href="/cursos/automatizar-acceso-a-grupos">
+    Da o quita acceso a grupos con flujos de trabajo.
+  </Card>
+  <Card title="Automatizar solicitudes para unirse" icon="user-check" href="/cursos/automatizar-solicitudes-para-unirse-a-grupos">
+    Gestiona las solicitudes de ingreso automáticamente.
+  </Card>
+  <Card title="Lista de disparadores" icon="list" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles por categoría.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="diagram-project" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Crea tu primer flujo de trabajo en Chateea.
+  </Card>
+</CardGroup>

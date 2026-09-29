@@ -1,0 +1,118 @@
+---
+title: "Cómo activar un flujo de trabajo desde una conversación con IA"
+description: "Haz que tu bot de IA dispare automatizaciones según lo que pide el cliente en la conversación."
+icon: "bolt"
+---
+
+La acción **Activar un flujo de trabajo** permite que tu bot de IA conversacional inicie automáticamente un flujo ya creado cuando detecta una situación concreta en la conversación.
+
+Conecta lo que el cliente pide con tus procesos internos: menos trabajo manual y respuestas más rápidas.
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Automatización** | Ejecuta acciones sin intervención manual |
+| **Respuestas más rápidas** | Dispara el flujo al instante, según la intención del cliente |
+| **Más precisión** | Reduce el error humano en tareas repetitivas |
+| **Procesos escalables** | Gestiona muchas conversaciones a la vez |
+| **Mejor experiencia** | El cliente recibe acciones oportunas y relevantes |
+
+## Dónde se configura
+
+En la pestaña **Objetivos del bot** de tu agente, dentro de la sección **Configura tus acciones**. Llegas desde **IA → IA conversacional → Lista de agentes**.
+
+Antes de empezar, asegúrate de que tu bot esté creado y tenga un nombre claro, para identificarlo cuando manejes varios.
+
+## Configura la acción
+
+<Steps>
+  <Step title="Abre el bot y ve a Objetivos del bot">
+    Edita el agente desde la lista y selecciona la pestaña **Objetivos del bot**.
+  </Step>
+  <Step title="Pulsa Activar un flujo de trabajo">
+    Está dentro de **Configura tus acciones**. Se abre la ventana de configuración.
+  </Step>
+  <Step title="Escribe un nombre de acción claro">
+    Que diga qué hace, por ejemplo "Enviar a flujo de nuevas citas".
+  </Step>
+  <Step title="Selecciona un flujo de trabajo publicado">
+    <Warning>
+      Solo puedes elegir flujos que ya estén **publicados**. Un flujo en borrador no aparece en la lista.
+    </Warning>
+  </Step>
+  <Step title="Define la condición que lo dispara">
+    Descríbela en lenguaje natural y sencillo:
+
+    ```text
+    El cliente quiere agendar una cita
+    ```
+
+    ```text
+    El cliente quiere contratar una suscripción
+    ```
+
+    Esto ayuda a la IA a relacionar las conversaciones reales con el flujo correcto.
+  </Step>
+  <Step title="Guarda">
+    La acción queda activa en el bot desde ese momento.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+<AccordionGroup>
+  <Accordion title="Escribe las condiciones en lenguaje natural">
+    Tal como lo diría una persona, no como una regla técnica.
+  </Accordion>
+
+  <Accordion title="Alinea las indicaciones con las condiciones">
+    Así la conversación lleva de forma natural a que se cumplan.
+  </Accordion>
+
+  <Accordion title="Evita condiciones duplicadas en el mismo bot">
+    Dos condiciones parecidas generan un comportamiento impredecible.
+  </Accordion>
+
+  <Accordion title="Máximo 5 acciones de este tipo por bot">
+    Más que eso complica el diagnóstico cuando algo falla.
+  </Accordion>
+
+  <Accordion title="Verifica que los flujos estén publicados">
+    Publica el flujo antes de seleccionarlo; si no, no aparecerá en la lista.
+  </Accordion>
+</AccordionGroup>
+
+## La regla de los 20 mensajes
+
+<Warning>
+  Un mismo escenario de activación **se ejecuta como máximo una vez cada 20 mensajes**.
+
+  Después de que el bot dispara ese escenario, no puede volver a activarlo durante los siguientes 20 mensajes. Esto evita que se repita con cada mensaje nuevo.
+
+  Tenlo en cuenta al probar: si repites la misma intención y el flujo no vuelve a dispararse, probablemente sea esto y no un error de configuración.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si varias condiciones coinciden a la vez?">
+    El sistema decide cuál ejecutar según el contexto y la prioridad.
+  </Accordion>
+
+  <Accordion title="¿Se puede activar por mensajes del bot y del cliente?">
+    Sí, la condición puede cumplirse desde cualquiera de los dos lados de la conversación.
+  </Accordion>
+
+  <Accordion title="¿Por qué no se activa mi flujo?">
+    Verifica que el flujo esté publicado, que la condición esté bien definida y que no se haya disparado en los últimos 20 mensajes.
+  </Accordion>
+
+  <Accordion title="¿Cuántas acciones de este tipo puedo agregar?">
+    Hasta 5 por bot.
+  </Accordion>
+
+  <Accordion title="¿Puedo editar la acción después de guardarla?">
+    Sí, puedes abrir de nuevo la configuración y actualizarla cuando quieras.
+  </Accordion>
+</AccordionGroup>

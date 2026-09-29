@@ -1,0 +1,154 @@
+---
+title: "Qué muestra la página de suscripciones"
+description: "Revisa tus suscripciones en un solo lugar, entiende cada estado por proveedor y qué registros no aparecen en la lista."
+icon: "arrows-rotate"
+---
+
+La página **Suscripciones** reúne en un solo lugar todos los cobros recurrentes que se crean desde los flujos de pago compatibles de Chateea. Desde ahí ves quién está suscrito, con qué proveedor, cuánto paga, de dónde vino la suscripción y en qué estado está, sin tener que entrar al panel de cada proveedor de pago. Esta guía explica qué aparece en la página, cómo interpretar cada estado y qué queda fuera.
+
+## Para qué te sirve
+
+- **Visibilidad centralizada:** revisas todas las suscripciones sin abrir Stripe, PayPal u otro proveedor por separado.
+- **Contexto del cliente:** ves cliente, origen, proveedor, importe, fecha de creación y estado en la misma fila.
+- **Seguimiento de cobros:** consultas las transacciones posteriores de las suscripciones compatibles.
+- **Estados claros:** los estados de cada proveedor se agrupan en un mismo lenguaje, aunque cada proveedor use nombres distintos.
+- **Gestión desde un solo lugar:** según el proveedor, el estado y tus permisos, puedes actualizar, pausar, reanudar o cancelar suscripciones.
+
+<Note>
+  Las acciones disponibles para cada suscripción dependen de su proveedor de pago, de su estado actual y de tus permisos en **Pagos**. Los reembolsos no se hacen desde aquí, sino desde **Pagos → Transacciones**.
+</Note>
+
+## Qué suscripciones aparecen
+
+La página incluye suscripciones creadas desde fuentes compatibles como:
+
+- La creación manual de una suscripción, por ejemplo desde la sección de pagos de un contacto, cuando el proveedor lo permite.
+- Las compras de suscripciones en formularios de pedido de 1 y 2 pasos.
+
+En la lista verás estas columnas:
+
+| Columna | Qué muestra |
+| --- | --- |
+| **Proveedor e ID** | El proveedor de pago que la procesa y el identificador de la suscripción |
+| **Cliente** | Los datos de la persona suscrita |
+| **Origen** | Desde dónde se creó la suscripción |
+| **Fecha de creación** | Cuándo se creó |
+| **Importe** | Cuánto se cobra en cada ciclo |
+| **Estado** | En qué punto de su ciclo de vida está |
+
+## Qué incluye el detalle de cada suscripción
+
+Al abrir una suscripción ves más contexto que en la lista:
+
+- Información del proveedor de pago.
+- Origen de la suscripción.
+- Datos disponibles del cliente y de facturación.
+- Información actual de la suscripción (productos, cantidades, fechas).
+- Las transacciones posteriores, en suscripciones creadas con Stripe.
+- Metadatos adicionales capturados en el checkout, como el nombre de la empresa, cuando existen.
+
+## Los estados de suscripción
+
+Cada proveedor usa sus propios nombres para estados parecidos. Chateea los agrupa así:
+
+| Estado en Chateea | Estado en Stripe | Estado en PayPal | Qué significa |
+| --- | --- | --- | --- |
+| **Prueba** | trialing | No aplica | Está en su período de prueba |
+| **Activa** | active | active | Está activa y cobrando con normalidad |
+| **Cancelada** | canceled | canceled | Fue cancelada |
+| **Suspendida** | No aplica | suspended | Está detenida temporalmente en el proveedor |
+| **Fallida** | incomplete_expired | No aplica | El primer cobro no se completó a tiempo y la suscripción expiró |
+| **Incompleta** | incomplete, past_due | approval pending, approved | Falta completar un pago o una aprobación |
+| **Impaga** | unpaid | No aplica | Hay cobros pendientes que no se pudieron realizar |
+| **Vencida** | No aplica | expired | La suscripción terminó |
+
+<Tip>
+  Los estados que te piden acción son **Incompleta**, **Impaga** y **Suspendida**: cada uno es un ingreso recurrente en riesgo. Filtrar la lista por ellos una vez por semana es la forma más rápida de saber a qué clientes contactar.
+</Tip>
+
+## Cómo se sincronizan los datos
+
+La sincronización depende del proveedor de pago:
+
+| Proveedor | Comportamiento |
+| --- | --- |
+| **Stripe** | El estado de la suscripción y los pagos recibidos se mantienen sincronizados. Si cancelas una suscripción en Stripe, aparece como **Cancelada** en la lista. |
+| **PayPal** | Las suscripciones aparecen en la lista, pero su estado no se sincroniza de forma continua ni se registran los cobros posteriores como en Stripe. |
+
+<Note>
+  Si trabajas con PayPal, revisa los cambios de estado y los cobros recurrentes también en tu cuenta de PayPal.
+</Note>
+
+## Qué NO aparece en esta página
+
+No todos los cobros recurrentes crean un registro aquí. Conocer las excepciones evita confundir un registro faltante con un error de sincronización.
+
+| No aparece aquí | Por qué |
+| --- | --- |
+| **Suscripciones cuyo primer pago falló** | Si el primer cobro falla al enviar el formulario de pedido, la suscripción nunca se crea |
+| **Plantillas de facturas recurrentes** | Se gestionan en la sección de facturas |
+| **Suscripciones creadas en Membresías** | Se gestionan dentro de Membresías |
+
+<Warning>
+  Aunque el primer pago falle, el contacto sí puede crearse desde el formulario de pedido. Si esperabas ver una suscripción y no está, busca el contacto y revisa su actividad de pagos.
+</Warning>
+
+## Cómo usar la página
+
+<Steps>
+  <Step title="Abre la página">
+    Ve a **Pagos → Suscripciones**.
+  </Step>
+  <Step title="Busca la suscripción">
+    Encuéntrala por cliente, estado, proveedor u otra información de la lista, y ábrela para ver sus detalles.
+  </Step>
+  <Step title="Revisa las acciones disponibles">
+    Antes de hacer cambios, confirma qué acciones ofrece esa suscripción según su proveedor, estado y tus permisos.
+  </Step>
+  <Step title="Usa la acción adecuada">
+    - **Actualizar:** modifica productos, cantidades o fechas elegibles.
+    - **Pausar, reanudar o cancelar:** disponible cuando el proveedor, el estado y tus permisos lo permiten.
+    - **Reembolsar un cobro:** ve a **Pagos → Transacciones** y usa la acción de reembolso en la transacción correspondiente.
+    - **Exportar:** usa la opción de descarga de la página si tus permisos lo permiten.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo cambiar productos o cantidades sin cancelar y volver a crear la suscripción?">
+    Sí, en suscripciones elegibles. La acción **Actualizar** modifica productos, cantidades y fechas sin recrear la suscripción. La disponibilidad depende del proveedor y del estado.
+  </Accordion>
+  <Accordion title="¿Actualizar una suscripción cambia las transacciones anteriores?">
+    No. Los cambios afectan la facturación futura y no reescriben las transacciones ya completadas.
+  </Accordion>
+  <Accordion title="¿La exportación incluye los valores actualizados?">
+    Sí. La exportación usa los datos más recientes de cada suscripción, incluidos los cambios de productos o cantidades.
+  </Accordion>
+  <Accordion title="¿Por qué un compañero ve una suscripción pero no puede actualizarla ni cancelarla?">
+    Los permisos de **Pagos** controlan por separado ver, actualizar, pausar o reanudar y cancelar suscripciones. El proveedor y el estado de la suscripción también limitan las acciones disponibles.
+  </Accordion>
+  <Accordion title="¿Por qué no veo una suscripción después de un pago fallido?">
+    Las suscripciones solo se crean cuando el primer cobro se completa. Si falló, no aparece en la lista, aunque el contacto sí puede haberse creado.
+  </Accordion>
+  <Accordion title="¿Los estados se actualizan solos?">
+    En Stripe sí se sincronizan. En PayPal la sincronización es limitada, así que conviene revisar también tu cuenta de PayPal.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Modificar suscripciones existentes" icon="pen-to-square" href="/pagos/modificar-suscripciones-existentes">
+    Agrega o quita productos, cambia cantidades y fechas.
+  </Card>
+  <Card title="Pausar y reanudar suscripciones" icon="pause" href="/pagos/pausar-y-reanudar-suscripciones">
+    Detén el cobro temporalmente sin cancelar.
+  </Card>
+  <Card title="Exportar suscripciones a CSV" icon="file-csv" href="/pagos/exportar-suscripciones-csv">
+    Descarga tus suscripciones para reportes y conciliación.
+  </Card>
+  <Card title="Gestionar reembolsos" icon="rotate-left" href="/pagos/gestionar-reembolsos">
+    Devuelve cobros desde Transacciones.
+  </Card>
+</CardGroup>

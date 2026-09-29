@@ -1,0 +1,112 @@
+---
+title: "Vincula un producto de pago a una oferta de curso"
+description: "Crea un producto en Pagos y conéctalo a una oferta de membresía para que cada compra otorgue acceso automático al curso."
+icon: "box"
+---
+
+Si quieres vender un curso como cualquier otro producto de tu catálogo (en tu tienda, en un embudo o con un enlace de pago), crea un producto en **Pagos** y vincúlalo a una oferta de membresía. Cuando alguien lo compra, recibe acceso automático a los cursos de esa oferta, sin que tengas que hacer nada después del pago.
+
+## Qué es una oferta de curso
+
+Una oferta agrupa uno o más cursos y define cómo se accede a ellos. Al vincular un producto de pago con una oferta, cada compra de ese producto otorga la oferta al comprador.
+
+Ventajas de vender así:
+
+- El acceso al curso se entrega solo, en cuanto se completa el pago.
+- Puedes cobrar un pago único o una suscripción.
+- Puedes vender paquetes de varios cursos.
+- Las ventas quedan registradas en tus informes de pagos.
+- Puedes usar el producto en ventas adicionales y promociones.
+
+## Antes de empezar
+
+<Warning>
+  La oferta tiene que existir y estar **publicada** antes de crear el producto. Solo las ofertas publicadas aparecen en la lista **Oferta de membresía**. Si tu oferta está en borrador, no podrás seleccionarla.
+</Warning>
+
+Para crear la oferta: ve a **Membresías → Cursos → Ofertas**, pulsa **Crear oferta**, ponle un título, selecciona los cursos, define el precio, pulsa **Crear** y luego publícala. Más detalles en [Crea, lanza y vende tu curso online](/cursos/curso-online).
+
+## Crea el producto y vincúlalo a la oferta
+
+<Steps>
+  <Step title="Abre la lista de productos">
+    Ve a **Pagos → Productos** y pulsa **Crear producto**.
+  </Step>
+  <Step title="Completa la información del producto">
+    | Campo | Para qué sirve |
+    | --- | --- |
+    | **Incluir en la tienda en línea** | Déjalo activado si quieres que el producto se pueda comprar desde tu tienda |
+    | **Título** (obligatorio) | Nombre visible en el pago y en tus listados |
+    | **Descripción** | Texto con formato: negritas, enlaces, viñetas |
+    | **Medios** | Imagen o video del producto. Recomendado: 1024 × 1024 px y máximo 10 MB |
+    | **Etiqueta del producto** | Distintivo opcional, como "Nuevo" o "Recomendado" |
+    | **Colección** | Agrupa el producto con otros similares en tu catálogo |
+  </Step>
+  <Step title="Configura los impuestos">
+    - **Código de impuesto del producto**: elige la categoría fiscal para el cálculo automático. Si lo dejas vacío, se aplica tu configuración de impuestos general.
+    - **Incluir impuestos en el precio**: sigue la configuración general o elige **Sí** o **No**.
+    - **Tasas de impuesto**: adjúntalas si gestionas los impuestos manualmente.
+    - **Descriptor del extracto**: el nombre que verá el cliente en su estado de cuenta bancario. Uno claro reduce las disputas de pago.
+  </Step>
+  <Step title="Define el precio">
+    - **Nombre del precio**: etiqueta interna para distinguir opciones.
+    - **Tipo**: **Pago único** o **Recurrente**. El recurrente agrega ciclo de cobro, periodo de prueba y cargo de configuración.
+    - **Monto** y, si quieres, **precio de comparación** para mostrar un descuento.
+    - **Moneda**.
+    - **Controlar inventario**, si quieres limitar las unidades disponibles.
+    - **Opciones adicionales**: límites de compra y otros ajustes avanzados.
+
+    <Warning>
+      En una suscripción, si indicas un **número de pagos**, la suscripción termina y se cancela al llegar a ese número. Si quieres que se cobre hasta que alguien la cancele manualmente, deja ese campo vacío.
+    </Warning>
+  </Step>
+  <Step title="Vincula la oferta de membresía">
+    Activa **Oferta de membresía** y, en la lista **Seleccionar oferta de membresía**, elige la oferta publicada que se otorgará con la compra.
+
+    Sin este paso, el comprador **no** recibirá acceso al curso aunque complete el pago.
+  </Step>
+  <Step title="Agrega variantes (opcional)">
+    Crea versiones del producto, por ejemplo por nivel o duración del acceso. Escribe el **nombre de la opción** (como "Nivel"), sus **valores** ("Básico", "Premium", "Pro") y pulsa **Listo**. Cada variante puede tener su propio precio, precio de comparación y cantidad disponible.
+  </Step>
+  <Step title="Optimiza la ficha para buscadores (opcional)">
+    En **Ficha en buscadores** completa el **título SEO**, la **descripción SEO** y el **identificador de URL** (por ejemplo `/product/mi-curso`).
+  </Step>
+  <Step title="Guarda">
+    Pulsa **Guardar**. Desde ahora, cada compra de este producto otorga automáticamente la oferta vinculada.
+  </Step>
+</Steps>
+
+<Tip>
+  Haz una compra de prueba con un correo tuyo distinto. Confirma que llega el correo de acceso y que el curso aparece en el portal del alumno.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no aparece mi oferta en la lista?">
+    Porque no está publicada. Solo las ofertas publicadas aparecen en **Oferta de membresía**.
+  </Accordion>
+  <Accordion title="¿Puedo tener un precio único y uno recurrente en el mismo producto?">
+    Sí. Pulsa **Agregar otro precio** y configura ambos tipos en el mismo producto.
+  </Accordion>
+  <Accordion title="¿Qué pasa después de que alguien compra el producto?">
+    Recibe acceso automático a los cursos incluidos en la oferta vinculada. No tienes que hacer nada más.
+  </Accordion>
+  <Accordion title="¿Cómo reciben los compradores sus datos de acceso?">
+    Activa el correo de bienvenida en la configuración de Membresías para que se envíe automáticamente después de la compra. Consulta [Correo de bienvenida de membresías](/automatizaciones/correo-de-bienvenida-de-membresias).
+  </Accordion>
+  <Accordion title="¿Cómo elimino un producto de pago vinculado a una oferta?">
+    Elimina la oferta asociada. El producto de pago se elimina automáticamente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crea, lanza y vende tu curso online" icon="graduation-cap" href="/cursos/curso-online">
+    El proceso completo: curso, oferta y venta.
+  </Card>
+  <Card title="Precio directo de cursos" icon="tag" href="/cursos/precio-directo-de-cursos">
+    Vende un curso sin crear una oferta aparte.
+  </Card>
+</CardGroup>

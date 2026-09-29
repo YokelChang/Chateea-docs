@@ -1,0 +1,128 @@
+---
+title: "Acción: Actualizar campo de contacto"
+description: "Escribe, vacía o calcula valores en campos del contacto desde un flujo, incluidos campos de fecha y valores dinámicos."
+icon: "pen-to-square"
+---
+
+La acción **Actualizar campo de contacto** (Update Contact Field) escribe un valor nuevo en un campo estándar o personalizado del contacto, o vacía un campo personalizado, justo en el momento en que el flujo de trabajo llega a ese paso. Es la forma más habitual de mantener los datos de tus contactos al día para personalizar mensajes, segmentar listas, sacar informes y tomar decisiones en pasos posteriores del flujo. Todos los cambios quedan registrados en el **Historial de ejecución** del flujo.
+
+## Agregar la acción
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre o crea un flujo.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+** en el punto donde quieras la acción y elige **Actualizar campo de contacto**.
+  </Step>
+  <Step title="Ponle un nombre">
+    Usa un nombre descriptivo para reconocerla fácilmente en el lienzo y en el historial de ejecución.
+  </Step>
+  <Step title="Elige el tipo de acción">
+    Selecciona **Actualizar datos del campo** o **Borrar datos del campo**. Según lo que elijas, verás distintas opciones.
+  </Step>
+</Steps>
+
+## Tipos de acción
+
+| Tipo | Qué hace | Campos admitidos |
+| --- | --- | --- |
+| **Actualizar datos del campo** (Update field data) | Escribe un valor nuevo que reemplaza al actual | Estándar y personalizados |
+| **Borrar datos del campo** (Clear field data) | Deja el campo vacío | Solo personalizados |
+
+### Actualizar datos del campo
+
+1. Selecciona el campo del contacto que quieres cambiar.
+2. Escribe el valor como **valor fijo** o elige un **valor dinámico** (datos en vivo del flujo o del contacto).
+3. Cuando el flujo llegue a este paso, el valor nuevo reemplazará al anterior.
+
+### Borrar datos del campo
+
+1. Elige **Borrar datos del campo** como tipo de acción.
+2. Selecciona uno o varios campos personalizados.
+3. Al ejecutarse, esos campos quedan vacíos.
+
+<Warning>
+  Vaciar un campo puede cambiar quién entra en tus listas inteligentes, cómo funcionan tus filtros y qué rama toma una condición en otros flujos. Revisa qué depende de ese campo antes de publicar.
+</Warning>
+
+## Usar valores dinámicos
+
+Los valores dinámicos te permiten rellenar un campo con la salida de un paso anterior del flujo o con otro campo ya guardado del contacto, sin escribir el valor a mano. Se calculan en el momento de la ejecución para cada contacto.
+
+Tipos de campo compatibles con valores dinámicos en esta acción:
+
+- **Numérico:** puntuaciones, conteos.
+- **Selección / Lista desplegable:** no necesitas el ID de la opción (a diferencia de las condiciones Si/Entonces, donde sí se requiere).
+- **Monetario:** totales, importes.
+
+Para usarlos:
+
+1. Elige **Actualizar datos del campo** y selecciona el campo de destino.
+2. En el valor, cambia a **Valor dinámico**.
+3. Elige la salida de un paso anterior o un campo guardado del contacto.
+4. Guarda y publica el flujo.
+
+Por ejemplo: cuando un paciente confirma una cita, el flujo recoge el tipo de confirmación ("Seguimiento" o "Primera visita") y lo guarda en un campo personalizado del contacto. Así el registro queda correcto y el siguiente mensaje es el adecuado.
+
+## Campos de tipo fecha
+
+Cuando el campo que actualizas es de tipo fecha, puedes elegir entre tres opciones:
+
+| Opción | Qué guarda |
+| --- | --- |
+| **Fecha personalizada** | Una fecha a partir de un valor o campo personalizado. Usa uno de los formatos recomendados: `MM-DD-YYYY` (por ejemplo, 12-21-2021) o `DD-MMM-YYYY` (por ejemplo, 21-OCT-2021) |
+| **Fecha actual** | La fecha del día en que se ejecuta la acción |
+| **Fecha específica** | Una fecha concreta que eliges en el calendario |
+
+<Tip>
+  La opción **Fecha actual** es muy útil para registrar hitos, como "Fecha de última compra" o "Fecha de alta", y luego usarlos en filtros o en esperas basadas en fechas.
+</Tip>
+
+## Actualizar varios campos a la vez
+
+En una misma acción puedes cambiar varios campos: haz clic en **Agregar campo** para añadir más filas. Si prefieres tener un registro más claro, puedes separar en acciones distintas lo que actualizas y lo que vacías.
+
+## Formatos y validación
+
+Para evitar errores, el valor debe coincidir con el tipo de campo:
+
+| Tipo de campo | Qué revisar |
+| --- | --- |
+| Texto o número | Usa el formato adecuado |
+| Fecha | Usa fechas válidas o valores dinámicos de tipo fecha |
+| Lista desplegable, casillas o botones de opción | El valor debe coincidir con una opción existente |
+| Correo o teléfono | Usa valores con formato correcto |
+
+La acción no crea campos nuevos: el campo debe existir antes en tu cuenta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo actualizar campos estándar como el correo o el teléfono?">
+    Sí. **Actualizar datos del campo** funciona con campos estándar y personalizados.
+  </Accordion>
+  <Accordion title="¿Puedo vaciar un campo estándar?">
+    No. **Borrar datos del campo** solo funciona con campos personalizados.
+  </Accordion>
+  <Accordion title="¿En qué se diferencian los valores dinámicos de las variables?">
+    Las variables (por ejemplo `{{contact.first_name}}`) siguen funcionando, pero los valores dinámicos te dejan elegir de una lista la salida de pasos anteriores o campos guardados, sin escribirlas ni mapearlas a mano.
+  </Accordion>
+  <Accordion title="¿Qué pasa si uso un formato incorrecto?">
+    La actualización puede fallar la validación. Revisa el tipo de campo y consulta el historial de ejecución del flujo para ver el detalle.
+  </Accordion>
+  <Accordion title="¿Vaciar un valor afecta a mis listas inteligentes o flujos?">
+    Sí. Puede cambiar quién pertenece a una lista y qué camino toma una condición.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores y acciones.
+  </Card>
+  <Card title="Acción: Actualizar valor personalizado" icon="pen-to-square" href="/automatizaciones/accion-actualizar-valor-personalizado">
+    Cambia valores personalizados de tu cuenta desde un flujo.
+  </Card>
+</CardGroup>

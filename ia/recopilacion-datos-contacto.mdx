@@ -1,0 +1,96 @@
+---
+title: "Recopilación de datos de contacto con instrucciones de IA"
+description: "Indica al bot que pida los datos del cliente de uno en uno, sin abrumarlo."
+icon: "list-ol"
+---
+
+Conseguir el nombre, el correo y el teléfono del cliente es clave para reservar citas, dar seguimiento y cerrar ventas. Con instrucciones claras en la indicación de tu bot, este pide esos datos de forma ordenada y sencilla.
+
+En vez de pedirlo todo de golpe, el bot sigue una secuencia guiada. Eso mejora la calidad de las respuestas y la cantidad de clientes que completan sus datos.
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Mejores conversaciones** | Las preguntas se sienten naturales, no abrumadoras |
+| **Más respuestas** | Es más probable que el cliente conteste paso a paso |
+| **Datos completos** | Te aseguras de recoger todos los campos que necesitas |
+| **Mejor automatización** | Permite seguimientos y flujos más precisos |
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Añade instrucciones a tu indicación">
+    En la pestaña **Objetivos del bot**, busca el campo de indicación o **Información adicional** y agrega instrucciones estructuradas.
+
+    Asegúrate de que definan claramente el **orden** y el **formato** de las preguntas.
+  </Step>
+  <Step title="Usa este formato">
+    ```text
+    ### Instrucción obligatoria: antes de continuar, recoge
+    los datos del cliente uno tras otro.
+
+    1. Pide el nombre del cliente
+    2. Pide su correo electrónico
+    3. Pide su número de teléfono (con código de país)
+
+    Importante:
+    - Haz cada pregunta en un mensaje separado
+    - No hagas todas las preguntas de una vez
+    ```
+  </Step>
+  <Step title="Guarda los cambios">
+    Desde ese momento, el bot sigue esa secuencia en sus conversaciones.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- Mantén las instrucciones simples y directas.
+- Haz siempre **una pregunta a la vez**.
+- Evita mensajes largos o complejos.
+- Usa un lenguaje que el cliente entienda sin esfuerzo.
+
+<Tip>
+  Coloca estas instrucciones **al principio** de la indicación. Cuanto más abajo estén, más probable es que el bot las pase por alto.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué una pregunta a la vez?">
+    Hace que la conversación sea fácil de seguir y aumenta las probabilidades de obtener respuestas completas.
+  </Accordion>
+
+  <Accordion title="¿Puedo cambiar el orden de las preguntas?">
+    Sí, ordénalas según lo que necesites.
+  </Accordion>
+
+  <Accordion title="¿Qué pasa si no agrego estas instrucciones?">
+    El bot puede hacer todas las preguntas de golpe o, directamente, no pedir datos importantes.
+  </Accordion>
+
+  <Accordion title="¿Puedo pedir más de tres datos?">
+    Sí. Agrega más pasos con el mismo formato.
+  </Accordion>
+
+  <Accordion title="¿Funciona en todas las conversaciones?">
+    Sí, siempre que el bot siga las instrucciones durante la conversación.
+  </Accordion>
+</AccordionGroup>
+
+## Si el bot no pide los datos
+
+Revisa en este orden:
+
+1. Que las instrucciones estén en el campo de indicación o de información adicional.
+2. Que el formato diga claramente que haga **una pregunta a la vez**.
+3. Que estén **al principio** de la indicación.
+4. Que no uses lenguaje vago: sé específico sobre qué debe preguntar.
+5. Que hayas probado el bot después de guardar.
+
+Si el problema sigue, simplifica las instrucciones para que le resulten más fáciles de seguir.
+
+<Card title="Acciones del bot: agregar información de contacto" icon="address-card" href="/ia/agregar-informacion-contacto">
+  Cómo guardar esos datos automáticamente en la ficha del contacto.
+</Card>

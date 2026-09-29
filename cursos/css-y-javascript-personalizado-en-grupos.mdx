@@ -1,0 +1,93 @@
+---
+title: "Agrega CSS y JavaScript personalizado a tus grupos"
+description: "Ajusta el diseño y el comportamiento de un grupo de comunidad con tu propio código, con vista previa antes de publicarlo."
+icon: "code"
+---
+
+Si los temas y colores del grupo no son suficientes, puedes agregar tu propio código CSS y JavaScript a un grupo de comunidad. Con CSS ajustas fuentes, espaciados y componentes para que el grupo se vea igual que tu marca. Con JavaScript agregas pequeñas interacciones o mejoras de navegación.
+
+El código se aplica **solo al grupo** donde lo agregas, así que puedes personalizar un grupo sin afectar a los demás.
+
+<Warning>
+  Chateea no ofrece asesoría ni soporte para escribir, depurar o mantener código personalizado. Si usas CSS o JavaScript propio, pruébalo bien antes de publicarlo.
+</Warning>
+
+## Para qué te sirve
+
+- **Marca precisa:** iguala tipografías, espaciados y estilos de botones a tu guía de marca.
+- **Cambios acotados:** el código afecta solo a ese grupo.
+- **Publicación controlada:** revisas los cambios con una vista previa antes de mostrarlos a los miembros.
+- **Mejor experiencia:** agregas detalles de navegación o microinteracciones con fragmentos cortos de JavaScript.
+- **Ajustes para móvil:** puedes definir reglas específicas para teléfonos y tabletas.
+
+## Agregar CSS o JavaScript a un grupo
+
+<Steps>
+  <Step title="Entra al grupo">
+    Ve a **Membresías → Comunidades → Grupos** y haz clic en **Iniciar sesión** en el grupo que quieres personalizar.
+  </Step>
+  <Step title="Abre la configuración de marca">
+    Dentro del grupo, haz clic en **Configuración** y abre la pestaña **Marca** (Branding).
+  </Step>
+  <Step title="Despliega las opciones avanzadas">
+    Baja hasta **Opciones avanzadas** (Advanced Options) y haz clic para expandirlas.
+  </Step>
+  <Step title="Pega tu código">
+    Pega tu código en los campos **CSS personalizado** y **JavaScript personalizado**.
+  </Step>
+  <Step title="Revisa la vista previa">
+    Haz clic en **Vista previa de prueba** (Test Preview) para ver cómo queda. Si algo no te convence, ajusta el código y vuelve a probar.
+  </Step>
+  <Step title="Publica y guarda">
+    Cuando estés conforme, activa el **Modo en vivo** (Live Mode) y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Estilos distintos para modo claro y modo oscuro
+
+Cuando un miembro usa el modo oscuro, se aplica automáticamente la clase `.dark` en la raíz de la página. Úsala en tu CSS para definir estilos específicos del modo oscuro:
+
+```css
+.dark .mi-clase {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+```
+
+<Tip>
+  Evita selectores demasiado genéricos, como `div:nth-of-type(2)`, a menos que estés seguro de que no afectan otras partes de la página. Revisa siempre el resultado en modo claro y en modo oscuro.
+</Tip>
+
+## Solución de problemas
+
+Si algo deja de funcionar en el grupo después de agregar código, primero confirma si el problema viene de tu código:
+
+1. **Desactiva el Modo en vivo.** Es la forma más rápida de apagar el código para todos.
+2. **Desactiva el código solo para ti.** Agrega `?customCode=false` al final de la URL de la comunidad en tu navegador y presiona Enter (si la URL ya tiene parámetros, usa `&customCode=false`). Esto desactiva el código personalizado solo en tu sesión actual.
+
+Si el problema desaparece con el código desactivado, tienes que revisar tu CSS o JavaScript.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo desactivar el código rápidamente para revisar un error?">
+    Sí. Apaga el **Modo en vivo** en la configuración de marca del grupo.
+  </Accordion>
+  <Accordion title="¿El código afecta a mis otros grupos?">
+    No. El CSS y el JavaScript se guardan por grupo y solo se aplican en el grupo donde los agregaste.
+  </Accordion>
+  <Accordion title="¿Cómo aplico estilos diferentes en modo oscuro?">
+    Usa la clase `.dark` en tus selectores. Se agrega automáticamente cuando el modo oscuro está activo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Temas de los grupos" icon="palette" href="/cursos/temas-de-grupos-de-comunidad">
+    Cambia los colores del grupo sin escribir código.
+  </Card>
+  <Card title="Transmisiones en vivo en comunidades" icon="video" href="/cursos/transmisiones-en-vivo-en-comunidades">
+    Haz reuniones y transmisiones dentro de tus grupos.
+  </Card>
+</CardGroup>

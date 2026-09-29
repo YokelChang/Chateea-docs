@@ -1,0 +1,106 @@
+---
+title: "Enlaces mágicos para acceder a cursos sin contraseña"
+description: "Genera o envía por flujos de trabajo enlaces seguros para que tus alumnos entren a sus cursos y grupos sin contraseña."
+icon: "wand-magic-sparkles"
+---
+
+Un enlace mágico es una URL segura y personal que permite a tu cliente entrar a sus cursos y grupos de comunidad sin escribir usuario ni contraseña. Al abrirlo, inicia sesión automáticamente y llega al contenido que ya tiene permiso para ver. Es la forma más cómoda de reducir los "no recuerdo mi contraseña" y de llevar a tus alumnos directo desde un correo o un SMS a su curso.
+
+<Note>
+  Las cuentas nuevas usan los enlaces mágicos del **Portal de clientes**. Puedes generarlos desde el panel del Portal de clientes.
+</Note>
+
+## Ventajas
+
+- **Sin contraseñas**: el cliente entra sin recordar ni restablecer nada.
+- **Seguro**: los enlaces usan un token que caduca, en lugar de quedar activos para siempre.
+- **Acceso directo**: del correo al curso o al grupo en un clic.
+- **Fácil de recuperar**: si el enlace caduca, el cliente pide uno nuevo desde la misma página.
+- **Respeta los permisos**: el cliente solo ve el contenido que ya tiene asignado.
+
+<Warning>
+  Un enlace mágico **inicia sesión**, pero **no da acceso** a contenido. Antes de enviarlo, confirma que el cliente tiene asignado el curso, la oferta o el grupo correcto.
+</Warning>
+
+## Genera un enlace mágico manualmente
+
+<Steps>
+  <Step title="Abre el Portal de clientes">
+    Ve a **Membresías → Portal de clientes**.
+  </Step>
+  <Step title="Genera el enlace">
+    En la sección **Acciones**, haz clic en **Generar**.
+  </Step>
+  <Step title="Envíalo">
+    Copia el enlace y envíalo directamente al cliente correspondiente.
+  </Step>
+</Steps>
+
+Tras generarlo, un contador muestra el tiempo que le queda. Cuando caduca, el botón **Generar enlace mágico** vuelve a estar disponible para crear otro.
+
+## Cuánto dura cada enlace
+
+| Cómo se entrega | Caducidad | Si caduca |
+| --- | --- | --- |
+| Enviado por correo (desde flujos o campañas) | **24 horas** | El cliente hace clic en **Enviar nuevo enlace** y recibe otro en su correo registrado. |
+| Generado en **Membresías → Portal de clientes** | **15 minutos** | Vuelve a **Acciones** y haz clic en **Generar** de nuevo. |
+
+## Envía enlaces mágicos desde flujos de trabajo
+
+<Steps>
+  <Step title="Usa un disparador de cursos">
+    Crea un flujo de trabajo con un disparador de cursos. El enlace mágico del alumno solo funciona con estos disparadores: Categoría iniciada, Categoría completada, Lección iniciada, Lección completada, Nuevo registro, Acceso a oferta otorgado, Acceso a oferta retirado, Acceso a producto otorgado, Acceso a producto retirado, Producto iniciado y Producto completado.
+  </Step>
+  <Step title="Agrega un correo o un SMS">
+    Añade una acción de correo o SMS e inserta **URL de inicio de sesión (enlace mágico)**. Al enviarse, se completa automáticamente con el enlace mágico de ese contacto.
+  </Step>
+</Steps>
+
+También puedes enviarlo en campañas de correo con el valor personalizado **URL de inicio de sesión (enlace mágico)** dentro de tu plantilla.
+
+<Warning>
+  Cualquiera que tenga el enlace puede entrar al material del curso. Envíalo solo a su destinatario, con su consentimiento, y pide a tus alumnos que no lo reenvíen.
+</Warning>
+
+## Prueba y solución de problemas
+
+Prueba siempre con un contacto real que tenga el acceso correcto y abre el enlace en una **ventana privada o de incógnito**. Si lo abres con tu sesión de administrador iniciada, verás todos los cursos de tu cuenta y no la experiencia real del alumno.
+
+| Problema | Solución |
+| --- | --- |
+| El enlace caducó | Si llegó por correo, haz clic en **Enviar nuevo enlace**. Si lo generaste manualmente, vuelve a **Acciones → Generar**. |
+| No llega el correo de reemplazo | Revisa spam y otras carpetas, y confirma que el correo del contacto es correcto. |
+| El cliente no ve el contenido esperado | Verifica que tiene asignado el curso, la oferta, el producto o el grupo correcto. |
+| Se abre la cuenta equivocada | No reutilices ni reenvíes enlaces personales. Genera uno nuevo para el contacto correcto. |
+| Ves más contenido del esperado al probar | Usa una ventana de incógnito para que tus permisos de administrador no interfieran. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuánto tiempo es válido un enlace mágico?">
+    Los enviados por correo, 24 horas. Los generados en **Membresías → Portal de clientes**, 15 minutos.
+  </Accordion>
+  <Accordion title="¿Qué pasa cuando caduca un enlace enviado por correo?">
+    El cliente hace clic en **Enviar nuevo enlace** en la página de caducidad y recibe uno nuevo en su correo registrado.
+  </Accordion>
+  <Accordion title="¿El enlace mágico da acceso a un curso o grupo?">
+    No. Solo inicia sesión. El cliente debe tener ya el permiso para ese contenido.
+  </Accordion>
+  <Accordion title="¿Por qué el cliente entra pero no ve su curso?">
+    Revisa que su contacto tenga asignada la oferta, el producto o el grupo correcto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Dar acceso a cursos con flujos de trabajo" icon="bolt" href="/cursos/dar-acceso-a-cursos-con-flujos">
+    Asigna el acceso antes de enviar el enlace.
+  </Card>
+  <Card title="Portal de clientes" icon="door-open" href="/portal-cliente/introduccion">
+    Todo lo que tus clientes pueden hacer en el portal.
+  </Card>
+  <Card title="Contraseña del portal de miembros" icon="key" href="/cursos/contrasena-del-portal-de-miembros">
+    Cómo crean o recuperan su contraseña tus alumnos.
+  </Card>
+</CardGroup>

@@ -1,0 +1,137 @@
+---
+title: "Canjear tarjetas de regalo en cobros que haces tú"
+description: "Aplica el saldo de la tarjeta de regalo del cliente al cobrar pedidos, facturas, Cobrar ahora o suscripciones."
+icon: "receipt"
+---
+
+No siempre es el cliente quien paga desde un checkout. A veces tu equipo cobra por él: registra el pago de un pedido o una factura, usa **Cobrar ahora** desde su ficha o le crea una suscripción. En todos esos casos puedes aplicar el saldo de su tarjeta de regalo sin mandarlo a otra página. Chateea valida la tarjeta, descuenta el saldo disponible y, si no alcanza, cobra el resto con otra tarjeta.
+
+## Por qué te conviene
+
+- **Cobros más flexibles:** aplicas la tarjeta mientras cobras, sin que el cliente tenga que completar un checkout aparte.
+- **Saldo aplicado automáticamente:** primero se usa el saldo de la tarjeta y después se cobra lo que falte.
+- **Pagos divididos:** combinas la tarjeta de regalo con otro método de pago.
+- **Validación clara:** recibes un aviso si la tarjeta no es válida, está vencida o no tiene saldo.
+- **Visibilidad del pago:** ves por separado cuánto se pagó con la tarjeta y cuánto con otro método.
+- **Saldo siempre al día:** el pedido de la tarjeta se actualiza con el saldo restante después del cobro.
+
+## Dónde puedes canjear una tarjeta al cobrar
+
+| Flujo de cobro | Ruta |
+| --- | --- |
+| **Registrar el pago de un pedido** | **Pagos → Pedidos →** abre el pedido **→ Registrar pago → Cobrar con tarjeta** |
+| **Registrar el pago de una factura** | **Pagos → Facturas →** abre la factura **→ Registrar pago → Cobrar con tarjeta** |
+| **Cobrar ahora** | **Contactos →** abre el contacto **→ Cobrar ahora** |
+| **Crear una suscripción desde el contacto** | **Contactos →** abre el contacto **→ Crear suscripción** |
+| **Crear una suscripción desde Pagos** | **Pagos → Suscripciones → Crear suscripción** |
+
+<Note>
+Por ahora no puedes canjear tarjetas de regalo cuando cobras tú desde **Calendarios** ni desde el **punto de venta (POS)**. Tus clientes sí pueden usarlas en los checkouts de reserva de los calendarios compatibles.
+</Note>
+
+## Antes de empezar
+
+Para que una tarjeta se pueda canjear:
+
+- Debe existir al menos un producto de tarjeta de regalo.
+- La tarjeta debe haberse vendido o enviado al cliente (sirven las tarjetas enviadas sin cobro).
+- Debe estar **activa**, **sin vencer** y con **saldo disponible**.
+
+## Cómo canjear una tarjeta al cobrar
+
+<Steps>
+  <Step title="Abre un flujo de cobro compatible">
+    Elige el que corresponda al pago que vas a cobrar (ver la tabla de arriba).
+  </Step>
+  <Step title="Ingresa el código">
+    En el campo **Tarjeta de regalo**, escribe el código del cliente y haz clic en **Aplicar**. Chateea valida la tarjeta y muestra el saldo disponible.
+  </Step>
+  <Step title="Revisa el monto aplicado">
+    - Si la tarjeta cubre todo el monto, no se cobra ningún otro método de pago.
+    - Si no lo cubre, primero se aplica todo el saldo disponible de la tarjeta.
+  </Step>
+  <Step title="Cobra el resto, si queda algo">
+    Elige una tarjeta guardada del cliente o agrega una tarjeta nueva para cobrar la diferencia.
+  </Step>
+  <Step title="Completa el pago">
+    Revisa el resumen final y confirma el cobro.
+  </Step>
+  <Step title="Verifica el canje">
+    Abre los **Detalles de la transacción** para ver el monto pagado con la tarjeta y revisa el **pedido de la tarjeta de regalo** para confirmar el saldo restante.
+  </Step>
+</Steps>
+
+## Ejemplos
+
+**La tarjeta no cubre todo:**
+
+| Concepto | Monto |
+| --- | --- |
+| Total a cobrar | 200 |
+| Saldo de la tarjeta | 150 |
+| Aplicado con la tarjeta | 150 |
+| Por cobrar con otro método | 50 |
+| Saldo que le queda a la tarjeta | 0 |
+
+**La tarjeta cubre todo:**
+
+| Concepto | Monto |
+| --- | --- |
+| Total a cobrar | 100 |
+| Saldo de la tarjeta | 180 |
+| Aplicado con la tarjeta | 100 |
+| Por cobrar con otro método | 0 |
+| Saldo que le queda a la tarjeta | 80 |
+
+## Tarjetas de regalo y suscripciones
+
+La tarjeta puede reducir el **primer cobro** de una suscripción, pero no paga los cobros recurrentes.
+
+- Puedes aplicarla al monto inicial que se cobra al crear una suscripción compatible.
+- No se puede usar en suscripciones con fecha de inicio futura o programadas.
+- Los cobros recurrentes siguientes **no** se descuentan del saldo de la tarjeta: se cobran con el método de pago de la suscripción.
+- Por eso, aunque la tarjeta cubra todo el primer cobro, la suscripción puede seguir necesitando una tarjeta del cliente.
+
+<Tip>
+Si el cliente no tiene tarjeta guardada, agrégala desde su ficha antes de crear la suscripción. Así el alta y los cobros siguientes salen sin problemas.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar más de una tarjeta de regalo en el mismo pago?">
+    No. Se puede aplicar una tarjeta de regalo por pago.
+  </Accordion>
+  <Accordion title="¿Una tarjeta de modo de prueba sirve para un cobro en vivo?">
+    No. Las tarjetas de modo de prueba solo se canjean en modo de prueba, y las de modo en vivo solo en modo en vivo.
+  </Accordion>
+  <Accordion title="¿Puedo canjear una tarjeta que envié sin cobro?">
+    Sí, siempre que esté activa, no haya vencido y tenga saldo.
+  </Accordion>
+  <Accordion title="¿Qué hago si el cliente no tiene tarjeta guardada y el saldo no alcanza?">
+    Agrega una tarjeta nueva en ese momento para cobrar la diferencia.
+  </Accordion>
+  <Accordion title="¿Puedo canjear una tarjeta vencida o sin saldo?">
+    No. Chateea muestra un aviso y no aplica la tarjeta.
+  </Accordion>
+  <Accordion title="¿Hay un permiso específico para canjear tarjetas?">
+    No. El usuario solo necesita acceso al área de pagos donde está cobrando (pedidos, facturas, contactos o suscripciones).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con las tarjetas de regalo" icon="gift" href="/pagos/tarjetas-regalo-primeros-pasos">
+    Reglas generales y checkouts compatibles.
+  </Card>
+  <Card title="Tarjetas guardadas de tus clientes" icon="credit-card" href="/pagos/tarjetas-guardadas-de-clientes">
+    Agrega y gestiona las tarjetas de tus clientes.
+  </Card>
+  <Card title="Rendimiento de las tarjetas de regalo" icon="chart-line" href="/pagos/tarjetas-regalo-analiticas">
+    Revisa saldos y estados desde los pedidos.
+  </Card>
+  <Card title="Permisos de tarjetas de regalo" icon="user-lock" href="/pagos/permisos-de-tarjetas-de-regalo">
+    Controla qué puede hacer cada usuario.
+  </Card>
+</CardGroup>

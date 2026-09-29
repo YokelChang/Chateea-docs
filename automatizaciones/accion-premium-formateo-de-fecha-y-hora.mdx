@@ -1,0 +1,106 @@
+---
+title: "Acción: Formateador de fecha y hora"
+description: "Convierte fechas y horas a otro formato o compara dos fechas dentro de tus flujos de trabajo."
+icon: "calendar-days"
+---
+
+La acción **Formateador de fecha y hora** (Date/Time Formatter) convierte fechas de un formato a otro y compara dos fechas dentro de un flujo de trabajo. Es útil cuando recibes fechas en formatos distintos (de formularios, integraciones o webhooks) y necesitas unificarlas para tus mensajes, informes u otros sistemas, o cuando quieres tomar decisiones según la distancia entre dos fechas.
+
+Es una acción premium: su uso se descuenta de la **billetera** de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+
+## Tipos de acción
+
+| Tipo | Qué hace | Cuándo usarlo |
+| --- | --- | --- |
+| Formatear fecha | Convierte una fecha de un formato a otro, por ejemplo de `MM/DD/YYYY` a `YYYY-MM-DD`. | Para usar un formato uniforme en informes, hojas de cálculo o sistemas externos. |
+| Formatear fecha y hora | Convierte fecha y hora a la vez, incluidas marcas de tiempo. | Para citas o registros que incluyen la hora, o para pasar de una marca de tiempo Unix a un formato legible. |
+| Comparar fechas | Compara dos fechas y determina cuál es anterior, cuál es posterior o si son iguales. | Para comparar, por ejemplo, la fecha de registro con la fecha de un evento. |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo, haz clic en **+** y busca **Formateador de fecha y hora**.
+  </Step>
+  <Step title="Ponle un nombre">
+    Escribe un **Nombre de la acción** que describa para qué la usas, por ejemplo "Fecha de envío en formato ISO".
+  </Step>
+  <Step title="Elige el tipo de acción">
+    Selecciona **Formatear fecha**, **Formatear fecha y hora** o **Comparar fechas**.
+  </Step>
+  <Step title="Completa los campos">
+    Rellena los campos del tipo elegido (ver tablas de abajo) y guarda la acción.
+  </Step>
+</Steps>
+
+### Formatear fecha
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| Nombre de la acción | Nombre único para identificar la acción. | Sí |
+| Tipo de acción | Formatear fecha. | Sí |
+| Campo | El campo de fecha que quieres convertir. | Sí |
+| Formato de origen | El formato actual de la fecha. | Sí |
+| Formato de destino | El formato que quieres obtener. | Sí |
+
+**Ejemplo:** con el disparador **Formulario enviado**, convierte la fecha del envío a `YYYY-MM-DD` para usarla en tus informes.
+
+### Formatear fecha y hora
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| Nombre de la acción | Nombre para identificar la acción. | Sí |
+| Tipo de acción | Formatear fecha y hora. | Sí |
+| Campo | El campo con la fecha y la hora. | Sí |
+| Formato de origen | El formato actual, por ejemplo `DD/MM/YYYY HH:mm`. | Sí |
+| Formato de destino | El formato deseado, por ejemplo `MM-DD-YYYY HH`. | Sí |
+
+**Ejemplo:** con el disparador **Cita creada**, convierte la fecha y hora de la cita desde una marca de tiempo Unix a un formato legible para tus notificaciones.
+
+### Comparar fechas
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| Nombre de la acción | Nombre para identificar la acción. | Sí |
+| Tipo de acción | Comparar fechas. | Sí |
+| Fecha de inicio | El primer campo de fecha. | Sí |
+| Formato de la fecha de inicio | El formato de la primera fecha, por ejemplo `MM-DD-YYYY`. | Sí |
+| Fecha de fin | El segundo campo de fecha. | Sí |
+| Formato de la fecha de fin | El formato de la segunda fecha, por ejemplo `DD/MM/YYYY`. | Sí |
+
+**Ejemplo:** tras una inscripción a un evento, compara la fecha de registro con la del evento y, con una condición **Si/Si no**, envía un recordatorio especial si faltan 3 días o menos.
+
+## Formatos admitidos
+
+Ejemplos para el 21 de diciembre de 2023:
+
+| Formato | Resultado de ejemplo |
+| --- | --- |
+| `YYYY-MM-DD` | 2023-12-21 |
+| `MM-DD-YYYY` | 12-21-2023 |
+| `MM/DD/YYYY` | 12/21/2023 |
+| `MM/DD/YY` | 12/21/23 |
+| `DD-MM-YYYY` | 21-12-2023 |
+| `DD/MM/YYYY` | 21/12/2023 |
+| `DD/MM/YY` | 21/12/23 |
+| `DD MMM YYYY` | 21 Dec 2023 |
+| `D MMMM YYYY` | 21 December 2023 |
+| `MMMM D, YYYY` | December 21, 2023 |
+| `MMM DD, YYYY` | Dec 21, 2023 |
+| `MMMM Do YYYY` | December 21st, 2023 |
+| `X` (marca de tiempo Unix) | 1703176259 |
+
+<Tip>
+  Indica siempre el **formato de origen** correcto. Si el formato de origen no coincide con cómo está guardada la fecha, el resultado será incorrecto. Prueba la acción con un contacto de prueba antes de publicar.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Formateador de números" icon="hashtag" href="/automatizaciones/accion-premium-formato-de-numeros">
+    Da formato a números, monedas y teléfonos en tus flujos.
+  </Card>
+  <Card title="Acciones premium y planes de ejecuciones" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las acciones premium.
+  </Card>
+</CardGroup>

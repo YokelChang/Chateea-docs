@@ -1,0 +1,65 @@
+---
+title: "Acción Dividir"
+sidebarTitle: "Acción Dividir"
+description: "Reparte los contactos de un flujo de trabajo en hasta 5 rutas con porcentajes aleatorios para probar variaciones y medir cuál funciona mejor."
+icon: "code-branch"
+---
+
+La acción **Dividir** (Split) reparte a los contactos de un flujo de trabajo en varias rutas según los porcentajes que definas. Así puedes probar distintas versiones de un mensaje o de una secuencia, comparar resultados y quedarte con la que mejor funciona.
+
+## Tipos de división
+
+Por ahora la acción ofrece un tipo de distribución: **División aleatoria** (Random Split).
+
+## División aleatoria
+
+Envía a cada contacto a una ruta al azar, respetando los porcentajes que configures. Es la base de cualquier prueba A/B dentro de tus automatizaciones.
+
+| Característica | Qué permite | Ejemplo |
+| --- | --- | --- |
+| **Reparto por porcentaje** | Enviar a los contactos a distintas rutas con los porcentajes que definas | 60 % a la ruta A y 40 % a la ruta B |
+| **Varias rutas** | Crear hasta 5 rutas diferentes | Rutas A, B, C, D y E |
+| **Nombres personalizables** | Cambiar el nombre de cada ruta para identificar su propósito | "Asunto A: urgencia" y "Asunto B: beneficio" |
+| **Estadísticas** | Ver cuántos contactos entran y completan cada ruta, y sus conversiones de objetivos | Pestaña **Estadísticas** con la distribución de contactos por ruta |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo de trabajo, pulsa **+** para agregar una acción y selecciona **Dividir** (Split) dentro de la categoría **Herramientas internas** (Internal Tools).
+  </Step>
+  <Step title="Elige el tipo de distribución">
+    Se abre el panel de la acción, con las pestañas **Editar acción** y **Estadísticas**. En **Tipo de distribución** (Distribution Type), elige **División aleatoria**.
+  </Step>
+  <Step title="Personaliza las rutas">
+    Cambia los nombres predeterminados **Ruta A** y **Ruta B** por nombres que describan cada variación y asigna el porcentaje de contactos de cada una. **La suma debe ser 100 %.**
+  </Step>
+  <Step title="Agrega o elimina rutas">
+    Pulsa **Agregar ruta** (Add Path) para crear hasta **5 rutas**. Para quitar una, pulsa la **X** junto a su nombre.
+  </Step>
+  <Step title="Revisa las estadísticas">
+    Cuando el flujo esté activo, abre la pestaña **Estadísticas** para ver cuántos contactos siguió cada ruta.
+  </Step>
+</Steps>
+
+<Info>
+  En la categoría **Herramientas internas** también encontrarás acciones como **Si/Sino**, **Esperar**, **Evento objetivo**, **Ir a**, **Actualizar valor personalizado**, **Establecer fecha de inicio del evento**, **Formateador de fecha y hora**, **Formateador de números**, **Operación matemática**, **Añadir al flujo de trabajo** y **Quitar del flujo de trabajo**.
+</Info>
+
+## Caso de uso: probar dos asuntos de correo
+
+**Escenario:** tienes una tienda en línea de zapatillas para correr y dudas entre dos asuntos para tu correo: "Potencia tu carrera con las zapatillas definitivas" y "Libera tu velocidad con nuestras zapatillas revolucionarias".
+
+**Solución:** agrega una **División aleatoria** con un reparto de 75/25. Envía el primer asunto al 75 % de la lista y el segundo al 25 % restante. Mide en cada ruta las visitas al sitio, las compras y otras métricas clave.
+
+**Resultado:** después de un tiempo, compara los resultados y verás qué asunto generó más interacción y ventas. Con esos datos puedes usar el mensaje ganador con confianza en tus próximas campañas.
+
+## Ten en cuenta
+
+<Warning>
+  Cuando un contacto toma una ruta, esa es su ruta para siempre en ese flujo. Si vuelve a entrar, seguirá la misma ruta original, no otra.
+</Warning>
+
+<Tip>
+  Como la asignación queda fija por contacto, define bien los porcentajes antes de publicar el flujo. Cambiarlos después no reasigna a quienes ya pasaron por la división.
+</Tip>

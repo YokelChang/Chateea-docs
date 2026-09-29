@@ -1,0 +1,62 @@
+---
+title: "Migración de dominios existentes"
+description: "Migra tus dominios existentes a Cloudflare con un clic mediante Domain Connect, o manualmente si tu proveedor no es compatible."
+icon: "right-left"
+---
+
+Puedes migrar los dominios que ya tienes conectados a la nueva infraestructura en Cloudflare sin eliminarlos y volver a añadirlos. Con **Domain Connect**, la migración se hace en un solo clic en los proveedores compatibles.
+
+## Por qué conviene migrar
+
+| Beneficio | Detalle |
+| --- | --- |
+| **Velocidad** | Los embudos y sitios web cargan alrededor de un **15 % más rápido** |
+| **Caché y protección** | Mejor almacenamiento en caché de las páginas y protección más sencilla contra ataques DDoS |
+| **Seguridad** | Más funciones de seguridad |
+
+Los dominios que necesitan migrarse aparecen en tu lista de dominios con la etiqueta **Migración necesaria** (Migration needed) y el botón **Migrar dominio**.
+
+## Migración automática
+
+<Steps>
+  <Step title="Abre tus dominios">
+    Ve a **Configuración → Dominios**.
+  </Step>
+  <Step title="Pulsa Migrar dominio">
+    Junto al dominio que quieres migrar.
+  </Step>
+  <Step title="Sigue el asistente de Domain Connect">
+    Se abrirá el flujo de Domain Connect de tu proveedor. Sigue las instrucciones y tus registros DNS se actualizarán automáticamente.
+  </Step>
+  <Step title="Listo">
+    Tu dominio queda migrado a Cloudflare.
+  </Step>
+</Steps>
+
+## Migración manual para proveedores no compatibles
+
+Si tu proveedor de DNS no es compatible con Domain Connect, en la ventana de migración elige la opción para **agregar los registros manualmente** (Add record manually).
+
+<Steps>
+  <Step title="Pulsa Migrar dominio">
+    Junto al dominio que quieres migrar.
+  </Step>
+  <Step title="Actualiza tus registros DNS">
+    En tu proveedor de DNS, configura estos registros:
+
+    | Registro | Valor |
+    | --- | --- |
+    | **CNAME** | Apúntalo a `sites.ludicrious.cloud` |
+    | **Dominio raíz** (registro A del apex) | Configura la dirección IP `162.159.140.166` |
+  </Step>
+  <Step title="Autoriza el dominio">
+    Pulsa **Autorizar dominio** para verificar los registros.
+  </Step>
+  <Step title="Listo">
+    Tu dominio ya está en Cloudflare.
+  </Step>
+</Steps>
+
+<Note>
+  Los cambios de DNS pueden tardar en propagarse. Si la verificación falla al principio, espera un rato y vuelve a intentarlo. Si necesitas ayuda, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+</Note>

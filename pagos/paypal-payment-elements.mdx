@@ -1,0 +1,101 @@
+---
+title: "Botones de PayPal en los elementos de pago"
+description: "Ofrece PayPal y Pay Later en tus formularios, encuestas, facturas, enlaces de pago, embudos y tienda."
+icon: "paypal"
+---
+
+El elemento de pago de Chateea admite **PayPal** y **Pay Later** (pago aplazado de PayPal). Así tus clientes pueden pagar con un método que conocen y en el que confían, directamente en tus formularios, encuestas, facturas, enlaces de pago, formularios de pedido y tienda en línea. PayPal no reemplaza a tus otros métodos: aparece junto a ellos y el cliente elige.
+
+## Para qué te sirve
+
+| Ventaja | Qué significa en la práctica |
+| --- | --- |
+| **Más opciones de pago** | El cliente puede pagar con PayPal o con Pay Later, además de con tarjeta |
+| **Más conversiones** | Un método conocido reduce el abandono en el checkout |
+| **Checkout seguro y fluido** | El pago se completa en la ventana de PayPal sin salir de tu página |
+| **Alcance internacional** | PayPal se usa en muchos países |
+| **Sin cambios grandes** | Se suma a los flujos de pago que ya tienes |
+
+## Dónde puedes mostrar PayPal
+
+| Dónde cobras | Qué elemento usar |
+| --- | --- |
+| **Sitios web y embudos** | Formularios de pedido de un paso o de dos pasos |
+| **Formularios y encuestas** | El elemento **Cobrar pago** (Collect Payment) |
+| **Facturas** | Tus clientes pagan la factura con PayPal |
+| **Enlaces de pago** | Enlaces de pago único con PayPal habilitado |
+| **Tienda en línea** | PayPal aparece en el checkout de la tienda |
+
+## Habilita PayPal en el elemento de pago
+
+<Steps>
+  <Step title="Conecta tu cuenta de PayPal">
+    Ve a **Pagos → Integraciones**, haz clic en **PayPal** e ingresa el **ID de cliente** (Client ID) y la **clave secreta** (Secret Key) de tu cuenta de desarrollador de PayPal. Guarda la configuración.
+  </Step>
+  <Step title="Agrega o actualiza el elemento de pago">
+    - En **formularios y encuestas**, agrega el elemento **Cobrar pago**.
+    - En **embudos y sitios web**, usa los elementos de **formulario de pedido de un paso o de dos pasos**. Ya admiten PayPal y no necesitas agregar otro elemento de pago.
+    - Si ya tenías un elemento de pago, asegúrate de que esté actualizado a la versión más reciente.
+  </Step>
+  <Step title="Revisa en la vista previa">
+    Abre la vista previa de tu formulario, encuesta, sitio o embudo y confirma que se ven los botones de PayPal y, si el cliente es elegible, de Pay Later.
+  </Step>
+</Steps>
+
+<Warning>
+Los botones de PayPal **no aparecen dentro del editor**. Solo se muestran en la vista previa y en la página publicada. Si no los ves mientras diseñas, no significa que algo esté mal.
+</Warning>
+
+<Note>
+Si agregaste el formulario de pedido antes del 1 de noviembre de 2024, elimínalo y vuelve a agregarlo para que sea compatible con PayPal.
+</Note>
+
+## Cómo lo ve tu cliente
+
+En el checkout, el cliente ve primero los botones de **PayPal** y, si es elegible, **Pay Later**. Debajo aparece un separador y luego el bloque de **tarjeta** y los demás métodos que tengas habilitados. Elige una sola forma de pago.
+
+## Detalles importantes
+
+| Situación | Qué hacer |
+| --- | --- |
+| Formularios de pedido antiguos | Revísalos antes de lanzar una campaña y vuelve a agregarlos si no muestran PayPal |
+| Elemento de pago creado antes de esta función | Actualízalo o elimínalo y agrégalo de nuevo |
+| Pay Later | Depende de la elegibilidad del cliente y de las condiciones de PayPal. No lo prometas como garantizado |
+| Otros métodos de pago | PayPal convive con ellos. No necesitas desactivar la tarjeta |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo obtengo mi ID de cliente y mi clave secreta de PayPal?">
+    Inicia sesión en tu cuenta de desarrollador de PayPal, entra a **Apps & Credentials** y crea una aplicación. PayPal te mostrará ambas credenciales.
+  </Accordion>
+  <Accordion title="¿Puedo usar PayPal junto con otros proveedores?">
+    Sí. Si tienes varios proveedores conectados, por ejemplo PayPal y Stripe, tu cliente verá ambas opciones en el checkout y elegirá la que prefiera.
+  </Accordion>
+  <Accordion title="¿Pay Later está disponible en todas las compras?">
+    No. Depende de las condiciones de PayPal y de la elegibilidad del cliente. No se configura desde Chateea.
+  </Accordion>
+  <Accordion title="¿Tengo que actualizar mis elementos de pago actuales?">
+    Sí. Los elementos de pago deben estar en su versión más reciente para mostrar PayPal.
+  </Accordion>
+  <Accordion title="¿Por qué no veo los botones de PayPal en el editor?">
+    Porque solo aparecen en la vista previa y en la página publicada.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo configurar una integración con PayPal" icon="paypal" href="/pagos/configurar-paypal">
+    Conecta tu cuenta de PayPal paso a paso.
+  </Card>
+  <Card title="Enlaces de pago" icon="link" href="/pagos/enlaces-de-pago">
+    Cobra con un enlace que compartes por cualquier canal.
+  </Card>
+  <Card title="Proveedores y métodos de pago por área" icon="table" href="/pagos/proveedores-y-metodos-de-pago-por-area">
+    Dónde funciona PayPal y dónde no.
+  </Card>
+  <Card title="Configurar proveedores de pago por canal" icon="shuffle" href="/pagos/proveedores-pago-por-canal">
+    Combina PayPal con otro proveedor en cada canal.
+  </Card>
+</CardGroup>

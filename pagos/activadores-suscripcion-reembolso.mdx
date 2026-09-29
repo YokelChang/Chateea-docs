@@ -1,0 +1,151 @@
+---
+title: "Disparadores de suscripción y reembolso"
+description: "Automatiza mensajes y tareas cuando una suscripción se crea, se activa o se cancela, o cuando se procesa un reembolso."
+icon: "bolt"
+---
+
+Además de los disparadores de **Pago recibido**, **Pedido enviado** y los de facturas, Chateea tiene dos disparadores pensados para automatizar lo que pasa después de la venta: el **disparador de suscripción** y el **disparador de reembolso**. Con ellos puedes dar la bienvenida a un nuevo suscriptor, avisar a tu equipo cuando una prueba se convierte en cliente de pago o confirmar un reembolso sin mover un dedo.
+
+## Qué hace cada disparador
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Suscripción** | Cuando se crea una suscripción para un cliente, cuando pasa de prueba a activa y cuando se cancela |
+| **Reembolso** | Cuando tú o tu equipo de ventas intentan un reembolso, tanto si sale bien como si falla |
+
+## Disparador de suscripción
+
+Sirve para automatizar procesos alrededor de los cambios de estado de una suscripción.
+
+### Ideas de uso
+
+- Enviar un mensaje de bienvenida cuando empieza una suscripción.
+- Avisar a tu equipo cuando una prueba gratuita se convierte en suscripción activa.
+- Pedir comentarios o lanzar una oferta de retención cuando alguien cancela.
+
+### Cómo configurarlo
+
+<Steps>
+  <Step title="Crea o abre un flujo de trabajo">
+    Ve a **Automatización** y crea un flujo de trabajo nuevo o abre uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y selecciona **Suscripción**.
+  </Step>
+  <Step title="Define los filtros">
+    Filtra por **estado de la suscripción** (por ejemplo, Activa, Prueba o Cancelada) o por el **producto** asociado para que el flujo se ejecute solo cuando corresponde.
+  </Step>
+  <Step title="Agrega tus acciones">
+    Usa condiciones **Si/Sino** para ramificar según el estado o el producto, y personaliza los mensajes con los valores personalizados de pagos.
+  </Step>
+</Steps>
+
+### Valores dinámicos disponibles
+
+En la sección de **Pagos** de los valores personalizados encontrarás datos de la suscripción para personalizar mensajes y acciones:
+
+| Valor | Qué devuelve |
+| --- | --- |
+| **ID de suscripción** | El identificador único de la suscripción |
+| **Importe total** | El monto total del cobro |
+| **Descuento** | El monto descontado |
+| **Importe del impuesto** | El impuesto aplicado |
+| **Estado de la suscripción** | El estado en el momento del evento |
+
+<Tip>
+  Un mensaje con datos concretos funciona mucho mejor que uno genérico. "Tu suscripción fue cancelada" se ignora; "Tu suscripción al plan mensual fue cancelada. Si fue un error, responde este mensaje y la reactivamos" abre una conversación.
+</Tip>
+
+## Disparador de reembolso
+
+Sirve para automatizar lo que ocurre cuando se procesa un reembolso, ya sea desde tu cuenta o por parte de tu equipo de ventas.
+
+### Ideas de uso
+
+- Enviar al cliente la confirmación de su reembolso.
+- Avisar a tu equipo cuando un reembolso falla para que lo revise.
+- Tratar distinto un reembolso total (posible baja) de uno parcial (ajuste de cobro).
+
+### Cómo configurarlo
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En tu flujo de trabajo, haz clic en **Agregar disparador** y selecciona **Reembolso**.
+  </Step>
+  <Step title="Ramifica según el resultado">
+    Usa condiciones para separar los casos según el resultado del reembolso, el tipo, el importe o el origen.
+  </Step>
+  <Step title="Personaliza los mensajes">
+    Inserta los valores personalizados de reembolso de la sección **Pagos** para enviar notificaciones adaptadas a cada caso.
+  </Step>
+</Steps>
+
+### Condiciones que puedes usar
+
+| Condición | Opciones |
+| --- | --- |
+| **Resultado** | Exitoso o fallido |
+| **Tipo** | Reembolso total o parcial |
+| **Importe** | El monto reembolsado |
+| **Origen** | De dónde viene el cobro reembolsado |
+
+### Valores dinámicos disponibles
+
+| Valor | Qué devuelve |
+| --- | --- |
+| **ID de reembolso** | El identificador del reembolso |
+| **ID de transacción** | El identificador de la transacción original |
+| **Importe del reembolso** | El monto devuelto |
+| **Estado del reembolso** | Si salió bien o falló |
+
+<Warning>
+  Configura siempre una rama para el **reembolso fallido**, no solo para el exitoso. Un reembolso que falla sin que nadie lo note termina en un cliente molesto que reclama por otro canal, o directamente en un contracargo.
+</Warning>
+
+## Proveedores compatibles
+
+| Proveedor | Compatibilidad |
+| --- | --- |
+| **Stripe** | Completa |
+| **Authorize.net** | Completa |
+| **NMI** | Completa |
+| **PayPal** | Limitada: el disparador de suscripción solo se activa cuando se crea la suscripción, no en los cambios posteriores |
+
+Los proveedores se conectan desde **Pagos → Integraciones**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué eventos de suscripción activan el flujo?">
+    La creación de la suscripción, el paso de prueba a activa y la cancelación.
+  </Accordion>
+  <Accordion title="¿Puedo activar un flujo cuando un reembolso falla?">
+    Sí. El disparador de reembolso se activa con cada intento, y puedes ramificar según si fue exitoso o fallido.
+  </Accordion>
+  <Accordion title="¿Puedo diferenciar reembolsos totales y parciales?">
+    Sí. Usa la condición de tipo de reembolso para tratar cada caso por separado.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar los mensajes con datos del pago?">
+    Sí. Los valores personalizados de suscripción y de reembolso están en la sección **Pagos** de los valores personalizados.
+  </Accordion>
+  <Accordion title="¿Funcionan con PayPal?">
+    Solo en parte: con PayPal, el disparador de suscripción se activa cuando se crea la suscripción, pero no en las acciones posteriores.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador de pago recibido" icon="bolt" href="/automatizaciones/disparador-de-flujo-de-trabajo-pago-recibido">
+    Automatiza lo que pasa cuando entra un pago.
+  </Card>
+  <Card title="Gestionar reembolsos" icon="rotate-left" href="/pagos/gestionar-reembolsos">
+    Cómo reembolsar cobros desde Chateea.
+  </Card>
+  <Card title="Estados de suscripción" icon="arrows-rotate" href="/pagos/gestionar-suscripciones">
+    Qué significa cada estado de una suscripción.
+  </Card>
+  <Card title="Reintentos de pago de suscripciones" icon="rotate-right" href="/pagos/reintentos-pago-suscripcion">
+    Recupera cobros fallidos automáticamente.
+  </Card>
+</CardGroup>

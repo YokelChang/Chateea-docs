@@ -1,0 +1,225 @@
+---
+title: "Migrar desde Zoho a Chateea"
+description: "Exporta contactos, usuarios, citas, negocios, formularios, contratos, sitio y automatizaciones de Zoho y llévalos a Chateea."
+icon: "right-left"
+---
+
+Si trabajas con las aplicaciones de Zoho (CRM, Bookings, Forms, Contracts, Sites, Analytics), puedes concentrar todo en Chateea: contactos, equipo, calendarios, oportunidades, formularios, contratos, sitio web, automatizaciones e informes. Esta guía te explica cómo exportar cada parte desde Zoho y cómo reconstruirla en Chateea.
+
+<Info>
+  Migra estos nueve componentes: contactos, usuarios, calendarios, oportunidades, formularios, contratos, sitios, automatizaciones y analítica.
+</Info>
+
+## Cómo exportar datos de Zoho CRM
+
+Varios pasos de esta guía usan el mismo proceso de exportación de Zoho CRM:
+
+<Steps>
+  <Step title="Abre la exportación">
+    Haz clic en **Setup** (ícono de engranaje, arriba a la derecha), entra a **Data Administration** y elige **Export**.
+  </Step>
+  <Step title="Elige el módulo">
+    Haz clic en **Start an Export** y selecciona el módulo: **Contacts**, **Users**, **Appointments** o **Deals**.
+  </Step>
+  <Step title="Elige los campos">
+    Exporta los campos de una vista personalizada, todos los campos o solo los que elijas. Para contactos, usuarios y negocios, incluye siempre el correo o el teléfono: Chateea los necesita para identificar cada registro.
+  </Step>
+  <Step title="Descarga el archivo">
+    Haz clic en **Export**. La exportación aparece en el historial con el estado "In progress". Cuando cambie a "Completed", pasa el cursor sobre la fila y haz clic en el enlace de descarga.
+  </Step>
+</Steps>
+
+<Note>
+  Zoho exporta como máximo 200.000 registros por vez (los más antiguos), en un CSV comprimido en ZIP. El enlace de descarga dura 7 días.
+</Note>
+
+## 1. Migra tus contactos
+
+<Steps>
+  <Step title="Prepara los datos en Zoho">
+    Convierte tus listas de correo y segmentos en etiquetas antes de exportar. Serán tus etiquetas de migración.
+  </Step>
+  <Step title="Exporta el módulo Contacts">
+    Sigue el proceso de exportación descrito arriba.
+  </Step>
+  <Step title="Prepara el CSV">
+    - Fechas en formato `AAAA-MM-DD`.
+    - Codificación UTF-8 para acentos y caracteres especiales.
+    - Sin saltos de línea, emojis ni caracteres innecesarios.
+    - Crea en **Configuración → Campos personalizados** los campos que necesites.
+  </Step>
+  <Step title="Importa en Chateea">
+    Ve a **Contactos → Importar contactos**, sube el archivo, asigna cada columna a su campo y aplica una etiqueta de origen como `importado-zoho`. Haz clic en **Importar**.
+  </Step>
+  <Step title="Revisa y segmenta">
+    Compara los datos con Zoho y recrea tus listas y segmentos como listas inteligentes a partir de tus etiquetas de migración. Ver [Listas inteligentes](/contactos/listas-inteligentes).
+  </Step>
+</Steps>
+
+## 2. Migra tus usuarios
+
+Zoho también exporta hasta 200.000 usuarios en CSV, pero en Chateea los usuarios se agregan a mano con sus permisos.
+
+<Steps>
+  <Step title="Exporta el módulo Users">
+    Sigue el proceso de exportación de Zoho CRM.
+  </Step>
+  <Step title="Organiza el archivo">
+    Abre el CSV como hoja de cálculo, confirma que cada usuario tiene un correo único y agrúpalos por equipo con los permisos que necesita cada uno.
+  </Step>
+  <Step title="Agrega los usuarios en Chateea">
+    Ve a **Configuración → Mi equipo** y haz clic en **+ Agregar empleado**. Elige si es administrador o usuario y configura sus permisos por función. Ver [Invita a tu equipo](/primeros-pasos/invita-a-tu-equipo).
+  </Step>
+</Steps>
+
+<Tip>
+  Configura primero un usuario de cada equipo y usa sus permisos como referencia para los demás. Ahorras tiempo y mantienes la consistencia.
+</Tip>
+
+## 3. Migra tus calendarios (Zoho Bookings)
+
+Las citas se exportan para respaldo y los calendarios se recrean a mano.
+
+<Steps>
+  <Step title="Exporta las citas">
+    Exporta el módulo **Appointments** con el proceso de Zoho CRM y guarda el archivo.
+  </Step>
+  <Step title="Documenta tus servicios">
+    En Zoho Bookings, haz clic en el ícono **Manage Business** (arriba a la derecha) y luego en **Workspaces**. Entra a cada espacio de trabajo y anota la configuración, las integraciones y los usuarios de cada servicio.
+  </Step>
+  <Step title="Crea los calendarios en Chateea">
+    Ve a **Configuración → Calendarios** y recrea cada servicio con sus recordatorios, ajustes, usuarios y ubicaciones. Para citas recurrentes, define las reglas de repetición a mano.
+  </Step>
+  <Step title="Conecta tus calendarios externos">
+    En **Calendarios → Configuración de calendarios → Conexiones**, agrega la sincronización con Google u Outlook.
+  </Step>
+  <Step title="Prueba">
+    Verifica que cada calendario funcione igual que en Zoho Bookings.
+  </Step>
+</Steps>
+
+## 4. Migra oportunidades y pipelines
+
+Los Deals de Zoho siguen el ciclo de venta: etapas, montos, probabilidad y pronóstico.
+
+<Steps>
+  <Step title="Exporta el módulo Deals">
+    Sigue el proceso de exportación de Zoho CRM.
+  </Step>
+  <Step title="Crea los pipelines">
+    Ve a **Oportunidades → Pipelines → + Agregar pipeline** y crea pipelines y etapas equivalentes. Agrega los campos personalizados de oportunidad que necesites. Ver [Campos personalizados de oportunidades](/oportunidades/campos-personalizados-de-oportunidades).
+  </Step>
+  <Step title="Importa las oportunidades">
+    Prepara el CSV con los requisitos de Chateea, abre el pipeline de destino y usa el menú de tres puntos (arriba a la derecha) para importar. Asigna cada columna a su campo. Ver [Importar oportunidades desde CSV](/oportunidades/importar-oportunidades-desde-csv).
+  </Step>
+  <Step title="Verifica">
+    Revisa que no falten datos ni haya campos mal asignados.
+  </Step>
+</Steps>
+
+## 5. Migra tus formularios (Zoho Forms)
+
+<Steps>
+  <Step title="Exporta las respuestas">
+    En Zoho Forms, entra a cada formulario, exporta las respuestas en CSV y guarda la estructura del formulario si está disponible.
+  </Step>
+  <Step title="Recrea los formularios">
+    Ve a **Sitios → Formularios**, crea un formulario nuevo y agrega los mismos campos y etiquetas.
+  </Step>
+  <Step title="Configura las acciones">
+    Replica las notificaciones y la lógica condicional que tenías en Zoho.
+  </Step>
+</Steps>
+
+## 6. Migra contratos y documentos (Zoho Contracts)
+
+<Steps>
+  <Step title="Descarga tus contratos">
+    En Zoho, abre la pestaña **Contracts** y descarga una copia de cada plantilla o estructura de contrato.
+  </Step>
+  <Step title="Recréalos en Chateea">
+    Ve a **Pagos → Documentos y contratos** y crea un documento nuevo con el texto, los campos personalizados y las firmas. Ver [Cómo usar documentos y contratos](/documentos/como-usar-documentos-y-contratos).
+  </Step>
+  <Step title="Configura las acciones">
+    Configura el envío, las notificaciones y el orden de firma. Ver [Orden de firma](/documentos/orden-de-firma).
+  </Step>
+</Steps>
+
+## 7. Migra tu sitio web (Zoho Sites)
+
+Zoho Sites no permite exportar la estructura del sitio. Copia el contenido a mano y reconstrúyelo.
+
+<Steps>
+  <Step title="Reúne el contenido">
+    Guarda el HTML y CSS que necesites, descarga los medios y documenta el SEO (títulos, descripciones) y el nombre de cada página.
+  </Step>
+  <Step title="Reconstruye el sitio">
+    Ve a **Sitios → Sitios web** o **Sitios → Embudos** y recrea cada página con su contenido y su SEO.
+  </Step>
+  <Step title="Desconecta el dominio de Zoho">
+    Entra a Zoho Directory, abre **Admin Panel** en el menú izquierdo, ve a la pestaña **Custom Domain** y haz clic en **Delete** junto al dominio.
+  </Step>
+  <Step title="Conéctalo a Chateea">
+    Ve a **Configuración → Dominios → Agregar dominio** y escribe tu dominio. Ver [Conectar un dominio raíz o subdominio](/sitios/conectar-dominio-raiz-o-subdominio).
+  </Step>
+</Steps>
+
+## 8. Migra tus automatizaciones
+
+Las automatizaciones de Zoho (reglas, respuestas automáticas, puntuación de leads) se documentan y se reconstruyen.
+
+<Steps>
+  <Step title="Documenta todo en Zoho">
+    - **Reglas de flujo:** **Setup → Automation → Workflow Rules**.
+    - **Respuestas automáticas:** en la pestaña Leads o Contacts, **More Actions** (tres puntos) **→ Autoresponders**.
+    - **Puntuación:** **Setup → Automation → Scoring Rules**.
+  </Step>
+  <Step title="Recrea la puntuación">
+    Ve a **Configuración → Gestionar puntuación** y agrega reglas con el mismo cálculo que en Zoho. Ver [Puntuación de interacción](/conversaciones/puntuacion-de-interaccion).
+  </Step>
+  <Step title="Recrea disparadores y acciones">
+    Ve a **Automatización → Flujos de trabajo** y reconstruye respuestas automáticas, secuencias de correo y asignación de tareas. Usa la acción de editar la puntuación de interacción para replicar las reglas de puntuación que falten.
+  </Step>
+</Steps>
+
+## 9. Migra tu analítica
+
+<Steps>
+  <Step title="Exporta Zoho Analytics">
+    Exporta o copia los datos y reportes que quieras conservar.
+  </Step>
+  <Step title="Recrea tus reportes en Chateea">
+    Crea paneles con widgets personalizados que muestren las métricas que seguías en Zoho. Ver [Crear un panel personalizado](/informes/crear-panel-personalizado).
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuántos registros puedo exportar de Zoho a la vez?">
+    Hasta 200.000 registros por exportación, empezando por los más antiguos. Si tienes más, haz varias exportaciones.
+  </Accordion>
+  <Accordion title="¿Por qué necesito correo o teléfono en cada registro?">
+    Chateea identifica a cada contacto por su correo o su teléfono. Los registros sin ninguno de los dos no se pueden importar como contacto.
+  </Accordion>
+  <Accordion title="¿Se migran los usuarios automáticamente?">
+    No. Exportas la lista para organizarla, pero cada usuario se agrega a mano en **Configuración → Mi equipo** con sus permisos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar contactos desde CSV" icon="file-csv" href="/contactos/importar-contactos-desde-csv">
+    Sube tu lista y asigna los campos.
+  </Card>
+  <Card title="Importar oportunidades desde CSV" icon="filter" href="/oportunidades/importar-oportunidades-desde-csv">
+    Carga tus negocios en un pipeline.
+  </Card>
+  <Card title="Documentos y contratos" icon="file-signature" href="/documentos/como-usar-documentos-y-contratos">
+    Recrea tus contratos con firma.
+  </Card>
+  <Card title="Migrar desde Salesforce" icon="right-left" href="/guias/migrar-desde-salesforce">
+    Otra guía de migración de CRM.
+  </Card>
+</CardGroup>

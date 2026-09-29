@@ -1,0 +1,170 @@
+---
+title: "Configuración de un flujo de trabajo"
+description: "Controla reingresos, zona horaria, ventana horaria, remitente y qué pasa cuando un contacto responde en cada flujo de trabajo."
+icon: "gear"
+---
+
+La pestaña **Configuración** de cada flujo de trabajo controla cómo entran y salen los contactos, en qué horario se envían los mensajes, qué remitente se usa y qué pasa cuando un contacto responde. Dedicarle dos minutos antes de publicar evita mensajes duplicados, envíos a deshoras y automatizaciones que siguen escribiendo cuando el cliente ya contestó.
+
+## Para qué sirve configurar bien un flujo
+
+- **Controlar las entradas:** decides si un contacto puede recorrer el flujo más de una vez.
+- **Enviar a la hora correcta:** puedes usar la zona horaria de cada contacto en lugar de una sola para todos.
+- **Respetar un horario de atención:** los mensajes solo salen en las horas y días que definas.
+- **Pasar la conversación a una persona:** el flujo se detiene solo cuando el contacto responde.
+- **Mantener una imagen coherente:** defines un nombre, correo y número de remitente por defecto para todo el flujo.
+
+## Cómo abrir la configuración
+
+<Steps>
+  <Step title="Entra a Automatización">
+    En el menú lateral, ve a **Automatización → Flujos de trabajo**.
+  </Step>
+  <Step title="Abre el flujo">
+    Abre un flujo existente o crea uno nuevo.
+  </Step>
+  <Step title="Cambia de pestaña">
+    En la parte superior del constructor, haz clic en la pestaña **Configuración** (Settings).
+  </Step>
+</Steps>
+
+## Configuración de contactos
+
+Este grupo define quién entra al flujo, cuántas veces y qué lo saca.
+
+### Permitir reingreso
+
+Indica si un contacto puede entrar al flujo más de una vez.
+
+- **Activado:** el contacto puede volver a entrar cuando ya terminó el flujo o fue retirado manualmente. Es útil para procesos que se repiten, como seguimientos después de cada compra. Un contacto que sigue activo dentro del flujo no puede entrar otra vez.
+- **Desactivado:** el contacto solo puede recorrer el flujo una vez.
+
+<Note>
+Los flujos con disparadores de **citas** o de **facturas** siempre permiten que el contacto entre una vez por cada cita o factura nueva, sin importar cómo esté este ajuste. Así cada reserva o factura recibe su propia secuencia.
+</Note>
+
+### Permitir varias oportunidades
+
+Aplica a flujos que se disparan por eventos de oportunidades, como **Cambio de etapa del pipeline**.
+
+- **Activado:** si un contacto tiene varias oportunidades, entra al flujo una vez por cada oportunidad que cumpla el disparador. Cada negocio tiene su propia secuencia.
+- **Desactivado:** el contacto solo entra por la primera oportunidad que cumpla los criterios.
+
+En los flujos nuevos viene activado por defecto. En flujos creados antes de que existiera esta opción viene desactivado.
+
+Si los datos de una oportunidad cambian mientras está dentro del flujo, el flujo no se reinicia: continúa desde el paso en que está, usando la información actualizada.
+
+### Detener al responder
+
+Saca al contacto del flujo en cuanto responde a un mensaje enviado por ese flujo. Es clave para que no sigan saliendo mensajes automáticos cuando el cliente ya espera la respuesta de una persona.
+
+- **Activado:** el flujo termina para ese contacto cuando responde por cualquiera de los canales que usa el flujo.
+- **Desactivado:** el contacto sigue hasta el final del flujo aunque responda.
+
+Solo afecta al contacto que respondió. Los demás contactos siguen su recorrido normal.
+
+#### Cómo funciona con la acción Llamar
+
+Por defecto, el sistema usa detección de buzón de voz para saber si una llamada saliente la contestó una persona o una máquina. Así un buzón de voz no cuenta como respuesta.
+
+Esa detección añade una pequeña demora al conectar la llamada. Dentro de la acción **Llamar** hay una opción avanzada para **desactivar la detección de buzón de voz**: elimina la demora, pero entonces un buzón de voz sí cuenta como respuesta y detiene el flujo. Si usas esa opción, pon un tiempo de espera de la llamada menor de 20 segundos para que no llegue a saltar el buzón.
+
+<Info>
+Lo que ocurra con tu equipo en la acción Llamar no influye en **Detener al responder**. Primero se llama a tu negocio: si nadie contesta, el flujo sigue; si tu equipo contesta pero el contacto no, el flujo también sigue. Solo cuenta la respuesta del contacto (o de su buzón de voz, si desactivaste la detección).
+</Info>
+
+## Configuración de comunicación
+
+Estos ajustes controlan el horario, el remitente y cómo se ven en **Conversaciones** los mensajes del flujo.
+
+### Zona horaria
+
+Define la zona horaria que usan los pasos que dependen del tiempo, como las esperas y la ventana horaria.
+
+| Opción | Cómo funciona |
+| --- | --- |
+| Zona horaria de la cuenta | Todas las acciones se ejecutan según la zona horaria configurada en tu cuenta. |
+| Zona horaria del contacto | Cada acción se ejecuta según la zona horaria del contacto. Ideal si vendes en varios países o ciudades: el mensaje de las 9:00 llega a las 9:00 hora local. Si el contacto no tiene zona horaria en su ficha, se usa la de la cuenta. |
+
+En el historial del flujo verás, para cada acción, si se ejecutó con la zona horaria de la cuenta o la del contacto.
+
+### Ventana horaria
+
+Limita el momento en que se ejecutan las acciones de comunicación (correo, SMS, llamadas). Si una acción toca fuera de la ventana, queda en pausa y se ejecuta en el siguiente horario disponible.
+
+Activa **Hora específica** y define:
+
+- **Hora de inicio:** por ejemplo, 9:00.
+- **Hora de fin:** por ejemplo, 17:00.
+- **Días incluidos:** los días de la semana en que aplica la ventana.
+
+La ventana es la misma para todos los días seleccionados; no puedes poner horarios distintos por día dentro del mismo flujo. Tampoco afecta a acciones internas como agregar una etiqueta, actualizar un campo o crear una oportunidad.
+
+### Datos del remitente
+
+Te ahorra configurar el remitente en cada acción de correo o SMS.
+
+- **Nombre del remitente:** el nombre que verá el contacto en los correos.
+- **Correo del remitente:** la dirección desde la que salen los correos.
+- **Número del remitente:** el número desde el que se envían los SMS.
+
+Cada acción **Enviar correo** puede sobrescribir estos datos con su propio nombre y correo de remitente.
+
+#### Si los datos del remitente no se guardan
+
+- Verifica que el correo del remitente sea una dirección completa y válida.
+- Si usas un dominio de envío dedicado, confirma que el correo pertenece a ese dominio.
+- Si tienes varios dominios de envío, revisa que estés usando el correcto.
+- Revisa si alguna acción **Enviar correo** tiene un remitente propio que choque con el del flujo.
+- Lee el mensaje de validación que aparece en pantalla y corrige el problema antes de volver a guardar.
+
+Si el problema sigue, escribe a soporte de Chateea en **help@chateea.com** con el correo de remitente, el dominio de envío, las acciones que lo sobrescriben y el mensaje de error exacto.
+
+### Conversaciones: marcar como leídas
+
+Por defecto, cuando el flujo envía un mensaje, la conversación queda como **no leída** para llamar la atención de tu equipo. Si activas esta opción, todas las conversaciones en las que intervenga el flujo se marcan como **leídas** automáticamente.
+
+Es útil para flujos administrativos o puramente informativos que no necesitan revisión manual. Aplica a todos los mensajes salientes del flujo (correos, SMS, llamadas y mensajes de voz); no puedes elegir solo algunos tipos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Si desactivo Permitir reingreso, ¿un contacto con una cita nueva puede entrar a mi flujo de recordatorios?">
+    Sí. Los disparadores de citas y de facturas son una excepción: el contacto entra una vez por cada cita o factura nueva, sin importar este ajuste.
+  </Accordion>
+  <Accordion title="¿Qué pasa si elijo la zona horaria del contacto y el contacto no tiene una?">
+    El flujo no falla. Para ese contacto se usa la zona horaria de la cuenta.
+  </Accordion>
+  <Accordion title="Si cambio la zona horaria de la cuenta, ¿afecta a los contactos que ya están dentro del flujo?">
+    No. El cambio solo aplica a los contactos que entren al flujo a partir de ese momento.
+  </Accordion>
+  <Accordion title="¿Puedo usar zonas horarias distintas en diferentes pasos?">
+    No. La zona horaria se define para todo el flujo, no por paso.
+  </Accordion>
+  <Accordion title="Si un contacto tiene dos oportunidades y está activado Permitir varias oportunidades, ¿recibe dos secuencias?">
+    Sí. Cada oportunidad que cumpla el disparador inicia un recorrido independiente, así que el contacto puede recibir comunicaciones de cada negocio por separado.
+  </Accordion>
+  <Accordion title="¿Puedo usar remitentes distintos en el mismo flujo?">
+    Sí. El remitente de la configuración es el predeterminado, pero cada acción de correo puede tener su propio nombre y correo de remitente.
+  </Accordion>
+  <Accordion title="¿Detener al responder saca a todos los contactos del flujo?">
+    No. Solo termina el flujo para el contacto que respondió.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Recorrido por el constructor de flujos" icon="diagram-project" href="/automatizaciones/generador-de-flujos-de-trabajo-descripcion-general">
+    Conoce el lienzo, las pruebas, el historial de versiones y la publicación.
+  </Card>
+  <Card title="Escenarios de citas en flujos" icon="calendar" href="/automatizaciones/escenarios-de-citas-en-flujos">
+    Qué pasa con el contacto cuando reserva, cancela o reprograma.
+  </Card>
+  <Card title="Varias oportunidades en flujos" icon="filter-circle-dollar" href="/oportunidades/varias-oportunidades-en-flujos-de-trabajo">
+    Cómo se comportan los flujos cuando un contacto tiene varios negocios.
+  </Card>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Qué revisar cuando un flujo no se comporta como esperas.
+  </Card>
+</CardGroup>

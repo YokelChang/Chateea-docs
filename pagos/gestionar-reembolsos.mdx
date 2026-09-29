@@ -1,0 +1,103 @@
+---
+title: "Gestiona reembolsos totales y parciales"
+description: "Devuelve todo o parte de un pago desde la transacción, con Stripe, Authorize.net, NMI o PayPal."
+icon: "rotate-left"
+---
+
+Devolver dinero a un cliente es parte normal de vender: un cobro duplicado, un pedido cancelado o un producto que llegó dañado. En Chateea puedes hacer reembolsos totales o parciales directamente desde la transacción, sin entrar al panel de cada proveedor de pago.
+
+## Qué puedes hacer
+
+- Reembolsar el total de una transacción o solo una parte.
+- Reembolsar pagos con tarjeta, Apple Pay y Google Pay.
+- Ver el historial de intentos de reembolso, exitosos y fallidos, en el detalle de cada transacción.
+- Gestionar reembolsos de distintos proveedores desde un solo lugar.
+
+### Proveedores compatibles
+
+| Proveedor | Reembolsos |
+| --- | --- |
+| Stripe | Sí |
+| Authorize.net | Sí |
+| NMI | Sí |
+| PayPal | Sí |
+
+<Warning>
+Por ahora no puedes reembolsar desde aquí los cobros recurrentes posteriores de una suscripción.
+</Warning>
+
+## Emite un reembolso
+
+<Steps>
+  <Step title="Busca la transacción">
+    Ve a **Pagos → Transacciones** y localiza el pago.
+  </Step>
+  <Step title="Abre el reembolso">
+    Haz clic en los tres puntos junto al pago y elige **Reembolsar**.
+  </Step>
+  <Step title="Define el monto">
+    Para un **reembolso total**, deja el monto que aparece precargado (el total de la transacción). Para un **reembolso parcial**, cámbialo por cualquier cantidad menor.
+  </Step>
+  <Step title="Agrega una nota">
+    Escribe el motivo en **Notas**. Es solo para tu registro y aparece en la columna de notas del detalle del reembolso.
+  </Step>
+  <Step title="Confirma">
+    Confirma el reembolso. El resultado quedará registrado en el detalle de la transacción.
+  </Step>
+</Steps>
+
+<Tip>
+Escribe siempre una nota clara, por ejemplo "Reembolso 50 % por retraso en la entrega". Dentro de unos meses sabrás qué pasó sin tener que reconstruirlo.
+</Tip>
+
+## Cuándo usar cada tipo
+
+| Situación | Tipo de reembolso |
+| --- | --- |
+| Cobro duplicado o erróneo | Total |
+| Cancelación de un pedido o servicio | Total |
+| Devolución de un producto para cambiarlo por otro | Total, y luego cobras el nuevo |
+| Se cobró un precio mayor al correcto | Parcial, por la diferencia |
+| Un descuento no se aplicó al comprar | Parcial, por el descuento |
+| El cliente devuelve solo parte del pedido | Parcial, por lo devuelto |
+| Artículos dañados o faltantes | Parcial, como compensación |
+| Problema o retraso en el envío | Parcial, por el costo de envío |
+| Acuerdo intermedio con un cliente insatisfecho | Parcial, por lo acordado |
+
+## Dónde ver los reembolsos
+
+Todos los intentos de reembolso, exitosos y fallidos, aparecen en la página de detalles de la transacción, con el monto y la nota. Para encontrar rápido todo lo reembolsado, usa el filtro de estado **Reembolsado** en la tabla de **Transacciones**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Authorize.net da el error de que la transacción no cumple los criterios para emitir un crédito">
+    Authorize.net solo permite reembolsar una transacción cuando han pasado 24 horas desde el cobro. Para transacciones antiguas, la posibilidad de reembolso depende de las políticas y plazos de cada proveedor. Consulta sus condiciones o a su soporte.
+  </Accordion>
+  <Accordion title="¿Puedo hacer varios reembolsos parciales de la misma transacción?">
+    Sí, siempre que la suma de todos no supere el monto original.
+  </Accordion>
+  <Accordion title="¿Puedo reembolsar pagos hechos con Apple Pay o Google Pay?">
+    Sí. Se reembolsan igual que los pagos con tarjeta, y el dinero vuelve a la tarjeta o cuenta asociada a la billetera del cliente.
+  </Accordion>
+  <Accordion title="¿Cuánto tarda en verlo mi cliente?">
+    Depende del proveedor y del banco del cliente. Normalmente, entre cuatro y seis días hábiles.
+  </Accordion>
+  <Accordion title="¿Hay un límite de reembolsos por día?">
+    Chateea no fija un límite, pero tu proveedor de pagos puede tener sus propias reglas. Confírmalo con él.
+  </Accordion>
+  <Accordion title="¿Puedo impedir que algunos usuarios hagan reembolsos?">
+    Por ahora no hay permisos específicos para reembolsos. Para controlar lo que se reembolsa, revisa el detalle de cada transacción o filtra la tabla de transacciones por estado **Reembolsado**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparadores de suscripción y reembolso" icon="bolt" href="/pagos/activadores-suscripcion-reembolso">
+    Avisa al cliente automáticamente cuando haces un reembolso.
+  </Card>
+  <Card title="Recibos de venta automáticos" icon="receipt" href="/pagos/recibos-de-venta">
+    Envía comprobantes de cada pago.
+  </Card>
+</CardGroup>

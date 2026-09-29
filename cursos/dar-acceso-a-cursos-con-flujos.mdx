@@ -1,0 +1,93 @@
+---
+title: "Da acceso a tus cursos con flujos de trabajo"
+description: "Inscribe alumnos automáticamente en tus cursos tras un pago, un formulario o una etiqueta con la acción Otorgar oferta de curso."
+icon: "bolt"
+---
+
+Puedes inscribir alumnos en tus cursos de forma automática con un flujo de trabajo. En lugar de dar acceso uno por uno, defines qué lo dispara (un formulario enviado, un pago completado, una etiqueta añadida) y la acción **Otorgar oferta de curso** (Course Grant Offer) hace el resto. El alumno recibe acceso al instante, sin esperas ni errores manuales.
+
+## Por qué automatizar el acceso
+
+- **Escala sin esfuerzo**: da acceso a cientos de alumnos sin tocar cada contacto.
+- **Mejor experiencia**: el alumno entra al curso en cuanto paga o se registra, y bajan las consultas de "no me llegó el acceso".
+- **Menos errores**: evitas olvidos o accesos al curso equivocado.
+- **Flexibilidad**: adapta el disparador a tu modelo de negocio, por ejemplo acceso gratis tras un formulario o acceso pagado tras una compra.
+
+## Configura el flujo
+
+<Steps>
+  <Step title="Abre los flujos de trabajo">
+    En tu cuenta de Chateea, ve a **Automatización → Flujos de trabajo**.
+  </Step>
+  <Step title="Crea un flujo nuevo">
+    Haz clic en **+ Crear flujo de trabajo**. Puedes empezar desde cero, desde una plantilla o con ayuda de la IA.
+  </Step>
+  <Step title="Elige el disparador">
+    Selecciona el evento que iniciará el flujo, por ejemplo:
+
+    - **Formulario enviado**
+    - **Pago recibido**
+
+    Usa los filtros para indicar qué formulario o qué fuente de pago debe activarlo.
+  </Step>
+  <Step title="Agrega la acción de acceso">
+    Añade la acción **Otorgar oferta de curso** (Course Grant Offer) y selecciona el curso o la oferta a la que quieres dar acceso.
+  </Step>
+  <Step title="Prueba y publica">
+    Ejecuta una prueba con un contacto tuyo. Verifica que el acceso se otorga correctamente y que las demás acciones, como correos, se disparan. Después activa el flujo en **Publicar** y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Crea un flujo distinto por curso u oferta. Así puedes ajustar el disparador y los mensajes de cada uno sin afectar a los demás.
+</Tip>
+
+## El correo de bienvenida
+
+Si incluyes un correo de bienvenida dentro del flujo, el sistema desactiva automáticamente el correo de bienvenida predeterminado de la configuración de membresías. Si luego tu flujo no tiene un paso de correo, el alumno no recibe ninguna bienvenida.
+
+Usa **un solo método**:
+
+1. El correo de bienvenida de la configuración de **Membresías**, o
+2. Un paso de **Enviar correo** dentro del flujo.
+
+<Warning>
+  Nunca dejes ambos a medias. Si desactivaste el correo de membresías, asegúrate de que el flujo tenga su propio correo con los datos de acceso.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no se envía el correo de bienvenida de membresías?">
+    Probablemente creaste un correo de bienvenida en un flujo de trabajo. Eso desactiva el correo predeterminado de membresías. Elige un solo método y verifica que esté configurado.
+  </Accordion>
+  <Accordion title="¿Puedo tener varios flujos para distintos cursos?">
+    Sí. Crea un flujo por curso para personalizar disparadores y acciones según cada caso.
+  </Accordion>
+  <Accordion title="¿Qué pasa si un pago falla?">
+    Puedes crear un flujo que se active con el pago fallido, avise al alumno y le retire el acceso hasta que regularice el pago.
+  </Accordion>
+  <Accordion title="¿Puedo combinar el acceso con correos de seguimiento?">
+    Sí. En el mismo flujo, o en otros, puedes enviar bienvenidas personalizadas, recordatorios para retomar el curso o felicitaciones al terminarlo.
+  </Accordion>
+  <Accordion title="¿Cómo sé quién recibió acceso por el flujo?">
+    Revisa el historial de ejecución e inscripción del flujo para ver qué contactos pasaron por cada acción.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Correo de bienvenida de membresías" icon="envelope" href="/automatizaciones/correo-de-bienvenida-de-membresias">
+    Cómo funciona el correo con los datos de acceso.
+  </Card>
+  <Card title="Historial de ejecución de flujos" icon="clock-rotate-left" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa qué contactos pasaron por tu flujo.
+  </Card>
+  <Card title="Enlaces mágicos de acceso" icon="wand-magic-sparkles" href="/cursos/enlaces-magicos-de-acceso">
+    Envía a tus alumnos un acceso sin contraseña.
+  </Card>
+  <Card title="Cursos, membresías y comunidades" icon="graduation-cap" href="/cursos/introduccion">
+    Visión general de los cursos en Chateea.
+  </Card>
+</CardGroup>

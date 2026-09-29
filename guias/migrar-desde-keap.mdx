@@ -1,0 +1,170 @@
+---
+title: "Migrar desde Keap a Chateea"
+description: "Traslada contactos, campos, etiquetas, pipelines, automatizaciones, páginas y citas de Keap a Chateea."
+icon: "right-left"
+---
+
+Si usas Keap y quieres pasarte a Chateea, esta guía te ayuda a mover tus contactos, campos personalizados, etiquetas, pipelines, automatizaciones, páginas, formularios y citas sin frenar tu operación. La clave es documentar bien lo que tienes en Keap, migrar primero lo crítico y probar cada pieza antes de cerrar la cuenta anterior.
+
+## Qué vas a migrar
+
+| En Keap | En Chateea | Cómo se migra |
+| --- | --- | --- |
+| Contactos | Contactos | Exportación e importación en CSV |
+| Campos personalizados | Campos personalizados | Se recrean a mano antes de importar |
+| Etiquetas | Etiquetas | Se recrean y se aplican al importar |
+| Pipelines y negocios | Pipelines y oportunidades | Se recrean y se cargan |
+| Campañas y secuencias | Flujos de trabajo | Se documentan y se reconstruyen |
+| Páginas de destino y formularios | Embudos, sitios web y formularios | Se reconstruyen |
+| Tipos de cita | Calendarios | Se reconstruyen |
+
+## 1. Prepara la migración
+
+<Steps>
+  <Step title="Revisa tu cuenta de Keap">
+    Haz una lista de todos tus activos: contactos, campos personalizados, etiquetas, pipelines, automatizaciones, páginas de destino, formularios y tipos de cita. Documenta las secuencias y campañas que son esenciales para tu día a día.
+  </Step>
+  <Step title="Define objetivos y prioridades">
+    Aclara por qué migras (automatización, CRM integrado, costos) y empieza por lo que no puede detenerse.
+  </Step>
+  <Step title="Respalda tus datos">
+    Exporta contactos, campos personalizados y la información de tus automatizaciones, y guarda una copia segura antes de empezar.
+  </Step>
+</Steps>
+
+## 2. Migra contactos, campos y etiquetas
+
+### Exporta desde Keap
+
+<Steps>
+  <Step title="Exporta los contactos">
+    En Keap, ve a **Contacts → People**, selecciona los contactos (o usa **Select All**) y haz clic en **Export** para descargarlos en CSV. Si exportas más de 1.000 contactos, Keap te pide un correo para enviarte el enlace de descarga.
+  </Step>
+  <Step title="Documenta tus campos personalizados">
+    Anota o exporta todos los campos personalizados de contactos y empresas, con su tipo. Tendrás que recrearlos a mano en Chateea.
+  </Step>
+  <Step title="Documenta tus automatizaciones">
+    Registra cada secuencia con sus disparadores y acciones, con capturas o notas.
+  </Step>
+</Steps>
+
+### Importa en Chateea
+
+<Steps>
+  <Step title="Recrea los campos personalizados">
+    Ve a **Configuración → Campos personalizados** y crea cada campo de Keap con el tipo de dato equivalente.
+  </Step>
+  <Step title="Recrea tus etiquetas">
+    Crea las etiquetas que usabas en Keap para mantener la misma segmentación.
+  </Step>
+  <Step title="Importa los contactos">
+    Ve a **Contactos → Importar contactos**, sube el CSV y asigna cada columna al campo correcto, incluidos los personalizados. Ver [Importar contactos desde un archivo CSV](/contactos/importar-contactos-desde-csv).
+  </Step>
+</Steps>
+
+<Tip>
+  Antes de importar, revisa el formato del archivo: fechas en `AAAA-MM-DD`, codificación UTF-8 y sin saltos de línea ni emojis dentro de las celdas. Ver [Formato del CSV para importar](/contactos/formato-csv-para-importar).
+</Tip>
+
+## 3. Migra pipelines y negocios
+
+<Steps>
+  <Step title="Documenta tus pipelines en Keap">
+    Anota cada pipeline activo con sus etapas y, de cada negocio, el valor, la etapa y el contacto asociado.
+  </Step>
+  <Step title="Crea los pipelines en Chateea">
+    Ve a **Oportunidades → Pipelines** y crea pipelines con las mismas etapas. Ver [Crear un pipeline](/oportunidades/crear-un-pipeline).
+  </Step>
+  <Step title="Carga los negocios como oportunidades">
+    Crea cada oportunidad en la etapa correcta y asóciala a su contacto. Si tienes muchos, prepara un CSV e impórtalos: ver [Importar oportunidades desde CSV](/oportunidades/importar-oportunidades-desde-csv).
+  </Step>
+</Steps>
+
+## 4. Migra automatizaciones y campañas
+
+<Steps>
+  <Step title="Revisa lo que tienes en Keap">
+    Identifica todas las automatizaciones activas: secuencias de correo, etiquetas que se aplican y disparadores. Documenta cada flujo con detalle.
+  </Step>
+  <Step title="Reconstruye en Chateea">
+    Ve a **Automatización → Flujos de trabajo** y recrea cada automatización con disparadores, condiciones y acciones equivalentes. Ver [Primeros pasos con flujos de trabajo](/automatizaciones/primeros-pasos-con-flujos-de-trabajo).
+  </Step>
+  <Step title="Prueba cada flujo">
+    Ejecuta cada flujo con un contacto de prueba y ajusta lo necesario antes de activarlo.
+  </Step>
+</Steps>
+
+## 5. Migra páginas de destino y formularios
+
+- **Páginas de destino:** reconstrúyelas en **Sitios → Embudos** o **Sitios → Sitios web** con el editor de arrastrar y soltar, con el mismo diseño y contenido.
+- **Formularios:** recrea tus formularios públicos en **Sitios → Formularios** con los mismos campos y ajustes. Ver [Crear un formulario de contacto](/sitios/crear-formulario-de-contacto).
+- **Acciones del formulario:** asegúrate de que cada envío aplique las etiquetas correctas y dispare los flujos de trabajo que correspondan, igual que en Keap.
+
+## 6. Migra citas y calendarios
+
+<Steps>
+  <Step title="Documenta tus tipos de cita">
+    Anota de cada tipo de cita la duración, la disponibilidad, los recordatorios y las integraciones que usa.
+  </Step>
+  <Step title="Crea los calendarios en Chateea">
+    Ve a **Configuración → Calendarios** y crea un calendario por cada tipo de cita, con su duración, ubicación (por ejemplo, Zoom) y disponibilidad. Ver [Integrar Zoom con calendarios](/calendarios/integrar-zoom-con-calendarios).
+  </Step>
+  <Step title="Conecta tus calendarios externos">
+    Conecta Google Calendar u Outlook para sincronizar citas y evitar reservas dobles. Ver [Conectar Google Calendar](/calendarios/conectar-google-calendar).
+  </Step>
+</Steps>
+
+## 7. Verificación final y capacitación
+
+- **Valida los datos:** compara contactos, oportunidades, automatizaciones y páginas con lo que tenías en Keap.
+- **Valida los flujos:** confirma que todos los flujos de trabajo estén activos y funcionen.
+- **Capacita a tu equipo** en el CRM, las automatizaciones y la gestión de citas en Chateea.
+- **Monitorea y mejora:** revisa el rendimiento las primeras semanas y ajusta tu configuración.
+
+## 8. Cierra Keap
+
+<Steps>
+  <Step title="Opera en paralelo">
+    Mantén ambas plataformas activas un tiempo y reduce el uso de Keap de forma gradual.
+  </Step>
+  <Step title="Haz un respaldo final">
+    Confirma que tienes guardado todo lo necesario antes de cancelar.
+  </Step>
+  <Step title="Cancela tu suscripción">
+    Sigue el proceso de cancelación de Keap.
+  </Step>
+  <Step title="Revisa el resultado">
+    Documenta los retos y aprendizajes, y sigue vigilando tu cuenta de Chateea para detectar problemas a tiempo.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los campos personalizados se crean solos al importar?">
+    No conviene depender de eso. Crea antes en Chateea cada campo personalizado de Keap con el tipo correcto y luego asígnalo durante la importación.
+  </Accordion>
+  <Accordion title="¿Se pueden importar las secuencias de Keap?">
+    No. Las automatizaciones se documentan en Keap y se reconstruyen en **Automatización → Flujos de trabajo**.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo debo operar en paralelo?">
+    El suficiente para confirmar que tus flujos, formularios y citas funcionan en Chateea. Muchas empresas lo hacen durante unas semanas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar contactos desde CSV" icon="file-csv" href="/contactos/importar-contactos-desde-csv">
+    Sube tu lista y asigna los campos.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="bolt" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Reconstruye tus automatizaciones.
+  </Card>
+  <Card title="Crear un pipeline" icon="filter" href="/oportunidades/crear-un-pipeline">
+    Recrea tu proceso de ventas.
+  </Card>
+  <Card title="Migrar desde HubSpot" icon="right-left" href="/guias/hubspot">
+    Otra guía de migración de CRM.
+  </Card>
+</CardGroup>

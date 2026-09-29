@@ -1,0 +1,199 @@
+---
+title: "Migrar desde Calendly a Chateea"
+description: "Traslada usuarios, disponibilidad, Zoom, cobros, tipos de evento, automatizaciones y contactos de Calendly a Chateea."
+icon: "right-left"
+---
+
+Si agendas tus citas con Calendly, puedes pasar toda tu agenda a Chateea y conectarla con tu CRM, tus pagos y tus automatizaciones. Esta guía te explica cómo migrar usuarios, sincronización de calendarios, disponibilidad, videollamadas, cobros, tipos de evento, automatizaciones y contactos, con una verificación después de cada paso.
+
+<Info>
+  Migra estos siete componentes: usuarios, configuración de calendarios, disponibilidad, videoconferencias, cobros, calendarios (tipos de evento) y automatizaciones. Al final, trae también tus contactos.
+</Info>
+
+## Equivalencias
+
+| En Calendly | En Chateea |
+| --- | --- |
+| Usuario de la organización | Usuario de tu equipo |
+| Event Type (tipo de evento) | Calendario |
+| Calendar Sync | Conexiones de calendario |
+| Workflows | Flujos de trabajo |
+| Integración de Stripe | Pasarela de pago en **Pagos → Integraciones** |
+
+## 1. Migra los usuarios
+
+En Calendly, una organización puede tener varios usuarios, cada uno con su página y sus tipos de evento. Necesitas que esas mismas personas estén en tu cuenta de Chateea.
+
+<Steps>
+  <Step title="Exporta la lista de usuarios de Calendly">
+    Si eres propietario o administrador en Calendly, abre **Account → Users** (arriba a la derecha) y haz clic en **Export**. Se descarga un CSV con los miembros de la organización.
+  </Step>
+  <Step title="Agrega los usuarios en Chateea">
+    Ve a **Configuración → Mi equipo**, revisa quién ya está y agrega a los que falten. Usa el CSV de Calendly para decidir el rol de cada uno. Ver [Invita a tu equipo](/primeros-pasos/invita-a-tu-equipo).
+  </Step>
+</Steps>
+
+## 2. Migra la sincronización de calendarios
+
+Calendly revisa tu Google Calendar, Outlook o iCloud para no ofrecer horarios ocupados. Chateea hace lo mismo para evitar reservas dobles.
+
+<Note>
+  Repite estos pasos con cada usuario que migres.
+</Note>
+
+<Steps>
+  <Step title="Desconecta el calendario de Calendly">
+    En Calendly, ve a **Account → Calendar Sync** y desconecta tu Google Calendar u Outlook.
+  </Step>
+  <Step title="Conéctalo a Chateea">
+    En Chateea, ve a **Calendarios → Configuración de calendarios → Conexiones** y conecta tu cuenta de Google u Outlook. Chateea revisará los conflictos según tu disponibilidad en ese calendario. Ver [Conectar Google Calendar](/calendarios/conectar-google-calendar) y [Conectar Outlook Calendar](/calendarios/conectar-outlook-calendar).
+  </Step>
+  <Step title="Ajusta las preferencias de sincronización">
+    En la misma pestaña **Conexiones**, define qué calendario revisa conflictos y si quieres sincronizar cancelaciones, igual que lo tenías en Calendly.
+  </Step>
+  <Step title="Verifica">
+    Crea un evento de prueba en Google Calendar y confirma que ese horario aparece bloqueado en Chateea y que se respetan tus otros eventos ocupados.
+  </Step>
+</Steps>
+
+## 3. Migra la disponibilidad
+
+<Steps>
+  <Step title="Documenta tu configuración de Calendly">
+    Anota tus horarios disponibles, tiempos de margen, aviso mínimo, límites diarios, incrementos de horario y cómo muestras la zona horaria.
+  </Step>
+  <Step title="Configúrala en Chateea">
+    En la configuración de disponibilidad de cada calendario, define horarios, tiempos de margen y límites diarios. Ver [Horario semanal y horas por fecha](/calendarios/horario-semanal-y-horas-por-fecha) y [Tiempo de margen antes y después](/calendarios/tiempo-de-margen-antes-y-despues).
+  </Step>
+  <Step title="Revisa la zona horaria">
+    Confirma que la zona horaria de tu cuenta y la del perfil de cada usuario coinciden con la que usabas en Calendly.
+  </Step>
+  <Step title="Verifica">
+    Abre el calendario y comprueba que los horarios ofrecidos, los márgenes y las restricciones coinciden con Calendly.
+  </Step>
+</Steps>
+
+## 4. Configura las videollamadas
+
+<Steps>
+  <Step title="Desconecta Zoom de Calendly">
+    En Calendly, ve a **Integrations → Zoom** y desconecta tu cuenta.
+  </Step>
+  <Step title="Conecta Zoom en Chateea">
+    Conecta tu cuenta de Zoom y autoriza el acceso. Ver [Integrar Zoom con calendarios](/calendarios/integrar-zoom-con-calendarios).
+  </Step>
+  <Step title="Elige Zoom como ubicación">
+    En la configuración de cada calendario, selecciona Zoom como ubicación predeterminada de las citas si corresponde.
+  </Step>
+</Steps>
+
+## 5. Configura los cobros
+
+En Calendly, cualquier tipo de evento puede cobrar. Los eventos personales (uno a uno y grupales) usan tu cuenta de Stripe, y los de equipo (round robin y colectivos) usan la del propietario de la organización.
+
+<Steps>
+  <Step title="Desconecta Stripe de Calendly">
+    En Calendly, abre **Integrations**, elige **Stripe** y haz clic en **Disconnect**.
+    <Warning>
+      Al desconectar Stripe, todos los tipos de evento que cobraban en Calendly pasan a ser gratuitos. Hazlo cuando tus calendarios de Chateea ya estén listos.
+    </Warning>
+  </Step>
+  <Step title="Conecta tu pasarela en Chateea">
+    Ve a **Pagos → Integraciones** y conecta Stripe u otra pasarela. Ver [Conectar Stripe](/integraciones/conectar-stripe).
+  </Step>
+  <Step title="Activa el cobro en los calendarios">
+    Configura el pago en cada calendario que deba cobrar. Ver [Cobrar pagos en calendarios](/calendarios/cobrar-pagos-en-calendarios).
+  </Step>
+</Steps>
+
+## 6. Migra tus tipos de evento
+
+En Calendly los calendarios se llaman tipos de evento. En Chateea, cada tipo de evento será un calendario.
+
+<Steps>
+  <Step title="Documenta cada tipo de evento">
+    Anota nombre, duración, ubicación, tiempos de margen, aviso mínimo, límites diarios y las preguntas que haces a quien reserva.
+  </Step>
+  <Step title="Crea los calendarios">
+    Ve a **Calendarios → Configuración de calendarios** y crea un calendario nuevo por cada tipo de evento. Configura nombre, duración, ubicación, horarios por fecha, márgenes, aviso mínimo y límites diarios, y agrega a los miembros del equipo que atienden.
+  </Step>
+  <Step title="Recrea las preguntas">
+    Si hacías preguntas al reservar, créalas como campos de un formulario y asígnalo al calendario. Ver [Ver respuestas de formularios en citas](/calendarios/ver-respuestas-de-formularios-en-citas).
+  </Step>
+  <Step title="Reemplaza tus enlaces">
+    Copia el enlace de reserva de cada calendario y reemplaza los enlaces de Calendly en tu sitio web, tus correos y tus firmas. También puedes insertarlo en tu sitio: ver [Insertar un calendario en otro sitio web](/calendarios/insertar-calendario-en-otro-sitio-web).
+  </Step>
+  <Step title="Verifica">
+    Haz una reserva de prueba y confirma márgenes, preguntas, notificaciones y el enlace de Zoom.
+  </Step>
+</Steps>
+
+## 7. Migra tus automatizaciones
+
+<Steps>
+  <Step title="Documenta tus Workflows de Calendly">
+    Desde tu página de inicio de Calendly, abre **Workflows** en el menú de la izquierda. Anota los disparadores (evento creado, cancelado) y las acciones (enviar correo, enviar SMS).
+  </Step>
+  <Step title="Recréalos en Chateea">
+    Ve a **Automatización → Flujos de trabajo** y crea flujos con disparadores equivalentes, como cita reservada, cancelada o inasistencia. Personaliza los mensajes con las variables de Chateea, por ejemplo `{{contact.first_name}}`.
+  </Step>
+  <Step title="Verifica">
+    Crea una cita de prueba y confirma que cada flujo se activa y envía los mensajes a tiempo y con el contenido correcto.
+  </Step>
+</Steps>
+
+## 8. Migra tus contactos
+
+Las citas de Calendly guardan los datos de quienes reservaron. Expórtalas antes de cerrar la cuenta.
+
+<Steps>
+  <Step title="Exporta los eventos">
+    En tu página de inicio de Calendly, abre **Meetings**, filtra los eventos que necesitas (por ejemplo, por fecha o tipo) y haz clic en **Export**. El CSV incluye datos de contacto de los invitados, tipos de evento, fechas y ubicaciones.
+  </Step>
+  <Step title="Prepara e importa el CSV">
+    Limpia el archivo y súbelo en **Contactos → Importar contactos**. Ver [Formato del CSV para importar](/contactos/formato-csv-para-importar) y [Solucionar errores de importación](/contactos/solucionar-errores-importacion-csv).
+  </Step>
+</Steps>
+
+## Antes de cerrar Calendly
+
+- **Capacita a tu equipo**, sobre todo en lo que funciona distinto que en Calendly.
+- **Revisa tus otras herramientas:** si además de Calendly usas otras plataformas, consulta las demás guías de migración de esta sección.
+- **Mientras migras**, puedes conectar tu cuenta de Calendly a Chateea para que las nuevas reservas entren como citas. Ver [Conectar Calendly](/calendarios/conectar-calendly).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo exporto la lista de usuarios de Calendly?">
+    Inicia sesión como propietario o administrador, ve a **Account → Users** y haz clic en **Export**. Se descarga un CSV con todos los usuarios.
+  </Accordion>
+  <Accordion title="¿Cómo paso mi calendario de Calendly a Chateea?">
+    Desconéctalo en **Account → Calendar Sync** de Calendly y conéctalo en **Calendarios → Configuración de calendarios → Conexiones** de Chateea. Luego ajusta tus preferencias de sincronización.
+  </Accordion>
+  <Accordion title="¿Qué pasa con mis eventos de pago al desconectar Stripe de Calendly?">
+    Pasan a ser gratuitos en Calendly. Por eso conviene tener listos tus calendarios con cobro en Chateea antes de desconectar Stripe.
+  </Accordion>
+  <Accordion title="¿Qué pruebas hago al terminar?">
+    Crea un evento en tu calendario conectado y confirma que bloquea el horario en Chateea, revisa la disponibilidad, haz una reserva de prueba para validar flujos, notificaciones, Zoom y cobro, y comprueba que los contactos se importaron bien.
+  </Accordion>
+  <Accordion title="¿Puedo usar la misma cuenta de Calendly en varias cuentas de Chateea mientras migro?">
+    Sí. Puedes conectar la misma cuenta de Calendly en cada cuenta de Chateea a la que pertenezcas. Cada usuario puede conectar solo una cuenta de Calendly por cuenta de Chateea.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar Calendly" icon="calendar" href="/calendarios/conectar-calendly">
+    Sincroniza tus reservas durante la transición.
+  </Card>
+  <Card title="Cobrar pagos en calendarios" icon="credit-card" href="/calendarios/cobrar-pagos-en-calendarios">
+    Cobra al reservar una cita.
+  </Card>
+  <Card title="Integrar Zoom con calendarios" icon="video" href="/calendarios/integrar-zoom-con-calendarios">
+    Enlaces de reunión automáticos.
+  </Card>
+  <Card title="Introducción a calendarios" icon="calendar-days" href="/calendarios/introduccion">
+    Todo sobre los calendarios de Chateea.
+  </Card>
+</CardGroup>

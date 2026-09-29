@@ -1,0 +1,139 @@
+---
+title: "Segmentación de cupones por producto, precio y variante"
+description: "Aplica un cupón exactamente al producto, precio o variante que quieres y úsalo como filtro en tus automatizaciones."
+icon: "tags"
+---
+
+Con la segmentación de cupones decides exactamente dónde se puede usar un descuento: en un producto completo, en uno o varios de sus precios, o solo en ciertas variantes. Así lanzas promociones precisas en embudos, formularios, tienda, enlaces de pago y calendarios sin duplicar productos ni eliminar variantes.
+
+Un ejemplo clásico: tienes un servicio con plan mensual y plan anual, y quieres promocionar solo el anual. Configuras el cupón para el precio anual y el mensual queda sin descuento.
+
+## Para qué te sirve
+
+| Ventaja | Qué resuelve |
+| --- | --- |
+| **Promociones más precisas** | Descuentas un precio o una variante, no el producto entero |
+| **Menos trabajo manual** | Ya no necesitas duplicar productos solo para descontar una opción |
+| **Checkout más exacto** | El cupón se aplica solo si el producto, precio o variante coincide |
+| **Automatizaciones más finas** | Filtros por producto, precio y variante en los disparadores de cupones |
+| **Configuración a prueba de futuro** | Si eliges el producto completo, se incluyen también los precios y variantes que agregues después |
+
+## A qué puede aplicarse un cupón
+
+| Alcance | Cuándo usarlo |
+| --- | --- |
+| **Producto completo** | Promoción general sobre todo lo que ofrece el producto |
+| **Todos los precios o variantes del producto** | Igual de amplio, pero declarado de forma explícita |
+| **Precios seleccionados** | Descuento para un nivel de precio concreto, por ejemplo el plan anual |
+| **Variantes seleccionadas** | Descuento para una opción concreta, como un color, una talla o una modalidad |
+
+Al elegir productos en el cupón verás una **vista de selección anidada**: expandes el producto y decides qué tan amplio o limitado será el descuento.
+
+## Configura la segmentación
+
+<Steps>
+  <Step title="Abre los cupones">
+    Ve a **Pagos → Cupones**.
+  </Step>
+  <Step title="Crea o edita un cupón">
+    Haz clic en **Crear cupón**, o abre uno existente y elige **Editar**.
+  </Step>
+  <Step title="Completa los datos del cupón">
+    Escribe el código, el tipo de descuento y el valor. Si lo necesitas, define también fechas de inicio y fin, límite de canjes y la configuración de pagos recurrentes.
+  </Step>
+  <Step title="Elige el producto">
+    En el área de selección de productos, busca el producto al que quieres aplicar el cupón.
+  </Step>
+  <Step title="Define el alcance">
+    En la vista anidada, elige el producto completo, todos sus precios o variantes, precios específicos o variantes específicas.
+  </Step>
+  <Step title="Guarda">
+    Guarda la configuración del cupón.
+  </Step>
+  <Step title="Prueba el cupón">
+    Úsalo en el checkout donde lo vas a promocionar: un embudo, un formulario, tu tienda, un enlace de pago o la página de reserva de un calendario.
+  </Step>
+</Steps>
+
+## Cómo se comporta en el checkout
+
+Todos estos checkouts respetan la segmentación:
+
+- Embudos
+- Formularios
+- Tienda en línea
+- Enlaces de pago
+- Calendarios
+
+Si el cupón está configurado para un precio o una variante específica, **solo se aplica cuando el cliente elige exactamente ese precio o esa variante**. Si elige otra opción del mismo producto, el cupón no se aplica.
+
+<Warning>
+Comunica con claridad en tu promoción a qué opción aplica el descuento. Si no lo haces, recibirás consultas de clientes que eligieron otra variante y no vieron el descuento.
+</Warning>
+
+Casos donde esto brilla:
+
+- Descontar solo el nivel de precio premium.
+- Promocionar una variante sin tocar las demás.
+- Lanzar ofertas limitadas ligadas a una opción concreta del producto.
+
+## Usa la segmentación en tus automatizaciones
+
+Los disparadores **Código de cupón aplicado** y **Código de cupón canjeado** permiten filtrar más allá del producto. Los filtros funcionan en orden:
+
+<Steps>
+  <Step title="Elige el producto">
+    Es el filtro base del disparador.
+  </Step>
+  <Step title="Se habilitan los precios o variantes">
+    Solo aparecen las opciones que corresponden a ese producto.
+  </Step>
+  <Step title="Elige el precio o la variante">
+    Selecciona la opción que quieres usar como condición.
+  </Step>
+</Steps>
+
+Configúralo en **Automatización → Flujos de trabajo** al agregar el disparador. Así puedes, por ejemplo, iniciar un flujo solo cuando el cupón se aplica al plan premium, enviar un seguimiento cuando se canjea en una variante concreta o etiquetar a los contactos según la compra con descuento que hicieron.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo seguir aplicando un cupón a un producto completo?">
+    Sí. El comportamiento por producto sigue disponible.
+  </Accordion>
+  <Accordion title="¿Qué pasa si elijo el producto completo?">
+    Se incluyen todos sus precios y variantes actuales, además de los que agregues más adelante.
+  </Accordion>
+  <Accordion title="¿Puedo aplicar un cupón a varios precios o variantes del mismo producto?">
+    Sí. Selecciona todos los que quieras incluir al configurar el cupón.
+  </Accordion>
+  <Accordion title="¿Por qué el cupón no se aplica a otra variante del mismo producto?">
+    Porque solo se aplica a los precios o variantes seleccionados en el cupón. Si el cliente eligió una opción no incluida, el descuento no se aplica.
+  </Accordion>
+  <Accordion title="¿Las suscripciones existentes usan esta lógica?">
+    No. Las suscripciones y transacciones anteriores siguen con la lógica antigua para no alterar lo que ya estaba en curso.
+  </Accordion>
+  <Accordion title="¿Qué pasa si edito un cupón existente?">
+    Los cambios usan la nueva lógica en las transacciones futuras.
+  </Accordion>
+  <Accordion title="¿Por qué no veo el filtro de precio o variante en el disparador?">
+    Son filtros dependientes: primero debes elegir un producto para que aparezcan.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con los cupones" icon="ticket" href="/pagos/primeros-pasos-cupones">
+    Crea cupones y define sus límites.
+  </Card>
+  <Card title="Cupones en productos de suscripción" icon="repeat" href="/pagos/cupones-productos-suscripcion">
+    Define cuánto dura el descuento en una suscripción.
+  </Card>
+  <Card title="Crea productos y véndelos con embudos" icon="box-open" href="/pagos/productos-y-embudos">
+    Los precios y variantes se definen en el producto.
+  </Card>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles en tus flujos.
+  </Card>
+</CardGroup>

@@ -1,0 +1,64 @@
+---
+title: "Enviar un certificado al aprobar un cuestionario o una tarea"
+description: "Emite un certificado automáticamente cuando un alumno completa una evaluación concreta de tu curso."
+icon: "list-check"
+---
+
+A veces el certificado no debe llegar al terminar todo el curso, sino al superar una prueba concreta: el examen final, una evaluación práctica o una tarea entregada. Con un flujo de trabajo puedes emitir el certificado automáticamente en cuanto el alumno completa (aprueba) un cuestionario o una tarea específica del curso.
+
+## Cómo funciona
+
+El flujo usa el disparador **Lección completada** con filtros que apuntan exactamente a la lección del cuestionario o la tarea. Cuando el alumno la completa, la acción **Emitir certificado** le envía la credencial que elijas.
+
+## Antes de empezar
+
+- El curso debe tener el cuestionario o la tarea creados como lección.
+- Necesitas una plantilla de certificado ya diseñada en **Membresías → Credenciales** (Credentials).
+
+## Configurar el flujo
+
+<Steps>
+  <Step title="Crea el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo desde cero, o abre uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** (Add Trigger) y elige **Lección completada** (Lesson Completed).
+  </Step>
+  <Step title="Aplica los filtros">
+    Para que el certificado se emita solo con esa prueba, añade estos filtros:
+    - **Producto**: selecciona tu curso.
+    - **Categoría**: elige el módulo o sección donde está el cuestionario.
+    - **Lección**: selecciona el cuestionario o la tarea concreta.
+  </Step>
+  <Step title="Agrega la acción de certificado">
+    Haz clic en el icono **+** debajo del disparador, elige **Emitir certificado** (Issue Certificate) y selecciona la plantilla de certificado.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda el flujo y publícalo. A partir de ahora, el certificado se enviará automáticamente cada vez que un alumno complete esa lección.
+  </Step>
+</Steps>
+
+<Tip>
+Si quieres premiar varios hitos del mismo curso (por ejemplo, un certificado por cada examen de módulo), crea un flujo por cada lección, cada uno con su filtro y su plantilla de certificado.
+</Tip>
+
+<Note>
+Con la misma acción **Emitir certificado** también puedes entregar una insignia: basta con elegir una plantilla de insignia en lugar de un certificado. Más detalles en [Automatizar insignias con flujos](/cursos/automatizar-insignias-con-flujos).
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cuestionarios y tareas en cursos" icon="list-check" href="/cursos/cuestionarios-y-tareas-en-cursos">
+    Crea evaluaciones dentro de tus cursos.
+  </Card>
+  <Card title="Certificados en flujos de trabajo" icon="bolt" href="/automatizaciones/certificados-en-flujos-de-trabajo">
+    Disparador y acción de certificados.
+  </Card>
+  <Card title="Certificados al completar cursos" icon="award" href="/cursos/certificados-al-completar-cursos-y-categorias">
+    Entrega automática al terminar un curso o una categoría.
+  </Card>
+  <Card title="Lista de disparadores" icon="list" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles.
+  </Card>
+</CardGroup>

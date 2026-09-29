@@ -1,0 +1,184 @@
+---
+title: "Migrar desde ConvertKit (Kit) a Chateea"
+description: "Migra automatizaciones, suscriptores, formularios, páginas, broadcasts y productos de ConvertKit a Chateea."
+icon: "right-left"
+---
+
+Si usas ConvertKit (hoy llamado Kit) para tu email marketing, puedes pasar a Chateea tus automatizaciones, suscriptores, formularios, páginas de destino, broadcasts y productos, y conectarlos con un CRM completo y otros canales como SMS y WhatsApp. Esta guía te explica cómo migrar cada componente y qué comprobar después de cada paso.
+
+<Info>
+  Migra estos siete componentes: automatizaciones visuales, suscriptores, formularios, páginas de destino, broadcasts, comercio y datos adicionales.
+</Info>
+
+## Equivalencias
+
+| En ConvertKit | En Chateea |
+| --- | --- |
+| Visual Automations | Flujos de trabajo |
+| Suscriptores | Contactos |
+| Etiquetas y segmentos | Etiquetas y listas inteligentes |
+| Formularios | Formularios |
+| Landing pages | Embudos y sitios web |
+| Broadcasts | Campañas de correo |
+| Commerce (productos digitales) | Productos y formularios de pedido |
+
+## 1. Migra tus automatizaciones visuales
+
+<Steps>
+  <Step title="Documéntalas">
+    En ConvertKit, anota cada automatización con sus puntos de entrada (disparadores), acciones, eventos y condiciones. Toma capturas del flujo para recrearlo con precisión.
+  </Step>
+  <Step title="Crea el flujo en Chateea">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo.
+  </Step>
+  <Step title="Configura los disparadores">
+    Usa disparadores equivalentes a tus puntos de entrada: envío de formulario, etiqueta agregada o compra realizada.
+  </Step>
+  <Step title="Agrega acciones y condiciones">
+    Recrea los envíos de correo, las esperas y las ramas Si/Sino del flujo original.
+  </Step>
+  <Step title="Pruébalo">
+    Pasa un contacto de prueba por el flujo y verifica envíos, etiquetas y ramas condicionales.
+  </Step>
+</Steps>
+
+## 2. Migra tus suscriptores
+
+<Steps>
+  <Step title="Exporta los suscriptores">
+    En ConvertKit, ve a **Subscribers → Grow** y marca la casilla superior para seleccionarlos a todos. Si tienes más de 30, confirma la selección con el enlace de la barra azul. Luego elige **Bulk Actions → Export**. El archivo se envía al propietario de la cuenta o se descarga directamente.
+  </Step>
+  <Step title="Revisa el archivo">
+    Abre el CSV y confirma que incluye datos del suscriptor, etiquetas, métricas de interacción y campos personalizados.
+  </Step>
+  <Step title="Crea tus campos personalizados">
+    En **Configuración → Campos personalizados**, crea los campos que usabas en ConvertKit.
+  </Step>
+  <Step title="Importa en Chateea">
+    Ve a **Contactos → Importar contactos**, sube el CSV y asigna las columnas (nombre, apellido, correo, etiquetas y campos personalizados). Ver [Importar contactos desde un archivo CSV](/contactos/importar-contactos-desde-csv).
+  </Step>
+  <Step title="Recrea tus segmentos">
+    Con las etiquetas importadas, crea listas inteligentes equivalentes a tus segmentos. Ver [Listas inteligentes](/contactos/listas-inteligentes).
+  </Step>
+</Steps>
+
+## 3. Migra tus formularios
+
+<Steps>
+  <Step title="Documenta cada formulario">
+    Anota campos, diseño y ajustes: URL de redirección, correo de incentivo y reCAPTCHA. Registra también los campos personalizados que usa.
+  </Step>
+  <Step title="Recréalo en Chateea">
+    Ve a **Sitios → Formularios**, crea un formulario nuevo y agrega los mismos campos.
+  </Step>
+  <Step title="Ajusta el diseño">
+    Adapta colores de fondo, tipografías y estilo de botones.
+  </Step>
+  <Step title="Configura las acciones">
+    Define la redirección después de enviar, el correo de confirmación y las etiquetas que se aplican. Si el formulario inicia una automatización, conéctalo con su flujo de trabajo.
+  </Step>
+  <Step title="Pruébalo">
+    Envía una respuesta de prueba y confirma que los datos se guardan y el flujo se activa.
+  </Step>
+</Steps>
+
+## 4. Migra tus páginas de destino
+
+<Steps>
+  <Step title="Documenta cada página">
+    Anota la plantilla, el contenido, las imágenes, los formularios o automatizaciones conectados y si usa un dominio o subdominio propio.
+  </Step>
+  <Step title="Recréala en Chateea">
+    Ve a **Sitios → Embudos** o **Sitios → Sitios web**, elige una plantilla parecida y reconstruye el contenido y el diseño.
+  </Step>
+  <Step title="Inserta tus formularios">
+    Agrega los formularios que creaste y confirma que estén conectados con tus flujos.
+  </Step>
+  <Step title="Configura el dominio">
+    Si usabas un dominio propio, conéctalo en **Configuración → Dominios**. Ver [Conectar un dominio raíz o subdominio](/sitios/conectar-dominio-raiz-o-subdominio).
+  </Step>
+  <Step title="Prueba">
+    Revisa la vista previa, envía el formulario y comprueba las redirecciones.
+  </Step>
+</Steps>
+
+## 5. Migra tus broadcasts
+
+<Steps>
+  <Step title="Documenta tus broadcasts">
+    Guarda asuntos, contenido, segmentos de destinatarios y copias de tus plantillas.
+  </Step>
+  <Step title="Crea la campaña">
+    En Chateea, crea una campaña de correo nueva y replica el contenido y el diseño. Ver [Lanza tu primera campaña de correo](/primeros-pasos/lanza-tu-primera-campana-de-correo).
+  </Step>
+  <Step title="Elige los destinatarios">
+    Usa las etiquetas y listas inteligentes que importaste.
+  </Step>
+  <Step title="Envía o programa">
+    Envía de inmediato o programa el envío.
+  </Step>
+  <Step title="Prueba">
+    Envía primero un correo de prueba y revisa cómo se ve en distintos clientes de correo.
+  </Step>
+</Steps>
+
+## 6. Migra tus productos (Commerce)
+
+<Steps>
+  <Step title="Documenta tus productos">
+    Anota cada producto digital o suscripción: precio, forma de entrega, automatizaciones asociadas, URL, dominio y ajustes.
+  </Step>
+  <Step title="Crea los productos y la página de venta">
+    Crea los productos en **Pagos → Productos** con sus modelos de precio (pago único, suscripción o pagos a plazos) y véndelos con un formulario de pedido en un embudo. Ver [Vender productos en formularios de pedido](/pagos/vender-productos-en-formularios-de-pedido).
+  </Step>
+  <Step title="Configura la entrega">
+    Asegura que el cliente reciba su producto automáticamente al comprar. Ver [Entregar productos digitales](/tienda/entregar-productos-digitales).
+  </Step>
+  <Step title="Conecta tus flujos">
+    Vincula la compra con flujos de seguimiento, upsells o segmentación.
+  </Step>
+  <Step title="Prueba la compra">
+    Haz una compra de prueba y confirma el cobro y la entrega.
+  </Step>
+</Steps>
+
+## 7. Datos adicionales
+
+Además de los suscriptores, puedes traer etiquetas, puntuaciones de interacción u otros datos de campos personalizados que exportaste de ConvertKit. Crea antes los campos en Chateea, impórtalos y compara el resultado con tu exportación.
+
+## Consideraciones finales
+
+- **Capacitación:** enseña a tu equipo lo que cambia respecto a ConvertKit: el CRM, el marketing multicanal y los flujos de trabajo.
+- **Monitoreo:** revisa el rendimiento de tus correos, automatizaciones y páginas, y usa los informes de Chateea para mejorar entregabilidad, automatizaciones y conversión.
+- **Respaldos:** conserva una copia de tus datos de ConvertKit después de migrar, para consultar el historial si hace falta, y revisa que tus políticas de retención de datos cumplan con tus obligaciones.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo exporto mis suscriptores de ConvertKit?">
+    Ve a **Subscribers → Grow**, selecciona a todos (confirma en la barra azul si tienes más de 30) y elige **Bulk Actions → Export**. El archivo llega por correo al propietario o se descarga directamente.
+  </Accordion>
+  <Accordion title="¿Se importan mis automatizaciones visuales?">
+    No. Documéntalas en ConvertKit y recréalas en **Automatización → Flujos de trabajo** con disparadores, acciones y condiciones equivalentes.
+  </Accordion>
+  <Accordion title="¿Qué pruebas hago al terminar?">
+    Pasa contactos de prueba por tus flujos, revisa los contactos importados, envía formularios de prueba, revisa tus páginas, envía correos de prueba y haz una compra de prueba. Compara todo con tu exportación de ConvertKit.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con flujos de trabajo" icon="bolt" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Reconstruye tus automatizaciones.
+  </Card>
+  <Card title="Entregar productos digitales" icon="download" href="/tienda/entregar-productos-digitales">
+    Entrega automática tras la compra.
+  </Card>
+  <Card title="Migrar desde Mailchimp" icon="right-left" href="/guias/migrar-desde-mailchimp">
+    Otra guía de email marketing.
+  </Card>
+  <Card title="Migrar desde Klaviyo" icon="right-left" href="/guias/migrar-desde-klaviyo">
+    Migra perfiles, flujos y campañas.
+  </Card>
+</CardGroup>

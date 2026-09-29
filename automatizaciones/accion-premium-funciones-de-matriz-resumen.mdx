@@ -1,0 +1,56 @@
+---
+title: "Funciones de matriz: guía rápida"
+sidebarTitle: "Funciones de matriz: guía rápida"
+description: "Versión resumida de la acción premium Funciones de matriz: cómo elegir el tipo de acción y configurar Buscar sobre los artículos de un pedido de Shopify."
+icon: "brackets-curly"
+---
+
+La acción premium **Funciones de matriz** (Array Functions) sirve para trabajar con listas de datos dentro de un flujo de trabajo, por ejemplo los productos de un pedido o los registros que devuelve un webhook. Esta guía rápida se centra en el tipo de acción **Buscar**.
+
+<Note>
+  Para ver el detalle de los cinco tipos de acción (Buscar, Filtrar, Buscar por índice, Partidas individuales y Matemáticas), consulta la [guía completa de funciones de matriz](/automatizaciones/accion-premium-funciones-de-matriz).
+</Note>
+
+## Elige el tipo de acción
+
+Después de agregar la acción **Funciones de matriz** en tu flujo, elige primero el tipo en el desplegable **Tipo de acción** (Action Type). El resto del panel cambia según esa elección.
+
+## Tipo de acción: Buscar
+
+**Buscar** (Find) localiza, dentro de una lista de objetos, el que coincide con los pares clave-valor que indiques y lo devuelve completo.
+
+En **Seleccionar campo** (Select Field) aparecen todos los campos de tipo matriz disponibles en el flujo. Provienen de los disparadores de **Shopify**, del disparador de **webhook entrante** y de las respuestas de las acciones de **webhook personalizado**.
+
+En este ejemplo se usa el disparador de **pedido realizado de Shopify** para comprobar si el producto con ID `zGhad23wfadfa` forma parte de los artículos del pedido.
+
+<Steps>
+  <Step title="Selecciona el campo de matriz">
+    En **Seleccionar campo**, despliega el grupo **Shopify** y elige **Artículos de línea** (Line Items).
+  </Step>
+  <Step title="Elige la clave">
+    En el bloque **Filtros**, abre el campo **Clave** (Key). Verás la lista de claves de los artículos de línea de Shopify.
+  </Step>
+  <Step title="Escribe el valor">
+    En **Valor** (Value), escribe el dato que buscas. Por ejemplo: clave `id`, valor `zGhad23wfadfa`.
+  </Step>
+  <Step title="Agrega más condiciones (opcional)">
+    Pulsa **Agregar otro elemento** (Add another item) si quieres que la búsqueda coincida con varios pares clave-valor.
+  </Step>
+</Steps>
+
+Claves disponibles en los artículos de línea de Shopify:
+
+| Clave | Qué contiene |
+| --- | --- |
+| `id` | Identificador del producto |
+| `title` | Nombre del producto |
+| `price` | Precio unitario |
+| `quantity` | Cantidad pedida |
+| `image` | Imagen del producto |
+| `line_price` | Importe total de la línea |
+
+Al buscar por `id` = `zGhad23wfadfa`, obtienes el objeto de ese producto con su `title`, `price` y `quantity` listos para usarlos en los pasos siguientes.
+
+## Usa los datos devueltos
+
+Los datos que devuelve la acción se pueden usar como valores en correos, SMS, condiciones **Si/Sino** (if/else) y otras acciones. En el menú de valores personalizados aparecen agrupados bajo **Funciones de matriz**, junto al número del paso que los generó (por ejemplo, `#2 Array Functions`).

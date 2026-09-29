@@ -1,0 +1,210 @@
+---
+title: "Acceso SSH a tu alojamiento WordPress"
+description: "Conéctate por SSH a tu sitio WordPress con contraseña o con clave, usa WP-CLI y soluciona los errores de conexión más comunes."
+icon: "terminal"
+---
+
+SSH (Secure Shell) te da una conexión directa, segura y cifrada con el servidor de tu sitio WordPress alojado en Chateea. Es la herramienta que usan desarrolladores y usuarios avanzados para gestionar archivos, ejecutar comandos de **WP-CLI** y diagnosticar problemas más rápido que desde el navegador o por FTP.
+
+<Warning>
+Usa SSH solo si te manejas con la línea de comandos. Un comando mal escrito puede afectar los archivos o la base de datos de tu sitio. Si no estás seguro, haz antes una copia de seguridad o prueba en un entorno de pruebas.
+</Warning>
+
+## Para qué sirve
+
+- **Gestión avanzada de archivos:** mover, editar o revisar archivos directamente en el servidor.
+- **WP-CLI:** administrar plugins, temas, caché y configuración con comandos.
+- **Diagnóstico más rápido:** revisar registros y archivos sin depender del panel.
+- **Seguridad:** todo el tráfico viaja cifrado, a diferencia del FTP tradicional.
+
+## Tus datos de conexión
+
+Encuentras los datos de acceso en **Sitios → WordPress**, abriendo tu sitio y yendo a **Configuración avanzada → Acceso FTP/SSH**. Si el acceso SSH está deshabilitado, actívalo desde ahí o desde **Configuración avanzada → Configuración del servidor**.
+
+| Dato | Qué es |
+| --- | --- |
+| **Host** | La dirección del servidor (un nombre de host o una IP) |
+| **Usuario** | Tu nombre de usuario único para el servidor |
+| **Contraseña** | Una contraseña generada por el sistema. Haz clic en el ícono del ojo para verla |
+| **Puerto** | Normalmente `22`, pero usa siempre el que aparece en tu panel |
+
+Puedes conectarte de dos formas:
+
+- **Con la contraseña generada**, la opción más rápida.
+- **Con una clave SSH**, más segura y cómoda si te conectas con frecuencia. Se explica más abajo.
+
+## Conectarte con la contraseña
+
+### En Mac o Linux
+
+<Steps>
+  <Step title="Abre la Terminal">
+    Usa la aplicación Terminal de tu sistema.
+  </Step>
+  <Step title="Escribe el comando de conexión">
+    Reemplaza los valores por los de tu panel:
+
+    ```bash
+    ssh usuario@host -p puerto
+    ```
+
+    Por ejemplo: `ssh wpuser_12345@servidor.ejemplo.com -p 22`.
+  </Step>
+  <Step title="Acepta el servidor">
+    La primera vez verás un aviso sobre la autenticidad del host. Escribe `yes` y pulsa **Enter**.
+  </Step>
+  <Step title="Pega la contraseña">
+    Pega la contraseña y pulsa **Enter**. Por seguridad, no verás los caracteres mientras la escribes.
+  </Step>
+</Steps>
+
+### En Windows con PowerShell
+
+Windows 10 y versiones posteriores incluyen un cliente SSH. Abre **PowerShell** y usa el mismo comando que en Mac o Linux:
+
+```powershell
+ssh usuario@host -p puerto
+```
+
+### En Windows con PuTTY
+
+<Steps>
+  <Step title="Instala PuTTY">
+    Descarga PuTTY desde su sitio oficial e instálalo.
+  </Step>
+  <Step title="Completa los datos">
+    En **Host Name**, escribe el host. En **Port**, el puerto. En **Connection type**, elige **SSH**.
+  </Step>
+  <Step title="Conéctate">
+    Haz clic en **Open** e introduce tu usuario y tu contraseña cuando te los pida.
+  </Step>
+</Steps>
+
+## Conectarte con una clave SSH
+
+### 1. Crea tu clave
+
+**En Mac:**
+
+```bash
+ssh-keygen -t rsa
+pbcopy < ~/.ssh/id_rsa.pub
+```
+
+Pulsa **Enter** en todas las preguntas. La clave privada queda en `~/.ssh/id_rsa` y la pública en `~/.ssh/id_rsa.pub`. El segundo comando copia la clave pública al portapapeles.
+
+**En Linux:**
+
+```bash
+ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub | xclip -sel clip
+```
+
+Si no tienes `xclip`, instálalo con el comando de tu distribución:
+
+| Distribución | Comando |
+| --- | --- |
+| Ubuntu / Debian | `sudo apt install xclip` |
+| Arch Linux | `sudo pacman -S xclip` |
+| Fedora / CentOS | `sudo yum -y install xclip` |
+
+**En Windows (PowerShell):**
+
+```powershell
+ssh-keygen.exe -t rsa
+Get-Content .ssh\id_rsa.pub | Set-Clipboard
+```
+
+<Warning>
+Comparte siempre el archivo **`.pub`** (clave pública). El archivo `id_rsa` sin extensión es tu **clave privada**: nunca lo compartas ni lo pegues en ningún panel.
+</Warning>
+
+### 2. Importa la clave en tu sitio
+
+<Steps>
+  <Step title="Abre la configuración del servidor">
+    En **Sitios → WordPress**, abre tu sitio y ve a **Configuración avanzada → Configuración del servidor**. Asegúrate de que el acceso SSH esté habilitado.
+  </Step>
+  <Step title="Ve al administrador de claves">
+    Baja hasta **Administrador de claves SSH** y haz clic en **Importar nueva clave**.
+  </Step>
+  <Step title="Completa el formulario">
+    Pega la clave pública completa, ponle un nombre que la identifique (por ejemplo, "Laptop de Ana") y deja la frase de contraseña en blanco salvo que hayas creado la clave con una.
+  </Step>
+  <Step title="Importa">
+    Haz clic en **Importar**. La clave aparece en la lista con su nombre, el comando SSH listo para copiar, las IP permitidas y un menú de acciones.
+  </Step>
+</Steps>
+
+### 3. Conéctate
+
+Copia el comando SSH de la lista de claves, o escribe:
+
+```bash
+ssh usuario@host -p puerto
+```
+
+Si tu clave tiene frase de contraseña, cárgala antes en el agente con `ssh-add ~/.ssh/id_rsa`.
+
+<Tip>
+Crea una clave por persona y por equipo, y elimina de inmediato las de equipos que ya no uses o de personas que dejaron tu equipo.
+</Tip>
+
+## Comandos útiles con WP-CLI
+
+Una vez conectado, entra a la carpeta del sitio:
+
+```bash
+cd public_html
+```
+
+| Objetivo | Comando |
+| --- | --- |
+| Listar los plugins instalados | `wp plugin list` |
+| Borrar la caché de WordPress | `wp cache flush` |
+| Borrar la caché del CDN | `wp cdn purge` |
+
+<Tip>
+`wp cache flush` seguido de `wp cdn purge` es la combinación habitual cuando publicaste un cambio y el sitio sigue mostrando la versión anterior.
+</Tip>
+
+## Solución de problemas
+
+| Error | Causa probable | Qué hacer |
+| --- | --- | --- |
+| **Connection refused** | Puerto incorrecto o un firewall bloquea el tráfico SSH | Usa exactamente el puerto de tu panel y revisa el firewall de tu equipo o de tu red |
+| **Permission denied** | Usuario o contraseña incorrectos, a menudo por espacios de más al copiar | Vuelve a copiar los datos sin espacios o genera una contraseña nueva. Si usas clave, confirma que esté importada |
+| **Timeout** | Servidor inaccesible o tu IP quedó bloqueada temporalmente por intentos fallidos | Espera 15 minutos y vuelve a intentarlo |
+
+Si el problema continúa, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Es mejor SSH o FTP?">
+    Para mover archivos, SFTP o FTP son suficientes. SSH te da además la línea de comandos y WP-CLI, y todo el tráfico va cifrado.
+  </Accordion>
+  <Accordion title="¿Puedo usar la contraseña y las claves a la vez?">
+    Sí. Puedes conectarte con la contraseña generada o con cualquiera de las claves que hayas importado.
+  </Accordion>
+  <Accordion title="¿Dónde está la carpeta de mi sitio?">
+    Al conectarte, entra a `public_html`. Ahí están los archivos de WordPress.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acceso SFTP a WordPress" icon="folder-open" href="/sitios/wordpress-acceso-sftp">
+    Transfiere archivos de forma segura.
+  </Card>
+  <Card title="Acceso FTP a tu sitio WordPress" icon="folder" href="/sitios/acceso-ftp-a-tu-sitio-wordpress">
+    Gestiona archivos con un cliente FTP.
+  </Card>
+  <Card title="Acceso a WP Admin con un clic" icon="right-to-bracket" href="/sitios/wordpress-acceso-a-wp-admin-con-un-clic">
+    Entra al escritorio de WordPress sin contraseña.
+  </Card>
+  <Card title="Agregar dominios a tu sitio WordPress" icon="globe" href="/sitios/wordpress-agregar-dominios-a-tu-sitio">
+    Conecta tu dominio al sitio.
+  </Card>
+</CardGroup>

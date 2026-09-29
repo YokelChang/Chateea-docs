@@ -1,0 +1,90 @@
+---
+title: "Acciones del bot: agregar información de contacto"
+description: "Recoge datos del cliente durante la conversación con IA y guárdalos automáticamente en su ficha."
+icon: "address-card"
+---
+
+Esta acción permite que tu bot de IA conversacional recoja datos importantes durante el chat y los guarde automáticamente en la ficha del contacto: nombre de la empresa, dirección, fecha de nacimiento y más.
+
+Así reduces la captura manual y mantienes tus fichas al día sin que nadie de tu equipo tenga que transcribir nada.
+
+<Warning>
+  **Esta acción solo completa campos vacíos.** No sobrescribe valores que ya existen.
+
+  El correo y el teléfono se actualizan automáticamente por otra vía, así que no necesitas esta acción para ellos.
+</Warning>
+
+## Principales ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| **Captura más rápida** | Recoge dirección, datos de empresa o fecha de nacimiento dentro de una conversación natural |
+| **Fichas más limpias** | Guarda directo en la ficha, sin que tu equipo reescriba nada |
+| **Mejor personalización** | Usa esos datos en respuestas, seguimientos y flujos de citas |
+| **Campos flexibles** | Actualiza campos estándar y campos personalizados compatibles |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → IA conversacional → Lista de agentes** y abre el que quieres editar.
+  </Step>
+  <Step title="Abre Objetivos del bot">
+    Selecciona esa pestaña dentro del agente.
+  </Step>
+  <Step title="Selecciona Información de contacto">
+    Desplázate hasta la sección **Configura tus acciones** y elige **Información de contacto**.
+  </Step>
+  <Step title="Configura la acción">
+    | Campo | Qué poner |
+    | --- | --- |
+    | **Nombre de la acción** | Un nombre para identificarla después. Por ejemplo: "Actualizar fecha de nacimiento" |
+    | **Qué campo actualizar** | Elige del desplegable: nombre, teléfono, correo, nombre de la empresa, etc. |
+    | **Qué actualizar en el campo** | Una breve descripción del dato. Ayuda a la IA a identificarlo con precisión |
+    | **Ejemplo de salida** | Solo para campos personalizados. Da al menos dos ejemplos |
+
+    Por ejemplo, si eliges **Fecha de nacimiento**, escribe "Esta es la fecha de nacimiento del contacto". Si eliges **Nombre de la empresa**, escribe "Este es el nombre de la empresa del contacto".
+
+    Para un campo personalizado como "¿Cuál es tu comida favorita?", los ejemplos podrían ser "Tacos" y "Hamburguesas".
+
+    Pulsa **Guardar**.
+  </Step>
+  <Step title="Actualiza la indicación">
+    <Warning>
+      **Este paso es obligatorio y es el que más se olvida.** Si no le pides explícitamente al bot que solicite esos datos, no los va a pedir y el campo nunca se actualizará.
+
+      Configurar la acción no basta: tienes que indicarle al bot que pregunte.
+    </Warning>
+
+    Agrega en la sección de información adicional de tu indicación algo así:
+
+    ```text
+    ### Instrucción obligatoria: antes de reservar una cita,
+    siempre inicia la conversación haciendo estas preguntas
+    una tras otra:
+    1. Pregunta al cliente su nombre.
+    2. Pregunta al cliente su correo electrónico.
+    3. Pregunta al cliente su número de teléfono.
+    4. Pregunta al cliente su fecha de nacimiento.
+    5. Pregunta al cliente el nombre de su empresa.
+    ```
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Hay un límite de campos que puedo agregar?">
+    Sí, esta acción permite asignar un número limitado de campos a la vez.
+
+    Si necesitas recoger más, haz que la IA conversacional active un flujo de trabajo y usa dentro del flujo la acción de **actualizar campo de contacto**. Así puedes completar todos los campos que haga falta.
+  </Accordion>
+
+  <Accordion title="¿Puede sobrescribir un valor existente?">
+    No. Solo completa campos vacíos.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Recopilación de datos de contacto con instrucciones de IA" icon="list-ol" href="/ia/recopilacion-datos-contacto">
+  Cómo estructurar la indicación para que el bot pregunte de uno en uno.
+</Card>

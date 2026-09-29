@@ -1,0 +1,164 @@
+---
+title: "Migrar desde Kartra a Chateea"
+description: "Traslada contactos, cursos, ofertas, calendarios, automatizaciones, sitios y embudos de Kartra a Chateea."
+icon: "right-left"
+---
+
+Si tu negocio funciona en Kartra, puedes pasarlo a Chateea: contactos, cursos, ofertas, calendarios, automatizaciones, sitios y embudos. Kartra no tiene un importador directo, así que el proceso combina exportar datos y reconstruir en Chateea. Esta guía te lleva paso a paso, desde la preparación hasta la cancelación de Kartra.
+
+## Qué vas a migrar
+
+| En Kartra | En Chateea |
+| --- | --- |
+| Leads | Contactos |
+| Etiquetas y listas | Etiquetas y listas inteligentes |
+| Memberships (cursos) | **Membresías → Cursos** |
+| Ofertas y productos | Productos y ofertas de curso |
+| Calendarios | Calendarios |
+| Secuencias y reglas | Flujos de trabajo |
+| Páginas y embudos | Sitios web y embudos |
+
+## 1. Prepara la migración
+
+<Steps>
+  <Step title="Revisa tu cuenta de Kartra">
+    Haz una lista de leads, automatizaciones, cursos y sitios. Documenta tus reglas, secuencias y configuraciones de comunicación, y calcula cuánto contenido (videos, documentos) y cuántos datos vas a migrar.
+  </Step>
+  <Step title="Define objetivos y prioridades">
+    Empieza por lo esencial para que tu operación no se detenga.
+  </Step>
+  <Step title="Respalda tus datos">
+    Exporta tus listas de contactos, correos y materiales de cursos y guárdalos en un lugar seguro.
+  </Step>
+</Steps>
+
+## 2. Migra tus contactos
+
+<Steps>
+  <Step title="Exporta desde Kartra">
+    Ve a **Communications → Leads**, marca los leads que quieres exportar y elige **Export** en el menú desplegable. Incluye correos, teléfonos y campos personalizados.
+  </Step>
+  <Step title="Revisa el archivo">
+    Confirma que el CSV trae todos los datos necesarios, incluidos campos personalizados, etiquetas y listas.
+  </Step>
+  <Step title="Prepara el CSV">
+    Pon las fechas en formato `AAAA-MM-DD`, guarda el archivo en UTF-8 y quita saltos de línea, emojis y columnas vacías.
+  </Step>
+  <Step title="Crea tus campos personalizados">
+    En **Configuración → Campos personalizados**, crea los campos que usabas en Kartra antes de importar.
+  </Step>
+  <Step title="Importa en Chateea">
+    Ve a **Contactos → Importar contactos**, sube el CSV y asigna nombre, apellido, correo, teléfono y campos personalizados. Aplica etiquetas que reflejen tu segmentación de Kartra, como `importado-kartra`.
+  </Step>
+</Steps>
+
+<Tip>
+  Si algo falla, revisa [Solucionar errores de importación](/contactos/solucionar-errores-importacion-csv).
+</Tip>
+
+## 3. Migra tus cursos
+
+<Steps>
+  <Step title="Exporta el contenido de Kartra">
+    En **My Memberships**, descarga todas las lecciones en video y los documentos, y guarda una copia de respaldo. Si tus cursos tienen cuestionarios o encuestas, documéntalos para recrearlos.
+  </Step>
+  <Step title="Organiza el material">
+    Agrupa el contenido por módulo para recrearlo más rápido y confirma que los formatos sean compatibles (por ejemplo, MP4 para video y PDF para documentos).
+  </Step>
+  <Step title="Recrea los cursos en Chateea">
+    En **Membresías → Cursos → Productos**, crea cada curso con sus categorías y lecciones y sube el contenido. Haz la migración en horas de poco tráfico para no afectar a tus alumnos. Ver [Editor de cursos](/primeros-pasos/editor-de-cursos).
+  </Step>
+  <Step title="Recrea las evaluaciones">
+    Agrega tus cuestionarios como evaluaciones del curso. Ver [Cuestionarios y tareas en cursos](/cursos/cuestionarios-y-tareas-en-cursos).
+  </Step>
+</Steps>
+
+## 4. Migra ofertas y automatizaciones
+
+<Steps>
+  <Step title="Revisa tus ofertas y automatizaciones">
+    Anota todas tus ofertas gratuitas y de pago con sus precios y pasarelas de pago, y todas tus reglas de automatización: secuencias de correo, etiquetas y acciones por disparador.
+  </Step>
+  <Step title="Recrea tus productos y ofertas">
+    Conecta tu pasarela en **Pagos → Integraciones**, crea tus productos en **Pagos → Productos** y, para cursos, crea las ofertas en **Membresías → Cursos → Ofertas**. Ver [Vincular un producto a una oferta de curso](/cursos/vincular-producto-a-oferta-de-curso).
+  </Step>
+  <Step title="Da acceso a las ofertas">
+    Asigna las ofertas a los contactos que ya las tenían, o automatiza el acceso tras cada compra. Ver [Dar acceso a cursos con flujos de trabajo](/cursos/dar-acceso-a-cursos-con-flujos).
+  </Step>
+  <Step title="Reconstruye tus automatizaciones">
+    Ve a **Automatización → Flujos de trabajo** y recrea tus reglas y secuencias de Kartra con disparadores, condiciones y acciones equivalentes. Prueba cada flujo y ajusta lo necesario.
+  </Step>
+</Steps>
+
+## 5. Migra tus calendarios
+
+<Steps>
+  <Step title="Documenta tus eventos">
+    Haz una lista de tus citas (tipo, frecuencia y participantes), reservas de servicios (horarios y duración) y eventos recurrentes.
+  </Step>
+  <Step title="Crea los calendarios en Chateea">
+    Ve a **Configuración → Calendarios** y crea cada calendario con sus recordatorios, usuarios asignados y ubicaciones de reunión. Configura las citas recurrentes con sus reglas de repetición.
+  </Step>
+  <Step title="Conecta tus calendarios externos">
+    En **Calendarios → Configuración de calendarios → Conexiones**, sincroniza Google u Outlook para gestionar todas tus citas en un solo lugar. Ver [Conectar Google Calendar](/calendarios/conectar-google-calendar).
+  </Step>
+  <Step title="Ajusta y prueba">
+    Revisa que los bloques de tiempo se vean bien según la zona horaria y la disponibilidad. Agrega a cada evento un título claro, una descripción, los participantes y sus notificaciones.
+  </Step>
+</Steps>
+
+Chateea ofrece varios estilos de calendario: round robin para repartir citas entre tu equipo, clases para sesiones grupales, citas recurrentes y opciones de color, disponibilidad y permisos. Ver [Introducción a calendarios](/calendarios/introduccion).
+
+## 6. Migra tus sitios y embudos
+
+<Steps>
+  <Step title="Recrea tus páginas">
+    En **Sitios → Sitios web**, reconstruye tus páginas clave de Kartra (ventas, destino y pago) con el mismo diseño y contenido, y sube tus textos, imágenes y videos.
+  </Step>
+  <Step title="Recrea tus embudos">
+    En **Sitios → Embudos**, reconstruye cada embudo con sus páginas, formularios de registro y secuencias de correo. Personaliza cada paso con el editor de arrastrar y soltar. Ver [Crear un embudo de ventas](/sitios/como-crear-un-embudo-de-ventas-utilizando-plantillas).
+  </Step>
+  <Step title="Conecta tu dominio">
+    Cuando todo esté listo, conecta tu dominio en **Configuración → Dominios**. Ver [Conectar un dominio raíz o subdominio](/sitios/conectar-dominio-raiz-o-subdominio).
+  </Step>
+</Steps>
+
+## 7. Verificación final y cierre de Kartra
+
+- **Valida los datos:** contactos, material de los cursos y automatizaciones.
+- **Valida los flujos:** confirma que todos funcionan.
+- **Capacita a tu equipo** en el CRM, las automatizaciones y la gestión de cursos.
+- **Opera en paralelo** un tiempo y reduce el uso de Kartra poco a poco.
+- **Haz un respaldo final** y sigue el proceso de cancelación de Kartra.
+- **Revisa el resultado,** documenta lo aprendido y sigue vigilando tu cuenta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Hay un importador automático para Kartra?">
+    No. Los contactos se importan en CSV y los cursos, ofertas, calendarios, automatizaciones y páginas se reconstruyen en Chateea.
+  </Accordion>
+  <Accordion title="¿Mis alumnos conservan el acceso a sus cursos?">
+    Sí, si les asignas las ofertas correspondientes en Chateea. Puedes hacerlo con flujos de trabajo filtrando por las etiquetas que importaste.
+  </Accordion>
+  <Accordion title="¿Qué formatos uso para el contenido de los cursos?">
+    Usa formatos comunes como MP4 para videos y PDF para documentos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lanza tu primer curso" icon="graduation-cap" href="/primeros-pasos/lanza-tu-primer-curso">
+    Crea y publica un curso en Chateea.
+  </Card>
+  <Card title="Dar acceso a cursos con flujos" icon="key" href="/cursos/dar-acceso-a-cursos-con-flujos">
+    Inscribe alumnos automáticamente.
+  </Card>
+  <Card title="Migrar desde Kajabi" icon="right-left" href="/guias/migrar-desde-kajabi">
+    Otra guía para cursos y membresías.
+  </Card>
+  <Card title="Importar embudos de ClickFunnels" icon="file-import" href="/sitios/importar-embudo-de-clickfunnels">
+    Si también tienes embudos en ClickFunnels.
+  </Card>
+</CardGroup>

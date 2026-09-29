@@ -1,0 +1,183 @@
+---
+title: "Migrar desde Wix a Chateea"
+description: "Pasa contactos, productos, formularios, sitio, dominio, automatizaciones y publicaciones sociales de Wix a Chateea."
+icon: "right-left"
+---
+
+Si tu sitio y tu negocio están en Wix, puedes pasarlos a Chateea y unir en un solo lugar tu sitio web, tu tienda, tus contactos, tus formularios, tus automatizaciones y tus redes sociales. Wix no permite exportar el sitio completo ni sus automatizaciones, así que parte de la migración es exportar datos y otra parte es reconstruir. Esta guía te dice qué hacer en cada caso.
+
+<Info>
+  Revisa estos siete componentes en tu migración: contactos, pipelines, productos, formularios, sitios y páginas, publicaciones en redes sociales, y herramientas de IA o integraciones personalizadas.
+</Info>
+
+## Qué se exporta y qué se reconstruye
+
+| Componente | ¿Wix permite exportarlo? | En Chateea |
+| --- | --- | --- |
+| Contactos | Sí, en CSV | Importación de contactos |
+| Workflows (tableros) | No | Pipelines y oportunidades |
+| Productos de Wix Stores | Sí, en CSV (hasta 5.000 productos físicos) | **Pagos → Productos** |
+| Envíos de formularios | Sí, en CSV | Formularios reconstruidos |
+| Sitio web y páginas | No | Embudos y sitios web |
+| Automatizaciones | No | Flujos de trabajo |
+| Publicaciones sociales | No | Planificador social |
+
+## 1. Migra tus contactos
+
+Wix agrega automáticamente a su lista de contactos a quien envía un formulario, se suscribe, compra o interactúa con tu sitio.
+
+<Steps>
+  <Step title="Exporta los contactos de Wix">
+    En el panel de **Contactos** de Wix, haz clic en el ícono **Más acciones** y elige **Exportar contactos**. Elige **Por etiqueta** para exportar un grupo o **Todos los contactos**, y guarda el CSV.
+  </Step>
+  <Step title="Prepara el archivo">
+    - Pon todas las fechas en formato `AAAA-MM-DD`.
+    - Guarda el archivo con codificación UTF-8 para conservar acentos y caracteres especiales.
+    - Quita saltos de línea, emojis y caracteres innecesarios.
+    - Crea en **Configuración → Campos personalizados** los campos que necesites para guardar datos que no tienen un campo estándar.
+  </Step>
+  <Step title="Importa en Chateea">
+    Ve a **Contactos → Importar contactos**, sube el archivo y asigna cada columna a su campo (por ejemplo, "First Name" a **Nombre**). Aplica una etiqueta de origen, como `importado-wix`, y haz clic en **Importar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Todos los campos obligatorios deben quedar asignados. Si una columna del CSV no tiene campo equivalente, crea primero el campo personalizado. Ver [Importar contactos desde un archivo CSV](/contactos/importar-contactos-desde-csv).
+</Tip>
+
+## 2. Recrea tus pipelines (Workflows de Wix)
+
+Un Workflow de Wix es un tablero con columnas por las que mueves tarjetas de contacto. No se puede exportar, así que se recrea como pipeline.
+
+| En Wix | En Chateea |
+| --- | --- |
+| Workflow | Pipeline |
+| Columna | Etapa del pipeline |
+| Tarjeta | Oportunidad |
+
+<Steps>
+  <Step title="Revisa tus Workflows en Wix">
+    En el panel de tu sitio de Wix, abre **Workflows** y anota cada tablero con sus columnas.
+  </Step>
+  <Step title="Crea los pipelines en Chateea">
+    Ve a **Oportunidades → Pipelines**, haz clic en **Agregar pipeline** y crea las mismas etapas. Ver [Crear un pipeline](/oportunidades/crear-un-pipeline).
+  </Step>
+</Steps>
+
+## 3. Migra tus productos (Wix Stores)
+
+<Steps>
+  <Step title="Exporta los productos">
+    En Wix Stores, ve a **Productos**, abre **Más acciones** y elige **Exportar**. Puedes exportar todo (casilla superior), una categoría o selección filtrada, o solo los productos que marques. Guarda el CSV.
+  </Step>
+  <Step title="Descarga las imágenes">
+    En el administrador de medios de Wix, mantén presionada la tecla **Command** o **Control**, selecciona los archivos y haz clic en **Descargar**.
+  </Step>
+  <Step title="Adapta el CSV">
+    Ajusta los encabezados y el orden de columnas al formato de importación de productos de Chateea. Ver [Importar productos desde CSV](/pagos/importar-productos-csv).
+  </Step>
+  <Step title="Conecta tu pasarela de pago">
+    En **Pagos → Integraciones**, conecta tu pasarela (por ejemplo, Stripe) y configura precios, impuestos y envíos como los tenías en Wix.
+  </Step>
+  <Step title="Importa los productos">
+    En **Pagos → Productos**, usa la importación por CSV (o crea los productos a mano) y vuelve a subir las imágenes de cada uno.
+  </Step>
+</Steps>
+
+## 4. Migra formularios y envíos
+
+<Steps>
+  <Step title="Exporta los envíos">
+    En Wix, entra a **Formularios y envíos**, abre **Más acciones** y elige **Exportar** para guardar los envíos en CSV.
+  </Step>
+  <Step title="Recrea los formularios">
+    En Chateea, ve a **Sitios → Formularios**, crea un formulario nuevo y agrega los mismos campos. Ver [Crear un formulario de contacto](/sitios/crear-formulario-de-contacto).
+  </Step>
+  <Step title="Configura las acciones">
+    Configura notificaciones, lógica condicional y flujos de trabajo para replicar lo que hacía Wix al recibir un envío (por ejemplo, avisarte por correo).
+  </Step>
+</Steps>
+
+## 5. Reconstruye tu sitio y conecta tu dominio
+
+Los sitios de Wix solo funcionan en los servidores de Wix y no se pueden exportar. Tendrás que copiar el texto, las imágenes y los archivos para reconstruir las páginas.
+
+<Steps>
+  <Step title="Reúne el contenido">
+    Descarga imágenes, videos y documentos desde el administrador de medios de Wix. Si usaste código personalizado, copia el HTML, el CSS y los scripts.
+  </Step>
+  <Step title="Reconstruye las páginas">
+    Ve a **Sitios → Sitios web** o **Sitios → Embudos**, recrea cada página con el editor de arrastrar y soltar, pega el contenido, sube los medios y agrega tus formularios. Si tenías código personalizado, agrégalo en la sección correspondiente.
+  </Step>
+  <Step title="Desvincula el dominio en Wix">
+    En Wix, abre la página **Dominios**, haz clic en el ícono **Mostrar más** junto al dominio y elige **Desasignar de este sitio**.
+  </Step>
+  <Step title="Conecta el dominio a Chateea">
+    Ve a **Configuración → Dominios → Agregar dominio** y escribe tu dominio. Chateea te mostrará los registros DNS que necesitas.
+  </Step>
+  <Step title="Agrega los registros DNS en Wix">
+    Si tu dominio sigue gestionado en Wix, ve a **Dominios**, haz clic en **Acciones del dominio → Administrar registros DNS**, busca el tipo de registro (por ejemplo, CNAME o TXT) y haz clic en **+ Agregar registro**. Ver [Conectar un dominio raíz o subdominio](/sitios/conectar-dominio-raiz-o-subdominio).
+  </Step>
+</Steps>
+
+## 6. Recrea tus automatizaciones
+
+Wix no permite exportar automatizaciones, así que las documentas y las reconstruyes.
+
+<Steps>
+  <Step title="Revisa tus automatizaciones en Wix">
+    En el panel de tu sitio, ve a **Automatizaciones** y, en **Tus automatizaciones**, filtra las activas en sus dos pestañas: **Creadas por ti** (las que creaste tú o desde una app) e **Instaladas para ti** (las que se crearon al instalar apps de Wix).
+  </Step>
+  <Step title="Reconstrúyelas en Chateea">
+    Ve a **Automatización → Flujos de trabajo** y configura disparadores y acciones equivalentes: secuencias de correo, recordatorios, asignación de tareas. Ver [Primeros pasos con flujos de trabajo](/automatizaciones/primeros-pasos-con-flujos-de-trabajo).
+  </Step>
+</Steps>
+
+## 7. Recrea tus publicaciones en redes sociales
+
+Wix no exporta publicaciones sociales. Conecta tus cuentas al Planificador social y recrea las publicaciones.
+
+<Steps>
+  <Step title="Guarda tus publicaciones de Wix">
+    En el panel de marketing en redes sociales de Wix, abre **Tus publicaciones** y guarda el texto, las imágenes, los enlaces y la fecha y hora programadas de cada una.
+  </Step>
+  <Step title="Recréalas en Chateea">
+    Ve a **Marketing → Planificador social**, conecta tus cuentas y crea las publicaciones. Prográmalas o publícalas de inmediato según tu calendario. Ver [Configura el Planificador social](/primeros-pasos/configura-el-planificador-social).
+  </Step>
+</Steps>
+
+## 8. Contenido con IA y otros datos
+
+- **Contenido generado con IA:** identifica los textos, imágenes y etiquetas SEO que creaste con la IA de Wix. Cópialos o vuelve a generarlos con las herramientas de IA de Chateea.
+- **Otros datos:** exporta o copia manualmente todo lo que no cubren las secciones anteriores, como entradas del blog o datos de analítica, y cárgalo en la sección que corresponda de Chateea.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo importar mi sitio de Wix automáticamente?">
+    No. Wix no permite exportar la estructura del sitio. Tienes que reconstruir las páginas en Chateea con el contenido y los medios que descargaste.
+  </Accordion>
+  <Accordion title="¿Mi sitio queda fuera de línea durante el cambio de dominio?">
+    Para reducir el tiempo sin servicio, termina y prueba tu sitio en Chateea antes de desvincular el dominio en Wix, y haz el cambio de DNS en un momento de poco tráfico.
+  </Accordion>
+  <Accordion title="¿Cuántos productos puedo exportar de Wix Stores?">
+    Wix permite exportar hasta 5.000 productos físicos en un CSV. Las imágenes se descargan aparte desde el administrador de medios.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar productos desde CSV" icon="box" href="/pagos/importar-productos-csv">
+    Carga tu catálogo en bloque.
+  </Card>
+  <Card title="Conectar un dominio" icon="globe" href="/sitios/conectar-dominio-raiz-o-subdominio">
+    Apunta tu dominio a Chateea.
+  </Card>
+  <Card title="Crear una tienda en línea" icon="store" href="/tienda/crear-tienda-en-linea">
+    Configura tu tienda en Chateea.
+  </Card>
+  <Card title="Migrar desde Squarespace" icon="right-left" href="/guias/migrar-desde-squarespace">
+    Otra guía para migrar un sitio web.
+  </Card>
+</CardGroup>

@@ -1,0 +1,188 @@
+---
+title: "Cómo añadir dominios en el panel de control de WordPress"
+description: "Añade tu dominio principal y subdominios a tu sitio de WordPress: nombre, certificado SSL, registros DNS y gestión desde el panel."
+icon: "gauge-high"
+---
+
+Conectar un dominio a tu sitio de WordPress es lo que permite que el público lo visite en esa dirección. El dominio es la dirección de tu sitio y lo que tus visitantes escriben para llegar a él.
+
+En esta guía recorremos el asistente del panel de WordPress paso a paso, tanto para el dominio principal como para los subdominios.
+
+## Resumen del proceso
+
+| Qué quieres hacer | Pasos |
+| --- | --- |
+| **Agregar el dominio principal** | 1. Añadir el nombre. 2. Configurar el certificado SSL. 3. Actualizar el DNS. |
+| **Agregar un subdominio** | 1. Añadir el nombre del subdominio. 2. Actualizar los registros CNAME y A. |
+| **Administrar tus dominios** | Revisar el estado del SSL y del DNS, elegir el dominio principal y ajustar el prefijo `www`. |
+
+## Agregar el dominio principal
+
+Ve a **Sitios → WordPress** en tu cuenta de Chateea. En el panel verás la sección para administrar dominios y subdominios. Pulsa **Añadir dominio** para empezar.
+
+### Paso 1: Añade tu nombre de dominio
+
+<Steps>
+  <Step title="Escribe el dominio">
+    En la sección de administración de dominios del panel de WordPress, escribe el dominio que quieres conectar y continúa.
+  </Step>
+  <Step title="Espera la comprobación automática">
+    El sistema verifica si el dominio ya está conectado a otra cuenta o a otro sitio. Así se evita que un mismo dominio apunte a dos instalaciones distintas.
+  </Step>
+  <Step title="Continúa si el dominio está disponible">
+    Si el dominio está libre, pasa al siguiente paso del asistente.
+  </Step>
+</Steps>
+
+<Warning>
+  Si el dominio ya está en uso en otra cuenta, no podrás continuar. Primero tendrás que desconectarlo del sitio donde esté registrado.
+</Warning>
+
+### Paso 2: Configura el certificado SSL
+
+Una vez verificado el dominio, hay que emitir su certificado SSL. Para eso debes crear **dos registros TXT** en tu proveedor de DNS:
+
+| Paso | Tipo | Nombre | Valor | TTL recomendado |
+| --- | --- | --- | --- | --- |
+| 1 | **TXT** | `_acme-challenge` | El valor que muestra el panel | 600 segundos |
+| 2 | **TXT** | `_cf-custom-hostname` | El valor que muestra el panel | 600 segundos |
+
+<Steps>
+  <Step title="Crea los dos registros TXT">
+    Copia cada nombre y su valor desde el panel y créalos en tu proveedor de DNS. Guarda después de cada uno.
+  </Step>
+  <Step title="Espera la verificación">
+    Mientras el panel no los detecte, los registros aparecen con el estado **Pendiente**.
+  </Step>
+  <Step title="Avanza al paso final">
+    Cuando los registros TXT estén verificados, podrás pasar a la actualización del DNS.
+  </Step>
+</Steps>
+
+<Note>
+  La mayoría de los registros SSL se propagan en aproximadamente una hora, pero la actualización global puede tardar **hasta 48 horas**. Usa un TTL de 600 segundos, o el valor más bajo que permita tu proveedor, para que la propagación sea más rápida.
+</Note>
+
+### Paso 3: Actualiza el DNS
+
+En este paso apuntas el dominio hacia tu sitio de WordPress en Chateea.
+
+| Tipo | Nombre | Valor | Para qué sirve |
+| --- | --- | --- | --- |
+| **A** | `@` (o `tudominio.com`) | La dirección IP que muestra el panel | Apunta el dominio sin `www` a tu sitio |
+| **CNAME** | `www` | El destino que muestra el panel | Apunta la versión con `www` a tu sitio |
+
+<Steps>
+  <Step title="Agrega los registros A y CNAME">
+    Créalos en tu proveedor de DNS con un TTL de 600 segundos y guarda los cambios.
+  </Step>
+  <Step title="Verifica desde el panel">
+    Pulsa **Verificar registros DNS**.
+  </Step>
+  <Step title="Márcalo como principal">
+    Vuelve al panel y designa el dominio como **principal**.
+  </Step>
+</Steps>
+
+<Warning>
+  - Si tu proveedor de DNS es **Cloudflare, desactiva el proxy** (deja el registro en modo "Solo DNS").
+  - La mayoría de los cambios de DNS se activan en una hora, pero la actualización global puede tardar **hasta 48 horas**.
+  - Usa un TTL de 600 segundos o el valor más bajo posible.
+</Warning>
+
+## Agregar un subdominio
+
+Agregar un subdominio es muy parecido, con una simplificación importante:
+
+<Tip>
+  En los dominios adicionales, el certificado SSL se verifica dentro del paso de actualización del DNS, así que **no necesitas crear los registros TXT**.
+</Tip>
+
+### Paso 1: Añade el nombre del subdominio
+
+<Steps>
+  <Step title="Escribe el subdominio">
+    En la sección de administración de dominios del panel de WordPress, escribe el subdominio que quieres conectar.
+  </Step>
+  <Step title="Espera la comprobación">
+    El sistema verifica si ya está conectado a otra cuenta. Si está disponible, pasas directamente a actualizar los registros DNS.
+  </Step>
+</Steps>
+
+### Paso 2: Actualiza los registros CNAME y A en tu proveedor de DNS
+
+| Paso | Tipo | Nombre | Valor | TTL recomendado |
+| --- | --- | --- | --- | --- |
+| 1 | **CNAME** | `www` | El valor que muestra el panel | 600 segundos |
+| 2 | **A** | `@` (o `tudominio.com`) | La IP que muestra el panel | 600 segundos |
+
+<Steps>
+  <Step title="Crea ambos registros">
+    Agrega en tu proveedor de DNS el CNAME y el registro A que muestra el panel, y guarda.
+  </Step>
+  <Step title="Verifica">
+    Pulsa **Verificar registros DNS**.
+  </Step>
+</Steps>
+
+<Note>
+  Si al verificar aparece un aviso de que **el registro A todavía se está propagando**, no es un error. Dale tiempo a los cambios y vuelve a comprobar más tarde.
+</Note>
+
+## Administra tus dominios desde el panel
+
+El panel reúne en una sola pantalla todo lo que necesitas para gestionar tus dominios:
+
+| Función | Qué hace | Cómo se ve |
+| --- | --- | --- |
+| **Estado del certificado SSL** | Indica si el certificado quedó bien configurado | Etiquetas **SSL emitido** o **SSL no emitido** |
+| **Verificación de DNS** | Confirma si tus registros están bien configurados | Etiquetas **Verificado** o **No verificado** |
+| **Gestión de dominios** | Permite agregar **hasta 5 dominios o subdominios** y elegir uno como principal | Lista con la insignia **Dominio principal** |
+| **Prefijo www** | Cambia entre la versión con y sin `www` | Opción **Cambiar prefijo a WWW** o **Eliminar prefijo WWW** |
+
+Desde el menú de tres puntos de cada dominio puedes:
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Establecer como dominio principal** | Convierte ese dominio en la dirección oficial del sitio |
+| **Configuración de DNS** | Muestra los registros exactos que debes crear en tu proveedor |
+| **Cambiar prefijo a WWW** | Alterna entre `tudominio.com` y `www.tudominio.com` |
+| **Eliminar dominio** | Desconecta el dominio del sitio |
+
+<Warning>
+  Si necesitas **eliminar y volver a agregar** un dominio, ten en cuenta que el proceso puede tardar. No lo hagas en un sitio en producción sin prever ese tiempo sin servicio.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el dominio principal pide registros TXT y el subdominio no?">
+    En el dominio principal, la validación del certificado SSL es un paso aparte (los registros TXT `_acme-challenge` y `_cf-custom-hostname`). En los dominios adicionales esa validación se hace dentro del paso de DNS, así que basta con el CNAME y el registro A.
+  </Accordion>
+
+  <Accordion title="¿Por qué se recomienda un TTL tan bajo?">
+    El TTL indica cuánto tiempo guardan en caché los servidores la respuesta de tu DNS. Con un TTL alto, un error tardaría horas en corregirse. Con 600 segundos (o el mínimo que permita tu proveedor), los cambios y las correcciones se reflejan mucho más rápido.
+  </Accordion>
+
+  <Accordion title="Configuré todo y el sitio aún no carga. ¿Qué reviso?">
+    Revisa en este orden: que el proxy de Cloudflare esté desactivado, que los nombres y valores no tengan espacios extra al copiarlos, que el registro A y el CNAME estén en el nombre correcto (`@` y `www`) y que haya pasado el tiempo de propagación. La actualización global puede tardar hasta 48 horas.
+  </Accordion>
+
+  <Accordion title="¿Cuántos dominios puedo administrar desde este panel?">
+    Hasta **cinco** dominios o subdominios, y uno de ellos debe ser el principal.
+  </Accordion>
+</AccordionGroup>
+
+Si necesitas ayuda con la configuración, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+
+## Continúa con
+
+<CardGroup cols={2}>
+  <Card title="WordPress: agregar dominios a tu sitio" icon="globe" href="/sitios/wordpress-agregar-dominios-a-tu-sitio">
+    Dominio principal, dominios adicionales y dominio raíz.
+  </Card>
+
+  <Card title="Acceso SSH y gestión de claves SSH" icon="terminal" href="/sitios/acceso-ssh-y-gestion-de-claves-ssh-en-tu-alojamiento">
+    Conéctate por terminal y administra tu sitio con WP-CLI.
+  </Card>
+</CardGroup>

@@ -1,0 +1,48 @@
+---
+title: "21211: Número de teléfono de destino no válido"
+sidebarTitle: "21211: Número de teléfono de destino no válido"
+description: "El número de destino no es válido o tiene un formato incorrecto. Causas del error 21211 y cómo corregir el número con el formato E.164."
+icon: "circle-exclamation"
+---
+
+El error **21211** aparece cuando intentas hacer una llamada o enviar un mensaje a un número que no es válido o que tiene un formato incorrecto. Chateea acepta los números en [formato E.164](https://es.wikipedia.org/wiki/E.164):
+
+```text
+[+] [código de país] [número de abonado, incluido el código de área]
+```
+
+Por ejemplo, un número de República Dominicana se escribe `+18295551234`.
+
+## Posibles causas
+
+- El número de destino tiene un formato no válido.
+- Intentaste llamar o escribir desde un número de Chateea a ese mismo número (el mismo número como origen y destino).
+- Intentaste enviar un mensaje a un código corto.
+- Intentaste enviar un mensaje a un identificador de remitente alfanumérico.
+- Intentaste enviar un mensaje a un número con un prefijo no válido.
+
+## Posibles soluciones
+
+- Escribe los números en formato E.164: `[+] [código de país] [número de abonado, incluido el código de área]`.
+- Comprueba que usaste el [código de país](https://es.wikipedia.org/wiki/Anexo:Prefijos_telef%C3%B3nicos_mundiales) correcto.
+- No llames ni escribas desde un número de Chateea a ese mismo número.
+- No envíes mensajes a códigos cortos ni a identificadores alfanuméricos: no pueden recibir mensajes desde números de Chateea.
+- Revisa el número de destino por si tiene errores de escritura o caracteres de más.
+- Si el número tiene un prefijo no válido, quítalo y envía el mensaje con el formato E.164. Si el número admite RCS y tienes un agente RCS disponible, Chateea lo usará para enviar el mensaje.
+
+<Tip>
+  Si el error se repite con contactos importados, revisa la columna de teléfono de tu archivo antes de importarlo: los números sin código de país son una causa habitual de este error.
+</Tip>
+
+¿Sigues viendo el error? Escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solucionar problemas de entrega de SMS" icon="message" href="/telefonia/solucionar-problemas-de-entrega-de-sms">
+    Pasos generales cuando tus mensajes no llegan.
+  </Card>
+  <Card title="Diccionario de códigos de error" icon="book" href="/telefonia/diccionario-de-codigos-de-error">
+    Todos los códigos de error de SMS y llamadas.
+  </Card>
+</CardGroup>

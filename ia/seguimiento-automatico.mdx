@@ -1,0 +1,126 @@
+---
+title: "Seguimiento automático con IA conversacional"
+description: "Deja que el bot reconozca cuándo un contacto se enfría y lo retome solo, en el momento justo."
+icon: "rotate-right"
+---
+
+<Note>
+  **Función disponible en Labs.** Actívala antes de configurarla.
+</Note>
+
+El seguimiento automático permite que tu bot envíe mensajes para retomar el contacto con personas que dejaron de responder, se volvieron inactivas o pidieron que les escribieras más tarde. No necesitas hacerlo a mano ni construir flujos complejos.
+
+Da igual si el cliente dice que está ocupado, pide una hora concreta o simplemente deja de contestar: la IA reconoce la situación y programa el mensaje en consecuencia. **En cuanto el contacto responde, el seguimiento se reinicia solo.**
+
+<Warning>
+  Mantén intervalos razonables entre mensajes. Demasiados seguimientos hacen que la gente te marque como spam, justo lo contrario de lo que buscas.
+</Warning>
+
+## Por qué usarlo
+
+En un negocio de servicios (una peluquería, una clínica, un taller) te encuentras todo el tiempo con contactos que:
+
+- Dicen que están ocupados (en una reunión, manejando).
+- Piden que les escribas más tarde.
+- Dejan de responder a mitad de la conversación.
+
+Con el seguimiento automático, el bot detecta la situación, guarda la intención, programa el mensaje para el momento adecuado, respeta tu horario laboral y cambia de canal si hace falta.
+
+| Resultado | Efecto |
+| --- | --- |
+| Más respuestas | Menos conversaciones perdidas |
+| Menos trabajo manual | El bot recuerda por ti |
+| Mejor experiencia | El contacto siente continuidad, no abandono |
+| Más conversión | Más citas y ventas cerradas |
+
+## Cuándo no se hace seguimiento
+
+Esto es tan importante como saber cuándo sí. El bot **no** da seguimiento, o lo detiene, en estos casos:
+
+| Situación | Comportamiento |
+| --- | --- |
+| El contacto dice que no le interesa o pide que dejes de escribirle | No hay seguimiento |
+| La cita ya se reservó, pero el contacto vuelve a escribir | Sí hay seguimiento |
+| El bot envió el enlace de reserva | Da seguimiento... |
+| ...y el contacto responde que ya reservó | ...se detiene |
+
+## Configúralo paso a paso
+
+<Steps>
+  <Step title="Abre la pestaña Objetivos del bot">
+    En **IA → IA conversacional → Lista de agentes**, edita tu bot, abre **Objetivos del bot** y selecciona **Seguimiento automático**.
+  </Step>
+  <Step title="Activa los escenarios predefinidos">
+    Chateea incluye tres situaciones comunes:
+
+    - El contacto dejó de responder.
+    - El contacto está ocupado (dice "estoy en una reunión", "voy manejando").
+    - El contacto pide un horario específico para el seguimiento.
+
+    Activa los que apliquen a tu negocio.
+  </Step>
+  <Step title="Define la frecuencia">
+    Para cada escenario, define cuánto tiempo pasa antes de enviar el mensaje.
+
+    **Ejemplo:**
+
+    | Seguimiento | Cuándo sale |
+    | --- | --- |
+    | Primero | A los 5 minutos de inactividad |
+    | Segundo | 15 minutos después del primero, si aún no responde |
+
+    Si el contacto responde en cualquier momento, la secuencia se reinicia.
+  </Step>
+  <Step title="Personaliza el mensaje">
+    Tienes tres opciones:
+
+    | Opción | Qué hace |
+    | --- | --- |
+    | **Mensaje generado por IA** (por defecto) | El bot lo redacta según el contexto de la conversación |
+    | **Mensaje personalizado** | Marcas la casilla y escribes el tuyo |
+    | **Activar un flujo de trabajo** | Al enviarse el seguimiento, dispara un flujo para etiquetar, asignar o notificar |
+
+    <Warning>
+      **No actives otro bot desde ese flujo de trabajo.** Provoca conversaciones inconsistentes y rompe la lógica del seguimiento.
+    </Warning>
+  </Step>
+  <Step title="Define tu horario laboral (opcional)">
+    Configura las **horas de trabajo activas** para que los seguimientos salgan solo dentro de tu horario.
+
+    **Ejemplo:** si trabajas de 8:00 a 17:00 y un seguimiento estaba programado para las 21:00, se envía al día siguiente a las 8:00.
+  </Step>
+  <Step title="Revisa la actividad">
+    Todos los seguimientos programados aparecen en el panel de **Información de respuesta** de cada contacto, con la hora prevista y el motivo que los disparó.
+  </Step>
+</Steps>
+
+## Cambio automático de canal
+
+Si un contacto deja de responder en un canal, el bot puede pasar a otro:
+
+| Canal donde dejó de responder | A dónde pasa |
+| --- | --- |
+| Chat en vivo | A SMS, si hay un teléfono disponible |
+| Facebook, Instagram o WhatsApp | A SMS tras 24 horas sin respuesta |
+
+Puedes dejar esta opción desactivada si no quieres que cambie de canal.
+
+## Ten en cuenta
+
+<AccordionGroup>
+  <Accordion title="No se envían seguimientos si el bot está inactivo">
+    Si el bot está en reposo en esa conversación, no hay seguimiento. Consulta [Bot inactivo (en reposo)](/ia/bot-inactivo).
+  </Accordion>
+
+  <Accordion title="No actives bots desde flujos durante los seguimientos">
+    Rompe la lógica del seguimiento y genera respuestas cruzadas.
+  </Accordion>
+
+  <Accordion title="Usa intervalos realistas">
+    Así evitas que tus mensajes parezcan spam.
+  </Accordion>
+
+  <Accordion title="Cualquier respuesta reinicia el ciclo">
+    En cuanto el contacto contesta, el seguimiento vuelve a empezar desde cero.
+  </Accordion>
+</AccordionGroup>

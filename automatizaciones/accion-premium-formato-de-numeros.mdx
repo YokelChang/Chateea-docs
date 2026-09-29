@@ -1,0 +1,110 @@
+---
+title: "Acción: Formateador de números"
+description: "Convierte texto en número y da formato a cifras, teléfonos y monedas, o genera números aleatorios."
+icon: "hashtag"
+---
+
+La acción **Formateador de números** (Number Formatter) transforma y genera valores numéricos dentro de un flujo de trabajo. Con ella puedes convertir texto en número, dar formato a cifras, estandarizar teléfonos, mostrar importes como moneda o generar números aleatorios. Es muy útil cuando los datos llegan de formularios o integraciones con formatos distintos y necesitas limpiarlos antes de usarlos en cálculos, mensajes o llamadas.
+
+Es una acción premium: su uso se descuenta de la **billetera** de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+
+## Tipos de acción
+
+| Tipo | Qué hace |
+| --- | --- |
+| Texto a número | Convierte un texto que representa un número en un valor numérico. Por ejemplo, `$12,345.67` pasa a `12345.67`. |
+| Formatear número | Da formato a un número según los separadores de decimales y de miles que elijas. |
+| Formatear número de teléfono | Estandariza un teléfono al formato deseado, por ejemplo `(123) 456-7890` o E.164. |
+| Formatear moneda | Muestra un valor numérico como moneda según la divisa y la configuración regional. |
+| Número aleatorio | Genera un número aleatorio dentro de un rango. |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo, haz clic en **+** y busca **Formateador de números**.
+  </Step>
+  <Step title="Ponle un nombre">
+    Escribe un **Nombre de la acción** descriptivo, por ejemplo "Teléfono en formato E.164".
+  </Step>
+  <Step title="Elige el tipo de acción">
+    Selecciona el tipo que necesitas y completa sus campos (ver tablas de abajo).
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda la acción y prueba el flujo con un contacto de prueba para comprobar el resultado.
+  </Step>
+</Steps>
+
+### Texto a número
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| Nombre de la acción | Nombre personalizable de la acción. | Sí |
+| Tipo de acción | Texto a número. | Sí |
+| Seleccionar campo | El campo que contiene el número escrito como texto. | Sí |
+| Marca decimal de entrada | Cómo se marca el decimal en el texto de entrada (por ejemplo, punto). | Sí |
+
+**Ejemplo:** tras un **Formulario enviado**, convierte a número el importe que escribió el cliente para procesar los datos de pago correctamente.
+
+### Formatear número
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| Nombre de la acción | Nombre personalizable de la acción. | Sí |
+| Tipo de acción | Formatear número. | Sí |
+| Seleccionar campo | El campo que contiene el número. | Sí |
+| Marca decimal de entrada | El separador decimal que usa el número actual. | Sí |
+| Formato de destino | El formato de salida que quieres (por ejemplo, con punto como separador decimal). | Sí |
+
+**Ejemplo:** tras un **Clic en enlace de disparo**, da formato a una cifra para mostrar estadísticas legibles en un mensaje.
+
+### Formatear número de teléfono
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| Nombre de la acción | Nombre personalizable de la acción. | Sí |
+| Tipo de acción | Formatear número de teléfono. | Sí |
+| Seleccionar campo | El campo que contiene el teléfono. | Sí |
+| Formato de destino | El formato deseado, por ejemplo E.164. | Sí |
+| Código de país del teléfono | El país al que pertenece el número. | Sí |
+
+**Ejemplo:** tras una **Cita reservada**, estandariza el teléfono del contacto antes de una llamada saliente o de enviarlo a otro sistema.
+
+### Formatear moneda
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| Nombre de la acción | Nombre personalizable de la acción. | Sí |
+| Tipo de acción | Formatear moneda. | Sí |
+| Seleccionar campo | El campo que contiene el valor numérico. | Sí |
+| Moneda | La divisa, por ejemplo USD o EUR. | Sí |
+| Configuración regional de la moneda | El formato regional, por ejemplo `en-US`. | Sí |
+
+**Ejemplo:** tras un **Pago recibido**, muestra el importe con el formato de moneda correcto en tus recibos y mensajes.
+
+### Número aleatorio
+
+| Campo | Descripción | Obligatorio |
+| --- | --- | --- |
+| Nombre de la acción | Nombre personalizable de la acción. | Sí |
+| Tipo de acción | Número aleatorio. | Sí |
+| Rango inferior | El valor mínimo. | Sí |
+| Rango superior | El valor máximo. | Sí |
+| Decimales | Cuántos decimales se permiten. | No |
+
+**Ejemplo:** tras **Correo abierto**, genera un número aleatorio para repartir contactos en pruebas A/B.
+
+<Tip>
+  Guarda el resultado del formateador en un campo personalizado o úsalo directamente en las acciones siguientes. Así tus mensajes, cálculos e integraciones reciben siempre datos limpios y consistentes.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Formateador de fecha y hora" icon="calendar" href="/automatizaciones/accion-premium-formateo-de-fecha-y-hora">
+    Convierte y compara fechas en tus flujos.
+  </Card>
+  <Card title="Acciones premium y planes de ejecuciones" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las acciones premium.
+  </Card>
+</CardGroup>

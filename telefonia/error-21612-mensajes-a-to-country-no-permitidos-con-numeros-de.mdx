@@ -1,0 +1,38 @@
+---
+title: "21612: No se permiten mensajes a ese país con tu número. Usa un número local"
+sidebarTitle: "21612: No se permiten mensajes a ese país con tu número"
+description: "La combinación del país de destino y el país de tu número no está permitida. Causas del error 21612 (formato E.164, conectividad, restricciones) y soluciones."
+icon: "globe-lock"
+---
+
+El error **21612** aparece cuando no se permite enviar mensajes al país del destinatario desde un número del país de tu remitente. El mensaje completo tiene esta forma:
+
+```text
+No se permite enviar mensajes a {{to_country}} con números de teléfono de {{from_country}}. Utilice un número local.
+```
+
+<Note>
+  `{{to_country}}` y `{{from_country}}` son variables: en el error real verás el país de destino y el país del número desde el que envías.
+</Note>
+
+## Posibles causas
+
+**Formato del número.** Chateea trabaja con números en formato E.164 (`+` seguido del código de país y el número completo, por ejemplo `+12345678900`). Si el número de destino o de origen no tiene ese formato, puede interpretarse como de otro país. Si el número se modificó de forma inesperada, corrígelo en formato E.164 y reenvía el mensaje.
+
+**Destinos sin conectividad.** Es posible que el sistema telefónico de Chateea aún no tenga servicio con el operador del país de destino.
+
+**Restricciones del país de destino.** Muchos países limitan qué números, códigos cortos o remitentes alfanuméricos pueden enviar mensajes en su territorio.
+
+## Posibles soluciones
+
+<Steps>
+  <Step title="Revisa el formato">
+    Confirma que el número del contacto y tu número de envío estén en formato E.164 y vuelve a intentarlo.
+  </Step>
+  <Step title="Usa un número local">
+    Envía los mensajes desde un número del mismo país que el destinatario. Puedes comprar uno en [Comprar un número de teléfono](/telefonia/comprar-un-numero-de-telefono).
+  </Step>
+  <Step title="Consulta con soporte">
+    Si necesitas enviar a ese país y el error continúa, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071** para confirmar si hay cobertura y qué tipo de número necesitas.
+  </Step>
+</Steps>

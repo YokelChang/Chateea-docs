@@ -1,0 +1,112 @@
+---
+title: "Disparador: Webhook entrante"
+description: "Recibe datos de otras aplicaciones en una URL única para iniciar flujos y usar esos datos en tus acciones."
+icon: "plug"
+---
+
+El disparador **Webhook entrante** (Inbound Webhook) le da a tu flujo de trabajo una URL única a la que otros sistemas pueden enviar datos. Cuando algo pasa en otra herramienta (una venta en tu tienda en línea, un ticket de soporte, un registro a un evento), esa herramienta envía una petición HTTP a la URL y tu flujo se pone en marcha al instante con esos datos. Así conectas Chateea con casi cualquier aplicación sin copiar información a mano.
+
+<Note>
+  **Webhook entrante** es un disparador premium: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Ideas de uso
+
+| Caso | Qué envía el otro sistema | Qué hace tu flujo |
+| --- | --- | --- |
+| **Pedidos de tu tienda en línea** | Nombre, correo, teléfono y valor del pedido | Crea o actualiza el contacto y guarda el pedido en su ficha |
+| **Sistema de tickets de soporte** | Correo del cliente, título y descripción del ticket | Asocia el ticket al contacto para que tu equipo lo vea en Chateea |
+| **Registro a eventos** | Datos del asistente y nombre del evento | Crea o actualiza el contacto y le envía la información del evento |
+| **Formularios externos** | Nombre, correo y teléfono del prospecto | Crea el prospecto y avisa a ventas para un seguimiento rápido |
+
+## Configurar el disparador
+
+<Steps>
+  <Step title="Agrega el disparador y copia la URL">
+    En **Automatización → Flujos de trabajo**, abre o crea un flujo, haz clic en **Agregar disparador** y elige **Webhook entrante**. Copia la URL del webhook que aparece y pégala en la aplicación o sistema que enviará los datos.
+  </Step>
+  <Step title="Envía una petición de prueba">
+    Desde tu aplicación, envía datos a la URL con un método compatible (**POST**, **GET** o **PUT**). Luego haz clic en **Probar disparador** (Test Trigger).
+  </Step>
+  <Step title="Elige la referencia de mapeo">
+    Chateea te muestra las peticiones recibidas; la más reciente aparece siempre arriba y con **Cargar más** ves las anteriores. Para encontrar la tuya, copia el ID que te devuelve la respuesta de la petición y búscalo en la lista. Selecciona la referencia correcta, revisa que el cuerpo de datos sea el esperado y guarda el disparador.
+  </Step>
+  <Step title="Crea o actualiza el contacto (opcional)">
+    Al guardar, el flujo te lleva a la acción **Crear o actualizar contacto**. Mapea los campos que llegaron en el webhook con los campos del contacto. Para crear o encontrar un contacto necesitas enviar un **correo o un teléfono**. Si tus datos no incluyen ninguno de los dos, elimina esta acción y el flujo seguirá funcionando sin contacto.
+  </Step>
+</Steps>
+
+La referencia que guardas funciona como una muestra de la estructura de tus datos. Gracias a ella, cada campo recibido aparece como valor personalizado que puedes usar en el resto del flujo, igual que un campo del contacto.
+
+## Usar los datos en el flujo
+
+Una vez guardado el disparador, los datos del webhook están disponibles en todas las acciones:
+
+- **En mensajes:** inserta los valores en el texto de un correo, un SMS o un WhatsApp, por ejemplo para confirmar el número de pedido.
+- **En condiciones Si/Entonces:** crea ramas según un valor recibido, como el importe del pedido o el tipo de ticket.
+- **En otras acciones:** envíalos a Google Sheets, a Slack o a otro webhook.
+
+## Flujos sin contacto
+
+El flujo puede ejecutarse sin ningún contacto asociado. Esto te permite enviar cualquier tipo de datos y usarlos en acciones que no dependen de un contacto, como **Webhook personalizado**, **Google Sheets**, **Slack**, las acciones de IA y las herramientas internas.
+
+Ejemplos:
+
+- Recibir los datos de un pedido, agregarlos a una hoja de Google Sheets, clasificarlos con una condición según el importe y enviar un aviso a Slack.
+- Recibir un ID de contacto y usar la acción **Buscar contacto** para traer sus datos al flujo cuando lo necesites.
+
+## Requisitos del formato
+
+- Usa siempre un método compatible: **POST**, **GET** o **PUT**.
+- Envía los datos como un objeto **JSON**. Es el único formato admitido.
+- Las claves deben ser una sola palabra, sin espacios. Usa formatos como `camelCase` o `snake_case` (por ejemplo, `orderTotal` u `order_total`, no `order total`).
+- Si quieres crear o actualizar un contacto, incluye su correo o su teléfono en los datos.
+- Las listas o arreglos que lleguen en el webhook se pueden usar en los campos de texto compatibles. Al elegir una lista en el selector de valores personalizados, se abre un formateador donde eliges qué campo extraer y cómo mostrar los valores.
+
+Ejemplo de datos válidos:
+
+```json
+{
+  "first_name": "Ana",
+  "email": "ana@ejemplo.com",
+  "phone": "+525512345678",
+  "order_total": 1250,
+  "items": [
+    { "name": "Crema facial", "qty": 2 },
+    { "name": "Protector solar", "qty": 1 }
+  ]
+}
+```
+
+## Buenas prácticas y seguridad
+
+- **Si cambia la estructura de tus datos**, vuelve a seleccionar la referencia de mapeo en el disparador para que los campos nuevos o renombrados estén disponibles en las demás acciones.
+- **Si tu URL se filtra** o recibes peticiones no deseadas, elimina el disparador y agrega uno nuevo. Se generará una URL distinta; actualízala en tus integraciones. A partir de ese momento, las peticiones a la URL anterior ya no entrarán al flujo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué métodos HTTP acepta?">
+    **POST**, **GET** y **PUT**.
+  </Accordion>
+  <Accordion title="¿Puedo enviar datos en un formato distinto de JSON?">
+    No. Los datos deben enviarse como un objeto JSON.
+  </Accordion>
+  <Accordion title="¿Es obligatorio enviar correo o teléfono?">
+    Solo si quieres crear, actualizar o encontrar un contacto con la acción **Crear o actualizar contacto**. Si el flujo trabaja sin contacto, no hacen falta.
+  </Accordion>
+  <Accordion title="No encuentro mi petición en la lista de referencias">
+    La más reciente aparece arriba. Usa **Cargar más** y busca con el ID que te devolvió la respuesta de tu petición.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Qué revisar cuando un flujo no se comporta como esperas.
+  </Card>
+  <Card title="Acción de Slack" icon="slack" href="/automatizaciones/accion-workflow-premium-de-slack">
+    Envía avisos a Slack desde tus flujos.
+  </Card>
+</CardGroup>

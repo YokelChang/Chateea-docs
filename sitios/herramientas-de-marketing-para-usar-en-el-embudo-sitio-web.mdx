@@ -1,0 +1,181 @@
+---
+title: "Banner de cookies: integra tus herramientas de marketing"
+description: "Códigos para conectar el banner de cookies con el píxel de Meta, Google Analytics y Google Tag Manager, y leer las categorías de consentimiento."
+icon: "chart-line"
+---
+
+Si usas herramientas de análisis o publicidad en tus embudos, sitios web o seminarios web, debes cargarlas de forma que respeten el consentimiento que da el visitante en el banner de cookies. En esta guía tienes los códigos listos para el píxel de Meta, Google Analytics y Google Tag Manager.
+
+<Warning>
+  Elimina las etiquetas `<noscript>` de tus códigos de seguimiento. El banner de cookies de Chateea funciona con JavaScript, y las etiquetas `<noscript>` están pensadas para navegadores sin JavaScript: si las dejas, podrían instalar cookies sin el consentimiento del visitante.
+</Warning>
+
+## Cómo funciona la integración
+
+Al conectar tus herramientas de marketing con el banner de consentimiento, cada herramienta se carga con el consentimiento denegado por defecto y solo se activa cuando el visitante acepta la categoría correspondiente.
+
+<Steps>
+  <Step title="Reemplaza tu código de seguimiento actual">
+    Los códigos de abajo **sustituyen** tus códigos de seguimiento del píxel de Meta, Google Tag Manager (GTM) o Google Analytics (GA). No los dupliques.
+  </Step>
+  <Step title="Pega el código en el encabezado">
+    Insértalo en el código del encabezado (head) de la página o en la configuración del código de seguimiento del encabezado de tu embudo, sitio web o seminario web.
+  </Step>
+  <Step title="Cambia los identificadores">
+    Sustituye el ID de ejemplo por el tuyo: `TU_ID_DE_PIXEL` en el píxel de Meta, `TAG_ID` en Google Analytics o `GTM-XXXXXX` en Google Tag Manager.
+  </Step>
+</Steps>
+
+<Note>
+  Los nombres de evento que aparecen en los códigos son los que emite el banner de cookies. Cópialos tal cual para que la integración funcione.
+</Note>
+
+## Píxel de Meta (Facebook)
+
+```javascript
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('consent', 'revoke');
+  fbq('init', 'TU_ID_DE_PIXEL');
+  fbq('track', 'PageView');
+  window.addEventListener('LCCookieConsentDoneFB',function(cookieConsent){
+  fbq('consent', cookieConsent.detail.fb)},!1)
+</script>
+```
+
+## Google Analytics
+
+```javascript
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+  });
+  window.addEventListener(
+    "LCCookieConsentDoneGTag",
+    function (cookieConsent) {
+      if (cookieConsent.detail.gtag === 'grant'){
+        gtag("consent", "update", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+        });
+      }
+    },
+    !1
+  );
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=TAG_ID"></script>
+<script>
+  gtag("js", new Date());
+  gtag("config", "TAG_ID");
+</script>
+```
+
+## Google Tag Manager
+
+```javascript
+<!-- Google Tag Manager -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+  });
+  window.addEventListener(
+    "LCCookieConsentDoneGTM",
+    function (cookieConsent) {
+      if (cookieConsent.detail.gtm === 'grant'){
+        gtag("consent", "update", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted",
+        });
+      }
+    },
+    !1
+  );
+</script>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXX');</script>
+<!-- End Google Tag Manager -->
+```
+
+## Lectura de categorías de cookies
+
+Este código es opcional. Úsalo si necesitas saber qué categorías aceptó el visitante para activar otro código personalizado o JavaScript de terceros.
+
+```javascript
+// Devuelve las categorías aceptadas por el visitante
+function getConsentedCategories() {
+  const categoriesCookie = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('cookie-categories='));
+
+  if (categoriesCookie) {
+    // Convierte el valor de la cookie en una lista
+    return categoriesCookie.split('=')[1].split(',');
+  }
+  return [];
+}
+
+// Comprueba si una categoría está permitida
+function isCategoryAllowed(category) {
+  const categories = getConsentedCategories();
+  return categories.includes(category);
+}
+
+// Devuelve la configuración de cookies elegida
+function getCookieConfig() {
+  const cookieConfig = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('cookie-config='));
+
+  if (cookieConfig) {
+    return cookieConfig.split('=')[1]; // Devuelve: all, essential o custom
+  }
+  return undefined; // undefined si el visitante aún no eligió
+}
+```
+
+## Ten en cuenta
+
+1. Las categorías aceptadas se guardan en la cookie `cookie-categories`.
+2. Dentro del valor de la cookie, las categorías van separadas por comas.
+3. Comprueba siempre el consentimiento inicial al cargar tus herramientas de marketing.
+4. Escucha los eventos de cambio de consentimiento para actualizar la configuración de cada herramienta.
+5. Elimina cualquier etiqueta `<noscript>`, porque podría saltarse la comprobación del consentimiento.
+
+## Continúa con
+
+<CardGroup cols={1}>
+  <Card title="Banner de consentimiento de cookies en embudos y sitios web" icon="shield-halved" href="/sitios/como-utilizar-el-banner-de-consentimiento-de-cookies-en">
+    Configuración, personalización y gestión de la lista de cookies.
+  </Card>
+</CardGroup>
