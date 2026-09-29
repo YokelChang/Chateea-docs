@@ -1,0 +1,97 @@
+---
+title: "Desactivar la indexación SEO de un sitio WordPress"
+description: "Evita que Google indexe tu sitio WordPress en construcción con un interruptor que aplica noindex y nofollow a todo el sitio."
+icon: "eye-slash"
+---
+
+Mientras construyes o rediseñas un sitio WordPress, normalmente no quieres que Google lo muestre en sus resultados a medio terminar. Desde Chateea puedes pedir a los buscadores que no indexen tu sitio con un solo interruptor, sin instalar plugins ni entrar a WP Admin.
+
+Al activarlo, Chateea agrega automáticamente instrucciones `noindex` y `nofollow` al archivo `robots.txt` del sitio y una etiqueta meta en todas las páginas.
+
+<Note>
+Solo los usuarios con rol de administrador pueden cambiar esta opción.
+</Note>
+
+## Cuándo usarlo
+
+- Sitios en construcción o en rediseño.
+- Entornos de prueba o copias de un sitio.
+- Sitios internos o privados que no deben aparecer en buscadores.
+
+## Activarlo o desactivarlo
+
+<Steps>
+  <Step title="Abre WordPress">
+    En el menú lateral, ve a **Sitios** y abre la pestaña **WordPress**.
+  </Step>
+  <Step title="Administra el sitio">
+    Haz clic en **Administrar sitio web** (Manage Website) en el sitio que quieres configurar.
+  </Step>
+  <Step title="Abre la configuración avanzada">
+    Ve a la pestaña **Configuración avanzada** y luego a **Administración de WordPress**.
+  </Step>
+  <Step title="Activa el interruptor">
+    Activa **Desaconsejar la indexación SEO** (Discourage SEO Indexing). Verás una confirmación en cuanto se guarde el cambio.
+  </Step>
+</Steps>
+
+Para volver a permitir la indexación, apaga el mismo interruptor.
+
+<Warning>
+Acuérdate de apagarlo cuando publiques el sitio definitivo. Si lo dejas activado, tu sitio no aparecerá en Google aunque esté terminado.
+</Warning>
+
+## Qué cambia en el sitio
+
+| Elemento | Qué hace Chateea |
+| --- | --- |
+| **robots.txt** | Agrega instrucciones para que los buscadores no indexen ni sigan los enlaces |
+| **Etiqueta meta** | Inserta en el encabezado de todas las páginas la etiqueta de abajo |
+| **Aplicación** | El cambio es inmediato, sin pasos manuales |
+
+```html
+<meta name="robots" content="noindex, nofollow">
+```
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo desactivar la indexación de una sola página?">
+    No con este interruptor: se aplica a todo el sitio. Para páginas concretas, usa la configuración de tu plugin de SEO en WordPress.
+  </Accordion>
+  <Accordion title="¿Afecta a los visitantes o a la velocidad del sitio?">
+    No. Los visitantes pueden seguir entrando con normalidad y el rendimiento no cambia.
+  </Accordion>
+  <Accordion title="¿Funciona si tengo un plugin de SEO como Yoast o Rank Math?">
+    Sí. Si hay conflicto, la opción de Chateea tiene prioridad.
+  </Accordion>
+  <Accordion title="¿Bloquea todos los bots?">
+    Afecta a los buscadores que respetan estas instrucciones, como Google o Bing. Los bots que no respetan las reglas pueden ignorarlas.
+  </Accordion>
+  <Accordion title="¿Deja de funcionar Google Analytics?">
+    No. La analítica sigue midiendo las visitas con normalidad.
+  </Accordion>
+  <Accordion title="¿Cómo compruebo que Google no está indexando el sitio?">
+    Usa la herramienta de inspección de URLs de Google Search Console sobre cualquier página del sitio.
+  </Accordion>
+  <Accordion title="¿Otros usuarios del equipo pueden cambiarlo?">
+    Solo los usuarios con rol de administrador.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con WordPress" icon="globe" href="/sitios/wordpress-primeros-pasos">
+    Crea y administra tu sitio WordPress en Chateea.
+  </Card>
+  <Card title="Informe SEO del alojamiento WordPress" icon="magnifying-glass" href="/sitios/informe-seo-alojamiento-wordpress">
+    Revisa el estado SEO de tu sitio.
+  </Card>
+  <Card title="Entorno de pruebas de WordPress" icon="flask" href="/sitios/wordpress-entorno-de-pruebas">
+    Prueba cambios sin tocar el sitio en vivo.
+  </Card>
+  <Card title="Metadatos SEO y etiquetas meta" icon="tags" href="/sitios/metadatos-seo-y-etiquetas-meta">
+    Controla la indexación en tus embudos y sitios de Chateea.
+  </Card>
+</CardGroup>

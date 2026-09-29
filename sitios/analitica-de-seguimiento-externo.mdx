@@ -1,0 +1,101 @@
+---
+title: "Analítica de seguimiento externo"
+description: "Mide visitas, formularios, dispositivos y ubicación de tus sitios web externos desde el panel de Análisis de Chateea."
+icon: "chart-line"
+---
+
+Si tienes un sitio web fuera de Chateea (en WordPress, Shopify, Wix, Webflow o hecho a medida), la analítica de seguimiento externo te deja ver su tráfico y el rendimiento de sus formularios en el mismo panel de **Análisis** que usas para tus embudos y sitios de Chateea.
+
+Así no tienes que saltar entre herramientas para saber cuántas personas visitan tu sitio, de dónde llegan, qué dispositivo usan y cuántas llenan tus formularios.
+
+## Qué te muestra
+
+### Métricas principales
+
+| Métrica | Qué significa |
+| --- | --- |
+| **Vistas de página** | Total de páginas vistas en tu sitio externo |
+| **Vistas de formulario** | Veces que se mostró un formulario rastreado |
+| **Respuestas** | Envíos de formulario registrados |
+| **Tasa de finalización** | Envíos divididos entre vistas del formulario |
+| **Tiempo promedio en la página** | Cuánto tiempo permanecen los visitantes en promedio |
+| **Salida antes de 30 s** | Porcentaje de visitas que abandonan la página antes de 30 segundos (similar a la tasa de rebote) |
+
+### Información de la audiencia
+
+- **Dispositivos:** escritorio, tablet y celular.
+- **Navegadores principales.**
+- **IP de los visitantes.**
+- **Ubicación:** país, estado y ciudad.
+- **Fuentes de tráfico.**
+
+### Análisis por formulario
+
+Para cada formulario detectado verás sus vistas, respuestas, tasa de finalización y la fecha de la última actualización. Te ayuda a detectar un formulario que recibe muchas visitas pero pocos envíos.
+
+## Antes de empezar
+
+Necesitas tener instalado el script de seguimiento externo de tu cuenta en el sitio que quieres medir. Si todavía no lo tienes, sigue la guía [Seguimiento externo: captura formularios de otros sitios web](/sitio-web/seguimiento-externo). Es el mismo script que captura los formularios, así que no tienes que instalar nada adicional.
+
+## Configurarlo
+
+<Steps>
+  <Step title="Copia el script de seguimiento">
+    Abre la sección **Seguimiento externo** de tu cuenta y haz clic en **Copiar script**. El script es único para tu cuenta.
+  </Step>
+  <Step title="Pégalo en tu sitio">
+    Agrega el script en todas las páginas que quieras medir, dentro de la sección `head` o justo antes del cierre de `body`, según lo permita tu plataforma. Lo más práctico es pegarlo en la plantilla o en la configuración global de código de tu sitio.
+  </Step>
+  <Step title="Abre la analítica">
+    En Chateea, ve a **Sitios → Análisis** y, en el selector de recursos, elige **Seguimiento externo**.
+  </Step>
+  <Step title="Comprueba que llegan datos">
+    Visita tu sitio (idealmente desde una ventana de incógnito) y vuelve al panel. Los datos pueden tardar unos minutos en aparecer.
+  </Step>
+</Steps>
+
+<Warning>
+No modifiques el identificador de seguimiento del script. Es lo que conecta tu sitio con tu cuenta: si lo cambias, dejan de llegar datos.
+</Warning>
+
+## Filtrar y comparar
+
+Usa el selector de fechas para ver tendencias por día, semana o mes, y los filtros avanzados para aislar un segmento (por ejemplo, solo visitas desde celular en un país concreto). Consulta [Filtros avanzados en Análisis](/embudos-sitios-web/filtros-avanzados-en-analisis-del-sitio).
+
+<Tip>
+Compara la tasa de finalización de tus formularios con la de los formularios de Chateea. Si tu formulario externo convierte mucho menos, prueba a reducir campos o a reemplazarlo por un formulario de Chateea insertado.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Instalé el script y no veo datos">
+    Los datos pueden tardar un poco en aparecer. Confirma que el script esté en las páginas publicadas (no solo en un borrador), que no hayas cambiado el identificador y que ningún plugin de caché u optimización lo esté eliminando.
+  </Accordion>
+  <Accordion title="¿Cómo se calcula la tasa de finalización?">
+    Es el número de envíos del formulario dividido entre el número de veces que se vio ese formulario.
+  </Accordion>
+  <Accordion title="¿Qué significa Salida antes de 30 s?">
+    Es el porcentaje de visitas que salen de la página antes de 30 segundos. Funciona como una tasa de rebote: si es alta, revisa que la página cargue rápido y que el mensaje principal se entienda de inmediato.
+  </Accordion>
+  <Accordion title="¿Se detectan los formularios dentro de un iframe?">
+    No. Solo se miden los formularios que están directamente en la página.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Seguimiento externo" icon="radar" href="/sitio-web/seguimiento-externo">
+    Instala el script y captura formularios de otros sitios.
+  </Card>
+  <Card title="Análisis de sitios y embudos" icon="chart-line" href="/sitios/analisis-de-sitios-y-embudos">
+    El panel de análisis de tus páginas en Chateea.
+  </Card>
+  <Card title="Filtros avanzados en Análisis" icon="filter" href="/embudos-sitios-web/filtros-avanzados-en-analisis-del-sitio">
+    Segmenta el tráfico por ubicación, dispositivo o fuente.
+  </Card>
+  <Card title="Insertar formularios en sitios externos" icon="code" href="/sitios/insertar-formularios-en-sitios-externos">
+    Usa un formulario de Chateea en tu sitio.
+  </Card>
+</CardGroup>

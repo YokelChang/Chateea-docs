@@ -1,0 +1,107 @@
+---
+title: "Bloquea el pago cuando no hay tarifa de envío"
+description: "Evita pedidos que no puedes despachar o con envío gratis por error cuando ninguna tarifa cubre la dirección del cliente."
+icon: "ban"
+---
+
+Esta opción impide que un cliente termine su compra cuando ninguna tarifa de envío coincide con su dirección de entrega. Así evitas pedidos a lugares donde no puedes enviar, o pedidos que salen con envío gratis por error porque tus reglas de tarifas no cubrían esa ubicación. Viene desactivada por defecto, así que tu pago funciona como siempre hasta que la actives.
+
+## Para qué te sirve
+
+- **Evita pedidos que no puedes despachar:** si no hay tarifa para esa dirección, no se puede pagar.
+- **Evita envíos gratis no deseados:** el cliente no termina la compra con un envío incorrecto o sin costo.
+- **Comunica con claridad:** el cliente ve el mensaje "Envío no disponible" y entiende por qué no puede avanzar.
+- **Respeta tu marca:** puedes cambiar el color del mensaje de error.
+
+## Cómo se valida el envío
+
+Con la opción activa, Chateea revisa el envío en dos momentos:
+
+| Momento | Qué pasa |
+| --- | --- |
+| **Página de pago** | Al escribir la dirección de entrega se calculan los métodos de envío. Si no hay ninguna tarifa válida para ese carrito y esa dirección, se bloquea el pago y aparece "Envío no disponible". |
+| **Venta adicional** | Si el cliente acepta una oferta adicional, se vuelve a validar el envío con el carrito actualizado. Si el nuevo artículo no se puede enviar a esa dirección, aparece el mismo mensaje y el pedido no avanza. |
+
+<Note>
+El pago solo se bloquea cuando el cálculo del envío funciona y no encuentra ninguna tarifa aplicable. Si el cálculo falla por un error del sistema, esta opción no bloquea el pago.
+</Note>
+
+## Qué puede hacer el cliente si se bloquea el pago
+
+- **Quitar los artículos que no se pueden enviar:** si solo algunos productos del carrito no llegan a esa dirección, puede quitarlos y comprar el resto.
+- **Vaciar el carrito:** puede empezar de nuevo con otros productos u otra dirección.
+- **Cambiar la dirección de entrega:** al modificarla, el envío se recalcula solo. Si la nueva dirección tiene tarifa, el bloqueo desaparece.
+
+Los carritos que solo tienen productos digitales no se ven afectados, porque no requieren envío.
+
+## Cómo activarla
+
+<Steps>
+  <Step title="Abre la configuración de envíos">
+    Ve a **Pagos → Configuración → Envío y entrega**.
+  </Step>
+  <Step title="Activa el bloqueo">
+    Activa el interruptor **Bloquear envío** (Block Shipping).
+  </Step>
+  <Step title="Revisa tus zonas y tarifas">
+    Configura tus zonas, perfiles y condiciones de tarifa para cubrir todas las regiones a las que quieres enviar.
+  </Step>
+  <Step title="Publica la tienda">
+    Guarda y publica tu tienda para que el cambio llegue a tus páginas de pago en vivo.
+  </Step>
+</Steps>
+
+<Tip>
+Antes de activarla, haz pedidos de prueba con varias direcciones de entrega para comprobar que tus zonas y condiciones de tarifa funcionan como esperas.
+</Tip>
+
+## Personaliza el color del mensaje
+
+Puedes cambiar el color del mensaje "Envío no disponible" desde la configuración del tema de tu tienda, modificando el color del texto de error. El color se aplica tanto en la página de pago como en el elemento de venta adicional. El texto del mensaje es fijo y no se puede cambiar.
+
+## Solución de problemas
+
+Si activaste la opción y no parece funcionar en tu tienda en vivo, vuelve a publicar la página o el sitio. Esto limpia la caché y aplica la configuración más reciente.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Afecta a los pedidos de productos digitales?">
+    No. Los carritos con solo productos digitales se pagan con normalidad.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la opción está desactivada?">
+    El pago funciona como antes: el cliente puede terminar la compra aunque no haya tarifa, y el envío puede salir gratis o incorrecto.
+  </Accordion>
+  <Accordion title="¿Cuándo exactamente se bloquea el pago?">
+    Solo cuando el cálculo del envío funciona y no encuentra una tarifa para ese carrito y esa dirección. Un error del sistema no bloquea el pago.
+  </Accordion>
+  <Accordion title="¿El cliente sabe qué artículo causa el problema?">
+    Ve el mensaje "Envío no disponible" junto con opciones para quitar los artículos que no se pueden enviar o vaciar el carrito.
+  </Accordion>
+  <Accordion title="¿Se aplica a las ventas adicionales?">
+    Sí. El envío se vuelve a validar cuando el cliente acepta una oferta adicional.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el texto del mensaje?">
+    No. Solo puedes cambiar su color.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el cliente cambia su dirección?">
+    El envío se recalcula automáticamente. Si la nueva dirección tiene tarifa, el cliente puede terminar la compra.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Zonas y tarifas de envío" icon="truck" href="/tienda/zonas-y-tarifas-de-envio">
+    Define dónde envías y cuánto cobras.
+  </Card>
+  <Card title="Personaliza la página de pago" icon="credit-card" href="/tienda/personalizar-pagina-de-pago">
+    Ajusta el pago de tu tienda.
+  </Card>
+  <Card title="Retiro en tienda" icon="store" href="/tienda/retiro-en-tienda">
+    Ofrece recoger el pedido en tu local.
+  </Card>
+  <Card title="Ventas adicionales después del pago" icon="cart-plus" href="/tienda/ventas-adicionales-despues-del-pago">
+    Ofrece más productos al terminar la compra.
+  </Card>
+</CardGroup>

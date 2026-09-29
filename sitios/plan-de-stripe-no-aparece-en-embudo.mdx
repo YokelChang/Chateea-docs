@@ -1,12 +1,12 @@
 ---
 title: "Mi plan de Stripe no aparece en los productos del embudo"
-description: "Qué precios de Stripe se pueden importar, cómo usarlos en tus embudos y qué revisar si un plan no aparece."
+description: "Qué precios de Stripe se pueden importar, cómo usarlos en tus embudos, qué revisar si un plan no aparece y por qué se ve (null)."
 icon: "credit-card"
 ---
 
 Un plan o precio que existe en Stripe no aparece automáticamente en tus embudos. Para poder venderlo en un formulario de pedido, primero tienes que importarlo a tu cuenta de Chateea como producto. Si no lo ves, lo más probable es que todavía no se haya importado, que esté en modo de prueba, que ya se haya importado antes o que no cumpla los requisitos.
 
-Esta guía te explica qué precios de Stripe se pueden importar, cómo hacerlo y qué revisar cuando un plan no aparece.
+Esta guía te explica qué precios de Stripe se pueden importar, cómo hacerlo, qué revisar cuando un plan no aparece y por qué a veces se ve "(null)" junto al nombre del producto.
 
 ## Requisitos para importar un precio de Stripe
 
@@ -64,6 +64,29 @@ Primero identifica dónde falta el plan: no es lo mismo que no aparezca en la li
 | **Cambiaste el precio en Stripe** | Los cambios hechos en Stripe no actualizan el producto en Chateea. Importa el nuevo precio como un precio o producto nuevo. |
 | **El producto está en Productos pero no en el embudo** | Confirma que lo agregaste en la pestaña **Productos** del mismo paso del embudo donde está el formulario. |
 
+## El plan aparece como "(null)" en el desplegable
+
+A veces, en el desplegable de planes de Stripe de un paso del embudo, el producto aparece con el texto **(null)** delante del nombre, por ejemplo `(null) Membresía mensual`.
+
+**No es un error** y no afecta al cobro: el plan funciona con normalidad. Solo indica que el precio no tiene una descripción interna en Stripe, así que no hay texto que mostrar en ese lugar.
+
+Si quieres que se vea un nombre claro:
+
+<Steps>
+<Step title="Abre el producto en Stripe">
+En tu panel de Stripe, ve a **Catálogo de productos** y abre el producto.
+</Step>
+<Step title="Edita el precio">
+En la sección de precios, abre el precio recurrente que usas en el embudo y edítalo.
+</Step>
+<Step title="Agrega una descripción al precio">
+Completa la descripción del precio (Price description), por ejemplo "Mensual" o "Anual con descuento", y guarda.
+</Step>
+<Step title="Vuelve al embudo">
+Recarga el editor del embudo y revisa el desplegable. Si todavía ves "(null)", vuelve a seleccionar el plan o impórtalo de nuevo como se explica arriba.
+</Step>
+</Steps>
+
 <Tip>
 Diagnóstico rápido: si ves el producto en **Pagos → Productos** pero no en el embudo, el problema está en la configuración del embudo. Si no ves el precio en **Importar desde Stripe**, revisa si es recurrente, si está en modo en vivo, si ya se importó y qué cuenta de Stripe está conectada.
 </Tip>
@@ -85,6 +108,9 @@ No. Los precios recurrentes medidos no son compatibles con la importación desde
 </Accordion>
 <Accordion title="Cambié el precio en Stripe. ¿Se actualiza solo en Chateea?">
 No. Los cambios en Stripe no se sincronizan con el precio ya importado. Importa el nuevo precio.
+</Accordion>
+<Accordion title="¿Por qué mi plan aparece como (null)?">
+Porque el precio no tiene descripción en Stripe. Es solo visual y no afecta al pago. Agrega una descripción al precio en Stripe si quieres que se vea un nombre claro.
 </Accordion>
 <Accordion title="¿Por qué desapareció un precio de la lista de importación?">
 Porque ya lo importaste. Lo encontrarás en **Pagos → Productos**.

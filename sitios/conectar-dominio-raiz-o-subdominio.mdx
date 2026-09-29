@@ -1,0 +1,207 @@
+---
+title: "Conectar un dominio raíz o un subdominio a tus sitios"
+description: "Conecta tu dominio o subdominio a embudos, sitios, tiendas, blogs y seminarios web, configura la página predeterminada y resuelve errores."
+icon: "globe"
+---
+
+Conectar tu propio dominio hace que tus embudos, sitios web, tiendas, blogs y seminarios web se vean en una dirección con tu marca, como `minegocio.com` o `ofertas.minegocio.com`. Esta guía te explica cómo elegir entre dominio raíz y subdominio, cómo conectarlo de forma automática o manual, y qué revisar si algo falla.
+
+## Dominio raíz o subdominio
+
+- **Dominio raíz:** la dirección principal, por ejemplo `minegocio.com`.
+- **Subdominio:** un prefijo sobre el dominio raíz, por ejemplo `www.minegocio.com`, `ofertas.minegocio.com` o `go.minegocio.com`.
+
+<Warning>
+Si tu dominio raíz ya muestra otro sitio web o servicio que quieres mantener, **no lo apuntes a Chateea**. Usa un subdominio libre (por ejemplo, `ofertas.minegocio.com`). Un mismo nombre de host no puede apuntar a dos plataformas a la vez.
+</Warning>
+
+## Lo que obtienes al conectarlo
+
+- **Tu marca en la URL** de todas tus páginas.
+- **Conexión automática o manual**, según tu proveedor de DNS.
+- **SSL gratis y automático** en cuanto el dominio queda conectado.
+- **Página predeterminada:** eliges qué paso de embudo o página se abre cuando alguien entra al dominio sin ruta.
+- **Página de error 404 propia** para las direcciones que no existen.
+- **Recordatorio de configuración** si te falta definir la página predeterminada o la de error.
+
+## Antes de empezar
+
+- Necesitas ser dueño del dominio o tener acceso al panel donde se administran sus DNS.
+- Identifica qué proveedor controla los DNS (revisa los servidores de nombres del dominio). A veces compraste el dominio en un sitio pero los DNS están en otro, como Cloudflare.
+- Decide qué dirección usarás: raíz o subdominio.
+
+## Paso 1: Inicia la conexión en Chateea
+
+<Steps>
+  <Step title="Abre Dominios">
+    Ve a **Configuración → Dominios** (Domains & URL Redirects).
+  </Step>
+  <Step title="Agrega el dominio">
+    Haz clic en **+ Conectar un dominio**. En la opción **Embudo / Sitio web / Tienda / Blog / Seminario web**, haz clic en **Conectar**.
+  </Step>
+  <Step title="Escribe la dirección">
+    Escribe el dominio raíz o el subdominio en el campo **URL del dominio**.
+  </Step>
+  <Step title="Elige el método">
+    **Continuar** intenta la conexión automática. **Agregar registro manualmente** te muestra los registros para crearlos tú.
+  </Step>
+</Steps>
+
+<Tip>
+Si conectas un dominio raíz, Chateea puede agregar también la versión `www` y crear una redirección 301 para que quien escriba `www.minegocio.com` llegue a `minegocio.com`.
+</Tip>
+
+## Paso 2: Configura los DNS
+
+### Conexión automática
+
+Si tu proveedor es compatible con la conexión automática (Domain Connect):
+
+<Steps>
+  <Step title="Autoriza">
+    Tras hacer clic en **Continuar**, haz clic en **Autorizar**.
+  </Step>
+  <Step title="Inicia sesión en tu proveedor">
+    Entra con tu cuenta del proveedor del dominio y aprueba la conexión.
+  </Step>
+  <Step title="Vuelve a Chateea">
+    Cierra la pestaña del proveedor y espera a que Chateea verifique los registros.
+  </Step>
+</Steps>
+
+Más detalles en [Conectar tu dominio automáticamente](/sitios/conectar-dominio-automaticamente).
+
+### Conexión manual
+
+Haz clic en **Agregar registro manualmente** y crea en tu proveedor de DNS **uno** de estos registros, copiando los valores exactos que te muestra Chateea en pantalla:
+
+| Caso | Tipo de registro | Nombre (host) | Valor |
+| --- | --- | --- | --- |
+| Dominio raíz | **A** | `@` | La dirección IP que muestra Chateea |
+| Subdominio | **CNAME** | Solo el prefijo, por ejemplo `www` u `ofertas` | El destino que muestra Chateea |
+| Subdominio (alternativa) | **A** | Solo el prefijo | La dirección IP que muestra Chateea |
+
+<Warning>
+- No crees un registro A y un CNAME para el mismo nombre de host. Usa solo uno.
+- Si usas **Cloudflare**, deja el registro en **Solo DNS** (DNS only), con la nube gris, no en modo proxy.
+- Copia y pega los valores. Un espacio de más es una causa frecuente de error.
+</Warning>
+
+Los cambios de DNS pueden tardar hasta 24 horas en propagarse.
+
+## Paso 3: Asocia el dominio a tu contenido
+
+<Steps>
+  <Step title="Espera la verificación">
+    Chateea comprueba que el registro exista.
+  </Step>
+  <Step title="Elige el embudo o sitio">
+    En la pantalla de asociación, selecciona el **embudo** o **sitio web** que se mostrará en ese dominio.
+  </Step>
+  <Step title="Elige la página predeterminada">
+    Selecciona el paso del embudo o la página del sitio que se abrirá al entrar al dominio.
+  </Step>
+  <Step title="Vincula">
+    Haz clic en **Vincular dominio** (Link Domain). El certificado SSL se genera solo en unos minutos.
+  </Step>
+</Steps>
+
+## Paso 4: Página predeterminada y página de error
+
+<Steps>
+  <Step title="Abre el dominio">
+    En **Configuración → Dominios**, busca el dominio y haz clic en **Administrar**.
+  </Step>
+  <Step title="Revisa los productos conectados">
+    Si ves el aviso **Acción requerida**, haz clic en él.
+  </Step>
+  <Step title="Elige las páginas">
+    Selecciona una página en **Página predeterminada** y otra en **Página de error 404 predeterminada**.
+  </Step>
+</Steps>
+
+También puedes cambiarlas después: en **Administrar**, abre el menú de tres puntos del dominio o producto conectado, elige **Editar**, actualiza la página predeterminada o la de error 404 y haz clic en **Guardar**.
+
+<Note>
+El botón **Editar** y el aviso **Acción requerida** solo aparecen en la cuenta de Chateea donde se agregó el dominio por primera vez. Si usas el mismo dominio en varias cuentas, haz estos cambios desde esa cuenta original: la página predeterminada solo puede tener un valor.
+</Note>
+
+## Comprobar tus registros DNS
+
+Usa una herramienta pública de consulta de DNS (por ejemplo, MXToolbox o dnschecker.org):
+
+1. Elige el tipo de consulta (A o CNAME).
+2. Escribe el dominio o subdominio que conectaste.
+3. Confirma que el resultado coincide con el valor que te mostró Chateea.
+
+Si cambiaste el registro hace poco, puede que todavía no aparezca. Espera hasta 24 horas antes de dar por hecho que algo falló.
+
+## Eliminar un dominio
+
+En **Configuración → Dominios**, haz clic en **Administrar** en el dominio, abre el menú de tres puntos, elige **Eliminar** y confirma. Antes, asegúrate de que ninguna página activa dependa de esa dirección.
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="Chateea no encuentra el registro A o CNAME">
+    1. Revisa los servidores de nombres para saber qué proveedor controla los DNS y agrega el registro ahí.
+    2. Busca si el nombre de host ya tiene otro registro A o CNAME apuntando a otro sitio y elimínalo.
+    3. Usa un solo registro por nombre de host.
+    4. En el campo de nombre, escribe solo el prefijo (`www`, `ofertas`) si tu proveedor lo pide así.
+    5. Guarda, espera la propagación y vuelve a verificar.
+  </Accordion>
+  <Accordion title="El dominio muestra un error de SSL o de privacidad">
+    Suele deberse a registros en conflicto. Elimina los registros A o CNAME duplicados, confirma que exista el registro de Chateea, pon Cloudflare en **Solo DNS** y espera a que se complete el SSL.
+  </Accordion>
+  <Accordion title="Mi dominio de Cloudflare no conecta">
+    En Cloudflare, abre el dominio, ve a **DNS**, busca el registro A o CNAME de Chateea, cambia el estado del proxy a **Solo DNS** y guarda. Luego vuelve a intentar la conexión.
+  </Accordion>
+  <Accordion title="A veces aparece una página 404">
+    Revisa si los visitantes usan tanto la versión con `www` como la versión sin `www`. Crea una redirección 301 para que una envíe a la otra, confirma la página predeterminada y configura una página de error 404.
+  </Accordion>
+</AccordionGroup>
+
+Para errores concretos de registros (varios registros A, AAAA o CAA), consulta [Solucionar errores de conexión de dominio](/dominios/errores-de-conexion).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que comprar un certificado SSL?">
+    No. Chateea genera el SSL automáticamente cuando el dominio queda conectado.
+  </Accordion>
+  <Accordion title="¿Cuántos dominios puedo conectar?">
+    No hay un límite establecido.
+  </Accordion>
+  <Accordion title="¿Varios embudos o sitios pueden usar el mismo dominio?">
+    Sí. Configura bien las rutas de cada página y la página predeterminada para que cada URL lleve a donde corresponde.
+  </Accordion>
+  <Accordion title="¿Puedo usar el mismo dominio en varias cuentas de Chateea?">
+    Sí. Ten en cuenta que la página predeterminada solo se edita desde la cuenta donde agregaste el dominio primero.
+  </Accordion>
+  <Accordion title="¿Por qué no veo el botón Editar en mi dominio?">
+    Porque el dominio se agregó originalmente en otra cuenta. El botón solo aparece en esa cuenta, ya que la página predeterminada solo puede tener un valor.
+  </Accordion>
+  <Accordion title="¿Puedo comprar un dominio en Chateea?">
+    Sí, las cuentas elegibles pueden comprar y administrar dominios desde **Configuración → Dominios**.
+  </Accordion>
+  <Accordion title="¿Puedo configurar los DNS a mano aunque mi proveedor admita la conexión automática?">
+    Sí. La configuración manual siempre está disponible.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Tipos de dominios" icon="globe" href="/sitios/tipos-de-dominios">
+    Qué dominio necesitas para cada producto.
+  </Card>
+  <Card title="Conectar tu dominio automáticamente" icon="plug" href="/sitios/conectar-dominio-automaticamente">
+    Conexión en un clic con Domain Connect.
+  </Card>
+  <Card title="Redirecciones 301" icon="arrow-right" href="/sitios/redirecciones-301">
+    Envía el tráfico de una URL a otra.
+  </Card>
+  <Card title="Página de error 404 personalizada" icon="triangle-exclamation" href="/embudos-sitios-web/como-configurar-tu-propia-pagina-de-error-404-personalizable">
+    Crea tu propia página de error.
+  </Card>
+</CardGroup>

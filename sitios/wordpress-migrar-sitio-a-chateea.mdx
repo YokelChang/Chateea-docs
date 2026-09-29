@@ -1,0 +1,89 @@
+---
+title: "Migrar un sitio WordPress a Chateea"
+description: "Traslada tu sitio WordPress desde otro hosting al alojamiento de Chateea con el plugin de migración, sin límite de tamaño."
+icon: "truck-moving"
+---
+
+Si ya tienes un sitio WordPress en otro proveedor de hosting, puedes trasladarlo al alojamiento WordPress de Chateea con el plugin de migración. Se instala en tu sitio actual, copia el contenido, los temas, los plugins y la configuración, y no tiene límite de tamaño de archivos, así que sirve también para sitios grandes.
+
+## Antes de empezar
+
+- Necesitas acceso de administrador al WordPress de origen, para poder instalar plugins.
+- Crea en Chateea el sitio WordPress de destino (en **Sitios → WordPress**) o ten a mano el que quieres usar.
+- Haz una copia de seguridad del sitio de origen, por precaución.
+- Evita publicar cambios en el sitio de origen mientras dura la migración.
+
+## Migrar tu sitio paso a paso
+
+<Steps>
+  <Step title="Descarga el plugin de migración">
+    En **Sitios → WordPress**, abre la opción de migración y descarga el plugin de migración. Se descarga como archivo `.zip`: no lo descomprimas.
+  </Step>
+  <Step title="Instálalo en el sitio de origen">
+    En el WP Admin de tu sitio actual, ve a **Plugins → Añadir nuevo → Subir plugin**, elige el archivo `.zip`, haz clic en **Instalar ahora** y luego en **Activar plugin**.
+  </Step>
+  <Step title="Elige el sitio de destino">
+    Vuelve a Chateea y selecciona el sitio WordPress al que quieres migrar.
+  </Step>
+  <Step title="Inicia la migración">
+    Haz clic en **Iniciar migración**.
+  </Step>
+  <Step title="Sigue el progreso">
+    Una barra de progreso te muestra el avance mientras el plugin transfiere tu contenido. El tiempo depende del tamaño del sitio.
+  </Step>
+  <Step title="Revisa el sitio migrado">
+    Cuando termine, abre el sitio en Chateea y revisa páginas, formularios, menús e imágenes.
+  </Step>
+</Steps>
+
+## Después de migrar
+
+- **Conecta tu dominio** al sitio en Chateea cuando hayas revisado que todo funciona. Hasta entonces, tu dominio sigue mostrando el sitio antiguo.
+- **Borra la caché** del sitio y del navegador si ves contenido desactualizado.
+- **Revisa los plugins** de caché, seguridad o copias de seguridad que traías del hosting anterior: algunos pueden no ser necesarios o no estar permitidos en el alojamiento de Chateea.
+- **Mantén el hosting anterior** unos días, hasta confirmar que el sitio nuevo funciona correctamente con tu dominio.
+
+<Tip>
+Programa la migración y el cambio de dominio en un momento de poco tráfico, por ejemplo de noche o en fin de semana.
+</Tip>
+
+## Si necesitas ayuda
+
+Si la migración falla o tu sitio es especialmente complejo, escribe a soporte de Chateea en **help@chateea.com**. Si el equipo necesita entrar a tu WordPress, no compartas tu contraseña: genera un [enlace de acceso seguro](/sitios/enlace-de-acceso-seguro-migracion-wordpress) temporal que puedes revocar en cualquier momento.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Hay un límite de tamaño para migrar?">
+    No. El plugin de migración no tiene límites de tamaño de archivos, por eso funciona también con sitios grandes.
+  </Accordion>
+  <Accordion title="¿Se migran los plugins y temas?">
+    Sí. La migración copia el contenido, los temas, los plugins y la configuración del sitio de origen.
+  </Accordion>
+  <Accordion title="¿Mi sitio de origen deja de funcionar durante la migración?">
+    No. El sitio de origen sigue en línea. Solo se copia su contenido al sitio de Chateea.
+  </Accordion>
+  <Accordion title="¿Cuánto tarda la migración?">
+    Depende del tamaño del sitio y de la velocidad del hosting de origen. La barra de progreso te muestra el avance en todo momento.
+  </Accordion>
+  <Accordion title="¿Tengo que compartir mi usuario y contraseña de WordPress?">
+    No. Con el plugin haces la migración tú mismo, y si alguien de soporte necesita acceso puedes usar un enlace de acceso seguro en lugar de tu contraseña.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con WordPress" icon="globe" href="/sitios/wordpress-primeros-pasos">
+    Crea y administra tu sitio WordPress en Chateea.
+  </Card>
+  <Card title="Enlace de acceso seguro para migraciones" icon="link" href="/sitios/enlace-de-acceso-seguro-migracion-wordpress">
+    Da acceso temporal sin compartir tu contraseña.
+  </Card>
+  <Card title="Agregar dominios a tu sitio WordPress" icon="globe" href="/embudos-sitios-web/wordpress-agregar-dominios-a-tu-sitio">
+    Conecta tu dominio cuando termines de migrar.
+  </Card>
+  <Card title="Errores de importación en WordPress" icon="triangle-exclamation" href="/sitios/wordpress-errores-de-importacion">
+    Qué hacer si la importación falla.
+  </Card>
+</CardGroup>

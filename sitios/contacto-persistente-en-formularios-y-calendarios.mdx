@@ -1,0 +1,74 @@
+---
+title: "El contacto persistente no funciona entre formulario y calendario"
+description: "Por qué los datos no se completan solos entre formularios y calendarios de tu embudo y cómo solucionarlo."
+icon: "user-check"
+---
+
+El contacto persistente (sticky contact) hace que, cuando alguien ya dejó sus datos en un paso de tu embudo, los siguientes formularios o calendarios aparezcan con esos datos ya completados. Por ejemplo, una persona llena un formulario con su nombre y correo, pasa a la página de reserva y el calendario ya la reconoce, sin pedirle todo de nuevo.
+
+Si esto no funciona entre un formulario y un calendario de tu embudo, la causa más común es que estás mezclando dos formas distintas de insertarlos.
+
+## La causa: mezclar elementos nativos con códigos incrustados
+
+En el editor de embudos y sitios web puedes agregar formularios y calendarios de dos maneras:
+
+- Con los **elementos nativos** del editor (elemento **Formulario** y elemento **Calendario**).
+- Con un **código incrustado** personalizado (HTML o JavaScript) dentro de un elemento de código.
+
+El contacto persistente solo funciona bien cuando **ambos usan el mismo método**. Si el formulario es un elemento nativo y el calendario está pegado como código (o al revés), los datos no pasan de uno a otro.
+
+| Formulario | Calendario | ¿Funciona el contacto persistente? |
+| --- | --- | --- |
+| Elemento nativo | Elemento nativo | Sí |
+| Código incrustado | Código incrustado | Sí |
+| Elemento nativo | Código incrustado | No |
+| Código incrustado | Elemento nativo | No |
+
+## Cómo solucionarlo
+
+<Steps>
+  <Step title="Revisa cómo está insertado cada uno">
+    Abre el embudo en el editor y revisa los pasos donde están el formulario y el calendario. Comprueba si cada uno es un elemento **Formulario** o **Calendario**, o un elemento de código personalizado.
+  </Step>
+  <Step title="Unifica el método">
+    Reemplaza el que no coincide para que los dos usen el mismo método. Lo recomendable es usar los **elementos nativos** en ambos casos.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda los cambios y publica el embudo.
+  </Step>
+  <Step title="Prueba el recorrido completo">
+    Abre el embudo en una ventana de incógnito, llena el formulario y avanza hasta el calendario. Tus datos deberían aparecer completados.
+  </Step>
+</Steps>
+
+<Tip>
+Usa los elementos nativos siempre que puedas. Además de mantener el contacto persistente, se adaptan al diseño de la página y se editan sin tocar código.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué en mi navegador los datos se completan solos y en otro no?">
+    El contacto persistente se guarda en el navegador de cada visitante. Si pruebas en otro navegador o en una ventana de incógnito nueva, empieza sin datos, lo cual es normal.
+  </Accordion>
+  <Accordion title="Ya uso el mismo método en ambos y sigue sin funcionar">
+    Confirma que el formulario y el calendario estén en el mismo dominio y que publicaste los cambios. Si el problema continúa, escribe a soporte de Chateea en **help@chateea.com** con la URL del embudo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un formulario de contacto" icon="clipboard-list" href="/sitios/crear-formulario-de-contacto">
+    Crea y gestiona formularios.
+  </Card>
+  <Card title="Editar formularios desde el embudo" icon="pen" href="/sitios/editar-formularios-desde-el-embudo">
+    Ajusta tus formularios sin salir del editor.
+  </Card>
+  <Card title="Parámetros de URL" icon="link" href="/sitios/parametros-de-url">
+    Pasa datos entre páginas con la URL.
+  </Card>
+  <Card title="Insertar formularios en sitios externos" icon="code" href="/sitios/insertar-formularios-en-sitios-externos">
+    Opciones de inserción con código.
+  </Card>
+</CardGroup>

@@ -1,0 +1,123 @@
+---
+title: "Crea una integración de dropshipping con la API"
+description: "Guía para desarrolladores: sincroniza productos, recibe pedidos por webhook y registra despachos con seguimiento en Chateea."
+icon: "code"
+---
+
+Esta guía es para desarrolladores que quieren conectar un proveedor de dropshipping, logística o despacho con las tiendas en línea de Chateea. Resume el recorrido completo: crear la app, autorizarla, sincronizar el catálogo, recibir los pedidos y devolver la información de despacho con el número de seguimiento.
+
+<Info>
+Todo el flujo usa la API de Chateea. Para obtener las credenciales de desarrollador, la URL base y la documentación de referencia de cada endpoint, escribe a soporte de Chateea en **help@chateea.com**.
+</Info>
+
+## Cómo funciona el flujo
+
+| Paso | Dirección | Qué ocurre |
+| --- | --- | --- |
+| 1. App | Tu integración | Creas la app, defines permisos y obtienes credenciales. |
+| 2. Autorización | Chateea hacia tu integración | El negocio instala la app y recibes los tokens de acceso. |
+| 3. Catálogo | Proveedor hacia Chateea | Creas productos y precios en la tienda. |
+| 4. Pedidos | Chateea hacia el proveedor | Recibes los pedidos por webhook y los creas en el proveedor. |
+| 5. Despacho | Proveedor hacia Chateea | Registras el despacho y el seguimiento en el pedido. |
+| 6. Páginas propias (opcional) | Dentro de Chateea | Muestras pantallas de configuración de tu integración. |
+
+## 1. Crea la app
+
+Crea tu app en el Marketplace de aplicaciones para desarrolladores: completa el perfil, agrega los permisos (scopes) de OAuth que necesitas y genera las credenciales de cliente (Client ID y Client Secret). Esto define la identidad de tu app y lo que puede hacer.
+
+Agrega los permisos según las API que vayas a usar: productos, precios, pedidos, despachos y webhooks.
+
+## 2. Gestiona la autorización
+
+1. Configura la URL de redirección de OAuth en los ajustes de la app.
+2. Crea un endpoint GET de retorno que reciba el código de autorización.
+3. Intercambia ese código por los tokens de acceso y de actualización, y guárdalos de forma segura.
+4. Crea un endpoint POST para webhooks y registra su URL en los ajustes de la app.
+5. Instala la app en la cuenta del negocio y verifica la conexión.
+
+## 3. Sincroniza productos del proveedor a Chateea
+
+Primero creas el **producto** y después uno o varios **precios** para ese producto. Un producto simple tiene un solo precio. Un producto con variantes lleva un precio por cada combinación.
+
+**Crear el producto.** Incluye los campos principales:
+
+- `name`, `locationId` (el identificador de la cuenta), `description`
+- `productType` (`PHYSICAL` o `DIGITAL`)
+- `availableInStore`, `image` y `medias`
+- Para productos con variantes: `variants` con sus opciones (por ejemplo, color y talla). Guarda los ID de las opciones, porque los necesitas al crear los precios.
+
+**Crear los precios.** Cada precio hace referencia al `_id` del producto e incluye:
+
+- `locationId`, `type` (`one_time` o `recurring`), `currency`, `amount` y `sku`
+- Opciones de inventario, si aplican
+- Para variantes: `variantOptionIds` con la combinación exacta (por ejemplo, color rojo y talla chica)
+- Para productos físicos: `shippingOptions` con el peso (`value`, `unit`) y las dimensiones (`length`, `width`, `height`, `unit`)
+
+**Opcional:** después de crear los precios, actualiza los `medias` del producto con los `priceIds` para que la tienda muestre la imagen correcta de cada variante.
+
+## 4. Recibe los pedidos de Chateea
+
+Suscríbete a dos webhooks:
+
+| Webhook | Qué contiene | Cómo usarlo |
+| --- | --- | --- |
+| `OrderCreate` | Encabezado del pedido (ID, fechas), datos del cliente, direcciones de envío y facturación, artículos con precio y SKU, moneda, montos y metadatos opcionales. | Crea o actualiza el pedido en el proveedor. Asocia cada artículo con el SKU o la variante del proveedor antes de enviarlo. |
+| `OrderStatusUpdate` | Cambios de estado del pedido (por ejemplo, de pendiente a completado o cancelado) con sus fechas. | Crea el pedido en el proveedor solo cuando el estado sea válido (por ejemplo, completado), o cancélalo o retenlo si hace falta. |
+
+Con estos datos arma el pedido en el formato del proveedor: artículos asociados a sus SKU, direcciones y totales.
+
+## 5. Envía el despacho de vuelta a Chateea
+
+Suscríbete a los webhooks de envío o despacho de tu proveedor. Cuando se cree o actualice un envío, registra el despacho del pedido correspondiente con la API de despachos de pedidos de Chateea:
+
+- **Pedido:** el ID interno del pedido en Chateea.
+- **Artículos:** los identificadores de precio o variante y las cantidades despachadas.
+- **Seguimiento:** `trackingNumber`, `shippingCarrier` y `trackingUrl`.
+- **Aviso al cliente:** opcional, con `notifyCustomer`.
+
+Ejemplo del cuerpo de la solicitud:
+
+```json
+{
+  "items": [{ "priceId": "66b6021be68f7a98102ba272", "qty": 2 }],
+  "trackings": [
+    {
+      "trackingNumber": "1Z999AA10123456784",
+      "shippingCarrier": "UPS",
+      "trackingUrl": "https://wwwapps.ups.com/WebTracking/track?trackNums=1Z999AA10123456784"
+    }
+  ],
+  "notifyCustomer": true
+}
+```
+
+## 6. Agrega páginas propias (opcional)
+
+Si tu integración necesita pantallas dentro de Chateea, usa las páginas personalizadas de la app. Sirven para asistentes de conexión, pasos de verificación, preferencias de envío, asociación de servicios de transportista o páginas de ayuda.
+
+Para identificar de forma segura al usuario y a la cuenta que instaló la app, recibe y valida el contexto de usuario que Chateea envía al cargar tu página.
+
+## Resumen
+
+1. Crea la app con sus permisos y completa la autorización con OAuth.
+2. Sincroniza el catálogo con las API de productos y precios.
+3. Escucha los webhooks de pedidos para enviarlos al proveedor.
+4. Escucha los envíos del proveedor y registra los despachos en Chateea.
+5. Si lo necesitas, agrega páginas propias con el contexto del usuario.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crea un producto con precio por API" icon="code" href="/tienda/crear-producto-con-precio-por-api">
+    Ejemplos para crear productos y precios.
+  </Card>
+  <Card title="Transportista personalizado por API" icon="truck" href="/tienda/transportista-personalizado-por-api">
+    Ofrece tarifas de envío desde tu propio sistema.
+  </Card>
+  <Card title="Integraciones privadas" icon="plug" href="/integraciones/integraciones-privadas">
+    Conecta tus sistemas con tu cuenta.
+  </Card>
+  <Card title="Integración con Printify" icon="shirt" href="/tienda/integracion-printify">
+    Un ejemplo de proveedor ya integrado.
+  </Card>
+</CardGroup>

@@ -1,0 +1,80 @@
+---
+title: "Importa tus cursos desde Kajabi"
+description: "Migra cursos y lecciones publicadas desde Kajabi con el importador de Membresías y resuelve los errores más comunes."
+icon: "file-import"
+---
+
+Si tienes tus cursos en Kajabi, el importador de Chateea los trae automáticamente a **Membresías**: videos, imágenes y textos de cada curso y lección. Te ahorra horas de copiar y pegar y te permite centralizar tus cursos, tus contactos y tus ventas en un mismo lugar.
+
+## Qué se importa y qué no
+
+| Se importa | No se importa |
+| --- | --- |
+| Cursos y lecciones **publicadas** | Lecciones en borrador o sin publicar |
+| Videos, imágenes y contenido de texto | Tareas, cuestionarios y evaluaciones |
+| Lecciones ocultas tras botones **Mostrar más** y dentro de categorías y subcategorías anidadas | |
+
+El importador detecta y sigue los botones **Mostrar más** y recorre las categorías anidadas, por lo que captura también los cursos grandes con estructuras complejas.
+
+## Buenas prácticas antes de empezar
+
+- Evita usar CSS personalizado en tu sitio de Kajabi durante la importación.
+- Haz una copia de seguridad de tus temas, por si necesitas volver a la configuración original.
+- Haz la migración en horas de poco tráfico para no afectar a tus alumnos.
+- Para que el contenido se vea como en origen, se recomiendan los temas **Encore Site** (biblioteca) y **Premier Product** (producto) en Kajabi.
+
+## Importa tus cursos
+
+<Steps>
+  <Step title="Crea un perfil de alumno en Kajabi">
+    En Kajabi, crea un contacto nuevo que actúe como alumno y dale acceso a los cursos que quieres migrar. El importador entrará con esas credenciales para leer el contenido.
+  </Step>
+  <Step title="Abre el importador">
+    En Chateea, ve a **Membresías → Cursos → Productos → Crear producto → Importar**.
+  </Step>
+  <Step title="Introduce los datos de acceso">
+    Escribe el correo y la contraseña del alumno que creaste. En el campo de dominio, pon el dominio donde tus alumnos inician sesión en Kajabi. Debe funcionar con la ruta `/login`, por ejemplo `tudominio.com/login`. Haz clic en **Importar**.
+  </Step>
+  <Step title="Sigue el progreso">
+    El importador inicia sesión como alumno y empieza a copiar los cursos. Haz clic en **Actualizar** para ver el estado real. Puedes cambiar de pestaña, pero **no cierres la pestaña ni la ventana** hasta que termine. Si necesitas detenerlo, haz clic en **Cancelar**.
+  </Step>
+  <Step title="Revisa los cursos importados">
+    Los cursos aparecen en **Productos**. En la sección de importación verás la fecha de la última importación.
+  </Step>
+</Steps>
+
+<Tip>
+  Después de importar, vuelve a crear en Chateea los cuestionarios y tareas que tenías en Kajabi, y revisa que el orden de las lecciones sea el correcto antes de dar acceso a tus alumnos.
+</Tip>
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="Aparece un error de autenticación">
+    El dominio o las credenciales no son correctos. Verifica el correo, la contraseña y el dominio antes de volver a importar.
+  </Accordion>
+  <Accordion title="La importación del curso falló">
+    Revisa lo siguiente:
+
+    - **Tema**: confirma que usas el tema recomendado en Kajabi.
+    - **Credenciales**: verifica que el correo y la contraseña del alumno son correctos.
+    - **Dominio**: comprueba que `tudominio.com/login` abre la página de inicio de sesión.
+    - **Reintentar**: haz clic en **Reintentar** para continuar desde donde se quedó.
+
+    Si cancelas una importación, se considera cancelada por ti y la siguiente empezará desde el principio.
+  </Accordion>
+  <Accordion title="Una importación nueva trae más lecciones que una anterior">
+    El importador ahora detecta mejor el contenido desplegable y las categorías anidadas. Si una importación antigua omitió lecciones, repetirla puede traer más contenido publicado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar contenido de otro curso" icon="copy" href="/membresias/importar-contenido-de-otro-curso">
+    Reutiliza lecciones y módulos entre tus cursos.
+  </Card>
+  <Card title="Cuestionarios y tareas" icon="list-check" href="/membresias/cuestionarios-y-tareas-en-cursos">
+    Recrea las evaluaciones que no se importan.
+  </Card>
+</CardGroup>

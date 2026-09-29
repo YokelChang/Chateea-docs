@@ -1,0 +1,109 @@
+---
+title: "Conecta ShipStation para envíos y tarifas en vivo"
+description: "Sincroniza tus pedidos con ShipStation, muestra tarifas de más de 50 transportistas en el pago y comparte el seguimiento."
+icon: "truck-fast"
+---
+
+ShipStation es una plataforma de envíos que reúne a más de 50 transportistas en un solo panel. Al conectarla con tu tienda de Chateea, los pedidos se sincronizan solos con ShipStation, tus clientes ven tarifas de envío en vivo en el pago y tú generas las etiquetas y das seguimiento desde un solo lugar.
+
+## Qué obtienes con la integración
+
+| Beneficio | Qué significa para ti |
+| --- | --- |
+| Pedidos sincronizados | Cada pedido de tu tienda pasa automáticamente a ShipStation, sin volver a escribirlo. |
+| Tarifas en vivo | Tus clientes comparan en el pago tarifas reales de los transportistas que configures. |
+| Envíos con descuento | Aprovechas las tarifas negociadas de ShipStation o conectas tus propias cuentas de transportista. |
+| Todo en un panel | Generas etiquetas, marcas pedidos como enviados y das seguimiento desde ShipStation. |
+| Seguimiento automático | Los números de seguimiento vuelven a Chateea y se envían a tus clientes con las notificaciones de tu tienda. |
+
+## Antes de empezar
+
+- Una cuenta de ShipStation con al menos un transportista activo.
+- La **API Key** y el **API Secret** de producción (Live) de tu cuenta de ShipStation. Los generas en ShipStation desde **Settings → Account → API Settings**.
+
+<Warning>
+Usa solo credenciales de producción (Live). Las credenciales de prueba no funcionan con la integración.
+</Warning>
+
+## Configura la integración
+
+<Steps>
+  <Step title="Instala la app">
+    Ve al **Marketplace de aplicaciones** o a **Configuración → Integraciones**, busca **ShipStation**, haz clic en **Ver app → Instalar** y confirma con **Permitir e instalar**.
+  </Step>
+  <Step title="Conecta tu cuenta de ShipStation">
+    Abre la app de ShipStation dentro de Chateea y entra en la pestaña **Configuración**. Pega tu **API Key** y tu **API Secret** de producción y haz clic en **Conectar**.
+  </Step>
+  <Step title="Completa la lista de verificación">
+    Antes de terminar, revisa en ShipStation que:
+    - Tienes al menos una dirección de origen creada en **Settings → Shipping → Ship From Locations**.
+    - La opción de paquetes está activada para todos tus transportistas activos en **Settings → Shipping → Packages**.
+    - La moneda de tu cuenta de ShipStation coincide con la moneda de tu tienda.
+
+    Marca las casillas de la lista en la configuración de la integración y haz clic en **Conectar**.
+  </Step>
+  <Step title="Agrega opciones de envío">
+    Haz clic en **+ Agregar opción de envío**. Escribe el nombre que verá el cliente en el pago, elige uno o varios servicios de transportista (por ejemplo, USPS Priority Mail, UPS Ground o FedEx 2Day) y define un **valor de respaldo**: una tarifa fija que se cobra si la tarifa en vivo no está disponible. Haz clic en **Crear**.
+  </Step>
+  <Step title="Prueba el pago">
+    Agrega un producto al carrito de tu tienda, ve a la página de pago y revisa el paso de envío. Deben aparecer las tarifas en vivo o, si no hay, la tarifa de respaldo.
+  </Step>
+</Steps>
+
+<Tip>
+Crea varias opciones de envío (por ejemplo, Estándar, Exprés y Prioritario) eligiendo distintos servicios de transportista en cada una. Así tus clientes eligen entre precio y rapidez.
+</Tip>
+
+## Preparación y seguimiento de pedidos
+
+Una vez conectada, ShipStation se convierte en tu centro de despacho:
+
+1. Los pedidos de tu tienda aparecen automáticamente en tu panel de ShipStation.
+2. Desde ShipStation generas e imprimes las etiquetas, marcas los pedidos como enviados y gestionas el despacho.
+3. Cuando marcas un pedido como enviado, el número de seguimiento se sincroniza con Chateea y se comparte automáticamente con el cliente.
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| No aparecen tarifas en vivo en el pago | Que el cliente haya escrito una dirección de envío válida y que tengas transportistas activos en ShipStation. |
+| Las tarifas salen mal calculadas | Que la moneda de la tienda y la de ShipStation sean la misma. Ajústala en ambas plataformas si hace falta. |
+| No se puede conectar la cuenta | Que estés usando las credenciales de producción, no las de prueba. |
+| Faltan datos en los envíos | Que tus cuentas de transportista, los datos de remitente y destinatario y tus reglas de envío estén bien configurados en ShipStation. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si no hay tarifas en vivo disponibles?">
+    Se cobra automáticamente la tarifa de respaldo que definiste en la opción de envío.
+  </Accordion>
+  <Accordion title="¿Cuántos transportistas puedo usar?">
+    Puedes comparar tarifas en vivo de más de 50 transportistas disponibles en ShipStation.
+  </Accordion>
+  <Accordion title="¿Los pedidos se sincronizan solos?">
+    Sí. Los pedidos pasan automáticamente a ShipStation y el estado del envío se actualiza en ambas plataformas.
+  </Accordion>
+  <Accordion title="¿Cómo recibe el cliente su número de seguimiento?">
+    Al marcar el pedido como enviado en ShipStation, el seguimiento vuelve a Chateea y se envía al cliente en las notificaciones de tu tienda.
+  </Accordion>
+  <Accordion title="¿Puedo usar credenciales de prueba?">
+    No. La integración solo funciona con credenciales de producción.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Zonas y tarifas de envío" icon="truck" href="/tienda/zonas-y-tarifas-de-envio">
+    Configura tarifas manuales para tu tienda.
+  </Card>
+  <Card title="Integración con Shippo" icon="truck-fast" href="/tienda/integracion-shippo">
+    Otra opción para tarifas de envío en vivo.
+  </Card>
+  <Card title="Imprime etiquetas de envío" icon="tag" href="/tienda/imprimir-etiquetas-de-envio">
+    Genera etiquetas desde tus pedidos.
+  </Card>
+  <Card title="Bloquea el pago sin tarifa de envío" icon="ban" href="/tienda/bloquear-pago-sin-tarifa-de-envio">
+    Evita pedidos que no puedes despachar.
+  </Card>
+</CardGroup>

@@ -1,0 +1,75 @@
+---
+title: "El fondo fijo o parallax no se ve en iPhone"
+description: "Por qué las imágenes de fondo fijas no funcionan en iPhone y iPad, y cómo usar una sección alternativa para celulares."
+icon: "mobile-screen"
+---
+
+Si usas una imagen de fondo fija (efecto parallax) en una sección de tu embudo o sitio web y en el iPhone o el iPad no se ve, o se ve cortada o ampliada de más, no es un error de tu página. Es una limitación de Safari en iOS, que bloquea este tipo de animación de fondo.
+
+## Dónde funciona y dónde no
+
+| Dispositivo | Fondo fijo / parallax |
+| --- | --- |
+| iPhone y iPad (Safari en iOS) | No funciona correctamente |
+| Celulares y tablets Android | Funciona |
+| Chromebooks | Funciona |
+| Tablets con Windows | Funciona |
+| Computadoras de escritorio | Funciona |
+
+Es un problema que afecta a la mayoría de las plataformas web, no solo a Chateea, porque depende del navegador del dispositivo.
+
+## Solución: una sección distinta para celulares
+
+La forma más fiable de resolverlo es mantener el efecto parallax en escritorio y mostrar en celulares una versión de la sección con un fondo normal.
+
+<Steps>
+  <Step title="Duplica la sección">
+    En el editor, duplica la sección que tiene el fondo fijo.
+  </Step>
+  <Step title="Cambia el fondo en la copia">
+    En la sección duplicada, cambia el tipo de fondo de **Fijo** (parallax) a una imagen normal, por ejemplo con ajuste de **Cubrir** (cover), o usa un color o un degradado.
+  </Step>
+  <Step title="Define en qué dispositivo se ve cada una">
+    Configura la sección original para que se vea solo en **escritorio** y la copia para que se vea solo en **celular**, desde las opciones de visibilidad por dispositivo de cada sección.
+  </Step>
+  <Step title="Revisa y publica">
+    Usa la vista previa móvil del editor y, sobre todo, prueba la página publicada en un iPhone real antes de dar el cambio por bueno.
+  </Step>
+</Steps>
+
+Los pasos detallados para mostrar u ocultar secciones según el dispositivo están en [Versión distinta para escritorio y móvil](/sitios/version-para-escritorio-y-movil).
+
+<Tip>
+En celular, usa una imagen más vertical o recortada al centro del motivo principal. Así el fondo se ve bien aunque no tenga el efecto parallax.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo forzar el parallax en iPhone con código personalizado?">
+    No hay una solución fiable: Safari en iOS no admite los fondos fijos de la misma forma que los navegadores de escritorio. La opción recomendada es usar una sección alternativa para celulares.
+  </Accordion>
+  <Accordion title="¿Y si uso Chrome en el iPhone?">
+    En iOS todos los navegadores usan el motor de Safari, así que el comportamiento es el mismo.
+  </Accordion>
+  <Accordion title="¿Afecta al SEO tener dos secciones duplicadas?">
+    Evita duplicar textos largos o encabezados principales en ambas versiones. Si la sección es sobre todo visual, el impacto es mínimo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Versión distinta para escritorio y móvil" icon="mobile-screen" href="/sitios/version-para-escritorio-y-movil">
+    Muestra u oculta secciones según el dispositivo.
+  </Card>
+  <Card title="Diseños adaptables a celulares" icon="mobile" href="/sitios/disenos-adaptables-a-moviles">
+    Haz que tus páginas se vean bien en cualquier pantalla.
+  </Card>
+  <Card title="Degradados y desenfoque de fondo" icon="palette" href="/sitios/degradados-y-desenfoque-de-fondo">
+    Alternativas de fondo para tus secciones.
+  </Card>
+  <Card title="Video de fondo" icon="film" href="/sitios/video-de-fondo">
+    Usa un video como fondo de secciones y filas.
+  </Card>
+</CardGroup>

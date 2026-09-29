@@ -1,0 +1,125 @@
+---
+title: "Vende productos de impresión bajo demanda con Printify"
+description: "Conecta Printify para importar productos, enviar pedidos a producción automáticamente y recibir el seguimiento en tu tienda."
+icon: "shirt"
+---
+
+Printify es una plataforma de impresión bajo demanda con más de 1.000 productos personalizables y más de 85 proveedores de impresión en distintos países. Al conectarla con tu tienda de Chateea vendes mercancía con tu marca sin comprar inventario: cada artículo se imprime solo cuando alguien lo compra, y el pedido pasa solo a Printify para su producción y envío.
+
+## Qué obtienes con la integración
+
+- **Lanzamientos rápidos:** más de 1.000 productos para crear nuevas líneas en poco tiempo.
+- **Precio y rapidez por región:** más de 85 proveedores de impresión con tarifas competitivas y entregas locales más rápidas.
+- **Catálogo siempre al día:** variantes, precios, imágenes, descripciones y mockups se sincronizan automáticamente.
+- **Despacho sin intervención:** los pedidos pasan a Printify y entran a producción sin que los vuelvas a escribir.
+- **Seguimiento completo:** recibes actualizaciones de despachos parciales y completos.
+- **Varias tiendas, una cuenta:** una sola cuenta de Printify puede alimentar varias tiendas.
+
+## Antes de empezar
+
+- Necesitas una cuenta de Printify y un **token de API** de Printify.
+- Todo el diseño se hace en Printify. Chateea solo gestiona el inventario y los pedidos de los productos ya sincronizados.
+
+## Genera tu token de API en Printify
+
+<Steps>
+  <Step title="Abre tu cuenta de Printify">
+    Inicia sesión en Printify y haz clic en **Account**.
+  </Step>
+  <Step title="Entra en Connections">
+    Haz clic en **Connections** y luego en **Generate**, dentro de **API Tokens**.
+  </Step>
+  <Step title="Crea el token">
+    Ponle un nombre, elige los permisos (scopes) y haz clic en **Generate**.
+  </Step>
+  <Step title="Cópialo">
+    Haz clic en **Copy to Clipboard** y guárdalo en un lugar seguro.
+  </Step>
+</Steps>
+
+## Conecta Printify con Chateea
+
+<Steps>
+  <Step title="Instala la app">
+    Abre el **Marketplace de aplicaciones**, busca **Printify** y haz clic en **Instalar**.
+  </Step>
+  <Step title="Pega el token">
+    Pega tu token de API en el campo **Printify Token** y haz clic en **Continuar**.
+  </Step>
+  <Step title="Elige la tienda y la moneda">
+    Elige una tienda de Printify existente o crea una nueva. En **Convertir la moneda del producto a**, selecciona la moneda en la que quieres ver los precios de los productos importados y haz clic en **Conectar**.
+  </Step>
+  <Step title="Importa tus productos">
+    Importa los productos y publícalos en tu tienda.
+  </Step>
+  <Step title="Activa el despacho automático">
+    En Printify, activa el despacho automático para que los pedidos entren a producción solos.
+  </Step>
+</Steps>
+
+<Warning>
+Los productos importados se publican en vivo por defecto. Revísalos antes de empezar a vender.
+</Warning>
+
+## Envíos con tarifas en vivo
+
+Printify usa un perfil de envío propio para mostrar tarifas en vivo en el pago. Chateea crea ese perfil automáticamente cuando sincronizas productos de Printify.
+
+- Los productos asignados al perfil de Printify muestran sus tarifas en vivo en el pago.
+- Si quitas un producto de ese perfil, deja de recibir tarifas en vivo.
+
+## Detalles importantes
+
+- **Desinstalar no borra productos:** los productos importados siguen en tu catálogo aunque quites la integración.
+- **Cobertura del proveedor:** Printify solo crea el pedido si un proveedor de impresión puede atender el país de destino, la variante y el método de envío elegidos.
+- **Sin cobro extra de Chateea:** solo pagas a Printify la producción y el envío.
+
+## Pedidos, cambios y devoluciones
+
+| Situación | Qué pasa |
+| --- | --- |
+| Un cliente compra | Cada pago en tu tienda crea un pedido equivalente en Printify, con impuestos y preferencias de envío incluidos. |
+| El pedido avanza | Printify envía actualizaciones en tiempo real (en producción, enviado, entregado), incluso por artículo si el envío es parcial. |
+| Borras un producto en Printify | Se desactiva en tu catálogo de Chateea en la siguiente sincronización. |
+| Haces un reembolso | Lo procesas en Chateea y se envía una solicitud de reembolso a Printify por los artículos aún no enviados. |
+| No hay proveedor para la dirección | Printify rechaza el pedido y en Chateea aparece como sin despachar por falta de proveedor. Edita el pedido y elige una variante o un proveedor que sí entregue en esa dirección. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo diseñar productos dentro de Chateea?">
+    No. Los diseños y mockups se crean en Printify. Chateea muestra lo que importas.
+  </Accordion>
+  <Accordion title="¿Printify elige el proveedor más cercano?">
+    Si el proveedor que elegiste tiene varias plantas, Printify envía el pedido a la más cercana.
+  </Accordion>
+  <Accordion title="¿Puedo despachar un pedido a mano en lugar de automáticamente?">
+    Sí. Desactiva el despacho automático y gestiónalo en Printify. Chateea seguirá recibiendo las actualizaciones de estado.
+  </Accordion>
+  <Accordion title="¿Los cambios que hago en Printify se sincronizan?">
+    Sí. Descripciones, mockups, variantes, precios e imágenes se actualizan automáticamente.
+  </Accordion>
+  <Accordion title="¿Tengo que volver a escribir los datos del pedido?">
+    No. Los pedidos pasan solos a Printify.
+  </Accordion>
+  <Accordion title="¿Puedo conectar una cuenta de Printify a varias tiendas?">
+    Sí. Los pedidos y las métricas se separan por tienda, mientras que la creación de productos y la facturación quedan centralizadas en Printify.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integración con Printful" icon="shirt" href="/tienda/integracion-printful">
+    Otra opción de impresión bajo demanda.
+  </Card>
+  <Card title="Integración con ShipStation" icon="truck-fast" href="/tienda/integracion-shipstation">
+    Centraliza tus envíos y etiquetas.
+  </Card>
+  <Card title="Crea tu tienda en línea" icon="store" href="/tienda/crear-tienda-en-linea">
+    Configura la tienda paso a paso.
+  </Card>
+  <Card title="Migra tu tienda desde Shopify" icon="right-left" href="/tienda/migrar-tienda-desde-shopify">
+    Trae tu catálogo a Chateea.
+  </Card>
+</CardGroup>

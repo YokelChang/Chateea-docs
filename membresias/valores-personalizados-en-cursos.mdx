@@ -1,0 +1,51 @@
+---
+title: "Valores personalizados en cursos"
+description: "Personaliza lecciones, ofertas y cuestionarios con datos del alumno, del curso, de tiempo o de ubicación."
+icon: "wand-magic-sparkles"
+---
+
+Puedes personalizar el contenido de tus cursos con valores dinámicos para que cada alumno sienta que el material le habla a él: saludarlo por su nombre, mostrar datos del curso en el texto o adaptar un mensaje a su zona horaria. Los valores se reemplazan automáticamente por los datos de cada alumno al mostrar el contenido.
+
+## Tipos de valores disponibles
+
+| Tipo | Para qué sirve |
+| --- | --- |
+| **Del contacto** | Dirigirte al alumno por su nombre o usar otros datos de su ficha |
+| **De tiempo** | Adaptar el contenido a la zona horaria o a fechas del alumno |
+| **Del curso** | Insertar datos como el título de la categoría o de la lección para crear contenido dinámico |
+| **De ubicación** | Mostrar contenido según la región |
+
+## Dónde puedes usarlos
+
+- En las **descripciones de las lecciones**.
+- En las **ofertas**, por ejemplo en su descripción.
+- En las **preguntas de los cuestionarios**.
+
+## Ejemplo
+
+En la descripción de la primera lección puedes escribir:
+
+```text
+Hola {{contact.first_name}}, bienvenido al primer módulo. Aquí empieza tu camino.
+```
+
+Cada alumno verá su propio nombre en lugar de la variable.
+
+<Tip>
+  Usa el selector de valores del editor para insertar la variable en lugar de escribirla a mano. Así evitas errores de escritura que harían que se muestre el texto literal en vez del dato.
+</Tip>
+
+<Note>
+  Si un alumno no tiene el dato en su ficha (por ejemplo, no hay nombre registrado), el valor puede aparecer vacío. Revisa que tus formularios de inscripción pidan los datos que vas a usar.
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Variables y valores personalizados" icon="code" href="/variables/introduccion">
+    Cómo funcionan los valores dinámicos en Chateea.
+  </Card>
+  <Card title="Crea, lanza y vende tu curso online" icon="graduation-cap" href="/comercio/curso-online">
+    El proceso completo para publicar un curso.
+  </Card>
+</CardGroup>

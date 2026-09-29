@@ -1,0 +1,129 @@
+---
+title: "Instalar y usar el plugin de Chateea para WordPress"
+description: "Instala el plugin de Chateea en WordPress, activa el chat, publica embudos como páginas, muestra valores personalizados y resuelve problemas."
+icon: "plug"
+---
+
+El plugin de Chateea para WordPress conecta tu sitio WordPress con tu cuenta de Chateea. Con él activas el chat web, publicas pasos de tus embudos como páginas de WordPress, muestras valores personalizados que se actualizan solos e insertas formularios, encuestas y calendarios, todo sin pegar código a mano.
+
+Esta guía se centra en instalarlo, activar sus funciones principales y resolver los problemas más comunes.
+
+## Qué puedes hacer con el plugin
+
+| Función | Para qué sirve |
+| --- | --- |
+| **Widget de chat** | Muestra el chat web de tu cuenta en el sitio. Las conversaciones llegan a **Conversaciones** en Chateea. |
+| **Embudos como páginas de WordPress** | Publica un paso de un embudo de Chateea en una URL de tu dominio de WordPress, con tu marca y carga rápida. |
+| **Valores personalizados** | Muestra datos de tu cuenta (teléfono, dirección, oferta vigente) con un código corto que se actualiza automáticamente. |
+| **Formularios, encuestas y calendarios** | Inserta tus recursos de Chateea con bloques de WordPress o con códigos cortos. |
+
+## Instalar el plugin
+
+### Si tu sitio está alojado en Chateea
+
+El plugin se instala automáticamente al crear el sitio. Solo tienes que comprobar que esté conectado:
+
+<Steps>
+  <Step title="Entra a WP Admin">
+    Abre el escritorio de WordPress de tu sitio.
+  </Step>
+  <Step title="Abre el plugin">
+    En el menú lateral de WordPress, abre la pestaña del plugin de Chateea.
+  </Step>
+  <Step title="Revisa el estado">
+    Confirma que el estado de conexión indique **Conectado** (Connected).
+  </Step>
+</Steps>
+
+### Si tu sitio está alojado en otro proveedor
+
+<Steps>
+  <Step title="Agrega el plugin">
+    En WP Admin, ve a **Plugins → Añadir nuevo**. Busca el plugin oficial de Chateea o sube el archivo `.zip` del plugin con **Subir plugin**.
+  </Step>
+  <Step title="Instala y activa">
+    Haz clic en **Instalar ahora** y luego en **Activar**.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Abre el plugin e inicia sesión con tus credenciales de Chateea para vincular el sitio con tu cuenta.
+  </Step>
+</Steps>
+
+<Note>
+Si no encuentras el plugin en el buscador de WordPress, escribe a soporte de Chateea en **help@chateea.com** y te indicamos cómo obtenerlo.
+</Note>
+
+## Activar el widget de chat
+
+<Steps>
+  <Step title="Abre la configuración del plugin">
+    En WP Admin, abre el plugin de Chateea y ve a la sección del widget de chat.
+  </Step>
+  <Step title="Actívalo">
+    Marca la casilla para habilitar el widget de chat.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios y visita tu sitio para comprobar que aparece.
+  </Step>
+</Steps>
+
+## Publicar un embudo como página de WordPress
+
+<Steps>
+  <Step title="Abre la sección de embudos">
+    En el plugin, ve a **Embudos** (Funnels) y haz clic en **Agregar nuevo**.
+  </Step>
+  <Step title="Elige embudo y paso">
+    Selecciona el embudo y el paso que quieres mostrar en los desplegables.
+  </Step>
+  <Step title="Asigna la URL">
+    Escribe el slug de WordPress donde se publicará, por ejemplo `oferta-especial` para que quede en `tudominio.com/oferta-especial`.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios y abre la URL para comprobar que el paso se muestra correctamente.
+  </Step>
+</Steps>
+
+<Tip>
+Publicar el embudo en tu propio dominio mantiene al visitante en tu sitio, refuerza tu marca y evita perder la atribución de la visita.
+</Tip>
+
+## Mostrar valores personalizados
+
+El plugin genera un código corto para cada valor personalizado de tu cuenta. Cópialo desde la sección de valores personalizados del plugin y pégalo en cualquier página o entrada. El código incluye la clave del valor, por ejemplo `business_phone`.
+
+Si escribes el código a mano, usa la clave exactamente como está en tu cuenta y **sin llaves**. Cuando cambies el valor en Chateea, se actualiza solo en todo tu sitio. Más detalles en [Valores personalizados en WordPress](/sitios/valores-personalizados-en-wordpress).
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="El widget de chat no aparece">
+    Borra la caché de tu plugin de caché de WordPress y la del servidor, y recarga la página forzando la actualización del navegador (Ctrl + F5 o Cmd + Shift + R). Comprueba también que el widget esté activado y que el plugin esté conectado.
+  </Accordion>
+  <Accordion title="El código corto de valor personalizado se ve en blanco">
+    Verifica que el valor personalizado tenga contenido en tu cuenta de Chateea y que la clave del código corto sea exactamente la misma, sin llaves.
+  </Accordion>
+  <Accordion title="El plugin aparece desconectado">
+    Si cambiaste la clave de API de tu cuenta hace poco, actualízala en la configuración del plugin, o vuelve a iniciar sesión desde el plugin para reconectar el sitio.
+  </Accordion>
+  <Accordion title="El embudo publicado en WordPress no se ve igual que en Chateea">
+    Algunos temas o plugins de optimización modifican los estilos de la página. Prueba a desactivar temporalmente el plugin de optimización o de caché para identificar el conflicto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con WordPress" icon="globe" href="/sitios/wordpress-primeros-pasos">
+    Crea y administra tu sitio WordPress en Chateea.
+  </Card>
+  <Card title="Valores personalizados en WordPress" icon="code" href="/sitios/valores-personalizados-en-wordpress">
+    Muestra datos de tu cuenta en tu sitio.
+  </Card>
+  <Card title="Instalar el widget de chat" icon="message" href="/sitios/instalar-widget-de-chat">
+    Configura el chat web de tu cuenta.
+  </Card>
+  <Card title="Avisos de pago fallido en WordPress" icon="credit-card" href="/sitios/wordpress-avisos-de-pago-fallido">
+    Alertas en WP Admin cuando falla un cobro.
+  </Card>
+</CardGroup>

@@ -1,0 +1,135 @@
+---
+title: "Automatizar el acceso a grupos con flujos de trabajo"
+description: "Usa disparadores y acciones de flujos para reaccionar cuando alguien gana o pierde acceso a un grupo, u otorgarlo y revocarlo solo."
+icon: "bolt"
+---
+
+Con los flujos de trabajo puedes automatizar el acceso a los grupos de tu comunidad: reaccionar cuando alguien gana o pierde acceso, o dar y quitar acceso como parte de un proceso más grande. Así la membresía del grupo se integra con el resto del recorrido de tu cliente (compras, cancelaciones, seguimientos) sin tareas manuales.
+
+La clave es distinguir si el cambio de acceso debe **iniciar** el flujo o si el flujo debe **hacer** el cambio.
+
+## Disparadores y acciones disponibles
+
+| Tipo | Nombre | Qué hace |
+| --- | --- | --- |
+| Disparador | **Acceso al grupo otorgado** | Inicia el flujo después de que un miembro obtiene acceso a un grupo |
+| Disparador | **Acceso al grupo revocado** | Inicia el flujo después de que un miembro pierde el acceso a un grupo |
+| Acción | **Otorgar acceso al grupo** | Da acceso a un grupo al contacto que está en el flujo |
+| Acción | **Revocar acceso al grupo** | Quita el acceso a un grupo al contacto que está en el flujo |
+
+<Tip>
+  Regla rápida: usa un **disparador** cuando el cambio de acceso debe poner en marcha la automatización. Usa una **acción** cuando el flujo es el que debe cambiar el acceso.
+</Tip>
+
+## Para qué te sirve
+
+- **Bienvenida automática:** das acceso al grupo después de otro evento, como una compra.
+- **Retiro automático de acceso:** quitas el acceso cuando se cumplen ciertas condiciones, como una cancelación o un reembolso.
+- **Seguimiento según el acceso:** envías mensajes o avisos internos cuando alguien entra o sale.
+- **Reglas coherentes:** aplicas la misma lógica a todos los contactos que califican.
+- **Todo conectado:** combinas el acceso a la comunidad con otros disparadores, condiciones y acciones.
+
+## Antes de empezar
+
+- Crea o identifica el grupo que el flujo va a vigilar o gestionar.
+- Decide si el flujo debe **reaccionar** a un cambio de acceso o **hacer** el cambio.
+- Define qué evento o condición hará entrar al contacto al flujo.
+- Ten a mano un contacto de prueba.
+
+No confundas estos casos:
+
+| Caso | Qué usar |
+| --- | --- |
+| Reaccionar después de que se otorga o revoca el acceso | Disparadores **Acceso al grupo otorgado** o **Acceso al grupo revocado** |
+| Cambiar el acceso dentro del flujo | Acciones **Otorgar acceso al grupo** o **Revocar acceso al grupo** |
+| Actuar sobre solicitudes pendientes, antes de aprobarlas | Disparador **Solicitó unirse al grupo** |
+| Gestionar el acceso a un canal privado | Disparadores y acciones específicos de canales privados |
+
+## Cómo crear un flujo que reaccione al acceso
+
+Usa este patrón cuando el acceso ya se otorgó o se retiró y quieres que eso active mensajes u otras acciones.
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo**, haz clic en **+ Crear flujo de trabajo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **+ Agregar**, luego en **Agregar disparador**, busca **Acceso al grupo otorgado** o **Acceso al grupo revocado**, elige el grupo que quieres vigilar y guarda.
+  </Step>
+  <Step title="Agrega las acciones de seguimiento">
+    Haz clic en el **+** debajo del disparador y configura lo que debe pasar: un mensaje de bienvenida, una notificación interna, una etiqueta u otras acciones y condiciones.
+  </Step>
+  <Step title="Prueba y publica">
+    Revisa el disparador y las acciones, haz clic en **Probar flujo**, elige un contacto de prueba y pulsa **Ejecutar prueba**. Cuando todo funcione como esperas, cambia el flujo de **Borrador** a **Publicado**.
+  </Step>
+</Steps>
+
+<Note>
+  Guardar no activa el flujo. Mientras esté en **Borrador**, no se ejecuta para ningún contacto.
+</Note>
+
+## Cómo otorgar o revocar acceso desde un flujo
+
+Usa este patrón cuando otro evento (una compra, un formulario, una cancelación) debe dar o quitar el acceso al grupo.
+
+<Steps>
+  <Step title="Elige el disparador">
+    En **Automatización → Flujos de trabajo**, crea un flujo nuevo o abre uno existente, y agrega el disparador que debe inscribir al contacto. Guarda.
+  </Step>
+  <Step title="Agrega la acción de acceso">
+    Haz clic en **+ Agregar** debajo del disparador o del paso anterior, elige **Agregar acción** y busca **Otorgar acceso al grupo** o **Revocar acceso al grupo**. Selecciona el grupo y guarda.
+  </Step>
+  <Step title="Completa, prueba y publica">
+    Añade los demás pasos que necesites, revisa que el grupo y la acción sean los correctos, prueba con un contacto y confirma que el acceso cambie como esperas. Luego cambia el flujo de **Borrador** a **Publicado**.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- **Separa disparadores de acciones:** los disparadores reaccionan a un cambio; las acciones lo provocan.
+- **Revisa el grupo seleccionado** en cada disparador y acción antes de publicar.
+- **Usa nombres descriptivos:** incluye el evento y el grupo en el nombre del flujo, por ejemplo "Compra curso > Otorgar acceso grupo VIP".
+- **Prueba con casos reales:** verifica tanto la entrada al flujo como el estado final del acceso.
+- **Evita bucles:** si un flujo cambia el acceso y otro flujo arranca con ese mismo cambio, revisa el recorrido completo para que un contacto no entre y salga una y otra vez.
+- **Usa el disparador correcto para solicitudes:** si quieres actuar antes de aprobar a alguien, usa **Solicitó unirse al grupo**.
+- **Mantén aparte la lógica de canales privados:** usa sus disparadores y acciones específicos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre Acceso al grupo otorgado y Otorgar acceso al grupo?">
+    **Acceso al grupo otorgado** es un disparador: inicia el flujo después de que alguien obtiene acceso. **Otorgar acceso al grupo** es una acción: da el acceso mientras el contacto recorre el flujo.
+  </Accordion>
+  <Accordion title="¿Y entre Acceso al grupo revocado y Revocar acceso al grupo?">
+    **Acceso al grupo revocado** inicia un flujo después de que se retira el acceso. **Revocar acceso al grupo** es una acción que retira el acceso durante el flujo.
+  </Accordion>
+  <Accordion title="¿Puedo automatizar las solicitudes para unirse a un grupo?">
+    Sí. Usa el disparador **Solicitó unirse al grupo**, que se activa con una solicitud pendiente y puede usar las respuestas a las preguntas de aprobación antes de dar el acceso.
+  </Accordion>
+  <Accordion title="¿Puedo enviar un aviso cuando alguien gana o pierde acceso?">
+    Sí. Usa **Acceso al grupo otorgado** o **Acceso al grupo revocado** como disparador y agrega la acción de mensaje o notificación que necesites.
+  </Accordion>
+  <Accordion title="¿Otro evento puede dar o quitar acceso automáticamente?">
+    Sí. Configura ese evento como disparador y agrega **Otorgar acceso al grupo** o **Revocar acceso al grupo** como acción.
+  </Accordion>
+  <Accordion title="¿Estos disparadores y acciones sirven para canales privados?">
+    No. Los canales privados tienen sus propias opciones: **Acceso a canal privado otorgado**, **Acceso a canal privado revocado**, **Otorgar acceso a canal privado** y **Revocar acceso a canal privado**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Automatizar solicitudes para unirse" icon="user-plus" href="/membresias/automatizar-solicitudes-para-unirse-a-grupos">
+    Gestiona solicitudes pendientes con flujos.
+  </Card>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles.
+  </Card>
+  <Card title="Lista de acciones" icon="list-check" href="/automatizaciones/lista-de-acciones">
+    Todas las acciones disponibles.
+  </Card>
+  <Card title="Primeros pasos con flujos de trabajo" icon="diagram-project" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Aprende a crear tu primer flujo.
+  </Card>
+</CardGroup>

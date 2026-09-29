@@ -1,0 +1,172 @@
+---
+title: "Conecta tu tienda a Google Merchant Center"
+description: "Sincroniza tu catálogo con Google para aparecer en listados gratuitos de Búsqueda y Shopping, sin mantener un feed aparte."
+icon: "bag-shopping"
+---
+
+Google Merchant Center es la herramienta gratuita de Google donde los comercios cargan y administran la información de sus productos. Al conectarla con tu tienda de Chateea, tu catálogo se sincroniza solo con Google, sin que tengas que mantener un feed de productos aparte. Cuando Google aprueba tus productos, pueden aparecer en listados gratuitos de Búsqueda, Shopping, Imágenes, Lens, YouTube, Maps y Gemini.
+
+<Note>
+Conectar Merchant Center no crea campañas de Google Ads. Para anuncios de Shopping pagados necesitas configurar Google Ads por separado.
+</Note>
+
+## Qué hace la integración
+
+- Sincroniza los productos que cumplen los requisitos y están asignados a la tienda conectada.
+- Envía la información del producto, las imágenes y las variantes compatibles.
+- Mantiene actualizados el precio, el inventario y la disponibilidad.
+- Sincroniza automáticamente los productos nuevos y los cambios en los existentes.
+- Muestra errores y advertencias de sincronización y problemas que pueden afectar la aprobación de Google.
+- Permite una **Sincronización forzada** manual cuando la necesitas.
+- Admite varias conexiones entre tiendas y cuentas de Merchant Center.
+
+## Antes de empezar
+
+- Una cuenta de Google.
+- Una tienda en línea con un **dominio conectado y activo**. Google recibe la URL de la página de cada producto, así que el dominio es obligatorio.
+- Una cuenta de Google Merchant Center, o la posibilidad de crearla durante la configuración.
+- El país y el idioma de tu **origen de envío** configurados.
+- Productos asignados a la tienda que vas a conectar.
+
+Google también exige verificar la URL de tu tienda. En algunos casos lo hace automáticamente y, si no puede, te da opciones para verificarla a mano. Consulta cómo [crear y configurar una cuenta de Merchant Center](https://support.google.com/merchants/answer/188924) y cómo [verificar tu sitio web](https://support.google.com/merchants/answer/176793).
+
+## Conecta tu tienda
+
+<Steps>
+  <Step title="Instala la app">
+    Abre el **Marketplace de aplicaciones**, busca **Google Merchant Center** e instala la app. Después, inicia la conexión con tu cuenta de Google.
+  </Step>
+  <Step title="Conecta tu cuenta de Google">
+    Inicia sesión con una cuenta de Google que ya tenga acceso a tu Merchant Center o que vayas a usar para crearlo y administrarlo. Completa la autorización. La app obtiene sola las cuentas de Merchant Center disponibles, así que no necesitas escribir ningún ID.
+  </Step>
+  <Step title="Elige o crea la cuenta de Merchant Center">
+    Si tienes cuentas disponibles, selecciona la que quieres conectar. Si no tienes una, usa la opción **Crear nueva cuenta de GMC** o sigue las instrucciones de la app. La cuenta se crea directamente con Google, no la crea la integración. Es posible que Google te pida completar tus datos de negocio y su verificación antes de que tus productos puedan aparecer.
+  </Step>
+  <Step title="Verifica el dominio de la tienda">
+    Confirma que el dominio conectado a tu tienda está verificado en Merchant Center. Si Google no puede verificarlo automáticamente, sigue sus [instrucciones de verificación](https://support.google.com/merchants/answer/11586344).
+  </Step>
+  <Step title="Selecciona la tienda">
+    Elige la tienda que quieres asociar a la cuenta de Merchant Center. Solo se sincronizan los productos asignados a esa tienda.
+  </Step>
+  <Step title="Confirma la conexión">
+    Confirma la asociación entre tienda y Merchant Center. La primera sincronización empieza automáticamente.
+  </Step>
+</Steps>
+
+<Info>
+Que un producto se sincronice significa que se envió a Google, no que ya esté aprobado o visible. Google puede tardar en procesarlo y revisarlo.
+</Info>
+
+## Qué productos se sincronizan
+
+| Se sincronizan | No se sincronizan |
+| --- | --- |
+| Productos con opción de **pago único** asignados a la tienda conectada | Productos que solo tienen opciones de pago recurrente |
+| Información del producto, imágenes, variantes, precio, inventario y disponibilidad | Productos no asignados a la tienda conectada |
+
+Google tiene sus propios requisitos de datos y políticas. Que la integración admita un producto no garantiza que Google lo apruebe. Revisa la [especificación de datos de productos de Google](https://support.google.com/merchants/answer/7052112).
+
+## La fuente de datos en Merchant Center
+
+Al conectar la integración se crea en Merchant Center una **fuente de datos** que recibe los productos de tu tienda. Se crea con el país y el idioma de tu origen de envío. Puedes identificarla en la sección de fuentes de datos de tu Merchant Center.
+
+<Warning>
+No borres esa fuente de datos salvo que sea necesario. Si la eliminas, se borran de Merchant Center todos los productos sincronizados a través de ella. Si la borraste por error, usa **Sincronización forzada**: se crea una fuente nueva y se vuelven a enviar los productos.
+</Warning>
+
+Más información sobre las [fuentes de datos de Merchant Center](https://support.google.com/merchants/answer/7439058).
+
+## Cuándo usar la sincronización forzada
+
+La sincronización es automática, así que usa **Sincronización forzada** solo cuando:
+
+- Un cambio reciente no aparece en Merchant Center.
+- Necesitas volver a enviar productos.
+- Se borró la fuente de datos.
+- Quieres refrescar el catálogo a mano.
+
+## Aprobación, errores y advertencias
+
+Google revisa los productos después de recibirlos y les asigna estados como **En revisión**, **Procesando**, **Aprobado**, **Limitado** o **No aprobado**. La aprobación la decide Google, no la integración.
+
+La integración te muestra los errores y advertencias que pueden impedir la aprobación, por ejemplo:
+
+- Información del producto faltante o no válida
+- Datos que no cumplen los requisitos de Google
+- Problemas de configuración de Merchant Center
+- Problemas del sitio web o del dominio
+- Incumplimientos de políticas
+- Datos del negocio incompletos
+
+Cuando esté disponible, usa el detalle del problema para ir al producto o a la configuración afectada y corregirla. Revisa también la sección [Requiere atención](https://support.google.com/merchants/answer/12153802) de Merchant Center y, después de corregir, [solicita una nueva revisión](https://support.google.com/merchants/answer/9242973) si aplica.
+
+## Quita una conexión
+
+Puedes desvincular una tienda de su cuenta de Merchant Center. Después de hacerlo:
+
+- Los cambios futuros de esa tienda ya no se sincronizan.
+- Puedes conectar la tienda a otra cuenta de Merchant Center.
+- La cuenta de Merchant Center queda libre para otra conexión.
+
+Quitar la conexión no cambia las políticas propias de Google sobre tus productos o tu cuenta.
+
+## Listados gratuitos y anuncios de Shopping
+
+Merchant Center entrega a Google los datos de tus productos. Con ellos, los productos aprobados pueden aparecer en listados gratuitos sin pagar publicidad. Para campañas de Shopping pagadas necesitas una cuenta de Google Ads [vinculada a Merchant Center](https://support.google.com/merchants/answer/6159060). Más información sobre [listados gratuitos](https://support.google.com/merchants/answer/9199328) y [anuncios de Shopping](https://support.google.com/merchants/answer/6149970).
+
+## Solución de problemas
+
+| Problema | Qué hacer |
+| --- | --- |
+| Mis productos no se sincronizan | Revisa que la tienda siga conectada, que el producto esté asignado a la tienda y tenga pago único, que el dominio esté activo, que exista la fuente de datos y que no haya errores en la integración. Si todo está bien, usa **Sincronización forzada**. |
+| El producto se sincronizó pero no aparece en Google | La sincronización y la aprobación son procesos distintos. Revisa el estado del producto y los problemas que reporta Google. |
+| Mi producto no fue aprobado | Revisa el error en la integración y en **Requiere atención** de Merchant Center, corrige el problema y solicita otra revisión si aplica. |
+| Mi dominio no está verificado | Completa la verificación de la URL en Merchant Center, automática o manual. |
+| Borré la fuente de datos | Usa **Sincronización forzada** para crearla de nuevo y reenviar los productos. |
+| No puedo conectar una tienda o una cuenta | Cada tienda y cada cuenta de Merchant Center solo pueden estar en una conexión activa. Quita la conexión existente antes de crear la nueva. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Conectar mi tienda garantiza que mis productos aparezcan en Google?">
+    No. La integración envía los productos a Merchant Center y Google decide si los aprueba y dónde los muestra.
+  </Accordion>
+  <Accordion title="¿Puedo conectar varias tiendas?">
+    Sí. Puedes tener varias conexiones, pero cada tienda y cada cuenta de Merchant Center solo pueden estar en una conexión activa a la vez.
+  </Accordion>
+  <Accordion title="¿Los productos nuevos se sincronizan solos?">
+    Sí. Después de la conexión inicial, los productos nuevos asignados a la tienda se envían automáticamente.
+  </Accordion>
+  <Accordion title="¿Los cambios de precio e inventario se sincronizan solos?">
+    Sí. Precio, inventario, disponibilidad, información, imágenes y variantes se actualizan automáticamente.
+  </Accordion>
+  <Accordion title="¿Se admiten productos recurrentes?">
+    No. Por ahora solo se sincronizan productos con opción de pago único.
+  </Accordion>
+  <Accordion title="¿Tengo que crear un feed de productos a mano?">
+    No. La integración crea y administra la fuente de datos por ti.
+  </Accordion>
+  <Accordion title="¿La integración crea mi cuenta de Merchant Center?">
+    No. Si no tienes una, usa la opción de creación o las instrucciones de la app y completa el proceso con Google.
+  </Accordion>
+  <Accordion title="¿La integración publica anuncios de Google Shopping?">
+    No. Solo sincroniza tu catálogo. Los anuncios pagados requieren configurar Google Ads.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="SEO de productos" icon="magnifying-glass" href="/tienda/seo-de-productos">
+    Mejora cómo aparecen tus productos en buscadores.
+  </Card>
+  <Card title="Vende en Facebook e Instagram" icon="share-nodes" href="/tienda/vender-en-facebook-e-instagram">
+    Lleva tu catálogo a las redes sociales.
+  </Card>
+  <Card title="Conecta un dominio" icon="globe" href="/sitios/conectar-dominio-raiz-o-subdominio">
+    Configura el dominio de tu tienda.
+  </Card>
+  <Card title="Zonas y tarifas de envío" icon="truck" href="/tienda/zonas-y-tarifas-de-envio">
+    Define tu origen de envío y tus tarifas.
+  </Card>
+</CardGroup>

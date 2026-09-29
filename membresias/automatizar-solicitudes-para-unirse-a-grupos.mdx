@@ -1,0 +1,109 @@
+---
+title: "Automatiza las solicitudes para unirse a grupos"
+description: "Aprueba, rechaza o filtra con IA las solicitudes a tus grupos de comunidad según las respuestas a las preguntas de ingreso."
+icon: "user-check"
+---
+
+Si tu comunidad tiene grupos privados con preguntas de ingreso, revisar cada solicitud a mano deja de ser viable cuando crece. Con el disparador **Solicitud para unirse a un grupo** (Requested to Join Group) puedes crear un flujo de trabajo que revise, clasifique y apruebe o rechace las solicitudes según lo que cada persona respondió.
+
+## Para qué sirve
+
+- **Menos trabajo manual**: las solicitudes se procesan solas y tú mantienes el control de quién entra.
+- **Decisiones según las respuestas**: el flujo usa lo que la persona contestó en las preguntas de ingreso.
+- **Filtro de spam con IA**: pasa las respuestas a una acción GPT para detectar solicitudes de baja calidad o sospechosas.
+- **Mejor experiencia**: quien cumple los requisitos entra más rápido, sin esperar tu revisión.
+
+## Filtros del disparador
+
+| Filtro | Qué hace |
+| --- | --- |
+| **Grupo** | Elige el grupo de la comunidad que vigila el flujo. Se dispara cuando alguien pide unirse a ese grupo. Puedes crear reglas distintas para cada grupo |
+| **Respuestas a las preguntas de ingreso** | Al elegir el grupo, cada pregunta configurada aparece como un filtro propio. Así el flujo solo se dispara con ciertas respuestas |
+
+Las respuestas no solo sirven como filtro del disparador: también están disponibles en todo el flujo como variables.
+
+## Cómo usar las respuestas dentro del flujo
+
+<CardGroup cols={2}>
+  <Card title="Condiciones Si/No" icon="code-branch">
+    Evalúa una respuesta, por ejemplo si "¿Por qué quieres unirte?" contiene ciertas palabras, y envía a la persona por caminos de aprobación distintos.
+  </Card>
+  <Card title="Detección de spam con GPT" icon="robot">
+    Envía las respuestas a una acción GPT con una instrucción como "¿Esta respuesta parece spam o una solicitud legítima?" y actúa según el resultado.
+  </Card>
+</CardGroup>
+
+Con la evaluación de la IA, el flujo puede aprobar las solicitudes genuinas, marcar las dudosas para revisión manual y rechazar el spam evidente.
+
+## Configura la automatización
+
+<Steps>
+  <Step title="Crea un flujo de trabajo">
+    Ve a **Automatización**, pulsa **Crear flujo de trabajo** y dale un nombre descriptivo, por ejemplo "Aprobación automática grupo Premium".
+  </Step>
+  <Step title="Agrega el disparador">
+    Pulsa **Agregar disparador** y elige **Solicitud para unirse a un grupo**.
+  </Step>
+  <Step title="Selecciona el grupo">
+    En el filtro **Grupo**, elige el grupo que quieres vigilar. Se cargan automáticamente las preguntas de ingreso de ese grupo.
+  </Step>
+  <Step title="Filtra por respuestas (opcional)">
+    Si quieres que el flujo solo se dispare con ciertas respuestas, usa los filtros de las preguntas. Por ejemplo: "Sector = Marketing" o "Nivel de experiencia = Avanzado".
+  </Step>
+  <Step title="Define la lógica">
+    Agrega las acciones que necesites. Las más comunes:
+
+    - Una condición **Si/No** que evalúe las respuestas.
+    - Una acción **GPT** para revisar la calidad o detectar spam.
+    - **Aprobar la solicitud** y agregar a la persona al grupo cuando cumple los requisitos.
+    - Una **notificación** al equipo para revisar manualmente los casos dudosos.
+    - **Rechazar la solicitud** si se detecta spam.
+  </Step>
+  <Step title="Publica el flujo">
+    Cambia el flujo a **Publicar**. Desde ese momento vigila las solicitudes del grupo y ejecuta las acciones que definiste.
+  </Step>
+</Steps>
+
+<Tip>
+  Empieza aprobando solo los casos claros y enviando el resto a revisión manual. Cuando veas que la IA acierta, amplía la aprobación automática.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo tener flujos distintos para grupos distintos?">
+    Sí. Crea un flujo por grupo usando el filtro **Grupo** y adapta la lógica de aprobación a cada uno.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el grupo no tiene preguntas de ingreso?">
+    El filtro de respuestas no aparece. El flujo se sigue disparando cuando alguien pide unirse, pero no podrás filtrar ni evaluar respuestas.
+  </Accordion>
+  <Accordion title="¿Puedo usar las respuestas en una instrucción de GPT?">
+    Sí. Inclúyelas como variables en la acción GPT y usa el resultado para aprobar, rechazar o marcar la solicitud.
+  </Accordion>
+  <Accordion title="¿Puedo aprobar solicitudes automáticamente según una respuesta concreta?">
+    Sí. Usa los filtros del disparador o una condición Si/No y, si se cumple, agrega la acción para aprobar la solicitud y sumar a la persona al grupo.
+  </Accordion>
+  <Accordion title="¿Funciona con todos los tipos de pregunta?">
+    Sí. Captura las respuestas de todos los tipos de pregunta del grupo, como texto libre u opción múltiple. Cada pregunta queda disponible como filtro y como variable.
+  </Accordion>
+  <Accordion title="¿Puedo avisar a mi equipo cuando se cumpla una condición?">
+    Sí. Agrega acciones de correo, SMS o notificación interna. Por ejemplo, avisa al equipo cuando una respuesta indique un cliente VIP para darle una bienvenida personal.
+  </Accordion>
+  <Accordion title="¿Qué más puedo hacer después de una solicitud?">
+    Cualquier acción disponible en los flujos: aprobar o rechazar, agregar etiquetas, enviar correos de bienvenida, crear registros en el CRM, iniciar otros flujos o enviar a caminos distintos según las respuestas.
+  </Accordion>
+  <Accordion title="¿Necesito saber programar?">
+    No. Todo se configura en el constructor visual de flujos con listas desplegables y acciones.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Modelos GPT en flujos de trabajo" icon="robot" href="/automatizaciones/modelos-gpt-en-flujos">
+    Usa IA para evaluar texto dentro de una automatización.
+  </Card>
+  <Card title="Cursos, membresías y comunidades" icon="users" href="/cursos/introduccion">
+    Buenas prácticas para mantener viva tu comunidad.
+  </Card>
+</CardGroup>

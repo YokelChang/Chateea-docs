@@ -1,6 +1,6 @@
 ---
 title: "Metadatos SEO y etiquetas meta personalizadas"
-description: "Configura el título, la descripción, la imagen y las etiquetas meta de cada página para buscadores y redes sociales."
+description: "Configura título, descripción, imagen y etiquetas meta de cada página, y soluciona vistas previas que no se actualizan en Google y redes."
 icon: "magnifying-glass"
 ---
 
@@ -81,11 +81,50 @@ El resultado en la página será equivalente a:
 
 Es útil para páginas de agradecimiento, ofertas privadas o páginas de prueba que no quieres que aparezcan en Google.
 
-## Comprobar cómo se ve tu página
+## Solución de problemas con los metadatos
 
-- Usa una herramienta de vista previa de metadatos (por ejemplo, metatags.io) para ver cómo aparecerá tu página en Google y en redes sociales.
-- Si cambiaste la imagen o el título y las redes siguen mostrando la versión antigua, borra la caché de vista previa con la herramienta de depuración de cada red (por ejemplo, el depurador de enlaces de Meta).
-- Para que Google vuelva a leer la página antes, usa la herramienta de [inspección de URLs de Search Console](https://support.google.com/webmasters/answer/9012289) y solicita la indexación.
+Si cambiaste el título, la descripción o la imagen y no ves el cambio, casi nunca es un problema de la página: lo normal es que Google o las redes sociales sigan mostrando una versión guardada en su caché. Revisa en este orden.
+
+<Steps>
+<Step title="Confirma que publicaste">
+Los cambios de **Metadatos SEO** solo llegan a la versión en vivo después de guardar y publicar la página. Abre la URL pública en una ventana de incógnito.
+</Step>
+<Step title="Comprueba los metadatos reales">
+Pega la URL en una herramienta de vista previa de metadatos, como [metatags.io](https://metatags.io/). Te muestra el título, la descripción y la imagen que ven Google y las redes. Si ahí aparecen los datos nuevos, la página está bien configurada.
+</Step>
+<Step title="Borra la caché de las redes sociales">
+Cada red guarda su propia vista previa del enlace. Fuerza una nueva lectura con su herramienta oficial:
+
+| Red | Herramienta |
+| --- | --- |
+| Facebook, Instagram y WhatsApp | [Depurador de enlaces de Meta](https://developers.facebook.com/tools/debug/) (haz clic en **Volver a extraer**) |
+| LinkedIn | [Post Inspector](https://www.linkedin.com/post-inspector/) |
+| X (Twitter) y Pinterest | Vuelven a leer la página por su cuenta con el tiempo. Si tienes prisa, comparte la URL con un parámetro, por ejemplo `?v=2` |
+</Step>
+<Step title="Pide a Google que vuelva a rastrear">
+Usa la [inspección de URLs de Search Console](https://support.google.com/webmasters/answer/9012289) y haz clic en **Solicitar indexación**. Antes necesitas tener tu dominio verificado en Search Console.
+</Step>
+</Steps>
+
+### Verificar tu dominio con una etiqueta meta
+
+Google Search Console (y también Meta, para verificar dominios) te dan una etiqueta meta de verificación. Puedes agregarla como **etiqueta meta personalizada** en la página principal de tu dominio:
+
+<Steps>
+<Step title="Copia la etiqueta">
+En Search Console, elige el método de verificación **Etiqueta HTML** y copia el valor de `content`.
+</Step>
+<Step title="Agrégala a la página">
+En el panel **Metadatos SEO** de la página principal, abre **Enlaces y etiquetas** y agrega una etiqueta meta personalizada con el nombre `google-site-verification` y el valor copiado.
+</Step>
+<Step title="Publica y verifica">
+Guarda, publica la página y vuelve a Search Console para hacer clic en **Verificar**.
+</Step>
+</Steps>
+
+<Tip>
+Google no siempre usa tu descripción tal cual: a veces muestra otro fragmento de la página si cree que responde mejor a la búsqueda. Si el título o la descripción que ves en Google no coinciden con los tuyos, no significa que la configuración esté mal.
+</Tip>
 
 ## Preguntas frecuentes
 
@@ -98,6 +137,9 @@ Sí, puedes agregar todas las que necesites.
 </Accordion>
 <Accordion title="¿Me perjudica no tener metadatos?">
 Sí. Si faltan la descripción o los datos para compartir en redes, Google y las redes sociales generan los suyos a partir del contenido, y el resultado suele ser menos atractivo y menos relevante.
+</Accordion>
+<Accordion title="Cambié la imagen para compartir y en WhatsApp sigue saliendo la anterior">
+WhatsApp usa la misma vista previa que Meta. Pasa la URL por el depurador de enlaces de Meta y haz clic en **Volver a extraer**. En conversaciones antiguas la vista previa ya enviada no cambia.
 </Accordion>
 <Accordion title="¿Qué pasa si agrego la etiqueta noindex?">
 Los buscadores como Google dejan de indexar esa página y no la muestran en sus resultados.
