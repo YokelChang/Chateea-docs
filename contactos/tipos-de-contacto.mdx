@@ -1,0 +1,141 @@
+---
+title: "Tipos de contacto: clasifica y segmenta tu base"
+description: "Clasifica cada contacto como prospecto, cliente, proveedor o socio y úsalo en filtros, listas y flujos de trabajo."
+icon: "tags"
+---
+
+El **tipo de contacto** te permite clasificar a cada persona según su relación principal con tu negocio: prospecto, cliente, proveedor, socio, etc. Es un campo de selección única, así que cada contacto tiene un solo tipo a la vez. Puedes personalizar los valores disponibles, asignarlos a mano o con automatizaciones y usarlos para filtrar y segmentar tu base de contactos.
+
+## Para qué sirve
+
+- **Clasificación consistente:** todo tu equipo ve de un vistazo qué relación tiene el negocio con cada contacto.
+- **Valores a tu medida:** defines las opciones que tienen sentido para tu modelo de negocio.
+- **Segmentación rápida:** filtras por tipo y guardas el resultado como lista inteligente.
+- **Actualización automática:** un flujo de trabajo puede cambiar el tipo cuando cambia la relación (por ejemplo, de prospecto a cliente al comprar).
+- **Orden en tus datos:** separas la clasificación general de las etiquetas más detalladas.
+
+## Tipo de contacto o etiquetas: cuál usar
+
+Los dos sirven para organizar, pero resuelven cosas distintas:
+
+| | Tipo de contacto | Etiquetas |
+| --- | --- | --- |
+| Cantidad por contacto | Uno solo | Todas las que necesites |
+| Úsalo para | La relación principal con tu negocio | Características que se pueden combinar |
+| Ejemplo | Cliente | VIP, Lead de Facebook, Plan anual, Remodelación |
+
+Regla práctica: si las categorías se excluyen entre sí (alguien no puede ser prospecto y cliente al mismo tiempo), usa el tipo de contacto. Si varias pueden aplicar a la misma persona, usa etiquetas.
+
+### Tipos de contacto habituales
+
+- **Prospecto (Lead):** mostró interés pero todavía no compra.
+- **Prospecto calificado:** ya pasó un filtro y vale la pena darle seguimiento comercial.
+- **Cliente:** ya compró o trabaja contigo actualmente.
+- **Proveedor:** te vende productos o servicios.
+- **Socio:** te refiere clientes o tiene una alianza con tu negocio.
+
+Evita crear un tipo para cada característica. Datos como la campaña de origen, el producto de interés o el nivel de membresía funcionan mejor como etiquetas o campos personalizados.
+
+## Configurar los valores del tipo de contacto
+
+<Steps>
+<Step title="Abre los campos personalizados">
+Ve a **Contactos → Campos personalizados**. También llegas desde **Configuración → Campos personalizados**, pero desde Contactos es el camino más directo.
+</Step>
+<Step title="Edita el campo Tipo de contacto">
+Busca **Tipo de contacto** (Contact Type) y haz clic en **Editar**.
+</Step>
+<Step title="Ajusta las opciones">
+Agrega, renombra, reordena o elimina los valores según tu negocio y guarda los cambios.
+</Step>
+</Steps>
+
+## Asignar el tipo manualmente
+
+1. Ve a **Contactos** y abre el contacto.
+2. Busca el campo **Tipo de contacto** en la ficha.
+3. Abre el menú desplegable y elige el valor correcto.
+
+Al elegir un nuevo valor, se reemplaza el anterior. El cambio queda disponible de inmediato para filtros, listas inteligentes y automatizaciones.
+
+## Cambiar el tipo automáticamente con un flujo de trabajo
+
+Así mantienes la clasificación al día sin que nadie tenga que acordarse. Por ejemplo, cuando un prospecto paga su primera factura, el flujo lo convierte en **Cliente**.
+
+<Steps>
+<Step title="Abre el flujo de trabajo">
+Ve a **Automatización → Flujos de trabajo** y abre el flujo donde debe cambiar el tipo.
+</Step>
+<Step title="Agrega la acción Actualizar campo del contacto">
+Agrega la acción **Actualizar campo del contacto** (Update Contact Field) y elige **Actualizar datos del campo**.
+</Step>
+<Step title="Elige el campo y el valor">
+En **Campos**, selecciona **Tipo de contacto** y elige el valor que quieres asignar. Haz clic en **Guardar acción**.
+</Step>
+<Step title="Publica el flujo">
+Completa el resto del flujo y publícalo.
+</Step>
+</Steps>
+
+<Tip>
+Si quieres que un flujo **empiece** cuando cambia el tipo de contacto (por ejemplo, para enviar una bienvenida a clientes nuevos), usa el disparador **Contacto modificado** (Contact Changed) con la condición sobre este campo.
+</Tip>
+
+## Filtrar y segmentar por tipo
+
+1. Ve a **Contactos → Listas inteligentes**.
+2. Abre los filtros y entra a la información del contacto.
+3. Elige el filtro **Tipo** y selecciona el valor que buscas.
+4. Aplica el filtro.
+5. Si vas a reutilizar ese segmento, guárdalo como lista inteligente.
+
+Las listas inteligentes se actualizan solas: si filtras por Tipo = Cliente, cada contacto que pase a ser cliente aparecerá en la lista automáticamente.
+
+## Cómo diseñar tus tipos de contacto
+
+1. Define las relaciones principales que necesitas distinguir.
+2. Asegúrate de que sean lo bastante amplias para que solo una aplique a cada contacto.
+3. Configura los valores en el campo **Tipo de contacto**.
+4. Decide cuándo lo asigna tu equipo a mano.
+5. Identifica los momentos del ciclo de vida que deben cambiarlo automáticamente y crea esos flujos.
+6. Construye tus listas inteligentes a partir del tipo.
+7. Revisa las opciones cada cierto tiempo y elimina las que confundan o no se usen.
+
+Una lista corta y clara de tipos es mucho más fácil de mantener que una larga y muy específica.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Un contacto puede tener más de un tipo?">
+No. Es un campo de selección única. Si eliges otro valor, reemplaza al actual.
+</Accordion>
+<Accordion title="¿Por qué en las listas inteligentes aparece como Tipo y no como Tipo de contacto?">
+En los filtros de contacto el campo se muestra como **Tipo**. Los valores que ves ahí son los mismos que configuraste en Tipo de contacto.
+</Accordion>
+<Accordion title="¿Puedo asignar el tipo al importar contactos?">
+Sí. El tipo de contacto se puede incluir como dato en la importación por CSV. Revisa que los valores de tu archivo coincidan con las opciones que configuraste antes de importar.
+</Accordion>
+<Accordion title="¿Un flujo de trabajo puede cambiar el tipo automáticamente?">
+Sí, con la acción **Actualizar campo del contacto**, eligiendo **Tipo de contacto** y el valor a asignar.
+</Accordion>
+<Accordion title="¿Debo crear un tipo para cada característica del contacto?">
+No. Usa el tipo para la clasificación principal y las etiquetas o campos personalizados para todo lo demás.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Importar contactos desde un CSV" icon="file-csv" href="/contactos/importar-contactos-desde-csv">
+Trae tus contactos con su tipo ya asignado.
+</Card>
+<Card title="Categorías y colores de etiquetas" icon="palette" href="/contactos/categorias-y-colores-de-etiquetas">
+Organiza las etiquetas que complementan al tipo de contacto.
+</Card>
+<Card title="Filtros avanzados en listas inteligentes" icon="filter" href="/contactos/filtros-avanzados-listas-inteligentes">
+Combina el tipo con otros criterios.
+</Card>
+<Card title="Listas inteligentes" icon="list-check" href="/contactos/listas-inteligentes">
+Guarda y reutiliza tus segmentos.
+</Card>
+</CardGroup>

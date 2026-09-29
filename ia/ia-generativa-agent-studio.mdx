@@ -1,0 +1,150 @@
+---
+title: "Genera texto, audio, imágenes y video en Agent Studio"
+description: "Configura las herramientas de IA generativa de Agent Studio y reutiliza el contenido en tu agente."
+icon: "wand-magic-sparkles"
+---
+
+Con las herramientas de IA generativa de Agent Studio, tu agente puede crear textos, audios, imágenes y videos mientras se ejecuta. Se agregan como pasos de procesamiento, usan tus indicaciones, tu voz y kit de marca y las variables del flujo, y guardan el resultado para que lo uses en los pasos siguientes.
+
+<Note>
+Este artículo trata de Agent Studio, que es distinto de AI Studio (el constructor de sitios web con IA).
+</Note>
+
+## Para qué sirve
+
+- **Creación automática de contenido:** texto, audio, imagen y video dentro del propio agente.
+- **Resultados reutilizables:** el contenido generado se guarda en variables.
+- **Coherencia de marca:** aplica tu voz y tu kit de marca.
+- **Flujos flexibles:** agregas un paso de generación donde lo necesites.
+- **Más personalización:** usas datos de pasos anteriores para generar contenido relevante.
+
+## Herramientas disponibles
+
+| Herramienta | Qué genera | Dónde guarda el resultado |
+| --- | --- | --- |
+| **Generación de texto** | Respuestas, resúmenes, descripciones, textos para redes, recomendaciones o texto estructurado. | Variable con el texto generado. |
+| **Generación de audio** | Mensajes hablados, respuestas de voz o narraciones. | Variable con el enlace (URL) del audio. |
+| **Generación de imagen** | Imágenes para campañas, redes sociales o productos. | Variable con el enlace (URL) de la imagen. |
+| **Generación de video** | Videos cortos para campañas o redes. | No tiene campo de nombre de variable; revisa el comportamiento de salida en tu agente. |
+
+## Cómo agregar una herramienta de IA generativa
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y abre el agente que quieres configurar.
+  </Step>
+  <Step title="Agrega un paso de procesamiento">
+    En el nodo donde quieres generar contenido, haz clic en **Agregar un nodo de procesamiento**.
+  </Step>
+  <Step title="Elige la herramienta">
+    En el panel **Agregar nodo**, abre la sección **IA generativa** y elige **Generación de audio**, **Generación de imagen**, **Generación de texto** o **Generación de video**.
+  </Step>
+  <Step title="Configúrala y guarda">
+    Completa los campos obligatorios en el panel lateral y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+En todos los campos de indicación puedes usar el **selector de variables** (con buscador) para insertar datos de la configuración global, variables de entrada, variables de ejecución, tu cuenta, valores personalizados, fecha y hora actual o datos del contacto. El botón **Mejorar indicación** te ayuda a pulir el texto, y el ícono de expandir abre un área más grande para instrucciones largas.
+
+En la indicación no escribes el resultado final: escribes las instrucciones de lo que la IA debe crear.
+
+## Generación de texto
+
+| Campo | Qué hace |
+| --- | --- |
+| **Nombre del nodo** | Identifica el paso. Por defecto es `text_generation`; cámbialo por algo como `generate_summary`. |
+| **Voz de marca** | Aplica un estilo de comunicación guardado. Puedes elegir **Ninguna**, una voz existente o **Agregar nueva**. |
+| **Indicación de texto** | Obligatoria. Describe el objetivo, el público, el tono y el formato. Evita instrucciones vagas como "escribe algo". |
+| **Nombre de la variable** | Obligatorio. Guarda el texto generado, por ejemplo `generatedSummary`. |
+| **Modelo** | Obligatorio. Opciones como gpt-4.1 o gpt-5-mini. Usa el recomendado salvo que necesites otro. |
+| **Longitud del texto** | Obligatoria. **Pequeño** para respuestas breves, **Grande** para textos más completos o **Personalizado** con un máximo de 5 a 20.000 caracteres. |
+
+## Generación de audio
+
+| Campo | Qué hace |
+| --- | --- |
+| **Nombre del nodo** | Por defecto `audio_generation`; por ejemplo, cámbialo a `generate_voice_response`. |
+| **Voz de marca** | Igual que en texto. |
+| **Indicación** | Obligatoria. Puede ser el texto exacto que se dirá o la descripción del audio: mensaje, tono, estilo, ritmo y público. |
+| **Nombre de la variable** | Obligatorio. Guarda el enlace del audio, por ejemplo `generatedAudioUrl`. |
+| **Modelo** | Modelo de texto a voz (gpt-4o-mini-tts). |
+| **Voz** | Obligatoria. Opciones: Alloy (equilibrada), Ash, Ballad (más suave y expresiva), Coral, Echo (conversacional), Fable (narrativa) y Nova (clara y pulida). Elige la que mejor encaje con tu tono. |
+
+## Generación de imagen
+
+| Campo | Qué hace |
+| --- | --- |
+| **Nombre del nodo** | Por defecto `image_generation`; por ejemplo, `generate_product_image`. |
+| **Voz de marca** | Útil si la imagen debe seguir el tono o la dirección creativa de una campaña. |
+| **Kit de diseño** | Aplica tu identidad visual (colores, tipografías, logotipo). Puedes elegir **Ninguno**, un kit existente o **Agregar nuevo**. |
+| **Indicación de imagen** | Obligatoria. Describe tema, escenario, estilo, colores, composición, ambiente y detalles importantes. |
+| **Nombre de la variable** | Obligatorio. Guarda el enlace de la imagen, por ejemplo `generatedImageUrl`. |
+| **Modelo** | Obligatorio. Opciones como GPT Image 1, DALL·E 3 o Gemini 2.5 Flash Image Preview. |
+| **Tamaño** | 1024x1024 (cuadrada), 1024x1792 (vertical) o 1792x1024 (horizontal). |
+| **Calidad** | **Estándar** o **HD** para piezas más pulidas. |
+
+Ejemplo de indicación: "Crea una imagen tipo fotografía profesional de una mesa de restaurante moderna, con luz cálida, comida fresca y un ambiente acogedor."
+
+## Generación de video
+
+| Campo | Qué hace |
+| --- | --- |
+| **Nombre del nodo** | Por defecto `video_generation`; por ejemplo, `generate_promo_video`. |
+| **Voz de marca** y **Kit de diseño** | Igual que en imagen. |
+| **Indicación de video** | Obligatoria. Sé específico con el tema, la acción, el escenario, los ángulos de cámara, la iluminación, el estilo, el movimiento y el ambiente. |
+| **Modelo de IA** | Obligatorio. Veo3.1 o Veo3.1 Fast si priorizas la velocidad. |
+| **Relación de aspecto** | 16:9 (horizontal, para web o presentaciones) o 9:16 (vertical, para redes y móvil). |
+| **Resolución** | 720p. Si el campo está vacío, elige una antes de guardar. |
+| **Aviso de uso de datos** | Debes marcar la casilla para aceptarlo antes de guardar. |
+
+Ejemplo de indicación: "Un golden retriever corriendo por una pradera soleada, cámara lenta, iluminación cinematográfica, colores cálidos."
+
+<Info>
+La generación de video usa modelos de IA de terceros que pueden conservar temporalmente las indicaciones y el contenido generado hasta 30 días para supervisión de seguridad y prestación del servicio. Tus datos no se usan para entrenar modelos, y el tratamiento puede variar según el proveedor.
+</Info>
+
+## Variables en la IA generativa
+
+Las variables se usan de dos formas:
+
+- **Como entrada en la indicación:** insertas datos existentes, como `{{contact.first_name}}` o una respuesta capturada antes, para que el contenido sea relevante.
+- **Como salida del nodo:** texto, audio e imagen guardan su resultado en el **Nombre de la variable**, para usarlo en pasos posteriores.
+
+Usa nombres descriptivos, como `generatedReply`, `generatedAudioUrl`, `generatedImageUrl`, `campaignCaption` o `summaryText`. Evita nombres ambiguos, sobre todo si el agente tiene varios pasos de generación.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que escribir el contenido final en la indicación?">
+    No. En la indicación das instrucciones; la IA crea el texto, audio, imagen o video cuando se ejecuta el nodo.
+  </Accordion>
+  <Accordion title="¿Todas las herramientas guardan el resultado en una variable?">
+    Texto, audio e imagen tienen el campo **Nombre de la variable**. La generación de video no lo incluye.
+  </Accordion>
+  <Accordion title="¿Para qué sirven la voz de marca y el kit de diseño?">
+    La voz de marca ajusta el tono y el estilo de comunicación. El kit de diseño alinea imágenes y videos con tu identidad visual. Más detalles en [Voz de marca y kit de marca en Agent Studio](/ia/voz-de-marca-agent-studio).
+  </Accordion>
+  <Accordion title="No veo opciones de voz de marca o kit de diseño. ¿Por qué?">
+    Puede que aún no hayas creado ninguno. Usa **Agregar nuevo** en el desplegable para crearlo desde el mismo nodo.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo guardar el nodo?">
+    El botón **Guardar** se desactiva mientras falten campos obligatorios. En video, también hasta que aceptes el aviso de uso de datos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Voz de marca y kit de marca" icon="palette" href="/ia/voz-de-marca-agent-studio">
+    Aplica tu identidad a todo lo que genera la IA.
+  </Card>
+  <Card title="Nodo secuencial" icon="list-ol" href="/ia/nodo-secuencial-agent-studio">
+    Encadena la generación con otros pasos.
+  </Card>
+  <Card title="Variables y valores personalizados" icon="code" href="/ia/variables-y-valores-personalizados-agent-studio">
+    Personaliza tus indicaciones con datos reales.
+  </Card>
+  <Card title="Nodo Agente de IA" icon="robot" href="/ia/nodo-agente-ia-agent-studio">
+    La inteligencia de tu agente.
+  </Card>
+</CardGroup>

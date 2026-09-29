@@ -1,0 +1,54 @@
+---
+title: "No llega el código de verificación de WhatsApp"
+description: "Soluciona por qué no te llega el código de verificación al conectar tu número a WhatsApp."
+icon: "key"
+---
+
+Para conectar un número a la API de WhatsApp Business desde tu cuenta de Chateea, Meta envía un código de verificación (OTP) por SMS o llamada. Si ese código nunca llega, la causa más habitual es que el número **ya está registrado en la app WhatsApp Business** (o en WhatsApp personal) y, mientras siga ahí, no puede registrarse en la API.
+
+## Cómo resolverlo
+
+<Steps>
+  <Step title="Comprueba si el número ya usa WhatsApp">
+    Revisa si el número tiene una cuenta activa en WhatsApp o WhatsApp Business. Puedes hacerlo intentando abrir un chat con ese número desde otro teléfono o con un verificador de números de WhatsApp en línea.
+  </Step>
+  <Step title="Si ya está registrado, elige una opción">
+    Mientras el número esté en la app, no se puede usar para la API de WhatsApp Business (WABA). Tienes dos caminos:
+
+    - **Usar otro número** que no tenga WhatsApp activo para conectarlo a Chateea.
+    - **Eliminar la cuenta de WhatsApp** de ese número en la app (desde **Ajustes → Cuenta → Eliminar cuenta**) y luego volver a intentar la verificación.
+  </Step>
+  <Step title="Espera a que el número se libere">
+    Después de eliminar la cuenta de la app, el número puede tardar un tiempo en quedar disponible. Si el código sigue sin llegar, espera un poco antes de reintentar.
+  </Step>
+  <Step title="Vuelve a solicitar el código">
+    Reinicia la conexión de WhatsApp en Chateea y solicita el OTP de nuevo. Asegúrate de que el número pueda recibir SMS o llamadas en ese momento.
+  </Step>
+</Steps>
+
+<Warning>
+Eliminar la cuenta de la app WhatsApp Business borra el historial de chats de ese teléfono. Haz una copia de seguridad antes si necesitas conservarlo.
+</Warning>
+
+<Tip>
+Si prefieres no perder la app WhatsApp Business en tu teléfono, pregunta por la conexión en modo de coexistencia, que permite usar la app y Chateea con el mismo número bajo ciertos requisitos de Meta.
+</Tip>
+
+## Otras causas posibles
+
+- **El número no puede recibir SMS:** algunos números fijos o virtuales no reciben mensajes de texto. Elige la opción de verificación por llamada.
+- **Demasiados intentos:** si pediste el código muchas veces seguidas, Meta puede bloquear temporalmente nuevos envíos. Espera unas horas antes de reintentar.
+- **Formato del número:** confirma que ingresaste el código de país correcto y sin ceros adicionales.
+
+Si nada de esto funciona, escribe a soporte de Chateea en **help@chateea.com** con el número que intentas conectar.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Número de WhatsApp en estado pendiente" icon="hourglass-half" href="/whatsapp/numero-de-whatsapp-en-estado-pendiente">
+    Qué hacer si la conexión no avanza.
+  </Card>
+  <Card title="WhatsApp en Chateea" icon="whatsapp" href="/whatsapp/introduccion">
+    Cómo conectar y configurar tu número.
+  </Card>
+</CardGroup>

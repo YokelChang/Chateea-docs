@@ -1,0 +1,80 @@
+---
+title: "Acción: Editar conversación"
+description: "Marca conversaciones como leídas o no leídas y archívalas o desarchívalas automáticamente desde un flujo."
+icon: "comments"
+---
+
+La acción **Editar conversación** (Edit Conversation) cambia automáticamente el estado de una conversación desde un flujo de trabajo: puede marcarla como leída o no leída y archivarla o desarchivarla. Así tu bandeja de **Conversaciones** se mantiene ordenada sin que nadie tenga que hacerlo a mano, y las conversaciones que requieren atención destacan.
+
+Marcar una conversación como leída quita su estado de no leída en la bandeja y, en las vistas compatibles, también elimina el separador de mensajes no leídos dentro del hilo.
+
+## Para qué te sirve
+
+- **Bandeja en orden automático:** actualiza estados sin trabajo manual.
+- **Mejor priorización:** deja como no leídos los mensajes que necesitan respuesta para que el equipo los vea.
+- **Menos ruido:** archiva las conversaciones terminadas o inactivas y deja visibles solo las activas.
+
+## Configurar la acción
+
+<Steps>
+  <Step title="Abre el constructor de flujos">
+    Ve a **Automatización → Flujos de trabajo**. Haz clic en **+ Crear flujo de trabajo** y elige **Empezar desde cero**, o abre el flujo donde quieras automatizar tus conversaciones.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+ Agregar acción**, busca **Editar conversación** y selecciónala.
+  </Step>
+  <Step title="Ponle un nombre">
+    Usa un nombre descriptivo, como "Marcar como leída y archivar", para reconocerla fácilmente en el flujo.
+  </Step>
+  <Step title="Elige las opciones">
+    Configura los dos ajustes de la tabla siguiente según lo que necesites.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar acción** y luego publica el flujo. A partir de ese momento, las conversaciones se actualizan solas cuando los contactos pasan por este paso.
+  </Step>
+</Steps>
+
+## Opciones disponibles
+
+| Ajuste | Opción | Qué hace |
+| --- | --- | --- |
+| **Marcar como leída o no leída** | Marcar como leída | Marca la conversación como leída sin tener que abrirla |
+| | Marcar como no leída | Vuelve a ponerla como no leída para que siga destacando |
+| | Ninguna | Mantiene el estado actual de lectura |
+| **Archivar o desarchivar** | Archivar | Saca la conversación de la vista activa para despejar la bandeja |
+| | Desarchivar | Devuelve la conversación a la pestaña **Recientes** |
+| | Ninguna | Deja la conversación donde está |
+
+## Ideas de uso
+
+- **Cerrar conversaciones terminadas:** cuando una cita pasa a "Completada", marca la conversación como leída y archívala.
+- **Reactivar conversaciones importantes:** cuando un contacto archivado vuelve a escribir o llena un formulario, desarchiva la conversación y márcala como no leída para que el equipo la atienda.
+- **Limpiar mensajes automáticos:** después de enviar una confirmación automática que no requiere respuesta, marca la conversación como leída.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo archivar automáticamente las conversaciones terminadas?">
+    Sí. Usa un disparador como **Contacto respondió** o **Estado de cita cambiado** y agrega esta acción con la opción **Archivar** para archivar la conversación cuando termine la interacción.
+  </Accordion>
+  <Accordion title="¿Qué pasa si dejo ambos ajustes en Ninguna?">
+    La acción no hará ningún cambio y la conversación quedará tal como estaba.
+  </Accordion>
+  <Accordion title="¿Avisa a alguien cuando una conversación se archiva o desarchiva?">
+    No. Solo cambia el estado de la conversación. Si necesitas avisar a tu equipo, agrega una acción de notificación interna aparte.
+  </Accordion>
+  <Accordion title="¿Sirve para actualizar conversaciones en masa?">
+    No directamente. La acción se aplica a la conversación de cada contacto que pasa por el flujo. Aun así, puedes hacer que muchos contactos pasen por el flujo con el tiempo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Marcar conversaciones como leídas" icon="envelope-open" href="/conversaciones/marcar-conversacion-como-leida">
+    Cómo funciona el estado de lectura en la bandeja.
+  </Card>
+  <Card title="Filtros de conversaciones" icon="filter" href="/conversaciones/filtros-de-conversaciones">
+    Encuentra rápido las conversaciones que necesitas.
+  </Card>
+</CardGroup>

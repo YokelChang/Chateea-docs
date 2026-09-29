@@ -1,199 +1,192 @@
 ---
-title: "Generador de flujos de trabajo - Descripción general"
-sidebarTitle: "Generador de flujos de trabajo - Descripción general"
-description: "Recorrido por el creador de flujos de trabajo: lienzo infinito, agregar activadores y acciones, vista de estadísticas, prueba del flujo, guardado, historial de versiones y modo borrador o publicado."
+title: "Recorrido por el constructor de flujos de trabajo"
+description: "Conoce el lienzo, los disparadores, las acciones, las estadísticas, las pruebas, el historial de versiones y la publicación de tus flujos."
 icon: "diagram-project"
 ---
 
-<Info>
-  **Documentado el 16 de agosto de 2026.** Este artículo recorre todas las funciones del **creador de flujos de trabajo**, desde el lienzo infinito hasta la publicación.
-</Info>
+El constructor de flujos de trabajo es el lienzo donde armas tus automatizaciones: agregas disparadores, encadenas acciones, pruebas el resultado y lo publicas. Esta guía recorre sus partes principales y las buenas prácticas para que tus flujos sean fáciles de entender y de corregir.
 
-## Tabla de contenido
+Si todavía no has creado ningún flujo, empieza por [Primeros pasos con los flujos de trabajo](/automatizaciones/primeros-pasos-con-flujos-de-trabajo).
 
-- Diseño de lienzo infinito
-- Agregar nuevo activador
-- Agregar nueva acción
-- Vista de estadísticas
-- Flujo de trabajo de prueba
-- Guardar flujo de trabajo
-- Historial de versiones
-- Borrador / Publicar
-- Preguntas frecuentes
+## El lienzo
 
-**Qué muestra la siguiente tabla:** las pestañas superiores del creador y para qué sirve cada una.
+El lienzo es infinito, así que puedes ver flujos grandes completos.
 
-<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
-  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
-    <thead>
-      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Pestaña</th>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Para qué sirve</th>
-      </tr>
-    </thead>
+- Usa los botones **Ajustar a la pantalla**, **Acercar** y **Alejar** de la esquina inferior izquierda para cambiar la vista.
+- Usa el **minimapa** de la esquina inferior derecha para ubicarte dentro de un flujo largo.
 
-    <tbody>
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Builder (Constructor)</td>
-        <td style={{padding:'12px 14px'}}>El lienzo donde se diseña el flujo: activadores, acciones y ramas.</td>
-      </tr>
+### Mover pasos en el lienzo
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Settings (Configuración)</td>
-        <td style={{padding:'12px 14px'}}>Ajustes generales del flujo: reingreso, oportunidades, zona horaria, ventana de tiempo y remitente.</td>
-      </tr>
+En el constructor estándar puedes reorganizar los pasos arrastrándolos:
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Enrollment History (Historial de inscripciones)</td>
-        <td style={{padding:'12px 14px'}}>Quién ha entrado al flujo y en qué estado está.</td>
-      </tr>
+1. Pasa el cursor sobre un paso para ver el asa de seis puntos.
+2. Mantén presionada el asa y arrastra el paso.
+3. Suéltalo donde aparezca el indicador **Mover aquí**.
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Execution Logs (Registros de ejecución)</td>
-        <td style={{padding:'12px 14px'}}>Detalle técnico de cada ejecución, útil para diagnosticar errores.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Así reordenas pasos y ramas sin tener que usar el menú del clic derecho.
 
-## Diseño de lienzo infinito
+### Atajos de teclado
 
-Utiliza los botones **"Ajustar a la pantalla"** y **"Acercar/Alejar"** situados en la parte inferior izquierda de la pantalla para controlar el área de visualización. El **minimapa**, en la parte inferior derecha, muestra la posición actual.
+El constructor estándar tiene atajos para seleccionar pasos, moverte entre ellos, copiar y pegar acciones, hacer zoom, abrir paneles, eliminar pasos y guardar.
 
-<Note>
-  **Imagen próximamente** — Captura del lienzo con un flujo de ejemplo (Trigger: Form Submitted → Send Email → Send SMS → END), el control de zoom al 100 % abajo a la izquierda y el minimapa abajo a la derecha.
-</Note>
+## Cambiar de flujo sin salir del constructor
 
-## Agregar nuevo activador
+El **selector de flujos** te permite saltar a otro flujo sin volver a la lista. Ábrelo desde el panel izquierdo o con **Shift + W**, y busca o elige el flujo que quieres abrir.
 
-Haz clic en el botón **"Agregar nuevo activador"** (Add New Trigger) para abrir la lista de activadores de flujo de trabajo. Después, selecciona un activador de la lista y configúralo.
+## Agregar disparadores
 
-El panel **Workflow Trigger** indica que añade un activador al flujo y que, al ejecutarse, el contacto se agrega al flujo de trabajo. Cuenta con un buscador (**Search Triggers**) y los activadores aparecen agrupados por área. Entre los del grupo **Contact** se encuentran:
+Los disparadores son los eventos que inician el flujo.
 
-<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
-  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
-    <thead>
-      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Activador</th>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Cuándo dispara el flujo</th>
-      </tr>
-    </thead>
+<Steps>
+  <Step title="Abre la lista de disparadores">
+    Haz clic en **Agregar disparador** (Add New Trigger).
+  </Step>
+  <Step title="Elige el disparador">
+    Busca o navega por categorías y selecciona uno, por ejemplo **Contacto creado** o **Cita reservada**. Algunos resultados muestran información adicional, como insignias o datos de la aplicación, para ayudarte a elegir.
+  </Step>
+  <Step title="Configúralo">
+    Completa los ajustes y filtros del disparador y guárdalo.
+  </Step>
+</Steps>
 
-    <tbody>
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Birthday Reminder</td>
-        <td style={{padding:'12px 14px'}}>Recordatorio de cumpleaños del contacto.</td>
-      </tr>
+<Warning>
+Si agregas varios disparadores, cualquiera de ellos inicia el flujo cuando se cumplen sus condiciones. Revisa que todos correspondan a cómo quieres que entren los contactos.
+</Warning>
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact Changed</td>
-        <td style={{padding:'12px 14px'}}>Cuando cambia información del contacto.</td>
-      </tr>
+Consulta todos los disponibles en la [lista de disparadores](/automatizaciones/lista-de-disparadores).
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact Created</td>
-        <td style={{padding:'12px 14px'}}>Cuando se crea un contacto nuevo.</td>
-      </tr>
+## Agregar acciones
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact DND</td>
-        <td style={{padding:'12px 14px'}}>Cuando se activa o cambia el estado “No molestar”.</td>
-      </tr>
+Las acciones son lo que ocurre después del disparador.
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Contact Tag</td>
-        <td style={{padding:'12px 14px'}}>Cuando se añade o quita una etiqueta.</td>
-      </tr>
+<Steps>
+  <Step title="Haz clic en el signo más">
+    Pulsa el botón **+** en la línea del flujo donde quieres la acción.
+  </Step>
+  <Step title="Elige la acción">
+    Busca o navega por categorías, por ejemplo **Enviar correo** o **Asignar a usuario**. La búsqueda incluye las herramientas de Chateea y las aplicaciones del Marketplace de aplicaciones; algunos resultados muestran detalles como precio o instalación.
+  </Step>
+  <Step title="Configúrala">
+    Completa los campos de la acción y guárdala.
+  </Step>
+</Steps>
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Custom Date Reminder</td>
-        <td style={{padding:'12px 14px'}}>Recordatorio basado en una fecha personalizada.</td>
-      </tr>
+Además de las acciones normales, hay tipos más avanzados:
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Note Added / Note Changed</td>
-        <td style={{padding:'12px 14px'}}>Cuando se agrega o modifica una nota.</td>
-      </tr>
+| Tipo | Para qué sirve |
+| --- | --- |
+| Goteo | Controla el ritmo al que avanzan los contactos, soltándolos por lotes. |
+| Condicionales | Evalúan condiciones y envían a cada contacto por la rama que le corresponde. |
+| Objetivos | Permiten que un contacto salte a un punto posterior del flujo cuando cumple una meta, sin pasar por las acciones intermedias. |
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Task Added / Task Reminder</td>
-        <td style={{padding:'12px 14px'}}>Cuando se agrega una tarea o llega su recordatorio.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Ponle a cada acción un nombre claro para que el flujo se entienda de un vistazo. Tienes el detalle de todas las acciones en la [lista de acciones](/automatizaciones/lista-de-acciones). También puedes apoyarte en el [asistente de IA de flujos](/ia/asistente-ia-de-flujos-de-trabajo) para entender un flujo y elegir las acciones adecuadas.
 
-**Ejemplo de lectura:** para un flujo de bienvenida, el activador natural es **Contact Created**; para reactivar clientes etiquetados, **Contact Tag**.
+## Acciones y disparadores de integraciones
 
-## Agregar nueva acción
+Los pasos que dependen de una integración externa muestran sus campos desde el principio, pero quedan bloqueados hasta que conectas una cuenta válida.
 
-Haz clic en el botón **"\+"** para abrir la lista de acciones de flujo de trabajo. Después, selecciona una acción de la lista y configúrala.
+1. Agrega la acción o el disparador de la integración.
+2. Revisa la vista previa de los campos.
+3. Haz clic en **Conectar tu cuenta**.
+4. Completa la conexión en la ventana emergente.
+5. Vuelve al flujo y elige la cuenta conectada, si aparece un selector de cuentas.
+6. Configura los campos que se desbloquearon.
 
-El panel **Actions** incluye un buscador (**Search Action**) y agrupa las acciones por área. En el grupo **Contact** aparecen, entre otras: **Create/Update Contact**, **Find Contact**, **Update Contact Field**, **Add Contact Tag**, **Remove Contact Tag**, **Assign To User**, **Remove Assigned User**, **Edit Conversation**, **Enable/Disable DND**, **Add To Notes** y **Add Task**.
-
-<Note>
-  **Imagen próximamente** — Captura del panel **Actions** abierto junto al lienzo, con el listado de acciones del grupo **Contact**.
-</Note>
+Algunas integraciones admiten varias cuentas conectadas: el selector dentro del paso define cuál usa. Si cambias de cuenta, los campos que dependen de ella pueden recargarse o vaciarse, así que revisa el paso antes de guardar. Si la cuenta elegida se elimina o deja de ser válida, el paso vuelve a quedar bloqueado hasta que la reconectes o elijas otra.
 
 ## Vista de estadísticas
 
-Activa la opción **"Vista de estadísticas"** (Stats View) en la esquina superior izquierda para ver las estadísticas de correo electrónico y SMS dentro del propio editor. Abre el modelo estadístico detallado haciendo clic en cualquiera de los datos estadísticos.
+La **vista de estadísticas** te muestra cómo se comportan los disparadores y las acciones de comunicación sin salir del constructor.
 
-**Qué muestra la siguiente tabla:** las métricas que se muestran sobre cada bloque de comunicación del lienzo.
+1. Abre el flujo.
+2. Activa **Estadísticas** en la esquina superior izquierda.
+3. Selecciona un disparador o una acción.
 
-<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
-  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
-    <thead>
-      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Bloque</th>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Métricas</th>
-      </tr>
-    </thead>
+En los disparadores verás:
 
-    <tbody>
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Email</td>
-        <td style={{padding:'12px 14px'}}>Delivered (entregados), Opened (abiertos), Clicked (con clic), Replied (respondidos), Bounced (rebotados).</td>
-      </tr>
+| Métrica | Significado |
+| --- | --- |
+| Evaluados | Contactos que el disparador revisó. |
+| Coincidentes | Contactos que cumplieron las condiciones. |
+| No coincidentes | Contactos que no las cumplieron. |
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>SMS</td>
-        <td style={{padding:'12px 14px'}}>Delivered (entregados), Clicked (con clic), Failed (fallidos).</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Haz clic en una métrica para ver el detalle por contacto, buscar un contacto concreto y averiguar por qué no entró. En las acciones de comunicación verás sus métricas de entrega e interacción, y al hacer clic abres el informe detallado.
 
-**Ejemplo de lectura:** un bloque de correo con 55,56 % entregado, 27,78 % abierto y 5,56 % rebotado te dice que el problema no está en el contenido sino en la calidad de la lista.
+- No puedes editar el flujo mientras la vista de estadísticas está activa.
+- Las estadísticas de disparadores cubren los últimos 30 días.
+- Si eliminas una acción de comunicación que ya se usó, sus estadísticas se conservan en el flujo.
+- También tienes estadísticas a nivel de flujo en la lista de flujos, desplegando la columna de estadísticas.
 
-## Flujo de trabajo de prueba
+## Probar el flujo
 
-Haz clic en el botón **"Probar flujo de trabajo"** (Test Workflow) en la parte superior derecha. Selecciona un contacto y haz clic en **"Ejecutar prueba"** (Run Test) para comenzar a probar el flujo de trabajo.
+1. Haz clic en **Probar flujo** en la esquina superior derecha.
+2. Elige un contacto de prueba.
+3. Haz clic en **Ejecutar prueba**.
 
-<Tip>
-  Prueba siempre con un contacto propio antes de publicar, sobre todo si el flujo incluye acciones irreversibles como eliminar contactos o enviar comunicaciones masivas.
-</Tip>
+La prueba con un contacto no es perfecta, sobre todo si reutilizas el mismo contacto varias veces. La forma más fiable de validar un flujo es publicarlo y probarlo en condiciones reales con un contacto nuevo. Si la prueba falla, revisa que los disparadores y acciones estén completos.
 
-## Guardar flujo de trabajo
+## Guardar el flujo
 
-Haz clic en el botón **"Guardar"** (Save) en la esquina superior derecha. El botón indica visualmente cuándo hay cambios sin guardar.
+Haz clic en **Guardar** (esquina superior derecha) cada vez que veas el punto rojo de cambios sin guardar. Si aparece un error al guardar, revisa que todos los campos obligatorios de disparadores y acciones estén completos.
+
+<Note>
+Guardar y publicar son cosas distintas. Un flujo puede estar en borrador o publicado, y a la vez tener o no cambios sin guardar.
+</Note>
 
 ## Historial de versiones
 
-Consulta el historial de cambios realizados haciendo clic en el **icono de historial** en la esquina superior derecha. El panel **Version History** lista cada versión con su número, nombre del flujo, fecha y hora, y el usuario que la actualizó, marcando cuál es la **versión actual** y cuáles fueron **publicadas**.
+Haz clic en el ícono de **Historial** (esquina superior derecha) para ver las versiones anteriores del flujo. Usa **Volver al constructor** para seguir editando.
 
-## Borrador / Publicar
+### Qué pasa con los contactos que ya están dentro
 
-Publica el flujo de trabajo o vuelve al modo **Borrador** activando el interruptor **Draft / Publish** en la parte superior derecha.
+Los contactos que están recorriendo el flujo usan los cambios que hagas en los pasos que todavía no han alcanzado.
 
-<Warning>
-  Mientras el flujo esté en **Borrador**, no procesará nuevas entradas. Recuerda publicarlo cuando termines de editarlo.
-</Warning>
+- Si un contacto está en una espera y modificas una acción posterior, al llegar a ella usará la versión nueva.
+- Si agregas una acción nueva después de la espera, el contacto también la ejecutará.
+- Si cambias la espera en la que ya está el contacto, su espera actual no cambia: termina la que tenía y luego sigue por el flujo actualizado.
+
+## Borrador y publicado
+
+Con el interruptor de la esquina superior derecha alternas entre **Borrador** y **Publicado**. En borrador, el flujo no se dispara ni ejecuta acciones reales; publicado, sí.
+
+Si pasas un flujo a borrador y luego lo reactivas, los contactos que estaban en pasos de espera (como una espera o una acción manual) se mantienen en ese mismo paso.
+
+## Buenas prácticas
+
+- **Evita bucles:** el constructor impide flechas que vuelvan a un paso anterior, pero aún es posible crear bucles invisibles (por ejemplo, un flujo que agrega una etiqueta que dispara otro flujo que vuelve al primero). Revísalo con cuidado.
+- **Mantén los flujos pequeños:** procura que quepan en una pantalla. Divide procesos complejos en varios flujos para corregirlos más fácil.
+- **Usa nombres claros:** nombra disparadores y acciones de forma descriptiva, sobre todo si trabajas en equipo.
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Qué sucede con los contactos de mi flujo de trabajo si lo configuro como borrador? ¿Permanecerán en el mismo paso cuando lo reanude más tarde?">
-    Si el contacto está en espera en cualquiera de los pasos de espera (espera, llamada manual, SMS manual, etc.), estará en el mismo paso cuando se reanude el flujo de trabajo.
+  <Accordion title="¿Qué pasa con los contactos si pongo el flujo en borrador?">
+    Los contactos que están en pasos de espera (espera, llamada manual, SMS manual) se quedan en ese paso y continúan cuando vuelvas a publicar.
+  </Accordion>
+  <Accordion title="¿Puedo meter a un contacto en varios flujos?">
+    Sí. Usa la acción **Agregar al flujo de trabajo** para inscribirlo en otro flujo.
+  </Accordion>
+  <Accordion title="¿Cómo envío datos a otra aplicación?">
+    Usa la acción **Webhook** o **Webhook personalizado** para mandar datos a plataformas externas.
+  </Accordion>
+  <Accordion title="¿Para qué sirven los objetivos?">
+    Un objetivo permite que el contacto avance directo a un punto del flujo cuando cumple una condición, por ejemplo, saltarse los recordatorios si ya pagó. Mira [cómo configurar los eventos de objetivo](/flujo-de-trabajo/como-configurar-los-eventos-de-objetivos-del-flujo-de-trabajo).
   </Accordion>
 </AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configuración del flujo" icon="gear" href="/flujo-de-trabajo/configuracion-del-flujo-de-trabajo-descripcion-general">
+    Reingreso, zona horaria, ventana horaria y remitente.
+  </Card>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los eventos que pueden iniciar un flujo.
+  </Card>
+  <Card title="Lista de acciones" icon="list" href="/automatizaciones/lista-de-acciones">
+    Todo lo que un flujo puede hacer por ti.
+  </Card>
+  <Card title="Estadísticas de flujos" icon="chart-line" href="/automatizaciones/estadisticas-de-flujos">
+    Analiza el rendimiento de tus automatizaciones.
+  </Card>
+</CardGroup>

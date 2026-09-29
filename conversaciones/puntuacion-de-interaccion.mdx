@@ -1,0 +1,95 @@
+---
+title: "Puntuación de interacción del contacto"
+description: "Mide qué tan activo está cada contacto con reglas de puntos para saber a quién llamar primero y a quién seguir nutriendo."
+icon: "gauge-high"
+---
+
+La puntuación de interacción del contacto es un número que refleja qué tan activo está cada contacto con tu negocio. Cada acción suma o resta puntos según reglas que tú defines: abrir un correo, llenar un formulario o pagar suben la puntuación; un rebote de correo o una baja la bajan. Con ella tu equipo sabe a quién llamar primero y a quién conviene seguir nutriendo.
+
+## Dónde ver la puntuación
+
+- **En la ficha del contacto:** en **Contactos**, abre un contacto y desplázate hasta la sección **Puntuación de interacción del contacto**.
+- **En Conversaciones:** en el panel derecho de la conversación verás la puntuación del contacto con el que estás hablando. Desde ahí también puedes verla y editarla.
+
+## Tipos de acción para las reglas
+
+Cada regla se activa con un tipo de acción. Estos son los disponibles:
+
+| Tipo de acción | Cuándo se aplica | Ejemplo de uso |
+| --- | --- | --- |
+| **Eventos de correo** | El contacto abre un correo, hace clic en un enlace, rebota o se da de baja | Sumar por clics, restar por rebotes o bajas |
+| **Contacto modificado** | Cambia un dato del contacto, como un campo personalizado | Sumar cuando el estado pasa de "Nuevo" a "Calificado" |
+| **Etiqueta del contacto** | Se agrega o se quita una etiqueta | Sumar puntos extra a quien recibe la etiqueta "Cliente VIP" |
+| **Pago recibido** | Entra un pago del contacto | Distinguir a quien ya compró de quien solo mira |
+| **Contacto respondió** | El contacto responde por correo, SMS o chat | Priorizar a quien conversa contigo |
+| **Formulario enviado** | Llena un formulario | Detectar interés fuerte para dar seguimiento |
+| **Formulario de pedido enviado** | Envía un formulario de pedido | Identificar prospectos listos para comprar |
+| **Pedido realizado** | Hace un pedido | Reconocer a clientes que ya pasaron a la acción |
+| **Encuesta enviada** | Responde una encuesta | Premiar a quien participa y da retroalimentación |
+| **Clic en enlace de disparo** | Hace clic en un enlace de disparo, como una promoción | Medir interés en ofertas concretas |
+| **Cita agendada** | Reserva una cita, demo o consulta | Señal clara de intención de compra |
+| **Cambio de estado de la cita** | Se confirma o se cancela una cita | Sumar por confirmaciones y restar por cancelaciones |
+
+## Crear y gestionar las reglas
+
+<Steps>
+  <Step title="Abre el gestor de puntuación">
+    Ve a **Configuración → Gestionar puntuación** (Manage Scoring). Ahí ves todas las reglas existentes y puedes crear nuevas.
+  </Step>
+  <Step title="Trabaja en modo borrador">
+    Con el selector **Borrador / Publicado** en **Borrador**, puedes crear y ajustar reglas sin afectar los datos reales de tus contactos.
+  </Step>
+  <Step title="Agrega una regla">
+    Haz clic en **+ Agregar nueva regla**, elige el tipo de acción y define cuántos puntos suma o resta.
+  </Step>
+  <Step title="Publica">
+    Cuando todo esté listo, cambia a **Publicado**. Desde ese momento la puntuación se calcula en tiempo real para todos los contactos.
+  </Step>
+</Steps>
+
+La tabla de reglas muestra:
+
+- **Acción:** la condición que dispara el ajuste, por ejemplo "si se abre un correo" o "si el contacto agenda una cita".
+- **Cálculo:** cuántos puntos se suman o se restan.
+- **Menú de tres puntos (⋮):** para editar o eliminar cada regla.
+
+<Tip>
+  Empieza con pocas reglas y puntos claros: por ejemplo, +1 por abrir un correo, +5 por responder, +10 por agendar una cita, +20 por pagar y -10 por darse de baja. Luego ajusta según lo que veas en tus ventas reales.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo aplicar reglas distintas a distintos segmentos de contactos?">
+    No directamente. Las reglas de puntuación se aplican a todos los contactos de tu cuenta. Para tratar distinto a cada segmento, usa listas inteligentes, etiquetas o campos personalizados, y crea flujos de trabajo que actúen según la puntuación.
+  </Accordion>
+  <Accordion title="¿La puntuación baja sola si el contacto deja de interactuar?">
+    No, no hay una disminución automática con el tiempo. Si la necesitas, crea un flujo de trabajo con esperas que reste puntos cuando el contacto no haya interactuado en cierto periodo, por ejemplo 60 días sin abrir correos ni responder.
+  </Accordion>
+  <Accordion title="¿Puedo dar distinto peso a la misma acción según las condiciones?">
+    No dentro de una misma regla. Lo que sí puedes hacer es crear varias reglas para acciones parecidas con disparadores distintos, por ejemplo +5 por un clic en un enlace normal y +10 por un clic en un enlace de una promoción prioritaria.
+  </Accordion>
+  <Accordion title="¿Puedo usar la puntuación en flujos de trabajo?">
+    Sí. Puedes crear flujos que se activen cuando la puntuación de un contacto supere un umbral (por ejemplo, más de 20) para iniciar contacto comercial, secuencias de correo o campañas de nutrición. Puedes tener varios flujos para distintos niveles de puntuación.
+  </Accordion>
+  <Accordion title="¿Hay un historial de cambios de la puntuación?">
+    No hay un historial integrado. Como alternativa, guarda la puntuación en un campo personalizado mediante un flujo de trabajo que registre el valor cada cierto tiempo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="La ficha del contacto" icon="address-card" href="/contactos/introduccion">
+    Toda la información de cada contacto.
+  </Card>
+  <Card title="Listas inteligentes" icon="list" href="/contactos/listas-inteligentes">
+    Segmenta contactos con filtros guardados.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="bolt" href="/automatizaciones/introduccion">
+    Automatiza acciones según la puntuación.
+  </Card>
+  <Card title="Panel lateral derecho" icon="table-columns" href="/conversaciones/panel-lateral-derecho">
+    Datos del contacto sin salir de la conversación.
+  </Card>
+</CardGroup>

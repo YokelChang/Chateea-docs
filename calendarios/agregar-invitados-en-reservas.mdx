@@ -1,0 +1,106 @@
+---
+title: "Agregar invitados en las reservas"
+description: "Permite reservar para varias personas, pide datos de cada invitado y cobra por asistente."
+icon: "user-plus"
+---
+
+La función **Agregar invitados** permite que quien reserva incluya a otras personas en la misma cita. Así sabes desde el principio cuántas personas asistirán y quiénes son. Además, puedes hacer obligatorio agregar invitados y cobrar automáticamente según el número total de asistentes, algo muy útil para clases grupales, talleres, consultas en pareja o familia, terapias grupales o reservas de restaurante.
+
+## Qué ganas con esta función
+
+- Cobras el importe correcto según cuántas personas asisten.
+- Eliges qué datos pedir de cada invitado: correo, teléfono o ambos.
+- Si no necesitas los datos de cada persona, puedes pedir solo el número de invitados.
+- Chateea crea o vincula un contacto por cada invitado usando su correo o teléfono.
+- La lista completa de invitados queda guardada en la cita.
+- Controlas mejor la asistencia y el tamaño de los grupos, con menos dudas sobre pagos.
+
+## Activar la función
+
+<Steps>
+  <Step title="Abre la configuración del calendario">
+    Ve a **Configuración → Calendarios** y haz clic en **Editar** junto al calendario que quieres modificar.
+  </Step>
+  <Step title="Entra en Formularios y pagos">
+    Abre la pestaña **Formularios y pagos** (Forms & Payment).
+  </Step>
+  <Step title="Configura los invitados">
+    Baja hasta la sección **Agregar invitados**. Activa **Requerir invitados para reservar** si quieres que sea obligatorio y elige qué datos pedir de cada invitado:
+
+    - **Nombre y correo**
+    - **Nombre y teléfono**
+    - **Nombre, correo y teléfono**
+    - **Solo número de invitados**: registra cuántas personas vienen sin crear un contacto por cada una.
+  </Step>
+  <Step title="Cobra por cada asistente (opcional)">
+    En la sección **Pagos**, activa **Aceptar pagos** para todos los asistentes. El cobro se calculará según el número total de participantes.
+  </Step>
+  <Step title="Guarda los cambios">
+    Guarda la configuración y haz una reserva de prueba para comprobar el formulario.
+  </Step>
+</Steps>
+
+<Note>
+  Los calendarios que ya pedían datos de invitados siguen usando **Nombre y correo**. Los calendarios nuevos usan por defecto **Nombre, correo y teléfono**.
+</Note>
+
+## Requerir invitados para reservar
+
+Con esta opción activada, la persona no puede completar la reserva hasta que agregue la información de los invitados que configuraste. Es ideal para servicios que siempre implican a más de una persona, como una sesión de pareja o una clase para grupos.
+
+## Cómo se crean los contactos de los invitados
+
+Cuando pides datos individuales, Chateea crea un contacto nuevo por cada invitado o lo vincula a uno existente usando el correo o el teléfono que se ingresó en la reserva. Si eliges **Solo número de invitados**, se guarda la cantidad, pero no se crean contactos individuales.
+
+### Zona horaria de los invitados
+
+- Si el invitado es un contacto nuevo, hereda la zona horaria de la persona que hizo la reserva.
+- Si el invitado ya existía en tu CRM, conserva la zona horaria que ya tenía.
+
+## Cobrar por todos los asistentes
+
+En lugar de cobrar un precio fijo por reserva, Chateea multiplica el precio por persona por el número de asistentes:
+
+```text
+Total = Precio del servicio × (1 persona que reserva + número de invitados)
+```
+
+Por ejemplo, si una clase cuesta 20 y la persona reserva con 3 invitados, el cobro es de 80. El importe total se cobra a quien reserva en el momento de la reserva, a través de la pasarela de pago conectada.
+
+Casos de uso habituales:
+
+- Talleres y capacitaciones.
+- Consultas o tratamientos grupales.
+- Reservas de restaurante o eventos.
+- Cualquier servicio con precio por persona.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que activar las dos opciones a la vez?">
+    No. Puedes requerir invitados sin cobrar por asistente, o cobrar por asistente sin hacer obligatorios los invitados.
+  </Accordion>
+  <Accordion title="¿Quien reserva puede agregar varios invitados?">
+    Sí. El formulario de reserva admite varios invitados. Ajusta la cantidad según tu servicio o tipo de cita.
+  </Accordion>
+  <Accordion title="¿Los invitados reciben correo de confirmación?">
+    Solo si pediste su correo y configuraste notificaciones para invitados mediante flujos de trabajo o disparadores.
+  </Accordion>
+  <Accordion title="¿Qué pasa si un invitado cancela pero quien reservó sí asiste?">
+    Los reembolsos o cambios se gestionan manualmente, porque el pago se calcula con los datos del formulario en el momento de reservar.
+  </Accordion>
+  <Accordion title="¿Se crea un contacto por cada invitado?">
+    Sí, cuando pides datos individuales (correo, teléfono o ambos). Con **Solo número de invitados** no se crean contactos individuales.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configura tu calendario de reservas" icon="calendar" href="/primeros-pasos/configura-tu-calendario-de-reservas">
+    Crea y configura tu primer calendario.
+  </Card>
+  <Card title="Cobrar un anticipo en las reservas" icon="credit-card" href="/calendarios/cobrar-anticipo-en-reservas">
+    Pide un depósito al reservar y cobra el resto después.
+  </Card>
+</CardGroup>

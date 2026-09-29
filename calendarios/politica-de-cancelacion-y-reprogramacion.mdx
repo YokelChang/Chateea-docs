@@ -1,0 +1,70 @@
+---
+title: "Política de cancelación y reprogramación"
+description: "Define hasta cuándo pueden tus clientes cancelar o reprogramar su cita con los enlaces de la reserva."
+icon: "calendar-xmark"
+---
+
+La política de cancelación y reprogramación te permite definir hasta cuándo pueden tus clientes cancelar o cambiar su cita por su cuenta usando los enlaces de la reserva. Pasado ese plazo, los enlaces dejan de funcionar y el cliente tiene que contactarte directamente. Así evitas cancelaciones y cambios de última hora que dejan huecos imposibles de llenar.
+
+## Configurar la política
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Configuración del calendario** y selecciona el calendario.
+  </Step>
+  <Step title="Entra en Notificaciones y opciones adicionales">
+    Abre la sección **Notificaciones y opciones adicionales**.
+  </Step>
+  <Step title="Activa las opciones">
+    En **Política de cancelación y reprogramación**, activa **Permitir cancelar la reunión** y **Permitir reprogramar la reunión**.
+  </Step>
+  <Step title="Define el plazo">
+    Indica con cuánta antelación a la cita dejarán de funcionar los enlaces. Si dejas el campo vacío, los enlaces no caducan y el cliente podrá usarlos en cualquier momento.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios.
+  </Step>
+</Steps>
+
+<Tip>
+  Un plazo de 24 horas es habitual en consultas y servicios profesionales. Si vendes clases o servicios muy demandados, un plazo más largo te da tiempo para ofrecer el hueco a otra persona.
+</Tip>
+
+## Cómo reciben los enlaces tus clientes
+
+Al activar las opciones, se añaden un enlace de cancelación y otro de reprogramación en la sección de notas adicionales de la cita. Ese contenido se incluye en las notas de la invitación de calendario que recibe el cliente, así que puede usar los enlaces desde ahí. Cuando se cumple el plazo configurado, los enlaces caducan y ya no permiten cancelar ni reprogramar.
+
+## Enviar los enlaces desde un flujo de trabajo
+
+También puedes incluir los enlaces en tus mensajes automáticos con estos valores personalizados:
+
+| Valor | Qué inserta |
+| --- | --- |
+| `{{appointment.reschedule_link}}` | Enlace para reprogramar la cita. |
+| `{{appointment.cancellation_link}}` | Enlace para cancelar la cita. |
+
+<Warning>
+  Estos valores solo funcionan en flujos disparados por eventos de citas, como **Estado de la cita** o **Cliente reservó una cita**. En flujos sin disparador de cita (por ejemplo, un envío de formulario o un cambio de etapa) no hay datos de la cita y los valores aparecerán vacíos.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué ve el cliente si intenta usar un enlace caducado?">
+    El enlace ya no le permite cancelar ni reprogramar. Tendrá que contactar contigo para cualquier cambio.
+  </Accordion>
+  <Accordion title="¿Puedo permitir reprogramar pero no cancelar?">
+    Sí. Las dos opciones se activan por separado, así que puedes activar solo la que te interese.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Recordatorios y ausencias" icon="bell" href="/calendarios/recordatorios">
+    Reduce las ausencias con avisos automáticos.
+  </Card>
+  <Card title="Cobrar un anticipo en las reservas" icon="credit-card" href="/calendarios/cobrar-anticipo-en-reservas">
+    Asegura el compromiso del cliente con un depósito.
+  </Card>
+</CardGroup>

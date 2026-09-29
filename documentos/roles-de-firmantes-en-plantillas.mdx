@@ -1,0 +1,128 @@
+---
+title: "Varios firmantes con roles en plantillas"
+description: "Define roles como comprador, vendedor o testigo en tus plantillas para enviar a varios firmantes de forma automática."
+icon: "user-tag"
+---
+
+Con la firma por roles puedes definir varios firmantes (por ejemplo, comprador, vendedor, testigo, codeudor o cualquier rol que necesites) directamente en tus plantillas de documentos y contratos. Cuando envías el documento desde un flujo de trabajo, Chateea llena automáticamente los datos de cada rol y envía el documento a cada firmante en el orden que definiste. Así dejas de escribir a mano los datos de cada parte en cada acuerdo.
+
+## Qué es la firma por roles
+
+Cada rol representa a una parte del acuerdo. A cada rol le asignas elementos rellenables propios: firmas, fechas, iniciales o campos de texto. Puedes configurar **hasta 6 roles por plantilla** y reutilizarlos en todos los documentos que generes a partir de ella.
+
+## Ventajas
+
+- **Ahorras tiempo:** no vuelves a escribir los datos de cada firmante en acuerdos de comprador y vendedor, cliente y codeudor, o inquilino y fiador.
+- **Menos errores:** los valores de cada rol se llenan solos al enviar.
+- **Flexibilidad por flujo:** puedes cambiar el nombre, correo o teléfono de cualquier rol en el flujo, sin duplicar plantillas.
+- **Acuerdos complejos en un solo envío:** ideal para inmobiliarias, contratistas y empresas de servicios que necesitan varias firmas (por ejemplo, comprador, vendedor y testigo).
+
+## Cómo funciona
+
+| Paso | Qué pasa |
+| --- | --- |
+| 1. Defines los roles en la plantilla | Creas los roles y les asignas elementos rellenables. Cada rol puede tener valores fijos o campos personalizados que se resuelven al enviar. |
+| 2. Seleccionas la plantilla en un flujo | La acción de envío detecta todos los roles de la plantilla y los muestra en su configuración. |
+| 3. Se llenan los datos (y puedes cambiarlos) | Los valores de la plantilla aparecen en la acción. Si lo necesitas, los reemplazas en el flujo. Los valores del flujo siempre tienen prioridad. |
+| 4. Se envía a cada firmante | Cada firmante recibe su propio enlace y completa solo sus elementos. El contacto que entra al flujo es el destinatario principal. |
+
+## Configurar los roles en la plantilla
+
+<Steps>
+  <Step title="Abre la plantilla">
+    Ve a **Pagos → Documentos y contratos → Plantillas** y abre una plantilla existente o crea una nueva.
+  </Step>
+  <Step title="Agrega un elemento rellenable">
+    En el editor, agrega una firma, una fecha, un campo de texto u otro elemento rellenable, y haz clic sobre él. Cada rol necesita al menos un elemento rellenable asignado.
+  </Step>
+  <Step title="Crea un rol">
+    Con el elemento seleccionado, haz clic en **Agregar rol** para abrir el formulario del rol.
+  </Step>
+  <Step title="Configura el nombre y los datos del rol">
+    Escribe un **Nombre del rol** descriptivo (por ejemplo, "Testigo", "Comprador" o "Codeudor"). Este nombre aparece sobre el campo de firma que verá el firmante.
+
+    Para el **Nombre**, **Correo** y **Teléfono** del rol tienes dos opciones:
+    - **Valor fijo:** escribes el dato directamente. Úsalo cuando esa parte siempre es la misma.
+    - **Campo personalizado:** eliges un campo del contacto, por ejemplo `{{contact.witness_name}}` o `{{contact.buyer_email}}`. Úsalo cuando el dato cambia en cada acuerdo; Chateea lo toma de la ficha del contacto al enviar.
+  </Step>
+  <Step title="Asigna más elementos a los roles">
+    El elemento que tenías seleccionado queda asignado al rol que creaste. Para asignar más elementos al mismo rol o a otros, agrega el elemento y elige el rol en el menú desplegable. Un rol puede tener varios elementos: por ejemplo, el comprador firma, pone sus iniciales y escribe la fecha.
+  </Step>
+  <Step title="Guarda la plantilla">
+    Haz clic en **Guardar**. Cualquier flujo que use esta plantilla detectará automáticamente los roles definidos.
+  </Step>
+</Steps>
+
+<Warning>
+Al menos un elemento rellenable debe estar asignado al rol **Contacto**. Ese rol representa al destinatario principal: el contacto que entra al flujo y provoca el envío. Sin esa asignación, la acción de envío de documentos del flujo no funcionará correctamente.
+</Warning>
+
+## Enviar la plantilla desde un flujo de trabajo
+
+<Steps>
+  <Step title="Agrega la acción de envío">
+    Ve a **Automatización → Flujos de trabajo**, crea o edita un flujo y agrega la acción **Enviar documentos y contratos**. Selecciona tu plantilla con roles.
+  </Step>
+  <Step title="Revisa la sección Asignar roles">
+    Al elegir la plantilla aparece la sección **Asignar roles**, con todos los roles que tienen al menos un elemento asignado. Si usaste campos personalizados, verás las variables que se resolverán al ejecutarse el flujo; si usaste valores fijos, verás esos valores.
+  </Step>
+  <Step title="Cambia los datos de un rol (opcional)">
+    Si un acuerdo necesita datos distintos, haz clic en **Editar** junto al rol y escribe otro nombre, correo o teléfono. Estos valores tienen prioridad sobre los de la plantilla y solo aplican a este flujo.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda la acción y publica el flujo. Desde ese momento, cada contacto que entre al flujo recibirá un documento con todos los roles completos. Cada firmante recibe su enlace por correo si las notificaciones por correo están activadas en la acción.
+  </Step>
+</Steps>
+
+<Tip>
+Usa campos personalizados en la plantilla para los roles que casi no cambian (por ejemplo, tu propio negocio como "Vendedor") y reemplaza los datos en el flujo para los roles que cambian en cada trato (compradores, codeudores o testigos distintos). Así evitas duplicar plantillas.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuántos roles puedo definir en una plantilla?">
+    Hasta 6 roles por plantilla. Cada uno debe tener al menos un elemento rellenable asignado.
+  </Accordion>
+  <Accordion title="¿Tengo que asignar el rol Contacto a algún elemento?">
+    Sí. Al menos un elemento rellenable debe estar asignado al rol **Contacto** para que la acción de envío del flujo funcione.
+  </Accordion>
+  <Accordion title="¿Puedo usar campos personalizados para los datos de un rol?">
+    Sí, para el nombre, el correo y el teléfono. Se resuelven con la ficha del contacto al enviar. También puedes reemplazarlos con valores fijos en el flujo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si cambio los datos de un rol en el flujo?">
+    Los valores del flujo tienen prioridad y se usan para ese envío. La plantilla no cambia.
+  </Accordion>
+  <Accordion title="¿Puedo reutilizar una misma plantilla para distintos tratos?">
+    Sí. Usa campos personalizados para los roles estables y reemplaza en el flujo los datos de los roles que cambian.
+  </Accordion>
+  <Accordion title="¿En qué orden firman?">
+    El documento se envía a cada firmante en el orden que definiste al configurar los roles en la plantilla. Cada uno firma en su turno y completa sus elementos.
+  </Accordion>
+  <Accordion title="¿Todos los roles necesitan una firma?">
+    No. Un rol puede tener cualquier combinación de elementos: firmas, fechas, campos de texto u otros.
+  </Accordion>
+  <Accordion title="¿Funciona con propuestas y presupuestos?">
+    Sí. La firma por roles funciona también con plantillas de propuestas y presupuestos dentro de Documentos y contratos.
+  </Accordion>
+  <Accordion title="¿Dónde veo los roles de un documento enviado?">
+    Abre el documento en **Documentos y contratos**. Verás cada rol con el nombre y correo del firmante, y si ya completó su firma.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Valores de oportunidad en plantillas" icon="file-contract" href="/documentos/valores-de-oportunidad-en-plantillas">
+    Llena tus plantillas con datos de cada trato.
+  </Card>
+  <Card title="Tipos de firma" icon="signature" href="/documentos/tipos-de-firma">
+    Decide si tus clientes dibujan o escriben su firma.
+  </Card>
+  <Card title="Orden de firma" icon="list-ol" href="/documentos/orden-de-firma">
+    Define quién firma primero en un documento.
+  </Card>
+  <Card title="Varios destinatarios" icon="user-group" href="/documentos/varios-destinatarios">
+    Envía un documento a varias personas.
+  </Card>
+</CardGroup>

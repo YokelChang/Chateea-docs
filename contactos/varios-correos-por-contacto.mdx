@@ -1,0 +1,170 @@
+---
+title: "Varios correos electrónicos en un mismo contacto"
+description: "Guarda hasta 10 correos adicionales por contacto, elige el principal e impórtalos o búscalos en tus flujos de trabajo."
+icon: "envelopes-bulk"
+---
+
+Muchas personas usan más de un correo: uno personal, uno del trabajo, otro para facturación. En Chateea puedes guardar todos esos correos en una sola ficha de contacto en lugar de crear contactos separados. Así mantienes un único historial por cliente y evitas duplicados.
+
+## Cómo funciona
+
+Cada contacto puede tener:
+
+- **1 correo principal**, que es el campo estándar **Correo** del contacto.
+- **Hasta 10 correos adicionales**.
+- **Un máximo de 11 correos** en total.
+
+Solo puede haber un correo principal a la vez. Las funciones que usan el campo estándar **Correo** (campañas, automatizaciones, notificaciones) usan siempre el correo principal. Los adicionales quedan vinculados al contacto y se pueden usar en importaciones, exportaciones, fusiones y en la búsqueda de contactos dentro de los flujos de trabajo.
+
+## Para qué te sirve
+
+- **Una sola ficha por persona**, con todos sus correos.
+- **Control del correo principal**, para decidir a qué dirección se envían tus comunicaciones.
+- **Carga masiva** de correos adicionales con una importación CSV.
+- **Menos duplicados**, porque un correo alternativo ya no genera una ficha nueva.
+- **Mejor búsqueda en automatizaciones**, al poder encontrar contactos también por sus correos adicionales.
+
+## Agregar correos adicionales
+
+<Steps>
+<Step title="Abre el contacto">
+Ve a **Contactos**, busca el contacto y abre su ficha.
+</Step>
+<Step title="Busca la sección de correo">
+En los datos del contacto, ubica el área **Correo electrónico**.
+</Step>
+<Step title="Agrega el correo">
+Haz clic en **Agregar otro correo** (Add Another Email) y escribe la dirección. Repite para cada correo adicional.
+</Step>
+<Step title="Guarda">
+Haz clic en **Guardar cambios**.
+</Step>
+</Steps>
+
+Al llegar a 10 correos adicionales, la opción para agregar otro desaparece.
+
+## Cambiar el correo principal
+
+<Steps>
+<Step title="Abre la ficha del contacto">
+Ubica el área **Correo electrónico**.
+</Step>
+<Step title="Marca la estrella">
+Haz clic en el ícono de **estrella** junto al correo que quieres usar como principal.
+</Step>
+</Steps>
+
+<Warning>
+Revisa qué correo es el principal antes de incluir al contacto en campañas o automatizaciones: es la dirección que recibirá tus envíos.
+</Warning>
+
+## Importar correos adicionales con CSV
+
+<Steps>
+<Step title="Prepara el archivo">
+Crea una columna aparte para los correos adicionales. Si un contacto tiene varios, sepáralos con comas dentro de la misma celda, por ejemplo: `facturacion@ejemplo.com, personal@ejemplo.com`.
+</Step>
+<Step title="Inicia la importación">
+Ve a **Contactos**, haz clic en **Importar** y, en **Importar registros desde CSV**, elige **Iniciar importación CSV**.
+</Step>
+<Step title="Mapea la columna">
+Sube el archivo y, en el mapeo de campos, asigna la columna de correos alternativos al campo **Correo adicional** (Additional Email). Revisa el resto del mapeo y completa la importación.
+</Step>
+</Steps>
+
+<Tip>
+Si vas a actualizar contactos que ya existen, revisa antes el tipo de importación y tu configuración de detección de duplicados para que Chateea actualice las fichas correctas en lugar de crear nuevas.
+</Tip>
+
+## Exportar los correos de tus contactos
+
+La exportación incluye los campos visibles en la tabla de contactos, así que primero ajusta las columnas.
+
+<Steps>
+<Step title="Filtra los contactos">
+En **Contactos**, abre la lista inteligente o aplica los filtros que necesites.
+</Step>
+<Step title="Muestra las columnas de correo">
+Abre **Administrar campos** y activa las columnas de correo que quieres incluir.
+</Step>
+<Step title="Exporta">
+Selecciona los contactos, haz clic en **Exportar** y confirma.
+</Step>
+</Steps>
+
+La exportación se procesa en segundo plano. Puedes ver su estado y descargar el archivo desde **Acciones masivas**.
+
+## Correos al fusionar contactos
+
+Cuando fusionas duplicados, la ventana **Fusionar contactos** te deja revisar los correos de cada ficha antes de unirlas.
+
+<Steps>
+<Step title="Selecciona los duplicados">
+En **Contactos**, selecciona las fichas repetidas, haz clic en **Más** y elige **Fusionar**.
+</Step>
+<Step title="Revisa los correos">
+Elige el contacto principal, revisa los campos con valores distintos y las direcciones de correo disponibles, y confirma cuál será el correo principal.
+</Step>
+<Step title="Confirma">
+Haz clic en **Fusionar contactos**.
+</Step>
+</Steps>
+
+<Warning>
+Las fusiones no se pueden deshacer. Revisa bien el contacto principal y los correos antes de confirmar.
+</Warning>
+
+## Buscar contactos por correo adicional en un flujo
+
+La acción **Buscar contacto** (Find Contact) de los flujos de trabajo busca por defecto solo en el correo principal. Si quieres que también encuentre contactos por sus correos adicionales:
+
+<Steps>
+<Step title="Abre el flujo">
+Ve a **Automatización → Flujos de trabajo** y abre o crea el flujo.
+</Step>
+<Step title="Agrega Buscar contacto">
+Añade la acción **Buscar contacto** y selecciona **Correo** como campo de coincidencia.
+</Step>
+<Step title="Incluye los correos adicionales">
+Activa la opción para incluir los correos adicionales en la búsqueda, completa el resto de la configuración y guarda.
+</Step>
+</Steps>
+
+Así el flujo encuentra al contacto aunque la dirección que recibe esté guardada como correo adicional y no como principal.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cuántos correos puede tener un contacto?">
+Uno principal y hasta 10 adicionales, 11 en total.
+</Accordion>
+<Accordion title="¿Puedo cambiar cuál es el correo principal?">
+Sí. En el área de correo de la ficha, haz clic en la estrella junto a la dirección que quieres usar como principal.
+</Accordion>
+<Accordion title="¿A qué correo se envían mis campañas?">
+Al correo principal, porque es el que ocupa el campo estándar **Correo** del contacto.
+</Accordion>
+<Accordion title="¿Puedo importar varios correos para un mismo contacto?">
+Sí. Ponlos en una columna de correos adicionales, separados por comas, y mapea esa columna al campo **Correo adicional**.
+</Accordion>
+<Accordion title="¿Buscar contacto encuentra correos adicionales?">
+Sí, si activas la opción para incluirlos al elegir **Correo** como campo de coincidencia. Por defecto solo busca en el correo principal.
+</Accordion>
+<Accordion title="¿Puedo deshacer una fusión si elegí mal el correo?">
+No. Si ocurre, corrige el correo principal a mano desde la ficha del contacto resultante.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Fusionar contactos duplicados" icon="code-merge" href="/contactos/fusionar-contactos-duplicados">
+Une fichas repetidas en un solo contacto.
+</Card>
+<Card title="Formato del archivo CSV para importar" icon="file-csv" href="/contactos/formato-csv-para-importar">
+Reglas para correos, teléfonos y fechas.
+</Card>
+<Card title="Exportar contactos a CSV" icon="file-export" href="/contactos/exportar-contactos-csv">
+Descarga tus contactos con las columnas que elijas.
+</Card>
+</CardGroup>

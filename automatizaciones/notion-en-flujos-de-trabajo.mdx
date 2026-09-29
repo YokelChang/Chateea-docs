@@ -1,0 +1,115 @@
+---
+title: "Disparadores y acciones de Notion en flujos"
+description: "Crea páginas, elementos de bases de datos y comentarios en Notion desde tus flujos e inicia flujos con cambios en Notion."
+icon: "book"
+---
+
+La integración nativa con **Notion** conecta tus flujos de trabajo con tu espacio de Notion sin conectores externos ni webhooks. Puedes iniciar flujos cuando cambia algo en Notion y, desde tus flujos, crear páginas, agregar elementos a bases de datos, añadir contenido o comentar. Es ideal para mantener documentación interna, bitácoras de clientes o wikis de proyectos alimentadas con los datos de tu CRM.
+
+## Qué ganas
+
+- **Menos herramientas:** una conexión nativa en lugar de conectores de terceros.
+- **Datos estructurados:** formularios de alta, resultados de citas o cambios en el pipeline llegan directo a bases de datos de Notion.
+- **Documentos automáticos:** crea wikis de proyecto, propuestas o procedimientos cuando un trato avanza.
+- **En ambos sentidos:** los cambios en Notion inician flujos y los flujos actualizan Notion.
+- **Respuesta ágil:** Chateea revisa Notion cada 5 minutos aproximadamente.
+
+## Disparadores (de Notion a Chateea)
+
+| Disparador | Se activa cuando |
+| --- | --- |
+| **Nuevo elemento en base de datos** | Se agrega un elemento a una base de datos de Notion. |
+| **Elemento de base de datos actualizado** | Se modifica un elemento existente. |
+| **Página actualizada** | Se actualiza una página de Notion. |
+
+<Note>
+  Todos los disparadores funcionan por consulta periódica: Chateea revisa Notion cada 5 minutos aproximadamente y procesa los cambios que encuentra.
+</Note>
+
+## Acciones (de Chateea a Notion)
+
+| Acción | Qué hace |
+| --- | --- |
+| **Crear elemento en base de datos** | Agrega un elemento a la base de datos elegida. |
+| **Actualizar elemento de base de datos** | Actualiza los campos de un elemento existente. |
+| **Buscar elemento en base de datos** | Localiza un elemento con filtros. |
+| **Buscar o crear elemento en base de datos** | Encuentra el elemento o lo crea si no existe. |
+| **Archivar elemento de base de datos** | Archiva un elemento. |
+| **Restaurar elemento de base de datos** | Reactiva un elemento archivado. |
+| **Obtener base de datos** | Trae los metadatos y la estructura de una base de datos. |
+| **Crear página** | Crea una página nueva. |
+| **Agregar contenido a página** | Añade contenido al final de una página existente. |
+| **Obtener página** | Trae una página y sus metadatos. |
+| **Obtener página y bloques** | Trae una página con todos sus bloques anidados. |
+| **Obtener bloques hijos** | Trae los bloques dentro de un bloque (texto, listas de tareas, desplegables, etc.). |
+| **Buscar página por título** | Localiza una página por su título. |
+| **Agregar comentario** | Publica un comentario en una página. |
+| **Obtener comentarios de la página** | Trae todos los comentarios de una página. |
+| **Buscar o crear comentario** | Encuentra un comentario según un criterio o lo crea si no existe. |
+
+## Conectar Notion
+
+<Steps>
+  <Step title="Busca el paso en tu flujo">
+    En el constructor de flujos, busca el disparador o la acción de Notion que quieres usar.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Si ya está conectada, verás las opciones de configuración. Si no, haz clic en **Conectar ahora** y completa la autorización de Notion.
+  </Step>
+</Steps>
+
+También puedes conectarla desde **Configuración → Integraciones**: busca **Notion** y conecta tu espacio de trabajo.
+
+## Configurar un disparador
+
+1. Elige el disparador, por ejemplo **Nuevo elemento en base de datos**.
+2. Ponle un nombre y haz clic en **Probar disparador**.
+3. Chateea trae los datos de ejemplo de Notion para que puedas usarlos como campos dinámicos en las acciones siguientes.
+
+## Casos de uso
+
+### Registrar formularios de alta en Notion
+
+- **Disparador:** Formulario enviado (filtro: formulario "Alta de cliente").
+- **Acciones:** **Crear elemento en base de datos** y **Agregar comentario**.
+- **Resultado:** cada cliente que completa el formulario aparece en tu base de datos de altas con un comentario de bienvenida para el equipo.
+
+### Bitácora de citas
+
+- **Disparador:** Cambio de estado de la cita (filtro: calendario "Consultas").
+- **Acciones:** **Actualizar elemento de base de datos** y **Agregar contenido a página**.
+- **Resultado:** si un prospecto no asiste a su consulta, su registro se actualiza y se añaden notas de seguimiento a su página.
+
+### Páginas de propuesta automáticas
+
+- **Disparador:** Cambio de etapa del pipeline (filtro: la etapa de propuesta de tu pipeline).
+- **Acciones:** **Crear página**, **Agregar contenido a página** y **Agregar comentario**.
+- **Resultado:** se crea una página titulada `Propuesta para {{contact.name}}` con el resumen del trato y un comentario para avisar al equipo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un plan de pago de Notion?">
+    No. Funciona con los planes gratuitos de Notion, aunque algunas funciones de Notion (como los espacios de equipo o la analítica) pueden requerir un plan de pago.
+  </Accordion>
+  <Accordion title="¿Hay límite de flujos con Notion?">
+    Los límites de flujos dependen de tu plan de Chateea. La integración respeta además los límites de uso de la API de Notion.
+  </Accordion>
+  <Accordion title="¿Cada cuánto revisa Chateea los cambios en Notion?">
+    Cada 5 minutos aproximadamente.
+  </Accordion>
+  <Accordion title="Si ya uso webhooks con Notion, ¿dejarán de funcionar?">
+    No. Puedes mantener tus webhooks y la integración nativa al mismo tiempo mientras haces la transición.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Google Contactos en flujos" icon="address-book" href="/automatizaciones/google-contactos-en-flujos-de-trabajo">
+    Sincroniza tu agenda de Google.
+  </Card>
+  <Card title="Acciones premium y planes" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las ejecuciones premium.
+  </Card>
+</CardGroup>

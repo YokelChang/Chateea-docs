@@ -1,0 +1,160 @@
+---
+title: "Disparadores programados para agentes gestionados"
+description: "Haz que un agente gestionado se ejecute solo una vez, por intervalos o con una expresión cron."
+icon: "clock"
+---
+
+Los disparadores programados hacen que un agente gestionado se ejecute solo, en una fecha y hora concretas o de forma recurrente. Puedes programarlo una vez, repetirlo cada cierto intervalo o usar una expresión cron para horarios más precisos. Una vez publicado el agente, Chateea lo ejecuta completo (instrucciones, habilidades y acciones del CRM) sin que nadie tenga que iniciarlo.
+
+Son útiles para trabajo operativo repetitivo: revisiones periódicas, recordatorios, resúmenes semanales, limpiezas del CRM o informes antes de una reunión.
+
+## Qué puedes programar
+
+Un disparador programado puede iniciar el agente:
+
+- **Una vez**, en una fecha y hora específicas.
+- **De forma recurrente**, cada cierto intervalo.
+- **Según una expresión cron** personalizada.
+- **Según un horario descrito en lenguaje natural** al constructor del agente.
+
+Cada ejecución programada corre el agente completo, con sus instrucciones, habilidades configuradas y acciones del CRM.
+
+## Ventajas
+
+- **Ejecución sin intervención:** el agente trabaja solo, sin que alguien lo inicie.
+- **Horarios flexibles:** una vez, por intervalo o con cron avanzado.
+- **Control de la recurrencia:** limita las ejecuciones a ciertos días de la semana y define cuándo termina.
+- **Varios horarios por agente:** un mismo agente puede tener distintas cadencias.
+- **Zona horaria local:** los horarios usan la zona horaria de tu cuenta.
+- **Visibilidad:** cada ejecución queda registrada en la actividad del agente.
+
+## Modos de programación
+
+### Una vez
+
+Úsalo cuando el agente debe ejecutarse una sola vez. Por ejemplo: una revisión de fin de mes, un recordatorio puntual, preparar un informe antes de una reunión o hacer una actualización programada en el CRM. No se repite después de ejecutarse.
+
+### Establecer intervalo
+
+Úsalo para una cadencia regular. Las unidades disponibles son **minutos**, **horas**, **días**, **semanas** y **meses**. Además puedes:
+
+- Limitarlo a **días específicos de la semana**.
+- Definir una **condición de fin** (ver más abajo).
+
+Ejemplo: ejecutar el agente martes, miércoles y jueves a las 9:00 a. m. hasta fin de mes.
+
+### Expresión cron
+
+Para horarios avanzados que un intervalo estándar no cubre. Es la mejor opción si ya conoces la sintaxis cron.
+
+```text
+0 9 * * 1-5   (todos los días hábiles a las 9:00)
+```
+
+<Warning>
+  Revisa la expresión cron con cuidado antes de publicar el agente para confirmar que representa el horario que quieres.
+</Warning>
+
+## Condiciones de fin de un horario recurrente
+
+| Condición | Cuándo usarla |
+| --- | --- |
+| **Nunca** | El horario sigue activo hasta que lo cambies o lo elimines |
+| **En una fecha específica** | Iniciativas con fecha límite, como una campaña mensual |
+| **Después de un número de ejecuciones** | Cuando el agente debe correr una cantidad conocida de veces |
+
+## Varios horarios en un mismo agente
+
+No necesitas duplicar un agente para tener distintas cadencias. Un solo agente puede, por ejemplo:
+
+- Hacer una revisión diaria de cuentas.
+- Generar un resumen semanal.
+- Ejecutar una revisión extra, una sola vez, a fin de mes.
+
+Cada horario se configura por separado en el área de **Disparadores** del agente.
+
+## Programar en lenguaje natural
+
+También puedes pedirle el horario al constructor del agente con una frase, por ejemplo:
+
+```text
+Ejecuta este agente martes, miércoles y jueves a las 9 a. m. hasta fin de mes.
+```
+
+El constructor interpreta la cadencia y configura el disparador. Antes de publicar, revisa que fechas, horas, días y condición de fin coincidan con lo que pediste.
+
+## Zona horaria
+
+Los disparadores programados usan la **zona horaria de tu cuenta**. Verifícala antes de publicar, sobre todo si tu equipo trabaja en distintas regiones, atiendes contactos en varias zonas horarias, el horario debe coincidir con tu horario comercial o hay una fecha límite precisa.
+
+## Disparador programado o programador de flujos de trabajo
+
+Ambos sirven para automatizar por tiempo, pero inician cosas distintas:
+
+- Un **disparador programado** inicia un **agente gestionado**, que razona y ejecuta sus instrucciones, habilidades y acciones del CRM.
+- El **disparador Programador** de **Automatización** inicia un **flujo de trabajo** con acciones y lógica fijas.
+
+Usa el agente cuando la tarea requiere criterio; usa el flujo de trabajo cuando el proceso es siempre el mismo paso a paso.
+
+## Configurar un disparador programado
+
+<Steps>
+  <Step title="Abre el agente">
+    Entra a **IA → Agent Studio**, abre el agente gestionado que quieres programar y haz clic en **Editar agente**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** (Add trigger) y elige **Programación** (Schedule).
+  </Step>
+  <Step title="Elige el modo">
+    Selecciona **Una vez**, **Establecer intervalo** o **Expresión cron**.
+  </Step>
+  <Step title="Configura el horario">
+    - **Una vez:** elige la fecha y la hora.
+    - **Intervalo:** escribe el intervalo, elige la unidad (minutos, horas, días, semanas o meses), marca los días de la semana si hace falta y define la condición de fin.
+    - **Cron:** escribe la expresión que representa el horario.
+  </Step>
+  <Step title="Revisa la zona horaria">
+    Confirma que el horario tiene sentido según la zona horaria de tu cuenta. Si el agente necesita otra cadencia, agrega otro horario.
+  </Step>
+  <Step title="Publica el agente">
+    El horario se activa al publicar. A partir de ahí no hace falta iniciarlo manualmente.
+  </Step>
+</Steps>
+
+## Seguimiento de las ejecuciones
+
+Cada ejecución programada queda registrada en la [actividad del agente](/ia/actividad-de-agentes-gestionados). Úsala para confirmar que el agente corrió y para investigar si una acción esperada no ocurrió. Para más detalle de cada paso, revisa los [registros de agentes](/ia/registros-de-agentes).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Un disparador programado ejecuta el agente completo?">
+    Sí. Cada ejecución corre las instrucciones, habilidades y acciones del CRM del agente, igual que una ejecución en vivo.
+  </Accordion>
+  <Accordion title="¿El agente tiene que estar publicado?">
+    Sí. Publicar el agente es lo que activa el horario.
+  </Accordion>
+  <Accordion title="¿Qué zona horaria usa?">
+    La zona horaria configurada en tu cuenta.
+  </Accordion>
+  <Accordion title="¿Un agente puede tener más de un horario?">
+    Sí. Puedes agregar varios horarios con cadencias distintas.
+  </Accordion>
+  <Accordion title="¿Puedo limitar un horario recurrente a ciertos días?">
+    Sí. Los horarios por intervalo pueden limitarse a días específicos de la semana.
+  </Accordion>
+  <Accordion title="¿Puedo detener un horario recurrente automáticamente?">
+    Sí. Puede seguir indefinidamente, terminar en una fecha o detenerse tras un número de ejecuciones.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparadores de citas" icon="calendar-check" href="/ia/disparadores-de-citas-agentes-gestionados">
+    Inicia un agente cuando se reserva o cambia una cita.
+  </Card>
+  <Card title="Actividad de los agentes gestionados" icon="list-check" href="/ia/actividad-de-agentes-gestionados">
+    Supervisa cada ejecución y depura problemas.
+  </Card>
+</CardGroup>

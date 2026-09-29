@@ -1,0 +1,133 @@
+---
+title: "Notificaciones por SMS para reservas de alquileres"
+description: "Envía SMS automáticos de confirmación, recordatorio, cancelación y seguimiento en tus reservas de alquileres."
+icon: "message"
+---
+
+Las notificaciones por SMS de alquileres envían mensajes automáticos cuando pasa algo importante con una reserva: se confirma, se cancela, se reprograma, se acerca la fecha o termina. Así tus clientes y tu equipo están al tanto sin que tengas que escribir cada mensaje a mano.
+
+Se configuran una sola vez en la configuración global de alquileres y se aplican a todas las reservas de todos tus anuncios.
+
+## Beneficios
+
+- **Comunicación más rápida:** el SMS llega directo al teléfono.
+- **Menos ausencias:** los recordatorios ayudan a que el cliente no olvide su reserva.
+- **Control de destinatarios:** decide si el mensaje va al cliente, al negocio o a ambos.
+- **Mensajes a tu medida:** edita el texto o usa una plantilla de SMS con datos de la reserva.
+- **Pruebas antes de activar:** envía un SMS de prueba sin molestar a clientes reales.
+- **Menos seguimiento manual:** tu equipo se enfoca en tareas de más valor.
+
+## Eventos que pueden enviar SMS
+
+| Evento | Cuándo se envía |
+| --- | --- |
+| **Sin confirmar** | Cuando se solicita una reserva con estado sin confirmar. Útil si revisas o apruebas las reservas manualmente. |
+| **Confirmación** | Cuando la reserva se confirma o pasa de sin confirmar a confirmada. |
+| **Cancelación** | Cuando se cancela una reserva. |
+| **Reprogramación** | Cuando cambian las fechas u horas de una reserva. |
+| **Recordatorio** | Antes del inicio de la reserva, según el tiempo que configures (por ejemplo, 24 horas o 1 hora antes). |
+| **Seguimiento** | Después de que termina la reserva. Ideal para pedir reseñas, opiniones u ofrecer otro servicio. |
+
+Cada evento se edita por separado, con su propio mensaje y destinatarios.
+
+## Destinatarios
+
+- **Contacto:** el cliente asociado a la reserva.
+- **Negocio:** el número interno que usas para gestionar los alquileres.
+
+Algunos ejemplos:
+
+- Mensajes para el cliente, como "Tu alquiler empieza mañana a las 9:00", solo al **Contacto**.
+- Alertas internas, como "Nueva reserva de la unidad 4 para este fin de semana", solo al **Negocio**.
+- Ambos, cuando cliente y equipo deben recibir el mismo aviso.
+
+## Antes de empezar
+
+- Tu cuenta debe tener configurado el envío de SMS y un número de envío activo. Revisa [Configura correo, teléfono y SMS](/primeros-pasos/configura-correo-telefono-y-sms).
+- Los números de los destinatarios deben ser válidos e incluir el código de país.
+- Envía SMS solo a contactos que aceptaron recibirlos.
+- En Estados Unidos, tu número necesita el registro A2P 10DLC para que los mensajes no se bloqueen.
+
+<Note>
+Cada SMS se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). Mantén los mensajes cortos para usar menos segmentos.
+</Note>
+
+## Cómo configurar las notificaciones por SMS
+
+<Steps>
+  <Step title="Abre la configuración global de alquileres">
+    Ve a **Calendarios → Configuración de calendarios → Alquileres → Configuración global** y abre **Notificaciones**.
+  </Step>
+  <Step title="Elige el evento">
+    Haz clic en el ícono de **lápiz** junto al evento que quieres configurar, por ejemplo **Recordatorio** o **Confirmación**.
+  </Step>
+  <Step title="Activa el SMS">
+    Abre la pestaña **SMS** y desactiva el interruptor **Desactivar notificaciones por SMS** para habilitar el envío en ese evento.
+  </Step>
+  <Step title="Elige los destinatarios">
+    En **¿Quién debe recibir esta notificación?**, marca **Contacto**, **Negocio** o ambos.
+  </Step>
+  <Step title="Escribe el mensaje">
+    Elige una plantilla en **Plantilla de SMS** o usa la predeterminada, y edita el **Cuerpo del mensaje**. Inserta valores personalizados con el selector de campos. Si quieres textos distintos para el cliente y para el negocio, configura cada uno por separado.
+  </Step>
+  <Step title="Ajusta el tiempo (recordatorios y seguimientos)">
+    En **Recordatorio**, indica cuánto antes del inicio se envía. En **Seguimiento**, indica cuánto después del fin se envía.
+  </Step>
+  <Step title="Envía una prueba">
+    Escribe un número con código de país en **SMS de prueba** y haz clic en **Enviar un SMS de prueba**. Revisa en el teléfono los datos, los enlaces, el tono y la longitud.
+  </Step>
+  <Step title="Guarda y repite">
+    Haz clic en **Guardar** y, si aparece, en **Guardar cambios** en la página de notificaciones. Repite con los demás eventos que quieras cubrir.
+  </Step>
+</Steps>
+
+Un mensaje de ejemplo:
+
+```text
+Hola {{contact.name}}, tu reserva está confirmada para el {{rentalBooking.start_time}} {{rentalBooking.timezone}}.
+```
+
+<Tip>
+Si editaste el mensaje y quieres volver al original, usa el enlace **Restablecer a predeterminado**.
+</Tip>
+
+## Solución de problemas
+
+- Confirma que el SMS esté habilitado en ese evento.
+- Revisa que tengas marcado el destinatario correcto (Contacto, Negocio o ambos).
+- Comprueba que el cuerpo del mensaje no esté vacío.
+- Verifica que el número del destinatario sea válido y tenga código de país.
+- Si el botón de prueba está desactivado, revisa el número de prueba y que tu cuenta tenga el envío de SMS configurado.
+- Revisa las preferencias de comunicación del contacto.
+- Confirma que tus mensajes no se estén bloqueando por falta de registro A2P.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que configurar los SMS en cada anuncio?">
+    No. Se configuran en la configuración global de alquileres y aplican a todas las reservas.
+  </Accordion>
+  <Accordion title="¿Puedo enviar SMS solo a mi equipo?">
+    Sí. Marca solo **Negocio** y deja **Contacto** sin marcar. El SMS funcionará como alerta interna.
+  </Accordion>
+  <Accordion title="¿Puedo usar textos distintos para el cliente y el negocio?">
+    Sí. Puedes configurar una plantilla diferente para cada destinatario.
+  </Accordion>
+  <Accordion title="¿El SMS reemplaza al correo o a WhatsApp?">
+    No. Es un canal adicional. El correo, las notificaciones en la app y WhatsApp se configuran por separado.
+  </Accordion>
+  <Accordion title="¿Las plantillas son obligatorias?">
+    No. Cada evento trae un mensaje predeterminado que puedes editar directamente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configura correo, teléfono y SMS" icon="phone" href="/primeros-pasos/configura-correo-telefono-y-sms">
+    Deja listo tu número para enviar mensajes.
+  </Card>
+  <Card title="Valores personalizados en calendarios" icon="brackets-curly" href="/calendarios/valores-personalizados-en-calendarios">
+    Personaliza tus mensajes con datos de la reserva.
+  </Card>
+</CardGroup>

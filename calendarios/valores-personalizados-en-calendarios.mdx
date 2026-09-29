@@ -1,0 +1,115 @@
+---
+title: "Valores personalizados en calendarios"
+description: "Inserta valores personalizados y datos del usuario asignado en tus citas, notificaciones y páginas."
+icon: "code"
+---
+
+Los valores personalizados son datos que guardas una sola vez en tu cuenta (un enlace de videollamada, el nombre de un asesor, la dirección de tu local) y luego insertas en cualquier texto como un campo combinable. En los calendarios te sirven para personalizar títulos de cita, ubicaciones y notificaciones sin copiar y pegar la misma información una y otra vez. Si el dato cambia, lo actualizas en un solo lugar.
+
+## Dónde puedes usarlos
+
+Los valores personalizados aparecen en el selector de campos combinables de:
+
+- Calendarios
+- Servicios
+- Alquileres
+
+Y funcionan en cualquier campo del calendario que admita campos combinables, por ejemplo:
+
+- Título de la cita.
+- Ubicación de la reunión (opción personalizada).
+- Notificaciones por correo.
+- Recordatorios por SMS.
+- Mensajes de flujos de trabajo disparados por citas.
+
+## Antes de empezar: crea tus valores
+
+<Steps>
+  <Step title="Abre los valores personalizados">
+    Ve a **Configuración → Valores personalizados**.
+  </Step>
+  <Step title="Crea uno nuevo">
+    Haz clic en **Nuevo valor personalizado**, escribe un nombre y el valor que quieres guardar.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. El valor ya aparecerá en el selector de campos combinables.
+  </Step>
+</Steps>
+
+## Insertar un valor personalizado en un calendario
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Calendarios**, abre un calendario existente o crea uno nuevo y entra en su configuración.
+  </Step>
+  <Step title="Elige el campo">
+    Haz clic en el campo de texto donde quieres usar el valor, por ejemplo el título de la cita o una notificación.
+  </Step>
+  <Step title="Abre el selector de campos combinables">
+    Haz clic en el ícono de campos combinables (`{}`). Baja hasta la sección **Valores personalizados** o usa el buscador.
+  </Step>
+  <Step title="Selecciona el valor">
+    Al elegirlo, se inserta como una variable del tipo `{{custom_values.tu_clave}}`.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar** y agenda una cita de prueba para confirmar que el valor se muestra correctamente.
+  </Step>
+</Steps>
+
+<Tip>
+  Un uso muy práctico: guarda el enlace fijo de tu sala de videollamadas como valor personalizado y úsalo como ubicación en todos tus calendarios. Si algún día cambias de sala, lo actualizas una sola vez.
+</Tip>
+
+## Datos del usuario asignado después de reservar
+
+También puedes mostrar datos del usuario asignado a la cita o al contacto (nombre, correo, teléfono u otros datos compatibles) en estos lugares:
+
+- La página de confirmación del calendario y el mensaje de agradecimiento.
+- El siguiente paso de un embudo después de reservar, cuando el elemento **Calendario** tiene como acción de redirección **Ir al siguiente paso**.
+
+Para usarlo en un embudo:
+
+1. Agrega el elemento **Calendario** a un paso del embudo.
+2. Configura su acción de redirección como **Ir al siguiente paso**.
+3. En el siguiente paso, agrega los campos combinables del usuario asignado.
+4. Haz una reserva de prueba y confirma que los datos aparecen.
+
+Así, por ejemplo, la página de gracias puede decir "Tu cita es con Laura" y mostrar su teléfono directo.
+
+## Ventajas
+
+- Confirmaciones y recordatorios más personales.
+- Mensajes coherentes en todas tus citas.
+- Menos trabajo manual al actualizar datos repetidos.
+- Automatizaciones de agenda más fáciles de mantener cuando creces.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que activar algo para usarlos?">
+    No. La función está disponible por defecto.
+  </Accordion>
+  <Accordion title="¿Funcionan en los flujos de trabajo?">
+    Sí. Puedes usarlos en acciones de correo y SMS de flujos disparados por citas.
+  </Accordion>
+  <Accordion title="¿Puedo combinarlos con otros campos combinables?">
+    Sí. Puedes usar varios campos combinables en el mismo texto.
+  </Accordion>
+  <Accordion title="¿Qué pasa si actualizo un valor personalizado?">
+    Los mensajes futuros usarán el valor nuevo. Los mensajes ya enviados no cambian.
+  </Accordion>
+  <Accordion title="¿Están disponibles en la aplicación móvil?">
+    Sí, en los campos relacionados con calendarios.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Varias ubicaciones de reunión" icon="location-dot" href="/calendarios/varias-ubicaciones-de-reunion">
+    Deja que el cliente elija dónde reunirse.
+  </Card>
+  <Card title="Recordatorios y ausencias" icon="bell" href="/calendarios/recordatorios">
+    Configura los avisos de tus citas.
+  </Card>
+</CardGroup>

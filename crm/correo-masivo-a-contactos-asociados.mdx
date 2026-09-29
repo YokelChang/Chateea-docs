@@ -1,0 +1,110 @@
+---
+title: "Enviar correo masivo a contactos asociados"
+description: "Escribe a los contactos vinculados a empresas u objetos personalizados, con datos del registro en el mensaje."
+icon: "envelope"
+---
+
+Puedes enviar un correo masivo partiendo de registros de **empresas** o de un **objeto personalizado**, sin tener que reconstruir la misma audiencia en Contactos. Chateea usa las asociaciones de esos registros para decidir qué contactos reciben el mensaje, y puedes personalizar el correo con datos de la empresa o del objeto.
+
+Por ejemplo: seleccionas las pólizas que vencen este mes y el correo llega a los titulares asociados a cada póliza, con el número de póliza y la fecha de renovación dentro del texto.
+
+## Qué puedes hacer
+
+- **Enviar desde registros existentes:** empiezas con empresas o registros de un objeto personalizado seleccionados.
+- **Elegir qué relaciones cuentan:** en objetos personalizados eliges una o varias etiquetas de asociación (por ejemplo, Comprador potencial o Titular).
+- **Controlar a quién se envía:** al contacto asociado más reciente, al más antiguo o a todos los contactos asociados.
+- **Personalizar con datos del registro:** insertas campos de la empresa o del objeto como campos de combinación.
+- **Evitar envíos duplicados:** si un contacto califica por varias etiquetas de asociación, recibe un solo correo.
+- **Usar las herramientas de siempre:** redactas, pruebas, programas, envías por lotes y mides resultados con el mismo constructor de correo masivo.
+
+## Requisitos y limitaciones
+
+- Los registros seleccionados deben tener contactos asociados.
+- En un objeto personalizado, la opción **Enviar correo** solo aparece si el objeto tiene una asociación con Contactos.
+- En Empresas, Chateea selecciona automáticamente la asociación con contactos.
+- La lista final de destinatarios se calcula cuando se ejecuta la acción masiva, no cuando la configuras.
+- Se omiten los contactos sin un correo válido o bloqueados por la configuración de correo (bajas, permisos, consentimiento).
+- Siguen aplicando los permisos, requisitos de consentimiento, protecciones de entregabilidad, límites de envío y demás reglas del correo masivo.
+
+## Configurar el envío
+
+<Steps>
+  <Step title="Selecciona los registros de origen">
+    Para empresas, ve a **Contactos → Empresas**. Para un objeto personalizado, ábrelo desde el menú de tu cuenta. Si lo necesitas, aplica filtros o una lista inteligente, y selecciona solo los registros cuyos contactos asociados deben recibir el correo.
+  </Step>
+  <Step title="Inicia el correo masivo">
+    Haz clic en **Enviar correo** en la barra de acciones masivas. Revisa cuántos registros seleccionaste y haz clic en **Confirmar y continuar**.
+  </Step>
+  <Step title="Elige la asociación y los destinatarios">
+    Escribe un **Nombre de la acción**. En objetos personalizados, selecciona una o varias **Etiquetas de asociación** (en Empresas se elige sola). En **Destinatarios del correo**, elige **Contacto asociado más reciente**, **Contacto asociado más antiguo** o **Todos los contactos asociados**.
+  </Step>
+  <Step title="Redacta el correo">
+    Completa los datos del remitente, el asunto y, si quieres, el texto de vista previa. Elige **Redacción rápida**, **Constructor inteligente** o **Seleccionar plantilla existente**. Inserta campos de combinación del contacto, de la empresa o del objeto donde te sirvan, agrega adjuntos si hace falta y envía un correo de prueba.
+  </Step>
+  <Step title="Ajusta opciones y programa el envío">
+    En **Configuración adicional** puedes activar el seguimiento de clics o los parámetros UTM. Luego elige **Enviar todo de una vez**, **Enviar a una hora programada** o **Enviar por lotes**.
+  </Step>
+  <Step title="Revisa y envía">
+    Revisa la configuración, acepta la confirmación de consentimiento si aparece y haz clic en **Enviar correo**.
+  </Step>
+</Steps>
+
+<Info>
+El número exacto de destinatarios no se conoce hasta que la acción se ejecuta. Las cifras finales aparecen en las estadísticas de la acción masiva.
+</Info>
+
+### Cómo elegir los destinatarios
+
+| Opción | Cuándo usarla |
+| --- | --- |
+| Contacto asociado más reciente | Quieres escribirle al contacto vinculado más recientemente, por ejemplo el último comprador interesado en una propiedad. |
+| Contacto asociado más antiguo | Te interesa el primer contacto vinculado, como el titular original de una póliza. |
+| Todos los contactos asociados | El mensaje aplica a todos, como un aviso a todo el equipo de una empresa cliente. |
+
+## Revisar los resultados
+
+Abre el envío en **Contactos → Acciones masivas** para ver métricas como aceptados, entregados, abiertos, clics, respuestas, bajas, quejas, rebotes, fallidos y omitidos.
+
+Para un análisis más completo, usa **Cargar más estadísticas** desde la acción masiva o ve a **Marketing → Correos → Estadísticas** y filtra por la fuente **Campañas de acciones masivas**.
+
+## Casos de uso
+
+- **Inmobiliarias:** selecciona propiedades y escribe a los contactos asociados como compradores potenciales.
+- **Seguros:** selecciona pólizas próximas a renovarse y escribe a sus titulares.
+- **Ventas B2B:** filtra empresas por criterios relevantes y escribe a sus contactos asociados.
+- **Veterinarias y negocios de mascotas:** selecciona registros de mascotas y envía recordatorios a sus dueños.
+- **Segmentos de listas inteligentes:** crea una lista inteligente de empresas u objetos, selecciona sus registros y escribe directamente a los contactos asociados.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no aparece Enviar correo en mi objeto personalizado?">
+    El objeto necesita tener una asociación con Contactos. Créala primero y la acción aparecerá.
+  </Accordion>
+  <Accordion title="¿Un contacto recibe el correo varias veces si califica por varias etiquetas?">
+    No. Los contactos que califican por varias etiquetas de asociación se deduplican antes del envío.
+  </Accordion>
+  <Accordion title="¿Por qué se omitió un contacto?">
+    Normalmente porque no tiene un correo válido o porque sus permisos, su consentimiento u otras protecciones de envío impiden la entrega.
+  </Accordion>
+  <Accordion title="¿Puedo usar una plantilla de correo que ya tengo?">
+    Sí. Elige **Seleccionar plantilla existente** en el constructor de correo masivo.
+  </Accordion>
+  <Accordion title="¿Puedo medir clics o agregar parámetros UTM?">
+    Sí. Actívalos en **Configuración adicional** dentro del constructor de correo masivo.
+  </Accordion>
+  <Accordion title="¿Dónde veo el rendimiento completo del envío?">
+    En **Contactos → Acciones masivas**, o en **Marketing → Correos → Estadísticas** filtrando por **Campañas de acciones masivas**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Activar automatizaciones en bloque" icon="bolt" href="/crm/activar-automatizaciones-en-bloque">
+    Envía empresas o registros de objetos a un flujo de trabajo.
+  </Card>
+  <Card title="Tu primera campaña de correo" icon="envelope" href="/primeros-pasos/lanza-tu-primera-campana-de-correo">
+    Aprende a crear y enviar campañas de correo en Chateea.
+  </Card>
+</CardGroup>

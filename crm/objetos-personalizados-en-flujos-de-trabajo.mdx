@@ -1,0 +1,114 @@
+---
+title: "Objetos personalizados en flujos de trabajo"
+description: "Disparadores y acciones para automatizar lo que pasa cuando se crea o cambia un registro de objeto personalizado."
+icon: "bolt"
+---
+
+Los flujos de trabajo basados en objetos personalizados se ejecutan sobre el registro del objeto (una casa, un auto, una mascota), no sobre un contacto. Así puedes automatizar lo que ocurre cuando se crea o cambia un registro: actualizar registros relacionados, limpiar campos, dejar notas o enviar los datos a otras herramientas.
+
+<Note>
+Antes de usar un objeto en un flujo, el objeto y sus campos deben estar creados.
+</Note>
+
+## Crear un flujo para un objeto personalizado
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo** y haz clic en **Crear flujo de trabajo**.
+  </Step>
+  <Step title="Elige el objeto">
+    Selecciona el flujo basado en el objeto que quieres automatizar (por ejemplo, **Casa**, **Vehículo**, **Póliza** o **Mascota**).
+  </Step>
+  <Step title="Agrega el disparador">
+    Añade un disparador y configura sus condiciones o filtros.
+  </Step>
+  <Step title="Agrega las acciones y publica">
+    Añade las acciones que quieres ejecutar y haz clic en **Publicar**.
+  </Step>
+</Steps>
+
+## Disparadores disponibles
+
+En los ejemplos usamos un objeto llamado "Casa". En tu cuenta verás el nombre de tu objeto.
+
+| Disparador | Qué hace |
+| --- | --- |
+| **Casa creada** | Inicia el flujo cuando se crea un registro del objeto. |
+| **Casa modificada** | Inicia el flujo cuando se actualiza un registro. Puedes filtrar por el campo que cambia. |
+| **Webhook entrante** | Inicia el flujo cuando llega un webhook de un sistema externo. |
+
+## Acciones disponibles
+
+### Objeto personalizado
+
+| Acción | Qué hace |
+| --- | --- |
+| **Crear Casa o registro asociado** | Crea un registro nuevo del objeto o un registro asociado a él. |
+| **Actualizar Casa o registro asociado** | Actualiza campos del registro o de un registro asociado. |
+| **Limpiar campos de Casa o registro asociado** | Vacía los campos que elijas del registro o de uno asociado. |
+| **Agregar nota** | Agrega una nota al registro que está en el flujo. |
+
+### Enviar datos
+
+| Acción | Qué hace |
+| --- | --- |
+| **Webhook personalizado** | Envía los datos del registro a una URL externa. |
+| **Google Sheets** | Registra los datos del registro en una hoja de cálculo. |
+
+### Internas y de IA
+
+También puedes combinar las acciones del objeto con las utilidades habituales de los flujos:
+
+- Si / sino
+- Esperar
+- Ir a
+- Actualizar valor personalizado
+- Formateadores de fecha y hora, de número y de texto
+- Agregar a flujo de trabajo y quitar de flujo de trabajo
+- Funciones de arreglos
+- Goteo (drip)
+- Código personalizado
+- Acción de IA con GPT
+
+## Ejemplo: una propiedad vendida
+
+Una inmobiliaria usa un objeto **Casa** para sus propiedades. Cuando el campo **Estado** pasa a **Cerrada** (la casa se vendió), quiere automatizar los siguientes pasos.
+
+**Disparador:** Casa modificada, con el filtro de que el campo **Estado** cambie a **Cerrada**.
+
+**Acciones:**
+
+1. **Actualizar registro asociado:** actualiza el registro del agente vinculado a la casa vendida.
+2. **Google Sheets:** agrega una fila con los datos de la venta en una hoja centralizada para seguimiento e informes.
+3. **Limpiar campos:** vacía los campos temporales, como notas provisionales o comentarios internos, que ya no hacen falta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo enviar datos de un objeto personalizado a otras plataformas?">
+    Sí. Con la acción **Webhook personalizado** envías los datos del registro a herramientas externas, útil para informes, sincronizar inventarios o activar otros servicios.
+  </Accordion>
+  <Accordion title="¿Tengo que crear el objeto antes de usarlo en un flujo?">
+    Sí. El objeto y sus campos deben existir antes de poder usarlos en un disparador o una acción.
+  </Accordion>
+  <Accordion title="¿Mis flujos existentes se ven afectados si creo más objetos?">
+    No. Los flujos reconocen los objetos nuevos automáticamente; solo tienes que agregar los disparadores o acciones que necesites.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Tu primera automatización" icon="bolt" href="/primeros-pasos/tu-primera-automatizacion">
+    Conceptos básicos de los flujos de trabajo.
+  </Card>
+  <Card title="Importar registros con asociaciones" icon="link" href="/crm/importar-registros-con-asociaciones">
+    Usa un flujo para asociar registros importados.
+  </Card>
+  <Card title="Notas en objetos personalizados" icon="note-sticky" href="/crm/notas-en-objetos-personalizados">
+    Agrega notas a mano o desde un flujo.
+  </Card>
+  <Card title="Crear y editar objetos personalizados" icon="cubes" href="/crm/crear-y-editar-objetos-personalizados">
+    Define el objeto y sus campos.
+  </Card>
+</CardGroup>

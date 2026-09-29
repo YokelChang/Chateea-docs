@@ -1,0 +1,85 @@
+---
+title: "Límites de asociación entre objetos"
+description: "Controla cuántos registros se pueden vincular entre objetos con relaciones uno a uno, uno a N o muchos a muchos."
+icon: "sliders"
+---
+
+Los límites de asociación te permiten controlar cuántos registros se pueden vincular entre objetos. Por ejemplo, que un asesor no tenga más de 50 propiedades asignadas o que cada contrato pertenezca a un solo cliente. Así evitas vínculos de más, mantienes tus datos ordenados y el equipo recibe un aviso claro cuando llega al tope.
+
+## Para qué sirven
+
+- **Evitan asociaciones excesivas** entre registros.
+- **Mantienen limpia la estructura de datos** de tu CRM.
+- **Reducen la confusión**: cuando se alcanza el límite, la interfaz lo indica de inmediato.
+
+## Tipos de relación compatibles
+
+<Note>
+Los límites se aplican **por etiqueta** de asociación y se reflejan en la interfaz.
+</Note>
+
+### Asociaciones con etiquetas (una o un par)
+
+| Tipo | Significado |
+| --- | --- |
+| **Uno a uno** (1:1) | Cada registro se vincula como máximo con un registro del otro lado. |
+| **Uno a N** | Un registro se vincula con hasta N registros del otro lado (N hasta 1.000). |
+| **Uno a muchos** | Un registro se vincula con muchos registros del otro lado, sin límite definido por ti. |
+| **N a muchos** | Hasta N registros de un lado (N hasta 1.000) con muchos del otro. |
+| **Muchos a muchos** | Sin límite en ninguno de los dos lados. |
+
+### Asociaciones entre contactos con una sola etiqueta
+
+- **Uno a uno** (1:1)
+- **Muchos a muchos**
+- **N a N personalizado**
+
+## Cómo configurar un límite de asociación
+
+<Steps>
+<Step title="Abre los objetos">
+Ve a **Configuración → Objetos**.
+</Step>
+<Step title="Edita el objeto">
+Elige un objeto personalizado o **Contactos**, haz clic en los tres puntos y selecciona **Editar**.
+</Step>
+<Step title="Entra en Asociaciones">
+Abre la pestaña **Asociaciones** y haz clic en **Crear asociación**, o edita una asociación existente.
+</Step>
+<Step title="Define las etiquetas">
+Elige si usarás una **sola etiqueta** o un **par de etiquetas** (por ejemplo, "Comprador" y "Vendedor").
+</Step>
+<Step title="Configura la relación">
+En **Configurar relación**, selecciona el tipo (por ejemplo, 1:1 o 1:N) y define el límite si corresponde.
+</Step>
+<Step title="Revisa y guarda">
+Usa la sección de vista previa para confirmar las restricciones antes de guardar. La asociación configurada aparecerá en la pestaña **Asociaciones**.
+</Step>
+</Steps>
+
+## Ejemplo: una inmobiliaria
+
+Una inmobiliaria quiere que cada asesor gestione como máximo 50 propiedades para repartir bien la carga de trabajo:
+
+1. Crea una relación **uno a N** del objeto **Asesor** al objeto **Propiedad**.
+2. Define el límite en **N = 50**.
+3. Cuando un asesor llega a 50 propiedades, el equipo ve un aviso en la interfaz y ya no puede asignarle más.
+
+## Qué pasa al llegar al límite
+
+Si intentas asociar más registros de los permitidos, Chateea muestra un mensaje de error al instante y no crea la asociación. Para vincular un registro nuevo, primero tendrás que quitar alguna de las asociaciones existentes o ajustar el límite en la configuración.
+
+<Tip>
+Antes de fijar un límite, piensa en cómo funciona tu negocio en la vida real. Si hoy un contrato siempre pertenece a un solo cliente, una relación 1:1 evita errores de captura desde el principio.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Asociaciones entre oportunidades, empresas y objetos" icon="diagram-project" href="/crm/asociaciones-oportunidades-empresas-y-objetos">
+Conecta oportunidades, empresas y objetos personalizados.
+</Card>
+<Card title="Tareas asociadas a varios objetos" icon="list-check" href="/crm/tareas-asociadas-a-varios-objetos">
+Vincula una tarea a hasta 10 registros de cada tipo.
+</Card>
+</CardGroup>

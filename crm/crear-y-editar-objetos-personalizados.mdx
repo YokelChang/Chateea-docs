@@ -1,0 +1,120 @@
+---
+title: "Crear y editar objetos personalizados"
+description: "Crea un objeto personalizado paso a paso, define sus campos y asociaciones, y elimínalo si ya no lo necesitas."
+icon: "pen-to-square"
+---
+
+Crear un objeto personalizado te permite añadir a Chateea un tipo de registro nuevo, con sus propios campos, asociaciones y automatizaciones. Por ejemplo, un objeto **Propiedad** con número de ficha, dormitorios y estado, o un objeto **Mascota** con raza y vacunas. Una vez creado, lo puedes usar en vistas de lista, filtros, listas inteligentes, formularios y flujos de trabajo.
+
+## Antes de empezar
+
+- Solo los **administradores** de la cuenta pueden crear, editar o eliminar objetos personalizados. Los usuarios normales tienen acceso de solo lectura a su definición.
+- Puedes crear hasta **10 objetos personalizados** por cuenta.
+- Algunos datos del objeto **no se pueden cambiar después** de crearlo: el nombre interno y el campo principal. Defínelos con calma.
+
+## Crear un objeto personalizado
+
+<Steps>
+  <Step title="Abre la configuración de objetos">
+    Ve a **Configuración → Objetos**.
+  </Step>
+  <Step title="Agrega un objeto">
+    Haz clic en **Agregar objeto personalizado** (Add Custom Object). Si prefieres partir de una estructura lista, elige usar una plantilla.
+  </Step>
+  <Step title="Escribe los nombres">
+    Ingresa el **nombre en singular** (por ejemplo, Mascota) y el **nombre en plural** (por ejemplo, Mascotas).
+  </Step>
+  <Step title="Revisa el nombre interno y el campo principal">
+    Chateea genera un **nombre interno** y un **campo principal** por defecto. Puedes ajustar el nombre interno durante la creación haciendo clic en el ícono `</>`. Después ya no se puede modificar.
+  </Step>
+  <Step title="Define el campo principal">
+    Ponle una etiqueta al **campo principal de visualización**, que es el que identifica cada registro (por ejemplo, Nombre de la mascota o Número de identificación). Si ese valor no debe repetirse, marca **Marcar campo principal como único**.
+  </Step>
+  <Step title="Añade ícono y descripción">
+    Elige un **ícono** y escribe una **descripción** para que tu equipo entienda para qué sirve el objeto.
+  </Step>
+  <Step title="Crea el objeto">
+    Haz clic en **Crear objeto personalizado**.
+  </Step>
+</Steps>
+
+## Editar un objeto
+
+Después de crearlo, el objeto aparece en la página **Objetos**. Haz clic sobre él para abrirlo y ajustar sus detalles, sus campos y sus asociaciones.
+
+## Campos y campos únicos
+
+Cada objeto admite sus propios campos personalizados: texto, número, fecha, listas desplegables y más. Para evitar registros duplicados puedes marcar algunos campos como **únicos**:
+
+- Tipos de campo que pueden ser únicos: texto de una línea, texto de varias líneas, número y teléfono.
+- Máximo **10 campos únicos por objeto**.
+- La unicidad se aplica en toda tu cuenta y en todas las vías de entrada: interfaz, flujos de trabajo, formularios y API.
+- Si conviertes un campo único en no único, **no puedes volver a hacerlo único**.
+
+## Asociaciones y etiquetas
+
+Las asociaciones conectan registros entre sí (por ejemplo, Oportunidad y Propiedad) para reflejar relaciones reales y ver la información cruzada.
+
+- Puedes definir relaciones de uno a muchos o de muchos a muchos entre objetos.
+- Las asociaciones se pueden usar en listas inteligentes, filtros y automatizaciones.
+- Puedes crear hasta **10 etiquetas de asociación** distintas entre dos objetos, por ejemplo "Comprador de" o "Publicado en".
+- Las oportunidades también se pueden asociar a objetos personalizados, para tener todo el contexto en el pipeline.
+
+## Eliminar un objeto personalizado
+
+<Warning>
+Eliminar un objeto es permanente. Se borran el objeto y **todos** sus registros, asociaciones, flujos de trabajo y campos personalizados. No se puede recuperar.
+</Warning>
+
+<Steps>
+  <Step title="Abre el menú del objeto">
+    En **Configuración → Objetos**, haz clic en los tres puntos junto al nombre del objeto.
+  </Step>
+  <Step title="Elige Eliminar">
+    Selecciona **Eliminar**.
+  </Step>
+  <Step title="Confirma">
+    Escribe **DELETE** para confirmar.
+  </Step>
+</Steps>
+
+## Automatizar con el objeto
+
+Cuando el objeto ya tiene sus campos y asociaciones, puedes crear flujos de trabajo basados en él: se disparan cuando se crea o cambia un registro y pueden crear, actualizar o limpiar registros, enviar datos por webhook o a Google Sheets. Lo explicamos en detalle en [Objetos personalizados en flujos de trabajo](/crm/objetos-personalizados-en-flujos-de-trabajo).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Quién puede crear o editar objetos personalizados?">
+    Solo los administradores de la cuenta. Los demás usuarios tienen acceso de solo lectura a la definición del objeto.
+  </Accordion>
+  <Accordion title="¿Cuántos objetos personalizados puedo crear?">
+    Hasta 10 por cuenta.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el nombre interno o el campo principal más adelante?">
+    No. Una vez creado el objeto, esos datos no se pueden editar.
+  </Accordion>
+  <Accordion title="¿Qué pasa si elimino un objeto personalizado?">
+    Se elimina de forma permanente junto con todos sus registros, asociaciones, flujos de trabajo y campos personalizados.
+  </Accordion>
+  <Accordion title="¿Cómo automatizo acciones cuando se crea o actualiza un registro?">
+    Con un flujo de trabajo basado en el objeto, usando sus disparadores de registro creado o cambiado y sus acciones de crear, actualizar o limpiar campos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Límites y compatibilidad" icon="circle-info" href="/crm/limites-y-compatibilidad-de-objetos-personalizados">
+    Dónde se pueden usar los objetos personalizados.
+  </Card>
+  <Card title="Crear y actualizar registros" icon="pen-to-square" href="/crm/crear-y-actualizar-registros-de-objetos">
+    Agrega y edita registros de tus objetos.
+  </Card>
+  <Card title="Campos únicos" icon="fingerprint" href="/crm/campos-unicos-en-objetos-personalizados">
+    Evita valores repetidos en tus registros.
+  </Card>
+  <Card title="Plantillas de objetos personalizados" icon="layer-group" href="/crm/plantillas-de-objetos-personalizados">
+    Crea objetos, campos y asociaciones en un solo paso.
+  </Card>
+</CardGroup>

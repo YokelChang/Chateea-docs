@@ -1,0 +1,134 @@
+---
+title: "Disparador Formulario de AI Studio enviado"
+description: "Inicia un flujo de trabajo cuando un visitante envía un formulario conectado en tu sitio de AI Studio."
+icon: "bolt"
+---
+
+El disparador **Formulario de AI Studio enviado** inicia un flujo de trabajo en cuanto un visitante envía un formulario conectado en un sitio creado con AI Studio. Es la forma más directa de dar seguimiento automático a los leads que capta tu sitio: enviarles un correo o SMS, etiquetarlos, crear una oportunidad o avisar a tu equipo.
+
+Puedes limitar el flujo a un proyecto, formulario, ruta de página o dominio concretos.
+
+<Info>
+  Este disparador convive con el **Evento de seguimiento externo**. Tus formularios existentes siguen funcionando con ese disparador y no necesitas cambiarlos. Solo debes reconectar un formulario antiguo si quieres usarlo con el nuevo disparador.
+</Info>
+
+## Ventajas
+
+- **Hecho para AI Studio:** separa las automatizaciones de tus sitios de AI Studio de las de otros formularios.
+- **Seguimiento automático:** notificaciones, correos, SMS, etiquetas, oportunidades o cualquier otra acción.
+- **Filtros precisos** por proyecto, formulario, ruta de página o dominio.
+- **Leads directo al CRM:** el contacto se crea y el flujo se ejecuta al instante.
+- **Compatible** con el seguimiento externo, sin conflictos.
+
+## Antes de empezar
+
+1. Confirma que AI Studio está activo en tu cuenta.
+2. Tu proyecto de AI Studio debe tener un formulario.
+3. Conecta el formulario al seguimiento del CRM (consulta [Conectar formularios y calendarios en AI Studio](/ia/formularios-y-calendarios-en-ai-studio)).
+4. Publica el proyecto.
+5. Envía un formulario de prueba para que el disparador cargue las opciones de filtro.
+
+## Reconectar formularios existentes
+
+Si tu formulario se conectó antes de que existiera este disparador, reconéctalo para que el disparador pueda identificar el proyecto y el formulario. Hazlo en cada formulario que quieras usar con él.
+
+<Steps>
+  <Step title="Abre el proyecto">
+    Entra al proyecto de AI Studio que contiene el formulario.
+  </Step>
+  <Step title="Pide rehacer la integración">
+    En el chat de AI Studio escribe: "Vuelve a ejecutar la integración del formulario" (Re-trigger form integration) y deja que AI Studio actualice la integración.
+  </Step>
+  <Step title="Conecta de nuevo al CRM">
+    Cuando termine, vuelve a conectar el formulario al seguimiento del CRM.
+  </Step>
+  <Step title="Publica">
+    Publica otra vez el proyecto para aplicar la configuración en el sitio en vivo.
+  </Step>
+  <Step title="Haz una prueba">
+    Entra al sitio publicado y envía un formulario de prueba.
+  </Step>
+</Steps>
+
+Los formularios conectados después de que se lanzó el disparador funcionan directamente, sin reconectar.
+
+## Crear el flujo de trabajo
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador**, busca y selecciona **Formulario de AI Studio enviado** (AI Studio Form Submitted).
+  </Step>
+  <Step title="Agrega filtros (opcional)">
+    Filtra por proyecto, formulario, ruta de página o dominio. Sin filtros, el flujo se activa con los formularios de todos tus proyectos de AI Studio.
+  </Step>
+  <Step title="Agrega las acciones">
+    Por ejemplo: enviar correo o SMS, agregar etiquetas, crear oportunidades, actualizar campos o asignar el contacto a alguien del equipo.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda los cambios y cambia el flujo a **Publicado**.
+  </Step>
+</Steps>
+
+## Filtros disponibles
+
+| Filtro | Qué hace |
+| --- | --- |
+| **Proyecto de AI Studio** | Solo envíos de un proyecto concreto |
+| **Formulario de AI Studio** | Solo cuando se envía un formulario concreto |
+| **Ruta de página** | Solo envíos desde ciertas páginas |
+| **Dominio** | Solo envíos desde ciertos dominios |
+
+<Tip>
+  Elige primero el proyecto: así las opciones de formulario, ruta y dominio se reducen a las de ese proyecto.
+</Tip>
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="No veo mi proyecto o formulario en los filtros">
+    - Confirma que el formulario está conectado al seguimiento del CRM.
+    - Si es un formulario antiguo, pide a AI Studio que vuelva a ejecutar la integración y reconéctalo.
+    - Envía un formulario de prueba nuevo.
+    - Actualiza el constructor de flujos e inténtalo otra vez.
+  </Accordion>
+  <Accordion title="El flujo no se ejecuta después de un envío">
+    - Confirma que el flujo está publicado.
+    - Confirma que el formulario está conectado al seguimiento del CRM (y reconéctalo si es antiguo).
+    - Envía el formulario desde la página publicada, no desde la vista previa.
+    - Revisa que los filtros coincidan con el proyecto, formulario, ruta o dominio de tu prueba.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Reemplaza al seguimiento externo?">
+    No. Funcionan juntos. Tus formularios actuales siguen activando el **Evento de seguimiento externo**; el nuevo disparador es una opción dedicada para AI Studio.
+  </Accordion>
+  <Accordion title="¿Qué pasa con el contacto que envía el formulario?">
+    Se crea automáticamente en tu cuenta y el disparador se activa con ese envío, así que puedes dar seguimiento de inmediato.
+  </Accordion>
+  <Accordion title="¿Cómo compruebo que funciona?">
+    Publica el flujo, envía un formulario de prueba desde tu sitio y revisa la pestaña de registros de ejecución del flujo. Verifica también que el contacto se creó o actualizó bien.
+  </Accordion>
+  <Accordion title="¿Sirve para formularios de sitios que no son de AI Studio?">
+    No. Para formularios de otros sitios o del constructor estándar usa los disparadores de formulario habituales o el seguimiento externo.
+  </Accordion>
+  <Accordion title="Mi proyecto sigue sin aparecer después de reconectar">
+    Verifica que el proyecto esté publicado y el formulario conectado, envía otra prueba y actualiza el constructor de flujos. Si persiste, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Formularios y calendarios en AI Studio" icon="calendar" href="/ia/formularios-y-calendarios-en-ai-studio">
+    Conecta tus formularios al CRM.
+  </Card>
+  <Card title="AI Studio" icon="wand-magic-sparkles" href="/ia/ai-studio">
+    Guía completa del constructor con IA.
+  </Card>
+</CardGroup>

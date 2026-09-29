@@ -1,0 +1,124 @@
+---
+title: "Objetos personalizados y empresas en formularios y encuestas"
+description: "Agrega campos de objetos personalizados o de Empresa a formularios, encuestas y cuestionarios y vincúlalos al contacto."
+icon: "rectangle-list"
+---
+
+Puedes agregar campos de **objetos personalizados** y del objeto **Empresa** a tus formularios, encuestas y cuestionarios. Así, cada envío no solo crea o actualiza el contacto, sino que también guarda los datos del objeto (una propiedad, una mascota, un vehículo o la empresa del contacto) y los deja vinculados entre sí.
+
+Es la forma más directa de capturar información estructurada de tu negocio desde la web, sin copiar datos a mano después.
+
+## Objetos personalizados y objeto Empresa
+
+- **Objetos personalizados:** sirven para registrar cualquier cosa propia de tu proceso o sector que no encaja en los campos del contacto, como **Propiedades**, **Mascotas**, **Vehículos**, **Casos** o **Activos**. Tú defines los campos y el campo principal, y un contacto puede tener varias asociaciones con el mismo objeto.
+- **Objeto Empresa:** es un objeto incluido que agrupa datos a nivel de negocio (clientes corporativos, proveedores, socios) y permite vincular varios contactos a una misma empresa.
+
+Dicho de forma simple: usa un objeto personalizado para registrar lo que es único de tu negocio, y usa Empresa para registrar para quién trabaja o a quién representa el contacto.
+
+| | Objeto personalizado | Objeto Empresa |
+| --- | --- | --- |
+| Campos | Los defines tú (texto, número, fecha, desplegable, etc.) | Trae campos predeterminados como Nombre, Teléfono y Correo |
+| Campo principal | Lo defines tú; si no hay, se usa el primer campo | **Nombre de la empresa**, fijo |
+| Asociaciones por contacto | Varias (uno a uno, uno a muchos o muchos a muchos) | Una sola empresa por contacto |
+| Dónde se gestiona | **Configuración → Objetos personalizados** | **Configuración → Empresas** |
+
+Cuando alguien envía el formulario, los datos se sincronizan con los registros vinculados.
+
+## Agregar campos de un objeto a un formulario
+
+<Steps>
+  <Step title="Prepara el objeto">
+    Crea o revisa tu objeto en **Configuración → Objetos personalizados**. Si vas a usar Empresa, ya viene incluido en **Configuración → Empresas**.
+  </Step>
+  <Step title="Abre el constructor">
+    Abre el formulario, la encuesta o el cuestionario que quieres editar. Los campos de objetos solo se agregan desde el constructor.
+  </Step>
+  <Step title="Agrega el primer campo del objeto">
+    Desde la barra lateral izquierda abre **Agregar campos de objeto** (Add Object Fields), elige el objeto y agrega el campo. El sistema añade automáticamente el campo principal del objeto.
+  </Step>
+  <Step title="Configura la asociación">
+    Indica cómo se relaciona el objeto con el contacto (la etiqueta de asociación). Hazlo apenas agregues el primer campo del objeto.
+  </Step>
+  <Step title="Agrega el resto de campos">
+    Vuelve a **Agregar campos de objeto** y suma los campos que necesites, uno por uno o varios a la vez.
+  </Step>
+  <Step title="Guarda y publica">
+    Desde ese momento, cada envío vincula al contacto con el registro del objeto.
+  </Step>
+</Steps>
+
+### Agregar varios campos a la vez
+
+En los constructores de formularios, encuestas y cuestionarios puedes insertar varios campos de objeto en un solo paso:
+
+1. Abre **Agregar campos de objeto** en la barra lateral izquierda.
+2. Elige un objeto en el desplegable, por ejemplo **Contacto**, **Oportunidad**, **Empresa** o uno de tus objetos personalizados.
+3. Busca por nombre de campo o navega por las carpetas.
+4. Marca las casillas de los campos que quieres agregar. El ícono de tipo de campo y la clave de consulta te ayudan a distinguir campos con nombres parecidos; si algo aparece cortado, pasa el cursor para ver el valor completo.
+5. Haz clic en **Agregar campos**, o arrastra cualquiera de los campos seleccionados al lienzo para moverlos todos como grupo.
+
+Los campos se insertan en el mismo orden en que aparecen en la barra lateral. Si hay un elemento activo en el lienzo, se agregan justo después; si no, se agregan al final de la página o diapositiva actual.
+
+Ten en cuenta cómo se comporta la selección:
+
+- Lo que marcas sigue seleccionado mientras te desplazas o buscas.
+- Si cambias de objeto, se borra la selección actual.
+- Con Mayús + clic seleccionas un rango, y se saltan los campos que ya están agregados o no disponibles.
+- La barra de selección muestra cuántos campos llevas y actualiza el botón **Agregar N campos**.
+
+## Buenas prácticas
+
+- Usa **un solo tipo de objeto por formulario**, encuesta o cuestionario. No combines campos de Empresa y de un objeto personalizado en el mismo constructor.
+- Configura la **asociación** en cuanto agregues el primer campo de un objeto personalizado.
+- Define un **campo principal** para cada objeto personalizado. Si no lo haces, el sistema usa el primer campo.
+- En Empresa, recuerda que el campo principal (Nombre de la empresa) ya está definido.
+- Usa nombres de objetos simples y coherentes para que tu equipo no se confunda.
+
+## Qué no se puede hacer
+
+- Mezclar varios tipos de objeto en un mismo formulario.
+- Hacer actualizaciones masivas o informes avanzados desde estos campos.
+- Crear o compartir formularios, encuestas o cuestionarios con campos de Empresa u objetos personalizados mediante la biblioteca de plantillas.
+- Compartir campos u objetos personalizados entre distintas cuentas.
+- Usar valores personalizados en campos de objetos personalizados.
+
+## Solución de problemas
+
+| Problema | Qué hacer |
+| --- | --- |
+| La asociación no carga | Revisa tu conexión y la configuración del objeto. |
+| Error por mezclar objetos | Quita los campos del objeto anterior antes de agregar los del nuevo. |
+| Falta el campo principal | Defínelo en la configuración del objeto; si no existe, se usa el primer campo. |
+| Quitaste el campo principal del formulario | Se borran todos los campos de ese objeto del constructor. Vuelve a agregarlos. |
+| La empresa no aparece en el contacto | Confirma que la empresa exista en **Configuración → Empresas**. |
+
+## Ejemplos
+
+- **Inmobiliaria:** un objeto **Propiedades** guarda ubicación, superficie y precio. Cada propiedad se vincula con varios contactos (inquilinos, compradores o propietarios).
+- **Clínica veterinaria:** un objeto **Mascotas** guarda raza, notas médicas y vacunas, y cada mascota queda vinculada a la ficha de su dueño.
+- **Negocio B2B:** el objeto Empresa guarda nombre, teléfono y dirección de facturación, y varios contactos del cliente quedan asociados a esa empresa.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar campos de Empresa y de un objeto personalizado en el mismo formulario?">
+    No. Cada formulario, encuesta o cuestionario admite un solo tipo de objeto. Si necesitas ambos, crea formularios separados.
+  </Accordion>
+  <Accordion title="¿Cuántas empresas puede tener un contacto?">
+    Una sola. En cambio, un contacto puede tener varias asociaciones con un mismo objeto personalizado.
+  </Accordion>
+  <Accordion title="¿Qué pasa si no defino un campo principal?">
+    El sistema usa el primer campo del objeto como campo principal.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar registros de objetos personalizados" icon="file-csv" href="/crm/importar-registros-de-objetos-personalizados">
+    Carga registros en bloque desde un archivo CSV.
+  </Card>
+  <Card title="Correo masivo a contactos asociados" icon="envelope" href="/crm/correo-masivo-a-contactos-asociados">
+    Escribe a los contactos vinculados a tus registros.
+  </Card>
+</CardGroup>

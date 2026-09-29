@@ -1,0 +1,135 @@
+---
+title: "Programación masiva con CSV avanzado"
+description: "Sube un archivo CSV o XLSX para programar publicaciones, historias, reels y shorts en varias redes a la vez."
+icon: "file-csv"
+---
+
+El formato avanzado de CSV del Planificador social te permite programar de una sola vez publicaciones, historias, reels y shorts para varias redes, con opciones específicas de cada una: marca de agua, optimización de medios, etiquetas, categorías, primer comentario y campos propios de Google, YouTube, TikTok o Pinterest. Es la forma más rápida de cargar el calendario de contenido de un mes entero.
+
+<Note>
+Antes de preparar tu archivo, revisa [Columnas del CSV para publicaciones masivas](/marketing/columnas-csv-publicaciones-masivas), donde se explica cada columna y sus valores.
+</Note>
+
+## Para qué te sirve
+
+- **Programación masiva multired:** publicaciones, historias, reels y shorts en una sola carga.
+- **Marca de agua automática:** tu logo en todas las imágenes y videos sin editarlos uno por uno.
+- **Optimización de medios:** los archivos se ajustan a los requisitos de cada red.
+- **Organización:** etiquetas y categorías asignadas desde el propio archivo.
+- **Fechas flexibles:** acepta varios formatos de fecha y hora.
+- **Dos tipos de archivo:** .csv y .xlsx.
+- **Primer comentario:** publica un comentario inicial para impulsar la interacción.
+
+## Cómo programar con el CSV avanzado
+
+<Steps>
+<Step title="Abre el Planificador social">
+Ve a **Marketing → Planificador social** y asegúrate de tener conectadas las redes en las que quieres publicar.
+</Step>
+<Step title="Inicia la carga">
+Haz clic en **Nueva publicación** y elige **Subir desde CSV** en el desplegable.
+</Step>
+<Step title="Sube el archivo">
+Selecciona **Formato avanzado**, sube tu archivo .csv o .xlsx y haz clic en **Siguiente**.
+</Step>
+<Step title="Elige las redes y la aprobación">
+Selecciona los canales donde publicar. Si las publicaciones necesitan revisión, activa **Enviar a aprobación** y elige a la persona aprobadora. Haz clic en **Crear**.
+</Step>
+<Step title="Revisa y corrige errores">
+El sistema marca cualquier problema en las publicaciones. Corrígelos antes de continuar. En esta pantalla también puedes añadir, cambiar o subir imágenes si prefieres no ponerlas en el archivo.
+</Step>
+<Step title="Programa e importa">
+Haz clic en **Programar** y después en **Importar** para añadir las publicaciones al calendario.
+</Step>
+</Steps>
+
+## Imágenes y videos según la red
+
+### Imágenes
+
+- **Facebook e Instagram** admiten carruseles: puedes poner varias URL de imágenes separadas por comas.
+- **Perfil de Empresa de Google** admite una sola imagen por publicación.
+
+<Warning>
+Si eliges a la vez una red que admite carruseles (como Facebook) y el Perfil de Empresa de Google, en Google se publicará solo la primera imagen y en Facebook todas.
+</Warning>
+
+### Reels y videos
+
+- Solo se admite **un video o reel por publicación**. Los carruseles de video no están disponibles.
+- Si pones varias URL de video, la publicación puede fallar.
+- Usa la columna `thumbnailUrl` para una miniatura personalizada. Se aplica al primer video y el resultado puede variar según la red.
+
+## Funciones avanzadas
+
+### Marca de agua
+
+Activa la marca de agua en el archivo para aplicarla a tus imágenes y videos durante la importación, en todas las redes compatibles.
+
+### Optimización de medios
+
+Las imágenes y los videos se redimensionan, comprimen o convierten según lo que exija cada red.
+
+### Etiquetas y categorías
+
+Asigna etiquetas y categorías a cada publicación directamente en el archivo para organizar tu contenido, filtrar y crear [colas por categoría](/marketing/cola-por-categoria-planificador-social).
+
+### Formatos de fecha y hora aceptados
+
+- `YYYY-MM-DD HH:mm`
+- `YYYY-MM-DD HH:mm:ss`
+- `YYYY/MM/DD HH:mm:ss`
+- `YYYY/MM/DD HH:mm`
+- `MM/DD/YYYY H:mm:ss`
+- `MM-DD-YYYY H:mm:ss`
+- `MM/DD/YYYY H:mm`
+- `MM-DD-YYYY H:mm`
+
+## Límites
+
+- Hasta **90 publicaciones por archivo**, repartidas entre todas las redes seleccionadas. Si publicas en 3 redes, cada fila cuenta para las 3.
+- Los archivos muy grandes tardan más en procesarse.
+- No se pueden usar enlaces de Google Drive: sube los archivos a la biblioteca de Medios y usa esos enlaces.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo usar archivos .csv y .xlsx?">
+Sí, ambos formatos se admiten.
+</Accordion>
+<Accordion title="¿Por qué no funcionan mis enlaces de Google Drive?">
+Por cambios de Google, ya no es posible procesar enlaces de Drive en las importaciones. Sube los archivos a la biblioteca de Medios de Chateea y usa esos enlaces.
+</Accordion>
+<Accordion title="¿Qué pasa si el archivo tiene errores?">
+El sistema los marca en el paso de revisión. Debes corregirlos antes de importar.
+</Accordion>
+<Accordion title="¿La marca de agua se aplica a todos los archivos?">
+Se aplica a los formatos de imagen y video compatibles cuando la activas en el archivo.
+</Accordion>
+<Accordion title="¿Puedo programar para varias redes en una sola carga?">
+Sí, incluidas historias, reels, shorts, Perfil de Empresa de Google, TikTok, Pinterest y más.
+</Accordion>
+<Accordion title="¿Cómo indico el tablero de Pinterest?">
+No se puede indicar en el archivo. Define un tablero predeterminado en la configuración del Planificador social.
+</Accordion>
+<Accordion title="¿Cómo añado un primer comentario?">
+Escríbelo en la columna `followUpComment` del archivo.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Columnas del CSV" icon="table" href="/marketing/columnas-csv-publicaciones-masivas">
+Referencia de todas las columnas y sus valores.
+</Card>
+<Card title="Aprobación de publicaciones" icon="circle-check" href="/marketing/aprobacion-de-publicaciones-planificador-social">
+Envía tus publicaciones a revisión antes de programarlas.
+</Card>
+<Card title="Publicaciones recurrentes" icon="repeat" href="/planificador-social/como-publicar-publicaciones-recurrentes-en-redes-sociales">
+Repite publicaciones de forma automática.
+</Card>
+<Card title="Aviso de cuentas desconectadas" icon="triangle-exclamation" href="/marketing/aviso-de-cuentas-desconectadas">
+Mantén tus cuentas conectadas para que nada falle.
+</Card>
+</CardGroup>

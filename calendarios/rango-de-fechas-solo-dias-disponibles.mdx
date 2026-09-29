@@ -1,0 +1,141 @@
+---
+title: "Rango de fechas: contar solo días disponibles"
+description: "Haz que el rango de fechas cuente solo los días en que atiendes para que el widget nunca aparezca vacío."
+icon: "calendar-days"
+---
+
+El **rango de fechas** define cuántos días hacia adelante pueden reservar tus clientes. Por defecto cuenta todos los días del calendario, incluidos los fines de semana y los días en que no trabajas. La opción **Contar solo días disponibles** cambia eso: solo cuenta los días en los que tienes disponibilidad, así tus clientes siempre ven el número de días que configuraste.
+
+## Por qué activarlo
+
+Imagina un negocio que atiende de lunes a viernes con un rango de 2 días. Si un cliente entra un viernes, el sábado y el domingo consumen el rango antes de llegar al lunes, y el widget aparece sin disponibilidad. Con la opción activada, Chateea salta los días sin disponibilidad y muestra el lunes y el martes.
+
+<Warning>
+La opción lee directamente tu configuración de disponibilidad. Si no tienes días configurados en **Disponibilidad**, el widget de reservas no mostrará ninguna fecha cuando la opción esté activada.
+</Warning>
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Calendarios → Configuración de calendarios** y haz clic en **Editar** en el calendario que quieres cambiar.
+  </Step>
+  <Step title="Ve a Reglas de reserva">
+    Selecciona **Reglas de reserva** en el menú de la izquierda.
+  </Step>
+  <Step title="Activa la opción">
+    Busca el campo **Rango de fechas** y activa **Contar solo días disponibles**, justo debajo.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios.
+  </Step>
+</Steps>
+
+La opción viene desactivada en todos los calendarios existentes. Activarla no cambia el número de tu rango de fechas, solo la forma de contarlo.
+
+## Cómo funciona
+
+### Opción desactivada (predeterminado)
+
+Se cuentan todos los días a partir de hoy, tengas o no disponibilidad.
+
+- Hoy: viernes 15 de agosto.
+- Rango de fechas: 2 días.
+- Disponibilidad: lunes a viernes.
+
+Se cuentan el sábado 16 y el domingo 17. Ninguno tiene disponibilidad, así que el widget no muestra días disponibles.
+
+### Opción activada
+
+Se cuentan solo los días con disponibilidad. Chateea avanza saltando los días sin horario hasta completar el número configurado. Por eso, si trabajas pocos días a la semana, la fecha final queda más lejos en el calendario. Es lo esperado.
+
+Con el mismo ejemplo, se saltan el sábado y el domingo y se cuentan el lunes 18 (1) y el martes 19 (2).
+
+**Ejemplo con pocos días de atención.** Hoy es lunes 11 de agosto, el rango es de 5 días y atiendes lunes, miércoles y viernes:
+
+| Fecha | ¿Tiene disponibilidad? | ¿Cuenta? |
+| --- | --- | --- |
+| Lun 11 | Sí | 1 |
+| Mar 12 | No | Se salta |
+| Mié 13 | Sí | 2 |
+| Jue 14 | No | Se salta |
+| Vie 15 | Sí | 3 |
+| Sáb 16 y dom 17 | No | Se saltan |
+| Lun 18 | Sí | 4 |
+| Mar 19 | No | Se salta |
+| Mié 20 | Sí | 5 |
+
+El widget muestra los días 11, 13, 15, 18 y 20.
+
+## Con el aviso mínimo de reserva
+
+El aviso mínimo y el rango de fechas son ajustes independientes: el aviso define **cuándo empieza** la ventana de reserva y el rango define **cuántos días** se muestran desde ese momento. Con la opción activada, primero se aplica el aviso y luego se cuentan los días disponibles a partir del primer día disponible tras el aviso. Así tus clientes siempre ven el número completo de días configurado.
+
+Si el aviso termina en un día sin atención, la cuenta empieza el siguiente día disponible.
+
+**Ejemplo.** Hoy es jueves 14, el aviso mínimo es de 2 días, atiendes de lunes a viernes y el rango es de 3 días. El aviso termina el sábado, así que la cuenta empieza el lunes:
+
+| Fecha | ¿Tiene disponibilidad? | ¿Cuenta? |
+| --- | --- | --- |
+| Lun 18 | Sí | 1 |
+| Mar 19 | Sí | 2 |
+| Mié 20 | Sí | 3 |
+
+El widget muestra los días 18, 19 y 20.
+
+<Note>
+El aviso mínimo siempre cuenta días naturales, no días hábiles. El sábado y el domingo cuentan para el aviso aunque tu negocio esté cerrado, porque el aviso representa tiempo real para prepararte.
+</Note>
+
+## Con horas por fecha específica
+
+Las horas por fecha específica reemplazan tu horario semanal en fechas concretas, y la opción las respeta:
+
+- **Un día fuera de tu horario semanal con horas por fecha agregadas** (por ejemplo, un sábado con un evento especial) cuenta como día disponible.
+- **Un día de tu horario semanal marcado como no disponible** (por ejemplo, un feriado) se salta.
+
+**Ejemplo.** Hoy es viernes 15, atiendes martes, miércoles y jueves, agregaste horas para el lunes 18 y el rango es de 4 días:
+
+| Fecha | Origen | ¿Cuenta? |
+| --- | --- | --- |
+| Sáb 16 y dom 17 | Sin disponibilidad | Se saltan |
+| Lun 18 | Horas por fecha | 1 |
+| Mar 19 | Horario semanal | 2 |
+| Mié 20 | Horario semanal | 3 |
+| Jue 21 | Horario semanal | 4 |
+
+## Con calendarios Round Robin y colectivos
+
+Un día cuenta como disponible si **al menos un** miembro del equipo tiene disponibilidad ese día. Si nadie tiene disponibilidad, el día se salta.
+
+Por ejemplo, con un rango de 4 días, si la persona A atiende lunes y miércoles y la persona B martes y jueves, el widget muestra los cuatro días, y cada día solo aparecen los horarios de quien atiende.
+
+## Casos especiales
+
+- **Días completamente reservados:** siguen contando. La opción se basa en tu horario, no en si los horarios ya están ocupados. El día aparece en el widget pero sin horarios libres.
+- **Sin disponibilidad configurada:** el widget no muestra fechas. Configura primero tu horario.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Activarlo cambia el número de mi rango de fechas?">
+    No. Un rango de 5 días sigue siendo de 5 días, solo que ahora se cuentan según tu disponibilidad.
+  </Accordion>
+  <Accordion title="¿Qué pasa si cambio mi disponibilidad después de activarlo?">
+    Los cambios se reflejan de inmediato en el widget de reservas. No tienes que hacer nada más.
+  </Accordion>
+  <Accordion title="¿El aviso mínimo cuenta días disponibles o días naturales?">
+    Siempre días naturales.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Horario semanal y horas por fecha" icon="clock" href="/calendarios/horario-semanal-y-horas-por-fecha">
+    Configura la disponibilidad que usa esta opción.
+  </Card>
+  <Card title="Diagnosticar disponibilidad con IA" icon="robot" href="/calendarios/diagnosticar-disponibilidad-con-ia">
+    Averigua por qué un horario no aparece.
+  </Card>
+</CardGroup>

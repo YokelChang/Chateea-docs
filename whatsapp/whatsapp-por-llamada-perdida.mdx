@@ -1,0 +1,101 @@
+---
+title: "WhatsApp automático por llamada perdida"
+description: "Envía un WhatsApp automático a quien te llamó y no pudiste atender, sin crear ningún flujo."
+icon: "phone-slash"
+---
+
+Cuando no alcanzas a contestar una llamada, cada minuto cuenta: el cliente puede llamar a la competencia. La función **WhatsApp por llamada perdida** (Missed Call WhatsApp Back) envía automáticamente un mensaje de WhatsApp a la persona que te llamó en cuanto la llamada se marca como perdida. Así reconoces su intento de contacto y le das un siguiente paso sin crear ningún flujo de trabajo.
+
+## Qué ganas con esta función
+
+- **Respuesta inmediata:** el contacto recibe un WhatsApp segundos después de la llamada perdida.
+- **Sin automatizaciones:** se activa desde la configuración del teléfono en pocos minutos.
+- **Más lectura y respuesta:** en muchos mercados WhatsApp tiene mejores tasas de apertura y respuesta que el SMS.
+- **Mensaje con tu estilo:** personalizas el texto e incluyes datos como el nombre del negocio o tu enlace de reservas.
+- **Menos oportunidades perdidas:** el cliente sabe qué hacer a continuación y tu equipo devuelve menos llamadas a ciegas.
+
+## Antes de empezar
+
+- Necesitas un número con WhatsApp conectado y activo en tu cuenta de Chateea, en buen estado de calidad.
+- El usuario que lo configura debe tener permiso para acceder a **Configuración → Sistema telefónico**.
+- El contacto debe usar WhatsApp en ese número. Si no, el mensaje no se entregará por este canal.
+- Asegúrate de contar con el consentimiento adecuado para escribir a tus contactos por WhatsApp.
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre la configuración de llamadas perdidas">
+    Ve a **Configuración → Sistema telefónico → Voz → Buzón de voz y mensaje por llamada perdida** y entra en la sección **Mensaje por llamada perdida** (Missed Call Textback).
+  </Step>
+  <Step title="Activa WhatsApp por llamada perdida">
+    Enciende el interruptor **WhatsApp por llamada perdida** (Missed Call WhatsApp Back).
+  </Step>
+  <Step title="Personaliza el mensaje">
+    Haz clic en **Personalizar** (Customize) y revisa el texto que viene precargado. Ajústalo al tono de tu negocio y mantenlo breve y útil.
+  </Step>
+  <Step title="Agrega variables">
+    Inserta las variables que necesites, como el nombre del negocio o tu enlace de reservas.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda los cambios y haz una llamada de prueba sin contestarla para confirmar que el WhatsApp llega y se ve como esperas.
+  </Step>
+</Steps>
+
+## Mensaje predeterminado y variables
+
+El mensaje viene precargado con un texto similar a este:
+
+```text
+Hola, te saluda {{location.name}}. Vimos que no pudimos atender tu llamada. ¿En qué te podemos ayudar?
+```
+
+El texto se edita en la misma sección de mensaje por llamada perdida, **no** en **Configuración → WhatsApp → Plantillas**.
+
+| Variable | Qué inserta |
+| --- | --- |
+| `{agent_name}` | El nombre del agente asignado, cuando está disponible. |
+| `{booking_link}` | El enlace de reservas que configuraste para tu negocio. |
+| `{business_hours}` | Un resumen legible de tu horario de atención. |
+| `{location_name}` o `{{location.name}}` | El nombre de tu negocio. |
+
+<Tip>
+Incluir el enlace de reservas convierte una llamada perdida en una cita agendada. Un mensaje como "¿Prefieres que te llamemos o quieres reservar directamente aquí?" suele funcionar muy bien.
+</Tip>
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| No se envía ningún mensaje | Confirma que WhatsApp está conectado al número que recibe la llamada y que el interruptor está activado. |
+| Las variables aparecen sin reemplazar | Revisa que la sintaxis sea correcta y que el dato exista (por ejemplo, que tengas un enlace de reservas configurado). |
+| El cliente recibe mensajes duplicados | Verifica si también tienes activo el SMS por llamada perdida o un flujo de trabajo que responda a llamadas perdidas. |
+| El contacto no recibió el mensaje | Comprueba que use WhatsApp, que no se haya dado de baja y que su número tenga el código de país correcto. |
+| No quieres enviar mensajes fuera de horario | Desactiva la función en esos horarios o ajusta el enrutamiento de llamadas y los horarios del sistema telefónico. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar WhatsApp por llamada perdida sin activar el SMS por llamada perdida?">
+    Sí. Puedes activarlo solo o junto con el SMS. Para evitar mensajes duplicados, elige un canal principal.
+  </Accordion>
+  <Accordion title="¿Dónde edito el texto del mensaje?">
+    En **Configuración → Sistema telefónico → Voz → Mensaje por llamada perdida**. No lo edites desde las plantillas de WhatsApp.
+  </Accordion>
+  <Accordion title="¿Se envía fuera del horario de atención?">
+    Sí, siempre que la llamada se marque como perdida. Puedes añadir `{business_hours}` al mensaje para informar tu horario o ajustar el enrutamiento de llamadas.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el contacto no tiene WhatsApp?">
+    El mensaje de WhatsApp no se entregará. Si quieres cubrir ese caso, activa también el SMS por llamada perdida o crea un flujo de trabajo de respaldo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="WhatsApp en Chateea" icon="whatsapp" href="/whatsapp/introduccion">
+    Conecta y configura tu número de WhatsApp.
+  </Card>
+  <Card title="Telefonía y SMS" icon="phone" href="/telefonia/introduccion">
+    Configura tu sistema telefónico y tus mensajes por llamada perdida.
+  </Card>
+</CardGroup>

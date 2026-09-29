@@ -1,0 +1,122 @@
+---
+title: "Acciones personalizadas de la IA de voz con webhooks"
+description: "Conecta tu agente de voz con otros sistemas mediante webhooks POST para consultar o enviar datos durante la llamada."
+icon: "code"
+---
+
+Las acciones personalizadas permiten que tu agente de IA de voz se comunique con otros sistemas en plena llamada. El agente envía una solicitud POST a un webhook, con los datos que recogió de la conversación, y puede usar la respuesta para seguir hablando con la persona. Así puede consultar el estado de un pedido, buscar un cliente en tu sistema o disparar un proceso externo sin poner a nadie en espera.
+
+## Para qué te sirve
+
+- Enviar solicitudes POST en tiempo real según lo que dice o pide quien llama.
+- Consultar o registrar información durante la llamada. Por ejemplo, si alguien pregunta "¿cómo va mi pedido?", el agente consulta tu sistema de pedidos y le da el estado en el momento.
+- Configurar la URL del webhook, los encabezados y la autenticación.
+- Enviar datos dinámicos de la llamada: teléfono, correo, fechas, números de pedido.
+- Probar la solicitud y la respuesta antes de guardar.
+- Resolver más consultas en la misma llamada y reducir los seguimientos manuales.
+
+## Cómo funciona
+
+### Disparadores de conversación
+
+El disparador define cuándo se ejecuta la acción. Puede basarse en lo que dice la persona, en un dato que entrega o en la intención que detecta el agente. Por ejemplo:
+
+- Cuando la persona dice "quiero revisar mi cita".
+- Cuando la persona da su correo.
+- Cuando la persona dicta una serie de dígitos, como un número de pedido, de reserva o de cuenta.
+
+### El webhook
+
+Cada acción personalizada es una solicitud POST que puede incluir:
+
+- La URL del endpoint.
+- Encabezados, como una clave de API o un token.
+- Autenticación, por ejemplo Bearer token o Basic Auth.
+- Un cuerpo con parámetros dinámicos recogidos durante la llamada.
+
+Por ejemplo, si lo conectas con tu CRM externo, la URL podría apuntar a un endpoint como `/api/v1/lookupContact` y enviar el correo o el teléfono de quien llama.
+
+### Parámetros dinámicos
+
+El agente extrae y etiqueta datos de la conversación y los asigna a los parámetros del cuerpo de la solicitud. Tipos de datos admitidos:
+
+| Tipo | Ejemplo |
+| --- | --- |
+| Texto | Nombre, motivo de la llamada |
+| Número | Número de pedido, cantidad |
+| Correo | cliente@ejemplo.com |
+| Teléfono | Número de quien llama |
+| Fecha | Fecha de la cita |
+
+## Cómo crear una acción personalizada
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → IA de voz → Agentes** y abre el agente que quieres configurar.
+  </Step>
+  <Step title="Agrega la acción">
+    En la pestaña **Construir** (Build), busca la sección de acciones y haz clic en **Nueva acción → Acción personalizada 2.0** (Custom action 2.0).
+  </Step>
+  <Step title="Configúrala">
+    1. Escribe un nombre para la acción.
+    2. Define el disparador. Por ejemplo, si alguien pide "consultar el saldo de mi cuenta", crea un disparador para esa solicitud y un parámetro de teléfono que se enviará a tu API.
+    3. Agrega la URL del webhook.
+    4. Confirma que el método es POST.
+    5. Agrega los encabezados que necesite tu sistema.
+    6. Si hace falta, completa la autenticación (Bearer token o Basic Auth).
+    7. Define los parámetros dinámicos que el agente debe recoger en la conversación.
+  </Step>
+  <Step title="Prueba el webhook">
+    Usa **Probar webhook** (Test Webhook) antes de guardar para validar la configuración.
+  </Step>
+</Steps>
+
+## Prueba en tiempo real
+
+La herramienta **Probar webhook** te deja enviar datos de prueba y ver qué pasa antes de usar la acción en llamadas reales. Con ella puedes:
+
+- Revisar la solicitud completa, con encabezados y cuerpo.
+- Ver la respuesta tal como la devuelve tu sistema (por ejemplo, 200 OK, 400 Bad Request o 404 Not Found).
+- Confirmar que el agente podrá usar los datos devueltos durante la llamada.
+- Detectar y corregir errores de configuración.
+
+<Warning>
+  Nunca compartas tus claves de API en capturas o mensajes. Guárdalas solo en los encabezados o en la autenticación de la acción.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar GET u otros métodos?">
+    No. Por ahora las acciones personalizadas solo admiten solicitudes POST.
+  </Accordion>
+  <Accordion title="¿Se admite autenticación?">
+    Sí. Puedes usar Bearer token, Basic Auth o enviar claves en los encabezados.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el webhook falla durante la llamada?">
+    El fallo queda registrado. Puedes definir qué debe hacer el agente si no recibe datos, si la solicitud falla o si se agota el tiempo de espera.
+  </Accordion>
+  <Accordion title="¿Puedo ejecutar varios webhooks en una misma llamada?">
+    Sí. Cada acción personalizada se dispara de forma independiente según sus propias condiciones.
+  </Accordion>
+  <Accordion title="¿Necesito un desarrollador?">
+    No siempre. Si tienes la documentación de la API del sistema externo, puedes configurar casos sencillos tú mismo. Para autenticaciones complejas o cuerpos personalizados, conviene que te ayude un desarrollador.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones durante y después de la llamada" icon="bolt" href="/ia/acciones-durante-y-despues-de-la-llamada">
+    Organiza qué hace el agente en cada momento.
+  </Card>
+  <Card title="API pública de la IA de voz" icon="code" href="/ia/api-publica-ia-de-voz">
+    Gestiona agentes y registros desde tus propios sistemas.
+  </Card>
+  <Card title="Registros de llamadas" icon="list" href="/ia/registros-de-llamadas-ia-de-voz">
+    Revisa qué acciones se ejecutaron en cada llamada.
+  </Card>
+  <Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+    Qué es la IA de voz y qué puede hacer.
+  </Card>
+</CardGroup>

@@ -1,0 +1,133 @@
+---
+title: "Tu cuenta de Google no aparece en Calendarios"
+description: "Revisa la conexión, los permisos y los calendarios vinculados cuando tu cuenta de Google no se muestra donde esperas."
+icon: "google"
+---
+
+A veces una cuenta de Google ya está conectada al perfil de un usuario, pero no aparece donde esperas al configurar tus calendarios. Suele deberse a que hay que volver a autorizar la cuenta, a que faltan permisos de Google o a que el Google Calendar que buscas todavía no está seleccionado para sincronizar. Revisar la conexión y los permisos primero te ayuda a resolverlo sin conectar una cuenta distinta por error.
+
+## Cómo funcionan las conexiones con Google
+
+Las conexiones con Google Calendar son **por usuario**: cada miembro del equipo conecta su propia cuenta de Google. Conectar la cuenta le da permiso a Chateea para acceder a Google Calendar, y después eliges qué calendarios concretos de esa cuenta se usan para sincronizar y para calcular la disponibilidad.
+
+<Warning>
+  La autorización de Google la debe completar **el usuario dueño de la cuenta de Google**, con su propio acceso a Chateea. No conectes la cuenta de otra persona entrando en su nombre.
+</Warning>
+
+## Antes de empezar
+
+Confirma lo siguiente:
+
+- Estás trabajando con el usuario correcto de Chateea.
+- Sabes qué cuenta de Google quiere conectar ese usuario.
+- El usuario puede iniciar sesión directamente en esa cuenta de Google.
+- El Google Calendar que busca pertenece a esa cuenta o se compartió con ella con permisos suficientes.
+- El usuario está listo para aprobar los permisos de Google si hace falta autorizar de nuevo.
+
+<Note>
+  Que una cuenta de Google esté conectada no significa que todos sus calendarios ya estén configurados para sincronizar en Chateea.
+</Note>
+
+## Paso 1: revisa la conexión en Calendarios
+
+<Steps>
+  <Step title="Abre las conexiones">
+    En tu cuenta de Chateea, ve a **Calendarios → Configuración del calendario** y abre la pestaña **Conexiones**.
+  </Step>
+  <Step title="Busca la cuenta de Google">
+    Comprueba si la cuenta de Google que quieres usar aparece entre las cuentas de calendario conectadas.
+  </Step>
+  <Step title="Si no está, conéctala">
+    Haz clic en **Agregar nuevo** y elige **Google Calendar** como proveedor.
+  </Step>
+  <Step title="Elige la misma cuenta de Google">
+    Cuando Google te pida elegir una cuenta, selecciona **la misma que quieres usar con Chateea**. Si no aparece en la lista, usa la opción de Google para iniciar sesión con otra cuenta.
+  </Step>
+  <Step title="Acepta los permisos">
+    Completa la autorización de Google y acepta los permisos que pide la integración. Luego vuelve a Chateea.
+  </Step>
+  <Step title="Verifica el resultado">
+    Confirma que la cuenta aparece en **Configuración del calendario → Conexiones** y que el Google Calendar que quieres usar está disponible.
+  </Step>
+</Steps>
+
+<Tip>
+  No hace falta elegir una cuenta de Google diferente solo porque la actual dejó de aparecer. El objetivo es volver a autorizar la cuenta correcta para el usuario actual.
+</Tip>
+
+## Paso 2: revisa los permisos y reconecta
+
+Una cuenta puede verse conectada aunque su autorización ya no incluya todos los permisos que Chateea necesita.
+
+<Steps>
+  <Step title="Abre la integración de Google">
+    Ve a **Configuración → Integraciones** y busca **Google**.
+  </Step>
+  <Step title="Busca avisos">
+    Revisa si hay un aviso de permisos faltantes.
+  </Step>
+  <Step title="Reconecta">
+    Si aparece la opción **Reconectar**, haz clic, elige la cuenta de Google correcta y acepta todos los permisos.
+  </Step>
+  <Step title="Comprueba los calendarios">
+    Vuelve a **Calendarios → Configuración del calendario → Conexiones** y confirma que la cuenta y sus calendarios ya están disponibles.
+  </Step>
+</Steps>
+
+La reautorización suele ser necesaria después de revocar permisos, cambiar la contraseña, hacer cambios de seguridad en la cuenta de Google o cuando la autorización deja de ser válida.
+
+## Paso 3: vuelve a integrar si sigue sin aparecer
+
+Si reconectar no recupera la cuenta, haz una reintegración completa: elimina la conexión y créala de nuevo siguiendo la guía [Reconectar Google Calendar](/calendarios/reconectar-google-calendar). Después:
+
+1. Vuelve a **Configuración del calendario → Conexiones**.
+2. Confirma que la cuenta de Google correcta aparece conectada.
+3. Verifica que el Google Calendar que quieres usar está disponible.
+4. Revisa la configuración de calendario vinculado y calendarios de conflicto.
+5. Crea una cita de prueba para confirmar que la sincronización funciona.
+
+## Cuenta conectada, calendario vinculado y calendarios de conflicto
+
+Son tres cosas distintas. Entender la diferencia te ayuda a saber si el problema está en la autorización de Google o en la configuración de un calendario concreto.
+
+| Concepto | Qué hace |
+| --- | --- |
+| **Cuenta de Google conectada** | Autoriza a Chateea a acceder al Google Calendar del usuario |
+| **Calendario vinculado** | Define el calendario externo donde se sincronizan las citas |
+| **Calendarios de conflicto** | Usa los eventos ocupados de los calendarios elegidos para calcular tu disponibilidad |
+
+Si la cuenta aparece bien en **Conexiones** pero las citas no se comportan como esperas, revisa el calendario vinculado y los calendarios de conflicto en lugar de reconectar la cuenta una y otra vez.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Mi cuenta de Google está conectada, ¿por qué no la veo donde espero?">
+    Puede que haya que volver a autorizarla, que falten permisos o que el Google Calendar que buscas no esté seleccionado todavía. Revisa **Configuración del calendario → Conexiones** y **Configuración → Integraciones → Google** antes de eliminar la conexión.
+  </Accordion>
+  <Accordion title="¿Debo elegir la misma cuenta de Google al reconectar?">
+    Sí, si quieres recuperar la conexión existente de ese usuario. No necesitas otra cuenta solo porque la actual requiere una nueva autorización.
+  </Accordion>
+  <Accordion title="¿Tengo que aceptar todos los permisos que pide Google?">
+    Sí. Si faltan permisos obligatorios, Chateea no puede acceder a tu calendario ni sincronizarlo correctamente.
+  </Accordion>
+  <Accordion title="Mi cuenta está conectada, pero un calendario concreto no aparece. ¿Qué hago?">
+    Revisa si tu cuenta tiene acceso suficiente a ese calendario, sobre todo si te lo compartió otra cuenta de Google. Consulta la guía del [error de acceso de escritura](/calendarios/error-acceso-de-escritura-google-calendar).
+  </Accordion>
+  <Accordion title="¿Conectar la cuenta es lo mismo que elegir el calendario vinculado?">
+    No. Conectar la cuenta autoriza el acceso a Google Calendar. El calendario vinculado define en qué calendario se sincronizan tus citas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Reconectar Google Calendar" icon="rotate" href="/calendarios/reconectar-google-calendar">
+    Vuelve a integrar tu calendario cuando deja de sincronizar.
+  </Card>
+  <Card title="Error de acceso de escritura en Google Calendar" icon="lock" href="/calendarios/error-acceso-de-escritura-google-calendar">
+    Da permiso de edición a un calendario compartido.
+  </Card>
+  <Card title="Herramienta de diagnóstico del calendario" icon="wrench" href="/calendarios/herramienta-de-diagnostico-del-calendario">
+    Revisa el estado de tus conexiones y horarios.
+  </Card>
+</CardGroup>

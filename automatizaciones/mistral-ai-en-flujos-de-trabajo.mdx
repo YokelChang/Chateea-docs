@@ -1,0 +1,145 @@
+---
+title: "Mistral AI en flujos de trabajo"
+description: "Genera textos, crea embeddings y analiza imágenes con los modelos de Mistral AI dentro de tus automatizaciones."
+icon: "wand-magic-sparkles"
+---
+
+Las acciones de **Mistral AI** conectan tus flujos de trabajo con los modelos de lenguaje, de embeddings y de visión de Mistral, usando tu propia clave de API. Con ellas puedes generar textos, convertir texto en vectores para búsquedas por significado y analizar imágenes, todo dentro de una automatización y sin construir una integración a medida.
+
+Cuando el flujo llega a una acción de Mistral, envía el indicador, el texto o la imagen configurados y recibe el resultado como una variable de salida. Esa variable se puede usar después en un SMS, un correo, una notificación interna, una actualización de campo o una condición.
+
+<Note>
+  Las acciones de Mistral AI están en fase beta. Los modelos disponibles, los campos y el comportamiento pueden cambiar mientras la integración evoluciona. Prueba tus flujos antes de usarlos con clientes.
+</Note>
+
+## Para qué sirve
+
+- **Respuestas generadas con IA:** respuestas, resúmenes, textos reescritos y contestaciones estructuradas a partir de los datos del contacto.
+- **Automatización multilingüe:** responde en el idioma del contacto manteniendo el tono de tu marca con un indicador de sistema.
+- **Lectura de imágenes:** analiza recibos, identificaciones, capturas de pantalla, tarjetas de presentación o documentos.
+- **Coincidencias por significado:** convierte texto en embeddings para comparar preguntas con tus preguntas frecuentes, aunque estén redactadas distinto.
+- **Elección de modelo:** escoge la familia de modelos según calidad, velocidad, razonamiento o costo.
+
+## Conecta tu cuenta de Mistral AI
+
+Necesitas una cuenta propia en Mistral y una clave de API (se obtiene en console.mistral.ai). Puedes conectar la integración de dos formas:
+
+- **Desde el flujo:** en **Automatización → Flujos de trabajo**, añade cualquier acción de Mistral AI. Si no está conectada, haz clic en **Conectar ahora** e inicia sesión en Mistral AI para aprobar el acceso. Si ya está conectada, los campos se cargan al instante.
+- **Desde la configuración:** ve a **Configuración → Integraciones → Mistral AI → Conectar**.
+
+## Acciones disponibles
+
+| Acción | Qué hace | Detalles |
+| --- | --- | --- |
+| **Crear finalización de chat** (Create Chat Completion) | Genera respuestas de texto con los modelos de lenguaje de Mistral. | Admite indicador e indicador de sistema, selección de modelo y parámetros de ajuste de la respuesta. |
+| **Crear embeddings** (Create Embeddings) | Convierte texto en un vector numérico con el modelo `mistral-embed`. | Útil para búsqueda semántica, RAG, clasificación y agrupación. |
+| **Analizar imagen** (Analyze Image, Vision) | Analiza una o varias imágenes con modelos de visión. | Compatible con modelos como Pixtral Large, Pixtral 12B y Mistral Large, Medium y Small. Devuelve la respuesta en lenguaje natural. |
+
+<Info>
+  Mistral AI no incluye disparadores. Inicia el flujo con un disparador de Chateea (por ejemplo, Cliente respondió, Formulario enviado, Webhook entrante o Cambio de estado de la oportunidad) y añade después la acción de Mistral.
+</Info>
+
+### Crear finalización de chat
+
+Sirve para redactar una respuesta al cliente, resumir un mensaje, reescribir contenido, clasificar una solicitud o generar una respuesta estructurada. Sus campos principales son:
+
+- **Nombre de la acción:** una etiqueta clara, como "Borrador de respuesta al cliente".
+- **Indicador de sistema:** el rol, el tono, las reglas o el formato esperado.
+- **Indicador:** la tarea concreta. Puedes insertar variables del flujo.
+- **Modelo:** por ejemplo Large, Medium, Small o Ministral 8B y 3B.
+- **Parámetros de ajuste:** controlan el estilo y la longitud de la respuesta.
+
+### Crear embeddings
+
+Transforma un texto en un vector de 1024 dimensiones que representa su significado. Úsalo para:
+
+- **Búsqueda semántica:** encontrar coincidencias por significado y no por palabras exactas.
+- **RAG:** recuperar información relevante antes de generar una respuesta.
+- **Clasificación y agrupación:** etiquetar o agrupar textos parecidos.
+
+El vector se puede enviar con un webhook a la base de datos vectorial que uses.
+
+### Analizar imagen
+
+Útil cuando la información está en una imagen: recibos, identificaciones, fotos de daños, tarjetas de presentación o archivos adjuntos de formularios. Acepta imágenes PNG y JPEG mediante una URL directa, incluidas las guardadas en **Medios** de tu cuenta.
+
+## Cómo configurarlo paso a paso
+
+<Steps>
+  <Step title="Abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Conecta Mistral AI">
+    Añade una acción de Mistral AI y haz clic en **Conectar ahora**, o conéctala antes desde **Configuración → Integraciones**.
+  </Step>
+  <Step title="Elige la acción">
+    **Crear finalización de chat** para generar texto, **Crear embeddings** para vectores o **Analizar imagen** para imágenes.
+  </Step>
+  <Step title="Configura los campos">
+    Completa indicadores, texto de entrada, URL de la imagen, modelo y ajustes opcionales. Inserta variables del flujo donde las necesites.
+  </Step>
+  <Step title="Usa el resultado">
+    Añade el siguiente paso (Enviar SMS, Enviar correo, Actualizar campo del contacto, Webhook personalizado o Condición Si/No) e inserta la variable de salida de Mistral.
+  </Step>
+  <Step title="Prueba">
+    Ejecuta el flujo con un contacto de prueba y revisa los **registros de ejecución** para ver entradas y salidas. Corrige cualquier problema de asignación de datos.
+  </Step>
+  <Step title="Publica">
+    Haz clic en **Publicar** y vigila las primeras ejecuciones.
+  </Step>
+</Steps>
+
+## Cobro y límites
+
+- Mistral te cobra directamente el uso de su API y de los modelos según tu plan con ellos.
+- En Chateea, las acciones de Mistral AI son **acciones premium**: cada ejecución se descuenta de la billetera de tu cuenta, además del cobro de Mistral.
+- Los límites de uso y cuotas se gestionan en tu espacio de trabajo de Mistral. Los planes gratuitos de Mistral suelen tener límites más estrictos.
+- Cada clave de API pertenece a un espacio de trabajo de Mistral. Si cambias de espacio, genera una nueva clave y vuelve a conectar la integración.
+
+## Ejemplos de uso
+
+### Respuestas en varios idiomas
+
+**Cliente respondió → Crear finalización de chat → Enviar correo o SMS.** Usa un modelo grande para responder con calidad en el idioma del contacto (francés, inglés, español, alemán, italiano, portugués y muchos otros) y mantén el tono de tu marca con el indicador de sistema.
+
+### Respuestas automáticas desde tus preguntas frecuentes
+
+**Cliente respondió → Crear embeddings → búsqueda en tu base vectorial → respuesta con plantilla.** Convierte la pregunta del cliente en vector y compárala con tus preguntas frecuentes ya indexadas para responder con la más parecida. Usa la misma acción una vez para indexar tus preguntas frecuentes.
+
+### Extraer datos de recibos o documentos
+
+**Formulario con imagen → Analizar imagen → Actualizar contacto → Crear oportunidad.** Pide al modelo un resultado estructurado (por ejemplo, "devuelve JSON con proveedor, fecha y total") y rellena campos personalizados sin escribir a mano.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué modelos aparecen en el desplegable?">
+    Modelos de las familias Mistral Large, Medium, Small, Ministral y Magistral. La lista se actualiza a medida que Mistral retira versiones antiguas y lanza nuevas.
+  </Accordion>
+  <Accordion title="¿Necesito una cuenta propia en Mistral?">
+    Sí. Usas tu propia clave de API y Mistral te factura el uso directamente según tu plan y el modelo elegido.
+  </Accordion>
+  <Accordion title="¿Puedo usar variables en los indicadores?">
+    Sí. Tanto el indicador de sistema como el indicador aceptan campos del contacto, campos personalizados, datos del disparador y resultados de pasos anteriores.
+  </Accordion>
+  <Accordion title="¿Dónde se guarda la respuesta?">
+    Queda como variable de salida de la acción. No se guarda como registro aparte, así que si quieres conservarla, escríbela en un campo personalizado o en una nota.
+  </Accordion>
+  <Accordion title="¿Qué formatos de imagen acepta Analizar imagen?">
+    PNG y JPEG mediante URL directa. Las imágenes se procesan a su resolución original.
+  </Accordion>
+  <Accordion title="¿Puedo usarlas en flujos en producción?">
+    Sí. Aunque están en beta, se pueden usar en flujos activos. Espera cambios graduales, como nuevos modelos en el desplegable.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="OpenRouter en flujos de trabajo" icon="robot" href="/automatizaciones/openrouter-en-flujos-de-trabajo">
+    Genera respuestas con modelos de distintos proveedores.
+  </Card>
+  <Card title="Acciones premium" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las acciones premium de los flujos.
+  </Card>
+</CardGroup>

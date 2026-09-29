@@ -1,0 +1,172 @@
+---
+title: "Crear disparadores personalizados para el Marketplace"
+description: "Guía para desarrolladores: configura disparadores de flujo de trabajo propios en tu aplicación del Marketplace de aplicaciones."
+icon: "bolt"
+---
+
+Si desarrollas una aplicación para el **Marketplace de aplicaciones**, puedes crear **disparadores personalizados de flujo de trabajo**: tu aplicación envía datos y esos datos inician flujos en las cuentas que la tienen instalada. El usuario elige tu disparador en el constructor, lo filtra según sus necesidades y usa los datos recibidos en las acciones siguientes.
+
+Este artículo es para desarrolladores: explica cómo se configura cada parte de un disparador desde el portal de desarrolladores del Marketplace.
+
+<Info>
+  - Los disparadores del Marketplace son **premium**: cada ejecución se descuenta de la billetera de la cuenta que lo usa.
+  - Un disparador solo aparece en el listado de disparadores de una cuenta si esa cuenta tiene la aplicación instalada.
+  - Tu aplicación debe tener activado el permiso (scope) `workflows.readonly` para habilitar acciones y disparadores.
+  - Si necesitas acceso al portal de desarrolladores, escribe a soporte de Chateea en **help@chateea.com**.
+</Info>
+
+## 1. Información del disparador
+
+| Campo | Descripción |
+| --- | --- |
+| **Ícono** | Se muestra en el flujo junto al disparador. |
+| **Nombre** | El nombre visible del disparador. |
+| **Clave** (Key) | Identificador único para referenciar el disparador dentro del flujo, por ejemplo `{{trigger_a.custom_variable}}`. **No se puede cambiar después.** |
+| **Descripción corta** | Aparece como subtítulo del disparador en el flujo. |
+| **Resumen** | Explicación detallada de qué hace el disparador y por qué usarlo. |
+
+## 2. Datos del disparador
+
+En **Datos del disparador**, pega un ejemplo válido del JSON que tu aplicación enviará. Ese ejemplo se usa para configurar los filtros y las variables personalizadas.
+
+## 3. Filtros
+
+En **Gestionar filtros** creas los filtros que verá el usuario al configurar el disparador en su flujo.
+
+- **Nombre:** la etiqueta del filtro.
+- **Tipo:** String, Selección, Selección múltiple o Dinámico.
+- **Obligatorio:** actívalo si el filtro es requerido.
+- **Referencia:** la clave de los datos de ejemplo a la que se asocia el filtro, por ejemplo `trigger_a_name`.
+- **Altera filtro dinámico:** si está activo, cualquier cambio en este filtro vuelve a cargar los filtros dinámicos.
+
+### Opciones de Selección y Selección múltiple
+
+- **Constantes:** pares etiqueta y valor que defines tú.
+- **Referencia interna:** opciones que vienen de un módulo interno de Chateea.
+- **API externa:** opciones que devuelve tu endpoint mediante GET, con los encabezados que necesites. Estructura de respuesta:
+
+```json
+{
+  "options": [
+    { "label": "Argentina", "value": "AR" },
+    { "label": "Chile", "value": "CL" },
+    { "label": "México", "value": "MX" }
+  ]
+}
+```
+
+### Filtro dinámico
+
+Construye filtros a partir de una llamada a tu API. Solo puede haber **un filtro dinámico por disparador**. Chateea envía por POST los datos del formulario:
+
+```json
+{
+  "data": {
+    "name": "Juan Pérez",
+    "country": "MX",
+    "profileType": "public"
+  },
+  "extras": {
+    "locationId": "xyz",
+    "contactId": "abc",
+    "workflowId": "def"
+  },
+  "meta": {
+    "key": "custom_trigger_key",
+    "version": "1.0"
+  }
+}
+```
+
+Tu API debe responder con la lista de filtros:
+
+```json
+{
+  "filters": [
+    { "field": "name", "title": "Nombre", "fieldType": "string", "required": true },
+    {
+      "field": "gender",
+      "title": "Género",
+      "fieldType": "select",
+      "required": true,
+      "options": [
+        { "label": "Masculino", "value": "male" },
+        { "label": "Femenino", "value": "female" }
+      ]
+    }
+  ]
+}
+```
+
+Valores de `fieldType` admitidos en filtros: `string`, `select` y `multiselect` (estos dos con `options`).
+
+## 4. Variables personalizadas
+
+En **Gestionar variables personalizadas**, crea variables a partir de los datos del disparador: pon un **nombre** y elige la **referencia** dentro de los datos de ejemplo. Los usuarios podrán usarlas en las acciones del flujo.
+
+## 5. URL de suscripción
+
+La **URL de suscripción** te permite saber cuándo un usuario configura tu disparador. Indica tu endpoint (POST) y los encabezados necesarios. Cada vez que el disparador se **crea**, **actualiza** o **elimina** en un flujo, Chateea envía su configuración:
+
+```json
+{
+  "triggerData": {
+    "id": "def",
+    "key": "trigger_a",
+    "filters": [
+      {
+        "field": "country",
+        "id": "country",
+        "operator": "==",
+        "title": "Country",
+        "type": "select",
+        "value": "MX"
+      }
+    ],
+    "eventType": "UPDATED",
+    "targetUrl": "https://<url-de-ejecucion-del-disparador>"
+  },
+  "meta": {
+    "key": "trigger_a",
+    "version": "2.4"
+  },
+  "extras": {
+    "locationId": "ghj",
+    "workflowId": "qwe",
+    "companyId": "asd"
+  }
+}
+```
+
+- `eventType` puede ser `CREATED`, `UPDATED` o `DELETED`. En `CREATED`, la lista `filters` suele llegar vacía.
+- `targetUrl` es la URL única a la que tu aplicación debe enviar los datos para ejecutar ese disparador. Guárdala junto con el `id` y los filtros, y deja de usarla cuando recibas `DELETED`.
+
+## 6. Publicar y mantener el disparador
+
+- **Enviar a revisión:** cada versión empieza como borrador. Cuando termines, haz clic en **Enviar a revisión** y añade el registro de cambios. Al aprobarse, la versión se publica para todas las cuentas que tienen tu aplicación.
+- **Nueva versión:** con **+ Nueva versión** se crea un borrador con los datos de la versión publicada.
+- **Eliminar disparador:** escribe el nombre del disparador para confirmar. Se elimina de forma permanente, desaparece del Marketplace y del listado de disparadores, y los flujos que lo usaban dejarán de ejecutarse por él.
+
+<Warning>
+  Eliminar un disparador no se puede deshacer. Avisa antes a las cuentas que lo usan en flujos activos.
+</Warning>
+
+## ¿El flujo puede ejecutarse sin un contacto?
+
+Sí. Los flujos iniciados por disparadores del Marketplace pueden funcionar **sin contacto**, así que puedes enviar cualquier tipo de dato y usarlo en el flujo.
+
+- Usa acciones que no dependan de un contacto, como Webhook personalizado, Google Sheets, Slack, ChatGPT y las herramientas internas.
+- Si necesitas un contacto, añade las acciones **Crear o actualizar contacto** o **Buscar contacto** para traerlo al flujo.
+
+**Ejemplo:** envías los datos de un pedido al disparador, los añades a una hoja de Google Sheets, usas una condición Si/No para clasificar el pedido por importe y mandas un aviso por Slack. Si hace falta, recuperas al cliente con **Buscar contacto** usando su ID.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear acciones personalizadas" icon="puzzle-piece" href="/automatizaciones/crear-acciones-personalizadas-del-marketplace">
+    Envía o trae datos de tu aplicación desde los flujos.
+  </Card>
+  <Card title="Conexiones externas de las apps" icon="link" href="/automatizaciones/conexiones-externas-de-apps-del-marketplace">
+    Cómo se conectan las apps del Marketplace con servicios de terceros.
+  </Card>
+</CardGroup>

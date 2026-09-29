@@ -1,0 +1,136 @@
+---
+title: "Plantillas multimedia de WhatsApp"
+description: "Crea y envía plantillas de WhatsApp con imagen, video, documento o ubicación."
+icon: "photo-film"
+---
+
+Las plantillas multimedia te permiten enviar por WhatsApp mensajes aprobados que incluyen una **imagen**, un **video**, un **documento** o una **ubicación**. Son ideales para campañas más atractivas y para compartir información que no cabe en un texto.
+
+## Para qué usarlas
+
+- **Lanzamientos:** muestra un producto nuevo con una foto o un video corto.
+- **Promociones:** acompaña un código de descuento con una imagen llamativa.
+- **Eventos:** comparte la ubicación y una imagen del lugar.
+- **Atención al cliente:** envía un tutorial, un catálogo o una guía en PDF.
+
+## Límites de archivos
+
+| Tipo | Formatos | Tamaño máximo |
+| --- | --- | --- |
+| Documento | PDF (`application/pdf`) | 100 MB |
+| Imagen | JPEG, PNG (8 bits, RGB o RGBA) | 5 MB |
+| Video | MP4 (`video/mp4`) | 16 MB |
+
+Si el archivo supera el tamaño o no coincide con el tipo de la plantilla (por ejemplo, un video en una plantilla de imagen), Chateea muestra un error y no lo acepta.
+
+## Crea una plantilla con imagen, video o documento
+
+<Steps>
+  <Step title="Abre el gestor de plantillas">
+    Ve a **Configuración → WhatsApp → Plantillas** y pulsa **Crear plantilla**.
+  </Step>
+  <Step title="Configura el encabezado multimedia">
+    Escribe el nombre, la categoría y el idioma. Activa el **encabezado**, elige **Multimedia** y sube el archivo.
+  </Step>
+  <Step title="Escribe el cuerpo y envía">
+    Completa el cuerpo, las variables y los botones si los necesitas, y pulsa **Crear**. La plantilla se envía a aprobación de Meta.
+  </Step>
+</Steps>
+
+Para las reglas de variables y aprobación, consulta [Plantillas de WhatsApp](/whatsapp/plantillas) y [Estados de las plantillas](/whatsapp/estados-de-plantillas).
+
+## Crea una plantilla de ubicación
+
+<Steps>
+  <Step title="Abre el gestor de plantillas">
+    Ve a **Configuración → WhatsApp → Plantillas** y pulsa **Crear plantilla**.
+  </Step>
+  <Step title="Elige Ubicación">
+    Selecciona **Ubicación** como tipo de encabezado y escribe la **latitud** y la **longitud**, además del **nombre** y la **dirección** del lugar.
+  </Step>
+</Steps>
+
+<Tip>
+  Para obtener la latitud y la longitud, haz clic derecho sobre el lugar en Google Maps y copia las coordenadas. Google lo explica en su [guía de coordenadas](https://support.google.com/maps/answer/18539?hl=es).
+</Tip>
+
+## Envía plantillas multimedia
+
+### Desde Conversaciones
+
+<Steps>
+  <Step title="Abre la conversación">
+    Ve a **Conversaciones** y abre el contacto al que quieres escribir.
+  </Step>
+  <Step title="Elige la plantilla">
+    Si la ventana de 24 horas está cerrada, verás el aviso para usar una plantilla. Selecciona la plantilla multimedia y pulsa **Enviar**.
+  </Step>
+</Steps>
+
+Puedes cambiar el archivo de ese envío con **Reemplazar archivo** o cambiando la URL del medio. La URL debe ser pública y del mismo tipo que la plantilla: una plantilla de imagen solo acepta PNG y JPEG. El cambio aplica solo a ese envío y no modifica la plantilla aprobada.
+
+### Desde un envío masivo
+
+<Steps>
+  <Step title="Elige los contactos">
+    Ve a **Contactos** y abre la lista inteligente a la que quieres escribir.
+  </Step>
+  <Step title="Inicia el envío">
+    Selecciona los contactos, pulsa el ícono de **WhatsApp**, elige la plantilla y escribe un nombre para la acción.
+  </Step>
+  <Step title="Revisa los resultados">
+    Pulsa **Ver estadísticas** y luego **Procesados** para ver el avance del envío.
+  </Step>
+</Steps>
+
+Más detalles en [Envío masivo de WhatsApp](/whatsapp/envio-masivo-de-whatsapp).
+
+### Desde una automatización
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización**, crea un flujo de trabajo desde cero y elige un disparador.
+  </Step>
+  <Step title="Agrega la acción de WhatsApp">
+    Agrega la acción **WhatsApp**, selecciona la plantilla multimedia, guarda la acción y guarda el flujo.
+  </Step>
+</Steps>
+
+<Note>
+  En la vista previa del flujo verás la URL del archivo. Al enviarse el mensaje, el cliente recibe el archivo real.
+</Note>
+
+### Desde la aplicación móvil
+
+La aplicación móvil de Chateea también permite enviar plantillas aprobadas de texto, imagen, video, archivo y ubicación.
+
+<Steps>
+  <Step title="Actualiza la app">
+    Asegúrate de tener la última versión de la aplicación móvil de Chateea.
+  </Step>
+  <Step title="Abre la conversación">
+    Ve a **Conversaciones** y abre una conversación de WhatsApp o inicia una nueva.
+  </Step>
+  <Step title="Elige y envía">
+    Selecciona el tipo de plantilla (texto, imagen, video, archivo o ubicación), revisa el contenido y pulsa enviar.
+  </Step>
+</Steps>
+
+Desde la app no se pueden crear ni editar plantillas: eso se hace en la versión web. Todas tus plantillas aprobadas aparecen en la app y pueden usarlas tanto administradores como usuarios con acceso a la cuenta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Las plantillas multimedia necesitan aprobación?">
+    Sí. Como cualquier plantilla, Meta debe aprobarlas antes de que puedas enviarlas.
+  </Accordion>
+  <Accordion title="¿Qué pasa si uso un archivo que no cumple las reglas?">
+    Verás un error y el mensaje no se enviará. Revisa el tipo y el tamaño del archivo y las [pautas de plantillas de WhatsApp](https://developers.facebook.com/docs/whatsapp/message-templates/guidelines/).
+  </Accordion>
+  <Accordion title="¿Por qué rechazan una plantilla multimedia?">
+    Por las mismas razones que cualquier plantilla: variables mal formadas, contenido que incumple las políticas comerciales de WhatsApp, solicitud de datos sensibles, lenguaje abusivo o duplicado de una plantilla existente.
+  </Accordion>
+  <Accordion title="¿Qué significa que la plantilla esté pausada?">
+    Recibió reacciones negativas o poca interacción. No podrás enviarla hasta que vuelva a estar activa.
+  </Accordion>
+</AccordionGroup>

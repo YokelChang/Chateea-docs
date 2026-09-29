@@ -1,0 +1,186 @@
+---
+title: "Servidor MCP de Chateea"
+description: "Conecta asistentes de IA como Cursor, n8n o tus propias apps a tu cuenta mediante el protocolo MCP."
+icon: "server"
+---
+
+El servidor MCP de Chateea permite que asistentes y agentes de IA externos (como Cursor, Windsurf, OpenAI Playground, clientes compatibles con Claude, n8n o tus propias aplicaciones) se conecten de forma segura a tu cuenta. Una vez conectados, pueden buscar contactos, actualizar datos, enviar mensajes, consultar oportunidades y calendarios, o crear publicaciones y blogs a partir de instrucciones en lenguaje natural.
+
+MCP (Model Context Protocol) es un protocolo estándar que funciona como puente entre un cliente de IA y un servicio: el cliente descubre qué herramientas tiene disponibles, consulta datos y ejecuta las acciones que le hayas autorizado. No necesitas instalar ningún SDK: la conexión es por HTTP.
+
+## Para qué te sirve
+
+- **Un solo punto de acceso:** conectas tu IA a contactos, conversaciones, calendarios, oportunidades, pagos, blogs, correos y redes sociales desde un único servidor.
+- **Acceso controlado:** usas un token de integración privada con los permisos (scopes) que tú eliges.
+- **Automatización en lenguaje natural:** tu asistente ejecuta tareas a partir de instrucciones sencillas.
+- **Compatible con muchas herramientas:** cualquier cliente que admita servidores MCP por HTTP y permita enviar cabeceras de autenticación.
+
+## Antes de empezar
+
+Necesitas:
+
+- Acceso a tu cuenta de Chateea con permisos para crear integraciones privadas.
+- Un **token de integración privada** con los permisos necesarios.
+- El **ID de tu cuenta**, que encuentras en **Configuración → Perfil del negocio**.
+- La **URL del servidor MCP de Chateea**. Solicítala a soporte en **help@chateea.com**.
+- Un cliente compatible con MCP.
+
+## Configurar la conexión
+
+<Steps>
+  <Step title="Crea un token de integración privada">
+    Ve a **Configuración → Integraciones privadas** y haz clic en **Crear nueva integración**. Elige los permisos que necesita tu flujo (consulta la tabla de permisos recomendados), haz clic en **Crear integración** y copia el token generado. Guárdalo en un lugar seguro.
+  </Step>
+  <Step title="Agrega el servidor a tu cliente MCP">
+    En la configuración de servidores MCP de tu cliente, añade la URL del servidor y las cabeceras de autenticación:
+
+    ```json
+    {
+      "mcpServers": {
+        "chateea": {
+          "url": "<URL-del-servidor-MCP-de-Chateea>",
+          "headers": {
+            "Authorization": "Bearer <tu-token>",
+            "locationId": "<id-de-tu-cuenta>"
+          }
+        }
+      }
+    }
+    ```
+
+    Sustituye `<tu-token>` por tu token de integración privada y `<id-de-tu-cuenta>` por el ID de tu cuenta.
+  </Step>
+  <Step title="Elige las herramientas">
+    Cuando el cliente se conecte, verás las herramientas disponibles según los permisos del token. Activa solo las que tu agente necesita.
+  </Step>
+</Steps>
+
+## Permisos recomendados
+
+Concede únicamente los permisos que tu caso de uso requiera.
+
+| Área | Permisos |
+| --- | --- |
+| **Contactos** | Ver contactos, Editar contactos |
+| **Conversaciones** | Ver conversaciones, Editar conversaciones |
+| **Mensajes** | Ver mensajes de conversación, Editar mensajes de conversación |
+| **Oportunidades** | Ver oportunidades, Editar oportunidades |
+| **Calendarios** | Ver calendarios, Editar calendarios |
+| **Eventos de calendario** | Ver eventos, Editar eventos |
+| **Pagos** | Ver órdenes de pago, Ver transacciones |
+| **Otros** | Ver campos personalizados, Ver formularios, Ver datos de la cuenta |
+
+## Herramientas disponibles
+
+Las herramientas que verá tu cliente dependen de los permisos del token. Estas son algunas de las principales:
+
+| Área | Herramientas |
+| --- | --- |
+| **Calendarios** | `calendars_get-calendar-events` (eventos por usuario, grupo o calendario), `calendars_get-appointment-notes` (notas de una cita) |
+| **Contactos** | `contacts_get-contact`, `contacts_get-contacts`, `contacts_create-contact`, `contacts_update-contact`, `contacts_upsert-contact` (crea o actualiza), `contacts_add-tags`, `contacts_remove-tags`, `contacts_get-all-tasks` |
+| **Conversaciones** | `conversations_search-conversation`, `conversations_get-messages`, `conversations_send-a-new-message` |
+| **Cuenta** | `locations_get-location` (datos de la cuenta), `locations_get-custom-fields` (campos personalizados) |
+| **Oportunidades** | `opportunities_search-opportunity`, `opportunities_get-pipelines`, `opportunities_get-opportunity`, `opportunities_update-opportunity` |
+| **Pagos** | `payments_get-order-by-id`, `payments_list-transactions` |
+| **Blogs** | `blogs_get-blogs`, `blogs_get-blog-post`, `blogs_create-blog-post`, `blogs_update-blog-post`, `blogs_check-url-slug-exists` (revisa el slug antes de publicar), `blogs_get-all-blog-authors-by-location`, `blogs_get-all-categories-by-location` |
+| **Correos** | `emails_create-template`, `emails_fetch-template` |
+| **Redes sociales** | `socialmediaposting_get-account`, `socialmediaposting_create-post`, `socialmediaposting_edit-post`, `socialmediaposting_get-post`, `socialmediaposting_get-posts`, `socialmediaposting_get-social-media-statistics` |
+
+### Ejemplo de llamada
+
+```python
+import requests
+
+headers = {
+    "Authorization": "Bearer TU_TOKEN",
+    "locationId": "ID_DE_TU_CUENTA"
+}
+
+data = {
+    "tool": "contacts_get-contact",
+    "input": {"contactId": "abc123"}
+}
+
+response = requests.post("URL_DEL_SERVIDOR_MCP", headers=headers, json=data)
+print(response.json())
+```
+
+## Qué puedes pedirle a tu IA
+
+Con el servidor conectado, tu asistente usa las herramientas en segundo plano. Por ejemplo:
+
+- "¿Tengo un contacto que se llame Ana Torres?" (busca con las herramientas de contactos).
+- "Muéstrame las oportunidades abiertas de mi cuenta." (consulta y resume las oportunidades).
+- Crear o actualizar un contacto, agregar o quitar etiquetas.
+- Buscar en el historial de conversaciones y enviar un mensaje a un contacto.
+- Revisar los eventos del calendario o los datos de una orden de pago.
+
+## Usarlo con n8n
+
+El servidor MCP de Chateea funciona con n8n sin plugins personalizados. Así puedes conectar los datos de tu cuenta con tus flujos de n8n y automatizar procesos entre ambas plataformas, incluso con flujos de n8n que ya tengas.
+
+<Steps>
+  <Step title="Configura la conexión MCP">
+    En el agente o cliente MCP de n8n, añade la URL del servidor MCP de Chateea y las cabeceras de autenticación (el token y, si quieres limitar las solicitudes a una cuenta, el `locationId`), con el mismo formato del ejemplo anterior.
+  </Step>
+  <Step title="Arma tu flujo en n8n">
+    Configura los pasos de tu flujo de n8n que usarán las herramientas de Chateea.
+  </Step>
+  <Step title="Prueba">
+    Ejecuta el flujo de prueba y confirma que los datos se mueven correctamente entre ambas plataformas.
+  </Step>
+</Steps>
+
+## Seguridad
+
+Cada solicitud debe incluir un token de integración privada válido, el ID de tu cuenta y los permisos necesarios para la herramienta que se usa. Todo viaja cifrado por HTTPS.
+
+<Warning>
+  Trata tu token como una contraseña. Nunca lo publiques en repositorios públicos, capturas de pantalla, indicaciones compartidas ni en código que se ejecute en el navegador.
+</Warning>
+
+## Buenas prácticas
+
+- **Mínimo privilegio:** activa solo los permisos que el flujo necesita.
+- **Cuidado con la escritura:** concede permisos de edición solo si el agente debe crear o actualizar datos.
+- **Prueba antes de usarlo en serio:** confirma que el cliente llama a las herramientas correctas y devuelve lo esperado.
+- **Supervisa la actividad:** revisa lo que hace la IA cuando tiene permisos de escritura.
+- **Renueva los tokens:** cámbialos periódicamente o cuando quieras revocar un acceso.
+- **Instrucciones claras:** indica a tu agente cuándo debe leer datos, cuándo actualizar y cuándo pedir confirmación.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué significa MCP?">
+    Model Context Protocol. Es un protocolo estándar que permite a los agentes y asistentes de IA conectarse con herramientas y servicios externos.
+  </Accordion>
+  <Accordion title="¿Puedo usarlo con Cursor, Windsurf, OpenAI Playground o Claude?">
+    Sí. Cualquier cliente que admita servidores MCP por HTTP y permita enviar las cabeceras de autenticación puede conectarse. Para Claude también existe una conexión específica con OAuth y más operaciones disponibles.
+  </Accordion>
+  <Accordion title="¿Necesito instalar un SDK?">
+    No. MCP usa una conexión HTTP estándar.
+  </Accordion>
+  <Accordion title="¿Mis datos están seguros?">
+    Sí. El acceso está limitado a los permisos del token de integración privada y la conexión va cifrada por HTTPS.
+  </Accordion>
+  <Accordion title="¿La IA puede modificar datos de mi cuenta?">
+    Sí, si el token incluye permisos de edición. Si solo quieres que consulte información, concede únicamente permisos de lectura.
+  </Accordion>
+  <Accordion title="¿Puedo conectar mis propios agentes de IA?">
+    Sí. Cualquier aplicación que admita MCP por HTTP y envíe las cabeceras necesarias puede conectarse.
+  </Accordion>
+  <Accordion title="¿Necesito un plugin especial para n8n?">
+    No. La integración con n8n funciona sin plugins personalizados.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar Claude a Chateea con MCP" icon="plug" href="/ia/conectar-claude-a-chateea-con-mcp">
+    Acceso ampliado con OAuth desde Claude.ai, Claude Code y Claude Cowork.
+  </Card>
+  <Card title="Apps MCP para agentes gestionados" icon="puzzle-piece" href="/ia/apps-mcp-para-agentes-gestionados">
+    Conecta tus agentes con HubSpot, Notion, Google y más.
+  </Card>
+</CardGroup>

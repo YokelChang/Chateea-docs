@@ -1,0 +1,104 @@
+---
+title: "Disparadores y acciones de Google Contactos en flujos"
+description: "Sincroniza Google Contactos con tus flujos: crea, actualiza, busca y agrupa contactos sin duplicados."
+icon: "address-book"
+---
+
+Si tu equipo trabaja con Gmail o Google Workspace, puedes mantener tu agenda de **Google Contactos** sincronizada con Chateea mediante disparadores y acciones nativos en tus flujos de trabajo. Un contacto nuevo en Google puede iniciar un flujo en Chateea, y tus flujos pueden crear, actualizar o agrupar contactos en Google sin copiar datos a mano.
+
+## Qué ganas
+
+- **Sin doble captura:** los contactos se mantienen sincronizados solos.
+- **Base de datos limpia:** las acciones de búsqueda evitan duplicados.
+- **Seguimiento inmediato:** lanza un flujo personalizado en cuanto aparece un contacto o grupo nuevo en Google.
+- **Menos herramientas:** no necesitas conectores externos ni webhooks.
+- **Casi en tiempo real:** Chateea revisa Google Contactos aproximadamente cada 5 minutos.
+
+## Disparadores (de Google a Chateea)
+
+| Disparador | Se activa cuando |
+| --- | --- |
+| **Nuevo contacto** | Aparece un contacto nuevo en Google Contactos. |
+| **Nuevo grupo** | Alguien crea un grupo de contactos nuevo en Google Contactos. |
+
+## Acciones (de Chateea a Google)
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear contacto** | Agrega un contacto nuevo a Google Contactos. |
+| **Actualizar contacto** | Mantiene al día el teléfono, correo u otros campos. |
+| **Buscar contacto** | Busca por nombre, correo o teléfono. |
+| **Buscar o crear contacto** | Actualiza el contacto si existe o lo crea si no, para evitar duplicados. |
+| **Crear grupo** | Crea un grupo de contactos nuevo. |
+| **Agregar contacto a grupos** | Añade un contacto existente a uno o varios grupos. |
+
+## Conectar Google Contactos
+
+<Steps>
+  <Step title="Busca el paso en tu flujo">
+    En el constructor, busca los disparadores o acciones de Google Contactos, por ejemplo "Buscar contacto" o "Crear contacto".
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Si ya está conectada, podrás configurar los campos enseguida. Si no, haz clic en **Conectar ahora** e inicia sesión con tu cuenta de Google.
+  </Step>
+</Steps>
+
+También puedes conectarla desde **Configuración → Integraciones**: busca **Google Contactos** y autoriza el acceso.
+
+## Cómo funcionan los disparadores
+
+Los disparadores de Google Contactos funcionan por consulta periódica: Chateea pregunta a Google cada cierto tiempo (normalmente cada 5 minutos) si hay contactos o grupos nuevos y, si los encuentra, inicia el flujo.
+
+Para configurarlos:
+
+1. Elige el disparador (**Nuevo contacto** o **Nuevo grupo**).
+2. Ponle un nombre.
+3. Haz clic en **Probar disparador**. Este paso es obligatorio: trae datos de ejemplo que después puedes usar como valores personalizados en las acciones siguientes.
+
+## Casos de uso
+
+### Guardar en Google a quien reserva una cita
+
+- **Disparador:** Cita reservada (filtro: calendario "Demostraciones").
+- **Acciones:** **Buscar o crear contacto** y **Agregar contacto a grupos** (grupo "Leads de demo").
+- **Resultado:** cada persona que agenda una demostración queda guardada en Google Contactos dentro del grupo correcto, sin duplicados.
+
+### Convertir envíos de formularios en contactos de Google
+
+- **Disparador:** Formulario enviado (filtro: formulario "Contacto del sitio web").
+- **Acciones:** **Buscar o crear contacto** y **Actualizar contacto** para quienes vuelven a enviar el formulario con datos nuevos.
+- **Resultado:** Chateea busca el contacto por correo en Google, lo actualiza si existe o lo crea si no.
+
+### Crear contactos de Google desde registros de Notion
+
+- **Disparador:** Nuevo elemento en una base de datos de Notion.
+- **Acciones:** buscar el registro en Notion, **Crear contacto** y **Agregar contacto a grupos**.
+- **Resultado:** cada registro nuevo que cumple tus condiciones en Notion se convierte en un contacto de Google.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo actualizar contactos que ya están en Google?">
+    Sí. Usa la acción **Actualizar contacto** para modificar registros existentes.
+  </Accordion>
+  <Accordion title="¿Necesito una cuenta de Google de pago?">
+    No. Funciona con cualquier cuenta de Gmail que tenga acceso a Google Contactos.
+  </Accordion>
+  <Accordion title="¿Puedo agrupar contactos según sus etiquetas o su etapa en el pipeline?">
+    Sí. Usa condiciones **Si/No** en el flujo y envía a cada contacto al grupo de Google que corresponda.
+  </Accordion>
+  <Accordion title="¿Cada cuánto se detectan los contactos nuevos?">
+    Aproximadamente cada 5 minutos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Notion en flujos" icon="book" href="/automatizaciones/notion-en-flujos-de-trabajo">
+    Crea páginas y registros en Notion.
+  </Card>
+  <Card title="Acciones premium y planes" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las ejecuciones premium.
+  </Card>
+</CardGroup>

@@ -1,0 +1,150 @@
+---
+title: "Campos condicionales en oportunidades"
+description: "Muestra u obliga a completar campos de oportunidad según el pipeline, la etapa, el estado u otros valores."
+icon: "sliders"
+---
+
+Los campos condicionales te permiten decidir qué campos de una oportunidad se muestran y cuáles son obligatorios según su pipeline, su etapa, su estado u otros valores. Así el formulario de la oportunidad muestra solo lo que importa en cada momento y tu equipo registra la información correcta en el punto adecuado del proceso de venta. Por ejemplo, puedes mostrar los campos de incorporación cuando un negocio se gana, o exigir los datos de la propuesta cuando llega a la etapa **Propuesta enviada**.
+
+## Cómo funcionan las reglas
+
+Cada regla condicional tiene dos partes:
+
+- **Disparadores:** las condiciones que activan la regla.
+- **Resultados:** los campos o carpetas que se muestran o se vuelven obligatorios cuando se cumplen las condiciones.
+
+| Disparadores disponibles | Resultados disponibles |
+| --- | --- |
+| Pipeline | **Mostrar campo:** muestra un campo concreto |
+| Etapa del pipeline | **Mostrar carpeta:** muestra una carpeta completa de campos |
+| Estado | **Hacer obligatorio:** exige completar un campo visible antes de guardar |
+| Campos desplegables | |
+| Campos de selección única (radio) | |
+| Casillas de verificación | |
+| Campos de selección múltiple | |
+
+## Activar la función
+
+Si aún no la tienes activa:
+
+1. Ve a **Configuración → Labs**.
+2. Busca **Mostrar y exigir campos de oportunidad de forma condicional** (Show & Require Opportunity Fields Conditionally).
+3. Actívala para tu cuenta.
+
+Activarla no cambia nada en tus formularios actuales. El comportamiento condicional empieza cuando un administrador crea y guarda la primera regla.
+
+## Crear una regla condicional
+
+<Steps>
+  <Step title="Abre las reglas condicionales">
+    Ve a **Configuración → Campos personalizados**, selecciona **Oportunidad** y abre la pestaña **Reglas condicionales**.
+  </Step>
+  <Step title="Crea la regla">
+    Haz clic en **Crear regla condicional**.
+  </Step>
+  <Step title="Define el disparador">
+    Elige el campo que activará la regla, el operador y el valor. Agrega más condiciones si las necesitas y únelas con **Y** u **O**.
+  </Step>
+  <Step title="Agrega los resultados">
+    Añade uno o más resultados: **Mostrar campo**, **Mostrar carpeta** o **Hacer obligatorio**, y elige los campos o carpetas afectados.
+  </Step>
+  <Step title="Revisa y guarda">
+    Comprueba el comportamiento en la vista previa en vivo y haz clic en **Guardar regla**. La regla se activa en cuanto la guardas.
+  </Step>
+</Steps>
+
+## Condiciones Y / O
+
+Usa **Y** cuando deben cumplirse todas las condiciones:
+
+- Pipeline es **Ventas**
+- **Y** Etapa es **Cerrado**
+
+Usa **O** cuando basta con que se cumpla una:
+
+- Etapa es **Propuesta enviada**
+- **O** Etapa es **Cerrado**
+
+Antes de guardar, revisa la vista previa para confirmar que la regla hace lo que esperas.
+
+## Mostrar campos y carpetas
+
+Los campos y carpetas incluidos en un resultado **Mostrar** quedan **ocultos por defecto** y solo aparecen cuando se cumplen las condiciones de la regla. Los campos que no forman parte de ninguna regla de mostrar siguen visibles como siempre.
+
+## Hacer campos obligatorios
+
+El resultado **Hacer obligatorio** exige completar un campo visible antes de guardar la oportunidad.
+
+Ejemplo:
+
+- **Disparador:** Etapa es **Cerrado**.
+- **Resultados:** hacer obligatorios **Monto de la propuesta**, **Fecha estimada de cierre** y **Persona que decide**.
+
+Cuando alguien mueva una oportunidad a **Cerrado**, tendrá que llenar esos campos para poder guardar el cambio.
+
+<Warning>
+Hacer obligatorio un campo no lo muestra automáticamente. Si ese campo también está controlado por una regla de mostrar, asegúrate de que sus condiciones de visibilidad se cumplan en el mismo momento en que debe ser obligatorio.
+</Warning>
+
+## Gestionar las reglas existentes
+
+Ve a **Configuración → Campos personalizados → Oportunidad → Reglas condicionales**. Desde ahí puedes ver los disparadores y resultados de cada regla, buscar reglas, editarlas, eliminarlas o crear nuevas. Los cambios se aplican en cuanto guardas.
+
+También puedes gestionar las reglas de un pipeline concreto desde la lista de pipelines:
+
+1. Ve a **Configuración → Oportunidades y pipelines**.
+2. Busca el pipeline y abre su menú **Acciones**.
+3. Selecciona **Gestionar reglas condicionales**.
+4. Crea o actualiza la regla, revisa la vista previa y haz clic en **Guardar regla**.
+
+## Notas y límites importantes
+
+- Solo los administradores pueden crear, editar o eliminar reglas condicionales.
+- Las reglas se configuran por cuenta.
+- Funcionan al crear, editar o editar en bloque oportunidades, tanto en la web como en la aplicación móvil.
+- Los campos ocultos **conservan su valor**: ocultar un campo no borra ni cambia sus datos.
+- Los campos ocultos no se validan como obligatorios mientras estén ocultos.
+- Si se aplican varias reglas a la vez, sus campos obligatorios se suman.
+- La validación condicional **no se aplica** a las actualizaciones hechas por la API pública ni por flujos de trabajo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué un campo sigue visible aunque no se cumplan las condiciones?">
+    Un campo solo se oculta por defecto si está incluido en un resultado **Mostrar campo** o **Mostrar carpeta**. Si no forma parte de ninguna regla de mostrar, siempre es visible.
+  </Accordion>
+  <Accordion title="¿Qué pasa con el valor de un campo cuando se oculta?">
+    Se conserva. Ocultar un campo no elimina ni modifica sus datos.
+  </Accordion>
+  <Accordion title="¿Qué pasa si se aplican varias reglas a la misma oportunidad?">
+    Los resultados se combinan. Habrá que completar todos los campos visibles que cualquiera de esas reglas haga obligatorios.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece un campo condicional?">
+    Revisa que:
+    - La función esté activada en **Labs**.
+    - La regla esté guardada.
+    - La oportunidad cumpla las condiciones del disparador.
+    - Estén seleccionados el pipeline, la etapa, el estado o el valor correctos.
+    - El campo o su carpeta estén incluidos en un resultado **Mostrar**.
+  </Accordion>
+  <Accordion title="¿Las reglas aplican a cambios hechos por la API o por flujos de trabajo?">
+    No. La validación se aplica al guardar desde la web y la app móvil, pero no a actualizaciones por la API pública ni por flujos de trabajo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Campos personalizados de oportunidades" icon="table-list" href="/oportunidades/campos-personalizados-de-oportunidades">
+    Crea los campos que tu proceso necesita.
+  </Card>
+  <Card title="Tipos avanzados de campos personalizados" icon="sliders" href="/oportunidades/tipos-avanzados-de-campos-personalizados">
+    Opciones y formatos adicionales de campos.
+  </Card>
+  <Card title="Editar oportunidades" icon="pen-to-square" href="/oportunidades/editar-oportunidades">
+    Actualiza los datos de tus negocios.
+  </Card>
+  <Card title="Edición masiva de oportunidades" icon="layer-group" href="/oportunidades/edicion-masiva-de-oportunidades">
+    Cambia varias oportunidades a la vez.
+  </Card>
+</CardGroup>

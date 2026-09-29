@@ -1,0 +1,107 @@
+---
+title: "Actividad de los agentes gestionados: supervisa y depura"
+description: "Revisa en una sola línea de tiempo cada chat y ejecución automática de tu agente gestionado."
+icon: "list-check"
+---
+
+La pestaña **Actividad** de un agente gestionado reúne en una sola línea de tiempo todo lo que ha hecho: conversaciones de chat en vivo y ejecuciones automáticas por disparadores (formularios enviados, etiquetas agregadas, formularios de clientes potenciales de Facebook, encuestas y más). Desde ahí abres el registro de cualquier ejecución para ver sus pasos, las habilidades y herramientas que usó y el resultado final.
+
+Es la forma más rápida de comprobar que tu agente trabaja como esperas y de encontrar el paso exacto donde algo falló.
+
+## Qué muestra
+
+La actividad aparece en orden cronológico inverso (lo más reciente primero). Cada fila muestra:
+
+| Dato | Qué te dice |
+| --- | --- |
+| **Ícono** | Un rayo para ejecuciones por disparador o una burbuja de chat para conversaciones |
+| **Estado** | Si la ejecución se completó, falló o sigue en curso |
+| **Fecha y hora** | Cuándo empezó, para relacionarla con otros eventos |
+| **Tipo** | Si la inició un **Disparador** o un **Chat** |
+| **Contexto** | Qué la inició: el nombre del formulario, la etiqueta agregada u otra automatización; en los chats, una vista previa del mensaje del usuario |
+
+Las ejecuciones iniciadas por un formulario de clientes potenciales de Facebook aparecen como **Formulario de clientes potenciales de Facebook enviado** (Facebook Lead Form Submitted), y las de encuestas como **Encuesta enviada** (Survey Submitted). Con el nombre del evento, el estado y la hora puedes confirmar que el envío sí inició el agente.
+
+## Ventajas
+
+- **Visibilidad completa** de chats y ejecuciones automáticas en una sola vista.
+- **Depuración más rápida:** revisas los pasos y las herramientas sin salir del agente.
+- **Confianza:** verificas qué pasó en cada ejecución automática.
+- **Sin cambiar de pantalla:** chat y automatizaciones en el mismo lugar.
+- **Rendimiento:** ves tiempos y consumo de tokens para detectar pasos lentos o ejecuciones costosas.
+
+## Cómo usar la actividad
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y selecciona el agente gestionado que quieres revisar.
+  </Step>
+  <Step title="Entra a la pestaña Actividad">
+    Haz clic en **Actividad** en la parte superior. La pestaña muestra un contador con las ejecuciones recientes.
+  </Step>
+  <Step title="Recorre la lista">
+    Revisa las ejecuciones de chat y de disparadores con su estado, hora, tipo y contexto.
+  </Step>
+  <Step title="Abre el registro de ejecución">
+    Haz clic en cualquier fila para ver el detalle completo de esa ejecución.
+  </Step>
+</Steps>
+
+<Tip>
+  Usa la actividad mientras pruebas el agente para confirmar que sus habilidades y disparadores funcionan. Si algo falla, la línea de tiempo te muestra en qué paso ocurrió.
+</Tip>
+
+## El registro de ejecución
+
+Al abrir una ejecución ves dos paneles lado a lado y una barra superior:
+
+- **Vista de la conversación del agente** (izquierda): resumen de la ejecución, respuesta final y pasos completados.
+- **Línea de tiempo de ejecución** (derecha): cada paso en orden, con las habilidades y herramientas usadas, sus entradas y salidas, el tiempo y los tokens consumidos.
+- **Barra superior:** título de la conversación y acciones como **Actualizar**, métricas de tiempo, uso de tokens, **Copiar ID** y **Ver en registros de agentes**.
+
+El botón **Ver en registros de agentes** abre la ejecución en los [registros de agentes](/ia/registros-de-agentes), donde puedes analizarla con más detalle.
+
+## Depurar una ejecución fallida
+
+1. Busca la ejecución con estado de error en la actividad.
+2. Ábrela y lee el resumen.
+3. Recorre la línea de tiempo hasta el paso que falló y revisa sus entradas y salidas.
+4. Ajusta la instrucción, la habilidad o la herramienta implicada y vuelve a probar.
+5. Si necesitas ayuda, usa **Copiar ID** y comparte el identificador con soporte de Chateea en **help@chateea.com**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué tipos de ejecuciones aparecen?">
+    Conversaciones de chat en vivo y ejecuciones automáticas por disparadores: formularios enviados, cambios de etiqueta, formularios de clientes potenciales de Facebook, encuestas y otros eventos compatibles.
+  </Accordion>
+  <Accordion title="¿Cómo sé si una ejecución salió bien?">
+    Cada fila tiene un indicador de estado. **Completado** significa que terminó correctamente; un estado de error indica que debes revisarla.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar o buscar en la actividad?">
+    La lista se ordena de la más reciente a la más antigua. Las opciones de filtro o búsqueda pueden variar según tu interfaz.
+  </Accordion>
+  <Accordion title="¿Puedo ver la actividad de varios agentes a la vez?">
+    No. La actividad es propia de cada agente; abre la pestaña de cada uno por separado. Para una vista más amplia usa los registros de agentes.
+  </Accordion>
+  <Accordion title="¿Puedo exportar la actividad?">
+    La exportación puede no estar disponible. Usa **Copiar ID** para referenciar una ejecución en tus notas o al escribir a soporte.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo se guardan los registros?">
+    La retención puede variar según tu cuenta. Si necesitas el dato exacto, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+  <Accordion title="¿Qué significan las métricas de tiempo y tokens?">
+    El tiempo indica cuánto tardó cada paso o la ejecución completa. Los tokens indican cuánto procesamiento de IA se consumió en cada paso o en total.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registros de agentes" icon="list-check" href="/ia/registros-de-agentes">
+    Analiza en detalle cada ejecución de tus agentes.
+  </Card>
+  <Card title="Conversaciones paralelas" icon="comments" href="/ia/conversaciones-paralelas-agentes-gestionados">
+    Trabaja varios temas con el mismo agente a la vez.
+  </Card>
+</CardGroup>

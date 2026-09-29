@@ -1,0 +1,95 @@
+---
+title: "Migrar tu número de la app de WhatsApp a la API"
+description: "Libera un número registrado en la app de WhatsApp para conectarlo a Chateea con la API de WhatsApp."
+icon: "right-left"
+---
+
+Si tu número ya está registrado en la app de WhatsApp (personal o Business) y quieres usarlo con la API de WhatsApp en Chateea por el método estándar, primero tienes que liberarlo. WhatsApp no permite que un mismo número esté activo en la app y en la API a la vez por esta vía. Esta guía te explica cómo hacerlo sin perder tu número y qué esperar en cada paso.
+
+<Tip>
+  ¿Quieres seguir usando la app WhatsApp Business en tu teléfono? Revisa antes la [coexistencia](/whatsapp/coexistencia-con-la-app-whatsapp-business). Permite usar el mismo número en la app y en Chateea a la vez, sin borrar tu cuenta, si tu número y tu país son elegibles.
+</Tip>
+
+## Por qué hay que migrar el número
+
+Si intentas conectar un número que sigue activo en WhatsApp, Meta muestra un error parecido a este:
+
+```text
+This number is registered to an existing WhatsApp account. To use this number, disconnect it from the existing account. Then, return to this page and re-enter the number. Note: It may take up to 3 minutes for the number to become available.
+```
+
+Significa que el número todavía pertenece a una cuenta de la app. Debes eliminar esa cuenta de WhatsApp (no tu línea telefónica) y esperar unos minutos a que Meta lo libere.
+
+<Note>
+  Si el número estuvo conectado antes a la API de WhatsApp con otro proveedor, Meta puede exigir un periodo de espera más largo, incluso de varias semanas, antes de que vuelva a estar disponible. En ese caso conviene usar la migración desde otro proveedor que se explica en [Conectar WhatsApp a tu cuenta](/whatsapp/conectar-whatsapp).
+</Note>
+
+## Qué conservas y qué pierdes
+
+| Conservas | Pierdes o cambia |
+| --- | --- |
+| Tu número de teléfono y tu línea (SIM) | El historial de chats de la app, que no se transfiere |
+| La posibilidad de recrear tu perfil de empresa en la API | El número queda sin servicio unos minutos durante el cambio |
+
+## Paso a paso
+
+<Steps>
+  <Step title="Respalda tus chats (opcional)">
+    Si quieres conservar una copia de tus conversaciones, en la app ve a **Ajustes → Chats → Copia de seguridad** y guárdala en Google Drive o iCloud. La copia no pasa a Chateea, pero te sirve de referencia.
+  </Step>
+  <Step title="Elimina la cuenta de WhatsApp de ese número">
+    En la app (personal o Business) ve a **Ajustes → Cuenta → Eliminar cuenta**, elige tu código de país, escribe tu número y confirma con **Eliminar mi cuenta**. Esto borra la cuenta de WhatsApp, no tu número: tu línea sigue funcionando para llamadas y SMS.
+  </Step>
+  <Step title="Espera unos minutos">
+    Meta tarda un poco en liberar el número. Espera de 2 a 3 minutos antes de continuar.
+  </Step>
+  <Step title="Conecta el número en Chateea">
+    Ve a **Configuración → WhatsApp** y elige crear una nueva cuenta de WhatsApp Business. Inicia sesión con Facebook, selecciona o crea tu portafolio comercial de Meta y, cuando te lo pida, escribe el número que acabas de liberar. Verifícalo con el código que recibes por SMS o llamada. Si vuelve a aparecer el error de número registrado, espera otros 2 o 3 minutos y reintenta.
+  </Step>
+  <Step title="Configura tu perfil de empresa">
+    Define el nombre visible, la categoría, la foto y la descripción. Esta información se gestiona en Meta y se refleja en tus conversaciones de Chateea. Más detalles en [Perfil de empresa](/whatsapp/perfil-de-empresa) y [Nombre visible del negocio](/whatsapp/nombre-visible-del-negocio).
+  </Step>
+  <Step title="Empieza a trabajar con WhatsApp en Chateea">
+    Ya puedes responder desde **Conversaciones**, crear [plantillas](/whatsapp/plantillas), hacer [envíos masivos](/whatsapp/envio-masivo-de-whatsapp) y usar WhatsApp en tus [flujos de trabajo](/whatsapp/whatsapp-en-flujos-de-trabajo). Toda la actividad queda registrada en la ficha de cada contacto.
+  </Step>
+</Steps>
+
+## Problemas comunes
+
+| Problema | Qué hacer |
+| --- | --- |
+| Sigue apareciendo "número ya registrado" | Espera de 3 a 5 minutos después de eliminar la cuenta y vuelve a intentarlo |
+| No llega el código de verificación | Confirma que el número recibe SMS o llamadas y prueba la opción de llamada. Más ayuda en [No llega el código de verificación](/whatsapp/no-llega-el-codigo-de-verificacion) |
+| El número aparece como pendiente en Meta | Revisa que tu portafolio comercial esté aprobado y que el número esté bien agregado. Consulta [Número en estado pendiente](/whatsapp/numero-de-whatsapp-en-estado-pendiente) |
+| Los mensajes no aparecen en Conversaciones | Revisa el estado de la conexión en **Configuración → WhatsApp**. Si sigue fallando, escribe a soporte de Chateea en **help@chateea.com** |
+
+## Recomendaciones
+
+- Usa un número dedicado al negocio, no tu WhatsApp personal.
+- Cada cuenta de Chateea necesita su propio número de WhatsApp.
+- Una vez conectado por este método, el número no puede usarse al mismo tiempo en la app de WhatsApp, salvo que actives la coexistencia.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Pierdo mi número de teléfono al eliminar la cuenta de WhatsApp?">
+    No. Solo eliminas la cuenta de WhatsApp asociada. Tu línea y tu número siguen siendo tuyos.
+  </Accordion>
+  <Accordion title="¿Puedo recuperar mis chats antiguos en Chateea?">
+    No con este método. El historial se queda en el teléfono o en tu copia de seguridad. Si necesitas traer historial, evalúa la coexistencia, que puede sincronizar hasta seis meses de chats.
+  </Accordion>
+  <Accordion title="¿Tengo que hacer esto cada vez?">
+    No. La migración se hace una sola vez por número.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar WhatsApp a tu cuenta" icon="plug" href="/whatsapp/conectar-whatsapp">
+    Los tres métodos de conexión.
+  </Card>
+  <Card title="Coexistencia con la app WhatsApp Business" icon="mobile" href="/whatsapp/coexistencia-con-la-app-whatsapp-business">
+    Usa la app y Chateea con el mismo número.
+  </Card>
+</CardGroup>

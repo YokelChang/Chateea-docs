@@ -1,0 +1,126 @@
+---
+title: "Permisos de la IA conversacional por usuario"
+description: "Decide quién de tu equipo puede crear, editar, consultar o entrenar tus bots de IA conversacional."
+icon: "user-lock"
+---
+
+Los permisos de la IA conversacional te permiten decidir qué puede ver y qué puede cambiar cada miembro de tu equipo en tus bots: quién crea o borra bots, quién edita sus objetivos, quién solo puede consultarlos y quién administra su entrenamiento. Así proteges la configuración que tanto trabajo te costó ajustar y evitas cambios accidentales.
+
+## Para qué te sirven
+
+- **Seguridad:** la configuración, los objetivos y el entrenamiento de tus bots quedan a salvo de cambios no autorizados.
+- **Acceso por rol:** cada persona ve y hace solo lo que corresponde a su trabajo.
+- **Pantallas más limpias:** se ocultan las opciones que un usuario no necesita.
+- **Menos riesgos:** reduces las modificaciones accidentales.
+
+## Cómo configurar los permisos
+
+<Steps>
+  <Step title="Abre tu equipo">
+    Ve a **Configuración → Mi equipo**, busca al usuario y pulsa el ícono de edición (lápiz).
+  </Step>
+  <Step title="Ve a los permisos de IA">
+    En el menú lateral del usuario, entra a **Roles y permisos** y baja hasta **Agentes de IA**.
+  </Step>
+  <Step title="Activa o desactiva los permisos">
+    Configura cada interruptor según el rol del usuario:
+
+    - **Agentes de IA** (control general)
+    - **Ver y administrar agentes de IA conversacional**
+    - **Ver objetivos de los agentes de IA conversacional**
+    - **Ver y administrar objetivos de los agentes de IA conversacional**
+    - **Ver y administrar el entrenamiento de los agentes de IA conversacional**
+    - **Ver panel de IA conversacional**
+  </Step>
+  <Step title="Guarda">
+    Pulsa **Guardar** para aplicar los cambios.
+  </Step>
+</Steps>
+
+## Qué controla cada permiso
+
+### Ver y administrar agentes de IA conversacional
+
+Es el permiso principal: controla la creación, edición y eliminación de bots.
+
+| Activado | Desactivado |
+| --- | --- |
+| Acceso completo para crear, editar y eliminar bots | Se oculta por completo el menú de la IA conversacional |
+| Habilita los permisos que dependen de él: objetivos, vista de objetivos y entrenamiento | Desaparece la lista de bots y no se pueden crear nuevos |
+| | Se desactivan automáticamente los permisos dependientes |
+
+### Ver y administrar objetivos
+
+Pensado para usuarios avanzados que ajustan la lógica y los objetivos del bot.
+
+| Activado | Desactivado |
+| --- | --- |
+| Puede editar la pestaña **Objetivos del bot** al modificar un bot existente | Se oculta la pestaña **Objetivos del bot** al editar |
+| | Aún puede definir objetivos al crear un bot de configuración guiada |
+| | Sigue teniendo acceso a la prueba del bot |
+
+### Ver objetivos (solo lectura)
+
+Para quien necesita consultar los objetivos sin poder cambiarlos.
+
+| Activado | Desactivado |
+| --- | --- |
+| Puede ver los objetivos configurados, como instrucciones y acciones | Se oculta la pestaña **Objetivos del bot** al editar |
+| Puede ver el detalle de las instrucciones en el panel de información de la respuesta de IA dentro de la conversación | Los objetivos solo se ven al crear un bot de configuración guiada, sin las instrucciones adicionales |
+
+### Ver y administrar el entrenamiento
+
+Controla quién puede conectar o desconectar una base de conocimiento del bot.
+
+| Activado | Desactivado |
+| --- | --- |
+| Puede conectar y desconectar bases de conocimiento | Se oculta la pestaña **Entrenamiento del bot** y no se puede modificar |
+| Ve qué base de conocimiento se usó en cada respuesta, en el panel de información de la respuesta de IA | Se quitan las referencias a la base de conocimiento de ese panel |
+
+<Warning>
+  Si desactivas a la vez **Ver y administrar el entrenamiento** y **Ver y administrar objetivos**, el usuario pierde el acceso a la **prueba del bot**.
+</Warning>
+
+### Ver panel de IA conversacional
+
+Muestra u oculta el [panel de resultados](/ia/panel-ia-conversacional) en la página principal de la IA conversacional y dentro de cada bot.
+
+## Combinaciones útiles
+
+| Rol en tu negocio | Permisos sugeridos |
+| --- | --- |
+| **Dueño o responsable de IA** | Todos activados |
+| **Vendedor o agente de atención** | Solo **Ver objetivos** y **Ver panel**, para entender cómo responde el bot sin poder cambiarlo |
+| **Encargado de contenido** | **Ver y administrar el entrenamiento** para mantener al día la base de conocimiento, sin tocar los objetivos |
+| **Personal sin relación con la IA** | **Ver y administrar agentes de IA conversacional** desactivado, para ocultar todo el módulo |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si desactivo Ver y administrar agentes de IA conversacional?">
+    Desaparece todo el menú de la IA conversacional, el usuario no puede crear ni editar bots y se desactivan también los permisos que dependen de él.
+  </Accordion>
+  <Accordion title="¿Puedo dar acceso de solo lectura a los objetivos y bloquear el entrenamiento?">
+    Sí. Activa **Ver objetivos** y desactiva **Ver y administrar el entrenamiento**.
+  </Accordion>
+  <Accordion title="Si desactivo Ver y administrar objetivos, ¿el usuario puede seguir definiendo objetivos?">
+    Solo al crear un bot de configuración guiada. No podrá editarlos en bots existentes.
+  </Accordion>
+  <Accordion title="¿Qué pasa al desactivar Ver y administrar el entrenamiento?">
+    Se oculta la pestaña de entrenamiento, el usuario no puede conectar ni desconectar bases de conocimiento y deja de ver qué base se usó en cada respuesta.
+  </Accordion>
+  <Accordion title="¿Por qué un usuario no ve el panel de la IA conversacional?">
+    Revisa que tenga activado **Ver panel de IA conversacional** en **Roles y permisos → Agentes de IA**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Invita a tu equipo" icon="users" href="/primeros-pasos/invita-a-tu-equipo">
+    Agrega usuarios a tu cuenta de Chateea.
+  </Card>
+  <Card title="Detalles del mensaje de IA" icon="message" href="/bot-ia/detalles-mensaje-ia">
+    Revisa y edita la información de las respuestas de la IA.
+  </Card>
+</CardGroup>

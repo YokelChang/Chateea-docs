@@ -1,0 +1,108 @@
+---
+title: "Registros de ejecución e historial de inscripción"
+description: "Revisa qué hizo un flujo con cada contacto, detecta errores y sigue su recorrido paso a paso en el constructor."
+icon: "list-check"
+---
+
+Los **registros de ejecución** (Execution Logs) y el **historial de inscripción** (Enrollment History) te muestran qué hizo un flujo con cada contacto: cuándo entró, por qué pasos avanzó, qué acción falló y cómo salió. Son la primera herramienta que debes abrir cuando una automatización no se comporta como esperabas.
+
+| Pestaña | Qué muestra |
+| --- | --- |
+| **Registros de ejecución** | Cada acción ejecutada, con su estado, fecha y detalle. Ideal para encontrar errores concretos. |
+| **Historial de inscripción** | Cada contacto que entró en el flujo, cuándo lo hizo y cómo terminó su recorrido. |
+
+## Dónde encontrarlos
+
+Tienes dos caminos:
+
+**Desde el flujo**
+
+1. Ve a **Automatización → Flujos de trabajo**.
+2. Abre el flujo.
+3. Haz clic en **Registros de ejecución** (o en **Historial de inscripción**) en el menú superior del flujo.
+4. Haz clic en **Ver detalles** en la fila que quieras revisar.
+
+**Desde una conversación (el camino más rápido)**
+
+Si un cliente recibió un mensaje extraño y quieres saber qué flujo lo envió:
+
+<Steps>
+  <Step title="Abre la conversación">
+    Ve a **Conversaciones** y abre la conversación del contacto.
+  </Step>
+  <Step title="Abre los detalles del mensaje">
+    Selecciona el mensaje en cuestión y abre sus **detalles**.
+  </Step>
+  <Step title="Salta a la ejecución">
+    En el apartado **Flujo de trabajo**, haz clic en el enlace del flujo. Chateea abre los registros de ejecución con los **Detalles de la ejecución** de ese contacto ya cargados.
+  </Step>
+</Steps>
+
+## Registros de ejecución
+
+### Qué verás en cada fila
+
+- **Nombre de la acción:** la columna de acción muestra el nombre que tú le diste a cada paso. Pasa el cursor sobre él para ver el tipo de acción. Por eso conviene nombrar bien los pasos, sobre todo si tienes varias acciones del mismo tipo.
+- **Estado:** si una acción tuvo un error, el estado o el enlace **Ver detalles** aparecen resaltados para que lo detectes enseguida.
+- **Fila activa:** al abrir los detalles de una fila, esta queda resaltada para que no pierdas de vista cuál estás analizando.
+- **Fecha y hora:** la fecha aparece en formato corto (por ejemplo, Oct-21) y la hora se muestra al pasar el cursor. El campo **Ejecutado el** incluye la zona horaria en la que se ejecutó la acción.
+
+### Filtros
+
+En el filtro por tipo de acción aparecen primero las acciones que forman parte del flujo y, en una sección aparte, el resto. Así filtras más rápido por lo que realmente usa tu automatización.
+
+### Contactos fusionados
+
+Si un contacto se fusiona con otro mientras está dentro de un flujo, verás una entrada **Fusión de contacto** en la línea de tiempo. El flujo continúa con el contacto principal, así que no se pierde ningún paso. Por ejemplo, un visitante del chat en vivo entra como "Invitado" en un flujo de seguimiento y después se fusiona con un contacto que ya existía: el seguimiento sigue su curso con el contacto definitivo.
+
+## Historial de inscripción
+
+### Estados de salida
+
+El historial te dice por qué un contacto terminó su recorrido:
+
+| Estado | Significado |
+| --- | --- |
+| **Flujo completado** | El contacto llegó al final del flujo de forma natural. |
+| **Eliminado por una acción del flujo** | Una acción de este mismo flujo lo sacó. |
+| **Eliminado por una acción de otro flujo** | Una acción de un flujo distinto lo sacó. |
+
+### Resaltar el recorrido del contacto
+
+Haz clic en el ícono **Resaltar recorrido del contacto** (en el historial de inscripción o en el historial de ejecución). Se abre el constructor con el camino que siguió ese contacto marcado en el lienzo, junto con:
+
+- **Errores:** los pasos donde ocurrió un error aparecen destacados.
+- **Pasos omitidos:** los pasos que el contacto no recorrió.
+- **Entrada y salida:** indicadores de cuándo entró y salió del flujo.
+- **En curso:** si el contacto todavía está avanzando por el flujo.
+
+### Ir a la acción
+
+Si al revisar un detalle decides corregir un paso, haz clic en **Ir a la acción**. Se abre el constructor con la barra lateral de esa acción lista para editar.
+
+## Historial del contacto e historial de ejecución
+
+- **Historial del contacto:** haz clic en el ícono **Ver historial del contacto** en los registros de ejecución. Verás los datos del contacto arriba y todas las acciones que se le han ejecutado en este flujo, en todas las veces que ha entrado.
+- **Historial de ejecución:** haz clic en el ícono **Ver historial de ejecución** para ver lo que ocurrió con ese contacto en una inscripción concreta. Los datos del contacto están en una pestaña aparte.
+
+En ambos casos, la ruta de navegación de la parte superior es clicable y te devuelve a los registros.
+
+## Paginación y rango de fechas
+
+- Ambas pestañas se paginan: elige ver **10, 25 o 50 filas** por página.
+- Además de los rangos predefinidos (hoy, ayer, etc.), puedes elegir un **rango personalizado** con fecha y hora de inicio y fin, de hasta **30 días**.
+
+<Tip>
+  Revisa los registros de tus flujos más importantes una vez por semana. Un flujo puede dejar de funcionar por una integración desconectada o una plantilla rechazada y nadie te avisará si no lo miras.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Qué revisar cuando un flujo no funciona.
+  </Card>
+  <Card title="Resolver errores antes de publicar" icon="triangle-exclamation" href="/automatizaciones/resolver-errores-antes-de-publicar">
+    Detecta y corrige fallos de configuración.
+  </Card>
+</CardGroup>

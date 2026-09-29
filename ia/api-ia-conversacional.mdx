@@ -1,0 +1,118 @@
+---
+title: "API de IA conversacional"
+description: "Crea, ajusta y consulta tus agentes de IA conversacional y sus respuestas desde tus propios sistemas por API."
+icon: "code"
+---
+
+La API de IA conversacional te da control programático sobre tus agentes de IA, sus acciones y las respuestas que generan. Es útil cuando quieres crear o ajustar agentes desde tus propios sistemas, mantener la misma configuración en varios bots o exportar el detalle de las respuestas para análisis y auditoría.
+
+Expone las mismas capacidades que ves en **IA → IA conversacional**: crear y administrar agentes, conectarles acciones y consultar el detalle de cada respuesta generada.
+
+## Qué puedes hacer con la API
+
+- Crear, buscar, actualizar y eliminar agentes de IA conversacional.
+- Conectar acciones a un agente, editarlas o quitarlas.
+- Ajustar la configuración de seguimiento automático de un agente.
+- Consultar el detalle de cada respuesta generada por la IA (generaciones).
+- Integrar la IA conversacional con tus aplicaciones internas y construir informes o registros de cumplimiento propios.
+
+## Para qué le sirve a tu negocio
+
+| Beneficio | Qué significa en la práctica |
+| --- | --- |
+| **Puesta en marcha más rápida** | Creas agentes y les conectas acciones con un script, en minutos. |
+| **Configuración consistente** | Aplicas los mismos ajustes a varios agentes sin repetir clics. |
+| **Análisis más profundo** | Extraes las generaciones para tableros, control de calidad o auditorías. |
+| **Integración flexible** | Conectas la IA con tus herramientas internas y registras eventos fuera de Chateea. |
+| **Seguridad por permisos mínimos** | Das solo los alcances (scopes) de lectura o escritura que tu integración necesita. |
+
+## Autenticación
+
+Puedes autenticarte de dos formas:
+
+| Método | Cuándo usarlo |
+| --- | --- |
+| **Token de integración privada** | Integraciones simples de servidor a servidor. Se genera en minutos desde tu cuenta. |
+| **JWT (flujo OAuth)** | Aplicaciones que se conectan mediante autorización OAuth. |
+
+### Crear un token de integración privada
+
+<Steps>
+  <Step title="Abre las integraciones privadas">
+    En tu cuenta de Chateea, ve a **Configuración → Integraciones privadas**.
+  </Step>
+  <Step title="Crea una nueva integración">
+    Dale un nombre y una descripción que te permitan reconocer para qué se usa.
+  </Step>
+  <Step title="Elige los alcances de IA conversacional">
+    Marca solo los permisos que necesitas. Si tu integración solo va a leer datos, elige los alcances de lectura.
+  </Step>
+  <Step title="Genera y copia el token">
+    Guárdalo en un lugar seguro, como el gestor de secretos de tu servidor.
+  </Step>
+</Steps>
+
+<Warning>
+  Trata el token como una contraseña. No lo publiques en código del lado del navegador ni en repositorios, y revócalo si crees que se expuso.
+</Warning>
+
+<Note>
+  Para obtener la URL base y la documentación completa de los endpoints de la API de Chateea, escribe a soporte en **help@chateea.com**.
+</Note>
+
+## Endpoints disponibles
+
+### Agentes
+
+- Crear un agente
+- Buscar agentes
+- Obtener un agente
+- Actualizar un agente
+- Eliminar un agente
+
+### Acciones
+
+- Conectar una acción a un agente
+- Listar las acciones de un agente
+- Obtener una acción por su ID
+- Actualizar una acción
+- Quitar una acción de un agente
+- Actualizar la configuración de seguimiento
+
+### Generaciones
+
+- Obtener el detalle de una generación (la respuesta de la IA a nivel de mensaje)
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué token debo usar?">
+    Usa un token generado desde tu propia cuenta de Chateea, para que las llamadas actúen dentro de ella.
+  </Accordion>
+  <Accordion title="¿Puedo administrar los agentes solo por API?">
+    Sí. Puedes crear, actualizar, consultar y eliminar agentes de IA conversacional sin entrar a la interfaz.
+  </Accordion>
+  <Accordion title="¿Puedo usar tanto el token de integración privada como JWT?">
+    Sí. Elige el token de integración privada para integraciones de servidor a servidor y JWT para aplicaciones con flujo OAuth.
+  </Accordion>
+  <Accordion title="¿Dónde encuentro el ID de un agente?">
+    Crea o busca agentes con los endpoints de Agentes y usa el campo `id` que devuelve la respuesta en las llamadas siguientes.
+  </Accordion>
+  <Accordion title="¿Cómo audito las respuestas de la IA?">
+    Usa el endpoint de Generaciones para obtener el detalle de cada respuesta y guárdalo en tu sistema de análisis o cumplimiento.
+  </Accordion>
+  <Accordion title="¿Por qué recibo un error 403?">
+    Normalmente se debe a que faltan alcances en el token, a permisos incorrectos o a que intentas acceder a recursos de otra cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="El agente conversacional" icon="robot" href="/ia/agente-conversacional">
+    Cómo funciona la IA conversacional en tu cuenta.
+  </Card>
+  <Card title="Detalles del mensaje de IA" icon="magnifying-glass" href="/bot-ia/detalles-mensaje-ia">
+    Revisa y edita las respuestas de la IA desde la bandeja.
+  </Card>
+</CardGroup>

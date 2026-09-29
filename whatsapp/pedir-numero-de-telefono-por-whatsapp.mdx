@@ -1,0 +1,67 @@
+---
+title: "Pedir el número de teléfono a un contacto por WhatsApp"
+description: "Usa la acción Solicitar información de contacto para que un cliente comparta su número dentro del chat de WhatsApp."
+icon: "address-card"
+---
+
+Algunos clientes te escriben por WhatsApp con su **nombre de usuario** y no comparten su número de teléfono. Con la acción **Solicitar información de contacto** (Request Contact Info) de los mensajes interactivos de WhatsApp, puedes pedirles dentro del mismo chat que compartan sus datos, en lugar de esperar a que los envíen por iniciativa propia. Es útil para completar la ficha del contacto y poder darle seguimiento por otros canales.
+
+## Por qué te sirve
+
+- No todos los contactos de WhatsApp tendrán número en su ficha. Algunos solo serán localizables por su nombre de usuario.
+- Pedir el número dentro del chat es más directo y cómodo para el cliente.
+- El cliente decide qué comparte, así que respetas su privacidad.
+
+Si quieres entender cómo llegan estos contactos, revisa [Nombres de usuario de WhatsApp](/whatsapp/nombres-de-usuario-de-whatsapp).
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Agrega la acción en tu flujo de trabajo">
+    Ve a **Automatización**, abre o crea un flujo de trabajo y agrega la acción de **mensajes interactivos de WhatsApp**. Elige **Solicitar información de contacto** y escribe el texto que verá el cliente, por ejemplo: "Para enviarte la confirmación, ¿nos compartes tu número?".
+  </Step>
+  <Step title="Publica y prueba">
+    Publica el flujo y ejecuta una prueba para confirmar que el mensaje se envía y se ve como esperas. Lo ideal es probar con un contacto que solo tenga nombre de usuario, que es el caso para el que está pensada la acción.
+  </Step>
+  <Step title="Revisa el resultado en Conversaciones">
+    Abre la conversación del contacto de prueba en **Conversaciones**. Cuando el contacto comparte sus datos, el campo **Para** se actualiza con la información que envió, por ejemplo su nombre de usuario de WhatsApp.
+  </Step>
+</Steps>
+
+<Note>
+  Como cualquier mensaje libre de WhatsApp, este mensaje interactivo solo se puede enviar mientras la ventana de atención de 24 horas está abierta.
+</Note>
+
+## Qué ve el cliente
+
+Cuando el cliente toca el botón para responder, WhatsApp abre su pantalla nativa de **Enviar información de contacto**. Ahí elige exactamente qué datos comparte con tu negocio: su número de teléfono, su nombre de usuario y cualquier otro dato de su tarjeta de contacto. Luego toca **Enviar**.
+
+- Si deja marcado un dato (por ejemplo, el número o el nombre de usuario), ese dato llega a Chateea y se actualiza en tu lado.
+- Si desmarca un dato antes de enviar, ese dato no llega.
+
+Lo que aparece en Chateea es siempre lo que el cliente confirmó, no algo que el sistema complete por su cuenta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El cliente está obligado a compartir su número?">
+    No. El cliente decide qué datos envía y puede desmarcar su número antes de enviar.
+  </Accordion>
+  <Accordion title="¿Puedo usarlo con contactos que ya tienen número?">
+    Sí, pero donde más sentido tiene es con contactos que solo tienen nombre de usuario.
+  </Accordion>
+  <Accordion title="¿Puedo enviarlo a alguien que nunca me escribió?">
+    No. A un contacto que solo tiene nombre de usuario no se le puede escribir primero. Tiene que haberte escrito antes.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Nombres de usuario de WhatsApp" icon="at" href="/whatsapp/nombres-de-usuario-de-whatsapp">
+    Cómo se capturan contactos sin número.
+  </Card>
+  <Card title="WhatsApp en flujos de trabajo" icon="diagram-project" href="/whatsapp/whatsapp-en-flujos-de-trabajo">
+    Todas las acciones de WhatsApp en tus automatizaciones.
+  </Card>
+</CardGroup>

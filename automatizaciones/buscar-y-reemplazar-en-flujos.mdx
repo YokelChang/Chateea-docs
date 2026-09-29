@@ -1,0 +1,136 @@
+---
+title: "Buscar y reemplazar en flujos de trabajo"
+description: "Encuentra valores personalizados, etiquetas o texto dentro de un flujo y reemplaza valores y etiquetas en todos los pasos."
+icon: "magnifying-glass"
+---
+
+**Buscar y reemplazar** te permite encontrar en segundos dónde se usa un valor personalizado, una etiqueta o un texto dentro de un flujo de trabajo y, si lo necesitas, cambiarlo en todos los pasos a la vez. En lugar de abrir las acciones una por una, usas un panel de búsqueda que te lleva directamente a cada coincidencia.
+
+## Para qué te sirve
+
+- **Actualizar flujos grandes más rápido:** encuentra cada lugar donde aparece una etiqueta, un valor personalizado o una frase.
+- **Cambios consistentes:** reemplaza un valor o una etiqueta en todo el flujo para que la lógica y los mensajes queden alineados.
+- **Menos errores:** la lista de resultados te lleva a cada paso, así no se te escapa ninguno.
+- **Ver dependencias:** antes de cambiar algo importante (por ejemplo, la etiqueta "prioridad-alta"), sabes exactamente dónde se usa.
+- **Disponible en los dos constructores:** funciona igual en el **Constructor estándar** y en el **Constructor avanzado**.
+
+## Modos de búsqueda
+
+Al abrir el panel eliges qué quieres buscar:
+
+| Modo | Qué encuentra | Ejemplo |
+| --- | --- | --- |
+| **Valores personalizados** | Los valores personalizados usados en correos, SMS, condiciones y otras acciones que los admiten. | Cambiaste el correo de soporte y quieres que todos los pasos usen el nuevo valor personalizado. |
+| **Etiquetas** | Las etiquetas que se agregan o quitan en acciones, y las condiciones que dependen de etiquetas. | Reemplazar la etiqueta "prioridad-alta" por "urgente" en todo el flujo. |
+| **Texto** | Texto dentro del contenido y la configuración de los pasos, como el cuerpo de los mensajes, además de los nombres de pasos y disparadores. | Encontrar todos los mensajes que mencionan "promoción de verano". |
+
+La búsqueda **no distingue mayúsculas de minúsculas** y admite **coincidencias parciales**: basta con escribir parte de una palabra.
+
+## Cómo buscar
+
+<Steps>
+<Step title="Abre el flujo">
+Ve a **Automatización → Flujos de trabajo** y abre el flujo en el constructor estándar o avanzado.
+</Step>
+<Step title="Abre el panel de búsqueda">
+Haz clic en el ícono de **lupa** de la barra de herramientas o usa el atajo **Alt + F** (Windows y Linux) u **Option + F** (Mac).
+</Step>
+<Step title="Elige el modo y escribe">
+Selecciona **Valores personalizados**, **Etiquetas** o **Texto** y escribe lo que buscas. Los resultados aparecen al instante.
+</Step>
+<Step title="Recorre los resultados">
+El primer resultado se abre automáticamente y el lienzo se mueve hasta ese paso. Usa **Siguiente** y **Anterior** para pasar de una coincidencia a otra; el constructor centra cada paso para que lo revises en contexto.
+</Step>
+</Steps>
+
+## Cómo reemplazar
+
+Activa **Reemplazar** en el panel para editar varias coincidencias a la vez.
+
+<Steps>
+<Step title="Busca lo que quieres cambiar">
+Escribe el valor personalizado o la etiqueta que quieres reemplazar.
+</Step>
+<Step title="Elige el reemplazo">
+Para valores personalizados, usa el selector de valores personalizados para elegir el nuevo valor. Para etiquetas, elige o escribe la nueva etiqueta.
+</Step>
+<Step title="Aplica el cambio">
+**Reemplazar** cambia solo la coincidencia que tienes seleccionada. **Reemplazar todo** cambia todas las coincidencias compatibles del flujo actual.
+</Step>
+</Steps>
+
+### Qué se puede reemplazar
+
+| Elemento | Buscar | Reemplazar |
+| --- | --- | --- |
+| Valores personalizados | Sí | Sí |
+| Etiquetas | Sí | Sí |
+| Texto en mensajes y configuración | Sí | No |
+| Nombres de pasos y disparadores | Sí | No |
+
+Algunos elementos del sistema o tipos de disparador pueden aparecer en la búsqueda pero no se pueden reemplazar desde el panel.
+
+## Alcance y limitaciones
+
+- **Solo el flujo abierto:** la búsqueda y el reemplazo funcionan únicamente dentro del flujo que estás editando. No busca en otros flujos ni carpetas.
+- **Reemplazar todo no afecta otros flujos:** aunque el mismo valor o etiqueta exista en otras automatizaciones, solo cambia el flujo actual.
+- **Cambios en varios flujos:** abre cada flujo por separado (el selector de flujos ayuda) y repite la búsqueda.
+- **Permisos:** necesitas permiso para editar el flujo.
+
+## Trabaja con red de seguridad
+
+- **Deshacer y Rehacer:** cualquier **Reemplazar** o **Reemplazar todo** se puede revertir con **Deshacer** durante tu sesión.
+- **Cambios recientes:** revisa tus últimas ediciones y vuelve a un punto anterior si hace falta.
+- **Historial de versiones:** para cambios grandes, puedes volver a una versión anterior completa del flujo.
+- **Publicación:** los cambios siguen el modelo de borrador y publicación. No afectan a tus contactos hasta que publicas.
+
+<Tip>
+Antes de un **Reemplazar todo** en un flujo importante, haz clic en **Guardar versión** para tener un punto de retorno seguro. Si puedes, prueba primero en una copia del flujo.
+</Tip>
+
+## Tutorial dentro de la plataforma
+
+Cuando la función está disponible en tu cuenta, el constructor puede mostrarte una guía breve que explica el panel, los modos de búsqueda y cómo reemplazar. Es una buena forma de enseñar la herramienta a personas nuevas del equipo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Funciona en el constructor estándar y en el avanzado?">
+Sí. Buscar y reemplazar está disponible en los dos constructores.
+</Accordion>
+<Accordion title="¿Puedo buscar en varios flujos a la vez?">
+No. Solo busca en el flujo que tienes abierto. Para otro flujo, ábrelo y haz una nueva búsqueda.
+</Accordion>
+<Accordion title="¿Qué puedo reemplazar y qué solo puedo buscar?">
+Puedes reemplazar valores personalizados y etiquetas. El texto, los nombres de pasos y los nombres de disparadores solo se pueden buscar.
+</Accordion>
+<Accordion title="¿La búsqueda distingue mayúsculas?">
+No. "prioridad", "Prioridad" y "PRIORIDAD" devuelven los mismos resultados.
+</Accordion>
+<Accordion title="¿Reemplazar todo cambia otros flujos?">
+No. Solo afecta al flujo actual.
+</Accordion>
+<Accordion title="¿Qué hago si me equivoco con Reemplazar todo?">
+Usa **Deshacer** durante tu sesión o restaura una versión anterior desde el historial de versiones.
+</Accordion>
+<Accordion title="¿Los cambios se aplican al flujo publicado de inmediato?">
+Siguen el mismo modelo que cualquier cambio: quedan en borrador y llegan a tus contactos cuando publicas.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Deshacer, rehacer y cambios recientes" icon="rotate-left" href="/automatizaciones/deshacer-rehacer-y-cambios-recientes">
+Revierte cambios durante tu sesión.
+</Card>
+<Card title="Historial de versiones de flujos" icon="clock-rotate-left" href="/automatizaciones/historial-de-versiones-de-flujos">
+Vuelve a una versión anterior completa.
+</Card>
+<Card title="Constructor estándar y avanzado" icon="diagram-project" href="/automatizaciones/constructor-estandar-y-avanzado">
+Elige qué constructor se abre por defecto.
+</Card>
+<Card title="Selector de flujos" icon="shuffle" href="/automatizaciones/selector-de-flujos">
+Cambia de flujo sin salir del constructor.
+</Card>
+</CardGroup>

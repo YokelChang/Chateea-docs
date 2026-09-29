@@ -1,0 +1,108 @@
+---
+title: "Flujo de llamadas entrantes de la IA de voz"
+description: "Conecta tus números al agente de IA de voz y ajusta el tiempo de espera para que ninguna llamada se pierda."
+icon: "phone-arrow-down-left"
+---
+
+El flujo de llamadas entrantes define qué pasa cuando alguien llama a uno de tus números de Chateea. Si lo configuras bien, la llamada llega directo a tu agente de IA de voz, que contesta, conversa con la persona y toma sus datos, sin que nadie de tu equipo tenga que atender primero.
+
+Esta guía explica cómo conectar un número a un agente de IA de voz y cómo ajustar el tiempo de espera para que ninguna llamada se pierda en el buzón de voz.
+
+## Para qué sirve
+
+- **Llamadas contestadas automáticamente:** el agente atiende sin que alguien del equipo levante el teléfono.
+- **Respuesta inmediata:** quien llama habla con el agente al instante.
+- **Más cobertura:** atiende fuera de horario o en momentos de mucho trabajo.
+- **Control del enrutamiento:** decides cómo maneja cada número las llamadas entrantes.
+- **Menos oportunidades perdidas:** un tiempo de espera bajo evita que la llamada caiga en el buzón de voz antes de que conteste el agente.
+
+## Paso previo: asigna el número al agente
+
+Primero asigna el número (o un grupo de números) al agente en su pestaña **Desplegar**. Lo explicamos en [Crear un agente de IA de voz](/ia/crear-agente-de-voz-ia).
+
+## Dónde revisar el enrutamiento del número
+
+<Steps>
+  <Step title="Abre tus números">
+    Ve a **Configuración → Sistema telefónico** y abre la pestaña **Administrar números**. Ahí ves los números de tu cuenta.
+  </Step>
+  <Step title="Edita la configuración del número">
+    Haz clic en los tres puntos junto al número y elige **Editar configuración**.
+  </Step>
+  <Step title="Revisa el desvío de llamadas">
+    Abre la pestaña **Desvío de llamadas** y, en el enrutamiento, selecciona o confirma la opción **IA de voz**.
+  </Step>
+</Steps>
+
+## Que el agente conteste siempre
+
+Si el número asignado al agente **no tiene desvío de llamadas activo**, el agente de IA de voz contestará siempre las llamadas a ese número.
+
+<Warning>
+  La excepción es el **número predeterminado de tu cuenta**. Si asignas ese número al agente, el comportamiento puede ser distinto.
+</Warning>
+
+Para que el agente conteste todas las llamadas entrantes:
+
+- **No** asignes al agente el número predeterminado de tu cuenta.
+- **No** configures desvío de llamadas en el número asignado al agente.
+
+Es la configuración ideal si estás demasiado ocupado para contestar el teléfono todo el día: el agente se convierte en tu recepcionista, atiende llamadas, recibe leads y toma los datos para el seguimiento.
+
+## Ajusta el tiempo de espera
+
+El tiempo de espera define cuánto espera Chateea antes de pasar la llamada a la opción de respaldo. Si es muy alto, la llamada puede llegar al buzón de voz de tu teléfono antes de que conteste el agente.
+
+<Warning>
+  Si la llamada llega a tu buzón de voz local, se marca como completada y el agente de IA de voz ya no la contesta.
+</Warning>
+
+<Steps>
+  <Step title="Abre la configuración del número">
+    Ve a **Configuración → Sistema telefónico → Números de teléfono**, haz clic en los tres puntos del número y elige **Editar configuración**.
+  </Step>
+  <Step title="Busca el tiempo de espera">
+    En la pestaña **Desvío de llamadas**, ubica el ajuste **Tiempo de espera**.
+  </Step>
+  <Step title="Bájalo">
+    Ponlo en un valor bajo, entre **1 y 3 segundos**. Según tu enrutamiento, también puedes usar **0 segundos**.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios.
+  </Step>
+</Steps>
+
+## Comprueba que funciona
+
+Llama al número asignado desde otro teléfono y confirma que contesta el agente correcto. Luego revisa el registro de la llamada en **IA → IA de voz → Panel y registros**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mi agente no contesta las llamadas entrantes?">
+    Verifica que el número esté asignado al agente correcto en su pestaña **Desplegar** y que el **Desvío de llamadas** del número tenga la IA de voz como opción de enrutamiento. Revisa también el horario de atención y el tiempo de espera.
+  </Accordion>
+  <Accordion title="¿Un agente puede usar varios números?">
+    Sí. Puedes asignar varios números a un mismo agente.
+  </Accordion>
+  <Accordion title="¿Puedo asignar un grupo de números?">
+    Sí, donde esté disponible. Se puede asignar un grupo de números por agente.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la llamada llega primero a mi buzón de voz?">
+    Se marca como completada y el agente no contesta. Baja el tiempo de espera para evitarlo.
+  </Accordion>
+  <Accordion title="¿Puedo comprar un número nuevo al asignar números al agente?">
+    Sí. Desde la pantalla de asignación de números puedes comprar uno nuevo si no tienes ninguno disponible.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Horario de atención de la IA de voz" icon="clock" href="/ia/horario-de-atencion-voz-ia">
+    Define cuándo contesta el agente.
+  </Card>
+  <Card title="Probar un agente de IA de voz" icon="headset" href="/ia/probar-agente-de-voz-ia">
+    Valida la llamada antes de lanzar.
+  </Card>
+</CardGroup>

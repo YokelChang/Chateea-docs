@@ -1,0 +1,119 @@
+---
+title: "Reconectar Google Calendar cuando deja de sincronizar"
+description: "Descubre por qué se rompe la integración con Google Calendar y cómo volver a conectarla sin perder citas."
+icon: "rotate"
+---
+
+Si tus citas de Chateea dejaron de aparecer en Google Calendar, lo más probable es que Google haya cortado el acceso de Chateea a tu cuenta. La solución es volver a integrar el calendario: primero revisas si basta con reconectar y, si no, eliminas la conexión y la creas de nuevo. En esta guía verás por qué se rompe la integración y cómo recuperarla sin perder citas.
+
+<Warning>
+  La conexión con Google la tiene que hacer **el propio usuario dueño de la cuenta de Google**, iniciando sesión en Chateea con su usuario. No se puede conectar la cuenta de Google de otra persona entrando en su nombre.
+</Warning>
+
+## Por qué se rompe la integración con Google Calendar
+
+Google revoca el acceso de aplicaciones conectadas en situaciones como estas:
+
+- Cambiaste la contraseña de tu cuenta de Google.
+- Se retiraron los permisos de Chateea desde la configuración de seguridad de Google.
+- Google detectó actividad sospechosa y bloqueó el acceso automáticamente.
+- Los tokens de autorización (las credenciales seguras de la conexión) caducaron o dejaron de ser válidos.
+
+Cuando pasa, la sincronización se detiene y las citas nuevas no llegan a tu Google Calendar.
+
+## Cuándo conviene volver a integrar
+
+- Los eventos dejaron de sincronizarse.
+- Cambiaron o se revocaron los permisos de tu cuenta de Google.
+- El calendario aparece desconectado.
+- Ves errores de autorización o de sincronización en tu cuenta.
+
+## Paso 1: intenta reconectar
+
+Antes de borrar nada, revisa si solo faltan permisos.
+
+<Steps>
+  <Step title="Abre la integración de Google">
+    Ve a **Configuración → Integraciones → Google**.
+  </Step>
+  <Step title="Busca avisos de permisos">
+    Si aparece un aviso de permisos faltantes, haz clic en **Reconectar**.
+  </Step>
+  <Step title="Autoriza de nuevo">
+    Elige la misma cuenta de Google y acepta todos los permisos que se solicitan.
+  </Step>
+</Steps>
+
+<Info>
+  Al reconectar, Chateea sincroniza automáticamente las **próximas citas** que se crearon mientras la integración estaba caída. No necesitas editar cada cita para forzar la sincronización.
+</Info>
+
+## Paso 2: elimina la conexión de Google Calendar
+
+Si reconectar no lo soluciona, elimina la conexión actual. Puedes hacerlo desde dos lugares:
+
+- **Desde Mi perfil:** ve a **Configuración → Mi perfil**, baja hasta la configuración de calendario y haz clic en el ícono de papelera de la cuenta de Google conectada.
+- **Desde Conexiones:** ve a **Configuración → Calendarios**, abre la pestaña **Conexiones** y, en **Calendarios conectados**, haz clic en el ícono de papelera de la cuenta de Google.
+
+En la ventana que aparece, marca la casilla de confirmación y haz clic en **Confirmar**.
+
+## Paso 3: vuelve a integrar Google Calendar
+
+<Steps>
+  <Step title="Agrega la cuenta de nuevo">
+    En **Configuración → Mi perfil**, dentro de la configuración de calendario, haz clic en **Agregar nuevo** (también puedes hacerlo desde **Conexiones**).
+  </Step>
+  <Step title="Elige Google">
+    Selecciona Google Calendar, inicia sesión con tu cuenta y acepta todos los permisos.
+  </Step>
+  <Step title="Revisa tus calendarios vinculados">
+    Confirma qué Google Calendar se usa como calendario vinculado y cuáles se revisan como calendarios de conflicto.
+  </Step>
+</Steps>
+
+## Paso 4: prueba la sincronización
+
+Crea una cita de prueba en Chateea y comprueba que aparece en Google Calendar. Si después de probar el problema continúa, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo sé si mi integración con Google está rota?">
+    Las citas nuevas no aparecen en tu Google Calendar o ves un mensaje de desconexión o de permisos faltantes en la configuración de la integración.
+  </Accordion>
+  <Accordion title="¿Tengo que volver a integrar después de cambiar mi contraseña de Google?">
+    Sí. Al cambiar la contraseña, Google revoca el acceso de las aplicaciones conectadas, incluida Chateea. Tienes que autorizarla otra vez.
+  </Accordion>
+  <Accordion title="¿Debo eliminar la conexión anterior antes de reconectar?">
+    Si el botón **Reconectar** no resuelve el problema, sí. Eliminar la conexión antigua antes de crear la nueva evita conflictos de sincronización.
+  </Accordion>
+  <Accordion title="¿Pierdo citas al desconectar el calendario?">
+    No. Desconectar y volver a conectar no borra las citas pasadas ni las próximas que ya estaban en Chateea. La sincronización se reanuda después de la nueva integración.
+  </Accordion>
+  <Accordion title="¿Cómo sé que la reintegración funcionó?">
+    El calendario aparece en la lista con la sincronización activa. Para confirmarlo, crea una cita de prueba y verifica que se ve en ambos lados.
+  </Accordion>
+  <Accordion title="¿Puedo reconectar con otra cuenta de Google?">
+    Sí. Después de eliminar la conexión original puedes iniciar sesión con otra cuenta. Asegúrate de que sea la correcta para tus citas.
+  </Accordion>
+  <Accordion title="¿Puedo conectar varios calendarios al mismo usuario?">
+    Sí, puedes agregar varios calendarios, pero solo uno puede ser el calendario principal para sincronizar tus citas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Tu cuenta de Google no aparece" icon="circle-question" href="/calendarios/cuenta-de-google-no-aparece">
+    Qué hacer si tu cuenta conectada no se muestra donde esperas.
+  </Card>
+  <Card title="Error de acceso de escritura en Google Calendar" icon="lock" href="/calendarios/error-acceso-de-escritura-google-calendar">
+    Da permiso de edición a un calendario compartido.
+  </Card>
+  <Card title="Restaurar calendarios eliminados" icon="trash-arrow-up" href="/calendarios/restaurar-calendarios-eliminados">
+    Recupera un calendario que borraste por error.
+  </Card>
+  <Card title="Herramienta de diagnóstico del calendario" icon="wrench" href="/calendarios/herramienta-de-diagnostico-del-calendario">
+    Descubre por qué un horario no está disponible.
+  </Card>
+</CardGroup>

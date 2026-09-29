@@ -1,0 +1,116 @@
+---
+title: "Captura datos del usuario en Agent Studio"
+description: "Pide correo, teléfono, una opción o un texto con las herramientas de captura y úsalos en tu agente."
+icon: "clipboard-list"
+---
+
+Las herramientas de captura de información de Agent Studio te permiten pedirle al usuario un dato concreto (su correo, su teléfono, una opción de una lista o una respuesta escrita) y guardarlo para usarlo más adelante en el agente. En lugar de esperar que la IA extraiga el dato de un mensaje abierto, el agente hace una pregunta directa y recibe la respuesta en un formato ordenado.
+
+## Cuándo usarlas
+
+Úsalas cuando el agente necesita un dato claro antes de dar el siguiente paso. Por ejemplo:
+
+- Pedir el correo antes de enviar una confirmación o un seguimiento.
+- Pedir el teléfono antes de pasar al prospecto a ventas o soporte.
+- Hacer que el usuario elija una opción para enviarlo al camino correcto.
+- Recoger un texto libre: un tema, una solicitud, una pregunta o una descripción.
+- Reunir los datos necesarios antes de que un nodo Agente de IA genere contenido o responda.
+
+Son ideales cuando el dato es predecible y no hace falta razonamiento de IA para obtenerlo.
+
+## Herramientas disponibles
+
+| Herramienta | Qué captura | Ejemplo de pregunta |
+| --- | --- | --- |
+| **Correo electrónico** | Un correo válido para confirmaciones, seguimientos o datos del prospecto. | "Déjanos tu correo para enviarte los detalles." |
+| **Número de teléfono** | Un teléfono válido para devolver la llamada, calificar o dar seguimiento. Si el número no es válido, vuelve a pedirlo. | "¿A qué número te podemos llamar?" |
+| **Opción única** | Una opción de una lista fija: tipo de servicio, nivel de interés, tema de soporte. | "¿En qué te ayudamos? Precios, Agendar una llamada, Soporte, Otra consulta." |
+| **Texto libre** | Una respuesta escrita: tema, pregunta, nombre del negocio, objetivo o petición especial. | "¿Sobre qué tema quieres el contenido?" |
+
+## Cómo funcionan
+
+Las herramientas de captura se usan dentro de un [nodo secuencial](/ia/nodo-secuencial-agent-studio), que ejecuta cada paso en orden. Cuando el flujo llega a una herramienta de captura, el agente hace la pregunta, espera la respuesta y la guarda en una variable. Luego sigue con el siguiente paso.
+
+Un esquema típico:
+
+1. Un disparador, como **Mensaje de chat** o **Etiqueta del contacto**.
+2. Un nodo secuencial con una o varias herramientas de captura.
+3. Un enrutador o un nodo Agente de IA que usa los datos capturados para decidir qué sigue.
+
+Por ejemplo, el agente arranca con un mensaje de chat, pasa a un nodo secuencial con una pregunta de **opción única** y, según lo que elija el usuario, un enrutador lo envía a precios, a agendar una llamada o a soporte.
+
+## Cómo configurarlas
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y abre el agente que quieres editar.
+  </Step>
+  <Step title="Agrega o abre un nodo secuencial">
+    Agrega un nodo **Secuencial** al lienzo, o abre uno existente donde quieras recoger la información.
+  </Step>
+  <Step title="Elige la herramienta de captura">
+    En el panel izquierdo, abre **Capturar información** y arrastra al nodo secuencial la herramienta que necesites: **Correo electrónico**, **Número de teléfono**, **Opción única** o **Texto libre**.
+  </Step>
+  <Step title="Escribe la pregunta">
+    Escribe el mensaje que verá el usuario, por ejemplo: "¿Qué opción describe mejor tu solicitud?". En la opción única, agrega también las opciones.
+  </Step>
+  <Step title="Guarda la respuesta en una variable">
+    Asigna un nombre a la variable, como `email`, `phone_number`, `selected_interest` o `topic`, para poder usarla después.
+  </Step>
+  <Step title="Conecta el siguiente paso">
+    Une el nodo secuencial con lo que sigue: un enrutador, un nodo Agente de IA, un mensaje de confirmación u otra acción.
+  </Step>
+  <Step title="Prueba el flujo">
+    Ejecuta una conversación de prueba y confirma que las preguntas aparecen en orden, que el correo y el teléfono se validan, que las opciones se muestran bien, que las respuestas se guardan en la variable correcta y que el siguiente nodo las usa.
+  </Step>
+</Steps>
+
+## Usar los datos capturados más adelante
+
+Las respuestas quedan guardadas como variables de ejecución y puedes insertarlas en indicaciones, mensajes o acciones posteriores. Por ejemplo, si capturas:
+
+| Dato | Valor |
+| --- | --- |
+| Tema | IA en belleza |
+| Público | Adultos mayores |
+| Correo | `usuario@ejemplo.com` |
+| Teléfono | +1 555 123 4567 |
+
+Un nodo Agente de IA posterior puede recibir la instrucción: "Escribe un artículo de blog sobre el tema capturado para el público elegido e incluye el correo y el teléfono como datos de contacto". Así combinas una recogida de datos predecible con la generación con IA.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde encuentro estas herramientas?">
+    En el panel izquierdo de Agent Studio, en la sección **Capturar información**.
+  </Accordion>
+  <Accordion title="¿Usan IA para capturar la respuesta?">
+    No. Están diseñadas para recoger datos estructurados sin necesidad de IA.
+  </Accordion>
+  <Accordion title="¿Puedo usarlas dentro de un nodo Agente de IA?">
+    No, se usan dentro del nodo secuencial. Si necesitas razonamiento, agrega un nodo Agente de IA después de capturar los datos.
+  </Accordion>
+  <Accordion title="¿La opción única puede enviar a los usuarios por caminos distintos?">
+    Sí. Usa la opción elegida en un enrutador para dirigir a cada usuario al camino correcto.
+  </Accordion>
+  <Accordion title="¿El teléfono se valida?">
+    Sí. Si el número no es válido, la herramienta vuelve a pedirlo antes de continuar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Nodo secuencial" icon="list-ol" href="/ia/nodo-secuencial-agent-studio">
+    Ejecuta pasos en un orden fijo.
+  </Card>
+  <Card title="Nodo Agente de IA" icon="robot" href="/ia/nodo-agente-ia-agent-studio">
+    Usa los datos capturados con IA.
+  </Card>
+  <Card title="Nodo enrutador" icon="route" href="/ia/nodo-enrutador-agent-studio">
+    Envía a cada usuario por el camino correcto.
+  </Card>
+  <Card title="Variables y valores personalizados" icon="code" href="/ia/variables-y-valores-personalizados-agent-studio">
+    Reutiliza los datos en todo el agente.
+  </Card>
+</CardGroup>

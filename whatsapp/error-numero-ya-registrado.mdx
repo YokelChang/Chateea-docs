@@ -1,0 +1,102 @@
+---
+title: "Error: el número ya está registrado en una cuenta de WhatsApp"
+description: "Cómo liberar un número que sigue activo en WhatsApp para conectarlo a Chateea y recibir el código de verificación."
+icon: "phone-slash"
+---
+
+Al conectar WhatsApp a tu cuenta de Chateea puede aparecer alguno de estos errores:
+
+```text
+This number is registered to an existing WhatsApp account.
+This phone number is already registered to a WhatsApp account.
+```
+
+Los dos significan lo mismo: el número que intentas conectar **ya está vinculado a otra cuenta de WhatsApp**. Un número solo puede estar activo en una cuenta a la vez, así que primero hay que liberarlo. Esta misma causa es también la razón más común por la que **no llega el código de verificación (OTP)** durante la conexión.
+
+<Note>
+Esta regla aplica a la conexión estándar. Si tu número es elegible para la **coexistencia**, puedes usar el mismo número en la app WhatsApp Business y en Chateea a la vez, con un proceso de conexión diferente. Si quieres conservar la app, revisa esa opción antes de eliminar tu cuenta.
+</Note>
+
+## Por qué aparece
+
+- El número está activo en la app de **WhatsApp** personal.
+- El número está vinculado a la app **WhatsApp Business**.
+- El número está conectado a la plataforma de WhatsApp Business de **otro proveedor**.
+- El número se usó antes en WhatsApp y la cuenta no se eliminó correctamente.
+- El número se desconectó o migró hace poco y WhatsApp todavía está procesando el cambio.
+
+## Cómo comprobar si el número está registrado en WhatsApp
+
+**Método 1: enlace de WhatsApp.** Abre el navegador y escribe esta dirección con el número completo, incluido el código de país y sin signos ni espacios:
+
+```text
+https://wa.me/5215512345678
+```
+
+- Si se abre un chat de WhatsApp, el número **está registrado** (como cuenta personal o de empresa).
+- Si aparece un aviso de que el número compartido no es válido, el número **no está registrado**.
+
+**Método 2: desde la app.** Guarda el número en los contactos de tu teléfono, abre WhatsApp e inicia un chat nuevo buscando ese contacto. Si aparece, está en WhatsApp. Si el perfil dice "Cuenta de empresa" o muestra nombre del negocio, categoría o catálogo, está en WhatsApp Business.
+
+## Cómo solucionarlo
+
+<Steps>
+  <Step title="Elimina la cuenta de WhatsApp de ese número">
+    En el teléfono donde está activo el número, abre **WhatsApp** o **WhatsApp Business**, ve a **Ajustes → Cuenta → Eliminar cuenta**, confirma el número y completa la eliminación.
+
+    Si el número está conectado con otro proveedor de WhatsApp, pídele que lo libere o elimine por completo de su plataforma.
+  </Step>
+  <Step title="Espera a que WhatsApp libere el número">
+    Espera unos **3 minutos**. A veces tarda un poco más, según los sistemas de WhatsApp. No reintentes muchas veces seguidas, porque puede causar más demoras.
+  </Step>
+  <Step title="Vuelve a intentar la conexión">
+    Regresa a la conexión de WhatsApp en Chateea, escribe de nuevo el número y solicita y confirma el código de verificación.
+  </Step>
+</Steps>
+
+<Warning>
+Desinstalar la app **no es suficiente**: la cuenta debe eliminarse desde los ajustes de WhatsApp. Además, eliminar la cuenta borra de forma permanente el historial de chats de ese número. Haz una copia de seguridad antes si la necesitas.
+</Warning>
+
+<Tip>
+Si prefieres no eliminar nada, la opción más sencilla es conectar un número nuevo que nunca se haya registrado en WhatsApp.
+</Tip>
+
+## Si el error continúa
+
+- Asegúrate de que el número no esté activo en **ningún otro dispositivo**.
+- Confirma que no esté vinculado a otro portafolio comercial de Meta ni a otra cuenta de WhatsApp Business.
+- Si eliminaste la cuenta hace poco, espera de 10 a 15 minutos y vuelve a intentarlo.
+- Si el número estuvo conectado a la API con otro proveedor, Meta puede exigir una espera más larga antes de liberarlo.
+
+Si nada funciona, escribe a soporte de Chateea en **help@chateea.com** con:
+
+- El número de teléfono con código de país.
+- Una captura del error o el mensaje exacto.
+- La hora aproximada del intento fallido.
+- El ID de tu portafolio comercial de Meta, si lo tienes.
+
+## Buenas prácticas para evitar este error
+
+- Usa un número nuevo o que no se haya usado en WhatsApp.
+- Evita reutilizar números que estuvieron conectados a WhatsApp hace poco.
+- No intentes conectar el número mientras siga activo en alguna app de WhatsApp.
+
+Este error no es una falla del sistema: es una protección de WhatsApp para que cada número pertenezca a una sola cuenta. Cuando el número se libera correctamente, la conexión se completa sin problema.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="No llega el código de verificación" icon="message-sms" href="/whatsapp/no-llega-el-codigo-de-verificacion">
+    Otras causas por las que el OTP no llega.
+  </Card>
+  <Card title="Usar tu número de WhatsApp actual" icon="mobile-screen" href="/whatsapp/usar-tu-numero-de-whatsapp-actual">
+    Coexistencia, migración o número nuevo.
+  </Card>
+  <Card title="Coexistencia con la app WhatsApp Business" icon="mobile-screen-button" href="/whatsapp/coexistencia-con-la-app-whatsapp-business">
+    Usa la app y Chateea con el mismo número.
+  </Card>
+  <Card title="Error: ya existe un método de pago" icon="credit-card" href="/whatsapp/error-metodo-de-pago-ya-existe">
+    Si la cuenta de WhatsApp Business ya tiene facturación.
+  </Card>
+</CardGroup>

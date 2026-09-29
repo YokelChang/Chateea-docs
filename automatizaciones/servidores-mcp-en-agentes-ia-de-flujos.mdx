@@ -1,0 +1,130 @@
+---
+title: "Conectar servidores MCP externos al Agente IA de tus flujos"
+description: "Da a tu Agente IA acceso a buscadores, navegadores y APIs externas mediante MCP dentro de los flujos."
+icon: "plug"
+---
+
+La acción **Agente IA** de los flujos de trabajo puede conectarse a servicios externos mediante el **Model Context Protocol (MCP)**. Así tu agente consulta información en tiempo real de herramientas compatibles, como buscadores web, plataformas de automatización de navegador, bases de datos o APIs propias. Con ello puedes automatizar investigaciones, enriquecer registros y tomar decisiones más inteligentes dentro del flujo.
+
+## Qué es MCP
+
+MCP es un estándar abierto que permite a las aplicaciones de IA comunicarse de forma segura con herramientas y servicios externos. Un **servidor MCP** expone una serie de herramientas que el agente puede usar.
+
+Sin MCP, el agente trabaja sobre todo con la información de tu cuenta de Chateea. Con una conexión MCP puede buscar datos actuales, navegar por sitios web, hacer búsquedas e interactuar con otros sistemas mientras se ejecuta el flujo.
+
+## Beneficios
+
+- **Datos en tiempo real:** el agente obtiene información actual mientras el flujo se ejecuta.
+- **Capacidades ampliables:** conecta cualquier servidor MCP compatible, no solo las herramientas integradas.
+- **Descubrimiento automático:** al probar la conexión, Chateea detecta las herramientas disponibles.
+- **Permisos por herramienta:** eliges exactamente qué herramientas puede usar cada agente.
+- **Menos trabajo repetitivo:** el agente hace por ti investigaciones y tareas manuales.
+- **Autenticación flexible:** admite distintos métodos según el proveedor.
+
+## Servidores compatibles
+
+Puedes conectar cualquier servidor compatible con MCP. Algunos ejemplos habituales:
+
+| Servidor | Para qué sirve |
+| --- | --- |
+| Exa | Búsqueda web con IA sobre empresas, personas y noticias. |
+| Tavily | Búsqueda web en tiempo real y extracción de contenido de páginas. |
+| Browserbase | Automatización de navegador: navegar, hacer clic, tomar capturas y extraer datos. |
+| Servidores propios | Servidores MCP alojados o desarrollados por tu equipo que sigan la especificación MCP. |
+
+<Note>
+  Chateea no aloja ni administra servidores MCP de terceros. La disponibilidad, los precios, la autenticación y las herramientas que ofrecen dependen de cada proveedor, que puede requerir su propia cuenta o suscripción.
+</Note>
+
+## Opciones de conexión
+
+**Métodos de autenticación:**
+
+- Ninguno
+- Clave de API
+- Token Bearer
+- OAuth2
+- Encabezado personalizado
+
+Algunos proveedores piden la clave de API en un encabezado HTTP y otros como parámetro en la URL. Revisa la documentación de tu proveedor para configurarlo bien.
+
+**Tipos de transporte:**
+
+- **HTTP Streamable** (predeterminado y recomendado).
+- **Server-Sent Events (SSE).**
+
+Usa HTTP Streamable salvo que tu proveedor indique lo contrario.
+
+## Cómo configurar una conexión MCP
+
+<Steps>
+  <Step title="Abre el flujo y el agente">
+    Abre el flujo de trabajo y agrega o edita una acción **Agente IA**.
+  </Step>
+  <Step title="Ve a las herramientas MCP">
+    Haz clic en **Agregar herramientas** y abre la pestaña **MCP**.
+  </Step>
+  <Step title="Crea la conexión">
+    Haz clic en **Agregar conexión** y completa:
+    - **Nombre de la conexión:** uno descriptivo.
+    - **URL del servidor:** la que te da tu proveedor MCP.
+    - **Tipo de transporte.**
+    - **Tipo de autenticación** y las credenciales necesarias.
+  </Step>
+  <Step title="Prueba la conexión">
+    Haz clic en **Probar conexión**. Chateea verifica la comunicación con el servidor, valida las credenciales y muestra todas las herramientas que ofrece.
+  </Step>
+  <Step title="Elige las herramientas">
+    Revisa las herramientas descubiertas y activa solo las que el agente debe poder usar.
+  </Step>
+  <Step title="Guarda">
+    Guarda la conexión.
+  </Step>
+</Steps>
+
+## Gestionar los permisos de herramientas
+
+Un servidor MCP puede ofrecer muchas herramientas y no todos los flujos las necesitan. Limitar el acceso mejora la seguridad, simplifica las decisiones de la IA y garantiza que el agente solo haga acciones aprobadas.
+
+Los permisos se aplican **a nivel de agente**: dos agentes conectados al mismo servidor pueden tener conjuntos de herramientas distintos. Revisa las herramientas activas cada vez que cambie el objetivo de tu flujo.
+
+## Buenas prácticas
+
+- Conecta solo proveedores MCP de confianza.
+- Usa nombres descriptivos para cada conexión.
+- Activa únicamente las herramientas que el flujo necesita.
+- Prueba cada conexión antes de publicar el flujo.
+- Renueva las credenciales de API según tus políticas de seguridad.
+- Vigila la disponibilidad de los servicios de terceros.
+- Revisa los permisos periódicamente a medida que tus flujos evolucionan.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo conectar más de un servidor MCP a un agente?">
+    Si la configuración del agente lo permite, puedes agregar varias conexiones y el agente podrá usar herramientas de distintos proveedores.
+  </Accordion>
+  <Accordion title="¿Chateea ofrece servidores MCP?">
+    Para esta función, no: Chateea te permite conectarte a servidores compatibles, pero su alojamiento y gestión corresponden al proveedor o a tu equipo.
+  </Accordion>
+  <Accordion title="¿Qué hago si falla la prueba de conexión?">
+    Revisa la URL del servidor, el tipo de autenticación, las credenciales y el tipo de transporte, y confirma que el servidor está en línea y accesible.
+  </Accordion>
+  <Accordion title="¿Puedo restringir qué herramientas usa el agente?">
+    Sí. Después del descubrimiento puedes activar o desactivar cada herramienta antes de guardar.
+  </Accordion>
+  <Accordion title="¿Los servicios MCP de terceros están incluidos en mi plan de Chateea?">
+    No. Los proveedores externos pueden cobrar su propia suscripción o el uso de su API.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Servidor MCP de Chateea" icon="server" href="/ia/servidor-mcp-de-chateea">
+    Conecta herramientas de IA externas a tu cuenta de Chateea.
+  </Card>
+  <Card title="Conectores MCP para agentes gestionados" icon="plug" href="/ia/conectores-mcp-agentes-gestionados">
+    Usa MCP también en los agentes de Agent Studio.
+  </Card>
+</CardGroup>

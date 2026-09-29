@@ -1,0 +1,132 @@
+---
+title: "Llamadas salientes con IA de voz"
+description: "Haz que tu agente de voz llame a tus contactos desde flujos de trabajo: requisitos, límites y configuración paso a paso."
+icon: "phone-arrow-up-right"
+---
+
+Con las llamadas salientes de IA de voz, tu agente llama a tus contactos de forma automática desde un flujo de trabajo: seguimiento de prospectos, recordatorios y confirmaciones de citas, reactivación de clientes y otras campañas. Tú defines cuándo se llama (un formulario, una etiqueta, una cita, un cambio en el pipeline) y el agente se encarga de la conversación.
+
+<Warning>
+  Aceptar los términos de llamadas salientes **no** equivale al consentimiento de cada contacto. Tu negocio es responsable de confirmar que cada persona puede recibir legalmente una llamada con IA y de respetar los consentimientos, las solicitudes de baja, el estado No molestar (DND) y las leyes de llamadas aplicables.
+</Warning>
+
+## Para qué te sirve
+
+- **Llamadas programadas automáticamente:** sin marcar a mano.
+- **Disparadas por tus flujos:** formularios, etiquetas, citas, cambios de etapa y cualquier otro evento.
+- **Configuración en el mismo flujo:** aceptas los términos de llamadas salientes dentro de la acción, sin salir del constructor.
+- **Aceptación única:** los términos se aceptan una sola vez para tu cuenta, no en cada flujo.
+- **Un mismo agente para todo:** el mismo agente puede atender llamadas entrantes y hacer salientes si sus indicaciones lo contemplan.
+- **Volumen alto:** hasta 5.000 llamadas salientes por día y 10 por minuto en tu cuenta.
+- **Horario respetuoso:** las llamadas se programan entre las 8:00 y las 20:00 en la zona horaria del número del contacto.
+- **Visibilidad del rendimiento:** revisa resultados en el panel de llamadas salientes.
+
+## Requisitos
+
+- Tu cuenta debe estar dentro de los umbrales de la política de uso aceptable de Chateea.
+- Las llamadas se hacen desde un flujo de trabajo con la acción **Llamada saliente de IA de voz** (Voice AI Outbound Call).
+- Debes elegir un agente de IA de voz y un número de origen válidos.
+- Debes aceptar los términos de llamadas salientes de tu cuenta cuando se te pidan.
+- Debes completar la verificación de identidad o del negocio (KYC) que corresponda.
+- El contacto debe tener un número nacional válido del mismo país que tu cuenta.
+
+<Note>
+  La IA de voz no valida el consentimiento de cada contacto antes de llamar. Gestiona ese consentimiento con tus propios procesos, formularios o sistemas legales antes de inscribir contactos en el flujo.
+</Note>
+
+## Reglas y límites de las llamadas
+
+| Regla | Comportamiento |
+| --- | --- |
+| **Velocidad** | Hasta 10 llamadas por minuto en tu cuenta. |
+| **Límite diario de la cuenta** | Hasta 5.000 llamadas salientes por día (no es por agente, es para toda la cuenta). |
+| **Exceso diario** | Las llamadas por encima del límite se programan para el siguiente día hábil para llamar. |
+| **Límite diario por número** | Cada número de teléfono puede recibir una llamada por día. |
+| **Límite de 14 días por número** | Cada número puede recibir hasta 14 llamadas en 14 días. |
+| **Horario** | Entre las 8:00 y las 20:00, según la zona horaria del número del contacto. |
+| **País** | Solo números nacionales del mismo país que tu cuenta. |
+
+Las llamadas que no cumplan estos límites pueden retrasarse, reprogramarse, bloquearse o marcarse como fallidas. Si tu cuenta supera los umbrales de uso aceptable, las llamadas salientes pueden pausarse automáticamente.
+
+## Términos de llamadas salientes
+
+Si tu cuenta todavía no aceptó los términos, la propia acción del flujo te los muestra junto con:
+
+- La selección del agente de IA.
+- La selección del número de origen.
+- La casilla obligatoria de aceptación.
+- Los términos y condiciones.
+- Las pautas de llamadas.
+
+Revisa los términos y las pautas, marca la casilla y guarda la acción. La aceptación queda registrada para toda tu cuenta.
+
+Si ya habías aceptado una versión anterior, puede aparecer una casilla opcional para aceptar la versión actualizada. Aceptarla es opcional y no te impide guardar la acción ni seguir llamando.
+
+## Cómo configurar las llamadas salientes
+
+<Steps>
+  <Step title="Crea el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo**, crea uno nuevo o abre uno existente y agrega el disparador que debe iniciar la llamada. Usa disparadores y condiciones que apunten solo al público que quieres llamar.
+  </Step>
+  <Step title="Agrega la acción de llamada">
+    Haz clic en **+** donde debe ocurrir la llamada, busca **Llamada saliente de IA de voz** y selecciónala.
+  </Step>
+  <Step title="Configura la acción">
+    - **Nombre de la acción:** un nombre para identificarla.
+    - **Agente de IA:** el agente que hará la llamada. También puedes elegir agentes de voz a voz (S2S).
+    - **Número de origen:** el número de tu cuenta desde el que se llamará.
+  </Step>
+  <Step title="Acepta los términos si te los pide">
+    Revisa los **Términos y condiciones** y las **Pautas de llamadas**, marca la casilla obligatoria y guarda.
+  </Step>
+  <Step title="Publica y prueba">
+    Guarda la acción, publica el flujo e inscríbete tú o un contacto interno de prueba. Confirma que la llamada se programa y se realiza, y revísala en **IA → IA de voz → Panel y registros → Salientes**.
+  </Step>
+</Steps>
+
+<Tip>
+  Escribe las indicaciones del agente pensando en una llamada saliente: preséntate, di por qué llamas en la primera frase y ofrece una salida clara si la persona no quiere hablar. Las llamadas salientes que van directo al punto convierten mejor y generan menos quejas.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que aceptar los términos en cada flujo?">
+    No. Se aceptan una vez para toda tu cuenta.
+  </Accordion>
+  <Accordion title="¿Es obligatorio aceptar la versión actualizada de los términos?">
+    No. Si ya aceptaste una versión anterior, la actualizada es opcional y no bloquea nada.
+  </Accordion>
+  <Accordion title="¿Aceptar los términos significa que mis contactos dieron su consentimiento?">
+    No. Los términos son de tu cuenta. El consentimiento de cada contacto es responsabilidad de tu negocio.
+  </Accordion>
+  <Accordion title="¿Cuántas llamadas salientes puedo hacer por día?">
+    Hasta 5.000 por día en tu cuenta, sumando todos los agentes.
+  </Accordion>
+  <Accordion title="¿Qué pasa si llego al límite diario?">
+    Las llamadas restantes se programan para el siguiente día disponible, respetando el resto de reglas.
+  </Accordion>
+  <Accordion title="¿Aceptar los términos reemplaza la verificación KYC?">
+    No. Siguen aplicando la verificación, la política de uso aceptable, el horario de llamadas y la restricción de números del mismo país.
+  </Accordion>
+  <Accordion title="¿Un mismo agente puede atender entrantes y hacer salientes?">
+    Sí, siempre que sus indicaciones contemplen ambos tipos de llamada.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Controles de cumplimiento" icon="shield-check" href="/ia/cumplimiento-llamadas-salientes-ia">
+    Las verificaciones que se aplican antes de cada llamada.
+  </Card>
+  <Card title="Panel de llamadas salientes" icon="chart-line" href="/ia/panel-llamadas-salientes-ia-de-voz">
+    Mide los resultados de tus campañas.
+  </Card>
+  <Card title="Tu primera automatización" icon="diagram-project" href="/primeros-pasos/tu-primera-automatizacion">
+    Aprende a crear un flujo de trabajo.
+  </Card>
+  <Card title="Acciones personalizadas" icon="bolt" href="/ia/acciones-personalizadas-ia-de-voz">
+    Conecta el agente con tus sistemas durante la llamada.
+  </Card>
+</CardGroup>

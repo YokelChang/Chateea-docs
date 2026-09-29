@@ -1,0 +1,99 @@
+---
+title: "Flujos de trabajo de empresas: disparadores y acciones"
+description: "Automatiza procesos a nivel de empresa con los disparadores Empresa creada y Empresa modificada y las acciones de empresa."
+icon: "bolt"
+---
+
+Si vendes a otros negocios, muchas automatizaciones tienen más sentido a nivel de empresa que de contacto. Los flujos de trabajo basados en empresas se inician con eventos del registro de empresa (cuando se crea o cuando cambia) y ejecutan acciones que actualizan la empresa o los contactos asociados a ella. Así puedes dar la bienvenida a una cuenta nueva, sincronizar datos o mantener limpio tu CRM desde una sola automatización.
+
+## Qué ventajas tiene
+
+- **Bienvenida B2B**: inicias el proceso de alta de una cuenta en cuanto se crea la empresa.
+- **Datos sincronizados**: mantienes alineados los datos de la empresa y de sus contactos sin actualizaciones manuales.
+- **CRM limpio**: borras campos desactualizados cuando cambia el estado de la empresa.
+- **Responsables coherentes**: asignas el mismo responsable de cuenta a todos los contactos relacionados.
+- **Compatible con los flujos de contacto**: combinas flujos de empresa y de contacto para automatizar el proceso completo.
+
+## Disparadores de empresa
+
+| Disparador | Se inicia cuando | Filtros |
+| --- | --- | --- |
+| **Empresa creada** (Company Created) | Se añade una nueva empresa. | Filtros básicos: responsable, etiquetas, campos u otros atributos. |
+| **Empresa modificada** (Company Changed) | Se actualiza uno o varios campos de la empresa. | Condiciones de campo y valor (cuando estén disponibles) para reaccionar solo a cambios concretos. |
+
+## Acciones de empresa
+
+| Acción | Disponible en | Para qué sirve |
+| --- | --- | --- |
+| **Crear empresa o contacto asociado** | Flujos de empresa y de contacto | Crea una empresa nueva o añade un contacto a una empresa existente. |
+| **Actualizar empresa o contacto asociado** | Flujos de empresa y de contacto | Mantiene al día los datos de la empresa y, si quieres, los copia a los contactos asociados. Admite valores fijos o dinámicos. |
+| **Borrar campos de empresa o contacto asociado** | Flujos de empresa y de contacto | Limpia valores desactualizados en los campos que elijas. |
+| **Crear empresa asociada** | Solo flujos de contacto | Crea una empresa desde el contacto y la vincula a él. |
+| **Actualizar empresa asociada** | Solo flujos de contacto | Actualiza la empresa vinculada al contacto actual. |
+| **Borrar campos de empresa asociada** | Solo flujos de contacto | Limpia campos concretos de la empresa desde un flujo de contacto. |
+
+## Ideas para empezar
+
+- **Alta de clientes nuevos**: al crear la empresa, asigna el responsable de cuenta, define su etapa y envía una secuencia de bienvenida a todos sus contactos.
+- **Reflejar el ciclo de vida**: cuando cambia el estado de una empresa, actualiza las marcas correspondientes en sus contactos para tus flujos de retención.
+- **Higiene de datos**: borra campos temporales (como una promoción o un descuento temporal) pasado cierto tiempo.
+- **Empresas desde formularios**: crea la empresa a partir de un formulario de clientes B2B y asocia de inmediato al contacto que lo envió.
+- **Heredar atributos**: copia a los contactos el dominio, el sector, el segmento o el plan de su empresa para segmentar e informar mejor.
+
+## Cómo configurar un flujo de empresa
+
+<Steps>
+<Step title="Crea el flujo">
+Ve a **Automatización → Flujos de trabajo** y haz clic en **+ Crear flujo de trabajo**. Elige **Flujo basado en empresas** (Company-based Workflow) como tipo.
+</Step>
+<Step title="Añade el disparador">
+Selecciona **Empresa creada** o **Empresa modificada** y ajusta los filtros si solo quieres reaccionar a ciertos casos.
+</Step>
+<Step title="Añade las acciones">
+Agrega **Actualizar empresa o contacto asociado**, **Crear empresa o contacto asociado** o **Borrar campos de empresa o contacto asociado**, según lo que necesites. Relaciona los campos con valores fijos o variables dinámicas y decide si los cambios se aplican también a los contactos asociados.
+</Step>
+<Step title="Añade lógica si hace falta">
+Usa condiciones, bifurcaciones Si/Sino o esperas para controlar el momento y el alcance.
+</Step>
+<Step title="Guarda, prueba y publica">
+Guarda el flujo y pruébalo con unas pocas empresas para validar la relación de campos. Revisa el historial de ejecución y, cuando todo funcione, publícalo.
+</Step>
+</Steps>
+
+<Warning>
+Evita los bucles: si un flujo de empresa actualiza contactos y un flujo de contacto actualiza la empresa, pueden dispararse uno al otro sin fin. Usa condiciones de control, por ejemplo una etiqueta o un campo que indique "actualizado por automatización", antes de hacer actualizaciones en ambos sentidos.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Un mismo flujo puede actualizar la empresa y sus contactos?">
+Sí. Usa **Actualizar empresa o contacto asociado** y marca la opción para aplicar los cambios a los contactos asociados, donde esté disponible.
+</Accordion>
+<Accordion title="¿Puedo crear una empresa desde un flujo de contacto?">
+Sí. Usa la acción **Crear empresa asociada** en un flujo basado en contactos para crear la empresa y vincularla.
+</Accordion>
+<Accordion title="¿Cómo evito bucles entre flujos de empresa y de contacto?">
+Añade condiciones de control (una etiqueta, un campo o una casilla que marque que la actualización vino de una automatización) y no hagas actualizaciones en ambos sentidos sin esas protecciones.
+</Accordion>
+<Accordion title="¿Puedo inscribir empresas existentes en un flujo nuevo?">
+Usa filtros o listas inteligentes para inscribir un grupo concreto de empresas. Prueba primero con un lote pequeño y luego amplía.
+</Accordion>
+<Accordion title="¿Qué permisos necesito?">
+Acceso a **Flujos de trabajo** y permiso para ver y editar **Empresas** y **Contactos** en tu cuenta.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Primeros pasos con Empresas" icon="building" href="/crm/primeros-pasos-con-empresas">
+Qué datos guardas y cómo trabajar con la lista de empresas.
+</Card>
+<Card title="Crear empresas al importar contactos" icon="users" href="/crm/crear-empresas-al-importar-contactos">
+Genera empresas automáticamente a partir del nombre del negocio.
+</Card>
+<Card title="Activar automatizaciones en bloque" icon="bolt" href="/crm/activar-automatizaciones-en-bloque">
+Inscribe varios registros en un flujo de una sola vez.
+</Card>
+</CardGroup>

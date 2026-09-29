@@ -1,0 +1,159 @@
+---
+title: "Constructor avanzado de flujos de trabajo"
+description: "Conoce el lienzo visual del constructor avanzado: conexiones Ir a, ramas independientes, estadísticas, notas y más."
+icon: "diagram-project"
+---
+
+El **Constructor avanzado** es un lienzo visual y libre para crear tus flujos de trabajo. Puedes arrastrar, soltar y conectar pasos, tener varios caminos de disparadores, ramas paralelas y lógica compleja en una sola vista, sin cambiar la forma en que se ejecutan tus automatizaciones. Está pensado para flujos grandes, para trabajar en equipo y para editar más rápido.
+
+## Cómo activarlo
+
+- **Dónde:** abre cualquier flujo en **Automatización → Flujos de trabajo** y cambia a **Constructor avanzado** con el selector de la parte superior izquierda.
+- **Cambiar de vista:** puedes alternar entre el **Constructor estándar** y el **Constructor avanzado** en el mismo flujo. Algunas funciones solo existen en el avanzado (ver más abajo).
+- **Nombres largos:** si el nombre del flujo es largo, se recorta con puntos suspensivos en el encabezado. Pasa el cursor por encima para ver el nombre completo.
+
+## El lienzo
+
+### Agregar y conectar pasos
+
+- Abre el panel **Disparadores y acciones**.
+- Configura el paso desde el panel **o** arrástralo directamente al lienzo.
+- Conecta los pasos arrastrando desde el conector de un nodo (o usando el ícono **+**).
+
+### Conexión automática al soltar
+
+Cuando arrastras un disparador o una acción desde el panel lateral al lienzo, se conecta solo según dónde lo sueltes:
+
+- **Al final de una rama:** suéltalo sobre el último nodo de la rama para agregarlo al final.
+- **Entre dos pasos:** suéltalo entre dos nodos conectados para insertarlo en medio.
+
+Después de soltarlo, configura y guarda el nuevo paso.
+
+<Warning>
+Las acciones sin configurar **no se ejecutan**. Revisa que cada paso nuevo esté completo antes de publicar.
+</Warning>
+
+### Selección múltiple
+
+Selecciona varios nodos a la vez (arrastrando un recuadro o con **Shift** + arrastrar) para moverlos en bloque. Sobre una selección tienes acciones rápidas como **Activar/Desactivar**, **Formatear selección** y **Agregar nota adhesiva**, muy útiles para reorganizar flujos grandes. También puedes copiar y pegar ramas completas entre flujos para reutilizar patrones.
+
+### Menú de acciones rápidas
+
+Haz clic derecho sobre el lienzo o sobre un nodo para abrir un menú con las acciones más comunes, sin tener que buscar en la barra de herramientas.
+
+## Conexiones Ir a desde disparadores
+
+Con la conexión **Ir a** (Go-To) defines en qué acción exacta empieza cada disparador.
+
+- **Cómo conectarla:** arrastra el conector **Ir a** del disparador hasta la acción de destino.
+- **Cómo se ve:** es una **línea punteada con flecha**; las conexiones normales son **continuas**.
+- **Qué hace:** cuando el disparador se activa, el flujo salta directamente a esa acción y continúa desde ahí.
+
+## Ramas independientes
+
+Puedes crear grupos de acciones que no estén conectados en línea con el resto, algo ideal para manejar varios disparadores o resultados distintos en un mismo lienzo.
+
+- Construye un grupo independiente de acciones en cualquier parte del lienzo.
+- Conecta un disparador a ese grupo con una conexión **Ir a**.
+- Cada rama se ejecuta de forma independiente dentro del mismo flujo.
+
+**Guía visual rápida:**
+
+| Lo que ves | Qué significa |
+| --- | --- |
+| Conector continuo | Camino secuencial normal |
+| Conector punteado con flecha | Conexión **Ir a** desde un disparador |
+| Grupo aislado de nodos | Rama independiente |
+
+### Camino predeterminado
+
+Si tu flujo tiene varias ramas paralelas, puedes elegir cuál es el **Camino predeterminado**. Esa rama es la que siguen los contactos cuando:
+
+- ejecutas una prueba del flujo, o
+- un contacto entra a este flujo desde otro flujo.
+
+Para configurarlo:
+
+<Steps>
+<Step title="Abre el flujo en el Constructor avanzado">
+Debe tener varias ramas paralelas.
+</Step>
+<Step title="Elige la rama">
+En la primera acción de la rama que quieres usar, haz clic en el ícono de rama.
+</Step>
+<Step title="Márcala como predeterminada">
+Selecciona la opción para convertirla en **Camino predeterminado**. El conector del disparador hacia esa rama pasa a ser continuo; los que llegan por **Ir a** siguen punteados.
+</Step>
+<Step title="Valida">
+Ejecuta una prueba o inscribe un contacto desde otro flujo para confirmar que entra por esa rama.
+</Step>
+</Steps>
+
+## Modo estadísticas
+
+El modo estadísticas te muestra el rendimiento del flujo sin salir del constructor.
+
+- **En los disparadores:** verás **Intentados** (contactos evaluados), **Coincidentes** (cumplieron las condiciones) y **No coincidentes** (no las cumplieron). Haz clic en una cifra para ver el detalle por contacto, buscar un contacto y entender por qué no coincidió.
+- **En las acciones de comunicación:** verás las estadísticas de entrega e interacción disponibles para esa acción. Haz clic para abrir el informe detallado.
+
+<Note>
+Mientras el modo estadísticas está activo no puedes editar el flujo. Las estadísticas de disparadores muestran los últimos 30 días. Si borras una acción de comunicación que ya se había usado, sus estadísticas se conservan en el flujo.
+</Note>
+
+## Activar y desactivar nodos
+
+Puedes apagar cualquier acción o condición para hacer pruebas, sin borrarla ni reconectar nada.
+
+- **Desactivar:** pasa el cursor sobre el nodo y haz clic en **pausa**.
+- **Activar:** vuelve a pasar el cursor y haz clic en **reproducir**.
+- Los nodos desactivados **se saltan** durante la ejecución y sus conexiones se mantienen.
+
+## Notas adhesivas
+
+Usa notas para explicar la lógica a tu equipo (o a ti mismo en unos meses).
+
+- Agrégalas desde la barra lateral izquierda.
+- Elige un color o estilo y escribe el texto.
+- Las notas admiten **imágenes y enlaces**.
+
+## Atajos de teclado
+
+Abre el ícono de teclado (arriba a la izquierda) o presiona **K** para ver todos los atajos, agrupados en navegación, herramientas, vista y edición. Por ejemplo: flechas para moverte entre nodos, **Cmd/Ctrl + C** y **Cmd/Ctrl + V** para copiar y pegar.
+
+## Ordenar el lienzo
+
+La opción **Ordenar** (Tidy Up) reorganiza automáticamente los nodos con un clic. Úsala después de muchos cambios o al importar pasos.
+
+## Selector de flujos
+
+Desde la barra lateral izquierda puedes abrir el **selector de flujos** para buscar y abrir otros flujos sin salir del constructor.
+
+## Límites y buenas prácticas
+
+- **Una inscripción por contacto:** aunque haya ramas paralelas, un mismo contacto no recorre varias ramas del mismo flujo al mismo tiempo.
+- **Volver al Constructor estándar:** antes de cambiar, elimina las funciones exclusivas del avanzado: conexiones **Ir a**, ramas independientes y nodos desactivados.
+- **Organiza desde el principio:** usa notas con colores y **Ordenar** para mantener legibles los flujos complejos.
+- **Pon nombres claros:** nombra disparadores y acciones de forma descriptiva; te ayudará en el lienzo y en el historial de versiones.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Constructor estándar y avanzado" icon="diagram-project" href="/automatizaciones/constructor-estandar-y-avanzado">
+Elige qué constructor se abre por defecto.
+</Card>
+<Card title="Ramas independientes" icon="code-branch" href="/automatizaciones/ramas-independientes-en-el-constructor-avanzado">
+Crea ramas que no dependan de un camino lineal.
+</Card>
+<Card title="Atajos de teclado del constructor" icon="keyboard" href="/automatizaciones/atajos-de-teclado-del-constructor">
+Edita y navega más rápido con el teclado.
+</Card>
+<Card title="Desactivar acciones en un flujo" icon="pause" href="/automatizaciones/desactivar-acciones-en-flujos">
+Salta pasos sin borrarlos para hacer pruebas.
+</Card>
+<Card title="Selector de flujos" icon="shuffle" href="/automatizaciones/selector-de-flujos">
+Cambia de flujo sin salir del constructor.
+</Card>
+<Card title="Estadísticas de flujos" icon="chart-line" href="/automatizaciones/estadisticas-de-flujos">
+Analiza el rendimiento de tus automatizaciones.
+</Card>
+</CardGroup>

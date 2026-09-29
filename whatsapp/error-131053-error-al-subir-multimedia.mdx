@@ -1,0 +1,129 @@
+---
+title: "Error 131053: error al subir multimedia"
+description: "Formatos, códecs y tamaños admitidos por WhatsApp y cómo corregir archivos que fallan con el error 131053."
+icon: "file-image"
+---
+
+El error **131053** (Media Upload Error) aparece cuando WhatsApp no logra procesar el archivo que intentas enviar: una imagen, un video, un audio, un documento o un sticker. El mensaje no se entrega. En casi todos los casos la causa es un formato no admitido, un códec de video incorrecto o un archivo demasiado pesado, y se resuelve convirtiendo o comprimiendo el archivo.
+
+```json
+"errors": [
+  {
+    "code": 131053,
+    "title": "Media upload error",
+    "error_data": {
+      "details": "Unable to upload the media used in the message."
+    }
+  }
+]
+```
+
+<Tip>
+  El detalle del error suele decir la causa exacta. Por ejemplo: `Unsupported Image mime type image/webp. Please use one of image/png, image/jpeg.` Si ves ese detalle, empieza por ahí.
+</Tip>
+
+## Formatos y tamaños admitidos
+
+| Tipo | Tamaño máximo | Formatos |
+| --- | --- | --- |
+| Imagen | 5 MB | JPEG y PNG, de 8 bits, RGB o RGBA. WebP **no** se admite como imagen |
+| Video | 16 MB | MP4 y 3GPP con códec de video H.264 y de audio AAC. Una sola pista de audio o ninguna |
+| Audio | 16 MB | AAC, MP4, MPEG, AMR y OGG (solo con códec OPUS) |
+| Documento | 100 MB | PDF, Word, Excel, PowerPoint y la mayoría de formatos. Cualquier archivo que no encaje en otro tipo puede enviarse como documento |
+| Sticker | 100 KB | Solo WebP estático, de exactamente 512 x 512 píxeles y con fondo transparente |
+
+<Warning>
+  Las imágenes WebP **solo** sirven como sticker. Si envías un WebP como imagen normal, siempre fallará con 131053. Conviértelo a JPEG o PNG.
+</Warning>
+
+## Causas conocidas
+
+1. **Formato o tipo de archivo no admitido.** Por ejemplo, WebP como imagen, TIFF, GIF o un video con el códec equivocado. Importa el formato real del archivo, no la extensión: un WebP renombrado a `.jpg` sigue fallando.
+2. **El archivo supera el tamaño máximo.** WhatsApp mide el tamaño después de cifrar el archivo, que puede quedar un poco más grande que el original.
+3. **Archivo dañado o con metadatos extraños.** Pasa con imágenes editadas o exportadas con codificaciones poco comunes.
+4. **Sticker fuera de especificación.** Dimensiones distintas a 512 x 512, sin transparencia, más de 100 KB o formato distinto de WebP.
+5. **Video con códec no admitido.** H.265 (HEVC), VP9 o AV1 fallan. También fallan los videos con varias pistas de audio.
+6. **Enlace del archivo no accesible.** Si el archivo se envía desde una URL, debe ser pública, usar HTTPS, no pedir inicio de sesión y no redirigir a otra dirección.
+7. **La URL no termina en una extensión reconocida.** Las URL dinámicas sin `.jpg`, `.mp4` o `.pdf` al final pueden confundir al procesador de Meta.
+
+## Cómo solucionarlo
+
+<Steps>
+  <Step title="Lee el detalle del error">
+    Revisa el mensaje de error completo. Muchas veces indica el formato detectado o el motivo exacto del rechazo.
+  </Step>
+  <Step title="Convierte el archivo a un formato admitido">
+    | Formato no admitido | Conviértelo a | Nota |
+    | --- | --- | --- |
+    | WebP (como imagen) | JPEG o PNG | WebP solo se admite como sticker |
+    | GIF | Video MP4 | Los GIF animados no se admiten |
+    | TIFF, BMP, HEIC | JPEG o PNG | Con cualquier editor de imágenes |
+    | MOV, AVI, MKV | MP4 (H.264 + AAC) | Con HandBrake o ffmpeg |
+    | WAV, FLAC, WMA | AAC o MP3 | Con un conversor de audio |
+    | Archivo demasiado grande | Comprímelo o envíalo como documento | Los documentos admiten hasta 100 MB |
+  </Step>
+  <Step title="Comprueba el tamaño">
+    Si el archivo supera el límite, comprímelo. Puedes usar TinyPNG para imágenes, HandBrake para videos o exportar documentos a PDF.
+  </Step>
+  <Step title="Si usas una URL, verifica que sea pública">
+    La URL debe empezar por `https://`, abrirse sin iniciar sesión (pruébala en una ventana de incógnito), terminar en la extensión correcta y no redirigir a otra dirección.
+  </Step>
+  <Step title="Vuelve a exportar el archivo">
+    Si formato y tamaño son correctos pero sigue fallando, guarda o exporta de nuevo el archivo desde su programa original para limpiar metadatos. En videos, volver a codificar con HandBrake o ffmpeg genera un archivo limpio.
+  </Step>
+  <Step title="Contacta a soporte si persiste">
+    Escribe a soporte de Chateea en **help@chateea.com** con el tipo, formato y tamaño del archivo, el mensaje de error completo y, si aplica, la URL del archivo.
+  </Step>
+</Steps>
+
+## Cómo prevenirlo
+
+- **Usa siempre JPEG o PNG para imágenes.** Evita WebP, TIFF, BMP y HEIC.
+- **Codifica los videos en MP4 con H.264 y AAC** antes de subirlos.
+- **Deja margen con los tamaños:** apunta a imágenes de menos de 4 MB, videos de menos de 15 MB y stickers de menos de 80 KB.
+- **Aloja los archivos en un servidor HTTPS público y estable.** Evita enlaces temporales o que caducan.
+- **Prueba las URL** en una ventana de incógnito antes de usarlas.
+- **Ante la duda, envíalo como documento.** Admite más formatos y hasta 100 MB.
+
+## Otros códigos relacionados
+
+| Código | Nombre | Descripción |
+| --- | --- | --- |
+| `131052` | Error al descargar multimedia | WhatsApp no pudo descargar el archivo desde la URL (enlace roto, servidor lento o inaccesible) |
+| `131051` | Tipo de mensaje no compatible | El tipo de mensaje no está admitido por la API |
+| `100` | Parámetro no válido | Uno o más datos del envío son incorrectos |
+| `131026` | Mensaje no entregable | Número inválido, contacto que te bloqueó o límite de frecuencia |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Mi imagen es JPEG y aun así falla. ¿Por qué?">
+    La extensión no siempre refleja el formato real. Un archivo `.jpg` puede estar codificado como WebP por dentro. Ábrelo en un editor y expórtalo de nuevo como JPEG.
+  </Accordion>
+  <Accordion title="¿Puedo enviar GIF animados?">
+    No. Conviértelos en un video MP4 corto con H.264 y AAC. WhatsApp lo reproduce dentro de la conversación.
+  </Accordion>
+  <Accordion title="Mi video es MP4 y pesa menos de 16 MB. ¿Por qué falla?">
+    Porque además del formato importa el códec. Muchos MP4 usan H.265 (HEVC). Vuelve a codificarlo en H.264 con audio AAC.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre 131052 y 131053?">
+    El 131052 ocurre cuando WhatsApp no puede descargar el archivo desde la URL. El 131053 ocurre cuando sí accede al archivo pero no puede procesarlo, normalmente por formato, códec o archivo dañado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enviar multimedia con texto" icon="paperclip" href="/whatsapp/enviar-multimedia-con-texto-en-conversaciones">
+    Envía archivos desde Conversaciones.
+  </Card>
+  <Card title="Enviar multimedia desde flujos" icon="diagram-project" href="/whatsapp/enviar-multimedia-desde-flujos">
+    Archivos en tus automatizaciones.
+  </Card>
+  <Card title="Plantillas multimedia" icon="image" href="/whatsapp/plantillas-multimedia">
+    Plantillas con imagen, video o documento.
+  </Card>
+  <Card title="Error 131051: mensaje no compatible" icon="ban" href="/whatsapp/error-131051-tipo-de-mensaje-no-compatible">
+    Tipos de mensaje que la API no admite.
+  </Card>
+</CardGroup>

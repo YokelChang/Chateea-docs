@@ -1,0 +1,121 @@
+---
+title: "Importar registros de objetos personalizados desde CSV"
+description: "Crea o actualiza registros de objetos personalizados en bloque con un CSV, control de duplicados y seguimiento."
+icon: "file-csv"
+---
+
+La importación en bloque te permite cargar un archivo CSV para crear registros nuevos de un objeto personalizado, actualizar los que ya existen o hacer ambas cosas en una sola importación. Incluye control de duplicados basado en campos únicos y una página de **Acciones masivas** desde la que puedes seguir, pausar, reanudar o cancelar cada importación.
+
+Es la forma más rápida de poblar un objeto personalizado con cientos o miles de registros sin crearlos uno por uno.
+
+## Ventajas
+
+- **Carga rápida:** importa grandes volúmenes desde un CSV.
+- **Modos flexibles:** crear, actualizar o crear y actualizar, según tu caso.
+- **Datos más limpios:** los campos únicos evitan duplicados y conflictos.
+- **Control operativo:** pausa, reanuda o cancela desde Acciones masivas.
+- **Visibilidad:** estadísticas de la importación, errores y advertencias por fila, con indicaciones para resolverlos.
+
+## Modos de importación
+
+| Modo | Úsalo cuando |
+| --- | --- |
+| Crear | Tu archivo solo trae registros nuevos. |
+| Actualizar | Solo quieres modificar registros que ya existen. |
+| Crear y actualizar | Tu archivo mezcla registros nuevos con registros existentes. |
+
+## Duplicados y campos únicos
+
+Si tu objeto tiene **campos únicos** (por ejemplo, un número de póliza o una matrícula), la importación los usa para detectar si una fila corresponde a un registro que ya existe.
+
+- Si mapeas más de un campo único, Chateea te pide elegir cuál usar para la comparación.
+- Si una fila intenta asignar un valor único que ya pertenece a otro registro, la importación marca esa fila con un error o una advertencia para que la corrijas. Así se evitan conflictos entre registros.
+
+## Antes de empezar
+
+Un CSV limpio y un mapeo correcto marcan la diferencia entre una importación sin sobresaltos y una larga sesión de correcciones.
+
+- Asegúrate de que cada fila tenga el **campo principal** y los **campos obligatorios** del objeto.
+- Usa un solo objeto por archivo. La importación de varios objetos en un mismo CSV todavía no está disponible.
+- Si vas a actualizar, incluye la columna del campo único que identifica cada registro.
+
+## Importar registros
+
+<Steps>
+  <Step title="Abre el objeto personalizado">
+    Entra a **Objetos personalizados** en tu cuenta y elige el objeto en el que quieres importar registros.
+  </Step>
+  <Step title="Haz clic en Importar">
+    El botón **Importar** está en la parte superior derecha.
+  </Step>
+  <Step title="Selecciona el objeto y sube el archivo">
+    Elige el objeto de destino y carga tu CSV.
+  </Step>
+  <Step title="Elige el modo de importación">
+    Selecciona **Crear**, **Actualizar** o **Crear y actualizar**.
+  </Step>
+  <Step title="Elige el campo único para duplicados">
+    Si mapeaste varios campos únicos, selecciona cuál se usará para detectar duplicados. Si solo hay uno, este paso no aparece.
+  </Step>
+  <Step title="Mapea los campos">
+    Mapea primero los campos principales y obligatorios. Después mapea el resto, incluidos **Propietario** y **Seguidores** si los necesitas.
+  </Step>
+  <Step title="Decide si actualizar valores vacíos">
+    Activa **Actualizar valores vacíos** solo si quieres que las celdas vacías del CSV borren el valor actual del registro al actualizar. Los campos principales y obligatorios nunca se vacían.
+  </Step>
+  <Step title="Inicia la importación">
+    Haz clic en **Iniciar importación**.
+  </Step>
+</Steps>
+
+<Warning>
+Con **Actualizar valores vacíos** activado, cualquier celda en blanco sobrescribe el dato que ya tenías. Revisa bien el archivo antes de usar esta opción.
+</Warning>
+
+## Seguir y controlar la importación
+
+Ve a **Acciones masivas → Objetos personalizados** para gestionar tus importaciones:
+
+- **Pausar** y **Reanudar** una importación en curso.
+- **Cancelar** una importación. Se detiene el procesamiento, pero las filas que ya se procesaron pueden quedar aplicadas.
+- Abrir la importación para ver sus estadísticas. En las pestañas **Errores** y **Advertencias** verás el detalle por fila, junto con la indicación **Cómo resolverlo**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuándo uso Crear, Actualizar o Crear y actualizar?">
+    Usa **Crear** para datos totalmente nuevos, **Actualizar** para modificar solo registros existentes, y **Crear y actualizar** cuando el archivo mezcla ambos casos.
+  </Accordion>
+  <Accordion title="¿Por qué me pide elegir un campo para duplicados?">
+    Porque mapeaste más de un campo único y hay que indicar cuál se usa para identificar los registros existentes.
+  </Accordion>
+  <Accordion title="¿Qué significa el manejo estricto de conflictos en campos únicos?">
+    Si una fila rompe las reglas de un campo único (por ejemplo, intenta asignar un valor que ya tiene otro registro), la importación la marca con un error o una advertencia para que la corrijas.
+  </Accordion>
+  <Accordion title="¿Qué hace Actualizar valores vacíos?">
+    Permite que los valores vacíos del CSV se apliquen al actualizar. Los campos principales y obligatorios quedan excluidos.
+  </Accordion>
+  <Accordion title="¿Puedo pausar una importación y seguir después?">
+    Sí, desde **Acciones masivas → Objetos personalizados**.
+  </Accordion>
+  <Accordion title="¿Qué pasa si cancelo una importación?">
+    Se detiene. Las filas procesadas antes de cancelar pueden quedar aplicadas.
+  </Accordion>
+  <Accordion title="¿Dónde veo qué filas fallaron?">
+    Abre el detalle de la importación y revisa las pestañas **Errores** y **Advertencias**. Cada mensaje incluye cómo resolverlo.
+  </Accordion>
+  <Accordion title="¿Puedo importar varios objetos en un mismo CSV?">
+    Todavía no. La importación de varios objetos aparece como próximamente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Eliminar registros en bloque" icon="trash" href="/crm/eliminar-registros-de-objetos-en-bloque">
+    Borra y restaura registros de objetos personalizados.
+  </Card>
+  <Card title="Activar automatizaciones en bloque" icon="bolt" href="/crm/activar-automatizaciones-en-bloque">
+    Envía los registros importados a un flujo de trabajo.
+  </Card>
+</CardGroup>

@@ -1,0 +1,91 @@
+---
+title: "Integración MCP en agentes de IA de voz"
+description: "Conecta tus agentes de IA de voz a herramientas y sistemas externos mediante servidores MCP."
+icon: "plug"
+---
+
+Con la integración **MCP** (Model Context Protocol) tus agentes de IA de voz pueden conectarse a herramientas y sistemas externos: tus propias API, servicios de terceros o aplicaciones internas de tu negocio. Así el agente puede consultar datos, activar procesos o actuar en otras plataformas durante la llamada, sin perder la naturalidad de la conversación.
+
+## Qué es MCP
+
+MCP es un estándar abierto que permite a un agente de IA descubrir qué herramientas tiene disponibles, entender para qué sirve cada una y usarlas según el contexto de la conversación. Por ejemplo, consultar la disponibilidad en un sistema de reservas externo, buscar el estado de un pedido o registrar un dato en otra plataforma.
+
+## Beneficios
+
+- **Más capacidades:** conecta el agente con cualquier herramienta o API compatible con MCP.
+- **Automatización según el contexto:** defines cuándo debe usarse cada herramienta.
+- **Configuración sencilla:** sin infraestructura compleja dentro de Chateea.
+- **Control de herramientas:** agrega varios servidores MCP y elige qué herramientas puede usar cada agente.
+- **Integración sin rehacer procesos:** MCP funciona como puente entre tus agentes y tus sistemas actuales.
+
+## Antes de empezar
+
+Necesitas los datos de conexión de tu servidor MCP, que te dará el proveedor de la herramienta o tu equipo técnico:
+
+| Dato | Descripción |
+| --- | --- |
+| **Nombre del MCP** | Un nombre descriptivo para identificar el servidor. |
+| **URL del servidor** | La dirección donde está alojado el servidor MCP. |
+| **Encabezados** | Credenciales de autenticación o encabezados que exige la API. |
+| **Parámetros de consulta** (opcional) | Parámetros adicionales que necesite el servidor. |
+
+No necesitas programar nada dentro de Chateea.
+
+<Info>
+Si no ves la opción de MCP en la configuración de tu agente, escribe a soporte de Chateea en **help@chateea.com** para que revisen si está disponible en tu cuenta.
+</Info>
+
+## Cómo configurarlo
+
+<Steps>
+<Step title="Agrega tu servidor MCP">
+Registra el servidor con su nombre, URL, encabezados y, si aplica, parámetros de consulta. Así se establece la conexión entre Chateea y tus herramientas.
+</Step>
+<Step title="Asigna herramientas al agente">
+En la configuración de tu agente de IA de voz, abre la gestión de herramientas MCP y selecciona las herramientas que ese agente puede usar. Elige solo las que necesite para su función.
+</Step>
+<Step title="Define cuándo usar cada herramienta">
+Para cada herramienta, describe en qué situación debe ejecutarse. Ejemplos: "Usa esta herramienta cuando el cliente pregunte por disponibilidad de citas" o "Ejecuta esta acción después de confirmar los datos de pago".
+</Step>
+<Step title="Prueba">
+Haz llamadas de prueba que cumplan esas condiciones y comprueba que la herramienta se activa y devuelve el resultado esperado. Revisa el registro de la llamada para ver qué se envió y qué se recibió.
+</Step>
+</Steps>
+
+<Warning>
+Si el servidor MCP no responde, el agente seguirá atendiendo la llamada pero no podrá ejecutar las acciones que dependen de él. Asegúrate de que tu servidor sea estable y agrega en la indicación una respuesta alternativa para ese caso (por ejemplo, ofrecer que alguien del equipo devuelva la llamada).
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Necesito conocimientos técnicos?">
+Solo necesitas los datos de conexión (URL, encabezados y parámetros) que te dé el proveedor del servidor MCP. No hay que programar en Chateea.
+</Accordion>
+<Accordion title="¿Puedo agregar varios servidores MCP?">
+Sí. Puedes configurar varios y asignar a cada agente herramientas de distintos servidores.
+</Accordion>
+<Accordion title="¿Cómo controlo qué herramientas usa cada agente?">
+Al configurar el agente eliges qué herramientas puede usar y defines en qué condiciones se ejecuta cada una.
+</Accordion>
+<Accordion title="¿Qué tipo de herramientas puedo conectar?">
+Cualquier herramienta o API que siga el estándar MCP: sistemas de reservas, CRM externos, pasarelas de pago, servicios de consulta de datos o aplicaciones propias.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Conectores MCP para agentes" icon="plug" href="/ia/conectores-mcp-agentes-gestionados">
+Conecta herramientas MCP a tus agentes de IA.
+</Card>
+<Card title="Acciones personalizadas de IA de voz" icon="code" href="/ia/acciones-personalizadas-ia-de-voz">
+Llama a tus propias API desde el agente.
+</Card>
+<Card title="Construir flujos de IA de voz con IA" icon="wand-magic-sparkles" href="/ia/construir-flujos-ia-de-voz-con-ia">
+Crea flujos describiéndolos en un chat.
+</Card>
+<Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+Conoce cómo funcionan los agentes de IA de voz.
+</Card>
+</CardGroup>

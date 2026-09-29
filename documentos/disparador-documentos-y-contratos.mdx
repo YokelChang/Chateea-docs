@@ -1,0 +1,79 @@
+---
+title: "Disparador de flujo: Documentos y contratos"
+description: "Inicia flujos de trabajo cuando un documento se envía, se ve, se firma o se completa para automatizar el seguimiento."
+icon: "bolt"
+---
+
+El disparador **Documentos y contratos** inicia un flujo de trabajo cuando cambia el estado de un documento: se envía, se ve, se firma o se completa. Con él conectas el ciclo de vida de tus propuestas, contratos y acuerdos de confidencialidad con tus automatizaciones, para que el seguimiento ocurra solo.
+
+## Para qué te sirve
+
+- **Seguimiento automático**: envía recordatorios o mensajes personalizados según lo que haga el cliente con el documento.
+- **Registros al día**: actualiza campos del CRM, hojas de cálculo o canales internos con cada movimiento.
+- **Automatizaciones precisas**: filtra por plantilla, estado, tipo de destinatario o valor para que cada tipo de documento tenga su propio flujo.
+- **Coordinación del equipo**: avisa al instante a ventas u operaciones cuando un cliente firma.
+- **Experiencia personalizada**: usa datos del contacto y del documento en los mensajes que salen del flujo.
+
+## Configurar el disparador
+
+<Steps>
+  <Step title="Crea el flujo">
+    En el menú lateral, entra a **Automatización** y haz clic en **+ Crear flujo de trabajo**. Elige **Empezar desde cero**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **+ Agregar disparador**. En la lista, busca la sección **Pagos** y selecciona **Documentos y contratos**.
+  </Step>
+  <Step title="Ponle nombre">
+    Escribe un nombre claro en **Nombre del disparador**, por ejemplo "Contrato visto: onboarding".
+  </Step>
+  <Step title="Agrega filtros">
+    Haz clic en **Agregar filtros** y define las condiciones (las ves en la tabla de abajo).
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar disparador**. El flujo se activará cada vez que un documento cumpla los criterios.
+  </Step>
+</Steps>
+
+## Filtros disponibles
+
+| Filtro | Opciones | Úsalo para |
+| --- | --- | --- |
+| **Tipo de destinatario** | Contacto o Usuario del negocio | Separar acuerdos con clientes de aprobaciones internas de tu equipo. |
+| **Estado** | Enviado, Visto, Firmado/Aceptado, Completado | Reaccionar a una acción concreta sobre el documento. |
+| **Plantilla** | Una plantilla específica | Correr el flujo solo para ciertos documentos, como tu contrato de servicio o un formulario de alta. |
+| **Valor** | Operadores como "Mayor que" o "Igual a" | Tratar distinto los contratos de alto valor. |
+
+## Ideas de uso
+
+- Cuando un contacto firma tu "Contrato de servicio", envía una secuencia de bienvenida y mueve la oportunidad a **Ganada**.
+- Cuando un documento se **ve** pero no se firma, espera dos días y envía un recordatorio.
+- Cuando el valor del contrato es mayor que un monto alto, notifica al gerente de ventas.
+- Cuando un usuario de tu equipo firma un documento de revisión interna, envía un aviso a operaciones.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo tener flujos distintos si firma un contacto o un usuario del negocio?">
+    Sí. Con el filtro **Tipo de destinatario** eliges si el disparador aplica a **Contactos** (clientes o prospectos) o a **Usuarios del negocio** (tu equipo). Por ejemplo, enviar un correo de bienvenida cuando firma un cliente y un aviso interno cuando firma alguien del equipo.
+  </Accordion>
+  <Accordion title="Si un documento se ve y luego se firma, ¿el flujo se dispara dos veces?">
+    Sí, si configuraste ambos estados. Cada cambio de estado es un evento independiente. Para evitar mensajes duplicados, agrega condiciones dentro del flujo que revisen etiquetas o campos personalizados antes de actuar.
+  </Accordion>
+  <Accordion title="¿Puedo disparar el flujo solo para contratos de alto valor?">
+    Sí. Usa el filtro **Valor** con el operador "Mayor que" y el monto que definas. Así puedes dar un onboarding especial a clientes grandes o avisar a tus gerentes de los acuerdos importantes.
+  </Accordion>
+  <Accordion title="¿Cómo limito el flujo a ciertas plantillas?">
+    Usa el filtro **Plantilla** y selecciona las que deben activar el flujo. Por ejemplo, una secuencia para quien firma tu contrato de servicio y otra distinta para quien completa un acuerdo de confidencialidad.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enviar plantillas con flujos de trabajo" icon="diagram-project" href="/documentos/enviar-plantillas-con-flujos">
+    Automatiza el envío de contratos y propuestas.
+  </Card>
+  <Card title="Plantillas de correo y notificaciones" icon="envelope" href="/documentos/plantillas-de-correo-y-notificaciones">
+    Avisos al cliente y al equipo.
+  </Card>
+</CardGroup>

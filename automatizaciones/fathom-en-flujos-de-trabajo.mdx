@@ -1,0 +1,136 @@
+---
+title: "Fathom en flujos de trabajo"
+description: "Convierte tus reuniones grabadas en Fathom en seguimientos, tareas y avisos automáticos con transcripciones y resúmenes."
+icon: "video"
+---
+
+Fathom graba, transcribe y resume tus reuniones. Al conectarlo con tus flujos de trabajo de Chateea, cada reunión grabada puede convertirse automáticamente en un correo de seguimiento, tareas para el equipo o avisos internos, sin copiar notas a mano. Un disparador inicia el flujo cuando hay una grabación nueva y tres acciones te traen grabaciones, transcripciones y resúmenes para usarlos en los pasos siguientes.
+
+## Disparador y acciones disponibles
+
+| Tipo | Nombre | Qué hace |
+| --- | --- | --- |
+| Disparador | **Nueva grabación** | Inicia el flujo cuando Fathom crea y termina de procesar una grabación. |
+| Acción | **Listar grabaciones** | Trae las grabaciones disponibles en la cuenta conectada, con su resumen y otros campos para pasos posteriores. |
+| Acción | **Obtener transcripción** | Trae la transcripción completa de una grabación. |
+| Acción | **Obtener resumen** | Trae el resumen generado por IA de una grabación. |
+
+<Note>
+  Las acciones de Fathom son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Para qué te sirve
+
+- **Seguimientos automáticos:** usas la transcripción o el resumen para redactar correos personalizados después de cada llamada.
+- **Tareas sin olvidos:** conviertes los acuerdos de la reunión en tareas, por ejemplo en ClickUp.
+- **Equipo informado:** avisas a las personas indicadas cuando hay puntos importantes.
+- **Menos trabajo manual:** los datos de la reunión llegan al flujo solos.
+- **Combinable:** unes Fathom con acciones de IA, correo, notificaciones y herramientas de tareas.
+
+## Configurar Fathom en un flujo
+
+Puedes conectar Fathom desde el propio flujo o desde **Configuración → Integraciones**.
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo o edita uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador**, entra en la pestaña **Aplicaciones**, busca **Fathom** y elige **Nueva grabación**.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Si Fathom no está conectado, haz clic en **Conectar tu cuenta** y autoriza el acceso.
+  </Step>
+  <Step title="Elige qué reuniones escuchar">
+    En los filtros, indica de dónde debe tomar las grabaciones, por ejemplo **Mis reuniones** o **Reuniones del equipo**.
+  </Step>
+  <Step title="Prueba el disparador">
+    Haz clic en **Buscar registros nuevos**, revisa los datos que devuelve y haz clic en **Guardar disparador**.
+  </Step>
+  <Step title="Agrega las acciones">
+    Haz clic en el **+** y elige **Listar grabaciones**, **Obtener transcripción** u **Obtener resumen** según lo que necesites.
+  </Step>
+  <Step title="Prueba y guarda">
+    Prueba cada acción y guárdala.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+### Correo de seguimiento con IA después de una venta
+
+Los seguimientos manuales suelen llegar tarde y sin reflejar lo que se habló. Con este flujo, cada llamada genera un correo personalizado:
+
+1. **Disparador:** Fathom, Nueva grabación.
+2. **Acción:** Obtener transcripción.
+3. **Acción:** una tarea de IA (por ejemplo con Manus) que identifique a los competidores mencionados.
+4. **Acción:** una acción de IA que redacte el correo.
+5. **Acción:** Enviar correo.
+
+Indicación de ejemplo para la acción de IA:
+
+```text
+Eres un asistente de ventas.
+Con la transcripción de la llamada y el análisis de competidores, escribe un correo de seguimiento personalizado.
+
+Incluye:
+- Un breve agradecimiento
+- Los puntos clave que se hablaron
+- Las objeciones o dudas que surgieron
+- Próximos pasos claros
+- Un posicionamiento sutil frente a los competidores mencionados
+
+Sobre los competidores:
+- No los critiques directamente
+- Destaca nuestras fortalezas con profesionalismo y seguridad
+- Responde a las dudas que se plantearon
+
+Tono profesional, breve y cercano.
+
+Transcripción:
+{{transcript}}
+
+Análisis de competidores:
+{{competitor_analysis}}
+```
+
+### Resumen de la llamada y tareas asignadas
+
+Cuando los acuerdos de una reunión con un cliente no se documentan, se pierden entregas:
+
+1. **Disparador:** Fathom, Nueva grabación.
+2. **Acción:** Obtener resumen.
+3. **Acción:** una acción de IA que extraiga los puntos de acción en formato estructurado.
+4. **Acción:** Crear tarea (por ejemplo en ClickUp).
+5. **Acción:** Enviar notificación interna al equipo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuándo se activa el disparador Nueva grabación?">
+    Cuando Fathom termina de crear y procesar la grabación. Puede tardar unos minutos después de que acaba la reunión.
+  </Accordion>
+  <Accordion title="¿Tengo que conectar Fathom antes de usarlo?">
+    Sí. Sin la conexión, Chateea no puede traer grabaciones, transcripciones ni resúmenes.
+  </Accordion>
+  <Accordion title="¿Puedo usar las transcripciones en acciones de IA?">
+    Sí. Puedes pasar la transcripción a acciones de IA para redactar seguimientos, extraer tareas, resumir temas o preparar avisos internos.
+  </Accordion>
+  <Accordion title="¿Las grabaciones se asocian solas a mis contactos?">
+    No. Usa los datos de los participantes, como su correo, dentro del flujo para buscar o actualizar el contacto.
+  </Accordion>
+  <Accordion title="¿Qué hago si la prueba no encuentra registros?">
+    Confirma que Fathom está conectado, que la fuente elegida tiene grabaciones recientes ya procesadas y que los filtros no son demasiado restrictivos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Manus en flujos de trabajo" icon="robot" href="/automatizaciones/manus-en-flujos-de-trabajo">
+    Crea y continúa tareas de IA desde tus flujos.
+  </Card>
+  <Card title="Asana en flujos de trabajo" icon="list-check" href="/automatizaciones/asana-en-flujos-de-trabajo">
+    Crea y actualiza tareas y proyectos de Asana.
+  </Card>
+</CardGroup>

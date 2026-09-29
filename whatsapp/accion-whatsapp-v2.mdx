@@ -1,0 +1,85 @@
+---
+title: "Acción WhatsApp V2 en flujos de trabajo"
+description: "Crea ramas por botón, reacciona si el cliente no responde y arma chatbots de WhatsApp sin código."
+icon: "code-branch"
+---
+
+La acción **WhatsApp V2** es la forma más completa de enviar y gestionar mensajes de WhatsApp dentro de tus flujos de trabajo. Crea ramas automáticas según el botón que pulse el cliente, reacciona si no responde a tiempo y controla la entrega por ti. Con ella puedes armar chatbots y recorridos conversacionales que se adaptan en tiempo real, sin código ni condiciones manuales.
+
+## Qué ofrece frente a la versión anterior
+
+- **Ramas inteligentes:** crea una rama por cada botón de respuesta rápida de la plantilla.
+- **Multimedia flexible:** cambia la URL de la imagen, el video o el PDF directamente en la acción.
+- **Varios tipos de mensaje:** envía mensajes libres, plantillas o WhatsApp Flows.
+- **Ramas opcionales:** desactiva las ramas por respuesta si solo necesitas notificar.
+- **Tiempo de espera:** define qué pasa si el cliente no responde en un plazo.
+- **Esperar respuesta:** pausa el flujo hasta que el cliente conteste (solo después de que el mensaje se entregue).
+- **Control de entrega automático:** no necesitas condiciones extra para saber si el mensaje se entregó.
+
+## Cómo usarla en un flujo de trabajo
+
+<Steps>
+  <Step title="Prepara la plantilla">
+    Crea o elige una plantilla de WhatsApp en **Configuración → WhatsApp → Plantillas**. Añade botones, multimedia o un WhatsApp Flow según tu objetivo.
+  </Step>
+  <Step title="Agrega la acción WhatsApp V2">
+    En el constructor de flujos, añade la acción **WhatsApp V2** y elige el tipo de mensaje: plantilla, mensaje libre o mensaje con Flow.
+  </Step>
+  <Step title="Configura la lógica">
+    - Selecciona los botones de respuesta (si los hay) para generar las ramas automáticamente.
+    - Define la duración del tiempo de espera y la ruta alternativa.
+    - Activa o desactiva la opción de esperar respuesta.
+  </Step>
+  <Step title="Revisa los registros">
+    Consulta los registros del flujo para ver qué camino siguió cada contacto: entregado, respondido, sin respuesta.
+  </Step>
+</Steps>
+
+## Ramas por botón de respuesta
+
+Si tu plantilla incluye botones de respuesta rápida, WhatsApp V2 crea una rama del flujo por cada botón. Por ejemplo, con los botones "Confirmar", "Reprogramar" y "Cancelar", cada respuesta lleva al contacto a su propio camino sin que tengas que crear condiciones ni filtros.
+
+Si no necesitas ramas, desactiva el interruptor **Ramas por respuesta** (Branch Replies) y la acción funcionará como un simple aviso.
+
+## Tiempo de espera y esperar respuesta
+
+| Opción | Para qué sirve |
+| --- | --- |
+| **Tiempo de espera** (Timeout) | Ejecuta un seguimiento o una ruta alternativa si el cliente no responde en el plazo que definas. |
+| **Esperar respuesta** (Wait for Reply) | Pausa el flujo hasta que el cliente responda. Útil en conversaciones donde la respuesta es imprescindible para continuar. |
+
+<Tip>
+Combina ambas: espera la respuesta durante, por ejemplo, 24 horas y, si no llega, envía un recordatorio o asigna una tarea a tu equipo.
+</Tip>
+
+## Cambiar la multimedia sin rehacer la plantilla
+
+WhatsApp V2 te permite modificar la URL de imágenes, PDF y videos en la configuración del mensaje, incluso si forman parte de una plantilla aprobada. Así reutilizas la misma plantilla con distintos archivos (un catálogo por temporada, un PDF por cliente) sin pasar por otra aprobación.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si el mensaje no se entrega?">
+    WhatsApp V2 controla la entrega y envía al contacto por la rama correspondiente, sin configuración adicional.
+  </Accordion>
+  <Accordion title="¿Puedo usar la versión anterior y la V2 en el mismo flujo?">
+    Te recomendamos usar solo WhatsApp V2 en los flujos nuevos para aprovechar todas sus funciones.
+  </Accordion>
+  <Accordion title="¿Necesito configurar un WhatsApp Flow para usar plantillas?">
+    Solo si tu plantilla incluye un Flow. También puedes enviar plantillas básicas o mensajes libres.
+  </Accordion>
+  <Accordion title="¿Cómo desactivo las ramas automáticas?">
+    Apaga el interruptor **Ramas por respuesta** en la configuración de la acción.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Disparadores, acciones y ramas.
+  </Card>
+  <Card title="Enviar multimedia desde flujos" icon="photo-film" href="/whatsapp/enviar-multimedia-desde-flujos">
+    Imágenes, videos, audios y documentos automáticos.
+  </Card>
+</CardGroup>

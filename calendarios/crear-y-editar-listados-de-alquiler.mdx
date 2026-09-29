@@ -1,0 +1,225 @@
+---
+title: "Crear y editar listados de alquiler"
+description: "Crea listados con inventario, variantes, precios, reglas de reserva y sincronización con calendarios externos."
+icon: "pen-to-square"
+---
+
+Cada **listado** representa algo que alquilas: un auto, una propiedad o un equipo. Contiene todo lo necesario para reservarlo: fotos, precio, duración, stock y reglas. Puedes crear un listado en segundos con la ventana rápida y después completar los detalles avanzados (inventario, variantes, precios, reglas de reserva y sincronización con calendarios externos) desde la página de edición.
+
+## Crear un listado
+
+<Steps>
+  <Step title="Ve a tus listados">
+    Entra en **Calendarios → Configuración de calendarios → Alquileres → Listados**.
+  </Step>
+  <Step title="Abre la ventana de nuevo listado">
+    Haz clic en **Nuevo listado**, arriba a la derecha.
+  </Step>
+  <Step title="Completa los datos básicos">
+    - **Imagen del listado**: sube o arrastra fotos. Se muestran en la página de reservas.
+    - **Nombre del listado** (obligatorio): por ejemplo "Villa de lujo", "SUV compacta" o "Kit de cámara profesional".
+    - **Descripción**: explica sus características y qué incluye.
+    - **Precio base y unidad de reserva**: el precio por unidad de tiempo, por ejemplo 50 por hora.
+    - **Categoría**: el grupo al que pertenece.
+    - **Estado**: **Activo** (visible en la página de reservas) o **Inactivo** (oculto).
+  </Step>
+  <Step title="Abre la configuración avanzada">
+    Haz clic en **Configuración avanzada**, al final de la ventana, para completar el resto de pestañas.
+  </Step>
+</Steps>
+
+<Tip>
+  Deja el listado **Inactivo** hasta terminar la configuración para evitar reservas antes de tiempo.
+</Tip>
+
+## Editar un listado
+
+1. Ve a **Calendarios → Configuración de calendarios → Alquileres → Listados**.
+2. Haz clic en el ícono del **lápiz** junto al listado.
+3. Se abre la página **Editar listado**, con cuatro pestañas: **Información general**, **Inventario y precios**, **Configuración de reservas** y **Sincronización de calendario**.
+
+## Información general
+
+- **Imágenes**: añade o reemplaza fotos para formar una galería (hasta 30 por listado).
+- **Nombre** y **Descripción**.
+- **Categoría**: cámbialo de grupo si lo necesitas.
+- **Estado**: activo o inactivo.
+- **Formulario específico del listado**: actívalo si quieres pedir información adicional cuando se reserve este listado.
+
+<Note>
+  Al elegir un formulario personalizado para el listado, un aviso te indica si ese formulario puede controlar lo que ve el cliente después de reservar. Para que sus acciones al enviar y sus reglas condicionales se apliquen, activa **Permitir que un formulario personalizado aplique sus propias reglas** en la configuración global de Alquileres. Si no la activas, manda la configuración de confirmación global.
+</Note>
+
+<Note>
+  El formulario específico no se muestra si el cliente añade varios listados al carrito.
+</Note>
+
+Usa fotos de buena calidad y descripciones concretas: son lo que más influye en que el cliente reserve.
+
+## Inventario y precios
+
+### Inventario
+
+- **Inventario**: actívalo para controlar el stock. Si lo desactivas, el listado entero cuenta como una sola unidad reservable.
+- **Stock**: número total de unidades disponibles.
+
+### Variantes
+
+Las variantes son versiones distintas de un mismo listado, por ejemplo varios tipos de auto o de habitación. Con las variantes activas, la **unidad de reserva** (hora, día, semana o mes) es la misma para todas.
+
+Para añadir una variante:
+
+1. Activa **Variantes**.
+2. Haz clic en **Nueva**.
+3. Completa el **Nombre de la variante**, su **Stock** (si el inventario está activo), su **Precio base** y, si lo usas, el **Depósito de garantía**.
+4. Haz clic en **Confirmar**.
+
+El inventario y los precios se controlan por separado en cada variante. Por ejemplo, un negocio de cámaras podría tener:
+
+| Variante | Precio | Stock |
+| --- | --- | --- |
+| Cámara, solo cuerpo | 70 por día | 3 |
+| Cámara con objetivo | 90 por día | 2 |
+
+### Precios
+
+El **precio base** es la tarifa estándar antes de ajustes. Además puedes usar reglas avanzadas:
+
+- **Precio por temporada**: ajusta tarifas en fechas concretas, por ejemplo +20 % en vacaciones.
+- **Precio por día de la semana**: tarifas distintas entre semana y fin de semana.
+- **Precio por hora del día**: tarifas distintas en ciertas horas (solo en listados por horas).
+- **Descuentos por duración**: rebajas para alquileres largos, por ejemplo 10 % a partir de 7 días.
+- **Descuentos por cantidad**: rebajas al reservar varias unidades, por ejemplo 15 % desde 5 unidades.
+
+Consulta cómo se combinan en [Precios y descuentos en alquileres](/calendarios/precios-y-descuentos-en-alquileres).
+
+## Configuración de reservas
+
+### Periodo de reserva
+
+Define cómo elige el cliente las fechas y horas y cómo se calcula la duración y el precio. Hay tres modos:
+
+**1. Selector de fecha y hora**
+
+El cliente elige fecha y hora de inicio y de fin. La duración es la diferencia exacta entre ambas. Es el modo ideal para alquileres por horas o cuando necesitas precisión horaria.
+
+**2. Selector de fecha**
+
+El cliente elige solo fechas de inicio y fin, sin horas. El sistema usa la **Hora de inicio del alquiler** (por ejemplo, la hora de entrada) y la **Hora de fin del alquiler** (por ejemplo, la hora de salida) para calcular la duración y el precio:
+
+| Configuración | Cómo se cobra | Ejemplo |
+| --- | --- | --- |
+| La hora de fin es **posterior** a la de inicio | Por días. Elegir el mismo día de inicio y fin cuenta como 1 día. | Inicio 11:00, fin 17:00 |
+| La hora de fin es **anterior** a la de inicio | Por noches. Elegir dos fechas seguidas cuenta como 1 noche. | Inicio 15:00, fin 11:00 |
+
+Este modo no admite precios por hora.
+
+**3. Duraciones fijas**
+
+El cliente reserva paquetes predefinidos, por ejemplo 2 horas, 1 día, 1 semana o 1 mes. En todas las unidades existe la opción **El cliente puede elegir la hora de inicio al reservar**:
+
+- **Activada**: el cliente elige la hora de inicio y la hora de fin se calcula según la duración.
+- **Desactivada**: depende de la unidad. En **horas**, solo configuras la hora de inicio y el fin es la hora de inicio más la duración. En **días, semanas o meses**, configuras la hora de inicio y la de fin, que definen el periodo de cada duración.
+
+### Reglas para alquileres mensuales
+
+En cualquier modo, para alquileres por meses la hora de fin no puede ser posterior a la de inicio. Así el periodo es un mes limpio y no se cobra un ciclo extra. La fecha de fin es el mismo día del mes siguiente y, si ese día no existe (por ejemplo, el 31), se usa el último día válido de ese mes.
+
+### Qué modo elegir
+
+- **Selector de fecha y hora**: alquileres por horas o con hora exacta.
+- **Selector de fecha**: alquileres vacacionales, por noches o de varios días.
+- **Duraciones fijas**: paquetes cerrados de alquiler.
+
+### Otros ajustes
+
+| Ajuste | Qué controla |
+| --- | --- |
+| **Duración mínima** | La reserva más corta permitida. |
+| **Duración máxima** | La reserva más larga permitida. |
+| **Tiempo de margen antes y después** | Tiempo para preparar o limpiar entre reservas. |
+| **Antelación mínima** | Cuánto antes del inicio se debe reservar. |
+| **Ventana máxima de reserva anticipada** | Hasta qué fecha futura se puede reservar. |
+| **Contar solo días disponibles** | La ventana anticipada cuenta solo los días en que el listado está disponible, empezando después de la antelación mínima. |
+
+Ejemplo para una propiedad: duración mínima de 1 día, máxima de 30 días, 2 horas de margen antes y después, y reservas hasta 3 meses por adelantado.
+
+<Note>
+  Las reservas deben empezar y terminar dentro de tu horario de atención, pero la duración del alquiler puede extenderse más allá de ese horario.
+</Note>
+
+## Sincronización de calendario
+
+Conecta el listado con otras plataformas para evitar reservas dobles:
+
+- **Importar calendario**: añade enlaces iCal (terminados en `.ics`) de otras plataformas. Sus reservas aparecen como horarios bloqueados en tu calendario de Alquileres.
+- **Exportar calendario**: copia tu enlace iCal único y pégalo en otras plataformas para que vean tu disponibilidad.
+
+Las reservas externas se importan automáticamente cada hora. Si necesitas actualizar antes, usa **Actualizar** junto al calendario importado. Revisa siempre que el enlace iCal sea correcto antes de guardarlo.
+
+### Cómo se interpretan las reservas importadas
+
+- **Si el evento importado tiene hora de inicio y fin**, se bloquea exactamente ese tiempo. Por ejemplo, 15 de abril de 14:00 a 17:00. Esto aplica a todos los modos de reserva.
+- **Si el evento importado solo tiene fechas**, en los modos **Selector de fecha** y **Duraciones fijas** por días, semanas o meses, se usan las horas de alquiler del listado en lugar de bloquear de medianoche a medianoche.
+
+Ejemplo: con hora de inicio a las 15:00 y de fin a las 11:00, un evento importado del 15 al 17 de abril bloquea desde el 15 de abril a las 15:00 hasta el 17 de abril a las 11:00.
+
+<Note>
+  Si el listado tiene variantes, el calendario importado solo bloquea la primera variante. Si tiene inventario, se bloquea todo el inventario durante el tiempo de la reserva importada.
+</Note>
+
+## Guardar y publicar
+
+1. Haz clic en **Guardar cambios**, arriba a la derecha.
+2. Haz clic en **Ver página de reservas** para comprobar cómo lo ve el cliente.
+3. Cambia el listado a **Activo** cuando esté listo.
+
+<Tip>
+  Haz una reserva de prueba en la página de reservas para confirmar precios, duraciones y sincronización antes de publicarlo.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo subir varias imágenes?">
+    Sí, hasta 30 por listado.
+  </Accordion>
+  <Accordion title="¿Puedo desactivar el inventario?">
+    Sí. Si solo tienes una unidad, déjalo desactivado y el listado completo se reservará como una unidad.
+  </Accordion>
+  <Accordion title="¿Las variantes son obligatorias?">
+    No. Solo las necesitas si el listado tiene distintas versiones.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar la unidad de precio después?">
+    Sí, pero al cambiarla (por ejemplo, de días a horas) se recalculan el precio y la duración.
+  </Accordion>
+  <Accordion title="¿El tiempo de margen se aplica siempre?">
+    Sí. Se añade automáticamente antes y después de cada reserva.
+  </Accordion>
+  <Accordion title="¿Cada cuánto se sincronizan los calendarios externos?">
+    Cada hora. También puedes actualizar manualmente.
+  </Accordion>
+  <Accordion title="¿Puedo desconectar un calendario sincronizado?">
+    Sí. Elimina el enlace iCal desde la pestaña de sincronización cuando quieras.
+  </Accordion>
+  <Accordion title="¿Qué hace la opción Contar solo días disponibles?">
+    Hace que la ventana de reserva anticipada cuente solo los días en que el listado está disponible, después de la antelación mínima. Así el cliente siempre ve el número completo de días que configuraste.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Listados y categorías" icon="layer-group" href="/calendarios/listados-y-categorias-de-alquileres">
+    Organiza y comparte tus listados.
+  </Card>
+  <Card title="Precios y descuentos" icon="tags" href="/calendarios/precios-y-descuentos-en-alquileres">
+    Cómo se combinan las reglas de precio.
+  </Card>
+  <Card title="Configuración global de alquileres" icon="gear" href="/calendarios/configuracion-global-de-alquileres">
+    Horario, pagos, depósitos y página de reservas.
+  </Card>
+  <Card title="Tiempo de margen antes y después" icon="hourglass" href="/calendarios/tiempo-de-margen-antes-y-despues">
+    Deja tiempo libre entre reservas.
+  </Card>
+</CardGroup>

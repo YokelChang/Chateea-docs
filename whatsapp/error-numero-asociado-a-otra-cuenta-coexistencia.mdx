@@ -1,0 +1,83 @@
+---
+title: "Error de coexistencia: número asociado a otra cuenta de WhatsApp"
+description: "Por qué la coexistencia falla si tu número ya está ligado a una cuenta de la API y cómo liberarlo en tu portafolio de Meta."
+icon: "link-slash"
+---
+
+Al conectar tu app WhatsApp Business con la **coexistencia**, puede aparecer este error aunque tu número parezca estar solo en la app del teléfono:
+
+```text
+This phone number is already associated with another WhatsApp Business Account
+```
+
+Significa que el número ya tiene una asociación con una **cuenta de WhatsApp Business de la API** (Cloud API) en algún portafolio comercial de Meta. Mientras esa asociación exista, Meta bloquea la conexión por coexistencia. Esta guía te explica por qué pasa y cómo liberarlo.
+
+## Por qué ahora aparece este error
+
+Antes, durante la conexión podías **elegir manualmente** la cuenta de WhatsApp Business que querías usar. En el proceso actual ese paso puede no aparecer: cuando escribes tu número, Meta **revisa en segundo plano** a qué cuentas está asociado.
+
+Si el número ya fue agregado a una cuenta de la API, esa cuenta se detecta y se selecciona automáticamente. Como el número ya pertenece a una cuenta de la API, la coexistencia se bloquea.
+
+<Note>
+  La revisión ocurre antes de que se muestre cualquier selector de cuenta, así que en pantalla no verás qué cuenta se detectó. El único síntoma es el error. Por eso la asociación hay que buscarla en tu portafolio comercial, no en el proceso de conexión.
+</Note>
+
+## Qué significa y qué no
+
+- **Qué significa:** se detectó que el número está asociado a una cuenta de WhatsApp Business de la API.
+- **Por qué confunde:** aunque uses el número a diario en la app del teléfono, la asociación con la API puede seguir registrada en segundo plano, por ejemplo por una integración anterior, una prueba o una configuración que hizo otra persona.
+- **Qué no es:** no es un problema de la app WhatsApp Business de tu teléfono. Reintentar sin cambiar nada dará el mismo error.
+
+## Cómo resolverlo
+
+<Steps>
+  <Step title="Entra a tu portafolio comercial">
+    Abre el portafolio comercial (Meta Business Manager) de tu empresa en [business.facebook.com](https://business.facebook.com).
+  </Step>
+  <Step title="Revisa tus cuentas de WhatsApp Business">
+    Lista todas las cuentas de WhatsApp Business de tu negocio. Revisa cada una: la asociación puede estar en una cuenta antigua o que ya no usas.
+  </Step>
+  <Step title="Busca el número">
+    Comprueba si el número que quieres conectar aparece en alguna cuenta de WhatsApp Business de la API.
+  </Step>
+  <Step title="Elimina la asociación que no necesitas">
+    Si el número está en una cuenta antigua o no deseada, elimina el número de esa cuenta o la cuenta completa, según corresponda.
+  </Step>
+  <Step title="Vuelve a iniciar la coexistencia">
+    Con la asociación eliminada, inicia de nuevo la conexión por coexistencia desde **Configuración → WhatsApp** en Chateea.
+  </Step>
+</Steps>
+
+<Warning>
+  No elimines una cuenta de WhatsApp Business ni un número que se esté usando en otra integración activa. Confirma primero que ya no se necesita.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Mi número solo está en la app WhatsApp Business. ¿Por qué me sale el error?">
+    La app del teléfono y el registro de la cuenta de la API son cosas distintas. El número pudo agregarse a una cuenta de la API en algún momento (una integración anterior, una prueba o la configuración de otro administrador) y esa asociación sigue registrada. La verificación de Meta mira ese registro, no la app.
+  </Accordion>
+  <Accordion title="¿Cómo sé a qué cuenta está asociado mi número?">
+    En tu portafolio comercial revisa las cuentas de WhatsApp Business de tu negocio. Cada una muestra sus números registrados. Revisa todas, incluidas las antiguas.
+  </Accordion>
+  <Accordion title="¿Por qué ya no puedo elegir la cuenta correcta durante la conexión?">
+    Porque el proceso actual detecta la cuenta automáticamente a partir del número. Por eso hay que limpiar las asociaciones antiguas antes de conectar.
+  </Accordion>
+</AccordionGroup>
+
+Si no encuentras la asociación o no tienes acceso al portafolio donde está, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Coexistencia con la app WhatsApp Business" icon="mobile" href="/whatsapp/coexistencia-con-la-app-whatsapp-business">
+    Usa la app y Chateea con el mismo número.
+  </Card>
+  <Card title="Error: número no elegible para la coexistencia" icon="circle-exclamation" href="/whatsapp/error-numero-no-elegible-coexistencia">
+    Otro error frecuente al conectar.
+  </Card>
+  <Card title="Conectar WhatsApp a tu cuenta" icon="plug" href="/whatsapp/conectar-whatsapp">
+    Los tres métodos de conexión.
+  </Card>
+</CardGroup>

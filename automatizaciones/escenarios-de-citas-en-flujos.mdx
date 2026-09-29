@@ -1,0 +1,68 @@
+---
+title: "Qué pasa en los flujos cuando una cita cambia"
+description: "Cómo se comportan los flujos de citas cuando el cliente reserva varias, cancela, reprograma o tiene citas recurrentes."
+icon: "calendar-check"
+---
+
+Un cliente puede reservar varias citas, cancelarlas o cambiarlas de fecha, y cada caso afecta de forma distinta a los flujos de trabajo que se disparan por citas. Esta guía explica qué pasa con el contacto en cada escenario para que tus recordatorios y seguimientos se comporten como esperas.
+
+## Escenario 1: el contacto reserva varias citas
+
+Con los disparadores de citas, un contacto puede entrar al flujo varias veces, **aunque ya esté dentro** y aunque **Permitir reingreso** esté desactivado. Como un cliente puede reservar varias citas, cada reserva inicia su propio recorrido.
+
+## Ejemplo para los siguientes escenarios
+
+Para los escenarios 2 y 3 usamos este caso:
+
+| Dato | Valor |
+| --- | --- |
+| Fecha actual | 20 de junio |
+| Fecha de la cita | 25 de junio |
+| Paso del flujo | El contacto está en una espera de 5 días. |
+
+## Escenario 2: el cliente cancela la cita
+
+**Cuándo se considera cancelada:** cuando el estado de la cita cambia de Nueva, Confirmada o Asistió a Cancelada, No válida o No asistió.
+
+**Qué pasa:** el contacto sale del flujo y no se ejecutan más acciones.
+
+**Por qué:** si la cita ya no existe, no tiene sentido seguir enviando recordatorios.
+
+## Escenario 3: el cliente reprograma a una fecha posterior
+
+El cliente cambia su cita del 25 al 30 de junio mientras está en la espera de 5 días.
+
+**Cuándo se considera reprogramada:** cuando cambia la hora de inicio o la hora de fin de la cita.
+
+**Qué pasa:** el contacto sale del flujo. Vuelve a entrar solo si se cumplen **todas** estas condiciones:
+
+- El flujo tiene un disparador de estado de cita configurado para **Reprogramada**.
+- La cita reprogramada cumple todos los filtros del disparador (por ejemplo, el calendario y el usuario asignado correctos).
+- **Permitir reingreso** está activado en la configuración del flujo.
+
+**Por qué:** la reprogramación actualiza el estado de la cita. Si ese nuevo estado cumple el disparador y el reingreso está permitido, el contacto vuelve a entrar y recibe las comunicaciones de la nueva fecha. Si no, no vuelve a entrar.
+
+<Tip>
+Si quieres que los recordatorios se reajusten solos cuando un cliente cambia la fecha, agrega a tu flujo de recordatorios un disparador de estado de cita **Reprogramada** con los mismos filtros y activa **Permitir reingreso**.
+</Tip>
+
+## Escenario 4: citas recurrentes
+
+Las citas recurrentes **no** activan el disparador **Cliente reservó una cita**. Tenlo en cuenta si ofreces sesiones periódicas y planifica tus recordatorios con otro disparador.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configuración del flujo" icon="gear" href="/flujo-de-trabajo/configuracion-del-flujo-de-trabajo-descripcion-general">
+    Qué hace Permitir reingreso y las demás opciones del flujo.
+  </Card>
+  <Card title="Condición Si/Si no con datos de cita" icon="code-branch" href="/automatizaciones/condicion-si-no-con-datos-de-cita">
+    Crea ramas según los datos de la cita.
+  </Card>
+  <Card title="Citas recurrentes" icon="repeat" href="/calendarios/citas-recurrentes">
+    Cómo funcionan las citas que se repiten.
+  </Card>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores de citas disponibles.
+  </Card>
+</CardGroup>

@@ -1,0 +1,114 @@
+---
+title: "Búsqueda web en Agent Studio para respuestas en tiempo real"
+description: "Agrega la herramienta Buscar en la web a tus agentes para responder con información actualizada de internet."
+icon: "globe"
+---
+
+La herramienta **Buscar en la web** permite que un agente de Agent Studio consulte internet en tiempo real y responda con información actualizada. Es ideal cuando la respuesta no está en tu base de conocimiento o cambia con frecuencia: precios de mercado, noticias, tendencias o datos públicos de productos.
+
+La herramienta vive dentro del **nodo Agente IA**. Funciona como una fuente de conocimiento externa: en lugar de depender solo de tus datos internos, el agente puede buscar fuera cuando lo necesita.
+
+## Cuándo usarla
+
+Agrégala a tu agente si necesita responder preguntas que:
+
+- No están cubiertas en tu base de conocimiento.
+- Requieren datos actuales (eventos recientes, disponibilidad o precios públicos, tendencias).
+- Son de conocimiento general y no vale la pena documentarlas internamente.
+
+<Tip>
+  Para información de tu negocio (políticas, horarios, precios propios) usa siempre la base de conocimiento: es controlada y consistente. Deja la búsqueda web para lo que realmente está fuera de tus datos.
+</Tip>
+
+## Cómo funciona
+
+1. El usuario hace una pregunta.
+2. El agente interpreta la solicitud y la convierte en una consulta de búsqueda.
+3. La herramienta recupera resultados relevantes de internet.
+4. El agente redacta la respuesta a partir de esos resultados.
+
+## Ventajas
+
+- Acceso a información en tiempo real.
+- Amplía lo que sabe el agente más allá de tus fuentes internas.
+- Permite atender preguntas imprevistas o que cambian con el tiempo.
+- Reduce la necesidad de mantener una base de conocimiento para todo.
+
+## Los tres elementos de la herramienta
+
+| Elemento | Para qué sirve | Recomendación |
+| --- | --- | --- |
+| **Instrucciones** | Le dicen al agente cuándo y cómo usar la búsqueda web | Sé específico: por ejemplo, "usa la búsqueda web solo si la base de conocimiento no tiene la respuesta" |
+| **Consulta** (Query) | Define qué se va a buscar; es lo que se envía al buscador | Hazla dinámica con variables en lugar de texto fijo |
+| **Variables** | Aportan el dato dinámico de la consulta, normalmente la pregunta del usuario guardada durante la conversación | Usa variables de ejecución para que cada búsqueda responda a lo que se preguntó |
+
+Unas buenas instrucciones evitan búsquedas innecesarias y mejoran la calidad de las respuestas, sobre todo cuando combinas la búsqueda web con otras herramientas como la base de conocimiento.
+
+## Usa variables en la consulta
+
+Si escribes una consulta fija, el agente buscará siempre lo mismo y devolverá los mismos resultados. Lo correcto es que la consulta tome lo que dijo el usuario:
+
+1. El usuario escribe: "Busca tenis para correr de una marca concreta".
+2. Esa entrada se guarda como variable de ejecución.
+3. La variable se usa como consulta de la búsqueda web.
+
+Así cada búsqueda se adapta a la pregunta real del cliente.
+
+## Configurar la búsqueda web
+
+<Steps>
+  <Step title="Agrega la herramienta">
+    Abre tu agente en **Agent Studio**, entra al **nodo Agente IA**, haz clic en **Agregar una herramienta** (Add a Tool) y elige **Buscar en la web** (Search the Web).
+  </Step>
+  <Step title="Escribe las instrucciones">
+    Indica cuándo debe usarla. Ejemplo: "Busca en la web información actual solo cuando la base de conocimiento no tenga la respuesta".
+  </Step>
+  <Step title="Define la consulta">
+    Especifica qué debe buscar. Puede ser un texto fijo, aunque en la mayoría de los casos conviene conectarla a la entrada del usuario.
+  </Step>
+  <Step title="Inserta variables">
+    Usa el selector de variables (el ícono de llaves dentro del campo) para insertar variables de ejecución en la consulta o en las instrucciones.
+  </Step>
+  <Step title="Prueba el agente">
+    Haz preguntas variadas y confirma que los resultados son relevantes y precisos antes de publicar.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- Escribe instrucciones claras y cortas sobre cuándo buscar y cuándo no.
+- Limita la búsqueda a ciertos tipos de fuentes o temas si tu caso lo requiere (por ejemplo, "prioriza sitios oficiales").
+- Combina la búsqueda web con la base de conocimiento: primero lo interno, después lo externo.
+- Revisa los [registros de agentes](/ia/registros-de-agentes) para ver cuándo se usó la herramienta y qué devolvió.
+
+<Note>
+  Cada búsqueda web consume uso de IA. Consulta [cómo se cobra la IA](/ia/como-se-cobra-la-ia) para entender el impacto en tu billetera.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué los resultados de la búsqueda web a veces varían?">
+    Porque dependen de fuentes externas que cambian con el tiempo. El resultado depende de la consulta y de la información disponible en internet en ese momento.
+  </Accordion>
+  <Accordion title="¿Cuándo uso la búsqueda web y cuándo la base de conocimiento?">
+    Usa la base de conocimiento para información controlada y consistente de tu negocio. Usa la búsqueda web cuando el dato no existe internamente o necesita estar actualizado.
+  </Accordion>
+  <Accordion title="¿Cómo controlo cuándo busca el agente?">
+    Con las instrucciones de la herramienta y del agente. Define con claridad las condiciones, por ejemplo, buscar solo cuando los datos internos no alcancen.
+  </Accordion>
+  <Accordion title="¿Puedo limitar qué busca?">
+    Sí. Puedes orientar la búsqueda con las instrucciones y la consulta, incluso restringiéndola a ciertos tipos de fuentes o temas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registros de agentes" icon="list-check" href="/ia/registros-de-agentes">
+    Revisa paso a paso qué hizo tu agente.
+  </Card>
+  <Card title="Cómo se cobra la IA" icon="credit-card" href="/ia/como-se-cobra-la-ia">
+    Entiende el consumo de las herramientas de IA.
+  </Card>
+</CardGroup>

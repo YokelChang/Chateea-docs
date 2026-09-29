@@ -1,0 +1,115 @@
+---
+title: "Citas recurrentes: reglas y flujos de trabajo"
+description: "Qué pasa con horarios ocupados, disparadores, enlaces de reunión y sincronización cuando usas citas recurrentes."
+icon: "repeat"
+---
+
+Cuando activas las citas recurrentes en un calendario, el cliente reserva una sola vez y Chateea crea toda la serie (diaria, semanal o mensual). Esto ahorra mucho trabajo en sesiones periódicas, pero cambia algunas reglas: cómo se disparan tus flujos de trabajo, qué pasa si un horario está ocupado y cómo se comportan los enlaces de reunión o la sincronización. Aquí tienes todo lo que debes saber.
+
+## Activar la recurrencia en un calendario
+
+<Steps>
+  <Step title="Abre o crea el calendario">
+    Ve a **Calendarios → Configuración de calendarios** y crea un calendario (por ejemplo, **Reserva round robin**) o edita uno existente.
+  </Step>
+  <Step title="Activa las citas recurrentes">
+    En la pestaña **Disponibilidad**, enciende **Citas recurrentes** y elige la frecuencia y cuántas veces se repite la cita.
+  </Step>
+  <Step title="Define qué pasa si un horario no está disponible">
+    En **Si los horarios no están disponibles**, elige una de las opciones que se explican abajo y guarda.
+  </Step>
+</Steps>
+
+<Note>
+Todos los tipos de calendario admiten citas recurrentes, excepto los calendarios de servicios. Si usas un calendario round robin, debe tener como máximo un miembro del equipo.
+</Note>
+
+## Límites de la serie
+
+- Una cita puede repetirse **como máximo 24 veces**.
+- La recurrencia solo se ofrece en horarios estándar. En los horarios personalizados no aparece la opción de repetir.
+- Desde la página de **Oportunidades** no se pueden reservar citas recurrentes: el calendario aparece en la lista, pero solo permite reservar un horario suelto.
+
+## Si un horario de la serie está ocupado
+
+Puede pasar que alguna fecha de la serie choque con otra cita o evento. Estas son las opciones:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Continuar reservando** | Reserva todas las fechas aunque haya choques, es decir, permite la doble reserva. Aparece una lista adicional para elegir cómo tratar esas citas superpuestas. |
+| **Omitir los horarios no disponibles** | Reserva solo las fechas libres e ignora las ocupadas. |
+| **Reservar el siguiente horario disponible** | Busca el siguiente horario libre para cada fecha ocupada, hasta completar la serie. |
+
+<Warning>
+Con **Reservar el siguiente horario disponible**, Chateea revisa solo los tres horarios siguientes. Si ninguno está libre, esa cita no se reserva. Elige la opción con cuidado según cómo trabaja tu negocio.
+</Warning>
+
+## Citas recurrentes en tus flujos de trabajo
+
+Los disparadores de citas tienen un filtro **Tipo de evento** que decide con qué citas se ejecuta el flujo:
+
+| Filtro | Se dispara con |
+| --- | --- |
+| **Normal** | Citas que no son recurrentes. |
+| **Recurrente** | Solo citas reservadas en calendarios con la recurrencia activada. |
+| **Cualquiera** | Todas las citas, recurrentes o no. |
+
+<Warning>
+Los disparadores de **Estado de la cita** que ya existían en tu cuenta tienen por defecto el filtro **Tipo de evento: Normal**, así que **no se ejecutan con citas recurrentes**. Si quieres que tus confirmaciones, recordatorios o automatizaciones también funcionen con citas recurrentes, agrega el filtro **Recurrente** o **Cualquiera** a esos disparadores.
+</Warning>
+
+### Filtrar por quién creó la cita
+
+El filtro **Modificado por** te permite distinguir el origen de la cita:
+
+- **Cliente**: citas que el cliente reservó desde el widget de reservas.
+- **Usuario**: citas creadas dentro de Chateea o desde cualquier origen que no sea el widget.
+- **API**: solo citas creadas con la API.
+
+<Tip>
+Si antes usabas un disparador para "el cliente reservó una cita", replícalo con el disparador de citas y el filtro **Modificado por: Cliente**.
+</Tip>
+
+## Cómo se comportan las citas de la serie
+
+- **Enlaces de reunión**: si la ubicación es Zoom o Google Meet, cada cita de la serie tiene su propio enlace, porque Chateea genera un enlace distinto para cada reunión.
+- **Sincronización con calendarios externos**: si la sincronización está activa, cada cita se envía a Google, Outlook o iCloud como un evento independiente.
+- **Cambios en bloque**: no se pueden cancelar ni reprogramar en bloque las citas recurrentes. Cada una se gestiona por separado.
+- **Pagos**: los pagos parciales (anticipos) no funcionan en calendarios con citas recurrentes.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Mis flujos de trabajo actuales se ejecutan con citas recurrentes?">
+    No, salvo que cambies el filtro. Los disparadores de citas existentes usan **Tipo de evento: Normal** por defecto. Cambia a **Recurrente** o **Cualquiera** para incluirlas.
+  </Accordion>
+  <Accordion title="¿Cuántas veces puede repetirse una cita?">
+    Hasta 24 veces.
+  </Accordion>
+  <Accordion title="¿Puedo cancelar toda la serie de una vez?">
+    No. Las citas recurrentes del calendario no se pueden cancelar ni reprogramar en bloque.
+  </Accordion>
+  <Accordion title="¿Todas las citas de la serie usan el mismo enlace de Zoom o Meet?">
+    No. Cada cita recibe su propio enlace de reunión.
+  </Accordion>
+  <Accordion title="¿Cómo se ven en Google Calendar u Outlook?">
+    Como eventos individuales, uno por cada cita de la serie.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Notificaciones de citas" icon="bell" href="/calendarios/notificaciones-de-citas">
+    Avisos por correo, SMS, WhatsApp y en la app.
+  </Card>
+  <Card title="Calendarios vinculados y de conflicto" icon="link" href="/calendarios/calendarios-vinculados-y-de-conflicto">
+    Sincroniza tus citas con Google, Outlook o iCloud.
+  </Card>
+  <Card title="Citas recurrentes" icon="repeat" href="/calendarios/citas-recurrentes">
+    Configura series de citas en tu calendario.
+  </Card>
+  <Card title="Cobrar citas recurrentes" icon="credit-card" href="/calendarios/cobrar-citas-recurrentes">
+    Cobra la primera cita o toda la serie.
+  </Card>
+</CardGroup>

@@ -1,0 +1,116 @@
+---
+title: "Integrar Zoom con tus calendarios"
+description: "Conecta tu cuenta de Zoom para que cada cita reservada en Chateea genere su propio enlace de reunión."
+icon: "video"
+---
+
+Si atiendes a tus clientes por videollamada, puedes conectar tu cuenta de Zoom a los calendarios de Chateea para que cada reserva genere automáticamente su propio enlace de reunión. Así ya no tienes que crear la reunión a mano ni copiar y pegar el enlace en cada confirmación, y tus clientes reciben siempre la información completa para conectarse.
+
+## Qué ganas al conectar Zoom
+
+- **Enlaces automáticos:** cada cita reservada incluye un enlace de Zoom único, sin trabajo manual.
+- **Menos errores:** se acabaron las confirmaciones sin enlace o con el enlace de otra reunión.
+- **Ahorro de tiempo:** tu equipo se dedica a atender clientes, no a crear reuniones.
+- **Experiencia profesional:** todos tus clientes reciben una invitación completa y consistente.
+- **Cuenta compartida:** puedes conectar la misma cuenta de Zoom en varias cuentas de Chateea y permitir que varios usuarios la usen para sus reservas.
+
+## Calendarios compatibles
+
+Los enlaces dinámicos de Zoom (uno nuevo por cada cita) funcionan en estos tipos de calendario:
+
+| Tipo de calendario | Enlace dinámico de Zoom |
+| --- | --- |
+| Reserva personal | Sí |
+| Round robin | Sí |
+| Colectivo | Sí |
+| Servicios | Sí |
+
+## Cómo conectar tu cuenta de Zoom
+
+La conexión es por usuario: cada miembro del equipo conecta su propia cuenta de Zoom (o la cuenta compartida que usen). Puedes hacerlo desde dos lugares y el resultado es el mismo.
+
+### Opción 1: desde Mi perfil
+
+<Steps>
+  <Step title="Abre tu perfil">
+    Ve a **Configuración → Mi perfil** y baja hasta la sección de calendario.
+  </Step>
+  <Step title="Entra en Videoconferencias">
+    Selecciona la pestaña **Videoconferencias** (Video Conferencing) y haz clic en **Agregar nuevo** (Add New).
+  </Step>
+  <Step title="Conecta Zoom">
+    Haz clic en **Conectar** junto a Zoom. Se abrirá la ventana de inicio de sesión de Zoom: entra con tu cuenta y autoriza el acceso.
+  </Step>
+</Steps>
+
+### Opción 2: desde la configuración de calendarios
+
+<Steps>
+  <Step title="Abre las conexiones">
+    Ve a **Calendarios → Configuración del calendario** y entra en la pestaña **Conexiones**.
+  </Step>
+  <Step title="Elige Videoconferencias">
+    Dentro de **Conexiones**, abre la pestaña **Videoconferencias** y haz clic en **Agregar nuevo**.
+  </Step>
+  <Step title="Autoriza Zoom">
+    Haz clic en **Conectar** junto a Zoom, inicia sesión en tu cuenta y autoriza el acceso.
+  </Step>
+</Steps>
+
+## Usa Zoom como ubicación de la reunión
+
+Conectar la cuenta no basta: el calendario tiene que tener Zoom como ubicación de la reunión para que se genere el enlace. Edita el calendario, ve a los detalles de la reunión y, en el miembro del equipo que atiende las citas, elige **Zoom** como ubicación. Guarda los cambios.
+
+Para que el enlace llegue en los correos y SMS de confirmación y recordatorio, la plantilla del mensaje debe incluir el valor personalizado de ubicación de la cita:
+
+```text
+{{appointment.location}}
+```
+
+## Comprueba que la conexión está activa
+
+Ve a **Configuración → Mi perfil → Videoconferencias** o a **Calendarios → Configuración del calendario → Conexiones → Videoconferencias**. Si tu cuenta de Zoom aparece en la lista, está conectada.
+
+<Info>
+  Si Zoom se desconecta y luego lo vuelves a conectar, Chateea genera automáticamente los enlaces que faltaban en las **próximas citas** creadas mientras estuvo desconectado. No tienes que editar cada cita a mano.
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito una cuenta de Zoom de pago?">
+    No. Una cuenta gratuita de Zoom es suficiente para la integración. Los planes de pago de Zoom te dan reuniones más largas y otras funciones propias de Zoom.
+  </Accordion>
+  <Accordion title="¿Puedo usar una cuenta de Zoom distinta en cada calendario?">
+    La integración está ligada al perfil del usuario, así que cada usuario conecta una sola cuenta de Zoom. Si necesitas cuentas distintas, asígnalas a usuarios distintos.
+  </Accordion>
+  <Accordion title="¿Cómo desconecto o cambio mi cuenta de Zoom?">
+    Ve a **Calendarios → Configuración del calendario → Conexiones → Videoconferencias** (o a **Mi perfil → Videoconferencias**), haz clic en **Desconectar** junto a Zoom y vuelve a conectar con la otra cuenta.
+  </Accordion>
+  <Accordion title="¿Por qué el enlace de Zoom no aparece en el correo de confirmación?">
+    Revisa dos cosas: que la ubicación de la reunión del calendario sea Zoom y que la plantilla del mensaje incluya `{{appointment.location}}`.
+  </Accordion>
+  <Accordion title="¿Puedo tener Zoom y Google Meet conectados a la vez?">
+    Sí, puedes tener ambos conectados. Eso sí, en cada calendario o usuario solo una plataforma de videoconferencia puede estar activa como ubicación de la reunión.
+  </Accordion>
+  <Accordion title="¿Los calendarios de clases o eventos generan enlaces de Zoom?">
+    Los enlaces dinámicos solo se generan en calendarios de reserva personal, round robin, colectivos y de servicios. En otros tipos puedes usar una ubicación personalizada con un enlace fijo de Zoom que se repite en todas las reservas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integrar Microsoft Teams con tus calendarios" icon="video" href="/calendarios/integrar-microsoft-teams-con-calendarios">
+    Genera enlaces de Teams automáticos en cada reserva.
+  </Card>
+  <Card title="Varias ubicaciones de reunión" icon="location-dot" href="/calendarios/varias-ubicaciones-de-reunion">
+    Deja que el cliente elija dónde será la cita.
+  </Card>
+  <Card title="Crea tu calendario" icon="calendar" href="/calendarios/introduccion">
+    Configura tu primer calendario de reservas.
+  </Card>
+  <Card title="Recordatorios y ausencias" icon="bell" href="/calendarios/recordatorios">
+    Envía recordatorios con el enlace de la reunión.
+  </Card>
+</CardGroup>

@@ -1,0 +1,85 @@
+---
+title: "PayPal en calendarios"
+description: "Acepta PayPal como forma de pago al reservar citas en tus calendarios."
+icon: "paypal"
+---
+
+Puedes aceptar PayPal como forma de pago en las reservas de tus calendarios. Tus clientes pagan con su saldo de PayPal, su cuenta bancaria vinculada o su tarjeta, en un proceso que ya conocen y en el que confían, y el dinero llega directo a tu cuenta de PayPal.
+
+PayPal funciona en los calendarios de servicios (v2), round robin, colectivos y personales, y puede convivir con otras pasarelas como Stripe, Square, NMI o Authorize.net.
+
+## Beneficios
+
+- **Pago en un clic**: quien usa PayPal no tiene que escribir su tarjeta.
+- **Junto a otras pasarelas**: el cliente elige cómo pagar entre PayPal y las tarjetas.
+- **Dinero al instante** en tu cuenta de PayPal.
+- **Seguridad**: cumple con PCI y Chateea no guarda tus credenciales de PayPal.
+
+## Compatibilidad y limitaciones
+
+| Caso | ¿Funciona? |
+| --- | --- |
+| Todos los tipos de calendario y Servicios (v2) | Sí |
+| Menú de servicios anterior (v1) | No |
+| PayPal y Razorpay conectados a la vez | No. Si ambos están conectados, se usa Razorpay. |
+| Pago como invitado de PayPal (sin cuenta) | No |
+
+PayPal sigue las mismas reglas de moneda, pagos parciales y cupones que el resto de pagos en calendarios.
+
+## Configurar PayPal en tus calendarios
+
+<Steps>
+  <Step title="Conecta PayPal">
+    Ve a **Pagos → Integraciones**, haz clic en **PayPal → Conectar**, ingresa tu **Client ID** y tu **Secret** de PayPal y haz clic en **Guardar**. Estos datos los obtienes en tu cuenta de desarrollador de PayPal.
+  </Step>
+  <Step title="Abre el calendario">
+    Ve a **Calendarios → Configuración de calendarios** y abre el calendario en el que quieres cobrar.
+  </Step>
+  <Step title="Activa los pagos">
+    En **Formularios y pagos**, enciende **Aceptar pagos**.
+  </Step>
+  <Step title="Elige PayPal">
+    Selecciona **PayPal**, o deja **Predeterminada** si PayPal es tu única pasarela.
+  </Step>
+  <Step title="Completa el cobro y guarda">
+    Ingresa el **Monto**, la **Descripción** y elige modo **real** o **de prueba**. Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+Haz una reserva de prueba antes de pasar a modo real para ver exactamente lo que verá tu cliente al pagar.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo ofrecer PayPal y tarjeta al mismo tiempo?">
+    Sí. Si además tienes conectado Stripe, Square, NMI o Authorize.net, el widget de reservas muestra PayPal junto a las opciones de tarjeta y el cliente elige.
+  </Accordion>
+  <Accordion title="¿Qué pasa si también conecto Razorpay?">
+    Chateea da prioridad a Razorpay. Para usar PayPal, desconecta Razorpay o cambia tu pasarela predeterminada.
+  </Accordion>
+  <Accordion title="¿Funciona con calendarios de citas recurrentes?">
+    Sí, siempre que uses Servicios (v2) u otro tipo de calendario compatible. El menú de servicios anterior (v1) no es compatible.
+  </Accordion>
+  <Accordion title="¿A dónde llega el dinero?">
+    Directamente a la cuenta de PayPal que conectaste en **Pagos → Integraciones**.
+  </Accordion>
+  <Accordion title="¿Puedo reembolsar un pago de PayPal desde Chateea?">
+    Todavía no. Los reembolsos se hacen desde tu panel de PayPal.
+  </Accordion>
+  <Accordion title="¿PayPal está disponible en mi país?">
+    Depende de los países y monedas que admite PayPal. Revisa la [documentación de PayPal](https://www.paypal.com/) si tienes dudas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cobrar pagos en calendarios" icon="credit-card" href="/calendarios/cobrar-pagos-en-calendarios">
+    Cobra o guarda la tarjeta al reservar.
+  </Card>
+  <Card title="Cobrar un anticipo en reservas" icon="money-bill" href="/calendarios/cobrar-anticipo-en-reservas">
+    Cobra solo una parte al reservar.
+  </Card>
+</CardGroup>

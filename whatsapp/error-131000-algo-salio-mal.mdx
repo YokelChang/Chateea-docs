@@ -1,0 +1,106 @@
+---
+title: "Error 131000: algo salió mal"
+description: "Cómo diagnosticar el error genérico 131000 de WhatsApp: caídas de Meta, estado de la cuenta, plantillas y números."
+icon: "bug"
+---
+
+El error **131000** (Something Went Wrong) es el error genérico de la API de WhatsApp. Meta lo devuelve como un error interno del servidor cuando un mensaje falla por un motivo que no puede describir con más precisión. Muchas veces es temporal y se resuelve solo, pero también puede esconder un problema en tu cuenta, en la plantilla o en el número de destino. Esta guía te ayuda a revisarlo en orden.
+
+```json
+"errors": [
+  {
+    "code": 131000,
+    "title": "Something Went Wrong",
+    "message": "Message failed to send due to an unknown error."
+  }
+]
+```
+
+## Causas conocidas
+
+1. **Falla temporal o caída de Meta.** Es lo primero que hay que descartar. Si la plataforma tiene problemas, el error aparece en todos los mensajes.
+2. **Cuenta de WhatsApp Business restringida o marcada** por incumplimiento de políticas, calidad baja o una revisión pendiente.
+3. **Plantilla no aprobada o en mal estado**: en revisión, rechazada, pausada o deshabilitada, o con un nombre o idioma que no coincide con el aprobado.
+4. **Mensaje libre fuera de la ventana de 24 horas.** Fuera de la ventana solo se pueden enviar plantillas aprobadas.
+5. **Número de destino mal formado**: sin código de país o con espacios y caracteres especiales.
+6. **Problema de conexión o autorización** entre tu cuenta de WhatsApp y Chateea, o fallas internas de Meta (por ejemplo, con la firma de claves del negocio o sus servicios internos).
+
+## Cómo solucionarlo
+
+<Steps>
+  <Step title="Revisa el estado de Meta">
+    Entra a [metastatus.com/whatsapp-business-api](https://metastatus.com/whatsapp-business-api). Si hay una incidencia activa, espera a que Meta la resuelva. No sigas revisando tu cuenta: el error desaparecerá cuando se normalice la plataforma.
+  </Step>
+  <Step title="Espera un poco y reintenta">
+    Si no hay caída reportada, espera al menos 30 a 60 segundos y vuelve a enviar. Si el error fue puntual, suele bastar. No reintentes en bucle: deja cada vez más tiempo entre intentos.
+  </Step>
+  <Step title="Revisa el estado de tu cuenta de WhatsApp Business">
+    En Meta Business Suite confirma que tu cuenta está **activa** (no restringida, marcada ni deshabilitada), que el número figura como **conectado**, que su calidad no está en rojo y que no tienes avisos de incumplimiento pendientes.
+  </Step>
+  <Step title="Revisa la plantilla">
+    En **Configuración → WhatsApp → Plantillas** confirma que la plantilla está **activa** y que el nombre y el idioma coinciden exactamente con los aprobados.
+  </Step>
+  <Step title="Revisa el número del contacto">
+    Verifica que incluye el código de país sin espacios, guiones ni caracteres especiales. Prueba también a enviar a otro número que sepas que funciona para ver si el problema es solo de ese contacto.
+  </Step>
+  <Step title="Comprueba la ventana de atención">
+    Si enviabas un mensaje libre y el cliente no te escribió en las últimas 24 horas, usa una plantilla aprobada.
+  </Step>
+  <Step title="Revisa la conexión en Chateea">
+    En **Configuración → WhatsApp** confirma que la integración aparece conectada. La autorización técnica entre tu cuenta de WhatsApp y Chateea la gestiona Chateea: no necesitas crear aplicaciones ni tokens en Meta.
+  </Step>
+  <Step title="Contacta a soporte si persiste">
+    Escribe a soporte de Chateea en **help@chateea.com** para que lo escalemos a Meta. Incluye la respuesta completa del error (con el `fbtrace_id` si lo ves), la hora en que empezó, con qué frecuencia ocurre, si afecta a ciertas plantillas, números o contactos, y qué pasos ya revisaste.
+  </Step>
+</Steps>
+
+## Cómo prevenirlo
+
+- **Revisa la salud de tu cuenta** con frecuencia: estado, calidad del número y avisos de políticas.
+- **Usa plantillas aprobadas** para escribir fuera de la ventana de 24 horas.
+- **Valida el formato de los teléfonos** al importar o capturar contactos.
+- **Suscríbete a las alertas de [metastatus.com](https://metastatus.com)** para enterarte de caídas de WhatsApp.
+
+## Otros códigos relacionados
+
+| Código | Nombre | Descripción |
+| --- | --- | --- |
+| `131005` | Acceso denegado | El permiso no se concedió o se retiró |
+| `131031` | Cuenta bloqueada | Tu cuenta de WhatsApp Business fue restringida por incumplir una política |
+| `131047` | Mensaje de reenganche | Pasaron más de 24 horas desde la última respuesta del cliente. Usa una plantilla |
+| `132001` | La plantilla no existe | No existe en ese idioma o aún no está aprobada |
+| `1` | Error desconocido de la API | Solicitud no válida o posible error del servidor |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Todo funcionaba y de repente aparece 131000. ¿Qué pasó?">
+    Lo más probable es una falla temporal de Meta. Revisa el estado de la plataforma. Si no hay incidencias, confirma que tu cuenta de WhatsApp sigue en buen estado y que la conexión en Chateea está activa.
+  </Accordion>
+  <Accordion title="¿Debo reintentar de inmediato?">
+    Espera al menos 30 a 60 segundos antes del primer reintento y luego deja cada vez más tiempo. Si sigue fallando después de varios intentos, revisa las causas de esta guía.
+  </Accordion>
+  <Accordion title="¿Me cobran los mensajes que fallan con 131000?">
+    No. Los mensajes que fallan antes de entregarse no se cobran.
+  </Accordion>
+  <Accordion title="Solo me pasa con un contacto. ¿Es problema suyo?">
+    Es probable. Puede que el número no tenga WhatsApp, esté mal escrito o que la ventana de 24 horas esté cerrada. Prueba enviarle una plantilla y compara con otro contacto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Error de ventana de 24 horas" icon="clock" href="/whatsapp/error-ventana-de-24-horas-cerrada">
+    Cuando el cliente no te escribió en 24 horas.
+  </Card>
+  <Card title="Cuenta restringida y apelaciones" icon="shield-halved" href="/whatsapp/cuenta-restringida-y-apelaciones">
+    Revisa infracciones y apela.
+  </Card>
+  <Card title="Estados de las plantillas" icon="list-check" href="/whatsapp/estados-de-plantillas">
+    Qué significa cada estado.
+  </Card>
+  <Card title="Solución de problemas de WhatsApp" icon="wrench" href="/whatsapp/solucion-de-problemas">
+    Guía general de problemas.
+  </Card>
+</CardGroup>

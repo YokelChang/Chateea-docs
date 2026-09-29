@@ -1,0 +1,83 @@
+---
+title: "Disparador: Error de mensajería SMS"
+description: "Inicia un flujo cuando un SMS no se entrega y reacciona según el código de error para limpiar tu lista."
+icon: "triangle-exclamation"
+---
+
+El disparador **Error de mensajería: SMS** (Messaging Error - SMS) inicia un flujo de trabajo cada vez que un SMS queda como no entregado y devuelve un código de error. Te sirve para reaccionar automáticamente ante números inválidos, fijos, dados de baja o con problemas de registro, limpiar tu lista de contactos y mejorar la tasa de entrega de tus campañas.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En tu flujo de trabajo, haz clic en **Agregar disparador** y elige **Error de mensajería: SMS** en la lista.
+  </Step>
+  <Step title="Ponle un nombre">
+    Escribe un nombre descriptivo para identificarlo fácilmente dentro del flujo, por ejemplo "SMS rebotado por número inválido".
+  </Step>
+  <Step title="Filtra por código de error (opcional)">
+    Agrega el filtro **Código de error es** y elige uno o varios códigos de la tabla de abajo. Si no agregas filtros, el disparador se activará con cualquiera de ellos.
+  </Step>
+  <Step title="Guarda y agrega acciones">
+    Guarda el disparador y añade las acciones que quieras ejecutar: etiquetar, actualizar un campo, crear una tarea, marcar el contacto en No molestar, etc.
+  </Step>
+</Steps>
+
+## Códigos de error disponibles
+
+| Código | Qué significa |
+| --- | --- |
+| 30007 | Bloqueado por el operador (infracción de contenido o filtrado) |
+| 30034 | Registro A2P pendiente en el número de envío |
+| 30032 | Número gratuito (toll-free) sin verificar |
+| 30005 | Usuario inactivo o el número no existe |
+| 30003 | Número inaccesible o fuera de servicio |
+| 30004 | El destinatario no quiere recibir SMS o tiene No molestar activo |
+| 30006 | Teléfono fijo o número que no puede recibir SMS |
+| 30023 | A2P 10DLC en EE. UU.: se alcanzó el límite diario de mensajes |
+| 21408 | Envío de SMS no habilitado para esa región |
+| 30008 | Error desconocido |
+| 21606 | Número de envío ("De") no válido |
+| 21211 | Número de destino ("Para") no válido |
+| 21614 | El número de destino no es un móvil válido |
+| 21610 | El contacto respondió STOP (se dio de baja) |
+| 30011 | MMS no compatible con el número o la región del destinatario |
+| 30033 | Campaña A2P suspendida o eliminada |
+| 21661 | El número de envío no admite SMS |
+| 21635 | El número de destino no puede ser un teléfono fijo |
+| 30037 | Mensajería saliente deshabilitada |
+| 30002 | Cuenta suspendida |
+
+## Ejemplo: limpiar tu lista después de una campaña
+
+Imagina que envías una campaña de SMS para promocionar un producto nuevo. Quieres separar a los contactos que probablemente tampoco recibirán el próximo mensaje, o marcarlos para volver a intentarlo más adelante.
+
+1. **Disparador:** Error de mensajería: SMS.
+2. **Nombre:** "Error de SMS en campaña".
+3. **Filtro:** Código de error es **30007: Bloqueado por el operador**.
+4. **Acción:** agrega una etiqueta como `sms-filtrado` para revisar el contenido o reintentar más tarde por otro canal.
+
+Si necesitas tratar cada error de forma distinta, deja el disparador sin filtro y añade una acción **Si/Si no** que divida el camino por código. Por ejemplo:
+
+- **21610 (STOP):** no vuelvas a enviar SMS y respeta la baja.
+- **30005, 21211, 21614:** marca el número como inválido y pide otro dato de contacto por correo.
+- **30006, 21635 (fijo):** etiqueta el contacto para llamarlo en lugar de escribirle.
+- **30034, 30033, 30032:** notifica a tu equipo para revisar el registro A2P o la verificación del número.
+
+<Tip>
+  Combina este disparador con una lista inteligente de contactos etiquetados para revisar periódicamente los números problemáticos y mantener limpia tu base de datos. Una lista limpia mejora tu reputación de envío.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si no agrego ningún filtro?">
+    El disparador se activa con cualquier SMS no entregado que devuelva uno de los códigos de la tabla. Usa los filtros para quedarte solo con los errores que te interesan.
+  </Accordion>
+  <Accordion title="¿Puedo elegir varios códigos en el mismo disparador?">
+    Sí. Puedes agregar varios códigos en el filtro o crear disparadores separados si quieres acciones distintas para cada uno.
+  </Accordion>
+  <Accordion title="¿Qué hago si recibo muchos errores de registro A2P?">
+    Revisa el estado de tu registro A2P 10DLC o la verificación de tu número gratuito. Si tienes dudas, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>

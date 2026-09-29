@@ -1,0 +1,123 @@
+---
+title: "Typeform en flujos de trabajo"
+description: "Inicia automatizaciones con cada respuesta de Typeform y crea, duplica o consulta formularios desde tus flujos."
+icon: "file-lines"
+---
+
+La integración con Typeform conecta tus formularios de Typeform con los flujos de trabajo de Chateea. Cada vez que alguien responde un formulario, puedes arrancar una automatización al instante: crear o actualizar el contacto, avisar a tu equipo, crear tareas o enviar un correo de seguimiento. También puedes trabajar con Typeform desde el flujo, por ejemplo para duplicar un formulario o buscar respuestas anteriores.
+
+## Para qué te sirve
+
+- **Respuesta inmediata:** el flujo empieza en cuanto llega una respuesta, sin esperas ni revisiones manuales.
+- **Formularios por cliente o proyecto:** crea o duplica formularios desde una automatización para que cada cliente tenga su propia copia.
+- **Aprovecha respuestas anteriores:** busca respuestas ya enviadas para personalizar el seguimiento o completar la ficha del contacto.
+- **Menos cambios de herramienta:** gestionas las tareas más comunes de Typeform sin salir de Chateea.
+
+## Disparador y acciones disponibles
+
+| Tipo | Nombre | Qué hace |
+| --- | --- | --- |
+| Disparador | **Nueva respuesta** (New Entry, instantáneo) | Se activa en el momento en que alguien envía una respuesta en Typeform e inscribe el registro en el flujo. |
+| Acción | **Crear formulario vacío** (Create Empty Form) | Crea un formulario en blanco en el espacio de trabajo conectado y devuelve el ID y la URL del formulario nuevo. |
+| Acción | **Duplicar formulario existente** (Duplicate Existing Form) | Copia un formulario con su estructura, lógica, preguntas y diseño, y devuelve el ID y la URL de la copia. |
+| Acción | **Buscar respuestas en un formulario** (Search Responses In A Form) | Recupera respuestas ya enviadas en un formulario para usarlas en condiciones o en pasos posteriores. |
+
+El disparador es instantáneo: Typeform avisa a Chateea mediante un webhook en cuanto se envía la respuesta, así que el flujo arranca en segundos.
+
+<Note>
+  El disparador y las acciones de Typeform son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Conectar tu cuenta de Typeform
+
+Puedes conectar Typeform de dos maneras:
+
+- **Desde el flujo:** abre **Automatización → Flujos de trabajo**, agrega un disparador o una acción de Typeform (búscalo por su nombre) y haz clic en **Conectar tu cuenta**. Completa la autorización en la ventana emergente y elige la cuenta conectada.
+- **Desde la configuración:** ve a **Configuración → Integraciones**, busca **Typeform** y completa la autorización.
+
+Si ya tienes la cuenta conectada, verás los campos de configuración de inmediato.
+
+<Tip>
+  Si cambias la cuenta conectada en un paso, los campos que dependen de Typeform pueden recargarse o vaciarse. Revisa el paso antes de guardarlo.
+</Tip>
+
+## Crear tu primer flujo con Typeform
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y haz clic en **Crear flujo de trabajo**, o abre uno que ya tengas.
+  </Step>
+  <Step title="Agrega el disparador Nueva respuesta">
+    Elige el disparador **Nueva respuesta** de Typeform y selecciona el formulario que quieres escuchar.
+  </Step>
+  <Step title="Prueba el disparador">
+    Haz clic en **Probar disparador** y luego en **Obtener datos del disparador**. El sistema queda esperando una respuesta de muestra: envía el formulario una vez y la respuesta aparecerá como muestra. Selecciónala y guarda el disparador.
+  </Step>
+  <Step title="Asigna las respuestas a los datos del contacto">
+    Con la muestra guardada, puedes elegir cada pregunta por su título y usar su respuesta en los pasos siguientes. Agrega una acción para crear o actualizar el contacto y asigna el correo, el teléfono y el nombre que llegan del formulario.
+  </Step>
+  <Step title="Agrega el seguimiento">
+    Suma las acciones que necesites: enviar un correo, notificar a un usuario, crear una oportunidad o una tarea.
+  </Step>
+  <Step title="Publica y verifica">
+    Publica el flujo, envía el formulario una vez más y confirma en el **historial de ejecución** que la respuesta entró y que cada paso se ejecutó.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+### Alta de clientes nuevos
+
+- **Disparador:** Typeform, Nueva respuesta, con el filtro Nombre del formulario igual a "Alta de clientes".
+- **Acciones:** crear una tarea en tu herramienta de proyectos (por ejemplo ClickUp), actualizar los campos del contacto y enviar una notificación interna.
+
+Cuando un cliente completa el formulario, tu equipo recibe la tarea con sus datos, la ficha del contacto queda al día y alguien empieza el proceso de alta de inmediato.
+
+### Seguimiento según el contenido del pedido
+
+- **Disparador:** Typeform, Nueva respuesta, con el filtro Nombre del formulario igual a "Pedido".
+- **Acciones:** crear un documento con los datos del pedido y agregar una condición que revise un campo de la respuesta, por ejemplo si `total_items` es igual a 3.
+- **Si se cumple:** actualizar el contacto, avisar al equipo de operaciones y enviar un correo de confirmación.
+- **Si no se cumple:** terminar el flujo.
+
+### Alta según la etapa del pipeline
+
+- **Disparador:** Etapa del pipeline cambiada, con el filtro Pipeline igual a "Alta de clientes".
+- **Acción:** Buscar respuestas en un formulario (Typeform).
+- **Si hay respuestas:** crear el documento de alta, actualizar el contacto, avisar al equipo y enviar un correo al cliente.
+- **Si no hay respuestas:** duplicar el formulario de alta para ese cliente, avisar al equipo y enviarle un correo pidiéndole que lo complete.
+
+## Solución de problemas
+
+Si un paso falla, revisa el **historial de ejecución** del flujo para ver el error concreto (por ejemplo, un ID de formulario inválido o permisos insuficientes). Si la autorización venció, vuelve a conectar Typeform y repite la prueba.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un plan de pago de Typeform?">
+    No. La integración funciona con cuentas gratuitas y de pago. Los límites propios de tu plan de Typeform (cantidad de respuestas, eliminación de marca, etc.) siguen aplicando.
+  </Accordion>
+  <Accordion title="¿Está disponible para todas las cuentas?">
+    Sí, para cualquier cuenta que tenga acceso a flujos de trabajo e integraciones.
+  </Accordion>
+  <Accordion title="¿Dónde se guardan los formularios nuevos o duplicados?">
+    En el espacio de trabajo de Typeform asociado a la cuenta que elegiste en ese paso.
+  </Accordion>
+  <Accordion title="¿Puedo editar las preguntas de un formulario desde un flujo?">
+    Por ahora no. Las acciones disponibles son crear un formulario vacío, duplicar un formulario existente y buscar respuestas.
+  </Accordion>
+  <Accordion title="¿Qué tan rápido responde el disparador?">
+    Es instantáneo: los datos llegan al flujo pocos segundos después de que se envía la respuesta en Typeform.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores, acciones y flujos.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+</CardGroup>

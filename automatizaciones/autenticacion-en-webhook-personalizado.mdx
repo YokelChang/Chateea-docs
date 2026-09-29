@@ -1,0 +1,80 @@
+---
+title: "Autenticación y credenciales en el webhook personalizado"
+description: "Conecta APIs externas con OAuth2, Basic auth, Bearer token o API key y guarda tus claves de forma segura y enmascarada."
+icon: "key"
+---
+
+La acción **Webhook personalizado** envía datos de tus flujos a cualquier API externa. La mayoría de esas APIs exigen autenticación, y Chateea te permite configurarla de forma segura: puedes usar **OAuth2** para conectar servicios como Google, Facebook o LinkedIn, o guardar credenciales de tipo **Basic auth**, **Bearer token** o **API key** que quedan ocultas y protegidas.
+
+## Métodos de autenticación disponibles
+
+| Método | Cuándo usarlo |
+| --- | --- |
+| **OAuth2** | APIs grandes que usan este estándar de autorización, como las de Google, Facebook o LinkedIn. Es el método más seguro para este tipo de servicios. |
+| **Basic auth** | APIs que piden usuario y contraseña. |
+| **Bearer token** | APIs que piden un token de acceso en la cabecera. |
+| **API key** | APIs que piden una clave de API. |
+
+## Usar OAuth2
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo, agrega la acción **Webhook personalizado**.
+  </Step>
+  <Step title="Elige OAuth2">
+    En el tipo de autorización, selecciona **OAuth2**.
+  </Step>
+  <Step title="Selecciona o solicita un token">
+    Elige un token que ya tengas guardado o solicita uno nuevo siguiendo el proceso de autorización del servicio.
+  </Step>
+</Steps>
+
+### Gestionar los tokens de OAuth2
+
+1. Ve a **Automatización → Flujos de trabajo** y abre **Configuración global de flujos de trabajo**.
+2. En la sección **Gestionar tokens**, haz clic en **Gestionar token**.
+3. Se abre una ventana con la lista de todos tus tokens. Desde ahí puedes **actualizarlos** o **eliminarlos**.
+
+## Usar Basic auth, Bearer token o API key
+
+Las claves secretas de estos métodos se guardan cifradas y se muestran enmascaradas en la interfaz. Nunca aparecen en texto plano, así que no se filtran por accidente en una captura de pantalla o al compartir un flujo. Cada clave se identifica por un nombre, no por su valor.
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo, agrega la acción **Webhook personalizado**.
+  </Step>
+  <Step title="Elige el tipo de autenticación">
+    Selecciona **Basic auth**, **Bearer token** o **API key**.
+  </Step>
+  <Step title="Crea la clave">
+    Elige **Crear nueva clave**. Escribe un **nombre** para identificarla y el **valor** (la credencial real). Al guardarla, el valor queda enmascarado.
+  </Step>
+  <Step title="Reutiliza o gestiona tus claves">
+    En otros webhooks, elige la clave guardada desde el menú desplegable. Desde ese mismo menú puedes eliminar claves que ya no uses.
+  </Step>
+</Steps>
+
+## Seguridad y permisos
+
+- **Solo en tu cuenta:** las claves solo están disponibles dentro de la cuenta de Chateea donde se crearon.
+- **Quién puede eliminarlas:** solo los administradores de la cuenta o la persona que creó la clave.
+- **Reemplazo automático:** cuando actualizas una clave por una nueva, la anterior se elimina automáticamente.
+
+<Tip>
+  Usa nombres descriptivos para tus claves, por ejemplo "API facturación producción", y crea claves distintas para pruebas y producción. Así evitas enviar datos reales a un entorno de pruebas.
+</Tip>
+
+<Note>
+  El Webhook personalizado es una acción premium. Consulta [Acciones premium y planes de ejecuciones](/automatizaciones/acciones-premium-y-planes-de-ejecuciones) para saber cómo se cobra.
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones premium y planes" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las ejecuciones premium.
+  </Card>
+  <Card title="Registros de ejecución" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa la respuesta de cada webhook.
+  </Card>
+</CardGroup>

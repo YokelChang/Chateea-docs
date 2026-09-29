@@ -1,0 +1,165 @@
+---
+title: "Nodo Agente de IA en Agent Studio"
+description: "Configura la indicación, el modelo, el modo, las herramientas y las variables del nodo Agente de IA."
+icon: "robot"
+---
+
+El nodo **Agente de IA** es la inteligencia de un agente de flujo en Agent Studio. Recibe lo que llega del disparador o del nodo anterior, entiende la intención, sigue tus instrucciones, decide si necesita una herramienta, captura datos y pasa el resultado al siguiente paso. A diferencia de la lógica fija, se adapta al contexto de cada conversación.
+
+<Note>
+Agent Studio se usa para mantener tus agentes de flujo existentes. Los agentes nuevos se crean como [agentes gestionados](/ia/agentes-gestionados-agent-studio).
+</Note>
+
+## Los cinco elementos del nodo
+
+| Elemento | Qué define |
+| --- | --- |
+| **Indicación** (prompt) | El rol, el tono, las tareas y cuándo usar herramientas. |
+| **Modelo** | La capacidad de razonamiento y la velocidad de respuesta. |
+| **Modo** | Si el nodo conversa con el usuario o trabaja en segundo plano. |
+| **Herramientas** | Lo que puede hacer además de responder: buscar, enrutar, llamar a APIs, generar contenido. |
+| **Variables** | Los datos que usa como contexto y los que extrae durante la conversación. |
+
+### Indicación
+
+La indicación le dice al nodo cómo comportarse. Una buena indicación incluye:
+
+- El rol del agente y el objetivo del nodo.
+- Qué debe hacer y qué no.
+- El tono o estilo.
+- Cuándo usar cada herramienta.
+- Qué información debe capturar.
+- Qué resultado debe pasar al siguiente nodo.
+
+Ejemplo:
+
+```text
+Eres un asistente que califica solicitudes de soporte. Haz preguntas para aclarar cuando haga falta, identifica el tipo de problema del cliente, guarda la categoría del problema en una variable de ejecución y usa la base de conocimiento cuando pregunten por el producto.
+```
+
+### Modelo
+
+Los modelos de mayor capacidad (como GPT-5 o GPT-4.1) razonan mejor. Los modelos Mini y Nano son más rápidos y livianos, y GPT-4o ofrece baja latencia. Por ejemplo, ante "estoy viendo opciones para mi negocio", un modelo potente detecta mejor que se trata de un posible cliente, mientras que uno liviano puede responder de forma más genérica.
+
+### Modo
+
+- **Conversacional:** el nodo responde al usuario y maneja la interacción. Ideal para contestar preguntas sobre precios o servicios.
+- **Basado en tareas:** el nodo trabaja en silencio, sin enviar respuestas. Ideal para extraer el correo del usuario y actualizar el CRM en segundo plano.
+
+### Herramientas
+
+Según la indicación y el contexto, el nodo decide cuándo necesita una herramienta y cuál usar:
+
+| Herramienta | Úsala para |
+| --- | --- |
+| **Enrutador** | Llevar la conversación a otro camino (ventas, soporte, alternativa) según la intención. |
+| **Buscar en la base de conocimiento** | Responder preguntas frecuentes, detalles de producto, precios o soporte con tu información. |
+| **Buscar en la web** | Responder preguntas que requieren datos actuales o externos. |
+| **Servidor MCP** | Conectar con sistemas externos o herramientas personalizadas mediante Model Context Protocol. |
+| **Acciones** | Hacer cambios reales en Chateea: actualizar datos del CRM, enviar notificaciones o iniciar flujos de trabajo. |
+| **Llamada a API** | Enviar y recibir datos de otras aplicaciones. Configuras el endpoint y usas variables para los datos dinámicos. |
+| **Generación de texto** | Crear respuestas, resúmenes o salidas estructuradas. |
+| **Generación de imagen** | Crear imágenes a partir de una indicación. |
+| **Generación de video** | Crear videos, con ajustes como resolución y relación de aspecto. |
+| **Generación de audio** | Convertir texto en voz con ajustes de voz. |
+
+### Variables
+
+- Las **variables de entrada** dan contexto al nodo (datos del disparador o de nodos anteriores).
+- Las **variables de ejecución** capturan datos estructurados durante la conversación. Por ejemplo, si alguien escribe "Hola, soy Rahul y quiero una demo", el nodo puede guardar Nombre = Rahul y Requerimiento = Demo para usarlos después.
+
+## Cuándo usar el nodo Agente de IA
+
+Úsalo cuando la decisión depende del contexto: respuestas conversacionales, calificación de prospectos, clasificación de solicitudes de soporte, consultas a la base de conocimiento, búsquedas web, extracción de datos, actualizaciones del CRM o enrutamiento dinámico.
+
+Si los pasos siempre deben ejecutarse en el mismo orden, usa el [nodo secuencial](/ia/nodo-secuencial-agent-studio).
+
+## Cómo configurar el nodo
+
+<Steps>
+  <Step title="Agrega el nodo">
+    Desde el panel de nodos, agrega **Agente de IA** al lienzo y conéctalo al disparador de inicio o al nodo anterior.
+  </Step>
+  <Step title="Escribe la indicación">
+    En el panel de configuración, describe el rol, las responsabilidades, el tono y cuándo usar herramientas. Para insertar datos dinámicos, usa el ícono de variables del campo. Por ejemplo, con `{{contact.name}}` el nodo puede saludar "Hola Rahul, ¿en qué te ayudo?". Agrega solo las variables necesarias para que la indicación siga siendo clara.
+  </Step>
+  <Step title="Mejora la indicación (opcional)">
+    Usa **Mejorar indicación** para obtener una versión más clara y estructurada. Revisa la sugerencia y acéptala o recházala para conservar la tuya.
+  </Step>
+  <Step title="Elige el modelo">
+    Usa un modelo potente para razonamientos complejos y uno liviano para tareas simples y rápidas.
+  </Step>
+  <Step title="Elige el modo">
+    **Conversacional** si el nodo debe responder al usuario, o **Basado en tareas** si debe trabajar en segundo plano.
+  </Step>
+  <Step title="Conecta solo las herramientas necesarias">
+    Agrega las herramientas que tu caso requiere, como base de conocimiento, enrutador o búsqueda web. Menos herramientas hacen que el nodo elija mejor.
+  </Step>
+  <Step title="Define las variables de ejecución">
+    Para cada dato que quieras capturar, define el **Nombre** (por ejemplo, `user_name` o `email`), el **Tipo** y una **Descripción** clara de qué debe extraer. El nodo usa el nombre y la descripción para encontrar el dato en la conversación.
+  </Step>
+  <Step title="Conecta el siguiente paso">
+    Une el nodo con el siguiente paso del flujo para que su respuesta, acción o datos extraídos continúen.
+  </Step>
+</Steps>
+
+### Tipos de variable
+
+| Tipo | Para qué | Ejemplo |
+| --- | --- | --- |
+| Texto (String) | Valores de texto | Nombre, correo, consulta |
+| Número (Number) | Valores numéricos | Presupuesto, cantidad |
+| Booleano (Boolean) | Verdadero o falso | ¿Está interesado? |
+| JSON | Datos estructurados complejos | Varios datos agrupados |
+
+### Fuentes de variables disponibles
+
+- **Configuración global:** valores compartidos por todo el agente.
+- **Variables de entrada:** datos que llegan de nodos anteriores o del disparador.
+- **Variables de ejecución:** datos extraídos durante la conversación.
+- **Cuenta:** datos de tu negocio.
+- **Valores personalizados:** constantes que defines tú.
+- **Ahora mismo:** fecha y hora actuales.
+- **Contacto:** nombre, correo, teléfono y otros datos del contacto.
+
+Más detalles en [Variables y valores personalizados en Agent Studio](/ia/variables-y-valores-personalizados-agent-studio).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Conviene que un nodo haga muchas tareas?">
+    Es mejor que cada nodo Agente de IA tenga un rol principal. Demasiadas tareas distintas lo hacen más difícil de controlar y de probar.
+  </Accordion>
+  <Accordion title="¿Cómo decide qué herramienta usar?">
+    Según la indicación, las herramientas conectadas, lo que escribe el usuario y el contexto. Unas instrucciones claras sobre cuándo usar cada herramienta mejoran la elección.
+  </Accordion>
+  <Accordion title="¿Puede usar mi base de conocimiento?">
+    Sí, si conectas la herramienta **Buscar en la base de conocimiento** y la indicación explica cuándo usarla.
+  </Accordion>
+  <Accordion title="¿Puede conectarse con sistemas externos?">
+    Sí, con las herramientas de llamada a API o servidor MCP.
+  </Accordion>
+  <Accordion title="¿Por qué mi variable de ejecución queda vacía?">
+    Puede que el usuario no haya dado ese dato, que la descripción de la variable sea confusa o que la indicación no le pida capturarlo. Ajusta la indicación y la descripción y vuelve a probar.
+  </Accordion>
+  <Accordion title="¿Debo probar después de cada cambio?">
+    Sí. Prueba cada vez que cambies la indicación, el modelo, el modo, las herramientas, las variables o las conexiones.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Nodo secuencial" icon="list-ol" href="/ia/nodo-secuencial-agent-studio">
+    Ejecuta pasos en un orden fijo.
+  </Card>
+  <Card title="Nodo enrutador" icon="route" href="/ia/nodo-enrutador-agent-studio">
+    Divide la conversación por intención o por reglas.
+  </Card>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Conoce el constructor y sus nodos.
+  </Card>
+  <Card title="Prueba y depura agentes" icon="bug" href="/ia/probar-y-depurar-agentes-agent-studio">
+    Revisa cada paso antes de salir en vivo.
+  </Card>
+</CardGroup>

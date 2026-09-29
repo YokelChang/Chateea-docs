@@ -1,0 +1,102 @@
+---
+title: "Historial de versiones en el constructor con IA"
+description: "Restaura cualquier versión que genere el constructor de flujos con IA desde las tarjetas de versión del chat."
+icon: "wand-magic-sparkles"
+---
+
+Cuando usas el **constructor de flujos con IA**, cada vez que el asistente crea o modifica tu flujo se guarda esa iteración. Cada cambio genera una **tarjeta de versión** dentro del chat, y desde ella puedes volver a esa versión con un clic. Así puedes experimentar con cambios grandes sin miedo a perder lo que ya funcionaba.
+
+## Para qué te sirve
+
+- **Recuperación con un clic:** si la IA quita un disparador, sobrescribe la configuración de una acción o hace un cambio que no querías, vuelves a la versión anterior sin reconstruir nada.
+- **Sin cortar la conversación:** restauras versiones sin salir del asistente y sigues trabajando de inmediato.
+- **Experimentar con seguridad:** prueba cambios arriesgados, compara resultados y revierte si no te convencen.
+- **Nada se pierde:** restaurar una versión antigua no borra las más nuevas; puedes ir y volver entre ellas.
+- **Transparencia:** siempre sabes qué versión está en el lienzo y cuáles no se han guardado.
+
+## Cómo funcionan las tarjetas de versión
+
+| Elemento | Qué hace |
+| --- | --- |
+| **Tarjeta de versión** | Aparece en el chat cada vez que la IA crea o edita el flujo, en el punto exacto de la conversación donde ocurrió el cambio. Juntas forman una línea de tiempo. |
+| **Borde morado** | Marca la tarjeta que coincide con lo que ves ahora en el lienzo. |
+| **Menú de tres puntos** | Incluye **Restaurar esta versión** y **Mostrar en historial de versiones**. |
+| **Navegación en ambos sentidos** | Puedes restaurar versiones antiguas y luego volver a una más nueva. Ninguna versión se elimina al restaurar. |
+
+## Cómo restaurar una versión
+
+<Steps>
+<Step title="Pide un cambio a la IA">
+Abre el constructor de flujos con IA y escribe lo que quieres crear o modificar.
+</Step>
+<Step title="Revisa la primera tarjeta">
+Cuando la IA termina, aparece una tarjeta de versión en el chat con borde morado: es la versión que está en el lienzo.
+</Step>
+<Step title="Sigue iterando">
+Pide otro cambio. La IA genera una nueva versión y una nueva tarjeta, y el borde morado pasa a esa tarjeta. Las anteriores siguen visibles en el chat.
+</Step>
+<Step title="Restaura la que prefieras">
+En cualquier tarjeta anterior, abre el menú de tres puntos y elige **Restaurar esta versión**. El lienzo vuelve a esa versión al instante y el borde morado se mueve a esa tarjeta.
+</Step>
+</Steps>
+
+<Tip>
+Puedes restaurar versiones las veces que quieras y en cualquier orden. Es una forma práctica de comparar dos enfoques distintos para el mismo flujo.
+</Tip>
+
+## Indicador "Sin guardar"
+
+Si el **guardado automático** está desactivado en tu cuenta, las tarjetas de las versiones que no has guardado muestran la etiqueta **Sin guardar**. Con el guardado automático activado, todas las versiones se guardan solas y la etiqueta nunca aparece.
+
+<Warning>
+Si ves la etiqueta **Sin guardar**, guarda el flujo manualmente antes de salir. Las versiones sin guardar se pierden si abandonas el flujo.
+</Warning>
+
+## Relación con el historial de versiones
+
+Las tarjetas del chat se sincronizan con la pestaña **Historial de versiones** del flujo. Ahí verás, en orden cronológico, tanto las versiones generadas por la IA como las ediciones manuales. Esa pestaña es la referencia oficial para la numeración de versiones.
+
+Para ver una versión del chat en contexto, abre el menú de tres puntos de su tarjeta y elige **Mostrar en historial de versiones**. Se abrirá la pestaña con esa versión resaltada.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué pasa con las versiones más nuevas si restauro una anterior?">
+Siguen disponibles y puedes restaurarlas cuando quieras. Restaurar no borra ninguna versión.
+</Accordion>
+<Accordion title="¿Mis ediciones manuales generan tarjetas en el chat?">
+No. Las tarjetas solo aparecen para los cambios hechos por la IA. Tus ediciones manuales sí aparecen en la pestaña **Historial de versiones**.
+</Accordion>
+<Accordion title="¿Cómo sé qué versión está en el lienzo?">
+Es la tarjeta con borde morado. El borde se actualiza cada vez que restauras una versión o la IA genera una nueva.
+</Accordion>
+<Accordion title="¿Puedo restaurar desde la pestaña Historial de versiones?">
+Sí. Esa pestaña muestra todas las versiones, incluidas las de la IA, y puedes restaurarlas con los controles habituales.
+</Accordion>
+<Accordion title="¿Hay un límite de tarjetas por conversación?">
+No. Cada cambio de la IA genera una tarjeta nueva, sin límite.
+</Accordion>
+<Accordion title="¿Tengo que guardar después de restaurar?">
+Solo si el guardado automático está desactivado. Con el guardado automático activo, la versión restaurada se guarda sola.
+</Accordion>
+<Accordion title="¿Puedo borrar tarjetas del chat?">
+No. Las tarjetas forman parte permanente de la conversación como registro de todas las versiones generadas por la IA.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Constructor de flujos con IA" icon="wand-magic-sparkles" href="/automatizaciones/constructor-de-flujos-con-ia">
+Crea y edita flujos describiéndolos en lenguaje natural.
+</Card>
+<Card title="Historial de versiones de flujos" icon="clock-rotate-left" href="/automatizaciones/historial-de-versiones-de-flujos">
+Revisa y restaura versiones completas del flujo.
+</Card>
+<Card title="Guardado automático de flujos" icon="floppy-disk" href="/automatizaciones/guardado-automatico-de-flujos">
+Guarda tus cambios en borrador mientras trabajas.
+</Card>
+<Card title="Notas en flujos de trabajo" icon="note-sticky" href="/automatizaciones/notas-en-flujos-de-trabajo">
+Documenta la lógica de tus automatizaciones.
+</Card>
+</CardGroup>

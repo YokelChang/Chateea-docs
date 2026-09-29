@@ -1,0 +1,54 @@
+---
+title: "Acción: generar enlace de reserva de un solo uso"
+description: "Crea y envía automáticamente un enlace de reserva único a cada contacto desde un flujo de trabajo."
+icon: "bolt"
+---
+
+La acción **Generar enlace de reserva de un solo uso** crea, dentro de un flujo de trabajo, un enlace de reserva único para cada contacto que entra en la automatización. Ese enlace caduca en cuanto el contacto agenda su cita. Así puedes enviar invitaciones personales a reservar sin generar enlaces a mano y sin exponer tu calendario completo.
+
+## Ventajas
+
+- **Sin trabajo manual**: cada contacto recibe su propio enlace automáticamente, sin errores.
+- **Se adapta a cualquier proceso**: puedes usarlo con el disparador que necesites (un formulario, una etiqueta, un cambio de etapa en el pipeline, etc.).
+- **Más control de tus reservas**: cada enlace sirve para una sola cita.
+
+## Configurar la acción
+
+<Steps>
+  <Step title="Crea el flujo de trabajo">
+    Ve a **Automatización** y crea un flujo de trabajo nuevo. Agrega el disparador que iniciará el proceso según tu caso.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+** para agregar una acción. En la categoría **Citas**, elige **Generar enlace de reserva de un solo uso**.
+  </Step>
+  <Step title="Elige el calendario">
+    Selecciona el calendario para el que se generará el enlace.
+  </Step>
+  <Step title="Agrega una acción de envío">
+    Debajo, agrega una acción de comunicación, por ejemplo **Enviar correo**, para hacer llegar el enlace al contacto.
+  </Step>
+  <Step title="Inserta el enlace en el mensaje">
+    En el cuerpo del mensaje, abre el selector de valores personalizados, busca **Generar enlace de reserva de un solo uso** y elige **Enlace de un solo uso**. Cada vez que se dispare el flujo, se insertará el enlace único generado para ese contacto.
+  </Step>
+  <Step title="Personaliza y guarda">
+    Redacta el resto del mensaje y haz clic en **Guardar**.
+  </Step>
+  <Step title="Publica el flujo">
+    Publica el flujo de trabajo. A partir de ahora, cada contacto que entre recibirá su propio enlace de reserva.
+  </Step>
+</Steps>
+
+<Tip>
+  Ejemplo práctico: cuando un cliente potencial pasa a la etapa "Calificado" de tu pipeline, envíale automáticamente un correo con un enlace de un solo uso para agendar una llamada con tu equipo de ventas.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enlace de reserva de un solo uso" icon="link" href="/calendarios/enlace-de-reserva-de-un-solo-uso">
+    Qué es y cómo compartirlo manualmente.
+  </Card>
+  <Card title="Valores personalizados en calendarios" icon="code" href="/calendarios/valores-personalizados-en-calendarios">
+    Inserta datos reutilizables en tus citas y mensajes.
+  </Card>
+</CardGroup>

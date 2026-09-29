@@ -1,0 +1,136 @@
+---
+title: "Notificaciones de citas por correo, SMS, WhatsApp y app"
+description: "Configura los avisos de reserva, confirmación, cancelación, reprogramación, recordatorio y seguimiento de cada calendario."
+icon: "bell"
+---
+
+Cada calendario puede avisar automáticamente cuando se reserva, confirma, cancela o reprograma una cita, además de enviar recordatorios antes y seguimientos después. Estos avisos salen por **correo**, **SMS**, **WhatsApp** y como **notificaciones en la app**, y puedes personalizarlos para el contacto, sus invitados, tu equipo o cualquier correo o número adicional.
+
+## Tipos de notificación
+
+| Notificación | Cuándo se envía |
+| --- | --- |
+| **Cita reservada (sin confirmar)** | En cuanto se reserva una cita con estado sin confirmar. |
+| **Cita reservada (confirmada)** | En cuanto se reserva una cita confirmada o cuando una cita cambia a confirmada. |
+| **Cancelación** | Cuando una cita se cancela, se marca como no asistió o como no válida. |
+| **Reprogramación** | Cuando cambia la fecha o la hora de la cita. |
+| **Recordatorio** | Antes de la cita, con la anticipación que definas. |
+| **Seguimiento** | Después de la cita, con el tiempo que definas. |
+
+<Tip>
+Para evitar reuniones perdidas, cada miembro del equipo puede recibir un aviso interno cuando se reserva una cita **sin enlace de reunión ni ubicación**. Se activa en **Configuración → Mi equipo → [usuario] → Configuración de notificaciones → Notificaciones de calendario → Avisar cuando falte el enlace o la ubicación de la reunión**.
+</Tip>
+
+## Abrir la configuración de notificaciones
+
+Las notificaciones se configuran por calendario.
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Calendarios → Configuración de calendarios** y abre el calendario que quieres configurar.
+  </Step>
+  <Step title="Ve a Notificaciones">
+    Abre la pestaña **Notificaciones**. Verás la lista de tipos de notificación.
+  </Step>
+  <Step title="Personaliza cada notificación">
+    Haz clic en la notificación que quieres configurar y elige el canal (Correo, En la app, SMS o WhatsApp). Para cada tipo de destinatario (contacto, invitado, usuario o destinatarios adicionales) puedes personalizar el contenido o desactivar el envío.
+  </Step>
+</Steps>
+
+## Notificaciones por correo
+
+- En la pestaña **Correo**, asegúrate de que el interruptor esté encendido.
+- Elige una plantilla de correo o escribe directamente el asunto y el cuerpo. Para quitar la plantilla elegida, selecciona **Ninguna** (la primera opción de la lista).
+- Si quieres, envía un correo de prueba para ver cómo queda.
+- En **Recordatorios**, define con cuánta anticipación se envía. En **Seguimientos**, cuánto tiempo después de la cita. Puedes agregar varios tiempos.
+- Guarda los cambios.
+
+Ten en cuenta:
+
+- **Correos adicionales**: agrega las direcciones de cualquier otra persona que deba recibir el aviso.
+- Puedes crear tus plantillas en **Marketing → Correos → Plantillas**. Asegúrate de que la plantilla tenga **asunto**, o el correo no se entregará.
+- Si activaste **Agregar invitados** y usas un formulario personalizado, puedes enviar ese formulario a los invitados: Chateea les manda un correo automático con el enlace cuando se confirma la cita. Para evitar correos duplicados, revisa que no tengas además una confirmación para invitados en la notificación **Cita reservada (confirmada)**.
+
+## Notificaciones en la app
+
+- En la pestaña **En la app**, enciende el interruptor y elige qué usuarios reciben la notificación.
+- En recordatorios y seguimientos, define cuándo se envía (antes o después de la cita).
+
+Ten en cuenta:
+
+- Puedes activar solo las que te interesan, por ejemplo solo la confirmación.
+- En los **calendarios de eventos**, por defecto la reciben los administradores de la cuenta.
+- En los demás tipos de calendario, por defecto la recibe el **usuario asignado**.
+
+## Notificaciones por SMS
+
+- En la pestaña **SMS**, elige los destinatarios: **Contacto**, **Usuario asignado** o **Números adicionales**.
+- Elige una plantilla de SMS, edítala o crea una nueva.
+- Si quieres, envía un SMS de prueba.
+- En recordatorios y seguimientos, define cuándo se envía. Puedes agregar varios tiempos.
+- Guarda los cambios.
+
+Ten en cuenta:
+
+- Los números deben incluir el **código de país**.
+- Los SMS se cobran por segmentos y el consumo se descuenta de la billetera de tu cuenta. Mantén los mensajes cortos para controlar el costo.
+
+## Notificaciones por WhatsApp
+
+- En la pestaña **WhatsApp**, enciende el interruptor.
+- Elige los destinatarios: **Contacto**, **Usuario asignado** o **Números adicionales**.
+- Elige o crea una **plantilla aprobada** para ese tipo de notificación.
+- Usa **Enviar notificación de prueba de WhatsApp** para ver cómo llega.
+- Haz clic en **Guardar**.
+
+Ten en cuenta:
+
+- Tu cuenta de WhatsApp Business debe estar conectada y verificada.
+- Solo se pueden usar **plantillas aprobadas** por Meta. Usa **Obtener plantillas nuevas** para actualizar la lista.
+- Prueba siempre el formato y el contenido antes de activarla.
+
+## Personalizar con valores personalizados
+
+Puedes incluir tus propios datos en correos, SMS y WhatsApp. Al editar el mensaje, haz clic en el ícono de campos combinados `{ }` y elige una opción de la sección **Valores personalizados**. Así agregas enlaces, notas internas o datos específicos sin editar cada mensaje a mano.
+
+## Enlaces de reprogramación o cancelación vacíos
+
+Si `{{appointment.reschedule_link}}` o `{{appointment.cancellation_link}}` llegan vacíos, revisa lo siguiente:
+
+- **El mensaje debe estar ligado a una cita**: estos campos necesitan datos de una cita para completarse.
+- **Revisa el disparador**: si el mensaje sale de un flujo de trabajo, usa un disparador de citas, por ejemplo **Estado de la cita**.
+- **Prueba con una cita real**: algunas pruebas no incluyen datos de cita. Reserva una cita de prueba para comprobar que los campos se completan.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el enlace de reprogramación o cancelación llega vacío?">
+    Porque el mensaje no tiene acceso a una cita. Asegúrate de que se envía desde la notificación del calendario o desde un flujo con disparador de citas.
+  </Accordion>
+  <Accordion title="¿Qué disparadores de flujos de trabajo dan contexto de cita?">
+    Los disparadores de citas, como **Estado de la cita**.
+  </Accordion>
+  <Accordion title="¿Por qué un campo de la cita funciona con una reserva real pero no en la prueba?">
+    Algunas pruebas no incluyen información de una cita. Reserva una cita de prueba para que Chateea tenga los datos necesarios.
+  </Accordion>
+  <Accordion title="¿Puedo usar datos de la cita en correos y SMS?">
+    Sí. Puedes agregar campos combinados de la cita y valores personalizados en correo, SMS y WhatsApp.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Recordatorios y ausencias" icon="bell" href="/calendarios/recordatorios">
+    Reduce las inasistencias con recordatorios.
+  </Card>
+  <Card title="Valores personalizados en calendarios" icon="code" href="/calendarios/valores-personalizados-en-calendarios">
+    Usa tus propios datos en los mensajes del calendario.
+  </Card>
+  <Card title="Agregar invitados en reservas" icon="user-plus" href="/calendarios/agregar-invitados-en-reservas">
+    Permite que tus clientes sumen acompañantes.
+  </Card>
+  <Card title="Conectar WhatsApp" icon="whatsapp" href="/whatsapp/conectar-whatsapp">
+    Conecta tu cuenta de WhatsApp Business.
+  </Card>
+</CardGroup>

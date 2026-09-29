@@ -1,0 +1,53 @@
+---
+title: "Disparador: Tarea completada"
+description: "Automatiza el seguimiento en cuanto un usuario marca como completada una tarea asignada."
+icon: "list-check"
+---
+
+El disparador **Tarea completada** (Task Completed) inicia un flujo de trabajo cuando un usuario marca como completada una tarea que tenía asignada. Es ideal para que el trabajo avance solo: avisar al equipo, hacer seguimiento con el contacto o actualizar el estado de un proceso en cuanto alguien termina su parte.
+
+## Filtros disponibles
+
+Puedes usar el disparador sin filtros (se activará con cualquier tarea completada) o limitarlo con estas opciones:
+
+| Filtro | Para qué sirve | Obligatorio |
+| --- | --- | --- |
+| Usuario asignado | Limita el disparador a las tareas de un usuario concreto. Déjalo vacío para que funcione con cualquier usuario. | No |
+| Campos personalizados de la tarea | Filtra según el valor de los campos personalizados de tus tareas (por ejemplo, un campo "Nicho del negocio" o "Descripción"). | No |
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Elige el disparador">
+    En tu flujo de trabajo, haz clic en **Agregar disparador** y selecciona **Tarea completada**.
+  </Step>
+  <Step title="Ponle un nombre">
+    Usa un nombre descriptivo, por ejemplo "Seguimiento tras tarea de ventas".
+  </Step>
+  <Step title="Agrega filtros (opcional)">
+    Limita el disparador a un usuario asignado o a tareas con ciertos valores en sus campos personalizados.
+  </Step>
+  <Step title="Guarda">
+    Guarda el disparador y añade las acciones que deben ocurrir después.
+  </Step>
+</Steps>
+
+## Ejemplo: correo de seguimiento tras cerrar una tarea de ventas
+
+Quieres que, cuando tu vendedora termine la tarea de llamada con un prospecto del sector inmobiliario, el contacto reciba automáticamente un correo con la propuesta.
+
+- **Nombre del disparador:** Tarea de ventas completada.
+- **Usuario asignado:** la vendedora responsable.
+- **Filtro:** campo personalizado "Nicho del negocio" es igual a "Inmobiliaria".
+- **Acciones:** enviar correo con la propuesta, mover la oportunidad a la siguiente etapa del pipeline y crear una tarea de seguimiento para dentro de tres días.
+
+## Ideas de uso
+
+- Notificar a un supervisor cuando se completa una tarea crítica.
+- Enviar una encuesta de satisfacción cuando se cierra una tarea de soporte o instalación.
+- Encadenar procesos: al completar "Revisar documentos", crear automáticamente la tarea "Preparar contrato".
+- Actualizar un campo del contacto para reflejar en qué etapa del proceso está.
+
+<Tip>
+  Si varios usuarios trabajan con tareas parecidas, crea un disparador por usuario con el filtro **Usuario asignado**. Así cada flujo refleja la forma de trabajar de cada persona.
+</Tip>

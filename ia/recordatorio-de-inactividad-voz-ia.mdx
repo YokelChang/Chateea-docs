@@ -1,0 +1,93 @@
+---
+title: "Recordatorio de inactividad en la IA de voz"
+description: "Ajusta cuánto espera el agente antes de retomar la llamada cuando la persona se queda en silencio."
+icon: "hourglass-half"
+---
+
+El recordatorio de inactividad define cuánto espera tu agente de IA de voz, durante una llamada activa, antes de retomar la conversación cuando la persona se queda en silencio. Así el agente reactiva la llamada con naturalidad cuando alguien hace una pausa, necesita pensar o deja de responder, sin que la llamada se sienta trabada.
+
+<Info>
+  El recordatorio se puede configurar entre **1 y 20 segundos**. El valor predeterminado es **8 segundos**.
+</Info>
+
+## Para qué sirve
+
+- **Reactivación natural:** el agente le habla a quien se quedó en silencio en vez de cortar.
+- **Mejor ritmo:** controlas qué tan rápido reacciona el agente al silencio.
+- **Mejor experiencia:** menos pausas incómodas, pero con tiempo para pensar.
+- **Ajuste por agente:** cada agente puede tener su propio tiempo según el tipo de llamada.
+
+## Cómo funciona
+
+El recordatorio solo actúa durante una llamada activa. No controla cuándo contesta el agente, cómo se enrutan las llamadas ni cuánto se espera antes de conectar con el agente.
+
+Cuando quien llama se queda en silencio:
+
+1. El agente espera los segundos configurados.
+2. Si el silencio continúa, el agente dice un recordatorio para retomar la conversación.
+3. Si la persona responde, la conversación sigue.
+4. Si sigue en silencio más de **15 segundos** después del recordatorio, la llamada termina automáticamente.
+
+## Cuándo ajustarlo
+
+| Usa un tiempo más corto cuando | Usa un tiempo más largo cuando |
+| --- | --- |
+| La llamada es de ritmo rápido. | La persona puede necesitar tiempo para pensar. |
+| El agente pide respuestas cortas. | Puede tener que buscar un dato (un número de pedido, una fecha). |
+| Se espera una respuesta inmediata. | Las preguntas requieren respuestas largas. |
+| Son preguntas simples de calificación o derivación. | Es una llamada de soporte, agenda o explicaciones detalladas. |
+
+<Warning>
+  Un tiempo muy bajo hace que el agente interrumpa pausas naturales. Uno muy alto puede hacer pensar a la persona que la llamada se cortó.
+</Warning>
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → IA de voz → Lista de agentes** y selecciona el agente. El ajuste es por agente, así que solo afecta al que elijas.
+  </Step>
+  <Step title="Abre los ajustes de llamada">
+    En la pestaña **Construir**, abre **Ajustes de llamada** en el panel de la derecha.
+  </Step>
+  <Step title="Ajusta el recordatorio">
+    En **Recordatorio de inactividad**, escribe cuántos segundos debe esperar el agente antes de recordar a la persona que continúe (entre 1 y 20).
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Si sales sin guardar, el cambio no se aplica.
+  </Step>
+  <Step title="Pruébalo">
+    Inicia una llamada web o telefónica desde el panel de prueba. Quédate en silencio después de que hable el agente y confirma que el recordatorio llega en el momento esperado. Luego responde para comprobar que la llamada sigue con naturalidad.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuál es el valor predeterminado?">
+    8 segundos.
+  </Accordion>
+  <Accordion title="¿Qué valores puedo poner?">
+    Entre 1 y 20 segundos.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la persona sigue en silencio después del recordatorio?">
+    Si pasan más de 15 segundos sin respuesta después del recordatorio, la llamada termina automáticamente.
+  </Accordion>
+  <Accordion title="¿Es un ajuste general para todos los agentes?">
+    No. Se configura por agente. Cambia cada uno por separado si necesitan tiempos distintos.
+  </Accordion>
+  <Accordion title="¿Controla el tiempo de espera de las llamadas entrantes?">
+    No. Solo controla el silencio durante una llamada activa. Para el tiempo de espera del número, revisa el [flujo de llamadas entrantes](/ia/flujo-de-llamadas-entrantes-voz-ia).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un agente de IA de voz" icon="phone" href="/ia/crear-agente-de-voz-ia">
+    Todos los ajustes del agente.
+  </Card>
+  <Card title="Probar un agente de IA de voz" icon="headset" href="/ia/probar-agente-de-voz-ia">
+    Comprueba el recordatorio en una llamada de prueba.
+  </Card>
+</CardGroup>

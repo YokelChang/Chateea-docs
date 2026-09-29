@@ -1,0 +1,96 @@
+---
+title: "Crear suscripciones y facturas desde la ficha del contacto"
+description: "Cobra a un cliente sin salir de su ficha: crea suscripciones y facturas desde la pestaña Pagos."
+icon: "file-invoice-dollar"
+---
+
+Puedes crear suscripciones y facturas para un cliente directamente desde su ficha, en la pestaña **Pagos**, sin ir al módulo de Pagos ni buscar al contacto otra vez. Los datos del cliente se llenan solos y todo el historial de cobros queda visible junto a sus conversaciones y actividad.
+
+## Por qué hacerlo desde la ficha
+
+- **Rapidez:** cobras o programas un cobro en plena conversación o llamada.
+- **Menos errores:** los datos del contacto se completan automáticamente.
+- **Contexto:** ves facturas anteriores, suscripciones y métodos de pago junto al resto de la información del cliente.
+- **Visibilidad:** la nueva suscripción o factura aparece al instante en la ficha y en **Pagos**.
+
+## Antes de empezar
+
+- Conecta un procesador de pagos compatible (por ejemplo, Stripe) en **Pagos → Integraciones**.
+- Asegúrate de que los métodos de pago estén habilitados.
+- Para suscripciones, necesitas al menos un **producto recurrente** creado.
+- Revisa que tus ajustes de **impuestos** y **descuentos** coincidan con tu contabilidad.
+- Confirma que tu usuario tenga permisos de Pagos para crear suscripciones y facturas.
+- Recomendado: guarda una **tarjeta del cliente** para activar el cobro automático y reducir pagos fallidos.
+
+<Note>
+Si usas un proveedor de pagos personalizado, este debe admitir cobros programados con métodos de pago guardados para que puedas crear suscripciones manuales con cobro automático.
+</Note>
+
+## Crear una suscripción
+
+<Warning>
+El ciclo de facturación de la suscripción lo define el **producto recurrente** que eliges. Si el producto es mensual, la suscripción será mensual; si es anual, será anual.
+</Warning>
+
+<Steps>
+<Step title="Abre la ficha del contacto">
+Ve a **Contactos** y abre el perfil del cliente.
+</Step>
+<Step title="Inicia la suscripción">
+En la pestaña **Pagos**, haz clic en **Acciones → Crear suscripción**.
+</Step>
+<Step title="Configura el producto">
+Elige un **producto recurrente** y define la **fecha de inicio**, la **cantidad** y, si aplica, un **cupón**.
+</Step>
+<Step title="Elige el método de pago">
+Selecciona o agrega una tarjeta guardada para el cobro automático. Si tu proveedor no admite métodos de pago guardados en cobros programados, esta opción puede no estar disponible.
+</Step>
+<Step title="Revisa y confirma">
+Revisa el monto del primer cobro y el calendario de pagos antes de confirmar.
+</Step>
+</Steps>
+
+## Crear y enviar una factura
+
+<Steps>
+<Step title="Abre la ficha del contacto">
+Ve a **Contactos** y abre el perfil del cliente.
+</Step>
+<Step title="Inicia la factura">
+En la pestaña **Pagos**, haz clic en **Acciones → Crear factura**.
+</Step>
+<Step title="Completa la factura">
+Se abrirá el editor de facturas con los datos del cliente ya cargados. Agrega los productos, montos, fechas y notas que necesites.
+</Step>
+<Step title="Guarda y envía">
+Guarda la factura y envíala al cliente.
+</Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cómo defino el ciclo de cobro de una suscripción?">
+Lo hereda del producto recurrente que eliges. Configura el ciclo (semanal, mensual, anual) en el producto.
+</Accordion>
+<Accordion title="¿Qué pasa si falla el método de pago al crear la suscripción?">
+El sistema te pedirá elegir otra tarjeta o agregar una nueva. La suscripción no se activa hasta que haya un método de pago válido.
+</Accordion>
+<Accordion title="¿Puedo crear varias suscripciones para el mismo cliente?">
+Sí. Cada una puede tener sus propios productos, fechas de cobro y métodos de pago.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crea y envía facturas" icon="file-invoice" href="/primeros-pasos/crea-y-envia-facturas">
+Todo sobre el editor de facturas.
+</Card>
+<Card title="Conecta Stripe" icon="credit-card" href="/primeros-pasos/conecta-stripe">
+Configura tu procesador de pagos.
+</Card>
+<Card title="La ficha del contacto" icon="address-card" href="/contactos/introduccion">
+Conoce la pestaña Pagos y el resto de módulos.
+</Card>
+</CardGroup>

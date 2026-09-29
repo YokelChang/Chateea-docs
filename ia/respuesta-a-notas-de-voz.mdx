@@ -1,0 +1,98 @@
+---
+title: "Respuesta a notas de voz en la IA conversacional"
+description: "Haz que tu bot de IA entienda las notas de voz de tus clientes y responda con un mensaje coherente."
+icon: "microphone"
+---
+
+Muchos clientes prefieren mandar una nota de voz en lugar de escribir. Con la respuesta a audio, tu bot de IA conversacional entiende esas notas de voz y archivos de audio: los transcribe a texto, los procesa con el mismo entrenamiento y los mismos ajustes que ya configuraste y responde con un mensaje coherente con la conversación.
+
+Así el cliente habla con naturalidad y tú no pierdes la conversación solo porque llegó en audio.
+
+## Qué hace
+
+Con la respuesta a audio activada, el bot puede:
+
+- Recibir notas de voz y archivos de audio adjuntos.
+- Transcribir automáticamente lo que se dice.
+- Procesar el contenido con tu entrenamiento, indicaciones y objetivos actuales.
+- Responder de forma contextual.
+- Manejar varios audios dentro de una misma interacción.
+
+## Antes de empezar
+
+- Tienes al menos un bot de IA conversacional configurado.
+- Los canales que quieres usar están conectados a tu cuenta.
+- El bot está asignado a esos canales.
+
+## Canales compatibles
+
+| Canal | Compatible |
+| --- | --- |
+| WhatsApp | Sí |
+| Facebook Messenger | Sí |
+| Mensajes directos de Instagram | Sí |
+| SMS (MMS) | Sí |
+
+## Tipos de audio compatibles
+
+| Tipo | Formatos | Observaciones |
+| --- | --- | --- |
+| **Notas de voz nativas** | Notas de voz de WhatsApp, Facebook e Instagram | Las que el cliente graba con el botón de micrófono de cada app. |
+| **Archivos de audio** | OGG, MP3, MP4 (solo audio), AAC, M4A, MPEG | El archivo debe ser solo de audio. Un MP4 con video no se procesa como audio. |
+| **Varios audios seguidos** | Compatible | Los audios enviados con poca diferencia se tratan como una sola interacción. |
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre el bot">
+    Ve a **IA → IA conversacional → Lista de agentes**, haz clic en los tres puntos junto al bot y elige **Editar**.
+  </Step>
+  <Step title="Activa las notas de voz">
+    Enciende la opción **Permitir también que este bot responda a: notas de voz** y guarda los cambios.
+  </Step>
+  <Step title="Pruébalo">
+    Envía una nota de voz desde WhatsApp o una red social conectada y confirma que la respuesta hace referencia a lo que dijiste.
+  </Step>
+</Steps>
+
+## Cómo se comporta
+
+- **Tiempo de espera:** el bot respeta el **Tiempo de espera antes de responder**. Durante ese lapso junta todos los mensajes entrantes (audios y textos) y envía una sola respuesta unificada.
+- **Límite de mensajes:** el bot sigue tu **Límite máximo de mensajes**. Si lo alcanza, queda en reposo como con cualquier otro mensaje.
+- **Transparencia:** desde el panel de información de la respuesta de IA, en Conversaciones, puedes revisar la indicación, las fuentes y el detalle de lo que respondió el bot.
+- **Políticas de cada canal:** en Messenger e Instagram aplican las ventanas de mensajería de Meta (por ejemplo, la ventana de 24 horas). Tenlo en cuenta al diseñar tus flujos.
+
+<Tip>
+  Si tus clientes suelen mandar audios largos, sube un poco el tiempo de espera antes de responder. Así el bot recibe todos los audios y contesta una sola vez, en lugar de responder a medias.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tiene un costo adicional?">
+    El uso se cobra como consumo normal de la IA conversacional, más el costo del mensaje en cada canal (SMS o MMS, WhatsApp). Todo se descuenta de la billetera de tu cuenta. Las tarifas vigentes están en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+  </Accordion>
+  <Accordion title="¿El bot responde con audio o con texto?">
+    Responde con mensajes normales del canal, normalmente texto, para asegurar la compatibilidad.
+  </Accordion>
+  <Accordion title="¿Puedo limitar el manejo de audio a ciertos canales?">
+    Sí. Asigna al bot solo los canales donde quieres que escuche y responda. Fuera de ellos no procesa nada.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el cliente envía varios audios?">
+    Los audios que llegan dentro del tiempo de espera se transcriben juntos y el bot redacta una sola respuesta con todo el contexto.
+  </Accordion>
+  <Accordion title="¿Dónde veo qué entendió el bot?">
+    Abre el panel de información de la respuesta de IA dentro de la conversación para revisar la respuesta, la indicación y las fuentes de entrenamiento.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Detalles del mensaje de IA" icon="magnifying-glass" href="/bot-ia/detalles-mensaje-ia">
+    Revisa y edita las respuestas del bot.
+  </Card>
+  <Card title="Nueva experiencia de gestión de canales" icon="diagram-next" href="/bot-ia/nueva-gestion-canales">
+    Asigna cada bot a los canales correctos.
+  </Card>
+</CardGroup>

@@ -1,0 +1,106 @@
+---
+title: "Personalizar el formulario Agregar contacto"
+description: "Elige qué campos aparecen al crear un contacto, en qué orden y cuáles son obligatorios."
+icon: "user-plus"
+---
+
+El formulario **Agregar contacto** se abre como un panel lateral que te permite crear contactos sin salir de la página. Los administradores pueden decidir qué campos aparecen (incluidos los personalizados), en qué orden y cuáles son obligatorios. Así todo tu equipo captura la misma información desde el primer momento y tu base de datos queda más limpia.
+
+<Info>
+Esta mejora puede estar disponible en **Labs**. Si no la ves, revisa **Configuración → Labs** o escribe a soporte de Chateea en **help@chateea.com**.
+</Info>
+
+## Ventajas
+
+- **Captura más rápida:** el panel lateral no te saca de la lista de contactos.
+- **Datos más limpios:** muestras solo los campos que tu equipo realmente usa.
+- **Registros completos:** marcas como obligatorios los datos imprescindibles, por ejemplo el **Tipo de contacto**.
+- **Compatible con campos personalizados** a nivel de contacto.
+- **Control centralizado:** los administradores definen el formulario y el resto del equipo lo usa.
+
+## Quién puede hacer qué
+
+| Acción | Quién |
+| --- | --- |
+| Personalizar el formulario | Usuarios con rol de administrador en tu cuenta. |
+| Crear contactos con el formulario | Cualquier usuario con acceso a Contactos. |
+
+## Personalizar el formulario
+
+<Steps>
+<Step title="Abre el formulario">
+Ve a **Contactos → Listas inteligentes** y haz clic en **+ Agregar contacto**.
+</Step>
+<Step title="Entra al modo de personalización">
+Haz clic en **Personalizar formulario**. Agrega o quita campos estándar y campos personalizados de contacto, y arrástralos para cambiar el orden.
+</Step>
+<Step title="Marca los campos obligatorios">
+Activa **Obligatorio** en cada campo que deba completarse antes de guardar el contacto.
+</Step>
+<Step title="Revisa y guarda">
+Usa **Vista previa** para comprobar cómo queda y guarda el diseño para tu equipo.
+</Step>
+<Step title="Automatiza lo que sigue (opcional)">
+Crea un flujo de trabajo con el disparador **Contacto creado** para enviar una bienvenida, asignar un responsable o etiquetar a los contactos nuevos.
+</Step>
+</Steps>
+
+## Crear un contacto con el formulario
+
+1. Ve a **Contactos → Listas inteligentes → + Agregar contacto**.
+2. Completa los campos (los obligatorios están marcados).
+3. Elige una opción:
+   - **Guardar:** crea el contacto.
+   - **Guardar y agregar otro:** crea el contacto y abre un formulario en blanco para el siguiente.
+   - **Cancelar:** sale sin guardar.
+
+Si intentas cerrar el panel con cambios sin guardar, Chateea te pedirá confirmación para que no pierdas datos.
+
+## Evitar contactos duplicados
+
+La calidad de tu base también depende de cómo se manejan los duplicados:
+
+- En **Configuración → Perfil del negocio → Preferencias de duplicados de contactos** eliges si Chateea identifica un contacto repetido por **correo** o por **teléfono**, y en qué orden.
+- Las **importaciones por CSV** siempre revisan correo y teléfono y combinan las coincidencias, así que no crean duplicados.
+- Si se cuelan duplicados desde formularios o integraciones, puedes **combinar hasta 10 contactos** y elegir cuál es el registro principal.
+
+## Nueva ubicación de Gestionar listas inteligentes y Restaurar
+
+Las opciones **Gestionar listas inteligentes** y **Restaurar** ya no están en el encabezado de la página. Ahora las encuentras en el menú de **tres puntos (⋮)** junto al botón **Agregar contacto**, en **Contactos → Listas inteligentes**. Los permisos no cambiaron, solo su ubicación.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo incluir campos personalizados en el formulario?">
+Sí. Cualquier campo personalizado de contacto se puede agregar, reordenar y marcar como obligatorio. Los campos se crean en **Configuración → Campos personalizados**.
+</Accordion>
+<Accordion title="¿Guardar y agregar otro conserva los datos anteriores?">
+No. Crea el contacto y abre un formulario en blanco. Si necesitas aplicar siempre las mismas etiquetas o responsable, hazlo con un flujo de trabajo.
+</Accordion>
+<Accordion title="¿Los campos obligatorios afectan importaciones o la API?">
+No. Solo aplican a la creación manual desde este formulario. Las importaciones por CSV y la API tienen sus propias validaciones.
+</Accordion>
+<Accordion title="¿Mi equipo ve los cambios del formulario de inmediato?">
+Sí en sesiones nuevas. Quien ya tenga Contactos abierto puede necesitar recargar la página.
+</Accordion>
+<Accordion title="¿Cuánto tiempo puedo restaurar un contacto eliminado?">
+Hasta 60 días después de eliminarlo, desde la opción **Restaurar** del menú de tres puntos.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crear y gestionar contactos" icon="user-plus" href="/primeros-pasos/crear-y-gestionar-contactos">
+Lo básico para trabajar con contactos.
+</Card>
+<Card title="Tipos de contacto" icon="tags" href="/contactos/tipos-de-contacto">
+Un buen candidato para campo obligatorio.
+</Card>
+<Card title="Restaurar contactos eliminados" icon="rotate-left" href="/contactos/restaurar-contactos-eliminados">
+Recupera contactos borrados por error.
+</Card>
+<Card title="Importar contactos desde un CSV" icon="file-csv" href="/contactos/importar-contactos-desde-csv">
+Carga muchos contactos a la vez.
+</Card>
+</CardGroup>

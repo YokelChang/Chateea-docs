@@ -1,0 +1,76 @@
+---
+title: "Adjuntar imágenes a MMS con valores personalizados"
+description: "Envía imágenes por SMS desde tus flujos usando valores personalizados, con límites de tamaño y formatos."
+icon: "image"
+---
+
+Si envías la misma imagen por SMS en varios flujos de trabajo (un cupón, un flyer, un mapa de tu local), puedes guardar su enlace en un **valor personalizado** y adjuntarla desde ahí. Cuando cambies la imagen, solo actualizas el valor personalizado y todos los flujos que lo usan envían la versión nueva, sin tener que editar cada mensaje.
+
+## Paso 1: crea el valor personalizado con la URL
+
+<Steps>
+  <Step title="Abre los valores personalizados">
+    Ve a **Configuración → Valores personalizados** y haz clic en **+ Agregar valor personalizado**.
+  </Step>
+  <Step title="Pega la URL de la imagen">
+    Ponle un nombre claro (por ejemplo, "Imagen promoción MMS") y, como valor, pega la URL pública del archivo. Guarda.
+  </Step>
+</Steps>
+
+<Tip>
+  Puedes subir la imagen a **Medios** y copiar desde ahí su enlace público.
+</Tip>
+
+## Paso 2: adjúntala en tu flujo
+
+<Steps>
+  <Step title="Abre la acción de SMS">
+    Ve a **Automatización → Flujos de trabajo**, abre el flujo y la acción **Enviar SMS** donde quieras enviar la imagen.
+  </Step>
+  <Step title="Agrega el adjunto">
+    En la sección de archivos adjuntos, copia y pega la variable del valor personalizado que creaste (por ejemplo, `{{custom_values.imagen_promocion_mms}}`).
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda la acción y envíate una prueba para confirmar que la imagen llega.
+  </Step>
+</Steps>
+
+<Warning>
+  Los operadores imponen límites estrictos al tamaño de los MMS. Si la imagen es demasiado grande, el mensaje puede no entregarse o llegar sin el adjunto. Revisa la tabla de límites más abajo.
+</Warning>
+
+## Tamaño máximo de MMS por operador
+
+Estos límites los fijan los operadores de Estados Unidos, no Chateea:
+
+| Operador | Número estándar (long code) | Número gratuito (toll-free) | Código corto (short code) |
+| --- | --- | --- | --- |
+| AT&T | 0,6 MB | 0,6 MB | 0,6 MB |
+| Sprint | 1,4 MB | 0,6 MB | 1,4 MB |
+| T-Mobile | 1,5 MB | 0,6 MB | 1,0 MB |
+| Verizon | 0,675 MB | 0,6 MB | 1,2 MB |
+
+Para ir a lo seguro, mantén tus imágenes por debajo de 0,6 MB: así funcionarán con cualquier operador y tipo de número.
+
+## Formatos admitidos
+
+- JPEG
+- PNG
+- GIF
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="El valor personalizado no funciona cuando se envía el mensaje">
+    Revisa estos dos puntos:
+
+    1. **Que la URL no tenga espacios.** Una forma rápida de comprobarlo es pegar el valor personalizado en una página de prueba de un embudo y previsualizarla. Si la imagen se ve, el valor personalizado está bien.
+    2. **Que el archivo cumpla el límite de tamaño** del operador y del tipo de número que usas (ver la tabla anterior).
+  </Accordion>
+  <Accordion title="¿Qué tipos de archivo puedo enviar por MMS?">
+    Imágenes JPEG, PNG y GIF.
+  </Accordion>
+  <Accordion title="¿Cuál es el tamaño máximo recomendado?">
+    Depende del operador y del tipo de número, pero con menos de 0,6 MB te aseguras de que el MMS llegue en todos los casos.
+  </Accordion>
+</AccordionGroup>

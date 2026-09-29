@@ -1,115 +1,83 @@
 ---
-title: "Flujo de trabajo: activadores y acciones del mercado de aplicaciones"
-sidebarTitle: "Flujo de trabajo: activadores y acciones del mercado de aplicaciones"
-description: "Los activadores y acciones personalizados del Marketplace de aplicaciones se gestionan desde el directorio de apps: qué son, cómo se habilita la sección y por qué hay que instalar la aplicación antes de usarlos en un flujo de trabajo."
+title: "Disparadores y acciones de apps del Marketplace"
+description: "Descubre, compara e instala apps del Marketplace desde el constructor de flujos y usa sus disparadores y acciones."
 icon: "store"
 ---
 
-<Info>
-  **Documentado el 16 de agosto de 2026.** Este artículo explica qué son los activadores y acciones de flujo de trabajo del **Marketplace de aplicaciones** y qué hace falta para poder usarlos.
-</Info>
-
-## Qué son
-
-Los activadores y acciones de flujo de trabajo del **Marketplace** son los activadores y acciones de flujo de trabajo **personalizados** que se gestionan en el **Marketplace de aplicaciones**.
-
-El Marketplace de aplicaciones es un directorio de aplicaciones con activadores y acciones de flujo de trabajo personalizados, proveedores personalizados, etc., que puedes instalar y usar en tu cuenta.
-
-<Note>
-  **Imagen próximamente** — Captura de la pantalla **Marketplace Apps** con el menú lateral (**App Marketplace** resaltado), las pestañas **All Apps** e **Installed Apps**, el listado de categorías a la izquierda y las tarjetas de aplicaciones a la derecha.
-</Note>
-
-## Mercado de aplicaciones
-
-El directorio organiza las aplicaciones por categorías, con un buscador (**Search Apps**) y paginación para recorrer el catálogo completo.
-
-**Qué muestra la siguiente tabla:** las categorías del menú lateral del Marketplace y el tipo de integración que agrupa cada una.
-
-<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
-  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
-    <thead>
-      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Categoría</th>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué agrupa</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>All Apps</td>
-        <td style={{padding:'12px 14px'}}>El catálogo completo, sin filtrar.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Accounting & Payments</td>
-        <td style={{padding:'12px 14px'}}>Contabilidad y cobros.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Analytics & Data</td>
-        <td style={{padding:'12px 14px'}}>Analítica y explotación de datos.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Calling</td>
-        <td style={{padding:'12px 14px'}}>Llamadas y telefonía.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Content Management System</td>
-        <td style={{padding:'12px 14px'}}>Gestores de contenido.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Crm</td>
-        <td style={{padding:'12px 14px'}}>Integraciones con otros CRM.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Customer Success</td>
-        <td style={{padding:'12px 14px'}}>Soporte y éxito del cliente.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Data Management</td>
-        <td style={{padding:'12px 14px'}}>Gestión y enriquecimiento de datos.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>E-Commerce</td>
-        <td style={{padding:'12px 14px'}}>Tiendas y comercio electrónico.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Email</td>
-        <td style={{padding:'12px 14px'}}>Correo electrónico y entregabilidad.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Lead Generation</td>
-        <td style={{padding:'12px 14px'}}>Captación de clientes potenciales.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Live Chat</td>
-        <td style={{padding:'12px 14px'}}>Chat en vivo.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-**Ejemplo de lectura:** si buscas una app que enriquezca los datos de tus contactos, la categoría a revisar es **Data Management**; si buscas enviar SMS con un proveedor externo, la categoría es **Calling** o **Email** según el canal.
-
-Entre las aplicaciones publicadas en el directorio aparecen, por ejemplo, **RoSMS** (By Temperfield), **Capri GPT** (By Capri Ai), **Zoominfo By Konnectify** (By Konnectify Limited), **FlowMattic** (By InfiWebs Pvt. Ltd.), **Narware** (By Narware) y **My Web Audit** (By My Web Audit).
-
-<Note>
-  Si la opción **Mercado de aplicaciones** no está visible en tu cuenta, puedes habilitarla desde los **laboratorios** o contactar con tu administrador.
-</Note>
+El **Marketplace de aplicaciones** reúne apps de terceros que añaden disparadores y acciones nuevos a tus flujos de trabajo: contabilidad, analítica, telefonía, correo, generación de prospectos y mucho más. Puedes descubrir, comparar e instalar estas apps sin salir del constructor de flujos, y usar sus acciones como cualquier otro paso de tu automatización.
 
 <Warning>
-  Para utilizar los activadores y acciones personalizados vinculados a la aplicación en los flujos de trabajo, **debes instalar la aplicación correspondiente en tu cuenta**. Mientras no esté instalada, sus activadores y acciones no aparecerán en el creador de flujos de trabajo.
+  Para usar los disparadores y acciones de una app en un flujo, primero tienes que instalar esa app en tu cuenta. Hasta entonces no aparecen en la lista de pasos disponibles.
 </Warning>
 
-<Tip>
-  Revisa la pestaña **Installed Apps** para saber qué aplicaciones ya están activas en la cuenta antes de diseñar un flujo que dependa de ellas.
-</Tip>
+## Cómo está organizado el constructor
+
+Al agregar un disparador o una acción, el constructor separa las opciones en tres grupos:
+
+| Grupo | Qué incluye |
+| --- | --- |
+| **Herramientas** | Pasos nativos de Chateea y bloques de lógica, como webhooks, Si/No, esperas y acciones de IA. |
+| **Apps** | Integraciones que ya tienes instaladas en tu cuenta. |
+| **Descubrir** | Apps del Marketplace que aún no has instalado, con su precio e información para evaluarlas. |
+
+Los nombres y la disponibilidad pueden variar según tu cuenta y la vista del constructor.
+
+## Buscar disparadores y acciones
+
+El buscador del constructor busca a la vez entre acciones nativas, acciones de apps del Marketplace y disparadores. Puedes:
+
+- Buscar en las categorías nativas, del Marketplace y de IA.
+- Navegar por categorías y usar filtros para acotar resultados.
+- Ver primero las herramientas nativas de Chateea y después los resultados del Marketplace.
+
+Cada resultado incluye información para decidir más rápido:
+
+- Indicador de precio (gratis, de pago o precio por ejecución cuando aplica).
+- Valoraciones y número de instalaciones, cuando están disponibles.
+- Etiquetas como **Nativo** o **Beta**.
+- Una descripción breve.
+
+## Descubrir e instalar apps desde el constructor
+
+<Steps>
+  <Step title="Abre Descubrir">
+    Dentro de un flujo, al agregar un disparador o una acción, haz clic en **Descubrir**.
+  </Step>
+  <Step title="Explora por categorías">
+    Revisa las apps agrupadas en **Más instaladas**, **Mejores gratuitas**, **Mejores de pago** y **Recién agregadas**, o usa el buscador.
+  </Step>
+  <Step title="Revisa los detalles">
+    Abre la pestaña **Detalles** de la app para ver qué hace, qué disparadores y acciones ofrece y cuánto cuesta.
+  </Step>
+  <Step title="Instálala">
+    Haz clic en el botón de instalación y sigue los pasos de autorización de la app.
+  </Step>
+  <Step title="Úsala en tu flujo">
+    Las acciones de las apps instaladas aparecen en la sección **Todas las acciones**, junto a las nativas.
+  </Step>
+</Steps>
+
+## Actualizaciones de apps instaladas
+
+Si una app que ya instalaste agrega acciones nuevas, verás una etiqueta de **Actualización** junto a ella. Así sabes que hay funciones nuevas disponibles para tus flujos.
+
+## Consejos
+
+- Antes de diseñar un flujo que dependa de una app, revisa en el Marketplace (pestaña de apps instaladas) que esté activa en tu cuenta.
+- Muchas acciones de apps son premium y se cobran por ejecución. Revisa el indicador de precio antes de usarlas en flujos con mucho volumen.
+- Si una acción de app falla, revisa los registros de ejecución: a menudo la causa es una conexión caducada que se soluciona volviendo a autorizar la app.
+
+<Note>
+  Si no ves el Marketplace de aplicaciones o la opción **Descubrir** en tu cuenta, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones premium y planes" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las ejecuciones premium.
+  </Card>
+  <Card title="Registros de ejecución" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa qué hizo cada paso del flujo.
+  </Card>
+</CardGroup>

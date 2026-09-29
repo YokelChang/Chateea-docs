@@ -1,0 +1,116 @@
+---
+title: "Disponibilidad: horario semanal y horas por fecha"
+description: "Configura tu horario habitual y ajusta días concretos como feriados o jornadas especiales."
+icon: "clock"
+---
+
+La disponibilidad de un calendario define cuándo se pueden reservar citas. Se configura con dos herramientas que trabajan juntas: el **horario semanal**, que es tu horario habitual y se repite cada semana, y las **horas por fecha**, que reemplazan ese horario en días concretos como feriados, vacaciones o jornadas especiales. Entre las dos determinan qué horarios ve el cliente en tu página de reservas.
+
+<Warning>
+  Las horas por fecha siempre tienen prioridad sobre el horario semanal. Si configuras horas para una fecha, el horario semanal deja de aplicarse por completo ese día.
+</Warning>
+
+## Horario semanal
+
+El horario semanal (antes llamado disponibilidad estándar) es tu disponibilidad regular. Por ejemplo, si atiendes todos los lunes, martes y jueves de 8:00 a 22:00, lo configuras una vez y Chateea lo aplica automáticamente cada semana.
+
+### Configurar el horario semanal
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Calendarios → Configuración del calendario** y haz clic en **Editar calendario**.
+  </Step>
+  <Step title="Entra en Disponibilidad">
+    En el menú de la izquierda, selecciona **Disponibilidad**. En **Disponibilidad de reservas**, haz clic en el nombre del usuario para abrir el panel lateral.
+  </Step>
+  <Step title="Define las horas">
+    En **Horario semanal**, haz clic en **Editar** y define las horas de cada día.
+  </Step>
+  <Step title="Copia a otros días (opcional)">
+    Usa **Copiar** para repetir la configuración en otros días.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en el botón azul **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Si necesitas cambiar la disponibilidad de varios miembros del equipo a la vez, usa la edición masiva en la pestaña **Disponibilidad** del calendario.
+</Tip>
+
+## Horas por fecha
+
+Las horas por fecha (antes llamadas disponibilidad personalizada) te permiten marcar disponibilidad o indisponibilidad solo para días concretos. Son útiles para:
+
+- **Feriados**: marca como no disponibles Navidad, Semana Santa u otros festivos.
+- **Compromisos personales**: si tienes una cita médica el 10 de febrero de 12:00 a 15:00, ajusta ese día sin crear un bloqueo aparte.
+- **Horario extendido**: amplía tus horas en fechas especiales, como un fin de semana largo o una temporada alta.
+
+### Cómo se combinan con el horario semanal
+
+En cualquier fecha con horas por fecha, el horario semanal no se aplica. Por eso, para **ampliar** un día debes escribir el rango completo.
+
+Ejemplo: tu horario semanal es de 9:00 a 17:00 y el martes 10 de marzo quieres atender de 9:00 a 20:00.
+
+| Lo que configuras ese día | Resultado |
+| --- | --- |
+| Horas por fecha de 9:00 a 20:00 | Disponible de 9:00 a 20:00. Correcto. |
+| Horas por fecha de 17:00 a 20:00 | Disponible solo de 17:00 a 20:00. De 9:00 a 17:00 aparece como no disponible. |
+
+### Configurar horas por fecha
+
+<Steps>
+  <Step title="Abre la disponibilidad del calendario">
+    Ve a **Configuración → Calendarios**, elige el calendario y abre **Disponibilidad**.
+  </Step>
+  <Step title="Agrega fechas">
+    En la sección **Horas por fecha**, haz clic en **+ Agregar horas por fecha**.
+  </Step>
+  <Step title="Elige una o varias fechas">
+    En el selector, marca todas las fechas que quieres modificar.
+  </Step>
+  <Step title="Define el horario">
+    Indica la hora de inicio y de fin.
+  </Step>
+  <Step title="Guarda">
+    Guarda para aplicar el mismo horario a todas las fechas seleccionadas.
+  </Step>
+</Steps>
+
+<Note>
+  La selección de varias fechas a la vez puede no estar disponible todavía en todas las cuentas mientras se completa su lanzamiento.
+</Note>
+
+### Cómo se agrupan las fechas
+
+Al guardar horas para varias fechas, Chateea las agrupa para mantener la lista ordenada:
+
+- Las fechas consecutivas aparecen como un solo rango.
+- Las fechas no consecutivas aparecen como rangos separados.
+
+Por ejemplo, si eliges el 2, 3, 4, 5, 8 y 9 de enero, verás dos entradas: del 2 al 5 de enero y del 8 al 9 de enero. Puedes editar o eliminar cada grupo por separado.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo configurar un horario que se repita cada dos semanas?">
+    Por ahora, el horario solo se repite semanalmente. Si trabajas en semanas alternas, usa horas por fecha para definir cada día que corresponda. Te recomendamos cargar varias semanas por adelantado o ponerte un recordatorio cada dos semanas para actualizarlo.
+  </Accordion>
+  <Accordion title="¿Por qué desaparece mi horario semanal cuando agrego horas por fecha?">
+    Porque las horas por fecha reemplazan el horario semanal de ese día. Para ampliar un día, escribe el rango completo (por ejemplo, de 9:00 a 20:00) y no solo las horas extra.
+  </Accordion>
+  <Accordion title="¿Cómo bloqueo un día completo?">
+    Agrega horas por fecha para ese día y márcalo como no disponible. El calendario no mostrará horarios esa fecha.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Tiempo de margen antes y después" icon="hourglass-half" href="/calendarios/tiempo-de-margen-antes-y-despues">
+    Reserva tiempo entre citas.
+  </Card>
+  <Card title="Recordatorios y ausencias" icon="bell" href="/calendarios/recordatorios">
+    Avisos de citas y gestión de ausencias.
+  </Card>
+</CardGroup>

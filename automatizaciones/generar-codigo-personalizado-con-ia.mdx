@@ -1,0 +1,157 @@
+---
+title: "Generar código personalizado con IA en flujos"
+description: "Usa Crear con IA en la acción Código personalizado para escribir, probar y guardar JavaScript a partir de una descripción."
+icon: "code"
+---
+
+La opción **Crear con IA** (Build with AI) de la acción **Código personalizado** escribe el JavaScript por ti a partir de una descripción en lenguaje natural. Explicas qué necesitas, indicas qué datos usar y qué debe devolver, y la IA genera el código. Tú lo revisas, lo pruebas y lo guardas.
+
+Es útil cuando un paso del flujo necesita transformar datos, dar formato a valores, hacer cálculos, preparar una petición a una API o aplicar una lógica que no cubre ninguna acción estándar.
+
+## Crear con IA o constructor de flujos con IA
+
+Chateea tiene varias herramientas de IA para automatizaciones. Elige según lo que necesites:
+
+| Herramienta | Para qué sirve |
+| --- | --- |
+| **Constructor de flujos con IA** | Crear o editar un flujo completo: disparadores, acciones y estructura. |
+| **Crear con IA** (dentro de Código personalizado) | Generar el JavaScript de un solo paso del flujo. |
+
+Por ejemplo, usa el constructor de flujos con IA para montar un flujo de seguimiento de leads, y **Crear con IA** cuando uno de sus pasos tenga que dar formato a un teléfono, calcular un descuento o extraer el dominio de un correo.
+
+## Antes de empezar
+
+- Necesitas permiso para crear o editar flujos de trabajo.
+- Ten claro qué datos usará el código y qué campos de salida necesitan los pasos siguientes.
+- **Código personalizado** es una **acción premium**: cada ejecución se descuenta de la billetera de tu cuenta.
+- Revisa y prueba siempre el código generado antes de publicar el flujo.
+
+## Conceptos clave
+
+### Propiedades de entrada
+
+Las propiedades de entrada son los datos del flujo que el código puede usar. Cada una tiene una **clave** (el nombre que usa el código) y un **valor** (el dato del flujo asignado). En el código se leen así:
+
+```javascript
+inputData.keyName
+// o bien
+inputData['keyName']
+```
+
+Por ejemplo, si creas una propiedad con la clave `email`, el código la lee como `inputData.email`.
+
+### Salida del código
+
+El código debe devolver un objeto de JavaScript o un arreglo de objetos. Esos valores son los que podrán usar las acciones siguientes:
+
+```javascript
+return { emailDomain: domain, formattedPhone: formattedPhone };
+```
+
+- La respuesta total debe pesar **menos de 2 MB**.
+- Después de una prueba exitosa, revisa **Salida de referencia** (Reference output) para ver qué campos quedan disponibles.
+
+## Cómo generar código con IA
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea o abre un flujo. Para experimentar, usa un flujo en borrador.
+  </Step>
+  <Step title="Añade la acción Código personalizado">
+    Haz clic en **Agregar acción** en el punto donde debe ejecutarse la lógica y elige **Código personalizado**. Se abrirá el panel de configuración a la derecha.
+  </Step>
+  <Step title="Ponle nombre">
+    Usa un nombre que diga qué hace, como "Formatear teléfono", "Extraer dominio del correo", "Calcular descuento" o "Preparar datos para la API".
+  </Step>
+  <Step title="Confirma el lenguaje">
+    En **Lenguaje**, verifica que esté seleccionado **Javascript**.
+  </Step>
+  <Step title="Añade las propiedades">
+    En **Propiedad para incluir en el código**, añade cada dato con una clave clara (por ejemplo `email`, `phone`, `amount`, `fullName` u `opportunityValue`) y asígnale el valor del flujo que corresponda.
+  </Step>
+  <Step title="Haz clic en Crear con IA">
+    En la sección **Código**, haz clic en **Crear con IA**.
+  </Step>
+  <Step title="Describe lo que necesitas">
+    Explica el objetivo, qué propiedades usar, qué campos devolver, las reglas de formato y qué hacer si falta un dato. Si el código llamará a una API, incluye el endpoint, el método, los encabezados y el cuerpo.
+  </Step>
+  <Step title="Revisa el código generado">
+    Comprueba que usa las claves correctas, que los nombres de salida son los que necesitas, que los cálculos son correctos y que maneja bien los valores vacíos.
+  </Step>
+  <Step title="Dale formato si hace falta">
+    Usa **Formatear código** para que sea más fácil de leer.
+  </Step>
+  <Step title="Prueba el código">
+    Haz clic en **Probar tu código** y revisa que la salida tenga la estructura esperada. Luego consulta **Salida de referencia**.
+  </Step>
+  <Step title="Guarda la acción">
+    Haz clic en **Guardar acción**. Los cambios sin guardar no se usan en el flujo.
+  </Step>
+  <Step title="Prueba el flujo completo">
+    Antes de publicar, ejecuta una prueba completa y confirma que las acciones siguientes reciben la salida. Si algo falla, revisa los **registros de ejecución**.
+  </Step>
+</Steps>
+
+<Note>
+  Al probar el código, los valores personalizados no se envían. Usa valores de ejemplo o datos de prueba del flujo para validar el comportamiento.
+</Note>
+
+## Ejemplos de indicaciones
+
+Una buena indicación nombra las propiedades de entrada y los campos exactos de salida.
+
+| Objetivo | Indicación de ejemplo |
+| --- | --- |
+| Extraer el dominio del correo | "Usa `inputData.email` para extraer el dominio. Devuélvelo como `emailDomain`. Si el correo falta o no es válido, devuelve una cadena vacía." |
+| Formatear un teléfono | "Usa `inputData.phone` para dar formato E.164 al número. Devuélvelo como `formattedPhone`. Si falta o no es válido, devuelve una cadena vacía." |
+| Calcular un descuento | "Usa `inputData.amount` para calcular un 15 % de descuento. Devuelve `discountAmount` y `finalAmount`. Si falta el monto, devuelve 0 en ambos." |
+| Separar nombre y apellido | "Usa `inputData.fullName` para separarlo en `firstName` y `lastName`. Si solo hay un nombre, devuélvelo en `firstName` y deja `lastName` vacío." |
+| Llamar a una API | "Envía un POST al endpoint indicado con `inputData.email`, `inputData.firstName` y `inputData.lastName`. Devuelve el estado de la respuesta y su ID como `status` y `externalId`." |
+
+## Lista de revisión antes de publicar
+
+- El código usa las claves de entrada correctas.
+- Maneja de forma segura los valores vacíos o ausentes.
+- Los nombres de salida son claros y coherentes.
+- Los cálculos, las fechas y los formatos son correctos.
+- El endpoint, el método, los encabezados, la autenticación y el cuerpo de la API son correctos.
+- No hay datos sensibles escritos directamente en el código si no es necesario.
+- Las acciones posteriores usan los campos de salida correctos.
+- Probaste el flujo completo con registros de ejemplo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde encuentro Crear con IA?">
+    En **Automatización → Flujos de trabajo**, abre un flujo, añade la acción **Código personalizado** y haz clic en **Crear con IA** en la sección Código.
+  </Accordion>
+  <Accordion title="¿Qué lenguaje usa la acción Código personalizado?">
+    JavaScript.
+  </Accordion>
+  <Accordion title="¿Puede usar datos de pasos anteriores?">
+    Sí. Añádelos como propiedades de entrada y léelos en el código con `inputData.clave` o `inputData['clave']`.
+  </Accordion>
+  <Accordion title="¿Por qué la salida no aparece en las acciones siguientes?">
+    Asegúrate de haber probado el código con éxito y de que devuelve los campos esperados. Sin una prueba exitosa, la salida no se puede referenciar.
+  </Accordion>
+  <Accordion title="¿Puedo usarlo para peticiones a una API?">
+    Sí. Incluye en la indicación el endpoint, el método, los encabezados, la autenticación, el cuerpo y los campos de respuesta que esperas.
+  </Accordion>
+  <Accordion title="¿Qué significa el límite de 2 MB?">
+    La respuesta total que devuelve la acción Código personalizado debe pesar menos de 2 MB.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acción Código personalizado" icon="code" href="/automatizaciones/accion-codigo-personalizado">
+    Todo sobre la acción que ejecuta JavaScript en tus flujos.
+  </Card>
+  <Card title="Constructor de flujos con IA" icon="wand-magic-sparkles" href="/automatizaciones/constructor-de-flujos-con-ia">
+    Crea o edita flujos completos describiéndolos con tus palabras.
+  </Card>
+  <Card title="Registros de ejecución" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa qué pasó en cada paso del flujo.
+  </Card>
+</CardGroup>

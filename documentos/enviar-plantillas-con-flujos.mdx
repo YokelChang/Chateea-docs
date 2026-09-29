@@ -1,0 +1,148 @@
+---
+title: "Enviar plantillas de documentos con flujos de trabajo"
+description: "Envía tus plantillas de propuestas y contratos de forma automática con un flujo de trabajo en el momento justo."
+icon: "paper-plane"
+---
+
+Con **Documentos y contratos** puedes crear plantillas profesionales (propuestas, presupuestos, contratos de servicio) y enviarlas solas con un flujo de trabajo cuando pasa algo concreto: se agrega una etiqueta, una oportunidad cambia de etapa o un cliente llena un formulario. El documento llega en el momento justo, sin seguimiento manual, y tú ves su estado desde tu CRM.
+
+## Para qué te sirve
+
+- Enviar contratos automáticamente cuando ocurre un evento.
+- Reutilizar plantillas con contenido dinámico (valores personalizados).
+- Recoger firmas electrónicas válidas en segundos.
+- Incluir productos y precios dentro del documento.
+- Seguir el envío, la firma y la finalización.
+- Encadenar acciones de seguimiento cuando el documento se firma.
+
+## 1. Crea la plantilla
+
+<Steps>
+  <Step title="Abre una plantilla nueva">
+    Ve a **Pagos → Documentos y contratos → Plantillas**, haz clic en **+ Nuevo** y elige **Crear nueva plantilla**. Ponle un nombre, por ejemplo "Propuesta".
+  </Step>
+  <Step title="Diseña el contenido">
+    Usa **Agregar elemento** para construir el documento:
+    - **Imagen**: tu logo o elementos de marca.
+    - **Texto**: condiciones, descripción de servicios, etc.
+    - **Valores personalizados**: datos dinámicos como el nombre o el correo del contacto.
+    - **Lista de productos**: servicios o artículos con precios de tu catálogo. Con **Mostrar imagen en la lista** decides si se ve la foto del producto, y si creas un producto desde el editor también puedes subir su imagen.
+    - **Firma**: el espacio donde firma el cliente.
+  </Step>
+  <Step title="Guarda la plantilla">
+    Haz clic en **Guardar**. Solo las plantillas guardadas aparecen en el flujo de trabajo.
+  </Step>
+</Steps>
+
+<Note>
+Puedes editar una plantilla cuando quieras desde la pestaña **Plantillas**, pero los cambios no afectan a documentos ya enviados ni a borradores ya creados.
+</Note>
+
+### Asignar campos al remitente
+
+Si en la plantilla hay campos que debe firmar alguien de tu equipo, no tienes que editarla para cada vendedor:
+
+1. En el editor de la plantilla, agrega un campo de **Firma** (u otro campo rellenable).
+2. En el panel **Propiedades**, en **Para ser firmado por**, elige **Remitente** (Sender). El remitente es el usuario que envía el documento, y el flujo lo asigna en el momento del envío.
+
+### Asignar campos a un miembro concreto del equipo
+
+Si siempre firma la misma persona:
+
+1. Haz clic en el campo rellenable (por ejemplo, Firma).
+2. En **Propiedades**, abre **Para ser firmado por** y selecciona al miembro del equipo.
+3. Guarda la plantilla.
+
+Cada documento generado con esa plantilla tendrá el campo asignado a esa persona.
+
+## 2. Envía el documento con un flujo de trabajo
+
+Para usar la acción **Enviar documentos y contratos**, la plantilla debe estar guardada y el contacto debe tener un correo válido.
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo**, haz clic en **+ Crear flujo de trabajo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Elige el disparador">
+    Por ejemplo, **Etiqueta agregada** u **Oportunidad actualizada**.
+  </Step>
+  <Step title="Agrega la acción">
+    Añade **Enviar documentos y contratos** y configúrala:
+    - Ponle un nombre a la acción.
+    - Elige el usuario **Desde** (From user): quién envía el documento y recibe las notificaciones.
+    - Selecciona la plantilla guardada.
+    - Si la plantilla tiene campos de **Remitente**, en **Asignar campos del remitente a** elige **Usuario remitente** (firma quien envía desde el flujo) o **Propietario de la plantilla** (firma el último usuario que actualizó la plantilla).
+    - Elige el modo: **Enviar directamente** o **Crear como borrador**.
+    - Elige el canal: correo, SMS o ambos.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar** y luego **Publica** el flujo.
+  </Step>
+</Steps>
+
+<Warning>
+Aunque elijas SMS, el contacto necesita un correo registrado. Si no lo tiene, el contrato se genera pero se queda en **Borradores** hasta que agregues el correo.
+</Warning>
+
+<Tip>
+Usa **Crear como borrador** mientras pruebas el flujo o si prefieres revisar cada documento antes de enviarlo manualmente.
+</Tip>
+
+## Qué recibe el contacto
+
+El contacto recibe un correo con su nombre, los datos de la propuesta o contrato y un enlace seguro. Hace clic, revisa y firma desde el navegador, sin crear cuenta ni descargar nada.
+
+## Seguir el estado del documento
+
+Ve a **Pagos → Documentos y contratos → Todos los documentos y contratos** y usa las pestañas:
+
+- **Borradores**
+- **Esperando a otros**
+- **Completados**
+- **Pagos**
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo editar un documento después de enviarlo?">
+    Solo si lo creaste con **Crear como borrador**. Si se envió directamente, queda bloqueado y no se puede editar.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el contacto no firma?">
+    El documento se queda en **Esperando a otros**. Puedes reenviarlo o hacer seguimiento manual, o crear un flujo que le recuerde firmar.
+  </Accordion>
+  <Accordion title="¿Puedo enviarlo a más de una persona?">
+    Sí. Un mismo documento admite varios destinatarios, cada uno con sus propios campos de firma.
+  </Accordion>
+  <Accordion title="¿Puedo cobrar cuando firman?">
+    Sí. Si la plantilla incluye una lista de productos con precios, puedes activar el cobro con Stripe u otro proveedor de pagos conectado.
+  </Accordion>
+  <Accordion title="¿Las firmas tienen validez legal?">
+    Sí. El proceso de firma electrónica cumple con las principales normativas de firma digital y deja un registro auditable.
+  </Accordion>
+  <Accordion title="¿Se puede firmar desde el celular?">
+    Sí. Los documentos se adaptan al móvil y se firman desde el navegador del teléfono.
+  </Accordion>
+  <Accordion title="¿Puedo ver el documento antes de que se envíe?">
+    Sí. Configura la acción en modo **Crear como borrador**, revisa el documento y envíalo manualmente.
+  </Accordion>
+  <Accordion title="¿Por qué el envío por SMS necesita un correo?">
+    El correo del contacto se usa como identificador obligatorio para el seguimiento, el historial de versiones y el ciclo de vida del contrato. Aunque lo entregues por SMS, el contacto debe tener un correo en su ficha.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador de Documentos y contratos" icon="bolt" href="/documentos/disparador-documentos-y-contratos">
+    Reacciona cuando un documento se ve o se firma.
+  </Card>
+  <Card title="Valores de oportunidad en plantillas" icon="handshake" href="/documentos/valores-de-oportunidad-en-plantillas">
+    Rellena datos del acuerdo automáticamente.
+  </Card>
+  <Card title="Varios destinatarios en un documento" icon="users" href="/documentos/varios-destinatarios">
+    Firmantes, copias y destinatario principal.
+  </Card>
+  <Card title="Facturas automáticas al firmar" icon="file-invoice-dollar" href="/documentos/facturas-automaticas-al-firmar">
+    Cobra en el mismo momento de la firma.
+  </Card>
+</CardGroup>

@@ -1,0 +1,85 @@
+---
+title: "Constructor estándar y avanzado de flujos"
+description: "Qué constructor se abre al crear un flujo, quién puede cambiar de vista y qué revisar al pasar de uno a otro."
+icon: "sliders"
+---
+
+Chateea tiene dos formas de construir flujos de trabajo: el **constructor estándar**, más simple y lineal, y el **constructor avanzado**, pensado para lógica visual y caminos complejos. En este artículo te explicamos qué constructor se abre al crear un flujo, cómo cambiar la vista de un flujo concreto y qué cuidados tener al pasar de uno a otro.
+
+## Qué constructor se abre por defecto
+
+Cada cuenta tiene un **constructor predeterminado** (estándar o avanzado). Es el que se abre cuando creas un flujo nuevo.
+
+- **Solo afecta a flujos nuevos:** cambiar el predeterminado no modifica los flujos que ya existen.
+- **Cada flujo recuerda su vista:** un flujo existente se abre siempre en la última vista con la que se guardó.
+- **Borrador o publicado no importa:** el estado del flujo no cambia el constructor en el que se abre.
+
+<Note>
+  El constructor predeterminado de tu cuenta y la lista de roles que pueden cambiar de vista se configuran a nivel de plataforma. Si quieres que tu cuenta abra otro constructor por defecto o que más usuarios puedan cambiar de vista, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Quién puede cambiar de vista
+
+No todos los usuarios pueden pasar un flujo de un constructor al otro. Esto protege los flujos complejos para que nadie elimine por accidente funciones exclusivas del constructor avanzado.
+
+- Los permisos se asignan por rol, por ejemplo administradores o usuarios de la cuenta.
+- Si tu usuario no tiene permiso, el control para cambiar de vista **no aparece** en el editor y solo verás el constructor predeterminado.
+
+<Tip>
+  En equipos con flujos complejos, conviene limitar el cambio de vista a las personas que construyen y revisan automatizaciones.
+</Tip>
+
+## Cambiar la vista de un flujo
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre el flujo.
+  </Step>
+  <Step title="Usa el selector de constructor">
+    Arriba a la izquierda del editor verás el selector para cambiar entre **Constructor estándar** y **Constructor avanzado**.
+  </Step>
+  <Step title="Guarda">
+    Guarda el flujo. A partir de ese momento se abrirá en la vista que acabas de guardar, hasta que alguien la vuelva a cambiar.
+  </Step>
+</Steps>
+
+## Pasar del avanzado al estándar
+
+Algunas funciones solo existen en el constructor avanzado, como las ramas independientes (nodos desvinculados), las conexiones "Ir a" desde el disparador o los nodos desactivados. Si el flujo las usa, no podrás guardarlo en la vista estándar hasta quitarlas. Así se evita perder lógica sin darte cuenta.
+
+## Ventajas de este sistema
+
+- **Experiencia coherente:** cada flujo nuevo se abre en el constructor que tu equipo espera.
+- **Adopción gradual:** puedes empezar con el constructor avanzado solo para las personas con más experiencia.
+- **Flujos protegidos:** limitar quién cambia de vista evita borrar por error funciones avanzadas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cambiar el predeterminado afecta a mis flujos actuales?">
+    No. Solo se aplica a los flujos nuevos. Los existentes se abren en su última vista guardada.
+  </Accordion>
+  <Accordion title="¿Puedo impedir que un usuario use el constructor avanzado?">
+    Sí. Si su rol no tiene permiso para cambiar de vista, solo verá el constructor predeterminado y no tendrá el control para cambiar.
+  </Accordion>
+  <Accordion title="¿Qué pasa si intento pasar al estándar un flujo con funciones avanzadas?">
+    Debes quitar primero las funciones que el constructor estándar no admite. Así no se pierde información por accidente.
+  </Accordion>
+  <Accordion title="¿Dónde está el control para cambiar de vista?">
+    Arriba a la izquierda del editor del flujo. Si no lo ves, tu usuario no tiene permiso para cambiar de vista.
+  </Accordion>
+  <Accordion title="¿Hay una API para leer o cambiar esta configuración?">
+    No. Esta configuración se gestiona solo desde la interfaz.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Ramas independientes en el constructor avanzado" icon="code-branch" href="/automatizaciones/ramas-independientes-en-el-constructor-avanzado">
+    Arma varios mini flujos dentro del mismo flujo.
+  </Card>
+  <Card title="Selector de flujos" icon="shuffle" href="/automatizaciones/selector-de-flujos">
+    Cambia de flujo sin salir del constructor.
+  </Card>
+</CardGroup>

@@ -1,0 +1,115 @@
+---
+title: "Permisos de pipelines"
+description: "Controla quién puede ver, editar o no acceder a cada pipeline y revisa el historial de cambios de permisos."
+icon: "key"
+---
+
+Los permisos de pipelines te permiten decidir quién puede ver o modificar cada pipeline de tu cuenta de Chateea. Así proteges la información sensible (como ingresos o negocios de dirección), evitas que alguien cambie por error la estructura de etapas y le das a cada persona una vista limpia con solo los negocios que le corresponden.
+
+## Para qué sirven
+
+- **Estructura estable:** los vendedores trabajan sus negocios sin poder renombrar, reordenar ni borrar etapas.
+- **Privacidad de datos:** oculta pipelines con información de ingresos a colaboradores externos o personal nuevo.
+- **Control granular:** comparte con todos, con usuarios o roles concretos, o excluye solo a algunas personas.
+- **Trazabilidad:** cada cambio de permisos queda registrado.
+- **Mismas reglas en todas partes:** los permisos se aplican igual en la web, en la aplicación móvil de Chateea y en la API.
+- **Paneles coherentes:** los widgets y métricas del panel respetan el acceso a cada pipeline y la configuración de datos asignados del usuario.
+
+## Configurar los permisos de un pipeline
+
+<Steps>
+  <Step title="Abre los pipelines">
+    Ve a **Oportunidades → Pipelines**.
+  </Step>
+  <Step title="Abre la gestión de permisos">
+    Haz clic en el ícono de **llave** junto al nombre del pipeline para abrir **Gestionar permisos**.
+  </Step>
+  <Step title="Elige el modo de compartir">
+    Selecciona **Compartir con todos los usuarios**, **Compartir con usuarios o roles seleccionados** o **Excluir usuarios específicos**.
+  </Step>
+  <Step title="Asigna el nivel de acceso">
+    Para cada usuario o rol incluido, elige **Solo ver**, **Editar** o **Sin acceso**.
+  </Step>
+  <Step title="Comparte el enlace (opcional)">
+    Haz clic en **Copiar enlace** para enviar un acceso directo al pipeline a compañeros que ya tienen permiso.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para aplicar los cambios.
+  </Step>
+</Steps>
+
+## Modos de compartir
+
+| Modo | Cuándo usarlo |
+| --- | --- |
+| **Compartir con todos los usuarios** | Das el mismo nivel (Solo ver, Editar o Sin acceso) a todo el equipo en un clic. |
+| **Compartir con usuarios seleccionados** | Eliges personas o roles concretos y asignas un nivel a cada uno. |
+| **Excluir usuarios específicos** | El pipeline sigue siendo de todos, pero quitas el acceso a unas pocas excepciones. |
+
+Si eliges un rol, todas las personas con ese rol heredan el nivel de acceso asignado. Es la forma más rápida de gestionar equipos grandes.
+
+## Niveles de acceso
+
+| Nivel | Qué puede hacer el usuario |
+| --- | --- |
+| **Solo ver** | Ver el pipeline, mover oportunidades entre etapas y actualizarlas. No puede agregar, editar ni borrar etapas ni el pipeline. |
+| **Editar** | Control total: agregar, editar y eliminar etapas, y también modificar o eliminar el pipeline. |
+| **Sin acceso** | El pipeline queda totalmente oculto en la web, la app móvil y las respuestas de la API. |
+
+<Note>
+Los usuarios con rol de **administrador** siempre tienen acceso completo a todos los pipelines, sin importar lo que configures aquí.
+</Note>
+
+## Registro de cambios y protecciones
+
+Chateea registra automáticamente cada vez que alguien crea, cambia o revoca un permiso de pipeline: qué usuario lo hizo, en qué pipeline, qué acción y cuándo. El historial se conserva **60 días**.
+
+Para consultarlo:
+
+1. Ve a **Configuración → Registros de auditoría**.
+2. Filtra por **Usuario**, por el módulo **Permisos de pipelines**, por **Acción** o por **Rango de fechas**.
+
+Además, el sistema **no te deja quitar el acceso a alguien que tiene oportunidades asignadas en ese pipeline**. Primero tendrás que reasignar esas oportunidades a otra persona.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre Solo ver y Sin acceso?">
+    Con **Solo ver**, el usuario sigue viendo el pipeline y puede mover o actualizar oportunidades. Con **Sin acceso**, el pipeline desaparece por completo para esa persona.
+  </Accordion>
+  <Accordion title="¿Qué pasa si quiero poner Sin acceso a alguien que tiene oportunidades asignadas?">
+    Chateea bloquea el cambio. Reasigna o elimina primero sus oportunidades en ese pipeline y después quítale el acceso.
+  </Accordion>
+  <Accordion title="¿Los permisos se aplican también en la app móvil?">
+    Sí. Las mismas reglas se aplican en la web, en iOS, en Android y en las respuestas de la API.
+  </Accordion>
+  <Accordion title="¿Puedo asignar permisos por rol en lugar de usuario por usuario?">
+    Sí. Los roles aparecen en el selector y todas las personas con ese rol reciben el nivel elegido.
+  </Accordion>
+  <Accordion title="¿Cambiar permisos afecta a mis automatizaciones o webhooks?">
+    No. Los flujos de trabajo siguen funcionando. Solo ten en cuenta que las llamadas a la API hechas con el token de un usuario sin acceso devolverán la lista de pipelines vacía.
+  </Accordion>
+  <Accordion title="¿Cómo creo un pipeline que solo vea una persona?">
+    Elige **Compartir con usuarios seleccionados**, agrega a esa persona con el nivel que necesite y deja al resto en **Sin acceso**. Recuerda que los administradores siempre lo verán.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo se guarda el historial de cambios?">
+    60 días. Durante ese tiempo puedes revisarlo o descargarlo desde los registros de auditoría.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un pipeline" icon="diagram-project" href="/oportunidades/crear-un-pipeline">
+    Configura las etapas de tu proceso de venta.
+  </Card>
+  <Card title="Etiquetas inteligentes en pipelines" icon="tags" href="/oportunidades/etiquetas-inteligentes-en-pipelines">
+    Resalta oportunidades con chips de color automáticos.
+  </Card>
+  <Card title="Duplicar un pipeline" icon="copy" href="/oportunidades/duplicar-un-pipeline">
+    Reutiliza un pipeline existente con sus permisos.
+  </Card>
+  <Card title="Eliminar y restaurar oportunidades y pipelines" icon="trash-can-arrow-up" href="/oportunidades/eliminar-y-restaurar-oportunidades-y-pipelines">
+    Recupera lo que se borró por error.
+  </Card>
+</CardGroup>

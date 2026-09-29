@@ -1,0 +1,128 @@
+---
+title: "Responde con tu base de conocimiento en Agent Studio"
+description: "Conecta tu base de conocimiento a un agente para que responda con la información de tu negocio."
+icon: "book-open"
+---
+
+La herramienta **Buscar en la base de conocimiento** permite que un agente de Agent Studio responda preguntas con la información de tu negocio: páginas web, preguntas frecuentes, tablas, textos y documentos. Cuando la agregas a un nodo Agente de IA, el agente busca en la base de conocimiento que elijas y usa lo que encuentra para contestar durante la conversación, en lugar de suponer.
+
+## Para qué sirve
+
+Es la herramienta ideal cuando tu agente debe responder sobre:
+
+- Detalles de productos o servicios.
+- Temas de soporte y pasos para resolver problemas.
+- Políticas de devoluciones, reembolsos u otras reglas.
+- Documentación interna o externa.
+- Precios o datos en tablas.
+- Preguntas frecuentes.
+
+Sus ventajas:
+
+- **Respuestas respaldadas:** el agente contesta con tu contenido, no con suposiciones.
+- **Soporte más rápido:** tus clientes resuelven dudas comunes sin esperar a una persona.
+- **Reutilizas lo que ya tienes:** conectas preguntas frecuentes, documentos, tablas y tu sitio web al agente.
+- **Respuestas coherentes:** todas las conversaciones usan la misma fuente.
+
+## Fuentes que puede tener una base de conocimiento
+
+Las bases de conocimiento se crean y gestionan en **IA → Base de conocimiento**. Admiten estas fuentes:
+
+| Fuente | Qué aporta |
+| --- | --- |
+| **Rastreador web** | El contenido de las páginas de tu sitio web. |
+| **Preguntas frecuentes** | Pares de pregunta y respuesta. |
+| **Búsqueda web** | Información de fuentes web. |
+| **Tablas** | Datos estructurados: precios, listas de productos, servicios. |
+| **Texto enriquecido** | Textos que escribes a mano: documentación, políticas, instrucciones. |
+| **Archivos** | Documentos que subes. |
+
+## Cómo configurar la herramienta
+
+<Steps>
+  <Step title="Crea o elige una base de conocimiento">
+    Ve a **IA → Base de conocimiento**, crea una base nueva o abre una existente y agrega el contenido que el agente debe usar. Confirma que contenga la información necesaria para las preguntas que esperas.
+  </Step>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y abre el agente en el lienzo.
+  </Step>
+  <Step title="Asegúrate de tener un disparador">
+    La herramienta no arranca el agente por sí sola; lo hace un disparador. Los más comunes son **Mensaje de chat** (el uso más habitual, porque ahí llegan las dudas de soporte y producto), **Formulario enviado** (para responder según lo que el contacto envió) y **Etiqueta del contacto** (para enviar información relacionada con esa etiqueta, como instrucciones de bienvenida). Consulta [Disparadores para agentes de flujo](/ia/disparadores-agentes-de-flujo).
+  </Step>
+  <Step title="Agrega un nodo Agente de IA">
+    La herramienta funciona dentro de un nodo **Agente de IA**, porque hace falta razonamiento para buscar y armar la respuesta. Agrega el nodo y abre su configuración.
+  </Step>
+  <Step title="Agrega Buscar en la base de conocimiento">
+    Tienes dos formas, y ambas abren el mismo panel: desde el nodo, abre **Agregar una herramienta** y elige **Buscar en la base de conocimiento**; o arrastra la herramienta desde el panel **Agregar nodo** hasta el nodo Agente de IA.
+  </Step>
+  <Step title="Escribe las instrucciones">
+    En **Instrucciones** (obligatorio), explica cuándo debe usar el agente esta herramienta: qué temas, qué tipos de pregunta o qué situaciones. Puedes usar **Mejorar instrucciones** para pulir el texto y el selector de variables para insertar datos dinámicos.
+  </Step>
+  <Step title="Elige las bases de conocimiento">
+    En **Selección de base de conocimiento**, elige una o varias bases con la información más relevante para este agente. Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+Ejemplo de instrucciones:
+
+```text
+Usa esta herramienta cuando el cliente pregunte por precios, características de los productos, garantías o políticas de devolución. No la uses para saludos ni para agendar citas.
+```
+
+## Cómo probar la herramienta
+
+<Steps>
+  <Step title="Haz una pregunta que la base debe responder">
+    Abre el agente, inicia una conversación de prueba y pregunta algo que esté en tu base. Por ejemplo, si tienes información de refrigeradores: "¿Cuál es el precio del refrigerador Samsung?".
+  </Step>
+  <Step title="Compara con tu contenido">
+    Confirma que la respuesta coincide con la información de la base de conocimiento.
+  </Step>
+  <Step title="Haz una pregunta que no tenga relación">
+    Comprueba que el agente no use la base de conocimiento cuando no corresponde.
+  </Step>
+  <Step title="Ajusta y repite">
+    Si el agente usa la herramienta de más o de menos, ajusta las instrucciones, guarda y vuelve a probar.
+  </Step>
+</Steps>
+
+<Tip>
+Si la respuesta no es la esperada, revisa primero qué encuentra la base de conocimiento con el [probador de recuperación](/ia/probador-de-recuperacion-base-conocimiento). Así sabrás si el problema está en el contenido o en las instrucciones del agente.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde creo una base de conocimiento?">
+    En **IA → Base de conocimiento**.
+  </Accordion>
+  <Accordion title="¿La herramienta hace que el agente arranque?">
+    No. El agente arranca con un disparador. La herramienta se usa dentro de la lógica del agente cuando el nodo Agente de IA necesita responder algo relevante.
+  </Accordion>
+  <Accordion title="¿Qué escribo en las instrucciones?">
+    Cuándo debe usar el agente la base de conocimiento: los temas, tipos de pregunta o situaciones que cubre.
+  </Accordion>
+  <Accordion title="¿Puede responder preguntas que no están en la base?">
+    La herramienta responde con el contenido de las bases elegidas. Si la información no está, conviene indicarle al agente en su indicación qué hacer en ese caso, por ejemplo ofrecer hablar con una persona.
+  </Accordion>
+  <Accordion title="¿Cómo sé si está funcionando?">
+    Pruébala con preguntas que la base debería responder y compara la respuesta con tu contenido.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Nodo Agente de IA" icon="robot" href="/ia/nodo-agente-ia-agent-studio">
+    Configura la indicación, el modelo y las herramientas.
+  </Card>
+  <Card title="Probador de recuperación" icon="magnifying-glass" href="/ia/probador-de-recuperacion-base-conocimiento">
+    Comprueba qué información encuentra la IA.
+  </Card>
+  <Card title="Importa archivos de Google Drive" icon="google-drive" href="/ia/google-drive-base-de-conocimiento">
+    Agrega documentos a tu base de conocimiento.
+  </Card>
+  <Card title="Prueba y depura agentes" icon="bug" href="/ia/probar-y-depurar-agentes-agent-studio">
+    Revisa cada paso antes de salir en vivo.
+  </Card>
+</CardGroup>

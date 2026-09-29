@@ -1,0 +1,89 @@
+---
+title: "Disparador: Reseña de producto enviada"
+description: "Automatiza agradecimientos, alertas y seguimientos en cuanto un cliente deja una reseña en tu tienda."
+icon: "star"
+---
+
+El disparador **Reseña de producto enviada** (Product Review Submitted) inicia un flujo de trabajo en el momento en que un cliente deja una reseña en un producto de tu tienda de Chateea. Te permite agradecer al comprador, pedirle más detalles, atender rápido las valoraciones bajas o aprovechar las de 5 estrellas, sin hacerlo a mano.
+
+Al activarse, el disparador recoge los datos de la reseña: valoración, titular, comentario, datos de quien la escribió, tienda y producto. Lo encuentras en **Automatización → Flujos de trabajo → Agregar disparador → Tiendas de comercio electrónico**.
+
+## Beneficios
+
+- **Respuesta inmediata:** envía un correo o SMS en cuanto recibes la opinión y refuerza la fidelidad después de la compra.
+- **Moderación sin esfuerzo:** envía las reseñas de 1 o 2 estrellas a tu equipo de soporte para atenderlas con prioridad.
+- **Más prueba social:** manda las reseñas de 5 estrellas a Slack o Google Sheets para reutilizarlas en anuncios y páginas de venta.
+- **Segmentación fina:** combina valoración, titular y producto para seguimientos muy específicos.
+- **Varias tiendas:** separa automatizaciones por tienda si gestionas más de una.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo**. Edita o duplica un flujo existente, o haz clic en **Crear flujo de trabajo** y elige **Empezar desde cero** (también puedes partir de una plantilla o crearlo con IA).
+  </Step>
+  <Step title="Agrega el disparador">
+    En el constructor, haz clic en **Agregar disparador**, baja hasta **Tiendas de comercio electrónico** y selecciona **Reseña de producto enviada**.
+  </Step>
+  <Step title="Ponle un nombre">
+    Usa un nombre que refleje el objetivo, por ejemplo "Rescate de reseñas de 1 estrella" o "Reseñas de 5 estrellas para redes". Te ayudará a reconocerlo en la lista de flujos y en los registros de ejecución.
+  </Step>
+  <Step title="Agrega filtros">
+    Con **Agregar filtros** defines qué reseñas entran al flujo. Usa **Requerir todos** para que se cumplan todas las condiciones o **Requerir cualquiera** para que baste con una. Si no agregas filtros, se capturan todas las reseñas.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda el disparador, añade las acciones (enviar correo, crear tarea, notificar por Slack, etc.) y envía una reseña de prueba en tu tienda para comprobar que todo funciona antes de publicar.
+  </Step>
+</Steps>
+
+## Filtros disponibles
+
+| Filtro | Operadores | Para qué sirve |
+| --- | --- | --- |
+| Producto global | Es | Limita el disparador a las reseñas de un producto concreto. Útil para lanzamientos o productos estrella. |
+| Comentario de la reseña | Contiene frase, No está vacío | Captura reseñas que mencionan palabras como "envío", "reembolso" o "talla". Puedes añadir varias frases. |
+| Titular de la reseña | Contiene frase, No está vacío | Filtra según el titular, por ejemplo para detectar titulares vacíos o poco claros. |
+| Valoración (estrellas) | Es cualquiera de, No es ninguno de, Está vacío, No está vacío | Elige qué valoraciones de 1 a 5 estrellas activan el flujo. |
+| Nombre de la tienda | Es cualquiera de, No es ninguno de, Está vacío, No está vacío | Limita el flujo a una o varias de tus tiendas. |
+| Correo y nombre del usuario | Es igual a, Contiene, Está vacío, No está vacío | Prioriza o excluye a ciertos autores: clientes VIP, afiliados, pruebas internas o posibles spammers. |
+
+### Ejemplos de combinaciones
+
+- **Rescate de clientes insatisfechos:** Valoración **Es cualquiera de** 1 y 2 estrellas → crear tarea para soporte y enviar un correo pidiendo disculpas.
+- **Embajadores de marca:** Valoración **Es cualquiera de** 5 estrellas → enviar un código de referido y guardar la reseña en Google Sheets.
+- **Problemas de envío:** Comentario **Contiene frase** "envío" o "retraso" → notificar al equipo de logística.
+- **Clientes VIP:** Correo del usuario igual a tus clientes clave con valoración baja → escalar al responsable de la cuenta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se activa antes o después de aprobar la reseña?">
+    En cuanto el cliente la envía. El estado de aprobación no influye.
+  </Accordion>
+  <Accordion title="¿Hace falta un contacto para que el flujo se ejecute?">
+    No. Como otros disparadores de la tienda, puede ejecutarse sin contacto, aunque puedes crear o actualizar un contacto dentro del flujo si lo necesitas.
+  </Accordion>
+  <Accordion title="¿Puedo elegir varios productos en el filtro Producto global?">
+    Por ahora no: solo un producto por disparador. Crea disparadores adicionales para otros productos.
+  </Accordion>
+  <Accordion title="¿Si desactivo las reseñas de la tienda se detiene el disparador?">
+    Sí. Si las reseñas están desactivadas en la configuración de la tienda, no se generan eventos y el disparador no se activa.
+  </Accordion>
+  <Accordion title="¿Cómo evito responder por error a las reseñas de 5 estrellas?">
+    Usa el filtro de valoración con **No es ninguno de** 4 y 5 estrellas para que solo entren las valoraciones más bajas.
+  </Accordion>
+  <Accordion title="¿Editar una reseña vuelve a activar el flujo?">
+    No. Solo el envío inicial de la reseña activa el disparador.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Checkout abandonado" icon="cart-shopping" href="/automatizaciones/disparador-checkout-abandonado">
+    Recupera ventas de carritos sin pagar.
+  </Card>
+  <Card title="Pedido completado" icon="truck" href="/automatizaciones/disparador-pedido-completado">
+    Automatiza el seguimiento cuando envías un pedido.
+  </Card>
+</CardGroup>

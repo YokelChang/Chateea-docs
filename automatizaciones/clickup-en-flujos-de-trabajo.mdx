@@ -1,0 +1,155 @@
+---
+title: "Disparadores y acciones de ClickUp en flujos"
+description: "Conecta ClickUp para crear tareas, listas, espacios y documentos desde tus flujos e iniciar flujos con eventos de ClickUp."
+icon: "list-check"
+---
+
+La integración nativa con **ClickUp** conecta tus flujos de trabajo con tu gestor de proyectos sin herramientas intermedias. Los **disparadores** escuchan lo que pasa en ClickUp (una tarea nueva, un cambio de estado) para iniciar flujos en Chateea, y las **acciones** crean o actualizan tareas, espacios, listas y documentos en ClickUp desde tus flujos. Así tu CRM y la ejecución de tus proyectos van siempre sincronizados.
+
+## Qué ganas
+
+- **Sin doble captura:** los datos de clientes y proyectos pasan solos entre Chateea y ClickUp.
+- **Arranques más rápidos:** espacios, carpetas, listas y tareas se crean en cuanto un trato llega a la etapa clave.
+- **Documentos con IA:** genera contenido con los pasos de IA de tus flujos y guárdalo directamente en ClickUp Docs.
+- **Traspasos más claros:** los comentarios y estados quedan donde trabaja tu equipo.
+- **Menos herramientas:** reemplaza webhooks y conectores externos por pasos nativos que puedes auditar.
+
+## Antes de empezar
+
+- Necesitas acceso a **Flujos de trabajo** e **Integraciones** en tu cuenta de Chateea.
+- El usuario de ClickUp que conectes debe tener permiso para crear y editar elementos en el espacio de trabajo. Las acciones respetan los permisos de ClickUp.
+- Los disparadores y acciones de ClickUp son **premium** y se cobran por ejecución. Consulta [Acciones premium y planes de ejecuciones](/automatizaciones/acciones-premium-y-planes-de-ejecuciones).
+
+## Conectar tu cuenta de ClickUp
+
+La conexión usa la autorización oficial de ClickUp (OAuth).
+
+- **Desde un flujo:** agrega cualquier disparador o acción de ClickUp. Si no está conectado, haz clic en **Conectar ahora**, inicia sesión en ClickUp y aprueba el acceso. Si ya lo está, los campos se cargan al instante.
+- **Desde la configuración:** ve a **Configuración → Integraciones → ClickUp → Conectar**.
+
+## Disparadores (de ClickUp a Chateea)
+
+Se activan cuando ClickUp envía un evento. Usa filtros para limitarlos a un espacio de trabajo o lista y evitar ruido.
+
+| Disparador | Se activa cuando |
+| --- | --- |
+| **Nueva tarea** | Se crea una tarea. |
+| **Cambios en una tarea** | Se actualiza una tarea (estado, fecha de vencimiento, etc.). |
+| **Nueva lista** | Se crea una lista. |
+| **Nueva carpeta** | Se crea una carpeta. |
+| **Nuevo comentario en una tarea** | Alguien comenta una tarea. |
+| **Nuevo adjunto en una tarea** | Se agrega un archivo a una tarea. |
+| **Nueva reacción en un mensaje del chat** | Alguien reacciona a un mensaje de un canal público. |
+| **Nueva reacción en un comentario** | Alguien reacciona al comentario de una tarea. |
+| **Nuevo registro de tiempo** | Se registra tiempo en una tarea. |
+
+## Acciones (de Chateea a ClickUp)
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear tarea** | Crea una tarea con nombre, fecha de vencimiento, responsable, etc. |
+| **Actualizar tarea** | Cambia estado, fecha de vencimiento o prioridad. |
+| **Archivar o eliminar tarea** | Archiva la tarea o la elimina de forma permanente. |
+| **Crear espacio** | Crea un espacio de trabajo. |
+| **Crear carpeta** | Agrega una carpeta para organizar listas. |
+| **Crear lista** | Crea una lista de tareas. |
+| **Publicar comentario en tarea** | Agrega un comentario a una tarea. |
+| **Publicar adjunto** | Sube archivos a una tarea. |
+| **Crear documento** | Crea un documento en ClickUp. |
+| **Editar página de documento** | Actualiza una página existente. |
+| **Crear página de documento** | Agrega una página a un documento. |
+| **Buscar tarea por ID** | Localiza una tarea por su ID. |
+| **Buscar documentos** | Busca documentos. |
+| **Buscar campos personalizados** | Localiza un campo personalizado. |
+| **Buscar todas las tareas** | Devuelve las tareas de un espacio o lista. |
+| **Buscar usuario por nombre o correo** | Localiza a un usuario de ClickUp. |
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Conecta ClickUp">
+    Agrega un paso de ClickUp y haz clic en **Conectar ahora**, o conéctalo desde **Configuración → Integraciones**.
+  </Step>
+  <Step title="Elige la dirección">
+    - **De ClickUp a Chateea:** agrega un disparador de ClickUp (por ejemplo, **Nueva tarea** o **Cambios en una tarea**) para iniciar el flujo.
+    - **De Chateea a ClickUp:** agrega una acción de ClickUp (por ejemplo, **Crear tarea**, **Crear lista** o **Crear documento**), elige el espacio o la lista de destino y asigna los campos con datos del contacto, la oportunidad o el formulario.
+  </Step>
+  <Step title="Ordena y protege el flujo">
+    - Usa condiciones **Si/No** para separar por etapa del pipeline, tipo de servicio o etiqueta.
+    - Agrega esperas cuando un elemento debe existir antes del siguiente paso (por ejemplo, después de **Crear lista** y antes de crear tareas en ella).
+    - Si creas muchos elementos a la vez, espacia las acciones para no superar los límites de la API de ClickUp.
+  </Step>
+  <Step title="Prueba">
+    Para disparadores, crea un evento de prueba en ClickUp. Para acciones, ejecuta el flujo con un contacto de prueba. Revisa los registros de ejecución para ver datos enviados, respuestas e IDs devueltos.
+  </Step>
+  <Step title="Publica">
+    Haz clic en **Publicar** y supervisa las primeras ejecuciones.
+  </Step>
+</Steps>
+
+<Info>
+  Los disparadores de ClickUp no están asociados a un contacto. Si necesitas vincular el flujo a uno, agrega la acción **Buscar contacto** y usa el correo que llega en los datos del disparador, o **Crear contacto** si es alguien nuevo.
+</Info>
+
+## Casos de uso
+
+### Crear tareas a partir de formularios
+
+- **Disparador:** Formulario enviado (filtro: formulario "Alta de cliente").
+- **Acciones:** Crear tarea en ClickUp y Publicar comentario en tarea.
+- **Resultado:** cuando un cliente envía el formulario con sus requisitos, se crea una tarea en la lista "Configuración de clientes" y se añade un comentario con lo que espera.
+
+### Propuestas generadas con IA
+
+- **Disparador:** Cambio de estado de oportunidad (filtro: etapa "Solicitud de propuesta").
+- **Acciones:** una acción de IA genera el contenido de la propuesta y **Crear documento** la guarda en ClickUp, en la carpeta de documentos de ventas.
+- **Resultado:** tu equipo recibe un borrador de propuesta personalizado para revisar, con un título como `Propuesta para {{contact.name}}`.
+
+### Espacios de proyecto según el servicio
+
+- **Disparador:** Cambio de etapa del pipeline (por ejemplo, a "Contrato firmado").
+- **Acción:** Crear espacio en ClickUp con el nombre del cliente.
+- **Ramas:** una condición **Si/No** según el servicio contratado. En cada rama se crea la lista y la primera tarea que corresponde (por ejemplo, "Investigación de palabras clave" para SEO) y se envía una notificación interna al equipo responsable. Si no coincide ninguna rama, el flujo termina.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué plan de ClickUp necesito?">
+    Funciona con los planes gratuitos y de pago de ClickUp. Algunas funciones, como el registro de tiempo o ciertos campos personalizados, pueden requerir un plan de pago de ClickUp.
+  </Accordion>
+  <Accordion title="¿Cuántos espacios de trabajo de ClickUp puedo conectar?">
+    Conecta el espacio de trabajo que corresponde a tu cuenta. Las acciones y permisos siguen la autorización de ese espacio.
+  </Accordion>
+  <Accordion title="¿Puedo usar fechas de vencimiento dinámicas?">
+    Sí. Usa cálculos relativos como `+7 days` en el campo de fecha de vencimiento.
+  </Accordion>
+  <Accordion title="¿Dónde veo los errores?">
+    En los registros de ejecución y el historial de inscripción del flujo verás los datos de entrada, las respuestas y cualquier mensaje de error.
+  </Accordion>
+  <Accordion title="¿Hay límite de flujos con ClickUp?">
+    No hay un límite propio de la integración, más allá de los límites de uso de la API de ClickUp.
+  </Accordion>
+  <Accordion title="¿Estas acciones tienen costo?">
+    Sí. Son acciones premium y se cobran por ejecución según tu plan de ejecuciones.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones premium y planes" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las ejecuciones premium.
+  </Card>
+  <Card title="Registros de ejecución" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa entradas y salidas de cada paso.
+  </Card>
+  <Card title="Airtable en flujos" icon="table" href="/automatizaciones/airtable-en-flujos-de-trabajo">
+    Sincroniza registros de Airtable.
+  </Card>
+  <Card title="Notion en flujos" icon="book" href="/automatizaciones/notion-en-flujos-de-trabajo">
+    Crea páginas y registros en Notion.
+  </Card>
+</CardGroup>

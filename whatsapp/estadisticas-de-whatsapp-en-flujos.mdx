@@ -1,0 +1,91 @@
+---
+title: "Estadísticas de WhatsApp en flujos de trabajo"
+description: "Mide cuántos mensajes de WhatsApp de tus flujos se enviaron, entregaron, leyeron o fallaron y exporta el detalle."
+icon: "chart-bar"
+---
+
+Cada acción de WhatsApp dentro de un flujo de trabajo tiene sus propias estadísticas. Con ellas sabes cuántos mensajes salieron, cuántos llegaron, cuántos se leyeron y cuántos fallaron, y puedes descargar el detalle por contacto. Es la forma más rápida de saber si una automatización de WhatsApp realmente está funcionando.
+
+## Qué puedes medir
+
+| Estado | Qué significa |
+| --- | --- |
+| **Total** | Todos los mensajes que disparó esa acción en el rango de fechas elegido. |
+| **Pendiente** | Mensajes en cola que todavía no se han enviado. |
+| **Enviado** | El mensaje salió hacia WhatsApp pero aún no llega al teléfono. En WhatsApp se ve con una palomita gris. |
+| **Entregado** | El mensaje llegó al teléfono del cliente. Se ve con dos palomitas grises. |
+| **Leído** | El cliente abrió el mensaje. Se ve con dos palomitas azules. |
+| **Fallido** | El mensaje no se pudo entregar. |
+
+<Note>
+  Si el cliente tiene desactivadas las confirmaciones de lectura, sus mensajes aparecen como **Entregado** aunque los haya leído. Por eso la tasa de lectura real suele ser un poco mayor que la que ves.
+</Note>
+
+## Ver las estadísticas de una acción
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización** y abre el flujo de trabajo que contiene la acción de WhatsApp.
+  </Step>
+  <Step title="Entra a la acción">
+    Haz clic en la acción de WhatsApp y luego en **Estadísticas**.
+  </Step>
+  <Step title="Revisa el desglose">
+    En la pestaña **Estadísticas** verás los totales por estado. Ajusta el rango de fechas para comparar periodos.
+  </Step>
+</Steps>
+
+## Exportar el detalle
+
+<Steps>
+  <Step title="Abre las estadísticas">
+    Sigue los pasos anteriores hasta ver las estadísticas de la acción.
+  </Step>
+  <Step title="Muestra todos los registros">
+    Selecciona la vista con todas las estadísticas.
+  </Step>
+  <Step title="Descarga el archivo">
+    Haz clic en **Exportar**. Se descarga un archivo CSV con el nombre del contacto, su teléfono, el estado del mensaje y la fecha y hora.
+  </Step>
+</Steps>
+
+## Por qué falla un mensaje
+
+Los motivos más comunes de un estado **Fallido** son:
+
+- El número no es válido o no tiene WhatsApp.
+- La plantilla fue bloqueada o pausada por Meta.
+- El cliente bloqueó tu número.
+- El cliente alcanzó el límite de mensajes de marketing que Meta le permite recibir. Consulta [el límite de mensajes de marketing por usuario](/whatsapp/limite-de-marketing-por-usuario).
+
+<Tip>
+  Si ves muchos fallos por límite de marketing, prueba a enviar ese mensaje con una plantilla de utilidad (si realmente es transaccional) o a espaciar los envíos. Reintentar de inmediato no ayuda.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre Enviado y Entregado?">
+    Enviado significa que el mensaje salió de Chateea hacia WhatsApp. Entregado significa que ya llegó al teléfono del cliente.
+  </Accordion>
+  <Accordion title="¿Qué indica el número Total?">
+    La cantidad de mensajes que disparó esa acción en el rango de fechas que seleccionaste.
+  </Accordion>
+  <Accordion title="¿El archivo exportado incluye cada mensaje?">
+    Sí. Cada fila corresponde a un mensaje, con el nombre del contacto, el teléfono, el estado y la fecha y hora.
+  </Accordion>
+  <Accordion title="¿Puedo ver estas cifras por plantilla en lugar de por flujo?">
+    Sí. La [analítica de plantillas](/whatsapp/analitica-de-plantillas) muestra el rendimiento de cada plantilla sin importar desde dónde se envió.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Analítica de plantillas" icon="chart-line" href="/whatsapp/analitica-de-plantillas">
+    Envíos, lecturas y clics por plantilla.
+  </Card>
+  <Card title="Mensaje de WhatsApp no entregado" icon="circle-exclamation" href="/whatsapp/mensaje-no-entregado">
+    Causas comunes y cómo resolverlas.
+  </Card>
+</CardGroup>

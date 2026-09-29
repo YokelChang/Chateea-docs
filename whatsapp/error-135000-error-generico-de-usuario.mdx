@@ -1,0 +1,112 @@
+---
+title: "Error 135000: error genérico de usuario"
+description: "Por qué una plantilla de WhatsApp falla con el error 135000 y los pasos que lo resuelven en la mayoría de los casos."
+icon: "triangle-exclamation"
+---
+
+El error **135000** (Generic User Error) aparece cuando una plantilla de WhatsApp no se puede enviar por un problema desconocido con los datos del mensaje o por una restricción interna de Meta. Es un error frustrante porque Meta no explica el motivo exacto: solo indica que está relacionado con restricciones de plantillas aplicadas por seguridad. La buena noticia es que hay soluciones que funcionan en la mayoría de los casos.
+
+<Info>
+  Según el soporte de Meta, este error a veces se debe a **falsos positivos** de su sistema de detección de spam y estafas. Una plantilla legítima puede quedar marcada por error, incluso si antes funcionaba sin problemas.
+</Info>
+
+## Causas conocidas
+
+1. **Valores de variables no admitidos.** Es la causa confirmada más común. Si lo que insertas en las variables `{{1}}`, `{{2}}`, etc. contiene emojis, enlaces de WhatsApp, caracteres especiales o textos muy largos, el envío falla.
+2. **Plantilla marcada por el sistema antispam de Meta.** Meta analiza las plantillas al enviarlas. Si se parecen a spam, phishing o estafas, pueden bloquearse aunque sean legítimas.
+3. **Incumplimiento de políticas.** El contenido o los valores de las variables pueden violar la política comercial o de comercio de WhatsApp (productos prohibidos, datos sensibles, lenguaje amenazante). Meta revisa esto al enviar, no solo al aprobar.
+4. **Datos del envío que no coinciden con la plantilla.** Por ejemplo, un número de variables distinto al de la plantilla aprobada o componentes que no corresponden. Pasa más a menudo después de editar una plantilla.
+5. **Plantilla dañada o desincronizada en Meta.** A veces una plantilla aprobada que funcionaba empieza a fallar sin cambios de tu parte, por un problema interno de Meta.
+
+## Cómo solucionarlo
+
+No existe una solución única garantizada. Sigue estos pasos en orden, de lo más simple a lo más drástico.
+
+<Steps>
+  <Step title="Revisa los valores de las variables">
+    Comprueba qué se está insertando en cada variable, sobre todo si vienen de campos del contacto o valores personalizados.
+
+    | Evita en las variables | Valores seguros |
+    | --- | --- |
+    | Emojis | Texto simple |
+    | Enlaces de WhatsApp (wa.me) | Números y fechas |
+    | Caracteres como # $ % & | Nombres y frases cortas |
+    | Textos muy largos | Contenido alfanumérico estándar |
+    | Formato HTML o markdown | Enlaces solo si la plantilla se aprobó con una variable de URL |
+    | Valores vacíos | |
+  </Step>
+  <Step title="Confirma que el envío coincide con la plantilla aprobada">
+    Abre la plantilla en **Configuración → WhatsApp → Plantillas** y verifica que el número de variables, los componentes (encabezado, cuerpo y botones), el nombre y el idioma coinciden con lo que estás enviando.
+  </Step>
+  <Step title="Elimina y vuelve a crear la plantilla">
+    Es la solución más efectiva según Meta y muchos negocios:
+
+    1. Copia el contenido de la plantilla afectada.
+    2. Elimínala desde **Configuración → WhatsApp → Plantillas**.
+    3. Crea una plantilla nueva con el mismo contenido o uno similar, pero con un **nombre nuevo**.
+    4. Envíala a aprobación y espera a que Meta la apruebe (hasta 24 horas).
+    5. Pruébala y actualiza tus flujos de trabajo y campañas para que usen la nueva plantilla.
+  </Step>
+  <Step title="Si persiste, pide ayuda antes de tocar el número">
+    En casos extremos, eliminar y volver a agregar el número en Meta Business Manager ha resuelto el problema. Es una medida delicada: el número sale de tu cuenta de WhatsApp Business, tendrás que verificarlo de nuevo con un código y puede afectar tu conexión con Chateea. Antes de hacerlo, escribe a soporte de Chateea en **help@chateea.com**.
+  </Step>
+</Steps>
+
+<Tip>
+  Cuando escribas a soporte, incluye el nombre de la plantilla, el número afectado, la respuesta completa del error (incluido el valor `fbtrace_id` si lo ves), cuándo empezó el problema y si hiciste cambios recientes en la plantilla o la cuenta.
+</Tip>
+
+## Cómo prevenirlo
+
+- **Mantén simples los valores de las variables:** sin emojis, caracteres especiales, enlaces de WhatsApp, HTML ni textos largos.
+- **Sigue las pautas de plantillas de Meta** al redactar, sobre todo las de formato de variables.
+- **Prueba con valores de ejemplo** antes de enviar a una lista grande.
+- **No reutilices nombres** de plantillas rechazadas o eliminadas.
+- **Evita que tu plantilla parezca phishing o spam:** nada de urgencias exageradas, enlaces sospechosos ni solicitudes de datos personales.
+
+## Otros códigos relacionados
+
+| Código | Nombre | Descripción |
+| --- | --- | --- |
+| `132000` | Número de parámetros incorrecto | El número de variables no coincide con la plantilla aprobada |
+| `132001` | La plantilla no existe | No existe en ese idioma o aún no está aprobada |
+| `132007` | Incumplimiento de políticas de contenido | El contenido de la plantilla viola una política de WhatsApp |
+| `132012` | Formato de parámetro incorrecto | Los valores de las variables no tienen el formato aprobado |
+| `131037` | Nombre visible sin aprobar | El número no tiene un nombre visible aprobado |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Mi plantilla funcionaba y no cambié nada. ¿Por qué falla ahora?">
+    Es un caso conocido. El análisis automático de Meta puede marcar por error una plantilla aprobada. Eliminarla y crearla de nuevo con otro nombre es la solución más efectiva.
+  </Accordion>
+  <Accordion title="¿Puedo recrear la misma plantilla?">
+    Sí, con el mismo contenido, pero con un **nombre nuevo**. Usar el mismo nombre puede mantener el problema.
+  </Accordion>
+  <Accordion title="¿Siempre es culpa de mi plantilla?">
+    No. Meta ha confirmado que el error puede deberse a falsos positivos de su sistema antispam. Si revisaste todo y está correcto, probablemente el problema está del lado de Meta.
+  </Accordion>
+  <Accordion title="¿Me cobran los mensajes que fallan con 135000?">
+    No. No se entregan y no se cobran.
+  </Accordion>
+  <Accordion title="¿Puedo apelar ante Meta?">
+    No hay un proceso de apelación específico para este error. Lo recomendado es recrear la plantilla y, si persiste, pedir a soporte que lo escale a Meta con el `fbtrace_id` del error.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Error de parámetro no válido" icon="triangle-exclamation" href="/whatsapp/error-parametro-invalido">
+    Problemas con las variables de las plantillas.
+  </Card>
+  <Card title="Crear plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Cómo crear y editar plantillas.
+  </Card>
+  <Card title="Estados de las plantillas" icon="list-check" href="/whatsapp/estados-de-plantillas">
+    Qué significa cada estado.
+  </Card>
+  <Card title="Por qué no puedes editar una plantilla" icon="lock" href="/whatsapp/por-que-no-puedo-editar-una-plantilla">
+    Límites de edición de Meta.
+  </Card>
+</CardGroup>

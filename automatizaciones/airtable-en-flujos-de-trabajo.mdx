@@ -1,0 +1,106 @@
+---
+title: "Disparadores y acciones de Airtable en flujos"
+description: "Inicia flujos con registros nuevos o actualizados de Airtable y busca, crea, actualiza o elimina filas desde tus flujos."
+icon: "table"
+---
+
+La integración nativa con **Airtable** te permite reaccionar a los cambios en tus bases de Airtable y trabajar con sus registros directamente desde tus flujos de trabajo. Usa los disparadores para iniciar un flujo cuando se crea o actualiza una fila, y las acciones para buscar, crear, actualizar o eliminar registros. Así tu CRM y tus tableros de Airtable se mantienen alineados sin conectores externos.
+
+## Qué ganas
+
+- **Datos siempre coherentes:** tus tableros de proyectos y tu CRM se actualizan a la vez.
+- **Automatización nativa:** reemplaza conectores externos con pasos que corren dentro de Chateea.
+- **Costo predecible:** los pasos de Airtable son ejecuciones premium que se cobran por uso.
+- **Detección rápida:** Chateea revisa Airtable aproximadamente cada 5 minutos.
+- **Funciona con el plan gratuito de Airtable:** los límites propios de Airtable siguen aplicando.
+
+## Disparadores y acciones
+
+| Tipo | Nombre | Qué hace |
+| --- | --- | --- |
+| Disparador | **Nuevo registro** | Se activa cuando se agrega una fila a la tabla elegida. Se detecta cada 5 minutos aproximadamente. |
+| Disparador | **Registro actualizado** | Se activa cuando cambia una fila existente de la tabla. Se detecta cada 5 minutos aproximadamente. |
+| Acción | **Buscar registro** | Localiza un registro por su ID o por valores de campos, y devuelve sus datos como valores personalizados para los pasos siguientes. |
+| Acción | **Crear registro** | Crea una fila con los campos que asignes desde el flujo. |
+| Acción | **Actualizar registro** | Actualiza uno o varios campos de una fila (identificada por ID o por una búsqueda anterior). |
+| Acción | **Eliminar registro** | Borra una fila de la tabla de forma permanente. |
+
+## Conectar Airtable
+
+Tienes dos caminos:
+
+- **Desde un flujo:** en **Automatización → Flujos de trabajo**, haz clic en **+ Agregar disparador** o **+ Agregar acción**, busca **Airtable**, elige el paso y haz clic en **Conectar ahora**. Inicia sesión en Airtable y autoriza el acceso.
+- **Desde la configuración:** ve a **Configuración → Integraciones**, busca **Airtable** y completa la conexión.
+
+La conexión es propia de tu cuenta de Chateea.
+
+## Crea tu primer flujo con Airtable
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y haz clic en **Crear flujo de trabajo**, o abre uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Elige **Nuevo registro** o **Registro actualizado**, selecciona la **base** y la **tabla**, y haz clic en **Probar disparador** para traer un registro de ejemplo.
+  </Step>
+  <Step title="Agrega acciones de Airtable">
+    Por ejemplo, **Buscar registro** y después **Actualizar registro** o **Crear registro**. Asigna el correo, el teléfono o los IDs a partir del ejemplo del disparador.
+  </Step>
+  <Step title="Completa y publica">
+    Añade los pasos de seguimiento que necesites (enviar un correo, notificar a un usuario, crear una oportunidad), publica el flujo y haz una prueba. Confirma el resultado en los registros de ejecución.
+  </Step>
+</Steps>
+
+## Casos de uso
+
+### Avisar al equipo cuando entra un registro
+
+- **Disparador:** Nuevo registro (o **Registro actualizado** si quieres avisar de cambios).
+- **Acciones:** **Buscar registro** y una notificación interna por correo.
+- **Resultado:** cuando se agrega un proyecto en Airtable, el responsable recibe un correo con el ID del registro para revisarlo.
+
+### Mantener Airtable al día con tus prospectos
+
+- **Disparadores:** Contacto modificado (con etiqueta "Nuevo"), Contacto creado (tipo prospecto) o Formulario de clientes potenciales de Facebook enviado.
+- **Acciones:** **Buscar registro**; si existe, **Actualizar registro**; si no, **Crear registro**.
+- **Resultado:** cada prospecto nuevo o actualizado queda reflejado en Airtable sin duplicados.
+
+### Producción de contenido desde briefs
+
+- **Disparador:** Nuevo registro en la tabla "Briefs de contenido".
+- **Acciones:** **Buscar registro**, generar el borrador con IA, crear una tarea en ClickUp con el contenido y enviar una notificación interna y un correo.
+- **Resultado:** cada brief nuevo se convierte en un borrador y una tarea asignada sin intervención manual.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un plan de pago de Airtable?">
+    No. Funciona con cuentas gratuitas y de pago. Los límites de tu plan de Airtable (filas, almacenamiento de adjuntos, etc.) siguen aplicando.
+  </Accordion>
+  <Accordion title="¿Los pasos de Airtable tienen costo?">
+    Sí. Los disparadores y acciones de Airtable son premium y se cobran por ejecución según tu plan de ejecuciones.
+  </Accordion>
+  <Accordion title="¿Dónde se guardan los registros?">
+    En la base y la tabla que elijas en cada paso, con la cuenta de Airtable conectada.
+  </Accordion>
+  <Accordion title="¿Cómo soluciono un fallo?">
+    Revisa los registros de ejecución para ver el error del paso (por ejemplo, tabla o campo no válido o falta de permisos). Si la autorización caducó, vuelve a conectar Airtable y repite la prueba.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones premium y planes" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las ejecuciones premium.
+  </Card>
+  <Card title="ClickUp en flujos" icon="list-check" href="/automatizaciones/clickup-en-flujos-de-trabajo">
+    Crea tareas y documentos en ClickUp.
+  </Card>
+  <Card title="Apps del Marketplace en flujos" icon="store" href="/flujo-de-trabajo/activadores-y-acciones-del-mercado-de-aplicaciones">
+    Encuentra e instala apps desde el constructor.
+  </Card>
+  <Card title="Registros de ejecución" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa qué hizo cada paso del flujo.
+  </Card>
+</CardGroup>

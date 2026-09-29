@@ -1,0 +1,171 @@
+---
+title: "Agentes de flujo en Agent Studio"
+description: "Conoce el constructor visual de Agent Studio, sus nodos y versiones, y cómo mantener tus agentes de flujo."
+icon: "diagram-project"
+---
+
+Agent Studio es el constructor visual de Chateea para crear agentes de IA basados en flujos. En un lienzo conectas bloques (nodos) para definir cuándo empieza el agente, cómo procesa la información, qué decisiones toma y qué acciones realiza: responder un chat, consultar tu base de conocimiento, llamar a una API o generar contenido.
+
+A diferencia de un flujo de trabajo tradicional, que sigue reglas fijas, un agente de Agent Studio interpreta lo que escribe la persona, decide en función del contexto y elige el camino adecuado.
+
+<Warning>
+Los **agentes gestionados** (Managed Agents, antes llamados Super Agents) son ahora la experiencia recomendada para crear agentes nuevos. Los agentes de flujo que ya tienes siguen funcionando con normalidad, sus disparadores siguen activos y puedes editarlos y mantenerlos desde Agent Studio. Para crear agentes nuevos, usa la pestaña **Agentes gestionados** de Agent Studio. Consulta [Agentes gestionados en Agent Studio](/ia/agentes-gestionados-agent-studio).
+</Warning>
+
+<Note>
+No confundas Agent Studio con AI Studio. AI Studio crea sitios web y páginas a partir de indicaciones; Agent Studio construye agentes que responden a eventos, conversan con tus contactos y automatizan tareas.
+</Note>
+
+## Para qué sirve
+
+- **Constructor visual:** diseñas el comportamiento del agente arrastrando y conectando nodos.
+- **Se ejecuta con eventos:** el agente arranca con eventos de tu CRM, como un mensaje de chat, un formulario enviado o una etiqueta agregada.
+- **Decisiones flexibles:** enruta la conversación por intención detectada con IA o por reglas.
+- **Conocimiento y herramientas integradas:** consulta tu base de conocimiento, busca en internet o llama a otras aplicaciones.
+- **Contenido multimedia:** genera texto, imágenes, audio o video dentro del mismo flujo.
+- **Captura de datos estructurada:** recoge correos, teléfonos y selecciones durante la conversación.
+- **Cambios seguros:** pruebas en una versión de staging antes de pasar a producción, sin afectar las conversaciones reales.
+
+## El panel de Agent Studio
+
+Ve a **IA → Agent Studio** y haz clic en **Agentes de flujo** (Flow Agents) para ver la lista de tus agentes. Desde ahí puedes:
+
+- Ver tus agentes y su estado (Borrador o Publicado).
+- Consultar cuándo se crearon o actualizaron.
+- Organizarlos en carpetas.
+- Abrir la biblioteca de plantillas.
+
+Si tu cuenta todavía permite crear agentes de flujo, puedes empezar desde cero o instalar una plantilla de la biblioteca. Las plantillas traen disparadores, nodos de IA, lógica de enrutamiento y acciones ya conectadas, y puedes modificar cualquier parte después de instalarlas. Son la forma más rápida de entender cómo se arma un agente.
+
+## El lienzo del constructor
+
+Al abrir un agente entras al lienzo. Los agentes se construyen de izquierda a derecha: empiezan con un disparador y terminan en una acción o un punto final. Las conexiones entre nodos definen cómo se comporta el agente en situaciones reales.
+
+### El disparador de inicio
+
+Todo agente empieza con un **disparador de inicio** (Start trigger), que define cuándo se ejecuta. Por ejemplo: un mensaje de chat, un formulario enviado o una etiqueta agregada a un contacto. Sin disparador, el agente no se ejecuta. Lo explicamos en detalle en [Disparadores para agentes de flujo](/ia/disparadores-agentes-de-flujo).
+
+### Tipos de nodos
+
+Cada nodo cumple una sola función. Al conectarlos, defines el comportamiento completo del agente.
+
+| Categoría | Nodo | Para qué sirve |
+| --- | --- | --- |
+| Control del flujo | Agente de IA | Es el cerebro: entiende la entrada, el contexto y genera respuestas según tus instrucciones. |
+| Control del flujo | Secuencial | Agrupa varios pasos que se ejecutan en un orden fijo. |
+| Control del flujo | Enrutador | Elige el siguiente camino por intención detectada o por condiciones. |
+| Control del flujo | Fin | Marca dónde termina la ejecución. |
+| Herramientas | Buscar en la base de conocimiento | Responde con la información de tu base de conocimiento. |
+| Herramientas | Buscar en la web | Obtiene información pública y actualizada de internet. |
+| Herramientas | Servidor MCP | Conecta el agente con servidores de herramientas externas mediante Model Context Protocol. |
+| Herramientas | Llamada a API | Envía o recibe datos de otras aplicaciones. |
+| IA generativa | Generación de texto, imagen o audio | Crea mensajes, resúmenes, imágenes o respuestas habladas. |
+| Captura | Correo, Teléfono, Opción única, Texto libre | Recoge datos del usuario en un formato ordenado. |
+
+### Variables e indicación global
+
+En la parte superior del constructor encuentras dos herramientas que afectan a todo el agente:
+
+- **Variables:** marcadores reutilizables que guardan información. Defines un dato una vez (por ejemplo, el nombre de tu negocio) y lo usas en todo el flujo. Puedes crear variables globales, de entrada o de ejecución. Más detalles en [Variables y valores personalizados en Agent Studio](/ia/variables-y-valores-personalizados-agent-studio).
+- **Indicación global** (Global Prompt): instrucciones generales que el agente sigue en cada interacción, como el tono, la personalidad y las reglas.
+
+### Ramas con condiciones
+
+Además del nodo enrutador, puedes definir condiciones en las conexiones para que el agente tome caminos distintos según el valor de una variable o la entrada del usuario.
+
+## Versiones: staging y producción
+
+Agent Studio maneja versiones para que puedas probar cambios sin afectar las conversaciones reales:
+
+| Versión | Qué es |
+| --- | --- |
+| Borrador | Los cambios que estás haciendo y aún no guardas como versión. |
+| Staging | Tu versión de trabajo. Al guardar y publicar se actualiza staging, sin afectar el tráfico real. |
+| Producción | La versión que atiende a contactos reales. Solo se crea cuando **promueves** una versión de staging. |
+
+Si algo falla después de publicar, puedes volver a una versión anterior del agente.
+
+## Cómo editar un agente de flujo
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio**, haz clic en **Agentes de flujo** y luego en el nombre del agente que quieres editar.
+  </Step>
+  <Step title="Agrega o ajusta nodos">
+    Añade nodos de herramientas (agente de IA, MCP, API, base de conocimiento o búsqueda web) o modifica los que ya existen.
+  </Step>
+  <Step title="Conecta los nodos">
+    Une los nodos con conexiones para definir los caminos lógicos del agente.
+  </Step>
+  <Step title="Configura las variables">
+    Define las variables que pasan datos de un nodo a otro.
+  </Step>
+  <Step title="Prueba el agente">
+    Abre la pestaña **Probar** para simular una conversación y revisar cada paso. Consulta [Prueba y depura agentes en Agent Studio](/ia/probar-y-depurar-agentes-agent-studio).
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar** y **Publicar** para crear o actualizar la versión de staging. Cuando esté lista, **promuévela a producción** y despliega el agente.
+  </Step>
+</Steps>
+
+<Tip>
+Un agente solo responde a eventos reales cuando está publicado. Si lo editas después y no lo vuelves a publicar, la copia de trabajo aparece como Borrador.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Todavía puedo crear agentes nuevos en el constructor de flujos?">
+    La creación de agentes nuevos se hace ahora con los agentes gestionados. Agent Studio sigue disponible para editar y mantener tus agentes de flujo existentes.
+  </Accordion>
+  <Accordion title="¿Qué pasa con mis agentes de flujo actuales?">
+    Siguen funcionando igual. Puedes editarlos, probarlos, versionarlos y promoverlos a producción desde tu cuenta.
+  </Accordion>
+  <Accordion title="¿Mis disparadores seguirán funcionando?">
+    Sí. Los disparadores conectados a tus agentes de flujo siguen activos.
+  </Accordion>
+  <Accordion title="¿Debo pasar todos mis agentes a agentes gestionados ya?">
+    No es obligatorio. Tus agentes actuales pueden seguir funcionando como hoy. Usa agentes gestionados para los nuevos y mantén los existentes en Agent Studio.
+  </Accordion>
+  <Accordion title="¿Los agentes se ejecutan solos?">
+    Solo cuando se cumple el disparador configurado y el agente está publicado.
+  </Accordion>
+  <Accordion title="¿En qué se diferencia un agente de un flujo de trabajo?">
+    Un flujo de trabajo sigue reglas definidas de antemano. Un agente interpreta lo que recibe y toma decisiones dinámicas con IA.
+  </Accordion>
+  <Accordion title="¿Puedo conectar el agente con otros sistemas?">
+    Sí, con los nodos de llamada a API y servidor MCP.
+  </Accordion>
+  <Accordion title="¿Un agente puede llamar a otro agente?">
+    Sí. Puedes invocar otro agente como parte del flujo o llamarlo por API desde un paso secuencial.
+  </Accordion>
+  <Accordion title="¿Se envían mis documentos completos al modelo de IA?">
+    No. De la base de conocimiento solo se envían los fragmentos recuperados que son relevantes para la pregunta, no los documentos enteros. Así el contexto es más preciso y el consumo, menor.
+  </Accordion>
+  <Accordion title="¿Qué pasa si falla una API externa dentro del flujo?">
+    El error queda registrado en el historial de ejecución y puedes crear una rama alternativa con condiciones (por ejemplo, según el código de error) para que el agente siga funcionando.
+  </Accordion>
+  <Accordion title="¿Cómo se cobra el uso de Agent Studio?">
+    Se cobra el consumo de IA (tokens del modelo) de las ejecuciones. Los pasos que no usan IA y las consultas a la base de conocimiento no generan cargo de modelo. El consumo se descuenta de la billetera de tu cuenta y puedes verlo en **Configuración → Facturación**. Consulta [Cómo se cobra el uso de la IA](/ia/como-se-cobra-la-ia).
+  </Accordion>
+  <Accordion title="¿Todas las conexiones necesitan una condición?">
+    No. Una conexión sin condición funciona como el siguiente paso predeterminado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparadores para agentes de flujo" icon="bolt" href="/ia/disparadores-agentes-de-flujo">
+    Arranca tu agente con formularios, etiquetas o chats.
+  </Card>
+  <Card title="Nodo enrutador" icon="route" href="/ia/nodo-enrutador-agent-studio">
+    Divide la conversación por intención o por reglas.
+  </Card>
+  <Card title="Prueba y depura agentes" icon="bug" href="/ia/probar-y-depurar-agentes-agent-studio">
+    Revisa cada paso antes de salir en vivo.
+  </Card>
+  <Card title="API pública de Agent Studio" icon="code" href="/ia/api-publica-agent-studio">
+    Ejecuta tus agentes desde otros sistemas.
+  </Card>
+</CardGroup>

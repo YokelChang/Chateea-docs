@@ -1,0 +1,199 @@
+---
+title: "Acción: Google Sheets"
+description: "Crea, busca, actualiza y vacía filas de Google Sheets automáticamente desde tus flujos."
+icon: "table"
+---
+
+La acción **Google Sheets** conecta tus flujos de trabajo directamente con tus hojas de cálculo de Google. Sin depender de herramientas externas, puedes agregar filas nuevas, buscar registros, actualizar datos o vaciar filas a medida que tus contactos avanzan por un flujo. Es ideal para llevar un registro de ventas, inscripciones, pedidos o prospectos en una hoja que tu equipo ya usa.
+
+<Note>
+  **Google Sheets** es una acción premium: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Para qué te sirve
+
+- **Automatizar tus hojas:** crea, busca o modifica registros automáticamente según lo que pasa en tus flujos.
+- **Menos captura manual:** los datos del flujo llegan directamente a la hoja, sin copiar y pegar.
+- **Datos ordenados:** cada valor va a su columna, así todos los registros siguen la misma estructura.
+- **Uno o varios registros:** usa acciones de una fila o de varias filas según los datos que tengas.
+- **Reutilizar datos de la hoja:** las búsquedas devuelven valores que puedes usar en los pasos siguientes del flujo.
+
+## Antes de empezar
+
+1. Conecta una cuenta de Google a tu cuenta de Chateea.
+2. Asegúrate de que esa cuenta de Google tiene acceso a la unidad (Drive) y a la hoja de cálculo que usarás.
+3. Pon encabezados claros en la **primera fila** de la hoja. Esa fila se usa como encabezado y define las columnas que podrás mapear.
+4. Confirma que existe la pestaña (hoja) correcta dentro del archivo.
+
+## Configurar la acción
+
+<Steps>
+  <Step title="Agrega la acción">
+    Ve a **Automatización → Flujos de trabajo**, abre o crea un flujo, haz clic en **+**, busca **Google Sheets** y elige la operación que quieres hacer (por ejemplo, **Crear fila**).
+  </Step>
+  <Step title="Conecta tu cuenta de Google">
+    Si aún no hay una cuenta conectada, conéctala y autorízala. Debe tener acceso a la unidad y a la hoja que usará el flujo.
+  </Step>
+  <Step title="Elige unidad, hoja de cálculo y pestaña">
+    Selecciona la **Unidad** (Drive), la **Hoja de cálculo** y la **Hoja** (pestaña) donde el flujo trabajará.
+  </Step>
+  <Step title="Define el rango de columnas">
+    Elige la **Columna inicial** y la **Columna final**. Los encabezados dentro de ese rango quedan disponibles para mapear. Si cambiaste columnas después de configurar la acción, haz clic en **Actualizar encabezados** (Refresh Headers).
+  </Step>
+  <Step title="Mapea y guarda">
+    Asigna a cada columna el valor del flujo que corresponda y haz clic en **Guardar acción**.
+  </Step>
+</Steps>
+
+<Tip>
+  Tener a mano los nombres exactos de la unidad, la hoja de cálculo y la pestaña te ahorra tiempo al buscarlas en los desplegables.
+</Tip>
+
+## Operaciones disponibles
+
+| Operación | Qué hace |
+| --- | --- |
+| **Crear fila** | Agrega una fila nueva debajo de la última fila con datos |
+| **Crear varias filas** | Agrega una fila por cada registro cuando el flujo tiene una lista de registros |
+| **Buscar fila** | Encuentra una fila que cumpla los criterios de búsqueda |
+| **Buscar varias filas** | Devuelve varias filas que coinciden, hasta el número que indiques |
+| **Actualizar fila específica** | Cambia los valores de un número de fila concreto |
+| **Actualizar varias filas** | Cambia valores en filas que ya existen, a partir de una fila inicial |
+| **Actualizar fila con búsqueda** | Actualiza la fila que encontró una búsqueda anterior |
+| **Borrar fila específica** | Vacía los valores de un número de fila concreto |
+| **Borrar fila con búsqueda** | Vacía la fila que encontró una búsqueda anterior |
+
+<Warning>
+  Las operaciones de **borrar** vacían el contenido de la fila, pero **no eliminan la fila** de la hoja.
+</Warning>
+
+## Crear filas
+
+### Crear fila
+
+Úsala cuando cada ejecución del flujo deba crear un solo registro, por ejemplo una fila por cada nueva venta. Configura la cuenta, la unidad, la hoja de cálculo, la pestaña y el rango de columnas, mapea los valores y guarda.
+
+### Crear varias filas
+
+Crea varias filas en una sola ejecución, pero **solo** cuando el flujo recibe los datos como una **lista (arreglo) de objetos**. Cada objeto de la lista se convierte en una fila: una lista con tres objetos crea tres filas.
+
+Fuentes habituales de listas:
+
+- Un **webhook entrante** que envía varios registros juntos.
+- Una integración o paso anterior que devuelve una lista que puedes mapear.
+
+<Note>
+  Esta operación no agrupa contactos. Cada contacto que entra al flujo es una ejecución independiente, así que inscribir mil contactos uno por uno no genera una sola petición de mil filas. Si solo hay un registro disponible, se crea una sola fila.
+</Note>
+
+## Buscar filas
+
+### Buscar fila
+
+Busca un registro existente y deja sus valores disponibles para los pasos siguientes. Por ejemplo, buscar al contacto por su correo o su teléfono.
+
+- **Orden de búsqueda:** **Desde arriba** devuelve la primera coincidencia; **Desde abajo** devuelve la coincidencia más reciente según su posición en la hoja.
+- **Columna y valor de búsqueda:** elige en qué columna buscar y qué valor debe coincidir.
+- **Columna de búsqueda adicional:** agrega otra columna y valor cuando la coincidencia deba cumplir más de una condición.
+
+**Crear fila si no hay coincidencia:** dentro de **Buscar fila** puedes activar la opción de crear una fila cuando no se encuentra ninguna. Es útil para actualizar el registro si existe y crearlo si no. Esa creación se registra y se cobra como una ejecución premium aparte.
+
+### Buscar varias filas
+
+Funciona igual que **Buscar fila**, pero con un campo adicional, **Número de filas**, para indicar cuántas coincidencias quieres recibir.
+
+## Actualizar filas
+
+### Actualizar fila específica
+
+Úsala cuando ya sabes qué fila modificar. Indica el **Número de fila** (puedes insertarlo de forma dinámica con el selector de valores personalizados), elige el rango de columnas y mapea los valores nuevos. Si dejas un campo vacío, esa columna no se modifica (cuando la acción lo permite).
+
+### Actualizar varias filas
+
+Para refrescar datos en filas que ya existen sin crear duplicados. Indica la fila desde la que empieza la actualización, el rango de columnas y los valores a cambiar.
+
+### Actualizar fila con búsqueda
+
+<Steps>
+  <Step title="Agrega una búsqueda">
+    Configura antes en el flujo una acción **Buscar fila** que encuentre la fila objetivo.
+  </Step>
+  <Step title="Agrega la actualización">
+    Agrega otra acción de Google Sheets y elige **Actualizar fila con búsqueda**.
+  </Step>
+  <Step title="Elige la búsqueda">
+    Selecciona la búsqueda cuyo resultado quieres actualizar. Solo aparecen las búsquedas que están antes en el flujo.
+  </Step>
+  <Step title="Mapea las columnas">
+    Elige la columna inicial y final y asigna los valores nuevos.
+  </Step>
+</Steps>
+
+Solo puedes elegir una búsqueda por acción. Si la búsqueda no devuelve ninguna fila, este paso se omite y el flujo continúa.
+
+## Borrar filas
+
+- **Borrar fila específica:** indica el **Número de fila** (fijo o dinámico) y guarda.
+- **Borrar fila con búsqueda:** agrega antes una acción **Buscar fila**, luego esta acción y selecciona esa búsqueda. Si la búsqueda no encuentra nada, el paso se omite y el flujo sigue.
+
+En ambos casos se vacía el contenido; la fila sigue existiendo.
+
+## Usar los resultados de una búsqueda
+
+Cuando **Buscar fila** encuentra una coincidencia, los valores de esa fila quedan disponibles según los encabezados de columna. Por ejemplo, si tu hoja tiene las columnas Nombre, Correo, Teléfono y Estado, una búsqueda por correo te devuelve todos esos datos para usarlos en mensajes, condiciones u otras acciones.
+
+- **Índice de búsqueda:** cada acción de búsqueda recibe automáticamente un índice que la identifica. No se puede cambiar.
+- **Número de fila encontrada:** usa `{{sheet.x.rowNumber}}`, cambiando `x` por el índice de la búsqueda, para referirte a la fila en otra acción.
+- **Condiciones Si/Entonces:** usa el resultado para actualizar la fila si existe o crearla si no, y así evitar duplicados.
+
+<Warning>
+  Si una búsqueda no encuentra coincidencias, las acciones que dependen de ella (**Actualizar fila con búsqueda**, **Borrar fila con búsqueda**) pueden omitirse porque no tienen una fila objetivo.
+</Warning>
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="No aparece la hoja de cálculo o la pestaña">
+    Confirma que conectaste la cuenta de Google correcta, que tiene acceso a la unidad y permiso sobre la hoja, que elegiste la unidad correcta y que la pestaña existe. Si hace falta, vuelve a conectar o autorizar la cuenta.
+  </Accordion>
+  <Accordion title="Faltan encabezados o están desactualizados">
+    Si agregaste, renombraste, borraste o reordenaste columnas, haz clic en **Actualizar encabezados** y revisa el mapeo antes de publicar.
+  </Accordion>
+  <Accordion title="Los datos caen en columnas equivocadas">
+    Verifica que la primera fila tenga los encabezados esperados, que el rango de columnas sea correcto, que actualizaste los encabezados tras los cambios y que cada valor esté mapeado a su columna.
+  </Accordion>
+  <Accordion title="La búsqueda no devuelve ninguna fila">
+    Revisa la columna de búsqueda, el valor, el orden de búsqueda, los criterios adicionales y los valores reales de la hoja. Consulta el historial de ejecución del flujo para confirmar el resultado.
+  </Accordion>
+  <Accordion title="Crear varias filas solo crea una">
+    La acción necesita una lista con varios objetos en la misma ejecución. Si solo llega un registro, crea una fila. Los contactos que entran por separado no se agrupan.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre Crear varias filas y Actualizar varias filas?">
+    **Crear varias filas** agrega registros nuevos. **Actualizar varias filas** cambia valores en filas que ya existen.
+  </Accordion>
+  <Accordion title="¿Puedo actualizar o borrar todas las filas que devuelve Buscar varias filas?">
+    No automáticamente. **Actualizar fila con búsqueda** y **Borrar fila con búsqueda** trabajan con una sola fila. Para actualizaciones masivas usa **Actualizar varias filas**; si necesitas tratar cada resultado por separado, hará falta lógica adicional en el flujo.
+  </Accordion>
+  <Accordion title="¿Puedo usar varias hojas de cálculo en un mismo flujo?">
+    Sí. Cada acción de Google Sheets se configura con su propia cuenta, unidad, hoja de cálculo y pestaña.
+  </Accordion>
+  <Accordion title="¿Necesito encabezados en mi hoja?">
+    Sí. La primera fila se usa como encabezado y define las columnas disponibles. Usa nombres claros y únicos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador: Webhook entrante" icon="plug" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
+    Recibe listas de registros desde otras aplicaciones.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores y acciones.
+  </Card>
+</CardGroup>

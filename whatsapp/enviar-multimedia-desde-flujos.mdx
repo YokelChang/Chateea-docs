@@ -1,0 +1,89 @@
+---
+title: "Enviar imágenes, videos, audios y documentos desde flujos"
+description: "Envía imágenes, videos, audios y documentos por WhatsApp de forma automática desde un flujo de trabajo."
+icon: "photo-film"
+---
+
+Con la acción **WhatsApp multimedia** (WhatsApp Media) puedes enviar imágenes, videos, audios y documentos de forma automática desde un flujo de trabajo. Es ideal para mandar un catálogo en PDF después de una consulta, un video de bienvenida, una guía de uso o un comprobante sin que nadie del equipo tenga que hacerlo a mano.
+
+## La regla clave: la ventana de 24 horas
+
+Los mensajes multimedia libres solo se pueden enviar mientras está abierta la **ventana de atención al cliente**. Esta ventana se abre cada vez que el cliente te escribe por WhatsApp y dura 24 horas desde su último mensaje. Fuera de ella, solo puedes enviar plantillas aprobadas por Meta.
+
+<Note>
+Por eso conviene poner siempre el paso **WhatsApp: Verificar ventana de atención al cliente** (Customer Service Window Check) antes de la acción multimedia. Así el archivo solo se envía cuando la ventana está abierta y no generas mensajes fallidos.
+</Note>
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea o abre un flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo**, haz clic en **Crear flujo de trabajo** y elige **Empezar desde cero**, o abre un flujo existente. Agrega el disparador que corresponda a tu caso.
+  </Step>
+  <Step title="Agrega la verificación de la ventana">
+    Haz clic en el ícono **+**, busca **WhatsApp: Verificar ventana de atención al cliente** y selecciónalo. El flujo se dividirá en dos ramas: **Abierta** y **Cerrada**.
+  </Step>
+  <Step title="Añade la acción multimedia en la rama Abierta">
+    Bajo la rama **Abierta**, haz clic en **+** y elige la acción **WhatsApp multimedia**.
+  </Step>
+  <Step title="Configura el envío">
+    Selecciona el número de envío (**De**), elige el **Tipo de medio** (imagen, video, audio o documento), sube el archivo y, si aplica, escribe un texto de acompañamiento.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar acción**, publica el flujo y pruébalo con un contacto de prueba que te haya escrito en las últimas 24 horas.
+  </Step>
+</Steps>
+
+<Tip>
+En la rama **Cerrada** puedes enviar una plantilla aprobada (de utilidad o marketing) para reabrir la conversación. Cuando el cliente responda, se abrirá una nueva ventana de 24 horas y podrás enviarle el archivo.
+</Tip>
+
+## Formatos y tamaños permitidos
+
+| Tipo | Formatos | Tamaño máximo |
+| --- | --- | --- |
+| Imagen | JPEG, PNG | 5 MB |
+| Video | MP4, 3GP (video H.264 y audio AAC) | 16 MB |
+| Audio | AAC, AMR, MP3, M4A, OGG (OPUS) | 16 MB |
+| Documento | TXT, PDF, DOC/DOCX, PPT/PPTX, XLS/XLSX | 100 MB |
+
+Si un archivo supera estos límites, WhatsApp devuelve un error y el mensaje no se entrega.
+
+### Texto de acompañamiento
+
+El texto (caption) se admite en imágenes, videos y documentos. En audios no se muestra: si escribes algo en ese campo para un audio, se ignora.
+
+## Cuánto tiempo están disponibles los archivos
+
+- **Archivos recibidos** de tus clientes: disponibles durante 7 días desde que se enviaron.
+- **Archivos enviados** por tu negocio: disponibles durante 30 días.
+
+Pasado ese plazo, el enlace caduca y el archivo ya no se puede abrir ni descargar. Si necesitas conservar documentos importantes, descárgalos y guárdalos antes.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tiene costo enviar archivos dentro de la ventana de 24 horas?">
+    Los mensajes libres (incluidos los multimedia) enviados con la ventana abierta no generan un cargo adicional por mensaje y puedes enviar los que necesites.
+  </Accordion>
+  <Accordion title="¿Qué pasa si intento enviar un archivo con la ventana cerrada?">
+    El mensaje falla. Para reabrir la conversación, envía una plantilla aprobada y espera a que el cliente responda.
+  </Accordion>
+  <Accordion title="¿Cómo elijo el número que envía el archivo?">
+    En la acción **WhatsApp multimedia**, selecciona en **De** cualquiera de los números de WhatsApp conectados a tu cuenta.
+  </Accordion>
+  <Accordion title="¿Puedo probar el envío antes de activarlo para todos?">
+    Sí. Publica el flujo y dispáralo con un contacto de prueba que te haya escrito recientemente para confirmar que el archivo llega bien.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Disparadores, acciones y ramas.
+  </Card>
+  <Card title="Acción WhatsApp V2" icon="bolt" href="/whatsapp/accion-whatsapp-v2">
+    Mensajes con ramas por respuesta y tiempo de espera.
+  </Card>
+</CardGroup>

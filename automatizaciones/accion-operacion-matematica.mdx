@@ -1,0 +1,147 @@
+---
+title: "Acción: Operación matemática"
+description: "Calcula con campos numéricos, monetarios y de fecha en tus flujos: puntuaciones, renovaciones, comisiones y más."
+icon: "calculator"
+---
+
+La acción **Operación matemática** (Math Operation) hace cálculos automáticos con campos numéricos, monetarios y de fecha dentro de un flujo de trabajo, y guarda el resultado en el campo que elijas. Con ella puedes sumar puntos a un prospecto cada vez que interactúa, calcular la fecha de renovación de una membresía o descontar unidades vendidas de un inventario, sin hacer cuentas a mano y sin errores.
+
+## Para qué te sirve
+
+Algunos ejemplos reales de negocio:
+
+| Caso | Cómo se resuelve |
+| --- | --- |
+| **Renovación de membresías** | Suma 1 año a la fecha de vencimiento actual para programar recordatorios a tiempo |
+| **Puntuación de prospectos** | Suma puntos cada vez que el contacto llama, abre un correo o visita tu web |
+| **Vencimiento de suscripciones** | Suma la duración contratada a la fecha de activación |
+| **Fechas límite de proyectos** | Suma o resta días a la fecha de inicio y programa avisos al equipo |
+| **Comisiones de ventas** | Multiplica el monto vendido por el porcentaje de comisión |
+| **Precios con descuento o impuestos** | Multiplica el precio por el porcentaje correspondiente |
+| **Programa de lealtad** | Suma puntos por cada compra y avisa cuando el cliente llega a un umbral |
+| **Inventario** | Resta las unidades vendidas del stock para saber cuándo reponer |
+| **Garantías** | Suma el periodo de garantía a la fecha de compra |
+| **Recargos por mora** | Multiplica la tarifa diaria por los días de retraso |
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea o abre el flujo donde quieras hacer el cálculo.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+ Agregar acción** y elige **Operación matemática**.
+  </Step>
+  <Step title="Elige el campo de entrada">
+    En **Seleccionar campo**, elige el campo numérico, monetario o de fecha sobre el que quieres calcular. Puede ser un campo estándar, un campo personalizado o un valor que llega desde el disparador.
+  </Step>
+  <Step title="Elige la operación y el valor">
+    - Para campos **numéricos o monetarios**: suma, resta, multiplicación o división.
+    - Para campos de **fecha**: sumar o restar días, meses o años.
+
+    En **Valor**, escribe la cantidad (por ejemplo, `10` para sumar 10) o elige un campo o valor del disparador para usarlo como operando.
+  </Step>
+  <Step title="Elige dónde guardar el resultado">
+    En **Actualizar campo**, selecciona el campo que recibirá el resultado. Puedes elegir entre campos estándar, campos personalizados y valores personalizados.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar** y publica el flujo. El cálculo se hará automáticamente cada vez que un contacto llegue a este paso.
+  </Step>
+</Steps>
+
+En resumen: **campo de entrada** (numérico, monetario o fecha) → **operación y valor** → **campo de salida** donde se guarda el resultado.
+
+<Note>
+  - Solo se admiten campos de tipo numérico, monetario y fecha.
+  - El campo de entrada y el de salida pueden ser el mismo o distintos, pero deben ser del **mismo tipo**.
+  - Si el resultado es negativo, se guarda como cero.
+</Note>
+
+## Tipos de campo compatibles
+
+### Numérico
+
+Guarda números enteros o decimales: conteos, cantidades, porcentajes, puntuaciones o tasas de conversión. Admite suma, resta, multiplicación y división.
+
+### Monetario
+
+Guarda importes en una moneda: precios, costos, ingresos, comisiones. Tiene una precisión fija para los centavos. Admite las mismas cuatro operaciones que el numérico y su valor mínimo es 0.
+
+### Fecha
+
+Guarda fechas (y a veces hora) de eventos, vencimientos o hitos. Puedes:
+
+| Operación | Ejemplos de uso |
+| --- | --- |
+| **Sumar o restar días** | Fecha de seguimiento, fin de un periodo de prueba, fecha límite de una tarea |
+| **Sumar o restar meses** | Próxima fecha de cobro, evento mensual recurrente, fin de un contrato |
+| **Sumar o restar años** | Renovación anual, aniversarios, fin de una licencia |
+
+### Fecha actual
+
+También puedes calcular a partir de la **fecha actual**, que corresponde al día y la hora según la zona horaria de tu cuenta. Es útil para fijar fechas relativas a hoy: "dentro de 30 días", "el próximo mes" o "dentro de un año".
+
+<Warning>
+  Los valores negativos no se admiten en operaciones con campos de fecha ni con la fecha actual. Para ir hacia atrás, usa la operación de restar.
+</Warning>
+
+## Resultados negativos
+
+- **Campos monetarios:** si un descuento deja el precio por debajo de 0, el resultado se guarda como 0. Así nunca tendrás un cobro negativo. Si quieres controlarlo tú, agrega antes una condición **Si/Entonces** que compruebe el resultado.
+- **Campos numéricos:** pueden guardar valores negativos como dato (por ejemplo, una pérdida), pero ten en cuenta que el resultado de esta acción se guarda como cero si sale negativo. Si necesitas registrar negativos, revisa el comportamiento con una prueba antes de publicar.
+
+## Combinar con otras acciones y condiciones
+
+La operación matemática se vuelve más potente cuando la combinas con condiciones **Si/Entonces** y otras acciones:
+
+<AccordionGroup>
+  <Accordion title="Priorizar prospectos">
+    Suma puntos con cada interacción. Luego, una condición separa a los contactos en calientes, tibios y fríos: a los calientes los asignas a un vendedor para contacto inmediato y a los demás les envías una secuencia de correos.
+  </Accordion>
+  <Accordion title="Recordatorios de renovación">
+    Calcula la fecha de renovación sumando la duración de la suscripción a la fecha de inicio. Una condición comprueba si faltan menos de dos semanas y, si es así, envía el recordatorio.
+  </Accordion>
+  <Accordion title="Comisiones y reconocimiento">
+    Calcula la comisión de cada vendedor. Si supera un umbral, envíale un correo de felicitación con el detalle de su comisión.
+  </Accordion>
+  <Accordion title="Seguimiento de fechas límite">
+    Suma la duración del proyecto a la fecha de inicio. Si la fecha límite está cerca o ya pasó, envía un recordatorio al equipo o escala el caso a un responsable.
+  </Accordion>
+  <Accordion title="Programa de lealtad">
+    Suma puntos con cada compra. Cuando el cliente alcanza el umbral, envíale un aviso con su recompensa.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo hacer varias operaciones en un mismo paso?">
+    No. Cada acción hace una sola operación. Para cálculos más complejos, encadena varias acciones **Operación matemática** en el mismo flujo.
+  </Accordion>
+  <Accordion title="¿Cómo se manejan los decimales?">
+    La precisión decimal se gestiona automáticamente. En campos monetarios se usa la precisión fija de la moneda.
+  </Accordion>
+  <Accordion title="¿Funciona con campos de fecha personalizados?">
+    Sí. Puedes sumar o restar días, meses o años a cualquier campo personalizado de tipo fecha.
+  </Accordion>
+  <Accordion title="¿Hay límites en los valores?">
+    Depende del tipo de campo. En los campos monetarios el mínimo es 0. En fechas no se admiten valores negativos.
+  </Accordion>
+  <Accordion title="¿Puedo usar el resultado en una condición Si/Entonces?">
+    Sí. Una vez guardado en un campo, puedes usarlo en condiciones para enviar al contacto por distintos caminos, por ejemplo según su puntuación, su gasto total o los días que faltan para una fecha.
+  </Accordion>
+  <Accordion title="¿Puedo calcular con datos que vienen de otra aplicación?">
+    Sí, si esos datos llegan a un campo de tu cuenta o forman parte del disparador (por ejemplo, un webhook entrante). En ese caso puedes usarlos como campo de entrada o como valor de la operación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acción: Actualizar campo de contacto" icon="pen-to-square" href="/flujo-de-trabajo/accion-actualizar-el-campo-de-contacto">
+    Escribe o vacía campos del contacto desde un flujo.
+  </Card>
+  <Card title="Acción: Actualizar valor personalizado" icon="sliders" href="/flujo-de-trabajo/accion-actualizar-valor-personalizado">
+    Cambia valores personalizados de tu cuenta desde un flujo.
+  </Card>
+</CardGroup>

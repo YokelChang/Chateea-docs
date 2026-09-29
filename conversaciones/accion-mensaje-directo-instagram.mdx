@@ -1,0 +1,81 @@
+---
+title: "Acción de flujo: enviar mensaje directo de Instagram"
+description: "Envía mensajes directos de Instagram desde un flujo de trabajo respetando la ventana de 24 horas."
+icon: "instagram"
+---
+
+La acción de flujo de trabajo **Mensaje directo de Instagram** (Instagram DM) envía un mensaje directo al contacto desde tu cuenta de Instagram conectada. Sirve para responder automáticamente a quienes te escriben por Instagram, con textos propios o plantillas y con archivos adjuntos.
+
+## Requisito clave: la ventana de 24 horas
+
+Meta solo permite enviar mensajes directos a un contacto que te escribió por Instagram en las **últimas 24 horas**. Si el contacto llega a esta acción después de ese plazo, el mensaje no se entrega.
+
+<Warning>
+  Usa esta acción solo con contactos que te hayan enviado un mensaje directo en las últimas 24 horas. Fuera de esa ventana, Meta bloquea el envío.
+</Warning>
+
+## Configurar la acción
+
+<Steps>
+  <Step title="Elige el disparador">
+    Crea un flujo en **Automatización → Flujos de trabajo** con el disparador **Cliente respondió** (Customer Replied) y filtra el canal de respuesta como **Mensaje directo de Instagram**. Así te aseguras de que el contacto acaba de escribirte.
+  </Step>
+  <Step title="Agrega la acción">
+    Agrega la acción **Mensaje directo de Instagram**.
+  </Step>
+  <Step title="Escribe el mensaje">
+    Elige una plantilla existente o redacta tu propio mensaje. Puedes usar variables para personalizarlo.
+  </Step>
+  <Step title="Adjunta archivos (opcional)">
+    Haz clic en **Agregar adjunto** y elige un archivo de tu equipo o escribe la URL del archivo.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda la acción y publica el flujo.
+  </Step>
+</Steps>
+
+## Uso con comentarios en publicaciones
+
+Si usas esta acción con el disparador **Comentario(s) de Instagram en publicación**:
+
+| Situación | Cómo se envía el mensaje |
+| --- | --- |
+| El contacto comentó recientemente en tu publicación | Como respuesta privada al comentario |
+| No hay un comentario reciente, pero el contacto te escribió por mensaje directo en las últimas 24 horas | Como mensaje directo normal |
+| Ninguna de las dos | No se entrega |
+
+## Recomendación: usa la acción de mensajería interactiva
+
+Para enviar mensajes directos de Instagram te recomendamos la acción **Mensajería interactiva de Instagram** (Instagram Interactive Messenger), que te da más control sobre el tipo de respuesta:
+
+- Si respondes a un comentario, elige el tipo de respuesta **Responder al comentario por mensaje directo**.
+- Si envías un mensaje directo normal, elige el tipo de respuesta **Responder al mensaje directo**.
+
+<Tip>
+  Una estrategia muy efectiva: pide en tus publicaciones que la gente comente una palabra clave y responde automáticamente por mensaje directo con el enlace, el catálogo o la promoción. Así conviertes comentarios en conversaciones dentro de Chateea.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mi mensaje directo no se entregó?">
+    Lo más probable es que el contacto no te haya escrito en las últimas 24 horas, o que no haya un comentario reciente al que responder. Es una regla de Meta y no se puede saltar.
+  </Accordion>
+  <Accordion title="¿Puedo escribir a alguien que solo comentó en mi publicación hace días?">
+    No. Meta exige una interacción reciente. Responde a los comentarios mientras son recientes o espera a que el contacto te escriba por mensaje directo.
+  </Accordion>
+  <Accordion title="¿Puedo adjuntar archivos?">
+    Sí. Usa **Agregar adjunto** para subir un archivo o indicar una URL.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Mensajes de Facebook e Instagram" icon="instagram" href="/ventas-conversaciones/mensajes-facebook-instagram">
+    Conecta Instagram a tu bandeja unificada.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="bolt" href="/automatizaciones/introduccion">
+    Disparadores, acciones y ramas.
+  </Card>
+</CardGroup>

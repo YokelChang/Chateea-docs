@@ -1,0 +1,96 @@
+---
+title: "Conexiones Ir a desde los disparadores en el constructor avanzado"
+description: "Elige en qué acción empieza el recorrido de cada disparador para tener varias entradas en un mismo flujo."
+icon: "diagram-project"
+---
+
+En el constructor avanzado de flujos de trabajo puedes decidir en qué acción empieza el recorrido de cada disparador. Con las **conexiones Ir a** (Go-To) de los disparadores, arrastras una línea desde el disparador hasta la acción donde debe comenzar ese camino. Así un mismo flujo puede tener varias entradas distintas, sin duplicar flujos ni montar grandes cadenas de Si/Si no.
+
+<Note>
+  Para conectar un nodo con otro, haz clic en el pequeño punto conector del disparador, arrástralo hasta el punto conector de la acción y suéltalo.
+</Note>
+
+## Qué son las conexiones Ir a
+
+Son conectores especiales, dibujados con **línea discontinua y punta de flecha**, que unen un disparador con su primera acción. Cuando el disparador se cumple, el contacto salta directamente a esa acción y el flujo continúa desde ahí. Los caminos secuenciales normales se siguen viendo con línea continua.
+
+<Warning>
+  - **Solo en el constructor avanzado.** Esta función no está disponible en el constructor estándar.
+  - **Cada disparador debe conectarse a una acción.** Los disparadores sin asignar se conectan automáticamente a la acción raíz (la primera), pero conviene que elijas tú la acción de inicio correcta.
+  - **Una sola inscripción a la vez por contacto.** Un contacto no recorre en paralelo varios caminos del mismo flujo.
+  - **Volver al constructor estándar.** Antes de cambiar de vista, quita las funciones exclusivas del avanzado: conexiones Ir a de disparadores, nodos desvinculados y nodos desactivados.
+</Warning>
+
+## Beneficios
+
+- **Un disparador, un recorrido:** diseña varias entradas dentro de un solo flujo.
+- **Lógica más limpia:** menos ramas Si/Si no y un lienzo fácil de leer.
+- **Ejecución más directa:** los contactos se saltan pasos innecesarios y empiezan donde les corresponde.
+- **Mantenimiento sencillo:** para cambiar el punto de inicio, basta con arrastrar la línea discontinua a otra acción.
+
+## Cómo usarlas
+
+<Steps>
+  <Step title="Abre el flujo en el constructor avanzado">
+    Ve a **Automatización → Flujos de trabajo**, abre tu flujo y cambia al constructor avanzado.
+  </Step>
+  <Step title="Coloca disparadores y acciones">
+    Agrega tus disparadores y las acciones de cada recorrido en el lienzo.
+  </Step>
+  <Step title="Conecta cada disparador">
+    Desde cada disparador, arrastra la conexión discontinua hasta la acción donde debe empezar su camino.
+  </Step>
+  <Step title="Reasigna cuando lo necesites">
+    Para cambiar el inicio, arrastra el mismo conector a otra acción.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda el flujo y publícalo cuando esté listo.
+  </Step>
+</Steps>
+
+### Ejemplo
+
+Un flujo de bienvenida tiene dos disparadores: **Formulario enviado** y **Cita reservada**. Conectas el formulario a la acción "Enviar guía de precios" y la cita a "Enviar confirmación y preparación de la reunión". Ambos recorridos comparten los pasos finales (etiquetar y notificar al equipo), sin necesidad de dos flujos separados.
+
+## Reglas de conexión
+
+- **Conexiones uno a uno:** cada disparador se conecta a una sola acción siguiente, y cada acción puede tener una sola conexión de entrada (desde un disparador o desde la acción anterior).
+- **Sin bifurcar desde una acción:** una acción solo tiene un "siguiente paso". Si ya apunta a otra acción y la conectas a una nueva, la conexión anterior se reemplaza.
+- **Regla para guardar:** todos los disparadores deben estar conectados exactamente a una acción para poder guardar el flujo.
+
+## Cómo entran los contactos
+
+- **Un disparador por inscripción:** cada entrada al flujo se atribuye al único disparador que se activó. La narración y las estadísticas del disparador reflejan ese disparador.
+- Si varios disparadores podrían cumplirse casi al mismo tiempo, el flujo registra **una sola** inscripción para ese momento, vinculada a un disparador.
+- Si tu flujo **permite volver a entrar** (según su configuración), el mismo contacto puede entrar otra vez más adelante cuando se active otro disparador. Cada ejecución la inicia siempre un solo disparador.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Un disparador puede tener más de una conexión Ir a?">
+    No. Cada disparador se conecta a una sola acción para que la ejecución sea predecible. Lo que sí puedes es tener varios disparadores, cada uno con su propia acción de inicio.
+  </Accordion>
+  <Accordion title="¿Qué pasa si elimino la acción a la que apunta un disparador?">
+    La conexión deja de ser válida y el disparador se vuelve a conectar automáticamente a la acción raíz hasta que le asignes un nuevo destino.
+  </Accordion>
+  <Accordion title="¿Los contactos que ya están en el flujo siguen la nueva ruta?">
+    No. Los cambios de ruta se aplican solo a los contactos que entren después de publicar la actualización.
+  </Accordion>
+  <Accordion title="¿Funciona en el constructor estándar?">
+    No. Tienes que usar el constructor avanzado o quitar las conexiones discontinuas antes de cambiar al estándar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Constructor estándar y avanzado" icon="diagram-project" href="/automatizaciones/constructor-estandar-y-avanzado">
+    Diferencias entre ambos constructores y cómo cambiar de uno a otro.
+  </Card>
+  <Card title="Ramas independientes" icon="code-branch" href="/automatizaciones/ramas-independientes-en-el-constructor-avanzado">
+    Organiza caminos separados dentro del constructor avanzado.
+  </Card>
+  <Card title="Narración y estadísticas de disparadores" icon="chart-simple" href="/automatizaciones/narracion-y-estadisticas-de-disparadores">
+    Entiende qué disparador inscribió a cada contacto.
+  </Card>
+</CardGroup>

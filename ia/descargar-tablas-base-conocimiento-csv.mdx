@@ -1,0 +1,97 @@
+---
+title: "Descarga tablas de la base de conocimiento en CSV"
+description: "Exporta en CSV las tablas que usa tu IA para analizarlas, revisarlas o guardar un respaldo."
+icon: "file-csv"
+---
+
+Las tablas de tu base de conocimiento se pueden descargar como archivo CSV con un solo clic. Esto te permite sacar de Chateea los mismos datos estructurados que consulta tu IA (precios, horarios, catálogos, políticas) para analizarlos, revisarlos o guardar una copia de respaldo.
+
+## Para qué sirve
+
+- **Reutilizar los datos fuera de Chateea:** abre el CSV en Excel, Google Sheets o una herramienta de informes y trabaja con exactamente las mismas filas que usa tu agente de IA.
+- **Revisar y corregir más rápido:** cuando la IA da una respuesta extraña, descarga la tabla completa y comprueba qué datos tiene. También sirve para validar una importación nueva.
+- **Guardar respaldos y comparar cambios:** descarga una copia de tus tablas críticas antes de una actualización importante para comparar el antes y el después, o restaurar a mano si hace falta.
+- **Un solo proceso para todo:** funciona igual si la tabla nació de un CSV subido o de una hoja de Google Sheets conectada.
+- **Enlaces seguros y temporales:** cada descarga usa un enlace que caduca a los 15 minutos aproximadamente.
+
+## Qué tablas se pueden descargar
+
+Puedes descargar cualquier tabla que aparezca en la pestaña **Tablas** con estado **Listo** (Ready).
+
+| Tipo de tabla | Detalles |
+| --- | --- |
+| Tabla creada desde un CSV subido | Admite hasta 50.000 filas, 500 columnas y 50 MB por archivo. Se puede descargar cuando termina de indexarse. |
+| Tabla conectada a Google Sheets | Es una fuente viva que se sincroniza cada 15 a 20 minutos aproximadamente, o cuando la actualizas a mano. El CSV refleja la última versión sincronizada con la base de conocimiento. |
+
+En ambos casos la IA usa esas tablas para responder preguntas en lenguaje natural sobre tus datos estructurados. Para indexar, Chateea selecciona hasta 20 columnas como las más relevantes.
+
+## Cómo descargar una tabla en CSV
+
+No necesitas configurar nada. En cuanto una tabla termina de procesarse, la opción de descarga aparece sola.
+
+<Steps>
+  <Step title="Abre la base de conocimiento">
+    Ve a **IA → Base de conocimiento** y abre la base que contiene la tabla.
+  </Step>
+  <Step title="Entra a la pestaña Tablas">
+    En la parte superior de la base verás pestañas como Rastreador web, Preguntas frecuentes, Tablas, Texto enriquecido y Archivos. Haz clic en **Tablas** y confirma que la tabla que quieres aparece con estado **Listo**.
+  </Step>
+  <Step title="Abre el menú de la tabla">
+    A la derecha de la fila, haz clic en el menú de tres puntos.
+  </Step>
+  <Step title="Descarga el archivo">
+    Elige **Descargar CSV** (Download CSV). Chateea genera un enlace seguro y la descarga empieza de inmediato en tu navegador. El archivo se guarda en tu carpeta de descargas habitual.
+  </Step>
+</Steps>
+
+<Tip>
+Si la tabla viene de Google Sheets y acabas de hacer cambios en la hoja, espera a la sincronización automática (entre 15 y 20 minutos) o usa la opción de actualización manual de la fuente. Cuando vuelva a estar en **Listo**, descarga el CSV para obtener la versión más reciente.
+</Tip>
+
+Si piensas volver a subir el archivo a Chateea más adelante, conserva la fila de encabezados y la estructura de columnas para que la IA siga pudiendo consultarlo.
+
+## Seguridad y caducidad de los enlaces
+
+- **Solo usuarios con acceso de gestión:** la opción de descarga forma parte de los controles de administración de la tabla. La ven los usuarios que pueden gestionar las fuentes de la base de conocimiento, no los que solo tienen permisos de lectura.
+- **Enlaces que caducan:** cada enlace de descarga deja de funcionar a los 15 minutos aproximadamente. Si lo abres después, tendrás que volver a la pestaña **Tablas** y generar una descarga nueva.
+- **Comparte el archivo, no el enlace:** evita pegar enlaces de descarga en canales o documentos públicos. Si un compañero necesita los datos, envíale el archivo o dale acceso en Chateea para que genere su propia descarga.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Descargar el CSV cambia o bloquea la tabla?">
+    No. Es una acción de solo lectura. No modifica la tabla, no la vuelve a indexar y no afecta cómo la usa la IA.
+  </Accordion>
+  <Accordion title="¿Por qué no veo la opción Descargar CSV?">
+    Las causas más comunes son: la tabla todavía se está procesando y no está en **Listo**, tu rol no tiene permisos para gestionar fuentes, o estás viendo la base de conocimiento desde una pantalla simplificada que oculta las herramientas de edición.
+  </Accordion>
+  <Accordion title="¿Qué versión de Google Sheets se descarga?">
+    La última versión que ya se sincronizó con la base de conocimiento. Para obtener la más reciente, espera la próxima sincronización automática o actualiza la fuente a mano y luego descarga.
+  </Accordion>
+  <Accordion title="¿Puedo volver a subir un CSV descargado para actualizar la tabla?">
+    Sí, como una nueva fuente de tabla o como reemplazo, siempre que cumpla los requisitos: fila de encabezados, límites de tamaño, datos limpios y codificación correcta. Si cambias nombres de columnas o la estructura, comprueba que la IA siga respondiendo bien.
+  </Accordion>
+  <Accordion title="¿Funciona con tablas muy grandes?">
+    Sí. La descarga admite los mismos tamaños que las tablas de la base de conocimiento: hasta 50.000 filas, 500 columnas y 50 MB por CSV.
+  </Accordion>
+  <Accordion title="¿Puedo usar estas descargas como mi único respaldo?">
+    No es recomendable. El CSV es una foto de un momento concreto. Tu sistema principal o la hoja de Google original deben seguir siendo la fuente de verdad; usa los CSV para auditorías, informes y comparar versiones.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conecta Google Sheets a tu base de conocimiento" icon="table" href="/ia/google-sheets-base-de-conocimiento">
+    Mantén tus tablas sincronizadas con una hoja de cálculo.
+  </Card>
+  <Card title="Probador de recuperación" icon="magnifying-glass" href="/ia/probador-de-recuperacion-base-conocimiento">
+    Comprueba qué información encuentra la IA.
+  </Card>
+  <Card title="Importa archivos de Google Drive" icon="google-drive" href="/ia/google-drive-base-de-conocimiento">
+    Agrega documentos de Drive a tu base de conocimiento.
+  </Card>
+  <Card title="Bases de conocimiento múltiples" icon="book" href="/bot-ia/bases-conocimiento-multiples">
+    Organiza tu información en varias bases.
+  </Card>
+</CardGroup>

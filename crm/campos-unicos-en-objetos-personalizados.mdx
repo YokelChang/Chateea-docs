@@ -1,0 +1,132 @@
+---
+title: "Campos únicos en objetos personalizados"
+description: "Evita valores repetidos en identificadores como números de caso o de chasis marcando campos como únicos."
+icon: "fingerprint"
+---
+
+Los campos únicos garantizan que un valor no se repita entre los registros de un objeto personalizado. Son ideales para identificadores como el número de caso, el número de chasis (VIN), el ID de paciente o el código de empleado: Chateea bloquea cualquier registro nuevo o editado que intente usar un valor que ya existe, y así evitas duplicados desde el principio.
+
+## Beneficios
+
+- **Sin duplicados:** la regla se aplica al crear y al actualizar, desde la interfaz, formularios, flujos de trabajo, importaciones y la API.
+- **Informes fiables:** cada identificador corresponde a un solo registro, así tus paneles y métricas reflejan la realidad.
+- **Automatizaciones seguras:** las importaciones y acciones de flujo no crean registros duplicados por accidente.
+
+## Reglas y límites
+
+| Regla | Detalle |
+| --- | --- |
+| Cuándo se marca | Al crear el campo, o al crear el objeto en el caso del campo principal. |
+| Máximo | 10 campos únicos por objeto. |
+| Alcance | Toda tu cuenta. Otras cuentas pueden tener el mismo valor. |
+| Dónde se aplica | Interfaz, flujos de trabajo, formularios, importaciones y API. |
+| Tipos admitidos | Texto de una línea, texto de varias líneas, número y teléfono. |
+| Quitar la unicidad | Se puede, pero es **irreversible**: no podrás volver a marcarlo como único. |
+
+## Marcar un campo como único
+
+### Opción 1: al crear un campo personalizado
+
+<Steps>
+  <Step title="Abre los campos personalizados">
+    Ve a **Configuración → Campos personalizados**.
+  </Step>
+  <Step title="Agrega un campo">
+    Haz clic en **+ Agregar campo** y elige un tipo compatible: texto de una línea, texto de varias líneas, número o teléfono.
+  </Step>
+  <Step title="Completa los datos">
+    Escribe el nombre del campo y elige el objeto y el grupo.
+  </Step>
+  <Step title="Márcalo como único">
+    Activa la casilla **Marcar campo como único** y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+### Opción 2: el campo principal al crear el objeto
+
+<Steps>
+  <Step title="Crea el objeto">
+    Ve a **Configuración → Objetos** y haz clic en **+ Agregar objeto personalizado**.
+  </Step>
+  <Step title="Define nombre y campo principal">
+    Escribe el nombre del objeto y el campo principal de visualización.
+  </Step>
+  <Step title="Márcalo como único">
+    Activa **Marcar campo principal como único** y haz clic en **Crear objeto personalizado**. Así, por ejemplo, ningún caso ni vehículo podrá repetir su número.
+  </Step>
+</Steps>
+
+## Quitar la unicidad de un campo
+
+<Warning>
+Si conviertes un campo único en no único, no podrás volver a hacerlo único.
+</Warning>
+
+<Steps>
+  <Step title="Busca el campo">
+    Ve a **Configuración → Campos personalizados** y busca el campo único.
+  </Step>
+  <Step title="Edítalo">
+    Selecciona el campo y haz clic en **Acciones masivas → Editar**.
+  </Step>
+  <Step title="Desmarca la opción">
+    Desmarca **Marcar campo como único** y guarda.
+  </Step>
+</Steps>
+
+## Qué pasa en cada caso
+
+| Situación | Resultado |
+| --- | --- |
+| Guardas un registro con un campo principal que ya existe | Error: "Ya existe un registro con el mismo valor." |
+| Importas registros con un valor repetido en un campo único que no es el principal | Éxito parcial: las filas duplicadas se omiten con un aviso. |
+| Intentas eliminar un campo marcado como único | Aviso: el campo no se puede eliminar. |
+| Quitas la unicidad de un campo | Se permite, pero es irreversible. |
+| Actualizas un registro por API con un valor repetido | La API devuelve un error de validación. |
+
+## Buenas prácticas
+
+- Usa campos únicos para identificadores o claves: ID de paciente, número de caso, código de empleado.
+- No marques como únicos campos de texto que cambian con frecuencia.
+- Antes de importar, elimina los duplicados de tu archivo para evitar filas omitidas.
+- Decide qué campos serán únicos desde el principio: no se puede volver a activar la unicidad más adelante.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La unicidad aplica a toda la cuenta?">
+    Sí. Se controla en todos los registros del objeto dentro de tu cuenta.
+  </Accordion>
+  <Accordion title="¿Se revisa también al actualizar, no solo al crear?">
+    Sí. Tanto la creación como la actualización se bloquean si el valor ya existe.
+  </Accordion>
+  <Accordion title="¿Qué mensaje ve el usuario ante un duplicado?">
+    Un aviso que indica que ya existe un registro con el mismo valor en ese campo.
+  </Accordion>
+  <Accordion title="¿Puedo marcar como único un campo de correo o una lista desplegable?">
+    No. Por ahora solo se admiten texto de una línea, texto de varias líneas, número y teléfono.
+  </Accordion>
+  <Accordion title="¿Qué pasa en una importación CSV con duplicados?">
+    La importación termina, pero las filas con valores repetidos en un campo único fallan.
+  </Accordion>
+  <Accordion title="¿La validación hace más lentas las inserciones masivas por API?">
+    No. La validación está optimizada y su impacto en el rendimiento es mínimo, incluso en lotes grandes.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear y editar objetos personalizados" icon="cubes" href="/crm/crear-y-editar-objetos-personalizados">
+    Define tu objeto y su campo principal.
+  </Card>
+  <Card title="Crear y actualizar registros" icon="pen-to-square" href="/crm/crear-y-actualizar-registros-de-objetos">
+    Gestiona e importa registros.
+  </Card>
+  <Card title="Importar registros con asociaciones" icon="link" href="/crm/importar-registros-con-asociaciones">
+    Usa identificadores únicos para asociar registros.
+  </Card>
+  <Card title="Objetos personalizados en flujos de trabajo" icon="bolt" href="/crm/objetos-personalizados-en-flujos-de-trabajo">
+    Automatiza sobre tus registros.
+  </Card>
+</CardGroup>

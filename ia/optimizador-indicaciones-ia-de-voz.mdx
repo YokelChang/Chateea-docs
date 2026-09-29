@@ -1,0 +1,138 @@
+---
+title: "Optimizador de indicaciones de IA de voz"
+description: "Prueba tu agente de voz con escenarios y llamadas reales, mide la precisión y aplica variaciones de indicación ya probadas."
+icon: "flask"
+---
+
+El **Optimizador de indicaciones** (Prompt Optimizer) pone a prueba tu agente de IA de voz con escenarios de llamada realistas, mide si cumple lo esperado y te propone versiones mejoradas de la indicación. Así validas el comportamiento del agente con datos, en lugar de depender de pruebas sueltas, y reduces el riesgo antes de atender a clientes reales.
+
+## Qué hace
+
+El optimizador ejecuta **llamadas de voz reales** contra una copia de tu agente, evalúa cada llamada frente al comportamiento esperado y, si algo falla, genera variaciones de la indicación y las vuelve a probar. Puedes iniciar una optimización generando o creando escenarios, o directamente desde una llamada de prueba ya terminada en el editor del agente, cuando la opción **Optimizador desde llamada de prueba** está disponible.
+
+## Beneficios
+
+- **Escenarios automáticos** creados a partir de la configuración de tu agente.
+- **Optimización desde llamadas de prueba** terminadas, sin reconstruir el escenario a mano.
+- **Pruebas con voz real**, no simulaciones de texto.
+- **Validación de acciones:** citas, SMS, correos, consultas a la base de conocimiento y actualizaciones del CRM.
+- **Puntuación y razonamiento de la IA** que explica por qué cada llamada pasó o falló.
+- **Transcripciones y grabaciones** de cada llamada.
+- **Variaciones de indicación probadas** antes de aplicarlas.
+- **Control total:** nada cambia en tu agente hasta que tú lo decides.
+- **Pruebas en varios idiomas.**
+
+## Cuándo usarlo
+
+- Antes de poner el agente a atender llamadas de clientes.
+- Después de cambiar la indicación, los objetivos, las herramientas, las acciones o las fuentes de conocimiento.
+- Después de una prueba web o telefónica con resultados inesperados.
+- Para validar reservas, transferencias, SMS, correos, actualizaciones del CRM o respuestas de la base de conocimiento.
+- Para probar escenarios en otros idiomas o casos límite.
+- Para medir la precisión y comparar variaciones de la indicación.
+
+| Herramienta | Qué hace |
+| --- | --- |
+| **Evaluador de indicaciones** | Revisa la indicación y sugiere mejoras. |
+| **Editar con IA** | Reescribe el fragmento que seleccionas según tu instrucción. |
+| **Optimizador de indicaciones** | Ejecuta llamadas de prueba por escenarios, evalúa y prueba variaciones. |
+
+## Antes de empezar
+
+- Las pruebas son **llamadas de voz reales** y las acciones configuradas **pueden ejecutarse**: reservar citas, enviar SMS o correos, actualizar el CRM.
+- Usa contactos, calendarios y destinos de prueba siempre que puedas. Para flujos de citas, conviene un calendario de prueba.
+- La evaluación de la IA no es 100 % determinista. Toma la precisión como una señal orientativa y revisa también transcripciones, grabaciones y razonamiento.
+- El optimizador trabaja sobre una **copia** del agente. Tu agente en vivo no cambia durante la prueba.
+
+<Info>
+Cada cuenta tiene **20 minutos gratuitos de prueba al día**. Después de esos minutos, el uso adicional se descuenta de la billetera según tu plan de IA. Revisa las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Info>
+
+## Cómo usar el optimizador
+
+<Steps>
+<Step title="Abre el agente">
+Ve a **IA → IA de voz → Lista de agentes** y abre el agente que quieres probar.
+</Step>
+<Step title="Inicia el optimizador">
+Haz clic en **Optimizador de indicaciones** en el editor del agente. Se usará la indicación, el idioma, la dirección (entrante o saliente) y las acciones del agente para preparar las pruebas.
+</Step>
+<Step title="Genera escenarios">
+Haz clic en **Generar escenarios**. Cada escenario puede incluir el perfil de quien llama, lo que pide, el comportamiento esperado del agente, las acciones que debería usar y una prioridad (Crítica, Alta, Media o Baja).
+</Step>
+<Step title="Elige, edita o crea escenarios">
+Selecciona los escenarios que quieres ejecutar. Puedes editarlos o crear escenarios propios con nombre, descripción, lo que dice quien llama, comportamientos esperados y prioridad. Ejemplos de comportamiento esperado: verificar los datos de la persona, rechazar una solicitud no soportada, reservar una cita, enviar un SMS o responder con la base de conocimiento. También puedes reutilizar escenarios de una ejecución anterior.
+</Step>
+<Step title="Configura idioma y número de llamadas">
+Elige el idioma de la prueba (se usa para generar escenarios, hacer las llamadas y evaluarlas) y cuántas llamadas hacer por escenario, **de 1 a 10**. Varias llamadas por escenario te ayudan a medir la consistencia.
+</Step>
+<Step title="Revisa uso y lista previa">
+Confirma los minutos gratuitos usados y disponibles del día. Revisa el contacto de prueba (nombre, teléfono y correo) y cualquier aviso sobre calendarios, acciones o consumo.
+</Step>
+<Step title="Ejecuta las llamadas">
+Haz clic en **Ejecutar llamadas**. Cada llamada pasa por estados como En espera, En curso, Evaluando, Completada o Fallida. Puedes salir de la pantalla y volver después; las llamadas siguen en segundo plano.
+</Step>
+<Step title="Revisa los resultados">
+Verás cuántas llamadas pasaron, cuántas fallaron y el porcentaje de precisión general. Abre cada llamada para leer la transcripción (con quién habla y marcas de tiempo), escuchar la grabación, ver el razonamiento de la IA y las acciones que se ejecutaron.
+</Step>
+<Step title="Genera variaciones">
+Usa **Improvisar** (Improvise) para crear una variación de la indicación a partir de las llamadas fallidas y probarla. Usa **Auto** para que el optimizador pruebe hasta **5 variaciones** automáticamente. Auto se detiene al alcanzar el objetivo, llegar al máximo de variaciones, no encontrar mejora, agotar el tiempo o llegar a un límite de facturación.
+</Step>
+<Step title="Compara y aplica">
+Cada variación muestra su precisión, resultados, razonamiento, historial y las **diferencias** con la indicación original. La mejor aparece con la etiqueta **Mejor variación**. Cuando estés conforme, haz clic en **Usar indicación** y confirma. Solo entonces se actualiza tu agente.
+</Step>
+</Steps>
+
+## Cómo revisar una llamada fallida
+
+Antes de cambiar la indicación, revisa:
+
+- El motivo de la evaluación.
+- La transcripción y la grabación.
+- Las acciones que se ejecutaron (o no).
+- Si el comportamiento esperado estaba bien redactado.
+- Si la indicación necesita instrucciones más específicas.
+
+<Note>
+Las evaluaciones pueden ser estrictas. Un fallo no siempre significa que la conversación fue mala, pero sí señala algo que vale la pena revisar, como un paso omitido o en otro orden.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿El optimizador cambia mi agente automáticamente?">
+No. Prueba sobre una copia del agente. Tu agente en vivo solo cambia cuando eliges una variación y haces clic en **Usar indicación**.
+</Accordion>
+<Accordion title="¿En qué se diferencia del evaluador de indicaciones?">
+El evaluador revisa el texto y sugiere mejoras. El optimizador hace llamadas reales, evalúa los resultados y genera variaciones ya probadas.
+</Accordion>
+<Accordion title="¿Las llamadas de prueba pueden activar acciones reales?">
+Sí. Pueden reservar citas, enviar SMS o correos, consultar la base de conocimiento y actualizar el CRM. Usa un contacto y recursos de prueba.
+</Accordion>
+<Accordion title="¿Por qué falló una llamada que parecía correcta?">
+La evaluación compara la llamada con los comportamientos esperados del escenario. Puede fallar si omitió un paso, lo hizo en otro orden o no ejecutó una acción.
+</Accordion>
+<Accordion title="¿Debo fiarme solo de la precisión?">
+No. Úsala como referencia y revisa transcripciones, grabaciones, acciones y razonamiento antes de decidir.
+</Accordion>
+<Accordion title="¿Cómo se cobra?">
+Tienes 20 minutos gratuitos de prueba al día. El uso adicional depende de tu plan de IA y se descuenta de la billetera. Consulta **Configuración → Facturación**.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Editar indicaciones con IA" icon="wand-magic-sparkles" href="/ia/editar-indicaciones-con-ia-voz">
+Mejora un fragmento concreto de la indicación.
+</Card>
+<Card title="Probar agentes de IA de voz desde el navegador" icon="headset" href="/ia/prueba-web-agentes-ia-de-voz">
+Haz llamadas de prueba sin número de teléfono.
+</Card>
+<Card title="Registros de agentes de IA de voz" icon="list-check" href="/ia/registros-de-agentes-ia-de-voz">
+Revisa cada llamada paso a paso.
+</Card>
+<Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+Conoce cómo funcionan los agentes de IA de voz.
+</Card>
+</CardGroup>

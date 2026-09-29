@@ -1,0 +1,160 @@
+---
+title: "AI Studio: SSR, funciones de servidor, APIs REST y secretos"
+description: "Construye aplicaciones completas en AI Studio con renderizado en servidor, lógica privada y credenciales seguras."
+icon: "server"
+---
+
+Los proyectos nuevos de AI Studio son aplicaciones web completas (full-stack): además de la parte visual, pueden renderizar páginas en el servidor, ejecutar lógica privada, exponer endpoints de API y guardar credenciales de forma segura. Todo en el mismo proyecto y con el mismo flujo de publicación.
+
+Esto te permite construir, por ejemplo, un portal de clientes que consulta datos privados, recibe webhooks de otro sistema y se conecta a servicios externos sin exponer tus claves.
+
+<Info>
+  Todos los proyectos **nuevos** usan esta arquitectura (basada en TanStack Start). Los proyectos existentes creados con la arquitectura anterior (Vite/React) siguen funcionando igual y **no se migran automáticamente**.
+</Info>
+
+## Las cuatro piezas
+
+| Capacidad | Para qué sirve | Uso típico |
+| --- | --- | --- |
+| **SSR** (renderizado en el servidor) | Genera el HTML de la página en el servidor antes de enviarlo | SEO, páginas públicas, vistas previas al compartir |
+| **Funciones de servidor** | Ejecutan lógica privada que el frontend puede llamar | Operaciones internas e integraciones protegidas |
+| **APIs REST** | Crean endpoints HTTP como `/api/...` | Webhooks, integraciones y aplicaciones externas |
+| **Secretos** | Guardan valores sensibles fuera del código del navegador | Claves de API, tokens y credenciales |
+
+## Ventajas
+
+- **Contenido renderizado en el servidor** para visitantes, buscadores y redes sociales.
+- **Lógica privada** fuera del código del navegador.
+- **Credenciales seguras** guardadas como secretos.
+- **Integraciones externas** mediante endpoints REST.
+- **Un solo proyecto** para frontend y backend.
+- **Publicación integrada** de la app y sus funciones de servidor.
+- **Compatibilidad:** tus proyectos anteriores siguen funcionando sin cambios.
+
+## Cada pieza en detalle
+
+### Renderizado en el servidor (SSR)
+
+El servidor genera el HTML de la página, así que buscadores, redes y navegadores reciben el contenido sin depender del JavaScript del navegador. Es especialmente útil para sitios de marketing, páginas de aterrizaje, sitios de varias páginas, páginas públicas con URL y metadatos propios, contenido orientado a buscadores y páginas que se comparten en redes.
+
+### Funciones de servidor
+
+Permiten que el frontend pida operaciones al servidor sin que el código quede expuesto en el navegador. Úsalas para:
+
+- Llamar a servicios externos con credenciales privadas.
+- Cargar datos protegidos.
+- Validar información enviada.
+- Hacer cálculos del lado del servidor.
+- Transformar datos antes de devolverlos al frontend.
+
+<Tip>
+  Aunque la lógica corra en el servidor, guarda las credenciales siempre como **secretos** y devuelve al navegador solo la información que realmente necesita.
+</Tip>
+
+### APIs REST
+
+Crean endpoints HTTP que otros sistemas pueden llamar, con rutas como `/api/...` y métodos como GET o POST. Sirven para recibir webhooks, conectar aplicaciones de terceros, crear APIs públicas o autenticadas, aceptar datos de otro servicio y devolver datos estructurados en JSON.
+
+### Secretos
+
+Almacenamiento del lado del servidor para lo que nunca debe estar en el código del navegador: claves de API, tokens de autenticación, secretos de firma de webhooks, credenciales de integraciones y configuración privada.
+
+## Función de servidor o API REST
+
+| Necesidad | Usa |
+| --- | --- |
+| El frontend llama a su propia lógica de backend de forma segura | **Función de servidor** |
+| Un servicio externo envía datos a tu aplicación | **API REST** |
+| Un sistema de terceros necesita un endpoint HTTP | **API REST** |
+| Una operación interna requiere una clave de API privada | **Función de servidor + secreto** |
+| Un proveedor de webhooks necesita una URL de retorno | **API REST** |
+| Un valor sensible debe quedar fuera del navegador | **Secreto** |
+
+## Proyectos nuevos y existentes
+
+| Tipo de proyecto | Comportamiento |
+| --- | --- |
+| **Proyecto nuevo** | Usa la arquitectura full-stack actual |
+| **Proyecto existente (Vite/React)** | Sigue con su arquitectura actual |
+| **Proyecto existente que necesita la nueva arquitectura** | Requiere un proceso de migración aparte |
+
+No rehagas un proyecto solo porque exista la nueva arquitectura. Primero evalúa si de verdad necesitas SSR, lógica privada, endpoints REST o secretos.
+
+## Cómo construir una aplicación full-stack
+
+<Steps>
+  <Step title="Crea un proyecto nuevo">
+    Abre **AI Studio** en el menú lateral, crea un proyecto y describe el sitio o la aplicación.
+  </Step>
+  <Step title="Describe el comportamiento completo">
+    No te limites al diseño: menciona servicios externos, credenciales privadas, webhooks entrantes, procesos protegidos y APIs públicas. Ejemplo: "Crea un portal de estado de pedidos con una página pública, una consulta de cuenta privada que corra en el servidor y un endpoint para recibir webhooks de estado de pedidos".
+  </Step>
+  <Step title="Agrega los secretos">
+    Identifica cada credencial privada, agrégala cuando AI Studio te lo pida, ponle un nombre claro, úsala solo desde las funciones de servidor que la necesitan y prueba que nunca se devuelva al navegador.
+  </Step>
+  <Step title="Revisa las funciones de servidor">
+    Verifica que el procesamiento sensible corra en el servidor, que las credenciales vengan de los secretos y que solo se devuelva lo necesario. Prueba solicitudes correctas y con errores.
+  </Step>
+  <Step title="Crea las APIs REST">
+    Define la ruta, el método HTTP y el formato de la solicitud; agrega autenticación o validación de firma si hace falta; procesa en el servidor y devuelve la respuesta adecuada.
+  </Step>
+  <Step title="Prueba todo">
+    Confirma que las páginas públicas cargan, prueba funciones y endpoints con datos esperados e inesperados, revisa que ningún secreto aparezca en lo que ve el navegador y que los errores se manejen de forma segura. Revisa también títulos, encabezados y metadatos.
+  </Step>
+  <Step title="Publica">
+    Haz clic en **Publicar**, revisa la dirección del sitio, confirma y prueba la aplicación en vivo.
+  </Step>
+  <Step title="Conecta tu dominio">
+    En **Publicar → Agregar dominio personalizado**, escribe el dominio, agrega los registros DNS en tu proveedor si se piden, haz clic en **Verificar DNS**, espera a que se emita el certificado y prueba la aplicación en tu dominio.
+  </Step>
+</Steps>
+
+<Warning>
+  Si recibes webhooks, valida la autenticación o la firma que ofrezca el proveedor antes de procesar operaciones protegidas.
+</Warning>
+
+## Consideraciones de SEO
+
+Los proyectos nuevos usan renderizado en el servidor. Los anteriores siguen con su arquitectura y con las herramientas de [SEO avanzado](/ia/seo-avanzado-ai-studio). En ambos casos, antes de publicar páginas importantes revisa títulos, meta descripciones, estructura de encabezados, URL canónicas, vista previa en redes, el mapa del sitio y el contenido renderizado en la página en vivo.
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| **Falla una función de servidor** | Entradas de la función, secretos requeridos, errores del servidor y datos devueltos al frontend |
+| **No se puede llamar un endpoint REST** | Ruta, método HTTP, que la aplicación esté publicada, formato de la solicitud y autenticación |
+| **Falla la autenticación con una API externa** | Que exista el secreto correcto y que el código del servidor use ese valor |
+| **Los webhooks no pasan la verificación** | Secreto de firma, encabezados, lógica de validación y URL de retorno |
+| **El dominio propio no carga** | Que los registros DNS coincidan exactamente y repetir **Verificar DNS** tras la propagación |
+| **Un proyecto anterior no muestra las nuevas funciones** | Si se creó con la arquitectura Vite/React; esos proyectos no se migran automáticamente |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Mis proyectos existentes se pasan solos a la nueva arquitectura?">
+    No. Siguen con su arquitectura actual y requieren una migración aparte.
+  </Accordion>
+  <Accordion title="¿Una función de servidor puede usar un secreto?">
+    Sí, es el uso más común cuando la lógica necesita una clave de API o un token privado.
+  </Accordion>
+  <Accordion title="¿Puedo crear endpoints para webhooks?">
+    Sí. Las rutas de API REST sirven como URL de retorno para proveedores de webhooks.
+  </Accordion>
+  <Accordion title="¿Puedo poner un secreto directamente en el código del frontend?">
+    No. Las credenciales deben quedarse en secretos y usarse solo desde el servidor.
+  </Accordion>
+  <Accordion title="¿Puedo editar el código de backend generado?">
+    Sí, con el [editor de código](/ia/editor-de-codigo-ai-studio). También puedes [descargar el código](/ia/descargar-codigo-ai-studio) como ZIP.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="AI Studio" icon="wand-magic-sparkles" href="/ia/ai-studio">
+    Guía completa del constructor con IA.
+  </Card>
+  <Card title="SEO avanzado" icon="magnifying-glass-chart" href="/ia/seo-avanzado-ai-studio">
+    SEO para proyectos con la arquitectura anterior.
+  </Card>
+</CardGroup>

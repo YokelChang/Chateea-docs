@@ -1,0 +1,78 @@
+---
+title: "Historial en acciones de GPT (memoria de IA)"
+description: "Activa el historial en la acción GPT para que la IA recuerde interacciones anteriores con cada contacto y dé respuestas más coherentes."
+icon: "brain"
+---
+
+La acción **GPT con OpenAI** (GPT Powered By OpenAI) puede recordar las interacciones anteriores gracias a la opción de historial, también llamada clave de memoria de IA. Cuando la activas, cada respuesta que genera la IA tiene en cuenta lo que ya se habló antes con ese contacto, así que obtienes resultados más coherentes y personalizados, por ejemplo al redactar seguimientos, clasificar mensajes o continuar una conversación.
+
+## Tipos de historial
+
+Al activar el historial eliges **qué alcance tiene la memoria**. Hay cinco opciones:
+
+| Tipo de historial | Qué recuerda | Cuándo usarlo |
+| --- | --- | --- |
+| **Esta cuenta** | Todas las interacciones con GPT de todos los flujos de tu cuenta que también usen el tipo "Esta cuenta". | Cuando quieres que la IA tenga una visión global de cada contacto en todas tus automatizaciones. |
+| **Este flujo de trabajo** | Todas las interacciones con GPT dentro de este flujo que usen el tipo "Este flujo de trabajo". | Para conversaciones o procesos que viven dentro de un solo flujo. |
+| **Por ejecución** | Las interacciones con GPT dentro del flujo, solo durante una misma ejecución. | Cuando cada inscripción del contacto debe empezar de cero. |
+| **Este paso** | Las interacciones de esta acción específica a lo largo de varias ejecuciones. | Para una acción que se repite y debe recordar sus propias respuestas anteriores. |
+| **Personalizado** | Un historial con nombre propio que puedes reutilizar en el mismo flujo o en varios flujos. | Para compartir memoria solo entre ciertas acciones, sin mezclarla con el resto. |
+
+<Note>
+El historial siempre es **independiente para cada contacto**. La IA nunca mezcla la memoria de un contacto con la de otro.
+</Note>
+
+## Cómo activar el historial
+
+<Steps>
+<Step title="Agrega la acción de GPT">
+En tu flujo de trabajo, haz clic en **+** donde quieres el paso de IA y elige la acción **GPT con OpenAI**. Si no ves la opción de historial, revisa si está disponible en **Configuración → Labs** y actívala.
+</Step>
+<Step title="Elige el tipo de acción Personalizado">
+El historial solo funciona cuando el tipo de acción es **Personalizado** (Custom).
+</Step>
+<Step title="Activa el historial">
+Enciende el interruptor **Habilitar historial** (Enable history).
+</Step>
+<Step title="Selecciona el alcance">
+En **Historial para** (History for), elige uno de los cinco tipos de historial. Si eliges **Personalizado**, ponle un nombre claro para reutilizarlo en otras acciones.
+</Step>
+<Step title="Agrega instrucciones del sistema">
+Escribe las reglas que la IA debe seguir en todas sus respuestas (por ejemplo, tono, idioma o formato). Luego guarda la acción y publica el flujo.
+</Step>
+</Steps>
+
+## Opciones avanzadas
+
+- **Instrucciones del sistema:** reglas generales que se aplican a todas las respuestas de la acción. Sirven para dar contexto y obtener resultados más precisos.
+- **Excluir instrucciones del historial:** evita que las instrucciones del sistema se guarden en la memoria. Útil para no repetir las mismas reglas una y otra vez en el contexto.
+- **Excluir respuestas del historial:** la respuesta de esta acción no se guarda en la memoria. Actívalo cuando la salida es un dato de análisis y no parte de la conversación, por ejemplo un sentimiento "positivo" o "negativo".
+
+## Puntos a tener en cuenta
+
+- Al activar el historial, la acción selecciona por defecto un modelo avanzado de GPT (de la familia GPT-4 o superior). Puedes revisar el modelo antes de publicar.
+- El historial solo funciona con el tipo de acción **Personalizado**.
+- Cada contacto tiene su propia memoria.
+- El uso de la acción de GPT se descuenta de la billetera de tu cuenta. Un historial más largo implica más texto enviado al modelo y, por lo tanto, más consumo.
+
+<Tip>
+Usa el alcance más pequeño que te sirva. Un historial de tipo **Por ejecución** o **Este paso** mantiene el contexto enfocado y reduce el consumo, mientras que **Esta cuenta** es ideal solo cuando de verdad necesitas una memoria global del contacto.
+</Tip>
+
+## Ejemplo práctico
+
+Tienes un flujo que responde comentarios de Instagram con GPT. Si activas el historial con el alcance **Este flujo de trabajo**, cuando el mismo contacto vuelva a comentar, la IA recordará lo que ya le respondió y podrá continuar la conversación sin repetirse. Si además tienes un paso que clasifica el comentario como positivo o negativo, activa **Excluir respuestas del historial** en ese paso para que esa etiqueta no ensucie la memoria de la conversación.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Modelos GPT en flujos" icon="robot" href="/automatizaciones/modelos-gpt-en-flujos">
+Elige el modelo de GPT adecuado para cada acción.
+</Card>
+<Card title="GPT-5 en flujos de trabajo" icon="wand-magic-sparkles" href="/automatizaciones/gpt-5-en-flujos">
+Usa los modelos GPT-5 en tus automatizaciones.
+</Card>
+<Card title="Cómo se cobra la IA" icon="credit-card" href="/ia/como-se-cobra-la-ia">
+Entiende cómo se descuenta el uso de IA de tu billetera.
+</Card>
+</CardGroup>

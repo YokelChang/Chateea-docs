@@ -1,0 +1,188 @@
+---
+title: "Crear acciones personalizadas para el Marketplace"
+description: "Guía para desarrolladores: configura acciones de flujo de trabajo propias en tu aplicación del Marketplace de aplicaciones."
+icon: "puzzle-piece"
+---
+
+Si desarrollas una aplicación para el **Marketplace de aplicaciones**, puedes crear **acciones personalizadas de flujo de trabajo** que envíen o traigan datos de tu aplicación o de tu API. Estas acciones aparecen en el constructor de flujos de las cuentas que instalan tu aplicación, con los campos, el ícono y la descripción que tú definas.
+
+Este artículo es para desarrolladores: explica cómo se configura cada parte de una acción desde el portal de desarrolladores del Marketplace.
+
+<Info>
+  - Las acciones del Marketplace son **acciones premium**: cada ejecución se descuenta de la billetera de la cuenta que la usa.
+  - Una acción solo aparece en el listado de acciones de una cuenta si esa cuenta tiene la aplicación instalada.
+  - Tu aplicación debe tener activado el permiso (scope) `workflows.readonly` para habilitar acciones y disparadores.
+  - Si necesitas acceso al portal de desarrolladores, escribe a soporte de Chateea en **help@chateea.com**.
+</Info>
+
+## 1. Información de la acción
+
+| Campo | Descripción |
+| --- | --- |
+| **Ícono** | Se muestra en el flujo junto a la acción. |
+| **Nombre** | El nombre visible de la acción. |
+| **Clave** (Key) | Identificador único para referenciar la acción dentro del flujo, por ejemplo `{{mycustomaction.data.name}}`. **No se puede cambiar después.** |
+| **Descripción corta** | Aparece como subtítulo de la acción en el flujo. |
+| **Resumen** | Explicación detallada de qué hace la acción y por qué usarla. |
+
+## 2. Campos de la acción
+
+En **Gestionar campos** construyes el formulario que verá el usuario para recoger los datos que se enviarán a tu API.
+
+### Crear un campo
+
+- **Nombre:** la etiqueta del campo.
+- **Tipo:** String, Numérico, Área de texto, Selección, Selección múltiple, Radio, Interruptor (Toggle), Casilla, Adjunto, Editor de texto enriquecido, Oculto o Dinámico.
+- **Obligatorio:** actívalo si el campo es requerido.
+- **Referencia:** clave única a la que se asocia el valor, por ejemplo `action_a_name`.
+- **Valor predeterminado:** valor fijo o asignado que se carga por defecto en el flujo.
+- **Altera campo dinámico:** si está activo, cualquier cambio en este campo vuelve a cargar los campos dinámicos de la acción.
+
+### Opciones de Selección, Selección múltiple y Radio
+
+Puedes cargar las opciones de tres formas:
+
+- **Constantes:** pares etiqueta y valor que defines tú.
+- **Referencia interna:** opciones que vienen de un módulo interno de Chateea.
+- **API externa:** opciones que devuelve tu endpoint mediante GET. Puedes añadir encabezados. La respuesta debe tener esta estructura:
+
+```json
+{
+  "options": [
+    { "label": "Argentina", "value": "AR" },
+    { "label": "Chile", "value": "CL" },
+    { "label": "México", "value": "MX" }
+  ]
+}
+```
+
+### Campo oculto
+
+No se muestra en la configuración, pero su valor asignado se envía en el payload. Sirve para mandar datos esenciales, como identificadores de cliente o de empresa, tomados de datos del sistema o de tus disparadores personalizados.
+
+### Campo dinámico
+
+Construye campos a partir de una llamada a tu API. Solo puede haber **un campo dinámico por acción**. Chateea envía por POST los datos del formulario a tu endpoint:
+
+```json
+{
+  "data": {
+    "name": "Juan Pérez",
+    "age": "29",
+    "hobbies": ["sports", "music"],
+    "country": "MX",
+    "profileType": "public",
+    "dataShare": true
+  },
+  "extras": {
+    "locationId": "xyz",
+    "contactId": "abc",
+    "workflowId": "def"
+  },
+  "meta": {
+    "key": "custom_action_key",
+    "version": "1.0"
+  }
+}
+```
+
+Tu API debe responder con secciones y campos. Las secciones agrupan los campos en la interfaz:
+
+```json
+{
+  "inputs": [
+    {
+      "section": "Datos personales",
+      "fields": [
+        { "field": "name", "title": "Nombre", "fieldType": "string", "required": true },
+        { "field": "age", "title": "Edad", "fieldType": "numerical", "required": true },
+        {
+          "field": "gender",
+          "title": "Género",
+          "fieldType": "select",
+          "required": true,
+          "options": [
+            { "label": "Masculino", "value": "male" },
+            { "label": "Femenino", "value": "female" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Valores de `fieldType` admitidos en campos dinámicos: `string`, `numeric`, `textarea`, `select`, `multiselect` (con `options`), `radio` (con `options`), `toggle` y `checkbox`.
+
+### Reglas de validación
+
+Las reglas de validación comprueban el valor que escribe el usuario antes de guardarlo. Si no cumple, se bloquea el guardado y se muestra tu mensaje de error. Hay tres métodos:
+
+1. **Reglas predefinidas:** correo, teléfono, URL, números y detección de sintaxis de variables.
+2. **Expresiones regulares:** valida contra un patrón propio.
+3. **Función flecha:** una función que recibe el valor y devuelve `true` o `false`.
+
+Cada regla necesita un **mensaje de error personalizado**.
+
+## 3. Varias ramas (Multi-branch)
+
+Permite que la acción tenga varias ramas y que cada contacto siga el camino que corresponda. Puedes configurar:
+
+- **Sección de ramas** y su **descripción**.
+- **Etiqueta** y **texto de ayuda** del nombre de la rama.
+- **Título** y **descripción** del aviso al eliminar una rama.
+- **Permitir nuevas ramas:** el usuario puede añadir ramas.
+- **Ramas predefinidas editables:** el usuario puede editar las ramas que tú definiste.
+- **Mostrar sección de ramas:** muestra u oculta la sección al usuario.
+
+Las ramas se envían dentro de `data.branches`, cada una con su `id`, `name` y `fields`.
+
+## 4. Ejecución de la acción
+
+Elige entre llamar a una **API** o ejecutar **código personalizado**.
+
+### API
+
+Indica la URL (POST) y los encabezados. Cuando la acción se ejecuta, Chateea envía los datos del formulario a tu endpoint con la misma estructura `data`, `extras` y `meta` del ejemplo anterior.
+
+### Código personalizado
+
+Escribe tu propia lógica en el editor. Puedes insertar peticiones HTTP (GET, PUT, POST, DELETE) con el botón correspondiente y usar valores personalizados con el selector. La salida debe ser un objeto de JavaScript o un arreglo de objetos.
+
+- **Probar el código es obligatorio:** sin una prueba, la salida no se puede usar en pasos posteriores.
+- Haz clic en **Probar código**. Verás "Test Result Success" si funciona o "Test Result Failed" si hay que corregir algo.
+- Usa **Formatear código** para ordenarlo.
+
+## 5. Pausar la ejecución
+
+Con el interruptor **Pausar ejecución**, el contacto queda detenido en la acción hasta que tu sistema llame al webhook de reanudación. En ese caso debes enviar el objeto `extras` como cuerpo de la llamada. El botón **Mostrar detalles de la API** muestra ejemplos de respuesta para ejecución correcta y fallida.
+
+- **Ejecución síncrona** (pausa desactivada, con ramas): el contacto pasa a la rama indicada en la propiedad `branchId` de la respuesta de tu API o del `return` de tu código.
+- **Ejecución asíncrona:** el `branchId` se envía en la llamada al webhook de reanudación, según los detalles que muestra **Mostrar detalles de la API**.
+
+## 6. Datos de respuesta y variables personalizadas
+
+- En **Datos de respuesta**, pega un ejemplo válido del JSON que devuelve tu endpoint. Se admiten arreglos, que luego pueden usarse en funciones de matriz, código personalizado y webhooks personalizados.
+- En **Gestionar variables personalizadas**, crea variables a partir de ese ejemplo: pon un **nombre** y elige la **referencia** dentro de la respuesta. Los usuarios podrán usarlas en los pasos siguientes del flujo.
+- Para los valores de entrada, el usuario puede elegir entre un **valor estándar** (según el tipo de campo) o el **selector de valores personalizados** (por ejemplo, datos de un webhook entrante o campos personalizados).
+
+## 7. Publicar y mantener la acción
+
+- **Enviar a revisión:** cada versión empieza como borrador. Cuando termines, haz clic en **Enviar a revisión** y añade el registro de cambios. Al aprobarse, la versión se publica para todas las cuentas que tienen tu aplicación.
+- **Nueva versión:** con **+ Nueva versión** se crea un borrador con los datos de la versión publicada.
+- **Eliminar acción:** escribe el nombre de la acción para confirmar. Se elimina de forma permanente, desaparece del Marketplace y del listado de acciones, y los flujos que la usaban se saltarán ese paso.
+
+<Warning>
+  Eliminar una acción no se puede deshacer. Si hay cuentas que la usan en flujos activos, avísales antes para que la reemplacen.
+</Warning>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear disparadores personalizados" icon="bolt" href="/automatizaciones/crear-disparadores-personalizados-del-marketplace">
+    Envía datos de tu aplicación para iniciar flujos.
+  </Card>
+  <Card title="Conexiones externas de las apps" icon="link" href="/automatizaciones/conexiones-externas-de-apps-del-marketplace">
+    Cómo se conectan las apps del Marketplace con servicios de terceros.
+  </Card>
+</CardGroup>

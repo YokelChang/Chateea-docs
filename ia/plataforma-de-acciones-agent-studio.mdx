@@ -1,0 +1,142 @@
+---
+title: "Plataforma de acciones en Agent Studio"
+description: "Haz que tus agentes de IA envíen mensajes, etiqueten contactos y actualicen campos del CRM."
+icon: "bolt"
+---
+
+La plataforma de acciones conecta Agent Studio directamente con tu CRM para que tus agentes de IA no solo respondan preguntas, sino que también **hagan cosas**: enviar mensajes, etiquetar contactos, guardar datos en campos o avisar a tu equipo. Todo queda registrado y se configura desde el mismo lienzo de Agent Studio, sin código ni integraciones externas.
+
+## Qué es
+
+Es un conjunto de acciones del CRM integradas que los agentes pueden ejecutar en tiempo real. Agent Studio ya te da un constructor visual por nodos para responder a eventos, dirigir conversaciones y usar herramientas; la plataforma de acciones añade una forma estándar de ejecutar operaciones del CRM dentro de esos flujos.
+
+El resultado es un asistente digital que razona y actúa: detecta qué quiere el cliente y ejecuta el paso siguiente.
+
+## Ventajas
+
+- **Actualizaciones al instante:** el agente etiqueta, completa campos y registra actividad en cuanto alguien envía un formulario o escribe en el chat.
+- **Seguimientos más oportunos:** el agente envía SMS o correos con contexto de la conversación que acaba de tener.
+- **Menos configuración técnica:** muchos casos que antes requerían llamadas a la API o varios flujos encadenados se resuelven con un solo agente.
+- **Datos ordenados:** etiquetas, campos personalizados y valores personalizados se crean y actualizan de forma estructurada, lo que mantiene limpios tus informes y segmentos.
+- **Pensada para IA que decide:** combinada con los nodos Agente IA, Secuencial y Enrutador, permite flujos donde el agente elige qué hacer y lo lleva a cabo.
+
+## Acciones disponibles
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Enviar SMS** | Confirmaciones, recordatorios o seguimientos inmediatos al contacto actual, usando el sistema telefónico de Chateea. Aplican tus tarifas de SMS y las reglas de cumplimiento A2P |
+| **Enviar correo** | Correos transaccionales o de nutrición, opcionalmente con tus plantillas; la IA personaliza asunto o fragmentos con variables |
+| **Etiquetar contacto** | Aplicar etiquetas según el resultado de la conversación ("Lead caliente", "Pidió demo") para que otros flujos, pipelines o informes reaccionen |
+| **Crear etiquetas nuevas** | Si lo permites, el agente crea etiquetas que no existían, útil para campañas o temas muy específicos |
+| **Crear campos y valores personalizados** | Guardar datos que surgen en la conversación (producto preferido, presupuesto, etapa de incorporación) como información permanente del CRM |
+| **Enviar notificaciones internas** | Avisar a tu equipo cuando pasa algo importante, como un lead que pide hablar con ventas |
+| **Generar contenido** | Redactar artículos de blog, publicaciones de Facebook o textos de anuncios y guardarlos, enviarlos a revisión o por correo |
+
+Ejemplo de SMS con variables:
+
+```text
+¡Gracias por agendar, {{contact.first_name}}! Aquí tienes tu enlace de confirmación: {{calendar_link}}
+```
+
+## Nodos que deciden y nodos secuenciales
+
+### Nodos con decisión
+
+Con la plataforma de acciones dentro de los nodos de Agent Studio:
+
+1. Un nodo de IA interpreta la intención o el contexto.
+2. Un enrutador elige la rama adecuada.
+3. Un nodo con acciones ejecuta la operación exacta del CRM.
+
+Ejemplos:
+
+- Si un lead muestra mucha intención: etiquetarlo y enviarle al momento un SMS con el enlace de tu calendario.
+- Si un cliente pide un reembolso: avisar al equipo de soporte y aplicar la etiqueta "Reembolso solicitado".
+- Si alguien pregunta precios: generar un correo personalizado que resuma lo que preguntó en el chat.
+
+### Nodos secuenciales
+
+Agrupan varios pasos que deben ir en un orden fijo, perfectos para miniprocesos repetibles. Pueden encadenar acciones (guardar campos, etiquetar, enviar correo), mezclar razonamiento con acciones concretas y volver al flujo principal al terminar.
+
+**Secuencia de lead nuevo:** crear o actualizar el contacto, aplicar la etiqueta "Lead nuevo", enviar un SMS de confirmación y avisar al equipo si el presupuesto supera cierto umbral.
+
+**Seguimiento después de soporte:** preguntar el nivel de satisfacción; si es bajo, pasar a una persona y aplicar una etiqueta de escalamiento; si es alto, enviar un correo pidiendo reseña y aplicar la etiqueta "Nutrición de reseñas".
+
+## Qué pone en marcha las acciones
+
+Las acciones se ejecutan cada vez que corre un agente, así que los disparadores deciden cuándo actúa la IA. Los agentes pueden iniciarse:
+
+- Con disparadores del nodo de inicio: **Formulario enviado**, **Etiqueta agregada o quitada** y **Mensaje de chat**.
+- Desde un flujo de trabajo, con la acción **Invocar agente de Agent Studio**, para que una automatización normal le pase a un agente el razonamiento o las acciones complejas.
+- Desde Ask AI, para que un chat inicie procesos de varios pasos construidos en Agent Studio.
+
+## Generar contenido con acciones
+
+- **Generar y enviar:** redactar un artículo y enviártelo por correo, o crear un texto para Instagram y mandarlo como notificación interna para que tu equipo lo apruebe.
+- **Generar y guardar:** guardar textos largos en campos personalizados o notas del contacto para reutilizarlos.
+- **Generar y ramificar:** decidir con IA qué tipo de contenido crear según lo que pidió el usuario y ejecutar la acción correspondiente.
+
+Así el agente produce contenido, pero la publicación y la aprobación final siguen en manos de tu equipo.
+
+## Configurar acciones en un agente
+
+<Steps>
+  <Step title="Revisa los requisitos">
+    Confirma que tienes acceso a **IA → Agent Studio** en tu cuenta y que tu configuración de SMS, teléfono y correo ya funciona, para que los envíos salgan bien.
+  </Step>
+  <Step title="Abre o crea un agente">
+    En **IA → Agent Studio**, crea un agente (puedes partir de una plantilla) o abre uno existente.
+  </Step>
+  <Step title="Decide dónde actuar">
+    En el lienzo, elige el punto donde el agente debe ejecutar la acción: después de una pregunta de calificación, al resumir el chat, al final de un nodo secuencial o después de que el enrutador identifique la intención.
+  </Step>
+  <Step title="Agrega un nodo con acciones">
+    Inserta el nodo que puede ejecutar acciones y, en su panel, elige el tipo: enviar SMS, enviar correo, etiquetar contacto, crear campo personalizado o enviar notificación interna.
+  </Step>
+  <Step title="Asigna variables">
+    Usa variables y valores personalizados para rellenar nombre, correo, teléfono o datos recogidos en la conversación. Por ejemplo, guardar en el campo "Nivel de interés" el valor que detectó el agente.
+  </Step>
+  <Step title="Conecta los disparadores">
+    En un agente nuevo, configura los disparadores del nodo de inicio. Si quieres que un flujo de trabajo lo invoque, agrega la acción **Invocar agente de Agent Studio** y elige el agente publicado.
+  </Step>
+  <Step title="Prueba">
+    Simula el disparador con las herramientas de prueba y revisa la línea de tiempo de ejecución. Comprueba que los SMS y correos salen con el contenido correcto, que etiquetas y campos se aplican bien y que las notificaciones llegan a quien deben.
+  </Step>
+  <Step title="Publica y supervisa">
+    Publica el agente para que responda a disparadores reales. Revisa el historial del contacto, los registros de flujos y los [registros de agentes](/ia/registros-de-agentes) y ajusta lo necesario.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Reemplaza a los flujos de trabajo?">
+    No, los complementa. Sigues usando las acciones normales de los flujos, y ahora también puedes invocar un agente desde un flujo cuando necesitas razonamiento de IA y acciones del CRM en el mismo proceso.
+  </Accordion>
+  <Accordion title="¿Cómo se cobran los SMS y correos que envía el agente?">
+    Igual que cualquier otro envío de tu cuenta: se descuentan de tu billetera según tus tarifas de mensajería. La plataforma de acciones no cambia las tarifas, solo automatiza cuándo y cómo se envían. Consulta las tarifas vigentes en **Configuración → Facturación**.
+  </Accordion>
+  <Accordion title="¿Puedo controlar qué acciones hace el agente?">
+    Sí. Tú decides qué nodos y acciones agregar, y puedes condicionarlas con enrutadores, condiciones o variables para que solo se ejecuten cuando se cumplan ciertos criterios.
+  </Accordion>
+  <Accordion title="No veo las opciones de acciones en mis agentes">
+    Dependen de que Agent Studio y tus productos de IA estén activos en tu cuenta. Escribe a soporte de Chateea en **help@chateea.com** para confirmarlo.
+  </Accordion>
+  <Accordion title="¿Sirve para actualizar contactos en masa?">
+    No es lo ideal. Las acciones corren por cada ejecución del agente (un formulario, un chat), así que están pensadas para automatización uno a uno en tiempo real. Para importaciones o etiquetado masivo usa flujos de trabajo, listas o las herramientas de importación.
+  </Accordion>
+  <Accordion title="¿Cómo reviso lo que hizo el agente?">
+    Los SMS, correos, etiquetas y campos aparecen donde Chateea registra esos eventos normalmente, como el historial del contacto y los registros de flujos. Además, los registros de ejecución de Agent Studio muestran qué nodos y acciones corrieron en cada conversación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Búsqueda web en Agent Studio" icon="globe" href="/ia/busqueda-web-en-agent-studio">
+    Da a tu agente acceso a información en tiempo real.
+  </Card>
+  <Card title="Conectores MCP personalizados" icon="plug" href="/ia/conectores-mcp-agentes-gestionados">
+    Conecta tus agentes con servicios externos.
+  </Card>
+</CardGroup>

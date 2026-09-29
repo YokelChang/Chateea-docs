@@ -1,0 +1,202 @@
+---
+title: "Configuración global de servicios"
+description: "Define en un solo lugar la página de reservas, pagos, horarios, notificaciones y sincronización de todos tus servicios."
+icon: "gear"
+---
+
+La **Configuración global** de Servicios reúne en un solo lugar las reglas que se aplican a todos tus servicios: cómo se ve tu página de reservas, cómo cobras, cómo se reparten los horarios, qué notificaciones se envían y cómo se sincronizan las citas con calendarios externos. Configurarla bien desde el principio te ahorra editar cada servicio por separado y hace que tus clientes vivan la misma experiencia sin importar qué servicio reserven.
+
+Para abrirla, entra en **Calendarios → Configuración de calendarios → Servicios** y selecciona **Configuración global**.
+
+## Qué conviene configurar aquí y qué en cada servicio
+
+| Usa la Configuración global para | Edita cada servicio para |
+| --- | --- |
+| Diseño y comportamiento de la página de reservas | Precio y duración |
+| Formularios y página de confirmación | Variaciones del servicio |
+| Modos de pago, moneda y cupones | Personal y recursos asignados |
+| Intervalos, antelación y ventana de reservas | Complementos (add-ons) |
+| Notificaciones y sincronización con calendarios externos | Impuestos del producto vinculado |
+
+Los enlaces directos a un servicio, a un miembro del equipo o a una categoría son vistas filtradas de la misma página de reservas, así que cualquier cambio que hagas aquí se refleja también en ellos.
+
+## Configuración dentro de la aplicación
+
+- **Opciones de vista**: elige si la vista de calendario empieza la semana en lunes, sábado o domingo.
+- **Activar varias ubicaciones**: úsalo si tu negocio atiende en más de una sede. Podrás crear varias ubicaciones y mostrarlas en la página de reservas para que el cliente elija dónde quiere su cita.
+- **Activar recursos**: si trabajas con salas, cabinas, equipos o herramientas, actívalo para gestionarlos y evitar reservas dobles. Aparece la pestaña **Recursos** para configurarlos.
+- **Activar complementos**: si ofreces extras al reservar (por ejemplo, un tratamiento adicional), actívalo para vender más en cada cita. Aparece la pestaña **Complementos**.
+
+## Página de reservas
+
+### Personalizar la página de reservas
+
+| Opción | Para qué sirve |
+| --- | --- |
+| **Nombre y logotipo de la empresa** | Se muestran en la cabecera de tu página de reservas. |
+| **Imágenes de servicios** | **Con imágenes** muestra la foto de cada servicio en su tarjeta. **Sin imágenes** usa un diseño centrado en el texto. |
+| **Identificador de la cuenta** (slug) | Es la base de las direcciones web de todos tus servicios. |
+| **Explorar por** | **Por categoría**: el cliente elige primero una categoría y luego el servicio. **Todos los servicios**: ve todo el catálogo desde el inicio y puede filtrar por categoría. |
+| **Orden de la página de reservas** | Si tienes varias ubicaciones, decide si el cliente elige primero el servicio o primero la ubicación. |
+| **Diseño de la página** | Muestra los servicios en tarjetas, en lista o deja que el cliente elija la vista. |
+| **Ubicación de filtros y orden** | Arriba en un menú desplegable, en una columna a la izquierda o con las categorías como pestañas superiores. |
+| **Tema** | Claro u oscuro. Afecta la cabecera, el pie y los elementos de la página. |
+| **Idioma** | Idioma en que el cliente ve la página. |
+| **Color principal** | Color de los botones y de la selección de fechas. |
+| **Color de fondo** | Color del fondo de la página. |
+| **Texto del botón de selección** | Lo que dice el botón para elegir un servicio, por ejemplo "Reservar". |
+| **Texto del botón final** | Lo que dice el botón que confirma la cita, por ejemplo "Agendar cita". |
+| **Vista previa** | Muestra cómo queda la página con tus cambios. |
+| **Insertar código personalizado** | Pega CSS propio para ajustar el diseño y guarda para aplicarlo. |
+
+### Opciones adicionales de la reserva
+
+- **Permitir que el cliente elija con quién reserva**: el cliente selecciona un miembro del equipo. Si lo desactivas, el sistema asigna a alguien automáticamente según la disponibilidad y el reparto por turnos (round robin).
+- **Ocultar la opción "Cualquiera disponible"**: obliga al cliente a elegir siempre a una persona concreta cuando la selección de personal está activa.
+- **Permitir varios servicios en una reserva**: el cliente puede reservar varios servicios en la misma sesión.
+- **Asignar personal automáticamente según**: define el criterio que usa el sistema cuando el cliente no elige a nadie.
+- **Permitir explorar otros servicios**: si el cliente entra con el enlace directo de un servicio o categoría, puede navegar y añadir servicios de otras categorías en la misma reserva.
+
+### Formularios
+
+- **Seleccionar formulario**: usa el formulario predeterminado (nombre, apellido, teléfono y correo) o uno personalizado creado en **Sitios → Formularios**. Con esos datos se crea o actualiza el contacto en tu cuenta.
+- **Rellenar campos automáticamente**: recuerda los datos del cliente mediante cookies del navegador para que no tenga que escribirlos de nuevo. Actívalo solo si cada cliente reserva desde su propio dispositivo; si varias personas usan el mismo navegador (por ejemplo, una tableta en recepción), los datos pueden mezclarse.
+- **Casilla de consentimiento**: pide al cliente que acepte un texto de consentimiento que tú redactas. Solo está disponible con el formulario predeterminado.
+
+### Página de confirmación
+
+Después de reservar, puedes mostrar un mensaje personalizado en la página de confirmación o redirigir al cliente a otra página.
+
+Si usas un formulario personalizado, puedes activar **Permitir que un formulario personalizado aplique sus propias reglas**. Con esta opción:
+
+- Si la acción al enviar del formulario es **Mensaje de agradecimiento** o **URL de redirección**, esa es la experiencia que ve el cliente al terminar.
+- Si la acción es **Confirmación de pedido** o el formulario no tiene una acción aplicable, se usa la configuración de confirmación de esta página.
+- Las reglas condicionales del formulario (redirecciones, mensajes personalizados, descalificación de prospectos) también se aplican después de reservar.
+
+<Note>
+  Las condiciones de mostrar u ocultar campos del formulario personalizado siempre se aplican durante la reserva, tengas o no activada esta opción.
+</Note>
+
+## Configuración de pagos
+
+- **Modo de prueba y modo real**: usa el modo de prueba para simular reservas y pagos. Cuando todo funcione, cambia al modo real para cobrar de verdad.
+- **Moneda**: se aplica a todos los servicios. Si la cambias, revisa y actualiza el precio de cada servicio.
+- **Forma de pago al reservar**:
+  - **Pago en línea**: el cliente paga al reservar. Si tus servicios tienen anticipo, puedes activar **Permitir elegir entre anticipo o pago total** para que el cliente decida en el momento de pagar.
+  - **Pago en persona**: el cliente paga al llegar. No se piden datos de tarjeta ni se muestran opciones de pago.
+  - **Solo tarjeta registrada**: se guardan los datos de la tarjeta de forma segura, pero no se hace ningún cargo al reservar.
+- **Ocultar el importe**: esconde el precio en la página de reservas. Solo funciona con **Pago en persona** o **Solo tarjeta registrada**.
+- **Códigos de cupón**: muestra un campo para aplicar cupones. Antes crea los cupones en **Pagos → Cupones**. Si lo desactivas, el campo no aparece.
+- **Impuestos**: no se configuran aquí, sino en cada servicio o en su producto vinculado. Consulta [Impuestos y cargos por procesamiento en servicios](/calendarios/impuestos-y-cargos-en-servicios).
+- **Formato de precio**: cuando un servicio tiene varios precios, elige **Mostrar rango de precios** (el más bajo y el más alto) o **Mostrar precio inicial** (solo el más bajo). El precio final se calcula según las variaciones y complementos que elija el cliente.
+
+## Configuración de servicios
+
+- **Intervalo del servicio**: cada cuánto se ofrecen horarios. Con 1 hora verás 9:00, 10:00, 11:00; con 30 minutos, 9:00, 9:30, 10:00.
+- **Antelación mínima**: tiempo mínimo antes de la cita para poder reservarla. Con 2 horas, un horario de las 10:00 ya no se puede reservar después de las 8:00 del mismo día.
+- **Ventana de reservas**: hasta cuándo pueden reservar tus clientes.
+  - **Por rango**: un número de días que avanza con el tiempo. Con 30 días, el cliente siempre puede reservar hasta 30 días desde hoy.
+  - **Por fechas**: un periodo fijo con fecha de inicio y de fin.
+- **Título de la reserva**: el nombre que reciben las citas creadas desde la página de reservas. Puedes usar valores personalizados, como `{{contact.name}}`, para incluir el nombre del cliente.
+
+### Contar solo los días disponibles
+
+Con la ventana **Por rango** puedes activar **Contar solo días disponibles**. Así el sistema salta los días en que no hay personal disponible y empieza a contar desde el primer día libre después de la antelación mínima. El cliente siempre ve el número completo de días que configuraste, en lugar de un calendario con huecos vacíos. Si lo dejas desactivado (opción predeterminada), se cuentan todos los días del calendario.
+
+Ejemplo:
+
+| Dato | Valor |
+| --- | --- |
+| Hoy | Miércoles 12 de agosto |
+| Antelación mínima | 2 días |
+| Disponibilidad | Lunes a viernes |
+| Ventana de reservas | 5 días, por rango |
+| Resultado con la opción activada | Se ofrecen el 14, 15, 18, 19 y 20 de agosto |
+
+Esta opción no tiene efecto con la ventana **Por fechas**, porque el inicio y el fin ya son fijos.
+
+### Cancelación, reprogramación y confirmación
+
+- **Permitir cancelación**: define cuánto antes de la cita deja de funcionar el enlace de cancelación, para evitar cancelaciones de último minuto.
+- **Permitir reprogramación**: igual que la anterior, pero para el enlace de reprogramación.
+- **Confirmar automáticamente las citas nuevas**: las reservas entran como confirmadas. Si lo desactivas, entran sin confirmar para que las revises antes.
+
+### Título de las citas creadas desde la app móvil
+
+Cuando configuras el título de la reserva, las citas de servicios nuevas que crees desde la aplicación móvil de Chateea usan ese mismo título en el campo **Título de la cita**. Si lo dejas vacío, la app usa el nombre del contacto. Así mantienes el mismo formato en la web y en el móvil sin editar cada cita a mano.
+
+## Otras opciones
+
+- **Asignar el contacto al miembro del equipo que atiende la cita**: cambia el usuario asignado del contacto a la persona que lo atiende. Por ejemplo, si el contacto estaba asignado a Ana y reserva con Luis, pasa a estar asignado a Luis.
+- **No reasignar si el contacto ya tiene usuario asignado**: solo asigna los contactos que todavía no tienen responsable.
+- **ID del píxel de Facebook**: registra los eventos del proceso de reserva en tu píxel.
+- **Bloquear la zona horaria de la página de reservas**: el cliente no puede cambiarla. Es útil para servicios presenciales, porque los horarios se muestran siempre en tu zona horaria, esté donde esté quien reserva.
+
+## Notificaciones
+
+Las notificaciones mantienen informados a tu equipo y a tus clientes sobre cada reserva. Puedes elegir qué se envía, a quién y con qué contenido.
+
+| Tipo | Cuándo se envía |
+| --- | --- |
+| **Cita reservada (sin confirmar)** | Al crear una reserva con estado sin confirmar. |
+| **Cita reservada (confirmada)** | Al crear una reserva confirmada o al confirmar una existente. |
+| **Cancelación** | Al cancelar la cita, marcarla como no presentada o como no válida. |
+| **Reprogramación** | Al cambiar la fecha o la hora. |
+| **Recordatorio** | Antes de la cita, con la antelación que elijas (por ejemplo, 1 día o 1 hora). |
+| **Seguimiento** | Después de la cita, según el tiempo que configures. |
+
+Canales disponibles:
+
+- **Correo**: para contactos y usuarios asignados.
+- **En la aplicación**: avisos en la web y en la app móvil para los usuarios asignados.
+- **SMS**: para contactos y usuarios asignados.
+- **WhatsApp**: para enviar confirmaciones y novedades a tus clientes.
+
+<Note>
+  En WhatsApp puedes usar valores personalizados de la reserva completa, pero no de cada servicio por separado. Si un cliente reserva tres servicios juntos, el mensaje puede incluir los datos generales de la reserva, pero no el detalle dinámico de cada servicio.
+</Note>
+
+## Calendarios externos
+
+Controla cómo se integran tus citas de servicios con Google Calendar, Outlook o iCloud:
+
+- **Sincronización e invitaciones**: Google u Outlook añaden la cita al calendario de los asistentes y envían invitaciones y avisos cuando se reserva, reprograma o cancela.
+- **Notas de la cita**: texto que aparece en la invitación del calendario externo, por ejemplo un enlace de reunión, instrucciones de llegada o cómo prepararse.
+
+<Tip>
+  Usa las notas de la cita para lo que el cliente debe ver de un vistazo en su calendario: dirección exacta, qué traer o cómo acceder al local.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué ventaja tiene la Configuración global frente a editar cada servicio?">
+    Aplica los mismos valores a todos los servicios a la vez. Cambias la página de reservas, los pagos o los horarios una sola vez y el cambio llega a todo tu catálogo.
+  </Accordion>
+  <Accordion title="¿Los enlaces directos de un servicio o de un miembro del equipo reflejan estos cambios?">
+    Sí. Son vistas filtradas de la misma página de reservas, así que el diseño, los formularios, los pagos y las notificaciones se actualizan automáticamente.
+  </Accordion>
+  <Accordion title="¿Cómo compruebo cómo queda la página después de cambiar algo?">
+    Usa la vista previa de la página de reservas antes de compartir tus enlaces. Así confirmas que los cambios se ven como esperas.
+  </Accordion>
+  <Accordion title="¿Contar solo días disponibles funciona con la ventana por fechas?">
+    No. Solo aplica a la ventana de reservas por rango.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Impuestos y cargos en servicios" icon="file-invoice" href="/calendarios/impuestos-y-cargos-en-servicios">
+    Añade impuestos y un cargo por procesamiento a cada servicio.
+  </Card>
+  <Card title="Disparador Reserva de servicio" icon="bolt" href="/calendarios/disparador-reserva-de-servicio">
+    Automatiza mensajes y tareas cuando alguien reserva.
+  </Card>
+  <Card title="Vista de calendario para servicios" icon="calendar-days" href="/calendarios/vista-de-calendario-de-servicios">
+    Consulta y filtra tus reservas de servicios.
+  </Card>
+  <Card title="Sincronización con calendarios externos" icon="arrows-rotate" href="/calendarios/sincronizacion-de-calendarios-externos-en-servicios">
+    Qué se sincroniza con Google, Outlook e iCal.
+  </Card>
+</CardGroup>

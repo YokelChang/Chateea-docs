@@ -1,0 +1,102 @@
+---
+title: "Registro de auditoría de WhatsApp"
+description: "Consulta quién cambió números, plantillas o flows de WhatsApp en tu cuenta, cuándo lo hizo y qué modificó."
+icon: "clipboard-list"
+---
+
+El registro de auditoría de WhatsApp te muestra quién cambió qué en la configuración de WhatsApp de tu cuenta, cuándo lo hizo y a qué elemento afectó (un número, una plantilla o un flow). Es muy útil cuando algo deja de funcionar de un día para otro: en lugar de preguntar a todo el equipo, revisas el historial y encuentras el cambio en segundos.
+
+## Qué registra cada entrada
+
+Los eventos de WhatsApp forman parte del registro de auditoría general de Chateea. Cada entrada guarda:
+
+- El **usuario** que hizo el cambio.
+- La **acción** realizada.
+- La **fecha y hora**.
+- El **elemento de WhatsApp** afectado, como un número de teléfono, una plantilla o un flow.
+
+## Beneficios
+
+- **Visibilidad inmediata:** ves quién modificó un número, una plantilla o un flow, y cuándo.
+- **Más responsabilidad:** cada cambio queda asociado a un miembro del equipo.
+- **Solución de problemas más rápida:** identificas qué cambio causó un problema y quién puede ayudar a corregirlo.
+- **Menos malentendidos:** te ahorras idas y vueltas cuando algo se comporta distinto.
+- **Mejor control:** mantienes un historial claro de los cambios importantes en tu configuración de WhatsApp.
+
+## Acciones de WhatsApp que se registran
+
+| Elemento | Acciones registradas |
+| --- | --- |
+| Número de teléfono | Agregado |
+| Cuenta de WhatsApp Business (WABA) | Eliminada, desactivada |
+| Número predeterminado | Actualizado |
+| Plantilla | Creada, actualizada, eliminada |
+| Perfil del número | Actualizado |
+| Flow | Creado, publicado, obsoleto, eliminado |
+
+## Cómo consultar el registro
+
+<Steps>
+  <Step title="Abre el registro de auditoría">
+    En tu cuenta de Chateea, ve a **Configuración → Registros de auditoría**.
+  </Step>
+  <Step title="Filtra la actividad de WhatsApp">
+    Usa el buscador y el filtro **Módulo** para ver solo los eventos de WhatsApp.
+  </Step>
+  <Step title="Revisa el detalle">
+    Haz clic en cualquier fila para abrir el panel de detalles y ver quién cambió qué y cuándo.
+  </Step>
+</Steps>
+
+## Casos de uso para resolver problemas
+
+<AccordionGroup>
+  <Accordion title="Un número de WhatsApp desapareció o cambió">
+    Busca eventos de número agregado, número predeterminado actualizado o WABA eliminada o desactivada.
+  </Accordion>
+  <Accordion title="Una plantilla dejó de enviarse o cambió sin aviso">
+    Filtra los eventos de plantilla creada, actualizada o eliminada para ver qué usuario la modificó.
+  </Accordion>
+  <Accordion title="Un flow se comporta distinto que antes">
+    Filtra los eventos de flow creado, publicado, obsoleto o eliminado para encontrar los cambios recientes.
+  </Accordion>
+</AccordionGroup>
+
+Con el usuario, la acción, la hora y el elemento afectado, resuelves el problema más rápido y puedes asignar el seguimiento a la persona correcta.
+
+## Alcance y conservación
+
+- Los eventos se registran a nivel de tu cuenta de Chateea.
+- Las entradas se conservan durante **60 días** y después se eliminan automáticamente, igual que el resto del registro de auditoría.
+
+<Tip>
+Si estás en medio de un proyecto importante (por ejemplo, una migración de plantillas), revisa el registro con regularidad y anota los cambios importantes antes de que pasen los 60 días.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="No veo eventos de WhatsApp. ¿Qué reviso?">
+    Confirma que estás en la cuenta correcta, amplía el rango de fechas y quita filtros muy restrictivos, como un usuario o un elemento específico.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo se guardan los eventos?">
+    60 días. Después se eliminan automáticamente.
+  </Accordion>
+  <Accordion title="¿Puedo recibir alertas cuando ocurra un cambio?">
+    Por ahora no hay notificaciones automáticas para estos eventos. Te recomendamos revisar el registro periódicamente en momentos clave.
+  </Accordion>
+  <Accordion title="¿Quién puede ver el registro de auditoría?">
+    Depende de los roles y permisos de cada usuario. Si no puedes entrar a **Configuración → Registros de auditoría**, pide acceso a un administrador de tu cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Crea y administra tus plantillas.
+  </Card>
+  <Card title="WhatsApp Flows para reservar citas" icon="calendar" href="/whatsapp/whatsapp-flows-reserva-de-citas">
+    Configura y publica flows.
+  </Card>
+</CardGroup>

@@ -1,0 +1,71 @@
+---
+title: "Varias oportunidades de un contacto en flujos de trabajo"
+description: "Haz que cada oportunidad de un mismo contacto tenga su propia ejecución dentro de un flujo de trabajo."
+icon: "code-branch"
+---
+
+Cuando un contacto tiene varias oportunidades abiertas, por defecto solo la más reciente entra en un flujo de trabajo. La opción **Permitir varias oportunidades** (Allow Multiple Opportunity) cambia ese comportamiento: cada oportunidad del contacto entra al flujo como una ejecución independiente. Es clave si vendes varios productos, propiedades o servicios a una misma persona y quieres dar seguimiento a cada negocio por separado.
+
+## Qué cambia al activarla
+
+| Situación | Desactivada | Activada |
+| --- | --- | --- |
+| Un contacto con varias oportunidades | Solo la oportunidad más reciente sigue en el flujo | Cada oportunidad tiene su propia ejecución del flujo |
+| Se actualiza una oportunidad que ya está en el flujo | Puede cortar la ejecución de otra oportunidad del mismo contacto | La ejecución de esa oportunidad sigue desde el paso donde estaba, con los valores actualizados |
+
+<Note>
+Actualizar una oportunidad no reinicia su ejecución. El flujo continúa desde el paso en el que estaba y usa los valores nuevos de la oportunidad a partir de ese momento.
+</Note>
+
+## Cómo activarla
+
+<Steps>
+  <Step title="Abre el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y abre el flujo que usa un disparador de oportunidad.
+  </Step>
+  <Step title="Ve a la configuración del flujo">
+    Abre la pestaña **Configuración** del flujo. El interruptor está en la parte superior, junto a opciones como **Permitir reingreso**.
+  </Step>
+  <Step title="Activa el interruptor">
+    Cambia **Permitir varias oportunidades** a activado.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios del flujo.
+  </Step>
+</Steps>
+
+## Ejemplo práctico
+
+Eres agente inmobiliario y atiendes a Juan Pérez, interesado en dos propiedades. En Chateea tienes un contacto, **Juan Pérez**, con dos oportunidades: **Av. Central 1** y **Calle Norte 2**. Tu flujo se dispara cada vez que se actualiza una oportunidad y le envía a Juan un SMS de recordatorio durante 2 días.
+
+**Con la opción desactivada:**
+
+- A las 8:00 se actualiza **Av. Central 1** y Juan recibe el SMS.
+- A las 12:00 se actualiza **Calle Norte 2** y el resto de acciones se omiten.
+
+**Con la opción activada:**
+
+- A las 8:00 se actualiza **Av. Central 1** y Juan recibe el SMS.
+- A las 12:00 se actualiza **Calle Norte 2** y Juan recibe otro SMS, esta vez sobre la segunda propiedad.
+
+Las dos oportunidades conviven y cada una recibe su propio seguimiento.
+
+## Buenas prácticas
+
+- Actívala en flujos donde cada negocio necesite su propio seguimiento (propuestas, recordatorios de pago, incorporación por producto).
+- Personaliza los mensajes con datos de la oportunidad (nombre, valor, etapa) para que el contacto sepa a qué negocio se refiere cada mensaje.
+- Revisa la frecuencia de envío: un contacto con muchas oportunidades puede recibir varios mensajes en poco tiempo.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Automatizar oportunidades" icon="bolt" href="/oportunidades/automatizar-oportunidades">
+    Disparadores y acciones para tus pipelines.
+  </Card>
+  <Card title="Varias oportunidades por contacto" icon="users" href="/oportunidades/varias-oportunidades-por-contacto">
+    Permite más de una oportunidad por persona en un pipeline.
+  </Card>
+  <Card title="Configuración del flujo de trabajo" icon="gear" href="/flujo-de-trabajo/configuracion-del-flujo-de-trabajo-descripcion-general">
+    Todas las opciones de configuración de un flujo.
+  </Card>
+</CardGroup>

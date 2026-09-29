@@ -1,0 +1,90 @@
+---
+title: "Verificar la ventana de atención al cliente en flujos"
+description: "Comprueba en un flujo si la ventana de 24 horas está abierta para enviar un mensaje libre o una plantilla."
+icon: "window-maximize"
+---
+
+La acción **WhatsApp: Verificar ventana de atención al cliente** (Customer Service Window Check) revisa, dentro de un flujo de trabajo, si la ventana de 24 horas con el cliente está abierta. Si lo está, envías un mensaje libre. Si no, envías una plantilla aprobada. Así tus automatizaciones nunca intentan mandar un mensaje que WhatsApp no permite y aprovechas los mensajes de servicio gratuitos.
+
+## Conceptos clave
+
+### Ventana de atención al cliente
+
+Cuando un cliente te escribe por WhatsApp se abre, o se reinicia, un temporizador de **24 horas**. Mientras está abierta puedes enviarle cualquier tipo de mensaje, incluidos mensajes libres. Cuando se cierra, solo puedes escribirle con una plantilla aprobada.
+
+### Tipos de conversación
+
+- **Marketing, utilidad y autenticación:** se abren al enviar una plantilla de esa categoría.
+- **Servicio:** se abre al enviar un mensaje libre (que no es plantilla) dentro de la ventana de atención.
+
+Por ejemplo:
+
+| Momento | Qué pasa |
+| --- | --- |
+| Hora 0 | Envías una promoción (plantilla de marketing). |
+| Hora 4 | El cliente te responde. Se abre la ventana de atención de 24 horas. |
+| Hora 5 | Le envías un mensaje libre. Ya hay una conversación abierta (la de marketing). |
+| Hora 25 | La ventana sigue abierta porque el cliente escribió en la hora 4. Envías otro mensaje libre: se abre una conversación de servicio. |
+| Hora 26 | Envías un tercer mensaje libre dentro de la misma conversación de servicio. |
+
+### Mensajes de servicio gratuitos
+
+Hasta el 30 de septiembre de 2026 los mensajes de servicio no tienen costo. Desde el **1 de octubre de 2026**, los primeros **1.000 mensajes de servicio por número al mes** son gratis y los siguientes se cobran por mensaje. El cupo se renueva al inicio de cada mes. Las plantillas de marketing, utilidad y autenticación no entran en ese cupo. Los detalles están en [Precios y cobro de WhatsApp](/whatsapp/precios-y-cobro-de-whatsapp).
+
+## Configura la verificación en un flujo
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo → Crear flujo de trabajo** y elige **Empezar desde cero**. Agrega el disparador que necesites.
+  </Step>
+  <Step title="Agrega la verificación">
+    Pulsa **+** y selecciona **WhatsApp: Verificar ventana de atención al cliente**.
+  </Step>
+  <Step title="Elige el número">
+    Selecciona el número de WhatsApp de la conversación que quieres revisar.
+  </Step>
+  <Step title="Configura la rama Abierta">
+    En la rama **Abierta**, agrega la acción **WhatsApp** y en la plantilla elige **Ninguna, mensaje libre**. Escribe tu mensaje.
+  </Step>
+  <Step title="Configura la rama Cerrada">
+    En la rama **Cerrada**, agrega la acción **WhatsApp** y elige una plantilla de marketing o utilidad para reabrir la conversación.
+  </Step>
+  <Step title="Publica">
+    Guarda las acciones, publica el flujo y guárdalo.
+  </Step>
+</Steps>
+
+<Tip>
+  Combina esta verificación con respuestas guardadas: en la rama Abierta puedes pegar el texto de uno de tus fragmentos para responder siempre igual. Consulta [Fragmentos y plantillas en conversaciones](/whatsapp/fragmentos-y-plantillas-en-conversaciones).
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre mensaje libre y plantilla en la acción de WhatsApp?">
+    El mensaje libre solo se puede enviar con la ventana de 24 horas abierta. La plantilla está aprobada por Meta y sirve para iniciar conversaciones fuera de esa ventana o para mensajes de marketing y soporte con formato fijo.
+  </Accordion>
+  <Accordion title="¿Dónde veo cuántos mensajes de servicio gratis he usado?">
+    En [Meta Business Manager](https://business.facebook.com/wa/manage/insights/): elige tu cuenta de WhatsApp y ve a **Herramientas de la cuenta → Estadísticas**.
+  </Accordion>
+  <Accordion title="¿Puedo combinar WhatsApp con SMS o correo en el mismo flujo?">
+    Sí. Por ejemplo, en la rama Cerrada puedes enviar un SMS en lugar de una plantilla si el mensaje no justifica su costo.
+  </Accordion>
+  <Accordion title="¿Puedo escribir fuera de la ventana de 24 horas?">
+    Sí, con plantillas aprobadas. Esos envíos tienen costo según la categoría y el país.
+  </Accordion>
+  <Accordion title="¿Qué es una conversación de punto de entrada gratuito?">
+    Se abre cuando el cliente te escribe desde un anuncio que abre WhatsApp o desde el botón de tu página de Facebook. Dura 72 horas y durante ese tiempo puedes enviar mensajes libres y plantillas sin costo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="WhatsApp en flujos de trabajo" icon="diagram-project" href="/whatsapp/whatsapp-en-flujos-de-trabajo">
+    Respuestas automáticas, esperas, estado de entrega y No molestar.
+  </Card>
+  <Card title="WhatsApp en Chateea" icon="whatsapp" href="/whatsapp/introduccion">
+    La ventana de 24 horas explicada con ejemplos.
+  </Card>
+</CardGroup>

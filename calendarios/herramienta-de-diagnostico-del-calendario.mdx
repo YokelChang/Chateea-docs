@@ -1,0 +1,141 @@
+---
+title: "Herramienta de diagnóstico del calendario"
+description: "Descubre por qué un horario no se puede reservar, resuelve dobles reservas y revisa tus conexiones."
+icon: "wrench"
+---
+
+La herramienta de diagnóstico del calendario te muestra, horario por horario, por qué un espacio no se puede reservar. Es la forma más rápida de resolver problemas como calendarios sin horarios, citas duplicadas o usuarios que no reciben reservas, sin adivinar qué ajuste está fallando. Viene incluida en todos los calendarios y no necesita configuración.
+
+## Para qué sirve
+
+- **Visibilidad inmediata:** detecta huecos de disponibilidad, usuarios sin asignar y fallos de sincronización con Google u Outlook.
+- **Diagnóstico sin esperas:** identificas el problema tú mismo, sin abrir un caso con soporte.
+- **Recuperas reservas antes:** encuentras la causa raíz y el calendario vuelve a funcionar.
+- **Calendarios de equipo:** funciona con calendarios de grupo y round robin, y muestra qué usuario está bloqueando la reserva.
+- **Problemas por usuario:** señala errores de sincronización ligados a un usuario o a su cuenta conectada.
+
+## Cómo abrir la herramienta
+
+Tienes dos caminos:
+
+- **Desde la lista de calendarios:** ve a **Calendarios → Configuración del calendario**, busca el calendario y haz clic en el ícono de llave inglesa que aparece junto a él.
+- **Desde el editor del calendario:** abre el calendario que estás editando y haz clic en **Diagnosticar calendario** (Troubleshoot Calendar), arriba a la derecha. Así lo revisas sin salir del editor.
+
+## Cómo usarla
+
+<Steps>
+  <Step title="Elige una fecha">
+    Selecciona un día en la cuadrícula del calendario.
+  </Step>
+  <Step title="Revisa los horarios no disponibles">
+    Pasa el cursor sobre un horario no disponible. Un cuadro emergente te muestra el motivo.
+  </Step>
+</Steps>
+
+La herramienta primero toma tu disponibilidad y el intervalo de las reuniones para generar todos los horarios posibles, y luego indica cuáles están libres y cuáles no. Por ejemplo, si tu disponibilidad es de 10:00 a 12:00 y de 18:00 a 20:00 con intervalos de 60 minutos, solo verás los horarios de 10:00, 11:00, 18:00 y 19:00, cada uno con su estado. Si el calendario no tiene disponibilidad los sábados, ese día no muestra horarios.
+
+## Qué significa cada motivo
+
+| Código | Significado |
+| --- | --- |
+| **USER** | No hay usuarios disponibles a esa hora |
+| **COLLECTIVE** | Uno o más usuarios del calendario colectivo no están disponibles |
+| **CONFLICT** | Hay un evento en un calendario externo conectado |
+| **BOOKED** | Ya hay una cita reservada en Chateea |
+| **BLOCKED** | El horario se bloqueó manualmente |
+| **NOTICE** | No cumple el aviso mínimo de programación |
+| **TOOFAR** | Está fuera del rango de fechas permitido |
+| **DAYLIMIT** | Se alcanzó el límite de citas del día |
+| **SLOTMAX** | Se alcanzó el máximo de reservas del horario |
+| **BUFFER** | Lo bloquea un tiempo de margen |
+| **DURATION** | La cita es más larga que el hueco disponible |
+| **PAST** | El horario ya pasó |
+| **LOOKBUSY** | Se ocultó con la opción de aparentar agenda ocupada |
+| **NO SEATS** | No quedan plazas disponibles |
+| **RESOURCE** | Un recurso necesario no está disponible |
+
+## Casos frecuentes
+
+### Revisar el estado de las integraciones
+
+Si tu calendario externo no está bien conectado, las citas pueden no aparecer o sincronizarse mal.
+
+1. Ve a **Configuración del calendario → Conexiones**.
+2. Confirma que Google u Outlook aparecen como **Conectado**.
+3. Si no, vuelve a conectar la cuenta y elige el calendario correcto.
+
+### Limpiar calendarios eliminados en Google u Outlook
+
+Si borraste en Google u Outlook un calendario que estaba conectado, Chateea muestra un aviso de error. Puedes limpiarlo tú mismo:
+
+<Steps>
+  <Step title="Abre Conexiones">
+    Ve a **Configuración → Calendarios** y abre la pestaña **Conexiones**.
+  </Step>
+  <Step title="Haz clic en Corregir">
+    En el aviso, haz clic en **Corregir** (Fix This).
+  </Step>
+  <Step title="Revisa la lista">
+    Verás cada calendario eliminado y en qué parte de Chateea estaba conectado.
+  </Step>
+  <Step title="Elimina las conexiones rotas">
+    Haz clic en **Eliminar calendarios borrados** para quitarlas todas a la vez. Después, conecta o selecciona un calendario válido si lo necesitas.
+  </Step>
+</Steps>
+
+### Usuarios sin disponibilidad
+
+Aunque el calendario esté conectado, si un usuario no tiene horario definido no se puede reservar con él. La herramienta marca a los usuarios sin horas de trabajo. Para corregirlo, ve a **Calendarios → Configuración del calendario**, edita el calendario, abre la pestaña **Disponibilidad** y agrega los bloques de horario de los días que corresponda.
+
+### Citas duplicadas (doble reserva)
+
+Las dobles reservas suelen ocurrir cuando varios usuarios sincronizan el mismo calendario externo o cuando sus disponibilidades se superponen.
+
+- Usa la herramienta para ver qué usuarios están en conflicto en ese horario.
+- Separa los calendarios por usuario para que cada persona sincronice su propio calendario.
+- En calendarios de equipo, revisa que cada miembro tenga configurados sus calendarios de conflicto, para que sus eventos externos bloqueen los horarios en los que está ocupado.
+- Revisa la opción de sincronización de cada calendario externo: si los eventos de Google u Outlook no se leen como ocupados, Chateea no puede evitar que se reserve encima.
+
+### Errores de permisos
+
+Algunos problemas vienen de permisos revocados o incompletos en Google u Outlook. Ve a **Configuración → Mi personal**, edita al miembro del equipo, entra en la configuración de calendario y confirma que se concedieron todos los permisos necesarios. Si faltan, vuelve a conectar la cuenta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que activar la herramienta?">
+    No. Está incluida y disponible en la configuración de todos los calendarios.
+  </Accordion>
+  <Accordion title="¿Por qué un horario aparece como no disponible?">
+    El usuario está fuera de su disponibilidad o el horario está bloqueado por un conflicto: otro evento, un problema de sincronización o una regla de reserva. Pasa el cursor sobre el horario para ver el código exacto.
+  </Accordion>
+  <Accordion title="¿Por qué mi calendario no muestra ningún horario?">
+    Normalmente porque no hay usuarios asignados, no hay disponibilidad configurada o la sincronización del calendario está desconectada.
+  </Accordion>
+  <Accordion title="¿Sirve para calendarios de grupo o round robin?">
+    Sí. Muestra qué usuarios están provocando que no se pueda reservar.
+  </Accordion>
+  <Accordion title="¿Muestra errores de automatizaciones?">
+    No. Solo revisa la configuración del calendario, no la lógica de tus flujos de trabajo.
+  </Accordion>
+  <Accordion title="¿Puedo ver la disponibilidad en la zona horaria del contacto?">
+    No. La herramienta usa la zona horaria del usuario que ha iniciado sesión.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Faltan horarios disponibles en el calendario" icon="calendar-xmark" href="/calendarios/faltan-horarios-disponibles-en-el-calendario">
+    Revisa uno por uno los ajustes que ocultan horarios.
+  </Card>
+  <Card title="Horario semanal y horas por fecha" icon="clock" href="/calendarios/horario-semanal-y-horas-por-fecha">
+    Configura la disponibilidad de cada usuario.
+  </Card>
+  <Card title="Permisos de usuario en calendarios" icon="user-lock" href="/calendarios/permisos-de-usuario-en-calendarios">
+    Controla qué puede hacer cada miembro del equipo.
+  </Card>
+  <Card title="Reconectar Google Calendar" icon="rotate" href="/calendarios/reconectar-google-calendar">
+    Recupera la sincronización cuando se rompe.
+  </Card>
+</CardGroup>

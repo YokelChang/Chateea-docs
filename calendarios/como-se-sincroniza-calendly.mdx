@@ -1,0 +1,124 @@
+---
+title: "Cómo se sincroniza Calendly"
+description: "Qué datos de Calendly llegan a Chateea, cómo se crean los contactos y a quién se asigna cada cita."
+icon: "rotate"
+---
+
+Una vez que conectas Calendly, las reservas de los calendarios que elegiste entran a Chateea como citas, casi en tiempo real. Este artículo explica qué datos se sincronizan, cómo se crean los contactos, a quién se asigna cada cita y qué límites tiene la integración, para que tus automatizaciones funcionen como esperas.
+
+## Cómo funciona la sincronización
+
+La integración con Calendly funciona distinto a Google, Outlook o iCloud: es **en un solo sentido**. Chateea trae los eventos de Calendly, pero no envía nada de vuelta.
+
+- Las citas que creas en Chateea no aparecen en Calendly.
+- Los eventos que vienen de Calendly no se pueden editar en Chateea. Cualquier cambio se hace en Calendly.
+- Solo se sincronizan los calendarios que seleccionaste al conectar.
+- Cada evento de Calendly entra como una **cita** real, no como un bloqueo de horario.
+
+## Qué se sincroniza y qué no
+
+| Se sincroniza | No se sincroniza |
+| --- | --- |
+| Fecha y hora del evento | Cancelaciones o reprogramaciones hechas después en Calendly |
+| Nombre y correo del invitado | Eventos creados más de 180 días antes de conectar Calendly |
+| Título de la cita | Archivos adjuntos y notas |
+| Origen (marcado como "Calendly") | Respuestas del formulario de preguntas y campos personalizados |
+| Calendario al que pertenece el evento | |
+| Teléfono, desde la ubicación o el formulario (según tu configuración) | |
+
+## Eventos que se importan
+
+- **Al conectar:** se importan todos los eventos futuros y los eventos pasados creados en los últimos 180 días.
+- **Después:** cada nueva reserva de Calendly se sincroniza de forma automática.
+- **Si quitas un calendario:** sus nuevas reservas dejan de sincronizarse.
+- **Si vuelves a agregarlo:** se importan de nuevo los eventos futuros y los pasados de los últimos 180 días, contados desde que conectaste tu cuenta de Calendly. Las reservas hechas mientras estuvo desconectado no se recuperan.
+
+<Warning>
+  Los eventos pasados que se importan al conectar no disparan flujos de trabajo. Solo los eventos futuros activan automatizaciones.
+</Warning>
+
+## Contactos creados desde Calendly
+
+Cuando una reserva de Calendly entra a Chateea:
+
+- Si el invitado es nuevo, se crea un contacto con su nombre y correo.
+- Si el contacto ya existe, la cita se agrega a su ficha.
+- El contacto puede entrar a flujos de trabajo que se activan por estado de cita.
+
+## A quién se asigna la cita
+
+| Tipo de calendario en Calendly | Dueño de la cita en Chateea |
+| --- | --- |
+| Enlace personal | El usuario que conectó su cuenta de Calendly |
+| Calendario compartido (rotativo o de equipo) | Un usuario elegido al azar entre los que conectaron Calendly |
+
+Además, el campo **Usuario asignado** del contacto se actualiza para coincidir con el dueño de su cita más reciente. Así los seguimientos y automatizaciones llegan a la persona correcta.
+
+## Teléfono del invitado
+
+- Si el teléfono está en la ubicación de la reunión y el formulario no tiene campos de teléfono, se sincroniza automáticamente.
+- Si el formulario de Calendly tiene un campo de teléfono, eliges la fuente en una pantalla de mapeo: el campo del formulario, el teléfono de la ubicación o **No sincronizar**.
+- Si no hay teléfono en ninguna fuente, se omite la sincronización del teléfono.
+
+En calendarios compartidos, cambiar esta opción afecta a todos los usuarios conectados a ese calendario.
+
+## Administrar los calendarios después de conectar
+
+Ve a **Calendarios → Configuración de calendarios → Conexiones**, busca tu conexión de Calendly y haz clic en el ícono de edición. Agrega o quita calendarios y haz clic en **Guardar**. Solo se sincronizan los calendarios seleccionados.
+
+### Borrar eventos sincronizados
+
+Al quitar un calendario o desconectar Calendly, Chateea te pregunta si quieres borrar los eventos que ya se sincronizaron:
+
+- **Un calendario:** puedes borrar todos los eventos que vinieron de ese calendario.
+- **Calendarios compartidos:** si varios usuarios conectaron el mismo calendario, todos deben elegir borrar los eventos para que desaparezcan. Si uno lo conserva, los eventos siguen visibles.
+- **Desconectar Calendly por completo:** puedes borrar todos los eventos sincronizados de todos los calendarios.
+
+<Warning>
+  El borrado de eventos sincronizados es permanente y no se puede deshacer. Si vuelves a conectar Calendly, se importarán otra vez los eventos futuros y los pasados de los últimos 180 días.
+</Warning>
+
+## Límites de la integración
+
+- Una cuenta de Calendly por usuario en cada cuenta de Chateea.
+- Puedes conectar la misma cuenta de Calendly en varias cuentas de Chateea a las que pertenezcas.
+- Solo funciona con los planes Standard, Teams y Enterprise de Calendly. Free y Essentials no son compatibles.
+- Los eventos no se pueden editar en Chateea.
+- Del invitado solo se sincronizan nombre, correo y, si lo configuras, teléfono.
+
+## Buenas prácticas
+
+- Selecciona solo los calendarios de Calendly que realmente necesitas en Chateea.
+- Asegúrate de que tus tipos de evento en Calendly pidan al menos nombre y correo.
+- Si reprogramas o cancelas en Calendly, actualiza también el estado de la cita en Chateea, porque esos cambios no se sincronizan.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no aparecen mis eventos antiguos de Calendly?">
+    Al conectar solo se importan los eventos pasados creados en los últimos 180 días, además de todos los futuros. Los eventos más antiguos no se incluyen.
+  </Accordion>
+  <Accordion title="¿Puedo editar o reprogramar un evento de Calendly desde Chateea?">
+    No. Los eventos se editan directamente en Calendly.
+  </Accordion>
+  <Accordion title="¿Qué pasa si vuelvo a conectar Calendly?">
+    Se importan los eventos futuros y los pasados creados en los últimos 180 días.
+  </Accordion>
+  <Accordion title="¿Quién es el dueño de las citas de un calendario compartido?">
+    Uno de los usuarios que conectaron Calendly, elegido al azar.
+  </Accordion>
+  <Accordion title="¿Puedo conectar la misma cuenta de Calendly a varios usuarios o cuentas?">
+    Sí. Una misma cuenta de Calendly se puede conectar a varios usuarios en distintas cuentas de Chateea.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar Calendly" icon="plug" href="/calendarios/conectar-calendly">
+    Conecta tu cuenta y elige qué calendarios sincronizar.
+  </Card>
+  <Card title="Lista de citas" icon="list" href="/calendarios/lista-de-citas">
+    Administra tus citas en formato de lista.
+  </Card>
+</CardGroup>

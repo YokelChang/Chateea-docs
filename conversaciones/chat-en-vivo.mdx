@@ -1,0 +1,112 @@
+---
+title: "Chat en vivo en Conversaciones"
+description: "Atiende en tiempo real a los visitantes de tu sitio web desde Conversaciones, junto con el resto de tus canales."
+icon: "comments"
+---
+
+El chat en vivo te permite conversar en tiempo real con las personas que visitan tu sitio web. Los mensajes que escriben en el widget de chat llegan directo a **Conversaciones**, junto con WhatsApp, SMS, correo y el resto de tus canales, así que tu equipo responde desde el mismo lugar sin abrir otra herramienta.
+
+## Por qué usarlo
+
+- **Respuesta inmediata:** atiendes al visitante mientras todavía está en tu sitio, sin esperar un correo o un SMS.
+- **Todo en una bandeja:** los chats aparecen en Conversaciones con el resto de los canales.
+- **Mejor experiencia:** responder rápido aumenta la satisfacción y la conversión.
+- **Organización del equipo:** puedes asignar cada chat a una persona, manualmente o con flujos de trabajo.
+
+## Antes de empezar: configura el widget de chat
+
+Para recibir chats en vivo en Conversaciones necesitas un widget de chat instalado en tu sitio y configurado con el tipo **Chat en vivo**.
+
+<Steps>
+  <Step title="Crea el widget">
+    Ve a **Sitios → Widget de chat** y haz clic en **+ Nuevo**.
+  </Step>
+  <Step title="Elige el tipo de chat">
+    Selecciona **Chat en vivo** (Live Chat) como tipo de chat. Si eliges otro tipo, como chat por SMS o correo, los mensajes no se gestionan como chat en tiempo real.
+  </Step>
+  <Step title="Personaliza la experiencia">
+    Configura estos ajustes clave:
+
+    - **Mensaje de bienvenida:** un saludo breve que aparece antes de iniciar el chat.
+    - **Avatar del agente e imagen de marca:** adapta la ventana de chat a tu marca.
+    - **Mensaje por inactividad del agente:** si nadie de tu equipo responde en el tiempo que definas, un mensaje automático le pide al visitante sus datos de contacto para seguir la conversación después.
+    - **Mensaje de cierre por inactividad del visitante:** si el visitante deja de responder, el chat se cierra y se le avisa.
+  </Step>
+  <Step title="Instala el widget en tu sitio">
+    Copia el código de instalación y pégalo en el pie de página o en el cuerpo de tu sitio web. Si usas WordPress, instala el plugin de Chateea para WordPress para activar el widget.
+  </Step>
+</Steps>
+
+## Responder chats desde Conversaciones
+
+### Ver y responder mensajes
+
+Abre **Conversaciones**. Los mensajes del chat en vivo aparecen en tiempo real en la bandeja y se identifican con el ícono de chat. Haz clic en la conversación para leerla y responder al instante.
+
+### Ver solo los chats en vivo
+
+Usa los filtros de la bandeja y elige **Chat en vivo** como canal para ver únicamente estas conversaciones. Más detalles en [Filtros, orden y acciones masivas](/conversaciones/filtros-de-conversaciones).
+
+### Asignar chats automáticamente
+
+Puedes asignar los chats a mano o con un flujo de trabajo. Este es un ejemplo sencillo para enviar los chats de un widget concreto a una persona de tu equipo:
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo** y haz clic en **+ Nuevo flujo de trabajo**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Cliente respondió** (Customer Replied) o **Nuevo mensaje de chat**.
+  </Step>
+  <Step title="Filtra el canal y el widget">
+    En los filtros del disparador, define **Canal = Chat en vivo** y agrega el filtro **Widget de chat es** con el widget que quieras.
+  </Step>
+  <Step title="Asigna el usuario">
+    Agrega la acción **Asignar a usuario** y elige a la persona que atenderá esos chats.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar** y cambia el flujo de **Borrador** a **Publicado**.
+  </Step>
+</Steps>
+
+### Terminar un chat
+
+Usa la opción **Finalizar chat** cuando la conversación haya terminado. También puedes definir en la configuración del widget un tiempo de inactividad para que el chat se cierre solo cuando el visitante deja de responder.
+
+<Tip>
+  Si tu equipo no puede atender el chat todo el día, apóyate en el mensaje por inactividad para capturar el nombre, el teléfono o el correo del visitante. Así ningún prospecto se pierde fuera del horario de atención.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no me llegan los chats a Conversaciones?">
+    Revisa que el widget esté instalado y activo en tu sitio y que el tipo de chat sea **Chat en vivo** en **Sitios → Widget de chat**. Sin esa configuración, los mensajes no llegan como chat en vivo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si nadie responde a tiempo?">
+    Si nadie responde dentro del tiempo de inactividad configurado en el widget, un mensaje automático le pide al visitante sus datos de contacto. Así puedes continuar la conversación después por correo o SMS.
+  </Accordion>
+  <Accordion title="¿Puedo asignar los chats a personas concretas?">
+    Sí, de forma manual desde la conversación o automáticamente con un flujo de trabajo, como en el ejemplo de este artículo.
+  </Accordion>
+  <Accordion title="¿Puedo ver solo los chats en vivo?">
+    Sí. Filtra la bandeja por el canal **Chat en vivo**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="La bandeja unificada" icon="inbox" href="/conversaciones/bandeja-unificada">
+    Todos tus canales en un solo lugar.
+  </Card>
+  <Card title="Filtros, orden y acciones masivas" icon="filter" href="/conversaciones/filtros-de-conversaciones">
+    Encuentra rápido cada chat.
+  </Card>
+  <Card title="Embudos, páginas y sitios web" icon="globe" href="/embudos/introduccion">
+    Crea el sitio donde instalarás tu chat.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="bolt" href="/automatizaciones/introduccion">
+    Automatiza la asignación de chats.
+  </Card>
+</CardGroup>

@@ -1,0 +1,104 @@
+---
+title: "Pausar flujos de trabajo en fechas específicas"
+description: "Detén temporalmente tus flujos en feriados o vacaciones sin desactivarlos, con pausas únicas o que se repiten cada año."
+icon: "calendar-xmark"
+---
+
+La opción **Pausar flujo de trabajo** te permite detener temporalmente ciertas automatizaciones durante un rango de fechas, sin desactivarlas ni borrarlas. Es ideal para feriados, vacaciones del equipo, cierres por inventario o temporadas en las que no quieres enviar mensajes automáticos. Cuando termina el periodo, los flujos se reanudan solos.
+
+## Para qué te sirve
+
+- **Evitar mensajes fuera de lugar:** no envíes promociones o recordatorios en Navidad, Año Nuevo o días de duelo.
+- **Mantener el progreso:** los contactos no pierden su lugar en el flujo; simplemente esperan a que termine la pausa.
+- **Controlar qué se pausa:** detén solo los flujos no esenciales y deja activos los críticos (por ejemplo, confirmaciones de pago).
+- **Automatizar pausas recurrentes:** configura una vez los feriados que se repiten cada año.
+- **Gestionar todo en un solo lugar:** todas las pausas se administran desde la configuración global de flujos.
+
+## Cómo configurar una pausa
+
+<Steps>
+<Step title="Abre la configuración global de flujos">
+Ve a **Automatización → Flujos de trabajo** y abre la **Configuración global de flujos de trabajo** (Global Workflow Settings). También puedes entrar desde **Configuración → Automatización**.
+</Step>
+<Step title="Busca la sección Pausar flujo de trabajo">
+Desplázate hacia abajo hasta encontrar la sección **Pausar flujo de trabajo** (Pause Workflow).
+</Step>
+<Step title="Elige la fecha y hora de inicio y fin">
+Haz clic en el campo **Fecha y hora de inicio**, selecciona el rango completo (inicio y fin) y confirma con **Confirmar**.
+</Step>
+<Step title="Selecciona los flujos">
+En **Seleccionar flujos de trabajo**, elige uno, varios o **Todos los flujos publicados**. Solo aparecen en la lista los flujos que están publicados.
+</Step>
+<Step title="Marca Anualmente si se repite cada año">
+Si la pausa corresponde a una fecha que se repite (por ejemplo, 24 y 25 de diciembre), activa la casilla **Anualmente** en esa fila. Los flujos seleccionados se pausarán en esas mismas fechas todos los años.
+</Step>
+<Step title="Agrega más rangos si los necesitas">
+Haz clic en **Agregar fecha** para crear otra fila con un rango distinto. Guarda los cambios al terminar.
+</Step>
+</Steps>
+
+### Duplicar o eliminar un rango
+
+Junto a cada fila tienes dos íconos: **Clonar**, para duplicar la fila y ajustar solo lo que cambia, y **Eliminar**, para quitarla.
+
+## Cómo saber si un flujo está en pausa
+
+- **En la lista de flujos:** los flujos pausados muestran el estado **Pausado** en la página principal de flujos.
+- **En la configuración del flujo:** dentro del constructor, en la configuración de cada flujo, la sección **Pausar flujo de trabajo** indica la fecha y hora de la pausa. Desde ahí también puedes ir a la configuración global para cambiarla.
+
+## Límites y reglas
+
+| Regla | Detalle |
+| --- | --- |
+| Rangos de fechas | Hasta **15 rangos** diferentes. |
+| Duración de cada rango | Máximo **15 días** entre la fecha de inicio y la de fin. |
+| Rangos superpuestos | Un mismo flujo **no puede estar en dos rangos que se superpongan**. |
+| Flujos disponibles | Solo flujos **publicados**. |
+
+## Qué pasa con los contactos durante la pausa
+
+- Los contactos **siguen inscribiéndose** en el flujo aunque esté pausado.
+- Las acciones **Esperar** y **Si/Sino** se siguen procesando. Cualquier otra acción queda en espera hasta que termine la pausa.
+- Por eso, el punto donde se detiene el contacto depende de la primera acción del flujo:
+  - Si la primera acción es, por ejemplo, **Enviar correo**, el contacto se inscribe y espera en el disparador hasta que termine la pausa.
+  - Si la primera acción es **Esperar** o **Si/Sino**, el contacto pasa por esa acción y se detiene en la siguiente.
+- Al terminar el periodo, el flujo se reanuda automáticamente y los contactos continúan desde donde quedaron.
+
+<Warning>
+Cuando termina la pausa, todos los contactos acumulados continúan al mismo tiempo. Si el flujo envía mensajes, considera el volumen que saldrá de golpe (por ejemplo, el primer día hábil después de un feriado largo).
+</Warning>
+
+<Note>
+Esta función pausa **flujos completos** por fechas. Si lo que necesitas es desactivar un solo paso dentro de un flujo, usa la opción de desactivar acciones.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo pausar todos mis flujos a la vez?">
+Sí. En **Seleccionar flujos de trabajo** elige **Todos los flujos publicados**.
+</Accordion>
+<Accordion title="¿Los contactos salen del flujo durante la pausa?">
+No. Siguen entrando y quedan en espera en el disparador o en la acción siguiente a un **Esperar** o **Si/Sino**, hasta que termine la pausa.
+</Accordion>
+<Accordion title="¿Cuántos rangos de fechas puedo configurar?">
+Hasta 15 rangos, de un máximo de 15 días cada uno, sin superposiciones para un mismo flujo.
+</Accordion>
+<Accordion title="¿Puedo aplicar el mismo rango a varios flujos?">
+Sí. En cada fila puedes seleccionar tantos flujos como necesites.
+</Accordion>
+<Accordion title="¿Tengo que reactivar los flujos al terminar la pausa?">
+No. Se reanudan automáticamente al terminar el rango configurado, siempre que hayas guardado los cambios.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Desactivar acciones en un flujo" icon="pause" href="/automatizaciones/desactivar-acciones-en-flujos">
+Salta pasos individuales sin borrarlos.
+</Card>
+<Card title="Página de inicio de flujos" icon="diagram-project" href="/automatizaciones/pagina-de-inicio-de-flujos">
+Revisa el estado de tus automatizaciones.
+</Card>
+</CardGroup>

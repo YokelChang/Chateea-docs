@@ -1,0 +1,135 @@
+---
+title: "Elegir el número de envío y de destino de un SMS"
+description: "Elige desde qué número de tu negocio sale cada SMS y a qué teléfono del contacto llega cuando tienes varios."
+icon: "phone"
+---
+
+En Conversaciones puedes elegir desde qué número de tu negocio sale un SMS (el número **De**) y a qué número del contacto llega (el número **Para**). Es muy útil si tu cuenta tiene varios números, por ejemplo uno por sucursal o por vendedor, o si un contacto tiene más de un teléfono guardado. Cuando no eliges el remitente, Chateea aplica un orden de prioridad para mantener la continuidad de cada conversación.
+
+## Qué son los números De y Para
+
+- **De:** el número de tu negocio que envía el SMS.
+- **Para:** el número del contacto que lo recibe.
+
+Si hay varios números disponibles, el editor de Conversaciones te deja elegir ambos antes de enviar.
+
+## Requisitos y limitaciones
+
+- El número **De** debe pertenecer a tu cuenta de Chateea y tener capacidad de SMS.
+- El contacto debe tener un número de teléfono válido.
+- Si el contacto tiene varios números, revisa cuál está marcado como **Principal**.
+- Siguen aplicando los requisitos de registro y cumplimiento de mensajería (como A2P 10DLC en Estados Unidos), el modo **No molestar** y las bajas del contacto.
+
+<Note>
+  Este artículo trata sobre los SMS que envías manualmente desde Conversaciones. Los flujos de trabajo y los envíos masivos de SMS tienen su propia configuración de remitente.
+</Note>
+
+## Cómo elige Chateea el número De
+
+Cuando no eliges el remitente a mano, Chateea sigue este orden:
+
+| Prioridad | Número que se usa | Detalle |
+| --- | --- | --- |
+| 1 | **El que elegiste manualmente** | Siempre tiene prioridad sobre todo lo demás |
+| 2 | **El número asignado al usuario que envía** | Si ese número no puede enviar SMS, se usa la opción de respaldo que corresponda |
+| 3 | **El número ya asociado a la conversación** | Mantiene la continuidad con el contacto |
+| 4 | **El número saliente predeterminado de tu cuenta** | Se usa si no aplica ninguna de las anteriores |
+
+<Tip>
+  Si un cliente siempre recibe mensajes desde el mismo número, reconoce a tu negocio y confía más en tus mensajes. Cambia de número solo cuando tengas una buena razón.
+</Tip>
+
+## Elegir el número De
+
+<Steps>
+  <Step title="Abre la conversación">
+    Ve a **Conversaciones** y abre la conversación del contacto.
+  </Step>
+  <Step title="Selecciona el canal SMS">
+    En el editor de mensajes, elige **SMS**.
+  </Step>
+  <Step title="Elige el remitente">
+    Haz clic en el menú desplegable **De** y selecciona el número de tu negocio que quieres usar.
+  </Step>
+  <Step title="Escribe y envía">
+    Redacta tu SMS, confirma el número seleccionado y haz clic en **Enviar**.
+  </Step>
+</Steps>
+
+### Qué números ve cada usuario
+
+| Rol | Números disponibles |
+| --- | --- |
+| **Administrador** | Todos los números configurados en la cuenta |
+| **Usuario** | El número predeterminado, el último usado, los asignados a ese usuario y los números sin asignar |
+
+## Elegir el número Para
+
+<Steps>
+  <Step title="Abre la conversación y elige SMS">
+    En **Conversaciones**, abre la conversación del contacto y selecciona **SMS** en el editor.
+  </Step>
+  <Step title="Elige el número del contacto">
+    Si el contacto tiene varios teléfonos, haz clic en el menú desplegable **Para** y elige el número al que quieres escribir.
+  </Step>
+  <Step title="Confirma y envía">
+    Revisa el número seleccionado, escribe tu mensaje y envíalo.
+  </Step>
+</Steps>
+
+<Info>
+  Un contacto puede tener hasta **11 números de teléfono**, y uno de ellos se marca como **Principal**. Si no hay una conversación previa, se usa el número principal por defecto.
+</Info>
+
+## Comprobar desde qué número se envió un SMS
+
+1. En **Conversaciones**, abre la conversación.
+2. Pasa el cursor sobre el SMS que quieres revisar.
+3. Haz clic en el menú de tres puntos (⋮) y elige **Detalles**.
+4. Revisa el número de envío que aparece en los detalles del mensaje.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si elijo el número De manualmente?">
+    Ese número tiene prioridad sobre el número asignado al usuario, el historial de la conversación y el número predeterminado.
+  </Accordion>
+  <Accordion title="¿Y si no elijo ningún número De?">
+    Chateea revisa primero el número asignado al usuario que envía, luego el número asociado a la conversación y, por último, el número saliente predeterminado de tu cuenta.
+  </Accordion>
+  <Accordion title="¿Por qué sigo enviando desde un número antiguo?">
+    Probablemente la conversación sigue asociada a ese número. Elige manualmente el nuevo número **De** cuando quieras cambiar el remitente.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el número asignado al usuario no puede enviar SMS?">
+    Chateea puede usar como respaldo el número saliente predeterminado que corresponda.
+  </Accordion>
+  <Accordion title="¿Puedo usar cualquier número como remitente?">
+    No. Debe pertenecer a tu cuenta y tener capacidad de SMS.
+  </Accordion>
+  <Accordion title="¿Cuántos teléfonos puede tener un contacto?">
+    Hasta 11, con uno marcado como principal.
+  </Accordion>
+  <Accordion title="¿Puedo elegir el número De en los SMS de un flujo de trabajo?">
+    Sí. Los flujos tienen su propia configuración de remitente, independiente del editor de Conversaciones.
+  </Accordion>
+  <Accordion title="¿Elegir un número me exime de los requisitos de cumplimiento?">
+    No. El número elegido debe cumplir los requisitos de capacidad, registro, cumplimiento, No molestar y bajas que apliquen.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Telefonía y SMS" icon="phone" href="/telefonia/introduccion">
+    Números, llamadas y mensajes en Chateea.
+  </Card>
+  <Card title="La ficha del contacto" icon="address-card" href="/contactos/introduccion">
+    Gestiona los teléfonos de cada contacto.
+  </Card>
+  <Card title="Chat grupal por SMS" icon="users" href="/conversaciones/chat-grupal-sms">
+    Escribe a varios contactos en un solo hilo.
+  </Card>
+  <Card title="Invita a tu equipo" icon="users" href="/primeros-pasos/invita-a-tu-equipo">
+    Usuarios, roles y números asignados.
+  </Card>
+</CardGroup>

@@ -1,0 +1,137 @@
+---
+title: "Solucionar errores al importar contactos por CSV"
+description: "Revisa los errores de una importación masiva, entiende cada código de error y corrige tu archivo CSV."
+icon: "triangle-exclamation"
+---
+
+La importación masiva por CSV es la forma más rápida de subir cientos o miles de contactos a Chateea, pero un detalle de formato puede hacer que algunas filas fallen o que ciertos campos queden vacíos. Esta guía explica cómo revisar los errores de una importación, qué significa cada código y cómo corregirlo.
+
+## Dónde ver los errores de una importación
+
+Cada importación queda registrada como una acción masiva. Para revisarla:
+
+<Steps>
+<Step title="Abre Acciones masivas">
+Ve a **Contactos** y entra en **Acciones masivas**.
+</Step>
+<Step title="Busca tu importación">
+Localiza la importación por fecha y nombre de archivo, y revisa cuántos registros se procesaron bien y cuántos fallaron.
+</Step>
+<Step title="Descarga el registro de errores">
+Abre el detalle y descarga el archivo de errores. Allí verás cada fila con problema y su código de error.
+</Step>
+<Step title="Corrige y vuelve a importar">
+Corrige las filas en tu archivo original según la tabla de abajo e importa solo esas filas otra vez.
+</Step>
+</Steps>
+
+## Lista de revisión antes de importar
+
+- El archivo tiene **una sola hoja**.
+- Los campos obligatorios están completos y con el formato correcto.
+- Correos, teléfonos y fechas siguen un formato uniforme.
+- Cada ID de contacto aparece **una sola vez** en el archivo.
+- Los valores de desplegables, casillas y selección múltiple coinciden **exactamente** con las opciones del campo.
+- En la columna de propietario usas el correo (o el nombre completo) de usuarios que existen en tu cuenta.
+- Elegiste una columna principal confiable, como correo o ID del contacto.
+
+## Códigos de error y cómo resolverlos
+
+### Errores de archivo y formato
+
+| Código | Error | Qué significa | Cómo resolverlo |
+| --- | --- | --- | --- |
+| 1001 | Error desconocido | No se pudo procesar el archivo. No se importó nada. | Confirma que el archivo cumple los requisitos. Borra la caché del navegador o prueba con otro navegador y vuelve a importar. |
+| 1002 | Varios propietarios encontrados | El valor de propietario coincide con más de un usuario (por ejemplo, hay dos usuarios llamados igual). Los registros se importaron sin propietario. | Usa el correo del usuario en lugar del nombre y vuelve a importar, o asigna el propietario a mano. |
+| 1003 | Cantidad de hojas inválida | El archivo tiene más de una hoja. No se importó nada. | Deja una sola hoja y vuelve a importar. |
+| 1004 | Propiedad obligatoria inválida | Un campo obligatorio tiene un valor inválido. Esa fila no se importó. | Revisa el formato que exige ese campo, corrige el archivo y vuelve a importar. |
+| 1005 | Opción no válida | Un valor no coincide con ninguna opción de un campo de desplegable, casillas, opción única o selección múltiple. El registro se importó, pero ese campo quedó vacío. | Compara el valor con las opciones del campo. Corrige el archivo o agrega la opción al campo, y vuelve a importar o actualiza a mano. |
+| 1006 | ID de contacto inválido | Marcaste actualizar por ID de contacto, pero el ID no existe en tu cuenta. No se importó. | Exporta tus contactos para obtener los ID correctos. Si no estás actualizando registros existentes, no marques esa opción. |
+| 1007 | Archivo no encontrado | No se encontró el archivo seleccionado. | Verifica que el archivo esté guardado en tu equipo y sea `.csv`, y vuelve a subirlo. |
+
+### Errores de duplicados y validación
+
+| Código | Error | Qué significa | Cómo resolverlo |
+| --- | --- | --- | --- |
+| 1008 | Correo inválido | El correo no tiene un formato válido (nombre@dominio.com). No se creó ni actualizó el registro. | Corrige el correo en el archivo y vuelve a importar. |
+| 1009 | Identificador único vacío | Una fila no tiene valor en la columna principal elegida. | Completa el dato o elige otra columna principal y vuelve a importar. |
+| 1010 | Identificador repetido en tu cuenta | El valor de la columna principal está en varios contactos de tu cuenta. Los datos se aplicaron a todos, pero puede haber duplicados. | Elige otra columna principal o limpia los duplicados antes de reimportar. |
+| 1011 | Identificador repetido en el archivo | El mismo valor único aparece varias veces en el archivo. Puede haber duplicados y las asociaciones no se hicieron. | Elige otra columna como identificador o corrige las filas repetidas. |
+| 1012 | ID de contacto repetido en el archivo | El mismo ID aparece en varias filas. Esos registros no se actualizaron. | Deja una sola fila por ID, con la información más actualizada, y vuelve a importar. |
+
+### Otros errores
+
+| Código | Error | Qué significa | Cómo resolverlo |
+| --- | --- | --- | --- |
+| 1013 | No se pudo leer el teléfono | El teléfono tiene caracteres no numéricos o no sigue el formato internacional. El registro se importó sin teléfono. | Corrige el número (por ejemplo `+5215512345678`) y vuelve a importar o actualiza a mano. |
+| 1014 | No se pudo leer la fecha | La fecha no coincide con el formato elegido al importar. El registro se importó sin esa fecha. | Usa un único formato de fecha en todo el archivo y vuelve a importar. |
+| 1015 | Propietario no encontrado | El propietario no coincide con ningún usuario de tu cuenta. El registro se importó sin propietario. | Usa el nombre completo o el correo de un usuario existente. Si la persona aún no es usuario, agrégala antes. |
+| 1016 | Opción ambigua | Un valor coincide con más de una opción del campo. El registro se importó con ese campo vacío. | Ajusta el valor para que coincida con una sola opción. |
+| 1017 | Tu cuenta no permite duplicados | Tienes desactivados los contactos duplicados y el registro coincide con uno existente. | Revisa los casos de los códigos 1010 y 1011. |
+| 1018 | Campo personalizado no compatible | El tipo de campo no admite importación (por ejemplo archivos o firmas). | Quita esa columna del mapeo. |
+| 1019 | Valor de campo personalizado inválido | El valor no es válido para el campo. | Sigue los pasos del código 1005. |
+| 1020 | No se pudo crear el contacto | El registro no se creó. | Revisa la fila y vuelve a importarla. |
+| 1021 | Faltan datos mínimos | La fila no tiene correo, teléfono ni nombre. | Agrega al menos uno de esos datos. |
+| 1022 | Contacto no encontrado | No se encontró el contacto que se quería actualizar. | Verifica el identificador usado. |
+| 1023 | No se pudo actualizar el contacto | La actualización falló. | Revisa la fila y vuelve a importarla. |
+| 1024 | No se pudo agregar al flujo | El contacto se importó, pero no se pudo inscribir en el flujo de trabajo o campaña. | Agrégalo al flujo a mano o con una acción masiva. |
+
+## Casos frecuentes
+
+### Archivo con contactos mixtos (unos con correo, otros solo con teléfono)
+
+Usa la **preferencia secundaria** al importar. Chateea busca primero por el campo principal (por ejemplo correo) y, si no lo encuentra, por el secundario (por ejemplo teléfono). Así también se actualizan los contactos que solo tienen teléfono.
+
+### Contactos con varios teléfonos o correos
+
+Lo ideal es usar columnas de **teléfonos adicionales** y **correos adicionales**, con los valores separados por comas. Si tu archivo tiene varias columnas de teléfono sin ese formato, pasa los números extra a la columna de teléfonos adicionales antes de importar.
+
+### Teléfonos exportados desde otro CRM
+
+Algunos sistemas exportan los teléfonos con paréntesis, guiones y espacios, por ejemplo `(810) 292-9388`. Limpia la columna para dejar solo dígitos con el código de país delante antes de importar.
+
+### Teléfonos de otros países
+
+Si el país de tu cuenta es, por ejemplo, México, los números mexicanos sin código de país se interpretan como locales. Para números de **otros países** debes incluir el código internacional (`+1`, `+34`, `+57`, etc.). Lo más seguro es poner siempre el código de país en todos los números.
+
+### Columna DND en el archivo
+
+Si importas una columna de DND, los contactos quedan en **No molestar para todos los canales**. Para aplicar DND solo a un canal, crea antes un flujo que active el DND de ese canal cuando se agregue una etiqueta (por ejemplo `dnd-sms`) y pon esa etiqueta en el archivo en lugar de la columna DND.
+
+### Notas
+
+Solo se puede importar **una nota por contacto**, de hasta 5.000 caracteres. Si necesitas más, usa un campo personalizado de texto largo. Al exportar, se incluye solo la última nota con un máximo de 255 caracteres.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué tipo de archivo debo subir?">
+Solo `.csv`. Si trabajas en Excel o Google Sheets, exporta primero la hoja como CSV.
+</Accordion>
+<Accordion title="¿Puedo deshacer una importación?">
+No hay un botón para deshacer, pero puedes agregar una etiqueta a todos los contactos durante la importación. Si algo sale mal, filtra por esa etiqueta y elimínalos en bloque.
+</Accordion>
+<Accordion title="¿Cuál es el tamaño máximo del archivo?">
+30 MB. Si tu archivo es muy grande, divídelo en varios más pequeños para revisar los errores con más facilidad.
+</Accordion>
+<Accordion title="¿Cómo valido los teléfonos antes de subirlos?">
+Usa fórmulas de tu hoja de cálculo o herramientas en línea para dejarlos en formato internacional (E.164): signo más, código de país y número.
+</Accordion>
+<Accordion title="¿Qué uso como columna principal?">
+Un identificador único que no se repita entre contactos, como el correo o el ID del contacto.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Formato del archivo CSV para importar" icon="file-csv" href="/contactos/formato-csv-para-importar">
+Reglas de formato por tipo de campo.
+</Card>
+<Card title="Importar contactos y oportunidades" icon="file-import" href="/contactos/importar-contactos-y-oportunidades-csv">
+Paso a paso de la importación.
+</Card>
+<Card title="Importar contactos desde CSV" icon="upload" href="/contactos/importar-contactos-desde-csv">
+Guía básica para subir tu primera lista.
+</Card>
+</CardGroup>

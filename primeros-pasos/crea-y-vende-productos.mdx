@@ -1,0 +1,189 @@
+---
+title: "Crea y vende productos"
+description: "Crea productos físicos, digitales o suscripciones, ponles precio y elige cómo venderlos en Chateea."
+icon: "bag-shopping"
+---
+
+En Chateea puedes crear productos físicos, productos digitales, ofertas de pago único y suscripciones recurrentes, y venderlos desde tu tienda en línea, un embudo, un enlace de pago, una factura o un formulario. En esta guía aprendes a crear y ponerle precio a un producto, agregar un periodo de prueba y elegir cómo lo van a comprar tus clientes.
+
+<Info>
+Para cobrar en línea necesitas un proveedor de pagos conectado, por ejemplo Stripe. Si aún no lo tienes, sigue primero la guía [Conecta Stripe](/primeros-pasos/conecta-stripe).
+</Info>
+
+## Crea un producto
+
+Ve a **Pagos → Productos** y haz clic en **Crear producto**. El formulario tiene varias secciones.
+
+### Información del producto
+
+| Campo | Para qué sirve |
+| --- | --- |
+| **Incluir en la tienda en línea** | Muestra el producto en tu tienda. Déjalo activado si quieres que se pueda comprar públicamente allí |
+| **Título** (obligatorio) | Nombre del producto. Se ve en el pago, en tus listados internos y en la tienda |
+| **Descripción** | Detalle del producto con formato enriquecido: negritas, cursivas, enlaces, listas y fuentes |
+| **Medios** | Imagen o video del producto. Recomendado: 1024 × 1024 píxeles y máximo 10 MB |
+| **Habilitar etiqueta del producto** | Agrega una etiqueta visible como "Nuevo" o "Más vendido" |
+| **Colección de productos** | Agrupa el producto con otros similares, útil si tienes un catálogo grande |
+
+### Impuestos
+
+| Campo | Para qué sirve |
+| --- | --- |
+| **Código fiscal del producto** | Categoría fiscal para el cálculo automático de impuestos. Si lo dejas vacío, se usa tu configuración fiscal general |
+| **Incluir impuestos en los precios** | Define si el precio mostrado ya incluye impuestos (Sí), si se suman aparte (No) o si sigue la configuración general |
+| **Añadir tasas de impuestos** | Útil si gestionas impuestos manualmente o vendes a compradores de otros países |
+| **Descriptor del extracto** | En **Configuración adicional**, cambia el nombre que el cliente ve en su estado de cuenta bancario. Un nombre claro reduce disputas y reclamos |
+
+### Precios
+
+Primero elige el tipo de precio:
+
+| | Pago único | Recurrente |
+| --- | --- | --- |
+| Cómo se cobra | Una sola vez | Cada cierto periodo |
+| Ideal para | Productos puntuales, servicios, consultas, cuotas de alta | Membresías, suscripciones, igualas mensuales, servicios continuos |
+| Periodo de facturación | No | Sí |
+| Periodo de prueba | No | Sí |
+| Ejemplo | Consulta de 99 | Membresía de 99 al mes |
+
+Luego completa:
+
+- **Nombre del precio**: etiqueta interna para distinguir varias opciones o planes.
+- **Tipo**: pago único o recurrente. El recurrente agrega periodo de facturación, prueba y cuota de alta.
+- **Monto** y, si quieres mostrar un descuento, **Precio de comparación** (el precio original tachado).
+- **Moneda** del cobro.
+- **Controlar inventario**, si quieres limitar las existencias.
+- **Opciones adicionales**, como límites de compra o metadatos.
+- **Descripción del precio**, una nota interna.
+
+### Variantes
+
+Las variantes crean versiones de un mismo producto, como niveles, tallas o duraciones de acceso.
+
+1. Escribe el **Nombre de la opción**, por ejemplo "Nivel" o "Plan de acceso".
+2. En **Valores de la opción**, agrega las variantes (por ejemplo "Básico", "Premium", "Pro") y haz clic en **Listo**.
+3. Asigna a cada variante su precio, precio de comparación y cantidad disponible.
+4. Activa **Controlar inventario** si quieres limitar cuántas unidades de cada variante se pueden vender.
+
+### Listado en buscadores (SEO)
+
+- **Título SEO**: nombre claro con las palabras que buscarían tus clientes.
+- **Descripción SEO**: resumen breve con palabras clave.
+- **Identificador**: la parte final de la dirección del producto, por ejemplo `/product/mi-curso`.
+
+Es opcional, pero mejora que te encuentren en Google.
+
+Cuando termines, haz clic en **Guardar**.
+
+## Duplica un producto existente
+
+Si vas a crear un producto parecido a otro, duplícalo para ahorrar tiempo.
+
+1. Ve a **Pagos → Productos** y busca el producto.
+2. Abre el menú de tres puntos y haz clic en **Duplicar**.
+3. Se abre una copia llamada "Copia de" más el nombre original, con título, descripción, precios, variantes, imágenes y ajustes.
+4. Haz los cambios necesarios y haz clic en **Guardar**.
+
+## Agrega un periodo de prueba
+
+<Steps>
+  <Step title="Abre el producto">
+    Ve a **Pagos → Productos** y crea un producto o edita uno existente.
+  </Step>
+  <Step title="Configura un precio recurrente">
+    En **Precios**, elige el tipo **Recurrente**, escribe el monto (y el precio de comparación, si quieres) y selecciona el periodo de facturación.
+  </Step>
+  <Step title="Define la prueba">
+    Escribe el periodo de prueba en días, por ejemplo 5. Si lo necesitas, indica también el número de pagos y una cuota de alta.
+  </Step>
+  <Step title="Guarda y úsalo">
+    Guarda el producto y agrégalo a un formulario de pedido, una factura o una página de pago.
+  </Step>
+</Steps>
+
+## Elige cómo vender tu producto
+
+| Método | Cuándo usarlo | Qué hacer |
+| --- | --- | --- |
+| **Tienda en línea** | Quieres que los clientes naveguen por tu catálogo y compren | Activa **Incluir en la tienda en línea** y agrega el producto a tu tienda en **Sitios** |
+| **Embudo** | Vendes con una página de ventas o de pago dedicada | Agrega el producto al embudo y un formulario de pedido en la página de pago |
+| **Enlace de pago** | Quieres compartir un enlace directo por correo, SMS, WhatsApp o código QR | Crea un enlace de pago con el producto y precio |
+| **Factura** | Cobras a un cliente concreto | Crea una factura con el producto. El tipo de factura debe coincidir con el precio (único o recurrente) |
+| **Formulario** | Quieres pedir datos y cobrar en el mismo formulario | Agrega el elemento **Pago** al formulario y elige el producto |
+
+<Warning>
+Si vendes productos digitales, sube los archivos descargables a cada producto o variante antes de venderlos. Sin archivos, el cliente no verá la opción de descarga después de pagar.
+</Warning>
+
+## Vende desde un embudo
+
+### Agrega el producto al embudo
+
+1. Ve a **Sitios → Embudos** y abre tu embudo.
+2. Entra a la pestaña **Productos** y haz clic en **Agregar producto**.
+3. Configura el producto y el precio, y haz clic en **Guardar**.
+
+### Agrega el formulario de pedido
+
+1. Abre el editor de la página de pago. Si todavía no existe, haz clic en **Agregar paso nuevo**, completa los datos y haz clic en **Crear paso del embudo**.
+2. Agrega una sección de ancho completo con una fila de una columna.
+3. Dentro de la fila, agrega un formulario de pedido de uno o dos pasos.
+4. Personalízalo y haz clic en **Guardar** y **Publicar**.
+5. Asegúrate de que el producto esté agregado a la misma página donde está el formulario.
+
+Antes de compartir el embudo, haz una compra de prueba y confirma que aparecen el producto, el precio y los métodos de pago correctos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo cambiar la moneda de un producto existente?">
+    No. Para usar otra moneda, crea un producto nuevo o agrega un nuevo precio en la moneda que necesitas.
+  </Accordion>
+  <Accordion title="¿Dónde edito los datos de un producto?">
+    En **Pagos → Productos**, abriendo el producto. Puedes cambiar nombre, descripción, medios, impuestos, SEO, tipo de producto y descriptor del extracto.
+  </Accordion>
+  <Accordion title="¿Cómo cambio un producto de físico a digital?">
+    Abre el producto y su precio en **Pagos → Productos**, cambia **Envío y entrega** a **Digital** y guarda.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre un producto físico y uno digital?">
+    Los productos físicos piden datos de envío en el pago; los digitales no. Las descargas digitales solo están disponibles si subiste un archivo al producto o variante.
+  </Accordion>
+  <Accordion title="¿Por qué no encuentro mi producto al crear una factura?">
+    Los productos se filtran según el tipo de precio. Las facturas de pago único muestran productos de pago único, y las recurrentes muestran productos recurrentes.
+  </Accordion>
+  <Accordion title="¿En qué unidad se mide el periodo de prueba?">
+    Siempre en días, sin importar la frecuencia de cobro del producto.
+  </Accordion>
+  <Accordion title="¿Por qué algunos productos aparecen como no disponibles en la vista previa?">
+    Normalmente porque el control de inventario está activado y las existencias llegaron a cero. Aumenta la cantidad disponible o desactiva el control de inventario.
+  </Accordion>
+  <Accordion title="¿Por qué un producto duplicado aparece en gris al agregarlo a una factura?">
+    Revisa que el producto esté publicado y tenga un precio activo con el tipo de cobro y la moneda correctos.
+  </Accordion>
+  <Accordion title="¿Por qué no se importan mis productos de Stripe?">
+    Solo se pueden importar desde Stripe los productos recurrentes o de suscripción. Los de pago único debes crearlos directamente en **Pagos → Productos**. Si el producto ya existe en Chateea o todavía se está sincronizando, espera a que termine la sincronización antes de volver a importarlo.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece el botón de descarga tras una compra digital?">
+    El botón solo aparece si el producto o variante tiene al menos un archivo digital. Si subes el archivo después, la opción de descarga se habilita automáticamente.
+  </Accordion>
+  <Accordion title="Me aparece un error de ID de categoría al crear un producto. ¿Qué hago?">
+    Suele ocurrir si faltan campos obligatorios o al editar un producto existente. Crea los productos uno por uno y completa todos los campos obligatorios antes de guardar. Si el error continúa, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conecta Stripe" icon="credit-card" href="/primeros-pasos/conecta-stripe">
+    Conecta tu proveedor de pagos.
+  </Card>
+  <Card title="Crea enlaces de pago" icon="link" href="/primeros-pasos/crea-enlaces-de-pago">
+    Cobra con un enlace directo.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/primeros-pasos/crea-y-envia-facturas">
+    Factura a tus clientes desde Chateea.
+  </Card>
+  <Card title="Lanza tu primer embudo" icon="filter" href="/primeros-pasos/lanza-tu-primer-embudo">
+    Crea una página de ventas.
+  </Card>
+</CardGroup>

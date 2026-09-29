@@ -1,0 +1,148 @@
+---
+title: "Disparadores de citas para agentes gestionados"
+description: "Inicia un agente gestionado cuando un cliente reserva, confirma, cancela o no asiste a una cita."
+icon: "calendar-check"
+---
+
+Los disparadores de citas inician un agente gestionado en el momento en que un cliente reserva, confirma, cancela o no se presenta a una cita en tus calendarios de Chateea. Así la IA responde justo cuando el contacto tiene más intención: después de agendar, cambiar o perder una cita.
+
+El agente recibe el contexto de la cita (calendario y estado) como parte del evento, de modo que sus indicaciones y su lógica pueden usar esos datos para personalizar cada mensaje.
+
+## Tipos de disparador
+
+| Disparador | Cuándo se activa | Ideal para |
+| --- | --- | --- |
+| **Cliente reservó una cita** (Customer Booked Appointment) | Cuando se reserva una cita nueva en uno de los calendarios seleccionados | Enviar la confirmación, instrucciones previas o preguntas de precalificación |
+| **Estado de la cita cambió** (Appointment Status Changed) | Cuando cambia el estado de una cita existente: confirmada, cancelada, asistió, no asistió o reprogramada | Flujos según el resultado: agradecer la asistencia, recuperar ausencias, enviar indicaciones al confirmar |
+
+Ejemplos con el cambio de estado:
+
+- Enviar un "gracias por venir" cuando el estado pasa a **Asistió**.
+- Lanzar una oferta para reagendar cuando pasa a **No asistió** o **Cancelada**.
+- Enviar recordatorios o cómo llegar cuando pasa a **Confirmada**.
+
+## Ventajas
+
+- **Respuesta en tiempo real** en los momentos clave de la agenda, sin esperar a flujos lentos ni seguimientos manuales.
+- **Mejores tasas de asistencia y respuesta**, porque el mensaje llega cuando el contacto está más atento.
+- **Precisión por calendario y estado**, para no gastar uso de IA en eventos que no importan.
+- **Lógica reutilizable**: el mismo agente puede manejar confirmaciones, recordatorios y recuperación en varios calendarios.
+- **Menos trabajo manual** en confirmaciones, preguntas frecuentes, instrucciones para reagendar y ofertas de seguimiento.
+
+## Filtros del disparador
+
+### Calendarios (obligatorio)
+
+Debes elegir al menos un calendario antes de guardar. El agente solo se ejecuta con eventos de esos calendarios. Patrones comunes:
+
+- Activarlo solo en calendarios de **ventas** o **consultas**, no en calendarios internos.
+- Separar agentes por línea de servicio (por ejemplo, coaching, limpieza dental, mantenimiento).
+
+### Estados de la cita (opcional)
+
+En el disparador **Estado de la cita cambió** puedes limitar la ejecución a ciertos estados: confirmada, cancelada, asistió, no asistió o reprogramada.
+
+<Warning>
+  Si dejas el filtro de estados vacío, el agente se ejecutará con **cualquier** cambio de estado en los calendarios elegidos. Úsalo así solo si realmente quieres responder a todas las transiciones.
+</Warning>
+
+Casos de uso:
+
+- Solo cuando un prospecto confirma una llamada de ventas, para enviarle material de preparación.
+- Cuando una cita de servicio se cancela o queda como no asistió, para ofrecer una nueva fecha.
+- Con cualquier cambio de estado en un calendario interno, para notificaciones o informes.
+
+## Dos formas de configurarlo
+
+### En el constructor visual
+
+1. Abre el agente gestionado en el constructor visual.
+2. Ubica el nodo de **inicio** (o agrega uno).
+3. Elige **Cliente reservó una cita** o **Estado de la cita cambió**.
+4. Selecciona al menos un calendario.
+5. Opcional: selecciona los estados (solo en el disparador de cambio de estado).
+6. Guarda, prueba y publica.
+
+La validación integrada no te deja guardar si falta un campo obligatorio, como el calendario.
+
+### Con el chat del constructor
+
+Describe lo que quieres en lenguaje natural:
+
+```text
+Inicia este agente cada vez que alguien reserve una consulta en mi calendario de Ventas.
+Ejecuta este agente cuando una limpieza dental quede como No asistió.
+```
+
+El constructor elige el tipo de disparador, lo conecta al agente y aplica los filtros de calendario y estado. Después abre el constructor visual para verificar lo que configuró, ajustar indicaciones y nodos, y probar antes de publicar.
+
+## Paso a paso recomendado
+
+<Steps>
+  <Step title="Prepara tus calendarios">
+    Confirma que los calendarios existen y están activos en tu cuenta, con tipos de cita, zona horaria y disponibilidad correctos. Si lo necesitas, crea calendarios separados por caso de uso (demo de ventas, llamada de bienvenida, consulta VIP) para apuntar con precisión.
+  </Step>
+  <Step title="Abre o crea el agente">
+    Ve a **IA → Agent Studio** y abre el agente gestionado. Si es nuevo, diseña al menos lo básico: mensaje de saludo o confirmación, las preguntas que quieres hacer y las acciones de seguimiento (notas, etiquetas, avisos internos).
+  </Step>
+  <Step title="Agrega el disparador de cita">
+    En el nodo de inicio, elige **Cliente reservó una cita** para confirmaciones y nutrición posterior a la reserva, o **Estado de la cita cambió** para flujos según el resultado.
+  </Step>
+  <Step title="Configura calendarios y estados">
+    Selecciona los calendarios y, si aplica, solo los estados que deben iniciar el agente. Guarda y confirma que la validación pasa.
+  </Step>
+  <Step title="Usa el contexto de la cita">
+    Ajusta indicaciones y mensajes para mencionar la fecha y hora, el tipo de servicio y el estado. Agrega nodos para etiquetar al contacto (por ejemplo, "Consulta reservada" o "Recuperación de ausencia enviada"), enviar SMS o correos y avisar a tu equipo.
+  </Step>
+  <Step title="Prueba sin afectar clientes reales">
+    Usa las herramientas de prueba de Agent Studio. Lo ideal es crear un calendario y un contacto de prueba, reservar y cambiar citas de prueba y revisar la actividad y los registros.
+  </Step>
+  <Step title="Publica y supervisa">
+    Publica el agente para activar los disparadores. En las primeras ejecuciones, confirma que solo los calendarios y estados correctos lo inician y ve mejorando indicaciones y filtros.
+  </Step>
+</Steps>
+
+<Tip>
+  Empieza con un solo calendario de alto valor (como demos de ventas o consultas de clientes nuevos). Cuando compruebes que el agente se comporta bien, amplíalo a otros calendarios y estados.
+</Tip>
+
+## Cómo se ven en la actividad del agente
+
+Las ejecuciones iniciadas por una cita aparecen en la [actividad del agente](/ia/actividad-de-agentes-gestionados) con:
+
+- Un **ícono de calendario** que las distingue de otros eventos.
+- La etiqueta de evento **Cita**.
+- Los **datos del evento**: a qué calendario pertenece la cita y qué estado tenía cuando se inició el agente.
+
+Con esto puedes entender por qué un contacto recibió un mensaje, comprobar que tus filtros funcionan y ver con qué frecuencia corren tus flujos de recuperación. Para más detalle, revisa los [registros de agentes](/ia/registros-de-agentes).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Reemplazan a los disparadores de formulario, etiqueta o chat?">
+    No, se suman. Puedes seguir usando los otros disparadores e incluso combinar varios tipos en el mismo agente.
+  </Accordion>
+  <Accordion title="¿Un agente puede tener más de un disparador de cita?">
+    Sí. Por ejemplo, uno de **Cliente reservó una cita** en tu calendario de ventas y otro de **Estado de la cita cambió = No asistió** en tu calendario de servicios.
+  </Accordion>
+  <Accordion title="¿Cómo funcionan con citas recurrentes o reprogramadas?">
+    Una nueva ocurrencia reservada activa **Cliente reservó una cita** si el calendario está seleccionado. Cuando una cita se reprograma o actualiza, puede activarse **Estado de la cita cambió**, según cómo se registre el cambio y los estados que hayas elegido.
+  </Accordion>
+  <Accordion title="No veo un calendario en la configuración del disparador">
+    Confirma que el calendario existe en tu misma cuenta y que tienes permiso para verlo.
+  </Accordion>
+  <Accordion title="¿Afectan a mis flujos de trabajo de recordatorios?">
+    No los desactivan ni los modifican. Si ya envías recordatorios con flujos de trabajo, revísalos para que el cliente no reciba mensajes duplicados cuando el flujo y el agente respondan al mismo evento.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparadores programados" icon="clock" href="/ia/disparadores-programados-agentes-gestionados">
+    Ejecuta un agente en una fecha u horario recurrente.
+  </Card>
+  <Card title="Configura tu calendario de reservas" icon="calendar" href="/primeros-pasos/configura-tu-calendario-de-reservas">
+    Prepara los calendarios que usará tu agente.
+  </Card>
+</CardGroup>

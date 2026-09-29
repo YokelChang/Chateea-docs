@@ -1,0 +1,134 @@
+---
+title: "Usar campos de oportunidad en plantillas de documentos"
+description: "Llena tus plantillas de documentos con datos de cada oportunidad, como presupuesto o fecha de cierre."
+icon: "filter-circle-dollar"
+---
+
+Los campos personalizados de oportunidad te permiten llenar tus plantillas de documentos y contratos con datos propios de cada negocio en curso: el presupuesto del proyecto, el tipo de servicio, la fecha de cierre o el nombre del paquete contratado. Cuando un flujo de trabajo genera el documento, Chateea reemplaza cada campo de combinación con el valor guardado en la oportunidad correspondiente. Así evitas editar a mano cada propuesta y mantienes la información exacta y consistente.
+
+## Por qué usar datos de la oportunidad y no del contacto
+
+Los campos de contacto guardan información que no cambia entre negocios (nombre, correo, dirección). Los campos de oportunidad, en cambio, guardan información de **un trato específico**. Un mismo contacto puede tener varias oportunidades abiertas, cada una con su propio presupuesto o fecha, y el documento tomará los valores de la oportunidad que disparó el flujo.
+
+Beneficios principales:
+
+- **Documentos más rápidos:** envías propuestas y contratos sin retocar cifras ni fechas.
+- **Datos exactos:** la información sale directamente del registro de la oportunidad.
+- **Automatización reutilizable:** una sola plantilla sirve para todas tus oportunidades y pipelines.
+- **Consistencia:** todo tu equipo envía documentos con el mismo formato y estructura.
+
+<Note>
+Estas instrucciones aplican a **plantillas** reutilizables, no a documentos individuales. Entra a **Pagos → Documentos y contratos → Plantillas** y confirma que estás en la pestaña **Plantillas**. Mientras editas una plantilla, la dirección del navegador incluye `/templates/`.
+</Note>
+
+## Antes de empezar
+
+Para que los valores de la oportunidad aparezcan en el documento, revisa que se cumpla todo lo siguiente:
+
+- El campo se creó como campo personalizado de **oportunidad** (no de contacto).
+- La oportunidad tiene un valor guardado en ese campo.
+- La oportunidad está asociada al contacto correcto.
+- La plantilla está guardada antes de seleccionarla en el flujo.
+- El flujo usa un disparador relacionado con oportunidades.
+- El contacto tiene un correo electrónico válido.
+
+<Tip>
+Si tu plantilla tiene varios firmantes (roles), asigna al menos un elemento rellenable al rol **Contacto** antes de usarla en un flujo. Los datos de rol que escribas en el flujo reemplazan los valores predeterminados de la plantilla.
+</Tip>
+
+## Agregar campos de oportunidad a la plantilla
+
+Usar el menú de campos de combinación inserta el código exacto del campo y evita errores de escritura.
+
+<Steps>
+  <Step title="Abre la plantilla">
+    Ve a **Pagos → Documentos y contratos → Plantillas**. Haz clic en **+ Nuevo** o abre una plantilla existente.
+  </Step>
+  <Step title="Agrega un bloque de texto o una tabla">
+    Haz clic en el ícono **+** y agrega un bloque de **Texto** o una **Tabla** donde quieras mostrar la información del trato.
+  </Step>
+  <Step title="Inserta el campo de combinación">
+    Coloca el cursor en el lugar exacto y haz clic en el ícono **Campos de combinación** (Merge Fields). Luego elige **Contacto → Campos personalizados → Detalles de la oportunidad → nombre del campo**.
+  </Step>
+  <Step title="Revisa y guarda">
+    Confirma que el código del campo aparece donde lo necesitas y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+Selecciona los campos desde el menú en lugar de escribir a mano un código genérico como `{{opportunity.xyz}}`. El menú inserta la clave exacta del campo que elegiste.
+</Tip>
+
+## Usar la plantilla en un flujo de trabajo
+
+El disparador de oportunidad es lo que le da a Chateea el contexto del trato para llenar los campos.
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Elige el disparador">
+    Agrega el disparador que corresponda a tu proceso:
+    - **Etapa del pipeline cambiada:** inicia el flujo cuando la oportunidad entra en una etapa concreta.
+    - **Estado de la oportunidad cambiado:** inicia el flujo cuando la oportunidad pasa a un estado como Ganada o Perdida.
+
+    Solo necesitas los dos disparadores si cualquiera de esos eventos debe iniciar el flujo. Configura los filtros de pipeline, etapa o estado.
+  </Step>
+  <Step title="Agrega la acción de envío">
+    Haz clic en **+ Agregar acción** y elige **Enviar documentos y contratos**.
+  </Step>
+  <Step title="Configura la acción">
+    - Selecciona el usuario remitente (**De usuario**).
+    - Elige la plantilla guardada.
+    - Decide entre **Crear como borrador** o **Enviar directamente**.
+    - Selecciona el canal de envío.
+    - Completa los datos de destinatarios o firmantes que se pidan.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar acción** y publica el flujo.
+  </Step>
+</Steps>
+
+<Tip>
+Mientras pruebas, usa **Crear como borrador**. Abre el borrador generado, verifica que cada campo de oportunidad muestre el valor esperado y, cuando todo esté bien, cambia la acción a **Enviar directamente**.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué un valor de la oportunidad sale en blanco en el documento?">
+    Revisa que el campo tenga un valor en la oportunidad que disparó el flujo. Verifica también que elegiste el campo dentro de **Detalles de la oportunidad** y que guardaste la plantilla antes de que el flujo se ejecutara.
+  </Accordion>
+  <Accordion title="¿Por qué sigue visible el código del campo?">
+    Es normal verlo mientras editas la plantilla. Debe reemplazarse cuando el flujo genera el documento. Si aparece en el documento generado, vuelve a insertar el campo desde el menú **Campos de combinación** y prueba de nuevo.
+  </Accordion>
+  <Accordion title="¿Puedo escribir a mano un campo de oportunidad?">
+    Sí, pero el código debe coincidir exactamente con la clave del campo. Usar el menú reduce los errores de escritura y formato.
+  </Accordion>
+  <Accordion title="¿Qué disparador me conviene?">
+    Usa **Etapa del pipeline cambiada** cuando el documento deba crearse al llegar a una etapa concreta. Usa **Estado de la oportunidad cambiado** cuando deba crearse después de un cambio de estado, por ejemplo al marcar el trato como Ganado.
+  </Accordion>
+  <Accordion title="¿Por qué mi plantilla no aparece en la acción del flujo?">
+    Confirma que creaste una plantilla (no un documento individual) y que hiciste clic en **Guardar**. Solo las plantillas guardadas aparecen en la acción **Enviar documentos y contratos**.
+  </Accordion>
+  <Accordion title="¿Por qué el documento se quedó en borradores?">
+    Revisa si la acción está en **Crear como borrador**. Confirma también que el contacto tenga un correo válido: es obligatorio incluso si eliges enviar por SMS.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Pipelines y oportunidades" icon="filter" href="/contactos/pipelines">
+    Organiza tus tratos por etapas y estados.
+  </Card>
+  <Card title="Roles de firmantes en plantillas" icon="users" href="/documentos/roles-de-firmantes-en-plantillas">
+    Define varios firmantes y envíalos desde un flujo.
+  </Card>
+  <Card title="Fecha de la cita en contratos" icon="calendar" href="/documentos/fecha-de-cita-en-contratos">
+    Incluye automáticamente la fecha reservada en el contrato.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="bolt" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores y acciones.
+  </Card>
+</CardGroup>

@@ -1,133 +1,215 @@
 ---
-title: "Nueva experiencia de gestión de canales"
-description: "Asigna bots directamente a los canales, sin depender de un bot principal ni de flujos."
-icon: "diagram-next"
+title: "Canales y enrutamiento de los bots de IA conversacional"
+description: "Decide qué bot responde, en qué canales y a qué contactos, sin crear flujos solo para activarlo."
+icon: "route"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
-
-Se rediseñó la forma en que los bots de IA conversacional se asignan a los canales. Este artículo explica cómo funcionaba antes, qué cambia y qué debes hacer después de la migración.
+La gestión de canales de la IA conversacional te permite decidir **qué bot responde, dónde responde y a qué contactos atiende**. Cada bot se asigna directamente a sus canales desde su pestaña **Desplegar** (Deploy), sin necesidad de crear un flujo de trabajo solo para activarlo. Además, puedes enrutar los mensajes por página, número, widget y etiquetas del contacto para armar configuraciones con varios bots.
 
 <Info>
-  El cambio de fondo en una frase: **desapareció el concepto de "bot principal"**. Ahora cada bot responde de forma independiente según los canales y filtros que le asignes, sin necesidad de flujos de trabajo para el enrutamiento básico.
+  El cambio de fondo: **ya no existe el "bot principal"**. Cada bot responde de forma independiente según los canales y condiciones que le asignes.
 </Info>
+
+## Para qué sirve
+
+- **Despliegue más simple:** asignas el bot a sus canales desde la pestaña Desplegar.
+- **Enrutamiento preciso:** combinas canal, destino conectado y etiquetas del contacto.
+- **Mejor segmentación:** envías clientes premium, leads nuevos o solicitudes de soporte a bots distintos.
+- **Varios bots sin enredos:** un bot para ventas, otro para soporte, otro por sucursal, página o widget.
+- **Menos conflictos:** Chateea impide que dos bots tengan exactamente la misma configuración.
+- **Migración automática:** los canales del antiguo bot principal pasan a la nueva experiencia.
+
+## Canales compatibles
+
+- SMS
+- Correo
+- Facebook
+- Instagram
+- WhatsApp
+- Chat en vivo
+- Widget de chat
+
+Las opciones de cada canal dependen del tipo de conexión: en uno eliges un número de teléfono; en otro, una página o un widget.
 
 ## Antes y ahora
 
 |  | Experiencia anterior | Nueva experiencia |
 | --- | --- | --- |
-| **Quién respondía solo** | Solo el bot principal, en sus canales asignados | Cualquier bot, según su asignación de canal |
-| **Bots no principales** | Necesitaban un flujo de trabajo para responder | Responden directo por asignación de canal |
-| **Enrutamiento** | Por flujos de trabajo | Por configuración del bot |
-| **Bot principal** | Obligatorio | Ya no existe |
+| **Quién respondía solo** | Solo el bot principal, en sus canales | Cualquier bot, según sus canales asignados |
+| **Bots no principales** | Necesitaban un flujo para responder | Responden directo por asignación de canal |
+| **Dónde se asignan los canales** | En la lista de agentes | En la pestaña **Desplegar** de cada bot |
+| **Bot en el widget de chat** | Se elegía en el constructor del widget | Se asigna desde el bot, en Desplegar |
 
-En la experiencia anterior, para que un bot **no principal** respondiera, tenías que crear un flujo, usar la acción de actualizar bot y estado, asignar el bot y configurar los disparadores. Todo ese rodeo desaparece.
+La **Lista de agentes** ahora muestra el nombre del bot, su estado, la última actualización y las acciones disponibles. Los canales ya no se gestionan desde esa lista.
 
-## Asigna bots directamente a los canales
+## Cómo se decide qué bot responde
 
-Ahora asignas canales directamente a cualquier bot:
+Cuando llega un mensaje, Chateea revisa primero si el contacto tiene un bot **asignado directamente**. Si no, busca el bot cuya regla de despliegue coincide con el mensaje. Una regla puede combinar:
 
-| Bot | Canal | Resultado |
-| --- | --- | --- |
-| **Bot A** | WhatsApp | Atiende lo que entra por WhatsApp |
-| **Bot B** | Facebook | Atiende lo que entra por Facebook |
+- El canal de mensajería.
+- El destino conectado (página, número, cuenta o widget).
+- Etiquetas que el contacto **tiene**.
+- Etiquetas que el contacto **no tiene**.
 
-No hace falta designar un bot principal. Puedes crear varios bots y darle a cada uno su propio conjunto de canales.
+### La asignación directa tiene prioridad
 
-### Reglas de enrutamiento más finas
+Un bot asignado directamente a un contacto lo atiende aunque otro bot coincida por canal y etiquetas. La asignación directa ocurre cuando:
 
-Además del canal, puedes aplicar filtros:
+- Asignas un bot al contacto manualmente.
+- Un flujo usa la acción **Actualizar bot de IA conversacional y estado**.
+- Otro bot hace una **transferencia de bot**.
 
-- Tiene etiqueta
-- No tiene etiqueta
-- Número de teléfono específico
-- Otras condiciones propias del canal
-
-Así diriges la conversación al bot correcto sin depender de flujos.
-
-## Lógica de asignación
-
-Para evitar conflictos, la asignación sigue dos reglas:
-
-<AccordionGroup>
-  <Accordion title="Regla 1: no se permiten configuraciones duplicadas">
-    Dos bots no pueden tener exactamente la misma configuración de canal.
-  </Accordion>
-
-  <Accordion title="Regla 2: lo más específico tiene prioridad">
-    Cuando varias asignaciones podrían coincidir con una conversación, gana la más específica.
-  </Accordion>
-</AccordionGroup>
-
-**Cómo se resuelve en la práctica:**
-
-| Configuración | Entra un mensaje… | Responde |
-| --- | --- | --- |
-| Bot A → todo el chat en vivo<br />Bot B → chat en vivo del Widget B | …desde el Widget B | **Bot B** (más específico) |
-| Bot A → Facebook<br />Bot B → Facebook \+ etiqueta VVIP | …de un contacto con etiqueta VVIP | **Bot B** |
-| Bot A → Facebook<br />Bot B → Facebook \+ etiqueta VVIP | …de un contacto sin esa etiqueta | **Bot A** |
-
-## Asignación por flujo de trabajo
-
-La acción **Actualizar bot de IA conversacional y estado** sigue existiendo, pero ahora funciona distinto: es **independiente del canal**.
-
-Cuando se ejecuta:
-
-- El bot seleccionado se asigna a ese contacto
-- Responderá al mensaje entrante **por cualquier canal** de ese contacto
-- No necesitas asignarle ningún canal
-- Responde de inmediato, sin importar el canal
-
-La asignación depende de la ejecución del flujo, no de los canales.
+El contacto sigue con ese bot en todos los canales compatibles hasta que cambie la asignación o el estado del bot.
 
 <Warning>
-  **Si quieres que un bot se active únicamente por flujo de trabajo, no le asignes ningún canal.**
-
-  Si le asignas canales, empezará a responder también por enrutamiento de canal, y eso puede saltarse el comportamiento por flujo que tenías pensado.
+  Si quieres que un bot se active **solo** por flujo de trabajo, no le asignes ningún canal en Desplegar. Si le asignas canales, también responderá por enrutamiento de canal.
 </Warning>
 
-## Cuál usar
+### Enrutamiento por etiquetas
 
-| Usa asignación de canal cuando… | Usa asignación por flujo cuando… |
+En la ventana de edición del canal tienes dos controles:
+
+- **Tiene etiquetas:** el contacto debe cumplir la condición.
+- **No tiene etiquetas:** el contacto no debe cumplirla.
+
+Y dos formas de combinarlas:
+
+- **Y (AND):** el contacto debe cumplir todas las condiciones.
+- **O (OR):** basta con que cumpla una.
+
+### Sin configuraciones duplicadas
+
+Dos bots no pueden compartir exactamente la misma combinación de canal, destino, condiciones de "tiene etiquetas" y de "no tiene etiquetas". Si Chateea no te deja guardar, cambia el destino o las etiquetas para que la regla sea distinta.
+
+<Tip>
+  Evita reglas que puedan coincidir con el mismo contacto en dos bots. Si ocurre, gana la regla más específica, pero es mejor que cada grupo de contactos tenga un solo bot posible.
+</Tip>
+
+## Activar la gestión de canales
+
+Si tu cuenta todavía muestra el esquema de bot principal, actívala desde Labs:
+
+<Steps>
+  <Step title="Abre Labs">
+    Ve a **Configuración → Labs** y busca **Gestión de canales de la IA conversacional**.
+  </Step>
+  <Step title="Actívala">
+    Enciende la función y espera unos cinco minutos mientras se migra la configuración actual.
+  </Step>
+  <Step title="Revisa tus bots">
+    Ve a **IA → IA conversacional → Lista de agentes** y revisa la pestaña **Desplegar** de cada bot.
+  </Step>
+</Steps>
+
+Si ya no ves la opción en Labs, la función está activa por defecto en tu cuenta.
+
+### Qué pasa con la migración
+
+| Situación | Resultado |
 | --- | --- |
-| Quieres que un bot responda automáticamente en canales específicos | Quieres que un bot se active solo tras cumplirse una condición del flujo |
+| **Antiguo bot principal** | Se le asignan los canales que ya atendía, para que siga respondiendo igual. |
+| **Otros bots** | Quedan sin canales asignados. Configúralos en Desplegar si quieres que respondan por canal. |
+| **Cuenta con un solo bot** | Se conservan su modo de funcionamiento y sus canales. |
 
-## Qué pasa después de la migración
+Después de migrar, abre el antiguo bot principal, confirma que tiene los canales esperados y reparte canales o grupos de clientes entre tus otros bots.
 
-<AccordionGroup>
-  <Accordion title="Bot principal existente">
-    Sus canales asignados **se conservan**, para mantener el comportamiento que ya tenías.
-  </Accordion>
+## Configurar el despliegue de un bot
 
-  <Accordion title="Bots no principales existentes">
-    Se les **eliminan** las asignaciones de canal. Si quieres que respondan por enrutamiento, vuelve a configurarlas con la nueva experiencia.
-  </Accordion>
+<Steps>
+  <Step title="Abre el bot">
+    Ve a **IA → IA conversacional → Lista de agentes** y selecciona el bot.
+  </Step>
+  <Step title="Entra a Desplegar">
+    Haz clic en la pestaña **Desplegar**.
+  </Step>
+  <Step title="Activa el canal">
+    Enciende el canal que necesitas. La tarjeta muestra un resumen como "Todos los números", "Todas las páginas" o "Todos los widgets".
+  </Step>
+  <Step title="Afina el destino">
+    Haz clic en el ícono de edición del canal, activa **Asignar canal** y elige la página, número, cuenta o widget.
+  </Step>
+  <Step title="Agrega condiciones de etiqueta">
+    Define **Tiene etiquetas** y **No tiene etiquetas**, y elige **Y** u **O** según corresponda.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Actualizar** y luego en **Guardar**. Repite con los demás canales.
+  </Step>
+</Steps>
 
-  <Accordion title="Migración por instantánea (snapshot)">
-    Todos los bots se migran **desactivados** y **sin** asignaciones de canal. Deberás reconfigurarlas tras instalar la instantánea.
-  </Accordion>
+## Conectar un bot al widget de chat de tu sitio
 
-  <Accordion title="Excepción: subcuenta con un solo bot">
-    Se conservan tanto el modo de funcionamiento como las asignaciones de canal existentes. En configuraciones de un solo bot, nada cambia.
-  </Accordion>
-</AccordionGroup>
+El widget controla cómo se ve el chat en tu sitio; el bot se asigna desde el propio bot.
 
-<Warning>
-  Si administras plantillas o instantáneas, esta es la parte que más sorprende: tras instalar una, **todos los bots quedan apagados y sin canales**. Es intencional — pero significa que debes reconfigurarlos antes de que atiendan nada.
-</Warning>
+<Steps>
+  <Step title="Prepara el widget">
+    Ve a **Sitios → Widgets de chat**, crea o abre un widget, configúralo y guárdalo.
+  </Step>
+  <Step title="Asigna el bot">
+    En **IA → IA conversacional**, abre el bot, entra a **Desplegar** y activa **Widget de chat**.
+  </Step>
+  <Step title="Elige el widget">
+    Haz clic en el ícono de edición, activa **Asignar canal**, selecciona el widget y agrega condiciones de etiqueta si hacen falta.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Actualizar**, guarda el bot y prueba el widget en tu sitio.
+  </Step>
+</Steps>
 
-## Comportamiento del bot de transferencia
+## Ejemplo: clientes regulares y premium en el mismo widget
 
-La transferencia entre bots sigue funcionando con el nuevo sistema. Cuando ocurre una transferencia:
+Dos bots pueden compartir un widget si sus condiciones de etiqueta son distintas.
 
-- Aplica **solo a ese contacto**
-- Aplica **solo al canal** donde se da la conversación
-- El bot de destino **no necesita** tener ese canal asignado globalmente
+| Bot | Canal | Destino | Tiene etiquetas |
+| --- | --- | --- | --- |
+| Bot de clientes regulares | Widget de chat | Widget 1 | `cliente-regular` |
+| Bot de clientes premium | Widget de chat | Widget 1 | `cliente-premium` |
 
-Por eso un bot puede responder bien tras una transferencia aunque no tenga canales configurados, y los flujos de transferencia siguen funcionando sin configurar canales adicionales.
+Para cada bot: abre **Desplegar**, activa **Widget de chat**, entra a la edición, activa **Asignar canal**, elige **Widget 1**, selecciona la etiqueta en **Tiene etiquetas**, haz clic en **Actualizar** y guarda.
+
+### Verifica qué bot respondió
+
+1. Abre un contacto con la etiqueta `cliente-regular` y envía un mensaje por el widget.
+2. En el panel **Bot de IA conversacional** del contacto, confirma que está asignado el bot de clientes regulares.
+3. Abre la información de la respuesta de IA y confirma el nombre del bot y el modo de respuesta.
+4. Repite con un contacto que tenga `cliente-premium`.
+
+## Transferencias entre bots
+
+Cuando un bot transfiere la conversación a otro:
+
+- Aplica **solo a ese contacto**.
+- El bot de destino queda asignado directamente, así que tiene prioridad sobre las reglas de despliegue.
+- El bot de destino **no necesita** tener ese canal asignado.
 
 <Card title="Transferencia de acción del bot" icon="arrow-right-arrow-left" href="/bot-ia/transferir-accion-bot">
   Cómo pasar una conversación de un bot a otro.
 </Card>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Ya no veo la pestaña Agente en mi widget de chat, ¿cómo elijo el bot?">
+    Los bots ya no se eligen desde el constructor del widget. Crea el widget en **Sitios → Widgets de chat** y luego asigna el bot desde **IA → IA conversacional → Desplegar**.
+  </Accordion>
+  <Accordion title="¿Sigo necesitando un flujo para que un segundo bot responda?">
+    No. Asigna el bot a sus canales desde Desplegar. Los flujos siguen siendo útiles para asignar un bot a un contacto concreto.
+  </Accordion>
+  <Accordion title="¿Dos bots pueden usar el mismo canal o el mismo widget?">
+    Sí, siempre que usen destinos o condiciones de etiqueta distintos.
+  </Accordion>
+  <Accordion title="¿Qué pasa si asigno un bot directamente a un contacto?">
+    Ese bot tiene prioridad sobre el enrutamiento normal por canal y etiquetas.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo guardar la configuración de un canal?">
+    Probablemente otro bot ya usa la misma combinación de canal, destino y etiquetas. Cambia algún ajuste para que la regla sea distinta.
+  </Accordion>
+  <Accordion title="¿Qué pasa si ningún bot coincide con las etiquetas del contacto?">
+    Ningún bot responde por esa regla. Revisa tus asignaciones generales y define qué bot o persona atiende a esos contactos.
+  </Accordion>
+  <Accordion title="Si desactivo un canal, ¿el bot deja de responder ahí?">
+    Deja de responder por enrutamiento de canal. Si el contacto tiene ese bot asignado directamente, la asignación directa puede seguir aplicando.
+  </Accordion>
+  <Accordion title="¿Cómo confirmo qué bot generó una respuesta?">
+    Abre la información de la respuesta de IA en la conversación y revisa el nombre del bot.
+  </Accordion>
+</AccordionGroup>

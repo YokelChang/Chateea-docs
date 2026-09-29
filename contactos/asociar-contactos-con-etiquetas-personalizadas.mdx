@@ -1,0 +1,158 @@
+---
+title: "Asociar contactos con etiquetas personalizadas"
+description: "Vincula contactos entre sí o con objetos personalizados usando etiquetas de relación, límites y flujos de trabajo."
+icon: "link"
+---
+
+Las **asociaciones** te permiten vincular un contacto con otros contactos o con otros registros del CRM y explicar esa relación con una etiqueta: cónyuge, colega, gerente y empleado, comprador y vendedor. También puedes conectar contactos con objetos personalizados como propiedades, vehículos, pólizas o proyectos. Así mantienes el contexto del negocio dentro del CRM y puedes usar esas relaciones en tus automatizaciones.
+
+## Tipos de etiquetas de asociación
+
+| Tipo | Cuándo usarlo | Ejemplo |
+| --- | --- | --- |
+| **Etiqueta única** | Ambos lados de la relación tienen el mismo nombre. | Colega ↔ Colega |
+| **Par de etiquetas** | Cada lado cumple un rol distinto. | Gerente ↔ Empleado, Padre ↔ Hijo, Comprador ↔ Vendedor |
+
+## Para qué te sirve
+
+- **Organizar relaciones.** Familias, equipos de una empresa, propietarios y sus inmuebles, todo conectado.
+- **Dar contexto.** Cualquiera del equipo ve de un vistazo cómo se relacionan dos registros.
+- **Conectar con objetos personalizados.** Vincula personas con las cosas que gestiona tu negocio.
+- **Automatizar.** Usa las etiquetas de asociación en flujos de trabajo que trabajan con contactos, empresas y objetos personalizados.
+- **Poner reglas.** Limita cuántos registros se pueden asociar con cada etiqueta.
+
+## Antes de empezar
+
+- Las definiciones de asociación se gestionan en **Configuración → Objetos**.
+- Las asociaciones entre contactos admiten etiquetas únicas y pares de etiquetas.
+- Los tipos de relación disponibles dependen de los objetos que conectes y de cómo configures las etiquetas.
+- Los límites se aplican por etiqueta.
+- Para usar asociaciones en flujos de trabajo, los registros y las asociaciones ya deben existir, salvo que la propia acción del flujo sea la que crea la asociación.
+
+## Dónde se ven las asociaciones
+
+- **En la ficha del contacto:** en el área **Asociaciones** u **Objetos relacionados** ves y gestionas los registros vinculados.
+- **En la configuración de objetos:** en **Configuración → Objetos** creas y gestionas las definiciones, las etiquetas y las reglas.
+
+## Crear una asociación
+
+Primero se crea la definición (qué se puede conectar, con qué etiquetas y con qué límites) y después se vinculan los registros.
+
+<Steps>
+<Step title="Abre la configuración de contactos">
+Ve a **Configuración → Objetos**, busca **Contactos**, ábrelo y entra en **Asociaciones**.
+</Step>
+<Step title="Crea la asociación">
+Haz clic en **Crear asociación**.
+</Step>
+<Step title="Elige el objeto asociado">
+Selecciona con qué tipo de registro quieres relacionar a los contactos: otro contacto, una empresa, una oportunidad o un objeto personalizado disponible.
+</Step>
+<Step title="Elige el tipo de etiqueta">
+**Etiqueta única** si ambos lados se llaman igual, o **Par de etiquetas** si cada lado tiene un rol distinto.
+</Step>
+<Step title="Configura la relación">
+En **Configurar relación**, elige el tipo de relación y sus límites. Con pares de etiquetas puedes usar uno a uno, uno a N, uno a muchos, N a muchos o muchos a muchos. Con etiqueta única entre contactos, las opciones son uno a uno, muchos a muchos y N a N configurable. Revisa la **Vista previa** para confirmar cuántos registros puede asociar cada lado.
+</Step>
+<Step title="Guarda">
+Revisa el objeto, las etiquetas, el tipo de relación y los límites, y haz clic en **Guardar**.
+</Step>
+</Steps>
+
+## Vincular registros a un contacto
+
+<Steps>
+<Step title="Abre el contacto">
+Ve a **Contactos** y abre la ficha.
+</Step>
+<Step title="Agrega la asociación">
+En el área **Asociaciones** u **Objetos relacionados**, haz clic en **Agregar** junto al tipo de objeto.
+</Step>
+<Step title="Elige el registro y la etiqueta">
+Busca y selecciona el registro relacionado, elige la etiqueta de asociación adecuada y confirma.
+</Step>
+</Steps>
+
+El registro vinculado aparece en la ficha del contacto. En los pares de etiquetas, la etiqueta complementaria se muestra automáticamente en el otro registro (si marcas a alguien como **Empleado** de un contacto, ese contacto aparece como su **Gerente**).
+
+## Gestionar asociaciones
+
+### Editar una definición
+
+Ve a **Configuración → Objetos**, abre el objeto, entra en **Asociaciones**, localiza la asociación, abre el menú de tres puntos, edita lo que necesites y guarda.
+
+### Quitar una asociación entre registros
+
+Abre la ficha del contacto u objeto, ve al área **Asociaciones** u **Objetos relacionados**, localiza el registro vinculado, elige la opción para quitar la asociación y confirma.
+
+<Note>
+Quitar una asociación solo elimina la relación. Ninguno de los dos registros se borra.
+</Note>
+
+## Configurar límites de asociación
+
+Los límites controlan cuántos registros se pueden vincular con una etiqueta concreta. Por ejemplo, que un contacto solo pueda tener un **Cónyuge**.
+
+<Steps>
+<Step title="Abre las asociaciones del objeto">
+Ve a **Configuración → Objetos**, abre **Contactos** o el objeto personalizado y entra en **Asociaciones**.
+</Step>
+<Step title="Crea o edita una asociación">
+Elige **Etiqueta única** o **Par de etiquetas**.
+</Step>
+<Step title="Define el tipo y los límites">
+En **Configurar relación**, elige el tipo de relación y los límites que quieras aplicar. Revisa la **Vista previa** y guarda.
+</Step>
+</Steps>
+
+Cuando se alcanza el límite, Chateea no permite asociar más registros con esa etiqueta y muestra un aviso.
+
+## Usar asociaciones en flujos de trabajo
+
+En **Automatización → Flujos de trabajo** tienes acciones que aprovechan las asociaciones:
+
+| Acción | Qué hace |
+| --- | --- |
+| **Agregar registros asociados a un flujo** | Inscribe en otro flujo a los registros vinculados al registro que disparó la automatización. Eliges el tipo de objeto, la etiqueta de asociación (si hace falta) y el flujo de destino. |
+| **Quitar registros asociados de un flujo** | Saca de otro flujo a los registros vinculados. Eliges el tipo de objeto, la etiqueta y el flujo. |
+| **Asociar registros** | Busca registros que cumplan tus filtros y crea la asociación automáticamente con una etiqueta existente. |
+
+<Info>
+La acción **Asociar registros** está en fase beta. Para usarla, actívala antes en **Configuración → Labs** con la opción **Asociar registros: acción de flujo de trabajo**.
+</Info>
+
+Por ejemplo, cuando un contacto con rol de **Comprador** firma un contrato, puedes inscribir automáticamente a su **Vendedor** asociado en un flujo de seguimiento.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué diferencia hay entre etiqueta única y par de etiquetas?">
+La etiqueta única usa el mismo nombre en ambos registros. El par de etiquetas asigna un rol distinto a cada lado, como Gerente y Empleado.
+</Accordion>
+<Accordion title="¿Puedo asociar contactos con objetos personalizados?">
+Sí. Puedes vincularlos con objetos como propiedades, vehículos, pólizas o proyectos que hayas configurado para tu negocio.
+</Accordion>
+<Accordion title="¿Puedo limitar cuántos registros se asocian?">
+Sí, con los límites de asociación, que se aplican por etiqueta.
+</Accordion>
+<Accordion title="¿Quitar una asociación borra el contacto?">
+No. Solo elimina la relación; los registros siguen en el CRM.
+</Accordion>
+<Accordion title="¿Dónde gestiono las etiquetas de asociación?">
+En **Configuración → Objetos**, abriendo el objeto y entrando en **Asociaciones**.
+</Accordion>
+<Accordion title="¿Se pueden crear asociaciones automáticamente?">
+Sí, con la acción de flujo **Asociar registros**, disponible en beta desde **Configuración → Labs**.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="La ficha del contacto" icon="address-card" href="/contactos/introduccion">
+Dónde ver las asociaciones de cada contacto.
+</Card>
+<Card title="Agregar contactos a un flujo en masa" icon="diagram-project" href="/contactos/agregar-contactos-a-flujo-en-masa">
+Inscribe grupos de contactos en una automatización.
+</Card>
+</CardGroup>

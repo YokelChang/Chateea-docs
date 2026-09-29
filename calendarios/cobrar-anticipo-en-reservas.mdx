@@ -1,0 +1,92 @@
+---
+title: "Cobrar un anticipo en las reservas"
+description: "Cobra un depósito fijo o en porcentaje al reservar y gestiona el saldo pendiente con facturas."
+icon: "credit-card"
+---
+
+El pago parcial te permite cobrar un anticipo (depósito) en el momento de la reserva y dejar el resto para después. El cliente ve el precio total del servicio, pero solo paga una parte para asegurar su lugar. Es una de las formas más eficaces de reducir las ausencias sin exigir el pago completo por adelantado.
+
+Puedes definir el anticipo como un **monto fijo** o como un **porcentaje** del total, y funciona en todos los tipos de calendario.
+
+## Requisitos
+
+- Una pasarela de pago conectada en **Pagos → Integraciones**. Para los pagos de calendario se admiten Stripe, NMI y Authorize.net.
+
+## Activar el pago parcial
+
+<Steps>
+  <Step title="Activa los pagos en el calendario">
+    En la configuración del calendario, abre **Formularios y pagos** y activa **Aceptar pagos**.
+  </Step>
+  <Step title="Indica el precio total">
+    Escribe el importe total del servicio o cita y elige la moneda.
+  </Step>
+  <Step title="Activa el pago parcial">
+    Marca la casilla **Aceptar pago parcial**.
+  </Step>
+  <Step title="Elige el tipo de anticipo">
+    Selecciona **Monto fijo** o **Porcentaje**. El porcentaje se calcula sobre el importe total.
+  </Step>
+  <Step title="Define el anticipo">
+    Escribe el monto o el porcentaje que se cobrará al reservar.
+  </Step>
+  <Step title="Agrega una descripción (opcional)">
+    Añade una descripción para dar contexto al cliente, por ejemplo "Anticipo no reembolsable para reservar tu sesión".
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para aplicar los cambios.
+  </Step>
+</Steps>
+
+## Qué se registra en Pagos
+
+Cuando alguien reserva con pago parcial, se crean dos registros:
+
+| Registro | Contenido |
+| --- | --- |
+| **Transacción** | El anticipo cobrado en el momento de la reserva. |
+| **Factura** | El saldo pendiente (total menos anticipo). Queda en estado **borrador**. |
+
+## Cobrar el saldo pendiente
+
+El saldo no se cobra automáticamente. Para cobrarlo:
+
+1. Ve a **Pagos → Facturas**.
+2. Busca la factura en borrador que se creó con la reserva.
+3. Revísala y envíala al cliente para que pague el resto.
+
+<Note>
+  El cliente no recibe ningún aviso automático sobre el saldo pendiente. Tu equipo puede consultar los importes pendientes en **Pagos → Facturas**.
+</Note>
+
+<Tip>
+  Deja claro en la descripción del calendario y en la confirmación cuánto se paga al reservar y cuándo se cobra el resto. Así evitas sorpresas y reclamaciones.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué tipos de calendario admiten pago parcial?">
+    Todos: de eventos, round robin, colectivos, de clases, de servicios y el menú de servicios.
+  </Accordion>
+  <Accordion title="¿Cómo gestiono los pagos pendientes?">
+    Desde **Pagos → Facturas**. Allí ves el importe pendiente de cada reserva y puedes enviar la factura al cliente.
+  </Accordion>
+  <Accordion title="¿El cliente recibe un aviso del saldo pendiente?">
+    No de forma automática. Tu equipo debe enviar la factura en borrador cuando corresponda.
+  </Accordion>
+  <Accordion title="¿Qué pasarelas de pago puedo usar?">
+    Stripe, NMI y Authorize.net.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conecta Stripe" icon="credit-card" href="/primeros-pasos/conecta-stripe">
+    Conecta tu pasarela para cobrar en tus calendarios.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/primeros-pasos/crea-y-envia-facturas">
+    Aprende a enviar facturas a tus clientes.
+  </Card>
+</CardGroup>

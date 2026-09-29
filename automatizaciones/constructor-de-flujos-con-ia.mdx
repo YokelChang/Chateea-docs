@@ -1,0 +1,219 @@
+---
+title: "Constructor de flujos con IA"
+description: "Describe lo que quieres automatizar y deja que la IA genere el flujo; luego ajústalo conversando o seleccionando pasos."
+icon: "wand-magic-sparkles"
+---
+
+El **constructor de flujos con IA** crea automatizaciones completas a partir de una descripción en lenguaje natural. En lugar de configurar a mano cada disparador y acción, le cuentas lo que quieres lograr, la IA genera el flujo y tú lo revisas y ajustas conversando con ella. Es la forma más rápida de pasar de una idea a un flujo listo para probar.
+
+## Qué te aporta
+
+- **Rapidez:** genera un flujo completo con una sola instrucción, normalmente en menos de 30 segundos.
+- **Sencillez:** usas lenguaje cotidiano, sin memorizar nombres de disparadores y acciones.
+- **Un buen punto de partida:** obtienes un borrador estructurado que puedes afinar.
+- **Flexibilidad:** editas con instrucciones escritas o seleccionando pasos en el lienzo.
+- **Reutilización:** tu equipo puede compartir instrucciones que funcionan bien.
+
+Mientras trabaja, el constructor te muestra en tiempo real el progreso paso a paso, recuerda el contexto de la sesión para ediciones de seguimiento (por ejemplo, "mejor que sean 48 horas") y conserva la conversación si cierras y vuelves a abrir el panel.
+
+## Dónde encontrarlo
+
+1. **Desde la lista de flujos:** en **Automatización → Flujos de trabajo**, haz clic en **Crear con IA**. Se abre una ventana para escribir tu instrucción.
+2. **Desde el constructor:** al crear un flujo desde cero (**Crear flujo de trabajo → Empezar desde cero**), verás un cuadro de instrucciones de IA en el lienzo. También puedes dictar la instrucción por voz.
+3. **Desde el asistente de IA:** dentro del constructor, pide al asistente de chat que construya el flujo.
+
+## Cómo crear tu primer flujo con IA
+
+<Steps>
+  <Step title="Escribe tu instrucción">
+    Redacta o dicta lo que necesitas, o elige una de las plantillas de instrucciones disponibles. Ejemplos:
+    - "Envía una serie de correos de bienvenida cuando alguien complete mi formulario de contacto."
+    - "Crea un flujo de cumpleaños que envíe un SMS de felicitación."
+    - "Avisa a mi equipo por Slack cuando se cree una oportunidad de alto valor."
+    - "Haz seguimiento a los asistentes del webinar 24 horas después del evento."
+  </Step>
+  <Step title="Genera el flujo">
+    Haz clic en **Crear flujo** o en **Enviar**, según el punto de entrada. Si tarda más de lo normal, simplifica la instrucción y vuelve a intentarlo.
+  </Step>
+  <Step title="Revisa el resultado">
+    Recibirás un resumen de lo que se creó. Si empezaste desde la lista de flujos, se abrirá el constructor; si lo hiciste dentro del constructor, el flujo aparece en el lienzo. Revisa la estructura, los disparadores y la configuración de cada acción.
+  </Step>
+  <Step title="Ajusta con IA">
+    Pide los cambios que necesites en el chat (ver más abajo).
+  </Step>
+  <Step title="Completa los pendientes y prueba">
+    Revisa la lista de pendientes posterior a la generación, prueba el flujo y publícalo.
+  </Step>
+</Steps>
+
+<Info>
+  Si el guardado automático está activado, los flujos generados con IA se guardan en cuanto se crean, y cada edición que hagas con IA se guarda en segundo plano.
+</Info>
+
+### Detalles que conviene incluir
+
+Cuanto más concreta sea la instrucción, mejor será el resultado. Puedes indicar:
+
+- El **nombre** del flujo.
+- Los **ajustes** del flujo que quieras aplicar.
+- Las **apps** que debe usar (por ejemplo, "crea una tarea en ClickUp").
+- Cómo usar datos de pasos anteriores (por ejemplo, "usa la respuesta de la IA en el cuerpo del correo").
+
+### Ajustes del flujo que la IA puede gestionar
+
+Puedes pedirle que revise, active, desactive o cambie:
+
+- Permitir reingreso.
+- Permitir múltiples oportunidades.
+- Detener al responder.
+- Zona horaria y ventana de horario.
+- Datos del remitente (nombre, correo y número de envío).
+- Marcar conversaciones como leídas.
+- El nombre del flujo.
+
+Ejemplo:
+
+```text
+Cambia el nombre a Seguimiento de citas v2, pon soporte@minegocio.com como correo del remitente, limita los mensajes de lunes a viernes de 9 a 18 h y confirma que el reingreso esté desactivado.
+```
+
+## Editar con IA
+
+Después de revisar el flujo, pide cambios en el chat. Indica siempre el alcance: si el cambio aplica a todos los pasos que coinciden, a un número concreto o a pasos específicos. La IA modifica solo ese alcance y deja el resto intacto.
+
+**Acciones:** agregar, eliminar (en uno o varios caminos), reemplazar, mover y modificar acciones; hacer que usen datos de pasos anteriores; y agregar acciones de apps integradas.
+
+**Disparadores:** agregar, eliminar, reemplazar y modificar disparadores.
+
+**Condiciones y esperas:** en las acciones **Si/No** puedes agregar, quitar o actualizar condiciones, cambiar operadores Y/O y agregar o eliminar ramas. En las **Esperas** puedes cambiar el tipo y sus atributos, ajustar la configuración de respuesta o ventana, y agregar o quitar ramas de tiempo límite.
+
+**Ediciones masivas:** con una sola instrucción puedes actualizar el texto de varios correos o SMS, cambiar etapas del pipeline en varias acciones o disparadores, o definir el nombre y correo del remitente en todos o algunos correos.
+
+Ejemplos de instrucciones:
+
+- "Agrega una espera de 3 días entre el correo de bienvenida y el de seguimiento."
+- "Reemplaza la acción de SMS por una notificación de Slack."
+- "Actualiza el texto del SMS solo en las dos primeras acciones."
+- "Cambia el disparador de formulario enviado a contacto creado."
+- "Agrega una condición para saber si el contacto ya compró."
+- "Quita la rama de tiempo límite de esta espera."
+
+Si pides eliminar pasos en varios caminos o una edición compleja de condiciones, la IA puede hacerte preguntas para confirmar qué quieres cambiar.
+
+### Deshacer y rehacer
+
+- **Ctrl+Z** (Windows) o **Cmd+Z** (Mac) deshace el último cambio hecho por la IA.
+- **Ctrl+Y** (Windows) o **Cmd+Y** (Mac) lo vuelve a aplicar.
+
+Las versiones anteriores quedan en el historial de la sesión actual, y puedes revisar las ediciones recientes en **Cambios recientes** del constructor.
+
+## Señalar y editar
+
+Cuando es más fácil señalar que describir, usa **Señalar y editar** (Point and Edit):
+
+<Steps>
+  <Step title="Activa la selección">
+    Haz clic en **Señalar y editar** en el chat de IA.
+  </Step>
+  <Step title="Selecciona los pasos">
+    Haz clic en una acción, en varias, o mantén **Shift** y arrastra para seleccionar un grupo. Los pasos elegidos se resaltan.
+  </Step>
+  <Step title="Describe el cambio">
+    Escribe lo que quieres hacer. La IA lo aplica solo a los pasos seleccionados.
+  </Step>
+</Steps>
+
+Por ejemplo: selecciona tres correos y escribe "conviértelos en SMS", o selecciona una tarea y escribe "haz el texto más urgente". Es especialmente útil en flujos con más de 10 acciones o con varias ramas, donde describir cada paso sería confuso.
+
+## Preguntas aclaratorias
+
+Si tu instrucción es demasiado general, el constructor te hará hasta **tres preguntas** antes de crear o editar el flujo. Aparecen, por ejemplo, cuando:
+
+- No indicaste el disparador ("Haz seguimiento al cliente").
+- No indicaste el canal ("Envía una secuencia de mensajes").
+- El momento no está claro ("Recuérdaselo más tarde").
+- Pediste un canal que no es compatible.
+
+Elige una de las opciones o escribe tu respuesta. Si prefieres, omite la pregunta y deja que la IA decida. Responder suele dar un mejor resultado al primer intento.
+
+## Modo chat
+
+El **Modo chat** sirve para planificar sin construir todavía:
+
+1. Activa **Modo chat** en el panel de IA.
+2. Conversa con la IA para definir disparadores, acciones, ramas y tiempos.
+3. Cuando el plan esté claro, desactiva el modo chat y pídele que construya el flujo.
+
+## Lista de pendientes antes de publicar
+
+Tras generar el flujo, revisa la lista **Completa estos pasos antes de ejecutar tu flujo**. Muestra lo que necesita tu intervención, por ejemplo:
+
+- Conectar credenciales de una integración.
+- Elegir la cuenta correcta.
+- Seleccionar un pipeline.
+- Completar campos obligatorios.
+- Definir ajustes cuando hay varias opciones posibles.
+
+Haz clic en cada pendiente para ir directo al paso y complétalo antes de publicar.
+
+## Buenas prácticas
+
+- **Sé específico:** "Cuando un contacto reserve una cita, espera 24 horas, envía un correo de confirmación y un SMS de recordatorio un día antes de la cita."
+- **Incluye los detalles clave:** tiempos, canales, condiciones y tipo de contenido.
+- **Usa verbos de acción:** envía, notifica, crea, actualiza, espera, comprueba si.
+- **Define el alcance de cada edición.**
+- **Empieza por flujos sencillos** y aumenta la complejidad cuando conozcas la herramienta.
+- **Valora el resultado** con el pulgar arriba o abajo y cuenta qué faltó; ayuda a mejorar las respuestas.
+
+## Limitaciones y solución de problemas
+
+- **Revisión manual obligatoria:** verifica disparadores, acciones y configuraciones antes de publicar. Algunas configuraciones complejas pueden requerir ajustes a mano.
+- **La IA no prueba el flujo:** haz siempre una prueba real con un contacto de prueba.
+
+| Problema | Qué hacer |
+| --- | --- |
+| El resultado no se parece a lo que querías | Añade detalle o divide el objetivo en partes más pequeñas. |
+| Disparador incorrecto | Indica el disparador exacto en la instrucción o pide que lo cambie. |
+| Faltan acciones | Enuméralas explícitamente o agrégalas con una edición. |
+| Tiempos incorrectos | Usa referencias precisas, como "después de 2 días". |
+
+## Desactivar el constructor con IA
+
+Ve a **Automatización → Configuración global de flujos de trabajo → IA de flujos de trabajo** y desactiva **Constructor con IA**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo editar el flujo generado con IA?">
+    Sí. Puedes agregar, eliminar, reemplazar, mover o modificar acciones y disparadores conversando con la IA, incluidas condiciones Si/No y esperas. También puedes editarlo manualmente como cualquier otro flujo.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar solo algunos pasos?">
+    Sí. Indica el alcance en tu instrucción (todos los pasos que coinciden, un número concreto o pasos específicos) o usa **Señalar y editar** para seleccionarlos en el lienzo.
+  </Accordion>
+  <Accordion title="¿Qué hago si el flujo no es lo que quería?">
+    Da más detalle en la instrucción o haz ediciones conversacionales. También puedes planificar primero en **Modo chat**.
+  </Accordion>
+  <Accordion title="¿Tengo que probar el flujo?">
+    Sí. Valida siempre disparadores, acciones, tiempos y resultados con una prueba real antes de activarlo.
+  </Accordion>
+  <Accordion title="¿Un flujo generado con IA está listo para publicar?">
+    No siempre. Revisa la lista de pendientes y completa los campos obligatorios antes de publicar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Asistente de IA de flujos" icon="robot" href="/ia/asistente-ia-de-flujos-de-trabajo">
+    Tu ayudante dentro del constructor.
+  </Card>
+  <Card title="Dictado por voz en flujos" icon="microphone" href="/ia/dictado-por-voz-en-flujos-de-trabajo">
+    Describe tu flujo hablando.
+  </Card>
+  <Card title="Botón Más información" icon="lightbulb" href="/automatizaciones/boton-mas-informacion-con-ia">
+    Ayuda contextual en cada paso.
+  </Card>
+  <Card title="Resolver errores antes de publicar" icon="triangle-exclamation" href="/automatizaciones/resolver-errores-antes-de-publicar">
+    Detecta y corrige fallos de configuración.
+  </Card>
+</CardGroup>

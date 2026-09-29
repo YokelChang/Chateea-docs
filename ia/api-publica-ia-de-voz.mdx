@@ -1,0 +1,90 @@
+---
+title: "API pública de la IA de voz"
+description: "Gestiona agentes, acciones y voces, y consulta los registros de llamadas de la IA de voz desde tus propios sistemas."
+icon: "code"
+---
+
+La API pública de la IA de voz te permite gestionar tus agentes desde tus propios sistemas: crear y actualizar agentes y acciones, consultar el catálogo de voces y obtener registros y transcripciones de llamadas. Es útil si tienes un equipo técnico o un desarrollador que quiere integrar la IA de voz con tus aplicaciones, informes o procesos internos.
+
+<Note>
+  Para obtener las credenciales de acceso, la URL base y la documentación técnica de la API de Chateea, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Para qué te sirve
+
+- **Acceso a los datos:** obtén resultados, transcripciones y métricas de llamadas para tus propios informes o análisis.
+- **Integración con tus procesos:** automatiza la configuración y adapta la IA de voz a tus aplicaciones.
+- **Configuración consistente:** crea y actualiza agentes con la misma configuración sin hacerlo a mano uno por uno.
+- **Webhooks en tiempo real:** recibe resultados, transcripciones y resúmenes de las llamadas en tus sistemas.
+
+## Qué puedes hacer con la API
+
+### Voces (catálogo)
+
+| Operación | Qué hace |
+| --- | --- |
+| **Listar voces** | Devuelve una lista paginada de voces. Puedes filtrar por idioma y enviar un `agentId` para ver solo las voces compatibles con ese agente. |
+| **Detalle de una voz** | Devuelve la información de una voz, incluida una URL de muestra para escucharla. |
+
+### Registros de llamadas
+
+| Operación | Qué hace |
+| --- | --- |
+| **Listar registros** | Devuelve los registros de llamadas de los agentes de tu cuenta. Permite filtrar por agente, contacto, tipo de llamada, tipo de acción y rango de fechas (interpretado en la zona horaria IANA que indiques). Admite ordenamiento y paginación que empieza en 1. |
+| **Obtener un registro** | Devuelve una llamada concreta a partir de su ID, con la transcripción cuando está disponible. |
+
+### Agentes
+
+| Operación | Qué hace |
+| --- | --- |
+| **Crear agente** | Crea un agente nuevo con su configuración. |
+| **Actualizar agente** | Modifica parcialmente un agente existente. |
+| **Listar agentes** | Devuelve la lista paginada de agentes de tu cuenta. |
+| **Obtener agente** | Devuelve la configuración completa de un agente. |
+| **Eliminar agente** | Elimina un agente y toda su configuración. |
+
+### Acciones
+
+Las acciones definen lo que puede hacer un agente durante una llamada, como llamar a un webhook, consultar datos o enviar resultados.
+
+| Operación | Qué hace |
+| --- | --- |
+| **Crear acción** | Agrega una acción nueva a un agente. |
+| **Actualizar acción** | Modifica el comportamiento y la configuración de una acción. |
+| **Obtener acción** | Devuelve la configuración de una acción, incluidos sus parámetros. |
+| **Eliminar acción** | Elimina una acción de forma permanente. |
+
+<Warning>
+  Eliminar un agente o una acción por API es permanente. Prueba tus integraciones primero con agentes de prueba.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo gestionar las voces por API?">
+    Sí. Puedes listar las voces disponibles y obtener su información, con la URL de muestra, para elegir la voz adecuada para cada agente.
+  </Accordion>
+  <Accordion title="¿Necesito permisos especiales?">
+    Sí. Necesitas acceso para gestionar la IA de voz y leer datos de llamadas en tu cuenta. Si no puedes acceder a algún recurso, habla con el administrador de tu cuenta.
+  </Accordion>
+  <Accordion title="¿Dónde consulto los endpoints y los formatos de solicitud y respuesta?">
+    Escribe a **help@chateea.com** y te enviaremos la documentación técnica actualizada de la API de Chateea. Los requisitos de acceso y autenticación pueden cambiar, así que usa siempre la versión más reciente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="API pública de Agent Studio" icon="code" href="/ia/api-publica-agent-studio">
+    Integra tus agentes de Agent Studio.
+  </Card>
+  <Card title="API de IA conversacional" icon="code" href="/ia/api-ia-conversacional">
+    Gestiona tus bots de chat por API.
+  </Card>
+  <Card title="Registros de llamadas" icon="list" href="/ia/registros-de-llamadas-ia-de-voz">
+    Los mismos datos, desde la interfaz de Chateea.
+  </Card>
+  <Card title="Acciones personalizadas" icon="bolt" href="/ia/acciones-personalizadas-ia-de-voz">
+    Conecta el agente con webhooks durante la llamada.
+  </Card>
+</CardGroup>

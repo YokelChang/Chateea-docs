@@ -1,0 +1,175 @@
+---
+title: "Creación y enriquecimiento automático de empresas"
+description: "Asocia contactos a su empresa por nombre o dominio de correo, crea empresas nuevas y completa su nombre y logo."
+icon: "wand-magic-sparkles"
+---
+
+Chateea puede asociar cada contacto a la empresa correcta sin que tengas que hacerlo a mano. Para encontrarla usa el nombre de la empresa del contacto, el dominio de su correo corporativo o ambos. Si no existe una empresa que coincida, puede crearla y completar su dominio, su nombre y su logo.
+
+Así tu CRM se mantiene ordenado: cada contacto nuevo queda vinculado a su empresa, se reutilizan los registros que ya tienes y se evitan duplicados.
+
+<Warning>
+Desactivar estas opciones detiene el procesamiento automático a partir de ese momento, pero no deshace nada: las empresas, asociaciones, dominios y logos que ya se crearon se mantienen. Si una asociación o una empresa quedó mal, corrígela manualmente.
+</Warning>
+
+## Qué puede hacer la automatización
+
+Según las opciones que actives, Chateea puede:
+
+- Asociar un contacto a una empresa que ya existe.
+- Agregar el dominio del correo del contacto a una empresa existente que todavía no tiene dominio.
+- Crear una empresa cuando no hay ninguna que coincida.
+- Completar el nombre y el logo de la empresa nueva.
+- Aplicar todo lo anterior a los contactos y empresas que ya tienes en tu cuenta.
+
+Un contacto que ya está asociado a una empresa **nunca** se mueve a otra de forma automática.
+
+## Antes de empezar
+
+- Si tu cuenta lo requiere, activa la función en **Configuración → Laboratorios** (Labs).
+- La automatización se configura en **Configuración → Objetos → Empresas**, sección **Automatizaciones**.
+- Para usar el dominio del correo, los contactos necesitan una dirección de correo corporativa.
+- Los dominios de correo gratuitos (Gmail, Yahoo, Outlook, iCloud y similares) siempre se excluyen.
+- La coincidencia por dominio es exacta: `acme.com` y `mail.acme.com` son dominios distintos.
+- Cada empresa puede tener un solo dominio.
+- La coincidencia por nombre ignora mayúsculas y minúsculas, pero sí cuentan la ortografía, los espacios, la puntuación y los sufijos legales (por ejemplo, "Acme" y "Acme S.A." son distintos).
+- El enriquecimiento de nombre y logo es "en la medida de lo posible": si no se encuentra información, la empresa se crea igual.
+
+## Configurar la creación automática de empresas
+
+<Steps>
+  <Step title="Activa la función si hace falta">
+    Ve a **Configuración → Laboratorios** y activa la creación y asociación automática de empresas, si aparece allí.
+  </Step>
+  <Step title="Abre la configuración de Empresas">
+    Ve a **Configuración → Objetos → Empresas**.
+  </Step>
+  <Step title="Elige las automatizaciones">
+    En **Automatizaciones**, marca las opciones que quieras usar:
+
+    - **Crear y asociar empresas automáticamente a partir del nombre de empresa del contacto**: usa el campo Nombre de la empresa del contacto.
+    - **Crear empresas a partir del dominio del correo del contacto**: usa el dominio que aparece después de la `@` en el correo.
+    - **Enriquecer empresas automáticamente**: intenta completar el nombre y el logo de la empresa.
+    - **Evitar empresas duplicadas automáticamente**: impide que dos empresas usen el mismo dominio.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar cambios**.
+  </Step>
+</Steps>
+
+<Tip>
+**Configuración recomendada:** activa **Crear empresas a partir del dominio del correo**, **Enriquecer empresas automáticamente** y **Evitar empresas duplicadas automáticamente**. Deja apagada la opción por nombre de empresa si quieres que el dominio sea el método principal: los dominios varían mucho menos que los nombres escritos a mano.
+</Tip>
+
+## Procesar los contactos y empresas que ya tienes
+
+Cuando activas la creación por dominio de correo, Chateea te ofrece dos opciones para tus datos existentes. Ambas vienen marcadas por defecto:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Completar dominios de empresas existentes** | Agrega un dominio a las empresas que todavía no lo tienen, cuando puede hacerlo con seguridad. |
+| **Aplicar a contactos existentes** | Asocia tus contactos actuales con sus empresas y crea la empresa si no existe. |
+
+Si marcas las dos, primero se completan los dominios y después se procesan los contactos. Así los contactos tienen más probabilidades de unirse a las empresas que ya tienen oportunidades, notas o historial, en lugar de crear registros nuevos.
+
+El completado de dominios **omite**:
+
+- Dominios que ingresaste manualmente (nunca se sobrescriben).
+- Dominios de correo gratuitos.
+- Direcciones de redes sociales o creadores de sitios, como Facebook, LinkedIn, Wix, Squarespace o Linktree.
+- Valores que no son un dominio válido.
+- Empresas que terminarían compartiendo el mismo dominio.
+
+El proceso corre en segundo plano y tarda según la cantidad de registros. Puedes seguir trabajando mientras tanto.
+
+## Cómo se busca la empresa de un contacto
+
+Chateea revisa los datos en este orden y se detiene en la primera coincidencia:
+
+1. **Asociación existente:** si el contacto ya tiene empresa, no cambia nada.
+2. **Nombre de la empresa:** si la automatización por nombre está activa, usa o crea la empresa con ese nombre.
+3. **Dominio existente:** si una empresa ya tiene el dominio del correo del contacto, lo asocia a ella.
+4. **Empresa existente sin dominio:** si el dominio corresponde al nombre de una empresa que ya existe, reutiliza esa empresa y le guarda el dominio.
+5. **Sin coincidencias:** crea una empresa nueva con ese dominio.
+
+<Note>
+Si la coincidencia por nombre resuelve primero la empresa, los pasos por dominio ya no se ejecutan. En ese caso el dominio no se agrega a la empresa y esta queda fuera de la prevención de duplicados por dominio.
+</Note>
+
+## Enriquecimiento: nombre y logo
+
+- Si el enriquecimiento funciona, la empresa nueva recibe su nombre y su logo a partir del dominio.
+- Si el dominio no se reconoce, la empresa se crea igual, con su dominio.
+- Si no hay un nombre enriquecido disponible, el nombre se toma del dominio.
+- La falta de logo no impide crear la empresa.
+- Para enriquecer una sola vez las empresas que ya tenías, desactiva **Enriquecer empresas automáticamente**, guarda, vuelve a activarla y guarda otra vez.
+
+## Excluir dominios
+
+Excluye tu propio dominio, los de tus socios, dominios de prueba o cualquier otro que no deba crear ni asociar empresas. Por ejemplo, si tu equipo se registra como contacto con el correo de tu negocio, no querrás que todos queden asociados a tu propia empresa.
+
+<Steps>
+  <Step title="Abre la configuración">
+    Ve a **Configuración → Objetos → Empresas**.
+  </Step>
+  <Step title="Abre la lista de exclusión">
+    Debajo de **Crear empresas a partir del dominio del correo**, selecciona **Excluir dominios de la asociación automática**.
+  </Step>
+  <Step title="Agrega el dominio">
+    Escribe solo el dominio, por ejemplo `acme.com`, y agrégalo a la lista.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar cambios**.
+  </Step>
+</Steps>
+
+<Note>
+Las exclusiones solo afectan a la coincidencia por dominio. Si también tienes activa la automatización por nombre de empresa, se puede crear una empresa a partir del nombre aunque el dominio esté excluido.
+</Note>
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| No se creó ninguna empresa | Que el contacto tenga un correo corporativo, que el dominio no esté excluido ni sea gratuito y que el contacto no tuviera ya una empresa. |
+| Se creó una empresa con un dominio excluido | Si la automatización por nombre está activa: la empresa pudo crearse a partir del nombre, no del dominio. |
+| Se creó una empresa duplicada | El dominio y el nombre de la empresa existente. Diferencias de espacios, puntuación, sufijos legales o dominio impiden la coincidencia. |
+| La empresa no tiene logo | Que el dominio se haya reconocido, que el enriquecimiento esté activo o si la empresa existía antes de activarlo. |
+| Una empresa sigue sin dominio después del completado | Si no tiene sitio web utilizable, usa un dominio gratuito, social o de creador de sitios, o si entraría en conflicto con otra empresa. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un flujo de trabajo para crear empresas desde el correo?">
+    No. Una vez activadas las automatizaciones de Empresas, la búsqueda y la creación funcionan solas.
+  </Accordion>
+  <Accordion title="¿Conviene usar el nombre de la empresa o el dominio del correo?">
+    El dominio del correo, porque varía mucho menos entre contactos y deja datos más limpios. La opción por nombre sigue disponible si la necesitas.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el contacto tiene nombre de empresa y correo corporativo?">
+    Si la automatización por nombre está activa y encuentra o crea la empresa, esa coincidencia tiene prioridad y la búsqueda por dominio no se ejecuta.
+  </Accordion>
+  <Accordion title="¿Funciona con correos de Gmail, Yahoo u otros personales?">
+    No. Los dominios de correo gratuitos están excluidos de forma permanente.
+  </Accordion>
+  <Accordion title="¿La prevención de duplicados fusiona las empresas que ya tengo?">
+    No. Solo evita nuevos dominios duplicados. Las empresas duplicadas que ya existen debes revisarlas y resolverlas tú.
+  </Accordion>
+  <Accordion title="¿El completado de dominios sobrescribe un dominio que ingresé a mano?">
+    No. Los dominios ingresados manualmente se conservan siempre.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Dominio de empresa y prevención de duplicados" icon="globe" href="/crm/dominio-de-empresa-y-prevencion-de-duplicados">
+    Cómo funciona el campo de dominio y cómo mantener una empresa por dominio.
+  </Card>
+  <Card title="Empresas" icon="building" href="/contactos/empresas">
+    Crea y gestiona los registros de empresa de tu CRM.
+  </Card>
+  <Card title="Campos de empresa en valores personalizados" icon="building" href="/crm/campos-de-empresa-en-valores-personalizados">
+    Personaliza mensajes y documentos con datos de la empresa.
+  </Card>
+</CardGroup>

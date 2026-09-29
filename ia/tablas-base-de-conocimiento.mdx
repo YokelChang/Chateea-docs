@@ -1,0 +1,103 @@
+---
+title: "Tablas en la base de conocimiento"
+description: "Sube archivos CSV para que tus agentes de IA respondan preguntas sobre tus datos en lenguaje natural."
+icon: "table"
+---
+
+Las **tablas** de la base de conocimiento permiten subir archivos CSV y que tus agentes de IA respondan preguntas sobre esos datos en lenguaje natural. Así, una lista de productos, un inventario, un catálogo de precios o un registro de clientes se convierte en información que tu IA puede usar en las conversaciones.
+
+## Cómo funciona
+
+Al subir un CSV, Chateea indexa cada fila por su significado (búsqueda semántica), no solo por palabras exactas. Por eso puedes preguntar cosas como "¿Qué productos tienen envío al día siguiente?" o "¿Qué clientes tienen facturas vencidas?" sin fórmulas ni filtros. El sistema compara la pregunta con las filas y devuelve las más relevantes.
+
+## Beneficios
+
+- **Preguntas en lenguaje natural** sobre tus datos.
+- **Respuestas con contexto:** encuentra las filas y columnas relevantes.
+- **Archivos grandes:** hasta 50.000 filas y 500 columnas.
+- **Datos que la web no capta bien:** catálogos, inventarios, indicadores y listados.
+- **Para todos tus agentes:** IA conversacional, IA de voz y flujos de trabajo con IA.
+
+## Requisitos del archivo
+
+| Requisito | Detalle |
+| --- | --- |
+| Formato | Solo `.csv` (se recomienda UTF-8). Si tienes un Excel, guárdalo como CSV. |
+| Tamaño del archivo | Hasta 50 MB. |
+| Filas y columnas | Hasta 50.000 filas y 500 columnas. Eliges las 20 columnas más relevantes para indexar. |
+| Encabezados | La primera fila debe tener los nombres de las columnas. |
+| Tipos de datos | Se detectan automáticamente (texto, número, fecha, etc.) y puedes ajustarlos. |
+| Datos limpios | Sin celdas combinadas, fórmulas ocultas ni valores vacíos innecesarios. |
+
+<Tip>
+Si el archivo se rechaza, ábrelo en una hoja de cálculo o en un editor de texto y revisa encabezados, separadores y celdas con formatos raros. Un CSV con formato válido puede tener igualmente datos con errores.
+</Tip>
+
+## Cómo agregar una tabla
+
+<Steps>
+<Step title="Abre la base de conocimiento">
+Ve a **IA → Base de conocimiento**. Edita una base existente o haz clic en **Crear base de conocimiento** y ponle nombre y descripción.
+</Step>
+<Step title="Agrega la fuente">
+Haz clic en **Agregar fuente** y elige **Tablas**.
+</Step>
+<Step title="Sube el CSV">
+Arrastra el archivo o selecciónalo desde tu equipo (máximo 50 MB).
+</Step>
+<Step title="Revisa las columnas">
+Revisa las columnas detectadas y ajusta los tipos de datos si hace falta. Elige las columnas más relevantes.
+</Step>
+<Step title="Indexa">
+Haz clic en **Listo**. Verás el progreso de procesamiento; normalmente tarda unos minutos.
+</Step>
+<Step title="Conecta y prueba">
+Conecta la base de conocimiento a tu agente de IA (chat, voz o flujo de trabajo) y haz una pregunta de prueba para confirmar los resultados.
+</Step>
+</Steps>
+
+## Cómo se procesa la tabla
+
+- Se detecta el tipo de cada columna.
+- Las filas se agrupan en bloques de cinco (máximo 2.000 caracteres) para indexarlas de forma eficiente.
+- Se guardan datos de referencia para que cada respuesta pueda citar las filas correctas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo subir archivos de Excel (.xlsx)?">
+No. Guarda la hoja como CSV antes de subirla.
+</Accordion>
+<Accordion title="¿Cuánto tarda en estar disponible?">
+Normalmente unos minutos. La barra de progreso indica cuándo terminó.
+</Accordion>
+<Accordion title="¿Puedo filtrar u ordenar en la pregunta?">
+Por ahora conviene hacer preguntas descriptivas y afinar con preguntas de seguimiento, en lugar de pedir filtros, comparaciones u ordenamientos exactos.
+</Accordion>
+<Accordion title="¿Puedo ver qué filas usó la IA para responder?">
+Sí. En la información de la respuesta dentro de la conversación se citan las filas usadas, para que las verifiques.
+</Accordion>
+<Accordion title="¿Puedo limitar qué agentes usan la tabla?">
+Sí. Solo los agentes conectados a la base de conocimiento que contiene la tabla pueden consultarla.
+</Accordion>
+<Accordion title="¿Cómo se protegen los datos sensibles?">
+Las tablas heredan la seguridad de la base de conocimiento: solo los usuarios con acceso a ella pueden verlas o consultarlas.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Descargar tablas en CSV" icon="download" href="/ia/descargar-tablas-base-conocimiento-csv">
+Exporta las tablas de tu base de conocimiento.
+</Card>
+<Card title="Tablas desde Google Sheets" icon="table" href="/ia/google-sheets-base-de-conocimiento">
+Conecta una hoja de cálculo como fuente.
+</Card>
+<Card title="Introducción a la base de conocimiento" icon="book-open" href="/ia/introduccion-base-de-conocimiento">
+Qué es y qué fuentes admite.
+</Card>
+<Card title="Base de conocimiento en IA de voz" icon="phone" href="/ia/base-de-conocimiento-ia-de-voz">
+Conecta la base de conocimiento a tu agente de voz.
+</Card>
+</CardGroup>

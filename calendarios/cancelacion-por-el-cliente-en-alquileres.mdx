@@ -1,0 +1,130 @@
+---
+title: "Cancelación por el cliente en alquileres"
+description: "Permite que tus clientes cancelen sus reservas de alquiler con un enlace y controla hasta cuándo pueden hacerlo."
+icon: "calendar-xmark"
+---
+
+Con la cancelación por el cliente, quien reservó un alquiler puede cancelar su reserva desde un enlace, sin llamarte ni escribirte. Tu equipo se ahorra las solicitudes de rutina y tú sigues decidiendo sobre reembolsos, pagos y depósitos de garantía.
+
+## Cómo funciona
+
+Cada reserva próxima de Alquileres tiene un enlace de cancelación propio. El cliente abre el enlace, revisa su reserva y la cancela directamente. No hay un paso de aprobación: al cancelar, la reserva queda cancelada y la disponibilidad se libera para otros clientes.
+
+<Note>
+El flujo básico de cancelación no requiere configuración. Solo necesitas configurar algo si quieres limitar hasta cuándo se puede usar el enlace o si quieres incluirlo en tus propios mensajes.
+</Note>
+
+<Warning>
+Cancelar no genera un reembolso automático. La cancelación cambia la reserva, pero los reembolsos, los ajustes de pago y el destino del depósito de garantía siguen en tus manos.
+</Warning>
+
+## Limitar hasta cuándo se puede cancelar
+
+Por defecto, el cliente puede usar el enlace en cualquier momento antes de que empiece la reserva. Si quieres evitar cancelaciones de último minuto, activa un límite de tiempo.
+
+<Steps>
+  <Step title="Abre la configuración global de Alquileres">
+    Ve a **Calendarios → Alquileres → Configuración global** y abre **Configuración de reservas**.
+  </Step>
+  <Step title="Activa el vencimiento del enlace">
+    Enciende **Definir vencimiento del enlace de cancelación** (Set cancellation link expiry).
+  </Step>
+  <Step title="Elige el plazo">
+    Indica cuánto tiempo antes del inicio de la reserva vence el enlace, en **minutos, horas o días**. Por ejemplo, con 3 horas, el cliente puede cancelar hasta 3 horas antes de que empiece la reserva.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar cambios**.
+  </Step>
+</Steps>
+
+Si dejas esta opción apagada, el cliente puede cancelar hasta que empiece la reserva. Una vez iniciada, el enlace ya no sirve para cancelar.
+
+## Incluir el enlace en tus mensajes
+
+Para que el cliente tenga el enlace a mano, inserta este valor personalizado en tus mensajes de confirmación o recordatorio:
+
+```text
+{{rentalBooking.cancellation_link}}
+```
+
+Al enviar el mensaje, Chateea lo reemplaza por el enlace de cancelación de esa reserva.
+
+<Tip>
+Acompaña el enlace con un texto claro, como "Cancelar tu reserva", para que el cliente sepa que ese enlace cancela la reserva y no abre una página general de gestión.
+</Tip>
+
+## Lo que ve el cliente al cancelar
+
+Al abrir un enlace válido, el cliente llega a una página de cancelación con los datos de su reserva.
+
+1. **Revisa la reserva**: ve el anuncio, las fechas y los demás detalles para confirmar que es la reserva correcta.
+2. **Escribe un motivo, si quiere**: el campo **Motivo de la cancelación** es opcional. Aun así, le da a tu equipo contexto útil sin necesidad de preguntarle después.
+3. **Confirma**: hace clic en **Cancelar reserva**.
+
+Al terminar, el cliente ve una página de confirmación, así no queda con la duda de si su reserva sigue activa.
+
+## Reservas con varios anuncios
+
+Una reserva puede incluir más de un anuncio. En ese caso, la sección **Detalles de la reserva** muestra todos los anuncios con sus fechas.
+
+La cancelación aplica a la reserva completa: el cliente no puede quitar un solo anuncio y mantener los demás. Al hacer clic en **Cancelar reserva**, se cancela todo junto.
+
+## Qué pasa después de la cancelación
+
+- La reserva queda cancelada y deja de ocupar disponibilidad.
+- Tu equipo revisa la reserva y aplica las acciones financieras que correspondan según tu política.
+
+Por ejemplo, puedes tener reglas distintas según la anticipación con la que se canceló. El cliente libera la reserva por su cuenta y tú decides si hay reembolso, de cuánto, y qué pasa con el depósito.
+
+## Enlaces vencidos o ya usados
+
+El enlace deja de servir para cancelar cuando:
+
+- La reserva ya fue cancelada.
+- Pasó el plazo de cancelación que configuraste.
+- La reserva ya empezó o terminó.
+
+En esos casos, el cliente ve un mensaje claro que le explica que no puede cancelar desde ese enlace, en lugar de un error técnico. Si necesita ayuda, tendrá que contactar a tu negocio.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que activar el vencimiento del enlace para que los clientes cancelen?">
+    No. Es opcional. Si lo dejas apagado, el cliente puede cancelar hasta que empiece la reserva.
+  </Accordion>
+  <Accordion title="¿Puedo impedir cancelaciones poco antes de la reserva?">
+    Sí. Activa **Definir vencimiento del enlace de cancelación** en la configuración global de Alquileres y elige un plazo en minutos, horas o días.
+  </Accordion>
+  <Accordion title="¿El motivo de cancelación es obligatorio?">
+    No. El cliente puede escribirlo si quiere, pero puede cancelar sin él.
+  </Accordion>
+  <Accordion title="¿Cancelar reembolsa automáticamente al cliente?">
+    No. La cancelación solo afecta a la reserva. Los reembolsos se gestionan aparte, según tu proceso.
+  </Accordion>
+  <Accordion title="¿Qué pasa con el depósito de garantía?">
+    La cancelación no decide nada sobre el depósito. Tú eliges la acción que corresponda.
+  </Accordion>
+  <Accordion title="¿El cliente puede cancelar solo un anuncio de una reserva con varios?">
+    No. La cancelación aplica a la reserva completa y a todos sus anuncios.
+  </Accordion>
+  <Accordion title="¿Se puede cancelar después de que empezó la reserva?">
+    No. La cancelación por el cliente solo está disponible antes del inicio.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Notificaciones de WhatsApp en alquileres" icon="whatsapp" href="/calendarios/notificaciones-de-whatsapp-en-alquileres">
+    Envía confirmaciones y recordatorios por WhatsApp.
+  </Card>
+  <Card title="Bloquear horarios en alquileres" icon="ban" href="/calendarios/bloquear-horarios-en-alquileres">
+    Aparta inventario sin crear una reserva.
+  </Card>
+  <Card title="Configuración global de alquileres" icon="gear" href="/calendarios/configuracion-global-de-alquileres">
+    Ajustes que aplican a todos tus anuncios.
+  </Card>
+  <Card title="Editar una reserva de alquiler" icon="pen-to-square" href="/calendarios/editar-una-reserva-de-alquiler">
+    Cambia fechas, anuncios o pagos de una reserva.
+  </Card>
+</CardGroup>

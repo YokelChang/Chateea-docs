@@ -1,0 +1,90 @@
+---
+title: "Respaldo por SMS en envíos masivos de WhatsApp"
+description: "Envía un SMS automático a los contactos cuyo WhatsApp masivo falló para que tu campaña siga llegando."
+icon: "comment-sms"
+---
+
+Cuando envías un mensaje masivo por WhatsApp, algunos destinatarios pueden no recibirlo por restricciones de Meta, como la pausa de mensajes de marketing a números de Estados Unidos. El **respaldo por SMS** (Fallback to SMS) envía automáticamente un SMS a los contactos cuyo WhatsApp falló, para que tu campaña siga llegando sin tener que reenviarla a mano.
+
+## Qué ganas con el respaldo por SMS
+
+- **No pierdes alcance** cuando Meta bloquea mensajes por políticas.
+- **Envío automático:** el SMS sale solo para los destinatarios que fallaron, sin reconfigurar nada.
+- **Campañas más fiables**, sobre todo si tienes contactos en países con restricciones de marketing en WhatsApp.
+- **Un solo envío:** configuras WhatsApp y el respaldo en el mismo proceso.
+
+## Antes de empezar
+
+- Necesitas un número de teléfono con SMS activo en tu cuenta de Chateea. Si envías a Estados Unidos, ese número debe tener su registro A2P aprobado.
+- Tus contactos deben haber dado su consentimiento para recibir SMS.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Inicia un envío masivo de WhatsApp">
+    Abre la opción de envío masivo y selecciona **WhatsApp** como canal principal.
+  </Step>
+  <Step title="Elige a los destinatarios">
+    Crea o importa tu lista de destinatarios, por ejemplo desde una lista inteligente.
+  </Step>
+  <Step title="Activa el respaldo">
+    En la sección **Configuración de respaldo** (Fallback Settings), activa **Respaldo a SMS**.
+  </Step>
+  <Step title="Escribe el SMS de respaldo">
+    Redacta el mensaje que se enviará si WhatsApp falla. Respeta el límite de caracteres del SMS e incluye una forma de darse de baja.
+  </Step>
+  <Step title="Revisa y envía">
+    Comprueba que el mensaje de respaldo tenga sentido para tu objetivo y haz clic en **Enviar**.
+  </Step>
+</Steps>
+
+## Cuándo se activa el respaldo
+
+El SMS solo se envía cuando Meta devuelve un motivo de fallo concreto.
+
+| Se envía SMS cuando | No se envía SMS cuando |
+| --- | --- |
+| Meta rechaza la entrega explícitamente (por ejemplo, por políticas de marketing). | Hay fallos temporales de red o reintentos en curso. |
+| La cuenta de WhatsApp del destinatario está inactiva o no es alcanzable. | Cancelas el envío manualmente. |
+| La plantilla es rechazada tras el envío por infringir las reglas de marketing. | El destino no admite SMS. |
+
+<Tip>
+Si envías mucho contenido informativo con plantillas de marketing, prueba el reescritor de plantillas para convertirlas a utilidad. Así aumentas la entrega por WhatsApp y dependes menos del respaldo.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El respaldo funciona con mensajes individuales?">
+    No. Por ahora solo aplica a envíos masivos (campañas y acciones masivas).
+  </Accordion>
+  <Accordion title="¿Me cobran WhatsApp y SMS a la vez?">
+    Solo se cobra el canal que entregó el mensaje. Si WhatsApp falla y sale el SMS, se descuenta el SMS de tu billetera. Consulta las tarifas en **Configuración → Facturación**.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar el SMS de respaldo?">
+    Sí. Durante la configuración escribes un mensaje específico para el respaldo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si fallan WhatsApp y SMS?">
+    Ambos fallos quedan registrados en el historial de entrega y no se hacen más reintentos.
+  </Accordion>
+  <Accordion title="¿Funciona fuera de Estados Unidos?">
+    Está pensado principalmente para los fallos en Estados Unidos, pero también se activa en otros países cuando Meta informa un fallo de entrega que cumple las condiciones.
+  </Accordion>
+  <Accordion title="¿Afecta a mis flujos de trabajo?">
+    No. Solo cambia la entrega de ese envío masivo. Tus automatizaciones y seguimientos no se modifican.
+  </Accordion>
+  <Accordion title="¿Cómo mido cuántos SMS de respaldo se enviaron?">
+    Revisa los informes de entrega de mensajes en Conversaciones o en Informes para ver cuántas veces se activó el respaldo y cuántos SMS se entregaron.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Convertir una plantilla de marketing a utilidad" icon="arrows-rotate" href="/whatsapp/convertir-plantilla-de-marketing-a-utilidad">
+    Mejora la entrega de tus plantillas informativas.
+  </Card>
+  <Card title="Campañas de correo, SMS y WhatsApp" icon="bullhorn" href="/campanas/introduccion">
+    Planifica tus envíos por varios canales.
+  </Card>
+</CardGroup>

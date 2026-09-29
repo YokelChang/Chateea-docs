@@ -1,0 +1,222 @@
+---
+title: "Filtros avanzados en listas inteligentes"
+description: "Segmenta contactos con filtros de fecha, texto, número y No molestar, y combínalos con lógica Y u O."
+icon: "filter"
+---
+
+Los **filtros avanzados** te permiten segmentar tus contactos con precisión: clientes sin cita en los últimos 90 días, prospectos de cierta ciudad, contactos con puntuación de interacción alta o personas que no aceptan SMS. Aquí aprendes cómo se arma un filtro y qué hace cada operador según el tipo de campo.
+
+## Cómo funciona un filtro
+
+Cada filtro tiene tres partes:
+
+1. **Campo:** el dato que quieres evaluar (por ejemplo, Ciudad o Fecha de creación).
+2. **Operador:** cómo lo comparas (es, contiene, entre, en los últimos...).
+3. **Valor:** lo que buscas (por ejemplo, "Monterrey" o "30 días").
+
+Los operadores disponibles dependen del tipo de campo: un campo de fecha ofrece operadores de fechas y un campo numérico, operadores de comparación. Si un operador no aparece, es que no aplica a ese campo.
+
+## Ventajas
+
+- **Segmentación precisa** con campos, operadores y condiciones combinadas.
+- **Listas más confiables** porque cada operador se adapta al tipo de dato.
+- **Búsqueda de campos** para encontrar rápido el que necesitas.
+- **Limpieza de datos:** encuentras contactos con campos vacíos o estados inválidos.
+- **Envíos más seguros:** excluyes a quien tiene activado No molestar (DND).
+
+## Aplicar filtros avanzados
+
+<Steps>
+<Step title="Abre una lista inteligente">
+Ve a **Contactos** y haz clic en **+ Agregar lista inteligente**, o abre una que ya tengas.
+</Step>
+<Step title="Abre los filtros avanzados">
+Haz clic en **Filtros avanzados** y busca el campo que quieres usar.
+</Step>
+<Step title="Elige operador y valor">
+Selecciona el operador que corresponde a lo que buscas y escribe o elige el valor.
+</Step>
+<Step title="Combina condiciones">
+- **+ Agregar filtro anidado:** agrega una condición que **también** debe cumplirse (lógica **Y**).
+- **+ Agregar filtro:** agrega una condición alternativa; basta con cumplir una (lógica **O**).
+</Step>
+<Step title="Aplica">
+Haz clic en **Aplicar** y, si vas a reutilizar el segmento, guárdalo como lista inteligente.
+</Step>
+</Steps>
+
+<Tip>
+Ejemplo de Y: Ciudad **es** Bogotá **y** Tipo **es** Cliente. Ejemplo de O: Etiqueta **es** "webinar-marzo" **o** Etiqueta **es** "webinar-abril".
+</Tip>
+
+## Filtros de fecha
+
+Sirven para campos que guardan una fecha o una fecha y hora, como **Última cita**, **Fecha de nacimiento**, **Creado el**, **Última actividad**, **Última actualización**, **Último clic en correo** o **Última apertura de correo**.
+
+En los ejemplos de abajo, supón que hoy es miércoles 11 de marzo y que filtras por **Última cita**.
+
+### Fechas relativas a hoy
+
+| Operador | Qué incluye | Coincide con |
+| --- | --- | --- |
+| Es → Hoy | El día de hoy | Cita el 11 de marzo |
+| Es → Mañana | El día siguiente | Cita el 12 de marzo |
+| Es → Ayer | El día anterior | Cita el 10 de marzo |
+| Es → Esta semana | La semana calendario actual | Cita entre el 9 y el 15 de marzo |
+| Es → Este mes | El mes actual | Cita entre el 1 y el 31 de marzo |
+| Es → Este trimestre | El trimestre actual | Cita entre el 1 de enero y el 31 de marzo |
+| Es → Este año | El año actual | Cita entre el 1 de enero y el 31 de diciembre |
+
+### Fecha exacta o rango
+
+| Operador | Qué incluye | Ejemplo |
+| --- | --- | --- |
+| Es → El | Un día concreto | El 5 de marzo |
+| Es → Entre | Un rango de fechas | Entre el 1 y el 7 de marzo |
+
+### Tiempo transcurrido
+
+| Operador | Qué incluye | Ejemplo | Coincide con |
+| --- | --- | --- | --- |
+| Es → Hace más de | Fechas anteriores al periodo indicado | Hace más de 7 días | Citas antes del 4 de marzo |
+| Es → Hace menos de | Fechas dentro del periodo indicado | Hace menos de 7 días | Citas entre el 4 y el 11 de marzo |
+| Es → En los próximos | Fechas futuras dentro del periodo | Próximos 3 días | Citas entre el 11 y el 14 de marzo |
+| Es → En los últimos | Fechas pasadas dentro del periodo | Últimos 3 días | Citas entre el 8 y el 11 de marzo |
+
+### Comparación con una fecha
+
+| Operador | Qué incluye | Ejemplo |
+| --- | --- | --- |
+| Es → Después de | Fechas posteriores a la elegida | Después del 5 de marzo: desde el 6 en adelante |
+| Es → Antes de | Fechas anteriores a la elegida | Antes del 5 de marzo: el 4 o antes |
+
+### Filtros negativos (No es)
+
+Cada operador tiene su versión **No es**, que excluye lo que el positivo incluiría. Algunos ejemplos:
+
+| Operador | Qué devuelve |
+| --- | --- |
+| No es → Hoy | Todos los contactos cuya última cita no fue hoy |
+| No es → Esta semana | Contactos con la última cita fuera de la semana actual |
+| No es → Entre (1 al 7 de marzo) | Citas antes del 1 o después del 7 de marzo |
+| No es → Hace más de 30 días | Contactos con cita en los últimos 30 días |
+| No es → Hace menos de 7 días | Contactos cuya última cita fue hace 7 días o más |
+| No es → En los próximos 7 días | Citas pasadas y citas futuras más allá de 7 días |
+| No es → En los últimos 14 días | Contactos sin citas recientes |
+| No es → Después de (1 de marzo) | Citas el 1 de marzo o antes |
+| No es → Antes de (1 de enero) | Citas el 1 de enero o después |
+
+### Vacío o no vacío
+
+| Operador | Qué devuelve |
+| --- | --- |
+| Está vacío | Contactos que nunca han tenido una cita registrada |
+| No está vacío | Contactos con al menos una cita registrada |
+
+### Consejos para filtros de fecha
+
+- **En los últimos** es ideal para encontrar contactos con actividad reciente.
+- **Hace más de** te ayuda a detectar contactos inactivos para campañas de reactivación.
+- **Entre** sirve para informes históricos.
+- **Está vacío** encuentra prospectos que todavía no han agendado.
+
+## Filtros de No molestar (DND)
+
+Te dicen si un contacto tiene bloqueada la comunicación por algún canal. Son clave para armar listas de envío que respeten las preferencias de tus clientes. Puedes filtrar por:
+
+- DND en todos los canales
+- DND de SMS
+- DND de correo
+- DND de llamadas y buzón de voz
+- DND de WhatsApp
+- DND de mensajes entrantes
+- DND de Facebook Messenger
+- DND de mensajes de Google Business Profile
+
+| Operador | Qué devuelve |
+| --- | --- |
+| Activado | Contactos que se dieron de baja del canal elegido |
+| Desactivado | Contactos que no se dieron de baja del canal elegido |
+
+## Filtros de texto
+
+Sirven para nombres, etiquetas, identificadores, datos de origen y otros campos de texto, como **Nombre**, **Apellido**, **Correo**, **Dirección**, **Zona horaria**, **Última actualización por**, **Pipeline de la oportunidad**, **Estado del correo** o **Etiquetas**.
+
+Algunos campos se filtran escribiendo el valor; otros, eligiéndolo de una lista. Algunos aceptan varios valores separados por comas y otros solo uno.
+
+| Operador | Qué hace | Ejemplo | Coincide con |
+| --- | --- | --- | --- |
+| Es | Coincide con un valor | Lima | Contactos en Lima |
+| No es | Excluye un valor | Lima | Contactos fuera de Lima |
+| Contiene | El texto aparece en cualquier parte del campo | San | San José, San Salvador, Santiago |
+| No contiene | Excluye campos que incluyen el texto | San | Todas las ciudades que no incluyen "San" |
+| Es cualquiera de | Coincide con alguno de varios valores separados por comas | Lima, Quito, Bogotá | Contactos en cualquiera de esas ciudades |
+| No es ninguno de | Excluye todos los valores de la lista | Lima, Quito, Bogotá | Contactos fuera de esas ciudades |
+| Está vacío | El campo no tiene valor | | Contactos sin ciudad registrada |
+| No está vacío | El campo tiene algún valor | | Contactos con ciudad registrada |
+
+### Cómo se filtran tus campos personalizados de texto
+
+| Tipo de campo personalizado | Se comporta como |
+| --- | --- |
+| Texto de una línea o de varias líneas | Campos de texto libre |
+| Lista de cuadros de texto | El campo Zona horaria |
+| Desplegable simple, desplegable múltiple, botones de opción y casillas | El campo Etiquetas |
+
+## Filtros numéricos
+
+Sirven para valores medibles, como la **puntuación de interacción** o la calificación de un cuestionario guardada en un campo personalizado.
+
+| Operador | Qué hace | Ejemplo | Coincide con |
+| --- | --- | --- | --- |
+| Igual a | Un número exacto | 100 | Contactos con 100 puntos |
+| Diferente de | Excluye un número | 100 | Contactos con cualquier puntuación menos 100 |
+| Entre | Un rango | 90 a 100 | Contactos entre 90 y 100 |
+| Mayor que | Por encima de un umbral | 90 | Más de 90 |
+| Mayor o igual que | En o por encima de un umbral | 90 | 90 o más |
+| Menor que | Por debajo de un umbral | 90 | Menos de 90 |
+| Menor o igual que | En o por debajo de un umbral | 90 | 90 o menos |
+| Está vacío | El campo no tiene valor | | Contactos que no hicieron el cuestionario |
+| No está vacío | El campo tiene valor | | Contactos que sí lo hicieron |
+
+### Cómo se filtran tus campos personalizados numéricos
+
+| Tipo de campo personalizado | Se comporta como |
+| --- | --- |
+| Número | La puntuación de interacción |
+| Moneda | La puntuación de interacción |
+| Teléfono | El campo Teléfono |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Todos los campos tienen los mismos operadores?">
+No. Los operadores dependen del tipo de campo que eliges.
+</Accordion>
+<Accordion title="¿Puedo usar varios filtros a la vez?">
+Sí. Combínalos con filtros anidados (Y) o con filtros adicionales (O) para afinar el resultado.
+</Accordion>
+<Accordion title="¿Puedo filtrar contactos por datos de sus oportunidades?">
+Sí. Hay filtros de oportunidades para segmentar por pipeline, etapa y estado.
+</Accordion>
+<Accordion title="¿La lista se actualiza sola?">
+Sí. Las listas inteligentes se recalculan con los datos actuales, así que los contactos entran y salen según cumplan los filtros.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Listas inteligentes" icon="list-check" href="/contactos/listas-inteligentes">
+Crea, guarda y comparte tus listas.
+</Card>
+<Card title="Tipos de contacto" icon="tags" href="/contactos/tipos-de-contacto">
+Segmenta por la relación con tu negocio.
+</Card>
+<Card title="Categorías y colores de etiquetas" icon="palette" href="/contactos/categorias-y-colores-de-etiquetas">
+Ordena las etiquetas que usas en tus filtros.
+</Card>
+<Card title="Puntuación de interacción" icon="chart-line" href="/conversaciones/puntuacion-de-interaccion">
+Filtra por el nivel de interés de tus contactos.
+</Card>
+</CardGroup>

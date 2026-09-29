@@ -1,0 +1,111 @@
+---
+title: "Brechas de conocimiento en IA de voz"
+description: "Detecta las preguntas que tu agente de voz no supo responder y complétalas en tu base de conocimiento."
+icon: "lightbulb"
+---
+
+Las **brechas de conocimiento** (Knowledge Gaps) convierten las preguntas que tu agente de IA de voz no supo responder en una lista de mejoras para tu base de conocimiento. Chateea captura esas preguntas, agrupa las que son parecidas y las ordena por tema y subtema. Cuando completas la información que falta, el agente puede usarla en las próximas llamadas.
+
+## Beneficios
+
+- **Ves qué preguntan de verdad tus clientes** y el agente no pudo contestar.
+- **Organización automática** por tema y subtema.
+- **Menos duplicados:** las preguntas similares se unen en una sola brecha, así la lista funciona como una lista de tareas.
+- **Prioridades claras:** las brechas que más se repiten son las que más impacto tienen.
+- **Mejores respuestas futuras:** agregas la información una vez y el agente la usa en adelante.
+- **Mejora continua:** cada llamada real alimenta tu base de conocimiento.
+
+## Cómo se crean las brechas
+
+Cuando alguien hace una pregunta que el agente no puede responder con la información disponible:
+
+1. Chateea registra la pregunta como posible brecha.
+2. La analiza y la clasifica por tema y subtema.
+3. La une con preguntas similares, si las hay.
+4. La muestra en la página **Brechas de conocimiento** para que la revises.
+
+**Ejemplo:** una inmobiliaria recibe preguntas como "¿Tienen casas de tres habitaciones disponibles?", "¿Me ayudas a encontrar una propiedad de tres habitaciones?" y "¿Qué propiedades de tres habitaciones están abiertas?". En lugar de tres entradas separadas, se agrupan en una sola brecha:
+
+**Tema:** Propiedades en venta → **Subtema:** Búsqueda de propiedades
+
+Así atiendes la necesidad de fondo una sola vez, en vez de redactar una respuesta para cada forma de preguntar.
+
+## Cómo completar una brecha
+
+Identifica qué información esperaba la persona y agrégala a la base de conocimiento conectada al agente, en **IA → Base de conocimiento**. Elige el tipo de fuente según la información:
+
+| Tipo de fuente | Úsala para |
+| --- | --- |
+| **Preguntas frecuentes** | Una pregunta común con una respuesta concreta. |
+| **Texto enriquecido** | Políticas, instrucciones o información que mantienes a mano. |
+| **Rastreador web** | Respuestas que ya están en tu sitio web y lo mantienes actualizado. |
+| **Tablas** | Datos estructurados como inventario, precios o listas de productos. |
+| **Archivos** | Información que está en un documento aprobado. |
+
+<Note>
+Cada agente de IA de voz usa **una sola base de conocimiento** a la vez. Agrega la información a la base de conocimiento asignada a ese agente.
+</Note>
+
+## Cómo configurarlo y usarlo
+
+<Steps>
+<Step title="Abre el agente">
+Ve a **IA → IA de voz → Lista de agentes** y crea o edita el agente.
+</Step>
+<Step title="Conecta la base de conocimiento">
+En la configuración de **Base de conocimiento** del agente, elige la base que debe usar. Confirma que contiene fuentes relevantes para lo que el agente debe responder y, si aplica, configura cuándo debe consultarla. Guarda el agente.
+</Step>
+<Step title="Prueba el agente">
+Inicia una llamada web o telefónica desde los controles de prueba y haz preguntas que deberían responderse con la base de conocimiento, incluidas variaciones y casos límite. Ajusta la indicación o el contenido si hace falta.
+</Step>
+<Step title="Revisa las brechas">
+Cuando el agente haya atendido llamadas, abre la página **Brechas de conocimiento**. Usa el tema, el subtema y las preguntas agrupadas para entender qué falta. Prioriza las brechas importantes o más repetidas.
+</Step>
+<Step title="Agrega la información que falta">
+Abre la base de conocimiento conectada al agente y agrega o actualiza la fuente adecuada. Escribe respuestas claras, actuales y específicas. Guarda o procesa la fuente según corresponda.
+</Step>
+<Step title="Valida la respuesta">
+Prueba de nuevo con la pregunta original y con otras formas de decirla. Confirma que el agente recupera y entrega la información correcta, y sigue revisando las brechas nuevas.
+</Step>
+</Steps>
+
+<Tip>
+Dedica un momento fijo cada semana a revisar las brechas. Es una de las formas más rápidas de mejorar la calidad de tu agente con base en lo que tus clientes realmente preguntan.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cada pregunta sin respuesta crea una brecha distinta?">
+No. Las preguntas similares se agrupan en una sola fila para evitar ruido.
+</Accordion>
+<Accordion title="¿Por qué se organizan por tema y subtema?">
+Para que entiendas qué tipo de información falta y veas qué preguntas se resuelven con una misma actualización.
+</Accordion>
+<Accordion title="¿Las brechas reemplazan las pruebas del agente?">
+No. Las pruebas siguen siendo necesarias para validar la indicación, la recuperación de información, las acciones y la conversación. Las brechas las complementan con preguntas reales.
+</Accordion>
+<Accordion title="¿El agente puede usar varias bases de conocimiento?">
+No. Cada agente de IA de voz usa una sola base de conocimiento. Agrega la información a la que tiene asignada.
+</Accordion>
+<Accordion title="¿Cómo confirmo que la brecha quedó resuelta?">
+Prueba la base de conocimiento con preguntas realistas y luego haz una llamada de prueba al agente para confirmar que responde bien.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Base de conocimiento en IA de voz" icon="book" href="/ia/base-de-conocimiento-ia-de-voz">
+Conecta una base de conocimiento a tu agente de voz.
+</Card>
+<Card title="Introducción a la base de conocimiento" icon="book-open" href="/ia/introduccion-base-de-conocimiento">
+Qué es y qué fuentes admite.
+</Card>
+<Card title="Documentos y texto enriquecido" icon="file-lines" href="/ia/documentos-texto-enriquecido-base-conocimiento">
+Agrega archivos y texto a tu base de conocimiento.
+</Card>
+<Card title="Probar agentes de IA de voz desde el navegador" icon="headset" href="/ia/prueba-web-agentes-ia-de-voz">
+Valida las respuestas sin número de teléfono.
+</Card>
+</CardGroup>

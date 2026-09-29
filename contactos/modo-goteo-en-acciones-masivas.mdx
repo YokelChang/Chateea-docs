@@ -1,0 +1,108 @@
+---
+title: "Modo goteo en acciones masivas"
+description: "Envía SMS, correos o acciones masivas por lotes espaciados en el tiempo para cuidar tu reputación y a tu equipo."
+icon: "droplet"
+---
+
+El **modo goteo** (Drip Mode) te permite ejecutar una acción masiva por lotes, espaciados en el tiempo, en lugar de aplicarla a todos los contactos de golpe. Es ideal para enviar SMS o correos a listas grandes sin saturar a los operadores, cuidar la reputación de tu número y tu dominio, y repartir la carga de respuestas para que tu equipo pueda atenderlas.
+
+## Para qué te sirve
+
+- **Proteges tu reputación de envío.** Los operadores y proveedores de correo ven un volumen constante en lugar de un pico repentino.
+- **Tu equipo no se desborda.** Si una campaña genera respuestas o llamadas, llegan de forma escalonada.
+- **Campañas largas sin límite de fecha.** Puedes programar goteos de semanas o meses, por ejemplo un curso de ocho semanas o un reto de 12 semanas.
+- **Envíos más fiables.** El sistema guarda el avance después de cada lote. Si hay una desconexión o un reinicio, retoma exactamente donde se quedó, sin duplicar ni perder envíos.
+- **Mismo comportamiento en todas las acciones.** El modo goteo funciona igual en SMS, correo, etiquetas, flujos de trabajo y oportunidades.
+
+## Acciones compatibles con el modo goteo
+
+- Envío masivo de SMS y MMS.
+- Envío masivo de correo.
+- Agregar o quitar etiquetas.
+- Agregar a un flujo de trabajo o campaña.
+- Actualizaciones de oportunidades (estado, pipeline, propietario).
+- La acción **Goteo** (Drip) dentro de los flujos de trabajo, que usa la misma lógica.
+
+## Configurar una acción masiva en modo goteo
+
+<Steps>
+<Step title="Abre Contactos">
+Ve a **Contactos**.
+</Step>
+<Step title="Elige a quién aplicarla">
+Abre una lista inteligente o selecciona los contactos a mano. El tamaño de la audiencia determina cuántos lotes hacen falta.
+</Step>
+<Step title="Elige la acción">
+En la barra de acciones, elige lo que quieres hacer en bloque: **Enviar SMS**, **Enviar correo**, **Agregar etiqueta**, **Agregar a flujo de trabajo**, etc.
+</Step>
+<Step title="Activa el modo goteo">
+En **Método de entrega**, elige **Enviar en modo goteo** (Send in Drip Mode).
+</Step>
+<Step title="Configura el ritmo">
+Completa los parámetros del goteo (los verás en detalle más abajo): fecha de inicio, cantidad por lote, intervalo, días y horario permitidos.
+</Step>
+<Step title="Describe la acción">
+Escribe una descripción corta, por ejemplo "Goteo SMS invitación webinar julio", para reconocerla luego en **Acciones masivas**.
+</Step>
+<Step title="Revisa la duración estimada">
+Según el tamaño de la audiencia, el lote y el intervalo, Chateea calcula cuánto tardará la acción en completarse. Verifica que encaje con tu campaña y confirma.
+</Step>
+</Steps>
+
+## Parámetros del goteo
+
+| Parámetro | Qué define |
+| --- | --- |
+| **Empezar el** (Start On) | Fecha y hora del primer lote. Puede ser cualquier fecha futura. |
+| **Cantidad por lote** (Batch Quantity) | Cuántos contactos se procesan en cada tanda, de 1 a 10.000. |
+| **Repetir después de** (Repeat After) | Tiempo de espera entre lotes, en minutos, horas o días. |
+| **Enviar los días** (Send On) | Opcional. Días de la semana permitidos, por ejemplo de lunes a viernes. |
+| **Procesar entre** (Process Between) | Horario en el que se permite procesar lotes. Respeta la zona horaria de tu cuenta. |
+| **Terminar a las** (End At) | Hora de corte diaria. El goteo se detiene y sigue en la siguiente ventana válida. |
+
+<Tip>
+Para SMS, empieza con lotes pequeños y un intervalo de varios minutos, sobre todo si tu número es nuevo. Cuando veas que las entregas y las respuestas van bien, puedes aumentar el tamaño del lote.
+</Tip>
+
+## Pausar, editar o cancelar un goteo
+
+Ve a **Contactos → Acciones masivas**, abre el menú de tres puntos de la acción y elige:
+
+- **Pausar:** detiene temporalmente el goteo. Al reanudarlo, sigue desde el último lote completado.
+- **Editar:** cambia la programación. Si modificas el tamaño del lote, el cambio se aplica al siguiente lote pendiente; los ya enviados no se tocan.
+- **Cancelar:** detiene los lotes restantes. Lo ya procesado queda como está.
+
+## Límites que siguen aplicando
+
+El modo goteo no elimina los límites de seguridad de la plataforma ni los de los operadores. Por ejemplo, con una frecuencia de un minuto el máximo es de 1.000 SMS por minuto. El sistema aplica estos límites de forma automática.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Hay una duración máxima para un goteo?">
+No hay un límite fijo. Puedes programar goteos de meses sin la antigua restricción de 30 días.
+</Accordion>
+<Accordion title="¿Puedo cambiar el tamaño del lote cuando el goteo ya empezó?">
+Sí. El siguiente lote sin procesar usa la nueva cantidad y los lotes ya enviados se mantienen.
+</Accordion>
+<Accordion title="¿Se respetan el horario permitido y el DND?">
+Sí. Lo que caiga fuera de la ventana de **Procesar entre** se pasa al siguiente lote válido, y los contactos con **No molestar** no reciben mensajes por los canales bloqueados.
+</Accordion>
+<Accordion title="¿La acción Goteo de los flujos de trabajo funciona igual?">
+Sí. Ambas usan la misma lógica de lotes, intervalos y recuperación; solo cambia desde dónde la configuras. En el historial del flujo cada lote aparece como una ejecución separada, lo que facilita auditarlo.
+</Accordion>
+<Accordion title="¿Qué pasa si el envío se interrumpe?">
+El sistema guarda el progreso después de cada lote y retoma automáticamente donde se quedó, sin reenviar lo que ya salió.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Acciones masivas en contactos" icon="layer-group" href="/contactos/acciones-masivas">
+Sigue, pausa y revisa tus acciones masivas.
+</Card>
+<Card title="Agregar contactos a un flujo en masa" icon="diagram-project" href="/contactos/agregar-contactos-a-flujo-en-masa">
+Inscribe listas completas en una automatización.
+</Card>
+</CardGroup>

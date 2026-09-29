@@ -1,0 +1,128 @@
+---
+title: "Reserva de citas con la IA de voz"
+description: "Configura tu agente de voz para ofrecer horarios y agendar citas en uno o varios calendarios durante la llamada."
+icon: "calendar-check"
+---
+
+Con la reserva de citas, tu agente de IA de voz ofrece horarios disponibles, pide los datos que falten y confirma la cita durante la misma llamada, sin mandar a la persona a un enlace externo ni obligar a tu equipo a devolver la llamada. Puedes hacer que agende siempre en un mismo calendario o que elija entre varios según lo que pida quien llama.
+
+## Para qué te sirve
+
+- **Agendar sin fricción:** la persona reserva en la llamada, sin esperar un seguimiento manual.
+- **Uno o varios calendarios:** el agente reserva en un calendario fijo o elige entre varios según la intención de quien llama.
+- **Respeta tus reglas:** usa la disponibilidad, los tiempos de margen, la anticipación mínima y los conflictos configurados en cada calendario.
+- **Datos completos:** el agente pide lo que falte, como el correo, antes de confirmar.
+- **Mejor experiencia:** una conversación natural hace que reservar sea rápido, aunque tengas servicios distintos con calendarios distintos.
+
+## Un calendario o varios calendarios
+
+### Un solo calendario
+
+Es la opción más simple. Úsala cuando el agente siempre debe agendar el mismo tipo de cita: un solo servicio, una sola persona o un flujo de reserva estándar. Eliges un calendario para la acción **Agendar cita** y defines cuántos días y cuántos horarios ofrece el agente.
+
+### Varios calendarios
+
+Úsala cuando ofreces más de un servicio, equipo o tipo de cita (por ejemplo, demostraciones, consultas de precios, llamadas de diagnóstico o primeras visitas) y cada uno tiene su calendario. El agente analiza la conversación y elige el calendario que mejor encaja, usando la intención, el contexto y tu configuración. Si más de un calendario podría servir, aplica lógica de confianza y prioridad.
+
+## Cómo elige el calendario la IA
+
+La IA no se fija solo en palabras sueltas: analiza toda la conversación, incluidas las preguntas y aclaraciones de la persona. Algunos ejemplos:
+
+| Lo que dice la persona | Calendario elegido |
+| --- | --- |
+| "Quiero agendar una demostración" | Calendario de demostraciones |
+| "Necesito hablar sobre precios" | Calendario de consultas de ventas |
+| "Soy paciente nuevo, es mi primera visita" | Calendario de primera consulta |
+
+### Descripciones y frases clave generadas con IA
+
+La IA puede redactar una descripción de cada calendario y sugerir frases clave para que el sistema entienda mejor cuándo usar cada uno. Puedes aceptarlas, ajustarlas o reemplazarlas:
+
+- Indica el nombre del calendario y sus detalles esenciales; la IA redacta la descripción.
+- Revisa y edita las frases clave sugeridas para cada calendario.
+- Usa un lenguaje breve y específico, y evita frases que se repitan entre calendarios.
+
+## Antes de empezar
+
+1. Ten creado un agente de IA de voz, o permiso para crearlo.
+2. Configura al menos un calendario de reservas para el servicio que quieres agendar.
+3. Revisa las reglas del calendario: disponibilidad, duración, márgenes y reglas de reserva.
+4. Si usas calendarios externos, como Google Calendar u Outlook, déjalos conectados.
+
+<Note>
+  El horario de atención del agente y la disponibilidad del calendario son cosas distintas. El horario del agente define cuándo contesta llamadas; la configuración del calendario define qué horarios se pueden reservar.
+</Note>
+
+## Cómo configurar la reserva de citas
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → IA de voz** y crea un agente nuevo o abre el que quieres usar para agendar.
+  </Step>
+  <Step title="Revisa la configuración básica">
+    Completa o revisa los datos del agente y, si aplica, su número de teléfono y horario de atención.
+  </Step>
+  <Step title="Agrega la acción de reserva">
+    En la sección de acciones, haz clic en **Nueva acción** y elige **Agendar cita** (Appointment Booking).
+  </Step>
+  <Step title="Elige cómo seleccionar el calendario">
+    - **Un calendario:** elige el calendario y configura **Días que se ofrecen** (cuántos días a futuro ofrece la IA), **Horarios por día** (cuántas opciones da cada día) y **Horas entre horarios** (separación entre las opciones ofrecidas).
+    - **Varios calendarios:** agrega los calendarios que el agente puede usar y dale a cada uno una descripción clara y pistas de enrutamiento para que la IA elija bien. Si lo necesitas, define un comportamiento alternativo para las solicitudes que no encajen con ninguno.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda el agente y haz llamadas de prueba para confirmar que elige el calendario correcto, que los horarios ofrecidos tienen sentido y que la cita se crea bien.
+  </Step>
+</Steps>
+
+## Notificaciones después de agendar
+
+- **Confirmación de la cita:** la envían las notificaciones configuradas en el calendario donde se reservó.
+- **Correo de la IA de voz después de la llamada:** es un correo aparte, enviado al terminar la llamada, que puede incluir el resumen, los datos del contacto y la transcripción.
+
+Configurar el correo posterior a la llamada no reemplaza ni controla las confirmaciones del calendario. Cada uno se configura por separado.
+
+## Dónde se guarda la información
+
+| Dato | Dónde queda | Para qué sirve |
+| --- | --- | --- |
+| Grabaciones, transcripciones y resúmenes | Registros y panel de la IA de voz | Revisar la conversación completa y el contexto de la cita. |
+| Respuestas de calificación asignadas a campos | Campos personalizados del contacto | Informes, segmentación y decisiones de enrutamiento. |
+| Contexto clave de la cita | Notas de la cita, mediante un flujo de trabajo de seguimiento | Que tu equipo llegue preparado a la reunión. |
+| Respuestas de un formulario de reserva personalizado | Sección de formulario del registro de la cita | Disponible si la cita usa un formulario personalizado. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo sabe la IA qué calendario usar cuando hay varios?">
+    Usa la intención de quien llama y el contexto de toda la conversación para elegir el calendario más adecuado. Si varios podrían servir, aplica lógica de confianza y prioridad.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la persona no da su correo?">
+    La IA puede pedírselo antes de confirmar la cita, para que el registro quede completo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si ningún calendario encaja con lo que pide la persona?">
+    Puedes configurar un comportamiento alternativo: presentar los servicios disponibles, usar un calendario de respaldo o seguir otra acción guiada.
+  </Accordion>
+  <Accordion title="¿Puedo hacer preguntas de calificación antes de agendar?">
+    Sí. Puedes configurar el flujo para recopilar información primero y luego dirigir a la persona al tipo de cita adecuado según sus respuestas.
+  </Accordion>
+  <Accordion title="¿Puedo usar Servicios en la reserva de la IA de voz?">
+    Por ahora no. La IA de voz admite **Un calendario** y **Varios calendarios**, pero no los calendarios de servicios.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configura tu calendario de reservas" icon="calendar" href="/primeros-pasos/configura-tu-calendario-de-reservas">
+    Crea el calendario donde agendará tu agente.
+  </Card>
+  <Card title="Acciones durante y después de la llamada" icon="bolt" href="/ia/acciones-durante-y-despues-de-la-llamada">
+    Organiza qué hace el agente en cada momento.
+  </Card>
+  <Card title="Base de conocimiento para IA de voz" icon="book" href="/ia/base-de-conocimiento-ia-de-voz">
+    Dale a tu agente la información de tu negocio.
+  </Card>
+  <Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+    Qué es la IA de voz y qué puede hacer.
+  </Card>
+</CardGroup>

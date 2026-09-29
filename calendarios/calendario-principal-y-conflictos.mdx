@@ -1,0 +1,73 @@
+---
+title: "Calendario principal y detección de conflictos"
+description: "Sincroniza tus citas de equipo con tu calendario externo y bloquea los horarios en los que ya estás ocupado."
+icon: "calendar-check"
+---
+
+En los calendarios de equipo (round robin, servicios, clases y colectivos), cada persona puede sincronizar sus citas asignadas con su propio Google Calendar, Outlook o iCloud, y hacer que Chateea tenga en cuenta sus otros compromisos. Esto se configura desde tu perfil con dos ajustes: el **calendario principal** y la **detección de conflictos**.
+
+## Dónde se configura
+
+Ve a **Configuración → Mi perfil** y busca la sección de calendarios. Ahí aparecen todos los calendarios externos que hayas conectado con tu usuario.
+
+## Calendario principal
+
+El calendario principal es el que se encarga de **escribir** tus citas en Google, Outlook o iCloud. También lee eventos de tu calendario externo, pero su función principal es enviar allí cada cita nueva que se te asigne.
+
+En la lista desplegable del calendario principal verás todos los calendarios que conectaste. Si alguno aparece desactivado, es porque ya lo usas en la detección de conflictos o porque no tiene permiso de escritura.
+
+### Permitir la creación de contactos
+
+Esta opción decide si los eventos que creas en Google u Outlook se convierten en citas dentro de Chateea.
+
+- Déjala en **Ninguno** si solo quieres que tus citas lleguen a tu calendario externo.
+- Elige uno de tus calendarios de equipo si quieres que los eventos externos **con invitados** se conviertan en citas y contactos dentro de ese calendario. En la lista aparecen todos los calendarios de grupo de los que formas parte.
+
+Con esta opción activa, el comportamiento es parecido a la sincronización bidireccional: los eventos con asistentes se convierten en citas, excepto los eventos recurrentes.
+
+### Permitir disparadores
+
+Esta opción solo aparece si elegiste un calendario en **Permitir la creación de contactos**, y se aplica únicamente a las citas creadas desde Google u Outlook.
+
+- **Activada**: los disparadores de tus flujos de trabajo se ejecutan también con las citas que llegan por la sincronización.
+- **Desactivada**: esas citas se crean sin disparar ningún flujo de trabajo.
+
+<Tip>
+Si tus flujos de trabajo envían confirmaciones o recordatorios al cliente, piensa bien antes de activar los disparadores: un evento personal con invitados podría recibir mensajes automáticos que no esperaba.
+</Tip>
+
+## Detección de conflictos
+
+En la sección **Revisar conflictos** aparecen todos tus calendarios de Google, Outlook o iCloud. Los que marques se leen para bloquear tu disponibilidad: cualquier evento que tengas en ellos deja ese horario como no disponible para nuevas citas.
+
+- La detección de conflictos **no crea citas**, solo bloquea el tiempo.
+- Si un calendario aparece desactivado en esta sección, es porque ya está seleccionado como calendario principal.
+
+<Tip>
+Agrega tu calendario personal a la detección de conflictos. Así, una cita con el médico o un compromiso familiar bloquea tus horarios sin que tengas que hacerlo a mano.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre el calendario principal y los de conflicto?">
+    El calendario principal escribe tus citas en tu calendario externo. Los calendarios de conflicto solo se leen para bloquear tu disponibilidad y no reciben citas.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo elegir un calendario como principal?">
+    Porque ya está en la detección de conflictos o porque tu conexión no tiene permiso de escritura en él. Quítalo de conflictos o vuelve a conectarlo con permiso de escritura.
+  </Accordion>
+  <Accordion title="¿Los eventos recurrentes de Google se convierten en citas?">
+    No. Aunque actives la creación de contactos, los eventos recurrentes no se convierten en citas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Calendarios vinculados y de conflicto" icon="link" href="/calendarios/calendarios-vinculados-y-de-conflicto">
+    Conecta Google, Outlook o iCloud y evita reservas dobles.
+  </Card>
+  <Card title="Grupos de calendarios" icon="layer-group" href="/calendarios/grupos-de-calendarios">
+    Reúne varios calendarios en un solo enlace.
+  </Card>
+</CardGroup>

@@ -1,0 +1,191 @@
+---
+title: "Calendly en flujos de trabajo: disparadores y acciones"
+description: "Conecta Calendly para automatizar reservas, cancelaciones e inasistencias y crear reuniones desde tus flujos."
+icon: "calendar-check"
+---
+
+Si tu equipo agenda llamadas de ventas, demostraciones o entrevistas con Calendly, puedes conectarlo a tus flujos de trabajo de Chateea. Así, cada reserva, cancelación o inasistencia en Calendly dispara una automatización al instante, y tus flujos también pueden crear reuniones, cancelar eventos o actualizar contactos en Calendly sin que nadie tenga que hacerlo a mano.
+
+## Cómo funciona la integración
+
+La integración tiene dos partes:
+
+- **Disparadores (de Calendly hacia Chateea):** cinco disparadores que cubren reservas, cancelaciones (hechas por el invitado o por el anfitrión), inasistencias y envíos de formularios de enrutamiento. Cuatro son instantáneos y uno revisa Calendly cada 5 minutos.
+- **Acciones (de Chateea hacia Calendly):** nueve acciones para crear reuniones de un solo uso, reservar en nombre de un invitado, buscar y cancelar eventos, marcar inasistencias, gestionar contactos y buscar usuarios.
+
+<Note>
+  Todos los disparadores y acciones de Calendly son **acciones premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). El uso de tu plan de Calendly (usuarios activos, tipos de evento de pago, integraciones) lo cobra Calendly directamente en tu cuenta de Calendly.
+</Note>
+
+## Conectar tu cuenta de Calendly
+
+Antes de usar cualquier disparador o acción, tienes que autorizar la conexión con Calendly.
+
+### Desde el constructor de flujos (recomendado)
+
+<Steps>
+  <Step title="Abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre o crea un flujo.
+  </Step>
+  <Step title="Busca Calendly">
+    Agrega un disparador o una acción, cambia a la pestaña **Aplicaciones** (Apps) y busca **Calendly**. Elige cualquier disparador o acción.
+  </Step>
+  <Step title="Inicia la conexión">
+    En el panel lateral, haz clic en **Conectar tu cuenta** (Connect your account).
+  </Step>
+  <Step title="Ponle nombre a la conexión">
+    En la ventana de configuración escribe un **Nombre** fácil de reconocer (por ejemplo "Calendly Ventas" o "Calendly Soporte") y el **Correo** asociado a esa cuenta. Ambos datos aparecen en el desplegable **Cuenta conectada** de cada disparador y acción. Haz clic en **Continuar**.
+  </Step>
+  <Step title="Autoriza en Calendly">
+    Calendly te muestra los permisos que se solicitan. Revísalos y haz clic en **Allow**. Al volver al constructor, el panel mostrará **Conectado**.
+  </Step>
+</Steps>
+
+### Desde Configuración
+
+También puedes ir a **Configuración → Integraciones**, buscar **Calendly**, hacer clic en **Conectar** y completar el mismo proceso (nombre, correo y autorización).
+
+<Tip>
+  Si conectas varias cuentas de Calendly (por equipo, marca o país), usa nombres claros. Así evitas que un paso del flujo apunte a la cuenta equivocada.
+</Tip>
+
+## Disparadores disponibles
+
+| Disparador | Tipo | Cuándo se activa |
+| --- | --- | --- |
+| **Invitado creado** (Invitee created) | Instantáneo | Alguien reserva una reunión con un enlace de Calendly |
+| **Invitado canceló** (Invitee canceled) | Instantáneo | Se cancela la reserva de un invitado |
+| **Inasistencia de invitado creada** (Invitee no show created) | Instantáneo | El invitado se marca como inasistente |
+| **Nuevo envío de formulario de enrutamiento** | Instantáneo | Alguien completa un formulario de enrutamiento de Calendly |
+| **Evento cancelado** (Event cancelled) | Revisión cada 5 minutos | El anfitrión cancela un evento |
+
+El disparador **Evento cancelado** no es instantáneo porque Calendly no envía un aviso automático cuando el anfitrión cancela, así que la integración lo revisa cada 5 minutos.
+
+## Acciones disponibles
+
+### Eventos
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear reunión de un solo uso** | Crea un tipo de evento de Calendly de un solo uso con anfitrión, duración (máximo 720 minutos), ventana de disponibilidad (fechas en formato `YYYY-MM-DD`) y zona horaria opcional. Devuelve el enlace de reserva |
+| **Reservar reunión para un invitado** | Agenda la reunión en nombre del invitado con sus datos y un tipo de evento, sin pasar por la página de reservas |
+| **Buscar evento** | Localiza un evento por su ID o URI y devuelve sus datos (tipo, anfitrión, horario e invitados) |
+| **Cancelar un evento** | Cancela un evento programado. Admite un motivo opcional que ve el invitado |
+
+### Invitados
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Marcar invitado como inasistente** | Marca al invitado como no presentado. Esto activa a su vez el disparador **Inasistencia de invitado creada** |
+
+### Contactos y usuarios
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear contacto** | Crea un contacto en Calendly y devuelve su ID |
+| **Buscar contacto** | Busca un contacto de Calendly por correo o teléfono |
+| **Actualizar contacto** | Actualiza un contacto existente por ID o correo |
+| **Buscar usuario** | Busca un usuario de Calendly por correo o URI. Devuelve nombre, correo, zona horaria, enlace de agenda y rol en la organización |
+
+## Ejemplo: configurar el disparador "Invitado creado"
+
+Este ejemplo inicia un flujo cada vez que alguien reserva con un enlace de la cuenta conectada. Los disparadores **Invitado canceló**, **Inasistencia de invitado creada** y **Nuevo envío de formulario de enrutamiento** se configuran igual.
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En el flujo, haz clic en **Agregar disparador**, abre la pestaña **Aplicaciones**, busca **Calendly** y elige **Invitado creado**.
+  </Step>
+  <Step title="Configúralo">
+    - **Cuenta conectada:** la cuenta de Calendly que quieres vigilar.
+    - **Nombre del disparador:** algo descriptivo, como "Nueva llamada de descubrimiento".
+    - **Alcance de la suscripción:** elige **Usuario** para escuchar solo los eventos del usuario conectado u **Organización** para escuchar a todos los usuarios de tu organización en Calendly.
+    - **Filtros (opcional):** limita el disparador por tipo de evento, dominio del correo del invitado o respuestas a preguntas personalizadas.
+  </Step>
+  <Step title="Pruébalo">
+    En el panel **Prueba tu disparador**, haz clic en **Buscar nuevos registros** (Find new records). Si no aparece nada, haz una reserva de prueba con un enlace de la cuenta conectada y vuelve a buscar. Selecciona el registro devuelto como referencia y haz clic en **Guardar disparador**.
+  </Step>
+</Steps>
+
+## Ejemplo: configurar la acción "Crear reunión de un solo uso"
+
+Esta acción genera un enlace de Calendly válido para una sola reserva, ideal para enviárselo a un contacto concreto.
+
+<Steps>
+  <Step title="Agrega la acción">
+    Haz clic en **+** en el punto del flujo donde quieras la acción, abre la pestaña **Aplicaciones**, elige **Calendly** y luego **Crear reunión de un solo uso**.
+  </Step>
+  <Step title="Completa los campos">
+    - **Cuenta conectada:** la cuenta que será anfitriona.
+    - **Nombre de la acción:** por ejemplo "Enlace de llamada de seguimiento".
+    - **Nombre del evento** (obligatorio): lo que verá el invitado.
+    - **Usuario anfitrión** (obligatorio): quién atiende la reunión. Si el anfitrión cambia según el contacto, usa antes la acción **Buscar usuario**.
+    - **Duración en minutos** (obligatorio): máximo 720 (12 horas).
+    - **Zona horaria** (opcional): nombre IANA, como `America/Mexico_City`. Si la dejas vacía, se usa la del anfitrión.
+    - **Fecha de inicio** y **Fecha de fin** (obligatorias): la ventana de disponibilidad, en formato `YYYY-MM-DD`.
+  </Step>
+  <Step title="Prueba y guarda">
+    Haz clic en **Probar acción**. La prueba crea un tipo de evento real en Calendly y el enlace de reserva aparece en la respuesta. Guarda la acción y prueba el flujo completo antes de publicarlo.
+  </Step>
+</Steps>
+
+## Cómo probar disparadores y acciones
+
+Prueba siempre antes de publicar: la prueba fija la estructura de los datos y te da un registro real para usar en los pasos siguientes.
+
+- **Disparadores instantáneos:** haz clic en **Buscar nuevos registros**. Si no hay resultados, realiza la acción en Calendly (reserva, cancela o envía un formulario de enrutamiento) y vuelve a buscar.
+- **Evento cancelado:** cancela un evento en Calendly como anfitrión (no como invitado), espera hasta 5 minutos al siguiente ciclo de revisión y vuelve a buscar.
+- **Acciones:** haz clic en **Probar acción**. Se ejecuta sobre tu cuenta real de Calendly, así que confirma el resultado allí (un nuevo evento de un solo uso, una reserva en el calendario del anfitrión, un contacto actualizado, etc.).
+
+## Reprogramaciones
+
+Calendly no envía un aviso específico de "reprogramado". Cuando un invitado cambia la hora, Calendly envía una cancelación de la cita anterior seguida de una nueva reserva. En tus flujos lo verás como dos disparos: **Invitado canceló** y luego **Invitado creado**.
+
+Para que tu flujo de cancelaciones no se ejecute con cada reprogramación, agrega una espera (por ejemplo, 30 minutos) después del disparador **Invitado canceló** y luego una condición que compruebe si el contacto volvió a reservar en ese tiempo. Si reservó, termina el flujo; si no, trátalo como una cancelación real.
+
+## Ideas de uso
+
+<AccordionGroup>
+  <Accordion title="Nueva reserva: sincronizar el contacto y preparar la llamada">
+    Disparador **Invitado creado** → acción **Buscar contacto** por correo → si no existe, crearlo; si existe, actualizarlo con los datos de la reserva → enviar un SMS o correo previo con la agenda y la información del anfitrión. Por ejemplo, cuando un prospecto agenda una llamada de 30 minutos, el flujo le pone la etiqueta "Origen: Calendly", guarda la fecha en un campo personalizado y le envía material de preparación.
+  </Accordion>
+  <Accordion title="Cancelación: recuperar la cita">
+    Disparador **Invitado canceló** → espera de 30 minutos → condición: ¿volvió a reservar? Si no, **Crear reunión de un solo uso** con el mismo anfitrión y una ventana de 7 días → enviar un mensaje amable con el nuevo enlace.
+  </Accordion>
+  <Accordion title="Inasistencia: secuencia de recuperación">
+    Disparador **Inasistencia de invitado creada** → agregar la etiqueta "Recuperar inasistencia" → enviar un mensaje de "te extrañamos" con un enlace nuevo → esperar unos días y, si no reserva, crear una tarea para que un asesor lo contacte personalmente.
+  </Accordion>
+  <Accordion title="Enlace a medida al llegar a una etapa">
+    Disparador de un hito de tu negocio (por ejemplo, una oportunidad que pasa a "Propuesta enviada") → **Buscar usuario** para obtener el anfitrión asignado → **Crear reunión de un solo uso** de 45 minutos con 5 días de disponibilidad → enviar el enlace por SMS o correo.
+  </Accordion>
+</AccordionGroup>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué disparadores son instantáneos y cuáles no?">
+    **Invitado creado**, **Invitado canceló**, **Inasistencia de invitado creada** y **Nuevo envío de formulario de enrutamiento** son instantáneos. **Evento cancelado** (cancelación hecha por el anfitrión) se revisa cada 5 minutos.
+  </Accordion>
+  <Accordion title="¿Por qué me pide un nombre y un correo al conectar?">
+    Sirven para identificar la conexión en el desplegable **Cuenta conectada**. Si tienes varias cuentas de Calendly conectadas, te ayudan a elegir la correcta en cada paso.
+  </Accordion>
+  <Accordion title="¿Qué devuelve la acción Crear reunión de un solo uso?">
+    El enlace de reserva de un solo uso y los datos del evento (anfitrión, duración y ventana de disponibilidad). Compártelo con un solo invitado: podrá reservar dentro de esa ventana sin ver la disponibilidad general del anfitrión.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre la acción Cancelar un evento y que el invitado cancele?">
+    **Cancelar un evento** equivale a que el anfitrión cancele en Calendly y genera la misma notificación de cancelación para cada invitado. Si el invitado cancela directamente en Calendly, se genera esa misma notificación. En ambos casos, el disparador **Invitado canceló** lo detecta.
+  </Accordion>
+  <Accordion title="¿Qué pasa si Calendly se retrasa en avisar?">
+    Normalmente los avisos llegan en segundos, pero puede haber retrasos puntuales. Los disparadores instantáneos se activan en cuanto llega el aviso. Si Calendly no llegara a enviarlo, el disparador no se ejecutaría, así que en procesos críticos conviene prever una revisión periódica.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores y acciones.
+  </Card>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Qué revisar cuando un flujo no se comporta como esperas.
+  </Card>
+</CardGroup>

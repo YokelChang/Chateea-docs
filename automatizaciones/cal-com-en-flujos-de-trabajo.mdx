@@ -1,0 +1,137 @@
+---
+title: "Cal.com en flujos de trabajo"
+description: "Automatiza reservas de Cal.com: inicia flujos con cada reserva y crea, cancela o reprograma citas desde tus flujos."
+icon: "calendar-check"
+---
+
+La integración con Cal.com conecta tu agenda de Cal.com con los flujos de trabajo de Chateea. Los disparadores inician un flujo cuando una reserva se crea, se reprograma, se cancela o termina, y las acciones te permiten crear, cancelar, reprogramar o buscar reservas desde una automatización. Así tus contactos, tus mensajes y tu agenda se mantienen alineados sin webhooks propios ni seguimiento manual.
+
+La integración funciona en dos sentidos:
+
+- **De Cal.com a Chateea:** eventos como reservas creadas, reprogramadas, canceladas, reuniones terminadas o ausencias inician flujos.
+- **De Chateea a Cal.com:** las acciones del flujo crean, cancelan, reprograman o buscan reservas.
+
+## Para qué te sirve
+
+- **Todo el ciclo de la reserva:** automatizas cada momento, desde que se reserva hasta que termina la reunión.
+- **Respuesta en segundos:** los disparadores funcionan con webhooks y se activan casi al instante.
+- **Reservas desde el flujo:** agendas reuniones con datos de un formulario o de un lead calificado.
+- **Asignación de campos más limpia:** usas una reserva real como referencia para los pasos siguientes.
+- **Datos completos:** cada reserva trae URL, título, inicio, fin, notas, tipo de evento, asistentes y organizador.
+- **Una sola conexión:** conectas Cal.com una vez y lo usas en todos tus flujos.
+
+## Conectar tu cuenta de Cal.com
+
+- **Desde el flujo:** en **Automatización → Flujos de trabajo**, agrega cualquier disparador o acción de Cal.com. Si no está conectado, haz clic en **Conectar ahora** y autentícate con tu clave de API de Cal.com (o con OAuth si está disponible). Luego autoriza el espacio de trabajo y los tipos de evento a los que Chateea puede acceder.
+- **Desde la configuración:** ve a **Configuración → Integraciones → Cal.com → Conectar**.
+
+## Disparadores
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Reserva creada** | Cuando se crea una reserva nueva. Devuelve los datos completos de la reserva. |
+| **Reserva reprogramada** | Cuando una reserva cambia de horario. Devuelve la hora anterior y la nueva. |
+| **Reserva cancelada** | Cuando la cancela el asistente, el organizador o el sistema. Incluye el motivo si se indicó. |
+| **Reunión terminada** | A la hora de fin programada de la reserva. Si la reserva se reprograma, se ajusta a la nueva hora. |
+| **Ausencia creada o actualizada** | Cuando se crea o modifica un periodo de ausencia (fuera de la oficina) en Cal.com. |
+
+## Acciones
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear reserva** | Crea una reserva para un tipo de evento. Campos obligatorios: tipo de evento, nombre del asistente, correo del asistente y hora de inicio. |
+| **Cancelar reserva** | Cancela una reserva por su ID, con un motivo opcional. |
+| **Reprogramar reserva** | Mueve una reserva a un nuevo horario. Cal.com actualiza la invitación y avisa a los asistentes. |
+| **Buscar reserva** | Localiza una reserva por ID, correo del asistente u otros filtros y devuelve sus datos. |
+
+<Note>
+  Las cuatro acciones de Cal.com son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Probar un disparador
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En el flujo, haz clic en **Agregar disparador**, entra en la pestaña **Aplicaciones**, busca **Cal.com** y elige, por ejemplo, **Reserva creada**.
+  </Step>
+  <Step title="Configúralo">
+    Ponle un nombre claro (por ejemplo "Nueva reserva de llamada de descubrimiento"). Si quieres, agrega filtros por tipo de evento, anfitrión, ubicación u otro dato de la reserva para que no entren reservas ajenas. Revisa también el **estado del webhook**: si aparece inactivo, vuelve a conectar la integración.
+  </Step>
+  <Step title="Busca registros de prueba">
+    En **Prueba tu disparador**, haz clic en **Buscar registros nuevos**. Se traen las reservas más recientes que coinciden.
+  </Step>
+  <Step title="Fija la referencia">
+    En **Registros: seleccionar referencia de asignación**, elige una de las reservas. Así quedan fijados los campos disponibles para los pasos siguientes.
+  </Step>
+  <Step title="Revisa los datos y guarda">
+    Confirma que la respuesta incluye los campos que usarás (URL, título, inicio, fin, notas, tipo de evento, asistentes, organizador) y haz clic en **Guardar disparador**.
+  </Step>
+</Steps>
+
+## Crear una reserva desde un flujo
+
+Por ejemplo, para agendar una llamada en cuanto un lead de alta intención llena un formulario:
+
+<Steps>
+  <Step title="Agrega la acción">
+    Haz clic en **Agregar**, abre la pestaña **Aplicaciones**, selecciona **Cal.com** y elige **Crear reserva**.
+  </Step>
+  <Step title="Completa los campos">
+    - **Tipo de evento** (obligatorio): el tipo de evento de Cal.com que se reservará.
+    - **Nombre del asistente** (obligatorio): por ejemplo `{{contact.full_name}}`.
+    - **Correo del asistente** (obligatorio): por ejemplo `{{contact.email}}`.
+    - **Zona horaria del asistente**: en formato IANA, como `America/Mexico_City` o `Europe/Madrid`. Si la dejas vacía, se usa la zona horaria de tu cuenta.
+    - **Hora de inicio** (obligatorio): en el formato sugerido (por ejemplo `12-21-2026 08:30 AM`) o en ISO 8601 (`2026-12-21T08:30:00`).
+  </Step>
+  <Step title="Guarda y usa el resultado">
+    Haz clic en **Guardar acción**. El ID y los datos de la reserva quedan disponibles para los pasos siguientes: confirma la cita por correo o SMS, o usa el ID más adelante para cancelarla o reprogramarla.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+- **Reserva nueva, contacto y bienvenida:** Reserva creada, crear o actualizar el contacto usando el correo del asistente, etiquetarlo con el tipo de evento, enviar un correo de preparación y un recordatorio el día anterior.
+- **Recuperar inasistencias:** Reunión terminada, **Buscar reserva** para ver si el asistente no se presentó y, si es así, enviarle un enlace para volver a reservar. Si no reserva en 48 horas, etiquétalo para seguimiento.
+- **Retener cancelaciones:** Reserva cancelada, ramificar según el motivo: a quien tuvo un conflicto de agenda, envíale un enlace para reprogramar; si perdió el interés, pasa el caso a tu equipo con todo el contexto.
+- **Agendar desde un formulario:** Formulario enviado con la hora preferida, **Crear reserva** en el calendario del vendedor asignado y enviar la confirmación.
+- **Compartir grabaciones:** donde esté disponible, cuando una grabación esté lista, resúmela con IA, envía el enlace y el resumen al asistente y regístralo en la ficha del contacto.
+
+## Buenas prácticas
+
+- Indica siempre la **zona horaria del asistente** si reservas para leads de distintas regiones.
+- Usa el formato de hora sugerido o ISO 8601. Los formatos ambiguos pueden mover la cita varias horas.
+- Antes de cancelar o reprogramar, usa **Buscar reserva** para confirmar que existe y está en el estado esperado.
+- Para seguimientos posteriores a la reunión, usa **Reunión terminada** y no **Reserva creada**: se programa solo y se ajusta si la reserva cambia.
+- Vigila el **estado del webhook** en el panel del disparador y vuelve a conectar si aparece inactivo.
+- Prueba primero el disparador para fijar la referencia y luego construye las acciones sobre esa muestra.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cancelar reserva avisa al asistente?">
+    Sí. Cal.com envía su correo de cancelación estándar, con el motivo si lo indicaste.
+  </Accordion>
+  <Accordion title="¿Reprogramar reserva envía invitaciones actualizadas?">
+    Sí. Cal.com cancela el evento original del calendario y envía la invitación con el nuevo horario.
+  </Accordion>
+  <Accordion title="¿Reserva creada se activa de nuevo al reprogramar?">
+    No. La reprogramación tiene su propio disparador, **Reserva reprogramada**.
+  </Accordion>
+  <Accordion title="¿Funciona con Cal.com instalado en mi propio servidor?">
+    Sí, admite los mismos webhooks, aunque algunas instalaciones propias pueden tener problemas con los eventos de inicio o fin de reunión. Prueba con una reserva real antes de usarlo en producción.
+  </Accordion>
+  <Accordion title="¿Puedo usar variables del flujo en los campos de Cal.com?">
+    Sí. Puedes usarlas en el nombre y correo del asistente, la hora de inicio y los demás campos de la acción.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configura tu calendario de reservas" icon="calendar" href="/primeros-pasos/configura-tu-calendario-de-reservas">
+    Si prefieres usar los calendarios nativos de Chateea.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+</CardGroup>

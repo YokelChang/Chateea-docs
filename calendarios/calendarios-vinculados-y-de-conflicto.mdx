@@ -1,0 +1,131 @@
+---
+title: "Calendarios vinculados y de conflicto"
+description: "Conecta Google, Outlook o iCloud para sincronizar citas, mostrar tu disponibilidad real y evitar reservas dobles."
+icon: "link"
+---
+
+Si usas Google Calendar, Outlook o iCloud además de Chateea, conectar esos calendarios evita las reservas dobles: Chateea sabe cuándo estás ocupado y tus citas aparecen también en tu calendario de siempre. Para lograrlo se combinan tres piezas: calendarios conectados, calendario vinculado y calendarios de conflicto.
+
+## Qué hace cada uno
+
+| Pieza | Para qué sirve |
+| --- | --- |
+| **Calendarios conectados** | Dan permiso a Chateea para leer (y, si quieres, escribir) eventos en tu cuenta de calendario externa. |
+| **Calendario vinculado** | Es el calendario externo con el que Chateea sincroniza: importa tus eventos para mostrar tu disponibilidad real y envía allí las citas que se reservan en Chateea. |
+| **Calendarios de conflicto** | Calendarios externos que solo sirven para bloquear tu disponibilidad. Si tienes un evento ocupado en ellos, ese horario deja de estar disponible en Chateea. |
+
+## Antes de empezar
+
+- Necesitas un rol de administrador o permisos para gestionar calendarios en tu cuenta de Chateea.
+- Cada usuario necesita su propio acceso a Google Calendar, Office 365, Outlook.com o iCloud.
+
+## Conectar un calendario externo
+
+<Steps>
+  <Step title="Abre las conexiones">
+    Ve a **Calendarios → Configuración de calendarios** y abre la pestaña **Conexiones**.
+  </Step>
+  <Step title="Agrega la cuenta">
+    En **Calendarios conectados**, haz clic en **+ Agregar nuevo** y elige el proveedor: **Google**, **Outlook**, **iCloud** o **Calendly**.
+  </Step>
+  <Step title="Da los permisos">
+    Inicia sesión y autoriza a Chateea a **leer** tus eventos, y a **escribir** si quieres que las citas se copien a tu calendario externo.
+  </Step>
+  <Step title="Comprueba la conexión">
+    Al terminar, verás tu correo en la lista con el ícono del proveedor.
+  </Step>
+</Steps>
+
+<Warning>
+Si ves un aviso rojo como "Vuelve a conectar tu integración" o la tarjeta del calendario aparece con borde rojo, el permiso venció o fue revocado. Haz clic en **Volver a conectar** y autoriza de nuevo. Si el calendario se eliminó en el proveedor, el aviso puede mostrar **Solucionar**: ahí verás los calendarios eliminados y podrás usar **Quitar calendarios eliminados** para limpiar las conexiones rotas.
+</Warning>
+
+Cuando vuelves a conectar un calendario desconectado, Chateea envía automáticamente al calendario externo las citas futuras que no se habían sincronizado. Y si conectas un calendario nuevo o cambias el calendario seleccionado dentro de la misma integración, Chateea vuelve a sincronizar las citas futuras con el nuevo calendario.
+
+## Configurar el calendario vinculado
+
+<Steps>
+  <Step title="Agrega el calendario vinculado">
+    En la sección **Configuración del calendario**, dentro de **Calendario vinculado**, haz clic en **Agregar**.
+  </Step>
+  <Step title="Elige el calendario">
+    Selecciona uno de tus calendarios conectados.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Note>
+- Para elegir un calendario como vinculado necesitas permiso de escritura en él.
+- El calendario vinculado se agrega automáticamente como calendario de conflicto. Los eventos que crees en él se traen a Chateea y las citas creadas en Chateea se envían a él.
+- Las preferencias de sincronización se ajustan en la configuración avanzada.
+</Note>
+
+## Preferencias de sincronización
+
+En la configuración avanzada eliges cómo se tratan los eventos que llegan desde tu calendario externo.
+
+| | Sincronización predeterminada (unidireccional) | Sincronización bidireccional |
+| --- | --- | --- |
+| Citas de Chateea en el calendario externo | Sí | Sí |
+| Eventos del calendario externo en Chateea | Sí, como **horarios bloqueados** | Sí, como **citas** |
+| Crea contactos para los invitados del evento | No | Sí |
+| Dispara flujos de trabajo | No | Sí, como cualquier otra cita |
+
+**Ejemplo**: Juan crea en Google un evento de 13:00 a 14:00 llamado "Consulta con el Dr. Marcos" e invita al doctor.
+
+- Con **sincronización predeterminada**, Chateea solo bloquea de 13:00 a 14:00 para que nadie reserve.
+- Con **sincronización bidireccional**, Chateea crea una cita de 13:00 a 14:00, crea un contacto para el Dr. Marcos y dispara los flujos de trabajo que tengas configurados para él.
+
+## Citas de servicios en tu calendario vinculado
+
+Las reservas de servicios también se sincronizan con el calendario vinculado que elijas en **Configuración de calendarios → Conexiones** (Google, Outlook o iCloud).
+
+- Cada persona ve en su calendario vinculado solo las reservas que tiene asignadas.
+- Si una reserva incluye varios servicios atendidos por distintas personas, cada una ve únicamente su parte.
+
+Así cada miembro del equipo tiene su agenda completa en un solo lugar, sin ver citas ajenas.
+
+## Calendarios de conflicto
+
+Los calendarios de conflicto leen todos los eventos del calendario externo y bloquean tu disponibilidad durante ellos. No crean citas: solo marcan el tiempo como ocupado.
+
+- Solo bloquean los eventos marcados como **Ocupado** en el calendario externo.
+- Los eventos marcados como **Disponible** se traen a Chateea, pero tu horario sigue abierto.
+- Puedes agregar varios calendarios de conflicto, por ejemplo el de trabajo y el personal.
+
+## Cómo trabajan juntos
+
+- **Al reservar**: Chateea revisa tu calendario vinculado y tus calendarios de conflicto. Cualquier evento que se superponga deja ese horario como no disponible.
+- **Escritura de citas**: si activas **Escribir citas en el calendario** (Write Back Appointments), las nuevas reservas se copian a tu calendario externo, y las cancelaciones o reprogramaciones también se actualizan allí.
+- **Cambios de estado**: marcar una cita como **Asistió** o **No asistió** no actualiza el calendario externo. Así se evita que tus invitados reciban correos de "evento actualizado" y el seguimiento de asistencia queda dentro de Chateea.
+- **En la vista de calendario**: los eventos externos se ven como bloques sombreados, las citas de Chateea con color y los horarios bloqueados como no disponibles.
+
+## Buenas prácticas
+
+- **Escritura en un solo calendario**: activa la escritura de citas solo en tu calendario principal de trabajo para evitar duplicados.
+- **Bloquea tu vida personal**: agrega tu calendario personal como calendario de conflicto para que tus compromisos familiares bloqueen horarios automáticamente.
+- **Misma zona horaria**: asegúrate de que tu calendario externo y tu perfil en Chateea usen la misma zona horaria.
+- **Vuelve a autorizar tras cambios de seguridad**: si cambias la contraseña o la seguridad de tu cuenta externa, reconecta el calendario.
+
+## Solución de problemas
+
+| Problema | Causa probable | Solución |
+| --- | --- | --- |
+| La integración aparece rota (aviso rojo) | El permiso venció o fue revocado | En **Configuración de calendarios → Conexiones**, haz clic en **Volver a conectar** y autoriza de nuevo. |
+| Los eventos externos no aparecen en Chateea | No hay calendario vinculado o la sincronización está apagada | En **Calendario vinculado**, haz clic en **Editar** y verifica que **Sincronizar eventos** esté activo. |
+| Se puede reservar durante eventos externos | El calendario no está marcado como de conflicto | En **Calendarios de conflicto**, haz clic en **Editar**, activa **Usar como calendario de conflicto** y guarda. |
+| Las citas de Chateea no llegan al calendario externo | La escritura de citas está apagada | Edita el calendario vinculado, activa **Escribir citas en el calendario** y guarda. |
+| Eventos duplicados en el calendario externo | Varios calendarios tienen la escritura activada | Desactiva la escritura en los calendarios secundarios o desvincula los que no necesites. |
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Calendario principal y detección de conflictos" icon="calendar-check" href="/calendarios/calendario-principal-y-conflictos">
+    Sincroniza tus citas de equipo con tu calendario personal.
+  </Card>
+  <Card title="Zona horaria para ver citas" icon="clock" href="/calendarios/zona-horaria-para-ver-citas">
+    Ve tus citas en la zona horaria correcta.
+  </Card>
+</CardGroup>

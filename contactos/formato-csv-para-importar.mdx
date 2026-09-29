@@ -1,0 +1,193 @@
+---
+title: "Formato del archivo CSV para importar"
+description: "Prepara tu archivo CSV con el formato correcto de columnas, fechas, teléfonos, países y zonas horarias antes de importar."
+icon: "file-csv"
+---
+
+Antes de importar contactos u oportunidades a Chateea conviene preparar bien el archivo CSV. Un archivo limpio y con el formato correcto se mapea casi solo, evita errores de carga, permite detectar duplicados y te ahorra horas de limpieza después. Esta guía reúne todas las reglas de formato que necesitas.
+
+## Qué es un archivo CSV
+
+CSV significa "valores separados por comas". Es un archivo de texto donde cada línea es un registro (un contacto u oportunidad) y cada columna es un dato, separado por comas. Es el formato más usado para mover datos entre sistemas.
+
+- La extensión del archivo es `.csv`.
+- Puedes crearlo o editarlo en Excel, Google Sheets o cualquier editor de texto.
+- El archivo debe tener **una sola hoja**. Si exportas desde Excel o Sheets, exporta solo la pestaña que vas a importar.
+
+## Estructura del archivo
+
+La primera fila es la **fila de encabezados** y es obligatoria: cada encabezado indica qué dato contiene la columna y se usa para mapearla con un campo estándar o personalizado de Chateea. Después, cada fila es un contacto u oportunidad.
+
+Ejemplo de archivo:
+
+```text
+First Name,Last Name,Email,Phone,Company,Tags,Created Date,Additional Phone
+Juan,Pérez,juan@ejemplo.com,+5215512345678,Comercial Pérez,"VIP, Lead",01/15/2024,+5215598765432
+Ana,Gómez,ana@ejemplo.com,+573001234567,Estudio Gómez,Cliente,02/02/2024,+573009876543
+```
+
+<Tip>
+Los encabezados pueden estar en español o en inglés. Lo importante es que durante la importación mapees cada columna al campo correcto. Si usas los mismos nombres que tienen los campos en Chateea, el mapeo se hace casi automático.
+</Tip>
+
+## Campos obligatorios
+
+Para **crear** un contacto necesitas al menos uno de estos datos:
+
+- Nombre
+- Correo electrónico
+- Teléfono
+
+Para **actualizar** contactos existentes, el archivo debe incluir un identificador único (ID del contacto, correo o teléfono), según cómo tengas configurada la detección de duplicados. En oportunidades, incluye el **ID de la oportunidad** si quieres actualizarla: sin ese ID se crea una oportunidad nueva.
+
+| Acción | Campos necesarios | Notas |
+| --- | --- | --- |
+| Crear contacto | Nombre, correo o teléfono | Al menos uno |
+| Actualizar contacto | ID del contacto, correo o teléfono | Depende de tu configuración de duplicados |
+| Fila de encabezados | Obligatoria | Cada encabezado debe mapearse a un campo existente o personalizado |
+
+## Requisitos del archivo
+
+| Requisito | Detalle |
+| --- | --- |
+| Formato | Solo `.csv` |
+| Hojas | Una por archivo |
+| Tamaño máximo | 30 MB |
+
+## Formato por tipo de campo
+
+| Tipo de campo | Formatos aceptados | Ejemplo |
+| --- | --- | --- |
+| Fecha | MM/DD/AAAA, AAAA/MM/DD, MM-DD-AAAA o AAAA-MM-DD | `04/16/2025`, `2025-04-16` |
+| Casillas o selección múltiple | Valores separados por coma, punto y coma o punto. Las barras no sirven | `VIP, Lead` o `Oro; Plata` |
+| Opción única (desplegable) | Un solo valor, igual a una de las opciones del campo | `Azul` |
+| Etiquetas | Separadas por coma, punto y coma o punto | `Azul, Amarillo` |
+| Teléfono | Formato internacional E.164 (recomendado) | `+5215512345678` |
+| Correo | Formato estándar con arroba y dominio | `nombre@ejemplo.com` |
+| Números | Con o sin decimales | `1.23`, `1234`, `.123` |
+| Montos | Con o sin separador de miles | `1234`, `1,234,234.33` |
+| Propietario del contacto | Nombre y apellido del usuario | `Laura Méndez` |
+| Seguidores del contacto | Nombres de usuarios separados por comas | `Laura Méndez, Carlos Ruiz` |
+| Correos adicionales | En una columna aparte, separados por comas | `ana@ejemplo.com, ana.trabajo@ejemplo.com` |
+| Teléfonos adicionales | En una columna aparte, separados por comas | `+5215511111111, +5215522222222` |
+
+### Teléfonos: lo que sí y lo que no
+
+- Usa siempre el formato internacional con signo más y código de país, por ejemplo `+573001234567`. Es la forma más segura para cualquier país.
+- Los formatos locales de Estados Unidos como `123-456-7890` o `(123) 456-7890` se aceptan, pero solo para números de ese país.
+- Números incompletos (`1234567`) o con letras (`abc1234567`) se rechazan.
+
+### Fechas
+
+Elige un solo formato de fecha y úsalo en todo el archivo. Mezclar formatos (por ejemplo días primero en unas filas y meses primero en otras) hace que algunas fechas se guarden mal o se rechacen.
+
+<Warning>
+Si vas a importar datos en campos personalizados, crea esos campos en Chateea **antes** de importar, con el tipo de dato correcto (fecha, número, desplegable, etc.). En los desplegables y casillas, los valores del archivo deben coincidir exactamente con las opciones del campo.
+</Warning>
+
+## Países aceptados
+
+Si el archivo incluye una columna de país, cada valor debe coincidir **exactamente** con uno de los nombres aceptados (en inglés, respetando mayúsculas y ortografía) o con su código ISO de dos letras (por ejemplo `MX`, `CO`, `ES`, `US`). `United States` o `US` funcionan; `USA` o `U.S.` provocan error. Si usas un campo personalizado de país, conviene seguir la misma lista.
+
+```text
+Afghanistan, Albania, Algeria, Andorra, Angola, Antigua and Barbuda, Argentina, Armenia,
+Australia, Austria, Azerbaijan, Bahamas, Bahrain, Bangladesh, Barbados, Belarus, Belgium,
+Belize, Benin, Bhutan, Bolivia, Bosnia and Herzegovina, Botswana, Brazil, Brunei, Bulgaria,
+Burkina Faso, Burundi, Cabo Verde, Cambodia, Cameroon, Canada, Central African Republic,
+Chad, Chile, China, Colombia, Comoros, Congo, Congo (Kinshasa), Costa Rica, Croatia, Cuba,
+Cyprus, Czech Republic, Denmark, Djibouti, Dominica, Dominican Republic, East Timor,
+Ecuador, Egypt, El Salvador, Equatorial Guinea, Eritrea, Estonia, Eswatini, Ethiopia, Fiji,
+Finland, France, Gabon, Gambia, Georgia, Germany, Ghana, Greece, Grenada, Guatemala,
+Guinea, Guinea-Bissau, Guyana, Haiti, Honduras, Hungary, Iceland, India, Indonesia, Iran,
+Iraq, Ireland, Israel, Italy, Jamaica, Japan, Jordan, Kazakhstan, Kenya, Kiribati,
+Korea, North, Korea, South, Kosovo, Kuwait, Kyrgyzstan, Laos, Latvia, Lebanon, Lesotho,
+Liberia, Libya, Liechtenstein, Lithuania, Luxembourg, Madagascar, Malawi, Malaysia,
+Maldives, Mali, Malta, Marshall Islands, Mauritania, Mauritius, Mexico, Micronesia,
+Moldova, Monaco, Mongolia, Montenegro, Morocco, Mozambique, Myanmar, Namibia, Nauru, Nepal,
+Netherlands, New Zealand, Nicaragua, Niger, Nigeria, North Macedonia, Norway, Oman,
+Pakistan, Palau, Panama, Papua New Guinea, Paraguay, Peru, Philippines, Poland, Portugal,
+Qatar, Romania, Russia, Rwanda, Saint Kitts and Nevis, Saint Lucia,
+Saint Vincent and the Grenadines, Samoa, San Marino, Sao Tome and Principe, Saudi Arabia,
+Senegal, Serbia, Seychelles, Sierra Leone, Singapore, Slovakia, Slovenia, Solomon Islands,
+Somalia, South Africa, South Sudan, Spain, Sri Lanka, Sudan, Suriname, Sweden, Switzerland,
+Syria, Taiwan, Tajikistan, Tanzania, Thailand, Togo, Tonga, Trinidad and Tobago, Tunisia,
+Turkey, Turkmenistan, Tuvalu, Uganda, Ukraine, United Arab Emirates, United Kingdom,
+United States, Uruguay, Uzbekistan, Vanuatu, Vatican City, Venezuela, Vietnam, Yemen,
+Zambia, Zimbabwe
+```
+
+<Note>
+"Korea, North" y "Korea, South" se escriben así, con la coma incluida. Si tu columna de país tiene comas dentro del valor, enciérralo entre comillas en el CSV.
+</Note>
+
+## Zonas horarias aceptadas
+
+Si importas la zona horaria del contacto, usa uno de estos valores tal cual (distinguen mayúsculas y minúsculas):
+
+```text
+Etc/GMT+12, Pacific/Midway, Pacific/Honolulu, America/Juneau, US/Alaska, America/Dawson,
+America/Los_Angeles, America/Phoenix, America/Tijuana, US/Arizona, America/Belize,
+America/Boise, America/Chihuahua, America/Denver, America/Edmonton, America/Guatemala,
+America/Managua, America/Regina, Canada/Saskatchewan, US/Mountain, America/Bahia_Banderas,
+America/Bogota, America/Cancun, America/Chicago, America/Mexico City, US/Central,
+America/Caracas, America/Detroit, America/Indiana/Indianapolis, America/Louisville,
+America/Manaus, America/New_York, America/Santiago, America/Santo_Domingo, America/Toronto,
+US/East-Indiana, US/Eastern, America/Argentina/Buenos_Aires, America/Glace_Bay,
+America/Montevideo, America/Sao_Paulo, Canada/Atlantic, America/St_Johns,
+Canada/Newfoundland, America/Godthab, America/Noronha, Etc/GMT+2, Atlantic/Cape_Verde,
+Atlantic/Azores, UTC, Africa/Algiers, Africa/Casablanca, Africa/Lagos, Atlantic/Canary,
+Europe/London, Africa/Cairo, Africa/Harare, Europe/Amsterdam, Europe/Belgrade,
+Europe/Brussels, Europe/Madrid, Europe/Oslo, Europe/Sarajevo, Africa/Nairobi, Asia/Amman,
+Asia/Baghdad, Asia/Jerusalem, Asia/Kuwait, Asia/Qatar, Europe/Athens, Europe/Bucharest,
+Europe/Helsinki, Europe/Moscow, Asia/Baku, Asia/Dubai, Asia/Kabul, Asia/Tehran,
+Asia/Karachi, Asia/Yekaterinburg, Asia/Colombo, Asia/Kolkata, Asia/Calcutta,
+Asia/Kathmandu, Asia/Almaty, Asia/Dhaka, Asia/Rangoon, Asia/Bangkok, Asia/Krasnoyarsk,
+Asia/Irkutsk, Asia/Kuala_Lumpur, Asia/Shanghai, Asia/Taipei, Australia/Perth, Asia/Seoul,
+Asia/Tokyo, Asia/Yakutsk, Australia/Adelaide, Australia/Darwin, Asia/Vladivostok,
+Australia/Brisbane, Australia/Canberra, Australia/Hobart, Australia/Sydney, Pacific/Guam,
+Asia/Magadan, Pacific/Auckland, Pacific/Fiji, Pacific/Tongatapu
+```
+
+## Lista de revisión antes de importar
+
+- El archivo es `.csv`, tiene una sola hoja y pesa menos de 30 MB.
+- La primera fila tiene encabezados y no hay columnas sin nombre.
+- No hay filas ni columnas en blanco al final del archivo.
+- Cada fila tiene al menos nombre, correo o teléfono.
+- Los teléfonos están en formato internacional.
+- Las fechas usan un único formato.
+- Los campos personalizados ya existen en tu cuenta con el tipo correcto.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo importar contactos con varios teléfonos o correos?">
+Sí. Usa columnas aparte para teléfonos adicionales y correos adicionales, y separa los valores dentro de cada celda con comas.
+</Accordion>
+<Accordion title="¿Qué pasa con una columna que no existe como campo en Chateea?">
+Se ignora, a menos que durante la importación la mapees a un campo estándar o a un campo personalizado (puedes crearlo antes de importar).
+</Accordion>
+<Accordion title="¿Chateea detecta duplicados al importar?">
+Sí. Según tu configuración de detección de duplicados, busca coincidencias por ID del contacto, correo o teléfono y actualiza el contacto existente o lo omite.
+</Accordion>
+<Accordion title="¿Puedo actualizar contactos con una importación?">
+Sí. Incluye en el archivo el dato que usas para detectar duplicados (ID del contacto, correo o teléfono) y elige la opción de actualizar al importar.
+</Accordion>
+<Accordion title="¿Tengo que borrar filas y columnas vacías?">
+Sí. Quita todo lo que no sea necesario para evitar comportamientos inesperados durante la importación.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Importar contactos y oportunidades" icon="file-import" href="/contactos/importar-contactos-y-oportunidades-csv">
+Paso a paso de la importación desde CSV.
+</Card>
+<Card title="Solucionar errores al importar" icon="triangle-exclamation" href="/contactos/solucionar-errores-importacion-csv">
+Qué hacer cuando una importación falla.
+</Card>
+<Card title="Importar contactos desde CSV" icon="upload" href="/contactos/importar-contactos-desde-csv">
+Guía básica para subir tu primera lista.
+</Card>
+</CardGroup>

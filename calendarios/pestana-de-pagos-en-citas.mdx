@@ -1,0 +1,150 @@
+---
+title: "Pestaña de pagos en las citas"
+description: "Revisa lo pagado, el saldo pendiente y las transacciones de cada cita, y cobra desde ahí."
+icon: "credit-card"
+---
+
+La pestaña **Pagos** de cada cita reúne todo lo relacionado con el dinero de esa reserva: cuánto se ha pagado, cuánto falta, quién pagó y qué transacciones hubo. Desde ahí también puedes cobrar el saldo pendiente, ya sea con tarjeta o registrando un pago hecho por fuera, como efectivo o transferencia.
+
+## Para qué te sirve
+
+- **Una sola fuente de verdad:** montos, asistentes y transacciones de la cita en un mismo lugar.
+- **Cobros más rápidos:** usa **Cobrar pago** directamente desde la cita.
+- **Claridad por asistente:** ves quién pagó, quién pagó una parte y quién debe; ideal cuando la reserva incluye invitados.
+- **Descuentos visibles:** los cupones y los totales ajustados aparecen en el resumen y en las transacciones.
+- **Contabilidad más ordenada:** cada reserva de un calendario con pagos genera una orden automáticamente.
+
+## Qué muestra la pestaña Pagos
+
+### Resumen de pago
+
+| Campo | Qué indica |
+| --- | --- |
+| Monto pagado | Lo que ya se cobró por la cita |
+| Saldo pendiente | Lo que falta por cobrar |
+| Monto total | El costo total de la cita después de descuentos o cupones |
+
+### Pagos por asistente
+
+Verás el estado de pago de cada persona de la reserva (quien reservó y sus invitados):
+
+- **Pagado:** pagó el total.
+- **Pagado parcialmente:** pagó una parte y queda saldo.
+- **Pendiente:** todavía debe el monto.
+
+### Historial de transacciones
+
+La lista de todas las transacciones asociadas a la cita, incluidos cobros y reembolsos.
+
+### Cobrar el saldo
+
+Si hay saldo pendiente, verás el botón **Cobrar pago** con dos opciones:
+
+- **Cobrar con tarjeta:** procesa un pago con tarjeta de crédito o débito.
+- **Registrar manualmente:** marca un pago que recibiste por fuera del sistema (efectivo, cheque, transferencia).
+
+## Cómo funciona por detrás
+
+- Al activar los pagos en un calendario, se crea automáticamente un producto con la etiqueta *Calendario* en tu lista de productos. Ese producto no se puede borrar desde ahí.
+- Cada vez que se reserva una cita en ese calendario, se crea una **orden** automáticamente (la verás en **Pagos → Órdenes**). No necesitas administrarla por separado: todo se puede hacer desde la cita.
+
+## Cómo usar la pestaña Pagos
+
+### Activa los pagos en el calendario
+
+<Steps>
+  <Step title="Abre los ajustes del calendario">
+    Ve a **Calendarios → Configuración** y edita el calendario que quieres cobrar.
+  </Step>
+  <Step title="Activa Aceptar pagos">
+    Activa **Aceptar pagos**. Chateea creará el producto con la etiqueta *Calendario*.
+  </Step>
+  <Step title="Configura las opciones que necesites">
+    De forma opcional, activa **Habilitar código de cupón**, configura un **pago parcial o anticipo**, o, si usas citas recurrentes, elige si se cobra **solo la primera cita** o **todas las citas** desde el widget.
+  </Step>
+</Steps>
+
+### Encuentra la pestaña
+
+1. Ve a **Calendarios** y abre la cita desde la vista de calendario o la lista de citas.
+2. Haz clic en la pestaña **Pagos**.
+
+### Cobra o registra un pago
+
+<Steps>
+  <Step title="Abre la pestaña Pagos de la cita">
+    Revisa el saldo pendiente y el estado de cada asistente.
+  </Step>
+  <Step title="Haz clic en Cobrar pago">
+    Elige **Cobrar con tarjeta** o **Registrar manualmente**.
+  </Step>
+  <Step title="Completa los datos y guarda">
+    Llena los campos que se piden y guarda.
+  </Step>
+  <Step title="Verifica el resultado">
+    Confirma que el monto pagado, el saldo pendiente y los estados de los asistentes se actualizaron.
+  </Step>
+</Steps>
+
+## Escenarios comunes
+
+| Escenario | Configuración | Qué verás en la pestaña Pagos |
+| --- | --- | --- |
+| Pago completo al reservar | **Aceptar pagos** activado | El monto pagado es igual al total, los asistentes aparecen como **Pagado** y la transacción aparece en el historial |
+| Anticipo | Pago parcial o anticipo activado | Aparece un saldo pendiente. Al cobrarlo después con **Cobrar pago**, el estado pasa de **Pagado parcialmente** a **Pagado** |
+| Cupón aplicado | **Habilitar código de cupón** activado | El resumen muestra el descuento del cupón y el total ajustado; se cobra el monto con descuento |
+| Guardar tarjeta en archivo | **Guardar tarjeta en archivo** activado | El cliente ingresa su tarjeta al reservar; se guarda para después, pero no se le cobra ni se crea ninguna transacción |
+| Invitados agregados después | Editas la cita, agregas invitados y cobras por asistente | Existe una orden de la reserva inicial; al guardar con **Cobrar pago por invitado** activado se pueden crear órdenes adicionales |
+| Recurrente, solo la primera | Se cobra solo la primera cita en el widget | La primera cita muestra el pago; las siguientes aparecen con saldo pendiente y se cobran manualmente |
+| Recurrente, todas las citas | Se cobran todas las citas en el widget | El total de la serie se cobra por adelantado y aparece pagado en la reserva inicial |
+
+### Guardar tarjeta en archivo
+
+Usa **Guardar tarjeta en archivo** (Collect Card on File) cuando quieras guardar de forma segura la tarjeta del cliente sin cobrarle al reservar:
+
+- El cliente ingresa su tarjeta durante la reserva.
+- La tarjeta queda guardada para usarla después.
+- No se le cobra nada al reservar y no se crea ninguna transacción.
+
+No es lo mismo que una reserva gratuita: si cobras por adelantado y el monto final es cero, simplemente no se pide tarjeta ni se procesa ningún pago.
+
+## Limitaciones
+
+- No funciona con reservas hechas desde el menú de servicios antiguo (versión 1).
+- No funciona con citas recurrentes personalizadas creadas manualmente desde la ventana de nueva cita.
+- En reservas grupales se crea una sola orden por todo el grupo al reservar.
+- Si editas una cita, agregas invitados y guardas con **Cobrar pago por invitado** activado, cada guardado puede crear una orden nueva. Planea bien tus cambios y cobros para evitar órdenes duplicadas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde se ven los descuentos de cupones?">
+    En la pestaña **Pagos** de la cita. El resumen muestra el descuento del cupón y el total después del descuento, y el historial muestra los cobros sobre ese total.
+  </Accordion>
+  <Accordion title="¿Puedo reembolsar un cobro desde la pestaña Pagos?">
+    Los reembolsos se hacen desde **Pagos → Transacciones** o desde tu pasarela de pago. Una vez hecho, el reembolso aparece en el historial de transacciones de la cita.
+  </Accordion>
+  <Accordion title="¿Funciona con PayPal?">
+    Sí. Los pagos con PayPal hechos desde el widget de reservas aparecen en el historial de transacciones y quedan ligados a la orden de la cita.
+  </Accordion>
+  <Accordion title="¿Cómo se ven los cobros de una serie recurrente?">
+    Si cobras solo la primera cita, las siguientes muestran saldo pendiente hasta que las cobres. Si cobras todas, el total aparece pagado desde la reserva inicial.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Códigos de cupón en calendarios" icon="ticket" href="/calendarios/codigos-de-cupon-en-calendarios">
+    Ofrece descuentos en tus reservas.
+  </Card>
+  <Card title="Cobrar un anticipo en reservas" icon="money-bill" href="/calendarios/cobrar-anticipo-en-reservas">
+    Pide solo una parte del pago al reservar.
+  </Card>
+  <Card title="Agregar invitados en reservas" icon="user-plus" href="/calendarios/agregar-invitados-en-reservas">
+    Permite que tus clientes reserven para más personas.
+  </Card>
+  <Card title="Pagar en cuotas con Klarna y Affirm" icon="wallet" href="/calendarios/pagar-en-cuotas-con-klarna-y-affirm">
+    Ofrece pagos en cuotas al reservar.
+  </Card>
+</CardGroup>

@@ -1,0 +1,126 @@
+---
+title: "Incluir la fecha de la cita en un contrato automáticamente"
+description: "Automatiza tus contratos para que salgan con la fecha de la cita que reservó el cliente ya escrita."
+icon: "calendar-check"
+---
+
+Si tu negocio trabaja con reservas (sesiones de fotos, consultas, eventos, instalaciones) y el contrato debe incluir la fecha exacta que reservó el cliente, puedes automatizarlo para que el contrato salga con la fecha ya escrita en cuanto se agenda la cita. Esta guía te muestra cómo hacerlo, tanto si usas un proceso sencillo como si trabajas con un pipeline de oportunidades.
+
+## El reto y la solución
+
+- **Objetivo:** que un flujo de trabajo envíe automáticamente un contrato con la fecha y hora de la cita en cuanto el cliente reserva.
+- **Reto:** no puedes poner la variable de la cita (por ejemplo, `{{appointment.start_time}}`) directamente en la plantilla del contrato. La acción de envío de documentos toma los datos de campos del **contacto** o de la **oportunidad**, no del disparador de la cita.
+- **Solución:** el flujo primero **copia la fecha de la cita** en un campo personalizado (del contacto o de la oportunidad) y después **envía el contrato**, que lee ese campo.
+
+## Antes de empezar
+
+Necesitas dos cosas preparadas.
+
+### 1. Un campo personalizado para guardar la fecha
+
+<Steps>
+  <Step title="Crea el campo">
+    Ve a **Configuración → Campos personalizados** y haz clic en **Agregar campo**.
+  </Step>
+  <Step title="Elige dónde se guarda">
+    Selecciona **Contacto** (método sencillo) u **Oportunidad** (método avanzado).
+  </Step>
+  <Step title="Configúralo">
+    Elige el tipo **Texto** y ponle un nombre claro, como "Fecha de la sesión", "Fecha del evento" o "Fecha de la reserva". Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+### 2. Una plantilla de contrato actualizada
+
+<Steps>
+  <Step title="Abre tus plantillas">
+    Ve a **Pagos → Documentos y contratos → Plantillas**.
+  </Step>
+  <Step title="Clona o crea la plantilla">
+    **Clona** tu plantilla actual (por ejemplo, "Contrato de servicio con fecha") o crea una **Nueva plantilla**.
+  </Step>
+  <Step title="Inserta el campo">
+    Agrega la variable del campo que creaste en el lugar donde debe aparecer la fecha:
+    - Método de contacto: `{{contact.session_date}}`
+    - Método de oportunidad: `{{opportunity.session_date}}`
+
+    El nombre exacto de la variable depende del nombre de tu campo. Lo más seguro es insertarlo desde el menú de campos de combinación. Guarda la plantilla.
+  </Step>
+</Steps>
+
+<Tip>
+Usa campos de **oportunidad** si un mismo cliente puede tener varias reservas. Así cada contrato toma la fecha de su propia oportunidad y no se pisan entre sí.
+</Tip>
+
+## Método 1: flujo sencillo con el contacto
+
+Es el camino más directo. Ideal si no usas pipelines para tus reservas y solo quieres enviar el contrato al agendar.
+
+<Steps>
+  <Step title="Configura el disparador">
+    Crea un flujo con el disparador **Cita reservada por el cliente** (Customer Booked Appointment). Si quieres, usa los filtros para elegir el calendario concreto.
+  </Step>
+  <Step title="Agrega la acción Actualizar campo del contacto">
+    Haz clic en **+**, elige **Actualizar campo del contacto**, selecciona tu campo (por ejemplo, "Fecha de la sesión") y, en el valor, haz clic en el ícono de etiquetas y elige **Cita → Hora de inicio**. Esto copia la fecha de la reserva al contacto.
+  </Step>
+  <Step title="Agrega la acción de envío del contrato">
+    Justo debajo, haz clic en **+** y elige **Enviar documentos y contratos**. En **Plantilla**, selecciona la plantilla actualizada.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda y publica el flujo. El contrato saldrá con la fecha de la reserva ya escrita.
+  </Step>
+</Steps>
+
+## Método 2: flujo avanzado con la oportunidad
+
+Para negocios que ya trabajan con pipelines. El flujo busca una oportunidad existente del contacto y le escribe la fecha de la reserva. También puedes crear una oportunidad nueva después de la reserva y llenar ahí la información.
+
+<Steps>
+  <Step title="Configura el disparador">
+    Usa el disparador **Cita reservada por el cliente** y filtra por el calendario que corresponda.
+  </Step>
+  <Step title="Agrega la acción Buscar oportunidad">
+    Haz clic en **+** y elige **Buscar oportunidad**. En la oportunidad a buscar, selecciona **Oportunidad creada más recientemente**. Agrega un filtro por campo: elige tu campo (por ejemplo, "Fecha de la sesión") con la condición **Está vacío**, para actualizar solo las oportunidades que todavía no tienen fecha.
+  </Step>
+  <Step title="Agrega la acción Actualizar oportunidad">
+    En la rama **Oportunidad encontrada**, haz clic en **+** y elige **Actualizar oportunidad**. Agrega tu campo de oportunidad y, en el valor, elige **Cita → Hora de inicio** desde el ícono de etiquetas.
+  </Step>
+  <Step title="Agrega la acción de envío del contrato">
+    Justo debajo, agrega **Enviar documentos y contratos** y selecciona tu plantilla basada en la oportunidad.
+  </Step>
+  <Step title="Guarda y publica">
+    El contrato se enviará con la fecha de la reserva ya completada.
+  </Step>
+</Steps>
+
+## La lógica que siempre debe cumplirse
+
+Uses el método que uses, el orden del flujo es:
+
+1. **Disparador:** cita reservada.
+2. **Actualizar campo:** del contacto o de la oportunidad.
+3. **Enviar contrato:** con la plantilla actualizada.
+
+## Solución de problemas
+
+<AccordionGroup>
+  <Accordion title="El contrato se envió, pero la fecha salió en blanco">
+    Revisa dos cosas:
+    1. El orden del flujo. La acción de **actualizar campo** (contacto u oportunidad) debe ir **antes** de la acción de enviar el contrato.
+    2. Si actualizas una oportunidad, esta debe existir para el contacto que reservó. Si no existe, usa la acción **Crear oportunidad** en lugar de buscarla.
+  </Accordion>
+  <Accordion title="Se envió el contrato viejo, sin el campo de fecha">
+    Abre la acción **Enviar documentos y contratos** y confirma que elegiste la plantilla nueva (la clonada o actualizada) y no la anterior.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Valores de oportunidad en plantillas" icon="file-contract" href="/documentos/valores-de-oportunidad-en-plantillas">
+    Llena tus plantillas con datos de cada trato.
+  </Card>
+  <Card title="Acción: Actualizar el campo de contacto" icon="bolt" href="/flujo-de-trabajo/accion-actualizar-el-campo-de-contacto">
+    Cómo funciona esta acción en los flujos.
+  </Card>
+</CardGroup>

@@ -1,0 +1,80 @@
+---
+title: "Error: tipo de mensaje no compatible en WhatsApp"
+description: "Qué formatos y tipos de mensaje admite WhatsApp y cómo enviar tu contenido cuando aparece este error."
+icon: "file-circle-xmark"
+---
+
+Si al enviar un mensaje de WhatsApp ves el error **"Message type is currently not supported"** (tipo de mensaje no compatible por ahora), significa que el mensaje usa un formato o un tipo de archivo que la API de WhatsApp Business no admite. No es un problema de tu número ni de tu cuenta: basta con cambiar el formato de lo que envías.
+
+## Por qué pasa
+
+### Tipo de archivo no admitido
+
+Estás intentando enviar un archivo que WhatsApp no acepta, como `.exe`, `.zip` o `.tar`. WhatsApp solo admite ciertos formatos de imagen, documento, video y audio.
+
+### Tipo de mensaje no admitido
+
+- Estructuras o botones interactivos que WhatsApp no admite.
+- Documentos con texto de descripción (caption): por ahora no están permitidos.
+- Stickers, GIF u otros formatos no compatibles.
+
+### Restricciones de la plantilla
+
+Si envías una plantilla, puede que el encabezado o el cuerpo tengan un tipo de parámetro que WhatsApp no admite.
+
+## Cómo solucionarlo
+
+### Usa formatos compatibles
+
+| Tipo | Formatos admitidos |
+| --- | --- |
+| Imágenes | JPG, JPEG, PNG (máximo 5 MB) |
+| Documentos | PDF, DOCX, PPTX, XLSX, TXT |
+| Audio | AAC, MP3, OGG |
+| Video | MP4 (máximo 16 MB) |
+
+### Revisa el contenido del mensaje
+
+- No envíes stickers, GIF ni archivos no admitidos.
+- Para escribir a un cliente por primera vez o fuera de la ventana de atención de 24 horas, usa una plantilla aprobada.
+
+### Revisa tus plantillas
+
+- Confirma que la plantilla esté aprobada y siga las reglas de formato de Meta.
+- Evita parámetros no admitidos o variables sin completar.
+
+### Envía el archivo de otra forma
+
+Si el formato no es compatible, súbelo a un servicio de almacenamiento (por ejemplo, Google Drive) y comparte el enlace en tu mensaje.
+
+```text
+Incorrecto: enviar un archivo .zip por WhatsApp.
+Correcto: subir el .zip a Google Drive y enviar el enlace de descarga en el mensaje.
+```
+
+<Note>
+Para consultar la lista actualizada de errores y formatos multimedia, revisa la documentación de la Cloud API en la plataforma de WhatsApp Business de Meta.
+</Note>
+
+## Resumen
+
+- Usa solo tipos de archivo y formatos admitidos.
+- Usa plantillas aprobadas para mensajes salientes fuera de la ventana de atención.
+- Evita stickers, GIF y archivos comprimidos.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enviar multimedia desde flujos" icon="photo-film" href="/whatsapp/enviar-multimedia-desde-flujos">
+    Envía imágenes, videos, audios y documentos desde tus automatizaciones.
+  </Card>
+  <Card title="Plantillas multimedia" icon="image" href="/whatsapp/plantillas-multimedia">
+    Plantillas con imagen, video o documento en el encabezado.
+  </Card>
+  <Card title="Por qué un mensaje no se entregó" icon="circle-exclamation" href="/whatsapp/mensaje-no-entregado">
+    Otras causas de mensajes fallidos.
+  </Card>
+  <Card title="Solución de problemas de WhatsApp" icon="circle-question" href="/whatsapp/solucion-de-problemas">
+    Errores frecuentes y cómo resolverlos.
+  </Card>
+</CardGroup>

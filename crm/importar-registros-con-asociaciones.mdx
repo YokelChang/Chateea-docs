@@ -1,0 +1,125 @@
+---
+title: "Importar registros con asociaciones automáticas"
+description: "Importa registros de objetos personalizados desde un CSV y asócialos solos a contactos, empresas u otros objetos."
+icon: "link"
+---
+
+Cuando migras datos desde otro sistema, no solo necesitas importar los registros: también tienes que vincularlos con sus contactos, empresas u oportunidades. En Chateea puedes hacerlo de forma automática combinando la importación de registros de objetos personalizados con la acción de flujo de trabajo **Asociar registros**.
+
+Por ejemplo, al importar mascotas incluyes en el CSV el correo del dueño. Cada vez que se crea una mascota, un flujo busca el contacto con ese correo y asocia la mascota a su dueño. Así evitas asociar cada registro a mano.
+
+<Warning>
+Crea y **publica** el flujo de trabajo antes de iniciar la importación. Los registros que se importen antes de publicarlo no se asociarán.
+</Warning>
+
+## Antes de empezar
+
+Asegúrate de que:
+
+- El objeto personalizado y sus campos ya están creados.
+- Existe una asociación entre el objeto personalizado y el objeto de destino (por ejemplo, Mascota y Contacto).
+- El CSV tiene un dato que permite identificar el registro de destino.
+- El flujo de trabajo está creado y publicado.
+
+### Elige un buen campo para buscar coincidencias
+
+El objeto que importas debe tener un campo que se pueda comparar con un campo del registro de destino. Los más recomendables son:
+
+- Correo electrónico
+- Teléfono
+- ID de cliente
+- Número de cuenta
+- ID del sistema de origen
+
+Usa, siempre que puedas, un identificador único y estable. Evita usar solo el nombre, porque varios registros pueden llamarse igual.
+
+### Los límites de asociación se respetan
+
+La acción **Asociar registros** respeta los límites configurados en la asociación entre los dos objetos. Si eliges asociar todos los registros que coincidan, comprueba que ese límite admite la cantidad de asociaciones que esperas.
+
+## Cómo funciona
+
+1. La importación del CSV crea un registro del objeto personalizado.
+2. El registro nuevo entra al flujo de trabajo del objeto.
+3. La acción **Asociar registros** usa un valor importado para buscar el registro coincidente.
+4. El flujo crea la asociación con la etiqueta que elegiste.
+
+**Ejemplo:** un CSV de mascotas incluye Nombre: Milo, Especie: Perro, Correo del dueño: `alex@example.com`. El flujo busca un contacto cuyo **Correo** sea igual al **Correo del dueño** de la mascota. Resultado: Milo queda asociado a Alex con la etiqueta **Dueño**.
+
+## Paso a paso
+
+<Steps>
+  <Step title="Crea la asociación">
+    Ve a **Configuración → Objetos**, abre el objeto personalizado y entra a **Asociaciones**. Crea la asociación con el objeto de destino. Por ejemplo: objeto **Mascota**, objeto asociado **Contacto**, etiqueta **Dueño**.
+  </Step>
+  <Step title="Prepara el CSV">
+    Incluye los datos para crear el registro y el valor que el flujo usará para encontrar el registro asociado. Para mascotas, por ejemplo: Nombre, Especie, Raza, Fecha de nacimiento y Correo del dueño. Crea en el objeto Mascota un campo **Correo del dueño** para mapear esa columna durante la importación.
+  </Step>
+  <Step title="Crea el flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo basado en el objeto que vas a importar. Para el ejemplo:
+
+    1. Crea un flujo de **Mascota**.
+    2. Agrega el disparador **Mascota creada**.
+    3. Agrega la acción **Asociar registros**.
+    4. En **Crear asociación con**, elige **Contacto**.
+    5. Añade el filtro de coincidencia: **Correo del contacto** es **Correo del dueño**.
+    6. Elige qué hacer si hay varios registros que coinciden.
+    7. Selecciona la etiqueta de asociación **Dueño**.
+    8. Publica el flujo.
+  </Step>
+  <Step title="Importa los registros">
+    Con el flujo publicado, abre el objeto personalizado, haz clic en **Importar**, sube el CSV, mapea las columnas con los campos del objeto, revisa el mapeo e inicia la importación. Puedes seguir el avance en **Acciones masivas**.
+  </Step>
+  <Step title="Verifica las asociaciones">
+    Cuando termine, abre algunos registros importados, revisa sus registros asociados y confirma que se aplicó la etiqueta correcta. Para los registros que no quedaron asociados, revisa los **registros de ejecución** del flujo.
+  </Step>
+</Steps>
+
+### Usar varios filtros
+
+Si un solo dato no es suficientemente fiable, añade más de un filtro. Por ejemplo:
+
+- Correo del contacto es Correo del dueño
+- Teléfono del contacto es Teléfono del dueño
+
+Con varios filtros, el registro de destino debe cumplir **todas** las condiciones.
+
+## Casos de uso
+
+| Registros que importas | Dato de coincidencia | Se asocian con |
+| --- | --- | --- |
+| Pólizas | Correo o ID del asegurado | Contacto |
+| Propiedades | Correo o número de cuenta del dueño | Contacto o empresa |
+| Vehículos | ID de cliente | Contacto |
+| Inscripciones a eventos | Correo del asistente | Contacto |
+| Activos | Número de cuenta de la empresa | Empresa |
+| Transacciones | Correo, teléfono o ID de cliente | Contacto |
+
+## Buenas prácticas
+
+- **Prueba primero con un CSV pequeño.** Comprueba que el flujo crea las asociaciones esperadas antes de importar todo.
+- **Usa identificadores estables.** Correo, teléfono, ID de cliente, número de cuenta o ID externo son mejores que los nombres.
+- **Combina filtros cuando haga falta** para reducir coincidencias incorrectas.
+- **Revisa los límites de asociación** para que admitan la cantidad que vas a crear.
+- **Revisa los dos resultados:** la importación y el flujo son procesos separados.
+
+<Note>
+Una importación puede terminar correctamente aunque el flujo no encuentre un registro coincidente. Por eso conviene revisar también los registros de ejecución del flujo.
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar registros de objetos personalizados" icon="file-import" href="/crm/importar-registros-de-objetos-personalizados">
+    Guía completa de importación desde CSV.
+  </Card>
+  <Card title="Objetos personalizados en flujos de trabajo" icon="bolt" href="/crm/objetos-personalizados-en-flujos-de-trabajo">
+    Disparadores y acciones disponibles.
+  </Card>
+  <Card title="Crear y actualizar registros" icon="pen-to-square" href="/crm/crear-y-actualizar-registros-de-objetos">
+    Gestiona y asocia registros manualmente.
+  </Card>
+  <Card title="Campos únicos" icon="fingerprint" href="/crm/campos-unicos-en-objetos-personalizados">
+    Usa identificadores que no se repitan.
+  </Card>
+</CardGroup>

@@ -1,0 +1,102 @@
+---
+title: "Agente de campañas de correo con Ask AI"
+description: "Crea una campaña de correo guiada por Ask AI con textos de marca, prueba de asuntos y audiencia."
+icon: "envelope"
+---
+
+El agente de campañas de correo es un asistente guiado de Ask AI que te ayuda a crear una campaña de correo completa en pocos minutos. Le pides algo como "Crea una campaña de correo" y te acompaña paso a paso: revisa tu dominio de envío, redacta el correo con tu voz de marca, prepara una prueba A/B de asuntos, te ayuda a elegir la audiencia y deja todo listo en el constructor de campañas para que lo revises y lo envíes.
+
+<Info>
+  Esta función está en fase beta, por lo que algunos pasos o nombres pueden cambiar ligeramente.
+</Info>
+
+## Para qué te sirve
+
+- **Textos con tu marca:** Ask AI redacta el correo completo usando tu voz de marca, así no empiezas desde una página en blanco.
+- **Pruebas más rápidas:** genera varios asuntos y los prueba entre sí para mejorar aperturas y clics.
+- **Audiencia precisa:** eliges entre segmentos, listas inteligentes, etiquetas o segmentos predefinidos.
+- **Mejor entregabilidad:** te guía para configurar un dominio de envío dedicado.
+- **Resultados claros:** revisas el rendimiento en las estadísticas de correo.
+
+## Crear una campaña con el agente
+
+<Steps>
+  <Step title="Pídele la campaña a Ask AI">
+    Abre **Ask AI** y escribe algo como "Crea una campaña de correo" o "Correo para promocionar mi producto". Ask AI reconoce la tarea e inicia el flujo guiado.
+  </Step>
+  <Step title="Revisa el dominio de envío">
+    El agente comprueba si tienes un dominio de envío dedicado. Puedes completar la configuración guiada en ese momento (recomendado para una mejor entregabilidad) o saltarla y hacerla después. Si hace falta, te muestra los registros DNS necesarios: se configuran solos cuando tu proveedor lo permite o los copias y pegas a mano.
+  </Step>
+  <Step title="Responde las preguntas de Ask AI">
+    Indica el nombre de la campaña, la oferta o tema, la intención con la audiencia y el tono. Ask AI arma una indicación completa, redacta el cuerpo del correo y rellena los datos de programación.
+  </Step>
+  <Step title="Conecta tu identidad de marca (opcional)">
+    Ask AI puede usar tu tablero de marca y tu voz de marca para que el texto y el formato sigan tus pautas. Puedes cambiar el tono o regenerar el contenido.
+  </Step>
+  <Step title="Activa la prueba de asuntos (recomendado)">
+    Activa **Prueba de asunto** para generar varios asuntos. Elige el número de variaciones (hasta 6), el tamaño de la muestra, la duración de la prueba y la métrica ganadora, o usa la **configuración predeterminada**.
+  </Step>
+  <Step title="Elige la audiencia">
+    Selecciona segmentos predefinidos, etiquetas o listas inteligentes.
+  </Step>
+  <Step title="Confirma el resumen">
+    Ask AI te muestra una tarjeta con el nombre de la campaña, la descripción, el objetivo, la audiencia y el estado de envío, y te pregunta si es correcto. Responde **Sí** para crear la campaña, o pide cambios. Al terminar, verás un enlace para revisarla y programarla en el constructor de campañas.
+  </Step>
+  <Step title="Lanza y mide">
+    Revisa el correo en el constructor, haz los ajustes que quieras y haz clic en **Lanzar campaña**. Después del envío, sigue los resultados en tus estadísticas de correo.
+  </Step>
+</Steps>
+
+## Prueba A/B de asuntos
+
+La prueba de asuntos envía distintas versiones a una parte de tu lista y, al terminar, manda la ganadora al resto automáticamente.
+
+| Regla | Detalle |
+| --- | --- |
+| **Variaciones** | Hasta 6 asuntos |
+| **Mínimo de contactos** | 10 por variación y 40 en total |
+| **Métrica ganadora** | Tasa de aperturas únicas o tasa de clics únicos |
+| **Tipos de envío compatibles** | **Enviar ahora** y **Programar** (no admite envío por lotes ni programación RSS) |
+
+## Opciones de audiencia
+
+| Opción | Cómo se comporta |
+| --- | --- |
+| **Segmentos** (en el constructor de campañas) | Grupos basados en reglas de interacción, etiquetas y campos. Se evalúan de forma dinámica y puedes reutilizarlos en otras campañas |
+| **Segmentos predefinidos** | Opciones de un clic, como "Interactuó en los últimos 7, 30 o 60 días" o "Interactuó con las últimas 5 campañas". Se fijan en el momento de crear o programar |
+| **Listas inteligentes** | Vistas dinámicas de **Contactos** que se actualizan en el momento del envío: entran los contactos nuevos que cumplen y salen los que ya no |
+| **Etiquetas** | Usa etiquetas existentes o agrégalas en la página de envío para organizar la audiencia y automatizar lo que sigue |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo editar el texto que redactó la IA antes de enviar?">
+    Sí. Puedes editarlo, regenerarlo y darle formato libremente antes de lanzar la campaña.
+  </Accordion>
+  <Accordion title="¿Las listas inteligentes o los segmentos se actualizan después de programar?">
+    Las listas inteligentes se evalúan en el momento del envío. Los segmentos predefinidos se fijan al crear o programar la campaña. Los segmentos del constructor son dinámicos.
+  </Accordion>
+  <Accordion title="¿Dónde veo los resultados?">
+    En **Marketing → Correos → Estadísticas**, que reúne las métricas de campañas, flujos de trabajo y acciones masivas.
+  </Accordion>
+  <Accordion title="Uso mi propio servidor SMTP, ¿por qué faltan algunas estadísticas?">
+    Con una integración SMTP propia normalmente solo se registran aperturas y clics. Las métricas de entregados y rebotes requieren enviar con el correo de Chateea.
+  </Accordion>
+  <Accordion title="¿Puedo reenviar a quienes no abrieron el correo?">
+    Sí. La opción de reenviar a quienes no abrieron está disponible para campañas enviadas al momento y para las programadas por lotes o RSS.
+  </Accordion>
+  <Accordion title="¿Qué tipos de envío puedo usar?">
+    **Enviar ahora**, **Programar**, **Programación por lotes** o **Programación RSS**, según tu objetivo y el tamaño de tu lista.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lanza tu primera campaña de correo" icon="envelope" href="/primeros-pasos/lanza-tu-primera-campana-de-correo">
+    Crea y envía tu primera campaña paso a paso.
+  </Card>
+  <Card title="Usar tu voz de marca en la IA de contenido" icon="bullhorn" href="/ia/voz-de-marca-en-ia-de-contenido">
+    Genera contenido alineado con el tono de tu negocio.
+  </Card>
+</CardGroup>

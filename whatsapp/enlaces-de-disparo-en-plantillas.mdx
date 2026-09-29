@@ -1,0 +1,112 @@
+---
+title: "Enlaces de disparo en plantillas de WhatsApp"
+description: "Mide qué botón o enlace toca cada contacto en tus plantillas de WhatsApp y activa automatizaciones con cada clic."
+icon: "link"
+---
+
+Con los enlaces de disparo en plantillas de WhatsApp puedes saber exactamente qué botón o enlace tocó cada contacto y reaccionar con una automatización. Funciona igual que los enlaces de disparo en correos y SMS: cuando el contacto toca el enlace, Chateea registra el clic y tu flujo de trabajo puede enviarle una oferta, un recordatorio o avisar a tu equipo, sin integraciones externas.
+
+## Cómo funciona
+
+| Aspecto | Detalle |
+| --- | --- |
+| **Dónde se usa** | Plantillas de WhatsApp enviadas con la acción de WhatsApp en tus flujos de trabajo. |
+| **Qué registra** | Qué botón o enlace tocó el contacto. |
+| **Qué puedes automatizar** | Ramas en el flujo, seguimientos, etiquetas, actualización de campos y más, con el disparador **Enlace de disparo clicado**. |
+| **Formatos** | Botón con enlace de disparo (recomendado) o enlace dentro del texto del mensaje. |
+
+## Beneficios
+
+- **Atribución por clic:** sabes qué llamada a la acción funcionó con cada contacto.
+- **Automatización más inteligente:** envías el siguiente paso según lo que tocó el cliente.
+- **Pruebas rápidas:** comparas textos de botones o destinos para mejorar la conversión.
+- **Traspasos claros:** las etiquetas y campos que se actualizan con el clic ayudan a tu equipo de ventas o soporte a personalizar el seguimiento.
+- **Sin herramientas extra:** el seguimiento es nativo en Chateea.
+
+## Antes de empezar
+
+- Tener WhatsApp conectado en tu cuenta y la configuración de Meta completa.
+- Permisos para crear plantillas y editar flujos de trabajo.
+- Uno o más enlaces de disparo creados en **Marketing → Enlaces de disparo → Enlaces**.
+- Plantillas que Meta pueda aprobar: categoría correcta, contenido de ejemplo y variables bien completadas.
+
+## Botón o enlace en el texto
+
+- **Botón con enlace de disparo (recomendado):** agregas un botón de tipo enlace de disparo y lo asocias a tu enlace. Es más limpio y fácil de tocar.
+- **Enlace en el cuerpo del mensaje:** insertas una variable en el texto y la asocias a un enlace de disparo. Útil cuando el texto necesita el enlace dentro de una frase.
+
+<Warning>
+Una plantilla admite como máximo **2 botones en total**, sumando los botones de enlace de disparo y los botones normales. Es el mismo límite que Meta aplica a los botones de URL.
+</Warning>
+
+Recomendaciones de diseño:
+
+- Usa una o dos llamadas a la acción claras para no abrumar al cliente.
+- Escribe etiquetas descriptivas ("Ver precios", "Agendar recogida") que se relacionen fácilmente con las ramas de tu flujo.
+- Completa el contenido de ejemplo de las variables para agilizar la aprobación de Meta.
+- Si vas a enviar una plantilla de seguimiento a quien no respondió, prepárala y apruébala con anticipación.
+
+## Configuración paso a paso
+
+<Steps>
+  <Step title="Crea el enlace de disparo">
+    Ve a **Marketing → Enlaces de disparo → Enlaces** y haz clic en **Agregar enlace**. Dale un nombre (por ejemplo, "Oferta de bienvenida 20%"), pega la URL de destino (por ejemplo, una página con formulario) y haz clic en **Guardar**.
+  </Step>
+  <Step title="Crea la plantilla de WhatsApp">
+    Ve a **Configuración → WhatsApp → Plantillas** y haz clic en **Crear plantilla**. Escribe el nombre, elige la categoría (por ejemplo, Marketing) y el idioma. Si quieres, agrega un encabezado (como una imagen con tu logo). Escribe el cuerpo, agrega variables donde las necesites (como el nombre del contacto) con su contenido de ejemplo, y opcionalmente un pie, por ejemplo "Responde BAJA para dejar de recibir mensajes".
+  </Step>
+  <Step title="Agrega la llamada a la acción con seguimiento">
+    Elige una de estas dos formas:
+
+    - **Botón:** en el editor de la plantilla, agrega un **Botón** de tipo **Enlace de disparo**, selecciona el enlace que creaste y haz clic en **Crear**. Recuerda: máximo 2 botones.
+    - **Enlace en el texto:** coloca el cursor donde debe aparecer el enlace, haz clic en **Agregar variable** y asóciala a tu enlace de disparo. Como contenido de ejemplo, pega la URL de destino para la revisión de Meta.
+  </Step>
+  <Step title="Envía la plantilla a aprobación">
+    Guarda la plantilla para enviarla a Meta. Cuando se apruebe, aparecerá como **Activa**.
+  </Step>
+  <Step title="Crea el flujo que registra el clic">
+    Ve a **Automatización**, crea un flujo desde cero (por ejemplo, "Seguimiento oferta 20% WhatsApp") y haz clic en **Agregar disparador**. Elige **Enlace de disparo clicado**, agrega el filtro **Enlace de disparo** y selecciona el enlace que usaste en la plantilla. Guarda el disparador, agrega las acciones de seguimiento y publica el flujo.
+  </Step>
+</Steps>
+
+Después de publicar, revisa los resultados en el historial del flujo y en la analítica de plantillas (entregados, leídos y clics en botones).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito alguna integración para medir los clics?">
+    No. Los enlaces de disparo se registran de forma nativa en Chateea y pueden activar flujos de trabajo.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre el botón y el enlace en el texto?">
+    El botón es más limpio y fácil de tocar. El enlace en el texto vive dentro de una frase. Los dos registran el clic y pueden activar ramas en tus flujos.
+  </Accordion>
+  <Accordion title="¿Cuántos botones puedo usar en un mensaje?">
+    Dos en total, sumando botones de enlace de disparo y botones normales.
+  </Accordion>
+  <Accordion title="¿Puedo hacer seguimiento si el contacto todavía no respondió?">
+    Sí, pero fuera de la ventana de atención de 24 horas debes usar una plantilla aprobada.
+  </Accordion>
+  <Accordion title="¿Cómo sé qué llamada a la acción funcionó mejor?">
+    Compara los clics y las conversiones en la analítica de plantillas y en el historial de tus flujos.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar la plantilla con el nombre del contacto?">
+    Sí. Inserta variables y agrega contenido de ejemplo para la aprobación de Meta. Al enviar, cada variable se reemplaza con los datos de cada contacto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enlaces de disparo" icon="link" href="/conversaciones/enlaces-de-disparo">
+    Cómo crear y gestionar tus enlaces de disparo.
+  </Card>
+  <Card title="Analítica de plantillas" icon="chart-line" href="/whatsapp/analitica-de-plantillas">
+    Mide entregas, lecturas y clics.
+  </Card>
+  <Card title="Mensajes interactivos de WhatsApp" icon="hand-pointer" href="/whatsapp/mensajes-interactivos">
+    Botones, listas y más dentro de la ventana de atención.
+  </Card>
+  <Card title="Estados de las plantillas" icon="list-check" href="/whatsapp/estados-de-plantillas">
+    Qué significa cada estado de revisión.
+  </Card>
+</CardGroup>

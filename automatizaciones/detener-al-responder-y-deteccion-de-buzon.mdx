@@ -1,0 +1,78 @@
+---
+title: "Detener al responder y detección de buzón de voz"
+description: "Cómo combinar Detener al responder con la detección de buzón de voz de la acción Llamar para priorizar precisión o velocidad."
+icon: "phone"
+---
+
+Si tu flujo de trabajo hace llamadas automáticas, dos ajustes deciden qué pasa cuando llamas a un contacto: **Detener al responder** (Stop on Response), en la configuración del flujo, y **Desactivar detección de buzón de voz** (Disable Voicemail Detect), dentro de la acción **Llamar**. Combinarlos bien te permite elegir entre **precisión** (distinguir si contestó una persona o el buzón de voz) y **velocidad** (conectar la llamada más rápido).
+
+## Qué hace cada ajuste
+
+### Detener al responder
+
+Es un ajuste general de todo el flujo. Cuando está activado, el contacto sale automáticamente del flujo si responde a cualquier comunicación enviada desde él: SMS, correo o llamada. Así evitas seguir enviando mensajes automáticos a alguien que ya está conversando contigo.
+
+### Desactivar detección de buzón de voz
+
+Es un ajuste avanzado de la acción **Llamar**. Controla si el sistema telefónico de Chateea intenta identificar si la llamada la contestó una persona o un buzón de voz. Por defecto, la detección está activada.
+
+<Note>
+Lo que haga tu negocio en la acción **Llamar** no influye en **Detener al responder**. Primero se llama a tu negocio: si nadie contesta, el flujo continúa; si contestas y luego el contacto no responde, el flujo también continúa. Solo cuenta lo que pasa con el contacto (o con su buzón de voz).
+</Note>
+
+## Combinaciones posibles
+
+| Detener al responder | Desactivar detección de buzón | Resultado |
+| --- | --- | --- |
+| Activado | Activado | El flujo **se detiene si contesta el buzón de voz** del contacto, porque el sistema no distingue entre persona y buzón. Configura el tiempo de espera de la llamada en **menos de 20 segundos** para que no llegue al buzón. |
+| Activado | Desactivado | El sistema detecta el buzón de voz, así que una llamada que cae en el buzón **no** cuenta como respuesta y el contacto sigue en el flujo. |
+| Desactivado | Desactivado | El flujo continúa sin importar si el contacto responde o si contesta el buzón. La conexión es un poco más lenta, porque la detección de buzón está activa. |
+| Desactivado | Activado | El flujo continúa sin importar si el contacto responde o si contesta el buzón. La conexión es un poco más rápida, porque no hay detección de buzón. |
+
+## Qué combinación elegir
+
+- **Quieres que el flujo se detenga solo cuando contesta una persona:** activa **Detener al responder** y deja la detección de buzón activa (no marques **Desactivar detección de buzón de voz**).
+- **Quieres la conexión más rápida posible y no usas Detener al responder:** marca **Desactivar detección de buzón de voz**.
+- **Necesitas Detener al responder y también conexión rápida:** desactiva la detección, pero baja el tiempo de espera de la llamada a menos de 20 segundos para evitar que conteste el buzón.
+
+## Dónde se configuran
+
+<Steps>
+<Step title="Detener al responder">
+Abre tu flujo en **Automatización → Flujos de trabajo**, entra a la pestaña **Configuración** del flujo y activa o desactiva **Detener al responder**.
+</Step>
+<Step title="Detección de buzón de voz">
+En el constructor, abre la acción **Llamar**, ve a las opciones avanzadas y marca o desmarca **Desactivar detección de buzón de voz**. Ahí también puedes ajustar el **tiempo de espera de la llamada**.
+</Step>
+<Step title="Guarda y publica">
+Guarda la acción y publica el flujo. Haz una llamada de prueba a tu propio número para confirmar el comportamiento.
+</Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Por qué mi flujo se detiene después de una llamada aunque nadie contestó?">
+Normalmente pasa cuando **Detener al responder** está activado en el flujo y **Desactivar detección de buzón de voz** está marcado en la acción **Llamar**. Si la llamada cae en el buzón, el sistema lo toma como una respuesta y detiene el flujo. Para evitarlo, configura el tiempo de espera de esa acción en 20 segundos o menos.
+</Accordion>
+<Accordion title="¿Por qué hay una pequeña demora al conectar cuando la detección está activa?">
+Con la detección activada (valor predeterminado), el sistema espera unos segundos después de que contestan para analizar el audio y distinguir entre una persona y un saludo grabado. Ese análisis causa la breve demora.
+</Accordion>
+<Accordion title="¿Qué tiempo de espera se recomienda para evitar el buzón de voz?">
+Unos 20 segundos. La mayoría de los operadores telefónicos dejan sonar más de 20 segundos antes de desviar la llamada al buzón de voz.
+</Accordion>
+<Accordion title="¿Detener al responder aplica a las llamadas manuales desde Conversaciones?">
+No. Solo aplica a las acciones automáticas enviadas desde ese flujo. Las comunicaciones manuales o de otros flujos no lo activan.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+Resuelve los problemas más comunes en tus automatizaciones.
+</Card>
+<Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+Repasa los conceptos básicos de disparadores y acciones.
+</Card>
+</CardGroup>

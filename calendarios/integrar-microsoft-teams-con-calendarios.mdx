@@ -1,0 +1,130 @@
+---
+title: "Integrar Microsoft Teams con tus calendarios"
+description: "Genera un enlace de Microsoft Teams automático en cada cita conectando tu cuenta de trabajo o estudios."
+icon: "video"
+---
+
+Si tu equipo trabaja con Microsoft Teams, puedes conectarlo a los calendarios de Chateea para que cada cita reservada tenga su propio enlace de reunión de Teams. El enlace se genera solo y se envía junto con la invitación del calendario, así que nadie tiene que crear reuniones a mano.
+
+## Antes de empezar
+
+- Necesitas acceso a la cuenta de Microsoft Teams que quieres conectar.
+- Solo son compatibles las cuentas de Teams **de trabajo o de estudios** (organizaciones y centros educativos). Las cuentas personales de Microsoft no se pueden integrar.
+- Conectar un calendario de Outlook **no** conecta Teams automáticamente. Son dos conexiones distintas.
+
+## Cómo conectar Microsoft Teams
+
+Cada usuario conecta su cuenta desde uno de estos dos lugares.
+
+### Desde Mi perfil
+
+<Steps>
+  <Step title="Abre tu perfil">
+    Ve a **Configuración → Mi perfil**.
+  </Step>
+  <Step title="Agrega una videoconferencia">
+    En la sección **Videoconferencias** (Video Conferencing), haz clic en **Agregar nuevo**.
+  </Step>
+  <Step title="Conecta Teams">
+    Selecciona **Microsoft Teams**, haz clic en **Conectar** e inicia sesión con tu cuenta de trabajo o estudios. Al terminar, la cuenta queda conectada.
+  </Step>
+</Steps>
+
+### Desde la configuración de calendarios
+
+<Steps>
+  <Step title="Abre las conexiones">
+    Ve a **Calendarios → Configuración del calendario → Conexiones**.
+  </Step>
+  <Step title="Entra en Videoconferencias">
+    Abre la pestaña **Videoconferencias** y haz clic en **Agregar nuevo**.
+  </Step>
+  <Step title="Autoriza Teams">
+    Haz clic en **Conectar** junto a **Microsoft Teams** e inicia sesión con tus credenciales.
+  </Step>
+</Steps>
+
+## Cómo usar Teams como ubicación de tus citas
+
+Los enlaces dinámicos solo se crean cuando Teams está elegido como ubicación de la reunión en el calendario.
+
+<Steps>
+  <Step title="Edita el calendario">
+    Ve a **Calendarios → Configuración del calendario** y edita el calendario que quieres cambiar.
+  </Step>
+  <Step title="Ve a los miembros del equipo">
+    Abre la pestaña **Detalles de la reunión** (Meeting Details) y baja hasta la sección **Miembros del equipo**.
+  </Step>
+  <Step title="Elige Microsoft Teams">
+    En cada miembro del equipo, confirma que ya conectó su cuenta de Teams y selecciona **Microsoft Teams** como ubicación de la reunión. Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Tip>
+  Si además quieres ver las citas en tu calendario de Outlook, conecta Outlook en **Conexiones → Calendarios** y márcalo como calendario vinculado. Es independiente de la conexión de Teams.
+</Tip>
+
+## Calendarios compatibles
+
+| Tipo de calendario | Enlace dinámico de Teams |
+| --- | --- |
+| Reserva personal | Sí |
+| Round robin | Sí |
+| Colectivo | Sí |
+| Servicios | Sí |
+| Clases | Todavía no |
+| Eventos | Solo con enlace fijo (ver abajo) |
+
+## Usar la misma cuenta de Teams en varios lugares
+
+- Puedes conectar la misma cuenta de Teams en varias cuentas de Chateea.
+- Varios usuarios pueden conectar y usar la misma cuenta de Teams.
+- Límite: cada usuario conecta **una sola** cuenta de Teams por cada cuenta de Chateea.
+
+Aunque la cuenta de Teams sea compartida, los calendarios compatibles siguen generando un enlace nuevo en cada reserva, siempre que Teams esté elegido como ubicación y la cuenta esté conectada en **Videoconferencias**.
+
+## Cambiar o quitar la cuenta de Teams
+
+<Steps>
+  <Step title="Abre Videoconferencias">
+    Ve a **Calendarios → Configuración del calendario → Conexiones → Videoconferencias**.
+  </Step>
+  <Step title="Cambia la conexión">
+    Elimina la conexión actual de Microsoft Teams o conecta otra cuenta.
+  </Step>
+  <Step title="Revisa tus calendarios">
+    Confirma que la ubicación de la reunión sigue en Microsoft Teams en todos los calendarios que deben generar enlaces.
+  </Step>
+</Steps>
+
+<Info>
+  Si Teams se desconecta y luego lo vuelves a conectar, Chateea genera automáticamente los enlaces que faltaban en las **próximas citas** creadas durante la desconexión.
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo uso Teams con un calendario de eventos?">
+    Los calendarios de eventos no generan enlaces dinámicos, pero puedes usar un enlace fijo. Crea la reunión en Microsoft Teams, copia el enlace y, en la configuración del calendario, elige **Personalizado** como ubicación de la reunión y pega el enlace. Ten en cuenta que todas las reservas usarán ese mismo enlace.
+  </Accordion>
+  <Accordion title="Conecté Outlook, ¿por qué no se generan enlaces de Teams?">
+    Porque Outlook y Teams se conectan por separado. Ve a **Conexiones → Videoconferencias** y conecta Microsoft Teams.
+  </Accordion>
+  <Accordion title="¿Puedo conectar mi cuenta personal de Microsoft?">
+    No. Solo se admiten cuentas de Teams de trabajo o de estudios.
+  </Accordion>
+  <Accordion title="¿Se generan enlaces si uso una cuenta de Teams compartida?">
+    Sí. Los calendarios de reserva personal, round robin, colectivos y de servicios crean un enlace por cita, siempre que Teams sea la ubicación de la reunión y la cuenta esté conectada.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integrar Zoom con tus calendarios" icon="video" href="/calendarios/integrar-zoom-con-calendarios">
+    Genera enlaces de Zoom automáticos en cada reserva.
+  </Card>
+  <Card title="Varias ubicaciones de reunión" icon="location-dot" href="/calendarios/varias-ubicaciones-de-reunion">
+    Ofrece varias opciones de ubicación en un calendario.
+  </Card>
+</CardGroup>

@@ -1,0 +1,131 @@
+---
+title: "Lanza tu sitio web desde una plantilla"
+description: "Crea, personaliza, conecta tu dominio y publica tu sitio web desde una plantilla sin errores comunes."
+icon: "globe"
+---
+
+Lanzar un sitio web en Chateea tiene cinco pasos: crearlo, personalizarlo, conectar tu dominio, asignar el dominio al sitio y publicarlo. Hacerlo en este orden evita los problemas más comunes: direcciones rotas, cambios que no se ven en línea y errores de dominio. Al final encontrarás una lista de verificación para revisar antes de compartir el sitio con tus clientes.
+
+## Guardar no es lo mismo que publicar
+
+Antes de empezar, ten clara esta diferencia:
+
+| Botón | Qué hace |
+| --- | --- |
+| **Guardar** | Guarda tus cambios como borrador. Los visitantes todavía no los ven. |
+| **Publicar** | Hace visible en línea la última versión guardada. |
+
+## Antes de empezar
+
+Ten listo lo siguiente para no frenarte a mitad del proceso:
+
+- Tu logo, imágenes, textos y la lista de páginas que necesitas.
+- Un dominio, comprado en Chateea o en otro proveedor.
+- Acceso a la configuración DNS de tu proveedor de dominio, por si la conexión debe hacerse de forma manual.
+- La decisión de usar un dominio raíz (`tunegocio.com`) o un subdominio (`www.tunegocio.com`).
+- Cuál será tu página de inicio y qué ruta tendrá cada página adicional.
+
+<Info>
+Los cambios de DNS pueden tardar hasta 24 horas en propagarse. Chateea genera el certificado SSL automáticamente cuando el dominio queda conectado y los registros DNS se verifican.
+</Info>
+
+## Cómo lanzar tu sitio web
+
+<Steps>
+  <Step title="Crea el sitio web">
+    1. Ve a **Sitios → Sitios web** y haz clic en **Nuevo sitio web**.
+    2. Elige un punto de partida: **Desde plantilla** para usar un diseño prediseñado, o **Desde cero** para construirlo tú.
+    3. Escribe el nombre del sitio y haz clic en **Crear**.
+    4. Si elegiste plantilla, previsualiza los diseños disponibles y selecciona el que prefieras.
+  </Step>
+  <Step title="Personaliza y guarda">
+    1. Abre cada página en el creador de sitios.
+    2. Cambia textos, imágenes, colores, menú, botones, formularios y demás elementos de la plantilla.
+    3. Revisa que los enlaces del menú apunten a las páginas correctas.
+    4. Revisa la vista de escritorio y la de móvil.
+    5. Usa **Vista previa** para ver la página como la vería un visitante.
+    6. En la configuración SEO de cada página, agrega el título y la meta descripción.
+    7. Haz clic en **Guardar**.
+  </Step>
+  <Step title="Conecta el dominio">
+    1. Sal del creador y abre la pestaña **Configuración** del sitio.
+    2. En **Dominio**, haz clic en **Conectar dominio**. Si se abre la página de dominios, haz clic en **Conectar un dominio**.
+    3. Elige **Conectar** junto a la opción de embudo, sitio web, tienda, blog o webinar.
+    4. Escribe el dominio raíz o subdominio que usarán tus visitantes y haz clic en **Continuar**.
+    5. Completa la conexión con la opción que te muestre Chateea:
+       - **Conexión automática**: inicias sesión en tu proveedor de dominio (si es compatible) y autorizas a Chateea a crear los registros.
+       - **Conexión manual**: copias los registros DNS que te muestra Chateea y los agregas en tu proveedor.
+    6. Espera a que el dominio aparezca como conectado o verificado.
+  </Step>
+  <Step title="Asigna el dominio al sitio">
+    1. Vuelve a **Sitios → Sitios web** y abre tu sitio.
+    2. En la pestaña **Configuración**, abre el desplegable **Dominio** y elige el dominio conectado.
+    3. Revisa la **Ruta**: deja una ruta como `/servicios` si el sitio debe abrir en `tunegocio.com/servicios`, o usa tu página de inicio como página predeterminada si debe abrir directamente en `tunegocio.com`.
+    4. Baja hasta el final y haz clic en **Guardar**.
+  </Step>
+  <Step title="Publica">
+    1. Vuelve al creador de sitios y haz una última vista previa.
+    2. Haz clic en **Guardar** y luego en **Publicar**.
+    3. Publica todas las páginas que deban estar en línea.
+  </Step>
+</Steps>
+
+<Warning>
+Si usas Cloudflare, configura el registro A o CNAME del sitio como **Solo DNS** (DNS only), no como Proxied. De lo contrario, el dominio puede no verificarse o mostrar errores de SSL.
+</Warning>
+
+## Lista de verificación antes de compartir el sitio
+
+Abre el sitio en una ventana de incógnito para ver exactamente lo que verá un visitante, sin caché ni sesión iniciada.
+
+- El dominio aparece como **Conectado**, **Verificado** o **Activo** en Chateea.
+- La dirección pública abre en una ventana de incógnito.
+- El sitio carga con `https://` y sin advertencias de seguridad.
+- Aparece la página de inicio correcta y no un error 404.
+- La versión con y sin `www` se comporta como esperas.
+- Los enlaces del menú y los botones abren las páginas correctas.
+- Los formularios, calendarios, ventanas emergentes y pagos funcionan.
+- Un envío de prueba de formulario crea el contacto o la notificación esperada.
+- El diseño se ve bien en escritorio y en móvil.
+- El contenido en línea es la última versión publicada.
+- No quedan textos de ejemplo, imágenes de la plantilla, precios de prueba ni enlaces rotos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el sitio en línea sigue mostrando contenido viejo?">
+    Probablemente guardaste los cambios pero no los publicaste. Abre la página, haz clic en **Publicar** y revisa la dirección en una ventana de incógnito.
+  </Accordion>
+  <Accordion title="¿Por qué mi dominio sigue pendiente?">
+    Los cambios de DNS pueden seguir propagándose, o algún registro no coincide con el valor que indica Chateea. Espera hasta 24 horas y luego revisa el tipo de registro, el host y el valor. Elimina los registros que entren en conflicto.
+  </Accordion>
+  <Accordion title="¿Por qué aparece una advertencia de SSL o de privacidad?">
+    Suele deberse a registros DNS incorrectos o en conflicto. En Cloudflare, los registros deben estar en **Solo DNS**. Tras corregirlos, espera a que Chateea emita el certificado SSL.
+  </Accordion>
+  <Accordion title="¿Por qué el dominio abre una página 404?">
+    Confirma que el dominio está asignado al sitio correcto, que la página está publicada y que la página predeterminada o la ruta están bien configuradas.
+  </Accordion>
+  <Accordion title="¿Qué hago si la conexión automática no está disponible?">
+    Usa la conexión manual y agrega en tu proveedor de dominio los registros DNS exactos que te muestra Chateea.
+  </Accordion>
+  <Accordion title="¿Debo verificar un dominio comprado en Chateea?">
+    No. Los dominios comprados en Chateea se verifican automáticamente. Los configuras en **Configuración → Dominios → Dominios comprados**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crea tu sitio web desde cero" icon="pen-ruler" href="/primeros-pasos/crea-tu-sitio-web-desde-cero">
+    Planifica y construye tu sitio página por página.
+  </Card>
+  <Card title="Lanza tu primer embudo" icon="filter" href="/primeros-pasos/lanza-tu-primer-embudo">
+    Crea una página de captación o de ventas.
+  </Card>
+  <Card title="Configura el chat en vivo" icon="comments" href="/primeros-pasos/configura-el-chat-en-vivo">
+    Agrega un chat a tu sitio web.
+  </Card>
+  <Card title="Crea y vende productos" icon="bag-shopping" href="/primeros-pasos/crea-y-vende-productos">
+    Vende desde tu sitio, embudo o tienda.
+  </Card>
+</CardGroup>

@@ -1,0 +1,96 @@
+---
+title: "GPT-5 en flujos de trabajo"
+description: "Usa GPT-5, GPT-5 Mini, GPT-5 Nano y GPT-5.1 en la acción GPT de tus flujos y elige el modelo según calidad y costo."
+icon: "wand-magic-sparkles"
+---
+
+La acción **GPT con OpenAI** de tus flujos de trabajo te permite usar la familia de modelos GPT-5 de OpenAI para generar o transformar texto dentro de tus automatizaciones: redactar correos, responder mensajes, resumir notas, clasificar clientes potenciales y mucho más. Cada modelo equilibra de forma distinta calidad, velocidad y costo, así que puedes elegir el adecuado para cada paso sin rehacer el flujo.
+
+## Por qué usar GPT-5 en tus flujos
+
+- **Velocidad:** respuestas casi en tiempo real para que tus clientes no esperen.
+- **Calidad constante:** mejor razonamiento y resultados más consistentes que modelos anteriores.
+- **Flexibilidad:** varios niveles de modelo para ajustar rendimiento y presupuesto.
+- **Simplicidad:** se configura con unos clics dentro de la acción, sin integraciones adicionales.
+
+## Modelos disponibles
+
+| Modelo | Ideal para | Costo relativo |
+| --- | --- | --- |
+| **GPT-5** | Razonamiento largo, análisis de documentos, textos importantes. Es el que admite más contexto y el más lento de los tres niveles principales. | Alto |
+| **GPT-5 Mini** (predeterminado) | Correos, respuestas de chat y textos de marketing del día a día. Equilibra velocidad y calidad. | Medio |
+| **GPT-5 Nano** | Clasificación de alto volumen, respuestas cortas y resúmenes ligeros. Es el más rápido. | El más bajo |
+| **GPT-5.1** | Seguir instrucciones con más precisión, con un tono más cálido y conversacional. | Alto (similar a GPT-5) |
+
+## Cómo se cobra
+
+El uso de GPT-5 se descuenta de la **billetera** de tu cuenta según los **tokens** que consume cada ejecución:
+
+- **Tokens de entrada:** tu instrucción más el contexto que envías (por ejemplo, el mensaje del cliente o los datos del contacto).
+- **Tokens de salida:** la respuesta que genera el modelo.
+
+Cada tipo de token tiene su propia tarifa, y el costo depende del modelo que elijas. Como referencia, un token equivale aproximadamente a cuatro caracteres de texto en inglés (en español suele ser un poco menos). Un correo de unas 400 palabras ronda los 500 tokens.
+
+Puedes consultar las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+
+<Tip>
+Para tareas de mucho volumen (clasificar miles de mensajes, etiquetar respuestas), empieza con **GPT-5 Nano**. Reserva **GPT-5** para los pasos donde la calidad del texto marca la diferencia.
+</Tip>
+
+## Cómo configurar GPT-5 en un flujo
+
+<Steps>
+<Step title="Agrega la acción de GPT">
+Abre tu flujo de trabajo, haz clic en **+** donde quieres el paso de IA, busca **GPT con OpenAI** (GPT powered by OpenAI) y selecciónala.
+</Step>
+<Step title="Elige el modelo">
+En la lista **Modelo**, deja **GPT-5 Mini** (predeterminado) o elige **GPT-5**, **GPT-5 Nano** o **GPT-5.1** según tu caso de uso.
+</Step>
+<Step title="Escribe la instrucción">
+Redacta tu instrucción y agrega los valores personalizados que necesites, como `{{contact.first_name}}` o el último mensaje del contacto.
+</Step>
+<Step title="Guarda y publica">
+Guarda la acción, prueba el flujo con un contacto de prueba y publícalo.
+</Step>
+</Steps>
+
+## Consejos para escribir instrucciones
+
+- **Define el rol y el formato:** empieza indicando qué papel cumple la IA y el formato exacto de la respuesta (por ejemplo, "Eres asistente de ventas. Responde en máximo 3 frases, sin emojis").
+- **Delimita los textos largos:** si incluyes un documento o un mensaje largo, enciérralo entre tres comillas invertidas para que el modelo distinga la instrucción del contenido.
+- **Divide el contenido extenso:** con GPT-5 Nano, parte los textos de varias páginas en llamadas más pequeñas para mantener el costo bajo.
+- **Incluye ejemplos:** mostrar uno o dos ejemplos de la respuesta esperada mejora la consistencia, sobre todo con Mini y Nano.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué modelo es el más económico para tareas de alto volumen?">
+GPT-5 Nano tiene la tarifa más baja por token. Es ideal para tareas en segundo plano o de gran volumen donde la velocidad y el costo importan más que un texto elaborado.
+</Accordion>
+<Accordion title="¿Puedo cambiar de modelo sin rehacer el flujo?">
+Sí. Edita la acción de GPT, elige otro modelo y guarda. No necesitas cambiar ningún otro paso.
+</Accordion>
+<Accordion title="¿Cómo se calculan los tokens de entrada y salida?">
+Los de entrada incluyen la instrucción y el contexto que envías; los de salida son la respuesta del modelo. Ambos se miden y se cobran por separado.
+</Accordion>
+<Accordion title="¿Hay límites de uso?">
+Se aplican los mismos límites de solicitudes que establece OpenAI. En momentos de mucho tráfico, algunas solicitudes pueden tardar un poco más en procesarse.
+</Accordion>
+<Accordion title="¿GPT-5 admite más contexto que los modelos anteriores?">
+Sí. GPT-5 admite ventanas de contexto más amplias que GPT-4 Turbo, lo que permite trabajar con textos más largos y razonamientos de varios pasos.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Modelos GPT en flujos" icon="robot" href="/automatizaciones/modelos-gpt-en-flujos">
+Compara los modelos de GPT disponibles en la acción.
+</Card>
+<Card title="Historial en acciones de GPT" icon="clock-rotate-left" href="/automatizaciones/historial-en-acciones-gpt">
+Haz que la IA recuerde interacciones anteriores.
+</Card>
+<Card title="Cómo se cobra la IA" icon="credit-card" href="/ia/como-se-cobra-la-ia">
+Entiende el consumo de IA en tu billetera.
+</Card>
+</CardGroup>

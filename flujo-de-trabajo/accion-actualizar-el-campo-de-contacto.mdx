@@ -1,178 +1,128 @@
 ---
-title: "Acción: Actualizar el campo de contacto."
-sidebarTitle: "Acción: Actualizar el campo de contacto."
-description: 'Las acciones "Actualizar campo de contacto" y "Borrar datos de campo" permiten actualizar el valor de un campo del contacto con datos estáticos o dinámicos, o vaciar un campo personalizado.'
-icon: "user-pen"
+title: "Acción: Actualizar campo de contacto"
+description: "Escribe, vacía o calcula valores en campos del contacto desde un flujo, incluidos campos de fecha y valores dinámicos."
+icon: "pen-to-square"
 ---
 
-## Acción: Actualizar el campo de contacto.
+La acción **Actualizar campo de contacto** (Update Contact Field) escribe un valor nuevo en un campo estándar o personalizado del contacto, o vacía un campo personalizado, justo en el momento en que el flujo de trabajo llega a ese paso. Es la forma más habitual de mantener los datos de tus contactos al día para personalizar mensajes, segmentar listas, sacar informes y tomar decisiones en pasos posteriores del flujo. Todos los cambios quedan registrados en el **Historial de ejecución** del flujo.
 
-<Info>
-  **Documentado el 16 de agosto de 2026.**
+## Agregar la acción
 
-  Artículo original modificado el martes, 25 de abril de 2023 a las 10:27 a. m.
-</Info>
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre o crea un flujo.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+** en el punto donde quieras la acción y elige **Actualizar campo de contacto**.
+  </Step>
+  <Step title="Ponle un nombre">
+    Usa un nombre descriptivo para reconocerla fácilmente en el lienzo y en el historial de ejecución.
+  </Step>
+  <Step title="Elige el tipo de acción">
+    Selecciona **Actualizar datos del campo** o **Borrar datos del campo**. Según lo que elijas, verás distintas opciones.
+  </Step>
+</Steps>
 
-Este artículo explica las acciones **"Actualizar campo de contacto"** y **"Borrar datos de campo"** de los flujos de trabajo. La primera permite actualizar un campo de contacto con un nuevo valor, ya sea estático o dinámico, mientras que la segunda borra el valor existente de un campo de contacto personalizado. Ambas acciones solo son compatibles actualmente con los campos personalizados de contacto.
+## Tipos de acción
 
-### Temas tratados en este artículo
+| Tipo | Qué hace | Campos admitidos |
+| --- | --- | --- |
+| **Actualizar datos del campo** (Update field data) | Escribe un valor nuevo que reemplaza al actual | Estándar y personalizados |
+| **Borrar datos del campo** (Clear field data) | Deja el campo vacío | Solo personalizados |
 
-- ¿Qué es la acción "Actualizar campo de contacto" en los flujos de trabajo?
-- ¿Cuáles son algunos buenos casos de uso para esto?
-- ¿Cómo utilizar esta acción?
-  - Seleccione Actualizar/Borrar datos de campo
-  - Actualizar datos de campo
-  - Borrar datos de campo
+### Actualizar datos del campo
 
----
+1. Selecciona el campo del contacto que quieres cambiar.
+2. Escribe el valor como **valor fijo** o elige un **valor dinámico** (datos en vivo del flujo o del contacto).
+3. Cuando el flujo llegue a este paso, el valor nuevo reemplazará al anterior.
 
-## ¿Qué es la acción "Actualizar campo de contacto" en los flujos de trabajo?
+### Borrar datos del campo
 
-La acción "Actualizar campo de contacto" en los flujos de trabajo permite actualizar el valor de un campo específico para un contacto. Con esta acción, puede especificar un nuevo valor para el campo, y el valor existente del contacto se reemplazará por el nuevo. Sin embargo, con esta nueva función, también puede borrar el campo, es decir, vaciar el campo de entrada o restablecerlo a su valor predeterminado.
+1. Elige **Borrar datos del campo** como tipo de acción.
+2. Selecciona uno o varios campos personalizados.
+3. Al ejecutarse, esos campos quedan vacíos.
 
 <Warning>
-  **Tenga en cuenta:** es importante tener en cuenta que la función para borrar datos de campo actualmente solo admite los campos personalizados de contacto.
+  Vaciar un campo puede cambiar quién entra en tus listas inteligentes, cómo funcionan tus filtros y qué rama toma una condición en otros flujos. Revisa qué depende de ese campo antes de publicar.
 </Warning>
 
-Puedes usar esta acción para actualizar o borrar varios campos con valores estáticos o personalizados en cualquier punto del flujo de trabajo. Los campos se pueden actualizar dinámicamente en los flujos de trabajo dondequiera que se utilicen.
+## Usar valores dinámicos
 
-<Note>
-  **Imagen próximamente.** Captura de la tarjeta de la acción **Update Contact Field** tal como aparece en el listado de acciones del constructor de flujos de trabajo.
-</Note>
+Los valores dinámicos te permiten rellenar un campo con la salida de un paso anterior del flujo o con otro campo ya guardado del contacto, sin escribir el valor a mano. Se calculan en el momento de la ejecución para cada contacto.
 
----
+Tipos de campo compatibles con valores dinámicos en esta acción:
 
-## ¿Cuáles son algunos buenos casos de uso para esto?
+- **Numérico:** puntuaciones, conteos.
+- **Selección / Lista desplegable:** no necesitas el ID de la opción (a diferencia de las condiciones Si/Entonces, donde sí se requiere).
+- **Monetario:** totales, importes.
 
-Estos son algunos ejemplos de uso excelentes para las acciones "Actualizar campo de contacto" y "Borrar datos de campo" en flujos de trabajo.
+Para usarlos:
 
-<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
-  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "680px" }}>
-    <thead>
-      <tr style={{ background: "#13322c" }}>
-        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>Caso de uso</th>
-        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Con "Actualizar campo de contacto"</th>
-        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Con "Borrar datos de campo"</th>
-      </tr>
-    </thead>
+1. Elige **Actualizar datos del campo** y selecciona el campo de destino.
+2. En el valor, cambia a **Valor dinámico**.
+3. Elige la salida de un paso anterior o un campo guardado del contacto.
+4. Guarda y publica el flujo.
 
-    <tbody>
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Gestión de clientes potenciales</td>
-        <td style={{ padding: "10px 16px" }}>Actualizar el campo de origen del cliente potencial según la fuente de referencia. Ayuda a comprender de dónde provienen los leads y a optimizar las estrategias de marketing.</td>
-        <td style={{ padding: "10px 16px" }}>Eliminar la información obsoleta de los registros de clientes potenciales.</td>
-      </tr>
+Por ejemplo: cuando un paciente confirma una cita, el flujo recoge el tipo de confirmación ("Seguimiento" o "Primera visita") y lo guarda en un campo personalizado del contacto. Así el registro queda correcto y el siguiente mensaje es el adecuado.
 
-      <tr>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Personalización</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Personalizar las campañas de email marketing actualizando campos de contacto como el nombre o los apellidos, lo que aumenta la interacción y las tasas de conversión.</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Eliminar información incorrecta o desactualizada de los campos de contacto.</td>
-      </tr>
+## Campos de tipo fecha
 
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Gestión del embudo de ventas</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Actualizar la etapa de un contacto en el embudo de ventas según su progreso, para un seguimiento y una gestión más eficaces.</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Eliminar contactos de su embudo si ya no son adecuados.</td>
-      </tr>
+Cuando el campo que actualizas es de tipo fecha, puedes elegir entre tres opciones:
 
-      <tr>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Integraciones personalizadas</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Actualizar campos personalizados de contacto con datos de otras integraciones. Por ejemplo, usar Zapier para actualizar un campo personalizado con datos de una hoja de Google Sheet o del envío de un formulario de tu sitio web.</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Restablecer campos personalizados en función de activadores o condiciones específicas.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-**Cómo leer esta tabla:** cada fila es un mismo escenario visto desde las dos acciones. La columna central describe qué escribe la acción en el campo; la columna derecha, cuándo conviene vaciarlo.
-
----
-
-## ¿Cómo utilizar esta acción?
-
-### Seleccione Actualizar/Borrar datos de campo
-
-Dentro de la acción **Update Contact Field**, el desplegable **ACTION TYPE** ofrece dos opciones:
-
-<div style={{ overflowX: "auto", borderRadius: "14px", border: "1px solid rgba(58,221,143,0.35)", boxShadow: "0 2px 10px rgba(19,50,44,0.08)", margin: "1.25rem 0" }}>
-  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.92rem", minWidth: "560px" }}>
-    <thead>
-      <tr style={{ background: "#13322c" }}>
-        <th style={{ padding: "12px 16px", color: "#3add8f", textAlign: "left" }}>ACTION TYPE</th>
-        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Qué hace</th>
-        <th style={{ padding: "12px 16px", color: "#ffffff", textAlign: "left" }}>Campos admitidos</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr style={{ background: "rgba(58,221,143,0.06)" }}>
-        <td style={{ padding: "10px 16px", fontWeight: "600" }}>Update field data</td>
-        <td style={{ padding: "10px 16px" }}>Actualiza el campo seleccionado con el valor proporcionado, ya sea estático o dinámico.</td>
-        <td style={{ padding: "10px 16px" }}>Campos de contacto (por ejemplo Email, teléfono o campos personalizados).</td>
-      </tr>
-
-      <tr>
-        <td style={{ padding: "10px 16px", fontWeight: "600", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Clear field data</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Restablece el campo seleccionado a su valor predeterminado, es decir, borra los datos y lo deja en NULL o vacío.</td>
-        <td style={{ padding: "10px 16px", borderTop: "1px solid rgba(58,221,143,0.18)" }}>Solo campos personalizados de contacto.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<Note>
-  **Imagen próximamente.** Captura del panel **Update Contact Field** con el campo _ACTION NAME_ en `Update contact field` y el desplegable _ACTION TYPE_ abierto mostrando **Update field data** y **Clear field data**.
-</Note>
-
-### Actualizar datos de campo (Update Field Data)
-
-Actualiza el campo seleccionado con el valor proporcionado.
-
-La acción "Update Contact Field" en los flujos de trabajo permite actualizar el valor de un campo específico para un contacto. Es útil cuando quieres actualizar un campo con un valor nuevo, como un número de teléfono, una dirección de correo electrónico o un campo personalizado.
-
-Para usar la acción, debes añadirla a tu flujo de trabajo, seleccionar el campo de contacto que quieres actualizar y especificar el nuevo valor que quieres asignarle. Puedes actualizar el campo con:
-
-- un **valor estático**, un valor fijo que especificas en el flujo de trabajo, o
-- un **valor personalizado**, generado dinámicamente a partir de otros datos de tu flujo de trabajo.
+| Opción | Qué guarda |
+| --- | --- |
+| **Fecha personalizada** | Una fecha a partir de un valor o campo personalizado. Usa uno de los formatos recomendados: `MM-DD-YYYY` (por ejemplo, 12-21-2021) o `DD-MMM-YYYY` (por ejemplo, 21-OCT-2021) |
+| **Fecha actual** | La fecha del día en que se ejecuta la acción |
+| **Fecha específica** | Una fecha concreta que eliges en el calendario |
 
 <Tip>
-  **Ejemplo de la fuente:** si tienes un campo personalizado llamado "Lead Source", puedes usar la acción "Update Contact Field" para actualizar el valor de ese campo en un contacto concreto. Puedes ponerle un valor estático como "Website", indicando que el lead llegó desde tu sitio web. O bien, puedes actualizarlo con un valor personalizado generado dinámicamente a partir de la fuente de referencia del lead.
+  La opción **Fecha actual** es muy útil para registrar hitos, como "Fecha de última compra" o "Fecha de alta", y luego usarlos en filtros o en esperas basadas en fechas.
 </Tip>
 
-Una vez que la acción "Update Contact Field" se ejecuta en el flujo de trabajo, el valor existente del campo del contacto se reemplaza por el nuevo valor especificado en la acción. Es importante tener en cuenta que puedes usar esta acción para actualizar varios campos con valores estáticos o personalizados en cualquier punto del flujo de trabajo.
+## Actualizar varios campos a la vez
 
-<Note>
-  **Imagen próximamente.** Captura del panel con _ACTION TYPE_ en `Update field data` y el bloque _FIELDS_ mostrando la fila `Email` asignada al valor <code>{{contact.email}}</code>, junto al enlace **Add field**.
-</Note>
+En una misma acción puedes cambiar varios campos: haz clic en **Agregar campo** para añadir más filas. Si prefieres tener un registro más claro, puedes separar en acciones distintas lo que actualizas y lo que vacías.
 
-### Borrar datos de campo (Clear Field Data)
+## Formatos y validación
 
-Restablece el campo seleccionado al valor predeterminado (borra los datos).
+Para evitar errores, el valor debe coincidir con el tipo de campo:
 
-Borrar campos de contacto es una función que permite eliminar el valor existente de un campo de contacto, restableciéndolo efectivamente a un valor vacío. Es útil cuando quieres quitar un valor introducido previamente en un campo de contacto. Al usar la función de borrado, el valor del campo del contacto se establece en NULL o vacío.
+| Tipo de campo | Qué revisar |
+| --- | --- |
+| Texto o número | Usa el formato adecuado |
+| Fecha | Usa fechas válidas o valores dinámicos de tipo fecha |
+| Lista desplegable, casillas o botones de opción | El valor debe coincidir con una opción existente |
+| Correo o teléfono | Usa valores con formato correcto |
 
-<Warning>
-  **Tenga en cuenta:** es importante señalar que la función de borrado de datos de campo actualmente solo admite los campos personalizados de contacto (Contact Custom Fields). Esto significa que solo puedes borrar los campos personalizados que hayas creado para tus contactos, no campos estándar como el nombre, el apellido o el correo electrónico.
-</Warning>
+La acción no crea campos nuevos: el campo debe existir antes en tu cuenta.
 
-Para borrar un campo de contacto en un flujo de trabajo, añade la acción "Update Contact Field", selecciona el campo de contacto que quieres borrar y añade un filtro para indicar qué campo quieres borrar. Una vez ejecutado el flujo de trabajo, el campo de contacto quedará sin su valor anterior y se establecerá en un valor vacío.
+## Preguntas frecuentes
 
-<Warning>
-  Es importante usar esta función con precaución, ya que borrar un campo de contacto puede resultar en la pérdida de datos valiosos. Por lo tanto, se recomienda usarla solo cuando sea necesario y asegurarse de tener una copia de seguridad de los datos antes de borrar cualquier campo de contacto.
-</Warning>
+<AccordionGroup>
+  <Accordion title="¿Puedo actualizar campos estándar como el correo o el teléfono?">
+    Sí. **Actualizar datos del campo** funciona con campos estándar y personalizados.
+  </Accordion>
+  <Accordion title="¿Puedo vaciar un campo estándar?">
+    No. **Borrar datos del campo** solo funciona con campos personalizados.
+  </Accordion>
+  <Accordion title="¿En qué se diferencian los valores dinámicos de las variables?">
+    Las variables (por ejemplo `{{contact.first_name}}`) siguen funcionando, pero los valores dinámicos te dejan elegir de una lista la salida de pasos anteriores o campos guardados, sin escribirlas ni mapearlas a mano.
+  </Accordion>
+  <Accordion title="¿Qué pasa si uso un formato incorrecto?">
+    La actualización puede fallar la validación. Revisa el tipo de campo y consulta el historial de ejecución del flujo para ver el detalle.
+  </Accordion>
+  <Accordion title="¿Vaciar un valor afecta a mis listas inteligentes o flujos?">
+    Sí. Puede cambiar quién pertenece a una lista y qué camino toma una condición.
+  </Accordion>
+</AccordionGroup>
 
-<Note>
-  **Imagen próximamente.** Captura del panel con _ACTION TYPE_ en `Clear field data` y el bloque _FIELDS_ mostrando el campo `Renewal Date` seleccionado con su icono de papelera.
-</Note>
-
----
+## Artículos relacionados
 
 <CardGroup cols={2}>
-  <Card title="Actualizar valor personalizado" icon="pen-to-square" href="/flujo-de-trabajo/accion-actualizar-valor-personalizado">
-    La acción equivalente, pero a nivel de subcuenta en lugar de contacto.
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores y acciones.
   </Card>
-
-  <Card title="Activador Premium de webhook entrante" icon="arrow-right-to-bracket" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
-    Trae desde un sistema externo los datos con los que actualizarás el campo.
+  <Card title="Acción: Actualizar valor personalizado" icon="pen-to-square" href="/flujo-de-trabajo/accion-actualizar-valor-personalizado">
+    Cambia valores personalizados de tu cuenta desde un flujo.
   </Card>
 </CardGroup>

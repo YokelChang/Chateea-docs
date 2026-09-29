@@ -1,0 +1,98 @@
+---
+title: "Usar un número de Chateea para WhatsApp Business"
+description: "Usa un número comprado en la plataforma como tu línea de WhatsApp Business para llamadas, SMS y WhatsApp."
+icon: "sim-card"
+---
+
+Puedes usar un número de teléfono comprado en Chateea como tu número de WhatsApp Business. Así no necesitas conseguir una línea aparte: el mismo número puede servir para llamadas, SMS y WhatsApp desde tu cuenta de Chateea.
+
+## Cómo funciona la verificación
+
+Durante el registro, Meta envía un código de verificación al número, por **SMS** o por **llamada**:
+
+- Si tu número acepta SMS, el código llega como mensaje entrante en **Conversaciones** de Chateea.
+- Si tu número solo tiene capacidad de voz, Meta te llama. En ese caso necesitas configurar el **desvío de llamadas** a un teléfono que tengas a la mano para escuchar el código.
+
+## Antes de empezar
+
+- Una cuenta de Facebook con acceso al Meta Business Manager de tu empresa. Si no tienes cuenta de WhatsApp Business (WABA) ni perfil de negocio, el registro te ayuda a crearlos.
+- El número no debe estar registrado en ninguna app de WhatsApp. Si lo está, elimina esa cuenta primero desde **Ajustes → Cuenta → Eliminar cuenta** en la app. El historial de esa cuenta no se migra.
+- WhatsApp activo en tu cuenta de Chateea. Si no ves la opción, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Paso 1: compra y prepara el número
+
+<Steps>
+  <Step title="Compra un número">
+    Ve a **Configuración → Números de teléfono**, pulsa **Agregar número**, elige uno y pulsa **Comprar**.
+  </Step>
+  <Step title="Configura el desvío de llamadas">
+    En la configuración del número, activa el **desvío de llamadas** hacia un teléfono personal donde puedas contestar. Es obligatorio si el número solo tiene voz, y recomendable en cualquier caso por si el SMS no llega.
+  </Step>
+</Steps>
+
+## Paso 2: registra el número en WhatsApp
+
+<Steps>
+  <Step title="Abre la configuración de WhatsApp">
+    Ve a **Configuración → WhatsApp** e inicia la conexión.
+  </Step>
+  <Step title="Inicia sesión con Facebook">
+    Pulsa **Registrarse con Facebook** e inicia sesión con la cuenta vinculada a tu Meta Business Manager. Luego pulsa **Comenzar**.
+  </Step>
+  <Step title="Completa los datos del negocio">
+    Elige tu portafolio comercial, escribe el nombre del negocio, agrega tu sitio web o perfil y selecciona el país.
+  </Step>
+  <Step title="Crea o elige tu cuenta de WhatsApp Business">
+    Si ya tienes una WABA, selecciónala. Si no, crea una nueva.
+  </Step>
+  <Step title="Crea el perfil de WhatsApp Business">
+    Escribe el nombre de la cuenta, el nombre visible (el que verán tus clientes) y elige la categoría del negocio.
+  </Step>
+  <Step title="Ingresa tu número de Chateea y el método de verificación">
+    Escribe el número que compraste y elige **Llamada telefónica** si solo tiene voz (con el desvío ya activo) o **SMS** si acepta mensajes de texto.
+  </Step>
+  <Step title="Ingresa el código">
+    Si elegiste SMS, abre **Conversaciones** en Chateea: el código de Meta aparece como mensaje entrante. Si elegiste llamada, contesta en el teléfono al que desviaste las llamadas. Escribe el código en el registro.
+  </Step>
+  <Step title="Acepta los permisos">
+    Revisa y acepta los permisos que Chateea necesita para administrar tu cuenta de WhatsApp Business.
+  </Step>
+  <Step title="Listo">
+    Tu número ya envía y recibe mensajes de WhatsApp desde **Conversaciones**.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar el número en WhatsApp si no terminé el registro A2P 10DLC?">
+    Sí. Puedes registrar el número en WhatsApp sin haber completado A2P 10DLC. Aun así, te recomendamos completarlo para que tus SMS a Estados Unidos se entreguen bien y cumplas las normas.
+  </Accordion>
+  <Accordion title="¿Dónde configuro el desvío de llamadas?">
+    En **Configuración → Números de teléfono**, busca tu número y configura el desvío hacia un teléfono donde puedas recibir llamadas. Así el código de Meta te llega durante el registro.
+  </Accordion>
+  <Accordion title="Me dice que el número ya está registrado en una cuenta de WhatsApp">
+    Pasa en dos casos:
+
+    - **Tienes WhatsApp personal o Business en el teléfono con ese número.** Elimina esa cuenta desde **Ajustes → Cuenta → Eliminar cuenta** en la app y vuelve a intentarlo. El historial no se migra. Meta explica el proceso en su guía para [migrar un número existente a una cuenta de empresa](https://developers.facebook.com/docs/whatsapp/cloud-api/get-started/migrate-existing-whatsapp-number-to-a-business-account).
+    - **El número está conectado a otro proveedor de WhatsApp Business.** Debes migrarlo a una nueva WABA. Consulta el método de migración en [Conectar WhatsApp a tu cuenta](/whatsapp/conectar-whatsapp).
+  </Accordion>
+  <Accordion title="Recibo el error de mensaje no entregable">
+    Las causas más comunes son:
+
+    - El número del destinatario no tiene WhatsApp.
+    - Enviaste una plantilla de autenticación a un número de India (+91). Por ahora Meta no permite enviar plantillas de autenticación a usuarios de India.
+    - Meta bloqueó el mensaje por el [límite de plantillas de marketing por usuario](https://developers.facebook.com/docs/whatsapp/cloud-api/guides/send-message-templates#per-user-marketing-template-message-limits).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar WhatsApp a tu cuenta" icon="plug" href="/whatsapp/conectar-whatsapp">
+    Los tres métodos para conectar tu número.
+  </Card>
+  <Card title="Solución de problemas de WhatsApp" icon="wrench" href="/whatsapp/solucion-de-problemas">
+    Qué revisar si algo no funciona.
+  </Card>
+</CardGroup>

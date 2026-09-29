@@ -1,0 +1,97 @@
+---
+title: "Duplicar un pipeline"
+description: "Crea una copia de un pipeline con sus etapas, permisos y etiquetas inteligentes sin rehacerlo desde cero."
+icon: "copy"
+---
+
+Duplicar un pipeline te permite crear una copia de uno que ya tienes en tu cuenta de Chateea, sin rehacer las etapas una por una. Es ideal para lanzar un proceso parecido (por ejemplo, un pipeline de renovaciones a partir del de ventas) o para probar cambios sin tocar el pipeline que tu equipo usa a diario.
+
+## Cuándo conviene duplicar
+
+- **Crear un proceso similar:** reutiliza la estructura de etapas y solo ajusta lo que cambia.
+- **Probar variaciones:** experimenta con otras etapas o probabilidades en una copia antes de aplicarlas al pipeline real.
+- **Ahorrar tiempo:** evitas configurar de nuevo colores, permisos y etiquetas inteligentes.
+
+## Quién puede duplicar
+
+La opción **Duplicar** está disponible para cualquier usuario con permiso de **Editar** en ese pipeline (y, por supuesto, para los administradores). Si no ves la opción, revisa tus permisos de pipeline.
+
+## Qué se copia y qué no
+
+| Se copia | No se copia |
+| --- | --- |
+| Etapas del pipeline | Oportunidades (registros) |
+| Permisos del pipeline | Flujos de trabajo y automatizaciones |
+| Etiquetas inteligentes de color | Informes |
+| Configuración de visibilidad en gráficos | Campos personalizados |
+
+<Note>
+El pipeline nuevo empieza vacío. Si tienes flujos de trabajo que dependen del pipeline original (por ejemplo, con el disparador **Etapa del pipeline cambiada**), tendrás que ajustarlos o crear otros para el pipeline duplicado.
+</Note>
+
+## Duplicar un pipeline
+
+<Steps>
+  <Step title="Abre la lista de pipelines">
+    Ve a **Oportunidades → Pipelines**.
+  </Step>
+  <Step title="Elige Duplicar">
+    Busca el pipeline que quieres copiar, haz clic en el menú de tres puntos a la derecha y selecciona **Duplicar**.
+  </Step>
+  <Step title="Ponle nombre">
+    En la ventana **Duplicar pipeline**, escribe el nombre del nuevo pipeline. Por defecto aparece el nombre original con "(copia)" al final. Cámbialo de inmediato para distinguirlo.
+  </Step>
+  <Step title="Ajusta colores y etapas">
+    Elige cómo se mostrarán los colores de las etapas y modifica las etapas si lo necesitas: reordénalas, renómbralas, agrega o quita las que sobren.
+  </Step>
+  <Step title="Configura la visibilidad en informes">
+    Decide si cada etapa se muestra en el panel de control. Si desactivas todas, el pipeline no aparecerá en el panel.
+  </Step>
+  <Step title="Confirma">
+    Haz clic en **Duplicar**. El nuevo pipeline aparece en la lista y ya puedes editarlo o empezar a usarlo.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- Renombra el pipeline duplicado en cuanto lo crees para no confundirlo con el original.
+- Usa la duplicación para probar cambios antes de aplicarlos al pipeline principal.
+- Después de duplicar, revisa lo que no se copia (flujos de trabajo, informes y campos personalizados) y completa lo que haga falta.
+- Revisa los permisos heredados: si el nuevo pipeline es para otro equipo, ajústalos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se copian las oportunidades del pipeline original?">
+    No. El pipeline duplicado se crea sin oportunidades.
+  </Accordion>
+  <Accordion title="¿Se copian los flujos de trabajo, informes o campos personalizados?">
+    No. Solo se copian las etapas, los permisos, las etiquetas inteligentes y la visibilidad en gráficos.
+  </Accordion>
+  <Accordion title="¿Se copian las etiquetas inteligentes y los permisos?">
+    Sí. Al duplicar un pipeline dentro de tu cuenta, se copian tanto sus etiquetas inteligentes de color como sus permisos.
+  </Accordion>
+  <Accordion title="¿Por qué no veo la opción Duplicar?">
+    Necesitas permiso de **Editar** en ese pipeline. Pide a un administrador de tu cuenta que revise tus permisos.
+  </Accordion>
+  <Accordion title="¿Puedo usar el mismo pipeline en otra cuenta de Chateea?">
+    La duplicación funciona dentro de tu misma cuenta. Si necesitas replicar pipelines en otra cuenta, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un pipeline" icon="diagram-project" href="/oportunidades/crear-un-pipeline">
+    Configura un pipeline desde cero.
+  </Card>
+  <Card title="Permisos de pipelines" icon="key" href="/oportunidades/permisos-de-pipelines">
+    Controla quién ve y edita cada pipeline.
+  </Card>
+  <Card title="Etiquetas inteligentes en pipelines" icon="tags" href="/oportunidades/etiquetas-inteligentes-en-pipelines">
+    Resalta oportunidades con chips de color automáticos.
+  </Card>
+  <Card title="Reordenar pipelines" icon="sort" href="/oportunidades/reordenar-pipelines">
+    Pon tus pipelines en el orden que prefieras.
+  </Card>
+</CardGroup>

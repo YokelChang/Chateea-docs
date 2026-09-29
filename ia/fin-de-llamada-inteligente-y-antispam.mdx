@@ -1,0 +1,133 @@
+---
+title: "Fin de llamada inteligente y protección contra spam"
+description: "Controla cómo cierra las llamadas tu agente de voz, detecta spam y bloquea automáticamente a quienes insisten."
+icon: "shield-halved"
+---
+
+El **fin de llamada inteligente y la protección contra spam** ayudan a tu agente de IA de voz a cerrar las conversaciones de forma natural y a no perder minutos con llamadas no deseadas. Puedes controlar cómo termina el agente una llamada, detectar spam mientras ocurre, analizar las llamadas entrantes cuando terminan y bloquear automáticamente a quienes insisten.
+
+## Qué incluye
+
+- Un **mensaje de cierre** (Hangup prompt) personalizable.
+- **Detección de spam durante la llamada.**
+- **Análisis de spam después de la llamada** entrante.
+- Un **umbral** configurable para quienes llaman con spam de forma repetida.
+- **Bloqueo automático** con No molestar (DND) para llamadas entrantes.
+- **Aviso por correo** cuando se bloquea un número.
+
+## Beneficios
+
+- **Ahorras minutos:** el agente corta pronto las llamadas de telemarketing, robots o spam evidentes.
+- **Controlas el cierre:** decides qué hace o dice el agente antes de colgar.
+- **Frenas a los insistentes:** quienes superan el umbral quedan bloqueados para llamadas entrantes.
+- **Detectas más spam:** durante la llamada y otra vez al terminar.
+- **Te enteras al instante:** recibes un correo cuando se bloquea un número.
+- **Eliges el nivel de protección** por agente: solo durante, solo después o ambos.
+
+## La acción Finalizar llamada y el mensaje de cierre
+
+La acción **Finalizar llamada** (End call) aparece en **Durante la llamada** dentro del editor del agente. Su **mensaje de cierre** indica al agente qué hacer justo antes de colgar, para que la conversación no termine de golpe.
+
+Chateea incluye un mensaje predeterminado ya probado: el agente pregunta si la persona necesita algo más y espera su confirmación antes de colgar. Puedes:
+
+- Mantener el mensaje predeterminado.
+- Editarlo según tu negocio. Al hacerlo, se marca como **Personalizado**.
+- Volver al original con **Restablecer**.
+
+<Warning>
+El mensaje predeterminado está probado a fondo. Si lo editas, eres responsable de probar y mantener el comportamiento personalizado.
+</Warning>
+
+## Protección contra spam: durante y después de la llamada
+
+| Opción | Qué hace | Para qué sirve |
+| --- | --- | --- |
+| **Durante la llamada** | Agrega instrucciones de spam al mensaje de cierre. El agente evalúa el comportamiento de quien llama y, si es claramente spam, lo rechaza con cortesía y cuelga. | Cortar a tiempo ventas no solicitadas, robots y telemarketing. |
+| **Después de la llamada** | Analiza las llamadas entrantes terminadas y marca las que parecen spam. Habilita el umbral de bloqueo y los avisos. | Detectar spam que no era evidente en vivo, como llamadas silenciosas o automáticas de prueba, y bloquear a los insistentes. |
+
+Puedes activar una, la otra o las dos. Con ambas tienes manejo en vivo y análisis posterior.
+
+<Note>
+Las personas legítimas o dudosas no deben desconectarse solo por sospecha. El agente solo corta cuando el spam es evidente.
+</Note>
+
+### Umbral de bloqueo y No molestar
+
+El **umbral de bloqueo** define cuántas llamadas marcadas como spam hacen falta para bloquear a alguien. Se cuentan dentro de una **ventana de 24 horas**. Al llegar al umbral, el contacto queda en **No molestar para llamadas entrantes** y sus próximas llamadas se bloquean. No necesitas crear un flujo de trabajo para esto.
+
+### Avisos de bloqueo
+
+Con **Después de la llamada** activo, puedes elegir quién recibe un correo cuando se bloquea un número: **Administrador** (predeterminado), **Correo personalizado** o ambos, con direcciones adicionales.
+
+## Cómo configurarlo
+
+<Steps>
+<Step title="Abre el agente">
+Ve a **IA → IA de voz**, abre el agente y entra a **Acciones**. Busca **Finalizar llamada** en **Durante la llamada**.
+</Step>
+<Step title="Revisa el mensaje de cierre">
+Haz clic en el ícono de edición de **Mensaje de cierre**. Mantén el predeterminado o edítalo, y haz clic en **Guardar**.
+</Step>
+<Step title="Activa la detección durante la llamada">
+Activa **Durante la llamada**. Revisa la instrucción de spam que se agrega al mensaje de cierre, ajústala si hace falta y confirma que describe con claridad cuándo colgar. Guarda.
+</Step>
+<Step title="Activa el análisis después de la llamada">
+Activa **Después de la llamada** para analizar las llamadas entrantes cuando terminan.
+</Step>
+<Step title="Define el umbral de bloqueo">
+Usa los botones **-** y **+** para elegir cuántas llamadas marcadas como spam en 24 horas bloquean al contacto.
+</Step>
+<Step title="Configura los avisos">
+En **Avisar al bloquear**, elige **Administrador**, **Correo personalizado** o ambos, agrega direcciones si hace falta y guarda.
+</Step>
+<Step title="Prueba">
+Haz llamadas de prueba. Confirma que las llamadas normales terminan bien, que el cierre suena natural y revisa con cuidado el manejo del spam antes de atender llamadas reales.
+</Step>
+</Steps>
+
+<Info>
+Si no ves estas opciones en la acción **Finalizar llamada**, escribe a soporte de Chateea en **help@chateea.com** para que revisen si están disponibles en tu cuenta.
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Tengo que personalizar el mensaje de cierre?">
+No. Puedes quedarte con el predeterminado si ya funciona como quieres.
+</Accordion>
+<Accordion title="¿Puedo usar solo una de las dos protecciones?">
+Sí. Durante y después de la llamada son opciones independientes.
+</Accordion>
+<Accordion title="¿Qué pasa cuando alguien llega al umbral?">
+Queda en No molestar para llamadas entrantes y sus próximas llamadas se bloquean.
+</Accordion>
+<Accordion title="¿El umbral cuenta las llamadas para siempre?">
+No. Solo cuenta las marcas de spam dentro de una ventana de 24 horas.
+</Accordion>
+<Accordion title="¿Puedo editar las instrucciones de spam?">
+Sí. La instrucción que se agrega al mensaje de cierre es editable.
+</Accordion>
+<Accordion title="¿Es lo mismo que la protección por volumen de llamadas entrantes?">
+No. Esa es una protección de infraestructura aparte. Esta función evalúa el comportamiento de quien llama dentro de la IA de voz.
+</Accordion>
+<Accordion title="¿Detecta todo el spam?">
+No se puede garantizar. Configura y prueba bien el agente para no cortar a personas legítimas.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Acciones durante y después de la llamada" icon="bolt" href="/ia/acciones-durante-y-despues-de-la-llamada">
+Todas las acciones que puede ejecutar tu agente.
+</Card>
+<Card title="Crear un agente de IA de voz" icon="robot" href="/ia/crear-agente-de-voz-ia">
+Configura, prueba y publica tu agente.
+</Card>
+<Card title="Probar agentes de IA de voz desde el navegador" icon="headset" href="/ia/prueba-web-agentes-ia-de-voz">
+Haz llamadas de prueba sin número de teléfono.
+</Card>
+<Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+Conoce cómo funcionan los agentes de IA de voz.
+</Card>
+</CardGroup>

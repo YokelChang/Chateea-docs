@@ -1,0 +1,135 @@
+---
+title: "Nodo enrutador en Agent Studio"
+description: "Dirige la conversación de tu agente por intención con IA, por reglas o sin condición."
+icon: "route"
+---
+
+El nodo enrutador decide hacia dónde va la conversación dentro de un agente de Agent Studio. Según lo que dice el usuario, los datos que ya capturaste o una regla fija, el enrutador envía el flujo al siguiente nodo correcto. Es lo que te permite construir agentes que no siguen un solo camino, sino que se adaptan a cada persona.
+
+## Tipos de enrutamiento
+
+| Tipo | Cómo decide | Úsalo cuando |
+| --- | --- | --- |
+| **Enrutador de IA** | Analiza el último mensaje del usuario y lo compara con las intenciones que definiste. | La gente puede decir lo mismo con palabras distintas, o quieres dividir por interés, sentimiento o intención. |
+| **Enrutador condicional** | Evalúa una variable guardada con una regla (variable, operador y valor). | Ya tienes un dato capturado, como "Sí" o "No", y necesitas una regla explícita. |
+| **Sin condición** | No evalúa nada: siempre pasa al siguiente nodo conectado. | El siguiente paso debe ejecutarse siempre, como un puente entre etapas. |
+
+También puedes usar el enrutador dentro de un **nodo secuencial**, para que un proceso mayormente lineal tome una decisión antes de continuar.
+
+## Para qué sirve
+
+- **Ramas más inteligentes:** diriges a cada persona por lo que quiere decir, no por palabras clave exactas.
+- **Más control:** usas variables y reglas para llevar al contacto al paso correcto.
+- **Lienzos más ordenados:** conectas los nodos con intención en lugar de forzar todo por un solo camino.
+- **Flexibilidad:** combinas enrutamiento por IA, por reglas y sin condición en el mismo agente.
+- **Mejor experiencia:** tus contactos llegan antes al resultado que buscan, con menos pasos innecesarios.
+
+## Enrutador de IA
+
+Defines intenciones con nombres claros y la IA clasifica el mensaje del usuario al momento, usando esos nombres y el contexto de la conversación. No necesitas entrenarla.
+
+Por ejemplo, para un agente que asesora sobre inversiones en plata:
+
+- **El usuario quiere invertir en plata**
+- **El usuario no quiere invertir en plata**
+
+Cada intención es una rama conectada a un nodo distinto.
+
+## Enrutador condicional
+
+Cada condición tiene tres partes: **variable**, **operador** y **valor**. Por ejemplo:
+
+```text
+Variable: {{runtime.userChoice_eyro}}
+Operador: igual a (EQ)
+Valor: Yes
+```
+
+Si la condición se cumple, el flujo va por esa rama; otra condición puede enviar al usuario a un resultado diferente. En cada rama puedes combinar varias reglas y decidir si deben cumplirse **todas** (Y) o **cualquiera** (O).
+
+## Cómo configurar el enrutador
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y abre el agente donde quieres agregar la decisión.
+  </Step>
+  <Step title="Asegúrate de tener disparador y agente de IA">
+    El agente debe tener un disparador (por ejemplo, **Mensaje de chat** o **Formulario enviado**) y un nodo **Agente de IA** configurado.
+  </Step>
+  <Step title="Agrega el enrutador">
+    Desde el panel **Control del flujo** a la izquierda, arrastra el nodo **Enrutador** (Router) al lienzo. Se abrirá el panel **Editar enrutador** a la derecha.
+  </Step>
+  <Step title="Elige el tipo">
+    En **Tipo de enrutador**, elige **Enrutador de IA** o **Enrutador condicional**.
+  </Step>
+  <Step title="Configura las ramas">
+    - **Enrutador de IA:** agrega las intenciones que definen cada camino.
+    - **Enrutador condicional:** escribe una **Etiqueta** clara para la rama (se verá sobre la conexión), elige el **Tipo de condición** (Y u O) y define la **Variable**, el **Operador** y el **Valor**.
+    - **Sin condición:** activa el interruptor para que la ruta siempre continúe al siguiente nodo.
+  </Step>
+  <Step title="Conecta cada salida">
+    Une cada rama con su nodo de destino en el lienzo y guarda la configuración del enrutador.
+  </Step>
+  <Step title="Prueba y publica">
+    Prueba la conversación para confirmar que cada ruta lleva al paso correcto. Luego guarda, publica y despliega el agente.
+  </Step>
+</Steps>
+
+## Ejemplo de flujo completo
+
+1. El agente pregunta si el usuario quiere saber el precio de la plata y usa **Buscar en la web** para darle el dato actual.
+2. Después le pregunta si quiere invertir.
+3. Un **enrutador de IA** evalúa la respuesta: si quiere invertir, sigue al siguiente nodo; si no, va a un nodo de agradecimiento.
+4. El siguiente nodo captura el correo del usuario.
+5. Una ruta **sin condición** lleva siempre a un paso de confirmación.
+6. Un nodo de **opción única** pregunta si quiere continuar.
+7. Un **enrutador condicional** revisa la respuesta guardada: si es **Sí**, sigue por el camino de avance; si es **No**, va a otro resultado.
+
+## Buenas prácticas
+
+- Usa el enrutador de IA cuando las respuestas varían en palabras pero comparten intención.
+- Usa el enrutador condicional cuando la decisión depende de un dato guardado.
+- Usa sin condición cuando el flujo siempre debe continuar.
+- Pon nombres claros a las intenciones y etiquetas; facilitan entender por qué alguien llegó a una rama.
+- Conecta una rama por defecto para los casos que no encajan en ninguna intención o condición.
+- Prueba cada camino antes de publicar.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre el enrutador de IA y el condicional?">
+    El de IA interpreta la intención del mensaje en lenguaje natural. El condicional revisa un valor guardado con una regla de variable, operador y valor.
+  </Accordion>
+  <Accordion title="¿Necesito una variable para el enrutador de IA?">
+    No. Usa la respuesta del usuario y las intenciones que definiste. El condicional, en cambio, sí necesita un valor ya capturado.
+  </Accordion>
+  <Accordion title="¿Qué pasa si no coincide ninguna intención ni condición?">
+    El flujo sigue la rama **Predeterminada** (Default). Si no hay ninguna conectada, la conversación termina y queda un error en el registro. Por eso conviene conectar siempre una rama por defecto.
+  </Accordion>
+  <Accordion title="¿El enrutador consume créditos de IA?">
+    Solo el enrutador de IA cuenta como uso del modelo. Los modos condicional y sin condición no tienen costo.
+  </Accordion>
+  <Accordion title="¿Puedo mezclar IA y condiciones en el mismo nodo?">
+    Cada enrutador funciona con un solo modo, pero puedes encadenar varios enrutadores uno detrás de otro.
+  </Accordion>
+  <Accordion title="Una ruta no va al nodo esperado. ¿Cómo lo reviso?">
+    Abre el registro de ejecución y ve a la pestaña de enrutamiento. Ahí verás la intención detectada, el razonamiento y el nivel de confianza, o la condición evaluada. Revisa también que las conexiones vayan al nodo correcto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Conoce el constructor y sus nodos.
+  </Card>
+  <Card title="Variables y valores personalizados" icon="code" href="/ia/variables-y-valores-personalizados-agent-studio">
+    Guarda y reutiliza datos en tu agente.
+  </Card>
+  <Card title="Disparadores para agentes de flujo" icon="bolt" href="/ia/disparadores-agentes-de-flujo">
+    Arranca tu agente con formularios, etiquetas o chats.
+  </Card>
+  <Card title="Prueba y depura agentes" icon="bug" href="/ia/probar-y-depurar-agentes-agent-studio">
+    Revisa cada paso antes de salir en vivo.
+  </Card>
+</CardGroup>

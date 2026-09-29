@@ -1,0 +1,133 @@
+---
+title: "Horario de atención de la IA conversacional"
+description: "Define los días y horas en que responde tu agente de IA y qué pasa cuando te escriben fuera de horario."
+icon: "clock"
+---
+
+Con el horario de atención defines cuándo responde tu agente de IA conversacional. En vez de contestar las 24 horas, eliges días y horas de trabajo para cada agente, qué canales siguen ese horario y qué pasa cuando un cliente escribe fuera de horario: una respuesta automática, un aviso a tu equipo, una etiqueta y un seguimiento cuando vuelves a abrir.
+
+Así la IA trabaja al ritmo de tu negocio sin dejar a nadie sin respuesta.
+
+<Note>
+  El horario de atención es una función de **Labs**. Actívala en **Configuración → Labs** (busca "Horario de atención") antes de configurarla en tus agentes. Es opcional: si no la activas, el agente sigue respondiendo a cualquier hora.
+</Note>
+
+## Para qué sirve
+
+- **Horarios flexibles:** distintos días y horas por agente, con varios turnos por día para pausas u horarios partidos.
+- **Control por canal:** eliges qué canales siguen el horario (SMS, correo, WhatsApp, Instagram, Facebook, widget de chat, chat en vivo, TikTok); los demás siguen respondiendo 24/7.
+- **Zona horaria a elección:** según la zona horaria de cada contacto o la de tu negocio.
+- **Conversaciones en curso:** si la conversación empezó en horario, el agente puede seguir respondiendo hasta que quede inactiva.
+- **Respuesta fuera de horario:** un mensaje automático personalizable con valores personalizados.
+- **Avisos al equipo:** correos a administradores, usuarios, usuario asignado, miembros elegidos o direcciones que definas.
+- **Etiquetas:** marca a quienes escriben fuera de horario para encontrarlos fácil.
+- **Seguimiento al reabrir:** un mensaje automático cuando vuelves a abrir si nadie le respondió al cliente.
+
+## Cómo funciona
+
+| Situación | Qué hace el agente |
+| --- | --- |
+| **Dentro del horario** | Responde en todos los canales según su configuración. |
+| **Fuera del horario** | No responde en los canales incluidos en el horario. Los canales no incluidos responden normal. |
+| **Conversación que empezó en horario** | Puede seguir respondiendo después del cierre hasta que la conversación quede inactiva (si activas esa opción). |
+| **Modo sugerencia** | Sigue generando sugerencias para tu equipo fuera de horario. |
+| **Activación manual** | Puedes activar el agente a mano desde el panel de la conversación aunque esté fuera de horario. |
+
+El horario se configura por agente, así que cada agente puede tener uno distinto.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Activa la función en Labs">
+    Ve a **Configuración → Labs**, busca "Horario de atención" y actívala.
+  </Step>
+  <Step title="Abre el agente">
+    Ve a **IA → IA conversacional** y selecciona el agente.
+  </Step>
+  <Step title="Entra al horario de atención">
+    En la pestaña **Desplegar**, selecciona **Horario de atención**.
+  </Step>
+  <Step title="Activa el horario">
+    Enciende **Horas activas**.
+  </Step>
+  <Step title="Elige los canales">
+    Marca los canales que seguirán el horario. Los que no marques seguirán respondiendo 24/7.
+  </Step>
+  <Step title="Elige la zona horaria">
+    **Zona horaria del contacto** aplica el horario según la hora local de cada contacto. **Zona horaria del negocio** usa la de tu negocio para todos.
+  </Step>
+  <Step title="Define días y horas">
+    Configura los días y horarios de respuesta. Puedes poner horarios distintos por día y varios turnos en un mismo día.
+  </Step>
+  <Step title="Configura las opciones fuera de horario (opcional)">
+    Conversaciones en curso, respuesta automática, avisos, etiquetas y seguimiento. Las explicamos abajo.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Desde ese momento el agente sigue el horario en los canales elegidos.
+  </Step>
+</Steps>
+
+## Opciones fuera de horario
+
+| Opción | Qué hace |
+| --- | --- |
+| **Continuar conversaciones en curso** | Si la conversación empezó en horario, el agente sigue respondiendo después del cierre hasta que quede inactiva. |
+| **Respuesta automática fuera de horario** | Envía un mensaje propio al cliente que escribe fuera de horario. Admite valores personalizados. |
+| **Avisos al equipo** | Envía un correo a administradores, usuarios, usuario asignado, miembros elegidos o direcciones personalizadas. |
+| **Etiquetas del contacto** | Agrega las etiquetas que elijas a quienes escriben fuera de horario. |
+| **Seguimiento al reabrir** | Cuando vuelves a abrir, envía un mensaje si el cliente no recibió respuesta ni del agente ni de tu equipo. |
+
+<Info>
+  La respuesta automática, los avisos y las etiquetas se aplican **una sola vez por periodo cerrado**. El cliente no recibe el mismo mensaje por cada mensaje que envía fuera de horario.
+</Info>
+
+Un ejemplo de respuesta automática:
+
+```text
+Hola, gracias por escribirnos. Nuestro horario de atención es de lunes
+a viernes de 9:00 a 18:00. Te respondemos apenas abramos.
+```
+
+<Tip>
+  Combina la etiqueta de fuera de horario con una lista inteligente. Así, cada mañana tu equipo ve de un vistazo quién escribió durante la noche.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si no activo el horario de atención?">
+    El agente sigue respondiendo a cualquier hora, como siempre.
+  </Accordion>
+  <Accordion title="¿El horario aplica a todos los canales?">
+    Solo a los canales que elijas. Los demás siguen respondiendo sin restricciones.
+  </Accordion>
+  <Accordion title="¿Cada cuánto se envía la respuesta automática fuera de horario?">
+    Una vez por periodo cerrado, no por cada mensaje.
+  </Accordion>
+  <Accordion title="¿Qué pasa con el seguimiento si el cliente ya recibió respuesta?">
+    Se omite si el cliente ya recibió respuesta del agente o de alguien del equipo.
+  </Accordion>
+  <Accordion title="¿Afecta al modo sugerencia?">
+    No. En modo sugerencia se siguen generando sugerencias para tu equipo fuera de horario.
+  </Accordion>
+  <Accordion title="¿Qué pasa si también tengo horario de seguimiento en el seguimiento avanzado?">
+    En los canales incluidos en el horario del agente, manda el horario de atención del agente.
+  </Accordion>
+  <Accordion title="¿Puedo activar el agente a mano fuera de horario?">
+    Sí, desde el panel de la conversación.
+  </Accordion>
+  <Accordion title="¿Puedo tener horarios distintos para cada agente?">
+    Sí. El horario se configura por agente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Seguimiento automático" icon="clock-rotate-left" href="/bot-ia/seguimiento-automatico">
+    Retoma conversaciones que quedaron sin respuesta.
+  </Card>
+  <Card title="Canales y enrutamiento de los bots" icon="diagram-next" href="/bot-ia/nueva-gestion-canales">
+    Asigna cada bot a sus canales.
+  </Card>
+</CardGroup>

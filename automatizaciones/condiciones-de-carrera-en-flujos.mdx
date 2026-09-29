@@ -1,0 +1,65 @@
+---
+title: "Condiciones de carrera en flujos de trabajo"
+description: "Detecta por qué una acción aparece como ejecutada pero no se aplicó y cómo evitarlo con una espera."
+icon: "stopwatch"
+---
+
+A veces el historial de un flujo de trabajo dice que una acción se ejecutó bien, pero al revisar el contacto el cambio no aparece. Una causa frecuente es una **condición de carrera**: dos o más actualizaciones ocurren al mismo tiempo (en el mismo segundo), "compiten" entre sí y terminan ejecutándose en un orden distinto al esperado, o una de ellas se marca como completada aunque en realidad no se aplicó. En esta guía verás cómo detectarla y cómo evitarla.
+
+## Cómo reconocer una condición de carrera
+
+Síntomas típicos:
+
+- El historial de ejecución muestra una acción como completada (por ejemplo, **Agregar etiqueta**), pero el contacto no tiene la etiqueta.
+- Un campo se actualiza y luego aparece con el valor anterior.
+- Dos acciones que dependen una de otra se ejecutan con la misma marca de tiempo.
+
+La pista clave está en la **hora exacta** de cada acción. Si dos pasos que modifican el mismo contacto se ejecutaron en el mismo segundo, lo más probable es que hayan chocado.
+
+## Abrir la ejecución exacta desde el mensaje
+
+Para diagnosticar bien, revisa la ejecución concreta del contacto y el momento afectado.
+
+<Steps>
+  <Step title="Abre la conversación">
+    Ve a **Conversaciones** y abre la conversación que contiene el mensaje afectado.
+  </Step>
+  <Step title="Abre los detalles del mensaje">
+    Abre los **detalles del mensaje** que envió el flujo.
+  </Step>
+  <Step title="Salta a la ejecución">
+    Haz clic en el enlace **Flujo de trabajo** para abrir los **Detalles de ejecución** con el contacto y la hora ya cargados.
+  </Step>
+  <Step title="Revisa horas y orden">
+    Compara las marcas de tiempo y el orden de las acciones para ver si varias se ejecutaron en el mismo segundo.
+  </Step>
+</Steps>
+
+Si el enlace al flujo no aparece en los detalles del mensaje, ve a **Automatización → Flujos de trabajo**, abre el flujo, entra en su **Historial de ejecución** (Logs) y filtra por el contacto y por el rango de tiempo cercano al mensaje.
+
+## Ejemplo: la etiqueta "se agregó" pero no está
+
+1. En el historial de ejecución, la acción **Agregar etiqueta** aparece como completada para el contacto.
+2. Al abrir la ficha del contacto, la etiqueta no está.
+3. Al volver al historial y mirar la hora, se ve que la acción **Agregar al flujo de trabajo** y la acción **Agregar etiqueta** se ejecutaron exactamente en el mismo segundo.
+
+Las dos acciones modificaron el contacto a la vez y una de ellas "pisó" a la otra. Eso es una condición de carrera.
+
+## Cómo evitarla
+
+La solución es separar en el tiempo las acciones que modifican el mismo contacto. Agrega una acción **Esperar** de **1 minuto** entre ellas. Con esa pausa, cada actualización termina antes de que empiece la siguiente y la condición de carrera desaparece.
+
+<Tip>
+  Aplica esta pausa sobre todo después de acciones que mueven al contacto a otro flujo, de actualizaciones de campos o etiquetas que otro flujo también toca, y justo al inicio de flujos que se activan por cambios que otro flujo acaba de hacer.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Otras causas comunes cuando un flujo no hace lo esperado.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores y acciones.
+  </Card>
+</CardGroup>

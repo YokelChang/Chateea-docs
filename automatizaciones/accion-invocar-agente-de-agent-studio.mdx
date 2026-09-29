@@ -1,0 +1,156 @@
+---
+title: "Acción Invocar agente de Agent Studio"
+description: "Ejecuta un agente de Agent Studio desde un flujo, envíale contexto y usa su respuesta en los pasos siguientes."
+icon: "robot"
+---
+
+La acción **Invocar agente de Agent Studio** (Invoke Agent Studio Agent) ejecuta uno de tus agentes de IA desde un flujo de trabajo. El flujo le envía contexto al agente, espera su respuesta y continúa con los siguientes pasos usando ese resultado, sin necesidad de programar nada.
+
+Es ideal cuando una automatización necesita "pensar": resumir una conversación, calificar un lead, redactar un texto, clasificar una solicitud o devolver datos estructurados para decidir qué camino sigue el contacto.
+
+## Para qué sirve
+
+- **Automatización con criterio:** el agente analiza la información en un punto concreto del flujo y la automatización continúa con su respuesta.
+- **Manejo flexible de datos:** envías instrucciones en el campo Mensaje, asignas datos del flujo a las variables del agente y reutilizas la respuesta después.
+- **Mejores pasos posteriores:** usa el resultado en correos, notificaciones internas, actualizaciones de campos, condiciones Si/No o webhooks.
+- **Decisiones estructuradas:** si pides al agente que responda en JSON, las ramas y actualizaciones posteriores son más fiables.
+- **Un mismo patrón para muchos procesos:** enriquecimiento de leads, resúmenes, enrutamiento, preparación de seguimientos y actualización de registros.
+
+## Requisitos
+
+Antes de usar la acción, confirma lo siguiente:
+
+- Tu cuenta tiene activo el **Empleado IA** con acceso a Agent Studio.
+- El agente está **publicado en Producción**. Las versiones en borrador o en pruebas (Staging) no aparecen en el selector de la acción.
+- Tu usuario tiene permiso para editar flujos de trabajo y agentes de IA.
+
+<Info>
+  Crea el agente con el disparador **Flujos de trabajo** (Workflows) cuando el objetivo sea ejecutarlo desde esta acción. Ese disparador está pensado para agentes que se inician desde un flujo, lo que facilita pasar las entradas correctamente y recibir la respuesta para los pasos siguientes.
+</Info>
+
+## Paso 1: prepara el agente en Agent Studio
+
+<Steps>
+  <Step title="Abre Agent Studio">
+    Entra en **Agent Studio** y haz clic en **Crear agente**, o abre un agente existente.
+  </Step>
+  <Step title="Elige el disparador Flujos de trabajo">
+    En el panel de selección de disparador, elige **Flujos de trabajo**.
+  </Step>
+  <Step title="Configura el agente">
+    Define sus instrucciones, herramientas y variables de entrada según los datos que le enviarás desde el flujo.
+  </Step>
+  <Step title="Pruébalo">
+    Ejecuta pruebas y confirma que el formato de la respuesta es el que necesita tu flujo (texto o JSON).
+  </Step>
+  <Step title="Publica en Producción">
+    Haz clic en **Publicar en Producción**. Solo los agentes publicados en Producción están disponibles en la acción.
+  </Step>
+</Steps>
+
+## Paso 2: agrega la acción al flujo
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre un flujo existente o crea uno nuevo.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+ Agregar acción** y, dentro de **Agent Studio**, elige **Invocar agente de Agent Studio**.
+  </Step>
+  <Step title="Ponle nombre">
+    Escribe un **nombre de acción** claro, por ejemplo "Analizar mensaje del lead" o "Resumen con IA". No cambia el comportamiento del agente, pero facilita leer y depurar el flujo.
+  </Step>
+  <Step title="Selecciona el agente">
+    En **Seleccionar agente** (obligatorio), elige el agente que debe ejecutarse.
+  </Step>
+  <Step title="Escribe el mensaje">
+    En **Mensaje** (opcional, pero recomendado) indica qué debe hacer el agente en este paso. Puedes usar campos de combinación, por ejemplo: "Analiza el último mensaje de `{{contact.name}}` y entrega un resumen breve con los siguientes pasos recomendados para el equipo de ventas."
+  </Step>
+  <Step title="Asigna las variables de entrada">
+    En **Variables de entrada**, asigna a cada variable del agente un valor del flujo o un texto fijo. Las variables obligatorias deben quedar asignadas.
+  </Step>
+  <Step title="Guarda la salida">
+    Usa **Guardar salida como** (Store Output As) si quieres guardar la respuesta completa como un valor personalizado para los pasos siguientes.
+  </Step>
+  <Step title="Guarda la acción">
+    Haz clic en **Guardar acción**.
+  </Step>
+</Steps>
+
+<Warning>
+  Si falta alguna variable de entrada obligatoria, la acción puede fallar. Revisa las asignaciones antes de publicar el flujo.
+</Warning>
+
+## Resumen de la configuración
+
+| Campo | Qué hace |
+| --- | --- |
+| **Agente** | El agente publicado en Producción que ejecutará el flujo. |
+| **Mensaje** | Instrucciones en texto libre para esta ejecución. Admite campos de combinación. |
+| **Variables de entrada** | Asignan datos del flujo o texto fijo a las entradas con nombre del agente. |
+| **Guardar salida como** | Guarda la respuesta completa como valor personalizado para usarla después. |
+
+## Cómo usar la respuesta del agente
+
+La respuesta queda disponible para los pasos posteriores del flujo. Usos habituales:
+
+- Guardar el resumen en un campo personalizado o en una nota.
+- Crear ramas con una **Condición Si/No** según los valores que devolvió el agente.
+- Insertar la respuesta en un correo, SMS, WhatsApp o notificación interna.
+- Enviar la respuesta completa a un webhook o a un sistema externo.
+
+<Tip>
+  Devuelve texto plano cuando el resultado vaya dentro de un mensaje o una nota. Pide JSON estructurado cuando lo vayas a usar para ramas, actualizaciones de campos o integraciones.
+</Tip>
+
+## Buenas prácticas y casos de uso
+
+- Mantén el mensaje breve y pasa el contexto detallado mediante variables.
+- Si usas varios agentes en un mismo flujo, dale a cada acción un nombre distinto.
+- Prueba el formato de salida del agente antes de conectarlo a pasos importantes.
+- Recuerda publicar en Producción cada cambio del agente para que el flujo lo use.
+
+Ejemplos: enriquecer un lead después de un formulario, resumir una conversación al cerrarla, clasificar una consulta de ventas, preparar notas de traspaso para el equipo de servicio o enviar datos estructurados a otras herramientas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mi agente no aparece en el desplegable?">
+    Confirma que esté publicado en Producción, que pertenezca a tu cuenta y que se haya creado con el disparador Flujos de trabajo. Si acabas de publicarlo, actualiza el constructor y vuelve a abrir la acción.
+  </Accordion>
+  <Accordion title="¿Un flujo puede llamar a varios agentes?">
+    Sí. Puedes añadir varias acciones Invocar agente de Agent Studio en el mismo flujo, una tras otra o en ramas distintas.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el agente da error?">
+    La acción falla y el error aparece en el registro de ejecución del flujo. Si lo necesitas, prepara la lógica del flujo para manejar esos casos.
+  </Accordion>
+  <Accordion title="¿Consume créditos de IA adicionales?">
+    La ejecución del agente se mide igual que cuando lo ejecutas desde Agent Studio. No hay un cargo extra por hacerlo desde un flujo.
+  </Accordion>
+  <Accordion title="¿Hay un tiempo límite?">
+    Sí. El agente debe responder en un máximo de 60 segundos.
+  </Accordion>
+  <Accordion title="¿Puedo probarlo con el flujo en borrador?">
+    Sí. Puedes probar la acción con el flujo en borrador. Los contactos se procesan de forma real cuando publicas el flujo.
+  </Accordion>
+  <Accordion title="¿Cómo soluciono problemas con las variables?">
+    Compara el registro de ejecución del flujo con las entradas y salidas que ves en las pruebas o registros de Agent Studio. Así detectas qué valor no llegó o llegó con otro formato.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agentes de flujo en Agent Studio" icon="robot" href="/ia/agentes-de-flujo-agent-studio">
+    Cómo crear agentes pensados para ejecutarse desde automatizaciones.
+  </Card>
+  <Card title="Disparadores de agentes de flujo" icon="bolt" href="/ia/disparadores-agentes-de-flujo">
+    Elige cómo se inicia cada agente.
+  </Card>
+  <Card title="Probar y depurar agentes" icon="bug" href="/ia/probar-y-depurar-agentes-agent-studio">
+    Revisa el comportamiento del agente antes de usarlo en producción.
+  </Card>
+  <Card title="Variables en Agent Studio" icon="code" href="/ia/variables-y-valores-personalizados-agent-studio">
+    Personaliza las entradas de tus agentes con variables.
+  </Card>
+</CardGroup>

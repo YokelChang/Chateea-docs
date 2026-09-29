@@ -1,0 +1,121 @@
+---
+title: "Disparadores y acciones de Basecamp en flujos"
+description: "Crea proyectos, listas, tareas y documentos en Basecamp desde tus flujos y reacciona al instante a su actividad."
+icon: "diagram-project"
+---
+
+La integración nativa con **Basecamp** conecta tus flujos de trabajo con tus proyectos. Los disparadores reaccionan al instante a lo que pasa en Basecamp (una tarea nueva, un mensaje publicado) y las acciones crean proyectos, listas de tareas, tareas, mensajes y documentos desde tus flujos. Es perfecta para arrancar la entrega de un servicio en cuanto cierras una venta.
+
+## Qué ganas
+
+- **Traspasos más rápidos:** crea proyectos, listas y tareas automáticamente cuando un trato pasa a entrega.
+- **Disparadores instantáneos:** funcionan por webhook, sin esperas de consulta periódica.
+- **Menos duplicados:** las acciones de búsqueda (proyecto, lista, tarea, persona, documento) te permiten buscar primero y crear solo si hace falta.
+- **Compatible con tu plan:** funciona con los planes gratuitos y de pago de Basecamp (las funciones disponibles dependen de tu plan).
+- **Costo claro:** los disparadores y acciones de Basecamp son premium y se cobran por ejecución.
+
+## Disparadores (de Basecamp a Chateea)
+
+| Disparador | Se activa cuando |
+| --- | --- |
+| **Nueva tarea** | Se crea una tarea (to-do) en Basecamp. |
+| **Nuevo comentario** | Se agrega un comentario a una tarea o un mensaje. |
+| **Nuevo documento** | Se crea un documento. |
+| **Nueva actividad** | Hay actividad nueva en un proyecto. |
+| **Nuevo mensaje publicado** | Se publica un mensaje en un proyecto. |
+| **Nueva lista de tareas** | Se crea una lista de tareas. |
+
+## Acciones (de Chateea a Basecamp)
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear proyecto** | Crea un proyecto en blanco o desde una plantilla, si está disponible. |
+| **Crear lista de tareas** | Crea una lista dentro de un proyecto. |
+| **Crear tarea** | Agrega una tarea a una lista con título, fecha de vencimiento, responsable, etc. |
+| **Actualizar tarea** | Cambia título, fecha, responsable o estado de una tarea. |
+| **Crear mensaje** | Publica en el tablero de mensajes de un proyecto. |
+| **Crear mensaje de Campfire** | Envía un mensaje al chat (Campfire) del proyecto. |
+| **Crear documento** | Crea una nota o un archivo en un proyecto. |
+| **Agregar persona al proyecto** | Suma a un miembro del equipo o a un cliente. |
+| **Buscar proyecto** | Localiza un proyecto existente para usarlo en pasos siguientes y evitar duplicados. |
+| **Buscar lista de tareas** | Localiza una lista existente. |
+| **Buscar tarea** | Localiza una tarea por nombre o ID para actualizarla. |
+| **Buscar documento** | Localiza un documento existente. |
+| **Buscar persona** | Localiza a un usuario o cliente de Basecamp. |
+
+## Conectar Basecamp
+
+- **Desde un flujo:** abre o crea un flujo, haz clic en **+ Agregar disparador** o **+ Agregar acción**, busca **Basecamp**, elige el paso y haz clic en **Conectar ahora**. Inicia sesión en Basecamp y autoriza el acceso.
+- **Desde la configuración:** ve a **Configuración → Integraciones**, busca **Basecamp** y completa la conexión.
+
+La conexión es propia de tu cuenta de Chateea. Puedes conectar más de una cuenta de Basecamp y elegir cuál usar en cada paso; al cambiar de cuenta, los campos que dependen de ella pueden recargarse o vaciarse.
+
+## Crea tu primer flujo con Basecamp
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y haz clic en **Crear flujo de trabajo**, o abre uno existente.
+  </Step>
+  <Step title="Agrega un disparador">
+    Por ejemplo, **Nueva tarea**, y selecciona el proyecto o alcance si se solicita.
+  </Step>
+  <Step title="Agrega acciones de Basecamp">
+    Por ejemplo: **Buscar proyecto**; si no existe, **Crear proyecto**; después **Crear lista de tareas** y **Crear tarea**.
+  </Step>
+  <Step title="Añade seguimientos internos">
+    Notifica a un usuario, envía un correo o actualiza la oportunidad.
+  </Step>
+  <Step title="Publica y prueba">
+    Publica el flujo y genera un evento de prueba (por ejemplo, crea una tarea en Basecamp). Confirma el resultado en los registros de ejecución.
+  </Step>
+</Steps>
+
+## Casos de uso
+
+### Tarea y documento desde un formulario
+
+- **Disparador:** Formulario enviado (filtro: formulario "Solicitud de proyecto").
+- **Acciones:** **Crear tarea** y **Crear documento** en Basecamp, y notificar a un usuario.
+- **Resultado:** al recibir la solicitud se crea la tarea de arranque, un documento con las respuestas del formulario y tu equipo recibe el aviso.
+
+### Resumen de arranque con IA al cerrar una venta
+
+- **Disparador:** Cambio de etapa de la oportunidad (etapa "Ganada").
+- **Acciones:** una acción de IA redacta el resumen del proyecto con los datos de la oportunidad, **Crear documento** lo guarda en Basecamp y se notifica al equipo de implementación.
+
+### Lista de tareas nueva por cada solicitud
+
+- **Disparador:** Formulario enviado.
+- **Acciones:** **Crear lista de tareas**, una condición para confirmar que se creó y **Crear tarea**.
+- **Resultado:** cada solicitud genera su propia lista (por ejemplo, "Rediseño web - Cliente ABC") con una primera tarea para empezar de inmediato.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un plan de pago de Basecamp?">
+    No. Funciona con los planes gratuitos y de pago. Las funciones avanzadas siguen los límites de tu suscripción de Basecamp.
+  </Accordion>
+  <Accordion title="¿La sincronización es bidireccional?">
+    La integración funciona en un sentido por paso: los disparadores inician flujos cuando pasa algo en Basecamp y las acciones hacen cambios en Basecamp. Para una sincronización completa en ambos sentidos necesitarías una herramienta intermedia.
+  </Accordion>
+  <Accordion title="¿Los pasos de Basecamp tienen costo?">
+    Sí. Son premium y se cobran por ejecución según tu plan de ejecuciones.
+  </Accordion>
+  <Accordion title="¿Puedo crear un proyecto desde una plantilla?">
+    Sí. **Crear proyecto** permite usar una plantilla cuando está disponible en tu cuenta de Basecamp.
+  </Accordion>
+  <Accordion title="¿Dónde reviso los fallos?">
+    En los registros de ejecución verás el error del paso (por ejemplo, un ID no válido o falta de permisos). Si la autorización caducó, vuelve a conectar Basecamp en **Configuración → Integraciones** y repite la prueba.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones premium y planes" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las ejecuciones premium.
+  </Card>
+  <Card title="ClickUp en flujos" icon="list-check" href="/automatizaciones/clickup-en-flujos-de-trabajo">
+    Crea tareas y documentos en ClickUp.
+  </Card>
+</CardGroup>

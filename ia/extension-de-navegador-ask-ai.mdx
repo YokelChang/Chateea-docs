@@ -1,0 +1,119 @@
+---
+title: "Extensión de control del navegador de Ask AI"
+description: "Instala la extensión para que Ask AI abra páginas, haga clic y complete formularios en tu navegador."
+icon: "window-maximize"
+---
+
+La extensión de **control del navegador** de Ask AI permite que Ask AI use tu navegador por ti: abre páginas, hace clic, escribe, se desplaza y completa formularios para terminar tareas de varios pasos. Así Ask AI pasa de decirte qué hacer a hacerlo, mientras tú ves cada paso en tiempo real.
+
+Funciona en navegadores basados en Chromium, como Google Chrome, Microsoft Edge, Brave y Arc, tanto en conversaciones de texto como de voz.
+
+## Para qué te sirve
+
+- **Tareas completas sin intervenir:** desde abrir una página hasta enviar formularios complejos.
+- **Interacción visual:** Ask AI lee las páginas mediante capturas de pantalla y actúa con un cursor animado, como lo haría una persona.
+- **Navegación completa:** abre, navega, recarga, cambia de pestaña y cierra páginas, con una captura nueva después de cada acción para verificar el resultado.
+- **Lectura de la página:** revisa el texto, los mensajes de la consola y las solicitudes de red para comprobar que cada acción funcionó.
+- **Texto o voz:** funciona igual escribiendo o hablando.
+- **Vista en vivo:** la captura de cada paso aparece en un panel de vista previa del chat.
+
+## Cómo funciona
+
+1. **Analiza la página:** toma capturas y detecta botones, campos, enlaces y opciones de navegación.
+2. **Actúa:** hace clic, escribe, se desplaza, arrastra elementos o usa atajos de teclado. El cursor animado muestra dónde está actuando.
+3. **Navega:** abre páginas nuevas, usa atrás y adelante, recarga, cambia de pestaña y cierra las que ya no necesita.
+4. **Verifica:** revisa el texto de la página, la consola y las solicitudes de red para confirmar el resultado y decidir el siguiente paso.
+
+No tienes que activarlo de forma especial: describe la tarea y Ask AI decide cuándo necesita usar el navegador.
+
+## Seguridad y privacidad
+
+- **Pestañas aisladas:** toda la automatización ocurre en un grupo de pestañas propio, separado de tu navegación personal. Ask AI no puede ver ni usar tus otras pestañas, ventanas o sesiones.
+- **Datos sensibles en tu equipo:** cuando un formulario pide contraseñas, datos de pago o información personal, la extensión te los pide en tu propio dispositivo y los rellena directamente en el navegador. Esos valores no se envían a los servidores ni al modelo de IA.
+- **Sin inicio de sesión adicional:** la extensión usa tu sesión abierta de Chateea y la verifica antes de ejecutar cualquier acción.
+- **Conexión solo cuando hace falta:** la conexión se abre únicamente mientras hay una tarea en curso y se cierra al terminar. Si se corta a mitad de tarea, intenta recuperarse automáticamente.
+- **Privacidad por diseño:** Ask AI solo recibe la información necesaria para completar la tarea que pediste.
+
+## Cómo instalar la extensión
+
+<Steps>
+  <Step title="Pide una tarea en el navegador">
+    Abre **Ask AI** desde el menú lateral y escribe una solicitud que requiera usar el navegador. Por ejemplo: "Abre Google Docs y crea el esquema de una página de aterrizaje para un evento".
+  </Step>
+  <Step title="Haz clic en Instalar">
+    Si no tienes la extensión, Ask AI te pedirá instalarla. Haz clic en **Instalar** y se abrirá la ficha de la extensión en Chrome Web Store.
+  </Step>
+  <Step title="Añádela al navegador">
+    Haz clic en **Añadir a Chrome** (o el botón equivalente de tu navegador), revisa los permisos y confirma con **Añadir extensión**.
+  </Step>
+</Steps>
+
+## Cómo usar el control del navegador
+
+<Steps>
+  <Step title="Inicia sesión en Chateea">
+    Abre tu cuenta de Chateea en el mismo navegador. La extensión usa tu sesión para autenticarse, sin credenciales aparte.
+  </Step>
+  <Step title="Comprueba la conexión">
+    Haz clic en el ícono de la extensión en la barra del navegador. Si tienes la sesión iniciada, verás el estado **Conectado a la página**.
+  </Step>
+  <Step title="Activa el conector (si hace falta)">
+    En Ask AI, comprueba que el conector de control del navegador esté activado en **Personalizar → Conectores**.
+  </Step>
+  <Step title="Pide la tarea">
+    En el chat o por voz, describe lo que necesitas. Por ejemplo: "Crea un sitio para mi próximo webinar" o "Rellena por mí el formulario de registro del hosting". Ask AI detectará que necesita el navegador y empezará a trabajar.
+  </Step>
+  <Step title="Sigue el progreso">
+    Mira las capturas de cada paso en el panel de vista previa del chat mientras Ask AI navega, hace clic y completa formularios.
+  </Step>
+</Steps>
+
+<Note>
+  La extensión solo abre conexiones mientras hay una tarea en curso. Al terminar, la conexión se cierra para reducir la exposición y el consumo de recursos.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué navegadores son compatibles?">
+    Los basados en Chromium, como Google Chrome, Microsoft Edge, Brave y Arc. Por ahora no funciona en Firefox ni en Safari.
+  </Accordion>
+  <Accordion title="¿Ask AI puede ver mis pestañas personales?">
+    No. Solo trabaja en su propio grupo de pestañas, aislado del resto de tu navegación.
+  </Accordion>
+  <Accordion title="¿Cómo maneja contraseñas y datos de pago?">
+    Cuando un formulario los pide, la extensión te muestra un aviso seguro en tu dispositivo. Tú introduces los datos localmente y se rellenan directamente en el formulario, sin enviarse a los servidores ni al modelo de IA.
+  </Accordion>
+  <Accordion title="¿Funciona en conversaciones de voz?">
+    Sí. Funciona igual por texto y por voz.
+  </Accordion>
+  <Accordion title="¿Qué pasa si se corta mi conexión a internet a mitad de tarea?">
+    La extensión intenta recuperar la sesión y continuar desde el último paso completado. Si no lo consigue, Ask AI te avisa y puedes reiniciar la tarea.
+  </Accordion>
+  <Accordion title="¿Puedo ver lo que hace Ask AI en el navegador?">
+    Sí. Cada acción genera una captura en el panel de vista previa, y el cursor animado muestra dónde está actuando.
+  </Accordion>
+  <Accordion title="¿Tengo que tener el ícono de la extensión visible?">
+    No. Funciona aunque esté oculto en el menú de extensiones, pero tenerlo fijado facilita comprobar el estado de conexión.
+  </Accordion>
+  <Accordion title="¿La extensión ralentiza el navegador cuando no la uso?">
+    No. Solo consume recursos mientras ejecuta una tarea pedida desde Ask AI. Después queda inactiva.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Habilidades y conectores de Ask AI" icon="plug" href="/ia/habilidades-y-conectores-de-ask-ai">
+    Conecta aplicaciones y activa el control del navegador.
+  </Card>
+  <Card title="Modo de voz de Ask AI" icon="microphone" href="/ia/modo-de-voz-de-ask-ai">
+    Pide tareas en el navegador hablando.
+  </Card>
+  <Card title="Ask AI, tu asistente en Chateea" icon="wand-magic-sparkles" href="/ia/asistente-ask-ai">
+    Qué es Ask AI y todo lo que puede hacer por ti.
+  </Card>
+  <Card title="Conversaciones paralelas en Ask AI" icon="layer-group" href="/ia/conversaciones-paralelas-en-ask-ai">
+    Deja tareas trabajando en segundo plano.
+  </Card>
+</CardGroup>

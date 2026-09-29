@@ -1,0 +1,121 @@
+---
+title: "Google Forms en flujos de trabajo"
+description: "Inicia flujos con respuestas de Google Forms y busca formularios o respuestas para personalizar tu seguimiento."
+icon: "clipboard-list"
+---
+
+Con la integración de Google Forms puedes iniciar flujos de trabajo cuando alguien responde uno de tus formularios de Google y buscar formularios o respuestas desde una automatización. Así conviertes cada respuesta en acciones concretas: crear el contacto, asignar tareas internas, actualizar oportunidades o enviar un seguimiento personalizado.
+
+## Para qué te sirve
+
+- **Seguimiento automático:** el flujo arranca cuando se detecta una respuesta nueva o actualizada.
+- **Leads atendidos más rápido:** compruebas si el contacto ya existe, lo creas si hace falta y le envías el mensaje adecuado.
+- **Mejor coordinación interna:** pasas los datos de la respuesta a tareas, pipelines y procesos del equipo.
+- **Mensajes más relevantes:** usas lo que respondió la persona para personalizar el siguiente paso.
+
+## Antes de empezar: conecta Google Forms
+
+La integración debe estar conectada en tu cuenta antes de usar sus disparadores o acciones.
+
+<Steps>
+  <Step title="Abre las integraciones">
+    Ve a **Configuración → Integraciones** y quédate en la pestaña **Todas las integraciones**.
+  </Step>
+  <Step title="Conecta Google Forms">
+    Busca **Google Forms**, haz clic en **Conectar** e inicia sesión con la cuenta de Google correcta.
+  </Step>
+  <Step title="Aprueba los permisos">
+    Revisa los permisos solicitados, apruébalos y confirma que el estado de la integración dice **Conectado**.
+  </Step>
+</Steps>
+
+También puedes conectarla desde el propio flujo: en **Automatización → Flujos de trabajo**, busca **Google Forms**, selecciona la aplicación y conecta tu cuenta de Google si todavía no lo has hecho.
+
+## Disparador disponible
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Respuesta nueva o actualizada** | Cuando se detecta una respuesta nueva en el formulario o cuando se modifica una respuesta existente. |
+
+<Note>
+  Este disparador revisa el formulario cada **5 minutos aproximadamente**, así que el flujo puede tardar unos minutos en arrancar después de que alguien envíe su respuesta.
+</Note>
+
+## Acciones disponibles
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Buscar formulario** | Busca un formulario de Google y devuelve su información para pasos posteriores. También puedes buscarlo por nombre o por ID. |
+| **Buscar respuesta por ID** | Recupera una respuesta concreta cuando ya conoces su ID. |
+| **Buscar respuestas por nombre de formulario** | Busca las respuestas de un formulario a partir de su nombre. |
+
+Las acciones se usan para traer datos de Google Forms en mitad del flujo, ramificar según si se encontró o no información y pasar los valores devueltos a acciones de correo, contactos, notas u oportunidades.
+
+## Configurar el disparador
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En tu flujo, agrega el disparador **Respuesta nueva o actualizada** de Google Forms.
+  </Step>
+  <Step title="Elige el formulario">
+    Selecciona el formulario que quieres vigilar y guarda el disparador.
+  </Step>
+  <Step title="Publica y prueba">
+    Publica el flujo, envía una respuesta de prueba (o edita una existente) y espera a que el intervalo de revisión la detecte.
+  </Step>
+</Steps>
+
+## Configurar una acción
+
+<Steps>
+  <Step title="Agrega la acción">
+    Dentro del flujo, haz clic en el **+**, busca **Google Forms** y elige la acción que necesitas.
+  </Step>
+  <Step title="Completa los campos">
+    Configura los campos obligatorios de la acción y guárdala.
+  </Step>
+  <Step title="Usa el resultado">
+    Usa los datos que devuelve en los pasos siguientes: actualizar el contacto, enviar un correo, crear tareas o mover oportunidades.
+  </Step>
+</Steps>
+
+## Ejemplo: de respuesta a contacto
+
+1. **Disparador:** Respuesta nueva o actualizada.
+2. **Acción:** Buscar contacto con el correo de la respuesta.
+3. **Condición:** si no existe, **Crear contacto**; si existe, actualizar sus campos.
+4. **Acciones:** asignar una tarea al equipo y enviar un correo de seguimiento con los datos que respondió la persona.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Google Forms tiene disparadores y acciones?">
+    Sí. Tiene un disparador (**Respuesta nueva o actualizada**) y acciones para buscar formularios y respuestas.
+  </Accordion>
+  <Accordion title="¿Cada cuánto revisa el disparador si hay respuestas?">
+    Aproximadamente cada 5 minutos.
+  </Accordion>
+  <Accordion title="¿Por qué el flujo no empieza justo después de enviar el formulario?">
+    Por el intervalo de revisión. El disparador consulta el formulario cada 5 minutos, así que puede haber una pequeña demora.
+  </Accordion>
+  <Accordion title="¿Cuál es la diferencia entre el disparador y las acciones?">
+    El disparador inicia el flujo cuando hay actividad en el formulario. Las acciones se usan dentro del flujo para buscar formularios o respuestas.
+  </Accordion>
+  <Accordion title="¿Puedo crear o actualizar contactos con las respuestas?">
+    Sí. La respuesta inicia el flujo y los pasos siguientes pueden buscar el contacto con **Buscar contacto**, crearlo con **Crear contacto** o continuar el seguimiento según el resultado.
+  </Accordion>
+  <Accordion title="¿Es una sincronización en ambos sentidos?">
+    No. La integración ofrece un disparador y acciones de búsqueda alrededor de los datos de Google Forms, no una sincronización bidireccional.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Typeform en flujos de trabajo" icon="file-lines" href="/automatizaciones/typeform-en-flujos-de-trabajo">
+    Automatiza tus formularios de Typeform con un disparador instantáneo.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores, acciones y flujos.
+  </Card>
+</CardGroup>

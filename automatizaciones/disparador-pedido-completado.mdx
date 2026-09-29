@@ -1,0 +1,106 @@
+---
+title: "Disparador: Pedido completado en tiendas de comercio electrónico"
+description: "Avisa del envío y automatiza el seguimiento en cuanto un pedido de tu tienda o de Shopify se completa."
+icon: "truck"
+---
+
+El disparador **Pedido completado** (Order Fulfilled) inicia un flujo de trabajo cuando el estado de un pedido cambia a **Completado** (enviado o preparado para entrega). Funciona con pedidos de tu tienda de Chateea, con tiendas externas como Shopify y con conectores de envío como Shippo o ShipStation. Así tienes un único punto de automatización para todo lo que ocurre cuando un producto sale de tu almacén.
+
+## Beneficios
+
+- **Experiencia completa para el cliente:** avisa del envío en el mismo momento en que el pedido se completa.
+- **Menos trabajo manual:** actualiza tu CRM, inventario o contabilidad de forma automática.
+- **Segmentación por datos del envío:** valor del carrito, productos, transportista, número de seguimiento.
+- **Varias tiendas, un disparador:** cubre tu tienda de Chateea y fuentes externas como Shopify.
+
+## Orígenes del pedido
+
+| Origen | Qué incluye |
+| --- | --- |
+| Tienda | Pedidos creados en tu tienda de Chateea. |
+| Externo | Pedidos sincronizados desde tiendas de terceros (hoy, Shopify). |
+
+Los eventos de envío que llegan desde Shippo, ShipStation y otras herramientas de envío conectadas también activan este disparador, sin importar dónde se creen las etiquetas.
+
+<Note>
+  El antiguo disparador exclusivo de Shopify aparece ahora como **Pedido de Shopify completado (se retirará pronto)**. Tus flujos actuales siguen funcionando, pero para automatizaciones nuevas usa **Tiendas de comercio electrónico → Pedido completado**, que además ofrece todos los filtros.
+</Note>
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre tus flujos">
+    Ve a **Automatización → Flujos de trabajo** y haz clic en **Crear flujo de trabajo**, o abre el flujo que quieres actualizar.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador**, baja hasta **Tiendas de comercio electrónico** y selecciona **Pedido completado**.
+  </Step>
+  <Step title="Ponle un nombre">
+    Usa un nombre claro, por ejemplo "Pedido completado: tienda y Shopify". Te ayudará en flujos con varios puntos de entrada.
+  </Step>
+  <Step title="Agrega filtros">
+    En **Filtros**, haz clic en **Agregar filtros** y elige las condiciones que necesites (ver tabla de abajo). Así evitas inscripciones innecesarias y tus mensajes son más relevantes.
+  </Step>
+  <Step title="Guarda el disparador">
+    Revisa el nombre y los filtros y haz clic en **Guardar disparador**.
+  </Step>
+  <Step title="Agrega acciones, publica y prueba">
+    Añade tus acciones posteriores al envío, publica el flujo y pruébalo completando un pedido de prueba en tu tienda o en Shopify. Si esperas varios envíos por pedido, activa **Permitir múltiples**.
+  </Step>
+</Steps>
+
+### Filtros disponibles
+
+| Filtro | Cómo usarlo |
+| --- | --- |
+| Valor del carrito | Elige un operador como **Mayor que** o **Entre** y el importe. Útil para dar un trato VIP a los pedidos grandes. |
+| Productos completados | **Contiene cualquiera** para incluir productos concretos o **No es ninguno de** para excluirlos. Se basa en lo que realmente se envió, no solo en lo que se pidió. |
+| Origen del pedido | **Tienda** o **Externo**. |
+| Suborigen del pedido | Si el origen es Externo, limita a una plataforma como **Shopify**. |
+| Transportista | **Contiene frase** (escribe el nombre y pulsa **Enter**) o **No está vacío**. Útil para personalizar el mensaje según FedEx, UPS, USPS, etc. |
+| Número de seguimiento | **No está vacío** para que el flujo solo se ejecute cuando ya existe número de seguimiento. |
+
+<Tip>
+  Usa el filtro **Número de seguimiento: No está vacío** para no enviar avisos antes de tiempo. Así tu cliente siempre recibe un mensaje con información útil para rastrear su paquete.
+</Tip>
+
+## Ideas de acciones
+
+- Enviar un correo, SMS o WhatsApp con el enlace de seguimiento.
+- Mover al cliente a una etapa "Enviado" de tu pipeline.
+- Avisar al canal de Slack del almacén.
+- Programar una solicitud de reseña unos días después de la entrega estimada.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Se activa con envíos parciales?">
+    Sí. Cada vez que un grupo de productos se marca como completado, el flujo se ejecuta. Usa filtros para controlar los duplicados.
+  </Accordion>
+  <Accordion title="¿Mis flujos antiguos de Shopify dejarán de funcionar?">
+    No. Siguen funcionando, pero te recomendamos migrarlos antes de que se retire el disparador antiguo.
+  </Accordion>
+  <Accordion title="¿Puedo esperar a que el número de seguimiento esté disponible?">
+    Sí. Agrega una acción de espera hasta que el enlace de seguimiento no esté vacío, o una espera de unos minutos después del disparador.
+  </Accordion>
+  <Accordion title="¿Cómo evito avisos duplicados en envíos divididos?">
+    Usa el filtro **Número de seguimiento** con **No está vacío** para que solo se activen los envíos con un número de seguimiento nuevo.
+  </Accordion>
+  <Accordion title="¿Marcar un pedido como Entregado vuelve a activar el flujo?">
+    No. Este disparador solo se activa cuando el estado cambia a Completado. Para la entrega, usa otros disparadores.
+  </Accordion>
+  <Accordion title="¿Es compatible con WooCommerce?">
+    Todavía no. Nuevas plataformas aparecerán en los filtros de suborigen a medida que se integren.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Checkout abandonado" icon="cart-shopping" href="/automatizaciones/disparador-checkout-abandonado">
+    Recupera ventas de carritos sin pagar.
+  </Card>
+  <Card title="Reseña de producto enviada" icon="star" href="/automatizaciones/disparador-resena-de-producto-enviada">
+    Reacciona a las opiniones de tus clientes.
+  </Card>
+</CardGroup>

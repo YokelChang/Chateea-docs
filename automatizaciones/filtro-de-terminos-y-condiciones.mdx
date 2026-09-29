@@ -1,0 +1,70 @@
+---
+title: "Filtro de términos y condiciones en formularios, encuestas y cuestionarios"
+description: "Separa en tus flujos a los contactos que aceptaron tus términos y condiciones de los que no."
+icon: "file-contract"
+---
+
+Los disparadores **Formulario enviado**, **Encuesta enviada** y **Cuestionario enviado** incluyen un filtro de **Términos y condiciones**. Con él puedes separar a quienes aceptaron tus términos de quienes no lo hicieron, y así decidir qué camino sigue cada contacto dentro del flujo de trabajo.
+
+Es útil para cumplir con requisitos legales o de consentimiento, segmentar mejor y evitar enviar comunicaciones a personas que no dieron su autorización.
+
+## Beneficios
+
+- **Mejor segmentación:** filtra contactos según si aceptaron o no los términos.
+- **Cumplimiento:** asegúrate de que solo avanzan en el flujo quienes aceptaron las condiciones.
+- **Recorridos a medida:** crea caminos distintos para quienes aceptaron y para quienes no.
+
+## Cómo agregar el filtro
+
+<Steps>
+  <Step title="Abre tu flujo de trabajo">
+    Ve a **Automatización → Flujos de trabajo** y abre el flujo que quieres editar, o crea uno nuevo.
+  </Step>
+  <Step title="Elige el disparador">
+    Agrega o abre un disparador **Formulario enviado**, **Cuestionario enviado** o **Encuesta enviada**.
+  </Step>
+  <Step title="Agrega el filtro">
+    Haz clic en **Agregar filtros** y selecciona el filtro de **Términos y condiciones**.
+  </Step>
+  <Step title="Elige la condición">
+    Selecciona una de las dos opciones:
+    - Contactos que **aceptaron** los términos y condiciones.
+    - Contactos que **no aceptaron** los términos y condiciones.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda el flujo y haz una prueba enviando el formulario con y sin aceptar los términos para confirmar que el filtro se comporta como esperas.
+  </Step>
+</Steps>
+
+<Note>
+  Si un contacto no interactuó con la casilla de términos y condiciones, se considera como **No aceptado**.
+</Note>
+
+## Casos de uso
+
+- **Ofertas promocionales:** excluye de una promoción a quienes no aceptaron los términos actualizados.
+- **Acceso a funciones o contenido:** da acceso a contenido premium solo a quienes aceptaron las condiciones.
+- **Procesos regulados:** asegúrate de que solo participan en el flujo los contactos que cumplen los requisitos.
+
+<Tip>
+  Puedes crear dos disparadores en el mismo flujo, uno para cada condición, o usar dos flujos separados: uno que continúe el proceso normal y otro que pida al contacto aceptar los términos antes de seguir.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo combinar este filtro con otros?">
+    Sí. El filtro de términos y condiciones funciona junto con los demás filtros del disparador para una segmentación más precisa.
+  </Accordion>
+  <Accordion title="¿Qué pasa con quienes no marcaron la casilla?">
+    Se clasifican como "No aceptado", así tu flujo siempre sabe qué camino debe seguir cada contacto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Filtros avanzados y listas inteligentes" icon="filter" href="/automatizaciones/filtros-avanzados-y-listas-inteligentes-de-flujos">
+    Segmenta con más precisión dentro de tus flujos.
+  </Card>
+</CardGroup>

@@ -1,0 +1,129 @@
+---
+title: "Importar contactos desde un archivo CSV"
+description: "Sube tu lista en CSV, relaciona columnas con campos y crea contactos y oportunidades en una sola importación."
+icon: "file-csv"
+---
+
+Importar un archivo CSV es la forma más rápida de traer a Chateea tus prospectos, clientes o listas de otro CRM. En pocos pasos subes el archivo, relacionas cada columna con un campo de Chateea y decides qué hacer con los contactos nuevos: etiquetarlos, agregarlos a una lista inteligente o meterlos en un flujo de trabajo. Si tu archivo también trae datos de ventas, puedes crear oportunidades en la misma importación.
+
+<Warning>
+Solo se aceptan archivos **.csv**. Si tu lista está en Excel o Google Sheets, expórtala primero como CSV (valores separados por comas).
+</Warning>
+
+## Antes de empezar
+
+Revisa estos requisitos para que la importación no falle:
+
+| Requisito | Detalle |
+| --- | --- |
+| Permisos | Solo los usuarios con rol de **administrador** pueden importar contactos. |
+| Formato | Archivo **.csv**, con una sola hoja. |
+| Tamaño | Menos de **30 MB**. Si pesa más, divídelo en varios archivos. |
+| Encabezados | La primera fila no puede estar vacía. Debe tener encabezados y al menos uno debe corresponder a un campo de Chateea. |
+| Datos mínimos | Cada fila necesita al menos un dato de identificación: nombre, correo o teléfono. |
+
+### Errores comunes que conviene evitar
+
+- **Encabezados que no coinciden** con los campos de Chateea. Nómbralos de forma clara (por ejemplo, `Nombre`, `Correo`, `Teléfono`) para que el mapeo sea más fácil.
+- **Filas sin nombre, correo ni teléfono.** Esas filas no se pueden crear como contacto.
+- **Teléfonos con espacios, guiones o letras.** Escribe los números limpios y, de preferencia, con el código de país (por ejemplo, `+5215512345678`).
+- **Registros duplicados dentro del mismo archivo.** Limpia la lista antes de subirla.
+- **Columnas para campos que no existen.** Si tu archivo trae datos que no tienen un campo en Chateea (por ejemplo, "Fecha de renovación"), crea antes ese campo como campo personalizado.
+
+## Importar contactos paso a paso
+
+<Steps>
+<Step title="Abre el importador">
+Ve a **Contactos** y haz clic en el botón **Importar contactos** de la barra de herramientas.
+</Step>
+<Step title="Elige qué vas a importar">
+Selecciona **Contactos**. Si tu archivo también trae información de oportunidades, marca además **Oportunidades** (lo explicamos más abajo). Haz clic en **Siguiente**.
+</Step>
+<Step title="Sube tu archivo y elige el tipo de importación">
+Carga el CSV y elige si vas a **crear** contactos nuevos, **actualizar** contactos existentes o **crear y actualizar** a la vez.
+
+Cuando actualizas, Chateea busca el contacto existente en este orden: **ID del contacto**, luego **correo** y luego **teléfono**. Así evita crear duplicados y actualiza el registro correcto.
+</Step>
+<Step title="Relaciona las columnas con los campos">
+Revisa que cada columna del archivo esté asignada al campo correcto de Chateea, ya sea estándar o personalizado.
+
+- Marca **No actualizar valores vacíos** si no quieres que una celda vacía del archivo borre un dato que el contacto ya tiene.
+- Si no quieres importar una columna, déjala sin asignar y marca la opción para **no importar datos de columnas sin asignar**.
+- Todos los campos obligatorios deben quedar asignados para poder continuar.
+- Si un contacto y una oportunidad están en la misma fila, quedan vinculados automáticamente.
+</Step>
+<Step title="Configura tus preferencias y confirma">
+Antes de lanzar la importación puedes:
+
+- Crear una **lista inteligente** con los contactos importados.
+- Agregar los contactos a un **flujo de trabajo**.
+- Aplicar una **etiqueta** para segmentarlos después.
+
+Revisa por última vez el mapeo de campos, confirma que tienes el consentimiento para contactar a estas personas y haz clic en **Importar**. Las columnas sin asignar se ignoran.
+</Step>
+</Steps>
+
+<Tip>
+Etiqueta siempre tus importaciones con algo como `importacion-abril-2026` o el origen de la lista. Te servirá para filtrar esos contactos, revisar resultados o deshacer una campaña si algo sale mal.
+</Tip>
+
+## Importar contactos y oportunidades a la vez
+
+Si tu archivo incluye datos de negocios o tratos, puedes crear los contactos y sus oportunidades en una sola pasada. Es útil cuando migras desde otro CRM y quieres que cada prospecto llegue ya ubicado en su etapa del pipeline.
+
+El proceso es el mismo que el de contactos. La única diferencia es que, en el paso 2, marcas **Contactos** y **Oportunidades**.
+
+Para que las oportunidades se creen bien, tu CSV debe tener columnas como:
+
+- Pipeline
+- Etapa
+- Estado
+- Nombre de la oportunidad
+- Valor (opcional)
+
+Las columnas que no necesites las puedes dejar sin asignar.
+
+## Revisar el estado de la importación
+
+Las importaciones se procesan en segundo plano. Para ver cómo van:
+
+1. Ve a **Contactos → Acciones masivas**. Ahí aparecen tanto las importaciones de contactos como las de oportunidades.
+2. Haz clic en **Ver estadísticas** (Show Stats) para ver cuántos registros se crearon, actualizaron o fallaron.
+3. En la pestaña **Errores** puedes descargar el registro de errores, ver qué filas fallaron y por qué, corregirlas y volver a importarlas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo importar contactos sin correo ni teléfono?">
+Sí, siempre que la fila tenga al menos un dato de identificación: nombre, correo o teléfono. Ten en cuenta que sin correo ni teléfono no podrás comunicarte con ese contacto desde Chateea.
+</Accordion>
+<Accordion title="¿Puedo omitir algunas columnas del CSV?">
+Sí. Déjalas sin asignar en el paso de mapeo y marca la opción para no importar columnas sin asignar.
+</Accordion>
+<Accordion title="¿Puedo actualizar contactos que ya existen?">
+Sí. Elige **Actualizar** o **Crear y actualizar**. Chateea identifica el contacto por ID, correo o teléfono, en ese orden.
+</Accordion>
+<Accordion title="¿Dónde veo mis importaciones anteriores?">
+En **Contactos → Acciones masivas** tienes el historial de todas las importaciones, con sus estadísticas y registros de errores.
+</Accordion>
+<Accordion title="Mi archivo trae una columna que no aparece en la lista de campos">
+Crea primero un campo personalizado con ese nombre y el tipo adecuado. Después vuelve a iniciar la importación y ya podrás asignar la columna.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Crear y gestionar contactos" icon="user-plus" href="/primeros-pasos/crear-y-gestionar-contactos">
+Lo básico para trabajar con contactos en Chateea.
+</Card>
+<Card title="Tipos de contacto" icon="tags" href="/contactos/tipos-de-contacto">
+Clasifica a tus contactos como prospecto, cliente o proveedor.
+</Card>
+<Card title="Restaurar contactos eliminados" icon="rotate-left" href="/contactos/restaurar-contactos-eliminados">
+Recupera contactos borrados o revierte una eliminación masiva.
+</Card>
+<Card title="Listas inteligentes" icon="list-check" href="/contactos/listas-inteligentes">
+Segmenta a tus contactos importados.
+</Card>
+</CardGroup>

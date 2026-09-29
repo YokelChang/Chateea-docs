@@ -1,0 +1,86 @@
+---
+title: "Disparador: Etiqueta de contacto"
+description: "Inicia un flujo cuando se agrega o se quita una etiqueta a un contacto, y conoce qué puede activarlo."
+icon: "tags"
+---
+
+Las etiquetas sirven para clasificar a tus contactos y encontrarlos rápido, pero también son una de las formas más prácticas de poner en marcha automatizaciones. El disparador **Etiqueta de contacto** (Contact Tag) inicia un flujo de trabajo cada vez que se agrega o se quita una etiqueta a un contacto. Por ejemplo, al etiquetar a alguien como "cliente-nuevo" puedes arrancar automáticamente tu secuencia de bienvenida.
+
+## Qué hace este disparador
+
+El disparador revisa si a un contacto se le **agrega** o se le **quita** una etiqueta. Con los filtros decides en qué caso se activa:
+
+- **Etiqueta agregada** (Tag Added): se activa cuando el contacto recibe la etiqueta.
+- **Etiqueta eliminada** (Tag Removed): se activa cuando se le quita la etiqueta.
+
+<Warning>
+  Si no agregas un filtro de agregada o eliminada, el disparador se activará en los dos casos. Casi siempre conviene indicar cuál de los dos quieres, además de la etiqueta concreta.
+</Warning>
+
+## Configurar el disparador
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea o abre un flujo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Etiqueta de contacto**.
+  </Step>
+  <Step title="Define los filtros">
+    Agrega el filtro **Etiqueta agregada** o **Etiqueta eliminada** y selecciona la etiqueta que debe activar el flujo.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda el disparador, agrega las acciones que quieras y publica el flujo.
+  </Step>
+</Steps>
+
+## Qué puede agregar o quitar una etiqueta
+
+Cualquiera de estos métodos activa el disparador (con el filtro correspondiente):
+
+| Origen | Agregar | Quitar |
+| --- | --- | --- |
+| Manualmente desde la lista de contactos (uno o varios a la vez) | Sí | Sí |
+| Acciones de un flujo de trabajo | Sí | Sí |
+| Herramientas de integración de terceros, como Zapier | Sí | No |
+| Importación de contactos desde CSV | Sí | No |
+
+### Desde la lista de contactos
+
+Ve a **Contactos**, selecciona uno o varios contactos y haz clic en **Agregar etiqueta**. Para quitarlas, usa **Quitar etiqueta**. Funciona igual con un solo contacto o con una acción masiva.
+
+### Desde otro flujo de trabajo
+
+Las acciones **Agregar etiqueta** y **Quitar etiqueta** de un flujo publicado cambian las etiquetas de cada contacto que llega a ese paso. Así puedes encadenar automatizaciones: un flujo etiqueta al contacto y esa etiqueta arranca otro flujo.
+
+### Desde integraciones externas
+
+Herramientas como Zapier pueden agregar etiquetas a tus contactos en respuesta a lo que pasa en otras aplicaciones. Por este medio solo se pueden **agregar** etiquetas, no quitarlas.
+
+### Al importar un CSV
+
+Puedes agregar etiquetas durante la importación de dos formas:
+
+- Incluye en el archivo una columna con el encabezado de etiquetas y escribe las etiquetas de cada contacto. Si son varias, sepáralas con comas dentro de la misma celda.
+- Usa las opciones avanzadas del proceso de importación para aplicar etiquetas a todos los contactos importados.
+
+<Note>
+  La importación también actualiza las etiquetas de contactos que ya existen si tienes desactivada la opción de permitir contactos duplicados y el correo y el teléfono coinciden con los de un contacto existente. En ese caso, las etiquetas nuevas también pueden activar tus flujos.
+</Note>
+
+## Buenas prácticas
+
+- **Nombres claros y consistentes:** usa un formato fijo (por ejemplo, minúsculas y guiones) para no crear etiquetas casi iguales que no activen el flujo esperado.
+- **Cuidado con las importaciones masivas:** antes de importar un CSV con etiquetas, revisa qué flujos se activan con ellas para no enviar mensajes a cientos de contactos sin querer.
+- **Evita bucles:** si un flujo agrega una etiqueta que a su vez dispara otro flujo que vuelve a tocarla, puedes crear un ciclo. Revisa la cadena completa antes de publicar.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar o quitar etiquetas en masa" icon="tags" href="/contactos/agregar-o-quitar-etiquetas-en-masa">
+    Gestiona etiquetas de muchos contactos a la vez.
+  </Card>
+  <Card title="Importar contactos desde CSV" icon="file-import" href="/contactos/importar-contactos-desde-csv">
+    Prepara tu archivo e importa contactos con etiquetas.
+  </Card>
+</CardGroup>

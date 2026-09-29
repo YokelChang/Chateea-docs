@@ -1,0 +1,123 @@
+---
+title: "Asana en flujos de trabajo"
+description: "Crea y actualiza tareas, secciones y proyectos de Asana, y arranca flujos con eventos de Asana en tiempo real."
+icon: "list-check"
+---
+
+La integración con Asana une tus flujos de trabajo de Chateea con tus proyectos en Asana. Puedes crear y actualizar tareas, secciones y proyectos desde una automatización, y también arrancar flujos cuando pasa algo en Asana, como una tarea nueva o un comentario. Todo sin Zapier ni webhooks propios.
+
+## Para qué te sirve
+
+- **Sincronización en tiempo real:** en cuanto algo cambia en Asana, tu flujo se ejecuta.
+- **Menos errores:** las tareas se crean y actualizan solas, sin copiar y pegar.
+- **Menos costos:** reemplazas conectores de pago como Zapier, Make o n8n con pasos nativos.
+- **Equipos alineados:** ventas y operaciones trabajan con la misma información, y puedes combinar Asana con otras acciones del flujo (correo, notificaciones, etiquetas o campos del contacto).
+
+## Disparadores (de Asana a Chateea)
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Tarea creada** (instantáneo) | Cuando se crea una tarea nueva en Asana. |
+| **Tarea actualizada** (instantáneo) | Cuando se modifica una tarea. |
+| **Proyecto creado** (instantáneo) | Cuando se crea un proyecto nuevo. |
+| **Comentario en tarea** (instantáneo) | Cuando se agrega un comentario a una tarea. |
+| **Nuevo usuario** | Cuando se agrega un usuario a tu espacio de trabajo de Asana. |
+| **Tarea movida a una sección** (instantáneo) | Cuando una tarea pasa de una sección a otra. |
+| **Nuevo archivo adjunto en tarea** (instantáneo) | Cuando se adjunta un archivo a una tarea. |
+
+Los disparadores **Etiqueta agregada a tarea** y **Nueva subtarea** están anunciados como próximos y todavía pueden no aparecer en tu cuenta.
+
+## Acciones (de Chateea a Asana)
+
+| Acción | Qué hace |
+| --- | --- |
+| **Crear tarea** | Crea una tarea nueva en Asana. |
+| **Actualizar tarea** | Cambia los datos de una tarea existente. |
+| **Buscar tarea por ID** | Localiza una tarea con su ID de Asana. |
+| **Buscar tarea** | Localiza una tarea por su nombre. |
+| **Crear sección** | Agrega una sección a un proyecto. |
+| **Buscar comentarios de una tarea** | Recupera los comentarios de una tarea. |
+| **Agregar tarea a una sección** | Mueve una tarea existente a una sección concreta. |
+| **Buscar todas las tareas del proyecto** | Trae todas las tareas de un proyecto. |
+| **Buscar tarea en un proyecto** | Localiza una tarea dentro de un proyecto concreto. |
+| **Crear comentario** | Agrega un comentario (historia) a una tarea. |
+| **Crear subtarea** | Crea una subtarea dentro de una tarea existente. |
+| **Buscar proyecto** | Obtiene el ID de un proyecto a partir de su nombre. |
+| **Buscar sección** | Obtiene el ID de una sección de un proyecto. |
+| **Crear proyecto** | Crea un proyecto nuevo en Asana. |
+
+<Note>
+  Los disparadores y las acciones de Asana son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Conectar Asana y crear el flujo
+
+<Steps>
+  <Step title="Busca Asana en el flujo">
+    En **Automatización → Flujos de trabajo**, abre o crea un flujo y busca el disparador o la acción de Asana que necesitas (por ejemplo, **Crear tarea** o **Tarea creada**).
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Si tu cuenta de Asana ya está conectada, verás las opciones de configuración de inmediato. Si no, haz clic en **Conectar ahora** e inicia sesión en Asana para autorizar el acceso.
+  </Step>
+  <Step title="Configura y prueba el disparador">
+    Elige el disparador, ponle un nombre y haz clic en **Probar disparador** para traer datos de muestra de una tarea.
+  </Step>
+  <Step title="Usa los datos en las acciones">
+    En los pasos siguientes puedes usar los campos dinámicos de la tarea, como el nombre, el responsable o la fecha de vencimiento.
+  </Step>
+</Steps>
+
+Los disparadores de Asana funcionan con webhooks: en cuanto ocurre el evento, Asana avisa a Chateea y el flujo arranca sin esperas ni intervalos de consulta.
+
+<Tip>
+  Si usas **Tarea actualizada**, agrega el filtro **Campos modificados**. Al cambiar un solo campo, Asana puede generar varias actualizaciones en cadena. Con el filtro, el flujo solo se ejecuta cuando cambian los campos que te importan y evitas ejecuciones innecesarias.
+</Tip>
+
+## Ejemplos de uso
+
+### Tarea de seguimiento para cada lead nuevo
+
+- **Disparador:** Contacto creado.
+- **Acciones:** Crear tarea en Asana con el título "Nuevo lead: `{{contact.name}}`", asignada al equipo de ventas. Luego, Crear comentario con el texto "Contactar a `{{contact.name}}` en `{{contact.email}}`".
+
+Cada vez que alguien llena un formulario, tu equipo de ventas tiene su tarea lista en Asana.
+
+### Proyectos sincronizados entre herramientas
+
+- **Disparador:** Proyecto creado (Asana).
+- **Acciones:** crear el proyecto o registro equivalente en otra herramienta (por ejemplo ClickUp o Airtable) y enviar una notificación interna a los responsables.
+
+### Avisos cuando cambia una tarea
+
+- **Disparador:** Tarea actualizada (Asana), con el filtro de campos modificados.
+- **Acciones:** enviar una notificación interna por correo o Slack, actualizar la etiqueta del contacto y cambiar el estado de la tarea en otra herramienta.
+
+Por ejemplo, cuando una tarea de diseño pasa a "Listo para revisión", el revisor recibe un correo y la etiqueta del contacto se actualiza.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los disparadores de Asana son instantáneos?">
+    Sí. Funcionan con webhooks, así que no hay intervalo de consulta ni demoras.
+  </Accordion>
+  <Accordion title="¿Puedo sincronizar datos en ambos sentidos?">
+    Cada flujo trabaja en un solo sentido: o lo dispara Asana, o Chateea ejecuta una acción en Asana. Si necesitas ambos sentidos, arma dos flujos distintos.
+  </Accordion>
+  <Accordion title="¿Necesito un plan de pago de Asana?">
+    No. La integración funciona con planes gratuitos y de pago. Algunas funciones avanzadas de Asana (como varios proyectos o acceso de invitados) pueden requerir un plan de pago.
+  </Accordion>
+  <Accordion title="¿Puedo crear subtareas o comentarios automáticamente?">
+    Sí, con las acciones **Crear subtarea** y **Crear comentario**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Monday.com en flujos de trabajo" icon="table-columns" href="/automatizaciones/monday-en-flujos-de-trabajo">
+    Crea y actualiza elementos de tus tableros de Monday.com.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+</CardGroup>

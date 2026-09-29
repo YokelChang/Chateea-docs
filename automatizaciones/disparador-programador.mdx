@@ -1,0 +1,124 @@
+---
+title: "Disparador: Programador"
+description: "Ejecuta flujos sin contactos en horarios fijos: cada día, cada semana, cada mes o con expresiones cron."
+icon: "clock"
+---
+
+El disparador **Programador** (Scheduler) inicia un flujo de trabajo en los momentos que tú definas, sin necesidad de inscribir contactos. Es perfecto para tareas recurrentes de operación: resúmenes diarios, informes semanales, sincronizaciones con hojas de cálculo, avisos a tu equipo o llamadas a webhooks.
+
+Todas las ejecuciones siguen la **zona horaria de tu cuenta**, y antes de publicar puedes ver cuándo serán las próximas.
+
+## Beneficios
+
+- **Automatización por reloj:** cada hora, a diario, semanal, mensual, en una fecha concreta o con una expresión cron.
+- **Sin contactos:** ideal para tareas internas. Las acciones que requieren un contacto se omiten automáticamente para evitar errores.
+- **Respeta tu zona horaria:** tus informes y procesos se ejecutan siempre a la misma hora local.
+- **Controles incluidos:** **Omitir fines de semana** y **Detener el** (fecha de fin) para respetar tu calendario de trabajo.
+- **Publicación segura:** con **Comprobar programación del disparador** ves las próximas cinco ejecuciones antes de activarlo.
+- **Listo para integraciones:** combínalo con webhooks, Google Sheets, Airtable, Slack, notificaciones internas, valores personalizados y creación de tareas.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Programador**.
+  </Step>
+  <Step title="Elige el tipo de intervalo">
+    - **Personalizado:** el enésimo día de la semana del mes, por ejemplo el segundo viernes o el cuarto lunes. Admite varias horas.
+    - **Diario:** una o varias veces al día.
+    - **Semanal:** eliges los días de la semana y la hora.
+    - **Mensual:** un día del 1 al 31, o **Último** día del mes, y la hora.
+    - **Cada N días:** por ejemplo, cada 2 días a las 9:00.
+    - **Fecha y hora única:** se ejecuta una sola vez.
+    - **Avanzado (cron):** para programaciones complejas.
+  </Step>
+  <Step title="Define la hora o las horas">
+    Indica en qué momento debe ejecutarse según el intervalo elegido.
+  </Step>
+  <Step title="Ajusta la configuración avanzada (opcional)">
+    En **Configuración avanzada**, activa **Omitir fines de semana** y define **Detener el** si quieres una fecha de fin.
+  </Step>
+  <Step title="Revisa la programación">
+    Haz clic en **Comprobar programación del disparador** para ver las próximas cinco ejecuciones y confirmar que la frecuencia es la correcta.
+  </Step>
+  <Step title="Agrega acciones y publica">
+    Añade acciones que no dependan de un contacto y publica el flujo. Empezará a ejecutarse en los horarios configurados a partir de ese momento.
+  </Step>
+</Steps>
+
+## Programación avanzada con cron
+
+Si los intervalos predefinidos no te bastan, usa una expresión cron con el formato estándar de cinco campos: minuto, hora, día del mes, mes y día de la semana. Admite listas, rangos y saltos.
+
+```text
+0 9 * * 1       Todos los lunes a las 9:00
+30 14 1 * *     El día 1 de cada mes a las 14:30
+0 */2 * * *     Cada 2 horas
+```
+
+<Note>
+  No se permiten expresiones que se ejecuten más de una vez por hora.
+</Note>
+
+## Omitir fines de semana y fecha de fin
+
+- **Omitir fines de semana:** elimina las ejecuciones de sábado y domingo en los intervalos diario, semanal, cada N días y en expresiones cron que incluyan fines de semana.
+- **Detener el:** fija una fecha y hora a partir de la cual ya no habrá más ejecuciones.
+
+Ambas opciones se reflejan de inmediato en la vista previa de las próximas cinco ejecuciones.
+
+## Acciones compatibles
+
+Como el programador no inscribe contactos, las acciones que necesitan uno no se ejecutan. El flujo continúa con el siguiente paso compatible.
+
+| Funcionan bien | Se omiten |
+| --- | --- |
+| Webhook saliente y webhook personalizado | Cualquier acción dirigida a un contacto, como enviar un SMS al contacto |
+| Google Sheets y Airtable | |
+| Slack | |
+| Correo o SMS interno a tu equipo | |
+| Actualizar valores personalizados | |
+| Crear tarea | |
+
+Los pasos omitidos quedan anotados en los registros de ejecución. Los pasos siguientes se ejecutan si no requieren datos de un contacto.
+
+## Ejemplos de uso
+
+- **Actualizar datos:** sincronizar registros de Airtable cada 4 horas.
+- **Informes periódicos:** enviar un resumen diario o un informe semanal por correo o Slack.
+- **Recordatorios al equipo:** un aviso cada mañana a las 8:00.
+- **Tareas de mantenimiento:** limpieza de datos por la noche o sincronizaciones con Google Sheets, Asana o Slack.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El programador inscribe contactos?">
+    No. Es un disparador sin contactos. Los pasos que requieren un contacto se omiten y la ejecución continúa con el siguiente paso compatible.
+  </Accordion>
+  <Accordion title="¿Recupera ejecuciones que se perdieron?">
+    No. Solo se ejecuta en los horarios futuros mientras el flujo está publicado. Las ejecuciones pasadas no se lanzan de forma retroactiva.
+  </Accordion>
+  <Accordion title="¿Puedo programar varias horas en un mismo día?">
+    Sí. Los intervalos Diario y Personalizado admiten varias horas.
+  </Accordion>
+  <Accordion title="¿Cómo funciona Omitir fines de semana?">
+    Quita automáticamente las ejecuciones de sábado y domingo. La vista previa lo refleja al instante.
+  </Accordion>
+  <Accordion title="¿Qué hace Detener el?">
+    Fija la fecha y hora final después de la cual no se ejecuta más.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Airtable en flujos de trabajo" icon="table" href="/automatizaciones/airtable-en-flujos-de-trabajo">
+    Crea y actualiza registros de Airtable desde tus flujos.
+  </Card>
+  <Card title="Registros de ejecución e historial de inscripción" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa qué pasos se ejecutaron y cuáles se omitieron.
+  </Card>
+</CardGroup>

@@ -1,0 +1,129 @@
+---
+title: "Reserva de servicios con la IA conversacional"
+description: "Permite que tu bot de IA reserve citas de servicio dentro de la conversación a partir de lo que describe el cliente."
+icon: "calendar-plus"
+---
+
+Con la compatibilidad con calendarios de servicios, tu bot de IA conversacional puede reservar citas de servicio directamente dentro de la conversación. En lugar de mandar al cliente a un formulario de reserva, el cliente describe lo que necesita con sus propias palabras y el bot lo guía hasta dejar la cita agendada.
+
+Es ideal para negocios de servicios (salones, spas, clínicas, talleres) que quieren una experiencia de reserva más rápida y conversacional.
+
+## Para qué sirve
+
+- **Reserva conversacional:** el cliente dice "quiero un corte y tinte el sábado" en vez de llenar un formulario.
+- **Usa lo que ya configuraste:** el bot trabaja con tus servicios públicos, la selección de personal, los complementos y las variantes.
+- **Menos abandono:** todo ocurre en la misma conversación, sin pasos extra.
+- **Control total:** eliges qué servicios puede reservar la IA y le das instrucciones de reserva propias.
+- **Ciclo completo de la cita:** según tu configuración, el bot también puede reprogramar, cancelar, enviar un enlace de reserva, disparar flujos o transferir la conversación.
+
+## Qué admite
+
+| Elemento | Compatibilidad |
+| --- | --- |
+| **Servicios públicos** | Sí. Solo se pueden elegir servicios visibles para el público. |
+| **Servicios privados** | No. |
+| **Selección de personal** | Sí, según lo que tengas configurado en el servicio. |
+| **Complementos y variantes** | Sí, si ya están configurados en el servicio. |
+| **Cobro en línea durante la reserva** | No. El bot no cobra durante la conversación. |
+
+<Warning>
+  El bot no cobra pagos en línea durante la reserva. Si tu servicio requiere pago anticipado, define cómo lo vas a cobrar (por ejemplo, con un enlace de pago enviado después por un flujo de trabajo).
+</Warning>
+
+## Servicios, calendarios de servicios y menús de servicios
+
+| Elemento | Para qué sirve |
+| --- | --- |
+| **Calendarios de servicios** | Gestionan la agenda de los servicios. |
+| **Servicios** | Definen lo que el cliente puede reservar: variantes, complementos, recursos, duración. |
+| **Menús de servicios** | Muestran varios servicios juntos en una experiencia de marca. Cada servicio sigue conectado a su propio calendario. |
+
+Los menús de servicios son opcionales: no los necesitas para que el bot reserve servicios.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Configura tus servicios primero">
+    Crea los servicios o calendarios de servicios que quieres ofrecer. Revisa que estén completos: detalles, personal, complementos, variantes, recursos y duración. La IA solo puede reservar lo que ya está bien configurado.
+  </Step>
+  <Step title="Activa la reserva de citas en el bot">
+    En tu bot de IA conversacional basado en indicaciones, abre la configuración de **Reserva de citas** y elige la opción **Servicios**. Luego selecciona los servicios públicos que manejará la IA.
+  </Step>
+  <Step title="Agrega instrucciones de reserva en la indicación">
+    Explica cómo debe hablar de los servicios, qué preguntas de aclaración debe hacer y cómo resolver dudas entre servicios parecidos.
+  </Step>
+  <Step title="Revisa las acciones adicionales">
+    Activa las que necesites: reprogramar, cancelar, enviar enlace de reserva, disparar flujos o transferir la conversación.
+  </Step>
+  <Step title="Prueba la reserva">
+    Haz conversaciones de prueba y confirma que el bot reconoce el servicio correcto, maneja bien los detalles y crea la cita como esperas. Es especialmente importante si tienes servicios con nombres parecidos.
+  </Step>
+</Steps>
+
+## Descripciones del servicio o indicación: qué va en cada lugar
+
+Esta diferencia es clave para que el bot acierte:
+
+- Las **descripciones de los servicios o calendarios** sirven para que la IA **clasifique la intención** del cliente y elija el servicio.
+- La **indicación del bot** contiene lo que quieres que la IA **le diga al cliente**: explicaciones, recomendaciones y reglas.
+
+Si quieres que el bot explique la diferencia entre dos servicios, pon esa explicación en la indicación, no solo en la descripción del servicio.
+
+### Qué puedes pedir en las instrucciones de reserva
+
+- Hacer preguntas de aclaración antes de ofrecer horarios.
+- Explicar la diferencia entre servicios con palabras sencillas.
+- Seguir reglas de reserva o pasos de calificación.
+- Recordar políticas, como las condiciones de cancelación.
+- Pedir datos útiles antes de confirmar la cita.
+
+```text
+Antes de ofrecer horarios, pregunta si es la primera visita del cliente.
+Si pide "tinte", confirma si quiere tinte completo o solo retoque de raíz.
+Al confirmar la cita, recuerda que las cancelaciones deben hacerse
+con al menos 24 horas de anticipación.
+```
+
+<Tip>
+  Para mejorar la precisión, usa nombres de servicio claros y descripciones que distingan bien cada opción. Si dos servicios se parecen mucho, explica en la indicación cuándo corresponde cada uno.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito tener servicios configurados antes de activar esta función?">
+    Sí. Tus servicios son la base que usa el bot para reservar. Configúralos antes de activar la reserva de servicios en el bot.
+  </Accordion>
+  <Accordion title="¿El bot puede reservar servicios privados?">
+    No. Por ahora solo admite servicios públicos.
+  </Accordion>
+  <Accordion title="¿El bot puede cobrar durante la reserva?">
+    No. El bot no cobra pagos en línea durante la conversación.
+  </Accordion>
+  <Accordion title="¿Puedo elegir qué servicios reserva la IA?">
+    Sí. Durante la configuración eliges los servicios públicos que manejará.
+  </Accordion>
+  <Accordion title="¿Necesito un menú de servicios?">
+    No. Los menús de servicios son opcionales.
+  </Accordion>
+  <Accordion title="El bot elige el servicio equivocado, ¿qué hago?">
+    Revisa los servicios seleccionados, haz que los nombres y descripciones sean más distintos entre sí y mejora las instrucciones de la indicación.
+  </Accordion>
+  <Accordion title="¿La reserva puede incluir complementos y variantes?">
+    Sí, si ya están configurados en el servicio.
+  </Accordion>
+  <Accordion title="¿El bot puede reprogramar o cancelar citas?">
+    Sí, según cómo configures las acciones de reserva de citas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Reserva de citas mediante IA" icon="calendar-check" href="/bot-ia/reserva-de-citas">
+    La configuración base del objetivo de reserva.
+  </Card>
+  <Card title="Reserva en múltiples calendarios" icon="calendar-days" href="/bot-ia/multiples-calendarios">
+    Deja que el bot elija entre varios calendarios.
+  </Card>
+</CardGroup>

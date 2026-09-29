@@ -1,0 +1,107 @@
+---
+title: "Conectores MCP personalizados para agentes gestionados"
+description: "Conecta cualquier servidor MCP a tus agentes gestionados para usar herramientas externas o internas."
+icon: "plug"
+---
+
+Los conectores MCP personalizados te permiten conectar cualquier servidor MCP a tus agentes gestionados, no solo los que vienen en el catálogo de Chateea. Así tus agentes pueden usar herramientas de servicios de terceros o de tus propios sistemas internos.
+
+MCP (Model Context Protocol) es un protocolo estándar para que los agentes de IA se comuniquen con herramientas y servicios externos. Si una aplicación o un sistema interno expone un servidor MCP, tu agente puede consultarlo y ejecutar acciones en él.
+
+## Catálogo o conector personalizado
+
+| | Conectores del catálogo | Conectores personalizados |
+| --- | --- | --- |
+| **Qué son** | Integraciones listas para servicios populares | Cualquier servidor MCP que agregues con su URL |
+| **Configuración** | Se eligen de la lista | Requieren nombre y URL del servidor (y credenciales si el servidor las pide) |
+| **Cuándo usarlos** | Si el servicio ya está en el catálogo | Servicios que aún no están en el catálogo o herramientas internas de tu empresa |
+
+## Ventajas
+
+- **Integraciones sin límite de catálogo:** conecta el servidor MCP que necesites.
+- **Herramientas internas:** tu agente puede trabajar con sistemas propios de tu negocio.
+- **Autenticación segura:** configura ID de cliente y secreto de cliente para servidores protegidos.
+- **Control de herramientas:** eliges exactamente qué herramientas del servidor puede usar el agente.
+- **Acciones en servicios externos:** amplía la automatización más allá de las integraciones nativas.
+
+## Qué necesitas
+
+- Un **nombre** descriptivo para el conector.
+- La **URL del servidor** donde está alojado el MCP.
+- Si el servidor lo requiere: **ID de cliente** y **secreto de cliente** emitidos por el proveedor.
+
+## Agregar un conector MCP personalizado
+
+<Steps>
+  <Step title="Abre el agente en Agent Studio">
+    Ve a **IA → Agent Studio** y abre el agente gestionado que quieres ampliar.
+  </Step>
+  <Step title="Agrega una app MCP">
+    En la configuración del agente, elige la opción para agregar una app MCP.
+  </Step>
+  <Step title="Elige Agregar MCP personalizado">
+    Haz clic en **+ Agregar MCP personalizado** (Add custom MCP) para abrir el formulario.
+  </Step>
+  <Step title="Escribe el nombre y la URL">
+    Ponle un nombre claro al conector y pega la URL del servidor MCP.
+  </Step>
+  <Step title="Guarda el conector">
+    Haz clic en **Agregar MCP** (Add MCP).
+  </Step>
+  <Step title="Conéctalo al agente y elige herramientas">
+    Vincula el conector a tu agente y selecciona qué herramientas del servidor puede usar.
+  </Step>
+</Steps>
+
+## Configurar la autenticación
+
+Algunos servidores MCP exigen credenciales para conectarse de forma segura.
+
+1. Al agregar o editar el conector, abre la sección **Configuración avanzada**.
+2. Escribe el **ID de cliente** que te dio el proveedor del servidor MCP.
+3. Escribe el **secreto de cliente**. Este campo se guarda cifrado.
+
+<Note>
+  Configura credenciales solo si tu servidor MCP las pide. Muchos servidores no requieren autenticación. Revisa la documentación del proveedor del servidor.
+</Note>
+
+## Buenas prácticas
+
+- Da a cada agente solo las herramientas que necesita para su tarea. Demasiadas herramientas pueden afectar su rendimiento y hacen más difícil controlar lo que hace.
+- Usa nombres de conector que expliquen qué sistema representan.
+- Prueba el agente después de conectar un servidor nuevo y revisa los [registros de agentes](/ia/registros-de-agentes) para ver qué herramientas usó.
+- Trata las credenciales como información sensible y rótalas si cambian en el proveedor.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que configurar autenticación en todos los conectores?">
+    No. Solo si el servidor MCP la exige. Consulta la documentación del servidor.
+  </Accordion>
+  <Accordion title="¿Puedo conectar los sistemas internos de mi empresa?">
+    Sí. Si tu sistema expone un servidor MCP, puedes conectarlo con un conector personalizado.
+  </Accordion>
+  <Accordion title="¿Cuántos conectores puedo agregar a un agente?">
+    Puedes agregar varios; no hay un límite fijo. Aun así, conviene limitarte a las herramientas que el agente realmente necesita para no afectar su rendimiento.
+  </Accordion>
+  <Accordion title="¿Puedo controlar qué herramientas del servidor usa el agente?">
+    Sí. Después de agregar el conector eliges qué herramientas específicas tiene permitido usar.
+  </Accordion>
+  <Accordion title="¿Puedo editar o quitar un conector después?">
+    Sí, en cualquier momento desde Agent Studio. Los cambios se aplican de inmediato.
+  </Accordion>
+  <Accordion title="¿Seguirán agregándose conectores al catálogo?">
+    Sí, el catálogo sigue creciendo. Los conectores personalizados cubren los servicios que aún no están en él y tus herramientas internas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Habilidades personalizadas" icon="wand-magic-sparkles" href="/ia/habilidades-personalizadas-agentes-gestionados">
+    Enseña a tus agentes procedimientos reutilizables.
+  </Card>
+  <Card title="Plataforma de acciones" icon="bolt" href="/ia/plataforma-de-acciones-agent-studio">
+    Conecta tus agentes con aplicaciones mediante acciones.
+  </Card>
+</CardGroup>

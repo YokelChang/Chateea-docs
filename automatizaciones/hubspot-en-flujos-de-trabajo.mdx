@@ -1,0 +1,150 @@
+---
+title: "HubSpot en flujos de trabajo"
+description: "Crea, busca y asocia contactos de HubSpot desde tus flujos e inicia automatizaciones con cada contacto nuevo."
+icon: "address-book"
+---
+
+Si usas HubSpot como CRM y Chateea para captar leads, comunicarte con clientes o automatizar marketing, esta integración mantiene ambos sistemas coordinados. Desde tus flujos de trabajo puedes crear contactos en HubSpot, buscar si ya existen para evitar duplicados y asociarlos a empresas o tratos. Además, un disparador inicia flujos en Chateea cada vez que se crea un contacto nuevo en HubSpot.
+
+## Para qué te sirve
+
+- **Contactos creados solos:** llevas a HubSpot los leads que entran por formularios, citas, etiquetas u otros disparadores de Chateea.
+- **Sin duplicados:** buscas el contacto en HubSpot antes de crearlo.
+- **Seguimiento más rápido:** cuando aparece un contacto nuevo en HubSpot, Chateea arranca el seguimiento.
+- **Asignación flexible:** envías campos estándar y personalizados a las propiedades de HubSpot.
+- **Procesos consistentes:** automatizas pasos repetitivos de ventas, marketing y operaciones.
+
+## Disparador disponible
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Nuevo contacto creado** | Cuando se crea un contacto en la cuenta de HubSpot conectada, ya sea desde formularios, a mano, por importación o desde otras integraciones. |
+
+Úsalo para enviar avisos internos, crear tareas, aplicar etiquetas o iniciar la comunicación de seguimiento en Chateea.
+
+## Acciones disponibles
+
+| Acción | Qué hace | Usos habituales |
+| --- | --- | --- |
+| **Crear contacto** | Crea un contacto en HubSpot con los datos del flujo. | Llevar a HubSpot cada lead nuevo con nombre, apellido, correo, teléfono, empresa, sitio web, etapa del ciclo de vida, origen del lead y propiedades personalizadas. |
+| **Buscar contacto** | Busca un contacto existente en HubSpot por un identificador, como el correo. | Evitar duplicados y ramificar el flujo según si se encontró o no. |
+| **Obtener contacto por ID** | Recupera un contacto a partir de su ID de registro en HubSpot. | Traer más propiedades de un contacto cuyo ID ya conoces, por ejemplo después del disparador. |
+| **Buscar contacto por correo** | Busca un contacto de HubSpot por su correo electrónico. | Emparejar contactos de Chateea con los de HubSpot cuando el correo es el identificador más fiable. |
+| **Crear asociación** | Relaciona registros de HubSpot, por ejemplo un contacto con una empresa, un trato o un ticket. | Mantener conectados los registros para ventas por cuentas, tratos o soporte. |
+
+<Note>
+  Las cinco acciones de HubSpot son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). El disparador **Nuevo contacto creado** no es premium, pero las acciones premium que agregues después sí se cobran.
+</Note>
+
+## Conectar HubSpot
+
+<Steps>
+  <Step title="Abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre un flujo o crea uno nuevo.
+  </Step>
+  <Step title="Busca HubSpot">
+    Haz clic en **Agregar disparador** o **Agregar acción**, entra en **Aplicaciones** y elige **HubSpot**.
+  </Step>
+  <Step title="Autoriza la cuenta">
+    Haz clic en **Conectar** o **Conectar ahora**, elige la cuenta de HubSpot, revisa los permisos solicitados y completa la autorización.
+  </Step>
+  <Step title="Confirma la conexión">
+    Vuelve a Chateea y comprueba que HubSpot aparece como conectado.
+  </Step>
+</Steps>
+
+## Configurar el disparador Nuevo contacto creado
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En el flujo, haz clic en **Agregar disparador**, selecciona **HubSpot** y elige **Nuevo contacto creado**.
+  </Step>
+  <Step title="Configúralo">
+    Confirma la cuenta de HubSpot conectada y ajusta los filtros disponibles, por ejemplo para limitar por origen o etapa del ciclo de vida.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar disparador** y usa **Buscar registros nuevos** para confirmar que Chateea detecta contactos de HubSpot.
+  </Step>
+  <Step title="Publica">
+    Cuando la prueba funcione, publica el flujo.
+  </Step>
+</Steps>
+
+## Configurar la acción Crear contacto
+
+<Steps>
+  <Step title="Agrega la acción">
+    Con el disparador ya configurado, haz clic en **Agregar acción**, selecciona **HubSpot** y elige **Crear contacto**.
+  </Step>
+  <Step title="Asigna los campos">
+    Confirma la cuenta conectada y asigna los campos obligatorios y las propiedades opcionales que necesites.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda la acción, pruébala y confirma en HubSpot que el contacto se creó.
+  </Step>
+</Steps>
+
+Asignación recomendada:
+
+| Propiedad de HubSpot | Dato de Chateea |
+| --- | --- |
+| First Name | Nombre del contacto |
+| Last Name | Apellido del contacto |
+| Email | Correo del contacto |
+| Phone | Teléfono del contacto |
+| Company | Nombre de la empresa del contacto |
+| Lead Source | Origen del flujo, nombre del formulario o un valor personalizado |
+
+<Tip>
+  Para propiedades personalizadas, créalas primero en HubSpot y luego asígnales la variable del flujo. HubSpot ignora los nombres de propiedad que no reconoce.
+</Tip>
+
+## Ejemplos de uso
+
+### Crear en HubSpot los leads de un formulario
+
+1. **Disparador:** Formulario enviado.
+2. **Acción:** Buscar contacto por correo.
+3. **Condición:** ¿se encontró el contacto?
+4. **Si no:** Crear contacto en HubSpot. **Si sí:** continuar con el seguimiento.
+
+### Seguimiento en Chateea para contactos nuevos de HubSpot
+
+1. **Disparador:** Nuevo contacto creado (HubSpot).
+2. **Acciones:** enviar una notificación interna, agregar una etiqueta, crear una tarea o asignar un usuario y, si corresponde, enviar un mensaje de seguimiento.
+
+### Asociar un contacto con una empresa o un trato
+
+1. **Disparador:** contacto creado o actualizado en Chateea.
+2. **Acciones:** buscar o crear el contacto en HubSpot, obtener el ID de la empresa o del trato y **Crear asociación**. Revisa luego la asociación en HubSpot.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un plan de pago de HubSpot?">
+    No. Funciona con el CRM gratuito de HubSpot. Algunas funciones avanzadas de HubSpot pueden requerir sus planes de pago, pero esos límites los fija HubSpot.
+  </Accordion>
+  <Accordion title="¿Cómo evito contactos duplicados en HubSpot?">
+    El correo es la clave principal de HubSpot. Usa **Buscar contacto por correo** antes de **Crear contacto** y crea el registro solo si no hay coincidencia.
+  </Accordion>
+  <Accordion title="¿Puedo usar variables del flujo en los campos de HubSpot?">
+    Sí. Todos los campos de las acciones admiten variables del flujo, así puedes enviar respuestas de formularios, campos del contacto o datos de pasos anteriores.
+  </Accordion>
+  <Accordion title="¿Qué pasa si una acción falla, por ejemplo por un correo inválido?">
+    El error queda registrado en el historial de ejecución. Para procesos críticos, agrega una rama alternativa que avise a un responsable cuando algo falle.
+  </Accordion>
+  <Accordion title="¿Puedo usar varios pasos de HubSpot en el mismo flujo?">
+    Sí. Por ejemplo, disparar con **Nuevo contacto creado**, buscar o crear el contacto en Chateea y terminar con **Crear asociación** en HubSpot.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar datos desde HubSpot" icon="file-import" href="/importacion/hubspot">
+    Trae tus contactos y datos de HubSpot a Chateea.
+  </Card>
+  <Card title="Klaviyo en flujos de trabajo" icon="envelope" href="/automatizaciones/klaviyo-en-flujos-de-trabajo">
+    Sincroniza perfiles, listas y campañas de Klaviyo.
+  </Card>
+</CardGroup>

@@ -1,0 +1,144 @@
+---
+title: "Canal de correo en la IA conversacional"
+description: "Haz que tu bot de IA responda correos automáticamente respetando el asunto, el hilo y los destinatarios."
+icon: "envelope"
+---
+
+Tu bot de IA conversacional también puede responder correos. Cuando llega un correo a una bandeja conectada, el bot lo lee, entiende el contexto y envía una respuesta automática que respeta el comportamiento normal del correo: mismo asunto, mismo hilo y los destinatarios que configures.
+
+Es ideal para responder rápido a leads que escriben por correo, dar soporte y mantener conversaciones continuas sin perder la coherencia de tu marca ni la visibilidad en **Conversaciones**.
+
+## Para qué sirve
+
+- **Respuestas más rápidas:** el cliente no espera a que alguien del equipo lea el correo.
+- **Mensajes coherentes en todos los canales:** el mismo bot atiende correo, chat y redes.
+- **Varios proveedores de correo:** funciona con el correo de Chateea, con SMTP propio y con proveedores de conversación personalizados.
+- **Detección de idioma:** responde en el idioma en que escribió el cliente.
+- **Acciones del bot:** puede disparar flujos, transferir a una persona o a otro bot.
+- **Historial ordenado:** las respuestas se mantienen en el mismo hilo.
+- **Flexibilidad operativa:** agregas CC o CCO y eliges cuánto espera el bot antes de responder.
+
+## Antes de empezar
+
+- Tienes al menos una bandeja de correo activa conectada a tu cuenta.
+- La dirección de envío (remitente) que vas a usar está activa.
+- El bot está en modo **Piloto automático** si quieres que responda solo.
+- El canal **Correo** está asignado al bot.
+
+## Qué puedes configurar
+
+Al activar el correo en un bot, defines:
+
+- Nombre del remitente.
+- Dirección de envío.
+- Destinatarios por defecto en CC y CCO.
+- Saludo personalizado (con campos personalizados).
+- Despedida y firma.
+- Tiempo de espera antes de responder (hasta 12 horas).
+- Formato: texto plano o plantilla con diseño.
+
+## Formatos de respuesta
+
+| Formato | Ideal para | Qué incluye | A tener en cuenta |
+| --- | --- | --- | --- |
+| **Texto plano** | Respuestas sencillas, estilo correo personal | Saludo, respuesta generada por la IA, despedida y firma | Se siente como un correo escrito uno a uno. |
+| **Editor de diseño** | Respuestas con tu marca | Correo HTML con logo, colores, encabezado, pie, redes sociales y la respuesta de la IA | Debes insertar el marcador de la respuesta de IA donde quieres que aparezca el texto generado. |
+
+## Personalización, hilos y acciones
+
+### Personalización
+
+Puedes usar saludos dinámicos, despedidas personalizadas y una firma que refleje a tu marca o tu equipo. Así las respuestas suenan naturales y no automáticas.
+
+### Detección de idioma
+
+El bot detecta el idioma del correo entrante y responde en ese mismo idioma. Muy útil si atiendes clientes en varios idiomas.
+
+### Hilos e historial
+
+Las respuestas conservan el asunto y la estructura del hilo, así el cliente y tu equipo siguen la conversación con facilidad.
+
+### Acciones del bot
+
+Según cómo tengas configurado el bot, en el canal de correo también puede:
+
+- Disparar flujos de trabajo.
+- Detener el bot.
+- Transferir la conversación a una persona.
+- Transferir a otro bot.
+
+<Note>
+  La acción de IA conversacional dentro de los flujos de trabajo todavía no admite el canal de correo. El correo funciona para las respuestas del bot a correos entrantes, no para esa acción de flujo.
+</Note>
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Abre el bot">
+    Ve a **IA → IA conversacional → Lista de agentes**, haz clic en los tres puntos junto al bot y elige **Editar**.
+  </Step>
+  <Step title="Activa el canal de correo">
+    En la sección **Canales**, enciende **Correo** y haz clic en **Configurar ajustes de correo**. Se abre un asistente de tres pasos.
+  </Step>
+  <Step title="Paso 1: configura el correo">
+    Escribe el **Nombre del remitente** y elige la **Dirección de envío**. Agrega los destinatarios por defecto en **CC** y **CCO** si hace falta. Define el **Tiempo de espera** antes de responder (máximo 12 horas) y el **Saludo personalizado**, con campos personalizados si quieres.
+  </Step>
+  <Step title="Paso 2: elige el formato">
+    Selecciona **Texto plano** o **Editor de diseño**. Si eliges el editor, abre o crea la plantilla, agrega tu marca e inserta el marcador de la respuesta de IA donde debe ir el texto generado.
+  </Step>
+  <Step title="Paso 3: revisión final">
+    Revisa la vista previa y haz clic en **Guardar** para activar el canal.
+  </Step>
+  <Step title="Haz una prueba">
+    Envía un correo desde una bandeja externa y verifica que aparece en la conversación correcta, que la respuesta usa el formato esperado y que se mantiene en el mismo hilo.
+  </Step>
+</Steps>
+
+## Cuándo responde el bot a los correos entrantes
+
+Para que el bot conteste automáticamente cualquier correo entrante (sin depender de un flujo de trabajo), el canal **Correo** debe estar asignado a ese bot y el bot debe estar en **Piloto automático**. Si tu cuenta todavía usa el esquema de bot principal, asigna el correo al bot principal: los bots que no son principales solo responden cuando un flujo de trabajo los activa.
+
+Consulta cómo asignar canales en [Nueva experiencia de gestión de canales](/bot-ia/nueva-gestion-canales).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito una bandeja conectada para usar el canal de correo?">
+    Sí. Necesitas al menos una bandeja activa para que el bot pueda responder.
+  </Accordion>
+  <Accordion title="¿Puedo usar texto plano en lugar de una plantilla con diseño?">
+    Sí. Elige texto plano si prefieres un correo sencillo.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece la respuesta de la IA en mi plantilla?">
+    Lo más probable es que falte el marcador de la respuesta de IA en el cuerpo de la plantilla.
+  </Accordion>
+  <Accordion title="¿El correo reemplaza a los otros canales del bot?">
+    No. Es un canal adicional y no afecta a los demás canales activos.
+  </Accordion>
+  <Accordion title="¿Puedo transferir a una persona desde el correo?">
+    Sí. La transferencia a una persona funciona igual que en los demás canales.
+  </Accordion>
+  <Accordion title="¿Qué proveedores de correo son compatibles?">
+    El correo de Chateea, SMTP propio y proveedores de conversación personalizados.
+  </Accordion>
+  <Accordion title="¿El bot responde en el idioma del correo?">
+    Sí. Detecta el idioma del correo entrante y responde en ese idioma.
+  </Accordion>
+  <Accordion title="¿Puedo usar el correo en la acción de IA conversacional de los flujos?">
+    No, por ahora esa acción no admite el canal de correo.
+  </Accordion>
+  <Accordion title="El correo está activado pero el bot no responde, ¿por qué?">
+    Revisa que el canal Correo esté asignado a ese bot, que el bot esté en Piloto automático y que la dirección de envío esté activa. Si tu cuenta usa bot principal y este bot no lo es, solo responderá cuando lo active un flujo de trabajo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Transferencia humana" icon="user-headset" href="/bot-ia/transferencia-humana">
+    Pasa la conversación a tu equipo cuando haga falta.
+  </Card>
+  <Card title="Configuración guiada basada en formularios" icon="list-check" href="/bot-ia/configuracion-guiada-formularios">
+    Crea tu bot paso a paso.
+  </Card>
+</CardGroup>

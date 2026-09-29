@@ -1,0 +1,148 @@
+---
+title: "Monday.com en flujos de trabajo"
+description: "Crea, actualiza, archiva y busca tableros, grupos y elementos de Monday.com desde tus automatizaciones."
+icon: "table-columns"
+---
+
+La integración con Monday.com conecta tus flujos de trabajo de Chateea con tus tableros de Monday. Desde una automatización puedes crear tableros, grupos, columnas, elementos y subelementos, actualizarlos, archivarlos o buscarlos por ID o por el valor de una columna. Así, cuando un trato avanza en tu CRM, el trabajo de entrega arranca en Monday sin copiar datos a mano ni usar Zapier, Make o webhooks propios.
+
+## Para qué te sirve
+
+- **Entregas más rápidas:** lanzas las tareas del proyecto en cuanto cambia la etapa de una oportunidad.
+- **Menos errores:** nada de copiar y pegar entre el CRM y los tableros.
+- **Menos costos de integración:** reemplazas conectores externos con pasos nativos.
+- **IDs reutilizables:** capturas el ID del elemento una vez con **Probar acción** y lo usas en pasos posteriores.
+- **Procesos estándar:** repites la misma plantilla de proyecto para cada cliente.
+
+## Antes de empezar
+
+- Acceso a **Automatización → Flujos de trabajo** en tu cuenta de Chateea.
+- Una cuenta de Monday.com con permiso para **ver y editar** el espacio de trabajo, los tableros, los grupos y los elementos que vas a usar.
+- Tu **clave de API de Monday.com** a mano para autenticarte.
+- Claridad sobre qué columnas vas a leer o escribir (Estado, Persona o Responsable, Fecha, Texto, Número).
+
+## Conectar tu cuenta
+
+- **Desde el flujo:** en **Automatización → Flujos de trabajo**, agrega cualquier acción de Monday.com. Si no está conectada, haz clic en **Conectar ahora** y autentica tu cuenta de Monday. Si ya lo está, los campos se cargan al instante.
+- **Desde la configuración:** ve a **Configuración → Integraciones**, busca **Monday.com** y haz clic en **Conectar**.
+
+## Acciones disponibles
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear tablero** | Crea un tablero y devuelve su ID para pasos posteriores. |
+| **Crear grupo** | Crea un grupo dentro de un tablero y devuelve su ID. |
+| **Crear columna** | Agrega una columna (Estado, Fecha, Persona, etc.) a un tablero. |
+| **Crear elemento** | Crea un elemento en un grupo y devuelve su ID. |
+| **Crear subelemento** | Crea un subelemento dentro de un elemento y devuelve su ID. |
+| **Actualizar elemento** | Actualiza las columnas asignadas de un elemento (Estado, Persona, Fecha, Texto, etc.). |
+| **Actualizar subelemento** | Actualiza las columnas asignadas de un subelemento. |
+| **Archivar tablero** | Archiva un tablero terminado para mantener ordenado el espacio de trabajo. |
+| **Archivar grupo** | Archiva un grupo terminado de un tablero. |
+| **Eliminar elemento** | Elimina un elemento de forma permanente. |
+| **Eliminar grupo** | Elimina un grupo de forma permanente. |
+| **Obtener elementos del tablero** | Recupera los elementos de un tablero (en tableros grandes puede traerlos por páginas). |
+| **Buscar elementos por valor de columna** | Localiza elementos según el valor de una columna (Estado, Persona o columnas personalizadas). |
+| **Buscar elementos por ID** | Trae un elemento concreto cuando ya conoces su ID. |
+
+<Warning>
+  **Eliminar elemento** y **Eliminar grupo** no se pueden deshacer. Úsalas solo cuando estés seguro de que el flujo apunta al elemento correcto.
+</Warning>
+
+<Note>
+  Las acciones de Monday.com son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Disparadores (próximamente)
+
+Los disparadores de Monday.com están anunciados como próximos. Cuando estén disponibles, permitirán que un evento de Monday inicie o ramifique un flujo:
+
+| Disparador | Cuándo se activará |
+| --- | --- |
+| **Cambio en el valor de una columna** | Cuando cambia una columna concreta (Estado, Persona, Fecha, etc.) de un elemento. |
+| **Elemento movido a un grupo** | Cuando un elemento pasa de un grupo a otro. |
+| **Nuevo tablero** | Cuando se crea un tablero en el espacio de trabajo conectado. |
+| **Nuevo elemento en un tablero** | Cuando se agrega un elemento a un tablero seleccionado. |
+| **Nuevo subelemento** | Cuando se crea un subelemento. |
+| **Nueva actualización en un tablero** | Cuando se agrega una actualización o comentario a un elemento. |
+| **Nuevo usuario** | Cuando alguien se une al espacio de trabajo de Monday. |
+
+Mientras tanto, arranca tus flujos con otro disparador. Más adelante podrás cambiarlo por uno de Monday.com sin rehacer los pasos siguientes.
+
+## Probar la acción
+
+Usa **Probar acción** en cualquier paso de Monday.com antes de publicar:
+
+- Valida la autenticación y el tablero, grupo o elemento elegidos.
+- Trae una respuesta real y guarda su estructura (por ejemplo `item.id` o `column_values.status.label`).
+- Te deja usar esos datos como valores en pasos posteriores sin volver a asignarlos.
+- Detecta a tiempo errores comunes, como una clave inválida, falta de permisos o un tipo de columna que no coincide.
+
+## Crear un flujo con Monday.com
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo**, crea un flujo o abre uno existente. Ponle nombre y elige carpeta si quieres.
+  </Step>
+  <Step title="Elige el disparador">
+    Usa un disparador de Chateea, por ejemplo **Estado de oportunidad cambiado**, **Formulario enviado** o uno programado, y configura los filtros que necesites.
+  </Step>
+  <Step title="Agrega la acción de Monday.com">
+    Haz clic en el **+**, busca **Monday.com** y elige la acción, por ejemplo **Crear elemento**, **Actualizar elemento** o **Buscar elementos por valor de columna**. Si te lo pide, haz clic en **Conectar ahora**.
+  </Step>
+  <Step title="Elige espacio de trabajo, tablero y grupo">
+    Selecciona el espacio de trabajo, el tablero de destino y, si aplica, el grupo.
+  </Step>
+  <Step title="Asigna los campos a las columnas">
+    Completa los obligatorios, como el nombre del elemento, y asigna las columnas que quieras escribir (Estado, Persona, Fecha, Texto). Cada valor debe coincidir con el tipo de columna de Monday. Para actualizar o eliminar, incluye el ID del elemento, subelemento, grupo o tablero.
+  </Step>
+  <Step title="Agrega los pasos siguientes (opcional)">
+    Suma condiciones o ramas para cada resultado, encadena otras acciones de Monday.com y agrega tareas internas o actualizaciones del CRM para mantener informado al equipo.
+  </Step>
+  <Step title="Guarda, publica y prueba">
+    Haz clic en **Guardar** y luego en **Publicar**. Haz una prueba controlada, por ejemplo moviendo un trato a la etapa elegida, y comprueba que el cambio aparece en el tablero y grupo correctos.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+### Proyecto nuevo al cerrar una venta
+
+- **Disparador:** Estado de oportunidad cambiado a Ganada.
+- **Acciones:** Crear elemento en el tablero "Alta de clientes", guardar el ID del elemento en un campo personalizado del contacto y enviar una notificación interna al responsable de la cuenta.
+
+### Aviso al cliente cuando termina el proyecto
+
+Cuando estén disponibles los disparadores, podrás usar **Cambio en el valor de una columna** (Estado igual a Completado) para enviar un correo al cliente, crear una nota en el CRM y archivar el elemento en Monday.com.
+
+### Tareas sincronizadas entre herramientas
+
+Con **Nuevo elemento en un tablero** podrás crear la tarea equivalente en otra herramienta (por ejemplo ClickUp), guardar el ID del elemento de Monday y actualizar el elemento con el enlace a la tarea.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo sincronizar datos en ambos sentidos?">
+    Sí, con dos flujos: uno de Monday hacia Chateea y otro de Chateea hacia Monday. Pasa los IDs entre ellos para evitar conflictos.
+  </Accordion>
+  <Accordion title="¿Necesito un plan específico de Monday?">
+    La mayoría de las acciones funcionan con el acceso estándar. Algunas funciones avanzadas de los tableros pueden depender del plan de tu espacio de trabajo en Monday.
+  </Accordion>
+  <Accordion title="¿Puedo actualizar varias columnas a la vez?">
+    Sí. **Actualizar elemento** y **Actualizar subelemento** permiten asignar varias columnas compatibles en un solo paso.
+  </Accordion>
+  <Accordion title="¿Cómo se cobra?">
+    Cada ejecución de una acción de Monday.com es premium y se descuenta de la billetera de tu cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Asana en flujos de trabajo" icon="list-check" href="/automatizaciones/asana-en-flujos-de-trabajo">
+    Crea y actualiza tareas y proyectos de Asana.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+</CardGroup>

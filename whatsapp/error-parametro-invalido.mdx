@@ -1,0 +1,42 @@
+---
+title: "Error de parámetro no válido al enviar WhatsApp"
+description: "Soluciona el error de parámetro no válido que aparece al enviar WhatsApp desde y hacia el mismo número."
+icon: "bug"
+---
+
+Si un mensaje de WhatsApp falla con el error **Parámetro no válido** (Invalid Parameter), la causa más común es muy simple: estás enviando el mensaje **desde y hacia el mismo número**. Suele ocurrir al hacer pruebas, cuando usas como contacto el mismo teléfono que conectaste a WhatsApp en tu cuenta de Chateea.
+
+## Por qué ocurre
+
+WhatsApp no permite que un número se envíe mensajes a sí mismo. Si el número de origen (**De**) y el de destino (**Para**) son idénticos, Meta rechaza la solicitud y el mensaje aparece como fallido con este error.
+
+## Cómo solucionarlo
+
+<Steps>
+  <Step title="Revisa los números del mensaje">
+    Abre la conversación o el registro del flujo de trabajo y compara el número de envío con el teléfono del contacto.
+  </Step>
+  <Step title="Usa un número distinto para probar">
+    Crea un contacto de prueba con otro teléfono (por ejemplo, el celular personal de alguien del equipo) y repite el envío.
+  </Step>
+  <Step title="Corrige el contacto si es necesario">
+    Si el contacto tiene guardado por error el número de tu negocio, actualízalo con el teléfono correcto del cliente.
+  </Step>
+</Steps>
+
+<Tip>
+Ten un par de contactos de prueba con números reales distintos al de tu negocio. Te ahorrará errores al probar plantillas, flujos de trabajo y campañas.
+</Tip>
+
+Si los números son distintos y el error continúa, revisa el formato del teléfono del contacto (código de país incluido) y escribe a soporte de Chateea en **help@chateea.com** con el contacto afectado y la hora del intento.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solución de problemas de WhatsApp" icon="circle-question" href="/whatsapp/solucion-de-problemas">
+    Otros errores frecuentes y cómo resolverlos.
+  </Card>
+  <Card title="WhatsApp en Chateea" icon="whatsapp" href="/whatsapp/introduccion">
+    Cómo funciona el canal en tu cuenta.
+  </Card>
+</CardGroup>

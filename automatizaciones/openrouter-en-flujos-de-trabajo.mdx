@@ -1,0 +1,117 @@
+---
+title: "OpenRouter en flujos de trabajo: generar respuestas con IA"
+description: "Usa la acción Generar respuesta de OpenRouter para crear textos con distintos modelos de IA dentro de tus automatizaciones."
+icon: "robot"
+---
+
+La acción **Generar respuesta** (Generate Response) de OpenRouter permite que tus flujos de trabajo escriban textos con inteligencia artificial: respuestas a clientes, resúmenes, mensajes de seguimiento o contenido personalizado. OpenRouter es una plataforma que da acceso a muchos modelos de IA de distintos proveedores con una sola clave, así que puedes elegir el modelo que mejor encaje con cada tarea.
+
+Cuando el flujo llega a esta acción, envía tus instrucciones al modelo elegido, recibe la respuesta y la guarda como una variable que puedes usar en los pasos siguientes (un SMS, un correo, una nota interna o un campo del contacto).
+
+## Para qué sirve
+
+- **Acceso a varios modelos:** eliges entre modelos más rápidos, más económicos o con mejor razonamiento, según la automatización.
+- **Respuestas personalizadas:** combinas instrucciones con datos del contacto y del flujo para que cada mensaje sea único.
+- **Uso flexible del resultado:** el texto generado se puede insertar en SMS, correos, notificaciones internas o actualizaciones del CRM.
+- **Control del tono:** con un indicador de sistema defines la personalidad, el estilo y el formato de las respuestas.
+- **Escala sin trabajo manual:** el flujo genera textos para cientos de contactos sin que nadie tenga que redactarlos.
+
+## Antes de empezar: conecta tu cuenta de OpenRouter
+
+Necesitas una cuenta en OpenRouter y una clave de API. El consumo de los modelos lo factura OpenRouter directamente según tu plan con ellos.
+
+<Steps>
+  <Step title="Abre las integraciones">
+    Ve a **Configuración → Integraciones**.
+  </Step>
+  <Step title="Busca OpenRouter">
+    Localiza **OpenRouter** en la lista de integraciones y haz clic en **Conectar**.
+  </Step>
+  <Step title="Pega tu clave">
+    Introduce tu **clave de API de OpenRouter** y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Indicador de sistema e indicador: cuál es la diferencia
+
+La acción tiene dos campos de instrucciones y conviene usarlos bien:
+
+| Campo | Qué define | Ejemplo |
+| --- | --- | --- |
+| **Indicador de sistema** (System Prompt) | El rol, la personalidad y las reglas de la IA. Se mantiene igual en cada ejecución. | "Eres un asistente de ventas amable que escribe mensajes cortos y persuasivos." |
+| **Indicador** (Prompt) | La tarea concreta que debe resolver en esta ejecución. Puede incluir variables. | "Escribe un mensaje de seguimiento para `{{contact.first_name}}`, que descargó nuestra guía de precios." |
+
+Separarlos te permite mantener un comportamiento coherente mientras el contenido cambia para cada contacto.
+
+## Cómo configurar la acción Generar respuesta
+
+<Steps>
+  <Step title="Abre tu flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre un flujo existente o crea uno nuevo.
+  </Step>
+  <Step title="Agrega un paso">
+    En el constructor, haz clic en **+** para añadir una acción. Se abrirá el panel de acciones a la derecha.
+  </Step>
+  <Step title="Elige OpenRouter">
+    Entra en la pestaña **Apps**, busca **OpenRouter** y haz clic para ver sus acciones.
+  </Step>
+  <Step title="Selecciona Generar respuesta">
+    Elige **Generar respuesta** (Generate Response). Se abrirá el panel de configuración.
+  </Step>
+  <Step title="Completa los campos">
+    - **Nombre de la acción:** un nombre descriptivo, por ejemplo "Generar correo de seguimiento". Te ayuda si el flujo tiene varias acciones de IA.
+    - **Indicador de sistema:** define el rol y el tono. Por ejemplo: "Eres un asistente de recepción que responde de forma clara y profesional."
+    - **Indicador:** describe la tarea. Puedes insertar variables del contacto, campos personalizados o resultados de pasos anteriores.
+    - **Modelo:** elige en el desplegable el modelo que usará OpenRouter.
+  </Step>
+  <Step title="Prueba la acción">
+    Haz clic en **Probar acción**. El sistema ejecuta el indicador con el modelo elegido y muestra la respuesta en el panel de resultados. Ajusta las instrucciones hasta que el resultado te convenza.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar acción**. Después, publica el flujo cuando esté listo.
+  </Step>
+</Steps>
+
+<Tip>
+  Al elegir modelo, piensa en el equilibrio entre calidad, velocidad y costo. Para respuestas cortas y frecuentes suele bastar un modelo rápido y económico; para textos largos o que requieren razonamiento, elige uno más avanzado.
+</Tip>
+
+## Cómo usar la respuesta generada
+
+El texto que devuelve el modelo queda disponible como variable de salida de la acción. Puedes usarla en pasos posteriores como:
+
+- **Enviar SMS** o **Enviar correo**, para mandar el mensaje al contacto.
+- **Agregar nota**, para dejar un resumen en la ficha del contacto.
+- **Actualizar campo del contacto**, para guardar el resultado en un campo personalizado.
+- **Condición Si/No**, para tomar decisiones según lo que respondió la IA.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué es OpenRouter?">
+    Es una plataforma que ofrece acceso a múltiples modelos de IA mediante una sola API, para que elijas el más adecuado para cada tarea.
+  </Accordion>
+  <Accordion title="¿Puedo usar variables del flujo en los indicadores?">
+    Sí. Puedes incluir campos del contacto, campos personalizados o resultados de acciones anteriores para personalizar la respuesta.
+  </Accordion>
+  <Accordion title="¿Dónde se guarda la respuesta de la IA?">
+    Se guarda como variable de salida de la acción y puedes insertarla en cualquier paso posterior del mismo flujo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el modelo falla o devuelve un error?">
+    El flujo continúa según la lógica que hayas configurado. Por eso es importante probar la acción antes de activar el flujo y revisar los registros de ejecución si algo no sale como esperabas.
+  </Accordion>
+  <Accordion title="¿Puedo usar la respuesta en condiciones del flujo?">
+    Sí. Puedes evaluar el texto generado en una condición para enviar al contacto por un camino u otro.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Modelos GPT en flujos" icon="robot" href="/automatizaciones/modelos-gpt-en-flujos">
+    Genera contenido con los modelos de OpenAI dentro de tus automatizaciones.
+  </Card>
+  <Card title="Mistral AI en flujos de trabajo" icon="wand-magic-sparkles" href="/automatizaciones/mistral-ai-en-flujos-de-trabajo">
+    Usa modelos de texto, embeddings y visión de Mistral en tus flujos.
+  </Card>
+</CardGroup>

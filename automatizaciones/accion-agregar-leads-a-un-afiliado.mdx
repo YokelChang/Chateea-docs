@@ -1,0 +1,62 @@
+---
+title: "Acción Agregar clientes potenciales a un afiliado"
+description: "Asigna contactos a un afiliado y su campaña de forma manual, por atribución de URL o con un campo personalizado."
+icon: "user-plus"
+---
+
+Si tienes un programa de afiliados en Chateea, la acción **Agregar clientes potenciales a un afiliado** asigna un contacto a un afiliado y a su campaña desde un flujo de trabajo. Así cada afiliado recibe el crédito correcto por los clientes que te trae, aunque lleguen por un formulario, una integración o un sistema externo.
+
+## Cómo usarla
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo, haz clic en **+** y busca **Agregar clientes potenciales a un afiliado** (Add Leads under an Affiliate).
+  </Step>
+  <Step title="Elige el método de asignación">
+    Selecciona **Manual**, **Automático (atribución)** o **Mapeo personalizado**.
+  </Step>
+  <Step title="Completa los campos">
+    Configura los campos que pide el método elegido (se explican abajo).
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda la acción y publica el flujo.
+  </Step>
+</Steps>
+
+## Métodos de asignación
+
+| Método | Cómo asigna | Ideal para |
+| --- | --- | --- |
+| **Manual** | Asignas el contacto a un afiliado concreto de una campaña concreta. | Envíos de formularios, derivaciones internas o decisiones del administrador. |
+| **Automático (atribución por URL)** | Usa el parámetro `am_id` que llega en la URL para identificar al afiliado. Admite atribución al **primer clic** o al **último clic**. | Clientes que llegan desde el enlace de afiliado a tu embudo o sitio web. |
+| **Mapeo personalizado** | Lee el `am_id` guardado en un campo personalizado o recibido como valor del flujo, y asigna el contacto al afiliado correspondiente. | Datos enviados por API, sistemas de terceros o campos ocultos en formularios. |
+
+### Manual
+
+1. Selecciona la campaña.
+2. Selecciona el afiliado (solo aparecen los afiliados de esa campaña).
+
+### Automático (atribución por URL)
+
+1. Elige el método de atribución: **Primer clic** o **Último clic**.
+2. Asegúrate de que el `am_id` llegue en la URL en un paso anterior del recorrido, por ejemplo en la página o el formulario del embudo.
+
+### Mapeo personalizado
+
+1. Elige la fuente del dato: un campo personalizado o un valor del flujo.
+2. El sistema lee el valor y asigna el contacto al afiliado que coincide.
+
+<Tip>
+Si recibes clientes potenciales desde otra plataforma, guarda el `am_id` en un campo oculto del formulario o en un campo personalizado y usa **Mapeo personalizado**. Así no pierdes la atribución aunque el cliente no pase por tu enlace de afiliado.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agregar venta manual a un afiliado" icon="hand-holding-dollar" href="/automatizaciones/accion-agregar-venta-manual-a-afiliado">
+    Registra ventas hechas fuera del sistema para pagar comisiones.
+  </Card>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Incluye los disparadores de afiliados.
+  </Card>
+</CardGroup>

@@ -1,0 +1,95 @@
+---
+title: "Usar campos de empresa como valores personalizados"
+description: "Inserta datos de la empresa del contacto en correos, flujos, documentos, conversaciones y respuestas de IA."
+icon: "building"
+---
+
+Los campos de empresa guardan la información del negocio al que pertenece un contacto: nombre, sitio web, dirección, sector o cualquier dato propio que hayas creado en el objeto Empresas. En Chateea puedes insertar esos campos como valores personalizados para que tus correos, mensajes, documentos y respuestas de IA se completen solos con los datos de la empresa asociada al contacto.
+
+Es útil, por ejemplo, para enviar una propuesta que mencione el nombre y el sitio web de la empresa del cliente, o para que un correo de seguimiento cite el sector en el que trabaja.
+
+## Dónde puedes usar los campos de empresa
+
+| Herramienta | Uso típico |
+| --- | --- |
+| Flujos de trabajo | Cualquier acción que acepte valores personalizados: enviar correo, enviar SMS, actualizar contacto, notificación interna, etc. |
+| Constructor de correos | Plantillas y contenido de correos |
+| Campañas de correo | Correos enviados a muchos destinatarios |
+| Conversaciones | Mensajes uno a uno |
+| Documentos y contratos | Contratos, propuestas y plantillas de acuerdos |
+| Acciones masivas | Envíos en bloque |
+| IA conversacional | Respuestas del agente de IA |
+
+## Campos disponibles
+
+En el selector de valores personalizados, los campos de empresa aparecen agrupados bajo **Empresa**.
+
+**Campos estándar:**
+
+- Nombre
+- Correo
+- Teléfono
+- Sitio web
+- Dirección
+- Ciudad
+- Estado o provincia
+- País
+- Código postal
+- Descripción
+
+**Campos personalizados:** cualquier campo que hayas creado en el objeto Empresas (texto, número, fecha, lista desplegable, etc.). Cuando creas un campo nuevo en Empresas, aparece automáticamente en el selector.
+
+## Cómo insertar un campo de empresa
+
+<Steps>
+  <Step title="Abre la herramienta">
+    Entra al editor donde quieras personalizar el contenido: el constructor de correos, la acción **Enviar correo** de un flujo de trabajo, una plantilla de documento, etc.
+  </Step>
+  <Step title="Abre el selector de valores personalizados">
+    Haz clic en el ícono del selector de valores personalizados en la barra de herramientas del editor.
+  </Step>
+  <Step title="Elige el grupo Empresa">
+    En la lista de grupos de campos, selecciona **Empresa**.
+  </Step>
+  <Step title="Selecciona el campo">
+    Elige el campo estándar o personalizado que necesitas, por ejemplo **Nombre**, **Sitio web** o un campo propio como **Sector**. La etiqueta correspondiente (por ejemplo, `{{business.name}}`) se inserta donde tengas el cursor.
+  </Step>
+  <Step title="Guarda los cambios">
+    Al enviar o generar el contenido, la etiqueta se reemplaza por el dato de la empresa asociada al contacto.
+  </Step>
+</Steps>
+
+## Qué tener en cuenta
+
+- El valor se toma de la empresa **asociada al contacto**. Si el contacto no tiene empresa asociada, la etiqueta queda en blanco.
+- Si el campo de la empresa está vacío, la etiqueta también queda en blanco. No se inserta ningún texto alternativo.
+- Si actualizas un dato de la empresa, el cambio se refleja la próxima vez que se use el valor personalizado.
+
+<Tip>
+Antes de lanzar una campaña con campos de empresa, revisa que tus contactos tengan una empresa asociada y que los campos que vas a usar estén completos. Una frase como "Hola, equipo de `{{business.name}}`" se ve mal si el nombre queda vacío.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si el contacto no está asociado a ninguna empresa?">
+    La etiqueta se reemplaza por un espacio en blanco. Asocia el contacto a una empresa o activa la creación automática de empresas para evitarlo.
+  </Accordion>
+  <Accordion title="¿Puedo usar campos personalizados de empresa?">
+    Sí. Todos los campos personalizados del objeto Empresas aparecen en el selector, dentro del grupo **Empresa**, en cuanto los creas.
+  </Accordion>
+  <Accordion title="¿Se puede definir un texto por defecto si el campo está vacío?">
+    No. Si el campo no tiene valor, la etiqueta queda en blanco.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Empresas" icon="building" href="/contactos/empresas">
+    Crea y gestiona los registros de empresa de tu CRM.
+  </Card>
+  <Card title="Creación automática de empresas" icon="wand-magic-sparkles" href="/crm/creacion-y-enriquecimiento-automatico-de-empresas">
+    Asocia contactos a empresas de forma automática.
+  </Card>
+</CardGroup>

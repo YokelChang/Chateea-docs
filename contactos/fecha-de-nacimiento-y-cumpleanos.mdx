@@ -1,0 +1,142 @@
+---
+title: "Fecha de nacimiento y cumpleaños de tus contactos"
+description: "Usa la fecha de nacimiento para enviar felicitaciones automáticas y segmentar contactos por edad en listas inteligentes."
+icon: "cake-candles"
+---
+
+El campo **Fecha de nacimiento** guarda el cumpleaños de cada contacto dentro de su ficha. Con ese dato puedes enviar felicitaciones y ofertas automáticas, avisar a tu equipo para que haga un seguimiento personal y segmentar tu base de contactos por edad en las listas inteligentes.
+
+## Cómo se llena la fecha de nacimiento
+
+El campo se completa de varias maneras:
+
+- **A mano**, desde la ficha del contacto.
+- **Con formularios**, si agregas el campo de fecha de nacimiento a tus formularios o encuestas.
+- **Con importaciones CSV**, mapeando la columna de cumpleaños al campo **Fecha de nacimiento**.
+- **Por API o integraciones** que envíen el dato a Chateea.
+
+<Tip>
+Pide el cumpleaños desde el primer contacto. Si lo incluyes en tus formularios de captación, tendrás el dato listo para tus campañas sin tener que perseguirlo después.
+</Tip>
+
+## Para qué te sirve
+
+| Uso | Qué consigues |
+| --- | --- |
+| Mensajes personalizados | Felicitaciones y ofertas de cumpleaños enviadas solas, en el momento justo. |
+| Automatizaciones | Recordatorios y campañas que se disparan antes, durante o después del cumpleaños. |
+| Segmentación | Listas inteligentes por fecha de nacimiento o por rango de edad. |
+| Mejor experiencia | Comunicaciones oportunas que hacen sentir al cliente recordado. |
+
+## Crear una campaña de cumpleaños
+
+Puedes automatizar felicitaciones, cupones o recordatorios internos con un flujo de trabajo que use el disparador de cumpleaños.
+
+<Steps>
+<Step title="Crea el flujo de trabajo">
+Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo desde cero.
+</Step>
+<Step title="Agrega el disparador de cumpleaños">
+Haz clic en **Agregar disparador** y elige **Recordatorio de cumpleaños** (Birthday Reminder). Luego define la condición:
+- **Después de cierta cantidad de días** del cumpleaños.
+- **Antes de cierta cantidad de días** del cumpleaños.
+- **El día es** (un día concreto).
+- **El mes es** (todos los que cumplen en un mes).
+</Step>
+<Step title="Define las acciones">
+Agrega lo que quieres que ocurra, por ejemplo:
+- **Enviar correo** con una felicitación o una oferta especial.
+- **Enviar SMS o WhatsApp** con un saludo corto o un código de descuento.
+- **Asignar tarea** para que alguien del equipo llame o escriba de forma personal.
+</Step>
+<Step title="Prueba y publica">
+Prueba el flujo con un contacto de muestra que tenga su fecha de nacimiento cargada y, cuando todo funcione, publícalo.
+</Step>
+</Steps>
+
+### Ejemplo de estructura
+
+| Paso | Acción |
+| --- | --- |
+| 1 | Disparador: el día del cumpleaños |
+| 2 | Enviar SMS o WhatsApp de felicitación |
+| 3 | Enviar correo con un cupón de regalo |
+| 4 | (Opcional) Notificar al equipo interno |
+
+## Filtrar contactos por fecha de nacimiento
+
+<Steps>
+<Step title="Abre las listas inteligentes">
+Ve a **Contactos** y abre la vista de listas inteligentes.
+</Step>
+<Step title="Abre los filtros avanzados">
+Haz clic en **Filtros avanzados** y, dentro de la información del contacto, elige **Fecha de nacimiento**.
+</Step>
+<Step title="Elige la condición">
+Puedes filtrar por: hoy, mañana, ayer, esta semana, este mes, este trimestre, en un mes concreto, este año, en una fecha, entre dos fechas, más de, después de una fecha, menos de, antes de una fecha, en los próximos o en los últimos días.
+</Step>
+</Steps>
+
+Por ejemplo, el filtro **Este mes** te da una lista siempre actualizada de todos los que cumplen años este mes, ideal para una campaña mensual.
+
+## Filtrar contactos por edad
+
+<Steps>
+<Step title="Abre los filtros avanzados">
+En **Contactos**, abre la lista inteligente y haz clic en **Filtros avanzados**.
+</Step>
+<Step title="Elige el filtro Edad">
+Dentro de la información del contacto, selecciona **Edad**.
+</Step>
+<Step title="Define la condición y guarda">
+Elige **Igual a**, **Entre**, **Más de** o **Menos de**, escribe el valor y haz clic en **Guardar**.
+</Step>
+</Steps>
+
+La edad se calcula de forma dinámica a partir de la fecha de nacimiento guardada y la fecha actual, así que la lista se actualiza sola con el paso del tiempo.
+
+## Buenas prácticas
+
+- **Usa un formato de fecha consistente.** El formato recomendado es MM/DD/AAAA. Mezclar formatos en una importación provoca fechas mal leídas.
+- **Incluye siempre el año.** Sin año (o con un año incorrecto) la edad se calcula mal.
+- **Prueba antes de activar.** Crea un contacto de prueba con cumpleaños cercano y verifica que el flujo se dispara.
+- **Ten en cuenta la zona horaria.** Los flujos pueden usar la zona horaria del contacto si así lo configuraste, lo que cambia la hora real de envío.
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| La automatización de cumpleaños no se dispara | Que el contacto tenga una fecha de nacimiento completa y bien formateada, que el disparador esté bien configurado y que el flujo esté publicado. |
+| La edad calculada es incorrecta | Que el año de nacimiento esté cargado y sea correcto. |
+| El SMS o correo no salió el día del cumpleaños | La programación del flujo, la condición del disparador y la zona horaria del contacto. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo enviar mensajes de cumpleaños automáticos?">
+Sí. El campo de fecha de nacimiento se usa en flujos de trabajo para enviar correos, SMS o WhatsApp, crear notificaciones internas o aplicar etiquetas.
+</Accordion>
+<Accordion title="¿El contacto necesita tener la fecha de nacimiento cargada?">
+Sí. Si el campo está vacío o tiene un valor inválido, el disparador de cumpleaños no se activa para ese contacto.
+</Accordion>
+<Accordion title="¿Puedo crear listas inteligentes por edad?">
+Sí. Usa el filtro **Edad** o el filtro **Fecha de nacimiento** en los filtros avanzados de la lista inteligente.
+</Accordion>
+<Accordion title="¿Por qué los resultados por edad no cuadran?">
+Revisa las fechas de nacimiento de los contactos afectados, confirma que el filtro esté bien configurado y busca problemas de formato en los datos importados.
+</Accordion>
+<Accordion title="¿Qué debo cuidar al importar contactos con cumpleaños?">
+Usa un solo formato de fecha en todo el archivo y revisa después de importar que las fechas se hayan guardado bien.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Listas inteligentes" icon="filter" href="/contactos/listas-inteligentes">
+Crea segmentos dinámicos de contactos.
+</Card>
+<Card title="Formato del archivo CSV para importar" icon="file-csv" href="/contactos/formato-csv-para-importar">
+Prepara tus columnas y fechas antes de importar.
+</Card>
+</CardGroup>

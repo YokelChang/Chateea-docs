@@ -1,0 +1,129 @@
+---
+title: "Proveedores de conversación personalizados en la IA conversacional"
+description: "Haz que tu bot de IA responda por canales de mensajería instalados desde el Marketplace de aplicaciones."
+icon: "plug"
+---
+
+Tu bot de IA conversacional puede responder mensajes que llegan por aplicaciones de mensajería instaladas desde el **Marketplace de aplicaciones**. Estas apps se llaman proveedores de conversación personalizados: agregan a Chateea un canal de mensajería que no viene incluido de fábrica. Tú decides qué apps puede usar cada bot, así responde solo por los canales que quieres.
+
+<Note>
+  Para usar canales del Marketplace con la IA conversacional necesitas tener activa la **Gestión de canales de la IA conversacional** en **Configuración → Labs**. Si está desactivada, las opciones de este artículo pueden no aparecer.
+</Note>
+
+## Para qué sirve
+
+- **Más canales:** usa la IA conversacional con apps de mensajería compatibles del Marketplace.
+- **Control por bot:** eliges qué apps usa cada bot.
+- **Configuración simple:** agregas las apps desde la pestaña **Desplegar** del bot.
+- **Interruptor independiente:** cada app se activa o desactiva por separado.
+- **Filtros por etiqueta:** decides a qué contactos responde el bot en cada app.
+- **Sin romper lo que ya tienes:** las apps que ya estaban conectadas siguen funcionando.
+
+## Canales incluidos y canales del Marketplace
+
+Chateea ya trae canales como SMS, correo, Facebook, Instagram, WhatsApp, TikTok, chat en vivo y widget de chat. Un proveedor de conversación personalizado agrega otro canal más que tu bot puede usar.
+
+## Qué cambió
+
+| Antes | Ahora |
+| --- | --- |
+| Las apps personalizadas dependían de los ajustes de SMS o correo. | Cada app aparece como una tarjeta propia en **Desplegar**. |
+| Al activar SMS o correo, el bot también respondía por las apps conectadas. | Eliges qué apps usa cada bot. |
+| No podías controlar cada app por separado. | Cada app tiene sus ajustes y su interruptor. |
+
+Las configuraciones anteriores siguen funcionando y las apps que ya estaban activas aparecen automáticamente en Desplegar.
+
+## Antes de empezar
+
+- La **Gestión de canales de la IA conversacional** está activa en Labs.
+- Ya tienes un bot de IA conversacional creado.
+- Tienes instalada una app del Marketplace que funcione como **proveedor de conversación** (Conversation Provider).
+- La app está instalada en tu cuenta, conectada y activa.
+
+<Warning>
+  No todas las apps del Marketplace sirven para la IA conversacional. Solo aparecen las apps instaladas que admiten la función de proveedor de conversación.
+</Warning>
+
+## Cómo responde el bot por una app del Marketplace
+
+1. El cliente escribe por la app conectada.
+2. Chateea recibe el mensaje.
+3. El bot lo lee y prepara la respuesta.
+4. La respuesta vuelve por la misma app que usó el cliente.
+
+El bot solo responde si la app está agregada al bot, está activada, guardaste el bot y el contacto cumple las reglas de etiquetas que hayas definido.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Activa la gestión de canales en Labs">
+    Ve a **Configuración → Labs**, busca **Gestión de canales de la IA conversacional** y actívala.
+  </Step>
+  <Step title="Instala una app compatible">
+    Abre el **Marketplace de aplicaciones**, busca la app de mensajería, confirma que funciona como proveedor de conversación, instálala en tu cuenta, completa su configuración y verifica que quede activa.
+  </Step>
+  <Step title="Abre tu bot">
+    Ve a **IA → IA conversacional**, abre el bot y entra a la pestaña **Desplegar**.
+  </Step>
+  <Step title="Agrega la app">
+    Haz clic en **Agregar canales desde el Marketplace**, abre el menú **Proveedores instalados** y elige la app. Si quieres, agrega reglas de etiquetas y elige **Y** u **O**. Luego haz clic en **Agregar canal**.
+  </Step>
+  <Step title="Revisa y guarda">
+    Confirma que la app aparece en Desplegar y está encendida, revisa las reglas de etiquetas y los demás canales activos, y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Controlar a qué contactos responde
+
+Las reglas de etiquetas son opcionales:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Tiene etiquetas** | El bot usa este canal solo con contactos que tengan la etiqueta. |
+| **No tiene etiquetas** | El bot no usa este canal con contactos que tengan la etiqueta. |
+| **Y** | Deben cumplirse todas las reglas. |
+| **O** | Basta con que se cumpla una. |
+
+Por ejemplo, puedes dejar que el bot responda a contactos con la etiqueta `normal` y no a los que tienen `premium`, para que a esos los atienda tu equipo o un bot distinto.
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| **La app no aparece en la lista** | Que la gestión de canales esté activa en Labs y que la app esté instalada en tu cuenta, activa y sea compatible como proveedor de conversación. |
+| **El bot no responde** | Que la app esté agregada al bot, encendida, que hayas guardado el bot, que el contacto cumpla las reglas de etiquetas y que la app esté bien conectada. |
+| **Responde a unos contactos y a otros no** | Revisa las reglas de "Tiene etiquetas" y "No tiene etiquetas". |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que activar algo en Labs primero?">
+    Sí. La gestión de canales de la IA conversacional debe estar activa para usar canales del Marketplace.
+  </Accordion>
+  <Accordion title="¿Por qué no veo mi app en la lista?">
+    Solo aparecen las apps instaladas y activas que funcionan como proveedor de conversación.
+  </Accordion>
+  <Accordion title="¿Cualquier app del Marketplace sirve?">
+    No. La app debe ser compatible como proveedor de conversación.
+  </Accordion>
+  <Accordion title="¿Mi configuración anterior dejará de funcionar?">
+    No. Sigue funcionando y las apps que ya estaban activas aparecen automáticamente en Desplegar.
+  </Accordion>
+  <Accordion title="¿Las apps personalizadas siguen dependiendo de SMS o correo?">
+    Con la nueva gestión de canales, las administras directamente desde la pestaña Desplegar.
+  </Accordion>
+  <Accordion title="¿Distintos bots pueden usar distintas apps?">
+    Sí. Cada bot tiene sus propios canales en Desplegar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Canales y enrutamiento de los bots" icon="diagram-next" href="/bot-ia/nueva-gestion-canales">
+    Cómo asignar cada bot a sus canales.
+  </Card>
+  <Card title="Canal de correo en la IA conversacional" icon="envelope" href="/ia/canal-de-correo-ia-conversacional">
+    Haz que tu bot responda correos.
+  </Card>
+</CardGroup>

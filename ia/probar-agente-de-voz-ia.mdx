@@ -1,0 +1,153 @@
+---
+title: "Probar un agente de IA de voz"
+description: "Prueba tu agente con llamadas web o telefónicas y revisa los registros antes de lanzarlo."
+icon: "headset"
+---
+
+Probar tu agente de IA de voz antes de lanzarlo te permite detectar huecos en la indicación, respuestas incorrectas, acciones que fallan y problemas de telefonía antes de que un cliente real llame. Chateea ofrece dos formas de probar: la **llamada web**, desde el navegador, y la **llamada telefónica**, que reproduce la experiencia real. Las llamadas de prueba quedan en los registros para revisarlas, pero no cuentan en las métricas del panel.
+
+## Para qué sirve
+
+- **Validación rápida:** inicia una llamada web sin comprar ni asignar un número.
+- **Pruebas realistas:** la llamada telefónica valida el comportamiento con una conexión real.
+- **Mejora continua:** escuchas, ajustas la indicación o la base de conocimiento y vuelves a probar al instante.
+- **Prueba de acciones:** confirmas que las acciones se ejecutan cuando deben.
+- **Revisión completa:** transcripción y grabación para evaluar ritmo, respuestas y experiencia.
+- **Métricas limpias:** las pruebas no se mezclan con las estadísticas reales.
+
+## Llamada web o llamada telefónica
+
+| Aspecto | Llamada web | Llamada telefónica |
+| --- | --- | --- |
+| **¿Necesita número?** | No | Usa tu configuración telefónica |
+| **Ideal para** | Indicaciones, respuestas, flujo de la conversación y acciones compatibles | Enrutamiento, identificador de llamadas, transferencias y comportamiento real |
+| **Transferencia de llamada** | No funciona en la prueba web | Sí se puede validar |
+| **Contacto usado** | El contacto del usuario que prueba | El número que ingresas para la prueba |
+| **Costo** | Sin configuración de número | Se aplican las tarifas telefónicas normales, descontadas de la billetera |
+
+<Warning>
+  La llamada web no reemplaza la prueba por teléfono. Es ideal para iterar rápido, pero no valida transferencias ni el enrutamiento completo del número. Antes de lanzar, haz al menos una prueba telefónica.
+</Warning>
+
+## Antes de probar
+
+- Guarda la última versión del agente.
+- Verifica que la indicación, el saludo, la base de conocimiento y las acciones estén listos.
+- Para la llamada web, usa un navegador actualizado y permite el acceso al micrófono.
+- Elige correctamente los dispositivos de entrada y salida de audio y cierra otras apps que usen el micrófono.
+- Para la llamada telefónica, ten claro el identificador de llamada y el número de destino.
+
+## Hacer una llamada web
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → IA de voz** y abre el agente que quieres probar.
+  </Step>
+  <Step title="Elige Llamada web">
+    En el panel **Prueba tu agente**, selecciona **Llamada web** y el escenario **Entrante** o **Saliente**.
+  </Step>
+  <Step title="Inicia la llamada">
+    Haz clic en **Iniciar llamada web** y permite el acceso al micrófono.
+  </Step>
+  <Step title="Conversa con el agente">
+    Habla como lo haría un cliente y evalúa las respuestas, las acciones y el flujo de la conversación.
+  </Step>
+</Steps>
+
+## Hacer una llamada telefónica de prueba
+
+<Steps>
+  <Step title="Elige Llamada telefónica">
+    En **Prueba tu agente**, selecciona **Llamada telefónica** y el escenario **Entrante** o **Saliente**.
+  </Step>
+  <Step title="Configura la llamada">
+    Elige el **Identificador de llamada** desde el que llamará el agente e ingresa el número que recibirá la prueba.
+  </Step>
+  <Step title="Recibe la llamada">
+    Haz clic en **Llámame**, contesta y prueba el agente como un cliente real.
+  </Step>
+</Steps>
+
+## Qué probar
+
+- Una solicitud típica de un cliente.
+- Una pregunta que responde la base de conocimiento.
+- Una pregunta que el agente no debe responder.
+- Una solicitud incompleta o confusa.
+- Cada acción configurada.
+- Una solicitud de hablar con una persona.
+- Un silencio prolongado.
+- Una interrupción mientras el agente habla.
+- El cierre de la llamada.
+
+<Tip>
+  Cambia un ajuste a la vez y vuelve a probar. Así sabes exactamente qué cambio mejoró o empeoró la llamada.
+</Tip>
+
+## Revisar las llamadas de prueba
+
+<Steps>
+  <Step title="Abre los registros">
+    Ve a **IA → IA de voz → Panel y registros**.
+  </Step>
+  <Step title="Filtra">
+    Elige **Todos los agentes** o el agente que probaste y confirma que el rango de fechas incluye la prueba.
+  </Step>
+  <Step title="Muestra solo las pruebas">
+    En la tabla de registros, abre el filtro **En vivo/Prueba** y elige **Prueba**.
+  </Step>
+  <Step title="Abre el registro">
+    Revisa los detalles de la llamada.
+  </Step>
+</Steps>
+
+| Detalle | Para qué te sirve |
+| --- | --- |
+| **Estado o resultado** | Saber si la prueba terminó bien o tuvo un problema. |
+| **Transcripción** | Revisar la conversación y detectar huecos en la indicación o la información. |
+| **Grabación** | Evaluar la calidad de voz, el ritmo, las interrupciones y los silencios. |
+| **Acciones disparadas** | Confirmar que las acciones se ejecutaron cuando debían. |
+| **Resumen** | Ver el resultado de un vistazo antes de leer o escuchar todo. |
+
+## Si no aparece el escenario saliente
+
+El escenario **Saliente** depende de que tu cuenta cumpla los requisitos de llamadas salientes con IA de voz. Si no lo ves:
+
+- Confirma que tu cuenta cumple los requisitos para llamadas salientes.
+- Completa la verificación de identidad o del negocio si se te solicita.
+- Verifica que tengas un agente y un número de salida disponibles.
+- Si aún no aceptaste los términos de llamadas salientes, puedes aceptarlos al configurar la acción **Llamada saliente de IA de voz** en un flujo de trabajo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito comprar un número para probar?">
+    No para la llamada web. La llamada telefónica sí usa tu configuración telefónica.
+  </Accordion>
+  <Accordion title="¿Las pruebas cuentan en las métricas del panel?">
+    No. Aparecen en los registros, pero no en las métricas ni en los análisis del panel.
+  </Accordion>
+  <Accordion title="¿Dónde encuentro mis llamadas de prueba?">
+    En **IA → IA de voz → Panel y registros**, con el agente y las fechas correctos y el filtro **En vivo/Prueba** en **Prueba**.
+  </Accordion>
+  <Accordion title="¿Puedo ver la transcripción y la grabación de una prueba?">
+    Sí, cuando están disponibles y terminó el procesamiento.
+  </Accordion>
+  <Accordion title="¿Puedo probar transferencias con una llamada web?">
+    No. Usa una llamada telefónica de prueba o llama al número asignado.
+  </Accordion>
+  <Accordion title="No encuentro una llamada de prueba, ¿qué reviso?">
+    El agente seleccionado, el rango de fechas y el filtro En vivo/Prueba. Confirma también que la llamada terminó bien y espera unos minutos a que se procese.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un agente de IA de voz" icon="phone" href="/ia/crear-agente-de-voz-ia">
+    Configura el agente paso a paso.
+  </Card>
+  <Card title="Panel de agentes de IA de voz" icon="chart-line" href="/ia/panel-de-voz-ia">
+    Mide el rendimiento de tus agentes.
+  </Card>
+</CardGroup>

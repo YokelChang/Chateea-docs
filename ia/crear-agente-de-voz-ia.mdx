@@ -1,0 +1,188 @@
+---
+title: "Crear un agente de IA de voz"
+description: "Crea, configura, prueba y pon en producción un agente de IA de voz que conteste tus llamadas."
+icon: "phone-plus"
+---
+
+Un agente de IA de voz es un asistente telefónico automático que habla con quienes llaman siguiendo las instrucciones, la información del negocio y las acciones que tú configuras. Puede responder preguntas, tomar datos, actualizar contactos, agendar citas, disparar automatizaciones y transferir la llamada cuando hace falta una persona.
+
+En esta guía creas el agente, lo configuras, lo pruebas y lo pones a atender llamadas reales.
+
+## Para qué sirve
+
+- **Atención inmediata:** nadie de tu equipo tiene que contestar cada llamada.
+- **Conversaciones consistentes:** siempre sigue las mismas instrucciones y reglas de escalamiento.
+- **Acciones automáticas:** agenda citas, envía mensajes, actualiza contactos o dispara flujos.
+- **Respuestas con tu información:** usa una base de conocimiento conectada.
+- **Transferencias flexibles:** pasa la llamada a una persona o a otro agente de voz.
+- **Más cobertura:** atiende más llamadas sin crear procesos manuales.
+
+## Antes de empezar
+
+- Tu usuario tiene el permiso **Ver y administrar agentes de IA de voz**. Si no ves la IA de voz en el menú, pide a un administrador de tu cuenta que revise tus permisos.
+- Tienes claro el objetivo del agente: calificar leads, dar soporte, agendar citas o derivar llamadas.
+- Tienes la información del negocio aprobada para la indicación o la base de conocimiento.
+- Tienes listos los calendarios, flujos, números de transferencia o integraciones que usarán las acciones.
+- Tienes un número del sistema telefónico de Chateea o un grupo de números para las llamadas reales.
+
+<Note>
+  Las llamadas salientes con IA de voz requieren completar la aprobación y los requisitos de cumplimiento correspondientes. Hasta entonces, la opción de prueba saliente puede no estar disponible.
+</Note>
+
+## Elige cómo crear el agente
+
+| Método | Cuándo usarlo |
+| --- | --- |
+| **Explorar el Marketplace** | Hay un agente prediseñado para tu caso. Revisa todas sus indicaciones, acciones, flujos, calendarios, campos y base de conocimiento antes de usarlo. |
+| **Crear agente personalizado** | Casos de atención telefónica estándar. Configuras indicación, base de conocimiento, acciones y ajustes de llamada. |
+| **Constructor por flujos** | Conversaciones estructuradas o con varios caminos, diseñadas con nodos visuales. |
+
+## Crear y configurar el agente
+
+<Steps>
+  <Step title="Abre la IA de voz">
+    Ve a **IA → IA de voz** y abre la pestaña **Lista de agentes**.
+  </Step>
+  <Step title="Crea un agente nuevo">
+    Haz clic en **Crear agente**, elige el método y haz clic en **Continuar**. Crea un agente distinto para cada uso principal: así es más fácil gestionar indicaciones, acciones e informes.
+  </Step>
+  <Step title="Configura lo básico">
+    Escribe un **Nombre del agente** claro y elige la **Voz**, el **Modelo** y el **Idioma**. Escribe o revisa la indicación, configura el **Mensaje de bienvenida** para llamadas entrantes y salientes, elige quién habla primero (cuando está disponible) y la pausa antes de que el agente empiece a hablar. Haz clic en **Guardar**.
+  </Step>
+  <Step title="Configura las llamadas salientes (si aplica)">
+    En los agentes de voz a voz (S2S) puedes usar el mismo agente para entrantes y salientes. Configura el mensaje de bienvenida saliente y, en **Ajustes de salida**, el aviso de que es una IA y la opción para que el cliente pida no recibir más llamadas. Guarda.
+  </Step>
+  <Step title="Conecta una base de conocimiento">
+    En **Base de conocimiento**, elige la que usará el agente, agrega o actualiza las fuentes y describe cuándo debe consultarla. Incluye horarios, servicios, precios, políticas, ubicaciones y preguntas frecuentes.
+  </Step>
+  <Step title="Agrega acciones">
+    En **Acciones**, haz clic en **Nueva acción**, elige el tipo, dale un nombre claro, define cuándo debe ejecutarse y completa el destino, flujo, campo, calendario o integración. Guarda. Agrega solo las acciones que el objetivo necesita.
+  </Step>
+  <Step title="Revisa los ajustes de llamada y posteriores">
+    Revisa solo lo que aplique a tu caso y cambia un ajuste a la vez, probando después de cada cambio.
+  </Step>
+</Steps>
+
+### Qué debe definir una buena indicación
+
+- El rol del agente y su objetivo principal.
+- Qué información debe recopilar.
+- De qué temas puede hablar y cuáles debe evitar.
+- Cuándo ejecutar cada acción.
+- Cuándo transferir o escalar.
+- Cómo cerrar la llamada.
+
+<Tip>
+  El optimizador de indicaciones puede ayudarte a mejorar el primer borrador, pero revisa y prueba siempre el resultado final. Indica al agente que no adivine cuando no tenga la información.
+</Tip>
+
+### Acciones disponibles
+
+| Acción | Qué hace |
+| --- | --- |
+| **Transferir llamada** | Pasa la llamada a un número de una persona. |
+| **Disparar flujo de trabajo** | Inicia un flujo de tu cuenta. |
+| **Enviar SMS** | Envía un mensaje durante la conversación. |
+| **Actualizar campo del contacto** | Guarda los datos que dio quien llama. |
+| **Reserva de citas** | Ofrece horarios y agenda la cita. |
+| **Acción personalizada** | Envía un webhook en tiempo real a un sistema externo. |
+| **Transferir a otro agente** | Pasa la conversación a otro agente de IA de voz. |
+
+Las acciones posteriores a la llamada aplican cambios o disparan seguimientos sin interrumpir a quien llamó.
+
+### Ajustes de llamada
+
+| Grupo | Qué controla |
+| --- | --- |
+| **Ajustes de llamada** | Duración máxima, recordatorios de inactividad y manejo de silencios. |
+| **Comportamiento del agente** | Velocidad de respuesta, sensibilidad a interrupciones y estilo. |
+| **Transcripción y voz** | Reconocimiento de voz, pronunciación y palabras clave. |
+| **Traducción** | Transcripciones o resúmenes traducidos. |
+| **Ajustes de voz** | Velocidad, volumen y opciones de audio. |
+| **Después de la llamada** | Avisos, flujos, resúmenes y seguimiento. |
+
+## Probar el agente
+
+Guarda la configuración y abre el panel de **Prueba**. Puedes probar con una **llamada web** (en el navegador, sin asignar número) o con una **llamada telefónica** (la experiencia completa). Ajusta y repite hasta que el comportamiento sea consistente. Todos los detalles están en [Probar un agente de IA de voz](/ia/probar-agente-de-voz-ia).
+
+<Warning>
+  La transferencia de llamada no funciona en una llamada web de prueba. Para validarla, usa una prueba por teléfono o llama al número asignado.
+</Warning>
+
+## Poner el agente en producción
+
+<Steps>
+  <Step title="Abre la pestaña Desplegar">
+    En el agente, entra a **Desplegar**.
+  </Step>
+  <Step title="Asigna el teléfono">
+    En la sección **Teléfono**, elige un número o grupo de números. Si necesitas uno nuevo, puedes comprarlo desde esa misma pantalla y decidir si lo asignas al agente.
+  </Step>
+  <Step title="Elige cómo atiende">
+    En **Enrutamiento de llamadas**, elige **Contestar directamente** (el agente atiende todas las llamadas) o **Usar como respaldo** (atiende cuando nadie contesta en el camino principal).
+  </Step>
+  <Step title="Define el horario">
+    En **Horario de atención**, elige **Todas las horas** o **Horario personalizado** con días y franjas. Los horarios pueden pasar la medianoche.
+  </Step>
+  <Step title="Conecta el chat (opcional)">
+    En **Chat**, conecta un widget de chat existente, crea uno nuevo o desconecta el actual.
+  </Step>
+  <Step title="Revisa el flujo de llamadas y guarda">
+    Revisa el desvío, el tiempo de espera, el buzón de voz y el respaldo del número. Luego guarda.
+  </Step>
+</Steps>
+
+<Note>
+  Asignar un número no garantiza que el agente conteste todas las llamadas. El horario, el modo de enrutamiento, el desvío, el tiempo de espera, el buzón de voz y el flujo de llamadas del número influyen. Ver [Flujo de llamadas entrantes de la IA de voz](/ia/flujo-de-llamadas-entrantes-voz-ia).
+</Note>
+
+## Lista final antes de lanzar
+
+- El nombre, la voz, el modelo y el idioma son correctos.
+- Los saludos de entrada y salida suenan naturales.
+- La indicación define claramente el rol, los límites y el objetivo.
+- Las respuestas de la base de conocimiento son correctas.
+- El agente no inventa respuestas cuando no tiene la información.
+- Cada acción se ejecuta solo cuando debe.
+- Una prueba telefónica confirma que las transferencias llegan al destino correcto.
+- El número o grupo de números correcto está asignado.
+- El horario y el comportamiento fuera de horario son correctos.
+- Una llamada real desde fuera llega al agente.
+- El registro de la llamada muestra transcripción, resumen y acciones esperadas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no veo la IA de voz en el menú?">
+    Tu rol puede no tener el permiso **Ver y administrar agentes de IA de voz**. Pide a un administrador de tu cuenta que lo revise.
+  </Accordion>
+  <Accordion title="¿Qué método de creación elijo?">
+    Agente personalizado para casos estándar, Marketplace si hay un agente prediseñado adecuado, y constructor por flujos para conversaciones con varios caminos.
+  </Accordion>
+  <Accordion title="¿Puedo probar sin asignar un número?">
+    Sí, con una llamada web desde el navegador.
+  </Accordion>
+  <Accordion title="El agente no contesta el número asignado, ¿qué reviso?">
+    Que el número o grupo esté asignado al agente correcto, el horario, el modo de enrutamiento, el desvío, el tiempo de espera, el buzón de voz y el flujo de llamadas del número.
+  </Accordion>
+  <Accordion title="¿Un agente puede atender varios números?">
+    Sí. Asígnale un grupo de números.
+  </Accordion>
+  <Accordion title="¿Un agente del Marketplace puede traer base de conocimiento?">
+    Sí. Revisa y reemplaza toda la información específica del negocio antes de usarlo.
+  </Accordion>
+  <Accordion title="¿Puede agendar citas durante la llamada?">
+    Sí. Agrega la acción de reserva de citas, conecta un calendario y prueba la selección de horarios y la confirmación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Voz IA" icon="phone" href="/ia/voz-ia">
+    Qué puede hacer la IA de voz por tu negocio.
+  </Card>
+  <Card title="Probar un agente de IA de voz" icon="headset" href="/ia/probar-agente-de-voz-ia">
+    Valida el agente antes de lanzarlo.
+  </Card>
+</CardGroup>

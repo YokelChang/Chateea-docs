@@ -1,149 +1,150 @@
 ---
-title: "Resumen y transcripción de la IA conversacional"
-description: "Genera resúmenes automáticos de cada conversación y dispara acciones a partir de ellos."
+title: "Resumen y transcripción de conversaciones con IA"
+description: "Genera un resumen y la transcripción de cada conversación con IA y envíalos a un flujo, a un campo del contacto o por correo."
 icon: "file-lines"
 ---
 
-<Info>
-  **Documentado el 15 de agosto de 2026.**
-</Info>
+La IA conversacional puede generar un **resumen** y una **transcripción** de cada conversación cuando esta queda inactiva. En vez de abrir una conversación de cuarenta mensajes para entender qué pasó, lees tres líneas. Y puedes enviar ese resumen a un flujo de trabajo, guardarlo en la ficha del contacto o recibirlo por correo.
 
-Los resúmenes y transcripciones capturan automáticamente la información clave y el registro completo de mensajes de cada conversación. Así revisas resultados, monitoreas la participación y automatizas acciones **sin leer cada mensaje a mano**.
+- **Resumen:** una versión corta con los puntos clave de la conversación.
+- **Transcripción:** el historial completo de mensajes, útil para registros, seguimiento interno o automatizaciones.
 
-<Info>
-  La diferencia práctica: en vez de abrir una conversación de cuarenta mensajes para entender qué pasó, lees tres líneas de resumen. Multiplicado por cientos de conversaciones, es la diferencia entre supervisar tu operación y ahogarte en ella.
-</Info>
+<Warning>
+  Los resúmenes vienen **desactivados** por defecto. Y aunque los actives, un resumen **no se guarda solo** en el CRM: tienes que enviarlo a algún lado (un flujo, un campo personalizado o un correo).
+</Warning>
 
-## Principales ventajas
+## Para qué te sirve
 
-| Ventaja | Detalle |
-| --- | --- |
-| **Información rápida** | Entiendes el resultado de la conversación al instante |
-| **Listo para automatizar** | Dispara flujos a partir del resumen |
-| **Mejor seguimiento** | Supervisas interacciones entre sesiones |
-| **Datos centralizados** | El resumen se guarda junto al registro del contacto |
+- **Revisión rápida:** entiendes el resultado de la conversación sin leer cada mensaje.
+- **Visibilidad interna:** los administradores, el usuario asignado u otras personas se enteran de lo importante.
+- **Mejor registro:** guardas resúmenes o transcripciones como notas para dar seguimiento.
+- **Seguimiento más eficiente:** tu equipo sabe cuál es el siguiente paso.
+- **Automatización flexible:** usas el resumen o la transcripción dentro de tus flujos de trabajo.
 
-## Habilita el resumen
+## Cómo activar el resumen
 
 <Steps>
-  <Step title="Localiza la sección Resumen de la conversación">
-    Y activa el interruptor.
+  <Step title="Abre el bot">
+    Ve a **Agentes de IA → IA conversacional** y abre un bot existente o crea uno nuevo.
   </Step>
-  <Step title="Establece el tiempo de inactividad">
-    Cuánto espera el sistema sin mensajes antes de generar el resumen. Por ejemplo, 15 minutos.
+  <Step title="Ve a los objetivos">
+    Entra a la pestaña **Objetivos del bot**.
   </Step>
-  <Step title="Establece el mínimo de mensajes">
-    Por ejemplo, 3. Si la conversación tiene menos, no se genera resumen — evita resumir intercambios triviales.
+  <Step title="Activa el resumen">
+    Activa **Habilitar resumen de la conversación**.
   </Step>
-  <Step title="Habilita las opciones que quieras">
-    Guardar en un campo de contacto o disparar flujos de trabajo.
+  <Step title="Configura las opciones">
+    Define el tiempo de inactividad, el mínimo de mensajes y a dónde enviar el resumen (ver la tabla siguiente).
   </Step>
   <Step title="Guarda">
+    Guarda la configuración del bot.
   </Step>
 </Steps>
+
+## Opciones disponibles
+
+| Opción | Qué hace |
+| --- | --- |
+| **Tiempo de inactividad** | Cuánto tiempo sin mensajes (ni del contacto ni del bot) debe pasar antes de generar el resumen. Por ejemplo, 15 minutos. También es otra forma de poner al bot en reposo, además del máximo de mensajes, el estado por contacto o la acción de detener el bot |
+| **Mínimo de mensajes para generar el resumen** | Si la conversación tiene menos mensajes que este número, no se genera resumen aunque pase el tiempo de inactividad. Evita resumir intercambios triviales |
+| **Disparar un flujo al generar el resumen o la transcripción** | Envía el resultado a un flujo de trabajo. Es la forma de guardarlo en el CRM, por ejemplo como nota |
+| **Guardar en un campo personalizado** | Guarda el resumen en un campo del contacto. Cada resumen nuevo reemplaza al anterior |
+| **Recibir el resumen por correo** | Envía el resumen a: todos los administradores, todos los usuarios, el usuario asignado al contacto, usuarios específicos o un correo personalizado |
 
 ## Cuándo se genera un resumen
 
-| Disparador | Momento |
+| Momento | Detalle |
 | --- | --- |
-| **Inactividad** | Tras el tiempo sin mensajes que definiste |
-| **Bot en reposo (instantáneo)** | De inmediato cuando la conversación termina por: límite de mensajes alcanzado, intervención manual o automatizada, condiciones de parada, o transferencia e inactividad |
+| **Por inactividad** | Cuando pasa el tiempo sin mensajes que definiste y la conversación cumple el mínimo de mensajes |
+| **Al instante** | Cuando la conversación termina porque el bot entra en reposo: se alcanzó el límite de mensajes, hubo una intervención manual o automatizada, se cumplió una condición de parada o hubo una transferencia |
 
-## Guardar en el registro del contacto
+## Enviar el resumen o la transcripción a un flujo
 
-- Habilita la opción de guardar en un campo de contacto
-- Selecciona el campo donde se almacenará
-
-<Warning>
-  **Cada resumen nuevo reemplaza al anterior.** Si necesitas conservar el historial completo, usa la transcripción en un flujo antes de que se sobrescriba.
-</Warning>
-
-## Automatizar a partir del resumen
-
-Los resúmenes pueden disparar flujos para seguimiento y acciones:
+Para conservar el resumen o la transcripción en el CRM, envíalo a un flujo de trabajo:
 
 <Steps>
-  <Step title="Abre tu creador de flujos">
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo **sin disparador**. Lo activará directamente la IA conversacional.
   </Step>
-  <Step title="Selecciona una acción">
-    Busca y elige **Resumen** o **Transcripción**.
+  <Step title="Agrega una acción">
+    Por ejemplo, **Agregar nota**.
   </Step>
-  <Step title="Inserta la variable en el flujo">
-    Puedes usar `Resumen de la conversación` y `Transcripción de la conversación`.
+  <Step title="Inserta los campos de combinación">
+    En el contenido de la acción, inserta **IA conversacional → Resumen** y, si quieres el historial completo, **IA conversacional → Transcripción**.
   </Step>
-  <Step title="Guarda y publica">
+  <Step title="Publica el flujo">
+    Guarda y publica el flujo.
+  </Step>
+  <Step title="Conéctalo al bot">
+    Vuelve a la configuración del resumen del bot, activa **Disparar un flujo al generar el resumen o la transcripción** y elige tu flujo en el desplegable.
   </Step>
 </Steps>
 
-Con esos datos puedes actualizar la ficha del contacto, generar información útil o disparar automatizaciones.
+<Tip>
+  Si guardas el resumen en un campo personalizado, cada resumen nuevo reemplaza al anterior. Para conservar el historial completo, usa el flujo con la acción **Agregar nota**: cada conversación queda como una nota separada en la ficha del contacto.
+</Tip>
 
-## Notificaciones por correo
+## Recibir el resumen por correo
 
-Manténte al tanto cuando se generen resúmenes:
+<Steps>
+  <Step title="Activa la notificación">
+    En la configuración del resumen del bot, activa **Recibir el resumen de la conversación por correo**.
+  </Step>
+  <Step title="Elige los destinatarios">
+    Todos los administradores, todos los usuarios, el usuario asignado al contacto, usuarios específicos o un correo personalizado. Puedes elegir varios.
+  </Step>
+  <Step title="Guarda">
+    Guarda la configuración del bot.
+  </Step>
+</Steps>
 
-- Habilita las notificaciones por correo
-- Elige destinatarios: usuarios administradores, usuarios asignados o direcciones específicas
-- Guarda
+## Reglas de funcionamiento
 
-## Reglas de comportamiento
+- Cada resumen cubre una sesión de conversación y abarca desde el último resumen generado, sin repetir lo ya resumido.
+- Solo se incluyen los mensajes posteriores a la activación de la función.
+- Los mensajes enviados mientras la función estaba desactivada no se incluyen.
+- Se incluyen tanto los mensajes entrantes como los salientes.
 
-<AccordionGroup>
-  <Accordion title="Se generan por sesión">
-    Cada resumen cubre una sesión de conversación.
-  </Accordion>
+## Solución de problemas
 
-  <Accordion title="Cada nuevo resumen reemplaza al anterior">
-    En el campo de contacto solo queda el más reciente.
-  </Accordion>
-
-  <Accordion title="Solo incluye mensajes posteriores a la activación">
-    Lo anterior a activar la función no se resume.
-  </Accordion>
-
-  <Accordion title="Los mensajes durante periodos deshabilitados se ignoran">
-  </Accordion>
-
-  <Accordion title="Incluye entrantes y salientes">
-    Ambos lados de la conversación.
-  </Accordion>
-
-  <Accordion title="Cada resumen abarca desde el último resumen">
-    No repite lo ya resumido.
-  </Accordion>
-</AccordionGroup>
+| Síntoma | Qué revisar |
+| --- | --- |
+| No aparece el resumen | Que la función esté activa, que haya pasado el tiempo de inactividad y que se cumpla el mínimo de mensajes |
+| Faltan mensajes | Solo se incluyen los mensajes enviados después de activar la función |
+| El flujo no se activa | Que el flujo esté publicado y seleccionado en la configuración del bot |
+| No se guarda en el contacto | Que esté activa la opción de guardar en un campo personalizado y que el campo esté elegido |
+| No llegan los correos | Que hayas seleccionado al menos un destinatario |
 
 ## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="¿Cuándo se crea un resumen?">
-    Tras un periodo de inactividad, o al instante cuando ciertas condiciones terminan la conversación.
+  <Accordion title="¿Qué diferencia hay entre el resumen y la transcripción?">
+    El resumen es una versión corta con los puntos clave. La transcripción es el registro completo de la conversación.
   </Accordion>
-
-  <Accordion title="¿Incluye todos los mensajes anteriores?">
-    No. Solo los posteriores a activar la función o al último resumen.
+  <Accordion title="¿Los resúmenes están activados por defecto?">
+    No. Tienes que activar **Habilitar resumen de la conversación** en la pestaña **Objetivos del bot**.
   </Accordion>
-
-  <Accordion title="¿Pueden activar automatización?">
-    Sí. Los flujos pueden dispararse cuando se genera un resumen.
+  <Accordion title="¿El resumen se guarda solo en el CRM?">
+    No. Solo se conserva si lo envías a un flujo, a un campo personalizado, a un correo u otro destino configurado.
   </Accordion>
-
-  <Accordion title="¿Puedo guardarlos para después?">
-    Sí, en un campo de contacto seleccionado.
+  <Accordion title="¿Se genera un resumen para cada conversación?">
+    No siempre. La conversación debe quedar inactiva el tiempo configurado y cumplir el mínimo de mensajes, o terminar por una condición que ponga al bot en reposo.
   </Accordion>
-
-  <Accordion title="¿Qué pasa si no hay suficientes mensajes?">
-    No se genera resumen si no se cumple el mínimo.
+  <Accordion title="¿Puedo usar el resumen y la transcripción en el mismo flujo?">
+    Sí. Inserta ambos campos de combinación en las acciones del flujo.
+  </Accordion>
+  <Accordion title="¿El correo incluye la transcripción?">
+    No. El aviso por correo envía solo el resumen. Para conservar la transcripción, usa un flujo con el campo de combinación de la transcripción.
   </Accordion>
 </AccordionGroup>
 
-## Si algo no funciona
+## Artículos relacionados
 
-| Síntoma | Solución |
-| --- | --- |
-| No aparece el resumen | Activa la opción y confirma inactividad y mínimo de mensajes |
-| Faltan mensajes | Solo se incluyen los enviados tras activar la función |
-| El flujo no se activa | Selecciona un flujo publicado |
-| No se guarda en el contacto | Activa "Guardar en campo personalizado" y elige el campo |
-| No llegan alertas por correo | Selecciona al menos un destinatario |
-
-Si aún así no funciona, prueba con una conversación nueva.
+<CardGroup cols={2}>
+  <Card title="Bot inactivo (en reposo)" icon="moon" href="/bot-ia/bot-inactivo">
+    Las condiciones que ponen al bot en reposo.
+  </Card>
+  <Card title="Panel de la IA conversacional" icon="chart-column" href="/ia/panel-ia-conversacional">
+    Consulta resúmenes y transcripciones desde el panel.
+  </Card>
+</CardGroup>

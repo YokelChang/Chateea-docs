@@ -1,0 +1,101 @@
+---
+title: "Deshacer, rehacer y cambios recientes en flujos"
+description: "Revierte o vuelve a aplicar tus cambios en el constructor de flujos y salta a un punto anterior de tu sesión."
+icon: "rotate-left"
+---
+
+El constructor de flujos de trabajo registra cada cambio que haces en el lienzo durante tu sesión de edición. Con **Deshacer**, **Rehacer** y **Cambios recientes** puedes retroceder o avanzar entre tus cambios, o saltar directamente a un punto anterior, sin afectar el historial de versiones del flujo. Es la forma más rápida de corregir un error o probar una idea sin miedo.
+
+## Qué hace cada función
+
+- **Deshacer:** revierte tu último cambio en el lienzo.
+- **Rehacer:** vuelve a aplicar un cambio que acabas de deshacer.
+- **Cambios recientes:** muestra una lista cronológica de tus últimas ediciones y te permite llevar el lienzo a un momento concreto.
+
+También funcionan con los cambios que hace el **constructor de flujos con IA**. Durante la sesión puedes volver al estado anterior a un cambio generado por IA (agregar acciones, editar pasos o reestructurar el flujo) o volver a aplicarlo si lo deshiciste.
+
+## Ventajas
+
+- **Seguridad:** recupera al instante una acción borrada o un cambio accidental.
+- **Velocidad:** avanza y retrocede con atajos de teclado.
+- **Precisión:** salta a una edición exacta de la lista y revierte varios pasos de una vez.
+- **Confianza:** haz cambios grandes sabiendo que puedes deshacerlos.
+
+## Botones y atajos de teclado
+
+En el lienzo tienes botones de **Deshacer** y **Rehacer** en la barra de herramientas. También puedes usar el teclado:
+
+| Acción | Windows | Mac |
+| --- | --- | --- |
+| Deshacer | Ctrl + Z | Cmd + Z |
+| Rehacer | Ctrl + Y | Cmd + Y o Cmd + Shift + Z |
+
+## Cómo usarlo
+
+<Steps>
+<Step title="Abre un flujo">
+Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+</Step>
+<Step title="Haz cambios">
+Agrega o modifica pasos directamente en el lienzo, o usa el constructor de flujos con IA para generar o editar el flujo.
+</Step>
+<Step title="Deshaz o rehaz">
+Usa los botones **Deshacer** y **Rehacer**, o los atajos **Ctrl/Cmd + Z** y **Ctrl/Cmd + Y**.
+</Step>
+<Step title="Salta a un punto anterior">
+Haz clic en **Cambios recientes** en el lienzo y selecciona cualquier entrada para llevar el flujo a ese momento.
+</Step>
+</Steps>
+
+## Cómo funciona la sesión
+
+- **Depende de la sesión:** el historial de cambios solo existe mientras editas. Se reinicia al salir del flujo o al recargar el navegador.
+- **Se reinicia al restaurar una versión:** si restauras una versión anterior desde el historial de versiones, Deshacer y Rehacer empiezan de cero desde ese estado.
+- **Es personal:** solo incluye tus cambios, no los de otras personas que editen el mismo flujo.
+
+<Note>
+Para volver atrás cambios de otras personas o de días anteriores, usa el **historial de versiones**, que guarda versiones permanentes y compartidas del flujo.
+</Note>
+
+## Diferencia con el historial de versiones
+
+| | Cambios recientes | Historial de versiones |
+| --- | --- | --- |
+| Qué guarda | Tus ediciones de la sesión actual | Versiones completas del flujo |
+| Cuánto dura | Hasta que sales o recargas | Hasta 10 versiones o 30 días |
+| Quién lo ve | Solo tú | Todo el equipo |
+| Ideal para | Corregir errores inmediatos | Volver a un estado estable conocido |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cuántos cambios puedo deshacer?">
+Puedes deshacer los cambios de tu sesión actual. El historial se reinicia cuando termina la sesión (por ejemplo, al recargar o salir) o cuando restauras una versión.
+</Accordion>
+<Accordion title="¿El historial se conserva si recargo o cierro la pestaña?">
+No. Solo existe durante tu sesión de edición.
+</Accordion>
+<Accordion title="¿Puedo deshacer los cambios de otra persona?">
+No. Deshacer y Rehacer solo registran tus cambios. Para revertir cambios de otras personas, usa el historial de versiones.
+</Accordion>
+<Accordion title="¿Deshacer afecta al flujo que ya está publicado?">
+Deshacer cambia el lienzo que estás editando. Lo que llega a tus contactos depende de lo que publiques. Usa el historial de versiones y la publicación para controlar los cambios en vivo.
+</Accordion>
+<Accordion title="¿Qué pasa después de restaurar una versión anterior?">
+El historial de Deshacer y Rehacer se reinicia y empieza desde el estado restaurado.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Historial de versiones de flujos" icon="clock-rotate-left" href="/automatizaciones/historial-de-versiones-de-flujos">
+Restaura versiones completas de tus flujos.
+</Card>
+<Card title="Guardado automático de flujos" icon="floppy-disk" href="/automatizaciones/guardado-automatico-de-flujos">
+Guarda tus cambios en borrador mientras trabajas.
+</Card>
+<Card title="Registros de ejecución e historial de inscripción" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+Revisa qué pasó con cada contacto.
+</Card>
+</CardGroup>

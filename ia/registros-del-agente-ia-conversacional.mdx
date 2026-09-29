@@ -1,0 +1,155 @@
+---
+title: "Registros del agente de IA conversacional"
+description: "Ve el camino completo que siguió tu IA conversacional en cada interacción: mensajes, acciones, datos y tiempos."
+icon: "clipboard-list"
+---
+
+Los registros del agente (Agent Logs) te muestran qué pasó en cada interacción de la IA conversacional: los mensajes, las acciones que eligió el bot, los datos que usó, cuánto tardó cada paso y el estado de la sesión. En lugar de ver solo la respuesta final que recibió el contacto, ves el camino completo que siguió la IA para llegar a ella.
+
+Piensa en los registros como una ventana de transparencia: te ayudan a entender por qué el bot respondió lo que respondió, a detectar errores y a medir el rendimiento de tus agentes.
+
+## Para qué sirven
+
+La IA conversacional no siempre sigue el mismo camino: según lo que diga el contacto, puede responder una pregunta, consultar la disponibilidad del calendario, guardar datos del contacto, buscar en la base de conocimiento, terminar la conversación o pasarla a una persona. Los registros te permiten responder preguntas como:
+
+- ¿Qué dijo el contacto y qué respondió la IA?
+- ¿La IA usó la acción que esperaba?
+- ¿Qué datos le envió a esa acción y qué le devolvió?
+- ¿Por qué tardó más de lo normal en responder?
+- ¿Consultó la base de conocimiento?
+- ¿Transfirió o terminó la conversación?
+
+## Conceptos clave
+
+| Concepto | Qué es | Ejemplo |
+| --- | --- | --- |
+| **Conversación** | La interacción completa entre el contacto y la IA. | El contacto pregunta por disponibilidad, da su nombre, pide horarios y dice que confirmará después. |
+| **Turno** | Un intercambio de ida y vuelta dentro de la conversación. | El contacto escribe, la IA procesa el mensaje y responde. |
+| **Paso** | Cada acción individual dentro de un turno. | Mensaje recibido, agente invocado, disponibilidad consultada, respuesta generada. |
+
+Un turno puede incluir pasos como: mensaje recibido, agente invocado, acción seleccionada, disponibilidad del calendario consultada, base de conocimiento consultada, datos del contacto extraídos, respuesta generada, conversación terminada o transferencia a una persona.
+
+## Dónde encontrarlos
+
+| Lugar | Cuándo usarlo |
+| --- | --- |
+| **IA → Registros del agente** | Vista general de todas las sesiones, contactos y métricas. |
+| **Conversaciones** | Estás leyendo un hilo y quieres ver cómo manejó la IA un mensaje concreto, sin salir de la bandeja. |
+| **Ficha del contacto y paneles laterales** | Sabes qué contacto quieres revisar, pero no la sesión exacta. |
+
+Puedes colocar el panel de registros del agente en los paneles laterales del contacto (por ejemplo, el central o el derecho) según cómo prefieras organizar tu espacio de trabajo.
+
+## Vista de sesiones
+
+Cada fila es una sesión de la IA que puedes abrir para ver el detalle. Muestra datos como el nombre del agente, el contacto, el canal, la fecha y hora, y el estado.
+
+### Filtros
+
+Para encontrar rápido lo que buscas, filtra por:
+
+- Producto de IA.
+- Canal.
+- Contacto.
+- Rango de fechas.
+- Agente.
+
+Por ejemplo, puedes ver solo las sesiones del chat web de un contacto específico.
+
+## Vista de contactos
+
+Organiza la actividad por contacto. Es útil para revisar todo lo que la IA hizo con una persona, investigar interacciones repetidas o encontrar sesiones cuando no sabes la fecha exacta.
+
+## Métricas
+
+La pestaña **Métricas** te da una visión general del rendimiento de la IA en muchas conversaciones:
+
+- Conversaciones atendidas y contactos alcanzados.
+- Mensajes de la IA y promedio de mensajes por conversación.
+- Tiempo promedio de respuesta.
+- Acciones, agentes y canales más usados.
+- Contactos más activos.
+- Actividad a lo largo del tiempo, horas de mayor actividad y uso por canal.
+
+Puedes filtrar las métricas por rango de fechas, agente, canal y contacto, y reorganizar los widgets para tener a la vista lo que más te importa.
+
+## Detalle de una sesión
+
+Al abrir una sesión ves dos áreas principales.
+
+### Conversación
+
+Los mensajes que intercambiaron el contacto y la IA, tal como ocurrieron.
+
+### Línea de tiempo de ejecución
+
+Lo que pasó detrás de escena. Por ejemplo, si el contacto pidió horarios, la línea de tiempo puede mostrar que la IA:
+
+1. Recibió el mensaje.
+2. Invocó al agente.
+3. Eligió la acción de disponibilidad del calendario.
+4. Envió a la acción las fechas solicitadas.
+5. Recibió los horarios disponibles.
+6. Generó una respuesta con esos horarios.
+7. Envió la respuesta al contacto.
+
+El detalle también puede incluir las entradas y salidas de cada paso, la latencia, el estado, opciones para copiar o expandir y, cuando está disponible, un gráfico visual del recorrido.
+
+### Revisar un mensaje concreto
+
+Haz clic en un mensaje para ver qué pasó en esa parte de la conversación. Si el cliente preguntó "¿puedo agendar mañana?", verás si la IA consultó la disponibilidad, qué datos envió y qué resultado obtuvo.
+
+### Acciones y herramientas
+
+Cuando la IA usa una acción (consultar disponibilidad, reservar, extraer datos del contacto, terminar la conversación, transferir), el registro muestra:
+
+- Qué acción eligió.
+- Qué datos le pasó.
+- Qué devolvió la acción.
+- Cómo usó el resultado en la respuesta.
+- Cuánto tardó.
+
+### Vista legible y vista técnica
+
+Algunos detalles se pueden ver en dos formatos:
+
+- **Vista legible (parsed):** los datos organizados en campos y valores. Es la más fácil de revisar.
+- **Vista técnica (raw):** los datos estructurados originales, útil si quieres inspeccionar exactamente lo que se intercambió con la acción.
+
+### Latencia y tiempos de respuesta
+
+Los registros muestran cuánto tardó cada paso. Así identificas qué paso fue el más lento, si una acción sumó tiempo o si la IA hizo varias acciones antes de responder. Por ejemplo, consultar el calendario y además extraer datos del contacto en el mismo turno puede alargar la respuesta.
+
+<Tip>
+  Cuando el bot responda algo inesperado, abre la sesión y revisa la línea de tiempo antes de cambiar la indicación. Muchas veces el problema está en una acción que no se ejecutó o que devolvió datos distintos a los esperados.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los registros son solo para resolver problemas?">
+    No. Son sobre todo una vista de transparencia para entender qué hizo la IA. También sirven para investigar comportamientos inesperados.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre conversación, turno y paso?">
+    La conversación es la interacción completa. El turno es un intercambio de ida y vuelta. El paso es una acción dentro de un turno, como recibir un mensaje, usar una acción o generar una respuesta.
+  </Accordion>
+  <Accordion title="¿Qué puedo ver en un registro?">
+    El mensaje del cliente, la respuesta de la IA, la línea de tiempo, las acciones usadas con sus entradas y salidas, la latencia, el estado y los datos de la sesión.
+  </Accordion>
+  <Accordion title="¿Puedo ver los registros sin salir de Conversaciones?">
+    Sí. Cuando está disponible, abres el registro directamente desde el hilo de la conversación.
+  </Accordion>
+  <Accordion title="¿Funcionan en los paneles laterales del contacto?">
+    Sí. Puedes colocar el panel de registros en los diseños de panel lateral compatibles.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Resumen y transcripción" icon="file-lines" href="/bot-ia/resumen-y-transcripcion">
+    Genera resúmenes de las conversaciones de la IA.
+  </Card>
+  <Card title="Detalles del mensaje de IA" icon="magnifying-glass" href="/bot-ia/detalles-mensaje-ia">
+    Revisa y edita respuestas desde la bandeja.
+  </Card>
+</CardGroup>

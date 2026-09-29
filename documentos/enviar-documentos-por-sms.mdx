@@ -1,0 +1,144 @@
+---
+title: "Enviar documentos y contratos por SMS"
+description: "Envía tus documentos y contratos por SMS o por SMS y correo para acelerar la firma."
+icon: "comment-sms"
+---
+
+Además del correo, puedes enviar tus documentos y contratos por SMS, o por correo y SMS a la vez. El mensaje de texto suele verse mucho antes que un correo, así que es una buena forma de acelerar la firma de propuestas, contratos y otros documentos. Funciona con envíos individuales, con flujos de trabajo y con fragmentos de SMS para reutilizar tus mensajes.
+
+## Ventajas del envío por SMS
+
+- **Más visibilidad:** los mensajes de texto se leen más rápido que el correo.
+- **Opciones flexibles:** envía solo por SMS o combina correo y SMS para llegar mejor.
+- **Mensajes reutilizables:** los fragmentos de SMS te dan textos consistentes y personalizados.
+- **Compatible con flujos:** automatiza el envío dentro de tus procesos de venta o de alta de clientes.
+- **Configuración centralizada:** defines por defecto cómo se envían las notificaciones de documentos.
+
+## Antes de empezar
+
+- Tu cuenta debe tener un número de teléfono de Chateea configurado para enviar SMS.
+- El contacto debe tener un número de teléfono válido.
+- El contacto también debe tener un correo válido: se requiere incluso si eliges enviar solo por SMS.
+
+## Definir el canal predeterminado de las notificaciones
+
+La configuración global mantiene una forma de envío coherente en toda tu cuenta.
+
+<Steps>
+  <Step title="Abre la configuración">
+    Ve a **Pagos → Documentos y contratos** y abre **Configuración**.
+  </Step>
+  <Step title="Entra a Notificaciones para clientes">
+    Selecciona **Notificaciones para clientes**.
+  </Step>
+  <Step title="Elige el canal">
+    En las opciones de notificaciones de documentos, elige **Solo SMS** o **Correo + SMS** y guarda los cambios.
+  </Step>
+</Steps>
+
+<Note>
+La notificación de **documento recibido** sigue el canal predeterminado, pero puedes cambiarlo al enviar cada documento. La notificación de **documento firmado** siempre sigue la configuración global.
+</Note>
+
+## Crear plantillas de SMS con fragmentos
+
+Los fragmentos te ahorran escribir el mismo mensaje cada vez y ayudan a que todo el equipo use el mismo texto.
+
+<Steps>
+  <Step title="Crea un fragmento">
+    Ve a **Marketing → Fragmentos** y haz clic en **Nuevo fragmento**.
+  </Step>
+  <Step title="Elige el tipo SMS">
+    Selecciona **SMS** como tipo de fragmento.
+  </Step>
+  <Step title="Escribe y guarda">
+    Redacta tu mensaje y guárdalo.
+  </Step>
+</Steps>
+
+Ejemplo de fragmento:
+
+```text
+Hola {{contact.first_name}}, tu documento está listo. Revísalo y fírmalo aquí:
+```
+
+<Tip>
+Escribe mensajes cortos y con una acción clara. En un SMS, el cliente debe entender en una línea qué tiene que hacer.
+</Tip>
+
+## Enviar un documento de forma individual
+
+Ideal para envíos puntuales o cuando sabes que un cliente responde mejor por mensaje de texto.
+
+<Steps>
+  <Step title="Abre el documento">
+    Entra al documento que quieres enviar y haz clic en **Enviar**.
+  </Step>
+  <Step title="Elige el canal">
+    Selecciona **Correo**, **SMS** o **Correo + SMS**.
+  </Step>
+  <Step title="Selecciona el fragmento">
+    Si elegiste SMS, selecciona el fragmento de SMS que quieres usar.
+  </Step>
+  <Step title="Revisa los destinatarios y envía">
+    Mientras agregas destinatarios puedes ver la información del contacto. Confirma el teléfono (y el correo si usas Correo + SMS) antes de enviar.
+  </Step>
+</Steps>
+
+Elegir el canal al enviar no cambia la configuración predeterminada de tu cuenta.
+
+## Enviar documentos desde un flujo de trabajo
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre un flujo existente o crea uno nuevo.
+  </Step>
+  <Step title="Agrega la acción">
+    Agrega la acción **Enviar documentos y contratos** y selecciona la plantilla.
+  </Step>
+  <Step title="Elige el canal">
+    Selecciona el canal de envío entre las opciones disponibles.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda y publica el flujo.
+  </Step>
+</Steps>
+
+En los envíos desde flujos se usa el contenido o la plantilla de SMS predeterminada configurada para documentos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo enviar un documento solo por SMS?">
+    Sí. Puedes enviarlo solo por SMS o por correo y SMS a la vez.
+  </Accordion>
+  <Accordion title="¿Necesito crear un fragmento de SMS antes de enviar?">
+    Los fragmentos son la forma de reutilizar el texto de tus SMS. Créalos en **Marketing → Fragmentos**.
+  </Accordion>
+  <Accordion title="¿Puedo elegir un canal distinto al enviar un documento individual?">
+    Sí. En cada envío individual eliges el canal, sin cambiar la configuración global.
+  </Accordion>
+  <Accordion title="¿Los documentos enviados desde flujos admiten SMS?">
+    Sí. Puedes elegir el canal en la acción **Enviar documentos y contratos**.
+  </Accordion>
+  <Accordion title="¿La notificación de documento firmado sigue la configuración global?">
+    Sí, siempre.
+  </Accordion>
+  <Accordion title="¿Qué debo revisar antes de enviar por SMS?">
+    Que el destinatario tenga el número de teléfono correcto y un correo válido. Revisa sus datos al agregarlo como destinatario.
+  </Accordion>
+  <Accordion title="¿Cuánto cuesta enviar documentos por SMS?">
+    Cada SMS se descuenta de la billetera de tu cuenta como cualquier otro mensaje. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Adjuntar archivos a documentos" icon="paperclip" href="/documentos/adjuntar-archivos-a-documentos">
+    Envía anexos junto a tus contratos.
+  </Card>
+  <Card title="Rechazar documentos" icon="ban" href="/documentos/rechazar-documentos">
+    Registra por qué un cliente no firmó.
+  </Card>
+</CardGroup>

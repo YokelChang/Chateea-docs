@@ -1,0 +1,150 @@
+---
+title: "WhatsApp en flujos de trabajo"
+description: "Automatiza WhatsApp con flujos que responden, envían plantillas, esperan respuesta y reaccionan a la entrega."
+icon: "diagram-project"
+---
+
+Con los flujos de trabajo de Chateea puedes automatizar WhatsApp: responder cuando un cliente escribe, enviar plantillas en el momento justo, esperar su respuesta antes de continuar, reaccionar si un mensaje no se entregó y respetar a quien pide no recibir más mensajes. Esta guía reúne las configuraciones más útiles.
+
+## Antes de empezar
+
+- WhatsApp debe estar conectado en tu cuenta. Consulta [Conectar WhatsApp a tu cuenta](/whatsapp/conectar-whatsapp).
+- Para escribir a alguien fuera de la ventana de 24 horas necesitas una [plantilla aprobada](/whatsapp/plantillas).
+
+## Responder automáticamente cuando el cliente escribe por WhatsApp
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Crear flujo de trabajo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Pulsa **Agregar disparador** y busca **Cliente respondió** (Customer Replied).
+  </Step>
+  <Step title="Filtra por canal">
+    Agrega el filtro **Canal de respuesta** y elige **WhatsApp**, para que el flujo solo reaccione a mensajes de WhatsApp.
+  </Step>
+  <Step title="Agrega la acción de WhatsApp">
+    Pulsa el botón **+** y elige la acción **WhatsApp**. Escribe un mensaje libre o elige una plantilla aprobada.
+  </Step>
+  <Step title="Activa las ramas (opcional)">
+    Si usas plantillas con botones o flujos de WhatsApp, puedes activar ramas según lo que pase:
+
+    - **Flujo completado:** el cliente terminó el flujo de WhatsApp.
+    - **No entregado:** el mensaje falló, por ejemplo porque el número no es alcanzable.
+    - **Tiempo agotado:** el cliente no respondió a tiempo.
+
+    Úsalas para enviar un mensaje alternativo, avisar a tu equipo o seguir con el siguiente paso.
+  </Step>
+  <Step title="Publica">
+    Pulsa **Guardar acción**, activa **Publicar** y guarda el flujo.
+  </Step>
+</Steps>
+
+## Elegir el número que envía
+
+Si tienes más de un número de WhatsApp, elige en cada acción desde cuál se envía el mensaje.
+
+<Steps>
+  <Step title="Agrega la acción">
+    Pulsa **+** en el flujo, busca **WhatsApp** y selecciónala.
+  </Step>
+  <Step title="Elige el número">
+    En el desplegable de número de envío, selecciona el número que quieres usar.
+  </Step>
+</Steps>
+
+<Note>
+  Solo aparecen los números con estado **Conectado**. Debes elegir el número en cada flujo; si eliges el equivocado, los mensajes saldrán de ese número hasta que edites la acción.
+</Note>
+
+## Esperar la respuesta del contacto
+
+Envía una plantilla y espera a que el cliente conteste antes de seguir. Así la conversación se siente más natural.
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Crear flujo de trabajo → Empezar desde cero** y agrega un disparador, por ejemplo **Contacto creado**.
+  </Step>
+  <Step title="Envía una plantilla">
+    Agrega la acción **WhatsApp** y selecciona la plantilla que quieres enviar.
+  </Step>
+  <Step title="Agrega una espera">
+    Agrega la acción **Esperar**. En **Esperar a** elige **Respuesta del contacto** y en **Respuesta a** elige **WhatsApp**. Guarda la acción.
+  </Step>
+  <Step title="Responde con mensaje libre">
+    Agrega otra acción **WhatsApp** y en la plantilla elige **Ninguna, texto manual** para escribir un mensaje libre.
+  </Step>
+  <Step title="Publica">
+    Guarda la acción, publica el flujo y guárdalo.
+  </Step>
+</Steps>
+
+<Tip>
+  Como el cliente ya respondió, se abrió la ventana de atención y puedes enviarle mensajes libres sin necesidad de otra plantilla. Revisa en [Precios y cobro de WhatsApp](/whatsapp/precios-y-cobro-de-whatsapp) qué mensajes tienen costo.
+</Tip>
+
+## Reaccionar al estado de entrega
+
+Puedes hacer que el flujo espere a que Meta confirme la entrega del mensaje y, si falla, enviar la información por otro canal. Chateea incluye una receta lista llamada **Estado de entrega de WhatsApp** en **Automatización** que puedes usar como punto de partida.
+
+<Steps>
+  <Step title="Envía una plantilla">
+    En un flujo nuevo, agrega un disparador y luego la acción **WhatsApp** con la plantilla que quieres enviar.
+  </Step>
+  <Step title="Espera el estado de entrega">
+    En la misma acción, activa **Esperar el estado de entrega del mensaje de WhatsApp** y guarda. El contacto se queda en ese paso hasta que llega la confirmación de Meta.
+  </Step>
+  <Step title="Agrega una condición">
+    Agrega la acción **Si/Si no**. En los datos del contacto elige **WhatsApp válido** y crea las ramas para verdadero y falso.
+  </Step>
+  <Step title="Configura el respaldo">
+    En las ramas **falso** y **ninguno**, agrega un SMS o un correo para que el mensaje llegue por otro canal.
+  </Step>
+</Steps>
+
+El campo **WhatsApp válido** se explica en [Campo WhatsApp válido y listas inteligentes](/whatsapp/campo-whatsapp-valido).
+
+## Activar No molestar cuando el cliente escribe STOP
+
+Respeta a quien no quiere recibir más mensajes activando No molestar de forma automática.
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Crear flujo de trabajo → Empezar desde cero**.
+  </Step>
+  <Step title="Configura el disparador">
+    Agrega **Cliente respondió** con los filtros **Canal de respuesta: WhatsApp** y **Contiene la frase: STOP** (o BAJA). Guarda el disparador.
+  </Step>
+  <Step title="Agrega la acción de No molestar">
+    Pulsa **+**, busca **No molestar** y elige **Activar/desactivar No molestar**.
+  </Step>
+  <Step title="Elige el alcance">
+    Selecciona **Activar No molestar para canales específicos** y marca **WhatsApp**. Si prefieres bloquear todos los canales, elige **Activar No molestar para todos los canales**. Guarda la acción.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre texto manual y una plantilla?">
+    El texto manual (mensaje libre) solo se puede enviar con la ventana de 24 horas abierta. La plantilla está aprobada por Meta y sirve para escribir fuera de esa ventana o para mensajes de marketing y soporte con formato fijo. Para enviar texto libre solo cuando corresponde, usa [Verificar la ventana de atención](/whatsapp/verificar-ventana-de-atencion).
+  </Accordion>
+  <Accordion title="¿Puedo combinar WhatsApp con SMS o correo en el mismo flujo?">
+    Sí. Los flujos permiten mezclar canales para crear secuencias completas.
+  </Accordion>
+  <Accordion title="¿Puedo enviar mensajes fuera de la ventana de 24 horas?">
+    Sí, con plantillas aprobadas. Ten en cuenta que esos envíos tienen costo.
+  </Accordion>
+  <Accordion title="¿Qué es una conversación de punto de entrada gratuito?">
+    Se abre cuando el cliente te escribe desde un anuncio que abre WhatsApp o desde el botón de tu página de Facebook. Dura 72 horas en lugar de 24 y dentro de ella puedes enviar mensajes libres y plantillas sin costo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el cliente responde algo distinto a lo que configuré en la espera?">
+    El flujo sigue esperando una respuesta que coincida. Para manejar respuestas inesperadas, agrega ramas con condiciones alternativas.
+  </Accordion>
+  <Accordion title="No veo mi número en el desplegable">
+    Solo aparecen los números con WhatsApp conectado. Revisa el estado del número en **Configuración → WhatsApp**.
+  </Accordion>
+  <Accordion title="¿Para qué sirve esperar el estado de entrega?">
+    Mantiene al contacto en el flujo hasta que Meta confirma si el mensaje se entregó. Así puedes decidir el siguiente paso según el resultado.
+  </Accordion>
+</AccordionGroup>

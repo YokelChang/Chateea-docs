@@ -1,0 +1,145 @@
+---
+title: "Manus en flujos de trabajo"
+description: "Crea, continúa y consulta tareas de IA de Manus desde tus flujos y automatiza propuestas, investigación y prospección."
+icon: "robot"
+---
+
+Manus es un sistema de IA basado en tareas: cada tarea empieza con una indicación (prompt), procesa la lógica y devuelve un resultado. Además, puedes continuar una tarea con nuevas indicaciones para encadenar varios pasos. Al integrarlo con tus flujos de trabajo de Chateea, puedes crear, consultar, continuar y eliminar tareas de IA desde una automatización, y también iniciar flujos cuando una tarea se crea o termina.
+
+La integración funciona en dos sentidos:
+
+- **De Chateea a Manus (acciones):** creas, actualizas, continúas, consultas o eliminas tareas.
+- **De Manus a Chateea (disparadores):** un flujo arranca cuando se crea o se detiene una tarea.
+
+## Para qué te sirve
+
+- **IA dentro de tus procesos:** creas y gestionas tareas de Manus sin herramientas intermedias.
+- **Disparadores instantáneos:** el flujo arranca en cuanto una tarea se crea o se detiene.
+- **Lógica de varios pasos:** continúas una tarea con indicaciones de seguimiento.
+- **Trazabilidad:** guardas el ID de cada tarea y revisas todo en el historial de ejecución.
+- **Escala:** armas automatizaciones repetibles para prospección, investigación o creación de contenido.
+
+## Antes de empezar
+
+- Acceso a **Automatización → Flujos de trabajo** en tu cuenta.
+- Una suscripción de Manus válida. El procesamiento y los límites de uso dependen de tu plan de Manus.
+- Una clave de API de Manus: en la configuración de API de Manus, haz clic en **Create New**, copia la clave y pégala cuando Chateea te la pida.
+
+<Note>
+  Los disparadores y las acciones de Manus son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). Chateea no incluye créditos de IA para Manus: el uso de IA lo cobra Manus en tu cuenta de Manus.
+</Note>
+
+## Conectar tu cuenta de Manus
+
+- **Desde el flujo:** en **Automatización → Flujos de trabajo**, agrega cualquier disparador o acción de Manus. Si no está conectado, haz clic en **Conectar ahora** y pega tu clave de API. Si ya lo está, los campos se cargan al instante.
+- **Desde la configuración:** ve a **Configuración → Integraciones**, busca **Manus** y haz clic en **Conectar**.
+
+## Disparadores (de Manus a Chateea)
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Nueva tarea creada** | Cuando se crea una tarea en Manus. |
+| **Tarea detenida** | Cuando una tarea de Manus se detiene o termina. |
+
+Los disparadores son instantáneos, pero **solo se activan con tareas creadas desde flujos de Chateea**. Las tareas que crees directamente en la aplicación de Manus no inician flujos.
+
+## Acciones (de Chateea a Manus)
+
+| Acción | Qué hace |
+| --- | --- |
+| **Crear tarea** | Crea una tarea nueva en Manus con tu indicación. |
+| **Obtener tarea** | Recupera los detalles y el resultado de una tarea concreta. |
+| **Actualizar tarea** | Cambia los metadatos o parámetros de una tarea. |
+| **Buscar tareas** | Trae una lista de tareas. |
+| **Eliminar tarea** | Elimina una tarea. |
+| **Continuar una tarea con una indicación** | Agrega una indicación de seguimiento a una tarea existente. |
+
+## Guarda siempre el ID de la tarea
+
+Cada vez que usas **Crear tarea**, Manus devuelve un ID único. Guárdalo en un campo personalizado del contacto o de la oportunidad. Lo necesitarás para **Obtener tarea**, **Continuar una tarea con una indicación**, **Actualizar tarea** y **Eliminar tarea**. Sin él, los pasos siguientes pueden fallar o apuntar a la tarea equivocada.
+
+## Usar Manus en un flujo
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo o abre uno existente.
+  </Step>
+  <Step title="Elige el disparador">
+    Puede ser un disparador de Manus o cualquier otro disparador de Chateea.
+  </Step>
+  <Step title="Agrega Crear tarea">
+    Escribe la indicación usando datos dinámicos como `{{contact.first_name}}`, `{{contact.email}}`, `{{opportunity.name}}` o tus valores personalizados.
+  </Step>
+  <Step title="Guarda el ID de la tarea">
+    Usa una acción para guardar el ID devuelto en un campo personalizado.
+  </Step>
+  <Step title="Espera y recupera el resultado">
+    Agrega un paso de **Espera** (por ejemplo, de 1 a 2 minutos) y luego **Obtener tarea** con el ID guardado.
+  </Step>
+  <Step title="Prueba y publica">
+    Prueba el flujo y publícalo cuando todo funcione.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+### Borrador de propuesta con tarea de revisión
+
+- **Disparador:** Etapa del pipeline cambiada a "Propuesta solicitada".
+- **Pasos:** **Crear tarea** con una indicación como: "Genera una propuesta para `{{contact.first_name}}` sobre `{{opportunity.name}}` con alcance, entregables, precio y plazos". Guarda el ID en un campo como `manus_proposal_task_id`, espera 1 o 2 minutos, usa **Obtener tarea**, crea una nota interna con el borrador, crea una tarea de revisión en tu herramienta de proyectos y avisa al vendedor asignado.
+
+### Investigación del lead antes de llamar
+
+- **Disparador:** Formulario enviado (formulario de contacto).
+- **Pasos:** **Crear tarea** con la indicación "Investiga a `{{custom.company_name}}`. Resume sector, tamaño, competidores y posibles problemas". Guarda el ID, espera, **Obtener tarea**, crea una nota interna con el resumen y avisa al vendedor.
+
+### Análisis del sitio web y correo personalizado
+
+Guarda la web del prospecto en un campo de la oportunidad (por ejemplo `{{opportunity.website}}`) y, cuando la oportunidad entre en "Prospección", crea una tarea con una indicación como esta:
+
+```text
+Analiza este sitio web: {{opportunity.website}}
+
+Extrae:
+- Posicionamiento
+- Servicios principales
+- Público objetivo
+- Diferenciadores
+
+Luego escribe un correo en frío personalizado que haga referencia a su posicionamiento y servicios.
+Hazlo breve y consultivo.
+```
+
+Guarda el ID, espera, usa **Obtener tarea** y aprovecha el resultado para crear una nota, actualizar campos de la oportunidad, enviar el correo o crear una tarea de seguimiento.
+
+### Análisis de anuncios de la competencia
+
+Guarda las URLs de la competencia en un campo de la oportunidad y pide a Manus que extraiga ganchos, propuestas de valor, ofertas, llamadas a la acción y detonantes emocionales, y que resuma temas comunes y huecos de posicionamiento. Con ese resultado puedes pedir a otra acción de IA que genere variaciones de anuncios y enviar todo a tu equipo de marketing para revisión.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde veo el resultado completo de una tarea?">
+    El historial de indicaciones y el ciclo completo de la tarea están en tu panel de Manus. Dentro de Chateea, usa **Obtener tarea** con el ID guardado.
+  </Accordion>
+  <Accordion title="¿Por qué puede fallar una tarea?">
+    Integración desconectada, ID de tarea inválido, tarea ya detenida, falta la indicación obligatoria o error de autorización de la API. Revisa el error en el historial de ejecución del flujo.
+  </Accordion>
+  <Accordion title="¿Necesito un plan de pago de Manus?">
+    La integración funciona con cuentas de Manus, pero los límites de uso y las funciones avanzadas dependen de tu suscripción.
+  </Accordion>
+  <Accordion title="¿Hay un límite de tareas?">
+    Depende de tu plan de Manus y de sus límites de uso de la API.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Fathom en flujos de trabajo" icon="video" href="/automatizaciones/fathom-en-flujos-de-trabajo">
+    Automatiza el seguimiento de tus reuniones grabadas.
+  </Card>
+  <Card title="Apify en flujos de trabajo" icon="spider" href="/automatizaciones/apify-en-flujos-de-trabajo">
+    Ejecuta extracciones de datos web desde tus flujos.
+  </Card>
+</CardGroup>

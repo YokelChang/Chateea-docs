@@ -1,0 +1,98 @@
+---
+title: "Plantilla de WhatsApp rechazada por formato no válido"
+description: "Corrige las variables mal escritas y otros errores de formato para que tus plantillas de WhatsApp se guarden y se aprueben."
+icon: "triangle-exclamation"
+---
+
+El error de **formato no válido** (Invalid Format) significa que alguna parte de tu plantilla de WhatsApp no cumple las reglas de formato que exige WhatsApp. Casi siempre el problema está en las variables: llaves mal cerradas, caracteres raros dentro de la variable o una variable colocada al principio o al final del cuerpo. Chateea detecta varios de estos errores mientras escribes, para que los corrijas antes de guardar y no esperes a que Meta rechace la plantilla.
+
+## Errores que Chateea detecta antes de guardar
+
+Al crear una plantilla en **Configuración → WhatsApp → Plantillas**, el editor revisa las variables del encabezado y del cuerpo. Si encuentra uno de estos problemas, marca el campo afectado y no te deja guardar hasta que lo corrijas:
+
+| Problema | Ejemplo | Qué pasa |
+| --- | --- | --- |
+| Caracteres no admitidos dentro de la variable | `{{1$}}` | El campo se marca y debes corregirlo. |
+| Llaves faltantes o sin cerrar | `{{1` | El encabezado o el cuerpo muestra un error. |
+| Llaves de más | `{{1}}}` | Debes corregir la variable antes de guardar. |
+| El cuerpo empieza o termina con una variable | `{{1}} tu pedido está listo.` | El cuerpo se marca hasta que haya texto antes y después. |
+
+<Note>
+La sintaxis de las variables se valida tanto en el **encabezado** como en el **cuerpo**. La regla de no empezar ni terminar con una variable aplica solo al **cuerpo**.
+</Note>
+
+## Reglas de formato de las variables
+
+- **Correcto:** `{{1}}`, `{{2}}`, `{{3}}`
+- **Incorrecto:** `{{1$}}`, `{{1`, `{{1}}}`
+- **Posición válida en el cuerpo:** `Hola {{1}}, tu cita está confirmada.`
+- **Posición no válida:** `{{1}} tu cita está confirmada.` o `Tu cita es con {{1}}`
+- **Numeración continua:** si usas varias variables, no te saltes números. Evita usar `{{1}}`, `{{2}}` y `{{4}}` sin `{{3}}`.
+
+## Motivos por los que Meta todavía puede rechazarla
+
+Que la plantilla pase la validación de Chateea no garantiza la aprobación. Meta revisa la plantilla completa y puede rechazarla por:
+
+- **Variables no consecutivas o demasiadas variables** para la cantidad de texto.
+- **Contenido o políticas:** contenido sensible, engañoso, abusivo o que no cumple las políticas de WhatsApp.
+- **Límites de caracteres o formato de texto** no admitido en algún componente.
+- **Contenido duplicado:** una plantilla igual a otra que ya existe.
+- **Categoría incorrecta:** el contenido no corresponde a la categoría elegida (marketing, utilidad o autenticación).
+
+## Cómo corregir un error de formato no válido
+
+<Steps>
+  <Step title="Revisa el campo marcado">
+    Lee el aviso en el encabezado o el cuerpo y ubica la variable con el problema.
+  </Step>
+  <Step title="Corrige la sintaxis">
+    Usa variables numeradas como `{{1}}` y `{{2}}`. Quita caracteres no admitidos y corrige llaves faltantes o sobrantes.
+  </Step>
+  <Step title="Revisa la posición en el cuerpo">
+    Asegúrate de que haya texto antes y después de cualquier variable que esté al inicio o al final del mensaje.
+  </Step>
+  <Step title="Revisa el resto de la plantilla">
+    Comprueba la numeración de las variables, los valores de ejemplo, la longitud, la categoría y los botones.
+  </Step>
+  <Step title="Guarda y envía">
+    Cuando desaparezcan los avisos, guarda la plantilla para enviarla a revisión de Meta.
+  </Step>
+</Steps>
+
+<Tip>
+Las nuevas plantillas de solicitud de reseñas del módulo de **Reputación** ya vienen con un texto predeterminado que no termina en variable, así que cumplen esta regla sin cambios.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué Chateea no me deja guardar la plantilla?">
+    El editor detectó una variable mal escrita, llaves incorrectas, caracteres no admitidos o un cuerpo que empieza o termina con una variable. Corrige lo que aparece marcado.
+  </Accordion>
+  <Accordion title="¿Cuál es el formato correcto de las variables?">
+    Números entre llaves dobles: `{{1}}`, `{{2}}`, `{{3}}`.
+  </Accordion>
+  <Accordion title="¿El cuerpo puede empezar o terminar con una variable?">
+    No. Agrega texto antes y después de la variable.
+  </Accordion>
+  <Accordion title="Si pasa la validación, ¿Meta la aprobará seguro?">
+    No. La validación cubre el formato de las variables. Meta puede rechazarla por contenido, categoría, políticas, duplicados u otros problemas de formato.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Cómo crear plantillas paso a paso.
+  </Card>
+  <Card title="Estados de las plantillas" icon="list-check" href="/whatsapp/estados-de-plantillas">
+    Qué significa cada estado de revisión.
+  </Card>
+  <Card title="Categorías de plantillas" icon="tags" href="/whatsapp/categorias-de-plantillas">
+    Elige la categoría correcta para evitar rechazos.
+  </Card>
+  <Card title="Error de parámetro no válido" icon="circle-exclamation" href="/whatsapp/error-parametro-invalido">
+    Errores con las variables al enviar.
+  </Card>
+</CardGroup>

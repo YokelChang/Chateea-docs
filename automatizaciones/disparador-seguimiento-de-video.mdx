@@ -1,0 +1,90 @@
+---
+title: "Disparador Seguimiento de video"
+description: "Inicia flujos según el porcentaje de un video que ve cada contacto para hacer seguimientos según su interés."
+icon: "video"
+---
+
+El disparador **Seguimiento de video** (Video Tracking) inicia un flujo de trabajo cuando un contacto ve un porcentaje determinado de un video alojado en tus embudos o sitios web. Así puedes reaccionar según el interés real de cada persona: agradecer a quien vio todo el video, recuperar a quien lo dejó a medias o sumar puntos a los leads más comprometidos.
+
+<Note>
+  La persona que ve el video ya debe existir como contacto en tu CRM. Si el visitante no está identificado, el disparador no puede asociar la visualización a nadie.
+</Note>
+
+## Antes de empezar: prepara el video
+
+- **Asegúrate de que el video esté preparado para el seguimiento**, es decir, correctamente codificado y alojado en tu embudo.
+- **Desactiva la barra de progreso** en la configuración del video para que el seguimiento sea preciso.
+- **Identifica a los visitantes antes del video:** crea una página previa con un formulario que capture los datos del visitante antes de dejarle ver el video. Es la forma de rastrear a personas que todavía no están en tu CRM.
+
+## Cómo configurar el disparador
+
+<Steps>
+  <Step title="Crea un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Seguimiento de video**.
+  </Step>
+  <Step title="Configura los filtros">
+    Indica el embudo, el video y el porcentaje de visualización que debe activar el flujo (por ejemplo 25 %, 50 %, 75 % o 100 %).
+  </Step>
+  <Step title="Añade las acciones">
+    Agrega los pasos que quieras ejecutar: un correo de seguimiento, un SMS, una etiqueta, una actualización de puntuación, etc.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda el disparador y publica el flujo.
+  </Step>
+</Steps>
+
+## Filtros disponibles
+
+| Filtro | Descripción | Obligatorio |
+| --- | --- | --- |
+| **Embudo** | El embudo donde está insertado el video. | No |
+| **Video** | El video cuyo porcentaje de visualización quieres rastrear. | No |
+| **Duración del video (%)** | El porcentaje que activa el flujo, por ejemplo 25 %, 50 %, 75 % o 100 %. | No |
+
+## Cómo se comporta el disparador
+
+- El disparador se evalúa cuando el contacto **cierra el video o lo termina**.
+- Si no indicas ningún porcentaje, el flujo se activa cuando el contacto cierra la ventana o termina el video, sin importar cuánto vio.
+- Si quieres que se active cuando haya visto **al menos** cierto porcentaje (por ejemplo, 20 % o más), cambia el operador a **Mayor o igual que** en lugar de **Igual a**.
+- El flujo recibe los datos cada vez que el contacto cierra el video. Si vuelve a la página y cumple de nuevo los filtros, entrará otra vez al flujo siempre que tengas activada la opción **Permitir reingreso**.
+
+## Ejemplos de uso
+
+### Seguimiento de un webinar grabado
+
+- **Al 50 %:** envía un correo agradeciendo que lo haya visto y comparte recursos relacionados.
+- **Al 100 %:** envía otro correo invitándolo a agendar una consulta u ofreciéndole un descuento especial.
+
+Así nutres a cada lead según su nivel de interés.
+
+### Puntuación de leads
+
+- **Al 25 %:** suma 10 puntos a su puntuación.
+- **Al 50 %:** suma 20 puntos más.
+- **Al 75 %:** suma 30 puntos más.
+
+Los contactos con más puntos son los más comprometidos y conviene priorizarlos en tus seguimientos de ventas.
+
+### Recuperar a quien abandonó el video
+
+- **Disparador:** el contacto vio menos del 50 % del video.
+- **Acción:** añádele una etiqueta como "Abandonó el video".
+- **Acción:** envíale un correo con el enlace al video para que lo termine.
+
+<Tip>
+  Crea un flujo distinto para cada porcentaje clave, o usa un solo flujo con condiciones. Lo importante es que el mensaje que reciba cada contacto esté alineado con lo que ya vio.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los disparadores disponibles en los flujos de trabajo.
+  </Card>
+  <Card title="Lanza tu primer embudo" icon="filter" href="/primeros-pasos/lanza-tu-primer-embudo">
+    Crea el embudo donde alojarás tu video.
+  </Card>
+</CardGroup>

@@ -1,0 +1,82 @@
+---
+title: "Orden de pasos del widget de reservas"
+description: "Decide si el cliente ve primero el formulario o la fecha y cómo afecta a contactos, pagos y flujos."
+icon: "list-ol"
+---
+
+Puedes decidir en qué orden aparecen los pasos del widget de reservas: primero el selector de fecha y hora o primero el formulario. El paso de pago, si está activado, se coloca según ese orden. Poner el formulario primero es muy útil para captar los datos del cliente potencial aunque al final no llegue a reservar, y así poder hacerle seguimiento.
+
+<Note>
+  Esta función solo está disponible con el **widget Neo**.
+</Note>
+
+## Cambiar el orden
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Configuración del calendario** y selecciona tu calendario.
+  </Step>
+  <Step title="Entra en Formularios y pagos">
+    Abre la sección **Formularios y pagos**.
+  </Step>
+  <Step title="Reordena los pasos">
+    Arrastra el **Selector de fecha y hora** y el **Formulario** hasta dejarlos en el orden que quieras.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Cómo funciona cada orden
+
+| Orden | Qué hace el cliente | Qué pasa en Chateea |
+| --- | --- | --- |
+| **Fecha primero, formulario después** | Elige fecha y hora, completa el formulario y confirma la cita. | Se crea la cita, se crea el contacto y se registra el envío del formulario al final. |
+| **Formulario primero, fecha después** | Completa el formulario y luego elige fecha y hora. | El contacto se crea en cuanto envía el formulario. Si después completa la reserva, se crea también la cita. |
+
+## Cómo funcionan los pagos
+
+Si el calendario cobra al reservar, la cita depende del estado del pago:
+
+- El cliente tiene **10 minutos** para completar el pago.
+- Si paga dentro de ese tiempo, la cita queda reservada.
+- Si no paga en 10 minutos, la cita no se crea y el horario vuelve a quedar libre para otras personas.
+
+## Combinaciones posibles
+
+1. Fecha primero, sin pagos.
+2. Fecha primero, con pagos.
+3. Formulario primero, sin pagos.
+4. Formulario primero, con pagos.
+
+<Tip>
+  Si tu objetivo es captar clientes potenciales, pon el formulario primero y crea un flujo de trabajo que haga seguimiento a quienes enviaron el formulario pero no reservaron.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si el cliente vuelve atrás y envía el formulario de nuevo?">
+    Si lo reenvía en la misma sesión, verás varios envíos del formulario, pero el contacto se actualiza con los datos del último envío.
+  </Accordion>
+  <Accordion title="¿Cuándo se disparan mis flujos de envío de formulario?">
+    Si el formulario va primero, se disparan en cuanto se envía. Si va segundo, solo se disparan si la cita se reserva correctamente.
+  </Accordion>
+  <Accordion title="¿Cuándo se disparan mis flujos de citas?">
+    Sin pagos, en cuanto se reserva la cita. Con pagos, solo cuando el pago se completa, porque la cita no se crea hasta entonces.
+  </Accordion>
+  <Accordion title="Un horario no aparece en el widget y no tengo ninguna cita a esa hora, ¿por qué?">
+    Probablemente alguien eligió ese horario y todavía no ha terminado de pagar. El horario queda reservado durante 10 minutos. Si paga, la cita aparece en tu calendario. Si la sesión caduca sin pago, el horario vuelve a estar disponible.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Personalizar el widget de reservas" icon="palette" href="/calendarios/personalizar-widget-de-reservas">
+    Colores, texto del botón y detalles visibles.
+  </Card>
+  <Card title="Cobrar un anticipo en las reservas" icon="credit-card" href="/calendarios/cobrar-anticipo-en-reservas">
+    Cobra un depósito al reservar.
+  </Card>
+</CardGroup>

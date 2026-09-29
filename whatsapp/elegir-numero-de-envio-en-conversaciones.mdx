@@ -1,0 +1,104 @@
+---
+title: "Elegir el número de WhatsApp de envío en Conversaciones"
+description: "Cómo elegir desde qué número de WhatsApp respondes cuando tienes varios conectados, y por qué a veces está bloqueado."
+icon: "phone"
+---
+
+Si tu negocio tiene varios números de WhatsApp conectados (por ejemplo, uno para ventas y otro para soporte, o uno por sucursal), es fácil responder desde el número equivocado. En **Conversaciones** de Chateea puedes elegir el número de envío antes de mandar un mensaje, y el sistema te ayuda preseleccionando o bloqueando el número correcto cuando hace falta para respetar las reglas de WhatsApp.
+
+## Número de envío y número de destino
+
+| Concepto | Qué es |
+| --- | --- |
+| **Número de envío** (De) | El número de WhatsApp de tu negocio desde el que sale el mensaje |
+| **Número de destino** (Para) | El número de teléfono del contacto al que le escribes |
+
+## Qué hace Chateea automáticamente
+
+- **Preselecciona el número de envío predeterminado** cuando inicias una conversación nueva.
+- **Bloquea el número de envío** en conversaciones activas para que la respuesta salga del mismo número con el que el cliente tiene abierta la ventana de 24 horas.
+- **Mantiene conversaciones independientes** por cada número del contacto. Si un contacto tiene dos teléfonos, cada uno tiene su propio estado de conversación en WhatsApp.
+- **Te pide una plantilla aprobada** cuando cambias a un número de envío que no tiene la ventana de atención abierta con ese contacto.
+
+Así reduces errores, ahorras tiempo al equipo y mantienes cada conversación ligada a la identidad correcta de tu negocio.
+
+## Requisitos
+
+- Tener tus números de WhatsApp conectados y activos en **Configuración → WhatsApp**. La configuración de números se hace desde la versión web.
+- El selector de número solo aparece si hay más de un número de WhatsApp disponible y la conversación es de WhatsApp.
+- El selector está disponible en **Conversaciones** tanto en la web como en la aplicación móvil de Chateea.
+
+## Cómo elegir el número de envío
+
+<Steps>
+  <Step title="Revisa tus números conectados">
+    Ve a **Configuración → WhatsApp** y, en el apartado de números, confirma que cada número está conectado y disponible.
+  </Step>
+  <Step title="Abre la conversación">
+    Ve a **Conversaciones** y abre la conversación del contacto, o inicia un mensaje nuevo.
+  </Step>
+  <Step title="Revisa el número de envío en el editor">
+    En el editor de mensajes verás el selector de número de WhatsApp. Chateea ya muestra preseleccionado el número recomendado.
+  </Step>
+  <Step title="Cambia el número si lo necesitas">
+    Si el selector está habilitado, elige otro de tus números. Si está bloqueado, la conversación está ligada a ese número por la ventana de atención activa.
+  </Step>
+  <Step title="Escribe y envía">
+    Redacta tu mensaje. Si el número elegido no tiene la ventana de 24 horas abierta con el contacto, selecciona una plantilla aprobada. Luego envía.
+  </Step>
+</Steps>
+
+## La ventana de 24 horas y el cambio de número
+
+WhatsApp solo permite mensajes libres dentro de la **ventana de atención de 24 horas**, que se abre cuando el cliente te escribe. Esa ventana se cuenta **por cada número de tu negocio**: un número puede tener la ventana abierta con el contacto y otro no.
+
+Por eso:
+
+- Si el número elegido tiene la ventana abierta, puedes responder con un mensaje normal.
+- Si el número elegido no la tiene, necesitas una [plantilla aprobada](/whatsapp/plantillas) para escribirle.
+
+Puedes insertar plantillas desde el editor como se explica en [Fragmentos y plantillas en Conversaciones](/whatsapp/fragmentos-y-plantillas-en-conversaciones).
+
+<Note>
+  La elección manual del número en Conversaciones no afecta a tus automatizaciones. Las acciones de WhatsApp en los flujos de trabajo tienen su propia configuración de número de envío.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no veo el selector de número?">
+    Puede que solo tengas un número conectado, que ningún número esté disponible o que la conversación no sea de WhatsApp. Revisa tus números en **Configuración → WhatsApp**.
+  </Accordion>
+  <Accordion title="¿Por qué el número de envío ya viene seleccionado?">
+    Para evitar envíos accidentales desde otra identidad de tu negocio. Chateea elige el número que corresponde a la conversación activa o el predeterminado.
+  </Accordion>
+  <Accordion title="¿Por qué no puedo cambiar el número en algunas conversaciones?">
+    En conversaciones activas el número queda bloqueado según la ventana de 24 horas en curso. Así se evitan problemas de cumplimiento y de enrutamiento, y el cliente sigue hablando con el mismo número.
+  </Accordion>
+  <Accordion title="¿Qué pasa si cambio el número de envío?">
+    Si el nuevo número no tiene la ventana abierta con el contacto, Chateea pasa a enviar con plantilla aprobada.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el contacto tiene varios teléfonos?">
+    Chateea mantiene un estado de conversación de WhatsApp independiente por cada teléfono del contacto. Al cambiar el número de destino, el enrutamiento se actualiza automáticamente.
+  </Accordion>
+  <Accordion title="¿Puedo usarlo desde el celular?">
+    Sí. El selector está en Conversaciones de la aplicación móvil. La conexión y configuración de números sí se hace desde la web.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Verificar la ventana de atención" icon="clock" href="/whatsapp/verificar-ventana-de-atencion">
+    Cuándo puedes enviar mensajes libres.
+  </Card>
+  <Card title="Números de envío y destino en SMS" icon="message" href="/conversaciones/numeros-sms-de-envio-y-destino">
+    La misma lógica aplicada a mensajes de texto.
+  </Card>
+  <Card title="WhatsApp en flujos de trabajo" icon="diagram-project" href="/whatsapp/whatsapp-en-flujos-de-trabajo">
+    Número de envío en tus automatizaciones.
+  </Card>
+  <Card title="Fragmentos y plantillas en Conversaciones" icon="file-lines" href="/whatsapp/fragmentos-y-plantillas-en-conversaciones">
+    Envía plantillas desde el editor.
+  </Card>
+</CardGroup>

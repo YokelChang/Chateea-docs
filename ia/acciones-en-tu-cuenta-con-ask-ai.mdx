@@ -1,0 +1,105 @@
+---
+title: "Ejecutar acciones en tu cuenta con Ask AI"
+description: "Crea, actualiza y consulta contactos, oportunidades y citas escribiendo en el chat de Ask AI."
+icon: "bolt"
+---
+
+Ask AI no solo responde preguntas: también ejecuta acciones en tu cuenta de Chateea. Puedes pedirle en el chat que cree un contacto, reprograme una cita o actualice varias oportunidades a la vez, y Ask AI lo hace por ti a través del servidor MCP de Chateea, sin que tengas que navegar por menús ni cambiar de pestaña.
+
+## Para qué te sirve
+
+- **Tareas en una frase:** escribe "Agrega a Juana Díaz al pipeline Leads Bogotá" y listo.
+- **Consultar y actuar en la misma conversación:** pide un listado y, a continuación, actúa sobre él ("Etiquétalos como Caliente").
+- **Amplia cobertura:** contactos, oportunidades, citas, pagos, cupones y otras áreas compatibles de tu cuenta.
+- **Seguridad según tu rol:** Ask AI solo puede hacer lo que tu usuario tiene permiso para hacer.
+- **Control sobre los cambios importantes:** las acciones destructivas o masivas piden tu confirmación antes de ejecutarse.
+
+## Cómo funciona
+
+<Steps>
+  <Step title="Entiende tu intención">
+    Ask AI identifica qué quieres hacer (crear, actualizar, consultar o eliminar) y sobre qué (un contacto, una oportunidad, una factura).
+  </Step>
+  <Step title="Prepara la acción">
+    Traduce tus palabras a los campos que necesita la acción, como el nombre del contacto o el pipeline de destino.
+  </Step>
+  <Step title="Verifica tus permisos">
+    Comprueba que tu usuario tiene acceso para realizar esa acción.
+  </Step>
+  <Step title="Pide confirmación si hace falta">
+    Si la acción elimina datos o afecta a muchos registros, Ask AI te muestra un resumen y te pregunta si quieres continuar.
+  </Step>
+  <Step title="Ejecuta y te responde">
+    Realiza la acción y te muestra el resultado, o el error si algo no salió bien, en la misma conversación.
+  </Step>
+</Steps>
+
+## Ejemplos de instrucciones
+
+| Tipo de acción | Ejemplo |
+| --- | --- |
+| **Crear** | "Crea un contacto llamado Juan Pérez con el teléfono 555 1234." |
+| **Actualizar** | "Pasa la oportunidad de Clínica Sonrisa a la etapa Ganada." |
+| **Consultar** | "Muéstrame las citas agendadas para mañana." |
+| **Eliminar** | "Elimina el cupón VERANO25." (pide confirmación) |
+| **Masiva** | "Etiqueta como Webinar-mayo a todos los contactos que asistieron al webinar de la semana pasada." |
+
+## Recetas de instrucciones que funcionan bien
+
+1. **Una sola acción:** "Crea una factura de 299 para el contacto juan@ejemplo.com con vencimiento en 30 días."
+2. **Consulta y acción en dos pasos:** "Lista las oportunidades perdidas esta semana y luego muévelas a la etapa Reactivar."
+3. **Con condiciones:** "De los contactos con la etiqueta Prueba por vencer, mueve al pipeline Riesgo de baja a los que no han tenido actividad en más de 14 días."
+
+<Tip>
+  Antes de una acción masiva, pide primero el listado ("Muéstrame los contactos que cumplen...") para comprobar que el filtro es correcto. Luego pide la acción.
+</Tip>
+
+## Seguridad y permisos
+
+- **Mismos permisos que en la interfaz:** lo que puedes hacer desde el chat es exactamente lo que tu rol te permite hacer en Chateea. No hay accesos ocultos.
+- **Confirmación en cambios irreversibles:** cualquier eliminación o cambio masivo requiere que respondas sí o no antes de ejecutarse.
+- **Aclaraciones antes de actuar:** si Ask AI no entiende bien tu instrucción, te hace una pregunta y no ejecuta nada hasta que confirmes.
+- **Registro de actividad:** las acciones que realiza Ask AI quedan registradas en la actividad de tu cuenta, para que puedas revisar qué se hizo.
+- **Límite de velocidad en acciones masivas:** los cambios sobre muchos registros se procesan de forma escalonada para proteger el rendimiento de tu cuenta.
+- **Consumo:** las acciones ejecutadas cuentan como uso de IA y se descuentan de la billetera según tu plan. Las tarifas vigentes están en **Configuración → Facturación** y en [chateea.com/precios](https://chateea.com/precios).
+
+## Primeros pasos recomendados
+
+1. Abre Ask AI en tu cuenta y escribe: "Crea un contacto de prueba llamado Demo Bot".
+2. Comprueba en **Contactos** que se creó correctamente.
+3. Prueba una acción masiva segura, por ejemplo: "Etiqueta como Prueba a los últimos 5 contactos".
+4. Revisa con tu equipo qué roles deberían poder hacer cambios importantes y ajusta sus permisos si hace falta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo hacer con Ask AI cosas que mi rol no permite?">
+    No. Ask AI respeta los permisos de tu usuario. Si no puedes hacer algo desde la interfaz, tampoco podrás hacerlo desde el chat.
+  </Accordion>
+  <Accordion title="¿Qué pasa si Ask AI malinterpreta mi instrucción?">
+    Te hace una pregunta de aclaración y no ejecuta ninguna acción hasta que confirmes.
+  </Accordion>
+  <Accordion title="¿Puedo deshacer una acción?">
+    Revisa siempre el resumen antes de confirmar cambios importantes. Si algo salió mal, puedes pedirle a Ask AI que revierta el cambio (por ejemplo, quitar una etiqueta o devolver una oportunidad a su etapa anterior) o corregirlo manualmente. Para datos críticos, exporta un respaldo (por ejemplo, un CSV de contactos) antes de hacer cambios masivos.
+  </Accordion>
+  <Accordion title="¿Hay límites en las acciones masivas?">
+    Sí. Se procesan con un límite de velocidad para no afectar el rendimiento de tu cuenta, así que una actualización grande puede tardar unos minutos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Ask AI, tu asistente en Chateea" icon="wand-magic-sparkles" href="/ia/asistente-ask-ai">
+    Qué es Ask AI y todo lo que puede hacer por ti.
+  </Card>
+  <Card title="Habilidades y conectores de Ask AI" icon="plug" href="/ia/habilidades-y-conectores-de-ask-ai">
+    Conecta Ask AI con otras aplicaciones mediante MCP.
+  </Card>
+  <Card title="Plantillas de Ask AI" icon="list-check" href="/ia/plantillas-de-ask-ai">
+    Flujos guiados para tareas frecuentes de tu cuenta.
+  </Card>
+  <Card title="Modo de voz de Ask AI" icon="microphone" href="/ia/modo-de-voz-de-ask-ai">
+    Pide acciones hablando, con confirmación en cambios sensibles.
+  </Card>
+</CardGroup>

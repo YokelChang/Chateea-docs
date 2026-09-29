@@ -1,0 +1,116 @@
+---
+title: "Acción Verificación de correo en flujos"
+description: "Verifica el correo de tus contactos antes de enviarles mensajes para reducir rebotes y proteger tu reputación de envío."
+icon: "envelope-circle-check"
+---
+
+La acción **Verificación de correo** (Email Verification) revisa la dirección de correo de un contacto dentro de un flujo de trabajo antes de que le envíes un correo. Así evitas enviar a direcciones inválidas o riesgosas, reduces rebotes y proteges la reputación de tu dominio de envío.
+
+Puedes colocarla en cualquier punto del flujo, pero lo habitual es ponerla justo antes de una acción **Enviar correo** y, después, usar una condición para decidir qué hacer según el resultado.
+
+## Qué revisa
+
+La verificación puede analizar señales como:
+
+- Que la sintaxis de la dirección sea correcta.
+- Que el dominio sea válido.
+- Que el buzón exista.
+- Indicadores de riesgo, como correos desechables, inactivos o de baja calidad.
+
+## Para qué sirve
+
+- **Menos rebotes:** no intentas entregar a direcciones que no existen.
+- **Mejor reputación de envío:** evitas direcciones riesgosas que dañan tu dominio.
+- **Mejor entregabilidad:** envías a direcciones con más probabilidad de recibir tus mensajes.
+- **Decisiones dentro del flujo:** según el resultado, continúas, cambias de camino o detienes los envíos.
+
+## Requisitos
+
+- La **verificación de correo debe estar activada en tu cuenta**. Si no la ves disponible, escribe a soporte de Chateea en **help@chateea.com**. El consumo se descuenta de la billetera de tu cuenta; consulta las tarifas en **Configuración → Facturación**.
+- El contacto **no debe estar excluido de la verificación**. Si lo está, la acción se omite.
+- El flujo debe tener acceso a la dirección de correo del contacto.
+- La acción debe ir antes de los pasos que envían correo, y cualquier condición Si/No debe ir después de ella.
+
+## Resultados posibles
+
+| Resultado | Qué significa | Qué hacer |
+| --- | --- | --- |
+| **Válido** | La dirección pasó la verificación y es más segura para enviar. | Continúa hacia el envío del correo. |
+| **Riesgoso** | Puede recibir correos, pero tiene señales que afectan la entregabilidad o la reputación. | Envíala a un camino aparte o a revisión, sobre todo en envíos masivos. |
+| **Inválido** | No pasó la verificación. | Exclúyela de los envíos de correo. |
+
+La acción por sí sola no detiene el flujo. Lo que ocurre después depende de cómo configures los pasos siguientes.
+
+## Orden recomendado en el flujo
+
+1. El disparador inicia el flujo.
+2. Acción **Verificación de correo**.
+3. **Condición Si/No** basada en el resultado de la verificación.
+4. Envía el correo solo a los contactos que cumplen tus criterios.
+5. Lleva los contactos riesgosos o inválidos a otro camino: una etiqueta, una notificación interna, activar No molestar (DND) para correo o la salida del flujo.
+
+Por ejemplo, en la condición puedes usar el resultado `isEmailVerified = true` para que esos contactos sigan hacia **Enviar correo**, mientras el resto va a otra rama.
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Abre tu flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre un flujo existente o crea uno nuevo.
+  </Step>
+  <Step title="Añade un disparador">
+    Por ejemplo, **Contacto creado**.
+  </Step>
+  <Step title="Agrega la verificación">
+    Haz clic en **+**, busca **Verificación de correo**, selecciónala y haz clic en **Guardar acción**. Colócala antes de cualquier **Enviar correo**.
+  </Step>
+  <Step title="Agrega una condición">
+    Debajo, añade una **Condición Si/No** que use el resultado de la verificación.
+  </Step>
+  <Step title="Define los caminos">
+    Envía los contactos verificados hacia tus correos y los riesgosos o inválidos hacia un camino alternativo, como activar No molestar para correo o terminar el flujo.
+  </Step>
+  <Step title="Prueba y publica">
+    Prueba el flujo con contactos de ejemplo para confirmar que cada uno sigue el camino esperado. Luego guarda y publica.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- Pon la verificación antes de cada envío de correo importante.
+- Separa con una condición los contactos verificados de los riesgosos o inválidos.
+- No envíes correos de marketing ni automáticos a direcciones inválidas.
+- Trata con cuidado los resultados riesgosos, sobre todo en campañas de alto volumen.
+- Usa etiquetas, notas o caminos alternativos para identificar los contactos con correos problemáticos.
+- Revisa el historial de ejecución del flujo cuando pruebes la lógica.
+- Recuerda que la verificación es solo una parte de tu estrategia de entregabilidad: no garantiza llegar a la bandeja de entrada.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde coloco la acción en el flujo?">
+    Antes de cualquier acción Enviar correo o paso relacionado con correo, para validar la dirección antes del envío.
+  </Accordion>
+  <Accordion title="¿La verificación detiene el flujo automáticamente?">
+    No. Depende de lo que configures después: puedes dejar que el contacto continúe, dividirlo con una condición o detener los envíos de correo si la dirección es riesgosa o inválida.
+  </Accordion>
+  <Accordion title="¿Qué significa un correo riesgoso?">
+    Que podría recibir el mensaje, pero tiene señales que pueden afectar tu tasa de rebote, tu reputación o tu entregabilidad. Es mejor enviarlo a un camino aparte que enviarle correos automáticamente.
+  </Accordion>
+  <Accordion title="¿La verificación es en tiempo real?">
+    Sí. La dirección se revisa en el momento en que el contacto llega a esa acción.
+  </Accordion>
+  <Accordion title="¿Garantiza que mis correos lleguen a la bandeja de entrada?">
+    No. Ayuda a no enviar a direcciones de mala calidad, pero la llegada a la bandeja también depende de tu reputación, tu contenido, la configuración de tu dominio y la interacción de tus contactos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Plantillas en la acción Enviar correo" icon="envelope" href="/automatizaciones/plantillas-de-correo-en-accion-enviar-correo">
+    Usa tus plantillas de correo dentro de los flujos.
+  </Card>
+  <Card title="Lista de acciones" icon="list" href="/automatizaciones/lista-de-acciones">
+    Todas las acciones disponibles en los flujos de trabajo.
+  </Card>
+</CardGroup>

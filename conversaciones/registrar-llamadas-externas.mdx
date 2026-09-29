@@ -1,0 +1,144 @@
+---
+title: "Acción de flujo: registrar llamada externa"
+description: "Registra en el historial del contacto las llamadas hechas con otro sistema telefónico usando una acción de flujo."
+icon: "phone-arrow-down-left"
+---
+
+La acción de flujo de trabajo **Registrar llamada externa** (Log External Call) agrega al historial de un contacto las llamadas que tu equipo hizo o recibió con otro sistema telefónico. La llamada queda en la conversación del contacto con su dirección, fecha, números, estado y, si está disponible, la grabación. Así tienes toda la actividad del cliente en Chateea aunque no todas las llamadas pasen por el sistema telefónico de Chateea.
+
+## Para qué sirve
+
+- **Historial completo:** las llamadas externas quedan asociadas al contacto correcto, junto al resto de sus mensajes.
+- **Visibilidad de otros sistemas:** traes a Chateea la información de tu proveedor de llamadas externo.
+- **Datos de cada llamada:** guardas dirección, fecha, números de origen y destino y estado.
+- **Acceso a grabaciones:** puedes incluir la referencia de la grabación para escucharla desde la conversación.
+- **Flexibilidad:** la acción usa cualquier dato disponible en el flujo, incluidos los que llegan por webhook.
+
+## Cómo funciona
+
+La acción toma los datos de la llamada que tenga el flujo y los registra en un contacto. Por eso necesitas dos cosas: que los datos de la llamada lleguen al flujo y que el flujo identifique al contacto correcto.
+
+El esquema más común es este:
+
+```text
+Sistema de llamadas externo → Webhook entrante → identificar o crear el contacto → Registrar llamada externa → conversación del contacto
+```
+
+Por ejemplo, tu proveedor de llamadas envía los datos al **Webhook entrante** de Chateea cuando termina una llamada. El flujo distingue si fue entrante o saliente, identifica al contacto y registra la llamada.
+
+<Note>
+  El webhook entrante es la forma más habitual de recibir los datos, pero no es obligatorio. La acción puede usar cualquier valor disponible en el contexto del flujo.
+</Note>
+
+## Campos de la acción
+
+| Campo | Qué representa | Qué mapear |
+| --- | --- | --- |
+| **Dirección** | Si la llamada fue entrante o saliente | El valor de dirección que envía tu sistema |
+| **Fecha** | Cuándo ocurrió la llamada | La fecha y hora de la llamada |
+| **Para** | El número de destino | El número al que se llamó |
+| **De** | El número de origen | El número desde el que se llamó |
+| **Estado de la llamada** | El resultado registrado por el sistema | El valor que indica el resultado de la llamada |
+| **Adjunto** | La grabación de la llamada | La referencia de grabación compatible, si existe |
+
+<Warning>
+  Los valores de **Dirección**, **Fecha**, **Estado de la llamada** y **Adjunto** deben tener el formato que admite la acción. No des por hecho que un estado o una disposición personalizada de tu proveedor se traduce sola al campo equivalente de Chateea.
+</Warning>
+
+Para que los contactos coincidan bien, usa números en formato internacional E.164 siempre que puedas, por ejemplo `+15551234567`.
+
+## Configuración con un webhook entrante
+
+<Steps>
+  <Step title="Crea el flujo y agrega el webhook">
+    Ve a **Automatización → Flujos de trabajo**, crea un flujo nuevo o abre uno existente y agrega el disparador **Webhook entrante** (Inbound Webhook). Copia la URL que te da Chateea y configúrala en tu sistema de llamadas para que envíe ahí los datos de cada llamada.
+
+    El envío debe incluir, como mínimo: dirección de la llamada, número de origen, número de destino, fecha y hora, estado y, si existe, la referencia de la grabación.
+  </Step>
+  <Step title="Envía datos de prueba">
+    Haz que tu sistema envíe una llamada de ejemplo al webhook, con los mismos campos que enviará en la operación normal. Confirma que Chateea la recibió y que ves todos los campos que necesitas.
+  </Step>
+  <Step title="Separa llamadas entrantes y salientes">
+    Después del disparador, agrega una acción **Si/Si no** (If/Else) con una condición sobre el valor de dirección de la llamada. Crea una rama para las entrantes y otra para las salientes.
+  </Step>
+  <Step title="Identifica o crea el contacto">
+    En cada rama, agrega una acción que identifique al contacto usando el número de la otra persona:
+
+    | Dirección | Número que identifica al contacto | Por qué |
+    | --- | --- | --- |
+    | Entrante | **De** (número de origen) | El cliente llamó a tu negocio |
+    | Saliente | **Para** (número de destino) | Tu negocio llamó al cliente |
+
+    Usa **Crear contacto** si quieres que el flujo cree el contacto o lo asocie con uno existente según tus reglas de duplicados. Usa **Buscar contacto** si prefieres controlar qué pasa cuando el contacto existe o no existe, con ramas de **Contacto encontrado** y **Contacto no encontrado**.
+  </Step>
+  <Step title="Agrega la acción Registrar llamada externa">
+    En cada rama, después de identificar al contacto, agrega **Registrar llamada externa**. En cada campo, abre el selector de valores personalizados, elige los datos que llegaron por el webhook y guarda.
+  </Step>
+</Steps>
+
+<Tip>
+  En **Estado de la llamada**, mapea el resultado técnico de la llamada (contestada, no contestada, ocupado, etc.), no la disposición que elige el agente, salvo que tu integración traduzca expresamente una a la otra.
+</Tip>
+
+<Warning>
+  La coincidencia de contactos depende de los datos que envíes y de tu configuración de duplicados. Prueba el flujo con registros representativos antes de procesar llamadas reales.
+</Warning>
+
+## Prueba y verifica
+
+Que el webhook reciba los datos no garantiza que la llamada quede en el contacto correcto. Antes de publicar:
+
+1. Envía una llamada entrante de prueba y confirma que se ejecuta la rama de entrantes.
+2. Verifica que el número **De** identificó al contacto correcto y que la llamada quedó registrada en él.
+3. Envía una llamada saliente de prueba y confirma que se ejecuta la rama de salientes.
+4. Verifica que el número **Para** identificó al contacto correcto.
+5. Abre el contacto y revisa la llamada en su conversación: dirección, fecha y hora, números, estado y grabación.
+6. Publica el flujo cuando los resultados sean los esperados.
+
+Si la llamada no aparece o aparece mal, revisa el historial de ejecución del flujo y confirma que:
+
+- El webhook recibió los datos esperados.
+- La condición Si/Si no eligió la rama correcta.
+- Se encontró o se creó el contacto correcto.
+- Los valores mapeados tenían contenido cuando se ejecutó la acción.
+- La estructura de los datos que envía tu proveedor no cambió. Si cambió, vuelve a enviar una muestra y revisa el mapeo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un webhook entrante para usar esta acción?">
+    No es obligatorio. Es la forma más común de recibir datos de un sistema externo, pero la acción usa cualquier valor disponible en el flujo.
+  </Accordion>
+  <Accordion title="¿La acción necesita un contacto?">
+    Sí. La llamada se registra en la actividad de un contacto, así que el flujo debe identificarlo antes. Si los datos llegan por webhook, usa una acción para buscar o crear el contacto primero.
+  </Accordion>
+  <Accordion title="¿Uso Crear contacto o Buscar contacto?">
+    Crear contacto crea o asocia el contacto según tus reglas de coincidencia. Buscar contacto te da control explícito para decidir qué hacer si existe o si no existe.
+  </Accordion>
+  <Accordion title="¿Cómo evito crear contactos duplicados?">
+    Envía siempre los números en el mismo formato, revisa tu configuración de duplicados y prueba con contactos reales. Buscar contacto te ayuda a comprobar si ya existe antes de crear uno.
+  </Accordion>
+  <Accordion title="¿Puedo incluir la grabación?">
+    Sí. Mapea la referencia de grabación compatible que te da tu proveedor en el campo **Adjunto** y verifica que se pueda escuchar desde la conversación.
+  </Accordion>
+  <Accordion title="¿Por qué la llamada no aparece en Conversaciones?">
+    Revisa la ejecución del flujo: que el webhook haya recibido los datos, que se haya ejecutado la rama correcta, que se identificara al contacto y que los campos tuvieran valores. Si tu proveedor cambió el formato de los datos, actualiza el mapeo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador Webhook entrante" icon="plug" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
+    Recibe datos de sistemas externos en tus flujos.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="bolt" href="/automatizaciones/introduccion">
+    Disparadores, acciones y ramas.
+  </Card>
+  <Card title="Telefonía y SMS" icon="phone" href="/telefonia/introduccion">
+    Llamadas desde el sistema telefónico de Chateea.
+  </Card>
+  <Card title="La bandeja unificada" icon="inbox" href="/conversaciones/bandeja-unificada">
+    Dónde ves las llamadas registradas.
+  </Card>
+</CardGroup>

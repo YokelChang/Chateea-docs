@@ -1,0 +1,130 @@
+---
+title: "Importa comandos cURL en la llamada a API"
+description: "Convierte un comando cURL en una llamada a API configurada dentro de tu agente de Agent Studio."
+icon: "terminal"
+---
+
+La opción **Importar cURL** de la herramienta de llamada a API en Agent Studio convierte un comando cURL en una solicitud configurada con un solo pegado. Rellena automáticamente el método, la URL, los encabezados y el cuerpo, así no tienes que copiar cada valor a mano desde la documentación de la API o desde tus pruebas.
+
+## Para qué sirve
+
+- **Configuras APIs más rápido:** pegas el comando y los campos se completan solos.
+- **Trabajas como un desarrollador:** traes solicitudes desde la documentación, la terminal o tu herramienta de pruebas de API.
+- **Menos errores de copia:** evitas pasar campo por campo el método, la URL, los encabezados y el cuerpo.
+- **Revisión sencilla:** al volver a abrir la ventana de importación ves la configuración actual reconstruida como cURL.
+- **Admite patrones habituales:** redirecciones, autenticación básica, cuerpos de varias líneas y saltos de línea con barra invertida.
+
+## Dónde se usa
+
+Importar cURL está en el panel de configuración de la herramienta **Llamada a API**, que puedes usar en:
+
+- Un **nodo Agente de IA**, donde la llamada a API es una herramienta que el agente usa cuando la necesita.
+- Un **nodo Secuencial**, donde la llamada a API es un paso fijo del proceso.
+
+## Qué se completa automáticamente
+
+| Se completa | Tipos de cuerpo que detecta | Patrones de cURL compatibles |
+| --- | --- | --- |
+| Método HTTP | JSON | `--location` (redirecciones) |
+| URL del endpoint | HTML | `-u` (autenticación básica) |
+| Encabezados | XML | Cuerpos de varias líneas |
+| Cuerpo de la solicitud | Texto y Form Data | Continuación de línea con `\` |
+
+Ejemplo de comando que puedes pegar:
+
+```bash
+curl --location 'https://api.ejemplo.com/v1/clientes' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer TU_TOKEN' \
+  --data '{"email": "cliente@ejemplo.com"}'
+```
+
+## Cómo importar un comando cURL
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y abre el agente (o crea uno nuevo si tu cuenta lo permite).
+  </Step>
+  <Step title="Confirma el disparador">
+    El agente debe tener un disparador de inicio, como **Mensaje de chat**, **Formulario enviado**, **Etiqueta del contacto** o **Flujos de trabajo**.
+  </Step>
+  <Step title="Agrega la llamada a API">
+    Agrega un nodo **Agente de IA** o **Secuencial** y dentro de él la herramienta o el paso **Llamada a API**. Abre su panel de configuración.
+  </Step>
+  <Step title="Importa el cURL">
+    Haz clic en **Importar cURL**, pega el comando en el campo **Comando cURL** y haz clic en **Importar**.
+  </Step>
+  <Step title="Revisa los campos">
+    Comprueba el método, la URL, los encabezados, el cuerpo, el tipo de cuerpo, el nombre de la variable y, si estás en un nodo Agente de IA, las instrucciones. Haz los cambios necesarios.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar** y usa **Probar** para verificar la llamada antes de publicar. El emulador de chat y la línea de tiempo de ejecución te muestran la respuesta paso a paso.
+  </Step>
+  <Step title="Publica">
+    Cuando todo funcione, haz clic en **Publicar**.
+  </Step>
+</Steps>
+
+## Qué revisar después de importar
+
+| Campo | Qué comprobar |
+| --- | --- |
+| **Instrucciones** | Que describan qué hace la llamada y cuándo debe usarla el agente (en nodos Agente de IA). |
+| **Nombre de la variable** | Dónde se guardará la respuesta de la API. |
+| **Endpoint** | Que el método y la URL sean correctos. |
+| **Encabezados** | Que estén los necesarios, como el tipo de contenido o la autorización. |
+| **Cuerpo** | El contenido y el formato. |
+| **Credenciales** | Si hay tokens, contraseñas o claves que debas reemplazar, quitar o proteger. |
+| **Variables** | Si necesitas datos dinámicos del contacto, la conversación o pasos anteriores. |
+
+<Warning>
+Los comandos cURL copiados de pruebas suelen incluir tokens o claves reales. Revisa siempre esos valores antes de guardar y no compartas capturas de la configuración.
+</Warning>
+
+## Sincronización en ambos sentidos
+
+Si vuelves a abrir **Importar cURL** después de configurar la llamada, verás la configuración actual convertida en un comando cURL. Puedes editarlo y volver a importarlo. Es útil para:
+
+- Verificar el formato de la solicitud.
+- Compararla con la documentación de la API externa.
+- Editar rápido encabezados o el cuerpo.
+- Resolver problemas antes de publicar.
+
+## Llamada a API frente a la API pública de Agent Studio
+
+- La **herramienta Llamada a API** hace que tu agente llame a un sistema externo mientras se ejecuta: consultar datos, enviar información o iniciar un proceso fuera de Chateea.
+- La **[API pública de Agent Studio](/ia/api-publica-agent-studio)** hace lo contrario: permite que una aplicación externa liste, consulte y ejecute tus agentes en producción sin entrar a Chateea.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo editar la llamada después de importar?">
+    Sí. Revisa y ajusta los campos antes de guardar o probar.
+  </Accordion>
+  <Accordion title="¿Admite comandos de varias líneas?">
+    Sí. Admite cuerpos de varias líneas y la continuación de línea con barra invertida.
+  </Accordion>
+  <Accordion title="¿Puedo usar variables después de importar?">
+    Sí. Agrega variables de Agent Studio donde necesites valores dinámicos. Consulta [Variables y valores personalizados](/ia/variables-y-valores-personalizados-agent-studio).
+  </Accordion>
+  <Accordion title="La solicitud importada no funciona. ¿Qué reviso?">
+    La URL, el método, los encabezados, los valores de autorización, el cuerpo, el tipo de cuerpo y las variables. Luego vuelve a probar el agente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="API pública de Agent Studio" icon="code" href="/ia/api-publica-agent-studio">
+    Ejecuta tus agentes desde otros sistemas.
+  </Card>
+  <Card title="Nodo secuencial" icon="list-ol" href="/ia/nodo-secuencial-agent-studio">
+    Usa llamadas a API como pasos fijos.
+  </Card>
+  <Card title="Nodo Agente de IA" icon="robot" href="/ia/nodo-agente-ia-agent-studio">
+    Usa llamadas a API como herramienta.
+  </Card>
+  <Card title="Prueba y depura agentes" icon="bug" href="/ia/probar-y-depurar-agentes-agent-studio">
+    Revisa la respuesta de la API paso a paso.
+  </Card>
+</CardGroup>

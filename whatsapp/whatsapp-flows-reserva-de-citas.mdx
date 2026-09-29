@@ -1,0 +1,134 @@
+---
+title: "WhatsApp Flows para reservar citas"
+description: "Ofrece reservas de citas guiadas dentro del chat de WhatsApp que se registran directo en tu calendario."
+icon: "calendar-check"
+---
+
+WhatsApp Flows te permite ofrecer una reserva de citas guiada dentro del mismo chat de WhatsApp. El cliente elige fecha y hora, confirma sus datos y agenda sin salir de la conversación ni abrir un sitio web. La cita queda registrada directamente en tu calendario de Chateea.
+
+## Por qué agenda más citas
+
+- **Menos fricción:** todo el proceso ocurre dentro de WhatsApp, sin enlaces externos que se abandonan a medio camino.
+- **Interfaz conocida:** tus clientes ya usan WhatsApp todos los días.
+- **Acción inmediata:** el cliente agenda en el momento en que muestra interés.
+- **Datos precargados:** nombre, correo, teléfono y zona horaria se completan solos.
+- **Carga rápida:** al no depender de una página web, la experiencia es más ágil.
+
+## Limitaciones
+
+| Limitación | Detalle |
+| --- | --- |
+| Calendarios con pago | No se admiten, porque WhatsApp no procesa pagos dentro del Flow. |
+| Eventos recurrentes | Las citas recurrentes no se pueden reservar por Flows. |
+| Campos personalizados | Solo se usan los campos predeterminados del formulario. |
+| Invitados | No se pueden agregar invitados a la cita. |
+| Coexistencia | Si tu número está en [coexistencia con la app de WhatsApp Business](/whatsapp/coexistencia-con-la-app-whatsapp-business), Flows no está disponible porque Meta no lo admite. |
+
+## Crear un Flow de reserva de citas
+
+<Steps>
+  <Step title="Abre la sección de Flows">
+    Ve a **Configuración → WhatsApp → Flows**.
+  </Step>
+  <Step title="Crea el Flow">
+    Haz clic en **Crear nuevo Flow**, escribe un nombre, elige el calendario donde se agendarán las citas y haz clic en **Siguiente**.
+  </Step>
+  <Step title="Ordena los campos">
+    Organiza los campos predeterminados del formulario en el orden que prefieras.
+  </Step>
+  <Step title="Configura el contenido y publica">
+    Escribe el encabezado, el cuerpo, el pie y el texto del botón. Luego haz clic en **Publicar**.
+  </Step>
+</Steps>
+
+## Enviar el Flow con una plantilla
+
+Para escribirle a un cliente que no te ha escrito en las últimas 24 horas necesitas una plantilla con un botón de Flow.
+
+<Steps>
+  <Step title="Crea la plantilla">
+    Ve a **Configuración → WhatsApp → Plantillas** y haz clic en **Crear plantilla**.
+  </Step>
+  <Step title="Completa el contenido">
+    Agrega nombre, categoría, idioma, encabezado, cuerpo y pie.
+  </Step>
+  <Step title="Agrega el botón de Flow">
+    Añade un botón, elige el tipo **Flow** y selecciona el Flow de reserva que creaste. Envía la plantilla a aprobación.
+  </Step>
+</Steps>
+
+## Enviar el Flow desde un flujo de trabajo
+
+### Opción 1: con una plantilla
+
+Sirve para cualquier contacto, tenga o no una conversación abierta.
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización**, haz clic en **Crear flujo de trabajo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Agrega la acción de WhatsApp">
+    Añade la acción **WhatsApp**, selecciona la plantilla que tiene el botón de Flow y haz clic en **Guardar acción**.
+  </Step>
+</Steps>
+
+### Opción 2: dentro de una conversación abierta
+
+Si el cliente te escribió en las últimas 24 horas, puedes enviarle el Flow directamente, sin plantilla y sin el costo de una plantilla de Meta.
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización**, haz clic en **Crear flujo de trabajo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Verifica la ventana de atención">
+    Haz clic en **+** y agrega la acción **WhatsApp: Verificar ventana de atención al cliente** (Customer Service Window Check). Guarda la acción.
+  </Step>
+  <Step title="Envía el Flow en la rama abierta">
+    En la rama **Abierta**, agrega la acción **WhatsApp: Enviar Flows** y elige el Flow que quieres enviar.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar acción**.
+  </Step>
+</Steps>
+
+<Tip>
+  En la rama **Cerrada** puedes agregar la acción de WhatsApp con la plantilla del Flow. Así cubres a todos los contactos: los que tienen la ventana abierta reciben el Flow gratis y los demás reciben la plantilla.
+</Tip>
+
+## Administrar Flows con Ask AI
+
+Con Ask AI para WhatsApp puedes crear, editar, publicar, retirar y eliminar Flows de reserva escribiendo lo que necesitas en lenguaje natural. Un asistente te ayuda a elegir el calendario correcto.
+
+Ejemplos de instrucciones:
+
+- "Crea un Flow de WhatsApp para reservar citas en mi Calendario de Ventas y publícalo."
+- "Actualiza el Flow de la clínica para que pregunte por el seguro médico."
+- "Crea un Flow de reserva para mi Calendario de Terapia, publícalo y muéstrame cómo agregarlo a mi plantilla de recordatorio."
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Enviar un Flow tiene costo?">
+    Enviarlo dentro de una conversación abierta (ventana de 24 horas) no requiere plantilla. Si lo envías con una plantilla, se cobra como cualquier plantilla de WhatsApp según su categoría, y el consumo se descuenta de la billetera de tu cuenta. Consulta las tarifas en **Configuración → Facturación**.
+  </Accordion>
+  <Accordion title="¿Puedo usar un calendario que cobra al reservar?">
+    No. Los calendarios con pagos activados no son compatibles con Flows.
+  </Accordion>
+  <Accordion title="¿Cómo personalizo la experiencia?">
+    Los datos del cliente se precargan automáticamente. Además, puedes personalizar la plantilla que acompaña al Flow con variables como el nombre del contacto.
+  </Accordion>
+  <Accordion title="¿Dónde aparece la cita agendada?">
+    En el calendario que elegiste al crear el Flow, igual que cualquier cita reservada por otro medio.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Cómo crear plantillas y lograr su aprobación.
+  </Card>
+  <Card title="WhatsApp en Chateea" icon="whatsapp" href="/whatsapp/introduccion">
+    La ventana de 24 horas y las reglas del canal.
+  </Card>
+</CardGroup>

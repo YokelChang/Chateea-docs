@@ -1,0 +1,65 @@
+---
+title: "Acción Finalizar llamada IVR"
+description: "Cuelga la llamada de tu menú telefónico cuando terminen los pasos del IVR, de inmediato o con un mensaje de despedida."
+icon: "phone-slash"
+---
+
+La acción **Finalizar llamada IVR** cuelga la llamada de tu menú telefónico (IVR) en el momento que tú decidas. Sin ella, cuando terminan los pasos del IVR la persona se queda escuchando música de espera hasta que el flujo llega al final, o hasta que cuelga por su cuenta. Con esta acción la llamada termina en cuanto ya no hace falta, con o sin un mensaje de despedida.
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Abre tu flujo de IVR">
+    Ve a **Automatización → Flujos de trabajo** y abre el flujo que contiene las acciones de IVR.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+** después de cualquier acción de IVR (recoger respuesta, reproducir mensaje, grabar buzón, etc.) y busca **Finalizar llamada IVR**.
+  </Step>
+  <Step title="Elige cómo terminar">
+    Selecciona una de las opciones de la tabla y, si corresponde, el número de repeticiones.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+## Opciones para terminar la llamada
+
+| Opción | Qué ocurre |
+| --- | --- |
+| **Terminar de inmediato** (predeterminada) | La llamada se corta al instante, sin aviso ni mensaje. |
+| **Mensaje de texto** | El sistema lee en voz alta el texto que escribas, las veces que indiques, y luego cuelga. |
+| **Audio personalizado** | Reproduce un audio que subas (un mensaje de voz, música de tu marca u otro archivo de audio), las veces que indiques, y luego cuelga. |
+
+<Tip>
+Un cierre breve como "Gracias por llamar a Clínica Sonrisa. Te enviaremos la confirmación por WhatsApp" deja mejor impresión que un corte seco.
+</Tip>
+
+## Qué pasa con el resto del flujo
+
+- Todas las acciones de IVR que estén después de **Finalizar llamada IVR** se omiten.
+- Las acciones que no son de IVR (enviar un SMS, agregar una etiqueta, crear una oportunidad, etc.) siguen ejecutándose con normalidad.
+
+Así puedes colgar la llamada y, en el mismo flujo, enviar después un mensaje de seguimiento o avisar a tu equipo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Es una acción premium?">
+    No. Finalizar llamada IVR no tiene cargo adicional por ejecución.
+  </Accordion>
+  <Accordion title="¿Qué mejora en la experiencia de quien llama?">
+    Evita que la persona se quede escuchando música de espera sin fin y reduce la duración de las llamadas cuando ya no queda nada que hacer en el IVR.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Recibir llamadas del IVR en la app" icon="mobile-screen" href="/automatizaciones/recibir-llamadas-ivr-en-la-app">
+    Elige dónde recibe cada usuario las llamadas del IVR.
+  </Card>
+  <Card title="Lista de acciones" icon="list" href="/automatizaciones/lista-de-acciones">
+    Todas las acciones de IVR y del resto de categorías.
+  </Card>
+</CardGroup>

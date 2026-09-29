@@ -1,0 +1,128 @@
+---
+title: "Faltan horarios disponibles en el calendario"
+description: "Revisa los ajustes que ocultan horarios en tu página de reservas y encuentra la causa exacta."
+icon: "calendar-xmark"
+---
+
+Cuando tus clientes abren tu página de reservas y no ven los horarios que esperabas (o ven horarios que no deberían estar), casi siempre la causa está en la configuración del calendario. Esta guía repasa, en orden, los ajustes que controlan qué horarios se muestran y cómo encontrar la causa exacta con la herramienta de diagnóstico.
+
+## Qué determina los horarios disponibles
+
+Un horario aparece en tu página de reservas solo si pasa todos estos filtros:
+
+- La configuración del calendario (horario semanal y horas por fecha).
+- Los miembros del equipo asignados.
+- La duración y el intervalo de las citas.
+- Los tiempos de margen.
+- Los eventos de calendarios externos conectados.
+- La zona horaria.
+- La capacidad del horario, en calendarios que aceptan varias citas por horario.
+
+Revísalos uno por uno.
+
+## 1. Confirma que editas el calendario correcto
+
+Ve a **Calendarios → Configuración del calendario**, busca el calendario y haz clic en el ícono de lápiz para editarlo. Verifica el nombre, el tipo de calendario y el grupo al que pertenece. Es común ajustar un calendario parecido y no el que está publicado.
+
+## 2. Revisa el horario semanal y las horas por fecha
+
+Dentro del editor, abre la pestaña **Disponibilidad** y confirma que:
+
+- El horario semanal está bien configurado para cada día.
+- No hay horas por fecha (excepciones de un día concreto) que bloqueen la disponibilidad.
+
+<Note>
+  Si el calendario tiene activadas las reuniones recurrentes, las horas por fecha pueden no aplicarse.
+</Note>
+
+## 3. Confirma los miembros del equipo asignados
+
+La disponibilidad depende de los usuarios asignados. En **Detalles del servicio**, verifica que haya al menos un miembro del equipo seleccionado. Si no hay nadie asignado, no se muestra ningún horario.
+
+## 4. Revisa duración, intervalo y márgenes
+
+En la pestaña **Disponibilidad**, revisa:
+
+- **Intervalo del servicio:** cada cuánto empieza un horario.
+- **Duración del servicio:** cuánto dura cada cita.
+- **Tiempo de margen posterior:** el descanso que se deja después de cada cita.
+
+Una mala combinación de intervalo y duración puede dejar huecos o hacer que desaparezcan horarios. Por ejemplo, si tu disponibilidad termina a las 12:00, la cita dura 90 minutos y los horarios empiezan cada 30 minutos, el último horario posible será a las 10:30.
+
+## 5. Revisa la capacidad por horario
+
+En los calendarios que aceptan varias citas en el mismo horario (como los de eventos o clases), un horario solo desaparece cuando se llena su capacidad:
+
+- Cada cita confirmada reduce en 1 la capacidad del horario.
+- Si una cita se superpone con varios horarios, cada horario afectado baja 1 de capacidad.
+- Un horario se bloquea solo cuando alcanza su límite.
+- Las citas superpuestas ya no bloquean por completo todos los horarios afectados antes de tiempo.
+
+Si un horario no aparece, comprueba si ya alcanzó el máximo de citas.
+
+## 6. Revisa los calendarios externos
+
+Si tienes Google Calendar u Outlook conectados, cualquier evento marcado como **Ocupado** bloquea ese rango en Chateea. Los conflictos externos tienen prioridad sobre la disponibilidad que configuraste. Revisa esos eventos y su estado de disponibilidad.
+
+## 7. Alinea las zonas horarias
+
+Una diferencia de zona horaria puede hacer que los horarios aparezcan a otra hora o que no aparezcan. Revisa:
+
+- La zona horaria de tu perfil de usuario.
+- La zona horaria con la que ves el calendario.
+- La zona horaria que se muestra al cliente.
+
+Un horario libre para un usuario puede no coincidir con el de otro usuario en otra zona horaria.
+
+## Encuentra la causa exacta con la herramienta de diagnóstico
+
+La herramienta de diagnóstico te dice por qué un horario concreto está bloqueado.
+
+<Steps>
+  <Step title="Abre la configuración">
+    Ve a **Calendarios → Configuración del calendario**.
+  </Step>
+  <Step title="Busca el calendario">
+    Localiza el calendario que tiene el problema.
+  </Step>
+  <Step title="Abre el diagnóstico">
+    Haz clic en el ícono de llave inglesa (**Diagnosticar**). La herramienta muestra reglas de capacidad, márgenes, zona horaria, asignación de usuarios y conflictos externos.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Un miembro del equipo aparece disponible pero no recibe reservas. ¿Por qué?">
+    La lógica de round robin, la prioridad de disponibilidad o la configuración de asignación de usuarios pueden estar enviando las citas a otras personas.
+  </Accordion>
+  <Accordion title="¿Por qué mis horarios no coinciden con mi horario de trabajo?">
+    Revisa el intervalo, la duración, los márgenes y los eventos de tus calendarios externos.
+  </Accordion>
+  <Accordion title="¿Una cita superpuesta bloquea el horario completo?">
+    No. Solo reduce en 1 la capacidad. El horario se bloquea cuando llega a su límite.
+  </Accordion>
+  <Accordion title="¿Por qué los horarios se ven distintos en otro dispositivo o navegador?">
+    Puede deberse a la caché del navegador o a una zona horaria distinta. Prueba en una ventana de incógnito y revisa la zona horaria.
+  </Accordion>
+  <Accordion title="¿El cliente puede elegir con quién reservar?">
+    Sí. En los calendarios round robin puedes activar la selección de personal en la configuración del calendario.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Herramienta de diagnóstico del calendario" icon="wrench" href="/calendarios/herramienta-de-diagnostico-del-calendario">
+    Consulta qué significa cada motivo de bloqueo.
+  </Card>
+  <Card title="Horario semanal y horas por fecha" icon="clock" href="/calendarios/horario-semanal-y-horas-por-fecha">
+    Configura tu disponibilidad correctamente.
+  </Card>
+  <Card title="Tiempo de margen antes y después" icon="hourglass-half" href="/calendarios/tiempo-de-margen-antes-y-despues">
+    Deja espacio entre citas.
+  </Card>
+  <Card title="Mostrar plazas disponibles en clases" icon="users" href="/calendarios/mostrar-plazas-disponibles-en-clases">
+    Muestra cuántos lugares quedan por horario.
+  </Card>
+</CardGroup>

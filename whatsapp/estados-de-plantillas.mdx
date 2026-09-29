@@ -1,0 +1,101 @@
+---
+title: "Estados de las plantillas de WhatsApp"
+description: "Interpreta el estado de tus plantillas de WhatsApp y resuelve por qué una no aparece o no se envía."
+icon: "circle-check"
+---
+
+Cada plantilla de WhatsApp pasa por la revisión de Meta y, una vez aprobada, Meta sigue midiendo su calidad según cómo reaccionan tus clientes. El estado de la plantilla te dice si está en revisión, lista para enviar, con problemas de calidad o bloqueada. Revisarlo es lo primero que debes hacer cuando una plantilla no aparece o no se envía.
+
+## Estados de una plantilla
+
+| Estado | Qué significa |
+| --- | --- |
+| **En revisión** | Meta está revisando la plantilla. |
+| **Rechazada** | Meta no la aprobó. Revisa el motivo antes de editarla, reenviarla o apelar. |
+| **Activa, calidad pendiente** | Aprobada y lista para enviar, pero aún no hay suficientes reacciones para medir su calidad. |
+| **Activa, calidad alta** | Activa y con buenas señales de calidad. |
+| **Activa, calidad media** | Activa, pero recibe algunas señales negativas. Vigílala de cerca. |
+| **Activa, calidad baja** | Sigue activa, pero corre un riesgo alto de ser pausada. |
+| **Pausada** | No se puede enviar por un problema de calidad. |
+| **Desactivada** | Ya no está disponible para enviar. |
+| **Apelación solicitada** | Enviaste una apelación y esperas la decisión de Meta. |
+
+## Cómo funciona la aprobación
+
+- **Aprobada:** la plantilla queda disponible para enviar y al principio suele mostrarse como **Activa, calidad pendiente**.
+- **Rechazada:** revisa el motivo que indica Meta, corrige la plantilla y vuelve a enviarla, o apela si crees que es un error.
+
+El editor de Chateea valida el formato de las variables antes de guardar, pero eso no garantiza la aprobación: Meta revisa también la categoría, el contenido y sus políticas.
+
+## Por qué rechazan una plantilla
+
+### Errores que el editor detecta antes de guardar
+
+- Llaves incompletas o de más, como `{{1` o `{{1}}}`.
+- Caracteres no permitidos dentro de la variable, como `{{1$}}`.
+- Un cuerpo que empieza o termina con una variable.
+
+### Errores que Meta puede detectar en la revisión
+
+- Variables que no van en orden, por ejemplo `{{1}}`, `{{2}}` y `{{4}}` sin `{{3}}`.
+- Demasiadas variables para la cantidad de texto del mensaje.
+- Contenido que no cumple las políticas comerciales de WhatsApp.
+- Solicitudes de información sensible o prohibida, como números completos de tarjeta.
+- Contenido amenazante, abusivo o prohibido.
+- Formato, longitud o caracteres no admitidos.
+- Plantillas duplicadas, con el mismo cuerpo y pie que otra existente.
+- Una categoría que no coincide con el contenido. Revisa [Categorías de plantillas](/whatsapp/categorias-de-plantillas).
+
+## Buenas prácticas
+
+- **Agrega ejemplos realistas** para cada variable, así Meta entiende cómo se verá el mensaje.
+- **Crea tus plantillas desde Chateea.** Al conectar WhatsApp se importan las que ya tenías en Meta, pero después de esa primera importación conviene crearlas y administrarlas desde **Configuración → WhatsApp → Plantillas** para que estén disponibles en conversaciones, automatizaciones y envíos masivos.
+- **Escribe a quien espera saber de ti.** Los bloqueos y reportes bajan la calidad de la plantilla y pueden pausarla.
+- **Vigila la calidad después de aprobar.** Una plantilla activa puede pasar a pausada o desactivada si recibe muchas señales negativas.
+
+## Revisa y administra tus plantillas
+
+<Steps>
+  <Step title="Abre la lista">
+    Ve a **Configuración → WhatsApp → Plantillas**.
+  </Step>
+  <Step title="Busca la plantilla">
+    Localiza la plantilla y revisa su estado actual antes de hacer cambios.
+  </Step>
+  <Step title="Corrige lo necesario">
+    Si estás creando o editando, corrige los errores de variables que marque el editor. Si Meta la rechazó, lee el motivo y ajusta el contenido o el formato.
+  </Step>
+  <Step title="Monitorea después de aprobar">
+    Sigue la calidad de la plantilla mientras la usas, sobre todo si la envías a muchos contactos.
+  </Step>
+</Steps>
+
+Para crear una plantilla paso a paso, consulta [Plantillas de WhatsApp](/whatsapp/plantillas).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué me rechazaron la plantilla si el editor no marcó errores?">
+    Porque el editor solo revisa el formato de las variables. Meta pudo rechazarla por categoría, políticas de contenido, formato no admitido, duplicado u otros requisitos.
+  </Accordion>
+  <Accordion title="¿Qué hago si una plantilla activa pasa a calidad baja o pausada?">
+    Revisa el contenido y a quién se lo envías. Reduce lo que genera reacciones negativas (envíos a contactos que no te conocen, demasiada frecuencia, mensajes puramente promocionales) y vigila su estado antes de volver a usarla a gran escala.
+  </Accordion>
+  <Accordion title="Tengo una plantilla en Meta que no aparece en Chateea">
+    Las plantillas de Meta se importan solo en la conexión inicial. Crea de nuevo la plantilla desde **Configuración → WhatsApp → Plantillas** para tenerla disponible en Chateea.
+  </Accordion>
+  <Accordion title="¿Qué significa que una plantilla esté pausada?">
+    Recibió reacciones negativas o poca interacción. No puedes enviarla hasta que vuelva a estar activa.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Cómo crear plantillas y usar variables.
+  </Card>
+  <Card title="Calidad y límites de mensajes" icon="gauge" href="/whatsapp/calidad-y-limites-de-mensajes">
+    Cómo cuidar la calidad de tu número.
+  </Card>
+</CardGroup>

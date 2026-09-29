@@ -1,0 +1,110 @@
+---
+title: "Tiempo de margen antes y después de las citas"
+description: "Reserva tiempo antes o después de cada cita, entiende cómo afecta la disponibilidad y muéstralo en la vista."
+icon: "hourglass-half"
+---
+
+El tiempo de margen (buffer) reserva unos minutos antes o después de cada cita para prepararte, trasladarte, tomar notas o limpiar el espacio. Chateea tiene en cuenta ese margen al calcular qué horarios quedan disponibles, así evitas citas pegadas una tras otra. Además, puedes ver los márgenes directamente en las vistas de día y semana del calendario.
+
+## Qué es el margen antes y después
+
+- **Margen previo** (pre buffer): tiempo reservado justo antes de la cita.
+- **Margen posterior** (post buffer): tiempo reservado justo después de la cita.
+
+Los márgenes se configuran por calendario y afectan a qué horarios se pueden reservar.
+
+## Ventajas
+
+- **Tiempo para prepararte**: revisar el caso, preparar la sala o trasladarte.
+- **Tiempo para el seguimiento**: notas, tareas administrativas, limpieza o traslados.
+- **Menos citas seguidas**: nadie podrá reservar pegado a otra cita.
+- **Agenda más clara**: ves el margen junto a cada cita sin confundirlo con la cita en sí.
+- **Control flexible**: puedes mostrar u ocultar los márgenes en la vista sin cambiar su configuración.
+
+## Configurar el margen
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Calendarios → Configuración del calendario**, elige el calendario y haz clic en **Editar**.
+  </Step>
+  <Step title="Entra en Disponibilidad">
+    Abre la sección **Disponibilidad**.
+  </Step>
+  <Step title="Define los márgenes">
+    Busca **Tiempo de margen previo** y **Tiempo de margen posterior** y define la duración de uno o de ambos.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios.
+  </Step>
+</Steps>
+
+Para quitar un margen, vuelve a **Disponibilidad**, pon el valor en **0** y guarda.
+
+<Tip>
+  Elige la duración según el tiempo real que necesitas. Por ejemplo, 10 minutos para notas después de una consulta o 30 minutos para trasladarte entre visitas a domicilio.
+</Tip>
+
+## Cómo afecta el margen a la disponibilidad
+
+El margen forma parte del cálculo de disponibilidad. Si una cita dura 30 minutos y tiene 15 minutos de margen previo y 15 de margen posterior, Chateea bloquea tiempo a ambos lados. Una nueva cita solo cabe si respeta el margen de la cita existente y también el de la nueva.
+
+Por eso, a veces un hueco que parece libre no se puede reservar: no alcanza para la duración de la cita más los márgenes, o los márgenes de dos citas se superponen. Si quieres ofrecer el máximo de horarios posibles, valora usar solo margen previo o solo margen posterior.
+
+El margen de un usuario también puede afectar su disponibilidad en otros calendarios:
+
+- **Calendarios round robin**: los márgenes de otros calendarios del usuario reducen sus horarios y pueden hacer que el reparto de citas sea desigual.
+- **Calendarios colectivos**: si un usuario obligatorio tiene un margen en ese horario, el horario no estará disponible.
+
+## Ver los márgenes en la vista de calendario
+
+Mostrar los márgenes te ayuda a entender por qué el tiempo alrededor de una cita no está disponible, sin revisar la configuración.
+
+<Steps>
+  <Step title="Abre la vista de calendario">
+    Ve a **Calendarios** y abre la **Vista de calendario**.
+  </Step>
+  <Step title="Activa los márgenes">
+    Haz clic en **Administrar vista** y activa **Mostrar tiempo de margen**.
+  </Step>
+  <Step title="Filtra lo que quieres ver">
+    Usa los filtros de usuarios, calendarios o grupos. Los márgenes aparecerán como bloques diferenciados junto a cada cita en las vistas de día y semana.
+  </Step>
+</Steps>
+
+<Note>
+  Desactivar **Mostrar tiempo de margen** solo oculta los bloques en la vista. El margen configurado sigue aplicándose y ese tiempo sigue sin poder reservarse.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Ocultar los márgenes en la vista los elimina?">
+    No. Solo deja de mostrarlos. El margen sigue afectando la disponibilidad.
+  </Accordion>
+  <Accordion title="¿Por qué no veo los márgenes en mi vista?">
+    Solo se muestran en las vistas de **Día** y **Semana**. Comprueba también que **Administrar vista → Mostrar tiempo de margen** esté activado.
+  </Accordion>
+  <Accordion title="¿Mostrar el margen cambia la disponibilidad?">
+    No. Solo hace visible el tiempo que ya estaba reservado. La disponibilidad depende del margen configurado en el calendario.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre un margen y un evento bloqueado?">
+    El margen es tiempo de transición antes o después de una cita. Un evento bloqueado o de un calendario de conflictos es otro periodo en el que el usuario no está disponible por otro compromiso.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el margen con citas ya agendadas?">
+    Sí. El cálculo usa siempre la configuración actual, así que el cambio puede afectar la disponibilidad alrededor de citas existentes.
+  </Accordion>
+  <Accordion title="¿Los eventos de calendarios externos reciben margen?">
+    No necesariamente. Según cómo esté configurada la sincronización, los eventos externos pueden tratarse como citas o como tiempo bloqueado. No confundas el margen con los periodos ocupados de calendarios externos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Horario semanal y horas por fecha" icon="clock" href="/calendarios/horario-semanal-y-horas-por-fecha">
+    Define cuándo acepta reservas tu calendario.
+  </Card>
+  <Card title="Vista de calendario" icon="calendar-days" href="/calendarios/vista-de-calendario">
+    Consulta citas de varios usuarios y calendarios.
+  </Card>
+</CardGroup>

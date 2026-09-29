@@ -1,0 +1,128 @@
+---
+title: "Importar contactos y oportunidades desde CSV"
+description: "Importa contactos, oportunidades o ambos desde un CSV: mapea columnas, crea o actualiza registros y revisa errores."
+icon: "file-import"
+---
+
+Con la importación por CSV puedes cargar de una sola vez tus contactos, tus oportunidades o ambos, crear registros nuevos o actualizar los existentes. Es la forma más rápida de migrar desde otro CRM o de subir una lista de leads, y te permite además etiquetar a los importados, agregarlos a un flujo de trabajo o crear una lista inteligente con ellos.
+
+## Antes de empezar
+
+- **Permisos:** solo los usuarios con rol de **administrador** pueden importar.
+- **Formato:** el archivo debe ser `.csv`.
+- **Tamaño:** menos de **30 MB**. Si es más grande, divídelo en varios archivos.
+- **Una sola hoja:** el archivo no puede tener varias pestañas.
+- **Encabezados:** la primera fila no puede estar vacía. Debe tener encabezados, y al menos uno debe corresponder a un campo de Chateea.
+
+### Errores comunes que conviene evitar
+
+- Encabezados que no corresponden a ningún campo.
+- Filas sin ningún dato identificador (nombre, correo o teléfono).
+- Teléfonos con espacios, guiones, paréntesis o letras.
+- Registros duplicados dentro del mismo archivo.
+
+<Tip>
+Si traes los datos de otro CRM, revisa la columna de teléfonos: muchos sistemas los exportan con paréntesis y guiones. Déjalos solo con dígitos y el código de país antes de importar.
+</Tip>
+
+## Importar paso a paso
+
+<Steps>
+<Step title="Abre el importador">
+Puedes entrar de dos formas, y ambas llevan al mismo proceso:
+- Desde **Contactos**, con el botón **Importar**.
+- Desde **Oportunidades**, con el botón **Importar** de la esquina superior derecha.
+</Step>
+<Step title="Elige qué importar">
+Selecciona **Contactos**, **Oportunidades** o **Contactos y oportunidades** a la vez, y haz clic en **Siguiente**.
+</Step>
+<Step title="Sube el archivo">
+Haz clic en **Subir archivo** y elige tu CSV.
+</Step>
+<Step title="Elige cómo importar">
+Decide si quieres **crear** registros nuevos, **actualizar** los existentes o **crear y actualizar**. Por defecto, los contactos existentes se buscan primero por correo y, si no se encuentra, por teléfono.
+</Step>
+<Step title="Mapea las columnas">
+Revisa que cada columna del archivo esté asignada al campo correcto de Chateea. Las columnas que no quieras importar puedes dejarlas sin mapear y marcar la opción **No importar datos de columnas sin mapear**.
+</Step>
+<Step title="Revisa y completa">
+Revisa el resumen del mapeo. Si quieres, activa estas opciones:
+- **Crear una lista inteligente** con los contactos importados.
+- **Agregar a un flujo de trabajo**.
+- **Agregar una etiqueta** a todos los importados.
+
+Marca la casilla de confirmación (es obligatoria) y lanza la importación.
+</Step>
+</Steps>
+
+### Detalles del mapeo
+
+- **No actualizar valores vacíos:** si marcas esta opción, una celda vacía en el archivo no borrará el valor que ya tenga el registro en Chateea.
+- **Varios correos y teléfonos:** puedes crear contactos con correos y teléfonos adicionales; se guardan como datos secundarios sin reemplazar el principal.
+- **Contactos y oportunidades en la misma fila:** si una fila tiene datos de contacto y de oportunidad, se vinculan automáticamente entre sí.
+
+<Note>
+Agregar una etiqueta a los importados es un buen seguro: si algo sale mal, puedes filtrar por esa etiqueta y corregir o eliminar esos contactos en bloque.
+</Note>
+
+## Seguir el estado de la importación
+
+- Las importaciones de contactos y de oportunidades aparecen juntas en **Acciones masivas**.
+- Haz clic en **Ver estadísticas** para ver cuántos registros se importaron y cuántos fallaron.
+- En la pestaña **Errores** puedes descargar el registro de errores con el detalle de cada fila y cómo corregirla.
+
+## Errores y fallos habituales
+
+| Error | Qué significa | Qué hacer |
+| --- | --- | --- |
+| Contacto o identificador duplicado | El mismo correo, teléfono, ID u otro valor único aparece más de una vez. | Elimina o combina los duplicados y vuelve a importar. |
+| Correo o teléfono inválido | El valor no tiene un formato válido. | Corrige el formato y reimporta solo esas filas. |
+| Falta información para identificar | No se puede crear ni encontrar el contacto. | Agrega nombre, correo, teléfono o ID del contacto. |
+| Valor de campo inválido | Una fecha, un desplegable, una casilla o un campo personalizado tiene un valor no aceptado. | Ajusta el valor al formato u opción correctos. |
+| Propietario no encontrado | El propietario no coincide con ningún usuario. | Usa el nombre o correo exacto de un usuario de tu cuenta. |
+| Contacto no encontrado o actualización fallida | No se pudo encontrar o actualizar el contacto indicado. | Verifica el ID, correo o teléfono y vuelve a intentarlo. |
+| Fallo parcial | Algunas filas se importaron y otras no. | Corrige y reimporta solo las filas fallidas. |
+| Error de procesamiento | No se pudo completar la importación por un problema del archivo. | Revisa el formato del CSV y vuelve a intentarlo. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué hago si mi archivo pesa más de 30 MB?">
+Divídelo en archivos más pequeños e impórtalos por separado.
+</Accordion>
+<Accordion title="¿Puedo importar contactos con varios correos o teléfonos?">
+Sí. Los correos y teléfonos adicionales se guardan como datos secundarios, sin reemplazar el principal.
+</Accordion>
+<Accordion title="¿Cómo se manejan los duplicados?">
+Si se encuentra un contacto existente con el mismo correo o teléfono, se actualiza en lugar de crear uno nuevo, según tu configuración de duplicados y el tipo de importación que elijas.
+</Accordion>
+<Accordion title="¿Puedo actualizar contactos existentes con un CSV?">
+Sí. Elige **Solo actualizar** o **Crear y actualizar** al importar.
+</Accordion>
+<Accordion title="¿Qué hago si la importación falla?">
+Revisa el detalle en **Acciones masivas**, descarga el registro de errores, corrige el archivo y vuelve a importar las filas afectadas.
+</Accordion>
+<Accordion title="¿Por qué todos mis contactos quedaron con DND en todos los canales?">
+Porque importaste una columna de DND, y esa columna aplica **No molestar** en todos los canales. Para aplicarlo solo a un canal, usa una etiqueta en el archivo y un flujo de trabajo que active el DND de ese canal cuando se agregue la etiqueta.
+</Accordion>
+<Accordion title="¿Puedo importar varias notas por contacto?">
+No. Solo se importa una nota por contacto, con un límite de 5.000 caracteres.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Formato del archivo CSV para importar" icon="file-csv" href="/contactos/formato-csv-para-importar">
+Reglas de formato de cada tipo de campo.
+</Card>
+<Card title="Solucionar errores al importar" icon="triangle-exclamation" href="/contactos/solucionar-errores-importacion-csv">
+Todos los códigos de error y cómo resolverlos.
+</Card>
+<Card title="Fusionar contactos duplicados" icon="code-merge" href="/contactos/fusionar-contactos-duplicados">
+Une fichas repetidas después de importar.
+</Card>
+<Card title="Acciones masivas en contactos" icon="layer-group" href="/contactos/acciones-masivas">
+Sigue el progreso de tus importaciones.
+</Card>
+</CardGroup>

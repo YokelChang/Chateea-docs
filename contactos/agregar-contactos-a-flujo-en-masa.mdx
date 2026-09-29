@@ -1,0 +1,102 @@
+---
+title: "Agregar contactos a un flujo de trabajo en masa"
+description: "Filtra contactos e inscríbelos en un flujo de trabajo al instante, a una hora programada o en modo goteo."
+icon: "diagram-project"
+---
+
+Normalmente los contactos entran a un flujo de trabajo cuando se cumple un disparador. Pero a veces necesitas meter a un grupo concreto de una sola vez: todos los que tienen la etiqueta "seguimiento", los leads que no respondieron el mes pasado o los clientes de una ciudad. Con **Agregar a automatización** seleccionas esos contactos desde **Contactos** y los inscribes en cualquier flujo publicado, al instante, a una hora programada o por lotes.
+
+## Para qué te sirve
+
+- **Inscribir rápido.** Mete a muchos contactos en un flujo con una sola acción.
+- **Apuntar bien.** Usa filtros avanzados (etiquetas, campos, datos de oportunidades) para elegir exactamente a quién.
+- **Controlar el momento.** Elige si entran ya, en una fecha concreta o de forma escalonada.
+- **Repetir fácilmente.** Guarda el filtro como lista inteligente y vuelve a usarlo cuando quieras.
+- **Revisar resultados.** Sigue el estado y las estadísticas en **Acciones masivas**.
+
+## Antes de empezar
+
+El flujo de trabajo debe estar **publicado**. Solo los flujos publicados aparecen en la lista para elegir.
+
+## Agregar contactos a un flujo paso a paso
+
+<Steps>
+<Step title="Filtra tus contactos">
+Ve a **Contactos** y haz clic en **Filtros avanzados**. Por ejemplo, para filtrar por etiqueta, busca **Etiqueta**, elige el operador (por ejemplo **Es**) y la etiqueta (por ejemplo "seguimiento"), y haz clic en **Aplicar**. Puedes combinar varios filtros y filtros anidados: correo, ciudad, origen del contacto, etapa de la oportunidad, campos personalizados, etc.
+</Step>
+<Step title="Selecciona los contactos">
+Marca las casillas de los contactos que quieres inscribir o usa **Seleccionar todos** para elegir toda la lista filtrada. La barra de acciones aparece en cuanto hay al menos un contacto seleccionado.
+</Step>
+<Step title="Abre Agregar a automatización">
+En la barra de acciones, haz clic en **Disparar automatización** (Trigger automation). Se abre una ventana con los contactos seleccionados arriba y los campos de configuración abajo.
+</Step>
+<Step title="Configura la acción">
+Completa los campos:
+- **Nombre de la acción:** cómo aparecerá en **Acciones masivas**, por ejemplo "Reactivación clientes marzo".
+- **Tipo de automatización:** elige **Flujo de trabajo**.
+- **Flujo de trabajo:** el flujo publicado al que quieres agregar los contactos.
+- **Modo:** cuándo y cómo entran (lo ves en detalle abajo).
+</Step>
+<Step title="Confirma">
+Haz clic en **Agregar a automatización**. Verás un aviso con la cantidad de contactos en proceso o programados. Haz clic en **Ver progreso** para ir a **Acciones masivas**, o cierra el aviso para volver a tus contactos.
+</Step>
+</Steps>
+
+## Modos de inscripción
+
+| Modo | Qué hace | Campos adicionales |
+| --- | --- | --- |
+| **Enviar todo a la vez** | Agrega a todos los contactos al flujo de inmediato. Es el modo por defecto. | Ninguno. |
+| **Enviar a una hora programada** | Agrega a todos los contactos en la fecha y hora que elijas, por ejemplo para coincidir con el lanzamiento de una campaña. | Fecha y hora de inicio, en la zona horaria de tu cuenta. |
+| **Enviar en modo goteo** | Agrega a los contactos por lotes a lo largo del tiempo. Ideal para listas grandes o para repartir las comunicaciones. | Fecha y hora de inicio, cantidad por lote y cada cuánto se repite (minutos, horas o días). |
+
+<Tip>
+Si el flujo envía SMS o genera llamadas del equipo, usa el modo goteo con listas grandes. Así evitas saturar a tus operadores y a tu equipo con cientos de respuestas al mismo tiempo.
+</Tip>
+
+## Seguir el progreso
+
+Ve a **Contactos → Acciones masivas**. Para cada solicitud verás:
+
+- **Nombre de la acción** que le diste.
+- **Operación**, por ejemplo flujo de trabajo.
+- **Estado:** en proceso, programada o completada.
+- **Usuario** que la lanzó.
+- **Fechas de creación y finalización**, en la zona horaria de tu cuenta.
+- **Estadísticas** con el detalle de resultados.
+
+Puedes filtrar por rango de fechas, estado, tipo de acción y usuario.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo filtrar por otros campos además de etiquetas?">
+Sí. Los filtros avanzados admiten cualquier campo del contacto (correo, ciudad, origen, fecha de creación, etapa de la oportunidad) y también campos personalizados. Puedes combinar varios filtros.
+</Accordion>
+<Accordion title="¿El flujo tiene que estar publicado?">
+Sí. Solo los flujos publicados aparecen en la lista.
+</Accordion>
+<Accordion title="¿Qué diferencia hay entre hora programada y modo goteo?">
+Con hora programada todos los contactos entran a la vez en el momento que elijas. Con modo goteo entran por lotes a intervalos regulares.
+</Accordion>
+<Accordion title="¿Puedo reutilizar el mismo filtro más adelante?">
+Sí. Guarda la vista filtrada como lista inteligente. La próxima vez, ábrela, selecciona los contactos y vuelve a disparar la automatización.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Modo goteo en acciones masivas" icon="droplet" href="/contactos/modo-goteo-en-acciones-masivas">
+Configura lotes e intervalos.
+</Card>
+<Card title="Acciones masivas en contactos" icon="layer-group" href="/contactos/acciones-masivas">
+Sigue y revisa tus acciones masivas.
+</Card>
+<Card title="Agregar o quitar etiquetas en masa" icon="tags" href="/contactos/agregar-o-quitar-etiquetas-en-masa">
+Prepara tus segmentos con etiquetas.
+</Card>
+<Card title="Listas inteligentes" icon="filter" href="/contactos/listas-inteligentes">
+Guarda tus filtros para reutilizarlos.
+</Card>
+</CardGroup>

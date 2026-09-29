@@ -1,0 +1,115 @@
+---
+title: "Prueba y depura agentes en Agent Studio"
+description: "Usa el emulador de chat y la línea de tiempo de ejecución para revisar cada paso de tu agente."
+icon: "bug"
+---
+
+Antes de poner un agente de Agent Studio frente a tus clientes, conviene ver exactamente qué hace en cada paso. Para eso tienes dos herramientas que trabajan juntas: el **emulador de chat**, donde simulas conversaciones, y la **línea de tiempo de ejecución**, que registra cada nodo, herramienta y decisión del agente con sus métricas. Así dejas de ver la IA como una caja negra y corriges problemas con datos reales.
+
+## Para qué sirve
+
+- **Transparencia total:** sigues cada transición de nodo y cada herramienta en el orden exacto en que se ejecutan.
+- **Detectas pasos lentos:** identificas indicaciones, llamadas a API o herramientas que retrasan la respuesta.
+- **Controlas modelo y consumo:** ves el modelo, los tokens y la configuración de cada mensaje.
+- **Corriges al instante:** saltas de un registro al nodo responsable en el lienzo.
+- **Pruebas realistas:** la conversación se ve como la verá el usuario final.
+
+## Las herramientas de prueba
+
+### Línea de tiempo de ejecución
+
+Aparece junto al emulador y se actualiza en vivo mientras el agente trabaja.
+
+- Cada tarjeta de evento muestra el nombre del nodo, el modelo, los tokens de entrada y salida y el tiempo de ejecución.
+- Etiquetas de color indican la latencia: rojo para pasos lentos y verde para pasos rápidos.
+- Al pasar el cursor sobre una tarjeta ves los datos de entrada y salida en JSON.
+- Si el agente trabaja con tareas de varios pasos, cada tarea aparece con una etiqueta descriptiva y su estado (activa o completada), para que sepas en qué parte del plan está.
+
+### Etiquetas de transición
+
+Cada paso de la línea de tiempo tiene una etiqueta morada con el nodo al que pasó la conversación. Al hacer clic, el lienzo se centra en ese nodo y lo resalta, para que revises o cambies su lógica sin buscarlo a mano.
+
+### Panel de métricas
+
+Debajo de cada mensaje verás:
+
+- Modelo y versión.
+- Tokens de entrada y salida.
+- Temperatura, máximo de tokens, top-p y penalizaciones de frecuencia y presencia.
+- Costo estimado, si la facturación está activa.
+
+### Emulador de chat
+
+Es una ventana de chat simulada, adaptada a móvil y con avatar, que reproduce la experiencia real. Tiene un botón **Reiniciar** para borrar el contexto entre pruebas y se muestra al lado de la línea de tiempo.
+
+## Cómo probar y depurar un agente
+
+<Steps>
+  <Step title="Abre el entorno de pruebas">
+    Ve a **IA → Agent Studio**, abre el agente y haz clic en la pestaña **Probar**, arriba a la derecha. Agent Studio revisa si faltan campos obligatorios.
+  </Step>
+  <Step title="Revisa los avisos de campos faltantes">
+    Si falta algo, aparece un aviso naranja arriba de la pantalla con el nodo y el campo exactos. No bloquea la prueba, pero completarlo evita errores confusos durante la ejecución.
+  </Step>
+  <Step title="Inicia una sesión de prueba">
+    Haz clic en **Iniciar** para abrir el emulador. Envía un mensaje de prueba (o ejecuta el agente por API) y observa cómo se registran en tiempo real cada transición, herramienta y paso del modelo.
+  </Step>
+  <Step title="Revisa los registros">
+    Mira los nodos que se ejecutaron, la actividad de las herramientas, los tokens, los tiempos y las etiquetas de latencia.
+  </Step>
+  <Step title="Analiza las métricas">
+    Entra a cada registro para ver el modelo, los tokens, la temperatura y el costo estimado. Úsalo para ajustar indicaciones o herramientas.
+  </Step>
+  <Step title="Ve al nodo de origen">
+    Haz clic en la tarjeta del registro para resaltar el nodo en el lienzo y corregir su lógica, indicaciones o variables.
+  </Step>
+  <Step title="Reinicia y vuelve a probar">
+    Usa **Reiniciar** para borrar la conversación y los registros. Repite la prueba para confirmar que el cambio resolvió el problema.
+  </Step>
+  <Step title="Publica con confianza">
+    Cuando todo funcione como esperas, pasa el agente a staging o a producción como siempre.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La línea de tiempo funciona con agentes de IA de voz?">
+    Sí. Al abrir la pestaña **Probar** de un agente de voz, verás el mismo registro cuando termine la llamada de prueba.
+  </Accordion>
+  <Accordion title="¿La línea de tiempo consume más tokens?">
+    No. Solo muestra datos que el modelo y las herramientas ya devuelven.
+  </Accordion>
+  <Accordion title="¿Puedo exportar los registros?">
+    Sí. Haz clic en el ícono de descarga, arriba a la derecha de la línea de tiempo, para guardar un archivo JSON con toda la ejecución.
+  </Accordion>
+  <Accordion title="¿Por qué no veo el botón para ir al nodo?">
+    Aparece solo cuando el agente se ha guardado al menos una vez. Guarda tus cambios y vuelve a probar.
+  </Accordion>
+  <Accordion title="¿Reiniciar el emulador borra la línea de tiempo?">
+    Sí. Se borran la conversación y sus registros para empezar una sesión limpia.
+  </Accordion>
+  <Accordion title="¿Necesito algún plan específico?">
+    El emulador y la línea de tiempo vienen incluidos con el mismo plan que te da acceso a Agent Studio.
+  </Accordion>
+  <Accordion title="¿Por qué aparece el aviso de campos obligatorios faltantes?">
+    Uno o más nodos tienen campos obligatorios vacíos. Abre el nodo indicado, complétalos y guarda para que desaparezca el aviso.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Conoce el constructor y sus nodos.
+  </Card>
+  <Card title="Registros de agentes" icon="list" href="/ia/registros-de-agentes">
+    Revisa qué hicieron tus agentes en conversaciones reales.
+  </Card>
+  <Card title="Nodo enrutador" icon="route" href="/ia/nodo-enrutador-agent-studio">
+    Divide la conversación por intención o por reglas.
+  </Card>
+  <Card title="Métricas de los registros" icon="chart-line" href="/ia/metricas-registros-de-agentes">
+    Analiza el rendimiento de tus agentes.
+  </Card>
+</CardGroup>

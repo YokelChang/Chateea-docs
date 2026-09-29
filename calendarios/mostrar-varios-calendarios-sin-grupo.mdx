@@ -1,0 +1,71 @@
+---
+title: "Mostrar varios calendarios sin crear un grupo"
+description: "Combina los ID de varios calendarios en un solo enlace o código de inserción para mostrarlos juntos."
+icon: "calendar"
+---
+
+Si quieres que tus clientes elijan entre varios calendarios en una misma página, lo habitual es crear un grupo de calendarios. Pero hay una alternativa rápida: combinar los identificadores (ID) de varios calendarios en un solo enlace o en un solo código de inserción. Es útil para mostrar, por ejemplo, dos servicios o dos profesionales juntos sin tener que armar un grupo.
+
+## Cómo funciona
+
+Cada calendario tiene un ID único que aparece al final de su enlace de reserva y dentro de su código de inserción. Si escribes varios ID separados por comas, Chateea muestra esos calendarios juntos en la misma vista de reserva.
+
+```text
+https://tu-enlace-de-reserva/ID_CALENDARIO_1,ID_CALENDARIO_2
+```
+
+## Opción 1: combinar calendarios en un enlace
+
+<Steps>
+  <Step title="Abre los enlaces de cada calendario">
+    Ve a **Calendarios → Configuración del calendario** y abre en una pestaña nueva el enlace de reserva de cada calendario que quieres combinar (usa el ícono de enlace de cada uno).
+  </Step>
+  <Step title="Copia el ID del segundo calendario">
+    En la barra de direcciones del segundo calendario, copia el ID, que es la última parte del enlace.
+  </Step>
+  <Step title="Pégalo en el primer enlace">
+    Ve a la pestaña del primer calendario, escribe una coma justo después de su ID en la barra de direcciones y pega el ID del segundo calendario.
+  </Step>
+  <Step title="Recarga la página">
+    Pulsa Enter. La página se recarga mostrando los dos calendarios. Copia ese enlace y compártelo con tus clientes.
+  </Step>
+</Steps>
+
+## Opción 2: insertar varios calendarios en una página de embudo o sitio web
+
+<Steps>
+  <Step title="Copia el código del primer calendario">
+    En **Calendarios → Configuración del calendario**, abre las opciones para compartir del primer calendario y copia su **código de inserción**.
+  </Step>
+  <Step title="Agrega un elemento de código">
+    En el editor de tu página de embudo o sitio web, agrega un elemento de **código personalizado** (Custom JS/HTML), haz clic en **Abrir editor de código** y pega el código.
+  </Step>
+  <Step title="Copia el ID del segundo calendario">
+    En otra pestaña, abre las opciones para compartir del segundo calendario y copia su ID.
+  </Step>
+  <Step title="Combina los ID en el código">
+    Vuelve al editor de código. Busca el ID del primer calendario dentro del código, escribe una coma justo después y pega el ID del segundo calendario. Guarda el elemento.
+  </Step>
+  <Step title="Guarda y revisa la página">
+    Guarda la página del embudo y ábrela en vista previa para comprobar que aparecen ambos calendarios.
+  </Step>
+</Steps>
+
+<Tip>
+  Puedes repetir el proceso para agregar más calendarios: separa cada ID con una coma, sin espacios.
+</Tip>
+
+## Cuándo usar un grupo de calendarios
+
+Combinar ID es práctico para casos puntuales. Si vas a mostrar muchos calendarios o necesitas repartir las citas entre tu equipo, crea un grupo de calendarios o un calendario round robin. Antes de compartir un enlace combinado, pruébalo para confirmar que todos los calendarios aparecen y aceptan reservas.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Insertar tu calendario en otro sitio web" icon="code" href="/calendarios/insertar-calendario-en-otro-sitio-web">
+    Copia el código de inserción de un calendario.
+  </Card>
+  <Card title="Crea tu calendario" icon="calendar" href="/calendarios/introduccion">
+    Configura los calendarios que vas a combinar.
+  </Card>
+</CardGroup>

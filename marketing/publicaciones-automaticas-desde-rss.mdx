@@ -1,0 +1,104 @@
+---
+title: "Publicar automáticamente desde un feed RSS"
+description: "Comparte en tus redes cada novedad de tu blog, pódcast o canal de YouTube usando su feed RSS o Atom."
+icon: "rss"
+---
+
+Con las publicaciones por RSS, el Planificador social revisa un feed RSS o Atom y publica automáticamente cada novedad en tus redes conectadas. Es ideal para compartir las entradas nuevas de tu blog, episodios de pódcast, videos de YouTube o noticias de tu sector sin hacerlo a mano.
+
+<Warning>
+  X (antes Twitter) no admite publicaciones por RSS debido a restricciones de su API. El resto de redes compatibles con el Planificador social sí se pueden usar.
+</Warning>
+
+## Para qué te sirve
+
+- **Compartir contenido sin esfuerzo:** cada entrada nueva de tu blog se publica sola.
+- **Curar contenido:** reúne en un feed las fuentes que te interesan y comparte lo más relevante.
+- **Estar al día:** suscríbete a blogs o noticias del sector y comparte novedades a tiempo.
+- **Constancia:** mantienes un ritmo de publicación estable aunque estés ocupado.
+
+## Antes de empezar
+
+- Necesitas la **URL de un feed RSS o Atom válido**, por ejemplo el de tu blog o tu canal de YouTube.
+- Tus redes deben estar conectadas en **Marketing → Planificador social → Configuración** (página de Facebook, Instagram, perfil o página de LinkedIn, Perfil de empresa de Google, Pinterest, etc.).
+
+## Cómo encontrar la URL de un feed RSS
+
+Casi todos los sitios tienen un feed, aunque no siempre lo muestran. Prueba estos atajos:
+
+| Tipo de sitio | Qué agregar a la URL | Ejemplo |
+| --- | --- | --- |
+| WordPress | `/feed` al final | `https://tusitio.com/feed` |
+| Tumblr | `/rss` al final | `https://ejemplo.tumblr.com/rss` |
+| Blogger | `/feeds/posts/default` al final | `https://ejemplo.blogspot.com/feeds/posts/default` |
+| Medium | `/feed/` antes del nombre de la publicación | `https://medium.com/feed/ejemplo` |
+| YouTube | La URL del canal suele funcionar como feed | URL de tu canal |
+
+Si nada de esto funciona, revisa el código fuente de la página: haz clic derecho en un espacio vacío, elige **Ver código fuente**, pulsa Ctrl+F (Windows o Linux) o Cmd+F (Mac) y busca `rss`. Si no aparece, busca `atom`. Copia la URL del feed que encuentres.
+
+## Cómo crear una publicación por RSS
+
+<Steps>
+  <Step title="Abre la opción de RSS">
+    Ve a **Marketing → Planificador social**, haz clic en **Nueva publicación** y elige **Publicación RSS**.
+  </Step>
+  <Step title="Agrega la URL del feed">
+    Pega la URL del feed RSS o Atom.
+  </Step>
+  <Step title="Selecciona las redes">
+    Elige las cuentas donde se publicarán las novedades.
+  </Step>
+  <Step title="Agrega un cierre (opcional)">
+    Usa la opción **Terminar con** para añadir al final de cada publicación un texto, hashtags o un enlace.
+  </Step>
+  <Step title="Define la frecuencia de revisión">
+    En **Tiempo de actualización**, elige cada cuánto se revisa el feed: desde cada 5 minutos hasta una vez al día.
+  </Step>
+  <Step title="Elige el máximo de publicaciones">
+    Indica cuántas entradas nuevas y distintas se toman en cada revisión, de 1 a 5. Por ejemplo, con 3 se publican hasta las 3 entradas más recientes. Cada entrada se publica una sola vez, como su propia publicación.
+  </Step>
+  <Step title="Incluye la descripción (opcional)">
+    Activa **Incluir descripción** para publicar el título y la descripción de cada entrada, o déjalo apagado para publicar solo el título. Usa la vista previa de varias entradas (hasta 5) para revisar formato, longitud y cortes antes de guardar.
+  </Step>
+</Steps>
+
+<Info>
+  Cuando publicas por RSS en varias redes, el texto se genera por separado para cada una según su límite de caracteres. Por eso una misma entrada puede cortarse en un punto distinto en cada red.
+</Info>
+
+## Cómo evita los duplicados
+
+El Planificador social guarda el registro de las entradas del feed durante 90 días. En cada revisión analiza cada entrada por separado y la identifica por su GUID (o, si no tiene, por su enlace y su título). Gracias a esto:
+
+- Cada entrada válida se publica una sola vez.
+- Las entradas repetidas se omiten.
+- Se detectan entradas que llegan tarde o fuera de orden.
+- Tus automatizaciones de RSS existentes siguen funcionando sin cambios.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo cambiar la frecuencia después?">
+    Sí. Edita la publicación RSS y ajusta el **Tiempo de actualización** o el **Máximo de publicaciones**.
+  </Accordion>
+  <Accordion title="¿Se publicará varias veces el mismo artículo?">
+    No. Cada entrada se publica una vez. Si no hay contenido nuevo, no se publica nada.
+  </Accordion>
+  <Accordion title="¿Aparecen imágenes automáticamente?">
+    La vista previa del enlace la genera cada red social. Para obtener buenos resultados, usa una imagen destacada y etiquetas Open Graph en la página de origen.
+  </Accordion>
+  <Accordion title="¿Puedo usar menciones o marcas de agua en las publicaciones RSS?">
+    No. Las publicaciones por RSS no admiten menciones con @ ni marcas de agua.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Limpiar la caché de vista previa en LinkedIn" icon="linkedin" href="/marketing/limpiar-cache-vista-previa-linkedin">
+    Actualiza la imagen y el título de tus enlaces en LinkedIn.
+  </Card>
+  <Card title="Marcas de agua por red social" icon="stamp" href="/marketing/marcas-de-agua-por-red-social">
+    Asigna un logo distinto a cada red.
+  </Card>
+</CardGroup>

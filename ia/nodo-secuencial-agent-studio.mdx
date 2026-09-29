@@ -1,0 +1,113 @@
+---
+title: "Nodo secuencial en Agent Studio"
+description: "Ejecuta pasos en un orden fijo para capturar datos, llamar a APIs y generar contenido."
+icon: "list-ol"
+---
+
+El nodo **Secuencial** ejecuta varios pasos en un orden fijo, de arriba hacia abajo, dentro de un solo nodo de Agent Studio. No toma decisiones con IA: sigue siempre el mismo camino. Por eso es ideal para procesos predecibles, como pedir el correo y el teléfono, enviar esos datos a otro sistema y confirmar al cliente.
+
+<Note>
+Antes de usar el nodo secuencial, asegúrate de que el agente tenga un disparador configurado.
+</Note>
+
+## Para qué sirve
+
+- Ejecuta los pasos en un orden claro y definido.
+- Da resultados predecibles y repetibles.
+- Agrupa varios pasos en un solo nodo y simplifica el lienzo.
+- Permite capturar datos de forma limpia y ordenada.
+- Reduce la complejidad frente a manejar muchos nodos sueltos.
+
+## Cómo funciona
+
+Cada paso del nodo secuencial es un **nodo de procesamiento**. El nodo empieza cuando recibe la entrada del disparador o del nodo anterior y ejecuta sus pasos en el orden en que los agregaste. Cada paso termina antes de que empiece el siguiente. Al final, pasa su resultado al siguiente nodo del flujo.
+
+Cada paso crea automáticamente una **variable de ejecución** con su resultado, que puedes usar en los pasos siguientes.
+
+## Tipos de pasos
+
+| Grupo | Paso | Qué hace | Qué configuras |
+| --- | --- | --- | --- |
+| Capturar información | **Correo electrónico** | Pide un correo y valida su formato antes de continuar. | Mensaje de solicitud y mensaje de error. |
+| Capturar información | **Número de teléfono** | Pide un teléfono y valida el formato, normalmente con código de país. | Mensaje de solicitud y mensaje de error. |
+| Capturar información | **Texto libre** | Recoge una respuesta abierta. | Mensaje y longitud mínima y máxima. |
+| Capturar información | **Opción única** | Muestra botones para elegir una opción. | Mensaje y lista de opciones. |
+| Acciones y API | **Llamada a API** | Envía una solicitud a otro sistema y recibe la respuesta, sin interpretación de IA. | Endpoint, encabezados y cuerpo. |
+| Acciones y API | **Acciones** | Hace cambios en Chateea, como actualizar registros o iniciar flujos de trabajo. | La operación a realizar. |
+| IA generativa | **Generación de texto** | Crea respuestas o resúmenes. | Indicación y variables. |
+| IA generativa | **Generación de imagen** | Crea una imagen y la devuelve como enlace o recurso. | Indicación y variables. |
+| IA generativa | **Generación de video** | Crea un video. | Indicación, resolución y relación de aspecto. |
+| IA generativa | **Generación de audio** | Convierte texto en voz. | Texto y ajustes de voz. |
+
+## Cómo configurar el nodo secuencial
+
+<Steps>
+  <Step title="Agrega el nodo">
+    Desde el panel de nodos, agrega **Secuencial** al lienzo y conéctalo al disparador o al nodo anterior.
+  </Step>
+  <Step title="Agrega los pasos">
+    Haz clic en **Agregar un nodo de procesamiento** o arrastra los pasos al nodo. Haz clic en cada paso para configurarlo; para quitar uno, pasa el cursor encima y elimínalo.
+  </Step>
+  <Step title="Configura cada paso">
+    Define los mensajes, las reglas de validación y el comportamiento de cada paso.
+  </Step>
+  <Step title="Revisa el orden">
+    Confirma que los pasos estén en la secuencia correcta, porque se ejecutan en ese orden. Planifica la secuencia antes de construirla: reordenar pasos después puede no ser sencillo.
+  </Step>
+  <Step title="Usa variables entre pasos">
+    En un paso posterior, haz clic en un campo (mensaje, cuerpo de API, etc.), abre el selector de variables y elige la variable del paso anterior.
+  </Step>
+  <Step title="Agrega acciones o llamadas a API">
+    Usa los datos recogidos para hacer algo con ellos: guardarlos en el CRM, enviarlos a otra plataforma o iniciar una automatización.
+  </Step>
+  <Step title="Conecta el siguiente nodo">
+    Une el nodo secuencial con el siguiente paso del flujo.
+  </Step>
+</Steps>
+
+## Ejemplo: capturar un correo y usarlo después
+
+1. **Paso 1, correo electrónico:** el usuario escribe `rahul@email.com`. El valor se guarda en una variable.
+2. **Paso 2, mensaje:** "¡Gracias! Te escribiremos a `{{email}}` en breve."
+3. **Paso 3, llamada a API:** envía el correo a tu sistema externo usando la misma variable en el cuerpo de la solicitud.
+
+<Info>
+Las llamadas a API dentro del nodo secuencial se ejecutan tal cual, sin interpretación de IA. La respuesta se guarda como variable de ejecución y tienes que usarla explícitamente en los pasos siguientes. Si necesitas que alguien razone sobre esa respuesta, usa un [nodo Agente de IA](/ia/nodo-agente-ia-agent-studio).
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuándo uso el nodo secuencial y cuándo el Agente de IA?">
+    Usa el secuencial cuando necesitas un proceso estructurado y predecible. Usa el Agente de IA cuando la interacción requiere conversación o decisiones según el contexto.
+  </Accordion>
+  <Accordion title="¿Por qué mi llamada a API no se adapta como una respuesta de IA?">
+    Porque en el nodo secuencial la API solo envía la solicitud y devuelve la respuesta, sin interpretarla. Si necesitas razonamiento, procésala en un nodo Agente de IA.
+  </Accordion>
+  <Accordion title="¿Qué pasa si no uso variables?">
+    El flujo será estático y dará siempre el mismo resultado. Las variables permiten que las respuestas del usuario y los resultados de cada paso influyan en lo que sigue.
+  </Accordion>
+  <Accordion title="¿Puedo reordenar los pasos después de agregarlos?">
+    No siempre es sencillo. Te conviene planificar la secuencia de antemano y agregar los pasos en el orden correcto.
+  </Accordion>
+  <Accordion title="¿Puedo tomar decisiones dentro del nodo secuencial?">
+    Sí. Puedes usar un enrutador dentro del nodo secuencial para que el proceso se divida antes de continuar. Consulta [Nodo enrutador](/ia/nodo-enrutador-agent-studio).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Nodo Agente de IA" icon="robot" href="/ia/nodo-agente-ia-agent-studio">
+    La inteligencia de tu agente.
+  </Card>
+  <Card title="Variables y valores personalizados" icon="code" href="/ia/variables-y-valores-personalizados-agent-studio">
+    Pasa datos de un paso a otro.
+  </Card>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Conoce el constructor y sus nodos.
+  </Card>
+  <Card title="Nodo enrutador" icon="route" href="/ia/nodo-enrutador-agent-studio">
+    Divide la conversación por intención o por reglas.
+  </Card>
+</CardGroup>

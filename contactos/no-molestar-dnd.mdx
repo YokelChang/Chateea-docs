@@ -1,0 +1,121 @@
+---
+title: "No molestar (DND): bloquear canales por contacto"
+description: "Activa No molestar por canal o en todos, entiende cuándo se activa solo y automatízalo con flujos de trabajo."
+icon: "bell-slash"
+---
+
+La función **No molestar** (DND, por Do Not Disturb) te permite bloquear la comunicación con un contacto en uno o en todos los canales. Sirve para respetar a quien pidió no recibir mensajes, cumplir las normas de comunicación de cada canal y evitar que tus automatizaciones escriban a quien no deben.
+
+## Para qué te sirve
+
+- **Respetar preferencias.** Los contactos que se dieron de baja de un canal quedan excluidos automáticamente.
+- **Cumplir la normativa.** Las bajas de SMS y correo se registran solas, lo que te ayuda con las reglas de consentimiento.
+- **Mejorar la experiencia.** Menos mensajes no deseados significa más confianza en tu marca.
+- **Automatizaciones más limpias.** Tus flujos respetan el estado DND sin que tengas que filtrar a mano.
+- **Control por canal.** Puedes bloquear un canal (por ejemplo SMS) y mantener otros abiertos.
+
+## Activar o desactivar DND en un contacto
+
+<Steps>
+<Step title="Abre el contacto">
+Ve a **Contactos** y abre la ficha del contacto.
+</Step>
+<Step title="Busca la sección DND">
+En la columna izquierda de la ficha, normalmente al final, encontrarás la sección **DND**.
+</Step>
+<Step title="Elige el alcance">
+Activa **DND en todos los canales** o marca solo los canales que quieres bloquear: correo, SMS, llamadas, perfil de negocio de Google, Facebook, WhatsApp, etc.
+</Step>
+</Steps>
+
+### DND de llamadas y SMS entrantes
+
+Además del DND de salida, existe una casilla aparte para **DND de llamadas y SMS entrantes**. Con ella:
+
+- Las **llamadas entrantes** desde el número del contacto se bloquean directamente.
+- Los **SMS entrantes** se bloquean a nivel de sistema, pero el mensaje sí se recibe técnicamente, por lo que **se cobra** igual desde tu billetera.
+
+El DND de entrada se activa o desactiva para todos los canales compatibles a la vez; hoy solo aplica a llamadas y SMS.
+
+## Cómo funciona en cada canal
+
+### Correo
+
+- **Activación automática.** El DND de correo se activa solo si el contacto se da de baja, marca un correo como spam o si hay un fallo permanente de entrega (rebote).
+- **Cómo quitarlo.** Verifica que el correo sea válido y no esté en listas de supresión, y luego desactiva el DND a mano desde la ficha.
+
+El DND de correo no bloquea todos los correos. Algunas categorías transaccionales se siguen enviando para que el contacto reciba información importante:
+
+| Se envía aunque tenga DND de correo | Se bloquea con DND de correo |
+| --- | --- |
+| Pagos (facturas) | Correos de marketing |
+| Notificaciones de calendario | Correos promocionales y campañas |
+| Notificaciones | |
+
+### SMS
+
+- **Activación automática.** Se activa cuando el contacto responde con una palabra de baja (por ejemplo STOP o UNSUBSCRIBE) o cuando el operador devuelve un error permanente de entrega, como número inexistente, inalcanzable, bloqueado o de línea fija.
+- **DND temporal.** Lo puedes quitar directamente desde la ficha del contacto.
+- **DND permanente.** Solo se elimina si el contacto envía un mensaje de alta (por ejemplo START) o si escribes a soporte de Chateea en **help@chateea.com** con la prueba de que el contacto dio su consentimiento.
+
+### Llamadas
+
+Con el DND de llamadas activo, las llamadas entrantes del contacto no se desvían ni se muestran a tu equipo. Puedes activarlo o desactivarlo desde la ficha cuando lo necesites.
+
+### Facebook, perfil de negocio de Google y WhatsApp
+
+Una vez que el canal está conectado, puedes aplicar DND solo a ese canal. Así el contacto puede darse de baja de una plataforma y seguir activo en las demás.
+
+## Automatizar DND con flujos de trabajo
+
+Con automatizaciones puedes aplicar, quitar y reaccionar al DND de forma consistente.
+
+| Elemento | Para qué sirve |
+| --- | --- |
+| Disparador **DND del contacto** | Se activa cuando se habilita o deshabilita el DND. Puedes filtrar por canal (correo, SMS, llamadas) o por dirección (entrante o saliente). |
+| Disparador **Clic en enlace de disparo** | Usa un enlace de baja en tus correos o SMS que lleve a un flujo que active el DND del canal. |
+| Acción **DND del contacto** | Activa o desactiva el DND global o por canal. Con la dirección **Entrante** bloqueas llamadas y SMS que llegan; con **Saliente** detienes los envíos. |
+| Acción **Actualizar campo del contacto** | Guarda datos de respaldo, como el origen del consentimiento o la fecha del alta. |
+| Acción **Quitar del flujo** | Detiene envíos programados en cuanto el contacto pasa a DND. |
+| Acción **Notificación interna** | Avisa al responsable cuando un contacto importante se da de baja. |
+
+## Quién cambió el DND
+
+En las conversaciones y en el registro de actividad del contacto verás quién activó o desactivó el DND, por canal o para todos:
+
+- **Flujos de trabajo:** lo cambió una automatización.
+- **Usuario:** lo cambió alguien de tu equipo.
+- **Contacto:** lo cambió la propia persona (por ejemplo al responder STOP).
+
+Esto funciona en todos los canales y no requiere configuración.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué pasa si un contacto tiene DND?">
+Chateea deja de enviarle mensajes por los canales bloqueados. En correo, las facturas, las notificaciones de calendario y otras notificaciones transaccionales se siguen enviando; el marketing no.
+</Accordion>
+<Accordion title="¿Puedo configurar DND por canal?">
+Sí, para la dirección saliente puedes activar o desactivar cada canal por separado. El DND entrante se aplica a todos los canales compatibles a la vez, y por ahora solo cubre llamadas y SMS.
+</Accordion>
+<Accordion title="¿Cómo sé si un contacto tiene DND?">
+Abre su ficha. Los canales con DND activo aparecen marcados en gris en la sección DND de la columna izquierda.
+</Accordion>
+<Accordion title="¿El DND bloquea absolutamente todo?">
+Bloquea los canales donde está activo, con la excepción de ciertos correos transaccionales (facturas, notificaciones de calendario y notificaciones), que se siguen entregando.
+</Accordion>
+<Accordion title="Un cliente se dio de baja por error, ¿cómo lo reactivo?">
+Si es DND temporal, desactívalo desde su ficha. Si es un DND permanente de SMS, pide al contacto que envíe START o escribe a **help@chateea.com** con la prueba de su consentimiento.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Consentimiento y base legal" icon="shield-check" href="/contactos/consentimiento-y-base-legal-de-datos">
+Cómo pedir y registrar el consentimiento de tus contactos.
+</Card>
+<Card title="Enlaces de disparo" icon="link" href="/conversaciones/enlaces-de-disparo">
+Crea enlaces de baja que activen automatizaciones.
+</Card>
+</CardGroup>

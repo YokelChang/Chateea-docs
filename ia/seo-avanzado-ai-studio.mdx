@@ -1,0 +1,113 @@
+---
+title: "SEO avanzado en AI Studio"
+description: "Haz que tus sitios de AI Studio sean fáciles de indexar, compartir y citar por buscadores con IA."
+icon: "magnifying-glass-chart"
+---
+
+El soporte SEO avanzado hace que los sitios publicados con AI Studio sean más fáciles de leer para buscadores, redes sociales y herramientas de búsqueda con IA. Así tus páginas se indexan antes, se ven bien al compartirlas y pueden aparecer citadas en respuestas de asistentes de IA.
+
+## Por qué lo necesitas
+
+La mayoría de los sitios de AI Studio son aplicaciones de una sola página (SPA). Son muy rápidas para las personas, pero para los robots pueden parecer "cajas vacías" porque necesitan JavaScript para cargar el contenido. Sin ayuda, eso provoca que:
+
+- Google tarde semanas en indexar tu contenido.
+- Al compartir un enlace, la vista previa salga en blanco o genérica.
+- Los buscadores con IA no puedan leer tu sitio para citarlo.
+
+Con el soporte SEO avanzado, los robots compatibles reciben el HTML ya renderizado en lugar de la estructura vacía, mientras que tus visitantes siguen viendo exactamente el mismo sitio.
+
+## Qué incluye
+
+| Función | Qué hace |
+| --- | --- |
+| **SEO con prerenderizado** | Los robots compatibles reciben el contenido completo de la página desde la primera visita |
+| **Vistas previas en redes y enlaces** | Cada página muestra su propio título, descripción e imagen al compartirse |
+| **Generar mapa del sitio** | Ayuda a los buscadores a descubrir tus páginas importantes |
+
+## Ventajas
+
+- **Vistas previas completas** al compartir en LinkedIn, WhatsApp, X, Facebook, Slack o Discord.
+- **Visibilidad en buscadores con IA**, que pueden entender y citar tu contenido.
+- **Indexación desde el primer rastreo**, sin esperar a que el buscador procese JavaScript.
+- **Rendimiento:** las páginas prerenderizadas se sirven desde una red perimetral en milisegundos, sin impacto para tus visitantes.
+- **Control por proyecto:** activas o desactivas el prerenderizado en cada proyecto.
+
+## SEO con prerenderizado
+
+<Note>
+  Solo está disponible en proyectos **publicados** con un **dominio propio conectado** y establecido como principal.
+</Note>
+
+Con el prerenderizado activo, los robots compatibles acceden al contenido, metadatos, imágenes, etiquetas canónicas y datos estructurados que ya existen en la página.
+
+- **Detección automática de robots:** buscadores, redes sociales y rastreadores de IA compatibles reciben el HTML renderizado.
+- **Respaldo seguro:** si el prerenderizado no está activo o una página aún no está en caché, el robot recibe la versión estándar, igual que antes.
+- **Actualización automática:** las páginas se regeneran en cada publicación, cambio de dominio o actualización del sitio. Admite hasta **150 rutas por sitio**.
+
+## Activar el soporte SEO avanzado
+
+<Steps>
+  <Step title="Abre el proyecto">
+    Entra al proyecto de AI Studio que quieres configurar.
+  </Step>
+  <Step title="Abre la configuración de SEO">
+    Haz clic en **Más** en la parte superior del constructor y abre **SEO y búsqueda con IA** (SEO & AI search).
+  </Step>
+  <Step title="Revisa los requisitos">
+    El proyecto debe estar publicado, con un dominio propio conectado y establecido como principal. Consulta cómo publicar en [AI Studio](/ia/ai-studio).
+  </Step>
+  <Step title="Activa">
+    Haz clic en **Activar**. El interruptor se pone morado cuando está activo.
+  </Step>
+  <Step title="Vuelve a publicar">
+    Publica de nuevo para que los robots reciban la versión renderizada más reciente.
+  </Step>
+</Steps>
+
+## Mejorar las vistas previas en redes sociales
+
+La acción **Mejorar el contenido de la vista previa social** te da una instrucción lista para aplicar metadatos SEO en todo el proyecto, de modo que cada página tenga su propio título, descripción e imagen Open Graph.
+
+1. En el proyecto, haz clic en **Más → SEO y búsqueda con IA**.
+2. Busca **Mejorar el contenido de la vista previa social** y haz clic en **Copiar instrucción** (Copy prompt).
+3. Pega la instrucción en el chat de AI Studio.
+4. Revisa el resumen de cambios y publica el proyecto.
+5. Comprueba el resultado compartiendo la URL en una red social o con el [depurador de contenido compartido de Facebook](https://developers.facebook.com/tools/debug/).
+
+## Generar el mapa del sitio
+
+1. En el proyecto, haz clic en **Más → SEO y búsqueda con IA**.
+2. Busca **Generar mapa del sitio** y haz clic en **Copiar instrucción**.
+3. Pégala en el chat de AI Studio.
+4. Revisa el resumen y publica. Haz clic en **Detalles** para ver tu mapa del sitio.
+5. Envíalo a [Google Search Console](https://search.google.com/search-console) para que Google descubra tus URL y puedas seguir su procesamiento.
+
+El contenido renderizado se actualiza solo al publicar, actualizar o cambiar de dominio, así que el mapa se mantiene alineado con tu sitio.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que publicar antes de activarlo?">
+    Sí. Necesitas el proyecto publicado y un dominio propio conectado para completar la configuración.
+  </Accordion>
+  <Accordion title="¿Cambia cómo ven el sitio mis visitantes?">
+    No. Las personas reciben la misma experiencia rápida e interactiva. Solo los robots reciben la versión prerenderizada.
+  </Accordion>
+  <Accordion title="¿Agrega datos estructurados (schema) automáticamente?">
+    No. Si pides a AI Studio que agregue datos estructurados y quedan en el código de la página, los robots los recibirán dentro del HTML renderizado.
+  </Accordion>
+  <Accordion title="¿Cómo se actualiza la caché?">
+    Automáticamente cada vez que publicas, cambias el dominio o actualizas y vuelves a publicar el sitio.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="AI Studio" icon="wand-magic-sparkles" href="/ia/ai-studio">
+    Publica tu proyecto y conecta tu dominio.
+  </Card>
+  <Card title="SSR, funciones de servidor y APIs" icon="server" href="/ia/ssr-funciones-servidor-ai-studio">
+    Renderizado en servidor para proyectos avanzados.
+  </Card>
+</CardGroup>

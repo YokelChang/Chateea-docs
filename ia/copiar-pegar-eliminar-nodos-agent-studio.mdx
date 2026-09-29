@@ -1,0 +1,109 @@
+---
+title: "Copia, pega y elimina nodos en Agent Studio"
+description: "Reutiliza grupos de nodos y limpia ramas en el lienzo con copiar, pegar y eliminación múltiple."
+icon: "copy"
+---
+
+En el lienzo de Agent Studio puedes copiar, pegar y eliminar varios nodos a la vez. Así reutilizas partes de un agente que ya funcionan, duplicas una rama para probar variaciones o limpias ramas viejas sin rehacer nada a mano. Estas herramientas trabajan con nodos o secciones del flujo, no con el agente completo.
+
+## Para qué sirve
+
+- **Construyes más rápido:** copias nodos existentes en lugar de crearlos desde cero.
+- **Reutilizas lógica entre agentes:** pegas un grupo de nodos en otro agente abierto en otra pestaña.
+- **Conservas las conexiones internas:** si copias varios nodos conectados entre sí, esas conexiones se recrean al pegar.
+- **Limpias en un solo paso:** eliminas varios nodos a la vez.
+- **Lienzo ordenado:** los nodos pegados aparecen un poco desplazados para que no queden encima de los originales.
+- **Sin conflictos:** cada nodo pegado recibe un identificador nuevo y funciona de forma independiente del original.
+
+## Cuándo usarlo
+
+- Para reutilizar un grupo de nodos que ya funciona bien.
+- Para duplicar una sección y probar una variante.
+- Para crear una rama parecida a otra sin empezar de cero.
+- Para copiar un patrón de lógica a otro agente.
+- Para quitar ramas de prueba o nodos que ya no usas.
+
+## Antes de empezar
+
+- Necesitas acceso a Agent Studio y permiso para editar el agente.
+- Las conexiones se conservan solo entre los nodos que copiaste juntos. Las conexiones con nodos que quedaron fuera de la selección tendrás que rehacerlas a mano.
+- Revisa siempre los nodos pegados antes de publicar.
+
+## Cómo copiar, pegar y eliminar nodos
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y abre el agente que quieres editar.
+  </Step>
+  <Step title="Selecciona los nodos">
+    Selecciona un nodo, o varios si quieres duplicar una sección completa.
+  </Step>
+  <Step title="Copia">
+    Pulsa `Ctrl + C` en Windows o `Cmd + C` en Mac.
+  </Step>
+  <Step title="Pega">
+    Para pegar en el mismo agente, quédate en el lienzo actual. Para pegar en otro agente, ábrelo en otra pestaña de Agent Studio. Pulsa `Ctrl + V` en Windows o `Cmd + V` en Mac.
+  </Step>
+  <Step title="Revisa lo pegado">
+    Los nodos aparecerán un poco desplazados. Comprueba que las conexiones internas sean las que esperabas y reconecta lo que haga falta.
+  </Step>
+  <Step title="Ajusta la configuración">
+    Cambia los ajustes o caminos de los nodos duplicados si quieres que se comporten distinto del original.
+  </Step>
+  <Step title="Elimina lo que sobra">
+    Selecciona uno o varios nodos que ya no necesites y usa la tecla de eliminar de tu equipo.
+  </Step>
+  <Step title="Guarda y publica">
+    Prueba el agente, guarda y publica cuando confirmes que todo funciona.
+  </Step>
+</Steps>
+
+## Atajos de teclado
+
+| Acción | Windows | Mac |
+| --- | --- | --- |
+| Copiar nodos seleccionados | `Ctrl + C` | `Cmd + C` |
+| Pegar nodos copiados | `Ctrl + V` | `Cmd + V` |
+| Eliminar nodos seleccionados | Tecla de eliminar | Tecla de eliminar |
+
+Dentro de Agent Studio tienes una guía de atajos de teclado para consultarlos mientras trabajas.
+
+## Buenas prácticas
+
+- Copia bloques de lógica completos cuando quieras reutilizar un camino probado.
+- Renombra los nodos duplicados cuando pruebes variantes, para que el lienzo siga siendo fácil de leer.
+- Usa la eliminación múltiple para quitar ramas de prueba y copias sobrantes.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo copiar varios nodos a la vez?">
+    Sí. Puedes copiar un solo nodo o varios seleccionados.
+  </Accordion>
+  <Accordion title="¿Qué pasa con las conexiones entre los nodos copiados?">
+    Si los copias juntos, las conexiones entre ellos se recrean automáticamente al pegar.
+  </Accordion>
+  <Accordion title="¿Puedo pegar en otro agente?">
+    Sí. Abre el otro agente en otra pestaña de Agent Studio y pega ahí.
+  </Accordion>
+  <Accordion title="¿Por qué los nodos pegados aparecen movidos?">
+    Se colocan con un pequeño desplazamiento para que no queden encima de los originales y los encuentres fácilmente.
+  </Accordion>
+  <Accordion title="¿Los nodos pegados tienen el mismo identificador que los originales?">
+    No. Cada nodo pegado recibe un identificador nuevo.
+  </Accordion>
+  <Accordion title="¿Sirve para clonar un agente completo?">
+    No. Está pensado para reutilizar nodos o secciones dentro del constructor.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Conoce el constructor y sus nodos.
+  </Card>
+  <Card title="Nodo enrutador" icon="route" href="/ia/nodo-enrutador-agent-studio">
+    Divide la conversación por intención o por reglas.
+  </Card>
+</CardGroup>

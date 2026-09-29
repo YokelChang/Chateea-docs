@@ -1,0 +1,112 @@
+---
+title: "Eliminar registros de objetos personalizados en bloque"
+description: "Borra varios registros de un objeto personalizado a la vez y restáuralos durante 60 días si lo necesitas."
+icon: "trash"
+---
+
+La eliminación en bloque te permite borrar varios registros de un objeto personalizado en una sola acción, directamente desde la vista de lista. Es la forma más rápida de limpiar registros de prueba, datos desactualizados o filas que se importaron por error, sin tener que abrir cada registro por separado.
+
+Además, si te equivocas, tienes un margen de 60 días para restaurar lo que eliminaste.
+
+## Cómo funciona
+
+En la vista de lista de cualquier objeto personalizado puedes marcar registros con las casillas de verificación y eliminarlos juntos. Tienes tres formas de seleccionar:
+
+- **Uno por uno:** marca la casilla a la izquierda de cada fila.
+- **Toda la página:** usa la casilla del encabezado para seleccionar todos los registros visibles.
+- **Sobre un resultado filtrado:** aplica filtros o una búsqueda primero y luego selecciona los registros que quedan en pantalla.
+
+Cada eliminación en bloque se registra como un trabajo en la página de **Acciones masivas**, donde puedes seguir su progreso, consultar el registro y restaurarla si hace falta.
+
+## Eliminar registros en bloque
+
+<Steps>
+  <Step title="Abre el objeto personalizado">
+    Entra al objeto personalizado del que quieres borrar registros (por ejemplo, Propiedades, Mascotas o Pólizas).
+  </Step>
+  <Step title="Selecciona los registros">
+    Usa las casillas de la izquierda de cada fila o la casilla del encabezado para seleccionar todos los de la página. Si necesitas acotar primero, aplica filtros o una búsqueda.
+  </Step>
+  <Step title="Haz clic en Eliminar">
+    En la barra de acciones masivas que aparece al seleccionar registros, haz clic en **Eliminar** (Delete).
+  </Step>
+  <Step title="Confirma">
+    Revisa el mensaje de confirmación y acepta.
+  </Step>
+  <Step title="Revisa el progreso">
+    Ve a **Contactos → Acciones masivas** para ver el avance del trabajo y su registro detallado.
+  </Step>
+</Steps>
+
+<Tip>
+Antes de eliminar un lote grande, aplica un filtro que deje solo los registros que quieres borrar y revisa el conteo. Así evitas llevarte por delante registros válidos.
+</Tip>
+
+## Qué se elimina y qué no
+
+Al eliminar un registro de objeto personalizado se borran el registro y todos los valores de sus campos. También se eliminan todas sus relaciones:
+
+- Asociaciones con **notas** y **tareas**.
+- Asociaciones con **contactos**, **empresas** y **oportunidades**.
+- Asociaciones con otros **registros de objetos personalizados**.
+- Las **etiquetas de asociación** aplicadas a esas relaciones.
+
+Lo que **no** se elimina son los registros relacionados. Las notas, tareas, contactos, empresas, oportunidades y otros registros siguen existiendo; lo único que desaparece es el vínculo con el registro borrado.
+
+| Elemento | Qué pasa |
+| --- | --- |
+| Registro y valores de sus campos | Se eliminan |
+| Asociaciones y etiquetas de asociación | Se eliminan |
+| Notas y tareas relacionadas | Se conservan, sin el vínculo |
+| Contactos, empresas y oportunidades relacionadas | Se conservan, sin el vínculo |
+| Otros registros de objetos personalizados | Se conservan, sin el vínculo |
+
+## Restaurar registros eliminados
+
+Los registros eliminados en bloque se pueden restaurar durante **60 días** desde la página de **Acciones masivas**. Pasado ese plazo se eliminan de forma permanente y ya no se pueden recuperar.
+
+<Steps>
+  <Step title="Abre Acciones masivas">
+    Ve a **Contactos → Acciones masivas** en tu cuenta de Chateea.
+  </Step>
+  <Step title="Busca el trabajo de eliminación">
+    Localiza la fila del trabajo que quieres deshacer, abre el menú de tres puntos de la derecha y haz clic en **Restaurar** (Restore).
+  </Step>
+  <Step title="Confirma la restauración">
+    Acepta el mensaje de confirmación.
+  </Step>
+</Steps>
+
+La restauración se ejecuta como un trabajo nuevo y aparece en la tabla de acciones masivas. Cuando termina, los registros vuelven a la vista de lista con sus valores de campo, sus asociaciones y sus etiquetas de asociación.
+
+<Warning>
+Si necesitas recuperar registros, no esperes: después de 60 días la eliminación es definitiva.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo eliminar en bloque desde una lista filtrada o una búsqueda?">
+    Sí. Aplica tus filtros o tu búsqueda primero y luego usa las casillas para seleccionar los registros del resultado.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo tengo para restaurar registros eliminados?">
+    Unos 60 días desde la fecha de eliminación. Después se eliminan de forma permanente.
+  </Accordion>
+  <Accordion title="¿La eliminación en bloque borra las notas y tareas asociadas?">
+    No. Solo se elimina la asociación con esas notas y tareas. Las notas y tareas siguen existiendo.
+  </Accordion>
+  <Accordion title="¿Se recuperan las asociaciones al restaurar un registro?">
+    Sí. Al restaurar desde **Acciones masivas**, el registro vuelve con sus asociaciones y etiquetas de asociación anteriores.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar registros de objetos personalizados" icon="file-csv" href="/crm/importar-registros-de-objetos-personalizados">
+    Crea o actualiza registros en bloque desde un archivo CSV.
+  </Card>
+  <Card title="Activar automatizaciones en bloque" icon="bolt" href="/crm/activar-automatizaciones-en-bloque">
+    Envía varios registros a un flujo de trabajo en una sola acción.
+  </Card>
+</CardGroup>

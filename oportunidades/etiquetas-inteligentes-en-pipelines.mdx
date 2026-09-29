@@ -1,0 +1,138 @@
+---
+title: "Etiquetas inteligentes de color en tus pipelines"
+description: "Resalta automáticamente oportunidades con chips de color según reglas: alto valor, leads nuevos o negocios sin responsable."
+icon: "tags"
+---
+
+Las etiquetas inteligentes (Smart Tags) son chips de color que aparecen automáticamente en las tarjetas de oportunidad cuando cumplen una regla que tú defines. Sirven para priorizar de un vistazo: los negocios de alto valor, los leads nuevos o las oportunidades sin responsable resaltan solos en el pipeline, sin que tengas que aplicar filtros ni abrir cada tarjeta.
+
+## Cómo funcionan
+
+Cada etiqueta inteligente combina un nombre, un color y una regla. Chateea evalúa todas las oportunidades del pipeline y, cuando una cumple la regla, le pone el chip de color. Si los datos de la oportunidad cambian y deja de cumplirla, el chip desaparece.
+
+Las reglas se vuelven a evaluar cada vez que una oportunidad se crea, se actualiza o cambia de etapa o de estado. No hace falta refrescar nada a mano.
+
+**Ventajas principales:**
+
+- **Priorización inmediata:** los negocios importantes saltan a la vista.
+- **Menos clics:** no necesitas abrir tarjetas ni combinar filtros para saber qué atender.
+- **Mismo criterio para todo el equipo:** todos ven las mismas señales de color.
+- **Reglas flexibles:** combina condiciones con Y / O sobre campos estándar y personalizados.
+
+## Permisos y límites
+
+| Tema | Detalle |
+| --- | --- |
+| Quién puede crear o editar | Administradores de la cuenta y usuarios con permiso de **Editar** en ese pipeline |
+| Quién puede verlas | Cualquier usuario con acceso de visualización al pipeline |
+| Máximo por pipeline | Hasta **60** etiquetas inteligentes activas |
+| Duplicados | No se permiten dos etiquetas con el mismo color y la misma regla en un pipeline |
+
+## Crear una etiqueta inteligente
+
+<Steps>
+  <Step title="Abre la configuración del pipeline">
+    Ve a **Oportunidades → Pipelines** y haz clic en **Editar** en el pipeline donde quieres usar la etiqueta. Abre la pestaña **Etiquetas inteligentes** (Smart Tags).
+  </Step>
+  <Step title="Agrega la etiqueta">
+    Haz clic en **Agregar etiqueta inteligente** y elige una opción:
+    - **Crear nueva etiqueta:** defines tú el nombre, el color y la regla.
+    - **Etiqueta predefinida:** partes de una plantilla, como *Lead nuevo* o *Alto valor*.
+  </Step>
+  <Step title="Define nombre y color">
+    Escribe el **nombre de la etiqueta** (por ejemplo, "Negocio caliente"), una descripción opcional y elige el **color**. Marca **Aplicar a todos los pipelines** si quieres que la regla funcione en todos. Luego haz clic en **Siguiente: agregar regla**.
+  </Step>
+  <Step title="Construye la regla">
+    Indica cuándo debe aparecer la etiqueta. Por ejemplo:
+    - **Fecha de creación** en los últimos 3 días → "Lead nuevo".
+    - **Valor de la oportunidad** mayor que 10.000 → "Alto valor".
+
+    Puedes combinar varias condiciones con lógica **Y / O** y crear filtros anidados para reglas más complejas.
+  </Step>
+  <Step title="Revisa y guarda">
+    Usa **Vista previa** para ver cómo quedará el chip en una tarjeta de ejemplo y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+### Opciones del constructor de reglas
+
+El constructor usa los mismos filtros avanzados de Oportunidades, así que tienes:
+
+- Campos agrupados por carpetas para encontrarlos más rápido.
+- Filtro por **Etapa** para apuntar a una parte concreta del pipeline.
+- Operadores de fecha ampliados: **no es**, **en los próximos**, **en los últimos**, **más de** y **menos de**.
+- Tiempo relativo en días, semanas, meses y años.
+- Lógica anidada para condiciones complejas.
+
+### Reglas personales con el valor "yo"
+
+En los filtros de **Propietario** o **Seguidor** puedes elegir el valor **yo** (me). Ese valor se resuelve según quién está mirando la lista: una regla **Propietario = yo** marca las oportunidades de cada usuario que la ve. Con una sola etiqueta, cada vendedor ve resaltados sus propios negocios, sin crear una regla por persona.
+
+## Ver, editar o eliminar etiquetas
+
+Desde la misma pestaña **Etiquetas inteligentes** del pipeline puedes previsualizar, editar o eliminar cualquier etiqueta ya creada.
+
+## Ideas de etiquetas útiles
+
+| Etiqueta | Color sugerido | Regla de ejemplo | Para qué sirve |
+| --- | --- | --- | --- |
+| Alto valor | Verde | Valor de la oportunidad mayor que 10.000 | Resaltar los negocios grandes |
+| Lead nuevo | Azul | Creada en los últimos 3 días | Atender rápido lo que acaba de entrar |
+| Negocio caliente | Naranja | Creada hace menos de 7 días y valor mayor que 5.000 | Oportunidades recientes y de ticket alto |
+| Sin responsable | Morado | Propietario vacío | Detectar oportunidades sin asignar |
+
+## Buenas prácticas
+
+- Usa colores bien distintos para tus prioridades principales (por ejemplo, rojo para urgente y verde para alto valor).
+- Mantén los nombres cortos, de menos de 20 caracteres, para que se lean bien en la tarjeta.
+- Revisa tus reglas de vez en cuando para que sigan reflejando tus prioridades reales.
+- Explica al equipo qué significa cada color.
+
+## Solución de problemas
+
+**Las etiquetas no se ven en las tarjetas**
+
+- Comprueba que las etiquetas inteligentes estén incluidas en el diseño de la tarjeta (desde **Personalizar tarjeta**).
+- Revisa que las condiciones de la regla realmente se cumplan en las oportunidades que estás viendo.
+- Recarga la página por completo para sincronizar los cambios.
+
+**No aparece la pestaña Etiquetas inteligentes**
+
+Solo los administradores y los usuarios con permiso de edición en el pipeline pueden crear y editar etiquetas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Las etiquetas funcionan en todos los pipelines?">
+    Sí, si marcas **Aplicar a todos los pipelines** al crearla. En ese caso aparecerá en cualquier pipeline donde se cumpla la regla.
+  </Accordion>
+  <Accordion title="¿Puedo copiar una etiqueta a otro pipeline?">
+    Por ahora no existe una opción para copiarlas entre pipelines. Puedes crear la misma regla manualmente en el otro pipeline, o duplicar el pipeline completo, ya que al duplicarlo se copian sus etiquetas inteligentes.
+  </Accordion>
+  <Accordion title="¿Las etiquetas aparecen en los informes?">
+    No. Por ahora solo se muestran visualmente en la vista del pipeline.
+  </Accordion>
+  <Accordion title="¿Cómo limito quién puede crear o editar etiquetas?">
+    Cualquier usuario con permiso para editar la configuración de un pipeline puede gestionar sus etiquetas. Usa los permisos de pipelines para restringir ese acceso.
+  </Accordion>
+  <Accordion title="¿En qué se diferencian de los colores de etapa?">
+    Los colores de etapa indican **dónde** está el negocio dentro del proceso. Las etiquetas inteligentes marcan oportunidades según **condiciones** (valor, antigüedad, responsable). Muchos equipos usan ambos a la vez.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Permisos de pipelines" icon="key" href="/oportunidades/permisos-de-pipelines">
+    Controla quién ve y edita cada pipeline.
+  </Card>
+  <Card title="Colores de etapas del pipeline" icon="palette" href="/oportunidades/colores-de-etapas-del-pipeline">
+    Asigna un color a cada etapa de tu proceso.
+  </Card>
+  <Card title="Personalizar tarjetas de oportunidades" icon="id-card" href="/oportunidades/personalizar-tarjetas-de-oportunidades">
+    Elige qué datos muestra cada tarjeta.
+  </Card>
+  <Card title="Crear un pipeline" icon="diagram-project" href="/oportunidades/crear-un-pipeline">
+    Configura las etapas de tu proceso de venta.
+  </Card>
+</CardGroup>

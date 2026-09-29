@@ -1,0 +1,91 @@
+---
+title: "Desactivar acciones en un flujo de trabajo"
+description: "Desactiva temporalmente pasos de un flujo sin borrarlos para hacer pruebas o aislar errores; se saltan al ejecutarse."
+icon: "pause"
+---
+
+Puedes desactivar temporalmente cualquier acción de un flujo de trabajo sin borrarla ni desconectarla. El paso queda en el lienzo con toda su configuración, pero se salta al ejecutar el flujo. Es la forma más segura de probar variantes, aislar un problema o dejar un paso "en espera" mientras decides qué hacer con él.
+
+Funciona tanto en el **Constructor estándar** como en el **Constructor avanzado**.
+
+## Ventajas
+
+- **Pruebas más rápidas:** desactiva un paso, ejecuta el flujo y vuelve a activarlo al instante.
+- **Sin reconstruir nada:** la configuración y las conexiones se mantienen.
+- **Ejecución limpia:** los pasos desactivados se saltan automáticamente, así que los contactos no se quedan atascados.
+- **Cambios más seguros:** depura o haz pruebas A/B sin alterar la lógica principal.
+
+## Cómo desactivar y activar un paso
+
+<Steps>
+<Step title="Abre el flujo">
+Ve a **Automatización → Flujos de trabajo** y abre el flujo en el constructor estándar o avanzado.
+</Step>
+<Step title="Desactiva el paso">
+Pasa el cursor sobre la acción y haz clic en el ícono de **pausa** (o en el interruptor **Activar/Desactivar**).
+</Step>
+<Step title="Comprueba el estado">
+El paso se ve atenuado (en gris) y muestra la etiqueta **Desactivado**.
+</Step>
+<Step title="Vuelve a activarlo">
+Cuando termines la prueba, pasa el cursor de nuevo y haz clic en **reproducir**. El paso recupera su color normal y vuelve a ejecutarse.
+</Step>
+</Steps>
+
+## Qué pasa durante la ejecución
+
+| Estado del paso | Comportamiento |
+| --- | --- |
+| **Desactivado** | Se salta. Si es el único camino hacia adelante, el flujo continúa con los siguientes pasos activos de ese camino. |
+| **Activado** | Se ejecuta exactamente como está configurado. |
+
+- Los contactos **no se quedan detenidos** en un paso desactivado.
+- En los **registros de ejecución**, los pasos desactivados aparecen como **Omitidos**, para que sepas qué se saltó durante tus pruebas.
+- Los pasos desactivados **no consumen ejecuciones**, porque no se ejecutan.
+
+<Warning>
+Desactivar un paso cambia lo que viven tus contactos en el flujo publicado. Si desactivas, por ejemplo, un **Esperar**, los siguientes mensajes saldrán antes de lo previsto.
+</Warning>
+
+## Ideas de uso
+
+- **Aislar un error:** desactiva una integración que está fallando mientras la revisas, sin detener el resto del flujo.
+- **Probar variantes:** desactiva un mensaje para comparar el resultado con y sin él.
+- **Preparar cambios:** agrega un paso nuevo desactivado, configúralo con calma y actívalo cuando esté listo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Los contactos se quedan detenidos en un paso desactivado?">
+No. El flujo salta el paso y continúa por el camino activo.
+</Accordion>
+<Accordion title="¿Puedo desactivar una rama completa?">
+Sí. Desactiva cada paso de esa rama. Todos se saltarán hasta que los vuelvas a activar.
+</Accordion>
+<Accordion title="¿Es lo mismo que pausar flujos por fechas?">
+No. Desactivar acciones afecta pasos individuales dentro de un flujo. Pausar flujos por fechas detiene flujos completos durante un rango de fechas.
+</Accordion>
+<Accordion title="¿Qué pasa si cambio al constructor estándar con pasos desactivados?">
+Si el constructor te lo indica, elimina o vuelve a activar esos pasos antes de cambiar de vista.
+</Accordion>
+<Accordion title="¿Los pasos desactivados cuentan para el límite de ejecuciones?">
+No. Como se saltan, no consumen ejecuciones.
+</Accordion>
+<Accordion title="¿Los registros muestran los pasos saltados?">
+Sí. Aparecen como **Omitidos** en los registros de ejecución.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Pausar flujos por fechas" icon="calendar" href="/automatizaciones/pausar-flujos-por-fechas">
+Detén flujos completos en feriados o vacaciones.
+</Card>
+<Card title="Constructor avanzado de flujos" icon="diagram-project" href="/automatizaciones/constructor-avanzado-de-flujos">
+Conoce el lienzo visual y sus funciones.
+</Card>
+<Card title="Registros de ejecución e historial de inscripción" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+Revisa qué pasos se ejecutaron o se omitieron.
+</Card>
+</CardGroup>

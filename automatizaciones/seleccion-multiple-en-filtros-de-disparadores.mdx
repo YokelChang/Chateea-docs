@@ -1,0 +1,80 @@
+---
+title: "Selección múltiple en filtros de disparadores"
+description: "Elige varios formularios, encuestas o frases en un mismo filtro de disparador para activar tus flujos con menos disparadores."
+icon: "filter"
+---
+
+Algunos disparadores de tus flujos de trabajo te permiten filtrar por formulario, por encuesta o por el texto que escribe el contacto. Con la selección múltiple puedes elegir varias opciones en un mismo filtro, en lugar de crear un disparador distinto para cada formulario o para cada palabra clave. Así mantienes tus automatizaciones más cortas, ordenadas y fáciles de revisar.
+
+## Qué filtros admiten varias opciones
+
+| Filtro | Cómo se agregan opciones | Ejemplo de uso |
+| --- | --- | --- |
+| **Formularios** | Haz clic en cada formulario de la lista desplegable. | Un mismo flujo de bienvenida para los formularios de "Contacto" y "Cotización". |
+| **Encuestas** | Haz clic en cada encuesta de la lista desplegable. | Enviar el mismo seguimiento a quien responda cualquiera de tus encuestas de satisfacción. |
+| **Contiene la frase** (Contains Phrase) | Escribe el texto y presiona **Enter** (o **Return** en Mac). Repite con cada frase. | Disparar el flujo si el mensaje o comentario contiene "precio", "costo" o "cuánto vale". |
+| **Coincidencia exacta** (Exact Match) | Escribe el texto y presiona **Enter** (o **Return**). Repite con cada valor. | Disparar el flujo si el contacto responde exactamente "SÍ", "OK" o "CONFIRMO". |
+
+## Cómo funciona la lógica
+
+Cuando agregas varias opciones en un mismo filtro, el disparador se comporta como un **"o"**: basta con que se cumpla **una** de ellas para que el contacto entre al flujo.
+
+Por ejemplo, si en el disparador de comentarios en una publicación de Facebook agregas cinco frases en **Contiene la frase**, el flujo se ejecuta cuando el contacto comenta cualquiera de esas cinco frases. No hace falta que las use todas.
+
+### Diferencia entre "Contiene la frase" y "Coincidencia exacta"
+
+- **Contiene la frase:** el disparador se activa si el texto del contacto incluye la frase en cualquier parte. Si configuras "precio", también se activa con "¿Me pasas el precio del plan?".
+- **Coincidencia exacta:** el disparador se activa solo si el texto del contacto es idéntico al valor configurado. Si configuras "SÍ", no se activa con "sí, claro".
+
+<Tip>
+Usa **Contiene la frase** para detectar intenciones generales (preguntas de precio, horarios, ubicación) y **Coincidencia exacta** para respuestas cortas y controladas, como palabras clave de una campaña ("PROMO", "INFO") o confirmaciones.
+</Tip>
+
+## Cómo configurarlo
+
+<Steps>
+<Step title="Abre el disparador">
+Ve a **Automatización → Flujos de trabajo**, abre tu flujo y haz clic en el disparador que quieres filtrar (o agrega uno nuevo con **Agregar disparador**).
+</Step>
+<Step title="Agrega el filtro">
+Haz clic en **Agregar filtros** y elige el filtro de formulario, encuesta, frase contenida o coincidencia exacta, según el disparador.
+</Step>
+<Step title="Selecciona o escribe varias opciones">
+En formularios y encuestas, haz clic en cada opción de la lista. En frases, escribe cada valor y presiona **Enter** después de cada uno para convertirlo en una etiqueta dentro del campo.
+</Step>
+<Step title="Guarda y publica">
+Guarda el disparador y publica el flujo. Prueba con un contacto de prueba usando una de las opciones para confirmar que entra al flujo.
+</Step>
+</Steps>
+
+## Buenas prácticas
+
+- **Agrupa variantes de escritura.** Los clientes escriben de muchas formas: agrega variantes con y sin acento, en singular y plural, o abreviadas ("info", "información").
+- **Evita frases demasiado cortas en "Contiene la frase".** Una frase como "si" puede aparecer dentro de muchas palabras y activar el flujo por error.
+- **Usa un solo disparador cuando la acción es la misma.** Si varios formularios llevan al mismo seguimiento, un disparador con selección múltiple es más fácil de mantener que varios disparadores iguales.
+- **Separa los flujos cuando la respuesta debe ser distinta.** Si cada formulario necesita un mensaje diferente, crea disparadores o ramas separadas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿El contacto tiene que cumplir todas las opciones?">
+No. Las opciones de un mismo filtro funcionan como "o": con que se cumpla una, el contacto entra al flujo.
+</Accordion>
+<Accordion title="¿Cómo quito una frase que agregué por error?">
+Haz clic en la **x** de la etiqueta de esa frase dentro del campo y guarda el disparador.
+</Accordion>
+<Accordion title="¿Puedo combinar este filtro con otros filtros del disparador?">
+Sí. Puedes sumar otros filtros al mismo disparador, por ejemplo una etiqueta o una página específica. En ese caso, el contacto debe cumplir cada filtro, y dentro del filtro con varias opciones le basta con cumplir una.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+Conoce todos los disparadores disponibles para tus flujos.
+</Card>
+<Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+Repasa los conceptos básicos de disparadores y acciones.
+</Card>
+</CardGroup>

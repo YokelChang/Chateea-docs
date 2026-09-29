@@ -1,0 +1,104 @@
+---
+title: "Cobrar pagos en calendarios"
+description: "Cobra por adelantado o guarda la tarjeta del cliente al reservar una cita, con la pasarela de pago que prefieras."
+icon: "credit-card"
+---
+
+Puedes cobrar a tus clientes en el momento en que reservan una cita. Es muy útil si tu negocio necesita asegurar el pago (o al menos una tarjeta) para apartar un horario: consultas pagadas, sesiones, clases o servicios con alta tasa de inasistencia.
+
+## Formas de cobrar en la reserva
+
+En la configuración de pagos del calendario eliges entre cobrar al reservar o solo guardar la tarjeta del cliente.
+
+### Cobrar por adelantado
+
+Activa **Cobrar por adelantado** (Charge upfront) para cobrar durante la reserva. El cobro depende del monto final:
+
+- Si el monto final es **mayor que 0**, el cliente ingresa sus datos de pago y paga el monto final.
+- Si el monto configurado es **0**, no se pide tarjeta ni se cobra.
+- Si un cupón deja el monto en **0**, no se pide tarjeta ni se cobra.
+- Si un cupón reduce el monto pero queda un saldo mayor que 0, el cliente paga el monto con descuento.
+
+### Guardar la tarjeta
+
+Activa **Guardar tarjeta** (Collect Card on File) si quieres guardar la tarjeta del cliente sin cobrarle al reservar:
+
+- El cliente ingresa su tarjeta durante la reserva.
+- La tarjeta queda guardada de forma segura para usos futuros.
+- No se cobra nada ni se crea ninguna transacción en ese momento.
+
+<Tip>
+Guardar la tarjeta es una buena opción para reducir inasistencias sin frenar la reserva: el cliente no paga por adelantado, pero tú tienes un método de pago registrado si tu política lo requiere.
+</Tip>
+
+### Resumen
+
+| Configuración | Monto final | ¿Se pide tarjeta? | ¿Se cobra? |
+| --- | --- | --- | --- |
+| Guardar tarjeta | Sin cobro por adelantado | Sí | No |
+| Cobrar por adelantado | Mayor que 0 | Sí | Sí |
+| Cobrar por adelantado | Configurado en 0 | No | No |
+| Cobrar por adelantado con cupón | Reducido a 0 | No | No |
+| Cobrar por adelantado con cupón | Mayor que 0 | Sí | Sí, el monto con descuento |
+
+## Pasarelas de pago compatibles
+
+Los calendarios pueden cobrar con **Stripe**, **NMI**, **Authorize.net**, **Razorpay**, **Square** y **PayPal**. Todas funcionan en todos los tipos de calendario.
+
+<Note>
+Razorpay, NMI y Square no están disponibles en el widget clásico ni en el menú de servicios.
+</Note>
+
+## Configurar el cobro en un calendario
+
+<Steps>
+  <Step title="Conecta una pasarela de pago">
+    Ve a **Pagos → Integraciones** y conecta la pasarela que vas a usar. Si conectas varias, elige cuál es la **predeterminada**: solo esa se usará para cobrar en los calendarios.
+  </Step>
+  <Step title="Abre el calendario">
+    Ve a **Calendarios → Configuración de calendarios**. Edita un calendario existente (tres puntos) o crea uno nuevo.
+  </Step>
+  <Step title="Activa los pagos">
+    En **Formularios y pagos**, enciende **Aceptar pagos**.
+  </Step>
+  <Step title="Completa los datos del cobro">
+    - **Monto**, con su moneda.
+    - **Descripción** del cobro.
+    - **Modo de pago**: prueba o real. Con el interruptor a la derecha, el calendario cobra en **modo real**. Con el interruptor a la izquierda, queda en **modo de prueba**.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda el calendario y haz una reserva en modo de prueba antes de pasar a modo real.
+  </Step>
+</Steps>
+
+<Warning>
+Si no ves las opciones de pago en el calendario, es porque aún no conectaste ninguna pasarela. Hazlo primero en **Pagos → Integraciones**.
+</Warning>
+
+## Conectar Square
+
+1. Inicia sesión en tu cuenta de Square en el mismo navegador y mantén la sesión abierta.
+2. En Chateea, ve a **Pagos → Integraciones** y haz clic en **Conectar** en Square (modo real).
+3. Chateea detecta la cuenta con la sesión iniciada y la conecta automáticamente.
+
+## Limitaciones
+
+- Los pagos parciales (anticipos) no funcionan con calendarios de citas recurrentes.
+- Si conectas varias pasarelas, solo se usa la predeterminada.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="PayPal en calendarios" icon="paypal" href="/calendarios/paypal-en-calendarios">
+    Acepta PayPal al reservar citas.
+  </Card>
+  <Card title="Cobrar un anticipo en reservas" icon="money-bill" href="/calendarios/cobrar-anticipo-en-reservas">
+    Cobra solo una parte al reservar.
+  </Card>
+  <Card title="Conecta Stripe" icon="stripe" href="/primeros-pasos/conecta-stripe">
+    Conecta tu cuenta de Stripe a Chateea.
+  </Card>
+  <Card title="Estilo del widget: Clásico o Neo" icon="palette" href="/calendarios/estilo-del-widget-clasico-o-neo">
+    Qué estilo de reserva te conviene.
+  </Card>
+</CardGroup>

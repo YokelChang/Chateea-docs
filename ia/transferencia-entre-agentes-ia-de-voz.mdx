@@ -1,0 +1,124 @@
+---
+title: "Transferencia entre agentes de IA de voz"
+description: "Pasa una llamada en curso a otro agente de IA de voz especializado sin colgar ni marcar otro número."
+icon: "shuffle"
+---
+
+La **transferencia entre agentes** (Agent Transfer) permite que un agente de IA de voz pase una llamada en curso a otro agente de IA de voz, sin colgar ni marcar otro número. Así puedes tener agentes especializados (ventas, soporte, cobros, reservas o un idioma concreto) y enviar a cada persona al que mejor la puede atender, sin que tenga que empezar de nuevo.
+
+## Cómo funciona
+
+La transferencia usa un modelo de **agente raíz** y **agentes de destino**:
+
+- **Agente raíz:** el agente que atiende la llamada al inicio y decide si hay que transferirla.
+- **Agente de destino:** el agente que recibe la conversación y la continúa con su propia indicación y configuración.
+- **Condición de transferencia:** la intención o situación que le indica al agente raíz cuándo transferir.
+- **Mensaje de traspaso:** un mensaje hablado opcional para avisar a la persona del cambio.
+
+Por ejemplo, si alguien pregunta por precios, el agente raíz puede pasar la llamada a un agente especializado en precios, que continúa la conversación.
+
+## Beneficios
+
+- **Experiencia fluida:** la persona sigue en la misma llamada mientras cambia el agente.
+- **Respuestas más precisas:** un agente enfocado se confunde menos que uno con una indicación gigante.
+- **Menor consumo:** cada especialista carga solo su propio contexto, lo que puede reducir el costo frente a un único agente enorme.
+- **Especialistas reutilizables:** el mismo agente de precios puede ser destino de varios agentes raíz.
+- **Resultados unificados:** la extracción de datos, los flujos de trabajo y las notificaciones de todos los agentes que participaron se combinan al final de la llamada.
+
+## Transferencia entre agentes o transferencia de llamada
+
+| Tipo | Destino | Requiere número | Cuándo usarla |
+| --- | --- | --- | --- |
+| Transferencia entre agentes | Otro agente de IA de voz | No | Otro agente de IA debe continuar la conversación. |
+| Transferencia de llamada | Una persona de tu equipo | Sí | Alguien de tu equipo debe hablar con quien llama. |
+
+Usa la **transferencia entre agentes** cuando la persona pregunta por precios, quiere agendar, tiene una duda de soporte o necesita otro idioma. Usa la **transferencia de llamada** cuando hace falta una persona: un cliente potencial de alto valor, un tema delicado o una solicitud expresa de hablar con alguien.
+
+## Condiciones y mensajes de traspaso
+
+Cada configuración admite **hasta tres agentes de destino**, y cada uno necesita su propia condición en el campo **Cuándo transferir a este agente** (When to transfer to this agent). Escríbela en lenguaje natural:
+
+- "Cuando la persona pregunte por precios."
+- "Cuando quiera agendar una cita."
+- "Cuando necesite ayuda en inglés."
+- "Cuando pida soporte técnico."
+
+<Warning>
+Evita los bucles de transferencia. Si dos agentes se transfieren la llamada entre sí en círculo, la llamada puede fallar.
+</Warning>
+
+Si activas **Hablar durante la ejecución** (Speak During Execution), el agente dirá un mensaje breve al transferir, por ejemplo: "Te comunico con nuestro especialista en precios" o "Un momento, te paso con quien puede ayudarte a agendar". Si lo dejas desactivado, el cambio es invisible: la persona solo nota una pausa natural y la conversación continúa con otro agente.
+
+<Note>
+Solo suena el saludo del agente raíz al inicio de la llamada. Los agentes de destino no reproducen su saludo cuando reciben una transferencia.
+</Note>
+
+## Cómo configurarla
+
+<Steps>
+<Step title="Abre el agente raíz">
+Ve a **IA → IA de voz → Lista de agentes** y abre el agente que atenderá la llamada al inicio.
+</Step>
+<Step title="Agrega la acción">
+Haz clic en **+ Nueva acción** y elige **Transferencia entre agentes** (Agent Transfer).
+</Step>
+<Step title="Conecta el agente de destino">
+En la ventana de configuración, haz clic en **Conectar agente** y elige el agente de IA de voz que recibirá la llamada. Repite para agregar más destinos, hasta tres.
+</Step>
+<Step title="Escribe la condición">
+En **Cuándo transferir a este agente**, describe con claridad cuándo debe ocurrir la transferencia. Hazlo para cada destino.
+</Step>
+<Step title="Configura el mensaje de traspaso (opcional)">
+Activa **Hablar durante la ejecución** y escribe el mensaje que oirá la persona, o déjalo desactivado para una transferencia sin aviso. Configúralo por cada destino.
+</Step>
+<Step title="Revisa las transferencias entrantes">
+Usa **Ver transferencias entrantes** para saber qué agentes envían llamadas al agente seleccionado. Es útil cuando varios agentes raíz comparten el mismo destino.
+</Step>
+<Step title="Revisa los ajustes del agente raíz">
+Revisa **Duración máxima de la llamada**, **Horario de atención** y **Agente de IA como respaldo**. Estos ajustes del agente raíz controlan toda la cadena de transferencia; los mismos ajustes de los agentes de destino se ignoran durante la transferencia.
+</Step>
+<Step title="Guarda y prueba">
+Haz clic en **Guardar cambios**. Prueba cada condición por separado y revisa el registro, el resumen y la transcripción de la llamada.
+</Step>
+</Steps>
+
+## Auditar transferencias en los registros de llamadas
+
+Después de la llamada, ve a **IA → IA de voz** y revisa la tabla de registros:
+
+- Si hubo transferencia, la columna **Acciones activadas** muestra **Transferencia entre agentes**. Si hubo varias, verás el número, por ejemplo **(2)**.
+- **Resumen:** haz clic en **Resumen** en la fila de la llamada para ver la cadena de agentes: quién empezó, quién recibió la llamada y en qué orden. Pasa el cursor sobre un agente del diagrama para ver sus datos, o haz clic para abrir su configuración en otra pestaña.
+- **Transcripción:** haz clic en el ícono de transcripción. Verás marcado el punto exacto de la transferencia y el nombre del agente activo en cada tramo. Úsala para comprobar si la condición coincidió con lo que dijo la persona.
+
+Los resúmenes, transcripciones, extracción de datos, correos de resumen y disparadores de flujos de trabajo incluyen la actividad de todos los agentes que participaron. Los flujos posteriores a la llamada pueden activarse para el agente raíz y para cualquier agente de la cadena.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cuántos agentes de destino puedo conectar?">
+Hasta tres por configuración.
+</Accordion>
+<Accordion title="¿Esta función pasa la llamada a una persona?">
+No. Pasa la llamada de un agente de IA de voz a otro. Para enviarla a una persona de tu equipo, usa la transferencia de llamada.
+</Accordion>
+<Accordion title="¿Qué agente controla el horario y la duración máxima?">
+El agente raíz. Sus ajustes de horario de atención, duración máxima y respaldo aplican a toda la cadena.
+</Accordion>
+<Accordion title="¿Un agente de destino puede volver a transferir?">
+Puede tener su propia transferencia configurada, pero prueba bien las rutas para evitar bucles o transferencias repetidas.
+</Accordion>
+<Accordion title="¿Es lo mismo que el enrutamiento de llamadas entrantes?">
+No. El enrutamiento decide cómo llega la llamada al agente raíz. La transferencia entre agentes decide si esa conversación pasa a otro agente.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+Conoce cómo funcionan los agentes de IA de voz.
+</Card>
+<Card title="Registros de agentes de IA de voz" icon="list-check" href="/ia/registros-de-agentes-ia-de-voz">
+Revisa cada llamada paso a paso.
+</Card>
+</CardGroup>

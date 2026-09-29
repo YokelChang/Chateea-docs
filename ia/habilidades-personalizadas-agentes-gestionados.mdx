@@ -1,0 +1,167 @@
+---
+title: "Habilidades personalizadas para agentes gestionados"
+description: "Guarda instrucciones reutilizables y aplícalas a los agentes gestionados que las necesiten."
+icon: "wand-magic-sparkles"
+---
+
+Las habilidades personalizadas son instrucciones reutilizables que guardas una sola vez y aplicas a los agentes gestionados de tu cuenta que las necesiten. En lugar de repetir el mismo proceso, formato o regla de negocio en cada agente, creas la habilidad y la activas solo donde corresponde.
+
+El agente puede aplicar una habilidad automáticamente cuando la solicitud encaja con su propósito, o puedes elegirla tú en el chat escribiendo `/`.
+
+## Para qué sirven
+
+Una habilidad personalizada le enseña al agente **cómo** quiere tu negocio que se haga una tarea concreta. Algunos ejemplos:
+
+- Calificar leads con los criterios de tu empresa.
+- Redactar correos de seguimiento con un formato estándar.
+- Hacer resúmenes de reuniones siempre con la misma estructura.
+- Seguir un procedimiento interno.
+- Aplicar reglas propias de tu negocio a una tarea recurrente.
+
+<Note>
+  No confundas las habilidades personalizadas con las habilidades integradas de los agentes (acciones del CRM, búsquedas en la base de conocimiento, acciones externas). Esas le dan **capacidades** al agente; las personalizadas le dicen **cómo** hacer una tarea.
+</Note>
+
+## Ventajas
+
+- **Instrucciones reutilizables** para varios agentes.
+- **Comportamiento consistente:** todos siguen los mismos criterios, formatos y procesos.
+- **Mantenimiento más simple:** actualizas la habilidad una vez en lugar de reescribir cada agente.
+- **Control por agente:** activas o desactivas cada habilidad según el rol del agente.
+- **Aplicación automática** cuando la solicitud coincide con la descripción.
+- **Selección a demanda** con `/` en el chat.
+
+## Partes de una habilidad
+
+| Parte | Para qué sirve |
+| --- | --- |
+| **Nombre** | Identifica la habilidad en la biblioteca y en el selector `/` |
+| **Descripción** | Explica **cuándo** usarla; el agente se basa en ella para reconocer las solicitudes que encajan |
+| **Instrucciones** | Definen el proceso, las reglas, el formato de salida y cualquier otra indicación |
+
+Una buena descripción habla de las situaciones en las que aplica, no repite el nombre. Por ejemplo, para una habilidad "Calificador de leads": qué tipo de leads evalúa y qué resultado debe producir.
+
+Las instrucciones pueden incluir:
+
+- Pasos numerados.
+- Criterios de calificación.
+- Formato de salida obligatorio.
+- Reglas del negocio.
+- Restricciones o límites.
+- Datos que se deben recopilar.
+- Condiciones para escalar o hacer otra acción.
+
+## Habilidad, instrucciones del agente o base de conocimiento
+
+| Dónde ponerlo | Ideal para | Ejemplo |
+| --- | --- | --- |
+| **Habilidad personalizada** | Procesos concretos y reutilizables que pueden servir a uno o varios agentes | Pasos para calificar a un prospecto, formato de resumen de reunión |
+| **Instrucciones del agente** | Comportamiento general de un agente en particular | Tono, rol, límites generales |
+| **Base de conocimiento** | Información de consulta | Políticas, precios, productos, preguntas frecuentes |
+
+Por ejemplo, tu política de precios va en la base de conocimiento, mientras que los pasos exactos para calificar a un prospecto van en una habilidad.
+
+## Crear y administrar habilidades
+
+### Crear una habilidad
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio → Agentes gestionados** y abre el agente que quieres configurar.
+  </Step>
+  <Step title="Entra a las habilidades">
+    Abre **Habilidades personalizadas** (Custom skills) y selecciona **Administrar habilidades** (Manage skills).
+  </Step>
+  <Step title="Agrega la habilidad">
+    Haz clic en **Agregar habilidad** (Add skill) y completa el **nombre**, una **descripción** breve de cuándo usarla y las **instrucciones** detalladas.
+  </Step>
+  <Step title="Revisa y guarda">
+    Comprueba que los pasos, las reglas y el resultado esperado estén claros y guarda.
+  </Step>
+</Steps>
+
+La habilidad nueva queda activada automáticamente para el agente en el que la creaste.
+
+### Subir una habilidad desde un archivo
+
+Si ya tienes las instrucciones guardadas en un archivo:
+
+1. Abre **Administrar habilidades** y haz clic en **Subir habilidad** (Upload skill).
+2. Elige el archivo.
+3. Revisa que el nombre, la descripción y las instrucciones importadas representen bien el proceso.
+4. Guarda y actívala en los demás agentes que la necesiten.
+
+Los tipos de archivo admitidos son los que muestra la ventana de carga.
+
+### Activar o desactivar una habilidad en un agente
+
+1. Abre el agente y entra a **Habilidades personalizadas**.
+2. Busca la habilidad y actívala o desactívala para ese agente.
+3. Repite en los otros agentes que deban usarla o dejar de usarla.
+
+Desactivar una habilidad en un agente no la borra de la biblioteca compartida.
+
+### Editar una habilidad
+
+1. Abre **Administrar habilidades** y selecciona la habilidad.
+2. Actualiza la descripción o las instrucciones.
+3. Haz clic en **Guardar cambios**.
+
+### Eliminar una habilidad
+
+1. Abre **Administrar habilidades** y selecciona la habilidad.
+2. Haz clic en **Eliminar** y confirma.
+
+<Warning>
+  Elimina una habilidad solo si ya no la necesita ningún agente. Si solo quieres que un agente deje de usarla, desactívala en ese agente.
+</Warning>
+
+## Usar una habilidad en el chat
+
+Cuando ya sabes qué proceso quieres que siga el agente:
+
+1. Abre el chat del agente gestionado.
+2. Haz clic en el cuadro de mensaje y escribe `/`.
+3. Busca y selecciona la habilidad.
+4. Completa tu solicitud y envíala.
+
+## Buenas prácticas
+
+- Crea habilidades enfocadas en una sola tarea.
+- Si dos habilidades cubren situaciones parecidas, haz sus descripciones más específicas para que el agente sepa cuál aplicar.
+- Activa cada habilidad solo en los agentes cuyo rol la necesita.
+- Revisa la [actividad del agente](/ia/actividad-de-agentes-gestionados) para confirmar qué habilidades usó en cada ejecución.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Una habilidad puede usarse en varios agentes?">
+    Sí. Están pensadas para compartirse entre los agentes gestionados de tu cuenta, y tú decides en cuáles se activa.
+  </Accordion>
+  <Accordion title="¿El agente necesita el comando / para usar una habilidad?">
+    No. El agente puede aplicar automáticamente una habilidad activada cuando la solicitud coincide con su descripción. El selector `/` es para elegirla tú de forma explícita.
+  </Accordion>
+  <Accordion title="¿Por qué es tan importante la descripción?">
+    Porque le indica al agente cuándo usar la habilidad y la distingue de las demás.
+  </Accordion>
+  <Accordion title="¿Guardo los datos de mi empresa en una habilidad?">
+    Normalmente no. La información de consulta va mejor en la base de conocimiento. Las habilidades son para procesos, reglas, formatos e instrucciones de tareas.
+  </Accordion>
+  <Accordion title="¿Son lo mismo que las habilidades de Ask AI?">
+    Cumplen una función parecida (guardar instrucciones reutilizables), pero pertenecen a experiencias distintas. Ask AI tiene su propia biblioteca de habilidades; este artículo trata solo las de los agentes gestionados.
+  </Accordion>
+  <Accordion title="¿Puedo desactivar una habilidad sin borrarla?">
+    Sí. Usa el control por agente para que un agente deje de usarla y siga disponible para los demás.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectores MCP personalizados" icon="plug" href="/ia/conectores-mcp-agentes-gestionados">
+    Amplía tus agentes con herramientas externas.
+  </Card>
+  <Card title="Diferencias entre productos de IA" icon="scale-balanced" href="/ia/diferencias-agentes-gestionados-ia-conversacional-ask-ai">
+    Agentes gestionados, IA conversacional y Ask AI.
+  </Card>
+</CardGroup>

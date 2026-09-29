@@ -1,0 +1,119 @@
+---
+title: "Registros de agentes: revisa qué hizo tu IA"
+description: "Revisa cada conversación, decisión y paso de tus agentes de IA para entender por qué respondieron así y mejorarlos."
+icon: "clipboard-list"
+---
+
+Los registros de agentes (Agent Logs) reúnen en un solo lugar todo lo que hicieron tus agentes de IA: cada conversación, cada decisión y cada paso que ejecutaron. Sirven para entender por qué un agente respondió de cierta forma, encontrar dónde falló algo y mejorarlo con datos en lugar de suposiciones.
+
+Hoy están disponibles para **Agent Studio** y la **IA de voz**. Otros productos de IA se irán sumando.
+
+## Para qué te sirven
+
+- **Visibilidad centralizada:** revisas la actividad de tus agentes en un solo lugar, no solo en las pruebas.
+- **Diagnóstico más rápido:** vas de una vista general a una conversación concreta y de ahí a un paso específico.
+- **Contexto para depurar:** comparas la respuesta del agente con la secuencia de pasos que la produjo.
+- **Rendimiento:** los tiempos por paso te muestran qué partes del agente son lentas.
+- **Confianza:** inspeccionas el detalle técnico cuando ajustas instrucciones, lógica, variables o herramientas.
+
+## Los tres niveles de detalle
+
+Los registros están organizados para que bajes de lo general a lo particular.
+
+### Nivel 1: actividad general
+
+Una lista de las interacciones recientes para ubicar rápido la que quieres revisar.
+
+| Elemento | Qué muestra o permite |
+| --- | --- |
+| **Fecha y hora** | Cuándo ocurrió la interacción |
+| **Nombre del agente** | Qué agente la atendió |
+| **ID del agente** | El identificador único del agente |
+| **Producto de IA** | A qué producto pertenece la actividad |
+| **Canal** | Por dónde llegó la interacción |
+| **Estado** | El resultado o estado actual |
+| **Filtros** | Por producto de IA, nombre del agente, canal o estado |
+| **Búsqueda por contacto** | Encuentra las interacciones de un contacto específico |
+| **Ordenar** | Reordena los resultados para ver primero lo más relevante |
+
+### Nivel 2: conversación y línea de tiempo
+
+Al abrir una interacción ves la conversación en formato de chat junto a una **línea de tiempo de ejecución**: el recorrido ordenado que siguió el agente desde el mensaje del cliente hasta la respuesta final.
+
+Te ayuda a responder preguntas como por qué el agente contestó así, en qué momento cambió una decisión o cuándo intervino una herramienta.
+
+<Info>
+  En algunas ejecuciones de Agent Studio, la línea de tiempo incluye una **lista de tareas** para trabajos de varios pasos. Cada tarea tiene un nombre descriptivo y verás cuál está activa y cuáles terminaron, incluso si el agente agregó tareas o cambió el plan a mitad de camino.
+</Info>
+
+### Nivel 3: detalle de cada paso
+
+Al seleccionar un paso de la línea de tiempo ves su información técnica:
+
+- El modelo usado en ese paso.
+- La latencia y el tiempo de ejecución.
+- La fecha y hora exactas.
+- La entrada y la salida del paso.
+- Las instrucciones usadas, cuando aplica.
+- Otros metadatos técnicos útiles para depurar.
+
+Puedes ver la salida en formato JSON o en una vista más legible, y copiarla como JSON para analizarla o compartirla. En ejecuciones de varios pasos también verás las tareas con sus transiciones, para confirmar el orden, qué se completó y dónde cambió el avance.
+
+## Cómo usar los registros
+
+No hace falta instalar ni configurar nada. Solo necesitas agentes con actividad.
+
+<Steps>
+  <Step title="Abre los registros">
+    Ve a **Agentes de IA → Registros de agentes** (Agent Logs).
+  </Step>
+  <Step title="Encuentra la interacción">
+    Revisa la lista de actividad y usa los filtros de **nombre del agente**, **producto de IA**, **canal** o **estado** para acotar los resultados.
+  </Step>
+  <Step title="Abre la conversación">
+    Revisa el chat junto a la línea de tiempo de ejecución.
+  </Step>
+  <Step title="Inspecciona los pasos">
+    Selecciona un mensaje o un paso para ver su detalle técnico. Usa esa información para ajustar las instrucciones, la lógica o las herramientas del agente.
+  </Step>
+  <Step title="Prueba y vuelve a revisar">
+    Después de hacer cambios, prueba el agente de nuevo y confirma el resultado en los registros.
+  </Step>
+</Steps>
+
+## Pestaña de métricas
+
+La pestaña **Métricas** resume los registros en un panel personalizable para ver volumen, rendimiento y tendencias de todos tus agentes, en vez de revisar sesión por sesión. Con **Editar diseño** puedes agregar, quitar, mover y cambiar el tamaño de los widgets, y guardar varios diseños.
+
+Te permite seguir indicadores como conversaciones atendidas, mensajes de IA, tiempo promedio de respuesta, agentes más activos, acciones más usadas, horas pico y actividad por canal. Todos los detalles están en [Métricas de los registros de agentes](/ia/metricas-registros-de-agentes).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Para qué sirven los registros de agentes?">
+    Para entender cómo manejó un agente una interacción, combinando el contexto de la conversación con el detalle de cada paso ejecutado.
+  </Accordion>
+  <Accordion title="¿Es lo mismo que la línea de tiempo de ejecución de las pruebas de Agent Studio?">
+    No. Los registros son un historial centralizado de la actividad real. La línea de tiempo de mensajes de Agent Studio forma parte de la experiencia de prueba y depuración del agente.
+  </Accordion>
+  <Accordion title="¿Cuándo conviene usarlos?">
+    Cuando quieras investigar cómo respondió un agente, revisar el recorrido de una interacción o encontrar el paso exacto donde algo salió mal.
+  </Accordion>
+  <Accordion title="¿Sirven para interacciones lentas o complejas?">
+    Sí. El detalle por paso muestra tiempos y contexto técnico para encontrar cuellos de botella.
+  </Accordion>
+  <Accordion title="¿Funcionan con todos los productos de IA?">
+    Por ahora con Agent Studio y la IA de voz. Se irán sumando otros productos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Métricas de los registros de agentes" icon="chart-line" href="/ia/metricas-registros-de-agentes">
+    Panel de indicadores de todos tus agentes.
+  </Card>
+  <Card title="Agentes personalizados" icon="wand-magic-sparkles" href="/ia/agentes-personalizados">
+    Crea y ajusta tus agentes.
+  </Card>
+</CardGroup>

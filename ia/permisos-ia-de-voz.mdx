@@ -1,0 +1,95 @@
+---
+title: "Permisos de la IA de voz para tu equipo"
+description: "Controla quién puede crear y editar agentes de voz, modificar sus objetivos o ver el panel de llamadas."
+icon: "user-lock"
+---
+
+Los permisos detallados de la IA de voz te permiten decidir quién puede ver, configurar y analizar tus agentes de voz. En lugar de dar acceso total o ninguno, puedes separar quién crea agentes, quién ajusta sus objetivos y quién solo ve las métricas. Así proteges la lógica de tus agentes y cada persona de tu equipo trabaja con el acceso justo que necesita.
+
+## Para qué te sirve
+
+- **Evitar cambios accidentales:** cada persona tiene solo el acceso que necesita, y nadie modifica la lógica de un agente por error.
+- **Claridad en el equipo:** los permisos de panel, objetivos y configuración están separados.
+- **Incorporar gente con facilidad:** asignas el acceso adecuado a soporte, capacitación o administración a medida que crece tu equipo.
+- **Límites más firmes:** los permisos controlan también lo que se ve. Quien no tiene acceso a la IA de voz no ve sus opciones en los menús.
+
+## Cómo configurar los permisos
+
+<Steps>
+  <Step title="Abre tu equipo">
+    Ve a **Configuración → Mi equipo** (My Staff), busca a la persona y haz clic en el ícono de lápiz para editarla.
+  </Step>
+  <Step title="Ve a Roles y permisos">
+    En el menú de la izquierda de la ficha, entra en **Roles y permisos** y baja hasta **Agentes de IA**.
+  </Step>
+  <Step title="Activa o desactiva los permisos">
+    Configura los interruptores según el rol de la persona:
+    - Agentes de IA (control principal)
+    - Ver y gestionar agentes de IA de voz
+    - Ver objetivos del agente de IA de voz
+    - Ver y gestionar objetivos del agente de IA de voz
+    - Ver el panel de la IA de voz
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para aplicar los cambios.
+  </Step>
+</Steps>
+
+## Qué permite cada permiso
+
+| Permiso | Si está activado | Si está desactivado | Ideal para |
+| --- | --- | --- | --- |
+| **Ver y gestionar agentes de IA de voz** | Crear, editar y eliminar agentes; asignar números, cambiar ajustes y configurar el comportamiento. Habilita los permisos de objetivos. | La lista de agentes se oculta por completo y no se pueden crear ni modificar agentes. Los permisos de objetivos se desactivan. El panel no se ve afectado. | Administradores y responsables de la IA. |
+| **Ver objetivos del agente** (solo lectura) | Acceso de lectura a la pestaña de objetivos del agente, sin riesgo de cambios. | La pestaña de objetivos no se ve y no hay visibilidad sobre cómo están configurados los agentes. | Soporte o capacitación. |
+| **Ver y gestionar objetivos del agente** | Configurar base de conocimiento, flujos posteriores a la llamada, campos de extracción de datos y acciones avanzadas, en modo básico y avanzado. | La pestaña de objetivos se oculta al editar. Se pueden definir objetivos al crear el agente, pero no cambiarlos después. | Usuarios avanzados que gestionan la lógica de la IA. |
+| **Ver el panel de la IA de voz** | Acceso al panel de llamadas de prueba y en vivo, con transcripciones, resúmenes, grabaciones y métricas. | El panel se oculta en todas partes, incluida la ficha de cada agente. No se exponen registros, datos sensibles ni métricas. | Supervisores y analistas. |
+
+<Note>
+  **Ver y gestionar agentes de IA de voz** es el permiso principal para administrar agentes. El permiso del panel es independiente: alguien puede ver las métricas sin poder editar agentes, y al revés.
+</Note>
+
+<Note>
+  Para [actualizar un agente a la nueva experiencia de IA de voz](/ia/actualizar-agente-nueva-ia-de-voz) se necesita el permiso **Ver y gestionar objetivos del agente**. Con permiso de solo lectura, los objetivos se ven pero no se pueden cambiar.
+</Note>
+
+## Visibilidad y aplicación inmediata
+
+- **Menús ocultos:** si una persona no tiene permisos de IA de voz, no ve las opciones de IA de voz ni en el menú de IA ni en la barra de configuración.
+- **Aplicación en tiempo real:** si le quitas los permisos a alguien mientras está usando la IA de voz, Chateea bloquea de inmediato cualquier acción nueva y le muestra un mensaje de **Permiso denegado**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo copiar los mismos permisos a varios usuarios?">
+    Sí. En **Configuración → Mi equipo**, abre el usuario al que quieres aplicar los permisos, haz clic en **Copiar permisos** (arriba a la derecha) y elige el usuario del que quieres copiarlos. Se copian todos los permisos, no solo los de IA de voz.
+  </Accordion>
+  <Accordion title="¿Cómo pruebo un conjunto de permisos sin riesgo?">
+    Crea un usuario temporal, aplícale los permisos y comprueba que ve exactamente lo que esperas antes de aplicarlos al resto del equipo.
+  </Accordion>
+  <Accordion title="¿Estos permisos afectan a los bots de IA conversacional?">
+    No. Solo controlan los agentes de voz. La IA conversacional tiene sus propios permisos.
+  </Accordion>
+  <Accordion title="¿Por qué no veo la IA de voz en el menú?">
+    Tu rol probablemente no incluye permisos de IA de voz. Pide a un administrador de tu cuenta que los active en **Configuración → Mi equipo → Roles y permisos → Agentes de IA**.
+  </Accordion>
+  <Accordion title="¿Por qué me aparece Permiso denegado mientras edito?">
+    Es posible que te hayan cambiado los permisos mientras trabajabas. Recarga la página y confirma tus permisos con un administrador.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registros de llamadas" icon="list" href="/ia/registros-de-llamadas-ia-de-voz">
+    Lo que puede ver quien tiene acceso al panel.
+  </Card>
+  <Card title="Carpetas de agentes de voz" icon="folder" href="/ia/carpetas-de-agentes-de-voz">
+    Organiza tus agentes por equipo, cliente o campaña.
+  </Card>
+  <Card title="Base de conocimiento para IA de voz" icon="book" href="/ia/base-de-conocimiento-ia-de-voz">
+    Una de las opciones que controla el permiso de objetivos.
+  </Card>
+  <Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+    Qué es la IA de voz y qué puede hacer.
+  </Card>
+</CardGroup>

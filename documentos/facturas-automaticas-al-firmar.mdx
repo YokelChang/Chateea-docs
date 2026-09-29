@@ -1,0 +1,131 @@
+---
+title: "Generar facturas automáticamente al firmar un documento"
+description: "Genera una factura al momento de la firma para que tu cliente firme y pague en el mismo paso."
+icon: "file-invoice-dollar"
+---
+
+Con los documentos "2 en 1" de Chateea, tu cliente firma el contrato y paga en el mismo paso. Si el documento incluye una lista de productos, al firmarse se genera automáticamente una factura (única o recurrente) y el firmante principal puede ser redirigido a pagarla en ese momento. Menos pasos para el cliente y cobros más rápidos para ti.
+
+## Enviar un documento que genera factura
+
+<Steps>
+  <Step title="Crea el documento">
+    Ve a **Pagos → Documentos y contratos → Nuevo documento**.
+  </Step>
+  <Step title="Agrega al firmante principal">
+    Añade al **firmante principal**: es quien recibe la factura y quien paga.
+  </Step>
+  <Step title="Agrega la lista de productos">
+    Inserta una **Lista de productos**. Con **Mostrar imagen en la lista** decides si se ve la foto del producto, y si creas un producto desde el editor puedes subir su imagen. Desde las propiedades de la derecha puedes marcar un producto como opcional y permitir que se edite su cantidad.
+  </Step>
+  <Step title="Configura el cobro">
+    En la sección **Pagos** del panel izquierdo, ajusta **Pago directo**, **Enviar factura** y **Pago automático** (ver la tabla de configuraciones). Si hay productos recurrentes, elige también la frecuencia de la factura.
+  </Step>
+  <Step title="Envía el documento">
+    Haz clic en **Enviar**.
+  </Step>
+</Steps>
+
+## Qué tipo de factura se genera
+
+| Productos en la lista | Factura generada |
+| --- | --- |
+| Solo productos de pago único | Factura única |
+| Al menos un producto recurrente | Factura recurrente |
+| Productos únicos y recurrentes marcados como opcionales | Depende de lo que seleccione el cliente. Si solo elige productos únicos, la factura es única. |
+
+<Note>
+Un documento solo puede tener **una frecuencia de cobro recurrente**. Configúrala en los ajustes de frecuencia de la factura.
+</Note>
+
+## Configuraciones
+
+| Opción | Activada | Desactivada |
+| --- | --- | --- |
+| **Pago directo** | Si existe una factura en el momento de la firma, el firmante principal va directo a la página de pago al firmar. También se envía el correo con la factura. | No hay redirección. El cliente paga desde la factura que recibe por correo, o tú la envías después desde borradores. |
+| **Enviar factura** | La factura se envía por correo automáticamente cuando se genera (al firmar o según el calendario). | La factura queda como **borrador** para que la revises y la envíes manualmente. |
+| **Pago automático** | Guarda la tarjeta (en los proveedores compatibles) y cobra automáticamente las siguientes facturas de la suscripción o del calendario de pagos. | El cliente paga cada factura manualmente. |
+
+El pago automático afecta a los cobros recurrentes. Los productos de pago único se cobran en el pago inmediato.
+
+<Warning>
+Las plantillas de Documentos y contratos no tienen un interruptor de modo de prueba. Si quieres hacer pruebas, usa una experiencia de pago que admita modo de prueba (como facturas o enlaces de pago) o la configuración de pruebas de tu proveedor de pagos.
+</Warning>
+
+## Qué pasa al firmar
+
+| Situación | Resultado |
+| --- | --- |
+| Factura única | El firmante principal va a la factura para pagar de inmediato. |
+| Recurrente que empieza al firmar | El firmante principal va a pagar la primera factura de inmediato. |
+| Recurrente que empieza más adelante | No hay redirección. La primera factura se crea y se envía según el calendario. |
+
+Solo el **firmante principal** es redirigido a pagar. Los demás firmantes solo firman. Si **Enviar factura** está activado, también sale el correo con la factura.
+
+## Automatizarlo con una plantilla y un flujo
+
+<Steps>
+  <Step title="Crea la plantilla">
+    Ve a **Pagos → Documentos y contratos → Plantillas → Nueva plantilla**.
+  </Step>
+  <Step title="Agrega firma y productos">
+    Inserta los campos de **Firma** y una **Lista de productos**. Las etiquetas de tipo (único o recurrente) se muestran automáticamente.
+  </Step>
+  <Step title="Define el inicio del cobro recurrente">
+    Si hay productos recurrentes, elige si el calendario empieza **al firmar** o en una **fecha o día futuro**.
+  </Step>
+  <Step title="Configura el cobro">
+    Ajusta **Pago directo**, **Enviar factura** y **Pago automático**, y guarda la plantilla.
+  </Step>
+  <Step title="Envíala con un flujo">
+    En **Automatización → Flujos de trabajo**, agrega la acción **Enviar documentos y contratos** y selecciona la plantilla. Cuando el flujo se dispara, el firmante recibe el documento y, al firmar, se aplica la misma lógica de redirección.
+  </Step>
+</Steps>
+
+## Seguimiento
+
+- **Pagos → Documentos y contratos**: estado del documento, de la firma y del pago en un solo lugar.
+- **Pagos → Facturas**: cada factura con su estado de pago, el avance del calendario recurrente y los resultados del pago automático.
+
+## Casos especiales
+
+- **Ejemplo semanal**: si el calendario es "cada jueves" y la firma se completa un jueves, la primera factura se genera de inmediato y se aplica la redirección. Si se firma otro día, la primera factura sale el jueves siguiente.
+- **Varios destinatarios**: solo el firmante principal es redirigido a pagar.
+- **Productos mezclados**: los productos únicos se cobran en la primera factura y los recurrentes siguen su calendario.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mi cliente no fue redirigido al pago después de firmar?">
+    O bien **Pago directo** está desactivado, o bien no había una factura en el momento de la firma (por ejemplo, un cobro recurrente que empieza más adelante). Activa **Pago directo** y, si es recurrente, configura el inicio **al firmar**.
+  </Accordion>
+  <Accordion title="¿Dónde veo el avance?">
+    En **Documentos y contratos** ves el estado del documento, y en **Facturas** el estado de cada factura, los calendarios y los resultados del pago automático.
+  </Accordion>
+  <Accordion title="¿Puedo combinar productos únicos y recurrentes?">
+    Sí. Las etiquetas de la lista de productos muestran el tipo de cada uno. Los únicos se cobran primero y los recurrentes continúan según el calendario.
+  </Accordion>
+  <Accordion title="Tenía un calendario de pagos en el documento, pero no se generó la factura">
+    Suele ocurrir cuando una de las fechas del calendario queda después de la fecha de vencimiento de la factura, algo común si el primer pago se configuró con una fecha personalizada. Configura el primer pago como **Al firmar el firmante principal** para que el calendario se alinee y la factura se genere.
+  </Accordion>
+  <Accordion title="¿Puedo enviar facturas en modo de prueba desde una plantilla?">
+    No. Las plantillas de Documentos y contratos no tienen interruptor de modo real o de prueba. Para probar cobros, usa enlaces de pago o facturas con modo de prueba, o la configuración de pruebas de tu proveedor.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Presupuestos con artículos opcionales" icon="list-check" href="/documentos/presupuestos-con-articulos-opcionales">
+    Deja que el cliente elija extras.
+  </Card>
+  <Card title="Cómo crear facturas recurrentes" icon="rotate" href="/pagos-facturas/facturas-recurrentes">
+    Cobros periódicos desde Pagos.
+  </Card>
+  <Card title="Configurar proveedores de pago" icon="credit-card" href="/pagos-facturas/configurar-proveedores-pago">
+    Conecta Stripe, PayPal y más.
+  </Card>
+  <Card title="Enviar plantillas con flujos de trabajo" icon="diagram-project" href="/documentos/enviar-plantillas-con-flujos">
+    Automatiza el envío de contratos.
+  </Card>
+</CardGroup>

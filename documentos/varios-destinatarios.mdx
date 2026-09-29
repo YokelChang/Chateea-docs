@@ -1,0 +1,74 @@
+---
+title: "Varios destinatarios en un mismo documento"
+description: "Envía un mismo documento a varios firmantes y destinatarios en copia, cada uno con sus propios campos."
+icon: "users"
+---
+
+Un mismo contrato muchas veces necesita más de una firma: dos socios, el cliente y su contador, o el cliente y alguien de tu equipo. En Chateea puedes enviar un solo documento a varios destinatarios, cada uno con sus propios campos de firma, agregar personas que solo reciben copia y firmar tú mismo dentro del mismo documento.
+
+## Cómo funciona
+
+### Firmantes y destinatarios en copia
+
+- Un destinatario con **al menos un campo de firma** asignado es un **firmante**.
+- Un destinatario **sin campos de firma** es un **destinatario en copia (CC)**: recibe el documento final, pero no firma.
+- Puedes incluir a un usuario de tu equipo (por ejemplo, quien envía el documento) como uno de los firmantes.
+
+### Un enlace único para cada firmante
+
+Cada firmante recibe su propio enlace, que lo lleva directo a su parte del documento. Así cada persona ve y firma solo los campos que le corresponden.
+
+### PDF final y certificado de firma
+
+Cuando todos los firmantes firman (y los destinatarios en copia lo ven), Chateea genera un PDF final con todas las firmas. Junto al PDF se crea un **certificado de firma** que registra, por cada firmante:
+
+- Dirección IP.
+- Ubicación geográfica, cuando es posible obtenerla.
+- Fecha y hora en que vio y en que firmó su parte.
+
+### Destinatario principal
+
+El **primer destinatario que agregas** es el **destinatario principal**. Esto importa porque:
+
+- Los campos personalizados del documento (nombre, dirección, etc.) se rellenan con los datos de su contacto.
+- Si tienes activada la creación automática de facturas, la factura se genera a su nombre cuando todas las partes firman o aceptan.
+
+## Agregar varios destinatarios
+
+<Steps>
+  <Step title="Abre o crea el documento">
+    Ve a **Pagos → Documentos y contratos** y crea un documento nuevo o edita una plantilla.
+  </Step>
+  <Step title="Agrega los destinatarios">
+    En la sección **Destinatarios**, añade a todos los contactos que participan. Agrega primero a quien debe recibir la factura y cuyos datos deben aparecer en el documento.
+  </Step>
+  <Step title="Asigna los campos de firma">
+    Arrastra los campos de firma, iniciales o fecha y asígnalos a cada firmante con la opción **Para ser firmado por** del panel de propiedades.
+  </Step>
+  <Step title="Deja sin campos a quien solo debe recibir copia">
+    Si un contacto no tiene campos asignados, recibirá el documento finalizado como destinatario en copia.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- **Cuida el orden**: el primer destinatario define la factura y los datos del documento. Si te equivocas, reordena antes de enviar.
+- **Avisa a los destinatarios en copia**: explícales que recibirán una copia de solo lectura y que solo los firmantes deben actuar.
+- **Revisa los campos antes de enviar**: confirma que cada firmante tiene todos sus campos de firma y fecha en el lugar correcto. Si falta un campo obligatorio, el documento no podrá completarse.
+- **Verifica el certificado en contratos importantes**: descárgalo y revisa que las IP, ubicaciones y horas coincidan con lo esperado, sobre todo si firman desde distintas zonas horarias o desde el celular.
+- **Si un firmante no responde**: el documento queda pendiente en **Esperando a otros**. Reenvía el recordatorio o cancela y reasigna los campos.
+
+<Tip>
+Si necesitas que las personas firmen en un orden determinado (por ejemplo, primero el cliente y después tu gerente), activa el orden de firma al enviar el documento.
+</Tip>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Orden de firma de los destinatarios" icon="list-ol" href="/documentos/orden-de-firma">
+    Define quién firma primero.
+  </Card>
+  <Card title="Facturas automáticas al firmar" icon="file-invoice-dollar" href="/documentos/facturas-automaticas-al-firmar">
+    Genera la factura para el destinatario principal.
+  </Card>
+</CardGroup>

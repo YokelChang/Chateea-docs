@@ -1,0 +1,120 @@
+---
+title: "Probar agentes de IA de voz desde el navegador"
+description: "Habla con tu agente de IA de voz desde el navegador, sin número de teléfono, para validar indicaciones, flujo y acciones."
+icon: "headset"
+---
+
+La **llamada web** (Web Call) te permite hablar con tu agente de IA de voz directamente desde el navegador, sin comprar ni asignar un número de teléfono. Es la forma más rápida de validar la indicación, el flujo de la conversación y las acciones del agente mientras lo configuras, antes de pasar a pruebas con un número real.
+
+## Beneficios
+
+- **No necesitas número de teléfono.** Empiezas a probar desde el primer minuto.
+- **Validación rápida.** Lanzas la prueba al instante y escuchas cómo responde el agente en una conversación real.
+- **Cubre casi todos los escenarios.** Puedes probar indicaciones, flujo y acciones, con la excepción de la transferencia de llamada.
+- **Retroalimentación inmediata.** Al terminar, revisas el registro, la transcripción y la grabación para mejorar el agente.
+
+## Llamada web o llamada telefónica
+
+Cada método de prueba valida cosas distintas:
+
+| Llamada web | Llamada telefónica |
+| --- | --- |
+| Pruebas desde el navegador sin número. | Comportamiento real con número de teléfono. |
+| Revisión de la indicación y del flujo de la conversación. | Validación de números asignados y enrutamiento entrante. |
+| Saludo, respuestas y acciones configuradas. | Manejo de llamadas similar a producción. |
+| Pruebas tempranas mientras configuras el agente. | Rutas de transferencia y comportamiento telefónico real. |
+
+<Warning>
+La llamada web no reemplaza la prueba telefónica. Antes de atender clientes reales, prueba el agente con el mismo número que usarán tus clientes.
+</Warning>
+
+## Requisitos
+
+- Acceso de tu usuario al área de pruebas del agente de IA de voz.
+- Un agente de IA de voz ya creado en tu cuenta.
+- Un micrófono que funcione y permiso de micrófono en el navegador (y en el sistema operativo, si aplica).
+- Un navegador moderno. Cierra otras aplicaciones que estén usando el micrófono, porque pueden interferir.
+
+Si el navegador bloquea el micrófono, la llamada web puede no iniciar o el agente no escuchará lo que dices.
+
+## Cómo funciona
+
+- La llamada se ejecuta en tu navegador como un modo de prueba del agente.
+- Durante la prueba, **tu propio contacto** (el del usuario conectado) se usa como el contacto que llama. Por eso el contexto puede diferir del de un cliente externo.
+- La mayoría de las acciones del agente se pueden probar.
+- **La transferencia de llamada no está disponible** en la llamada web.
+- Las llamadas de prueba quedan en los registros de IA de voz con transcripción y grabación.
+- Las llamadas de prueba **no cuentan** en las métricas ni en los análisis del panel.
+
+## Cómo hacer una llamada web
+
+<Steps>
+<Step title="Abre el agente">
+Ve a **IA → IA de voz** y abre el agente que quieres probar.
+</Step>
+<Step title="Elige el método de prueba">
+En el área de pruebas del agente verás dos opciones: **Llamada telefónica** y **Llamada web**. Selecciona **Llamada web**. No tienes que ingresar ningún número.
+</Step>
+<Step title="Permite el micrófono">
+Cuando el navegador lo pida, autoriza el acceso al micrófono.
+</Step>
+<Step title="Conversa con tu agente">
+Habla con el agente y pon a prueba la indicación, las respuestas y las acciones que quieres validar.
+</Step>
+<Step title="Revisa el resultado">
+Al terminar, abre los registros de IA de voz para revisar la transcripción y la grabación.
+</Step>
+</Steps>
+
+## Revisar los resultados de la prueba
+
+- Ve a los **registros del panel de IA de voz** para ver la actividad de las llamadas de prueba.
+- Usa el filtro **Tipo de llamada** y elige **Llamadas de prueba** para verlas por separado.
+- Abre el registro para escuchar la grabación y leer la transcripción.
+
+<Tip>
+Haz varias pruebas cortas, cada una centrada en un caso (reservar una cita, responder una pregunta frecuente, manejar una objeción). Así es más fácil detectar qué parte de la indicación debes ajustar.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Necesito comprar un número para usar la llamada web?">
+No. Puedes probar tu agente desde el navegador sin comprar, asignar ni configurar un número.
+</Accordion>
+<Accordion title="¿Puedo usar la llamada web para atender clientes?">
+No. Es solo para pruebas dentro de Chateea. Para llamadas reales necesitas un número de teléfono asignado al agente.
+</Accordion>
+<Accordion title="¿La llamada web prueba el enrutamiento telefónico?">
+No. No valida el enrutamiento de números, el comportamiento del número asignado ni las rutas telefónicas completas.
+</Accordion>
+<Accordion title="¿Puedo probar transferencias de llamada?">
+No. Para validar transferencias usa la prueba con llamada telefónica.
+</Accordion>
+<Accordion title="¿Las pruebas afectan las métricas del panel?">
+No. Aparecen en los registros, pero no cuentan en los análisis ni en las métricas de rendimiento.
+</Accordion>
+<Accordion title="¿Por qué no funciona mi micrófono?">
+Puede que el navegador o el equipo estén bloqueando el acceso, que esté seleccionado otro micrófono o que otra aplicación lo esté usando.
+</Accordion>
+<Accordion title="¿Puedo usarla antes de terminar de configurar el agente?">
+Sí. La prueba refleja la indicación, el saludo, los objetivos, las herramientas y la configuración que tengas guardados en ese momento.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+Conoce cómo funcionan los agentes de IA de voz.
+</Card>
+<Card title="Registros de agentes de IA de voz" icon="list-check" href="/ia/registros-de-agentes-ia-de-voz">
+Revisa cada llamada paso a paso.
+</Card>
+<Card title="Optimizador de indicaciones de IA de voz" icon="flask" href="/ia/optimizador-indicaciones-ia-de-voz">
+Prueba tu agente con escenarios automáticos.
+</Card>
+<Card title="Editar indicaciones con IA" icon="wand-magic-sparkles" href="/ia/editar-indicaciones-con-ia-voz">
+Mejora fragmentos de la indicación con ayuda de la IA.
+</Card>
+</CardGroup>

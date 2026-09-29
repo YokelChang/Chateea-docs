@@ -1,0 +1,109 @@
+---
+title: "Acción de flujo: agendar cita"
+description: "Crea citas automáticamente desde un flujo de trabajo cuando se cumple un disparador."
+icon: "calendar-plus"
+---
+
+La acción **Agendar cita** (Book Appointment) permite que un flujo de trabajo cree una cita automáticamente en el calendario que elijas cuando se cumple un disparador. Sirve para agendar seguimientos sin intervención manual a partir de eventos como el envío de un formulario, un webhook entrante o un cambio en el CRM.
+
+## Cómo funciona
+
+- Siempre eliges un **calendario** que recibirá la cita.
+- El miembro del equipo puede ser el **predeterminado del calendario** (por ejemplo, con distribución rotativa) o una **persona específica**.
+- La fecha y la hora pueden ser fijas o tomarse de los datos del disparador (un campo del formulario, el contenido de un webhook o un valor personalizado).
+- Si no hay nadie disponible en ese horario y no activaste la opción de ignorar disponibilidad, la cita no se crea.
+
+<Warning>
+  Los calendarios que tienen activadas las citas **recurrentes** no se pueden seleccionar en esta acción.
+</Warning>
+
+## Para qué te sirve
+
+- **Seguimientos más rápidos:** agenda automáticamente desde formularios, chats o webhooks.
+- **Más conversiones:** aseguras el horario mientras el interés del cliente está fresco.
+- **Asignación flexible:** usa las reglas del calendario o manda la cita a una persona concreta.
+- **Lógica confiable:** puedes ramificar el flujo según si la cita se creó o no.
+
+## Cómo configurar la acción
+
+<Steps>
+  <Step title="Crea el flujo y elige el disparador">
+    Ve a **Automatización → Crear flujo de trabajo → Empezar desde cero** y agrega un disparador, por ejemplo **Formulario enviado** o **Webhook entrante**.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **Agregar acción → Agendar cita** y ponle un nombre claro, como "Agendar demostración con ventas".
+  </Step>
+  <Step title="Elige el calendario y el miembro del equipo">
+    - **Calendario:** el calendario que recibirá la cita.
+    - **Miembro del equipo:** **Predeterminado del calendario** para seguir sus reglas de asignación (por ejemplo, rotativa), o una persona específica.
+  </Step>
+  <Step title="Define la fecha y la hora">
+    - **Estándar:** una fecha y hora fijas para todas las citas que cree este flujo.
+    - **Dinámica:** la fecha y hora se toman de los datos del disparador (campo de formulario, webhook o valor personalizado).
+  </Step>
+  <Step title="Decide si se respeta la disponibilidad">
+    Revisa la opción **Ignorar disponibilidad** (Override availability) y guarda la acción.
+  </Step>
+</Steps>
+
+### Formatos de fecha para la opción dinámica
+
+Para que la fecha dinámica funcione, el dato de entrada debe tener un formato compatible, por ejemplo:
+
+| Formato | Ejemplo |
+| --- | --- |
+| `MM-DD-YYYY HH:MM` | `12-21-2021 08:30 AM` |
+| `DD-MMM-YYYY HH:MM` | `21-OCT-2021 08:30 AM` |
+
+Si tu dato llega con otro formato, agrega antes una acción **Formateador de fecha y hora** (Date Time Formatter) para convertirlo.
+
+### Ignorar disponibilidad
+
+| Opción | Qué hace |
+| --- | --- |
+| Desactivada | El sistema revisa la disponibilidad antes de agendar. Si no hay horario libre, no crea la cita. |
+| Activada | Agenda sin revisar disponibilidad. Úsala con cuidado para no crear citas encimadas. |
+
+## Qué hacer después de la acción
+
+Agrega una acción **Si/De lo contrario** y usa la condición **Cita agendada correctamente** (verdadero o falso) para decidir el siguiente paso:
+
+- **Verdadero:** envía una confirmación o un recordatorio.
+- **Falso:** avisa a tu equipo, crea una tarea o intenta con otro horario.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La acción respeta la disponibilidad del calendario?">
+    Sí, a menos que actives **Ignorar disponibilidad**.
+  </Accordion>
+  <Accordion title="¿Puedo ramificar el flujo según si la cita se creó?">
+    Sí. Agrega una acción **Si/De lo contrario** con la condición **Cita agendada correctamente**.
+  </Accordion>
+  <Accordion title="¿Qué formatos de fecha acepta la opción dinámica?">
+    Formatos como `MM-DD-YYYY HH:MM` o `DD-MMM-YYYY HH:MM`. Si el tuyo es distinto, usa antes el **Formateador de fecha y hora**.
+  </Accordion>
+  <Accordion title="¿Puedo asignar las citas de forma rotativa?">
+    Sí. Elige **Predeterminado del calendario** para seguir las reglas de asignación del calendario.
+  </Accordion>
+  <Accordion title="¿Qué hago si la reserva falla?">
+    Usa la rama falsa para avisar al equipo, crear una tarea o probar otro horario.
+  </Accordion>
+  <Accordion title="¿Tiene alguna limitación?">
+    Los calendarios con citas recurrentes activadas no se pueden seleccionar en esta acción.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acción de flujo: crear nota de cita" icon="note-sticky" href="/calendarios/accion-crear-nota-de-cita">
+    Agrega notas a las citas desde un flujo.
+  </Card>
+  <Card title="Acción: generar enlace de un solo uso" icon="link" href="/calendarios/accion-generar-enlace-de-un-solo-uso">
+    Envía enlaces de reserva personalizados desde tus flujos.
+  </Card>
+  <Card title="Agendar citas manualmente" icon="calendar-plus" href="/calendarios/agendar-citas-manualmente">
+    Crea citas en nombre de tus clientes.
+  </Card>
+</CardGroup>

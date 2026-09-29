@@ -1,0 +1,163 @@
+---
+title: "Importar oportunidades desde un archivo CSV"
+sidebarTitle: "Importar oportunidades desde CSV"
+description: "Crea o actualiza oportunidades en bloque con un CSV: requisitos, mapeo de campos, errores y solución de problemas."
+icon: "file-import"
+---
+
+Con la importación por CSV puedes crear muchas oportunidades de una vez o actualizar las que ya tienes: pipeline, etapa, estado, valor y campos personalizados. Es la forma más rápida de migrar tus negocios desde otro CRM o de añadir oportunidades a contactos que ya están en Chateea.
+
+Toda oportunidad debe estar asociada a un contacto. Si los contactos ya existen en tu cuenta, haz una importación **solo de oportunidades** usando su ID de contacto. Si también necesitas crear los contactos, usa una importación de **contactos y oportunidades**.
+
+<Info>
+En una importación solo de oportunidades, cada fila debe incluir un **ID de contacto** válido, el **nombre de la oportunidad** y el **pipeline**.
+</Info>
+
+## Antes de importar
+
+- Guarda el archivo en formato **CSV**.
+- Mantén el archivo por debajo de **30 MB**.
+- Crea en Chateea los **pipelines** que vas a usar y sus **etapas**. La importación no crea pipelines.
+- Crea los **campos personalizados de oportunidad** que quieras mapear.
+- Comprueba que cada fila tenga un **ID de contacto** válido (en importaciones solo de oportunidades).
+- Incluye el **ID de oportunidad** si vas a actualizar oportunidades existentes.
+- Revisa que no haya valores vacíos o incorrectos.
+- Haz una prueba con un archivo pequeño antes de importar un volumen grande.
+
+<Warning>
+Una importación completada no se puede deshacer con un clic. Revisa bien el mapeo y prueba antes con pocos registros.
+</Warning>
+
+## Qué tipo de importación elegir
+
+| Tipo | Cuándo usarlo |
+| --- | --- |
+| **Solo oportunidades** | Los contactos ya existen en Chateea y tienes sus ID de contacto. |
+| **Contactos y oportunidades** | Necesitas crear los contactos y asociarles sus oportunidades desde las mismas filas del CSV. |
+
+En una importación solo de oportunidades no hacen falta el nombre, el correo o el formato del teléfono del contacto, porque se asocia por su ID. En una importación de contactos y oportunidades sí se aplican los requisitos de la importación de contactos.
+
+## Campos obligatorios y opcionales
+
+| Campo | Requisito | Para qué sirve |
+| --- | --- | --- |
+| **ID de contacto** | Obligatorio en importaciones solo de oportunidades | Asocia la oportunidad con un contacto existente. |
+| **Nombre de la oportunidad** | Obligatorio | Define el nombre del negocio. |
+| **Pipeline** | Obligatorio | Asigna la oportunidad a un pipeline existente. |
+| **Etapa del pipeline** | Recomendado | Coloca la oportunidad en la etapa correcta. |
+| **ID de oportunidad** | Obligatorio para actualizar | Identifica la oportunidad existente que se debe actualizar. |
+| **Valor de la oportunidad** | Opcional | Guarda el valor monetario del negocio. |
+| **Estado** | Opcional | Define el estado de la oportunidad. |
+| **Campos personalizados de oportunidad** | Opcional | Importa información adicional del negocio. |
+
+**Estados admitidos:** Abierta (Open), Ganada (Won), Perdida (Lost) y Abandonada (Abandoned). Si tu CRM anterior usa otros nombres, conviértelos a estos antes de importar.
+
+**Campos personalizados:** los de oportunidad son distintos de los de contacto. Créalos para el objeto **Oportunidad** antes de empezar.
+
+## Importar oportunidades paso a paso
+
+<Steps>
+  <Step title="Inicia la importación">
+    Ve a **Oportunidades**, haz clic en **Importar** y elige **Oportunidades** o **Contactos y oportunidades**.
+  </Step>
+  <Step title="Sube el CSV">
+    Selecciona o arrastra el archivo, confirma que se carga bien y revisa los avisos iniciales.
+  </Step>
+  <Step title="Elige el comportamiento">
+    Indica si vas a crear registros nuevos o actualizar existentes. Para actualizar, el CSV debe incluir el **ID de oportunidad** correcto.
+  </Step>
+  <Step title="Mapea las columnas">
+    Asocia cada columna con su campo en Chateea. Mapea primero los obligatorios (ID de contacto, nombre de la oportunidad y pipeline) y luego los opcionales: etapa, ID de oportunidad, valor, estado y campos personalizados. Si una columna no debe importarse, déjala sin mapear y confirma **No importar datos de columnas sin mapear**.
+  </Step>
+  <Step title="Decide qué hacer con las celdas vacías">
+    Al actualizar, activa **No actualizar valores vacíos** si quieres que una celda vacía del CSV deje intacto el valor que ya existe en Chateea, en lugar de borrarlo.
+  </Step>
+  <Step title="Revisa e importa">
+    Comprueba el mapeo, que los obligatorios estén mapeados, los avisos, el ajuste de valores vacíos y que las columnas no deseadas estén excluidas. Después inicia la importación.
+  </Step>
+</Steps>
+
+## Crear o actualizar: cómo lo decide Chateea
+
+**Para crear oportunidades nuevas**, incluye ID de contacto, nombre de la oportunidad y pipeline. Añade etapa, estado, valor y campos personalizados si los necesitas. No hace falta el ID de oportunidad.
+
+**Para actualizar oportunidades existentes:**
+
+1. Incluye el **ID de oportunidad** en el CSV y mapéalo.
+2. Mapea solo los campos que quieres actualizar.
+3. Decide si las celdas vacías deben sobrescribir los valores actuales.
+4. Haz primero una prueba con pocas filas.
+
+<Warning>
+Si falta el ID de oportunidad o es incorrecto, el importador puede crear una oportunidad nueva en lugar de actualizar la que querías.
+</Warning>
+
+## Importar contactos y oportunidades juntos
+
+Úsalo cuando los contactos todavía no existen en Chateea. Cada fila del CSV lleva los datos del contacto y los de su oportunidad:
+
+| Datos del contacto | Datos de la oportunidad |
+| --- | --- |
+| Nombre | Nombre de la oportunidad |
+| Apellido | Pipeline |
+| Correo | Etapa |
+| Teléfono | Valor |
+| Campos personalizados de contacto | Estado |
+| | Campos personalizados de oportunidad |
+
+Selecciona **Contactos y oportunidades**, sube el archivo, mapea las columnas de contacto a campos de contacto y las de oportunidad a campos de oportunidad, revisa ambos mapeos y completa la importación. Se aplican los requisitos de la importación de contactos, como datos de identificación válidos y el formato del teléfono.
+
+## Revisar resultados y corregir errores
+
+1. Ve a **Acciones masivas** y localiza la importación.
+2. Revisa su estado y haz clic en **Mostrar estadísticas** (Show Stats).
+3. Si hay fallos, abre la pestaña **Error** y descarga el registro de errores.
+4. Corrige en tu CSV las filas que fallaron.
+5. Vuelve a importar solo las filas corregidas.
+
+<Tip>
+No reimportes el archivo original completo si solo fallaron algunas filas: las que ya se importaron crearían oportunidades duplicadas.
+</Tip>
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| La oportunidad no está vinculada al contacto correcto | Que el ID de contacto sea correcto y esté mapeado como ID de contacto. |
+| Se creó una oportunidad nueva en vez de actualizar | El ID de oportunidad de esa fila. |
+| El pipeline no se acepta | Que el pipeline exista en Chateea con ese nombre. Créalo antes de importar. |
+| La oportunidad quedó en la etapa equivocada | Que la etapa exista dentro del pipeline indicado. |
+| Se borraron datos existentes | Si estaba activado **No actualizar valores vacíos** al actualizar. |
+| Falta un campo personalizado al mapear | Que el campo exista, que sea del objeto **Oportunidad** y no de Contacto, y que mapees la columna al campo correcto. |
+| Unas filas se importaron y otras no | Abre **Acciones masivas → Mostrar estadísticas → Error**, descarga el registro, corrige y reimporta esas filas. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo importar oportunidades sin importar contactos?">
+    Sí, si los contactos ya existen en tu cuenta. Cada oportunidad debe incluir un ID de contacto válido.
+  </Accordion>
+  <Accordion title="¿Mis pipelines y etapas tienen que existir antes?">
+    Sí. Crea los pipelines y las etapas antes de importar. El valor de pipeline del CSV debe coincidir con uno existente y la etapa debe pertenecer a ese pipeline.
+  </Accordion>
+  <Accordion title="¿Puedo importar campos personalizados de oportunidad?">
+    Sí. Créalos para el objeto Oportunidad antes de empezar y mapea las columnas durante la importación.
+  </Accordion>
+  <Accordion title="¿Puedo deshacer una importación?">
+    No con un clic. Prueba primero con un archivo pequeño y revisa bien el mapeo.
+  </Accordion>
+  <Accordion title="¿Dónde veo las filas que fallaron?">
+    En **Acciones masivas**: localiza la importación, haz clic en **Mostrar estadísticas** y abre la pestaña **Error** para descargar el registro.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importar contactos desde CSV" icon="file-import" href="/contactos/importar-contactos-desde-csv">
+    Requisitos y pasos para importar contactos.
+  </Card>
+  <Card title="Campos personalizados de oportunidades" icon="list-check" href="/oportunidades/campos-personalizados-de-oportunidades">
+    Crea los campos antes de importar.
+  </Card>
+</CardGroup>

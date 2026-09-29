@@ -1,0 +1,100 @@
+---
+title: "Protección reCAPTCHA del widget de IA de voz"
+description: "Cómo funciona la verificación reCAPTCHA automática del widget de voz y cómo evitarla mientras lo pruebas."
+icon: "shield-check"
+---
+
+El widget de chat con IA de voz permite que los visitantes de tu sitio web hablen con tu agente de voz directamente desde el navegador, usando el micrófono y los altavoces, sin marcar un número ni instalar nada. Para protegerlo del uso abusivo y de los bots, el widget incluye una verificación reCAPTCHA automática que aparece solo cuando detecta conexiones repetidas en muy poco tiempo.
+
+No tienes que configurar nada: la protección viene activada en todos los widgets de IA de voz.
+
+## Para qué sirve
+
+- **Protección contra bots:** evita el uso automatizado o repetido del widget.
+- **Más estabilidad:** reduce los ciclos de conexión rápida que pueden afectar el rendimiento.
+- **Buena experiencia para visitantes reales:** después de pasar la verificación, la persona sigue usando el widget sin problema.
+- **Sin configuración:** está activa por defecto en el tipo de widget de IA de voz.
+- **No afecta al chat normal:** solo aplica al widget de IA de voz, no a los widgets de chat de texto.
+
+## Cuándo aparece el reCAPTCHA
+
+1. Un visitante inicia una llamada desde el widget de IA de voz.
+2. Ese mismo visitante se conecta y desconecta rápidamente **10 veces en 60 segundos**.
+3. Chateea muestra una verificación reCAPTCHA para confirmar que es una persona.
+4. Si la supera, puede seguir usando el widget con normalidad.
+
+<Note>
+  El umbral de 10 conexiones en 60 segundos es fijo y por ahora no se puede modificar.
+</Note>
+
+## Cómo evitarlo mientras pruebas el widget
+
+Cuando pruebas el widget, es normal iniciar y cortar llamadas muchas veces, y eso se parece al comportamiento de un bot. Para no activar la verificación:
+
+- No inicies y cortes llamadas una tras otra muy rápido.
+- Deja unos segundos entre prueba y prueba cuando revises varios escenarios.
+- Prueba los permisos del micrófono en distintos navegadores si lo necesitas.
+- Si aparece el reCAPTCHA, complétalo y continúa.
+- Si sigue apareciendo con frecuencia, espacia más las reconexiones.
+
+## Cómo agregar el widget de IA de voz a tu sitio
+
+La protección se activa sola; solo tienes que configurar el widget:
+
+<Steps>
+  <Step title="Abre los widgets de chat">
+    Ve a **Sitios → Widgets de chat** y abre un widget existente o crea uno nuevo.
+  </Step>
+  <Step title="Elige el agente de IA de voz">
+    En la pestaña **Agente**, selecciona **Agente de IA de voz** y elige cuál debe atender.
+  </Step>
+  <Step title="Configura y guarda">
+    Ajusta el nombre del agente y el resto de opciones del widget, y haz clic en **Guardar**.
+  </Step>
+  <Step title="Instala el widget">
+    Copia el código del widget y pégalo en tu sitio web o embudo.
+  </Step>
+  <Step title="Publica y prueba">
+    Publica la página y prueba el widget desde el sitio en vivo.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué activa la verificación reCAPTCHA?">
+    Que el mismo visitante se conecte y desconecte rápidamente 10 veces en 60 segundos.
+  </Accordion>
+  <Accordion title="¿Afecta a mi widget de chat normal?">
+    No. Solo aplica al widget de IA de voz.
+  </Accordion>
+  <Accordion title="¿Tengo que activarla?">
+    No. Está activa automáticamente en todos los widgets de IA de voz.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el umbral?">
+    No. Por ahora es fijo.
+  </Accordion>
+  <Accordion title="¿Por qué me apareció mientras probaba el widget?">
+    Porque iniciaste y cortaste llamadas muy seguido. Espacia las pruebas y completa la verificación para seguir.
+  </Accordion>
+  <Accordion title="¿Significa que el widget está fallando?">
+    No. Es el comportamiento esperado cuando se detectan conexiones repetidas en poco tiempo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configura el chat en vivo" icon="comments" href="/primeros-pasos/configura-el-chat-en-vivo">
+    Instala el widget de chat en tu sitio.
+  </Card>
+  <Card title="Registros de llamadas" icon="list" href="/ia/registros-de-llamadas-ia-de-voz">
+    Revisa las conversaciones del widget.
+  </Card>
+  <Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+    Qué es la IA de voz y qué puede hacer.
+  </Card>
+  <Card title="Cambiar la voz del agente" icon="microphone" href="/ia/cambiar-voz-del-agente">
+    Ajusta cómo suena tu agente en el widget.
+  </Card>
+</CardGroup>

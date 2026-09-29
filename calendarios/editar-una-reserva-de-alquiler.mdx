@@ -1,0 +1,184 @@
+---
+title: "Editar una reserva de alquiler"
+description: "Cambia listados, cobra pagos y depósitos, y actualiza los estados de una reserva de alquiler."
+icon: "pen"
+---
+
+La página **Editar reserva** reúne todo lo de una reserva de alquiler: el cliente, los listados, las facturas, las transacciones y los estados. Desde ahí puedes cambiar fechas o cantidades, añadir o quitar listados, cobrar pagos y depósitos, y actualizar el estado de cada listado a medida que avanza el alquiler.
+
+## Qué puedes hacer
+
+- Añadir, actualizar o quitar listados y ajustar duraciones o cantidades.
+- Gestionar pagos, depósitos de garantía y facturas.
+- Revisar todas las transacciones y el resumen de pago.
+- Cambiar el estado de la reserva o de cada listado, o cancelar la reserva completa.
+
+## Ventajas
+
+- **Horarios flexibles**: puedes poner inicio y fin a medida aunque el selector de hora público esté desactivado.
+- **Sin solapamientos**: el tiempo de margen y el inventario siempre se respetan.
+- **Finanzas claras**: el resumen de pago, las facturas y las transacciones muestran qué cambió y qué falta cobrar.
+- **Control del depósito**: cobro por adelantado o con tarjeta registrada, y cargo o reembolso cuando haga falta.
+- **Precisión en reservas múltiples**: editas un listado sin afectar a los demás.
+- **Cambios al instante**: se ven enseguida en la lista de citas y en el calendario.
+
+## Cómo abrir una reserva para editarla
+
+1. Ve a **Calendarios → Vista de lista de citas**.
+2. Selecciona **Alquileres** en el menú desplegable.
+3. Busca la reserva y haz clic en el ícono del **lápiz** en la columna de acciones.
+
+<Note>
+  Cada fila de la lista es un listado dentro de una reserva. Al editar cualquier fila se abre la reserva completa, con todos sus listados, pagos y transacciones.
+</Note>
+
+## Resumen de la reserva
+
+En la parte superior ves los datos clave de un vistazo:
+
+| Dato | Qué muestra |
+| --- | --- |
+| **Contacto** | Quién hizo la reserva. Pasa el cursor por el ícono de información para ver el origen de la reserva y quién la creó. |
+| **ID de reserva** | Identificador único para localizarla. |
+| **Estado** | Sin confirmar, reservado, activo, completado, parcial o cancelado. |
+| **Estado del pago** | Pendiente, pagado parcialmente o pagado. |
+| **Origen** | Desde dónde se hizo la reserva, por ejemplo la página de calendarios o la página de reservas. |
+| **Inicio** | La hora de inicio más temprana de todos los listados. |
+| **Fin** | La hora de fin más tardía de todos los listados. |
+| **Zona horaria** | La zona horaria del negocio configurada en la configuración global. |
+
+## Listados
+
+Para cada listado de la reserva puedes:
+
+- Cambiar la cantidad.
+- Ajustar las fechas y horas de inicio y fin.
+- Ver el precio total del listado y su depósito de garantía.
+
+Usa **Nuevo listado** para añadir otro bien y **Eliminar** para quitar uno.
+
+<Note>
+  Al editar puedes saltarte restricciones como el horario de atención, las duraciones fijas o las ventanas de reserva. El tiempo de margen antes y después sí se aplica siempre, y solo puedes elegir un listado si hay inventario disponible para ese periodo.
+</Note>
+
+## Resumen de pago
+
+| Campo | Qué muestra |
+| --- | --- |
+| **Subtotal del alquiler** | La suma de todos los listados. |
+| **Impuestos** | Los impuestos de los listados, si los hay. |
+| **Depósito de garantía** | El depósito total de la reserva, ya sea incluido en el cobro inicial o como importe que podrías cobrar más adelante. |
+| **Depósito cobrado** | Aparece si usas depósitos con tarjeta registrada y ya cobraste el depósito manualmente. |
+| **Importe total** | Lo que se debe cobrar, incluidos depósitos y otros cargos. |
+| **Pagado** | Lo cobrado hasta ahora. |
+| **Pendiente hoy** | Lo que falta por cobrar. |
+
+Cómo influye el tipo de depósito:
+
+- **Cobro por adelantado**: el depósito se incluye automáticamente en el subtotal.
+- **Tarjeta registrada**: el depósito solo aparece en los totales después de cobrarlo manualmente.
+
+## Facturas
+
+Cada reserva genera automáticamente su primera factura al crearse. Las ediciones, pagos y cargos posteriores se reflejan en esa misma factura, que incluye los listados y los depósitos asociados.
+
+## Transacciones
+
+Lista cada movimiento de dinero de la reserva con su **fecha y hora**, su **importe** y su **estado** (correcta, fallida o reembolsada).
+
+Los reembolsos se hacen manualmente desde **Pagos → Transacciones** y aparecen aquí una vez registrados.
+
+## Notas internas
+
+En la parte inferior de la columna derecha verás las notas internas de la reserva. Cada nota indica quién la añadió y cuándo. Puedes editarlas, eliminarlas o añadir nuevas con **Agregar nota interna**. El cliente no las ve ni aparecen en las facturas.
+
+Úsalas para registrar situaciones especiales, seguimientos o instrucciones para tu equipo.
+
+## Acciones de la reserva
+
+### Cambiar el estado
+
+- **Marcar como confirmada**: aparece solo si la reserva está sin confirmar. Pasa todos los listados a **Reservado**.
+- **Marcar como reservado, activo o completado**: abre una ventana para elegir a qué listados aplicar el cambio.
+- **Menú ⋯**:
+  - **Volver a sin confirmar**: devuelve la reserva y todos sus listados a sin confirmar.
+  - **Cancelar reserva**: cancela la reserva y todos sus listados.
+
+### Pagos
+
+- **Cobrar pago**: abre una ventana para cobrar en línea o registrar un pago manual.
+- **Cobrar depósito**: solo disponible con depósitos en modo tarjeta registrada. Cobra el depósito y lo suma como **Depósito cobrado** en los totales y en la factura.
+
+## Estados de listados y de reserva
+
+Cada listado se actualiza manualmente a medida que avanza:
+
+- **Sin confirmar**: creado pero no confirmado.
+- **Reservado**: confirmado y listo para empezar.
+- **Activo**: en curso.
+- **Completado**: terminado.
+- **Cancelado**: se asigna automáticamente al cancelar la reserva.
+
+El estado de la reserva se calcula solo a partir de sus listados:
+
+| Estados de los listados | Estado de la reserva |
+| --- | --- |
+| Todos sin confirmar | Sin confirmar |
+| Todos reservados | Reservado |
+| Todos activos | Activo |
+| Todos completados | Completado |
+| Mezcla (por ejemplo, reservado y activo) | Parcial |
+| Todos cancelados | Cancelado |
+
+## Guardar los cambios
+
+1. Revisa los cambios y los importes.
+2. Haz clic en **Guardar cambios**, arriba a la derecha.
+3. La lista de citas y el calendario se actualizan al instante.
+
+<Tip>
+  Antes de guardar, revisa siempre el resumen de pago y la factura para confirmar que los totales son correctos.
+</Tip>
+
+## Comportamientos importantes
+
+- **Editar reservas pagadas**: si la reserva está pagada total o parcialmente, puedes editarla siempre que el nuevo total sea igual o mayor que lo ya cobrado.
+- **Reembolsos**: se hacen manualmente desde las transacciones. No cambian la factura ni el resumen de pago, pero la transacción muestra el estado **Reembolsado** o **Reembolsado parcialmente**.
+- **Totales siempre positivos**: los totales nunca bajan de cero, para mantener la contabilidad clara.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo modificar una factura ya pagada?">
+    Puedes editar la reserva siempre que el nuevo total sea igual o mayor que lo ya cobrado.
+  </Accordion>
+  <Accordion title="¿Qué pasa si edito una reserva pagada parcialmente?">
+    Puedes hacerlo si el nuevo total no es menor que lo ya pagado. Los cambios se reflejan en la factura.
+  </Accordion>
+  <Accordion title="¿Cómo afectan los reembolsos a la reserva?">
+    No cambian la factura ni el resumen de pago, pero la transacción se actualiza como Reembolsado o Reembolsado parcialmente.
+  </Accordion>
+  <Accordion title="¿Qué pasa si añado listados a una reserva ya pagada?">
+    La factura existente se actualiza automáticamente con los nuevos cargos.
+  </Accordion>
+  <Accordion title="¿Los totales pueden quedar en negativo?">
+    No. Siempre se mantienen en valores positivos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear una reserva de alquiler" icon="calendar-plus" href="/calendarios/crear-una-reserva-de-alquiler">
+    Registra reservas manualmente.
+  </Card>
+  <Card title="Reservas de alquiler en lista" icon="list" href="/calendarios/vista-de-lista-de-reservas-de-alquiler">
+    Filtra reservas por estado y pago.
+  </Card>
+  <Card title="Configuración global de alquileres" icon="gear" href="/calendarios/configuracion-global-de-alquileres">
+    Depósitos, pagos y zona horaria.
+  </Card>
+  <Card title="Vista de calendario de alquileres" icon="calendar-days" href="/calendarios/vista-de-calendario-de-alquileres">
+    Tus reservas en una línea de tiempo.
+  </Card>
+</CardGroup>

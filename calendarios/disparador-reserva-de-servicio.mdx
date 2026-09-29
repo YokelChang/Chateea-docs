@@ -1,0 +1,158 @@
+---
+title: "Disparador Reserva de servicio en flujos de trabajo"
+description: "Automatiza confirmaciones y tareas una sola vez por reserva de servicios, aunque incluya varios servicios."
+icon: "bolt"
+---
+
+El disparador **Reserva de servicio** (Service Booking) inicia un flujo de trabajo cada vez que se crea o actualiza una reserva de servicios. Trabaja sobre la reserva completa y no sobre cada cita: si un cliente reserva un corte, un facial y un masaje en el mismo pago, el flujo se ejecuta una sola vez, no tres. Así evitas mensajes duplicados y tienes todos los detalles de la reserva en un mismo lugar.
+
+## Para qué te sirve
+
+- **Evitar mensajes repetidos**: una sola ejecución por reserva, aunque incluya varios servicios.
+- **Comunicación más clara**: puedes enviar al cliente el servicio, la fecha, la hora, la duración, la persona que lo atiende, los complementos y la zona horaria.
+- **Segmentar mejor**: filtra por estado, servicio, categoría, etiqueta, ubicación o por quién creó o modificó la reserva.
+- **Resúmenes de varios servicios**: una sola confirmación puede listar todos los servicios reservados y sus complementos.
+
+## Cuándo se activa
+
+El flujo se inicia cuando se crea una reserva de servicios nueva desde:
+
+- **La página de reservas**, cuando el cliente reserva por su cuenta.
+- **Un usuario de tu equipo**, cuando crea la reserva manualmente.
+
+## Diferencia con el disparador de estado de cita
+
+| | Estado de cita | Reserva de servicio |
+| --- | --- | --- |
+| **Funciona con** | Citas de calendarios (reuniones) | Reservas de servicios |
+| **Nivel** | Cada cita individual | La reserva completa |
+| **Reserva con 5 servicios** | Puede ejecutarse por cada cita | Se ejecuta una sola vez |
+
+Por ejemplo, si la acción del flujo es **Enviar correo**, el cliente recibe un único correo con todos los servicios reservados, siempre que uses los valores personalizados de la reserva de servicio (ver más abajo).
+
+## Filtros disponibles
+
+- **Estado de la cita**: sin confirmar, confirmada, se presentó, no se presentó, cancelada o no válida.
+- **Creada por** / **Modificada por**.
+- **Tiene etiqueta**.
+- **En el servicio**: un servicio concreto.
+- **En la categoría de servicio**.
+- **En la ubicación del servicio**.
+
+## Cuándo está disponible
+
+El disparador solo aparece si tu cuenta tiene activo el módulo de **Servicios**. Si Servicios se desactiva:
+
+- **En flujos nuevos**: no podrás seleccionar este disparador.
+- **En flujos existentes que ya lo usan**: las reservas nuevas no lo activan, pero si cambia el estado de una reserva que ya existía, el flujo sí se ejecuta.
+
+## Reservas de servicios y el disparador de pedido enviado
+
+Cada reserva de servicios genera automáticamente un **pedido**. Para no duplicar automatizaciones, el disparador **Pedido enviado** no se activa con los pedidos creados por reservas de servicios.
+
+Si quieres que tus flujos de pedidos también se ejecuten con estas reservas, añade al disparador **Pedido enviado** el filtro **Origen del pedido = Calendario**.
+
+## Acciones de citas compatibles
+
+| Acción | ¿Compatible? | Notas |
+| --- | --- | --- |
+| **Actualizar estado de la cita** | Sí | Usa el ID de la reserva de servicio. |
+| **Crear nota en la cita** | Sí | La nota se aplica a la reserva completa. |
+| **Reservar cita** | No | |
+| **Reserva con el bot de IA conversacional** | No | |
+
+## Mostrar los detalles de la reserva en tus mensajes
+
+Puedes incluir automáticamente los datos de cada servicio reservado en correos, SMS o recordatorios. Para cada servicio tienes disponible:
+
+- **Nombre del servicio**, por ejemplo "Corte" o "Masaje".
+- **Precio**.
+- **Duración**, por ejemplo 60 minutos.
+- **Fecha y hora** de la cita.
+- **Zona horaria** del cliente.
+- **Personal asignado**.
+- **Complementos** elegidos, con su precio.
+
+Si el cliente reservó varios servicios, se listan uno tras otro.
+
+### Plantilla de ejemplo
+
+Copia este bloque en tu plantilla de correo o mensaje:
+
+```text
+{{#each serviceBooking.services}}
+  {{this.name}} - {{this.duration}} | Precio: {{this.price}}
+  Fecha: {{this.startDate}} a las {{this.startTime}} ({{this.timezone}})
+  Con: {{this.assignedUser}}
+
+  {{#if addOns}}
+    Complementos:
+    {{#each addOns}}
+      - {{this.addonName}} ({{this.addonPrice}})
+    {{/each}}
+  {{/if}}
+{{/each}}
+```
+
+Cómo funciona:
+
+- Todo lo que está entre `{{#each serviceBooking.services}}` y `{{/each}}` se repite una vez por cada servicio. Si el cliente reservó 3 servicios, el bloque aparece 3 veces.
+- Los complementos, si los hay, se listan debajo del servicio al que pertenecen.
+
+### Añadir más información
+
+Para mostrar otro dato, como el nombre completo de la persona que atiende, coloca el cursor dentro del bloque y añade el marcador correspondiente:
+
+```text
+{{#each serviceBooking.services}}
+  {{this.name}} - {{this.duration}} | Precio: {{this.price}}
+  Te atiende: {{this.user.name}}
+  Fecha: {{this.startDate}} a las {{this.startTime}} ({{this.timezone}})
+{{/each}}
+```
+
+<Tip>
+  Envía una prueba a tu propio correo antes de activar el flujo para comprobar que la lista de servicios se ve bien cuando hay más de uno.
+</Tip>
+
+## Cómo configurar el disparador
+
+<Steps>
+  <Step title="Crea o abre un flujo de trabajo">
+    Entra en **Automatización** en el menú lateral. Haz clic en el nombre de un flujo existente o en **Crear flujo de trabajo** para empezar uno nuevo.
+  </Step>
+  <Step title="Añade el disparador">
+    Haz clic en **Agregar disparador** y busca **Reserva de servicio**.
+  </Step>
+  <Step title="Configura los filtros">
+    Añade los filtros que necesites (estado, servicio, categoría, ubicación, etiquetas) y haz clic en **Guardar disparador**.
+  </Step>
+  <Step title="Añade las acciones y publica">
+    Agrega las acciones del flujo, por ejemplo un correo de confirmación con la plantilla anterior, y publica el flujo.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="No encuentro el disparador Reserva de servicio">
+    Comprueba que el módulo de Servicios esté activo en tu cuenta. Si no lo está, el disparador no aparece en flujos nuevos. Si necesitas ayuda para activarlo, escribe a **help@chateea.com**.
+  </Accordion>
+  <Accordion title="¿Puedo incluir los datos del personal en las confirmaciones?">
+    Sí. Usa los valores personalizados de la reserva para mostrar la persona asignada, el precio, la fecha, la ubicación y otros datos.
+  </Accordion>
+  <Accordion title="¿Por qué mi flujo de pedidos no se ejecuta con las reservas de servicios?">
+    Porque el disparador Pedido enviado ignora por defecto los pedidos creados por reservas. Añade el filtro Origen del pedido = Calendario si quieres incluirlos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configuración global de servicios" icon="gear" href="/calendarios/configuracion-global-de-servicios">
+    Notificaciones, pagos y reglas comunes de tus servicios.
+  </Card>
+  <Card title="Valores personalizados en calendarios" icon="code" href="/calendarios/valores-personalizados-en-calendarios">
+    Datos dinámicos que puedes usar en tus mensajes.
+  </Card>
+</CardGroup>

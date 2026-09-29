@@ -1,0 +1,136 @@
+---
+title: "Valores personalizados en las indicaciones de la IA de voz"
+description: "Personaliza las llamadas insertando datos del contacto, la cita o tu negocio en la indicación del agente."
+icon: "brackets-curly"
+---
+
+Los valores personalizados te permiten insertar información dinámica de Chateea en la indicación y en los mensajes de tu agente de IA de voz. Durante la llamada, el agente usa el dato guardado del contacto, la empresa, la cita, el calendario o la cuenta, así personaliza la conversación sin que escribas una indicación distinta para cada caso.
+
+Por ejemplo, si incluyes `{{location.name}}`, el agente dirá el nombre de tu negocio durante la llamada.
+
+## Para qué sirve
+
+- **Llamadas personalizadas:** el agente menciona datos del contacto, la empresa, la cita o tu negocio.
+- **Una indicación reutilizable:** la misma indicación se adapta a cada contacto.
+- **Saludos más naturales:** bienvenidas con el nombre del negocio o del cliente.
+- **Más contexto:** el agente sabe con quién habla y por qué.
+- **Menos edición manual:** no necesitas una indicación por sucursal, contacto o escenario.
+
+## Valores personalizados, base de conocimiento o acciones personalizadas
+
+| Herramienta | Úsala para | Ejemplo |
+| --- | --- | --- |
+| **Valores personalizados** | Insertar datos guardados en la indicación o en un mensaje | `{{location.name}}` para decir el nombre del negocio |
+| **Base de conocimiento** | Información del negocio para responder preguntas | Servicios, precios, preguntas frecuentes, políticas |
+| **Acciones personalizadas** | Conectar el agente con sistemas externos durante la llamada | Consultar datos externos o crear un registro |
+
+## Cómo insertar un valor personalizado
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → IA de voz → Lista de agentes** y abre el agente, o crea uno con **Crear agente**.
+  </Step>
+  <Step title="Entra a Construir">
+    En la pestaña **Construir** configuras la voz, el modelo, el idioma, la indicación, el mensaje de bienvenida y el comportamiento de la llamada.
+  </Step>
+  <Step title="Ubica el campo">
+    Busca la indicación o el mensaje donde quieres insertar el valor. Solo se puede en los campos que muestran el botón o ícono de valor personalizado.
+  </Step>
+  <Step title="Elige el valor">
+    Haz clic en **Valor personalizado**, busca el valor o explora las categorías: Contacto, Empresa, Usuario, Cita, Calendario, Cuenta o Ahora. Al seleccionarlo, se inserta con el formato de campo combinado.
+  </Step>
+  <Step title="Revisa la frase">
+    Lee la frase en voz alta para confirmar que suena natural. Evita frases con muchos valores juntos.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar** y prueba el resultado con una llamada web o telefónica.
+  </Step>
+</Steps>
+
+## Ejemplos de indicación
+
+```text
+Llamas en nombre de {{location.name}}. Habla con claridad, calidez y profesionalismo.
+```
+
+```text
+Gracias por llamar a {{location.name}}. ¿En qué te puedo ayudar?
+```
+
+```text
+Si conoces el nombre del contacto, salúdalo por su nombre.
+Si no está disponible, usa un saludo general.
+```
+
+```text
+Si hay datos de la cita, úsalos para confirmar la fecha y la hora.
+Si no los hay, pregunta a la persona lo necesario para ayudarla.
+```
+
+## Buenas prácticas
+
+- Usa valores personalizados solo cuando mejoren la conversación.
+- No pongas muchos valores en una misma frase.
+- No des por hecho que todos los valores tendrán dato: agrega instrucciones para cuando falten.
+- Evita que el agente lea en voz alta IDs largos, códigos internos o datos técnicos.
+- Pon la información del negocio en la base de conocimiento, no en la indicación.
+- Prueba con contactos que tengan los datos completos y con otros que los tengan vacíos.
+
+<Warning>
+  Una indicación como la siguiente es arriesgada, porque si falta algún dato la frase queda rota:
+
+  ```text
+  Hola {{contact.first_name}}, veo que tu cita es el {{appointment.start_time}}
+  con {{user.name}} en {{location.name}}.
+  ```
+
+  Mejor así:
+
+  ```text
+  Si el nombre del contacto y los datos de la cita están disponibles, úsalos
+  con naturalidad para confirmar el motivo de la llamada. Si falta algún dato,
+  continúa con un saludo general.
+  ```
+</Warning>
+
+## Solución de problemas
+
+| Problema | Qué revisar |
+| --- | --- |
+| **El valor no se completa** | Que el dato exista en el contacto, la cuenta, la cita o el registro relacionado. |
+| **El agente lee el campo tal cual** | Que el valor se haya insertado desde el menú de valores personalizados y se haya guardado. |
+| **El valor queda vacío** | Agrega instrucciones para cuando el dato no esté disponible. |
+| **No aparece la opción de valor personalizado** | Que estés en un campo compatible y tengas los permisos necesarios. |
+| **El agente usa el valor en el momento equivocado** | Da más contexto sobre cuándo debe usarlo. |
+| **La prueba suena distinta a lo esperado** | Revisa la indicación, los valores elegidos y los registros de llamada, y vuelve a probar. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar valores personalizados en el mensaje de bienvenida?">
+    Sí, si el campo muestra el ícono de valor personalizado.
+  </Accordion>
+  <Accordion title="¿Puedo usar campos personalizados del contacto?">
+    Depende de lo que muestre el menú de valores personalizados en tu cuenta. Búscalos por nombre o explora las categorías.
+  </Accordion>
+  <Accordion title="¿Por qué el agente leyó la variable en voz alta?">
+    Puede que el valor no se haya completado, que se haya escrito a mano con un formato incorrecto o que el campo no lo admita. Insértalo desde el menú y vuelve a probar.
+  </Accordion>
+  <Accordion title="¿Es lo mismo que una acción personalizada?">
+    No. Los valores personalizados insertan datos guardados en el texto. Las acciones personalizadas conectan el agente con sistemas externos durante la llamada.
+  </Accordion>
+  <Accordion title="¿Uso valores personalizados para las preguntas frecuentes del negocio?">
+    No. Para eso usa la base de conocimiento.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear un agente de IA de voz" icon="phone" href="/ia/crear-agente-de-voz-ia">
+    Configura el agente paso a paso.
+  </Card>
+  <Card title="Probar un agente de IA de voz" icon="headset" href="/ia/probar-agente-de-voz-ia">
+    Comprueba cómo suenan los valores en una llamada.
+  </Card>
+</CardGroup>

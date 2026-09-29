@@ -1,112 +1,138 @@
 ---
-title: "Cómo funcionan los flujos"
-description: "Disparadores, acciones y condiciones: la lógica detrás de toda automatización."
+title: "Cómo funcionan los flujos de trabajo"
+sidebarTitle: "Cómo funcionan los flujos"
+description: "Qué es un flujo, para qué sirve y cómo se construye con disparadores, acciones y condiciones en Chateea."
 icon: "diagram-project"
 ---
 
-Las automatizaciones son el cerebro de Chateea. Son lo que convierte la plataforma en un sistema en lugar de una colección de herramientas.
+Un flujo de trabajo (o automatización) es una secuencia de pasos que Chateea ejecuta sola cuando ocurre algo en tu negocio. Funciona con una lógica muy simple: **cuando pasa esto, haz aquello**. Así dejas de repetir a mano tareas como registrar un prospecto, avisar a tu equipo o enviar un recordatorio, y cada cliente recibe la misma atención rápida y consistente.
 
-Toda automatización responde a la misma estructura: **cuando pasa esto, haz aquello**.
+Por ejemplo, en lugar de copiar los datos de cada formulario y escribir un correo de bienvenida, un flujo puede hacerlo por ti en segundos:
 
-## Las tres piezas
+1. Guardar al prospecto en tu CRM con sus datos.
+2. Asignarlo a un vendedor de tu equipo.
+3. Enviarle un mensaje de bienvenida personalizado.
 
-<CardGroup cols={3}>
-  <Card title="Disparador" icon="bolt">
-    El evento que arranca el flujo. Toda automatización empieza con uno.
-  </Card>
+## Por qué automatizar
 
-  <Card title="Acción" icon="play">
-    Lo que el sistema hace: enviar, etiquetar, asignar, mover, esperar.
-  </Card>
-
-  <Card title="Condición" icon="code-branch">
-    Bifurca el camino según lo que sea cierto del contacto en ese momento.
-  </Card>
-</CardGroup>
-
-## Disparadores más usados
-
-| Disparador | Cuándo se activa |
+| Beneficio | Qué significa para tu negocio |
 | --- | --- |
-| Formulario enviado | Alguien completa un formulario |
-| Mensaje entrante | Llega un mensaje por cualquier canal |
-| Cita agendada | Se reserva una cita |
-| Cita completada | Termina una cita |
-| Factura pagada | Entra un pago |
-| Etiqueta agregada | Se aplica una etiqueta al contacto |
-| Cambio de etapa | Una oportunidad avanza en el pipeline |
-| Llamada perdida | No se contesta una llamada |
-| Cumpleaños | Coincide la fecha del contacto |
-| Contacto creado | Entra alguien nuevo a la base |
+| **Ahorro de tiempo** | Tu equipo deja las tareas repetitivas y se enfoca en vender y atender. |
+| **Menos errores** | Los pasos se ejecutan siempre igual, sin olvidos ni datos mal copiados. |
+| **Menor costo operativo** | Atiendes más clientes sin contratar más personas para tareas manuales. |
+| **Mejor experiencia del cliente** | Respondes al instante, incluso fuera de horario. |
+| **Crecimiento sin fricción** | El flujo trabaja igual con 10 contactos que con 10.000. |
+
+## Casos de uso habituales
+
+- **Gestión de prospectos:** capturar leads de formularios o anuncios, etiquetarlos, asignarlos y enviarles un saludo.
+- **Citas:** confirmar reservas, enviar recordatorios y dar seguimiento a quienes no se presentan.
+- **Atención al cliente:** asignar conversaciones y notificar al responsable según lo que pregunta el cliente.
+- **Marketing:** enviar seguimientos personalizados cuando alguien hace clic en un enlace o abre un correo.
+
+## Las piezas de un flujo
+
+Todo flujo se construye con tres tipos de elementos.
+
+### Disparadores: el punto de partida
+
+El disparador es el evento que pone en marcha el flujo. Es el "cuando" de la automatización. Algunos de los más usados son:
+
+- Un formulario completado.
+- Un mensaje entrante de un contacto.
+- Una cita reservada.
+- Un pago recibido.
+- Un cambio de etapa en el pipeline.
+- El cumpleaños de un contacto.
+
+### Acciones: lo que hace el sistema
+
+La acción es la tarea que se ejecuta después del disparador. Es el "haz aquello". Por ejemplo:
+
+- Enviar un mensaje por WhatsApp, SMS, correo u otro canal.
+- Esperar un tiempo determinado.
+- Agregar o quitar etiquetas, o actualizar datos del contacto.
+- Asignar el contacto a un usuario.
+- Crear una tarea o mover una oportunidad en el pipeline.
+
+### Condiciones: los caminos alternativos
+
+Las condiciones (acción **Si/No**, If/Else) dividen el flujo en ramas y envían a cada contacto por un camino distinto según sus datos. Por ejemplo, un camino para quien ya compró y otro para quien todavía no.
+
+Cada disparador y cada acción tiene su propia configuración y opciones. Este artículo te da la visión general; para detalles concretos, revisa los artículos dedicados a cada uno.
+
+## Cómo crear un flujo
+
+<Steps>
+  <Step title="Abre la sección de flujos">
+    Ve a **Automatización → Flujos de trabajo**.
+  </Step>
+  <Step title="Crea un flujo nuevo">
+    Haz clic en **Crear flujo de trabajo** (Create Workflow). Puedes empezar de tres formas:
+    - **Desde una receta:** estructuras listas para casos comunes que solo tienes que adaptar.
+    - **Desde una plantilla:** elige **Seleccionar desde plantilla** para ver la biblioteca de flujos prediseñados.
+    - **Desde cero:** arma tu propio flujo con los disparadores y acciones que necesites.
+  </Step>
+  <Step title="Elige el disparador">
+    Define el evento que inicia el flujo, por ejemplo, que un cliente reserve una cita.
+  </Step>
+  <Step title="Agrega las acciones">
+    Indica qué debe pasar después: enviar una notificación, actualizar el contacto, esperar, dividir en ramas, etc.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar**. Antes de publicar, usa **Probar flujo** (Test Workflow) con un contacto de prueba para comprobar que todo funciona.
+  </Step>
+  <Step title="Publica">
+    Cambia el estado de **Borrador** a **Publicado**. Un flujo en borrador no se ejecuta.
+  </Step>
+</Steps>
 
 <Tip>
-  Un mismo flujo puede tener varios disparadores. Si tus leads llegan por formulario web y por WhatsApp, no hagas dos flujos: pon los dos disparadores en el mismo.
+  Si prefieres describir la automatización con tus palabras, el [constructor de flujos con IA](/automatizaciones/constructor-de-flujos-con-ia) puede generar el borrador por ti.
 </Tip>
 
-## Acciones más usadas
+## Cuidado con las esperas
 
-- **Enviar mensaje** por WhatsApp, SMS, correo o redes
-- **Esperar** un tiempo determinado, o hasta que ocurra algo
-- **Agregar o quitar etiqueta**
-- **Asignar a un usuario**
-- **Crear tarea** con fecha de vencimiento
-- **Mover en el pipeline**
-- **Notificación interna** al equipo
-- **Actualizar un campo** del contacto
-- **Enviar a otro flujo**
+Las acciones de espera pueden incluir condiciones de salida. La más importante es **continuar solo si el contacto no ha respondido**. Sin ella, el flujo seguirá enviando mensajes automáticos a un cliente que ya está conversando con tu equipo.
 
-## La acción de espera
+## Recomendaciones clave
 
-Es la más importante y la que más se configura mal.
+- **Publica el flujo** cuando esté listo. En borrador no se ejecuta.
+- **Usa nombres descriptivos** para identificar cada flujo meses después.
+- **Configura ventanas de horario** para que los mensajes no salgan de madrugada.
+- **Prueba con tu propio número** antes de activar el flujo para tus clientes.
+- **Revisa el historial de ejecución** para ver qué pasó con cada contacto y detectar fallos.
 
-Una espera no solo detiene el flujo un tiempo: puede tener **condiciones de salida**. La más valiosa es _continuar solo si el contacto no ha respondido_.
-
-<Warning>
-  Sin esa condición, tu flujo le sigue escribiendo a alguien que ya está conversando contigo. El cliente recibe "¿sigues interesado?" justo después de haberte dicho que sí. Es el error que más daña la percepción de un negocio automatizado.
-</Warning>
-
-## Condiciones y bifurcaciones
-
-Una condición divide el flujo en dos caminos según algo que sea cierto o falso del contacto.
-
-Ejemplo: tras enviar una cotización, esperas tres días y preguntas _¿tiene la etiqueta "cliente"?_ Si sí, va por la rama de bienvenida. Si no, va por la rama de seguimiento.
-
-<Tip>
-  Empieza con flujos lineales, sin bifurcaciones. Cuando el flujo simple ya funcione y entiendas dónde se atascan los contactos, agrega las ramas. Un flujo con seis bifurcaciones desde el día uno es imposible de depurar.
-</Tip>
-
-## Reglas de oro
+## Preguntas frecuentes
 
 <AccordionGroup>
-  <Accordion title="Publícalo o no se ejecuta">
-    Un flujo en borrador nunca corre. Es la causa número uno de "construí la automatización y no pasó nada".
+  <Accordion title="¿Cuál es la diferencia entre un disparador y una acción?">
+    El disparador inicia el flujo (por ejemplo, un formulario enviado) y las acciones son las tareas que se ejecutan después (por ejemplo, enviar un correo).
   </Accordion>
-
-  <Accordion title="Ponle un nombre que se entienda en seis meses">
-    `Seguimiento leads web - 3 toques` es mejor que `Flujo 1`. Cuando tengas veinte flujos, vas a agradecerlo.
+  <Accordion title="¿Un flujo puede manejar procesos complejos de varios pasos?">
+    Sí. Un flujo puede tener varios disparadores, muchas acciones, esperas y ramas condicionales para cubrir procesos completos.
   </Accordion>
-
-  <Accordion title="Configura el reingreso">
-    Decide si un mismo contacto puede entrar varias veces. Para seguimiento de leads casi siempre la respuesta es no.
+  <Accordion title="¿Necesito saber programar?">
+    No. El constructor es visual: eliges disparadores y acciones de una lista y los configuras con formularios.
   </Accordion>
-
-  <Accordion title="Respeta el horario">
-    Agrega ventanas de envío permitido. Un mensaje automático a las 3 de la mañana genera bloqueos y bajas.
-  </Accordion>
-
-  <Accordion title="Pruébalo con tu propio número antes de publicar">
-    Siempre. Sin excepción.
+  <Accordion title="¿Cómo agrego un contacto a un flujo manualmente?">
+    Abre la ficha del contacto, ve a **Automatización → Agregar flujo de trabajo**, elige el flujo, define la hora de inicio y haz clic en **Agregar**.
   </Accordion>
 </AccordionGroup>
 
-## El historial de ejecución
+## Artículos relacionados
 
-Cada flujo guarda un registro de qué contactos entraron, en qué paso está cada uno y dónde se detuvieron.
-
-Es tu herramienta de diagnóstico principal: cuando algo no funciona, el historial te dice exactamente en qué paso se rompió, sin adivinar.
-
-## Siguiente paso
-
-<Card title="Flujos esenciales" icon="list-check" href="/automatizaciones/flujos-esenciales">
-  Los seis flujos que todo negocio debería tener funcionando.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Tu primera automatización" icon="bolt" href="/primeros-pasos/tu-primera-automatizacion">
+    Crea paso a paso tu primer flujo.
+  </Card>
+  <Card title="Flujos esenciales" icon="diagram-project" href="/automatizaciones/flujos-esenciales">
+    Los flujos que todo negocio debería tener.
+  </Card>
+  <Card title="Registros de ejecución" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa qué hizo el flujo con cada contacto.
+  </Card>
+  <Card title="Solución de problemas" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Qué revisar cuando un flujo no funciona.
+  </Card>
+</CardGroup>

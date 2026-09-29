@@ -1,0 +1,191 @@
+---
+title: "Prueba y mejora tu agente con el optimizador de indicaciones"
+description: "Prueba tu agente de IA con escenarios realistas y aplica solo las mejoras de la indicación que apruebes."
+icon: "flask"
+---
+
+El optimizador de indicaciones (Prompt Optimizer) te permite probar y mejorar tu agente de IA conversacional antes de que hable con clientes reales. Genera escenarios de clientes realistas, ejecuta chats de prueba, evalúa cada resultado con IA y te propone mejoras a la indicación que solo se aplican cuando tú las apruebas.
+
+En lugar de probar a mano, mensaje por mensaje, tienes un proceso repetible para detectar debilidades de la indicación y corregirlas.
+
+<Note>
+  El optimizador de indicaciones es una función de **Labs**. Puede cambiar con el tiempo según los comentarios de los usuarios. Actívalo desde **Configuración → Labs** si no lo ves en tu bot.
+</Note>
+
+## Para qué sirve
+
+- **Escenarios automáticos:** crea situaciones de clientes a partir de tu indicación, acciones, base de conocimiento, citas y contexto del negocio.
+- **Chats reales:** ejecuta conversaciones de verdad con el agente, no vistas previas estáticas.
+- **Validación de acciones:** comprueba si cada acción ocurre en el momento esperado.
+- **Evaluación con IA:** explica qué pasó, qué falló y por qué.
+- **Mejora de la indicación:** genera variantes a partir de los chats fallidos y las prueba.
+- **Comparación de cambios:** muestra exactamente qué cambió antes de aplicar nada.
+- **Tu bot en producción, intacto:** la indicación real no cambia hasta que haces clic en **Usar indicación**.
+- **Varios idiomas:** escenarios, mensajes, evaluaciones e indicaciones siguen el idioma configurado en el agente.
+- **Escenarios reutilizables:** repites las mismas pruebas para medir si un cambio mejoró el resultado.
+
+<Warning>
+  Las pruebas usan una copia del agente, pero **las acciones configuradas sí pueden ejecutarse**: reservar citas, disparar flujos, transferir, hacer seguimiento o actualizar campos. Usa calendarios, flujos y destinos de prueba siempre que puedas.
+</Warning>
+
+## El proceso en tres fases
+
+| Fase | Qué haces |
+| --- | --- |
+| **1. Configurar** | Generas o reutilizas escenarios, eliges cuántas ejecuciones hacer y revisas el consumo. |
+| **2. Probar** | Ejecutas los chats, revisas transcripciones, validas acciones y ves los resultados evaluados. |
+| **3. Mejorar** | Analizas los fallos, generas variantes de la indicación, comparas cambios y aplicas la que prefieras. |
+
+## Fase 1: Configurar
+
+### Generar escenarios de prueba
+
+El optimizador crea escenarios a partir de la configuración de tu agente: la indicación y su idioma, la base de conocimiento, la configuración de citas, las acciones configuradas y el contexto del negocio. Cada escenario puede incluir un perfil de cliente, un mensaje inicial, el comportamiento esperado del agente y una prioridad.
+
+### Reutilizar escenarios anteriores
+
+Si cambiaste la indicación o la configuración, reutiliza los escenarios de una prueba anterior para comparar el rendimiento en las mismas situaciones.
+
+### Elegir cuántas ejecuciones por escenario
+
+Ejecutar el mismo escenario varias veces ayuda a detectar comportamientos inconsistentes. Elige el número antes de empezar.
+
+### Revisar el consumo
+
+Antes de iniciar, verás un resumen con los escenarios elegidos, el consumo estimado de mensajes y el manejo de los contactos temporales. El consumo se descuenta de la billetera de tu cuenta.
+
+### Contactos temporales
+
+El optimizador crea contactos temporales para los chats de prueba y los elimina al terminar, así no se mezclan con tus clientes reales. Esto no impide que las acciones configuradas se ejecuten.
+
+## Fase 2: Probar
+
+El optimizador envía mensajes como si fuera un cliente, espera las respuestas del agente, registra las acciones y evalúa el chat completo frente al comportamiento esperado.
+
+Cada ejecución pasa por estados como **En espera**, **En curso**, **Evaluando**, **Completado** o **Fallido**.
+
+### Acciones que puede rastrear
+
+- Reserva de citas.
+- Transferencia a una persona.
+- Disparar un flujo de trabajo.
+- Transferencia a otro bot.
+- Detener el bot.
+- Seguimiento automático.
+- Actualización de campos del contacto.
+- Consulta a la base de conocimiento.
+
+### Revisar transcripciones
+
+Abre cada ejecución para ver los mensajes del cliente, las respuestas del agente y la evidencia de acciones. Así sabes si un fallo viene de la indicación, de la base de conocimiento o de la configuración de una acción.
+
+### Evaluación y puntuación
+
+Cada chat recibe un resultado de aprobado o fallido, con una explicación de la IA. Como los modelos de lenguaje no siempre responden igual, repetir un escenario puede dar resultados distintos. Usa la puntuación como orientación y revisa siempre la transcripción.
+
+### Resultados generales
+
+Al terminar verás la precisión general, los chats aprobados y fallidos, los resultados por escenario y el detalle de cada ejecución.
+
+## Fase 3: Mejorar
+
+### Mejora manual
+
+<Steps>
+  <Step title="Revisa los fallos">
+    Lee los chats fallidos y la explicación de la IA.
+  </Step>
+  <Step title="Genera una variante">
+    Haz clic en **Mejorar** (Improvise). El optimizador crea una nueva versión de la indicación.
+  </Step>
+  <Step title="Revisa el resultado">
+    La variante se prueba con los mismos escenarios. Revisa la nueva precisión, los chats, las explicaciones y la comparación de cambios.
+  </Step>
+</Steps>
+
+### Optimización automática
+
+Con **Auto**, el optimizador genera y prueba varias variantes seguidas hasta alcanzar la precisión objetivo, llegar al límite de variantes o detenerse por otro motivo.
+
+### Qué problemas detecta
+
+- Acciones que no se disparan.
+- Preguntas de aclaración débiles.
+- Respuestas que no están en la base de conocimiento.
+- Flujos de reserva incompletos.
+- Transferencias mal manejadas.
+- Instrucciones que faltan o son ambiguas.
+
+El optimizador reescribe la parte editable de la indicación para corregir esos puntos, respetando la estructura que necesita la IA conversacional.
+
+### Comparar y elegir la mejor variante
+
+La **comparación de cambios** (Prompt Diff) muestra lado a lado la indicación original y la optimizada. Cuando hay varias, la de mejor rendimiento aparece marcada como **Mejor variante**, y el historial guarda la precisión, los resultados, las explicaciones y los cambios de cada una.
+
+### Aplicar la indicación optimizada
+
+<Steps>
+  <Step title="Elige la variante">
+    Selecciona la que quieres usar.
+  </Step>
+  <Step title="Revisa los cambios">
+    Lee la comparación de cambios y la explicación de la IA.
+  </Step>
+  <Step title="Confirma que encaja con tu negocio">
+    Asegúrate de que las nuevas instrucciones siguen la experiencia que quieres dar.
+  </Step>
+  <Step title="Aplica">
+    Haz clic en **Usar indicación** para llevarla al agente en producción.
+  </Step>
+</Steps>
+
+## Ten en cuenta
+
+- Las evaluaciones y reescrituras pueden variar entre ejecuciones. Toma la precisión como una guía, no como una garantía.
+- La optimización automática trabaja dentro de un límite de variantes y puede detenerse antes de llegar al objetivo.
+- Los chats tienen un tiempo máximo para que una conversación trabada no bloquee toda la prueba.
+- Un fallo puede deberse a criterios de evaluación estrictos, a un comportamiento esperado ambiguo, a información faltante, a la configuración de una acción o a la redacción de la indicación.
+
+<Tip>
+  El optimizador solo mejora la indicación. Si el problema está en un calendario, un flujo, el destino de una transferencia, la base de conocimiento o el mapeo de un campo, corrige esa configuración directamente.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El optimizador cambia mi agente en vivo automáticamente?">
+    No. Las pruebas se hacen sobre una copia. La indicación real solo cambia cuando eliges una variante y haces clic en **Usar indicación**.
+  </Accordion>
+  <Accordion title="¿Puedo probar el mismo escenario varias veces?">
+    Sí. Ayuda a ver si el agente se comporta de forma consistente o si los fallos son intermitentes.
+  </Accordion>
+  <Accordion title="¿Puedo reutilizar escenarios de una prueba anterior?">
+    Sí. Es útil para comparar el rendimiento después de cambiar la indicación, la base de conocimiento, las acciones o las citas.
+  </Accordion>
+  <Accordion title="¿Qué hago si un chat falla?">
+    Revisa primero la transcripción, las acciones y la explicación de la IA. El fallo puede venir de la indicación, de la base de conocimiento, de una acción mal configurada o de criterios de evaluación estrictos.
+  </Accordion>
+  <Accordion title="¿Por qué las pruebas repetidas dan resultados distintos?">
+    Los modelos de lenguaje son probabilísticos: la simulación del cliente, la respuesta del agente y la evaluación pueden variar. Varias ejecuciones dan una visión más útil que un solo chat.
+  </Accordion>
+  <Accordion title="¿Funciona en varios idiomas?">
+    Sí. Todo se mantiene en el idioma configurado en el agente.
+  </Accordion>
+  <Accordion title="¿Debo usar mis calendarios y flujos reales durante las pruebas?">
+    Mejor usa recursos de prueba. Las acciones reales pueden ejecutarse durante las pruebas.
+  </Accordion>
+  <Accordion title="¿Cuándo conviene usarlo?">
+    Después de cambios importantes en la indicación, la base de conocimiento, las acciones, las citas o cualquier ajuste que cambie la experiencia del cliente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Introducción a las indicaciones para IA" icon="pen" href="/bot-ia/introduccion-indicaciones">
+    Cómo escribir buenas instrucciones para tu bot.
+  </Card>
+  <Card title="Registros del agente" icon="list-timeline" href="/ia/registros-del-agente-ia-conversacional">
+    Revisa paso a paso cómo respondió la IA.
+  </Card>
+</CardGroup>

@@ -1,0 +1,94 @@
+---
+title: "Automatizar oportunidades con flujos de trabajo"
+description: "Usa disparadores y acciones de oportunidad para crear, mover y dar seguimiento a tus negocios de forma automática."
+icon: "bolt"
+---
+
+Con los flujos de trabajo de Chateea puedes automatizar gran parte de la gestión de tus oportunidades: crearlas cuando llega un lead, moverlas de etapa, avisar al responsable cuando un negocio se estanca o enviar un seguimiento cuando cambia su estado. Así tu equipo dedica menos tiempo a tareas repetitivas y ningún negocio se queda sin atención.
+
+## 1. Identifica las tareas repetitivas
+
+Antes de construir nada, anota qué hace tu equipo una y otra vez con las oportunidades. Algunos ejemplos típicos:
+
+- Enviar un correo o WhatsApp de seguimiento cuando un negocio cambia de etapa.
+- Asignar los leads nuevos a un vendedor.
+- Agendar citas o crear tareas cuando se gana un negocio.
+- Actualizar el estado de una oportunidad según lo que hace el contacto.
+
+## 2. Crea el flujo de trabajo
+
+<Steps>
+  <Step title="Abre las automatizaciones">
+    Ve a **Automatización → Flujos de trabajo**.
+  </Step>
+  <Step title="Crea un flujo nuevo">
+    Haz clic en **Crear flujo de trabajo** y empieza desde cero.
+  </Step>
+  <Step title="Ponle un nombre claro">
+    Usa un nombre que explique qué hace, por ejemplo "Seguimiento al pasar a Propuesta enviada".
+  </Step>
+</Steps>
+
+## 3. Elige el disparador
+
+El disparador es el evento que inicia el flujo: que un lead llene un formulario, haga clic en un enlace o que una oportunidad llegue a cierta etapa. Estos son los disparadores de oportunidades:
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Oportunidad creada** | Al crearse una oportunidad nueva. |
+| **Estado de la oportunidad cambiado** | Cuando una oportunidad cambia de estado (abierta, ganada, perdida o abandonada). |
+| **Etapa del pipeline cambiada** | Cuando una oportunidad pasa a otra etapa del pipeline. |
+| **Oportunidades estancadas** | Cuando una oportunidad lleva cierto número de días sin cambios. |
+
+Todos estos disparadores admiten filtros por campos estándar y personalizados de la oportunidad, así puedes limitar el flujo a un pipeline, una etapa, un valor mínimo o cualquier otro dato.
+
+## 4. Agrega las acciones
+
+Las acciones son lo que el flujo hace automáticamente cuando se cumple el disparador. Para oportunidades destacan:
+
+- **Crear o actualizar oportunidad:** crea una oportunidad o actualiza la existente con los valores que definas, como pipeline, etapa, nombre, origen, estado y motivo de pérdida, entre otros.
+- **Eliminar oportunidad:** quita la oportunidad filtrada de un pipeline.
+- **Si / Si no:** divide el flujo en ramas según una condición. Puedes usar cualquier campo estándar o personalizado de la oportunidad en la condición.
+
+<Note>
+Para usar campos de oportunidad en una condición **Si / Si no**, el flujo debe tener un disparador de oportunidad. Con otro tipo de disparador, esos campos no estarán disponibles en el filtro.
+</Note>
+
+Combínalas con el resto de acciones de Chateea: enviar correos, WhatsApp o SMS, crear tareas, asignar usuarios, agregar etiquetas o notificar a tu equipo.
+
+## 5. Prueba y ajusta
+
+- Prueba el flujo con contactos de prueba o datos ficticios.
+- Verifica que cada acción se ejecute como esperas.
+- Pide opiniones a tu equipo y revisa el rendimiento del flujo.
+- Ajusta lo necesario antes de usarlo con clientes reales.
+
+## 6. Publica el flujo
+
+Cuando todo funcione, publica el flujo. Desde ese momento, Chateea lo ejecutará automáticamente cada vez que se cumplan las condiciones del disparador.
+
+## Ideas de automatizaciones
+
+| Objetivo | Disparador | Acciones |
+| --- | --- | --- |
+| No perder ningún lead | Formulario enviado | Crear oportunidad en la etapa **Nuevo lead** y asignar un vendedor |
+| Reactivar negocios quietos | Oportunidades estancadas (por ejemplo, 14 días) | Crear una tarea para el responsable y enviar un mensaje al contacto |
+| Arrancar la incorporación | Estado de la oportunidad cambiado a **Ganada** | Enviar bienvenida, crear tareas internas y mover a un pipeline de incorporación |
+| Aprender de las pérdidas | Estado cambiado a **Perdida** | Enviar una encuesta breve y agregar una etiqueta para campañas futuras |
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Varias oportunidades en flujos de trabajo" icon="code-branch" href="/oportunidades/varias-oportunidades-en-flujos-de-trabajo">
+    Procesa cada oportunidad de un contacto por separado.
+  </Card>
+  <Card title="Estados de las oportunidades" icon="flag" href="/oportunidades/estados-de-las-oportunidades">
+    Abierta, ganada, perdida y abandonada.
+  </Card>
+  <Card title="Crear un pipeline" icon="diagram-project" href="/oportunidades/crear-un-pipeline">
+    Define las etapas de tu proceso.
+  </Card>
+  <Card title="Tu primera automatización" icon="bolt" href="/primeros-pasos/tu-primera-automatizacion">
+    Aprende a crear un flujo de trabajo desde cero.
+  </Card>
+</CardGroup>

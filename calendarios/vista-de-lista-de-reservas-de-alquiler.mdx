@@ -1,0 +1,124 @@
+---
+title: "Vista de lista de reservas de alquiler"
+description: "Revisa, filtra y gestiona tus reservas de alquiler con su estado y su pago en la vista de lista de citas."
+icon: "list"
+---
+
+La **vista de lista de citas** de Alquileres te muestra todas las reservas de tus listados, con su estado y su pago, para que controles qué está por empezar, qué está en curso y qué falta cobrar. Cada fila corresponde a **un listado dentro de una reserva**, no a la reserva completa: si un cliente reserva tres listados, verás tres filas. Así puedes seguir el horario, el pago y la finalización de cada bien por separado.
+
+## Cómo abrirla
+
+<Steps>
+  <Step title="Abre la lista de citas">
+    Ve a **Calendarios → Vista de lista de citas**.
+  </Step>
+  <Step title="Elige Alquileres">
+    En el menú desplegable superior, selecciona **Alquileres**.
+  </Step>
+  <Step title="Revisa tus reservas">
+    Verás todos los listados reservados con cliente, listado, inicio y fin, estado y pago. Para añadir una reserva a mano, haz clic en **Crear reserva**, arriba a la derecha.
+  </Step>
+</Steps>
+
+## Columnas de la tabla
+
+| Columna | Qué muestra |
+| --- | --- |
+| **#** | Número de referencia. |
+| **Contacto** | Nombre y correo del cliente. |
+| **Listado** | El bien reservado. En reservas con varios listados, cada uno aparece en su propia fila. |
+| **Inicio / Fin** | Periodo de alquiler de ese listado. |
+| **Estado** | Situación de la reserva de ese listado. |
+| **Estado del pago** | Situación del cobro de ese listado. |
+| **Acciones** | Ver o editar la reserva. |
+
+### Estados del listado
+
+- **Sin confirmar**: la reserva se recibió pero aún no está confirmada.
+- **Reservado**: confirmado y programado, todavía no ha empezado.
+- **Activo**: el alquiler está en curso.
+- **Completado**: terminó correctamente.
+- **Cancelado**: la reserva se canceló.
+
+### Estados del pago
+
+- **Pendiente**: aún no se ha cobrado.
+- **Pagado**: se cobró por completo.
+
+A nivel de reserva completa también puede aparecer **Pagado parcialmente**, cuando algunos listados están pagados y otros no.
+
+### Acciones
+
+- **Ver**: abre la reserva completa, con todos sus listados y detalles.
+- **Editar**: abre el editor de la reserva para añadir o actualizar listados, gestionar pagos y notas.
+
+<Note>
+  Aunque cada listado aparezca en una fila distinta, **Ver** y **Editar** siempre abren la reserva completa, con todos sus listados, pagos y notas.
+</Note>
+
+## Barra de herramientas y filtros
+
+### Pestañas
+
+- **Próximas**: reservas con fechas futuras.
+- **Activas**: alquileres en curso.
+- **Completadas**: reservas terminadas.
+- **Todas**: todas las reservas, sea cual sea su estado.
+
+### Filtros avanzados
+
+Puedes filtrar por:
+
+- Estado (sin confirmar, reservado, activo, completado, cancelado).
+- Estado del pago (pagado, pendiente).
+- Nombre del listado o categoría.
+- Rango de fechas de inicio y fin.
+- Nombre o correo del cliente.
+
+### Ordenar, buscar y columnas
+
+- **Ordenar por**: hora de inicio, hora de fin o fecha de creación.
+- **Buscador**: encuentra reservas por nombre del listado o del cliente.
+- **Gestionar columnas**: muestra, oculta o reordena las columnas de la tabla.
+
+<Warning>
+  Las facturas de alquiler no se envían automáticamente al cliente al crear una reserva, aunque la ficha del contacto o Conversaciones puedan dar a entender lo contrario.
+</Warning>
+
+<Tip>
+  Empieza cada día con la pestaña **Próximas** filtrada por **Pendiente** para saber qué reservas debes cobrar antes de entregar el bien.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué veo varias filas para una misma reserva?">
+    Porque cada fila es un listado de la reserva. Una reserva con varios listados genera varias filas.
+  </Accordion>
+  <Accordion title="¿Qué significa Pagado parcialmente?">
+    Que algunos listados de esa reserva están pagados y otros siguen pendientes.
+  </Accordion>
+  <Accordion title="¿Puedo editar una reserva desde una fila?">
+    Sí. Haz clic en **Ver** o **Editar** en la columna de acciones y se abre la reserva completa.
+  </Accordion>
+  <Accordion title="¿Cómo aparecen las cancelaciones y los cambios de fecha?">
+    Los listados cancelados muestran el estado **Cancelado** y siguen visibles en **Todas**. Al reprogramar, se actualizan las horas de inicio y fin.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear una reserva de alquiler" icon="calendar-plus" href="/calendarios/crear-una-reserva-de-alquiler">
+    Registra reservas manualmente.
+  </Card>
+  <Card title="Editar una reserva de alquiler" icon="pen" href="/calendarios/editar-una-reserva-de-alquiler">
+    Cambia listados, cobra pagos y actualiza estados.
+  </Card>
+  <Card title="Vista de calendario de alquileres" icon="calendar-days" href="/calendarios/vista-de-calendario-de-alquileres">
+    Tus reservas en una línea de tiempo visual.
+  </Card>
+  <Card title="Introducción a Alquileres" icon="key" href="/calendarios/introduccion-a-alquileres">
+    Qué puedes hacer y cómo empezar.
+  </Card>
+</CardGroup>

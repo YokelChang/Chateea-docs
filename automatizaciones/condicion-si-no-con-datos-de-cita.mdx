@@ -1,0 +1,127 @@
+---
+title: "Condición Si/No con datos de la cita"
+description: "Divide tus flujos de citas según si la cita se reprogramó o según su fecha de inicio o de fin."
+icon: "calendar-check"
+---
+
+En los flujos que se activan con una cita, la acción **Si/No** (If/Else) incluye la opción **Cita**. Con ella puedes dividir el flujo según si la cita se reprogramó o según su fecha de inicio o de fin. Así envías un seguimiento distinto a quien cambió su cita, un recordatorio a quien tiene la cita mañana o una oferta a quien ya fue atendido.
+
+## Filtros disponibles
+
+| Filtro | Qué evalúa |
+| --- | --- |
+| **Reprogramada** | Si la cita se reprogramó en esta ejecución del flujo. |
+| **Fecha de inicio** | Cuándo empieza la cita. |
+| **Fecha de fin** | Cuándo termina la cita. |
+
+<Note>
+  La opción **Cita** solo aparece si el flujo usa uno de estos disparadores:
+  - **Cita reservada por el cliente** (Customer Booked Appointment): cuando se agenda una cita nueva.
+  - **Estado de la cita** (Appointment Status): cuando cambia el estado de una cita, por ejemplo a "no se presentó" o "cancelada".
+</Note>
+
+## Para qué sirve
+
+- **Seguimientos precisos:** envía un mensaje distinto a quien reprogramó su cita.
+- **Recuperar ausencias:** separa a quienes agendaron y no asistieron para volver a contactarlos.
+- **Mensajes según la fecha:** recordatorios antes de la cita o seguimientos después de que termine.
+- **Promociones con fecha límite:** actúa según la fecha de la cita para campañas por tiempo limitado.
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Configura el disparador">
+    Elige **Cita reservada por el cliente** o **Estado de la cita** como disparador.
+  </Step>
+  <Step title="Agrega la condición">
+    Haz clic en **+** para agregar una acción y elige **Si/No** (If/Else).
+  </Step>
+  <Step title="Ponle un nombre claro">
+    En **Nombre de la acción**, cambia el nombre por defecto ("Condición") por una pregunta que explique lo que evalúa. Por ejemplo: "¿El cliente reprogramó?".
+  </Step>
+  <Step title="Elige Construir la tuya">
+    En el desplegable de recetas de escenario, elige **Construir la tuya** (Build Your Own) para tener control total sobre la condición.
+  </Step>
+  <Step title="Nombra las ramas">
+    Da a cada rama un nombre que describa el resultado, por ejemplo "Reprogramada" y "No reprogramada".
+  </Step>
+  <Step title="Selecciona Cita y configura el filtro">
+    Elige la opción **Cita** y después el filtro que necesites: **Reprogramada**, **Fecha de inicio** o **Fecha de fin**. Para crear más condiciones, haz clic en **+ Agregar rama**.
+  </Step>
+</Steps>
+
+### Ejemplos de nombres para la condición
+
+| Filtro | Nombre sugerido |
+| --- | --- |
+| Reprogramada | "¿El cliente reprogramó?" |
+| Fecha de inicio | "¿La cita es dentro de más de dos semanas?" |
+| Fecha de fin | "¿La cita terminó hace más de 4 días?" |
+
+## Filtro Reprogramada
+
+Tiene dos valores:
+
+- **Verdadero:** la rama se sigue cuando el cliente cambió la hora de su cita. Útil para confirmar el nuevo horario o preguntar si necesita ayuda.
+- **Falso:** la rama se sigue cuando la cita se mantiene como se agendó originalmente.
+
+Si un cliente reprograma varias veces, la condición se evalúa con el estado más reciente.
+
+## Filtros Fecha de inicio y Fecha de fin
+
+Ambos funcionan igual: **Fecha de inicio** evalúa cuándo empieza la cita y **Fecha de fin**, cuándo termina. Al elegir uno aparecen dos desplegables.
+
+**Primer desplegable: operador**
+
+| Operador | Qué hace |
+| --- | --- |
+| **Es** | Coincide con una fecha exacta. |
+| **No es** | Aplica a todas las citas excepto las de esa fecha. |
+| **Está vacío** | Aplica si la cita no tiene fecha. Útil para detectar reservas incompletas. |
+| **No está vacío** | Aplica solo a citas con fecha definida. |
+
+**Segundo desplegable: referencia de tiempo**
+
+| Opción | Qué filtra |
+| --- | --- |
+| **Hoy** | Citas de hoy. |
+| **Mañana** | Citas del día siguiente. |
+| **Ayer** | Citas del día anterior. |
+| **Después** | Citas posteriores a una fecha. |
+| **Antes** | Citas anteriores a una fecha. |
+| **Fecha** | Una fecha concreta que eliges manualmente. |
+
+<Tip>
+  Usa **Fecha de inicio** para recordatorios previos a la cita y **Fecha de fin** para seguimientos posteriores, como pedir una reseña o enviar una oferta de recompra.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no veo la opción Cita en la condición Si/No?">
+    Solo aparece si el flujo usa el disparador **Cita reservada por el cliente** o **Estado de la cita**. Con otros disparadores no está disponible.
+  </Accordion>
+  <Accordion title="¿Puedo usar varios filtros de cita en la misma condición?">
+    No. Cada condición Si/No admite un solo filtro de cita. Si necesitas más, agrega otras condiciones Si/No en el flujo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el cliente reprograma varias veces?">
+    La condición toma en cuenta el estado de reprogramación más reciente.
+  </Accordion>
+  <Accordion title="¿Puedo combinar la opción Cita con otros filtros?">
+    Sí. Puedes agregar otras condiciones, como datos del contacto o fecha y hora, junto a la opción Cita para crear flujos más personalizados.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Disparadores, acciones y condiciones.
+  </Card>
+  <Card title="Acción dividida" icon="code-branch" href="/flujo-de-trabajo/accion-dividida">
+    Reparte contactos entre varios caminos.
+  </Card>
+</CardGroup>

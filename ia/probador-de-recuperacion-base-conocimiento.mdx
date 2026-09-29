@@ -1,0 +1,137 @@
+---
+title: "Probador de recuperación de la base de conocimiento"
+description: "Comprueba qué fuentes y fragmentos encuentra tu IA en la base de conocimiento antes de usarla con clientes."
+icon: "magnifying-glass"
+---
+
+El probador de recuperación te permite comprobar qué tan bien responde tu base de conocimiento antes de conectarla a un agente de IA que hable con tus clientes. Escribes una pregunta de prueba y ves qué fuentes y fragmentos encuentra Chateea para contestarla. Así confirmas que tus documentos, textos, tablas y páginas web se pueden encontrar y usar, sin tocar ninguna conversación real.
+
+## Para qué sirve
+
+Una base de conocimiento puede tener muchos tipos de fuente: documentos (PDF, DOC, DOCX), textos enriquecidos, tablas CSV, hojas de Google Sheets y páginas web rastreadas. Chateea extrae ese contenido, lo divide en fragmentos y lo indexa para que la IA encuentre la información correcta cuando responde. El probador te muestra si ese proceso está funcionando como esperas.
+
+Con él puedes:
+
+- **Probar en tiempo real:** haces una pregunta y ves al instante cómo responde la base de conocimiento.
+- **Ver las fuentes exactas:** revisas qué fuentes y fragmentos se usaron para armar la respuesta.
+- **Detectar problemas antes de salir en vivo:** encuentras contenido que falta, que sobra, que está desactualizado o mal estructurado.
+- **Probar sin riesgo:** es una simulación de solo lectura. No modifica tu base de conocimiento ni envía mensajes a nadie.
+- **Iterar rápido:** corriges el contenido y vuelves a probar la misma pregunta para confirmar la mejora.
+
+## Cuándo usarlo
+
+Te conviene usarlo cuando:
+
+- Agregas un documento, un texto enriquecido, una tabla CSV o un sitio web nuevo.
+- Actualizas contenido que ya existía.
+- Vas a lanzar un Empleado IA, un bot de IA conversacional o un agente de IA de voz.
+- Notas que la IA responde con la fuente equivocada o le faltan detalles.
+- Quieres comparar qué fragmentos recupera la IA según cómo se formule la pregunta.
+- Sospechas que hay contenido duplicado o contradictorio que confunde a la IA.
+
+## Cómo probar tu base de conocimiento
+
+<Steps>
+  <Step title="Abre la base de conocimiento">
+    Ve a **IA → Base de conocimiento** y abre la base que quieres probar.
+  </Step>
+  <Step title="Confirma que están las fuentes que quieres validar">
+    Revisa que la base incluya los documentos, textos enriquecidos, tablas o páginas web que quieres comprobar.
+  </Step>
+  <Step title="Espera a que termine el procesamiento">
+    Si acabas de agregar o editar contenido, espera a que termine de procesarse e indexarse. Si pruebas antes, la IA todavía no podrá encontrarlo.
+  </Step>
+  <Step title="Abre el probador de recuperación">
+    Dentro de la base de conocimiento, abre el **Probador de recuperación** (Retrieval Tester).
+  </Step>
+  <Step title="Escribe una pregunta realista">
+    Usa las palabras que usaría un cliente. Por ejemplo: "¿Cuál es su política de reembolsos?" o "¿Qué clientes tienen facturas vencidas?".
+  </Step>
+  <Step title="Revisa la respuesta y las fuentes">
+    Comprueba si las fuentes recuperadas son las que esperabas y si el fragmento responde de verdad la pregunta.
+  </Step>
+  <Step title="Corrige y vuelve a probar">
+    Si falta información, está desactualizada o aparece una fuente irrelevante, ajusta el contenido. Cuando termine de procesarse, repite la misma pregunta para confirmar que ahora se recupera bien.
+  </Step>
+</Steps>
+
+## Cómo leer las fuentes y los fragmentos
+
+Chateea divide el contenido en piezas pequeñas llamadas fragmentos. En los documentos toma los títulos y el texto para ubicar pasajes concretos; en las tablas indexa cada fila para que una pregunta en lenguaje natural encuentre las filas que coinciden.
+
+Al revisar un resultado, fíjate en:
+
+- Si aparece la fuente que esperabas.
+- Si el fragmento devuelto responde directamente la pregunta.
+- Si se está recuperando contenido irrelevante o viejo.
+- Si hay fuentes parecidas con información duplicada o contradictoria.
+- Si el contenido es demasiado general, ambiguo o no usa los términos que usan tus clientes.
+
+## Buenas prácticas
+
+Una buena prueba usa las mismas preguntas que harían tus clientes, prospectos o tu equipo. Probar solo una pregunta "perfecta" puede esconder huecos que aparecen cuando alguien pregunta de otra forma.
+
+- Empieza por preguntas simples y directas.
+- Usa el lenguaje natural del cliente, no solo tus términos internos.
+- Haz la misma pregunta de varias maneras.
+- Incluye preguntas que deban devolver un documento, una fila de tabla o una política concreta.
+- Prueba casos límite, excepciones y las preguntas que más impacto tienen en tus ventas.
+- Revisa las fuentes, no solo la respuesta generada.
+- Elimina o actualiza el contenido viejo que compite con el nuevo.
+- Divide los textos muy largos o confusos en secciones más claras.
+- Vuelve a probar después de cada cambio importante.
+
+## Solución de problemas
+
+| Problema | Qué puede significar | Qué hacer |
+| --- | --- | --- |
+| No se recupera ninguna fuente | El contenido no está indexado o no se parece a la forma en que se hace la pregunta. | Confirma que terminó el procesamiento y agrega redacción que coincida con cómo preguntan tus clientes. |
+| Se recupera la fuente equivocada | Otra fuente tiene términos parecidos y parece más relevante. | Actualiza, elimina o aclara el contenido que compite. |
+| La respuesta está incompleta | A la fuente le faltan detalles. | Agrega la información que falta a esa fuente. |
+| Se recupera una fuente desactualizada | Sigue existiendo contenido viejo en la base. | Elimina o actualiza ese contenido. |
+| No aparecen datos de una tabla | La tabla sigue procesándose o las columnas relevantes no están indexadas. | Revisa la configuración del CSV, las columnas seleccionadas y el estado de procesamiento. |
+| Falta contenido de un documento | El documento no se pudo leer con claridad. | Revisa títulos, formato y calidad del archivo; vuelve a subirlo o corrígelo. |
+| Mejora al cambiar la pregunta | La base no incluye la forma en que suelen preguntar tus clientes. | Agrega sinónimos, frases naturales y títulos más claros. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El probador modifica mi base de conocimiento?">
+    No. Es una simulación de solo lectura: no edita, borra ni actualiza tu contenido.
+  </Accordion>
+  <Accordion title="¿Las pruebas afectan conversaciones reales?">
+    No. Probar no envía mensajes a clientes ni inicia conversaciones.
+  </Accordion>
+  <Accordion title="¿Es lo mismo que probar mi bot de IA conversacional?">
+    No. El probador de recuperación solo verifica si el contenido de la base se puede encontrar y devolver. Probar el bot revisa la experiencia completa: objetivos, indicaciones, acciones y forma de responder.
+  </Accordion>
+  <Accordion title="¿Por qué se recupera la fuente equivocada?">
+    Puede tener palabras parecidas, información duplicada, datos viejos o contenido más general que parece más relevante. Revisa las fuentes que se solapan y haz más clara la fuente correcta.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece contenido que sí subí?">
+    Puede que siga procesándose, que no esté indexado, que su formato sea difícil de leer o que no use palabras parecidas a las de la pregunta.
+  </Accordion>
+  <Accordion title="¿El probador muestra la respuesta exacta que recibirá el cliente?">
+    No necesariamente. Valida qué contenido se recupera. La respuesta final también depende del agente de IA, sus indicaciones, la configuración del bot, el contexto de la conversación y el canal.
+  </Accordion>
+  <Accordion title="La fuente es correcta pero la respuesta es floja. ¿Qué hago?">
+    Mejora el contenido con títulos más claros, respuestas directas, ejemplos y lenguaje cercano al cliente. Luego repite la misma pregunta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conecta Google Sheets a tu base de conocimiento" icon="table" href="/ia/google-sheets-base-de-conocimiento">
+    Usa una hoja de cálculo como fuente de datos viva para la IA.
+  </Card>
+  <Card title="Importa archivos de Google Drive" icon="google-drive" href="/ia/google-drive-base-de-conocimiento">
+    Agrega documentos de Drive sin descargarlos.
+  </Card>
+  <Card title="Descarga tablas de la base de conocimiento en CSV" icon="file-csv" href="/ia/descargar-tablas-base-conocimiento-csv">
+    Exporta las tablas que usa tu IA.
+  </Card>
+  <Card title="Bases de conocimiento múltiples" icon="book" href="/bot-ia/bases-conocimiento-multiples">
+    Organiza tu información en varias bases.
+  </Card>
+</CardGroup>

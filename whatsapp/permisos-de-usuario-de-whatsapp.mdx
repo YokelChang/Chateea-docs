@@ -1,0 +1,121 @@
+---
+title: "Permisos de usuario de WhatsApp"
+description: "Controla qué puede cambiar cada miembro de tu equipo en WhatsApp: plantillas, Flows, números, perfil y desconexión."
+icon: "user-lock"
+---
+
+Los permisos de WhatsApp te permiten decidir qué puede cambiar cada miembro de tu equipo en la configuración de WhatsApp. En lugar de un único permiso que lo abre todo, puedes permitir o restringir acciones concretas: crear plantillas, editar Flows, administrar números, actualizar el perfil de empresa o desconectar la integración. Así evitas cambios accidentales y cada persona tiene justo el acceso que necesita.
+
+## Ventajas
+
+- **Control preciso:** cada usuario hace solo las acciones de configuración que su rol requiere.
+- **Menos errores:** limitas a personas autorizadas los cambios en plantillas, Flows, números, perfil y desconexión.
+- **Delegación segura:** das acceso a ciertas tareas de administración sin abrir todo lo demás.
+- **Aplicación coherente:** Chateea aplica los mismos permisos en la interfaz y en las solicitudes por API.
+- **Diagnóstico rápido:** si alguien no puede hacer algo, revisas sus permisos de WhatsApp antes de pensar en una falla.
+
+## Los siete permisos de WhatsApp
+
+| Permiso | Qué permite |
+| --- | --- |
+| **Crear o editar plantillas de WhatsApp** | Crear plantillas nuevas y modificar las existentes. Ver [Crear plantillas de WhatsApp](/whatsapp/plantillas) |
+| **Eliminar plantillas de WhatsApp** | Borrar plantillas cuando se permite. Es independiente de crear o editar |
+| **Crear o editar Flows de WhatsApp** | Crear y modificar WhatsApp Flows. Ver [WhatsApp Flows para reservar citas](/whatsapp/whatsapp-flows-reserva-de-citas) |
+| **Eliminar o dar de baja Flows de WhatsApp** | Borrar o dejar obsoletos Flows existentes. Protege los Flows publicados de bajas accidentales |
+| **Actualizar el perfil de empresa de WhatsApp** | Cambiar la información del perfil. Ver [Perfil de empresa](/whatsapp/perfil-de-empresa) |
+| **Agregar o administrar números de WhatsApp** | Agregar y gestionar los números conectados a WhatsApp |
+| **Desconectar la integración de WhatsApp** | Desconectar WhatsApp de Chateea. Conviene reservarlo a quien administra la integración |
+
+<Note>
+  Desconectar la integración y cancelar la suscripción de WhatsApp son acciones distintas. Este permiso solo controla la desconexión. Para cancelar, sigue [Eliminar un número o cancelar la suscripción](/whatsapp/eliminar-numero-o-cancelar-suscripcion).
+</Note>
+
+## Cómo funcionan
+
+- Los siete permisos controlan **acciones que cambian la configuración**: crear, editar, eliminar, administrar o desconectar.
+- **Ver y previsualizar** sigue dependiendo del acceso general a WhatsApp. Quitar el permiso de crear o editar no significa que el usuario deje de ver ese recurso.
+- Los permisos son **por usuario**: se aplican a ese usuario dentro de tu cuenta.
+
+### Valores predeterminados
+
+Para que nadie pierda acceso de golpe, los siete permisos vienen **activados** para los usuarios existentes (administradores y usuarios). Si quieres limitar a alguien, tienes que desactivar los permisos que no necesite.
+
+### Qué pasa cuando un usuario no tiene el permiso
+
+- El botón o la acción correspondiente aparece deshabilitado en Chateea.
+- Se muestra un mensaje o una descripción emergente que explica que falta el permiso.
+- Las solicitudes por API para esa acción se rechazan con un error **403 Forbidden**.
+
+Por ejemplo, un usuario puede entrar a **Plantillas** pero no crear ni editar una si tiene desactivado **Crear o editar plantillas de WhatsApp**.
+
+## Cómo configurar los permisos
+
+<Steps>
+  <Step title="Abre la gestión de usuarios">
+    En tu cuenta de Chateea ve a **Configuración → Mi equipo**.
+  </Step>
+  <Step title="Edita al usuario">
+    Busca al miembro del equipo y abre su configuración con el ícono de edición.
+  </Step>
+  <Step title="Ve a roles y permisos">
+    Abre la pestaña **Roles y permisos** y busca la sección **WhatsApp**.
+  </Step>
+  <Step title="Activa o desactiva cada permiso">
+    Enciende o apaga cada uno de los siete permisos según las tareas de esa persona. Revisa también el resto de sus permisos para no cortar trabajo del día a día.
+  </Step>
+  <Step title="Guarda">
+    Guarda los cambios. Se aplican a ese usuario de inmediato.
+  </Step>
+</Steps>
+
+<Tip>
+  Si alguien de repente no puede hacer una acción concreta de WhatsApp, compara esa acción con los siete permisos antes de tocar su acceso general al módulo.
+</Tip>
+
+## Ejemplos de uso
+
+| Rol en tu equipo | Configuración sugerida |
+| --- | --- |
+| Agente de atención | Todos los permisos de configuración desactivados. Solo atiende conversaciones |
+| Responsable de marketing | Crear o editar plantillas y Flows activados. Eliminar y desconectar desactivados |
+| Administrador de WhatsApp | Los siete permisos activados |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué un usuario entra a la configuración de WhatsApp pero no puede crear una plantilla?">
+    Tiene acceso a WhatsApp, pero no el permiso **Crear o editar plantillas de WhatsApp**. Actívalo en sus roles y permisos.
+  </Accordion>
+  <Accordion title="¿Puedo dejar que alguien edite plantillas sin que pueda borrarlas?">
+    Sí. Crear o editar y eliminar son permisos separados.
+  </Accordion>
+  <Accordion title="¿Puedo dejar que alguien cree Flows sin que pueda eliminarlos?">
+    Sí. **Crear o editar Flows** y **Eliminar o dar de baja Flows** son independientes.
+  </Accordion>
+  <Accordion title="Si quito el permiso de editar, ¿el usuario deja de ver el recurso?">
+    No necesariamente. Estos permisos controlan los cambios. La visualización depende del acceso general a WhatsApp.
+  </Accordion>
+  <Accordion title="¿Qué pasa si una integración intenta hacer una acción sin permiso?">
+    La solicitud por API se rechaza con un error 403 Forbidden.
+  </Accordion>
+  <Accordion title="¿El permiso de desconectar permite cancelar la suscripción?">
+    No. Son acciones distintas. Para cancelar, sigue el proceso de cancelación de la suscripción.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Crea y edita tus plantillas.
+  </Card>
+  <Card title="Perfil de empresa" icon="building" href="/whatsapp/perfil-de-empresa">
+    Foto, descripción y datos de tu negocio.
+  </Card>
+  <Card title="WhatsApp Flows para reservar citas" icon="calendar" href="/whatsapp/whatsapp-flows-reserva-de-citas">
+    Formularios dentro de WhatsApp.
+  </Card>
+  <Card title="Eliminar número o cancelar suscripción" icon="trash" href="/whatsapp/eliminar-numero-o-cancelar-suscripcion">
+    Cómo dar de baja WhatsApp.
+  </Card>
+</CardGroup>

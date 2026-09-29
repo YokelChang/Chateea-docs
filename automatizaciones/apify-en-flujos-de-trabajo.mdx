@@ -1,0 +1,119 @@
+---
+title: "Apify en flujos de trabajo"
+description: "Ejecuta actores y tareas de Apify, trae los datos extraídos y reacciona cuando termina una ejecución."
+icon: "spider"
+---
+
+Apify es una plataforma para extraer datos de sitios web mediante actores (programas de extracción) y tareas (configuraciones guardadas de un actor). Al conectarla con tus flujos de trabajo de Chateea, puedes lanzar extracciones, traer los datos resultantes y reaccionar cuando termina una ejecución, sin webhooks propios ni conectores externos. Es útil para conseguir leads, enriquecer contactos o vigilar a la competencia.
+
+## Para qué te sirve
+
+- **Recolección automática de datos:** lanzas trabajos de Apify desde un flujo, sin exportaciones manuales.
+- **Enriquecimiento más rápido:** usas datos de sitios web o negocios para completar contactos y segmentar mejor.
+- **Reacción inmediata:** arrancas un flujo cuando termina un actor o una tarea para actuar con datos frescos.
+- **Flexibilidad:** eliges si un evento de Chateea lanza la extracción o si el fin de la extracción lanza acciones en Chateea.
+
+## Antes de empezar
+
+- Acceso a **Automatización → Flujos de trabajo** en tu cuenta.
+- Una cuenta de Apify con una **clave de API** válida.
+- Acceso a **Configuración → Integraciones** si prefieres conectar Apify desde ahí.
+
+<Note>
+  Los disparadores y las acciones de Apify son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). El uso de Apify lo cobra Apify en tu cuenta de Apify.
+</Note>
+
+## Conectar tu cuenta de Apify
+
+- **Desde el flujo:** en **Automatización → Flujos de trabajo**, agrega cualquier disparador o acción de Apify. Si no está conectado, haz clic en **Conectar ahora** y pega tu clave de API. Si ya lo está, los campos se cargan al instante.
+- **Desde la configuración:** ve a **Configuración → Integraciones**, busca **Apify** y haz clic en **Conectar**.
+
+## Disparadores (de Apify a Chateea)
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Ejecución de actor terminada** | Cuando termina la ejecución de un actor de Apify. |
+| **Ejecución de tarea terminada** | Cuando termina la ejecución de una tarea de Apify. |
+
+## Acciones (de Chateea a Apify)
+
+| Acción | Qué hace |
+| --- | --- |
+| **Ejecutar una tarea** | Ejecuta una tarea de Apify ya configurada. |
+| **Ejecutar un actor** | Inicia un actor con los datos de entrada que le pases desde el flujo. |
+| **Extraer una URL** | Extrae datos estructurados de una sola página web. |
+| **Obtener elementos del conjunto de datos** | Trae los datos resultantes de una ejecución. |
+| **Buscar última ejecución de tarea** | Devuelve los detalles de la ejecución más reciente de una tarea. |
+| **Buscar última ejecución de actor** | Devuelve los detalles de la ejecución más reciente de un actor. |
+
+## Configurar Apify en un flujo
+
+<Steps>
+  <Step title="Abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo o abre uno existente.
+  </Step>
+  <Step title="Conecta Apify">
+    Agrega un paso de Apify y conecta tu cuenta con la clave de API, o hazlo antes desde **Configuración → Integraciones**.
+  </Step>
+  <Step title="Elige el sentido del flujo">
+    - **Empieza en Apify:** usa un disparador de Apify si el flujo debe arrancar cuando termina una extracción.
+    - **Empieza en Chateea:** usa una acción de Apify si un evento de Chateea debe lanzar la extracción.
+  </Step>
+  <Step title="Configura el disparador o la acción">
+    Por ejemplo, **Ejecución de actor terminada** para reaccionar al final de un actor, **Ejecutar una tarea** para lanzar una tarea guardada o **Extraer una URL** para sacar datos de una página.
+  </Step>
+  <Step title="Agrega una espera antes de pedir resultados">
+    Si el flujo lanza un actor o una tarea y luego necesita los datos, agrega un paso de **Espera** antes de **Buscar última ejecución** u **Obtener elementos del conjunto de datos**, para que la ejecución tenga tiempo de terminar.
+  </Step>
+  <Step title="Prueba y publica">
+    Haz una prueba pequeña, confirma que los datos llegan bien y publica el flujo.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+### Leads locales desde Google Maps
+
+- **Disparador:** Ejecución de actor terminada (un actor de extracción de Google Maps).
+- **Acciones:** Obtener elementos del conjunto de datos, Crear o actualizar contacto y agregar el contacto a un flujo con una campaña de correo o SMS.
+
+Por ejemplo, extraes los dentistas de una ciudad y, al terminar, cada uno entra como contacto y recibe tu secuencia de seguimiento.
+
+<Warning>
+  Si usas datos extraídos para enviar mensajes, asegúrate de cumplir las leyes de privacidad y consentimiento de tu país y las políticas de cada canal antes de contactar a esas personas.
+</Warning>
+
+### Vigilancia de la competencia con avisos
+
+- **Disparador:** Ejecución de tarea terminada (una tarea que revisa webs o precios de competidores).
+- **Acciones:** Obtener elementos del conjunto de datos, Enviar notificación interna y Crear tarea.
+
+Cuando cambia algo en la web o en los precios de un competidor, tu equipo de marketing recibe el aviso y una tarea para responder.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo manejo conjuntos de datos grandes?">
+    Agrega un paso de **Espera** después de lanzar el actor o la tarea, usa **Obtener elementos del conjunto de datos** y procesa los resultados en pasos manejables.
+  </Accordion>
+  <Accordion title="¿Tiene costo usar Apify?">
+    Sí. Apify cobra según tu cuenta de Apify y, además, cada ejecución de un paso premium se descuenta de la billetera de tu cuenta de Chateea.
+  </Accordion>
+  <Accordion title="¿Dónde conecto Apify?">
+    Desde un paso de Apify en **Automatización → Flujos de trabajo** o desde **Configuración → Integraciones**.
+  </Accordion>
+  <Accordion title="¿Qué hago si no llegan datos?">
+    Confirma que la ejecución terminó bien en Apify, revisa que usas la acción correcta, agrega una espera antes de pedir resultados y prueba de nuevo con una muestra pequeña.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Browse AI en flujos de trabajo" icon="globe" href="/automatizaciones/browse-ai-en-flujos-de-trabajo">
+    Otra forma de extraer y vigilar datos de sitios web.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+</CardGroup>

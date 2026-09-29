@@ -1,0 +1,78 @@
+---
+title: "Campo WhatsApp válido y listas inteligentes"
+description: "Usa el campo WhatsApp válido para crear listas inteligentes y enviar campañas solo a números activos."
+icon: "list-check"
+---
+
+El campo **WhatsApp válido** de cada contacto te dice si su número está activo en WhatsApp. Con él puedes filtrar contactos y crear listas inteligentes para enviar campañas solo a quien de verdad puede recibirlas, lo que reduce los envíos fallidos y mejora tu entregabilidad.
+
+## Valores del campo
+
+| Valor | Qué significa |
+| --- | --- |
+| **Es válido** | El número está activo en WhatsApp y puede recibir tus mensajes. |
+| **No es válido** | El número no está disponible en WhatsApp. El contacto no puede recibir mensajes por ese canal. |
+| **No validado** | Chateea aún no sabe si el número está en WhatsApp porque no ha habido conversación por ese canal. |
+
+## Cómo se actualiza
+
+El campo se actualiza solo, en tiempo real, y no se puede editar a mano:
+
+- **Mensaje entregado:** cuando un mensaje de WhatsApp se entrega, el contacto pasa a **Es válido**.
+- **Mensaje fallido:** si el mensaje no se entrega o Meta reporta un problema, pasa a **No es válido**.
+- **El contacto te escribe:** si inicia una conversación por WhatsApp, pasa a **Es válido** de inmediato.
+- **Sin conversación:** si nunca ha habido intercambio por WhatsApp, se queda en **No validado**.
+
+## Para qué te sirve
+
+- **Filtrar contactos:** encuentra rápido a quién puedes escribir por WhatsApp.
+- **Listas inteligentes:** segmenta tus campañas según el estado de WhatsApp.
+- **Automatizaciones:** usa el campo en condiciones **Si/Si no** para enviar un SMS o un correo cuando el WhatsApp no es válido. Consulta [WhatsApp en flujos de trabajo](/whatsapp/whatsapp-en-flujos-de-trabajo).
+
+## Muestra la columna en Contactos
+
+<Steps>
+  <Step title="Abre Contactos">
+    Ve a **Contactos**.
+  </Step>
+  <Step title="Agrega la columna">
+    Pulsa **Columnas** y selecciona **WhatsApp válido**.
+  </Step>
+</Steps>
+
+## Crea una lista inteligente sin números inválidos
+
+<Steps>
+  <Step title="Abre los filtros">
+    En **Contactos**, pulsa **Más filtros**.
+  </Step>
+  <Step title="Filtra por WhatsApp válido">
+    Busca **WhatsApp válido**, selecciona **Es válido** y pulsa **Aplicar**.
+  </Step>
+  <Step title="Incluye los no validados">
+    Agrega una condición **O** y selecciona **No validado**.
+  </Step>
+  <Step title="Guarda la lista">
+    Pulsa **Guardar como lista inteligente** y ponle un nombre.
+  </Step>
+</Steps>
+
+La lista se actualiza sola cada vez que un contacto cambia de estado. Úsala como audiencia de tus [envíos masivos de WhatsApp](/whatsapp/envio-masivo-de-whatsapp).
+
+<Note>
+  Conviene incluir los contactos **No validados** porque Chateea todavía no sabe si tienen WhatsApp: simplemente no ha habido conversación con ellos. Si los excluyes, dejarías fuera a muchos clientes que sí pueden recibir tus mensajes.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cada cuánto se actualiza el campo?">
+    En tiempo real, según los casos descritos arriba.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el estado a mano?">
+    No. Chateea lo actualiza automáticamente según las interacciones y el resultado de cada envío.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar contactos por este campo?">
+    Sí. Existe un filtro específico de **WhatsApp válido** en **Contactos** y en las listas inteligentes.
+  </Accordion>
+</AccordionGroup>

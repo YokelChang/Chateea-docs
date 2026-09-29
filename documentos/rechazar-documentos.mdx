@@ -1,0 +1,136 @@
+---
+title: "Rechazar documentos y registrar los motivos"
+description: "Permite que tus clientes rechacen documentos con un motivo y automatiza el seguimiento de esas ventas perdidas."
+icon: "ban"
+---
+
+Cuando un cliente decide no seguir adelante, puede rechazar formalmente el documento en lugar de dejarlo sin firmar. Chateea registra el rechazo como un estado, guarda los motivos y las notas que escribió el destinatario, y te permite automatizar el seguimiento. Así conviertes una venta perdida en información útil para mejorar tus propuestas y tu proceso comercial.
+
+## Por qué te conviene
+
+- **Retroalimentación estructurada:** recoges motivos predefinidos y notas opcionales.
+- **Estados más claros:** el estado **Rechazado** separa los tratos perdidos de los documentos pendientes o sin firmar.
+- **Automatización:** puedes disparar flujos cuando un documento se rechaza para enviar seguimientos, crear tareas o avisar a tu equipo.
+- **Mensajes personalizados:** usa los motivos del rechazo en tus plantillas de correo.
+- **Visibilidad de los tratos perdidos:** guardas quién rechazó, cuándo y por qué, para analizar patrones.
+
+## Cómo rechaza el destinatario
+
+<Steps>
+  <Step title="Abre el documento">
+    El destinatario abre el documento que recibió.
+  </Step>
+  <Step title="Elige rechazar">
+    Hace clic en el menú de la esquina superior derecha y selecciona **Rechazar documento**.
+  </Step>
+  <Step title="Indica los motivos">
+    Elige uno o más motivos de rechazo (si están disponibles) y, si quiere, agrega notas.
+  </Step>
+  <Step title="Envía">
+    Hace clic en **Enviar** para completar el rechazo.
+  </Step>
+</Steps>
+
+Al enviarlo, el documento queda marcado como **Rechazado**, se mueve a **Archivados** y ya no se puede firmar. Los detalles del rechazo quedan guardados para consultarlos después.
+
+## Cómo rechazas tú un documento
+
+A veces eres tú quien necesita detener un documento, por ejemplo porque el trato ya no aplica. Puedes rechazarlo desde tu cuenta después de enviarlo:
+
+1. Abre el documento desde **Pagos → Documentos y contratos**.
+2. Usa la opción de rechazo disponible para documentos enviados.
+3. Confirma el rechazo.
+
+El documento sigue el mismo ciclo: cambia su estado a **Rechazado** y pasa a **Archivados**.
+
+## Automatizar el seguimiento con flujos de trabajo
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Agrega el disparador **Documentos y contratos**.
+  </Step>
+  <Step title="Filtra por estado">
+    Agrega el filtro **Estado** y elige **Rechazado**.
+  </Step>
+  <Step title="Agrega tus acciones">
+    Por ejemplo: un correo de seguimiento, una notificación interna, una tarea para el vendedor o mover la oportunidad a la etapa de perdido.
+  </Step>
+</Steps>
+
+## Usar los motivos del rechazo en correos
+
+En tus plantillas de correo tienes dos valores personalizados relacionados con el rechazo:
+
+| Valor | Qué muestra |
+| --- | --- |
+| **Motivos de rechazo del documento** (Document Decline Reasons) | La lista de motivos seleccionados, separados por comas. |
+| **Detalle de los motivos de rechazo** (Document Decline Reasons Body) | Las notas o comentarios que escribió el destinatario. |
+
+Úsalos en correos de seguimiento al cliente, en notificaciones internas para tu equipo o en cualquier comunicación donde ayude saber por qué se rechazó el documento.
+
+<Tip>
+Envía una notificación interna al responsable del trato con los dos valores. Así puede llamar al cliente con contexto y, por ejemplo, ajustar el precio o el alcance si ese fue el motivo.
+</Tip>
+
+## Revisar los documentos rechazados y su historial
+
+<Steps>
+  <Step title="Entra a Archivados">
+    Ve a **Pagos → Documentos y contratos** y abre **Archivados**.
+  </Step>
+  <Step title="Abre el documento">
+    Selecciona el documento rechazado que quieres revisar.
+  </Step>
+  <Step title="Consulta el historial">
+    Abre **Ver historial** para ver la línea de tiempo del rechazo.
+  </Step>
+</Steps>
+
+En el historial verás:
+
+- Quién rechazó el documento.
+- La fecha y hora del rechazo.
+- Los motivos seleccionados.
+- Las notas adicionales.
+
+Revisa periódicamente los motivos más frecuentes: te dirán si debes ajustar tus precios, tus condiciones o la forma en que presentas tus propuestas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa cuando un destinatario rechaza un documento?">
+    Se marca como **Rechazado**, se mueve a **Archivados** y ya no se puede firmar. Chateea guarda los motivos y las notas.
+  </Accordion>
+  <Accordion title="¿Puedo rechazar yo un documento?">
+    Sí. Puedes rechazar un documento desde tu cuenta después de enviarlo.
+  </Accordion>
+  <Accordion title="¿Dónde encuentro los documentos rechazados?">
+    En **Pagos → Documentos y contratos → Archivados**.
+  </Accordion>
+  <Accordion title="¿Puedo automatizar acciones después de un rechazo?">
+    Sí. Crea un flujo con el disparador **Documentos y contratos** y el filtro de estado **Rechazado**.
+  </Accordion>
+  <Accordion title="¿Qué devuelve el valor Motivos de rechazo del documento?">
+    Una lista de los motivos que eligió el destinatario, separados por comas.
+  </Accordion>
+  <Accordion title="¿Qué devuelve el valor Detalle de los motivos de rechazo?">
+    Los comentarios o notas que escribió el destinatario al rechazar.
+  </Accordion>
+  <Accordion title="¿Dónde veo quién rechazó el documento y por qué?">
+    Abre el documento desde **Archivados** y usa **Ver historial**: verás la persona, la fecha y hora, los motivos y las notas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Vencimiento de documentos" icon="clock" href="/documentos/vencimiento-de-documentos">
+    Define un plazo para firmar tus documentos.
+  </Card>
+  <Card title="Pipelines y oportunidades" icon="filter" href="/contactos/pipelines">
+    Mueve tus tratos según el resultado.
+  </Card>
+</CardGroup>

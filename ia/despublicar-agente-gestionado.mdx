@@ -1,0 +1,79 @@
+---
+title: "Cómo despublicar un agente gestionado"
+description: "Pausa los disparadores de producción de un agente gestionado sin perder su configuración."
+icon: "circle-pause"
+---
+
+Despublicar un agente gestionado lo saca de producción de forma temporal sin perder nada de lo que configuraste. Sus disparadores dejan de ejecutarse, pero las instrucciones, apps, conocimiento y disparadores siguen guardados para que puedas editar y probar con calma. Cuando estés listo, lo vuelves a publicar con tu configuración más reciente.
+
+Es útil cuando necesitas hacer cambios importantes, cuando detectas un comportamiento inesperado o cuando una campaña termina y quieres pausar el agente sin borrarlo.
+
+## Qué pasa al despublicar
+
+- **Los disparadores de producción se detienen.** El agente deja de reaccionar a eventos reales.
+- **Las ejecuciones programadas pendientes se eliminan**, para que el agente quede inactivo en producción.
+- **La configuración se conserva:** disparadores, apps, conocimiento e instrucciones siguen ahí.
+- **Puedes seguir trabajando:** editar en el constructor, probar el borrador y chatear con el agente.
+- **Eventos en curso:** si un evento se estaba procesando justo al despublicar, aparece como **Omitido** (Skipped) en el historial de **Actividad**, con el motivo.
+
+<Note>
+  Despublicar no elimina ni desactiva la configuración del agente. Solo pausa sus disparadores de producción.
+</Note>
+
+## Ventajas
+
+- **Pausar sin perder configuración.**
+- **Seguir editando** sin reactivar los disparadores.
+- **Probar cambios** en el panel de prueba antes de volver a producción.
+- **Evitar ejecuciones programadas** mientras el agente está en pausa.
+- **Volver a producción fácilmente** con un clic.
+
+## Cómo despublicar un agente
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y abre el agente gestionado publicado que quieres pausar.
+  </Step>
+  <Step title="Entra en modo edición">
+    Haz clic en **Editar agente**, junto a **Publicar**, en la esquina superior derecha del constructor.
+  </Step>
+  <Step title="Despublica">
+    Haz clic en el menú de tres puntos junto a **Publicar** y elige **Despublicar** (Unpublish).
+  </Step>
+</Steps>
+
+## Volver a publicar
+
+Cuando termines de editar y probar, haz clic en **Publicar**. Se publica la última configuración guardada y los disparadores de producción vuelven a activarse.
+
+<Tip>
+  Si el agente tenía disparadores programados, revisa sus horarios antes de volver a publicar para confirmar que siguen teniendo sentido. Consulta [disparadores programados](/ia/disparadores-programados-agentes-gestionados).
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Despublicar borra mi agente?">
+    No. El agente y su configuración siguen disponibles. Solo se detienen sus disparadores de producción.
+  </Accordion>
+  <Accordion title="¿Puedo probar un agente despublicado?">
+    Sí. El panel de prueba sigue disponible para validar el borrador antes de publicarlo otra vez.
+  </Accordion>
+  <Accordion title="¿Puedo chatear con el agente mientras está despublicado?">
+    Sí. Despublicar detiene los disparadores de producción, no la interacción directa con el agente.
+  </Accordion>
+  <Accordion title="¿Qué pasa con un evento que se estaba procesando?">
+    Aparece como **Omitido** en el historial de **Actividad**, con el motivo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Actividad de los agentes gestionados" icon="list-check" href="/ia/actividad-de-agentes-gestionados">
+    Revisa qué ejecutó o qué omitió tu agente.
+  </Card>
+  <Card title="Disparadores programados" icon="clock" href="/ia/disparadores-programados-agentes-gestionados">
+    Configura cuándo se ejecuta tu agente.
+  </Card>
+</CardGroup>

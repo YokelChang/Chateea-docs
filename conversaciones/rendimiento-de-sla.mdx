@@ -1,0 +1,96 @@
+---
+title: "Mide el rendimiento de tus SLA"
+description: "Revisa el cumplimiento de tus metas de tiempo de respuesta por usuario y por canal en un solo panel."
+icon: "chart-line"
+---
+
+El panel de **Rendimiento de SLA** te muestra qué tan bien está cumpliendo tu equipo las metas de tiempo de respuesta que definiste en Conversaciones. En lugar de revisar conversación por conversación, ves en un solo lugar el porcentaje de cumplimiento, el tiempo promedio de respuesta y el desempeño por usuario y por canal.
+
+Te sirve para detectar demoras a tiempo, reconocer a quien responde bien, identificar a quien necesita apoyo y decidir en qué canal hace falta más cobertura.
+
+## Antes de empezar
+
+- Debes tener los SLA de conversación configurados. Si aún no lo hiciste, sigue [Configura los SLA de respuesta](/conversaciones/configurar-sla-de-respuesta).
+- Solo los **administradores** pueden ver los informes de rendimiento de SLA.
+- Los datos del panel están disponibles a partir del 23 de mayo de 2026.
+
+## Abre el panel
+
+<Steps>
+  <Step title="Entra a la analítica de Conversaciones">
+    Ve a **Conversaciones → Analítica → Rendimiento de SLA**.
+  </Step>
+  <Step title="Elige un rango de fechas">
+    Selecciona el período que quieres evaluar, por ejemplo la última semana o el último mes.
+  </Step>
+  <Step title="Revisa el resumen">
+    Empieza por el **% de SLA cumplido**, el **% de SLA incumplido** y el **tiempo promedio de respuesta**. Te dan la foto general.
+  </Step>
+  <Step title="Baja al detalle">
+    Revisa el desglose por usuario y por canal para ver dónde están las demoras.
+  </Step>
+</Steps>
+
+## Qué significa cada métrica
+
+| Métrica | Qué mide |
+| --- | --- |
+| **% de SLA cumplido** | Porcentaje de mensajes respondidos dentro del tiempo definido. Si el SLA se aplicó a 100 mensajes y 60 se respondieron a tiempo, el resultado es 60 %. |
+| **% de SLA incumplido** | Porcentaje de mensajes que no se respondieron a tiempo. |
+| **Tiempo promedio de respuesta** | Tiempo promedio que tardó tu equipo en responder los mensajes que sí tuvieron respuesta. |
+| **Mensajes con SLA cumplido** | Total de mensajes respondidos a tiempo. |
+| **Mensajes con SLA incumplido** | Total de mensajes que no tuvieron respuesta antes del límite. |
+| **Mensajes con SLA medido** | Total de mensajes con SLA cuyo resultado ya se conoce, sea cumplido o incumplido. |
+
+<Note>
+  Los mensajes cuyo SLA sigue activo (todavía no se cumplió ni se venció) no entran en ningún cálculo. Por eso los números del día en curso pueden cambiar a medida que se cierran conversaciones.
+</Note>
+
+## Reglas de conteo
+
+- Solo se incluyen mensajes con evaluación terminada: **cumplido** o **incumplido**.
+- Las conversaciones marcadas como leídas **sin respuesta** no se cuentan.
+- El resultado se atribuye al usuario que tenía asignada la conversación en el momento de la evaluación.
+
+<Warning>
+  Como marcar como leída sin responder saca la conversación del informe, pídele a tu equipo que no use esa opción para "limpiar" la bandeja. Hacerlo oculta demoras reales.
+</Warning>
+
+## Cómo usar el desglose por usuario y canal
+
+- Reconoce a quienes cumplen de forma constante.
+- Detecta a quien necesita capacitación o tiene demasiada carga.
+- Compara canales: si WhatsApp cumple y el correo no, quizá necesitas a alguien dedicado al correo o una respuesta automática de acuse.
+- Busca patrones que pidan ajustar flujos de trabajo o turnos.
+
+## Crea tus propios informes de SLA
+
+Además del panel de Conversaciones, puedes armar vistas a tu medida con widgets de SLA en **Informes** (paneles e informes personalizados). En el apartado de widgets de Conversaciones eliges la métrica, el tipo de gráfico, agrupas por usuario asignado o por canal, aplicas filtros y combinas los datos de SLA con otros widgets. Es útil para un panel de salud del servicio o para programar el envío periódico de informes.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Quién puede ver el panel de rendimiento de SLA?">
+    Solo los administradores de la cuenta.
+  </Accordion>
+  <Accordion title="¿Se incluyen todos los mensajes?">
+    No. Solo los que tienen un resultado de SLA definido: cumplido o incumplido.
+  </Accordion>
+  <Accordion title="¿Cuentan las conversaciones marcadas como leídas?">
+    No, si se marcaron como leídas sin enviar una respuesta.
+  </Accordion>
+  <Accordion title="Si varias personas trabajaron la conversación, ¿a quién se le atribuye?">
+    Al usuario asignado en el momento en que se evaluó el SLA.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configura los SLA de respuesta" icon="stopwatch" href="/conversaciones/configurar-sla-de-respuesta">
+    Define tus metas de tiempo por canal.
+  </Card>
+  <Card title="La bandeja de conversaciones" icon="inbox" href="/conversaciones/bandeja-unificada">
+    Filtros, asignación y compositor.
+  </Card>
+</CardGroup>

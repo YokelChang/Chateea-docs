@@ -1,0 +1,95 @@
+---
+title: "Narración y estadísticas de los disparadores"
+description: "Entiende de un vistazo la lógica de cada disparador y por qué un contacto entró o no a tu flujo."
+icon: "chart-simple"
+---
+
+Cuando un flujo de trabajo tiene varios disparadores o muchos filtros, puede costar entender por qué un contacto entró o no entró. Chateea te ofrece dos herramientas para verlo claro sin salir del constructor: la **narración del disparador**, que resume sus condiciones en lenguaje sencillo, y las **estadísticas del disparador**, que muestran cuántos contactos se evaluaron, cuántos cumplieron las condiciones y por qué los demás no.
+
+Juntas te ayudan a validar la configuración, diagnosticar problemas más rápido y hacer cambios con confianza.
+
+## Beneficios
+
+- **Visibilidad:** ves qué disparadores generan más actividad.
+- **Análisis de rendimiento:** detectas disparadores muy usados o que casi no se activan.
+- **Detección de errores:** encuentras disparadores que no funcionan como esperabas.
+- **Optimización:** mejoras tus flujos con datos reales, no con suposiciones.
+
+## Narración del disparador
+
+Cada tarjeta de disparador muestra un resumen legible de sus filtros y condiciones, justo debajo del nombre. Así puedes revisar la lógica sin abrir cada disparador.
+
+- Si el disparador tiene muchas condiciones, verás un resumen compacto con un enlace **+X más**.
+- Haz clic en **Detalles** para abrir un panel con la lista completa de filtros.
+
+La narración es muy útil en auditorías, cuando otra persona del equipo toma un flujo o cuando revisas lienzos grandes: ya no necesitas abrir cada disparador para recordar para qué sirve.
+
+## Estadísticas del disparador
+
+Las estadísticas son una vista de diagnóstico dentro del constructor que mide si los contactos cumplieron las condiciones de cada disparador. Están disponibles tanto en el constructor **estándar** como en el **avanzado**. Abre la vista **Estadísticas** y selecciona un disparador para revisar su actividad.
+
+<Warning>
+  En la vista de estadísticas no puedes editar el flujo. Además, las estadísticas solo cubren los **últimos 30 días**.
+</Warning>
+
+### Métricas por disparador
+
+| Métrica | Qué cuenta |
+| --- | --- |
+| Evaluados (Attempted) | Todos los contactos que el disparador evaluó, cumplieran o no los filtros. |
+| Coincidentes (Matched) | Contactos que cumplieron todas las condiciones. |
+| No coincidentes (Unmatched) | Contactos que no cumplieron alguna condición. |
+
+### Panel de estadísticas del disparador
+
+Haz clic en cualquier cifra para abrir el panel de detalle. Ahí verás:
+
+- Nombre, correo y fecha y hora de cada contacto.
+- Si coincidió o no.
+- El **motivo de no coincidencia** (por ejemplo, un valor distinto o un campo vacío).
+- Un resumen de los motivos más comunes, para detectar problemas repetidos en los filtros o en los datos de tus contactos.
+- Filtros por rango de fechas y búsqueda por contacto.
+
+### Análisis en tiempo real
+
+Las estadísticas se actualizan en vivo a medida que ocurren los eventos. Puedes hacer un cambio, provocar el evento de prueba y ver en segundos cómo se mueven los números para confirmar que tu corrección funciona.
+
+## Buenas prácticas
+
+- Revisa las estadísticas de tus disparadores cada semana para detectar problemas a tiempo.
+- Vigila la proporción entre evaluados y coincidentes como indicador de salud del flujo.
+- Compara disparadores de flujos parecidos para encontrar oportunidades de mejora.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Tengo muchos contactos no coincidentes. ¿Qué reviso primero?">
+    Abre el panel de estadísticas y mira el motivo de no coincidencia. Las causas más habituales son un valor incorrecto en el filtro, un campo vacío en el contacto o haber elegido un tipo de disparador que no corresponde al evento.
+  </Accordion>
+  <Accordion title="¿Puedo filtrar o buscar dentro de las estadísticas?">
+    Sí. Usa el rango de fechas y la búsqueda por contacto dentro del panel.
+  </Accordion>
+  <Accordion title="¿Esto cambia cómo se activan los disparadores?">
+    No. La narración y las estadísticas solo añaden visibilidad. La lógica y la ejecución de los disparadores siguen igual.
+  </Accordion>
+  <Accordion title="¿Cada cuánto se actualizan los números?">
+    En tiempo real. Normalmente verás los nuevos contactos evaluados a los pocos segundos del evento.
+  </Accordion>
+  <Accordion title="¿Qué cuenta como Evaluado?">
+    Cualquier contacto que el disparador haya evaluado, haya cumplido o no los filtros, suma uno a ese total.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo se guardan los datos?">
+    El panel conserva los datos de los últimos 30 días.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Estadísticas de flujos" icon="chart-line" href="/automatizaciones/estadisticas-de-flujos">
+    Mide el rendimiento general de tus flujos de trabajo.
+  </Card>
+  <Card title="Registros de ejecución e historial de inscripción" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa paso a paso qué pasó con cada contacto.
+  </Card>
+</CardGroup>

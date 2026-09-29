@@ -1,0 +1,63 @@
+---
+title: "La API de conversiones de Facebook no funciona en mi flujo"
+description: "Revisa las causas más comunes por las que la acción API de conversiones de Facebook no envía eventos a Meta."
+icon: "circle-question"
+---
+
+La acción **API de conversiones de Facebook** (Facebook Conversion API) envía a Meta los eventos que ocurren en tus flujos de trabajo, como un lead o una compra, para que tus anuncios se optimicen con datos reales. Si configuraste la acción y los eventos no aparecen en Meta, casi siempre se debe a una de estas causas: estás probando con el botón de prueba, el disparador no es el adecuado o falta el valor del lead en un evento de compra.
+
+## Causa 1: estás usando el botón de prueba del flujo
+
+La API de conversiones **no se puede probar con el botón de prueba del flujo**. Ese modo no envía un evento real a Meta.
+
+Para probarla:
+
+<Steps>
+  <Step title="Guarda y publica el flujo">
+    Guarda los cambios y publica el flujo.
+  </Step>
+  <Step title="Genera un evento real">
+    Completa tú mismo el formulario, la encuesta, la reserva o el pedido que dispara el flujo, como lo haría un cliente.
+  </Step>
+  <Step title="Revisa en Meta">
+    Comprueba en el Administrador de eventos de Meta si el evento llegó.
+  </Step>
+</Steps>
+
+## Causa 2: el disparador no es de tipo "entrada"
+
+La acción necesita un disparador que se active cuando una persona **envía información**, porque de ahí salen los datos que se mandan a Meta. Usa uno de estos:
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Formulario enviado** | Alguien envía un formulario. |
+| **Encuesta enviada** | Alguien completa una encuesta. |
+| **Cita reservada por el cliente** (Customer Booked Appointment) | Alguien reserva desde tu widget de calendario. |
+| **Formulario de pedido de 2 pasos** | Alguien envía un formulario de pedido de dos pasos. |
+
+<Warning>
+  Para citas, la acción solo funciona con el disparador **Cita reservada por el cliente**. No funciona con el disparador general **Cita**, que agrupa cualquier cambio de cita y no solo las reservas hechas por el cliente desde el widget.
+</Warning>
+
+## Causa 3: falta el valor del lead en un evento de compra
+
+Si usas el evento **Purchase** (compra), el campo **Valor del lead** es obligatorio. Para otros eventos puedes dejarlo en blanco.
+
+## Lista de verificación rápida
+
+- El flujo está **publicado** y lo pruebas con un envío real, no con el botón de prueba.
+- El disparador es Formulario enviado, Encuesta enviada, Cita reservada por el cliente o Formulario de pedido de 2 pasos.
+- Si el evento es Purchase, el valor del lead está completo.
+
+Si después de revisar todo esto los eventos siguen sin llegar, escribe a soporte de Chateea en **help@chateea.com** con el nombre del flujo y la hora aproximada de tu prueba.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Resuelve los problemas más comunes de tus automatizaciones.
+  </Card>
+  <Card title="Anuncios de clientes potenciales en Meta" icon="bullhorn" href="/primeros-pasos/anuncios-de-clientes-potenciales-en-meta">
+    Conecta tus anuncios de Meta con Chateea.
+  </Card>
+</CardGroup>

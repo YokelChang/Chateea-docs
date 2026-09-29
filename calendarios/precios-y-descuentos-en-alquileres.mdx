@@ -1,0 +1,192 @@
+---
+title: "Precios y descuentos en alquileres"
+description: "Configura precio base, depósitos y reglas por temporada, día, hora, duración y cantidad en tus alquileres."
+icon: "tags"
+---
+
+Los precios en Alquileres son dinámicos: se adaptan a las fechas, a la duración de la reserva y a la cantidad de unidades. Cada listado o variante tiene su propia configuración, así que puedes cobrar más en temporada alta, premiar los alquileres largos o hacer descuentos por volumen sin gestionar promociones a mano. Este artículo explica cada tipo de regla, el orden en que se aplican y cómo se calcula el total.
+
+## Qué compone el precio
+
+- **Precio base**: la tarifa principal del listado o la variante.
+- **Depósito de garantía** (opcional): un importe reembolsable o con tarjeta registrada para cubrir daños o pérdidas.
+- **Reglas de precio avanzadas**: ajustes automáticos según fecha, día, hora, duración o cantidad.
+
+## Ventajas
+
+- **Control preciso**: combina reglas por capas para reflejar temporadas y demanda.
+- **Coherencia**: las mismas reglas se aplican en la página de reservas y en las reservas que crea tu equipo.
+- **Incentivos automáticos**: premia los alquileres largos sin gestionar promociones.
+- **Horas punta**: cobra más en las horas de mayor demanda.
+- **Depósitos separados**: se muestran aparte en el pago y en las facturas, lo que facilita la conciliación.
+
+## Dónde se configuran
+
+1. Ve a **Calendarios → Configuración de calendarios → Alquileres**.
+2. Haz clic en el ícono del **lápiz** junto al listado.
+3. Abre la pestaña **Inventario y precios**.
+
+Si el listado tiene **variantes**, cada una tiene su propia pestaña de precios y sus propias reglas.
+
+### 1. Precio base
+
+Es el importe que se cobra por cada unidad de reserva: hora, día, semana o mes. Por ejemplo, si cobras 50 por hora y el cliente reserva 4 horas, el total antes de ajustes es 200.
+
+### 2. Depósito de garantía
+
+Solo está disponible si lo activas antes en la configuración global: **Alquileres → Configuración global → Pagos → Activar depósitos de garantía**.
+
+- Si el depósito es 0, no se muestra en la página de reservas ni se cobra.
+- El depósito no cambia el precio base: aparece por separado en el pago y en las facturas.
+
+### 3. Reglas de precio avanzadas
+
+Haz clic en **Precios avanzados** y activa las reglas que quieras usar.
+
+## Tipos de reglas
+
+### Precio por temporada
+
+Cambia la tarifa en fechas concretas, como vacaciones o temporada baja. Tiene dos modos:
+
+| Modo | Cómo funciona | Ejemplo con precio base 100 |
+| --- | --- | --- |
+| **Porcentaje (+/−)** | Sube o baja el precio base en un porcentaje. | −20 % deja el precio en 80. |
+| **Fijo** | Sustituye el precio base por el importe que indiques. No se suma. | Precio fijo de 150: se cobra 150, no 250. |
+
+Usa el modo fijo cuando quieras una tarifa cerrada para una temporada y el porcentaje cuando prefieras un ajuste relativo. Para añadir más periodos, haz clic en **Agregar rango de fechas**.
+
+### Precio por día de la semana
+
+Ajusta el precio según el día, ideal si los fines de semana tienen más demanda. Cada día puede tener su propio porcentaje: usa el signo menos para descuentos y un número sin signo para subidas. Por ejemplo: sábado +10 %, domingo −15 %.
+
+### Precio por hora del día
+
+Cobra más o menos en determinadas franjas horarias. Por ejemplo, de 18:00 a 22:00, +20 %.
+
+<Note>
+  Esta regla solo funciona si la unidad de reserva del listado es **por hora**. En listados por día, semana o mes se ignora.
+</Note>
+
+### Descuentos por duración
+
+Premian los alquileres largos. Se escriben como valores positivos, pero reducen el precio.
+
+- Defines umbrales, por ejemplo 3, 7 o 30 días. Cada uno es un **nivel**.
+- Cuando la duración alcanza o supera un nivel, se aplica su descuento.
+- Pueden ser **fijos** o **porcentuales**.
+- Se aplica el **nivel más alto alcanzado**. Si solo tienes un 5 % a partir de 3 días, cualquier reserva de 3 días o más recibe ese 5 %.
+
+Ejemplo: 10 % a partir de 7 días y 20 % a partir de 30 días. Una reserva de 14 días recibe 10 % y una de 40 días, 20 %.
+
+El descuento se basa en la duración que se usa para calcular el precio. Si una reserva se cobra como 3 meses, recibe el descuento de 3 meses aunque su duración real sea algo menor (por ejemplo, 2 meses y 1 día).
+
+### Descuentos por cantidad
+
+Reducen el precio cuando el cliente alquila varias unidades del mismo listado. También se escriben como valores positivos.
+
+- Defines umbrales, por ejemplo 3, 5 o 10 unidades.
+- Al alcanzar un nivel, el descuento se aplica a **todas** las unidades reservadas.
+- Siguen la misma lógica de niveles que los descuentos por duración.
+
+Ejemplo: 5 % desde 5 unidades y 10 % desde 10 unidades. Una reserva de 7 unidades recibe 5 % y una de 12, 10 %.
+
+<Note>
+  Los descuentos por cantidad solo están disponibles si el listado tiene el **inventario** activado.
+</Note>
+
+## Orden en que se aplican las reglas
+
+Las reglas se calculan en este orden, y cada una se aplica sobre el resultado de la anterior:
+
+| Orden | Regla | Cuándo se aplica | Notas |
+| --- | --- | --- | --- |
+| 1 | **Precio base** | Siempre | Tarifa principal del listado. |
+| 2 | **Temporada** | Si la fecha está dentro de un rango definido | Sustituye o ajusta el precio base temporalmente. |
+| 3 | **Día de la semana** | Si la reserva incluye un día configurado | Ajusta el total tras la temporada. |
+| 4 | **Hora del día** | Solo en listados por hora | Ajuste más fino por franja horaria. |
+| 5 | **Descuento por duración** | Si la duración alcanza un umbral | Se aplica después de los ajustes de tiempo. |
+| 6 | **Descuento por cantidad** | Si se reservan varias unidades | Reduce el precio por unidad. |
+
+## Detalles del cálculo
+
+Las reglas funcionan igual en la página de reservas y en las reservas creadas desde Chateea, así que el cobro siempre es predecible.
+
+### Cada unidad cobrada usa la regla de su inicio
+
+Para decidir qué ajuste aplicar (temporada, día u hora), el sistema mira la **hora de inicio de cada unidad cobrada** (cada hora, día, semana o mes) y aplica esa regla a la unidad completa. No divide el precio a mitad de una unidad.
+
+Ejemplo: un listado por días tiene +10 % los martes. Una reserva empieza el martes a las 23:30 y termina el jueves a las 23:30. El primer día completo se cobra con el recargo del martes y desde el segundo día (miércoles) se aplica la tarifa base.
+
+### Se mide el tiempo exacto
+
+En listados por día, semana o mes, el sistema calcula el tiempo real transcurrido, no solo la diferencia de fechas.
+
+- Un alquiler diario del 18 de octubre a las 14:00 al 19 de octubre a las 14:05 se cobra como **dos días**, porque supera las 24 horas.
+- En semanas y meses pasa lo mismo: cualquier minuto por encima de 7 días (semana) o 30 días (mes) empieza un nuevo ciclo de cobro.
+
+<Tip>
+  Si ofreces entregas y devoluciones a la misma hora, deja un pequeño margen o ajusta las horas del alquiler para no cobrar un día extra por unos minutos de retraso.
+</Tip>
+
+## Ejemplos de cálculo
+
+**Ejemplo 1: listado por días con temporada y duración**
+
+- Precio base: 100 por día.
+- Temporada: +20 % del 1 de junio al 31 de agosto.
+- Descuento por duración: 10 % a partir de 6 días.
+- Reserva: 7 días en julio.
+
+Cálculo: 100 × 7 = 700. Con temporada: 700 × 1,2 = 840. Con descuento: 840 × 0,9 = **756**.
+
+**Ejemplo 2: listado por horas con día y hora**
+
+- Precio base: 25 por hora.
+- Día de la semana: +10 % el sábado.
+- Hora del día: +15 % de 18:00 a 21:00.
+- Reserva: 3 horas el sábado, de 18:00 a 21:00.
+
+Cálculo: 25 × 3 = 75. Con el sábado: 75 × 1,10 = 82,50. Con la franja horaria: 82,50 × 1,15 = **94,88**.
+
+**Ejemplo 3: equipo con descuento por cantidad**
+
+- Precio base: 50 por día.
+- Descuento por cantidad: 5 % desde 5 unidades.
+- Reserva: 5 unidades durante 1 día.
+
+Cálculo: 50 × 5 = 250. Con descuento: 250 × 0,95 = **237,50**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo tener varios descuentos para la misma duración?">
+    No. En cada tipo de regla solo se aplica el descuento más alto que corresponda.
+  </Accordion>
+  <Accordion title="¿Qué pasa si se cumplen varias reglas a la vez?">
+    Se aplican en orden, una detrás de otra, ajustando el total en cada paso.
+  </Accordion>
+  <Accordion title="¿Las reglas se aplican por variante?">
+    Sí. Cada variante tiene su propia estructura de precios.
+  </Accordion>
+  <Accordion title="¿Puedo usar precio por hora del día en alquileres por días o semanas?">
+    No. Solo funciona en listados con unidad de reserva por hora.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crear y editar listados" icon="pen-to-square" href="/calendarios/crear-y-editar-listados-de-alquiler">
+    Inventario, variantes y reglas de reserva.
+  </Card>
+  <Card title="Configuración global de alquileres" icon="gear" href="/calendarios/configuracion-global-de-alquileres">
+    Moneda, pagos y depósitos de garantía.
+  </Card>
+  <Card title="Crear una reserva de alquiler" icon="calendar-plus" href="/calendarios/crear-una-reserva-de-alquiler">
+    Comprueba los precios con una reserva de prueba.
+  </Card>
+  <Card title="Introducción a Alquileres" icon="key" href="/calendarios/introduccion-a-alquileres">
+    Qué puedes hacer y cómo empezar.
+  </Card>
+</CardGroup>

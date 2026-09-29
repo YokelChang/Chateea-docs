@@ -1,0 +1,123 @@
+---
+title: "Dominio de empresa y prevención de duplicados"
+description: "Cómo funciona el campo de dominio de las empresas y cómo mantener un solo registro por dominio."
+icon: "globe"
+---
+
+Cada empresa de tu CRM puede tener un dominio web, como `acme.com`. Ese dato es el que te permite mantener un solo registro por negocio y el que Chateea revisa primero cuando busca a qué empresa pertenece un contacto nuevo.
+
+## Para qué sirve el campo Dominio
+
+El campo **Nombre de dominio** cumple dos funciones:
+
+- **Prevención de duplicados.** Con esta opción activa, solo una empresa de tu cuenta puede tener un dominio determinado.
+- **Asociación automática.** Cuando llega un contacto con correo corporativo, su dominio es lo primero que se revisa para encontrar su empresa.
+
+Una empresa sin dominio funciona con normalidad. Simplemente no queda protegida por la prevención de duplicados y no se le pueden asociar contactos por dominio hasta que se lo agregues.
+
+Verás el campo en tres lugares:
+
+- En la ficha de la empresa, como **Nombre de dominio**, dentro de **Información de la empresa**.
+- Como columna en tu lista de empresas.
+- En importaciones, listas inteligentes y la API de Chateea como `domainname`, junto a `companylogo`.
+
+## Agregar un dominio a una empresa
+
+<Steps>
+  <Step title="Abre la empresa">
+    Entra a la ficha de la empresa.
+  </Step>
+  <Step title="Escribe el dominio">
+    En **Información de la empresa**, completa **Nombre de dominio**.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+Escribe solo el dominio: `acme.com`, no `https://www.acme.com`, y nunca una dirección de correo.
+
+Los dominios también se completan solos de dos formas: cuando Chateea crea una empresa a partir del correo de un contacto, o cuando agrega un dominio a una empresa que no lo tenía. Además, puedes completarlos en bloque para tus empresas existentes (lo verás más abajo).
+
+<Note>
+Un dominio que escribiste tú nunca se sobrescribe, ni por la asociación automática ni por ningún otro proceso.
+</Note>
+
+## Mantener una empresa por dominio
+
+Ve a **Configuración → Objetos → Empresas** y, en **Automatizaciones**, activa **Evitar empresas duplicadas automáticamente**.
+
+| Estado | Resultado |
+| --- | --- |
+| **Activado (recomendado)** | Una empresa por dominio. Ninguna otra empresa puede usar un dominio que ya está en uso, así que la asociación siempre encuentra exactamente una empresa. |
+| **Desactivado** | Varias empresas pueden tener el mismo dominio. La asociación funciona igual, pero tiene más de una empresa para elegir. |
+
+Si lo desactivas, verás una advertencia y el cambio queda registrado para poder rastrearlo después.
+
+<Warning>
+Esta opción evita que se creen nuevos dominios duplicados, pero no fusiona las empresas que ya tienes. Si hoy tienes dos registros para el mismo negocio, seguirán separados hasta que los resuelvas tú.
+</Warning>
+
+La coincidencia es exacta: `acme.com` y `mail.acme.com` cuentan como dominios distintos.
+
+## Completar dominios en empresas existentes
+
+Las empresas creadas antes de usar la asociación por dominio suelen no tener dominio. Mientras no lo tengan, no se les pueden asociar contactos por dominio ni quedan protegidas contra duplicados.
+
+Al activar **Crear empresas a partir del dominio del correo del contacto**, Chateea te ofrece **Completar dominios de empresas existentes**. Este proceso revisa tus empresas y agrega un dominio donde puede hacerlo con seguridad: usa el sitio web de la empresa o, si no lo tiene, busca el dominio a partir del nombre.
+
+**Qué se omite:**
+
+- Dominios que escribiste tú. No se cambian nunca.
+- Proveedores de correo gratuitos, por ejemplo una empresa cuyo sitio web dice `gmail.com`.
+- Direcciones de redes sociales y creadores de sitios como Facebook, LinkedIn, Wix, Squarespace o Linktree, para no asignar la misma dirección a empresas que no tienen relación.
+- Valores que no son dominios, como un teléfono escrito en el campo del sitio web.
+- Empresas que terminarían compartiendo un dominio. Si varias empresas apuntan al mismo sitio web, ninguna se actualiza, para que tú decidas cuál debe quedárselo.
+
+Por ejemplo, si cuatro sucursales tienen como sitio web el de la casa matriz, en vez de darle el dominio a la primera que aparezca, las cuatro quedan sin cambios para que las ordenes tú.
+
+El proceso corre en segundo plano y su duración depende de cuántas empresas tengas. Puedes seguir trabajando. Si además elegiste aplicar la asociación a tus contactos existentes, primero se completan los dominios, para que tus contactos se unan a las empresas que ya tienes.
+
+<Info>
+Este completado no dispara tus flujos de trabajo, webhooks ni integraciones. Tus automatizaciones siguen funcionando con normalidad para las empresas que se crean o actualizan por las vías habituales.
+</Info>
+
+Las empresas que agregues más adelante reciben su dominio cuando se les asocia un contacto, o puedes escribirlo tú en la ficha.
+
+## Qué tener en cuenta
+
+- La coincidencia de dominios es exacta. Los subdominios no cuentan como el mismo dominio.
+- Cada empresa tiene un solo dominio. Si un negocio usa varios, deja el principal en la ficha y gestiona el resto manualmente.
+- La prevención de duplicados no fusiona empresas existentes.
+- El completado de dominios no se puede deshacer y nunca sobrescribe un dominio que escribiste tú.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿En qué formato debo escribir el dominio?">
+    Solo el dominio, por ejemplo `acme.com`. Sin `https://`, sin `www`, sin rutas y sin direcciones de correo.
+  </Accordion>
+  <Accordion title="¿Dos empresas pueden compartir un dominio?">
+    Solo si desactivas la prevención de duplicados. No lo recomendamos, porque la asociación automática tendría más de una empresa para elegir.
+  </Accordion>
+  <Accordion title="¿Activar la prevención de duplicados fusiona las empresas que ya tengo?">
+    No. Solo impide nuevos dominios duplicados. Los duplicados existentes debes resolverlos tú.
+  </Accordion>
+  <Accordion title="¿Los subdominios coinciden con el dominio principal?">
+    No. La coincidencia es exacta, así que `acme.com` y `mail.acme.com` son distintos.
+  </Accordion>
+  <Accordion title="¿Completar dominios puede sobrescribir uno que puse yo?">
+    Nunca.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Creación y enriquecimiento automático de empresas" icon="wand-magic-sparkles" href="/crm/creacion-y-enriquecimiento-automatico-de-empresas">
+    Asocia contactos a empresas y crea empresas de forma automática.
+  </Card>
+  <Card title="Empresas" icon="building" href="/contactos/empresas">
+    Crea y gestiona los registros de empresa de tu CRM.
+  </Card>
+</CardGroup>

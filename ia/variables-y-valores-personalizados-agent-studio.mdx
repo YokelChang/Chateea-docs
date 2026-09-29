@@ -1,0 +1,114 @@
+---
+title: "Variables y valores personalizados en Agent Studio"
+description: "Usa datos de tu cuenta, del contacto, de formularios y la fecha actual en tus agentes de IA."
+icon: "code"
+---
+
+Las variables y los valores personalizados hacen que tus agentes de Agent Studio usen datos reales de forma automática. En lugar de escribir a mano el teléfono de tu negocio o el nombre del cliente en cada nodo, insertas un marcador que se reemplaza por el dato correcto cuando el agente se ejecuta.
+
+## Qué es una variable
+
+Una variable es un marcador entre llaves dobles, como `{{contact.first_name}}`. Por ejemplo, si escribes `Hola {{contact.first_name}}` y el contacto se llama Juan, el agente enviará "Hola Juan".
+
+Puedes usar variables en cualquier campo de texto de Agent Studio: indicaciones del nodo de agente de IA, nodos de generación de texto, entradas de herramientas, mensajes y campos de condiciones. Haz clic en la flecha del campo para abrir el selector de variables, o escribe `{{` a mano.
+
+## Para qué sirve
+
+- **Construyes una vez y reutilizas:** el mismo agente funciona con los datos de cada contacto sin cambios.
+- **Sin actualizaciones manuales:** si cambias tu teléfono o dirección, se actualiza en todos los lugares donde lo usas.
+- **Personalización automática:** nombres y datos del CRM aparecen solos en las conversaciones.
+- **Fecha y hora al momento:** el agente sabe qué día y hora es.
+- **Ejecución segura:** si una variable no tiene valor, queda en blanco y el agente sigue funcionando.
+
+## Categorías de variables
+
+| Categoría | Qué contiene | Ejemplo |
+| --- | --- | --- |
+| **Cuenta** | Datos de tu negocio en la configuración de tu cuenta: nombre, teléfono, dirección, sitio web, URL del logo. | `{{account.name}}`, `{{account.primary_phone}}` |
+| **Valores personalizados** | Pares clave y valor que defines en **Configuración → Valores personalizados**. | `{{custom_values.support_email}}` |
+| **Ahora mismo** | Fecha y hora actuales: fecha completa, hora, día de la semana, mes o año, según la zona horaria de tu cuenta. | `{{right_now.date}}` |
+| **Datos del formulario** | Cada campo del formulario que disparó el agente. | `{{form.service_type}}` |
+| **Contacto** | Campos estándar y personalizados de la ficha del contacto en el CRM. | `{{contact.first_name}}`, `{{contact.email}}` |
+
+### Valores personalizados
+
+Los creas una vez y los usas donde quieras. Por ejemplo, con la clave `support_email` y el valor `soporte@tunegocio.com`, puedes escribir en el agente: "Si necesitas ayuda, escribe a `{{custom_values.support_email}}`". Si más adelante cambias el correo, se actualiza en todas partes.
+
+Además, los flujos de trabajo que usan la acción **Agente de IA** pueden actualizar valores personalizados durante la ejecución con la herramienta **Actualizar valor personalizado**.
+
+### Datos del formulario
+
+<Note>
+Las variables de formulario solo tienen valor cuando el agente arranca con el disparador **Formulario enviado**.
+</Note>
+
+### Contacto
+
+Si la ficha del contacto cambia, la próxima vez que se ejecute el agente usará los datos actualizados.
+
+## Variables de contacto o variables de ejecución
+
+- Las **variables de contacto** leen datos ya guardados en el CRM. Úsalas si la información existe antes de que empiece la conversación.
+- Las **variables de ejecución** (runtime) guardan datos temporales que se recogen durante la conversación actual. Úsalas si el dato se obtiene en el momento, por ejemplo con un nodo de captura.
+
+Algunos nodos, como las llamadas a API, generan variables de ejecución con su respuesta. Puedes reutilizarlas en pasos posteriores eligiéndolas en el selector de variables.
+
+## Cómo usar variables en tu agente
+
+<Steps>
+  <Step title="Crea tus valores personalizados">
+    Ve a **Configuración → Valores personalizados**, haz clic en **Agregar valor personalizado**, escribe el nombre y el valor y haz clic en **Crear**.
+  </Step>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio** y abre el agente que quieres personalizar.
+  </Step>
+  <Step title="Inserta la variable">
+    Haz clic en un campo de indicación o mensaje, abre el selector con la flecha (o escribe `{{`), elige la categoría (Cuenta, Valores personalizados, Ahora mismo, Datos del formulario o Contacto) y haz clic en la variable.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar** y luego en **Probar**. Ejecuta una conversación de ejemplo y confirma que las variables muestran los datos correctos. Si alguna sale en blanco, revisa que el dato exista en el CRM o en la configuración de tu cuenta.
+  </Step>
+  <Step title="Publica">
+    Cuando todo funcione, promueve el agente a producción.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si elimino un valor personalizado que usa el agente?">
+    La variable devuelve un valor vacío. No genera un error.
+  </Accordion>
+  <Accordion title="¿Qué pasa si una variable no tiene valor?">
+    Queda en blanco y el agente sigue funcionando con normalidad.
+  </Accordion>
+  <Accordion title="¿Puedo usar campos de oportunidades o tareas?">
+    Por ahora las fuentes disponibles son Cuenta, Valores personalizados, Ahora mismo, Datos del formulario y Contacto.
+  </Accordion>
+  <Accordion title="¿Las variables de fecha y hora respetan mi zona horaria?">
+    Sí. Usan la zona horaria configurada en tu cuenta.
+  </Accordion>
+  <Accordion title="¿Puedo usar variables de formulario en cualquier agente?">
+    Solo tienen valor cuando el agente arranca con el disparador **Formulario enviado**.
+  </Accordion>
+  <Accordion title="¿Importan las mayúsculas en los nombres de las variables?">
+    Sí. Usa exactamente las claves que aparecen en el selector de variables.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparadores para agentes de flujo" icon="bolt" href="/ia/disparadores-agentes-de-flujo">
+    Arranca tu agente con formularios, etiquetas o chats.
+  </Card>
+  <Card title="Nodo enrutador" icon="route" href="/ia/nodo-enrutador-agent-studio">
+    Usa variables para decidir el siguiente paso.
+  </Card>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Conoce el constructor y sus nodos.
+  </Card>
+  <Card title="Prueba y depura agentes" icon="bug" href="/ia/probar-y-depurar-agentes-agent-studio">
+    Comprueba que tus variables se resuelven bien.
+  </Card>
+</CardGroup>

@@ -1,0 +1,127 @@
+---
+title: "Error 131026: mensaje no entregable"
+description: "Causas del error 131026 de WhatsApp, cómo diagnosticarlo por descarte y cómo evitar que se repita."
+icon: "circle-exclamation"
+---
+
+El error **131026** (Message Undeliverable) indica que tu mensaje llegó a los servidores de Meta, pero no se pudo entregar en el teléfono del destinatario. Meta lo usa como un error "comodín": varias causas distintas devuelven el mismo código y, para proteger la privacidad del usuario, no siempre dice cuál fue. Esta guía te ayuda a descubrir la causa por descarte y a evitar que se repita.
+
+```json
+"errors": [
+  {
+    "code": 131026,
+    "title": "Message Undeliverable"
+  }
+]
+```
+
+<Info>
+  Los mensajes que fallan con 131026 **no se cobran**: no se entregaron y no se abrió ninguna conversación.
+</Info>
+
+## Causas conocidas
+
+| Causa | Qué pasa |
+| --- | --- |
+| **El número no tiene WhatsApp** | El destinatario no tiene cuenta de WhatsApp o el número ya no existe. Es la causa más común |
+| **El destinatario te bloqueó** | Meta no revela el bloqueo, solo devuelve este error |
+| **No aceptó los términos de WhatsApp** | Si el usuario no aceptó los términos y la política de privacidad más recientes, algunos mensajes (sobre todo plantillas) no se entregan |
+| **Versión de WhatsApp desactualizada** | Los mensajes con botones, enlaces o multimedia pueden fallar. Versiones mínimas: Android 2.21.15.15, iOS 2.21.170.4 y KaiOS 2.2130.10 |
+| **Plantilla de autenticación a un número de India (+91)** | Meta no permite enviar plantillas de autenticación a números con prefijo +91. Es una restricción fija |
+| **Límite de frecuencia de marketing** | Si el usuario ya recibió varios mensajes de marketing de distintos negocios en poco tiempo, Meta puede frenar los siguientes. A veces aparece como error 131049 |
+| **País restringido o sancionado** | No se entregan mensajes a usuarios en países con restricciones legales |
+| **Mensajes entre dos cuentas de la API** | La API está pensada para que un negocio escriba a consumidores, no a otra cuenta de la API de WhatsApp Business |
+
+## Cómo diagnosticar la causa
+
+<Steps>
+  <Step title="Envía un mensaje simple de utilidad">
+    Envía al mismo número una plantilla de utilidad de solo texto, sin botones, enlaces ni multimedia. Si se entrega, lo más probable es que el cliente tenga WhatsApp desactualizado: pídele que lo actualice. Si también falla, el número probablemente no tiene WhatsApp o te bloqueó.
+  </Step>
+  <Step title="Mira si el problema es aislado o general">
+    Si falla solo con un número, la causa está en ese contacto (no tiene WhatsApp, te bloqueó o no aceptó los términos). Si fallan muchos mensajes de marketing a la vez, lo más probable es el límite de frecuencia de marketing: prueba con mensajes de utilidad.
+  </Step>
+  <Step title="Revisa el formato del número">
+    Confirma que los números incluyen el código de país correcto y no tienen caracteres de más.
+  </Step>
+  <Step title="Revisa la categoría de la plantilla">
+    Si escribes a un número de India (+91), asegúrate de no estar usando una plantilla de autenticación.
+  </Step>
+  <Step title="Consulta el estado de Meta">
+    Entra a [metastatus.com/whatsapp-business-api](https://metastatus.com/whatsapp-business-api) para descartar una caída de la plataforma.
+  </Step>
+</Steps>
+
+## Cómo resolverlo según la causa
+
+| Causa | Qué hacer |
+| --- | --- |
+| El número no tiene WhatsApp | Quita el número de tus envíos por WhatsApp. Valida los números antes de cargarlos |
+| Te bloqueó | Deja de escribirle. Seguir intentando no funcionará |
+| No aceptó los términos | No puedes hacer nada desde tu lado. El usuario debe abrir WhatsApp y aceptarlos |
+| WhatsApp desactualizado | Envía primero un texto simple y pídele que actualice la app |
+| Autenticación a +91 | Envía el código por SMS, correo u otro canal |
+| Límite de marketing | Envía un mensaje de utilidad si corresponde. Espera antes de reintentar el marketing y aumenta el tiempo entre intentos |
+| País restringido | Retira esos contactos de tus listas de WhatsApp |
+| Mensajes entre cuentas de la API | No es posible. El contacto debe escribirte desde la app de WhatsApp para abrir la conversación |
+
+<Warning>
+  **No reintentes de inmediato.** Si la causa es el límite de frecuencia, reenviar el mismo mensaje en seguida devolverá el mismo error. Espera y reintenta con intervalos cada vez más largos.
+</Warning>
+
+## Cómo prevenirlo
+
+- **Valida los números** antes de cargarlos para confirmar que existen y tienen WhatsApp.
+- **Consigue consentimiento explícito** de cada contacto para recibir mensajes por WhatsApp.
+- **Limpia tus listas** con frecuencia: retira contactos que se dieron de baja, te bloquearon o fallan una y otra vez.
+- **Usa la categoría correcta**: una plantilla de utilidad mal clasificada como marketing tiene más riesgo de chocar con los límites.
+- **Cuida la calidad de tus plantillas**: una calificación baja aumenta los fallos de entrega.
+- **No uses plantillas de autenticación para +91**: usa SMS o correo para esos códigos.
+
+## Otros códigos relacionados
+
+| Código | Nombre | Descripción |
+| --- | --- | --- |
+| `131049` | Límite de marketing por usuario | Meta bloqueó un mensaje de marketing para no saturar al usuario. No reintentes de inmediato |
+| `131051` | Tipo de mensaje no compatible | El tipo de mensaje no está admitido por la API |
+| `131021` | Mismo remitente y destinatario | El número de envío y el de destino son iguales |
+| `130497` | País restringido | Tu cuenta no está aprobada para escribir a usuarios de ese país |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Me cobran los mensajes que fallan con 131026?">
+    No. No se entregan y no abren conversación, así que no hay cobro.
+  </Accordion>
+  <Accordion title="¿Puedo saber exactamente por qué no se entregó?">
+    No directamente. Meta usa este código de forma amplia para proteger la privacidad del destinatario. Los pasos de diagnóstico te ayudan a acotar la causa.
+  </Accordion>
+  <Accordion title="Antes se entregaban bien y ahora fallan. ¿Qué cambió?">
+    Un aumento repentino de 131026 en plantillas de marketing suele deberse al límite de frecuencia de marketing de Meta, que se viene ampliando desde 2024. Prueba con mensajes de utilidad a los mismos contactos: si se entregan, el problema está en el límite de marketing.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre 131026 y 131049?">
+    El 131049 está ligado específicamente al límite de frecuencia de marketing. El 131026 es más amplio: número inválido, bloqueo, app desactualizada y otras causas. A veces el límite de marketing también aparece como 131026.
+  </Accordion>
+  <Accordion title="¿Puedo escribir a números de India (+91)?">
+    Sí. Puedes enviar plantillas de marketing y de utilidad. Solo las de autenticación están bloqueadas para +91.
+  </Accordion>
+</AccordionGroup>
+
+Si después de revisar todo el problema continúa, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Por qué un mensaje no se entregó" icon="circle-exclamation" href="/whatsapp/mensaje-no-entregado">
+    Guía general de mensajes no entregados.
+  </Card>
+  <Card title="Límite de marketing por usuario" icon="gauge" href="/whatsapp/limite-de-marketing-por-usuario">
+    Todo sobre el error 131049.
+  </Card>
+  <Card title="Calidad y límites de mensajes" icon="chart-line" href="/whatsapp/calidad-y-limites-de-mensajes">
+    Mantén sana la calidad de tu número.
+  </Card>
+  <Card title="Error 131051: mensaje no compatible" icon="ban" href="/whatsapp/error-131051-tipo-de-mensaje-no-compatible">
+    Tipos de mensaje que la API no admite.
+  </Card>
+</CardGroup>

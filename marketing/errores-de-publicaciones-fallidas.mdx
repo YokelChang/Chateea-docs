@@ -1,0 +1,75 @@
+---
+title: "Errores de publicaciones fallidas en el Planificador social"
+description: "Consulta qué significa cada código de error de Facebook, Instagram, LinkedIn y Google y cómo resolverlo."
+icon: "triangle-exclamation"
+---
+
+Cuando una publicación del Planificador social falla, verás un mensaje y, en muchos casos, un código de error de la red social. Usa estas tablas para identificar la causa y aplicar la solución. La mayoría de los errores se resuelven reconectando la cuenta o ajustando el contenido.
+
+<Tip>
+  Antes de nada, revisa si la cuenta aparece como desconectada o con el token vencido en la configuración del Planificador social. Reconectarla resuelve buena parte de los fallos.
+</Tip>
+
+## Facebook
+
+| Código | Qué significa y cómo resolverlo |
+| --- | --- |
+| OAuthException, 102, 109, 463, 467 | El token de la cuenta venció. Reconecta la cuenta. |
+| 1, 2, Unexpected Error | Error temporal de Facebook. Recarga el navegador forzando la actualización (vaciando la caché) y vuelve a intentarlo en unos minutos. |
+| 3 | El token venció o la cuenta conectada no tiene permiso para publicar. Reconecta con una cuenta que sí tenga permiso. |
+| 10 | Falta la aplicación de Chateea en tu página o grupo. Agrégala desde la configuración de la página o del grupo en Facebook. |
+| 200 a 299 | La cuenta conectada no tiene permiso para publicar. Reconecta con una cuenta que sí lo tenga. |
+| 368 | El contenido infringe las normas comunitarias. |
+| 506 | Contenido duplicado: Facebook no permite publicar el mismo contenido dentro de 12 horas. |
+| 1609005 | El enlace de la publicación no es válido. |
+| 459 | Verificación de usuario pendiente. Inicia sesión en Facebook y confirma que la aplicación de Chateea está agregada a tu página o grupo. |
+| 460 | La contraseña cambió. Inicia sesión en Facebook, confirma que la aplicación de Chateea sigue agregada y reconecta. |
+| 464 | Usuario sin confirmar. Inicia sesión en Facebook y confirma que la aplicación de Chateea está agregada a tu página o grupo. |
+| 492 | Permiso insuficiente o token vencido. Reconecta la cuenta y revisa los permisos. |
+| Temporary Block | Facebook bloqueó temporalmente la publicación desde tu perfil. Tendrás que esperar a que se levante el bloqueo. |
+
+## Instagram
+
+| Código | Qué significa y cómo resolverlo |
+| --- | --- |
+| 400 - 2207003 | Se agotó el tiempo de carga del archivo. Usa un archivo más liviano. |
+| 400 - 2207001, 2207053 | Problema no definido de Instagram. Suele resolverse solo en poco tiempo. |
+| 400 - 2207051 | El contenido infringe las normas comunitarias. |
+| 400 - 2207042 | Llegaste al límite diario de publicaciones que permite la API de Instagram. |
+| 400 - 2207006 | El token de Instagram venció, fue revocado o no es válido. Reconecta la cuenta de Instagram. |
+| 400 - 2207050 | La cuenta de Instagram está restringida. Asegúrate de que sea una cuenta de empresa. |
+| 400 - 2207028 | Los carruseles deben tener entre 2 y 10 imágenes o videos. |
+| 400 - 2207040 | Superaste el límite de hashtags. Usa 30 o menos. |
+| 400 - 2207005 | Permisos insuficientes. Reconecta con una cuenta que tenga permiso para publicar. |
+
+## LinkedIn
+
+| Código | Qué significa y cómo resolverlo |
+| --- | --- |
+| 400 o 403 | El token de LinkedIn venció, fue revocado o no es válido. Reconecta LinkedIn. |
+| 400 | La cuenta conectada no tiene permiso para publicar. Reconecta con una cuenta que sí lo tenga. |
+| 404, 500, 504 | Problema no definido de LinkedIn. Suele resolverse solo en poco tiempo. |
+| 409 | Error temporal de LinkedIn. Recarga el navegador forzando la actualización y reintenta en unos minutos. |
+| 422 | Contenido duplicado dentro de 12 horas, o falta un campo obligatorio, o el texto es demasiado largo. |
+
+## Perfil de empresa de Google
+
+| Código | Qué significa y cómo resolverlo |
+| --- | --- |
+| MISSING_VALUE, INVALID_VALUE | Falta información en tu perfil. Completa la configuración de tu Perfil de empresa de Google y reconéctalo. |
+| VALUE_OUTSIDE_ALLOWED_RANGE | Superaste el límite de caracteres. Acorta el texto. |
+| OPERATION_EXECUTION_ERROR, EXPIRED_VALUE | El token venció. Reconecta la cuenta. |
+| PHOTO_FETCH_FAILED, PHOTO_UPLOAD_FAILED | Falló la carga de la imagen. Revisa formato, tamaño y dimensiones. |
+| OPERATION_UNSUPPORTED_UNDER_ACCOUNT_CONDITION | La operación no está permitida por el estado de la cuenta de Google. |
+| LOCATION_DISABLED_FOR_LOCAL_POST_API | Google desactivó las publicaciones por API para esa ubicación. Suele pasar cuando la ubicación pertenece a una cadena. |
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Solucionar problemas de Facebook" icon="facebook" href="/marketing/solucionar-problemas-publicacion-facebook">
+    Páginas que no aparecen, permisos y reconexión.
+  </Card>
+  <Card title="Optimización automática de imágenes" icon="wand-magic-sparkles" href="/marketing/optimizacion-automatica-de-imagenes">
+    Evita errores de formato y tamaño en tus imágenes.
+  </Card>
+</CardGroup>

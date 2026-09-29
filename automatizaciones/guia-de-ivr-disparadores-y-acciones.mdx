@@ -1,0 +1,177 @@
+---
+title: "Guía de IVR: disparadores y acciones"
+description: "Crea un menú telefónico automático con flujos de trabajo: saludo, opciones por teclado, transferencias y buzón de voz."
+icon: "phone-volume"
+---
+
+Un **IVR** (respuesta de voz interactiva) es un menú telefónico automático: saluda a quien llama con un mensaje grabado o de texto a voz, le pide que marque una opción y lo dirige al área correcta, a un buzón de voz o a otra acción, sin que nadie de tu equipo tenga que contestar primero. En Chateea, el IVR se construye con flujos de trabajo, usando un disparador y acciones específicas para llamadas.
+
+Esta guía explica las piezas del IVR y dos formas de montarlo: con la receta prediseñada o desde cero.
+
+## Piezas de un IVR
+
+| Componente | Función | Ejemplo |
+| --- | --- | --- |
+| **Disparador Iniciar IVR** | Activa el IVR cuando entra una llamada a un número asignado. | Un cliente llama a tu número y empieza el flujo. |
+| **Acción Decir o reproducir mensaje** | Reproduce un audio o un mensaje de texto a voz. | "Bienvenido a Nombre del negocio. Marca 1 para ventas o 2 para soporte." |
+| **Acción Recopilar datos en la llamada** | Recoge las teclas que marca quien llama. | El cliente marca 1 o 2. |
+| **Condición según la tecla marcada** | Envía la llamada por un camino u otro según la opción. | Si marca 1, va a ventas; si marca 2, a soporte. |
+| **Acción Conectar llamada** | Transfiere a un usuario, un área o un número externo. | Tras marcar 1, la llamada pasa a un vendedor. |
+| **Acción Grabar buzón de voz** | Permite dejar un mensaje si nadie puede atender. | Si no hay nadie disponible, se ofrece dejar un mensaje. |
+| **Condición según el estado de la llamada** | Decide qué hacer según si la llamada se contestó, se perdió o se cortó. | Si nadie contesta, reproduce un mensaje y ofrece devolver la llamada. |
+
+## Ventajas
+
+- **Mejor gestión de llamadas:** cada persona llega al área correcta y espera menos.
+- **Más eficiencia:** tu equipo deja de filtrar llamadas a mano.
+- **Disponible 24/7:** atiende consultas incluso fuera del horario laboral.
+- **Interacciones a medida:** texto a voz, enrutamiento, buzón de voz y recogida de datos según lo que marque cada persona.
+- **Integrado con tus automatizaciones:** dispara seguimientos, citas o etiquetas desde el mismo flujo.
+
+## Método 1: usar la receta de IVR (más rápido)
+
+<Steps>
+  <Step title="Crea el flujo desde una receta">
+    Ve a **Automatización**, haz clic en **Crear flujo** y elige **Seleccionar una receta**. Escoge la receta de **IVR**, que ya incluye el disparador, las acciones y la lógica de enrutamiento.
+  </Step>
+  <Step title="Elige el número de teléfono">
+    En el disparador, selecciona el número o los números que usará el IVR. Si el número no queda asignado, el IVR no funcionará.
+  </Step>
+  <Step title="Personaliza los mensajes">
+    Cambia el texto a voz o sube tus propios audios para el saludo, las opciones del menú y las instrucciones.
+  </Step>
+  <Step title="Ajusta el enrutamiento">
+    Revisa las condiciones de cada tecla para que cada opción lleve al área, persona o buzón correcto.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda el flujo y publícalo para activar el IVR.
+  </Step>
+</Steps>
+
+## Método 2: crear el IVR desde cero
+
+<Steps>
+  <Step title="Abre el constructor">
+    Ve a **Automatización**, haz clic en **+ Crear flujo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Añade el disparador Iniciar IVR">
+    Haz clic en **+ Agregar disparador** y busca **Iniciar IVR** (Start IVR).
+  </Step>
+  <Step title="Asigna el número">
+    En la configuración del disparador, elige el número de teléfono del IVR y haz clic en **Guardar**. Cada número solo puede estar asignado a un flujo de IVR a la vez.
+  </Step>
+  <Step title="Configura las acciones">
+    Añade las acciones de IVR que se describen abajo y conéctalas con condiciones según lo que marque quien llama.
+  </Step>
+  <Step title="Guarda y publica">
+    Prueba llamando a tu número y publica el flujo.
+  </Step>
+</Steps>
+
+## Acciones de IVR
+
+### Recopilar datos en la llamada
+
+Recoge las teclas que marca quien llama para navegar por el menú. Opciones:
+
+- **Decir o reproducir mensaje:** elige **Decir mensaje** para escribir un texto que se convertirá en voz, o **Reproducir mensaje** para subir un audio. Por ejemplo: "Marca 1 para consultar tu saldo o 2 para hablar con un asesor."
+- **Texto a decir:** el mensaje que se escucha antes de marcar.
+- **Idioma y voz:** con texto a voz, el idioma predeterminado es inglés (EE. UU.) y puedes elegir voz masculina o femenina.
+- **Número de repeticiones:** cuántas veces se repite el mensaje antes de dejar de esperar respuesta.
+
+**Condiciones de coincidencia (Match Conditions).** Al activarlas, creas una rama por cada tecla:
+
+- **Nombre de la rama:** una etiqueta descriptiva, como "Marcó 1".
+- **Al presionar la tecla:** la tecla que lleva a esa rama.
+- **Rama Ninguna:** qué pasa si la persona marca una tecla no válida, por ejemplo repetir el menú o pasar con un agente.
+
+**Configuración avanzada:**
+
+| Opción | Qué hace |
+| --- | --- |
+| **Dejar de recopilar después de (segundos)** | Tiempo máximo para marcar, entre 5 y 30 segundos. |
+| **Dejar de recopilar al presionar una tecla** | Si está activa, la recogida termina en cuanto se marca una tecla. Si no, espera al límite de tiempo o de dígitos. |
+| **Dejar de recopilar después de (dígitos)** | Cuántos dígitos se esperan. Al alcanzarlos, se envía la respuesta. |
+
+### Decir o reproducir mensaje
+
+Da instrucciones o información con texto a voz o con un audio grabado.
+
+- **Decir o reproducir:** escribe el texto o sube el archivo de audio.
+- **Formato recomendado:** usa archivos **.wav**; los **.mp3** no siempre son compatibles.
+- **Idioma:** el texto a voz está disponible en inglés (EE. UU.).
+- **Voz:** masculina o femenina.
+- **Número de repeticiones:** cuántas veces se repite antes de pasar al siguiente paso (1 por defecto).
+
+<Tip>
+  Si tu público habla español, graba tus mensajes en un archivo .wav y usa **Reproducir mensaje**. Así controlas el idioma, el acento y el tono de tu marca.
+</Tip>
+
+### Conectar llamada
+
+Transfiere la llamada a quien corresponda.
+
+- **Conectar con:** elige usuarios de tu cuenta o añade un número personalizado externo. Puedes añadir hasta **10 números** para que la llamada suene en varias líneas.
+- **Detectar buzón de voz:** identifica si contestó una persona o un buzón. Puede añadir un pequeño retraso y generar cargos adicionales.
+- **Grabar llamada:** graba la llamada conectada para control de calidad o cumplimiento.
+- **Tiempo de espera (segundos):** cuánto esperar a que contesten antes de redirigir o terminar. Por defecto 10 segundos; admite de 1 a 600.
+- **Límite de tiempo (segundos):** duración máxima de la llamada conectada. Por defecto no hay límite; puedes fijar hasta 24 horas.
+
+### Finalizar llamada
+
+Corta la llamada del IVR. Por defecto termina de inmediato, pero puedes activar **Agregar instrucciones de voz** para decir o reproducir un mensaje de cierre antes de colgar (con las mismas opciones de texto, audio .wav, voz y repeticiones).
+
+### Grabar buzón de voz
+
+Permite que quien llama deje un mensaje cuando nadie puede atender.
+
+| Opción | Qué hace |
+| --- | --- |
+| **Reproducir pitido** | Suena un pitido para indicar que empieza la grabación. |
+| **Dejar de grabar tras (segundos de silencio)** | Corta la grabación tras ese silencio. Por defecto 5 segundos. |
+| **Dejar de grabar al presionar una tecla** | Permite terminar marcando 0 a 9, asterisco o numeral. Por defecto no hay tecla asignada. |
+| **Duración máxima** | Entre 1 y 14.400 segundos (4 horas). Por defecto 3.600 segundos (1 hora). |
+| **Agregar instrucciones de voz** | Reproduce un mensaje antes de empezar a grabar. |
+
+## Ramas con la condición Si/No
+
+Además de las condiciones de coincidencia, puedes usar una **Condición Si/No** con **Recopilar datos en la llamada** como origen:
+
+1. Añade **Recopilar datos en la llamada** con un mensaje como "Marca 1 para servicios o 2 para agendar una cita."
+2. Añade una **Condición Si/No** y elige la respuesta del IVR como origen de la condición.
+3. Define los caminos: si marca 1, reproduce información de servicios; si marca 2, conecta con un agente para agendar.
+4. Prepara una alternativa para cuando no marque nada: repetir el mensaje o enviar al buzón de voz.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si la persona cuelga en mitad del IVR?">
+    El contacto sigue avanzando por el flujo, pero se omiten las acciones propias del IVR (como transferencias o grabaciones de buzón). Las demás acciones, como etiquetar o enviar mensajes de seguimiento, se ejecutan normalmente.
+  </Accordion>
+  <Accordion title="¿Puedo usar un mismo número en varios flujos de IVR?">
+    No. Cada número de teléfono solo puede estar asignado a un flujo de IVR a la vez.
+  </Accordion>
+  <Accordion title="¿Puedo transferir llamadas a números externos?">
+    Sí. La acción Conectar llamada permite transferir a usuarios de tu cuenta o a números externos.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la persona no marca a tiempo?">
+    Configura el tiempo de espera en Recopilar datos en la llamada y define una alternativa: repetir el mensaje o enviar la llamada al buzón de voz.
+  </Accordion>
+  <Accordion title="¿Dónde encuentro las grabaciones del buzón de voz?">
+    En **Conversaciones**, donde puedes escucharlas, descargarlas y gestionarlas.
+  </Accordion>
+  <Accordion title="¿Puedo hacer transferencias ciegas o asistidas dentro de una llamada de IVR?">
+    No. Cuando una llamada de IVR se dirige a la aplicación web, las transferencias ciegas y asistidas no están disponibles.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acción Finalizar llamada del IVR" icon="phone-slash" href="/automatizaciones/accion-finalizar-llamada-ivr">
+    Cómo cerrar las llamadas del IVR con un mensaje final.
+  </Card>
+  <Card title="Recibir llamadas del IVR en la app" icon="mobile" href="/automatizaciones/recibir-llamadas-ivr-en-la-app">
+    Atiende en la aplicación las llamadas que llegan desde tu IVR.
+  </Card>
+</CardGroup>

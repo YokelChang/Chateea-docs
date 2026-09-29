@@ -1,0 +1,84 @@
+---
+title: "Solucionar problemas al publicar en Facebook"
+description: "Resuelve páginas que no aparecen, permisos faltantes, tokens vencidos y errores al publicar en Facebook."
+icon: "screwdriver-wrench"
+---
+
+Esta guía reúne los problemas más comunes al conectar páginas de Facebook o publicar en ellas desde el Planificador social, con la causa probable y cómo resolver cada uno. Si después de revisarla el problema continúa, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Mis páginas de Facebook no aparecen en la lista
+
+Casi siempre se debe a permisos incompletos. Hay dos casos habituales.
+
+### Tengo acceso por Business Manager, pero faltan permisos de contenido
+
+El Planificador social necesita permisos de **contenido** e **estadísticas** sobre la página, y lo más fiable es que la persona que conecta sea **administradora directa** de la página, no solo a través de Business Manager.
+
+<Steps>
+  <Step title="Revisa el acceso a la página">
+    Inicia sesión en Facebook, abre la página desde tu foto de perfil y entra a **Administrar**. En el panel izquierdo busca **Acceso a la página**.
+  </Step>
+  <Step title="Comprueba tu rol">
+    Si no apareces con acceso total, pide al propietario o administrador de la página que te agregue como persona con acceso a Facebook y control total.
+  </Step>
+  <Step title="Si nadie tiene acceso total">
+    Si la página no tiene a su propietario en **Personas con acceso a Facebook**, invita a otra persona como administradora con control total. Luego esa persona invita al propietario con control total. Opcionalmente, después puedes retirar a la persona intermedia.
+  </Step>
+</Steps>
+
+<Tip>
+  Si no encuentras a la persona al buscarla para invitarla, envíale antes una solicitud de amistad. Así aparece más fácil en la búsqueda.
+</Tip>
+
+### Soy administrador, pero falta una página
+
+Ocurre cuando, en la primera conexión, no se marcaron todas las páginas. Al intentar agregar otra página más tarde, Facebook no la muestra.
+
+<Steps>
+  <Step title="Abre las integraciones comerciales">
+    En Facebook, haz clic en tu foto de perfil y entra a **Configuración y privacidad → Configuración → Integraciones comerciales**.
+  </Step>
+  <Step title="Edita los permisos de la integración">
+    Busca la integración que usa Chateea y haz clic en **Ver y editar**.
+  </Step>
+  <Step title="Marca todas las páginas">
+    En la ventana emergente, asegúrate de conceder todos los permisos y de marcar todas las páginas que quieres usar. Guarda los cambios.
+  </Step>
+  <Step title="Vuelve a conectar">
+    En Chateea, abre la configuración del Planificador social y conecta de nuevo tus páginas de Facebook. Ahora deberían aparecer todas.
+  </Step>
+</Steps>
+
+## La publicación de Facebook no se publicó
+
+| Error o situación | Causa | Qué hacer |
+| --- | --- | --- |
+| Contenido reportado o que infringe las normas comunitarias | Facebook considera que el texto o el enlace es abusivo o fue reportado por otros usuarios | Cambia el contenido o el enlace y vuelve a intentarlo |
+| Error al validar el token de acceso | La sesión expiró porque cambiaste la contraseña, Facebook invalidó la sesión por seguridad, o no publicaste desde el Planificador social en los últimos 90 días | Reconecta la página |
+| Autenticación en dos pasos | La página exige autenticación en dos pasos y tu usuario no la tiene activa | Activa la autenticación en dos pasos en tu cuenta y reconecta. Debes ser administrador, editor o moderador de la página |
+| Se debe conceder `manage_permissions` | Te agregaron a una página de otra persona o empresa y no se concedieron todos los permisos al conectar | Confirma que tienes acceso de administración y, al reconectar, concede todos los permisos en la sección de páginas |
+| Imagen ausente o no válida | El enlace de la imagen programada ya no abre | Sube la imagen de nuevo o reemplaza el enlace |
+| Error desconocido | El token de la página no tiene permisos suficientes para publicar (a veces publica y a veces falla) | Reconecta tus páginas concediendo todos los permisos |
+| La URL no es válida o no se pudo publicar el enlace | Facebook estaba saturado y no pudo leer el enlace a tiempo | Espera unos minutos y vuelve a intentarlo. Normalmente funciona en el segundo intento |
+
+## No puedo reconectar una página o un grupo
+
+La reconexión debe hacerla **la misma cuenta de Facebook que conectó la página originalmente**. Tienes dos opciones:
+
+- Reconectar usando la cuenta de Facebook de la persona que hizo la conexión original, o pedirle a esa persona que lo haga.
+- Desconectar la página y volver a conectarla con tu propia cuenta. Ve a la configuración del Planificador social (ícono de engranaje), abre **Integraciones**, haz clic en **Desconectar** en la cuenta con el token vencido y luego en **Conectar**. Necesitas ser administrador de la página.
+
+Por ejemplo: si Emilia conectó la página con su cuenta y ahora Alex quiere reconectarla porque venció, Alex debe usar la cuenta de Emilia, pedirle a Emilia que la reconecte, o desconectarla y conectarla de nuevo con su propia cuenta de administrador.
+
+Cuando termines, vuelve al Planificador social y comprueba que la cuenta ya no aparece con el token vencido.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar tus páginas de Facebook" icon="facebook" href="/marketing/conectar-paginas-de-facebook">
+    Guía de conexión paso a paso.
+  </Card>
+  <Card title="Errores de publicaciones fallidas" icon="triangle-exclamation" href="/marketing/errores-de-publicaciones-fallidas">
+    Todos los códigos de error por red social.
+  </Card>
+</CardGroup>

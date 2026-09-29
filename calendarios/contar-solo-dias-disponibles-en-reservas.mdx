@@ -1,0 +1,146 @@
+---
+title: "Contar solo días disponibles en la ventana de reserva"
+description: "Haz que tu ventana de reserva cuente solo los días en que atiendes, en calendarios, servicios y alquileres."
+icon: "calendar-days"
+---
+
+La ventana de reserva define hasta cuántos días en el futuro puede reservar un cliente. Por defecto cuenta todos los días del calendario, incluidos fines de semana y días cerrados. Con la opción **Contar solo días disponibles**, Chateea salta los días en los que no atiendes y sigue contando hasta completar el número de días disponibles que configuraste. Está disponible en calendarios de reuniones, servicios y alquileres.
+
+## Un ejemplo sencillo
+
+Tu negocio abre de lunes a viernes y tu ventana de reserva es de **2 días**. Un cliente entra a tu página de reservas un viernes:
+
+- **Con la opción desactivada:** el sábado y el domingo cuentan como los dos días, aunque estés cerrado. El cliente no ve ningún horario.
+- **Con la opción activada:** el sábado y el domingo se saltan y el cliente ve el lunes y el martes.
+
+Así tu página de reservas no aparece vacía cuando en realidad tienes disponibilidad pocos días después.
+
+## Beneficios
+
+- **Fechas útiles:** el cliente ve días en los que de verdad atiendes.
+- **Horarios flexibles:** funciona con semanas no estándar, como lunes, miércoles y viernes.
+- **Compatible con el aviso mínimo:** primero se aplica el aviso mínimo de programación y después se cuentan los días disponibles.
+- **Calendarios de equipo:** en round robin y colectivos, un día cuenta si al menos un miembro asignado tiene disponibilidad.
+- **Respeta cambios puntuales:** los días que agregas o bloqueas con horas por fecha se incluyen o se saltan automáticamente.
+
+## Cómo se cuentan los días
+
+### Qué es un día disponible
+
+Un día disponible es el que forma parte del horario de disponibilidad del calendario, servicio o alquiler. La opción mira si el día está programado como disponible, no si le quedan horarios libres.
+
+Por ejemplo, si atiendes lunes, miércoles y viernes y tu ventana es de 5 días, Chateea sigue avanzando hasta encontrar cinco días de esos.
+
+<Warning>
+  Configura tu disponibilidad antes de activar la opción. Si no hay disponibilidad configurada, la página de reservas puede no mostrar ninguna fecha.
+</Warning>
+
+### Días completamente reservados
+
+Un día lleno **sí cuenta** como disponible. Como la opción solo revisa si el día es laborable según tu horario, un día sin huecos libres ocupa un lugar en la ventana aunque no muestre horarios.
+
+### Aviso mínimo de programación
+
+El aviso mínimo (cuánta antelación debe tener una reserva) siempre usa tiempo de calendario normal, aunque la opción esté activada. Los fines de semana y días cerrados sí cuentan para el aviso. Chateea aplica primero el aviso y después empieza a contar los días disponibles.
+
+Ejemplo: hoy es jueves, el aviso mínimo es de 2 días, atiendes de lunes a viernes, la ventana es de 3 días y la opción está activada. Primero se aplican los 2 días de aviso. Si terminan en fin de semana, Chateea busca el siguiente día disponible y desde ahí cuenta tus tres días de reserva.
+
+### Horas por fecha
+
+Las horas por fecha cambian tu horario para un día concreto y la opción las tiene en cuenta:
+
+- Si normalmente cierras los sábados pero abres un sábado concreto, ese sábado cuenta.
+- Si normalmente trabajas los lunes pero bloqueas un lunes concreto, ese lunes se salta.
+
+No tienes que desactivar y volver a activar la opción después de cambiar tu disponibilidad. Chateea usa siempre la disponibilidad actualizada.
+
+### Calendarios de equipo
+
+En calendarios **round robin** y **colectivos**, un día cuenta si al menos un miembro asignado acepta reservas ese día. Si nadie está disponible, el día se salta. Por ejemplo, si una persona trabaja lunes y miércoles y otra martes y jueves, los cuatro días cuentan.
+
+## Dónde se aplica en cada tipo de reserva
+
+| Tipo | Ajuste que controla la ventana | Condición |
+| --- | --- | --- |
+| Calendarios de reuniones | **Rango de fechas** | Sin condiciones adicionales |
+| Servicios | **Ventana de reserva** | Solo con la opción **Basada en rango** |
+| Alquileres | **Ventana máxima de reserva anticipada** | Empieza a contar después del aviso mínimo |
+
+<Note>
+  En servicios, la opción no se aplica si eliges una ventana **Basada en fechas**, porque esa modalidad usa fechas fijas de inicio y fin.
+</Note>
+
+## Cómo activarlo
+
+### En calendarios de reuniones
+
+<Steps>
+  <Step title="Edita el calendario">
+    Ve a **Calendarios → Configuración del calendario**, busca el calendario y haz clic en **Editar**.
+  </Step>
+  <Step title="Abre las reglas de reserva">
+    Selecciona **Reglas de reserva** y busca **Rango de fechas**.
+  </Step>
+  <Step title="Activa la opción">
+    Activa **Contar solo días disponibles** y haz clic en **Guardar cambios**.
+  </Step>
+</Steps>
+
+### En servicios
+
+<Steps>
+  <Step title="Abre la configuración global">
+    Ve a **Calendarios → Servicios**, abre **Configuración global** y selecciona **Configuración de servicios**.
+  </Step>
+  <Step title="Elige una ventana basada en rango">
+    En **Ventana de reserva**, selecciona **Basada en rango** e indica cuántos días hacia adelante pueden reservar tus clientes.
+  </Step>
+  <Step title="Activa la opción">
+    Activa **Contar solo días disponibles** y haz clic en **Guardar cambios**.
+  </Step>
+</Steps>
+
+### En alquileres
+
+<Steps>
+  <Step title="Abre el anuncio">
+    Ve a **Calendarios → Alquileres** y abre el anuncio que quieres actualizar.
+  </Step>
+  <Step title="Ve a la configuración de reservas">
+    Selecciona **Configuración de reservas** y busca **Ventana máxima de reserva anticipada**. Define hasta dónde pueden reservar tus clientes.
+  </Step>
+  <Step title="Activa la opción">
+    Activa **Contar solo días disponibles** y haz clic en **Guardar cambios**.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cambia el número de días que configuré?">
+    No. Si tu ventana es de 5 días, sigue siendo de 5. Solo que ahora cuenta cinco días disponibles en lugar de cinco días de calendario.
+  </Accordion>
+  <Accordion title="Activé la opción y no veo ninguna fecha. ¿Qué pasa?">
+    Revisa tu disponibilidad. La opción usa tu horario para decidir qué días cuentan y, si no hay disponibilidad configurada, no se muestran fechas.
+  </Accordion>
+  <Accordion title="¿Un día lleno cuenta como disponible?">
+    Sí. Si el día forma parte de tu horario, cuenta aunque todos sus horarios estén reservados.
+  </Accordion>
+  <Accordion title="¿El aviso mínimo también cuenta solo días disponibles?">
+    No. El aviso mínimo usa tiempo de calendario normal. Se aplica primero y después se cuentan los días disponibles.
+  </Accordion>
+  <Accordion title="¿Qué pasa si desactivo la opción?">
+    Chateea vuelve a contar todos los días del calendario, incluidos fines de semana y días sin disponibilidad.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Horario semanal y horas por fecha" icon="clock" href="/calendarios/horario-semanal-y-horas-por-fecha">
+    Define qué días y horas atiendes.
+  </Card>
+  <Card title="Faltan horarios disponibles en el calendario" icon="calendar-xmark" href="/calendarios/faltan-horarios-disponibles-en-el-calendario">
+    Qué revisar si tu página de reservas no muestra horarios.
+  </Card>
+</CardGroup>

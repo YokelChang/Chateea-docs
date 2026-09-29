@@ -1,0 +1,77 @@
+---
+title: "Mostrar plazas disponibles en calendarios de clases"
+description: "Enseña en el widget cuántas plazas quedan en cada horario de tus clases y cómo se calculan."
+icon: "chair"
+---
+
+En los calendarios de reserva de clases, varias personas pueden reservar el mismo horario. La opción **Mostrar plazas por horario** (Show seats per slot) enseña en el widget de reservas cuántos lugares quedan libres en cada horario, para que tus clientes lo vean antes de elegir. Es ideal para clases de yoga, talleres, cursos presenciales o cualquier evento con cupo limitado.
+
+## Qué ganas
+
+- Tus clientes ven con claridad cuántos lugares quedan.
+- La reserva es más transparente y genera urgencia cuando quedan pocas plazas.
+- Aprovechas mejor la capacidad de tus clases.
+
+## Requisitos
+
+- Solo funciona en calendarios de tipo **Reserva de clases** (Class Booking).
+- El valor **Plazas por clase** debe ser mayor que 1.
+- Funciona con el widget Neo.
+
+## Activar la opción
+
+<Steps>
+  <Step title="Abre tu calendario de clases">
+    Ve a **Calendarios → Configuración del calendario** y haz clic en **Editar** en tu calendario de reserva de clases.
+  </Step>
+  <Step title="Entra en Personalización">
+    Abre la sección **Personalización** (Customizations).
+  </Step>
+  <Step title="Activa la opción">
+    En **Estilo del widget del calendario**, activa **Mostrar plazas por horario**.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. A partir de ese momento, el widget público mostrará las plazas restantes de cada horario.
+  </Step>
+</Steps>
+
+## Cómo se calculan las plazas disponibles
+
+La disponibilidad parte del valor **Plazas por clase** que configuraste en el calendario:
+
+- Cada cita confirmada resta una plaza.
+- Si una cita se superpone con varios horarios, resta solo una plaza en cada horario afectado.
+- Un horario se bloquea únicamente cuando se llena por completo.
+- Las citas superpuestas ya no bloquean todos los horarios afectados antes de tiempo.
+
+Por ejemplo, si tu clase tiene 10 plazas y ya hay 7 reservas confirmadas en el horario de las 18:00, el widget mostrará que quedan 3 plazas. Cuando se confirme la décima reserva, ese horario dejará de estar disponible.
+
+Esta lógica de capacidad se aplica en el widget público de reservas, en la ventana de citas dentro de Chateea y en los calendarios personales, round robin y de eventos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué hace exactamente esta opción?">
+    Muestra en el widget de reservas cuántas plazas quedan libres en cada horario de un calendario de clases.
+  </Accordion>
+  <Accordion title="¿Las citas superpuestas bloquean todo el horario?">
+    No. Restan una plaza en cada horario afectado. El horario solo se bloquea cuando se alcanza su capacidad total.
+  </Accordion>
+  <Accordion title="¿Funciona con clases recurrentes?">
+    Sí.
+  </Accordion>
+  <Accordion title="No veo la opción en mi calendario, ¿por qué?">
+    Comprueba que el calendario sea de tipo reserva de clases, que **Plazas por clase** sea mayor que 1 y que uses el widget Neo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Personalizar el widget de reservas" icon="palette" href="/calendarios/personalizar-widget-de-reservas">
+    Ajusta colores, textos y detalles del widget.
+  </Card>
+  <Card title="Agregar invitados en las reservas" icon="user-plus" href="/calendarios/agregar-invitados-en-reservas">
+    Permite reservar para varias personas y cobra por asistente.
+  </Card>
+</CardGroup>

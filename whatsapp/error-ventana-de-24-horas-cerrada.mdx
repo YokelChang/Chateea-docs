@@ -1,0 +1,68 @@
+---
+title: "Error: pasaron más de 24 horas desde la última respuesta"
+description: "Por qué falla un WhatsApp cuando la ventana de atención de 24 horas está cerrada y cómo retomar la conversación."
+icon: "clock"
+---
+
+Si al enviar un WhatsApp ves el error **"Message failed to send because more than 24 hours have passed since the customer last replied"**, significa que intentaste mandar un mensaje libre cuando la ventana de atención de 24 horas con ese cliente ya estaba cerrada. Es una regla de WhatsApp para proteger a los usuarios de mensajes no solicitados, no una limitación de Chateea. En la API de Meta este caso corresponde al código **131047**.
+
+## Cómo funciona la ventana de 24 horas
+
+- La ventana se abre cuando el cliente te envía un mensaje.
+- Mientras está abierta puedes responder con mensajes libres (texto normal, multimedia, notas de voz).
+- Si pasan 24 horas sin que el cliente vuelva a escribir, la ventana se cierra.
+- Cada mensaje nuevo del cliente reinicia el contador de 24 horas.
+
+## Por qué aparece el error
+
+Se cumplen las dos condiciones a la vez:
+
+1. El cliente no te ha escrito en las últimas 24 horas.
+2. Estás intentando enviar un mensaje normal en lugar de una plantilla aprobada.
+
+## Cómo solucionarlo
+
+<Steps>
+  <Step title="Envía una plantilla aprobada">
+    Con la ventana cerrada, la única forma de retomar la conversación es con una [plantilla de WhatsApp](/whatsapp/plantillas) aprobada por Meta, por ejemplo un recordatorio de cita, una actualización de pedido o un seguimiento. Cuando el cliente responda a la plantilla, la ventana de 24 horas se vuelve a abrir y puedes seguir con mensajes libres.
+  </Step>
+  <Step title="Pide al cliente que te responda">
+    Si tienes otro canal disponible (correo o SMS), invita al cliente a contestar tu último WhatsApp. En cuanto lo haga, la ventana se reabre.
+  </Step>
+</Steps>
+
+<Warning>
+  No hay forma de saltarse esta regla. Reintentar el mismo mensaje libre seguirá fallando hasta que envíes una plantilla o el cliente vuelva a escribir.
+</Warning>
+
+## Buenas prácticas
+
+- Responde rápido mientras la ventana está abierta. Si tu equipo no alcanza, apóyate en automatizaciones o en la IA conversacional.
+- Ten listas plantillas de reactivación y de seguimiento para cuando la ventana se cierre.
+- En tus flujos de trabajo, comprueba si la ventana está abierta antes de enviar un mensaje libre. Te lo explicamos en [Verificar la ventana de atención](/whatsapp/verificar-ventana-de-atencion).
+- Si programas mensajes libres, asegúrate de que la hora de envío caiga dentro de la ventana. Más en [Programar el envío de mensajes](/whatsapp/programar-envio-de-mensajes).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Las 24 horas cuentan desde mi último mensaje o desde el del cliente?">
+    Desde el último mensaje del cliente. Tus mensajes no reabren ni alargan la ventana.
+  </Accordion>
+  <Accordion title="¿Se cobra el mensaje que falló?">
+    No. Un mensaje que no se envía no se entrega y no genera cobro.
+  </Accordion>
+  <Accordion title="¿Qué tipo de plantilla debo usar?">
+    Depende del propósito. Si es una promoción, es de marketing. Si es un aviso sobre una cita, un pedido o un pago, es de utilidad. Revisa [Categorías de plantillas](/whatsapp/categorias-de-plantillas).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Verificar la ventana de atención" icon="clock" href="/whatsapp/verificar-ventana-de-atencion">
+    Evita el error desde tus automatizaciones.
+  </Card>
+  <Card title="Crear plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Prepara plantillas para retomar conversaciones.
+  </Card>
+</CardGroup>

@@ -1,0 +1,120 @@
+---
+title: "Detectar y resolver errores antes de publicar un flujo"
+description: "Encuentra los pasos mal configurados en el lienzo, corrígelos desde el panel Resolver errores y publica sin fallos."
+icon: "triangle-exclamation"
+---
+
+Un flujo con un campo obligatorio vacío o una integración desconectada no funcionará como esperas. Por eso el constructor de flujos de Chateea revisa la configuración mientras trabajas: marca en el lienzo los pasos con problemas, los reúne en un panel de **Resolver errores** y no te deja publicar hasta que corrijas los errores que bloquean la publicación. Mientras tanto, puedes seguir guardando tu avance sin perder nada.
+
+## Qué errores detecta
+
+El constructor identifica problemas de configuración en disparadores y acciones compatibles, por ejemplo:
+
+- Campos obligatorios sin completar.
+- Selecciones de configuración que faltan o no son válidas.
+- Integraciones desconectadas o no disponibles.
+- Condiciones **Si/No** mal configuradas.
+- Acciones de **Espera** mal configuradas.
+
+Algunos ejemplos concretos: un disparador de cita sin calendario seleccionado, una acción de SMS sin texto o una acción de correo sin asunto ni cuerpo. La lista de validaciones sigue creciendo, así que los errores detectados pueden variar según el disparador, la acción y la configuración.
+
+## Indicadores en el lienzo
+
+Cuando el constructor detecta un problema, aparece un indicador de error sobre el paso afectado. Así no tienes que abrir cada paso para revisarlo, algo muy útil en flujos grandes. Cuando corriges el problema, el indicador desaparece y el error se borra de la lista automáticamente.
+
+Si los indicadores te estorban mientras trabajas, puedes ocultarlos. Ocultar un error solo cambia su visibilidad: el problema sigue ahí y, si bloquea la publicación, tendrás que corregirlo igual.
+
+## Guardar con errores
+
+Guardar y publicar son cosas distintas:
+
+- **Guardar** (manual o automático) conserva tus cambios aunque haya errores. Puedes dejar un flujo a medias y volver después.
+- **Publicar** pone el flujo en marcha. Para eso no puede haber errores que bloqueen la publicación.
+
+## El panel Resolver errores
+
+Este panel reúne en un solo lugar todos los problemas detectados, agrupados por paso. Cada error ofrece dos opciones:
+
+| Opción | Qué hace |
+| --- | --- |
+| **Abrir paso** | Abre el disparador o la acción afectada para que la corrijas. |
+| **Cómo solucionarlo** | Usa la IA para explicarte el problema y sugerirte cómo resolverlo. |
+
+La ayuda de IA te orienta, pero revisa siempre el resultado para confirmar que el flujo hace lo que buscas. Por ejemplo, si una integración falló por un problema de autenticación, te sugerirá volver a conectarla; si faltan campos obligatorios, te indicará cuáles son para que los completes o los crees.
+
+## Cómo corregir los errores antes de publicar
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre el flujo que quieres revisar.
+  </Step>
+  <Step title="Construye y guarda">
+    Sigue trabajando y guarda tu avance cuando quieras, aunque haya errores.
+  </Step>
+  <Step title="Intenta publicar">
+    Haz clic en **Publicar** cuando creas que está listo.
+  </Step>
+  <Step title="Revisa el aviso">
+    Si hay errores que bloquean la publicación, aparecerá el aviso **El flujo aún no se puede publicar** con los pasos afectados.
+  </Step>
+  <Step title="Abre el panel de errores">
+    Haz clic en **Revisar problemas** para abrir el panel **Resolver errores**.
+  </Step>
+  <Step title="Corrige cada error">
+    Usa **Abrir paso** para ir directo a la configuración o **Cómo solucionarlo** para recibir ayuda de la IA. Corrige el problema.
+  </Step>
+  <Step title="Publica">
+    Repite con los errores restantes y, cuando no quede ninguno que bloquee, publica el flujo.
+  </Step>
+</Steps>
+
+## Errores de configuración y errores de ejecución
+
+| Tipo de error | Qué significa | Dónde verlo |
+| --- | --- | --- |
+| **De configuración (antes de publicar)** | Problemas en disparadores, acciones o ajustes obligatorios mientras construyes o publicas. | En el panel de errores del lienzo o con **Revisar problemas** al intentar publicar. |
+| **De ejecución** | Algo falló cuando un contacto pasaba por el flujo ya publicado. | En los **Registros de ejecución**, desde el menú superior del flujo. |
+
+<Note>
+  Corregir todos los errores de configuración no garantiza que cada ejecución salga bien. Prueba el flujo con un contacto de prueba y revisa los registros después de publicarlo.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo guardar un flujo que todavía tiene errores?">
+    Sí. El guardado manual y el automático conservan tu trabajo aunque haya errores. Publicar es un paso aparte.
+  </Accordion>
+  <Accordion title="¿Puedo publicar con un error que bloquea la publicación?">
+    No. Tienes que corregirlo antes de que el flujo pueda ponerse en marcha.
+  </Accordion>
+  <Accordion title="Si se detecta un error en un flujo ya publicado, ¿vuelve a borrador?">
+    No. Un flujo publicado no pasa a borrador automáticamente por un error.
+  </Accordion>
+  <Accordion title="¿El constructor detecta todos los problemas posibles?">
+    No. La validación cubre configuraciones compatibles y se amplía con el tiempo. Sigue probando y supervisando tus flujos después de publicarlos.
+  </Accordion>
+  <Accordion title="¿Ocultar un error lo resuelve?">
+    No. Solo deja de mostrarse. Si bloquea la publicación, tienes que corregirlo.
+  </Accordion>
+  <Accordion title="¿Son los mismos errores que veo en los registros de ejecución?">
+    No necesariamente. El panel Resolver errores muestra problemas de configuración; los registros de ejecución muestran lo que falló cuando el flujo ya estaba funcionando.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registros de ejecución" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Diagnostica errores de flujos publicados.
+  </Card>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Qué revisar cuando un flujo no funciona.
+  </Card>
+  <Card title="Constructor de flujos con IA" icon="wand-magic-sparkles" href="/automatizaciones/constructor-de-flujos-con-ia">
+    Crea y edita flujos describiéndolos.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Disparadores, acciones y condiciones.
+  </Card>
+</CardGroup>

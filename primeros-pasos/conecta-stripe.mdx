@@ -1,0 +1,124 @@
+---
+title: "Conecta Stripe para cobrar en línea"
+description: "Conecta tu cuenta de Stripe a Chateea para cobrar con facturas, enlaces de pago, formularios, tienda y más."
+icon: "credit-card"
+---
+
+Conectar Stripe a tu cuenta de Chateea te permite cobrar con tarjeta y otros métodos de pago en facturas, enlaces de pago, formularios de pedido, formularios, tienda en línea, calendarios, cursos, comunidades y más. En esta guía conectas Stripe, verificas que la integración funcione y revisas los ajustes clave antes de empezar a cobrar.
+
+## Qué obtienes al conectar Stripe
+
+Al conectarlo, tu cuenta de Stripe queda disponible como proveedor de pagos en Chateea. Las transacciones que se generan en Chateea se procesan en Stripe, y el seguimiento del pago queda vinculado a tu cuenta.
+
+- **Configuración centralizada**: gestionas los ajustes de Stripe sin salir de Chateea.
+- **Varias formas de cobrar**: facturas, enlaces de pago, formularios de pedido, tienda, formularios, calendarios y otras áreas compatibles.
+- **Control de métodos de pago**: tarjetas, billeteras digitales, débito bancario y otros métodos que Stripe admita.
+- **Modo de prueba y modo real por separado**: configuras los métodos de pago de forma independiente en cada modo.
+- **Proveedor por canal**: si tienes varios proveedores conectados, eliges cuál usar en cada canal.
+
+<Info>
+Cada cuenta de Chateea puede tener conectada una sola cuenta de Stripe a la vez.
+</Info>
+
+## Antes de conectar Stripe
+
+- Asegúrate de estar en la cuenta de Chateea donde quieres cobrar.
+- Ten acceso a la cuenta de Stripe que vas a conectar, o prepárate para crear una durante el proceso.
+- Confirma que tienes permisos suficientes en Stripe para autorizar la integración. Si no, el dueño de la cuenta de Stripe tendrá que ajustarlos.
+- Verifica que Stripe esté disponible en tu país.
+
+## Conecta Stripe
+
+<Steps>
+  <Step title="Abre las integraciones de pago">
+    En tu cuenta de Chateea, ve a **Pagos → Integraciones**.
+  </Step>
+  <Step title="Inicia la conexión">
+    Busca **Stripe** y haz clic en **Conectar** (o **Conectar con Stripe**).
+  </Step>
+  <Step title="Inicia sesión en Stripe">
+    Sigue las instrucciones de Stripe e inicia sesión en la cuenta que quieres conectar. Si no tienes cuenta, sigue los pasos de Stripe para crear una.
+  </Step>
+  <Step title="Autoriza la conexión">
+    Revisa la información que se solicita y autoriza la conexión con Chateea.
+  </Step>
+  <Step title="Verifica el estado">
+    Vuelve a **Pagos → Integraciones** y confirma que Stripe aparece como conectado o activo.
+  </Step>
+  <Step title="Revisa la configuración">
+    Cuando esté disponible, haz clic en **Administrar** para configurar opciones como los métodos de pago.
+  </Step>
+</Steps>
+
+## Métodos de pago
+
+Conectar Stripe crea la conexión con el proveedor; los ajustes de métodos de pago definen de qué formas puede pagar tu cliente en cada área de Chateea. Según tu cuenta, puedes ofrecer tarjetas, billeteras digitales, débito bancario, métodos regionales o compra ahora y paga después.
+
+La disponibilidad de cada método depende de:
+
+- La verificación y elegibilidad de tu cuenta de Stripe.
+- Tu país o región.
+- La moneda del cobro.
+- El área de Chateea o el tipo de pago (factura, formulario, tienda, etc.).
+- Si estás configurando el modo de prueba o el modo real.
+- Requisitos adicionales de Stripe para ciertos métodos.
+
+Si ya tenías métodos de pago configurados en Stripe, se conservan como predeterminados hasta que los cambies desde Chateea.
+
+## Proveedor de pagos por canal
+
+Si conectas más de un proveedor de pagos, Stripe no se usará necesariamente en todos los canales. Puedes elegir qué proveedor prefieres en cada canal: embudos, formularios, tienda, facturas, enlaces de pago, calendarios, cursos, comunidades y otros.
+
+- Cuando un canal tiene su propio proveedor configurado, se usa ese en lugar del predeterminado general de la cuenta.
+- Solo puedes elegir proveedores que ya estén conectados.
+- Si desconectas el proveedor preferido de un canal, ese canal vuelve a usar el proveedor predeterminado.
+
+<Tip>
+Antes de lanzar un pago real, haz una compra en modo de prueba con las tarjetas de prueba de Stripe y revisa que el pago aparezca en Chateea.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo conectar más de una cuenta de Stripe?">
+    No. Cada cuenta de Chateea admite una sola cuenta de Stripe a la vez. Si manejas negocios o marcas distintas con cuentas de Stripe diferentes, usa una cuenta de Chateea para cada una.
+  </Accordion>
+  <Accordion title="¿Por qué no veo un método de pago de Stripe después de conectar?">
+    Depende de tu cuenta de Stripe, país, moneda, tipo de pago, estado de verificación y de si el método está activado en el modo correcto (prueba o real). Algunos métodos requieren elegibilidad o configuración adicional.
+  </Accordion>
+  <Accordion title="¿Stripe se convierte automáticamente en el proveedor de todos los canales?">
+    No necesariamente. Si configuraste proveedores por canal, cada canal usa su proveedor preferido. Revisa **Pagos → Integraciones** y tu configuración por canal si usas varios proveedores.
+  </Accordion>
+  <Accordion title="¿Aparecerán en Chateea los pagos que ya tenía en Stripe?">
+    No. Los pagos hechos directamente en Stripe antes de la conexión no se importan. Chateea registra las transacciones nuevas que se generan desde Chateea tras conectar.
+  </Accordion>
+  <Accordion title="¿Puedo usar el modo de prueba de Stripe?">
+    Sí. El modo de prueba simula pagos sin cobrar tarjetas reales. Los métodos de pago se configuran por separado en modo de prueba y modo real, así que confirma en qué modo estás antes de lanzar.
+  </Accordion>
+  <Accordion title="¿Puedo importar todos mis productos de Stripe?">
+    No. Solo se importan los productos recurrentes o de suscripción. Los de pago único debes crearlos directamente en **Pagos → Productos**.
+  </Accordion>
+  <Accordion title="¿Puedo usar facturas sin procesar el pago con Stripe?">
+    Sí. En algunas facturas puedes registrar pagos manuales. Solo necesitas un proveedor conectado cuando quieres que el cobro se procese a través de él.
+  </Accordion>
+  <Accordion title="Stripe no aparece como conectado después de autorizar. ¿Qué hago?">
+    Revisa el estado en **Pagos → Integraciones**. Si no está activo, confirma que completaste la autorización con un usuario de Stripe con permisos suficientes y vuelve a conectar. Si sigue sin funcionar, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crea y vende productos" icon="bag-shopping" href="/primeros-pasos/crea-y-vende-productos">
+    Crea tu catálogo y elige cómo venderlo.
+  </Card>
+  <Card title="Crea enlaces de pago" icon="link" href="/primeros-pasos/crea-enlaces-de-pago">
+    Cobra con un enlace directo.
+  </Card>
+  <Card title="Crea y envía facturas" icon="file-invoice" href="/primeros-pasos/crea-y-envia-facturas">
+    Factura a tus clientes.
+  </Card>
+  <Card title="Guía rápida: pagos" icon="credit-card" href="/guias-rapidas/pagos">
+    Resumen de las herramientas de pago.
+  </Card>
+</CardGroup>

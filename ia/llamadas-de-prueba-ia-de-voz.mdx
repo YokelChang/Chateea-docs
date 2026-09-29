@@ -1,0 +1,118 @@
+---
+title: "Revisar las llamadas de prueba de la IA de voz"
+description: "Encuentra tus llamadas de prueba con el filtro En vivo/Prueba y revisa grabaciones y transcripciones sin afectar tus métricas."
+icon: "flask"
+---
+
+Antes de poner un agente de IA de voz a atender clientes reales, conviene probarlo varias veces. Cada llamada de prueba queda registrada con su grabación y su transcripción, pero se guarda aparte de las llamadas reales: aparece en los registros y no cuenta en las métricas del panel. Así puedes probar todo lo que quieras sin ensuciar tus reportes.
+
+En esta guía verás cómo encontrar tus llamadas de prueba con el filtro **En vivo/Prueba** (Live/Test) y qué revisar en cada una.
+
+## Llamadas de prueba y llamadas en vivo
+
+| Tipo | Qué es | ¿Cuenta en las métricas? |
+| --- | --- | --- |
+| **Llamada de prueba** | Una llamada que haces tú o tu equipo para probar el agente, por teléfono o con la llamada web. | No. Solo aparece en los registros. |
+| **Llamada en vivo** | Una llamada real de un cliente o prospecto atendida por el agente. | Sí. Suma a los totales, resultados, sentimiento y acciones del panel. |
+
+## Cuándo revisar las llamadas de prueba
+
+- Cuando creas un agente nuevo.
+- Después de cambiar indicaciones, ajustes de llamada, valores personalizados o acciones.
+- Para revisar los resultados de una prueba por llamada web o por teléfono.
+- Como control de calidad, escuchando grabaciones y leyendo transcripciones.
+- Para confirmar que una prueba se registró bien.
+- Antes de asignar números o enviar llamadas reales al agente.
+
+## Cómo ver tus llamadas de prueba
+
+<Steps>
+  <Step title="Abre el panel de la IA de voz">
+    Ve a **IA → IA de voz** y entra en **Panel y registros** (Dashboard & Logs). Aquí ves las tarjetas de métricas, los gráficos, los filtros y la tabla de registros.
+  </Step>
+  <Step title="Elige todos los agentes o uno en particular">
+    Con el filtro de agente puedes ver la actividad de **Todos los agentes** o limitarla a un solo agente. Si estás probando varios a la vez, filtra por el que te interesa.
+  </Step>
+  <Step title="Revisa el rango de fechas">
+    Asegúrate de que el rango de fechas incluya el día de tu prueba. Si no encuentras una llamada, este es el primer ajuste que debes revisar.
+  </Step>
+  <Step title="Ve a la tabla de registros">
+    Baja hasta la tabla de registros, debajo de las métricas. Las llamadas de prueba se revisan en esta tabla, no en las tarjetas del panel.
+  </Step>
+  <Step title="Filtra por prueba">
+    Abre el filtro **En vivo/Prueba** de la tabla y elige si quieres ver solo pruebas, solo llamadas en vivo o ambas.
+  </Step>
+  <Step title="Abre la llamada">
+    Haz clic en la llamada para ver su detalle: grabación, transcripción, datos del contacto, agente, fecha, resultado y acciones que se ejecutaron.
+  </Step>
+  <Step title="Vuelve a la vista normal">
+    Cuando termines, cambia o quita el filtro **En vivo/Prueba** para volver a ver las llamadas en vivo o la vista combinada.
+  </Step>
+</Steps>
+
+## Qué puedes revisar en una llamada de prueba
+
+Según los datos disponibles, cada registro de prueba puede incluir:
+
+- Grabación de la llamada.
+- Transcripción.
+- Nombre del agente.
+- Datos del contacto o de quien llamó.
+- Fecha y hora.
+- Estado o resultado de la llamada.
+- Acciones que se ejecutaron durante la llamada.
+
+<Tip>
+  Usa la transcripción y la grabación juntas. La transcripción te permite recorrer la conversación rápido; la grabación te muestra el tono, los tiempos, los silencios y las interrupciones, que es lo que realmente vive tu cliente.
+</Tip>
+
+## Por qué las pruebas no cuentan en las métricas
+
+Las pruebas son para revisión interna y control de calidad. Si contaran en el panel, cada prueba cambiaría tus totales de llamadas, los resultados, el sentimiento, las llamadas completadas o las acciones ejecutadas, y ya no podrías confiar en los números para medir cómo le va al agente con clientes reales.
+
+## Todos los agentes o un agente específico
+
+- Usa **Todos los agentes** para revisar las pruebas de todos los agentes de tu cuenta.
+- Usa la vista de un agente para ver solo sus llamadas.
+
+Si ves llamadas que no esperabas, revisa el filtro de agente, el rango de fechas y el filtro **En vivo/Prueba**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde veo las llamadas de prueba de la IA de voz?">
+    En **IA → IA de voz → Panel y registros**, en la tabla de registros, usando el filtro **En vivo/Prueba**.
+  </Accordion>
+  <Accordion title="¿Las llamadas de prueba cuentan en las métricas del panel?">
+    No. Aparecen en los registros para que las revises, pero no se suman a ninguna métrica de rendimiento.
+  </Accordion>
+  <Accordion title="¿Puedo escuchar la grabación y leer la transcripción de una prueba?">
+    Sí, cuando estén disponibles y hayan terminado de procesarse.
+  </Accordion>
+  <Accordion title="¿Por qué no encuentro mi llamada de prueba?">
+    Revisa el rango de fechas, el filtro de agente y el filtro **En vivo/Prueba**. Confirma también que la llamada terminó correctamente.
+  </Accordion>
+  <Accordion title="¿Las pruebas con llamada web aparecen en los registros?">
+    Sí, pueden aparecer una vez terminada la llamada. Búscalas con el filtro **En vivo/Prueba**, el agente correcto y el rango de fechas adecuado.
+  </Accordion>
+  <Accordion title="¿Debo revisar las pruebas antes de activar un agente?">
+    Sí. Es la mejor forma de confirmar que el agente responde bien antes de que hable con tus clientes.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registros de llamadas" icon="list" href="/ia/registros-de-llamadas-ia-de-voz">
+    Todo lo que guarda cada llamada de tus agentes.
+  </Card>
+  <Card title="Panel de llamadas salientes" icon="chart-line" href="/ia/panel-llamadas-salientes-ia-de-voz">
+    Mide el rendimiento de tus campañas de llamadas.
+  </Card>
+  <Card title="Correos de resumen de rendimiento" icon="envelope" href="/ia/correos-de-resumen-ia-de-voz">
+    Recibe un resumen periódico de cada agente.
+  </Card>
+  <Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+    Qué es la IA de voz y qué puede hacer.
+  </Card>
+</CardGroup>

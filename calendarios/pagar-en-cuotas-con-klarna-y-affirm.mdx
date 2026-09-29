@@ -1,0 +1,101 @@
+---
+title: "Pagar en cuotas con Klarna y Affirm"
+description: "Permite que tus clientes paguen sus reservas en cuotas con Klarna o Affirm a través de Stripe."
+icon: "credit-card"
+---
+
+Con la opción de comprar ahora y pagar después, tus clientes pueden reservar una cita y pagarla en cuotas con **Klarna** o **Affirm**, en lugar de pagar todo con tarjeta en el momento. Estas opciones aparecen en el widget de reservas de tus calendarios cuando tienes Stripe conectado y el cliente cumple los requisitos de esos proveedores.
+
+Es especialmente útil para servicios de ticket alto (tratamientos, asesorías largas, paquetes de sesiones), donde pagar todo por adelantado puede frenar la reserva.
+
+## Para qué te sirve
+
+- **Más formas de pago:** el cliente elige cómo pagar al reservar.
+- **Más reservas completadas:** reduces la presión de pagar todo de una vez.
+- **Experiencia moderna:** los métodos de pago que tus clientes ya conocen aparecen directamente en el widget.
+- **Disponibilidad automática:** Stripe decide qué opciones mostrar según tu configuración, la ubicación del cliente y su elegibilidad.
+
+## Métodos compatibles
+
+| Método | Cómo se activa | Quién lo ve |
+| --- | --- | --- |
+| Klarna | Desde los métodos de pago de Stripe | Clientes en regiones compatibles que cumplen los requisitos de Klarna |
+| Affirm | Desde los métodos de pago de Stripe | Clientes en regiones compatibles que cumplen los requisitos de Affirm |
+
+El pago con tarjeta sigue disponible junto a estas opciones.
+
+## Antes de empezar
+
+- Tu cuenta de Stripe debe estar conectada a Chateea.
+- El calendario debe tener activado el cobro de pagos en sus ajustes.
+
+## Cómo activar Klarna y Affirm
+
+<Steps>
+  <Step title="Abre la integración de Stripe">
+    Ve a **Pagos → Configuración → Integraciones** y haz clic en **Administrar Stripe** (Manage Stripe).
+  </Step>
+  <Step title="Revisa los métodos de pago">
+    Busca los métodos de pago disponibles para el área de producto que usan tus calendarios.
+  </Step>
+  <Step title="Activa Klarna y Affirm">
+    Activa **Klarna** y **Affirm** donde estén disponibles y guarda los cambios.
+  </Step>
+  <Step title="Prueba el widget de reservas">
+    Abre el widget de reservas de tu calendario y haz una reserva de prueba para confirmar que las opciones aparecen en el pago.
+  </Step>
+</Steps>
+
+## Cómo lo ve tu cliente
+
+Al llegar al paso de pago del widget de reservas, el cliente ve las opciones de pago en cuotas que le corresponden. Elige una, completa los pasos que pide el proveedor y termina de reservar su cita.
+
+Ten en cuenta:
+
+- Las opciones se muestran de forma dinámica.
+- No todos los clientes ven los mismos métodos de pago.
+- La elegibilidad depende de la región y de los requisitos de cada proveedor.
+
+## Cuándo aparecen estas opciones
+
+Klarna o Affirm solo se muestran cuando se cumplen todas estas condiciones:
+
+1. Tu negocio tiene Stripe conectado.
+2. Klarna o Affirm están activados para el área de pago correspondiente.
+3. La ubicación del cliente es compatible.
+4. El cliente cumple los requisitos de elegibilidad del proveedor.
+
+<Note>
+  Si al probar no ves Klarna o Affirm, revisa primero que estén activados en Stripe y que estés probando desde una región compatible. Que no aparezcan para un cliente concreto no significa que la configuración esté mal.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Todos mis clientes verán Klarna y Affirm?">
+    No. Las opciones se muestran según la ubicación, las reglas de cada proveedor y la elegibilidad del cliente.
+  </Accordion>
+  <Accordion title="¿Necesito Stripe para usar Klarna y Affirm en calendarios?">
+    Sí. Estos métodos se activan y administran desde los métodos de pago de Stripe.
+  </Accordion>
+  <Accordion title="¿Puedo seguir cobrando con tarjeta en el widget?">
+    Sí. El pago con tarjeta sigue disponible junto con los demás métodos que actives.
+  </Accordion>
+  <Accordion title="¿Funciona en todos los calendarios?">
+    Funciona en los calendarios que tienen pagos activados y cuyos métodos de pago están bien configurados en Stripe.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Pestaña de pagos en las citas" icon="credit-card" href="/calendarios/pestana-de-pagos-en-citas">
+    Revisa y cobra los pagos de cada cita.
+  </Card>
+  <Card title="Códigos de cupón en calendarios" icon="ticket" href="/calendarios/codigos-de-cupon-en-calendarios">
+    Ofrece descuentos en tus reservas.
+  </Card>
+  <Card title="Cobrar un anticipo en reservas" icon="money-bill" href="/calendarios/cobrar-anticipo-en-reservas">
+    Pide solo una parte del pago al reservar.
+  </Card>
+</CardGroup>

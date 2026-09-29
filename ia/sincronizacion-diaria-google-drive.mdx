@@ -1,0 +1,123 @@
+---
+title: "Sincronización diaria de archivos de Google Drive"
+description: "Mantén al día automáticamente los documentos de Google Drive de tu base de conocimiento con una revisión cada 24 horas."
+icon: "rotate"
+---
+
+La sincronización diaria mantiene al día los archivos que importaste desde Google Drive a tu base de conocimiento, sin que tengas que volver a sincronizarlos a mano. Cuando la activas en un archivo, Chateea revisa el documento original cada 24 horas y, si detecta cambios, actualiza la base de conocimiento para que la IA responda con la información más reciente.
+
+Es ideal para documentos que cambian a menudo: listas de precios, información de servicios, políticas, procedimientos o preguntas frecuentes.
+
+<Info>
+Esta función se activa primero en **Configuración → Labs** mientras esté disponible como función en prueba. Después se activa archivo por archivo.
+</Info>
+
+## Para qué sirve
+
+- **Conocimiento siempre actualizado:** tu base refleja los últimos cambios de tus documentos de Drive.
+- **Menos sincronizaciones manuales:** ya no tienes que acordarte de pulsar **Volver a sincronizar** después de cada cambio.
+- **Revisiones eficientes:** si el archivo no cambió, Chateea solo registra la revisión. No lo descarga ni lo vuelve a procesar.
+- **Control por archivo:** activas la sincronización solo en los documentos que lo necesitan.
+- **Respuestas más confiables:** la IA consulta la versión vigente de tus documentos.
+
+## Archivos compatibles
+
+La sincronización diaria funciona con estos archivos, siempre que se hayan importado desde Google Drive:
+
+- PDF
+- Google Docs
+- Microsoft Word (.doc)
+- Microsoft Word (.docx)
+
+Los archivos que subiste desde tu computadora son fuentes estáticas y no se pueden sincronizar. En la lista de archivos de la base de conocimiento, los compatibles muestran **Google Drive** en la columna **Origen**.
+
+## Cómo funciona
+
+Cada 24 horas, Chateea compara el archivo de tu base con el original en Drive:
+
+| Situación | Qué hace Chateea |
+| --- | --- |
+| El archivo no cambió | Registra la revisión y se detiene. No descarga, no guarda de nuevo, no fragmenta ni vuelve a indexar el archivo. |
+| El archivo cambió | Lo vuelve a sincronizar automáticamente. Cuando termina el procesamiento, la IA ya usa el contenido nuevo. |
+| El archivo ya no existe o se perdió el acceso | Detiene la sincronización de ese archivo y te muestra el problema, en lugar de seguir intentándolo. |
+
+La sincronización diaria no reemplaza la opción manual. Puedes seguir usando **Volver a sincronizar** cuando quieras traer un cambio al momento sin esperar a la siguiente revisión.
+
+## Diferencia con la sincronización de Google Sheets
+
+| | Sincronización diaria de Google Drive | Sincronización de Google Sheets |
+| --- | --- | --- |
+| Para qué fuentes | PDF, Google Docs, DOC y DOCX importados desde Drive | Hojas de Google Sheets conectadas como tablas |
+| Frecuencia | Una revisión cada 24 horas | Automática, aproximadamente cada 15 minutos |
+| Cómo se activa | Por archivo | Al conectar la hoja |
+| Ideal para | Documentos de texto | Datos estructurados que cambian mucho |
+
+Si tu información cambia varias veces al día y se puede organizar en filas y columnas, te conviene más [conectar Google Sheets](/ia/google-sheets-base-de-conocimiento).
+
+## Cómo activar la sincronización diaria
+
+<Steps>
+  <Step title="Activa la función en Labs">
+    Ve a **Configuración → Labs**, busca **Sincronización programada para Google Drive** (Scheduled sync for google drive) y haz clic en **Activar función**.
+  </Step>
+  <Step title="Abre la base de conocimiento">
+    Ve a **IA → Base de conocimiento** y abre (o edita) la base que contiene el archivo que quieres vigilar.
+  </Step>
+  <Step title="Entra a la pestaña Archivos">
+    Revisa los archivos de la base y ubica los que tienen **Google Drive** en la columna **Origen**. Si aún no importaste el documento, haz clic en **Agregar archivos** o **Importar desde Google Drive**, autoriza tu cuenta de Google si hace falta, elige el documento y espera a que su estado sea **Procesado**.
+  </Step>
+  <Step title="Activa la sincronización en el archivo">
+    En la columna **Acciones** del archivo, pasa el cursor por el control de sincronización programada hasta ver **Activar sincronización diaria** (Turn on daily sync) y haz clic. Desde ese momento, Chateea revisará el original cada 24 horas.
+  </Step>
+  <Step title="Repite con otros archivos">
+    Actívala en cada documento que necesite vigilancia. Por ejemplo, en tu lista de precios mensual sí, y en un documento histórico que no cambia, no.
+  </Step>
+  <Step title="Comprueba los cambios importantes">
+    Cuando se sincronice un cambio relevante y termine de procesarse, usa el [probador de recuperación](/ia/probador-de-recuperacion-base-conocimiento) para confirmar que la IA encuentra la información nueva.
+  </Step>
+</Steps>
+
+Para más detalles sobre cómo importar documentos, consulta [Importa archivos de Google Drive a tu base de conocimiento](/ia/google-drive-base-de-conocimiento).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo elegir a qué hora se sincroniza?">
+    No. Una vez activada, Chateea revisa el archivo una vez cada 24 horas.
+  </Accordion>
+  <Accordion title="¿Funciona con archivos que subí desde mi computadora?">
+    No. Solo funciona con archivos importados desde Google Drive.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el archivo no cambió?">
+    Chateea registra la revisión y no hace nada más: no descarga el archivo ni lo vuelve a procesar.
+  </Accordion>
+  <Accordion title="¿Puedo seguir sincronizando a mano?">
+    Sí. **Volver a sincronizar** sigue disponible para traer la última versión cuando quieras.
+  </Accordion>
+  <Accordion title="¿Se activa sola en todos mis archivos de Drive?">
+    No. Es opcional y se configura archivo por archivo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si borro el archivo en Drive o pierdo el acceso?">
+    La sincronización de ese archivo se detiene y Chateea te muestra el problema.
+  </Accordion>
+  <Accordion title="¿Cómo confirmo que la IA ya usa el contenido actualizado?">
+    Espera a que el archivo termine de procesarse y haz una pregunta sobre el cambio en el probador de recuperación. Revisa que la fuente devuelta tenga la información nueva.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Importa archivos de Google Drive" icon="google-drive" href="/ia/google-drive-base-de-conocimiento">
+    Agrega documentos de Drive a tu base de conocimiento.
+  </Card>
+  <Card title="Conecta Google Sheets a tu base de conocimiento" icon="table" href="/ia/google-sheets-base-de-conocimiento">
+    Tablas vivas que se actualizan cada pocos minutos.
+  </Card>
+  <Card title="Probador de recuperación" icon="magnifying-glass" href="/ia/probador-de-recuperacion-base-conocimiento">
+    Comprueba qué información encuentra la IA.
+  </Card>
+  <Card title="Descarga tablas en CSV" icon="file-csv" href="/ia/descargar-tablas-base-conocimiento-csv">
+    Exporta los datos que usa tu IA.
+  </Card>
+</CardGroup>

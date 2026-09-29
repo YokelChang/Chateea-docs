@@ -1,0 +1,116 @@
+---
+title: "Error 131042: problema de pago de WhatsApp"
+description: "Qué revisar cuando WhatsApp bloquea tus envíos por un problema con el pago, la billetera o la facturación en Meta."
+icon: "credit-card"
+---
+
+El error **131042** (Business Eligibility Payment Issue) significa que WhatsApp no encuentra una forma válida de cobrar el uso de tu cuenta de WhatsApp Business. Mientras el problema de pago no se resuelva, **todos los mensajes salientes que se cobran quedan bloqueados**. La solución casi siempre está en la configuración de facturación, así que en esta guía te decimos exactamente qué revisar.
+
+```json
+"errors": [
+  {
+    "code": 131042,
+    "title": "Business Eligibility Payment Issue",
+    "details": "Message failed to send because there are restrictions on how many messages can be sent from this phone number."
+  }
+]
+```
+
+## Primero: ¿cómo se paga tu WhatsApp?
+
+El consumo de WhatsApp se puede pagar de dos formas y lo que debes revisar depende de cuál uses:
+
+| Forma de pago | Cómo funciona | Dónde revisar |
+| --- | --- | --- |
+| **A través de Chateea** | Tu cuenta de WhatsApp Business usa la línea de crédito de Chateea y el consumo se descuenta de la **billetera** de tu cuenta | **Configuración → Facturación** en Chateea |
+| **Directo con Meta** | Agregaste tu propio método de pago en Meta Business Suite y Meta te cobra a ti | **Facturación y pagos** en Meta Business Suite |
+
+Si no sabes cuál aplica a tu caso, revisa [Línea de crédito de WhatsApp](/whatsapp/linea-de-credito-de-whatsapp) o escribe a soporte de Chateea en **help@chateea.com**.
+
+## Causas conocidas
+
+Según la documentación de Meta, el error aparece cuando se da una o varias de estas situaciones:
+
+1. **No hay método de pago vinculado a tu cuenta de WhatsApp Business.** Es la causa más común. Agregar una tarjeta a Meta Business Suite no la asigna automáticamente a tu cuenta de WhatsApp: hay que vincularla.
+2. **Se superó el límite de crédito** de la cuenta de pago.
+3. **La línea de crédito está inactiva o sin configurar.**
+4. **La cuenta de WhatsApp Business fue eliminada o suspendida** por Meta, por incumplimiento de políticas o inactividad.
+5. **Faltan o están mal la zona horaria o la moneda** de la cuenta de WhatsApp Business.
+6. **Se agotaron los mensajes gratuitos sin un método de pago válido.** Cada número tiene 1.000 mensajes de servicio gratis al mes. Pasado ese límite, se necesita un medio de pago activo.
+7. **Falta la información fiscal** en Meta Business Manager. Es una causa muy olvidada.
+8. **Hay pagos pendientes**: un cobro anterior falló (tarjeta vencida o sin fondos) y Meta bloquea los envíos hasta que se pague.
+
+## Cómo solucionarlo
+
+<Steps>
+  <Step title="Si pagas a través de Chateea, revisa tu billetera">
+    Ve a **Configuración → Facturación** y confirma que tu billetera tiene saldo y que tu método de pago está activo. Recarga si es necesario y vuelve a intentar el envío.
+  </Step>
+  <Step title="Si pagas directo a Meta, vincula el método de pago a tu cuenta de WhatsApp">
+    En [business.facebook.com](https://business.facebook.com) ve a **Configuración → Facturación y pagos → Cuentas → Cuentas de WhatsApp Business**. Busca la cuenta con el error, pulsa los tres puntos y elige **Ver detalles**. Si no aparece un método de pago, pulsa **Agregar método de pago** y completa los dos pasos: agregar la tarjeta **y** asignarla a esa cuenta de WhatsApp Business.
+  </Step>
+  <Step title="Paga los cargos pendientes">
+    En la misma sección, revisa si hay cobros fallidos o pendientes y págalos. Motivos habituales: tarjeta vencida, fondos insuficientes, banco que bloquea cargos internacionales o recurrentes, o una pequeña verificación de Meta que falló al registrar la tarjeta.
+  </Step>
+  <Step title="Revisa el límite de crédito">
+    Comprueba el estado de tu línea de crédito. Si llegaste al límite, usa una tarjeta con más cupo o solicita un aumento a Meta.
+  </Step>
+  <Step title="Corrige la zona horaria y la moneda">
+    En la configuración de tu cuenta de WhatsApp Business en Meta Business Suite, verifica que la zona horaria y la moneda correspondan a tu país. Una vez definidas no siempre se pueden cambiar; si necesitas corregirlas, contacta al soporte de Meta.
+  </Step>
+  <Step title="Agrega tu información fiscal">
+    En Meta Business Manager ve a **Configuración → Información del negocio**, baja hasta **Información fiscal** e ingresa tu identificación fiscal (RFC, RUT, NIT, CUIT, IVA u otra según tu país). Guarda y prueba un envío.
+  </Step>
+  <Step title="Confirma que tu cuenta de WhatsApp está activa">
+    Revisa en Meta Business Suite que tu cuenta de WhatsApp Business no esté restringida, deshabilitada ni suspendida. Si lo está, sigue las indicaciones de Meta para apelar. Consulta [Cuenta restringida y apelaciones](/whatsapp/cuenta-restringida-y-apelaciones).
+  </Step>
+  <Step title="Si sigue fallando, contacta a soporte">
+    Escribe a soporte de Chateea en **help@chateea.com** con el ID de tu cuenta de WhatsApp Business, el número afectado, una captura de tu estado de facturación, la respuesta completa del error (con el `fbtrace_id` si lo ves) y los pasos que ya hiciste.
+  </Step>
+</Steps>
+
+## Cómo prevenirlo
+
+- **Configura el pago antes de empezar a enviar**, no cuando los mensajes ya fallan.
+- **Mantén saldo en tu billetera** si pagas a través de Chateea.
+- **Prefiere tarjeta de crédito** si pagas directo a Meta. Las de débito con restricciones internacionales fallan con frecuencia.
+- **Actualiza tu tarjeta antes de que venza.**
+- **Carga tu información fiscal** desde el principio.
+- **Activa las notificaciones de facturación** en Meta Business Suite para enterarte de cobros fallidos a tiempo.
+
+## Otros códigos relacionados
+
+| Código | Nombre | Descripción |
+| --- | --- | --- |
+| `131031` | Cuenta bloqueada | Tu cuenta de WhatsApp Business fue restringida o deshabilitada por incumplir una política |
+| `130497` | País restringido | Tu cuenta no puede escribir a usuarios de ciertos países |
+| `131026` | Mensaje no entregable | Número inválido, contacto que te bloqueó o límite de frecuencia |
+| `131048` | Límite por spam | Demasiados usuarios marcaron tus mensajes como spam y bajó tu calidad |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Mi suscripción de Chateea está al día. ¿Por qué me sale este error?">
+    Porque el error no tiene que ver con tu plan de Chateea, sino con el pago del consumo de WhatsApp: la billetera si pagas a través de Chateea, o el método de pago en Meta si pagas directo.
+  </Accordion>
+  <Accordion title="¿Cuánto tarda en resolverse después de corregir el pago?">
+    Normalmente el error desaparece de inmediato. En algunos casos Meta tarda hasta 24 horas en actualizar el estado. Si pasado ese tiempo sigue, contacta a soporte.
+  </Accordion>
+  <Accordion title="Ya agregué mi tarjeta y el error sigue. ¿Qué me falta?">
+    Lo más olvidado es la información fiscal en Meta Business Manager. Revisa también que la tarjeta esté asignada a tu cuenta de WhatsApp Business (no solo agregada) y que no tenga una retención de verificación pendiente en tu banco.
+  </Accordion>
+  <Accordion title="¿Afecta a todos los mensajes?">
+    Bloquea todos los mensajes salientes que se cobran: plantillas de marketing, utilidad y autenticación, y los mensajes de servicio que superen los gratuitos del mes.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Precios y cobro de WhatsApp" icon="credit-card" href="/whatsapp/precios-y-cobro-de-whatsapp">
+    Cómo se cobra cada tipo de mensaje.
+  </Card>
+  <Card title="Línea de crédito de WhatsApp" icon="file-invoice" href="/whatsapp/linea-de-credito-de-whatsapp">
+    Qué es y por qué no se puede cambiar.
+  </Card>
+</CardGroup>

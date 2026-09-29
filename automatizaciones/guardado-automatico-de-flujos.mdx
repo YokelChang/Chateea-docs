@@ -1,0 +1,115 @@
+---
+title: "Guardado automático de flujos de trabajo"
+description: "Activa el guardado automático para que los cambios del lienzo se guarden en borrador mientras construyes tus flujos."
+icon: "floppy-disk"
+---
+
+El **guardado automático** guarda en segundo plano los cambios que haces en el lienzo de un flujo de trabajo mientras lo construyes. Tus cambios se guardan en el **borrador**, así que no pierdes avances si se cierra la pestaña o se corta la conexión, y nada llega a tus contactos hasta que haces clic en **Publicar**.
+
+## Ventajas
+
+- **Sin guardar a mano:** los cambios del lienzo se registran solos, sin buscar el botón Guardar.
+- **Borrador seguro:** los cambios solo afectan al borrador; el flujo publicado no cambia hasta que publicas.
+- **Menos clics:** lo activas una vez y sigues trabajando sin interrupciones.
+- **Puntos de control:** puedes crear versiones con nombre cuando quieras con **Guardar versión**.
+- **Trabajo en equipo:** si varias personas o pestañas editan el mismo flujo, el guardado más reciente pasa a ser el borrador actual.
+
+## Borrador y publicación
+
+| Qué haces | Qué pasa |
+| --- | --- |
+| Editas el lienzo con el guardado automático activo | Los cambios se guardan en el **borrador**. |
+| Haces clic en **Publicar** | El borrador pasa a ser la versión activa del flujo. |
+| Sigues editando después de publicar | Los nuevos cambios vuelven a quedar en borrador, sin afectar lo publicado. |
+
+Así puedes hacer y guardar muchos cambios sin tocar el comportamiento del flujo que ya está funcionando.
+
+## Qué guarda y qué no
+
+**Se guarda automáticamente cuando:**
+
+- Agregas una acción o un disparador al lienzo.
+- Eliminas una acción o un disparador del lienzo.
+- Cambias algo en la pestaña **Configuración** del flujo.
+- Editas el nombre del flujo.
+- Cambias el estado del flujo (**Borrador** o **Publicado**).
+
+**No se guarda automáticamente** lo que editas dentro de la ventana de configuración de una acción o disparador. Esos cambios solo pasan al lienzo cuando haces clic en **Guardar** (o **Aplicar**) dentro de esa ventana. A partir de ese momento, el guardado automático los registra.
+
+Por ejemplo, si cambias el tiempo de una acción **Esperar**, el cambio no se guarda hasta que haces clic en **Guardar** en la ventana de esa acción.
+
+## Historial de versiones y puntos de control
+
+- **Entradas de sesión:** el historial de versiones registra tus sesiones de edición.
+- **Guardar versión:** crea manualmente un punto de control con nombre, fácil de identificar después.
+- **Restaurar:** desde el historial de versiones puedes revisar y restaurar un estado anterior.
+
+<Tip>
+Antes de un cambio grande, haz clic en **Guardar versión** y ponle un nombre descriptivo, por ejemplo "Antes de agregar rama de reactivación". Si algo sale mal, volver atrás será inmediato.
+</Tip>
+
+## Si varias personas editan el mismo flujo
+
+Cuando varias personas o pestañas editan el mismo flujo, **el último guardado automático se convierte en el borrador actual**. Para evitar que se pisen los cambios:
+
+- En cambios críticos, que edite una sola persona a la vez.
+- Si colaboran, acuerden quién edita y cuándo.
+- Si vuelves después de un rato sin actividad, recarga la página para ver el borrador más reciente.
+
+## Cómo activar el guardado automático
+
+### Opción 1: desde el constructor
+
+<Steps>
+<Step title="Abre un flujo">
+Ve a **Automatización → Flujos de trabajo** y abre cualquier flujo.
+</Step>
+<Step title="Actívalo desde el aviso">
+La primera vez puede aparecer una ventana de bienvenida. Elige **Activar guardado automático ahora**.
+</Step>
+</Steps>
+
+### Opción 2: desde la configuración global de flujos
+
+<Steps>
+<Step title="Abre la configuración global">
+Ve a **Automatización → Configuración global de flujos de trabajo**.
+</Step>
+<Step title="Enciende el interruptor">
+Activa **Guardado automático**.
+</Step>
+<Step title="Trabaja como siempre">
+Agrega, quita y reorganiza pasos en el lienzo. Tus cambios se guardarán en el borrador.
+</Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿El guardado automático publica mis cambios?">
+No. Solo actualiza el borrador. Para que los cambios lleguen a tus contactos, haz clic en **Publicar**.
+</Accordion>
+<Accordion title="¿Tengo que guardar dentro de la ventana de cada acción?">
+Sí. Los cambios dentro de la ventana de configuración de un paso deben guardarse o aplicarse para pasar al lienzo. Después, el guardado automático los registra.
+</Accordion>
+<Accordion title="¿Qué pasa si se corta el internet mientras edito?">
+Cuando vuelva la conexión, el lienzo puede seguir guardando. Si no sabes cuál es el borrador actual, recarga el flujo y revisa el historial de versiones.
+</Accordion>
+<Accordion title="¿Funciona con el constructor de flujos con IA?">
+Sí. Cuando generas un flujo con IA, se guarda automáticamente, y las ediciones que hagas después con la IA también.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Historial de versiones de flujos" icon="clock-rotate-left" href="/automatizaciones/historial-de-versiones-de-flujos">
+Revisa y restaura versiones anteriores.
+</Card>
+<Card title="Deshacer, rehacer y cambios recientes" icon="rotate-left" href="/automatizaciones/deshacer-rehacer-y-cambios-recientes">
+Corrige errores durante tu sesión de edición.
+</Card>
+<Card title="Constructor avanzado de flujos" icon="diagram-project" href="/automatizaciones/constructor-avanzado-de-flujos">
+Conoce el lienzo visual y sus funciones.
+</Card>
+</CardGroup>

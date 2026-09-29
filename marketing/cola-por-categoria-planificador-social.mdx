@@ -1,0 +1,141 @@
+---
+title: "Cola por categoría en el Planificador social"
+description: "Agrupa publicaciones por categoría y publícalas en ciclo continuo con días y horarios fijos para reciclar contenido atemporal."
+icon: "layer-group"
+---
+
+La cola por categoría te ayuda a reutilizar tu contenido atemporal de forma automática. Agrupas publicaciones bajo una categoría (por ejemplo "Consejos", "Testimonios" o "Preguntas frecuentes"), defines los días y horarios de publicación, y la cola va publicándolas una tras otra. Cuando llega a la última, vuelve a empezar desde la primera.
+
+Es ideal para mantener tus redes activas con contenido que sigue siendo útil meses después, sin tener que reprogramar cada publicación a mano.
+
+## Para qué te sirve
+
+- **Publicación continua:** tu contenido atemporal se publica solo, ciclo tras ciclo.
+- **Reutilización:** aprovechas publicaciones que ya hiciste y sumas automáticamente las nuevas de la misma categoría.
+- **Control de prioridad:** decides si lo nuevo sale primero o se añade al final.
+- **Horarios a medida:** eliges los días y las franjas horarias de cada cola.
+- **Gestión flexible:** editas, reordenas, pausas, reanudas, reprogramas o eliminas la cola cuando quieras.
+
+## Antes de empezar
+
+Para crear una cola con contenido existente, asigna a esas publicaciones la categoría correspondiente. También puedes crear una categoría nueva y añadir publicaciones mientras configuras la cola.
+
+## Cómo crear una cola por categoría
+
+<Steps>
+<Step title="Abre la opción de cola">
+Ve a **Marketing → Planificador social**, haz clic en **Nueva publicación** y elige **Cola por categoría** (Category Queue).
+</Step>
+<Step title="Elige o crea la categoría">
+En **Seleccionar una categoría**, elige la que quieres usar. Si no existe, escribe el nombre y selecciona la opción para añadirla.
+</Step>
+<Step title="Configura las preferencias">
+- Activa **Incluir publicaciones futuras** (Enable future posts queuing) para que las nuevas publicaciones de esta categoría se añadan solas a la cola.
+- Activa **Priorizar contenido nuevo** (Prioritize new content) si quieres que lo nuevo se coloque al principio. Si lo dejas desactivado, se añade al final.
+
+Haz clic en **Continuar**.
+</Step>
+<Step title="Define el calendario">
+Selecciona los días de publicación y las franjas horarias. Haz clic en **Poner en cola** para aplicar el calendario y pasar al editor de la cola.
+</Step>
+<Step title="Revisa y completa la cola">
+Revisa las publicaciones y edita el texto o los archivos si hace falta. Para añadir otra, haz clic en **Nueva publicación** y arrástrala a la posición que prefieras. Si quieres que una publicación rote con distintas versiones, añade variaciones de contenido.
+</Step>
+<Step title="Resuelve los avisos">
+Revisa las advertencias y errores que aparezcan y corrígelos.
+</Step>
+<Step title="Activa la cola">
+Cuando no queden errores bloqueantes, haz clic en **Poner en cola** para activarla. Antes de activarla también puedes **Guardar como borrador**, **Eliminar** o **Restablecer**.
+</Step>
+</Steps>
+
+## Gestionar una cola
+
+Ve a **Marketing → Planificador social → Contenido → Cola por categoría**, busca la cola y haz clic en el ícono de **más opciones**.
+
+### Editar la cola
+
+Con **Editar cola** puedes cambiar, sin tener que recrearla:
+
+- El texto, los archivos y las variaciones de cada publicación.
+- La frecuencia de publicación.
+- Las franjas horarias.
+- El orden de las publicaciones, arrastrándolas.
+
+### Preferencias de la cola
+
+| Opción | Activada | Desactivada |
+| --- | --- | --- |
+| **Incluir publicaciones futuras** | Las nuevas publicaciones de la categoría se añaden solas a la cola | Las nuevas publicaciones no se añaden automáticamente |
+| **Priorizar contenido nuevo** | El contenido nuevo va al principio y se publica primero | El contenido nuevo va al final |
+
+Los cambios en las preferencias se aplican a partir del siguiente ciclo de la cola.
+
+### Ver el calendario de la cola
+
+Con **Ver calendario de la cola** revisas la cola en vista semanal o mensual para detectar huecos o días con demasiado contenido.
+
+### Reprogramar toda la cola
+
+Con **Reprogramar cola** mueves la cola completa a una nueva fecha de inicio. Chateea recalcula las fechas de cada publicación según la frecuencia y las franjas horarias configuradas.
+
+### Añadir publicaciones desde el editor
+
+Al crear cualquier publicación, elige **Añadir a la cola** y selecciona una categoría. Si eliges una existente, la publicación entra en su cola. Si creas una categoría nueva, se crea también su cola.
+
+### Pausar, reanudar o eliminar
+
+- Usa el interruptor de estado en la página **Cola por categoría** para pausarla o reanudarla.
+- Elige **Eliminar** en el menú de más opciones para borrar una cola que ya no necesitas.
+- Mientras editas, usa **Restablecer** para descartar los cambios de una publicación y volver a su contenido original.
+
+## Reglas importantes
+
+- No se puede reprogramar una publicación individual de la cola. Reprograma la cola completa.
+- No puedes mover ni reordenar publicaciones desde el calendario de la cola. Hazlo desde **Editar cola**.
+- Para ver el estado de cada categoría y su cola (activa, pausada o borrador), ve a **Marketing → Planificador social → Configuración → Categorías**.
+
+## Gestionar colas por API
+
+Si quieres crear o gestionar colas desde tus propias integraciones, la API de Chateea incluye operaciones para colas por categoría:
+
+| Acción | Descripción |
+| --- | --- |
+| Consultar categorías | Obtiene las categorías disponibles y el estado de su cola |
+| Gestionar colas | Crea, lista, actualiza y consulta colas |
+| Gestionar publicaciones de la cola | Añade, actualiza, restablece y elimina publicaciones |
+| Ver calendario | Consulta las publicaciones programadas en formato calendario |
+| Avanzar la cola | Elimina la publicación activa y programa la siguiente disponible |
+
+Para obtener las credenciales y la documentación de la API, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Cómo hago que las publicaciones nuevas entren solas en la cola?">
+Abre **Preferencias de la cola** y activa **Incluir publicaciones futuras**.
+</Accordion>
+<Accordion title="¿Cómo consigo que lo nuevo se publique antes que lo que ya estaba?">
+Activa **Priorizar contenido nuevo** en las preferencias de la cola.
+</Accordion>
+<Accordion title="¿Puedo cambiar el calendario de una cola?">
+Sí. Usa **Editar cola** para cambiar la frecuencia o las franjas horarias, o **Reprogramar cola** para mover toda la cola a otra fecha de inicio.
+</Accordion>
+<Accordion title="¿Puedo tener varias versiones de una misma publicación?">
+Sí. Añade variaciones para que la cola vaya rotando distintos textos y archivos.
+</Accordion>
+<Accordion title="¿Puedo cambiar el orden después?">
+Sí. Entra en **Editar cola** y arrastra las publicaciones al orden que prefieras.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Publicaciones recurrentes" icon="repeat" href="/planificador-social/como-publicar-publicaciones-recurrentes-en-redes-sociales">
+Repite una publicación concreta con la frecuencia que elijas.
+</Card>
+<Card title="Búsqueda y vistas filtradas" icon="filter" href="/marketing/busqueda-y-vistas-filtradas-planificador-social">
+Encuentra publicaciones por categoría, estado o red.
+</Card>
+</CardGroup>

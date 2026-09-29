@@ -1,0 +1,134 @@
+---
+title: "Disparador Validación de número"
+description: "Inicia flujos según el resultado de la validación del teléfono de un contacto antes de su primer SMS."
+icon: "phone"
+---
+
+El disparador **Validación de número** (Number Validation) inicia un flujo de trabajo según el resultado de la validación del teléfono de un contacto. Esta validación comprueba si el número de destino es válido y puede recibir SMS antes de enviarle el primer SMS saliente.
+
+La validación de números forma parte de **Inteligencia de números** (Number Intelligence), una función que también incluye la detección de spam y la búsqueda de nombre. Usar su resultado en tus flujos te ayuda a dirigir a cada contacto por el camino correcto y a evitar intentos de SMS a números inválidos o que no admiten mensajes.
+
+<Warning>
+  La validación de número no indica si el contacto aceptó recibir mensajes. Sigue cumpliendo tus obligaciones de consentimiento (opt-in) y las normas de mensajería que apliquen.
+</Warning>
+
+## Para qué sirve
+
+- **Menos SMS fallidos:** identificas números que no deberían seguir en un proceso basado en SMS.
+- **Enrutamiento automático:** envías a cada contacto por un camino distinto según el resultado.
+- **Mejores datos de contacto:** marcas los contactos cuyo teléfono necesita corrección.
+- **Avisos al equipo:** notificas a alguien cuando un número requiere atención.
+- **Seguimiento multicanal:** llevas al contacto a otro canal adecuado cuando el SMS no es una opción.
+
+## Requisito: activa Inteligencia de números
+
+La validación solo funciona si **Inteligencia de números** está activada en tu cuenta:
+
+<Steps>
+  <Step title="Abre la configuración telefónica">
+    Ve a **Configuración → Sistema telefónico**.
+  </Step>
+  <Step title="Entra en la configuración adicional">
+    Abre **Configuración adicional** (Additional Settings).
+  </Step>
+  <Step title="Activa la función">
+    Localiza **Inteligencia de números** y actívala.
+  </Step>
+</Steps>
+
+<Note>
+  La validación de número, la detección de spam y la búsqueda de nombre forman parte de Inteligencia de números y se activan o desactivan juntas.
+</Note>
+
+## Cómo funciona
+
+La validación **no** se ejecuta solo por crear o importar un contacto. Se ejecuta cuando Chateea prepara el primer SMS saliente hacia ese número:
+
+**Se prepara un SMS saliente → se ejecuta la validación → se genera el resultado → se activa el flujo de Validación de número → el SMS se envía o se bloquea según el resultado.**
+
+Por eso, un contacto que ya existía también puede pasar por la validación cuando le envías su primer SMS.
+
+<Info>
+  Este disparador se basa en el resultado de Inteligencia de números. No se activa porque un SMS reciba después un error de entrega del operador. Para reaccionar a esos errores, usa el disparador de error de mensajería.
+</Info>
+
+## Cómo configurar el disparador
+
+<Steps>
+  <Step title="Abre tu flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea o abre un flujo.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador**, busca y selecciona **Validación de número**.
+  </Step>
+  <Step title="Añade el filtro">
+    Agrega el filtro **El número es** (Number is) y elige el resultado de validación que debe activar el flujo, entre las opciones que muestra el constructor.
+  </Step>
+  <Step title="Guarda y añade acciones">
+    Guarda el disparador y añade las acciones que deben ejecutarse con ese resultado.
+  </Step>
+  <Step title="Prueba y publica">
+    Prueba el flujo y publícalo cuando se comporte como esperas.
+  </Step>
+</Steps>
+
+## Usos habituales
+
+### Dirigir según la capacidad de recibir SMS
+
+- **Número apto para SMS:** el contacto continúa en tu flujo de SMS.
+- **Número que no debe recibir SMS:** el contacto pasa a un seguimiento alternativo, por ejemplo por correo o WhatsApp si tienes su permiso.
+
+### Avisar al equipo
+
+Envía una notificación interna cuando el resultado indique que el teléfono necesita revisión, para que alguien lo corrija.
+
+### Segmentar contactos
+
+Usa acciones para añadir una etiqueta, actualizar un campo personalizado o mover al contacto a otro flujo. Así tu equipo distingue fácilmente los teléfonos que necesitan revisión.
+
+### Pedir datos actualizados
+
+Cuando el número no sirve para SMS, lleva al contacto a un proceso para obtener un teléfono correcto, usando otro canal si tienes su permiso.
+
+<Warning>
+  No elimines automáticamente un contacto solo porque su número salió inválido o no apto para SMS. Puede tener información útil o ser alcanzable por otro canal.
+</Warning>
+
+## Validación de número frente a errores de mensajería
+
+| Disparador | Úsalo para |
+| --- | --- |
+| **Validación de número** | Reaccionar al resultado de Inteligencia de números antes del primer SMS saliente. |
+| **Error de mensajería / SMS** | Reaccionar a un error que ocurre durante o después de un intento de entrega de SMS. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuándo se ejecuta la validación?">
+    Antes de enviar el primer SMS saliente a ese número. Crear o importar un contacto no la ejecuta.
+  </Accordion>
+  <Accordion title="¿Se valida el número en cada SMS?">
+    No. La validación está pensada para el primer SMS saliente a ese número, no para cada mensaje.
+  </Accordion>
+  <Accordion title="¿Se activa si un SMS devuelve un error de entrega?">
+    No. Para esos casos usa el disparador de error de mensajería.
+  </Accordion>
+  <Accordion title="¿Funciona con contactos que ya existían?">
+    Sí. Un contacto existente pasa por la validación cuando se prepara su primer SMS saliente.
+  </Accordion>
+  <Accordion title="Si el número es válido, ¿ya tengo permiso para enviarle SMS?">
+    No. La validación revisa si el número es válido y puede recibir SMS, pero no confirma que el contacto haya dado su consentimiento.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador de error de mensajería SMS" icon="triangle-exclamation" href="/automatizaciones/disparador-error-de-mensajeria-sms">
+    Reacciona cuando un SMS no se entrega.
+  </Card>
+  <Card title="Configura correo, teléfono y SMS" icon="phone" href="/primeros-pasos/configura-correo-telefono-y-sms">
+    Deja listos tus canales antes de automatizar.
+  </Card>
+</CardGroup>

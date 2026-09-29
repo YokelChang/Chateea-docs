@@ -1,0 +1,155 @@
+---
+title: "Acción: IA conversacional en flujos de trabajo"
+description: "Conversa con tus contactos con IA dentro de un flujo y dirígelos según su respuesta."
+icon: "robot"
+---
+
+La acción **IA conversacional** (Conversation AI) añade un paso de conversación con IA dentro de un flujo de trabajo. Envía una pregunta al contacto, espera su respuesta, continúa el diálogo si hace falta y, según lo que conteste, lo dirige por el camino que corresponda. Desde una sola acción controlas la pregunta, los tiempos de respuesta, el canal, las instrucciones de la IA, el límite de mensajes y qué pasa si no hay respuesta.
+
+Es ideal para calificar prospectos, hacer seguimientos y tomar decisiones sin tener que atender cada respuesta a mano.
+
+<Note>
+  En esta acción de flujo puedes elegir los canales **SMS, Facebook, Instagram, WhatsApp y chat en vivo**. Aunque tu bot de IA conversacional funcione en otros canales, eso no significa que estén disponibles en esta acción.
+</Note>
+
+## Beneficios
+
+- **Contacto dirigido:** haces una pregunta concreta y esperas la respuesta antes de seguir.
+- **Conversaciones de varios turnos:** la IA puede seguir respondiendo dentro de la acción hasta el límite que definas.
+- **Enrutamiento inteligente:** las respuestas se evalúan contra tus ramas y condiciones para decidir el siguiente paso.
+- **Respuestas con contexto:** la IA usa la configuración y el entrenamiento del bot, tus instrucciones, la pregunta y el historial de la conversación.
+- **Control de respuestas:** tiempo de espera, pausa antes de responder, límite de mensajes y opción de omitir si ya se respondió.
+- **Elección de canal:** un canal compatible por acción.
+
+## Cómo funciona
+
+| Etapa | Qué ocurre |
+| --- | --- |
+| 1. Inicio | El flujo llega a la acción y envía la **Pregunta** por el canal elegido. |
+| 2. Respuesta del contacto | La acción espera la respuesta durante el **Tiempo de espera** configurado. |
+| 3. Evaluación | La IA responde usando el contexto del bot y de la acción, y evalúa si se cumple alguna condición de las ramas. |
+| 4. Continúa si hace falta | La conversación sigue hasta que una rama coincide, se agota el tiempo o se alcanza el **Límite de respuestas del bot**. |
+| 5. Enrutamiento | El contacto sigue por la rama coincidente, por **Tiempo agotado** o por **Ninguna condición cumplida**. |
+
+## Opciones de configuración
+
+| Opción | Para qué sirve |
+| --- | --- |
+| Configuración avanzada del bot | Sustituye, solo para esta acción, la personalidad y las instrucciones adicionales predeterminadas del bot. |
+| Personalidad | El tono o estilo que debe usar la IA (con la configuración avanzada activa). |
+| Instrucciones adicionales | Objetivos, intención o indicaciones específicas para este flujo. |
+| Pregunta | El mensaje o pregunta que inicia la conversación. Admite valores personalizados. |
+| Tiempo de espera | Cuánto espera la respuesta antes de seguir por **Tiempo agotado**. En minutos, horas o días. |
+| Canal | SMS, Facebook, Instagram, WhatsApp o chat en vivo. |
+| Omitir si ya se respondió | Salta la acción si la pregunta ya se respondió manualmente, para no repetir mensajes. |
+| Límite de respuestas del bot | Máximo de mensajes de IA que puede enviar esta acción antes de ir a **Ninguna condición cumplida** si ninguna rama coincidió. |
+| Tiempo de espera en segundos | Pausa antes de que la IA responda, para reunir varios mensajes seguidos del contacto antes de contestar. |
+| Ramas y condiciones | Dónde continúa el flujo según la respuesta del contacto. |
+
+<Info>
+  El **Límite de respuestas del bot** de esta acción es distinto de los límites de mensajes que puedas tener configurados en el propio bot. Son controles independientes.
+</Info>
+
+## Antes de empezar
+
+- Decide qué disparador debe inscribir a los contactos. **Cliente respondió** es solo un ejemplo: usa el que encaje con tu objetivo.
+- Confirma que el canal que vas a usar está disponible para el flujo y para tu bot.
+- Define qué respuesta o intención representa cada rama antes de escribir las condiciones.
+- Planifica qué pasa si el contacto no responde o si ninguna condición se cumple.
+
+## Cómo configurar la acción
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Configura el disparador">
+    Agrega o revisa el disparador que inscribe a los contactos. Por ejemplo, para responder a mensajes entrantes puedes usar **Cliente respondió** con un filtro de canal de respuesta.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+** donde quieras añadirla, busca **IA conversacional** y selecciónala. Ponle un nombre claro para identificarla en el lienzo.
+  </Step>
+  <Step title="Define las instrucciones">
+    Activa **Configuración avanzada del bot** si quieres personalizar la **Personalidad** y las **Instrucciones adicionales** para esta acción. Si no la activas, se usa la configuración actual del bot. En **Pregunta**, escribe el mensaje que abre la conversación; puedes usar valores personalizados.
+  </Step>
+  <Step title="Elige tiempo de espera y canal">
+    Define el **Tiempo de espera** en minutos, horas o días y selecciona un **Canal**.
+  </Step>
+  <Step title="Ajusta los controles de conversación">
+    Activa **Omitir si ya se respondió** si procede, define el **Límite de respuestas del bot** y el **Tiempo de espera en segundos** antes de cada respuesta de la IA.
+  </Step>
+  <Step title="Crea las ramas y guarda">
+    Agrega tus ramas con condiciones claras para cada resultado y haz clic en **Guardar acción**.
+  </Step>
+</Steps>
+
+## Cómo funcionan las ramas
+
+| Rama | Cuándo se usa |
+| --- | --- |
+| Rama personalizada | Cuando la respuesta del contacto cumple las condiciones que definiste. |
+| Tiempo agotado | Cuando el contacto no responde dentro del tiempo de espera. |
+| Ninguna condición cumplida | Cuando ninguna condición personalizada se cumple, incluso si se alcanza el límite de respuestas del bot sin coincidencia. |
+
+Las ramas **Tiempo agotado** y **Ninguna condición cumplida** vienen incluidas siempre y no se pueden eliminar. Añade tus propias ramas para los resultados que quieras reconocer, por ejemplo "Interesado", "Pide precio" o "No interesado".
+
+## Probar y publicar
+
+<Steps>
+  <Step title="Guarda los cambios">
+    Guarda la acción y el resto del flujo.
+  </Step>
+  <Step title="Prueba con un contacto de prueba">
+    Usa **Probar flujo** y envía al menos una respuesta que deba coincidir con cada rama importante.
+  </Step>
+  <Step title="Prueba las ramas de respaldo">
+    Cuando sea posible, comprueba también **Tiempo agotado** y **Ninguna condición cumplida**.
+  </Step>
+  <Step title="Verifica canal e instrucciones">
+    Confirma que los mensajes de la IA salen por el canal correcto y siguen tus instrucciones.
+  </Step>
+  <Step title="Publica">
+    Cambia el flujo a **Publicado** cuando esté listo para contactos reales.
+  </Step>
+</Steps>
+
+<Warning>
+  Si reutilizas un mismo contacto de prueba, puede conservar actividad de pruebas anteriores. En automatizaciones importantes, valida el comportamiento final con cuidado antes de confiar en el flujo.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La acción solo envía un mensaje de IA?">
+    No. La pregunta inicia la conversación y la IA puede seguir respondiendo según la configuración. El límite de respuestas del bot marca cuántos mensajes puede enviar antes de ir a Ninguna condición cumplida si ninguna rama coincide.
+  </Accordion>
+  <Accordion title="¿Tengo que usar el disparador Cliente respondió?">
+    No. Es solo un ejemplo. Usa el disparador que corresponda al evento con el que quieres iniciar la automatización.
+  </Accordion>
+  <Accordion title="¿Qué pasa si el contacto no responde?">
+    Si no responde dentro del tiempo de espera, el flujo sigue por la rama **Tiempo agotado**.
+  </Accordion>
+  <Accordion title="¿Qué pasa si ninguna condición coincide?">
+    El flujo sigue por **Ninguna condición cumplida**, también cuando se alcanza el límite de respuestas del bot sin coincidencia.
+  </Accordion>
+  <Accordion title="¿Puedo eliminar Tiempo agotado o Ninguna condición cumplida?">
+    No. Son ramas integradas de la acción y no se pueden quitar.
+  </Accordion>
+  <Accordion title="¿Qué hace Omitir si ya se respondió?">
+    Permite que el flujo salte la acción cuando la pregunta ya se respondió manualmente, para no enviar mensajes redundantes.
+  </Accordion>
+  <Accordion title="¿Qué información usa la IA para responder?">
+    La personalidad, las instrucciones adicionales, la pregunta, el entrenamiento del bot y el historial de la conversación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones tras reservar una cita con IA conversacional" icon="calendar-check" href="/automatizaciones/acciones-tras-reservar-cita-con-ia-conversacional">
+    Pausa el bot o inicia flujos cuando se reserva una cita.
+  </Card>
+  <Card title="Registros del agente de IA conversacional" icon="list" href="/ia/registros-del-agente-ia-conversacional">
+    Revisa cómo respondió tu bot en cada conversación.
+  </Card>
+</CardGroup>

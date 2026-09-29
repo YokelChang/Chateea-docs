@@ -1,0 +1,110 @@
+---
+title: "Acción Código personalizado en flujos"
+description: "Ejecuta tu propio JavaScript dentro de un flujo para transformar datos, hacer cálculos o llamar APIs, o genera el código con IA."
+icon: "code"
+---
+
+La acción **Código personalizado** te permite escribir tu propia lógica en JavaScript dentro de un flujo de trabajo. Úsala cuando las acciones prediseñadas no alcanzan: transformar datos, hacer cálculos, conectar con un servicio externo por HTTP o tomar decisiones con reglas propias. Si no programas, la opción **Crear con IA** escribe el código a partir de una descripción.
+
+<Note>
+Es una acción premium: cada ejecución se descuenta de la **billetera** de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Configurar la acción
+
+<Steps>
+  <Step title="Agrega la acción">
+    En el flujo, haz clic en **+** y busca **Código personalizado**.
+  </Step>
+  <Step title="Lenguaje">
+    El código se escribe en JavaScript, que viene seleccionado por defecto.
+  </Step>
+  <Step title="Define las propiedades de entrada">
+    Si necesitas datos de pasos anteriores (el disparador u otras acciones), agrégalos como propiedades. Escribe un nombre en **Clave** y asígnale un valor con el selector de valores personalizados. Usa **Agregar propiedad** para añadir más.
+  </Step>
+  <Step title="Escribe el código">
+    El editor trae un ejemplo de referencia. El resultado debe devolverse desde el propio código y tiene que ser un objeto de JavaScript o una lista (array) de objetos.
+  </Step>
+  <Step title="Prueba el código">
+    Haz clic en **Probar tu código**. Es obligatorio: si no lo pruebas, los pasos siguientes no podrán usar su resultado.
+  </Step>
+</Steps>
+
+### Usar las propiedades en el código
+
+Las propiedades se guardan en un objeto llamado `inputData`. Si creaste una propiedad con la clave `nombre`, puedes leerla así:
+
+```javascript
+const nombre = inputData.nombre;
+// o también
+const mismoNombre = inputData['nombre'];
+
+return { saludo: `Hola, ${nombre}` };
+```
+
+## Herramientas del editor
+
+| Herramienta | Para qué sirve |
+| --- | --- |
+| **Consola** | Registra todo lo que imprimas con `console.log`, para depurar y vigilar tu código. |
+| **Solicitud HTTP** | Inserta al final del editor una plantilla de petición externa con el método que elijas: GET, POST, PUT, PATCH, DELETE, HEAD u OPTIONS. |
+| **Formatear código** | Ordena sangrías, espacios y saltos de línea para que el código sea más legible. |
+| **Respuesta directa** | Puedes devolver la respuesta directamente desde el código, lo que simplifica el manejo de operaciones asíncronas. |
+
+## Probar el código
+
+1. Haz clic en **Probar tu código**. Se abre una ventana de prueba.
+2. Si agregaste propiedades, escribe valores de ejemplo en la pestaña **Configuración de prueba**. Si no, puedes ejecutar la prueba directamente.
+3. Ejecuta la prueba. Si no hay errores verás **Prueba exitosa**; si algo falla verás **Prueba fallida** y tendrás que revisar el código.
+
+Después de ejecutar el flujo, puedes revisar los valores de entrada que recibió la acción en los registros de ejecución: abre la ejecución y haz clic en **Más detalles**.
+
+## Crear código con IA
+
+Si no quieres escribir el código desde cero, la IA lo hace por ti a partir de una descripción en lenguaje natural. También detecta e incorpora las propiedades de entrada que necesita.
+
+<Steps>
+  <Step title="Abre el asistente">
+    En la acción **Código personalizado**, haz clic en **Crear con IA**.
+  </Step>
+  <Step title="Describe lo que necesitas">
+    Sé lo más específico posible. Por ejemplo: "Tengo una API que devuelve la fecha en formato MM-DD-AAAA. Conviértela a AAAA-MM-DD".
+  </Step>
+  <Step title="Genera y ajusta">
+    Haz clic en **Generar**. Si quieres cambios, descríbelos en el cuadro de texto y haz clic en **Regenerar**.
+  </Step>
+  <Step title="Usa el código">
+    Revisa el resultado y haz clic en **Usar código** para insertarlo en la acción. Luego pruébalo como cualquier otro código.
+  </Step>
+</Steps>
+
+### Ideas de uso
+
+- **Formatear datos:** teléfonos o fechas con el formato que prefieras.
+- **Integrar una API:** llamar a un servicio externo por HTTP.
+- **Cálculos:** intereses, porcentajes de descuento u otras fórmulas.
+- **Manipular texto:** extraer un correo o un código de un texto.
+- **Lógica condicional:** reglas propias, como repartir contactos según varios criterios.
+
+## Tenlo en cuenta
+
+- Durante la prueba solo se envía la información del contacto. Los valores personalizados y otras propiedades no llegan en la prueba; usa valores de ejemplo en **Configuración de prueba**.
+- Probar el código es obligatorio. Sin prueba, el resultado no estará disponible en las acciones siguientes.
+- Asigna nombres de clave claros a tus propiedades y accede a ellas con `inputData.clave` o `inputData['clave']`.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones premium" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las acciones premium.
+  </Card>
+  <Card title="Registros de ejecución" icon="clock-rotate-left" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Revisa qué hizo cada acción con cada contacto.
+  </Card>
+  <Card title="Funciones de lista" icon="table-list" href="/flujo-de-trabajo/accion-premium-funciones-de-matriz">
+    Trabaja con listas de datos sin escribir código.
+  </Card>
+  <Card title="Lista de acciones" icon="list" href="/automatizaciones/lista-de-acciones">
+    Todas las acciones disponibles en los flujos.
+  </Card>
+</CardGroup>

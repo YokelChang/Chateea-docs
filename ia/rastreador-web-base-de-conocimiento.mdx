@@ -1,0 +1,99 @@
+---
+title: "Rastreador web de la base de conocimiento"
+description: "Agrega el contenido de tu sitio web a la base de conocimiento, incluidas secciones interactivas y ocultas."
+icon: "spider"
+---
+
+El **rastreador web** (Web Crawler) lee las páginas de tu sitio y agrega su contenido a la base de conocimiento para que tus agentes de IA respondan con información real de tu negocio. Funciona igual de bien con páginas estáticas que con sitios interactivos: abre acordeones, recorre pestañas y carga el contenido que aparece al desplazarse, así tu IA aprende mucho más de lo que se ve a simple vista.
+
+## Beneficios
+
+- **Captura más contenido:** extrae mucho más texto de sitios modernos (React, Vue, Angular, WordPress y otros).
+- **Lee contenido oculto:** acordeones, pestañas, ventanas emergentes, carga diferida y desplazamiento infinito.
+- **Rápido:** usa varias estrategias de detección en paralelo, incluso en sitios grandes.
+- **Seguro:** nunca envía formularios, cambia filtros ni agrega productos al carrito.
+- **Extrae datos estructurados:** horarios, datos de contacto, precios y servicios.
+
+## Cómo descubre las páginas
+
+- **Mapas del sitio anidados:** recorre sitemaps dentro de otros sitemaps.
+- **Sitemaps comprimidos:** admite archivos `.xml.gz` y `.gzip`.
+- **Control de límites:** se mantiene dentro del alcance que definiste, sin desviarse a otras partes del sitio.
+- **Varias fuentes de enlaces:** HTML, JavaScript y enlaces que aparecen al expandir secciones.
+- **Sin duplicados:** elimina enlaces repetidos y conserva el texto descriptivo.
+
+<Note>
+Solo se rastrea contenido público. Las páginas que requieren iniciar sesión no se pueden leer.
+</Note>
+
+## Tipos de rastreo
+
+| Opción | Qué rastrea | Ejemplo |
+| --- | --- | --- |
+| **URL exacta** | Solo esa página. | `https://www.tunegocio.com/precios` |
+| **Todas las URL de la ruta** | Todas las páginas que empiezan con esa ruta. | `https://www.tunegocio.com/servicios` incluye `/servicios/limpieza` y `/servicios/mantenimiento`. |
+| **Todas las URL del dominio** | Todas las páginas del dominio. | Cualquier página de `www.tunegocio.com`. |
+
+## Cómo agregar tu sitio web
+
+<Steps>
+<Step title="Abre la base de conocimiento">
+Ve a **IA → Base de conocimiento**. Crea una base nueva o edita una existente.
+</Step>
+<Step title="Agrega la fuente">
+Haz clic en **+ Agregar fuente** y elige **Rastreador web**.
+</Step>
+<Step title="Elige el tipo de rastreo">
+Selecciona **URL exacta**, **Todas las URL de la ruta** o **Todas las URL del dominio**. El tipo define cuántas páginas se rastrearán.
+</Step>
+<Step title="Ingresa la URL">
+Escribe la dirección y haz clic en **Extraer datos**.
+</Step>
+<Step title="Elige las páginas">
+Cuando termine el rastreo, haz clic en **Ver todas las páginas**. Selecciona todas o marca solo las que quieres incluir.
+</Step>
+<Step title="Entrena">
+Haz clic en **Entrenar**. El contenido quedará disponible para los agentes conectados a esa base de conocimiento.
+</Step>
+</Steps>
+
+<Tip>
+Incluye solo las páginas útiles para responder a clientes (servicios, precios, preguntas frecuentes, políticas, contacto) y deja fuera las que no aportan, como avisos legales extensos o entradas de blog antiguas. Menos ruido significa respuestas más precisas.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Tengo que configurar algo para que encuentre las secciones importantes?">
+No. Detecta automáticamente secciones como encabezados principales, testimonios, descripciones de productos, equipo, tablas de precios y datos de contacto.
+</Accordion>
+<Accordion title="¿Puede leer contenido interactivo u oculto?">
+Sí. Expande acordeones, recorre pestañas y muestra secciones de carga diferida.
+</Accordion>
+<Accordion title="¿Puede enviar formularios o tocar botones de compra?">
+No. El motor de interacción ignora formularios y acciones como pagar o agregar al carrito.
+</Accordion>
+<Accordion title="¿Qué pasa con las páginas protegidas con contraseña?">
+No se rastrean. Solo se lee contenido público.
+</Accordion>
+<Accordion title="¿Cómo mantengo el contenido actualizado?">
+Activa la actualización automática de enlaces para que las páginas se vuelvan a rastrear cada día, semana o mes.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Actualización automática de enlaces" icon="rotate" href="/ia/actualizacion-automatica-enlaces-base-conocimiento">
+Mantén al día el contenido rastreado de tu web.
+</Card>
+<Card title="Introducción a la base de conocimiento" icon="book-open" href="/ia/introduccion-base-de-conocimiento">
+Qué es y qué fuentes admite.
+</Card>
+<Card title="Entrena la base de conocimiento con tu web" icon="globe" href="/primeros-pasos/entrena-la-base-de-conocimiento-con-tu-web">
+Guía rápida para empezar.
+</Card>
+<Card title="Tablas en la base de conocimiento" icon="table" href="/ia/tablas-base-de-conocimiento">
+Sube datos estructurados en CSV.
+</Card>
+</CardGroup>

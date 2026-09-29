@@ -1,0 +1,109 @@
+---
+title: "Enviar WhatsApp desde llamadas de IA de voz"
+description: "Configura tu agente de voz para enviar plantillas de WhatsApp aprobadas durante la llamada, sin interrumpir la conversación."
+icon: "whatsapp"
+---
+
+Tu agente de IA de voz puede enviar una **plantilla de WhatsApp aprobada** a la persona con la que está hablando, en plena llamada. Es la forma más cómoda de entregar un enlace de reserva, datos de pago o la dirección de tu negocio justo cuando lo piden, sin que tengan que anotar nada.
+
+## Cómo funciona
+
+La acción **Enviar mensaje de WhatsApp** usa tus números de WhatsApp Business conectados y solo envía plantillas aprobadas por WhatsApp. Cuando se cumple la condición que definiste (por ejemplo, "cuando la persona pida el enlace para reservar"), el agente dice una frase breve como "Te lo envío ahora mismo" y manda la plantilla al número de WhatsApp del contacto de la llamada.
+
+El envío es **asíncrono**: ocurre en segundo plano y la conversación sigue sin pausas.
+
+## Beneficios
+
+- **Información al instante:** enlaces de reserva, de pago o datos de contacto en el momento justo.
+- **Llamada sin interrupciones:** el mensaje sale mientras el agente sigue hablando.
+- **Destinatario automático:** se envía al WhatsApp del contacto de la llamada, sin escribir números.
+- **Cumplimiento con WhatsApp:** solo se usan plantillas aprobadas.
+- **Control del momento:** tú decides en qué situación de la conversación se envía.
+
+## Requisitos
+
+- WhatsApp configurado en tu cuenta, con al menos un número conectado en **Configuración → WhatsApp**.
+- Al menos una plantilla de WhatsApp **aprobada** que cumpla las políticas de Meta.
+- La acción **Enviar mensaje de WhatsApp** disponible en tu agente. Si no la ves, escribe a soporte de Chateea en **help@chateea.com**.
+
+## Cómo configurar la acción
+
+<Steps>
+<Step title="Abre el agente">
+Ve a **IA → IA de voz**, abre el agente y entra a la sección **Acciones**. Haz clic en **+ Nueva acción**.
+</Step>
+<Step title="Elige la acción">
+Selecciona **Enviar mensaje de WhatsApp** (Send WhatsApp message).
+</Step>
+<Step title="Ponle nombre">
+En **Nombre de la acción**, escribe un nombre descriptivo, por ejemplo `enviar_enlace_reserva`.
+</Step>
+<Step title="Define cuándo enviarlo">
+En **¿Cuándo debe enviarse el WhatsApp?**, describe la condición. Ejemplos: "Cuando la persona quiera recibir la cotización por WhatsApp" o "Cuando pida el enlace para reservar".
+</Step>
+<Step title="Define qué dirá el agente">
+En **Qué decir antes de enviar el mensaje**, escribe la frase que dirá el agente, por ejemplo "Te lo envío a tu WhatsApp ahora mismo".
+</Step>
+<Step title="Elige el número de envío">
+En **Desde**, selecciona el número de WhatsApp Business conectado desde el que saldrá el mensaje.
+</Step>
+<Step title="Elige la plantilla">
+En **Plantilla**, elige una plantilla aprobada. La lista muestra el nombre, la categoría, el idioma y cuántas variables tiene.
+</Step>
+<Step title="Completa las variables">
+Si la plantilla tiene variables en el cuerpo, llénalas con texto. A la derecha verás una vista previa del mensaje final.
+</Step>
+<Step title="Guarda">
+Haz clic en **Actualizar**. La acción aparecerá en la sección **Durante la llamada** del panel de acciones del agente.
+</Step>
+</Steps>
+
+<Tip>
+Puedes crear varias acciones de WhatsApp en el mismo agente, cada una con su condición y su plantilla (por ejemplo, una para el enlace de reserva y otra para los datos de pago). Cada una se ejecuta por separado cuando se cumple su condición.
+</Tip>
+
+## Reglas importantes
+
+- **Solo plantillas:** el agente no puede redactar mensajes libres, modificar el contenido ni cambiar la estructura de la plantilla.
+- **Destinatario fijo:** el mensaje siempre va al contacto de la llamada. El agente no puede cambiar el número de destino.
+- **Envío en segundo plano:** la llamada no se interrumpe.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿El agente puede enviar mensajes personalizados por WhatsApp?">
+No. Solo puede enviar plantillas aprobadas por WhatsApp, sin modificarlas.
+</Accordion>
+<Accordion title="¿El mensaje interrumpe la llamada?">
+No. Se envía en segundo plano mientras el agente sigue hablando.
+</Accordion>
+<Accordion title="¿Cómo sabe el agente a qué número enviar?">
+Usa el número de WhatsApp del contacto vinculado a la llamada en curso.
+</Accordion>
+<Accordion title="¿Qué pasa si la plantilla no está aprobada?">
+No aparecerá en la lista. Solo puedes elegir plantillas aprobadas.
+</Accordion>
+<Accordion title="¿Dónde administro mis plantillas?">
+En **Configuración → WhatsApp**. Crea la plantilla y espera la aprobación de WhatsApp antes de usarla.
+</Accordion>
+<Accordion title="¿Puedo ver el mensaje antes de guardar?">
+Sí. Al completar las variables verás una vista previa del mensaje final.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Acciones durante y después de la llamada" icon="bolt" href="/ia/acciones-durante-y-despues-de-la-llamada">
+Todas las acciones que puede ejecutar tu agente.
+</Card>
+<Card title="Estados de plantillas de WhatsApp" icon="whatsapp" href="/whatsapp/estados-de-plantillas">
+Qué significa cada estado de aprobación.
+</Card>
+<Card title="Categorías de plantillas" icon="tags" href="/whatsapp/categorias-de-plantillas">
+Elige la categoría correcta para tu plantilla.
+</Card>
+<Card title="Conectar WhatsApp" icon="plug" href="/whatsapp/conectar-whatsapp">
+Conecta tu número de WhatsApp a Chateea.
+</Card>
+</CardGroup>

@@ -1,0 +1,189 @@
+---
+title: "Configura pipelines y oportunidades"
+description: "Crea tu primer pipeline de ventas y llénalo con oportunidades a mano, por importación o de forma automática."
+icon: "filter-circle-dollar"
+---
+
+Los pipelines y las oportunidades te permiten ver tu proceso de ventas completo de un vistazo: cuántos negocios tienes en juego, en qué etapa está cada uno y cuánto dinero representan. En esta guía entiendes cómo se relacionan las piezas, creas tu primer pipeline y aprendes a llenarlo a mano, con una importación o de forma automática.
+
+## Conceptos clave
+
+| Término | Qué representa |
+| --- | --- |
+| **Pipeline** | Tu proceso de ventas completo, de principio a fin. |
+| **Etapa** | Un paso dentro de ese proceso, por ejemplo Lead nuevo, Llamada agendada o Cerrado. |
+| **Oportunidad** | Un negocio potencial concreto que avanza por las etapas. |
+| **Contacto** | La persona asociada a esa oportunidad. |
+
+### Cómo encajan
+
+```text
+Contacto → Oportunidad → Pipeline → Etapa
+```
+
+Por ejemplo, tu contacto Ana Gómez puede tener una oportunidad en tu **Pipeline de ventas**, ubicada ahora en la etapa **Llamada agendada**.
+
+<Note>
+  Tus etapas deben reflejar los pasos reales de tu proceso de ventas. Los ejemplos de esta guía son solo sugerencias.
+</Note>
+
+## Antes de empezar
+
+Piensa en estas preguntas:
+
+- ¿Qué proceso de ventas quieres seguir?
+- ¿Por qué etapas pasa normalmente un lead hasta convertirse en cliente?
+- ¿Vas a agregar oportunidades a mano, importarlas o crearlas automáticamente?
+- ¿Qué personas de tu equipo van a gestionar las oportunidades?
+
+### Elige cómo agregar oportunidades
+
+| Método | Ideal para |
+| --- | --- |
+| **Creación manual** | Agregar oportunidades una por una a medida que surgen. |
+| **Importación CSV** | Migrar desde otra herramienta o cargar muchas a la vez. |
+| **Automatización** | Crear o mover oportunidades solas cuando ocurre algo (un formulario, una cita, un pago). |
+
+Puedes combinar los tres métodos.
+
+## Crea tu pipeline de ventas
+
+<Steps>
+  <Step title="Abre los pipelines">
+    Ve a **Oportunidades** y entra en **Pipelines**.
+  </Step>
+  <Step title="Crea uno nuevo">
+    Pulsa **Crear nuevo pipeline**.
+  </Step>
+  <Step title="Define nombre y etapas">
+    Escribe el nombre del pipeline y agrega sus etapas. Pulsa **Guardar**.
+  </Step>
+</Steps>
+
+Un ejemplo de etapas para empezar:
+
+1. Lead nuevo
+2. Lead caliente
+3. Llamada agendada
+4. No asistió
+5. En pausa
+6. Cerrado
+7. Sin respuesta
+
+## Importa oportunidades desde un archivo
+
+Si tienes una lista de un evento o de otra plataforma, puedes convertirla en oportunidades de una sola vez.
+
+<Steps>
+  <Step title="Abre el importador">
+    Ve a **Oportunidades** y pulsa **Importar**.
+  </Step>
+  <Step title="Elige Oportunidades">
+    Selecciona **Oportunidades** y pulsa **Siguiente**.
+  </Step>
+  <Step title="Sube el archivo">
+    Carga tu archivo CSV y pulsa **Siguiente**.
+  </Step>
+  <Step title="Empareja las columnas">
+    Relaciona cada columna del archivo con el campo de oportunidad que corresponde (pipeline, etapa, valor, contacto, etc.). Pulsa **Siguiente**.
+  </Step>
+  <Step title="Revisa e importa">
+    Verifica que todo esté correcto y pulsa **Iniciar importación masiva**.
+  </Step>
+</Steps>
+
+## Crea una oportunidad a mano
+
+<Steps>
+  <Step title="Agrega la oportunidad">
+    Ve a **Oportunidades** y pulsa **Agregar oportunidad**.
+  </Step>
+  <Step title="Elige el contacto">
+    Selecciona un contacto existente o escribe los datos de uno nuevo.
+  </Step>
+  <Step title="Completa los detalles">
+    Elige el pipeline y la etapa, indica el valor del negocio y los demás datos que uses. Pulsa **Crear**.
+  </Step>
+</Steps>
+
+## Crea oportunidades automáticamente
+
+Automatizar la creación de oportunidades mantiene tu pipeline al día sin clics extra. Este ejemplo crea una oportunidad cada vez que alguien envía un formulario:
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo** y pulsa **Crear flujo → Empezar desde cero** (o usa una plantilla).
+  </Step>
+  <Step title="Agrega el disparador">
+    Pulsa **Agregar disparador**, elige **Formulario enviado**, selecciona el formulario que capta tus leads y pulsa **Guardar disparador**.
+  </Step>
+  <Step title="Agrega la acción de oportunidad">
+    Pulsa el botón **+** debajo del disparador y elige **Oportunidad → Crear/actualizar oportunidad**.
+
+    - Elige el **pipeline** y la **etapa** donde deben aparecer los leads nuevos.
+    - Define el **estado** (por ejemplo, Abierta) y un **valor** si lo conoces.
+    - Activa **Permitir que la oportunidad se mueva** si quieres que se actualice cuando el contacto vuelva a entrar al flujo.
+
+    Pulsa **Guardar acción**.
+  </Step>
+  <Step title="Publica">
+    Cambia el flujo de **Borrador** a **Publicado**. Desde ese momento, cada envío del formulario cae directo en la etapa elegida.
+  </Step>
+</Steps>
+
+### Otros disparadores útiles
+
+La acción **Crear/actualizar oportunidad** es siempre la misma. Lo que cambia es el disparador, según cuándo quieres que el lead aparezca en el pipeline:
+
+| Disparador | Uso típico |
+| --- | --- |
+| **Cita reservada por el cliente** | Pasar al prospecto a "Consulta agendada" cuando reserva una llamada. |
+| **Etiqueta del contacto** | Mover a la etapa de cierre a quien recibe la etiqueta "lead caliente". |
+| **Formulario de anuncio de Facebook enviado** | Llevar los leads de tus anuncios a una etapa "Leads de Facebook". |
+| **Pago recibido** | Crear la oportunidad en "Ganado, pendiente de inicio" tras una compra. |
+| **Contacto creado** | Empezar a todo contacto nuevo en "Lead nuevo" para que nadie se pierda. |
+| **Estado de la llamada** | Pasar las llamadas entrantes atendidas a una etapa de seguimiento. |
+| **Encuesta enviada** | Enviar las encuestas completadas a una etapa de calificación. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuál es la diferencia entre un pipeline y una oportunidad?">
+    El pipeline es tu proceso de ventas completo. La oportunidad es un negocio concreto que avanza por ese proceso.
+  </Accordion>
+  <Accordion title="¿Qué es una etapa?">
+    Un paso específico dentro del proceso de ventas. Las oportunidades se mueven de una etapa a otra a medida que avanzan.
+  </Accordion>
+  <Accordion title="¿Necesito flujos de trabajo para crear oportunidades?">
+    No. Puedes crearlas a mano, importarlas o automatizarlas. Usa lo que mejor se adapte a tu negocio.
+  </Accordion>
+  <Accordion title="Mi oportunidad no aparece en el pipeline que esperaba">
+    Confirma qué pipeline y etapa se eligieron al crearla. Si la creó un flujo de trabajo, revisa la configuración de la acción **Crear/actualizar oportunidad**.
+  </Accordion>
+  <Accordion title="Mi flujo de trabajo no creó la oportunidad">
+    Verifica que el flujo esté publicado, que el contacto haya cumplido las condiciones del disparador, que la acción **Crear/actualizar oportunidad** esté configurada y que el pipeline y la etapa sean los correctos.
+  </Accordion>
+  <Accordion title="Mi oportunidad no cambió de etapa">
+    Si usas un flujo para actualizar oportunidades existentes, revisa que **Permitir que la oportunidad se mueva** esté activado en la acción.
+  </Accordion>
+  <Accordion title="¿Puedo crear una oportunidad para un contacto que ya existe?">
+    Sí. Al crearla a mano, selecciona el contacto existente y asígnale el pipeline y la etapa.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Pipelines y oportunidades" icon="diagram-project" href="/contactos/pipelines">
+    Gestión avanzada de tu pipeline.
+  </Card>
+  <Card title="Velocidad de ventas" icon="chart-line" href="/ventas-conversaciones/velocidad-de-ventas">
+    Mide el rendimiento de tus ingresos.
+  </Card>
+  <Card title="Tu primera automatización" icon="wand-magic-sparkles" href="/primeros-pasos/tu-primera-automatizacion">
+    Responde y da seguimiento a cada lead.
+  </Card>
+  <Card title="Importa tus contactos" icon="file-import" href="/primeros-pasos/importa-tus-contactos">
+    Trae tu base actual a Chateea.
+  </Card>
+</CardGroup>

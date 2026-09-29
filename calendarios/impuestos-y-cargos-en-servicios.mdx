@@ -1,0 +1,93 @@
+---
+title: "Impuestos y cargos por procesamiento en servicios"
+description: "Añade impuestos y un cargo porcentual a tus servicios para mostrar un total desglosado al reservar y en los recibos."
+icon: "file-invoice"
+---
+
+Puedes cobrar impuestos y un cargo por procesamiento en tus servicios para que el cliente vea un desglose claro antes de pagar y tus cuentas cuadren sin ajustes manuales. Cada servicio crea automáticamente un **producto vinculado**: los impuestos se asignan a ese producto y el cargo por procesamiento se configura en el propio servicio. Después, ambos aparecen solos en cada reserva.
+
+## Para qué te sirve
+
+- **Recuperar costos**: traslada al cliente comisiones de tarjeta o de gestión con un cargo bien identificado.
+- **Cumplir la normativa**: aplica la tasa de impuesto que corresponda en tu país (IVA, impuesto sobre ventas, etc.).
+- **Totales coherentes**: el mismo importe aparece en la página de reservas, en la cita, en el recibo y en las exportaciones.
+- **Confianza**: el cliente ve cada concepto por separado antes de pagar, lo que reduce dudas y contracargos.
+
+## Cargo por procesamiento
+
+El cargo por procesamiento (o cargo adicional) es un porcentaje extra que añades a un servicio para cubrir costos de cobro o de gestión.
+
+- Es un **porcentaje**, por ejemplo 5 %.
+- Tiene una **etiqueta personalizada**, por ejemplo "Cargo por servicio".
+- Aparece como una línea aparte en la página de reservas y en los recibos.
+- También se ve en el registro de la cita, junto al subtotal, los impuestos y el total.
+- Se configura **por servicio**, así que cada uno puede tener su propio porcentaje y etiqueta.
+
+## Impuestos
+
+Los impuestos no se asignan directamente al servicio, sino a su **producto vinculado**, que se crea de forma automática con cada servicio.
+
+- Puedes asignar una o varias tasas de impuesto al producto.
+- Las tasas se gestionan en **Pagos → Configuración → Impuestos**.
+- Cada vez que se reserva el servicio, esas tasas se aplican automáticamente.
+
+## Dónde se ven los impuestos y cargos
+
+- En la **página de reservas pública**, desglosados justo encima del total.
+- En el **panel de la cita**, con el detalle del pago, para tu equipo.
+- En los **recibos de venta** que recibe el cliente por correo, si tienes los recibos activados.
+
+## Cómo configurarlos
+
+<Steps>
+  <Step title="Abre el servicio">
+    Entra en **Calendarios → Configuración de calendarios → Servicios** y abre el servicio que quieres editar.
+  </Step>
+  <Step title="Configura los impuestos">
+    En la sección **Pagos**, haz clic en **Configurar impuestos para este servicio**. Se abre la ventana del producto vinculado.
+  </Step>
+  <Step title="Asigna una tasa">
+    Elige una tasa existente o haz clic en **Agregar tasa de impuesto** para crear una nueva, y guarda.
+  </Step>
+  <Step title="Añade el cargo por procesamiento (opcional)">
+    En el servicio, escribe el porcentaje del cargo y la etiqueta que verá el cliente.
+  </Step>
+  <Step title="Guarda el servicio">
+    A partir de ese momento, las nuevas reservas mostrarán el cargo y el impuesto por separado en la página de reservas, en la cita y en el recibo.
+  </Step>
+</Steps>
+
+<Tip>
+  Haz una reserva de prueba con los pagos en modo de prueba para comprobar que el desglose y el total son correctos antes de abrir el servicio a tus clientes.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar un cargo distinto en cada servicio?">
+    Sí. El cargo se configura en cada servicio, con su propio porcentaje y su propia etiqueta.
+  </Accordion>
+  <Accordion title="¿Los cambios afectan a reservas anteriores?">
+    No. Los cambios en impuestos o cargos solo se aplican a las reservas nuevas. Las reservas y recibos anteriores no cambian.
+  </Accordion>
+  <Accordion title="¿Dónde exporto un informe de impuestos y cargos cobrados?">
+    En **Pagos → Transacciones**, con la opción de exportar a CSV. Si usas pedidos, también puedes exportar el CSV de pedidos. Las exportaciones incluyen columnas con los importes y etiquetas de los cargos y con los impuestos.
+  </Accordion>
+  <Accordion title="¿Cómo afectan los descuentos y anticipos al total?">
+    Los descuentos reducen la base sobre la que se calcula el impuesto del producto vinculado, y también pueden reducir el cargo, porque es un porcentaje del precio. Con anticipos, el panel de la cita y los recibos muestran cuánto se cobró y cuánto queda pendiente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Configuración global de servicios" icon="gear" href="/calendarios/configuracion-global-de-servicios">
+    Formas de pago, moneda y cupones para tus servicios.
+  </Card>
+  <Card title="Cobrar anticipo en reservas" icon="credit-card" href="/calendarios/cobrar-anticipo-en-reservas">
+    Pide un pago parcial al reservar.
+  </Card>
+  <Card title="Disparador Reserva de servicio" icon="bolt" href="/calendarios/disparador-reserva-de-servicio">
+    Automatiza confirmaciones con el detalle de la reserva.
+  </Card>
+</CardGroup>

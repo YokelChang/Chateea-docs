@@ -1,0 +1,119 @@
+---
+title: "Disparador: Pedido enviado"
+description: "Inicia flujos con cada compra en formularios de pedido y upsells, con filtros y datos del pedido."
+icon: "cart-shopping"
+---
+
+El disparador **Pedido enviado** (Order Submitted) inicia un flujo de trabajo cada vez que un cliente compra a través de un formulario de pedido de uno o dos pasos, y también cuando compra una oferta adicional (upsell). Es ideal para enviar confirmaciones de compra con el detalle de los productos, ofrecer productos complementarios o dar acceso según lo que se compró.
+
+## Cuándo se activa
+
+El disparador se ejecuta en dos momentos:
+
+1. Cuando se envía un formulario de pedido de 1 o 2 pasos (compra del producto principal y, si la hay, de la oferta de último momento o *bump*).
+2. Cuando el cliente compra un upsell.
+
+En cada ocasión lleva la información de los productos comprados. Por ejemplo, si el cliente compra los productos A y B en el formulario y luego el producto C en un upsell, el flujo se activa **dos veces**: una por A y B, y otra por C.
+
+<Note>
+  Este disparador solo funciona con embudos de la versión más reciente del constructor. Si tu embudo es de una versión anterior, actualízalo desde la configuración del embudo.
+</Note>
+
+<Warning>
+  **Permite reentrar al flujo.** Si quieres que el flujo se active de nuevo para el mismo contacto cuando compra un upsell justo después del producto principal, activa **Permitir múltiples** (Allow Multiple) en la configuración del flujo.
+
+  **Cuidado con las esperas.** Si el flujo tiene un paso de espera y el contacto sigue dentro por la primera compra, la compra del upsell no podrá hacerlo entrar otra vez. Evita las esperas en este flujo, salvo que no vendas upsells ni bumps de ese producto.
+</Warning>
+
+## Diferencias con el disparador "Formulario de pedido enviado"
+
+| Aspecto | Pedido enviado | Formulario de pedido enviado |
+| --- | --- | --- |
+| Varios productos en la misma compra | Se activa **una sola vez** con todo el pedido | Se activa varias veces |
+| Filtrar por producto y precio del catálogo | Sí | No |
+| Valores personalizados del pedido (cliente, totales, cupón, pasarela) | Sí | No |
+| Condiciones Si/Entonces con datos del pedido | Sí | No |
+
+Los valores personalizados del pedido **solo aparecen** en el selector si **Pedido enviado** es uno de los disparadores del flujo.
+
+El disparador **Formulario de pedido enviado** sigue funcionando igual; no se ve afectado. Aun así, te recomendamos usar **Pedido enviado** para aprovechar los datos del pedido, del cupón y de cada producto.
+
+## Filtros del disparador
+
+| Filtro | Operadores | Opciones |
+| --- | --- | --- |
+| **Producto** | es, no es | Producto del catálogo |
+| **Precio** | es, no es | Nombre del precio |
+| **Origen del pedido** | es, no es | Formulario de pedido |
+| **Tipo de envío** | es, no es | Principal, Bump, Upsell |
+| **Embudo** | es, no es | Nombre del embudo |
+| **Página** | es, no es | Página dentro del embudo |
+| **Producto del embudo** | es, no es | Productos configurados en el embudo |
+
+### Cómo funciona el filtro "Tipo de envío"
+
+- **Principal:** se activa si en el formulario se compra cualquier producto principal.
+- **Bump:** se activa solo si se compra el producto bump del formulario. Si no se compra, no se activa.
+- **Upsell:** se activa solo con compras de upsell. No se activa con el envío del formulario de pedido (producto principal o bump).
+
+## Condiciones Si/Entonces disponibles
+
+| Condición | Operadores | Opciones |
+| --- | --- | --- |
+| **Origen del pedido** | es, no es | Formulario de pedido |
+| **Producto** | es, no es | Producto del catálogo |
+| **Pasarela de pago** | es, no es | Stripe, PayPal |
+| **Total del pedido** | Operadores numéricos | Un importe |
+| **Tipo de envío** | es, no es | Principal, Bump, Upsell |
+| **Embudo** | es, no es | Nombre del embudo |
+
+Con ellas puedes dirigir el flujo según el valor del carrito, los productos comprados o el embudo de origen.
+
+## Valores personalizados del pedido
+
+| Categoría | Valores |
+| --- | --- |
+| **Pedido** | Símbolo de moneda, código de moneda, total del carrito, total del pedido, código de cupón, descuento total, fecha de creación, hora de creación, ID del pedido, pasarela de pago |
+| **Pedido → Cliente** | ID, nombre, apellido, nombre completo, correo, teléfono, dirección completa, ciudad, estado, país, código postal |
+
+## Enviar una confirmación de pedido con los productos
+
+Puedes enviar un correo de confirmación que muestre automáticamente lo que compró el cliente:
+
+<Steps>
+  <Step title="Prepara la plantilla">
+    En el constructor de correos, crea una plantilla y agrega el elemento **Carrito de compras** (Shopping Cart). Este elemento muestra cada producto con su cantidad, imagen y precio.
+  </Step>
+  <Step title="Úsala en el flujo">
+    En tu flujo con el disparador **Pedido enviado**, agrega la acción **Enviar correo** y elige esa plantilla. Así los datos del pedido se rellenan correctamente.
+  </Step>
+</Steps>
+
+<Tip>
+  El carrito usa las imágenes que agregaste en **Pagos → Productos**. Si un producto no tiene imagen, se muestra una imagen genérica, así que te recomendamos cargar imágenes propias para cada producto.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el flujo no se activa con la compra del upsell?">
+    Revisa que **Permitir múltiples** esté activado en la configuración del flujo y que el contacto no siga retenido en un paso de espera por la compra anterior.
+  </Accordion>
+  <Accordion title="¿Por qué no veo los valores personalizados del pedido?">
+    Solo aparecen cuando **Pedido enviado** es uno de los disparadores del flujo.
+  </Accordion>
+  <Accordion title="¿Este disparador cambia mis flujos con Formulario de pedido enviado?">
+    No. Los flujos existentes siguen funcionando igual.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador: Pago recibido" icon="credit-card" href="/flujo-de-trabajo/disparador-de-flujo-de-trabajo-pago-recibido">
+    Automatiza acciones cuando recibes un pago.
+  </Card>
+  <Card title="Lanza tu primer embudo" icon="filter" href="/primeros-pasos/lanza-tu-primer-embudo">
+    Crea un embudo con formulario de pedido.
+  </Card>
+</CardGroup>

@@ -1,0 +1,109 @@
+---
+title: "Registros de agentes de IA de voz"
+description: "Revisa cada llamada de tu agente de voz paso a paso: transcripción, grabación, línea de tiempo, acciones, latencia y errores."
+icon: "list-check"
+---
+
+Los **registros de agentes** (Agent Logs) te muestran en detalle qué pasó en cada llamada o prueba de tu agente de IA de voz: la transcripción, la grabación, la línea de tiempo de ejecución, las acciones que se activaron, la latencia, los datos de entrada y salida y los errores. Son la herramienta principal para diagnosticar problemas y mejorar el comportamiento del agente.
+
+## Registros frente a métricas del panel
+
+- **Métricas del panel:** muestran tendencias generales (volumen de llamadas, sentimiento, acciones activadas, rendimiento).
+- **Registros de agentes:** te permiten investigar **una interacción concreta**, paso a paso.
+
+Si algo salió mal en una llamada específica, los registros te dicen exactamente dónde y por qué.
+
+## Qué puedes ver
+
+- **La conversación completa** entre el agente y la persona.
+- **La ejecución paso a paso** con marcas de tiempo precisas.
+- **Las transferencias:** cuándo y cómo se pasó la llamada.
+- **La latencia:** qué pasos fueron lentos.
+- **Los datos** de entrada y salida, en formato original o legible.
+- **Los fallos:** en qué punto exacto ocurrió un error.
+
+## Cuándo usarlos
+
+- Para revisar la llamada de un cliente concreto.
+- Para revisar una prueba hecha con llamada web o telefónica.
+- Para entender por qué el agente respondió de cierta manera.
+- Para comprobar si una herramienta, acción, transferencia o disparador se ejecutó bien.
+- Para investigar demoras o respuestas lentas.
+- Para control de calidad con transcripciones y grabaciones.
+- Para detectar problemas de indicación, flujo o configuración antes de salir en vivo.
+
+## Cómo usar los registros
+
+<Steps>
+<Step title="Abre los registros">
+Ve a **IA** y haz clic en **Registros de agentes** (Agent Logs) en el menú superior.
+</Step>
+<Step title="Revisa la tabla">
+La tabla muestra cada interacción con estas columnas: nombre del agente, nombre del contacto, producto de IA, canal, fecha y hora, y estado. Usa los filtros de la parte superior para acotar los resultados.
+</Step>
+<Step title="Encuentra la interacción">
+Recorre la lista y guíate por la fecha, la hora y el estado para ubicar la sesión que te interesa.
+</Step>
+<Step title="Abre el detalle">
+Haz clic en el **nombre del agente** o usa el menú de tres puntos y elige **Ver detalles**.
+</Step>
+<Step title="Analiza la conversación">
+Escucha la grabación (si está activada), lee los mensajes y revisa el contexto de la interacción.
+</Step>
+<Step title="Sigue la línea de tiempo">
+El panel de ejecución muestra los eventos en orden cronológico. Úsalo para identificar demoras, transferencias y fallos, y apóyate en las marcas de tiempo para ubicar el problema.
+</Step>
+<Step title="Inspecciona los datos">
+Alterna entre **Original** (Raw), con los datos técnicos tal como los procesó el sistema, y **Procesado** (Parsed), con un formato fácil de leer. Revisa qué se envió y qué se recibió en cada paso.
+</Step>
+<Step title="Revisa los detalles técnicos">
+Consulta el modelo usado, el tipo de ejecución, la latencia y los metadatos para auditar el rendimiento y depurar errores.
+</Step>
+</Steps>
+
+<Tip>
+Cuando una prueba no sale como esperabas, compara lo que el agente debía hacer con lo que muestra la línea de tiempo. Casi siempre el problema está en una instrucción ambigua de la indicación o en una acción mal configurada.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Las llamadas de prueba aparecen en los registros?">
+Sí, las pruebas por llamada web y telefónica aparecen cuando el tipo de interacción lo permite. Usa los filtros de tipo de llamada (de prueba o en vivo) para separarlas. Las pruebas no cuentan en las métricas del panel.
+</Accordion>
+<Accordion title="¿Por qué falta la grabación de una llamada?">
+Las grabaciones solo aparecen cuando la grabación está activada y disponible para ese tipo de interacción. Algunas configuraciones de teléfono o tipos de interacción no generan grabación.
+</Accordion>
+<Accordion title="¿Por qué la transcripción está incompleta?">
+Puede deberse a mala calidad de audio, a que la llamada terminó antes de tiempo o a una interrupción del procesamiento. Revisa la grabación y la línea de tiempo si están disponibles.
+</Accordion>
+<Accordion title="¿Puedo ver por qué falló una transferencia?">
+Sí. Busca en la línea de tiempo el evento de transferencia, los pasos fallidos o las condiciones que no se cumplieron. Luego confirma la configuración de la transferencia y las instrucciones de la indicación.
+</Accordion>
+<Accordion title="¿Qué diferencia hay entre datos originales y procesados?">
+Los originales muestran la información técnica tal cual. Los procesados la organizan en un formato más limpio y fácil de leer.
+</Accordion>
+<Accordion title="¿Puedo acceder a los registros por API?">
+Parte de los datos de registros y transcripciones de IA de voz está disponible a través de la API de Chateea. Para credenciales y detalles, escribe a soporte en **help@chateea.com**.
+</Accordion>
+<Accordion title="¿Por qué no veo los registros de agentes?">
+Es posible que tu usuario no tenga los permisos de IA de voz necesarios. Pide a un administrador de tu cuenta que los revise. Si el problema continúa, escribe a **help@chateea.com**.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+Conoce cómo funcionan los agentes de IA de voz.
+</Card>
+<Card title="Probar agentes de IA de voz desde el navegador" icon="headset" href="/ia/prueba-web-agentes-ia-de-voz">
+Haz llamadas de prueba sin número de teléfono.
+</Card>
+<Card title="Transferencia entre agentes de IA de voz" icon="shuffle" href="/ia/transferencia-entre-agentes-ia-de-voz">
+Pasa una llamada en curso a otro agente especializado.
+</Card>
+<Card title="Informes de rendimiento de IA de voz" icon="chart-line" href="/ia/informes-rendimiento-ia-de-voz">
+Recibe por correo un resumen periódico de cada agente.
+</Card>
+</CardGroup>

@@ -1,0 +1,83 @@
+---
+title: "Los datos de la cita no aparecen en tus mensajes"
+description: "Qué hacer si la hora de la cita u otros valores de cita salen vacíos en tus correos, SMS o recordatorios."
+icon: "circle-question"
+---
+
+Los valores personalizados de cita, como `{{appointment.start_time}}`, te permiten incluir la fecha, la hora, la ubicación o los enlaces de una cita en tus correos y SMS. Si en tus mensajes aparecen vacíos, si tus recordatorios no se envían a la hora correcta o si los enlaces para agregar la cita a Google Calendar o a iCal/Outlook no funcionan, la causa casi siempre es la misma: el mensaje no sabe de qué cita se trata.
+
+## Síntomas habituales
+
+- `{{appointment.start_time}}` u otros valores de cita salen en blanco en el correo o SMS.
+- El recordatorio de la cita no se envía según la hora de inicio de la cita.
+- Los enlaces **Agregar a Google Calendar** o **Agregar a iCal/Outlook** no funcionan en un correo de prueba.
+
+## Por qué ocurre
+
+Los valores de cita se rellenan con los datos de **una cita concreta**. Para eso, la automatización tiene que haberse iniciado por un evento de cita. Si el flujo empieza por otro motivo (por ejemplo, un cambio de etapa en el pipeline), Chateea no sabe qué cita usar y deja los valores vacíos.
+
+## Cómo solucionarlo
+
+### Usa un disparador de citas
+
+En el flujo de trabajo que envía la confirmación o los recordatorios, usa como disparador uno de estos:
+
+- **Estado de la cita** (Appointment Status): se activa cuando se crea una cita o cambia su estado.
+- **Cliente reservó una cita** (Customer Booked Appointment): se activa cuando el cliente reserva desde tu calendario.
+
+<Warning>
+  Evita disparadores como **Cambio de etapa del pipeline** para mensajes que usan datos de la cita. Aunque el contacto tenga una cita, el flujo no sabe a cuál referirse.
+</Warning>
+
+### Prueba con una cita real
+
+Un correo o SMS de prueba enviado desde el editor no está asociado a ninguna cita, así que los valores de cita salen vacíos y los enlaces para agregar al calendario no funcionan. Para probar de verdad:
+
+<Steps>
+  <Step title="Reserva una cita de prueba">
+    Abre el enlace de tu calendario y reserva una cita con un contacto de prueba (por ejemplo, tu propio correo y teléfono).
+  </Step>
+  <Step title="Deja que se active el flujo">
+    La reserva activa el disparador de citas y el flujo envía el mensaje con los datos reales.
+  </Step>
+  <Step title="Revisa el mensaje recibido">
+    Comprueba que la fecha, la hora, la ubicación y los enlaces aparecen correctamente.
+  </Step>
+</Steps>
+
+## Reprogramar citas sin romper los recordatorios
+
+- **Si reprogramas tú:** cambia la hora de la cita desde el calendario o desde la pestaña de citas en la ficha del contacto, en lugar de crear una cita nueva. Si tus recordatorios salen de un flujo con el disparador **Estado de la cita**, el contacto vuelve a entrar con la nueva hora y los recordatorios se calculan de nuevo.
+- **Si quieres que el cliente reprograme:** incluye en tus recordatorios el enlace de reprogramación que encontrarás entre los valores personalizados de cita. El cliente elige un nuevo horario y los datos de la cita se actualizan solos.
+
+<Tip>
+  Usa el selector de valores personalizados del editor de mensajes para insertar los valores de cita. Así evitas errores de escritura en nombres como `{{appointment.start_time}}` o `{{appointment.location}}`.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué el valor sale vacío si el contacto sí tiene una cita?">
+    Porque el valor depende del evento que inició el flujo, no de las citas que tenga el contacto. Si el flujo no empezó con un disparador de citas, no hay cita asociada.
+  </Accordion>
+  <Accordion title="¿Puedo probar los valores de cita con el botón de envío de prueba?">
+    No. El envío de prueba no tiene una cita asociada. Reserva una cita real de prueba para verificar los valores y los enlaces.
+  </Accordion>
+  <Accordion title="Si agrego un contacto manualmente a un flujo de recordatorios, ¿funciona?">
+    Solo si el flujo puede saber qué cita usar. Lo más fiable es que el contacto entre al flujo mediante el disparador de citas, al crear o reservar la cita.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Recordatorios y ausencias" icon="bell" href="/calendarios/recordatorios">
+    Configura recordatorios automáticos para tus citas.
+  </Card>
+  <Card title="Valores personalizados en calendarios" icon="code" href="/calendarios/valores-personalizados-en-calendarios">
+    Inserta datos de tu negocio en los calendarios.
+  </Card>
+  <Card title="Política de cancelación y reprogramación" icon="calendar-xmark" href="/calendarios/politica-de-cancelacion-y-reprogramacion">
+    Define cuándo pueden cancelar o reprogramar tus clientes.
+  </Card>
+</CardGroup>

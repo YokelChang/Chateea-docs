@@ -1,0 +1,170 @@
+---
+title: "Plantillas de correo y notificaciones de documentos"
+description: "Personaliza los correos y avisos que reciben tus clientes y tu equipo cuando envías, ves o firmas un documento."
+icon: "envelope-open-text"
+---
+
+Cada vez que envías un documento, tu cliente recibe correos: cuando le llega, cuando lo firma y cuando está por vencer. Y tu equipo recibe avisos cuando alguien lo ve o lo firma. En la configuración de **Documentos y contratos** puedes personalizar todos esos mensajes para que suenen a tu marca, lleven datos reales del documento y lleguen a las personas correctas.
+
+## Para qué te sirve
+
+- **Mensajes con tu marca**: reemplazas los correos genéricos del sistema por textos propios.
+- **Contenido dinámico**: insertas el enlace del documento, el nombre del cliente, el total o la fecha de vencimiento de forma automática.
+- **Avisos al equipo**: quien envía el documento se entera por defecto cuando hay actividad.
+- **Todo en un solo lugar**: las notificaciones al cliente y al equipo se configuran desde la misma pantalla.
+
+## Elegir plantilla y editar el correo al enviar
+
+Además de las plantillas predeterminadas, puedes ajustar el mensaje justo antes de enviar cada documento:
+
+<Steps>
+  <Step title="Abre la ventana de envío">
+    Abre el documento o contrato y haz clic en **Enviar**.
+  </Step>
+  <Step title="Elige la plantilla">
+    Usa el desplegable **Plantilla de correo** para escoger la que mejor encaje.
+  </Step>
+  <Step title="Edita si hace falta">
+    Haz clic en el ícono **Editar** para cambiar el asunto o el cuerpo del mensaje.
+  </Step>
+  <Step title="Envía">
+    Revisa la vista previa y haz clic en **Enviar**.
+  </Step>
+</Steps>
+
+## Variables que puedes usar
+
+Las plantillas admiten dos tipos de variables:
+
+| Tipo | De dónde saca el dato | Ejemplos |
+| --- | --- | --- |
+| Variables del contacto | Del registro del contacto asociado. Se gestionan en **Configuración → Campos personalizados → Contacto**. | `{{contact.first_name}}`, `{{contact.email}}` |
+| Variables del documento | Del propio documento que envías. Se generan automáticamente. | `{{proposal.url}}`, `{{proposal.total}}`, `{{proposal.due_date}}` |
+
+Ejemplo de mensaje dinámico:
+
+```text
+Hola {{contact.first_name}}, tu propuesta está lista.
+Puedes verla aquí: {{proposal.url}}
+El total es {{proposal.total}}.
+```
+
+<Note>
+Si una variable no existe para un documento concreto, aparece en blanco en el correo. Prueba tus plantillas con datos de ejemplo y redacta el texto de forma que se entienda aunque falte un dato.
+</Note>
+
+## Abrir la configuración
+
+<Steps>
+  <Step title="Entra a Pagos">
+    En el menú lateral, haz clic en **Pagos**.
+  </Step>
+  <Step title="Abre Documentos y contratos">
+    En la barra superior, selecciona **Documentos y contratos**.
+  </Step>
+  <Step title="Abre la configuración">
+    Haz clic en **Configuración** en la esquina superior derecha. Ahí encuentras las notificaciones al cliente, las notificaciones al equipo y otros ajustes.
+  </Step>
+</Steps>
+
+## Notificaciones al cliente
+
+Controlan los correos que recibe tu cliente.
+
+### Remitente
+
+Define el **Nombre del remitente** y el **Correo del remitente** que verá el cliente. Activa el interruptor de la sección para usarlos. Si lo dejas apagado, los correos salen con el remitente predeterminado del sistema.
+
+### Destinatarios en copia (CC)
+
+Agrega direcciones que recibirán el documento junto con el firmante principal, y también la copia firmada al terminar. Activa el interruptor y escribe los correos.
+
+<Warning>
+La copia (CC) de esta sección recibe exactamente el mismo correo que el cliente. Úsala solo si quieres que alguien de tu equipo vea ese mensaje. Para avisos internos con otro texto y otro público, usa un flujo de trabajo con la acción **Notificación interna**.
+</Warning>
+
+### Plantillas de correo
+
+Las plantillas no se crean dentro de esta configuración. Primero las diseñas en el constructor de correos:
+
+1. Ve a **Marketing → Correos → Plantillas**.
+2. Haz clic en **Crear plantilla**.
+3. Diseña tu correo y guárdalo como plantilla.
+
+Una vez guardada, aparece en el desplegable **Plantilla de correo** de la configuración de Documentos y contratos.
+
+### Documento recibido
+
+Es el correo que llega cuando el cliente recibe un documento. Edita el asunto, elige la plantilla y revisa el resultado con **Vista previa**.
+
+### Documento firmado
+
+Se envía cuando el cliente firma o acepta el documento. Personaliza el asunto y revísalo con **Vista previa**.
+
+### Aviso de vencimiento
+
+Recordatorio automático que se envía al cliente **un día antes** de que venza el documento. Personaliza el asunto y la plantilla, y actívalo o desactívalo con su interruptor.
+
+Cuando termines, haz clic en **Guardar** al final de la página.
+
+## Notificaciones al equipo
+
+Mantienen informado a tu equipo sobre la actividad de los documentos. Por defecto, los avisos internos llegan a quien envió el documento.
+
+### Cambiar el remitente
+
+Activa esta opción para definir el nombre y el correo desde los que salen los avisos internos, en lugar del remitente predeterminado.
+
+### Aviso de documento firmado
+
+Notifica a tu equipo cuando un cliente firma. Puedes editar el asunto y elegir la plantilla.
+
+### Aviso de documento visto
+
+Activa **Documento visto** para recibir un correo cuando un destinatario abre el documento por primera vez. Solo se envía un aviso por documento, aunque tenga varios destinatarios. Puedes editar el asunto y el cuerpo, e insertar `{{Preview URL}}` para incluir el enlace de vista previa.
+
+Haz clic en **Guardar** para aplicar los cambios.
+
+## Avisar a más personas de tu equipo
+
+Para que reciban alertas usuarios, roles, equipos o direcciones adicionales, usa un flujo de trabajo:
+
+<Steps>
+  <Step title="Agrega el disparador">
+    Usa el disparador **Documentos y contratos** y elige el evento: enviado, visto, firmado o completado.
+  </Step>
+  <Step title="Agrega la notificación">
+    Añade la acción **Notificación interna** y selecciona usuarios, roles o equipos, o escribe correos personalizados.
+  </Step>
+  <Step title="Afina con condiciones (opcional)">
+    Filtra por nombre de plantilla o valor del acuerdo, y suma otras acciones como etiquetar al contacto o mover la oportunidad.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si uso una variable que no existe para ese documento?">
+    El campo queda en blanco en el correo. Prueba siempre con datos de ejemplo y escribe un texto de respaldo, por ejemplo: "Tu propuesta está lista; si no ves el enlace, escríbenos".
+  </Accordion>
+  <Accordion title="¿Puedo enviar avisos distintos a distintas personas del equipo?">
+    Desde esta configuración no: las notificaciones al equipo son globales. Para avisos por rol o por persona, crea flujos de trabajo con el disparador de Documentos y contratos.
+  </Accordion>
+  <Accordion title="Si cambio el remitente de las notificaciones al equipo, ¿cambia también el de los clientes?">
+    No. Son configuraciones independientes: puedes tener un correo de remitente para los clientes y otro para los avisos internos.
+  </Accordion>
+  <Accordion title="¿Puedo usar una plantilla distinta para cada evento?">
+    Sí. Cada evento de las notificaciones al cliente (recibido, firmado, aviso de vencimiento) tiene su propia plantilla, y debes asignarla por separado en cada uno.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo usar Documentos y contratos" icon="file-signature" href="/documentos/como-usar-documentos-y-contratos">
+    Panel, editor y envío de documentos.
+  </Card>
+  <Card title="Disparador de Documentos y contratos" icon="bolt" href="/documentos/disparador-documentos-y-contratos">
+    Automatiza acciones según el estado del documento.
+  </Card>
+</CardGroup>

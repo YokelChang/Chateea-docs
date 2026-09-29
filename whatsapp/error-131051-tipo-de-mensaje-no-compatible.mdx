@@ -1,0 +1,111 @@
+---
+title: "Error 131051: tipo de mensaje no compatible"
+description: "Qué mensajes de WhatsApp no admite la API, cómo se ven en Chateea y qué hacer cuando aparece el error 131051."
+icon: "ban"
+---
+
+La app de WhatsApp permite muchos tipos de mensaje: encuestas, GIF, mensajes temporales, tarjetas de contacto y más. Pero la plataforma empresarial de WhatsApp (la API de Meta que usa Chateea) solo admite una parte de ellos. Cuando un cliente te envía algo que la API no puede procesar, en Chateea verás un aviso de **mensaje no compatible** en lugar del contenido. Meta identifica este caso con el código **131051**.
+
+<Info>
+  No es una falla de Chateea. Es una limitación de la API de WhatsApp de Meta y aplica por igual a cualquier plataforma que se conecte a ella.
+</Info>
+
+## Qué significa el error 131051
+
+Puede aparecer en dos direcciones:
+
+| Dirección | Qué pasa |
+| --- | --- |
+| **Entrante** (el cliente te escribe) | El cliente envía un tipo de mensaje que la API no procesa, como una encuesta, un GIF o un mensaje eliminado. Chateea recibe el aviso sin el contenido |
+| **Saliente** (tú le escribes) | Tu mensaje usa un tipo o formato que la API no admite, así que no se entrega y se devuelve el error |
+
+## Tipos de mensaje compatibles
+
+| Tipo | Dirección | Detalles |
+| --- | --- | --- |
+| Texto | Ambas | Texto con emojis y enlaces |
+| Imagen | Ambas | JPEG y PNG, hasta 5 MB |
+| Video | Ambas | MP4 y 3GPP, hasta 16 MB |
+| Audio | Ambas | AAC, MP4, MPEG, AMR y OGG, hasta 16 MB |
+| Documento | Ambas | PDF, Word, Excel, PowerPoint y otros, hasta 100 MB |
+| Sticker | Ambas | WebP estático al enviar. WebP animado solo al recibir |
+| Ubicación | Ambas | Un punto en el mapa con coordenadas |
+| Plantillas | Saliente | Plantillas aprobadas de marketing, utilidad y autenticación |
+| Interactivos | Saliente | Listas, botones de respuesta y botones con enlace |
+| Contactos | Ambas | Tarjetas de contacto estructuradas enviadas por la API |
+| Reacciones | Ambas | Reacciones con emoji a los mensajes |
+
+## Tipos de mensaje no compatibles
+
+Si un cliente envía alguno de estos, verás el aviso de mensaje no compatible y no podrás leer el contenido:
+
+- **Encuestas** creadas en WhatsApp.
+- **Mensajes temporales** configurados para desaparecer.
+- **Mensajes eliminados** por el cliente. La API recibe el aviso, pero el contenido no se puede recuperar.
+- **GIF animados** enviados desde la app.
+- **Llamadas de voz y video** normales de la app. Las llamadas de WhatsApp para empresas son una función distinta.
+- **Mensajes de grupos** de WhatsApp.
+- **Tarjetas de contacto** compartidas desde la agenda del teléfono del cliente.
+- **Mensajes entre dos cuentas de la API** de WhatsApp Business. Meta no permite que una cuenta de la API escriba a otra.
+
+## Cómo se ve en Chateea
+
+Según el caso, en la conversación puedes ver:
+
+- Una burbuja con el texto **"Mensaje no compatible"** o **"Este tipo de mensaje no es compatible"**.
+- Un enlace en lugar del archivo, si el tipo de archivo supera los límites.
+- La opción **Ver más** con los datos técnicos del mensaje, en algunos contenidos personalizados.
+
+El mensaje aparece como recibido, así que sabes que el cliente envió algo aunque no puedas verlo. La conversación sigue abierta y puedes responder con normalidad.
+
+## Cómo resolverlo
+
+<Steps>
+  <Step title="Identifica qué intentó enviar el cliente">
+    Revisa el contexto de la conversación para deducir si era una encuesta, un GIF, un mensaje borrado u otro tipo no compatible.
+  </Step>
+  <Step title="Pide que lo reenvíe en otro formato">
+    Responde al cliente pidiéndole que te lo envíe como texto, imagen, audio o documento.
+  </Step>
+  <Step title="Si el error es al enviar, revisa tu mensaje">
+    Comprueba que el tipo de mensaje y el formato del archivo estén en la lista de compatibles. Por ejemplo, convierte un GIF en video MP4.
+  </Step>
+  <Step title="Si persiste, contacta a soporte">
+    Si el error sigue en tus envíos y el formato es correcto, escribe a soporte de Chateea en **help@chateea.com** con la hora del envío y el contacto afectado.
+  </Step>
+</Steps>
+
+<Note>
+  Para los mensajes entrantes no compatibles no existe solución técnica: no hay forma de leer una encuesta, un GIF o un mensaje eliminado a través de la API.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Un cliente me envió una encuesta. ¿Por qué no la veo?">
+    La API de WhatsApp no admite encuestas. Llegan como mensaje no compatible con el código 131051. Pídele al cliente que te dé su respuesta por texto.
+  </Accordion>
+  <Accordion title="¿Puedo responder a un cliente que envió un mensaje no compatible?">
+    Sí. La conversación sigue abierta y puedes contestar con texto, imagen, audio o cualquier tipo compatible.
+  </Accordion>
+  <Accordion title="¿Puedo recuperar un mensaje que el cliente borró?">
+    No. Una vez eliminado por el cliente, ni Chateea ni Meta conservan su contenido.
+  </Accordion>
+  <Accordion title="¿Meta añadirá más tipos en el futuro?">
+    Meta amplía la API con el tiempo (por ejemplo, las reacciones se añadieron en una versión posterior). Puedes seguir las novedades en la [documentación de la plataforma de WhatsApp Business](https://developers.facebook.com/documentation/business-messaging/whatsapp/overview/).
+  </Accordion>
+  <Accordion title="Me aparece 131051 al enviar. ¿Qué reviso?">
+    Que el tipo de mensaje esté en la lista de compatibles. Las causas más comunes son enviar un GIF animado o intentar escribir a otra cuenta de la API de WhatsApp Business.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Error 131053 al subir multimedia" icon="file-image" href="/whatsapp/error-131053-error-al-subir-multimedia">
+    Formatos, códecs y tamaños de archivo.
+  </Card>
+  <Card title="Enviar multimedia con texto" icon="paperclip" href="/whatsapp/enviar-multimedia-con-texto-en-conversaciones">
+    Envía archivos desde Conversaciones.
+  </Card>
+</CardGroup>

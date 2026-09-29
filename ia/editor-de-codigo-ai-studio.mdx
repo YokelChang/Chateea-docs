@@ -1,0 +1,111 @@
+---
+title: "Editor de código en AI Studio"
+description: "Edita el código de tu proyecto de AI Studio, busca en archivos y corrige errores con ayuda de IA."
+icon: "code"
+---
+
+El editor de código de AI Studio te da acceso directo al código de tu proyecto sin salir del constructor. Puedes editar archivos, buscar en todo el proyecto, detectar errores rápido y ver los cambios en tiempo real. Es el paso natural cuando lo que generó la IA está casi listo y necesitas un control más preciso.
+
+El editor admite TypeScript, JSX, CSS, JSON y otros archivos de texto del proyecto. No necesitas un entorno de desarrollo externo ni un paso de despliegue aparte.
+
+<Note>
+  No es obligatorio usarlo. AI Studio genera páginas y flujos completos a partir de tus instrucciones. El editor es para quien quiere controlar el diseño, los estilos, la lógica o las integraciones más allá del chat y las ediciones visuales.
+</Note>
+
+## Ventajas
+
+- **Más control** cuando la edición con IA no alcanza la precisión que necesitas.
+- **Cambios puntuales** en textos, estilos, componentes, rutas o archivos sin rehacer todo.
+- **Sin cambiar de herramienta:** editas dentro de AI Studio, sin descargar archivos.
+- **Depuración rápida:** ves los errores al instante y usas **Intentar arreglar** para que la IA sugiera la corrección.
+- **Experimentación segura** con el historial de versiones.
+- **Navegación ágil** con buscar y reemplazar y la búsqueda en todo el proyecto.
+
+## Funciones principales
+
+### Buscar y reemplazar
+
+Pulsa **Cmd/Ctrl + F** para buscar dentro del archivo abierto. Se resaltan todas las coincidencias, puedes activar las opciones de mayúsculas y palabra completa para evitar coincidencias parciales, y reemplazar una por una o todas a la vez. Útil para renombrar componentes, cambiar textos o unificar nombres de variables.
+
+### Búsqueda en todo el proyecto
+
+Busca en todos los archivos, no solo en el abierto:
+
+- Resultados agrupados por archivo, con las coincidencias resaltadas.
+- Incluye cambios aún no guardados.
+- Número de línea de cada resultado.
+- Un clic te lleva al archivo y la línea exactos.
+
+### Guardado y vista previa al instante
+
+Haz clic en **Guardar** y la vista previa se actualiza en segundos, sin esperar un despliegue.
+
+### Detección inteligente de errores
+
+Si un cambio impide que el proyecto se compile o que la vista previa arranque, aparece el mensaje **Compilación fallida** (Build unsuccessful) en el chat.
+
+1. Haz clic en **Detalles** para ver el error.
+2. Haz clic en **Intentar arreglar** (Try to fix). La IA analiza el problema, actualiza los archivos y te explica qué cambió.
+3. AI Studio vuelve a compilar la vista previa automáticamente. Revisa que el problema esté resuelto.
+
+Cuando hace falta investigar más, AI Studio puede revisar el proyecto en ejecución y probar su comportamiento real, para distinguir un error de código de una vista previa desactualizada o un recurso externo no disponible. Después de arreglar, vuelve a comprobar el resultado.
+
+### Detección automática de rutas
+
+Cuando creas una ruta nueva en el código, aparece sola en el selector de páginas.
+
+### Historial de versiones
+
+Cada vez que guardas se crea una versión. Ábrelo con el ícono de **reloj** en la parte superior del constructor para previsualizar, marcar o volver a versiones anteriores.
+
+### Protección de cambios sin guardar
+
+Si intentas salir con cambios sin guardar, aparece un aviso para que guardes antes.
+
+## Cómo usar el editor
+
+<Steps>
+  <Step title="Abre el editor">
+    Abre el proyecto de AI Studio y haz clic en **Código**.
+  </Step>
+  <Step title="Edita el archivo">
+    Elige el archivo en el árbol de archivos y haz los cambios. Usa buscar y reemplazar o la búsqueda global para encontrar lo que necesitas.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para aplicar los cambios y actualizar la vista previa.
+  </Step>
+  <Step title="Revisa y corrige">
+    Verifica contenido, diseño y funcionamiento. Si aparece un error, abre **Detalles** y usa **Intentar arreglar**.
+  </Step>
+  <Step title="Publica">
+    Cuando todo esté bien, publica el proyecto para llevar los cambios al sitio en vivo. Consulta la sección de publicación en [AI Studio](/ia/ai-studio).
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El editor guarda automáticamente?">
+    No. Los cambios se guardan al hacer clic en **Guardar**. Si intentas salir con cambios pendientes, AI Studio te avisa.
+  </Accordion>
+  <Accordion title="¿Los cambios afectan de inmediato mi sitio publicado?">
+    No. Guardar actualiza la vista previa; el sitio público cambia solo cuando vuelves a publicar el proyecto.
+  </Accordion>
+  <Accordion title="¿Qué tipos de archivo puedo editar?">
+    TypeScript, JSX, CSS, JSON y otros archivos de texto del proyecto.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Ediciones visuales" icon="pen-to-square" href="/ia/ediciones-visuales-ai-studio">
+    Haz ajustes sin tocar código.
+  </Card>
+  <Card title="SSR, funciones de servidor y APIs" icon="server" href="/ia/ssr-funciones-servidor-ai-studio">
+    Lógica de servidor y secretos en AI Studio.
+  </Card>
+  <Card title="Descargar el código como ZIP" icon="file-zipper" href="/ia/descargar-codigo-ai-studio">
+    Llévate una copia de tu proyecto.
+  </Card>
+</CardGroup>

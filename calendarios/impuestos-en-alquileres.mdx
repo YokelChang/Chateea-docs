@@ -1,0 +1,114 @@
+---
+title: "Impuestos en alquileres"
+description: "Aplica impuestos manuales a tus anuncios de alquiler para que cada reserva, factura e informe muestre el total correcto."
+icon: "percent"
+---
+
+Si cobras impuestos por tus alquileres (equipos, vehículos, espacios, locaciones), puedes hacer que Chateea los calcule solo en cada reserva. El cliente ve el impuesto desglosado antes de pagar y tu equipo tiene totales correctos en reservas, facturas e informes, sin cálculos a mano.
+
+## Cómo funcionan los impuestos en Alquileres
+
+Cada anuncio (listing) de Alquileres crea automáticamente un **producto vinculado** en **Pagos → Productos**. Los impuestos no se configuran directamente en el anuncio, sino en ese producto vinculado. Así, cada vez que alguien reserva el anuncio, Chateea aplica las tasas de impuesto que tenga el producto.
+
+- Las tasas de impuesto se crean en **Pagos → Configuración → Impuestos**.
+- Luego asignas una o varias tasas al producto vinculado del anuncio.
+- Al reservar, el impuesto se calcula y se suma al total de forma automática.
+
+Chateea respeta la forma en que tengas configurado el impuesto en Pagos:
+
+| Configuración del impuesto | Qué pasa con el precio del anuncio |
+| --- | --- |
+| **Incluido** en el precio | Chateea separa la parte del impuesto que ya está dentro del precio del alquiler. |
+| **No incluido** (se suma) | Chateea agrega el impuesto encima del subtotal del alquiler. |
+
+<Note>
+Alquileres solo admite impuestos manuales. Los impuestos automáticos no están disponibles para este tipo de reservas.
+</Note>
+
+## Beneficios
+
+- **Control total**: tú decides qué tasa aplica a cada anuncio.
+- **Precios transparentes**: el cliente ve el total real, con el impuesto desglosado.
+- **Flexibilidad por variante**: si cada variante del anuncio tiene su propio producto vinculado, puedes darle una configuración de impuestos distinta.
+- **Menos trabajo manual**: se acabaron los cálculos aparte y los ajustes en cada reserva.
+- **Mejor control financiero**: los impuestos aparecen en los totales de la reserva, las facturas y los informes compatibles.
+
+## Configurar los impuestos de un anuncio
+
+<Steps>
+  <Step title="Crea la tasa de impuesto (si aún no existe)">
+    Ve a **Pagos → Configuración → Impuestos** y crea la tasa que necesitas, indicando si va incluida en el precio o se suma al total.
+  </Step>
+  <Step title="Abre el anuncio">
+    Ve a **Calendarios → Configuración de calendarios → Alquileres → Anuncios** y abre el anuncio que quieres actualizar. Haz clic en **Editar anuncio**.
+  </Step>
+  <Step title="Ve a la configuración de impuestos">
+    En la pestaña **Inventario y precios**, haz clic en **Configurar impuestos para este anuncio**.
+  </Step>
+  <Step title="Asigna el impuesto al producto vinculado">
+    Chateea te lleva al producto vinculado en **Pagos → Productos**. Agrega o actualiza la tasa de impuesto manual y haz clic en **Guardar**.
+  </Step>
+  <Step title="Comprueba el resultado">
+    Crea una reserva de prueba o revisa el total de una reserva futura para confirmar que el impuesto se aplica como esperas.
+  </Step>
+</Steps>
+
+<Warning>
+Los cambios en impuestos solo afectan a las reservas nuevas. Las reservas que ya existen conservan sus totales, salvo que las modifiques.
+</Warning>
+
+## Dónde verás los impuestos
+
+Una vez configurado, el impuesto aparece en:
+
+- La página pública de reserva, desglosado justo antes del total.
+- La vista de edición de la reserva en Alquileres.
+- La pestaña de pagos de la reserva.
+- Las facturas generadas, los recibos y las exportaciones.
+
+Los mismos totales se usan en todo el módulo de Alquileres para tus informes y conciliaciones.
+
+## Reservas con varios anuncios
+
+Si una reserva incluye varios anuncios, cada uno calcula su impuesto por separado según su propio producto vinculado. Después, Chateea suma todos los impuestos en el total final de la reserva.
+
+<Tip>
+Revisa tus tasas antes de temporada alta. Si ofreces anuncios con tratamientos fiscales distintos (por ejemplo, un espacio y un equipo), configúralos por separado para que cada reserva salga con el total correcto desde el principio.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar tasas distintas para cada anuncio?">
+    Sí. Los impuestos se configuran en el producto vinculado de cada anuncio, así que cada uno puede tener sus propias tasas.
+  </Accordion>
+  <Accordion title="¿Los cambios de impuestos afectan a reservas pasadas?">
+    No. Solo se aplican a las reservas nuevas. Las existentes no cambian a menos que las edites.
+  </Accordion>
+  <Accordion title="¿Cómo se calculan los impuestos en una reserva con varios anuncios?">
+    Cada anuncio calcula su impuesto de forma independiente y luego se suman todos en el total final.
+  </Accordion>
+  <Accordion title="¿Se aplica el impuesto al depósito de garantía?">
+    No. El impuesto se aplica solo al anuncio, nunca al depósito de garantía asociado.
+  </Accordion>
+  <Accordion title="¿Alquileres admite impuestos automáticos?">
+    No. Por ahora solo se pueden usar impuestos manuales.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Bloquear horarios en alquileres" icon="ban" href="/calendarios/bloquear-horarios-en-alquileres">
+    Reserva inventario para mantenimiento o uso interno.
+  </Card>
+  <Card title="Cancelación por el cliente en alquileres" icon="calendar-xmark" href="/calendarios/cancelacion-por-el-cliente-en-alquileres">
+    Permite que tus clientes cancelen con un enlace.
+  </Card>
+  <Card title="Crear y editar anuncios de alquiler" icon="pen-to-square" href="/calendarios/crear-y-editar-listados-de-alquiler">
+    Configura inventario, precios y opciones de cada anuncio.
+  </Card>
+  <Card title="Precios y descuentos en alquileres" icon="tags" href="/calendarios/precios-y-descuentos-en-alquileres">
+    Define tarifas y descuentos para tus anuncios.
+  </Card>
+</CardGroup>

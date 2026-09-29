@@ -1,0 +1,142 @@
+---
+title: "Acción: Invocar agente gestionado"
+description: "Usa un agente gestionado de IA dentro de un flujo y aprovecha su respuesta en los pasos siguientes."
+icon: "robot"
+---
+
+La acción **Invocar agente gestionado** (Invoke Managed Agent) te permite meter el razonamiento de un agente de IA en un punto concreto de tu flujo de trabajo. El flujo le pasa al agente el contacto, el contexto que necesite y, si hace falta, archivos adjuntos; el agente hace su trabajo con sus instrucciones, herramientas y permisos del CRM, y devuelve una respuesta que puedes usar en los siguientes pasos. Así combinas la estructura predecible de un flujo con la flexibilidad de la IA.
+
+## Para qué te sirve
+
+- **IA justo donde la necesitas:** agrega análisis, interpretación o redacción en el paso exacto del flujo.
+- **Contexto de cada ejecución:** envías datos del contacto y del flujo para que la tarea se adapte a cada caso.
+- **Instrucciones dinámicas:** incluyes valores variables en la instrucción para personalizar cada ejecución.
+- **Archivos adjuntos:** le pasas documentos cuando forman parte de lo que el agente debe revisar.
+- **Configuración reutilizable:** el agente se configura una sola vez y lo llamas desde todos los flujos que quieras.
+- **Resultados que se aprovechan:** usas la respuesta para actualizar registros, elegir una rama o enviar mensajes.
+
+## Cómo funciona
+
+El flujo decide **cuándo** se hace la tarea y el agente decide **cómo** hacerla según su configuración.
+
+1. Un contacto entra o avanza en el flujo.
+2. Llega a la acción **Invocar agente gestionado**.
+3. Chateea envía al agente el contacto, el contexto configurado, los valores dinámicos y los adjuntos.
+4. El agente procesa la instrucción con su configuración publicada, sus herramientas y sus capacidades del CRM.
+5. El agente devuelve su respuesta.
+6. El flujo continúa y puede usar esa respuesta en las acciones siguientes.
+
+Deja en el flujo lo que es fijo y predecible (disparadores, esperas, mensajes, condiciones) y delega en el agente lo que requiere criterio.
+
+## Requisitos del agente
+
+Solo puedes elegir agentes gestionados preparados para recibir llamadas desde flujos. Antes de agregar la acción:
+
+- Abre el agente en **IA → Agent Studio → Agentes gestionados**.
+- Agrégale el disparador **Invocado desde un flujo de trabajo** (Invoked from a workflow).
+- Confirma que tiene las instrucciones, herramientas, acceso a la base de conocimiento y capacidades del CRM que necesita la tarea.
+- Pruébalo antes de usarlo en una automatización real.
+- Publícalo.
+
+## Configurar la acción
+
+<Steps>
+  <Step title="Prepara el agente gestionado">
+    Ve a **IA → Agent Studio** y abre la pestaña **Agentes gestionados**. Crea un agente o abre uno existente. Configura sus instrucciones, herramientas, base de conocimiento y capacidades del CRM. En sus disparadores, agrega **Invocado desde un flujo de trabajo**. Pruébalo y publícalo.
+  </Step>
+  <Step title="Agrega la acción al flujo">
+    Ve a **Automatización → Flujos de trabajo**, abre o crea el flujo, sitúate en el punto donde debe actuar el agente, haz clic en **+ Agregar acción** y elige **Invocar agente gestionado**. Selecciona el agente publicado.
+  </Step>
+  <Step title="Escribe la instrucción">
+    Describe la tarea que debe hacer el agente. Agrega datos dinámicos del contacto o del flujo cuando cambien entre ejecuciones, da el contexto suficiente para que entienda el resultado esperado y añade adjuntos si tiene que revisar un archivo.
+  </Step>
+  <Step title="Usa la respuesta en los pasos siguientes">
+    Agrega la acción que irá después del agente. En el selector de valores dinámicos, elige la respuesta del paso **Invocar agente gestionado** y úsala donde la necesites. Si el resultado debe cambiar el camino del flujo, agrega una condición o una actualización de registros.
+  </Step>
+  <Step title="Guarda, prueba y publica">
+    Guarda la acción, revisa toda la secuencia y prueba el flujo con un contacto representativo. Confirma que el agente recibe la información correcta y que las acciones posteriores usan bien su respuesta. Publica cuando todo funcione.
+  </Step>
+</Steps>
+
+<Tip>
+  Si el agente no aparece en la lista, revisa que tenga el disparador **Invocado desde un flujo de trabajo** y que esté publicado.
+</Tip>
+
+### Cómo escribir una buena instrucción
+
+- Di claramente qué tarea debe completar.
+- Incluye solo el contexto relevante para esa decisión o resultado.
+- Describe el formato o el tipo de respuesta que esperas.
+- Usa valores dinámicos cuando la instrucción deba cambiar según el contacto.
+- Adjunta archivos solo si el agente necesita revisarlos.
+
+Ejemplo de instrucción:
+
+```text
+Revisa la información del contacto y el contexto que te envía este flujo. Decide cuál es la siguiente acción más adecuada para este contacto y devuelve una explicación breve que puedan usar los siguientes pasos del flujo.
+```
+
+## Qué puedes hacer con la respuesta
+
+- Actualizar registros del CRM.
+- Decidir qué rama del flujo se ejecuta.
+- Rellenar el contenido de un mensaje posterior.
+- Pasar información a otro paso de la automatización.
+
+## Cuándo usar esta acción y cuándo otra opción de IA
+
+Chateea ofrece varias formas de usar IA en los flujos. Elige según dónde mantienes la lógica del agente:
+
+| Opción | Dónde se configura la IA | Qué hace el flujo |
+| --- | --- | --- |
+| **Invocar agente gestionado** | Agentes gestionados | Llama a un agente gestionado publicado con el disparador **Invocado desde un flujo de trabajo** |
+| **Agente IA** | Dentro del constructor de flujos | Crea y configura el paso de IA (instrucciones, modelo, herramientas, memoria y salida) dentro del propio flujo |
+| **Invocar agente de Agent Studio** | Agentes de flujo de Agent Studio | Llama a un agente de flujo publicado en Agent Studio |
+
+Para crear agentes autónomos nuevos se recomiendan los agentes gestionados; los agentes de flujo de Agent Studio siguen disponibles para mantener los que ya tengas.
+
+## Ideas de uso
+
+- **Análisis del contacto:** revisar su información y devolver un resumen o una clasificación.
+- **Elegir el camino del flujo:** evaluar el contexto y dar una respuesta que decide la rama siguiente.
+- **Contenido personalizado:** redactar un texto adaptado para un mensaje o un registro posterior.
+- **Procesar registros:** interpretar información antes de actualizar campos, notas u otros registros.
+- **Revisar adjuntos:** leer un archivo disponible en el flujo y extraer lo necesario para los pasos siguientes.
+- **Tareas complejas:** delegar una tarea con varios pasos de razonamiento mientras el resto del proceso sigue en el flujo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué mi agente gestionado no aparece en la acción?">
+    Comprueba que tiene el disparador **Invocado desde un flujo de trabajo** y que está publicado. Solo esos agentes se pueden elegir.
+  </Accordion>
+  <Accordion title="¿Es lo mismo que Invocar agente de Agent Studio?">
+    No. **Invocar agente gestionado** es para agentes gestionados con el disparador **Invocado desde un flujo de trabajo**. **Invocar agente de Agent Studio** es para agentes de flujo de Agent Studio y tiene su propia configuración.
+  </Accordion>
+  <Accordion title="¿Sustituye a las acciones normales del flujo?">
+    No. Funciona junto a ellas. Usa el agente donde haga falta razonar o actuar con flexibilidad y sigue con acciones normales después.
+  </Accordion>
+  <Accordion title="¿El agente puede hacer cambios en el CRM cuando lo llama un flujo?">
+    Sí, puede usar las herramientas y capacidades del CRM que tenga configuradas. Revisa bien sus permisos e instrucciones antes de publicarlo.
+  </Accordion>
+  <Accordion title="¿Las reglas de negocio van en el flujo o en el agente?">
+    Deja la secuencia y las condiciones fijas en el flujo siempre que puedas. Usa el agente para tareas que requieren interpretar, razonar, generar contenido o actuar según el contexto.
+  </Accordion>
+  <Accordion title="¿Qué tan detallada debe ser la instrucción?">
+    Lo suficiente para que el agente entienda la tarea inmediata, el contexto y el resultado esperado. Su rol permanente y sus capacidades deben vivir en la configuración del agente, así no tienes que repetirlos en cada flujo.
+  </Accordion>
+  <Accordion title="¿El agente puede seguir usando otros disparadores?">
+    Sí. Un agente gestionado puede tener varios disparadores. **Invocado desde un flujo de trabajo** es solo una forma más de activarlo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agentes gestionados en Agent Studio" icon="robot" href="/ia/agentes-gestionados-agent-studio">
+    Crea, prueba y publica tus agentes gestionados.
+  </Card>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Construye agentes basados en flujos visuales.
+  </Card>
+</CardGroup>

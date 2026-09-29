@@ -1,0 +1,100 @@
+---
+title: "Analítica de plantillas de WhatsApp"
+description: "Revisa entregas, lecturas y clics en botones de cada plantilla de WhatsApp para saber cuáles funcionan."
+icon: "chart-line"
+---
+
+La analítica de plantillas te muestra cómo rinde cada plantilla de WhatsApp: cuántas veces se envió, se entregó y se leyó, y cuántas veces los clientes tocaron sus botones. Con estos datos puedes saber qué mensajes funcionan, cuáles ignoran tus clientes y qué conviene reescribir.
+
+<Note>
+  Este informe no está disponible si tu número está conectado en modo [coexistencia con la app de WhatsApp Business](/whatsapp/coexistencia-con-la-app-whatsapp-business).
+</Note>
+
+## Ver entregas y lecturas de una plantilla
+
+<Steps>
+  <Step title="Abre tus plantillas">
+    Ve a **Configuración → WhatsApp → Plantillas**.
+  </Step>
+  <Step title="Busca la plantilla">
+    Localiza la plantilla y haz clic en **Informes** (Reports).
+  </Step>
+  <Step title="Abre la pestaña de entregabilidad">
+    Haz clic en **Entregabilidad** (Deliverability).
+  </Step>
+  <Step title="Elige el periodo">
+    Selecciona la **fecha de inicio** y la **fecha de fin**. Los datos tienen granularidad diaria, así que puedes revisar un día, una semana o el periodo que necesites.
+  </Step>
+</Steps>
+
+| Métrica | Qué significa | Cómo se ve en WhatsApp |
+| --- | --- | --- |
+| **Enviados** | El mensaje salió hacia WhatsApp | Una palomita gris |
+| **Entregados** | Llegó al teléfono del cliente | Dos palomitas grises |
+| **Leídos** | El cliente lo abrió | Dos palomitas azules |
+
+## Ver los clics en botones
+
+Si tu plantilla tiene botones de enlace (URL) o de respuesta rápida, puedes ver cuántas veces los tocaron.
+
+<Steps>
+  <Step title="Abre tus plantillas">
+    Ve a **Configuración → WhatsApp → Plantillas**.
+  </Step>
+  <Step title="Abre el informe">
+    Busca la plantilla y haz clic en **Informes**.
+  </Step>
+  <Step title="Revisa los clics">
+    Haz clic en **Clics en botones** (Button Clicks).
+  </Step>
+</Steps>
+
+<Warning>
+  Los clics en botones solo se miden en plantillas de categoría **Marketing** o **Utilidad**. Tampoco están disponibles si tu cuenta de WhatsApp Business pertenece o está compartida con un portafolio comercial de la Unión Europea, Reino Unido o Japón, o si tu número tiene código de país de alguna de esas regiones.
+</Warning>
+
+## Tipos de botones y sus límites
+
+| Botón | Qué hace | Máximo por plantilla |
+| --- | --- | --- |
+| **Enlace (URL)** | Abre una página en el navegador del teléfono | 2 |
+| **Respuesta rápida** | Envía a tu negocio un texto predefinido, por ejemplo "Quiero más información" o "No me interesa" | 10 |
+
+Si combinas respuestas rápidas con otros botones, deben ir agrupadas: primero todas las respuestas rápidas y después los demás, o al revés. Mezclarlas de forma intercalada provoca un error.
+
+| Combinación válida | Combinación inválida |
+| --- | --- |
+| Respuesta rápida, Respuesta rápida | Respuesta rápida, URL, Respuesta rápida |
+| Respuesta rápida, Respuesta rápida, URL, Teléfono | URL, Respuesta rápida, URL |
+| URL, Teléfono, Respuesta rápida, Respuesta rápida | |
+
+## Cómo usar estos datos
+
+- **Muchos entregados y pocos leídos:** revisa el encabezado y la primera línea. Es lo que el cliente ve en la notificación.
+- **Muchos leídos y pocos clics:** el llamado a la acción no es claro o el botón no es atractivo. Prueba otro texto en el botón.
+- **Muchos clics en "No me interesa":** estás llegando a una audiencia equivocada o con demasiada frecuencia. Ajusta la segmentación antes de que baje la calidad de tu número.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Para qué sirve un botón de respuesta rápida?">
+    Permite que el cliente te responda con un solo toque. Un uso común es un botón para darse de baja de los mensajes de marketing, lo que además protege la calidad de tu número.
+  </Accordion>
+  <Accordion title="¿Puedo ver clics de plantillas de autenticación?">
+    No. Los clics solo se miden en plantillas de Marketing y de Utilidad.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay con las estadísticas de un flujo?">
+    Las estadísticas del flujo muestran lo que envió una acción concreta. La analítica de plantillas suma todos los envíos de esa plantilla, sin importar si salieron de un flujo, de una campaña o de una conversación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Cómo crear plantillas que Meta apruebe.
+  </Card>
+  <Card title="Estadísticas de WhatsApp en flujos" icon="diagram-project" href="/whatsapp/estadisticas-de-whatsapp-en-flujos">
+    El rendimiento de cada acción de WhatsApp en tus automatizaciones.
+  </Card>
+</CardGroup>

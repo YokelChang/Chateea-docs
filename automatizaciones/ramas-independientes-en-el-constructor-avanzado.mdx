@@ -1,0 +1,86 @@
+---
+title: "Ramas independientes en el constructor avanzado"
+description: "Arma varios grupos de acciones en un mismo flujo y actívalos desde el disparador que elijas con conexiones Ir a."
+icon: "code-branch"
+---
+
+Las ramas independientes (nodos desvinculados) te permiten armar varios grupos de acciones dentro del mismo flujo sin tener que encadenarlos en una sola línea. Cada grupo funciona como un mini flujo que colocas donde quieras en el lienzo y que arranca desde el disparador que tú elijas. Es ideal para mantener juntas automatizaciones relacionadas sin convertir el flujo en una cadena vertical interminable.
+
+<Info>
+  Las ramas independientes solo están disponibles en el **constructor avanzado** de flujos de trabajo.
+</Info>
+
+## Cómo funcionan
+
+- **Grupos independientes:** puedes colocar acciones en cualquier parte del lienzo y formar grupos separados, sin conectarlos a la cadena principal.
+- **No se ejecutan solos:** un grupo desvinculado solo corre si un disparador (u otro paso) apunta a su primera acción.
+- **Conexión "Ir a" desde el disparador:** para activar un grupo, arrastras un conector punteado desde el disparador hasta la primera acción del grupo.
+- **Misma ejecución:** cada rama conectada corre de forma independiente, pero dentro del mismo flujo.
+
+## Ventajas
+
+- **Más claridad visual:** ves las ramas lado a lado en lugar de una cadena larga.
+- **Pruebas más rápidas:** aíslas y depuras una rama sin tocar las demás.
+- **Todo en un solo lugar:** agrupas automatizaciones relacionadas en un flujo en vez de crear varios.
+- **Crece sin rehacer:** agregas o quitas grupos sin redibujar el flujo principal.
+- **Mejor organización:** combínalas con conexiones "Ir a", notas adhesivas y colores.
+
+## Configurar una rama independiente
+
+<Steps>
+  <Step title="Elige el disparador">
+    En el lienzo del constructor avanzado, ubica el disparador que debe iniciar la rama.
+  </Step>
+  <Step title="Conecta el disparador con el grupo">
+    Arrastra el conector punteado **Ir a** desde el disparador hasta la primera acción del grupo desvinculado que quieres activar.
+  </Step>
+  <Step title="Etiqueta y publica">
+    Si quieres, agrega notas adhesivas y colores para que tu equipo identifique cada rama. Guarda y publica el flujo para que el cambio quede activo.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- **Nombra cada grupo con una nota adhesiva:** por ejemplo "Alta VIP", "Sincronización de operaciones" o "Nutrición de prueba gratis".
+- **Deja clara la acción de entrada:** coloca la primera acción de cada grupo arriba o a la izquierda.
+- **Evita cruces de líneas:** usa la opción de ordenar el lienzo y deja espacio para que los conectores punteados se lean bien.
+
+## Lo que debes tener en cuenta
+
+- **Una inscripción por contacto:** un contacto no recorre varias ramas del mismo flujo al mismo tiempo.
+- **Conexión obligatoria:** un grupo desvinculado no se ejecuta si ningún disparador está conectado a él.
+- **Volver al constructor estándar:** antes de cambiar de vista, elimina las ramas independientes y cualquier otra función exclusiva del constructor avanzado (como las conexiones "Ir a" desde el disparador o los nodos desactivados).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Un contacto puede recorrer dos ramas a la vez?">
+    No. El flujo permite una sola inscripción por contacto, así que avanza por una sola rama a la vez.
+  </Accordion>
+  <Accordion title="¿Se rompen las ramas si clono el flujo?">
+    No. Al clonar se conservan todos los grupos y las conexiones "Ir a" tal como los diseñaste. Solo prueba los disparadores en la copia.
+  </Accordion>
+  <Accordion title="¿Las ramas independientes tienen costo?">
+    No. Son gratuitas dentro del constructor avanzado. Solo algunas acciones de integraciones externas son premium y se cobran por ejecución.
+  </Accordion>
+  <Accordion title="¿Puedo unir una rama con otra más adelante?">
+    Sí. Puedes dibujar una conexión normal desde cualquier acción de un grupo hasta el inicio de otro para unir los caminos cuando lo necesites.
+  </Accordion>
+  <Accordion title="¿Qué pasa si elimino una conexión Ir a?">
+    La rama queda inactiva hasta que la vuelvas a conectar a un disparador o a otro paso. Las ramas sin conexión no se ejecutan.
+  </Accordion>
+  <Accordion title="¿Muchos grupos hacen más lento el flujo?">
+    No de forma notable en automatizaciones normales. En flujos muy grandes, el editor puede tardar un poco más en cargar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Constructor estándar y avanzado" icon="sliders" href="/automatizaciones/constructor-estandar-y-avanzado">
+    Diferencias entre ambos constructores y cómo cambiar de vista.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores, acciones y flujos.
+  </Card>
+</CardGroup>

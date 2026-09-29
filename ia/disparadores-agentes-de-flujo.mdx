@@ -1,0 +1,107 @@
+---
+title: "Disparadores para agentes de flujo"
+description: "Haz que tu agente de flujo arranque solo cuando se envía un formulario, cambia una etiqueta o llega un chat."
+icon: "bolt"
+---
+
+Los disparadores hacen que un agente de flujo de Agent Studio arranque solo en el momento en que ocurre algo en tu cuenta: un contacto envía un formulario, recibe o pierde una etiqueta, o escribe por chat. Así respondes al instante, sin procesos manuales ni integraciones externas.
+
+<Note>
+Agent Studio incluye ahora **Agentes gestionados** (antes Super Agents) y **Agentes de flujo**. Los agentes nuevos se crean como [agentes gestionados](/ia/agentes-gestionados-agent-studio). Tus agentes de flujo existentes siguen funcionando y puedes abrirlos, editarlos y agregarles disparadores desde la página **Agentes de flujo**.
+</Note>
+
+## Qué es un disparador de inicio
+
+Un disparador es un "oyente" que se coloca en el nodo de inicio del agente. Cuando ocurre el evento que elegiste, el agente empieza desde ese disparador y recorre el flujo que diseñaste.
+
+Puedes elegir entre estos eventos:
+
+| Disparador | Cuándo arranca el agente | Qué datos recibe el agente |
+| --- | --- | --- |
+| **Formulario enviado** | Cuando alguien envía cualquiera de los formularios que seleccionaste. | Los campos del formulario, disponibles como variables. |
+| **Etiqueta del contacto** | Cuando se agrega o se quita una etiqueta concreta a un contacto. | El contexto del contacto, incluidas sus etiquetas y campos personalizados. |
+| **Mensaje de chat** | Cuando entra un mensaje nuevo por los canales de chat conectados. | El texto del mensaje, los datos del remitente y el contexto de la conversación. |
+| **Flujos de trabajo** | Cuando un flujo de trabajo invoca al agente con la acción correspondiente. | Lo que envíe el flujo de trabajo. |
+
+## Para qué sirve
+
+- **Respuesta en tiempo real:** atiendes al contacto justo cuando actúa.
+- **Sin integraciones extra:** no necesitas webhooks ni scripts; configuras el disparador y publicas.
+- **Punto de entrada claro:** todos tus agentes arrancan de la misma forma, lo que facilita probarlos y resolver problemas.
+- **No rompe nada:** los disparadores son opcionales. Los agentes que ya ejecutas por API siguen funcionando igual.
+
+Algunos usos comunes: calificar y dar seguimiento a un prospecto que acaba de llenar un formulario, iniciar una bienvenida VIP al agregar una etiqueta, lanzar una campaña de reactivación cuando se quita una etiqueta, o responder preguntas frecuentes por chat.
+
+## Cómo configurar un disparador
+
+<Steps>
+  <Step title="Abre el agente">
+    Ve a **IA → Agent Studio**, haz clic en **Agentes de flujo** y luego en el nombre del agente que quieres editar.
+  </Step>
+  <Step title="Agrega el disparador de inicio">
+    En el lienzo, usa **Agregar nodo** (o ubica el inicio de tu flujo). En el selector de nodos, dentro de **Control del flujo**, elige **Disparador de inicio** (Start trigger).
+  </Step>
+  <Step title="Elige el evento">
+    En el panel **Seleccionar disparador**, elige **Formulario enviado**, **Etiqueta del contacto**, **Mensaje de chat** o **Flujos de trabajo**. Las opciones siguientes dependen de lo que elijas.
+  </Step>
+  <Step title="Configura el disparador">
+    - **Formulario enviado:** en el desplegable, elige uno o varios formularios. Si aún no existe, haz clic en **Agregar nuevo**. El agente arrancará cuando se envíe cualquiera de ellos.
+    - **Etiqueta del contacto:** en **Acción de etiqueta**, elige **Etiqueta agregada** o **Etiqueta eliminada** y selecciona la etiqueta (o créala con **Agregar nuevo**). El agente solo escucha cambios en esas etiquetas.
+    - **Mensaje de chat:** no requiere configuración. El agente arrancará con cada mensaje entrante de tus canales de chat conectados.
+    - **Flujos de trabajo:** el agente se ejecutará cuando un flujo de trabajo lo invoque con su acción.
+  </Step>
+  <Step title="Conecta el disparador al primer nodo">
+    Asegúrate de que el disparador esté unido al primer nodo del flujo. Si no está conectado, el agente no hará nada.
+  </Step>
+  <Step title="Prueba">
+    Usa **Probar** para simular el evento. Verás exactamente qué variables y datos recibe el agente, sin afectar a contactos reales.
+  </Step>
+  <Step title="Guarda y publica">
+    **Guardar** almacena tus cambios como versión de staging (nada sale en vivo todavía); te conviene guardar después de cada paso. **Publicar** activa el agente y su disparador en tu cuenta, así los eventos reales empiezan a ejecutarlo.
+  </Step>
+</Steps>
+
+<Tip>
+Si pruebas un disparador de etiqueta agregando etiquetas en masa, hazlo primero con un grupo pequeño de contactos de prueba. Así evitas que el agente se ejecute cientos de veces a la vez.
+</Tip>
+
+<Info>
+Si el agente también se usa en otras funciones de Chateea (por ejemplo, Ask AI), normalmente debe estar en producción para que puedas seleccionarlo.
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo crear un agente de flujo nuevo para usar disparadores?">
+    No. Los agentes nuevos se crean como agentes gestionados. Puedes agregar disparadores a tus agentes de flujo existentes.
+  </Accordion>
+  <Accordion title="¿Mis disparadores actuales seguirán funcionando?">
+    Sí. Los agentes de flujo y sus disparadores siguen activos con normalidad.
+  </Accordion>
+  <Accordion title="¿Los disparadores cambian cómo funcionan mis agentes invocados por API?">
+    No. Los disparadores se suman a lo que ya tienes. Solo se ejecutan en los agentes donde agregaste un disparador de inicio.
+  </Accordion>
+  <Accordion title="¿Qué canales de chat son compatibles?">
+    Los widgets y canales de chat que ya tienes conectados en tu cuenta de Chateea. No hace falta configuración adicional.
+  </Accordion>
+  <Accordion title="No veo mi formulario o mi etiqueta en la lista. ¿Qué hago?">
+    Confirma que existe en tu cuenta y actualiza el constructor después de crear formularios o etiquetas nuevos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Conoce el constructor y sus nodos.
+  </Card>
+  <Card title="Nodo enrutador" icon="route" href="/ia/nodo-enrutador-agent-studio">
+    Divide la conversación por intención o por reglas.
+  </Card>
+  <Card title="Variables y valores personalizados" icon="code" href="/ia/variables-y-valores-personalizados-agent-studio">
+    Usa los datos del formulario y del contacto en tu agente.
+  </Card>
+  <Card title="API pública de Agent Studio" icon="code" href="/ia/api-publica-agent-studio">
+    Ejecuta tus agentes desde otros sistemas.
+  </Card>
+</CardGroup>

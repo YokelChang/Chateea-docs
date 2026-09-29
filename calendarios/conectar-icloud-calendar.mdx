@@ -1,0 +1,126 @@
+---
+title: "Conectar iCloud Calendar"
+description: "Conecta tu calendario de Apple con una contraseña específica para apps y evita reservas dobles."
+icon: "apple"
+---
+
+Si usas el calendario de Apple (iCloud), puedes conectarlo a Chateea para que tu disponibilidad sea real y no te reserven dos citas a la misma hora. Las citas que se agendan en Chateea se envían a tu calendario de iCloud, y los eventos de iCloud bloquean esos horarios en tus calendarios de Chateea.
+
+Apple exige una **contraseña específica para apps** y la verificación en dos pasos para conectar aplicaciones externas, así que el proceso tiene dos partes: primero generas esa contraseña en Apple y luego la usas en Chateea.
+
+## Antes de empezar
+
+- Necesitas acceso a la cuenta de Apple (Apple ID) del calendario que quieres conectar.
+- Tu Apple ID debe tener activada la **verificación en dos pasos**.
+- Revisa qué permiso tienes sobre el calendario:
+  - **Escritura:** necesaria si quieres que las citas de Chateea se agreguen a tu calendario de iCloud.
+  - **Solo lectura:** suficiente si solo quieres traer tus eventos de iCloud para bloquear horarios.
+
+## Paso 1: genera la contraseña específica para apps
+
+Esta contraseña es distinta a la de tu cuenta de Apple y solo sirve para esta conexión.
+
+<Steps>
+  <Step title="Inicia sesión en Apple">
+    Entra a [appleid.apple.com](https://appleid.apple.com/) con tu Apple ID.
+  </Step>
+  <Step title="Activa la verificación en dos pasos">
+    En la sección de seguridad, activa la verificación en dos pasos si todavía no la tienes.
+  </Step>
+  <Step title="Genera la contraseña">
+    En **Inicio de sesión y seguridad**, entra a **Contraseñas específicas para apps** y elige generar una nueva.
+  </Step>
+  <Step title="Ponle un nombre">
+    Escribe una etiqueta que te ayude a reconocerla, por ejemplo "Chateea calendario", y haz clic en **Crear**.
+  </Step>
+  <Step title="Guárdala">
+    Copia la contraseña generada y guárdala en un lugar seguro. La usarás en el siguiente paso.
+  </Step>
+</Steps>
+
+## Paso 2: conecta iCloud en Chateea
+
+<Steps>
+  <Step title="Abre las conexiones">
+    Ve a **Calendarios → Configuración de calendarios → Conexiones** y haz clic en **+ Agregar nueva**.
+  </Step>
+  <Step title="Elige iCloud Calendar">
+    Busca **iCloud Calendar** y haz clic en **Conectar**.
+  </Step>
+  <Step title="Ingresa tus datos">
+    Escribe tu Apple ID y la contraseña específica para apps que generaste, y haz clic en **Conectar**.
+  </Step>
+</Steps>
+
+## Paso 3: configura el calendario vinculado y los de conflicto
+
+Después de conectar iCloud, define qué calendario recibirá tus citas y cuáles se revisarán para bloquear horarios. Puedes hacerlo desde **Configuración → Mi perfil → Configuración de calendario** o desde **Calendarios → Configuración de calendarios → Conexiones** (ambos llevan al mismo panel).
+
+<Note>
+  Si no ves el panel de configuración de calendario, es porque todavía no hay un calendario externo conectado. Vuelve al paso 2.
+</Note>
+
+### Calendario vinculado
+
+Haz clic en **Editar** junto al calendario vinculado y elige el calendario de iCloud donde se agregarán las citas nuevas. Todas las citas creadas en Chateea se enviarán a ese calendario.
+
+- Necesitas permiso de escritura para elegir un calendario como vinculado.
+- El calendario vinculado se agrega automáticamente como calendario de conflicto: sus eventos también bloquean tu disponibilidad en Chateea.
+
+### Calendarios de conflicto
+
+Haz clic en **Editar** junto a los calendarios de conflicto y elige uno o varios calendarios que Chateea debe revisar antes de ofrecer horarios, por ejemplo tu calendario personal, el de feriados o los de otros miembros del equipo.
+
+Solo bloquean tu disponibilidad los eventos marcados como **Ocupado** en iCloud. Los eventos marcados como **Disponible** se traen a Chateea, pero el horario sigue libre para reservas.
+
+## Limitaciones de iCloud
+
+| Tema | Cómo funciona con iCloud |
+| --- | --- |
+| Tipo de sincronización | Solo sincronización predeterminada. A diferencia de Google y Outlook, no puedes cambiar las preferencias de sincronización |
+| Eventos que llegan de iCloud | Se tratan como horarios bloqueados, no como citas |
+| Contactos | No se crean contactos a partir de los invitados de eventos de iCloud |
+| Tiempo bloqueado en Chateea | Los bloqueos que creas en Chateea no se envían a iCloud |
+| Varias conexiones | Cada usuario puede conectar varias cuentas de iCloud en su cuenta de Chateea, y la misma cuenta de iCloud puede usarse en varias cuentas de Chateea |
+| Calendarios suscritos | No se pueden conectar calendarios a los que te suscribiste por URL, como los calendarios públicos |
+| Privacidad de eventos | iCloud no distingue eventos privados y públicos, así que sus eventos no se pueden ocultar con el modo privado |
+
+## Solución de problemas
+
+- **No puedo iniciar sesión:** confirma que usas la contraseña específica para apps y no la contraseña de tu Apple ID, y que la verificación en dos pasos está activada.
+- **Los eventos no se sincronizan:** revisa que el calendario correcto esté elegido como vinculado y que tus eventos de iCloud estén en ese calendario.
+- **Me reservan en horarios ocupados:** agrega tus calendarios de iCloud como calendarios de conflicto y revisa que los eventos estén marcados como **Ocupado**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los eventos de iCloud bloquean mi disponibilidad en Chateea?">
+    Sí, si agregas ese calendario como calendario de conflicto y el evento está marcado como **Ocupado**. Los eventos marcados como **Disponible** no bloquean horarios.
+  </Accordion>
+  <Accordion title="¿Puedo agregar varios calendarios de conflicto?">
+    Sí. Puedes elegir varios calendarios para que Chateea los revise y evite reservas dobles.
+  </Accordion>
+  <Accordion title="¿iCloud tiene sincronización en dos sentidos como Google u Outlook?">
+    No en el mismo sentido. Las citas de Chateea se envían a tu calendario vinculado, pero los eventos que vienen de iCloud entran solo como horarios bloqueados, no crean contactos, y los bloqueos que haces en Chateea no se envían a iCloud.
+  </Accordion>
+  <Accordion title="¿Puedo conectar varias cuentas de iCloud?">
+    Sí. Cada usuario puede conectar varias cuentas de iCloud, y la misma cuenta puede usarse en varias cuentas de Chateea.
+  </Accordion>
+  <Accordion title="¿Puedo conectar un calendario al que me suscribí por URL?">
+    No. Los calendarios de suscripción, normalmente públicos, no se pueden conectar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar Google Calendar" icon="google" href="/calendarios/conectar-google-calendar">
+    Sincroniza tu calendario de Google.
+  </Card>
+  <Card title="Conectar Outlook Calendar" icon="microsoft" href="/calendarios/conectar-outlook-calendar">
+    Sincroniza tu calendario de Outlook o Microsoft 365.
+  </Card>
+  <Card title="Avisos de desconexión de calendarios" icon="bell" href="/calendarios/avisos-de-desconexion-de-calendarios">
+    Entérate cuando una integración se desconecta.
+  </Card>
+</CardGroup>

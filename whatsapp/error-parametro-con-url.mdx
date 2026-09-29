@@ -1,0 +1,68 @@
+---
+title: "Error de plantilla: la variable del cuerpo contiene una URL"
+description: "Por qué Meta rechaza enlaces dentro de las variables de una plantilla de WhatsApp y dos formas de solucionarlo."
+icon: "link-slash"
+---
+
+El error **"body: Parameter at index contains URL"** aparece cuando envías una plantilla de WhatsApp y una de las variables del cuerpo (por ejemplo `{{1}}`) lleva un enlace completo. Meta no permite URL dentro de las variables del cuerpo, así que rechaza el envío. Aquí te explicamos por qué pasa y las dos formas de solucionarlo.
+
+## Qué significa
+
+Tu plantilla se aprobó con el cuerpo como texto y variables pensadas para datos como nombres, códigos o fechas. Al enviarla, estás llenando una de esas variables con un enlace. Por seguridad (contra el phishing) y por calidad, Meta exige que los enlaces formen parte del texto aprobado de la plantilla o que vayan en **botones**, que pueden tener una parte final dinámica.
+
+## Causas habituales
+
+- Estás pasando un valor como `https://example.com/deal/123` en la variable `{{1}}`.
+- El cuerpo de la plantilla se aprobó como texto normal y no espera enlaces.
+- Usas un acortador de enlaces dentro de una variable (muchos están bloqueados).
+- Lo que realmente necesitas es un **botón de sitio web**, no una variable en el cuerpo.
+
+## Cómo solucionarlo
+
+Elige la opción que mejor se ajuste a tu caso.
+
+### Opción A: escribe el enlace fijo en el cuerpo
+
+Crea una plantilla donde la URL completa esté escrita directamente en el texto aprobado, sin variable.
+
+```text
+Hola {{1}}, revisa tu oferta aquí: https://example.com/ofertas
+```
+
+**Úsala cuando** el enlace es el mismo para todos los destinatarios.
+
+### Opción B: usa un botón de llamada a la acción de sitio web
+
+Crea o modifica la plantilla para incluir un botón de tipo **Visitar sitio web**:
+
+| Campo | Ejemplo |
+| --- | --- |
+| URL base del botón | `https://example.com/pedido/` |
+| Texto del botón | Ver pedido |
+
+**Úsala cuando** cada destinatario necesita un enlace distinto (por ejemplo, con el número de pedido o el ID del contacto al final). Meta aprueba la URL base una sola vez y, al enviar, solo se completa la parte final dinámica.
+
+<Tip>
+Si quieres además medir quién toca el botón y reaccionar con una automatización, usa un enlace de disparo en el botón de la plantilla.
+</Tip>
+
+<Note>
+Recuerda que cualquier cambio de contenido en una plantilla aprobada requiere una nueva revisión de Meta. Si necesitas cambiar la estructura, suele ser más rápido crear una plantilla nueva.
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Enlaces de disparo en plantillas de WhatsApp" icon="link" href="/whatsapp/enlaces-de-disparo-en-plantillas">
+    Botones con seguimiento de clics para tus automatizaciones.
+  </Card>
+  <Card title="Error de parámetro no válido" icon="circle-exclamation" href="/whatsapp/error-parametro-invalido">
+    Otros errores con las variables de tus plantillas.
+  </Card>
+  <Card title="Plantillas de WhatsApp" icon="file-lines" href="/whatsapp/plantillas">
+    Cómo crear y enviar plantillas.
+  </Card>
+  <Card title="Por qué no puedes editar una plantilla" icon="pen-to-square" href="/whatsapp/por-que-no-puedo-editar-una-plantilla">
+    Qué hacer cuando necesitas cambiar una plantilla aprobada.
+  </Card>
+</CardGroup>

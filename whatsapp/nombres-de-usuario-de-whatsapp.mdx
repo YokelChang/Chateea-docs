@@ -1,0 +1,109 @@
+---
+title: "Nombres de usuario de WhatsApp: contactos sin número"
+description: "Cómo Chateea captura contactos que te escriben por WhatsApp con nombre de usuario en lugar de número de teléfono."
+icon: "at"
+---
+
+WhatsApp está incorporando los **nombres de usuario**, una función de privacidad que permite a las personas escribir a un negocio sin compartir su número de teléfono. Chateea ya está preparado: cuando alguien te escribe por primera vez con su nombre de usuario, se crea el contacto automáticamente y la conversación llega a tu bandeja como cualquier otro WhatsApp. Así no pierdes clientes potenciales por sus preferencias de privacidad.
+
+## Qué son los nombres de usuario y el BSUID
+
+Cuando un cliente usa un nombre de usuario en lugar de su número, WhatsApp asigna a esa relación un **identificador de usuario por negocio** (BSUID, Business-Scoped User ID).
+
+- Es **único por cliente y por negocio**: el mismo cliente tiene un BSUID distinto con cada negocio al que escribe.
+- Es **estable** mientras dure la relación con tu negocio.
+- Aparece en el mensaje donde normalmente iría el número de teléfono.
+- **Solo sirve para tu negocio**: un BSUID no puede usarse para escribir a ese cliente desde otro negocio.
+
+## Ventajas
+
+- **No pierdes clientes potenciales:** el contacto se crea automáticamente aunque no comparta su número.
+- **Sin configuración:** funciona con tu conexión de WhatsApp actual.
+- **Respeta la privacidad del cliente:** él decide cómo comparte sus datos y tú sigues pudiendo atenderlo.
+- **Preparado para el futuro:** a medida que más personas usen nombres de usuario, tu cuenta ya está lista.
+
+## Cómo se capturan estos contactos
+
+<Steps>
+  <Step title="El cliente te escribe">
+    Un cliente nuevo te envía un WhatsApp usando su nombre de usuario en lugar de compartir su número.
+  </Step>
+  <Step title="WhatsApp envía el nombre de usuario y el BSUID">
+    El mensaje llega con el nombre de usuario y el BSUID del cliente, sin número de teléfono.
+  </Step>
+  <Step title="Chateea crea el contacto">
+    Se crea un contacto nuevo con el nombre de usuario y el BSUID. La conversación aparece en **Conversaciones** como cualquier otro mensaje de WhatsApp.
+  </Step>
+  <Step title="Respondes y das seguimiento">
+    Con el BSUID ya disponible, puedes responder siguiendo las reglas habituales de WhatsApp: mensajes libres dentro de la ventana de 24 horas y plantillas aprobadas fuera de ella.
+  </Step>
+</Steps>
+
+## Qué no cambia
+
+Esta función se suma a lo que ya tienes, no reemplaza nada:
+
+- **Mensajes por número de teléfono:** envías y recibes exactamente igual que antes.
+- **Importación de contactos:** sigues importando contactos por número de teléfono.
+- **Contactos existentes:** tus fichas, historiales y automatizaciones activas no se ven afectados.
+
+<Note>
+  WhatsApp sigue compartiendo el número de teléfono con clientes existentes o que interactuaron recientemente con tu negocio (por ejemplo, dentro de un periodo reciente o si ya están en tu libreta de contactos de Meta). El número se oculta sobre todo en contactos totalmente nuevos cuyo primer mensaje llega con nombre de usuario. Meta sigue ajustando este comportamiento.
+</Note>
+
+## Cómo escribir a estos contactos
+
+<Warning>
+  **No puedes iniciar una conversación con un contacto que solo tiene nombre de usuario.** WhatsApp no ofrece búsqueda por nombre de usuario y solo enruta mensajes por número de teléfono o BSUID. Por eso no es posible hacer prospección en frío a un nombre de usuario.
+</Warning>
+
+Una vez que el contacto te escribe primero, su BSUID queda guardado y puedes responderle con las reglas normales de la ventana de 24 horas y de plantillas.
+
+Si necesitas su número, puedes pedírselo dentro del chat con un mensaje interactivo. Te lo explicamos en [Pedir el número de teléfono a un contacto](/whatsapp/pedir-numero-de-telefono-por-whatsapp).
+
+## Disponibilidad por país
+
+Los nombres de usuario están en fase beta en Meta y se habilitan de forma gradual por país. Chateea los admite en todos los mercados donde Meta los active, sin que tengas que hacer nada.
+
+| Mercados | Estado |
+| --- | --- |
+| Argelia, Azerbaiyán, Ghana, Libia, Nepal | Habilitado |
+| Colombia, República Dominicana, Singapur, Malasia, Perú | Habilitado |
+| Otros mercados | Se irán sumando a medida que Meta amplíe la disponibilidad |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Pierdo clientes potenciales si usan nombre de usuario?">
+    No. Chateea crea el contacto automáticamente la primera vez que te escriben.
+  </Accordion>
+  <Accordion title="¿Puedo escribirle primero a un cliente que usa nombre de usuario?">
+    No. WhatsApp no permite buscar por nombre de usuario. Solo puedes responder cuando el cliente te escribe primero.
+  </Accordion>
+  <Accordion title="¿Tengo que configurar algo?">
+    No. Funciona automáticamente en los países donde Meta lo tiene habilitado.
+  </Accordion>
+  <Accordion title="¿Puedo guardar o exportar el nombre de usuario en un campo personalizado?">
+    Por ahora no. El nombre de usuario todavía no se guarda en un campo dedicado ni se puede exportar.
+  </Accordion>
+  <Accordion title="¿Cambia algo en mis contactos y mensajes actuales?">
+    No. Todo lo que funciona por número de teléfono sigue igual.
+  </Accordion>
+  <Accordion title="¿Qué es exactamente el BSUID?">
+    Es un identificador único que WhatsApp crea para la relación entre un cliente con nombre de usuario y tu negocio. Te permite responder y mantener la conversación sin conocer su número.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Pedir el número de teléfono por WhatsApp" icon="address-card" href="/whatsapp/pedir-numero-de-telefono-por-whatsapp">
+    Solicita el número dentro del chat.
+  </Card>
+  <Card title="Escribir por nombre de usuario en el celular" icon="mobile" href="/whatsapp/escribir-por-nombre-de-usuario-en-la-app-movil">
+    Envía mensajes a contactos sin número desde la app.
+  </Card>
+  <Card title="Verificar la ventana de atención" icon="clock" href="/whatsapp/verificar-ventana-de-atencion">
+    Cuándo puedes enviar mensajes libres.
+  </Card>
+</CardGroup>

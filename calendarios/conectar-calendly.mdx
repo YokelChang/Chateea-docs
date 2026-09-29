@@ -1,0 +1,112 @@
+---
+title: "Conectar Calendly"
+description: "Conecta tu cuenta de Calendly para que sus reservas entren como citas y creen contactos automáticamente."
+icon: "plug"
+---
+
+Si tus clientes ya reservan contigo en Calendly, puedes conectar tu cuenta a Chateea para que esas reservas entren automáticamente como citas. Con cada reserva se crea o actualiza el contacto, y puedes usar esas citas para disparar automatizaciones, igual que con cualquier cita de tus calendarios de Chateea.
+
+## Para qué te sirve
+
+- Importas automáticamente las nuevas reservas de Calendly como citas.
+- Creas contactos a partir de las personas que reservan.
+- Asignas las citas al usuario que corresponde según el calendario.
+- Sincronizas calendarios personales o compartidos de Calendly.
+- Activas flujos de trabajo con cada nueva reserva.
+
+## Antes de empezar
+
+- Tu cuenta de Calendly debe tener un plan **Standard**, **Teams** o **Enterprise**. Los planes **Free** y **Essentials** no son compatibles.
+- Cada usuario puede conectar **una sola cuenta de Calendly** en su cuenta de Chateea.
+- Una misma cuenta de Calendly se puede conectar en varias cuentas de Chateea a las que pertenezcas.
+
+## Cómo conectar Calendly
+
+<Steps>
+  <Step title="Abre la configuración de calendarios">
+    En el menú lateral, entra a **Calendarios** y haz clic en **Configuración de calendarios**, arriba a la derecha.
+  </Step>
+  <Step title="Ve a Conexiones">
+    Abre la pestaña **Conexiones**, donde administras todos tus calendarios externos.
+  </Step>
+  <Step title="Agrega una nueva conexión">
+    Haz clic en **+ Agregar nueva**.
+  </Step>
+  <Step title="Elige Calendly">
+    Busca **Calendly** en la lista y haz clic en **Conectar**.
+  </Step>
+  <Step title="Inicia sesión en Calendly">
+    Escribe el correo de tu cuenta de Calendly y haz clic en **Continuar**. También puedes entrar con Google o Microsoft si así ingresas a Calendly. Autoriza el acceso.
+  </Step>
+  <Step title="Elige los calendarios">
+    Selecciona los calendarios de Calendly que quieres sincronizar. Solo las reservas de esos calendarios entrarán como citas.
+  </Step>
+  <Step title="Acepta y guarda">
+    Marca la casilla de consentimiento para que Chateea pueda leer tus eventos de Calendly y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+Al conectar, Chateea importa automáticamente tus eventos futuros y los eventos pasados creados en los últimos 180 días.
+
+<Warning>
+  Los flujos de trabajo solo se activan con eventos futuros. Los eventos pasados que se importan al conectar Calendly no disparan automatizaciones.
+</Warning>
+
+## Sincronizar el teléfono del invitado
+
+Calendly puede tener el teléfono del invitado en dos lugares: en la ubicación de la reunión o en un campo del formulario de preguntas. Chateea decide qué número guardar en el contacto así:
+
+| Situación | Qué pasa |
+| --- | --- |
+| El teléfono está en la ubicación de la reunión y el formulario no tiene campos de teléfono | Se sincroniza automáticamente el teléfono de la ubicación |
+| El formulario de Calendly tiene un campo de teléfono | Aparece una pantalla para que elijas la fuente: el campo del formulario, el teléfono de la ubicación (si existe) o **No sincronizar** |
+| No hay teléfono en ninguno de los dos lugares | Se omite este paso, sin mensajes ni errores |
+
+<Note>
+  En calendarios compartidos, si un usuario cambia la opción de sincronización del teléfono, el cambio aplica a todos los usuarios conectados a ese calendario.
+</Note>
+
+## Cómo cambiar los calendarios sincronizados
+
+<Steps>
+  <Step title="Abre la conexión">
+    En **Calendarios → Configuración de calendarios → Conexiones**, busca tu conexión de Calendly y haz clic en el ícono de lápiz.
+  </Step>
+  <Step title="Marca o desmarca calendarios">
+    Selecciona los calendarios que quieres sincronizar y quita los que ya no necesitas.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. Los eventos de los calendarios nuevos empiezan a sincronizarse desde ese momento.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo conectar varias cuentas de Calendly a un mismo usuario?">
+    No. Cada usuario puede conectar una sola cuenta de Calendly en su cuenta de Chateea.
+  </Accordion>
+  <Accordion title="¿Varios usuarios pueden usar la misma cuenta de Calendly?">
+    Sí. Una misma cuenta de Calendly se puede conectar a varios usuarios en distintas cuentas de Chateea.
+  </Accordion>
+  <Accordion title="¿Qué planes de Calendly son compatibles?">
+    Solo Standard, Teams y Enterprise. Free y Essentials no funcionan con esta integración.
+  </Accordion>
+  <Accordion title="¿Qué pasa si estoy en periodo de prueba de Calendly?">
+    Puedes conectar Calendly durante la prueba. Si al terminar no pasas a un plan compatible, la integración deja de funcionar.
+  </Accordion>
+  <Accordion title="¿Puedo editar en Chateea los eventos que vienen de Calendly?">
+    No. La sincronización es en un solo sentido, así que cualquier cambio se hace directamente en Calendly.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo se sincroniza Calendly" icon="rotate" href="/calendarios/como-se-sincroniza-calendly">
+    Qué datos se importan y cómo se asignan las citas.
+  </Card>
+  <Card title="Conectar Google Calendar" icon="google" href="/calendarios/conectar-google-calendar">
+    Sincroniza tu calendario de Google.
+  </Card>
+</CardGroup>

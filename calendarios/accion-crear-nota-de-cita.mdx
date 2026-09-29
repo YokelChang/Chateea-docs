@@ -1,0 +1,75 @@
+---
+title: "Acción de flujo: crear nota de cita"
+description: "Agrega notas internas a las citas de forma automática desde tus flujos de trabajo."
+icon: "bolt"
+---
+
+La acción **Crear nota de cita** (Create Appointment Note), dentro de la categoría **Citas** de los flujos de trabajo, agrega una nota interna a una cita de forma automática. Te sirve para dejar registro de lo que pasa alrededor de una cita (por ejemplo, datos que llegan de otro sistema o recordatorios para tu equipo) sin que nadie tenga que escribirlo a mano.
+
+## Datos que usa la acción
+
+| Campo | Tipo | Cuándo es obligatorio |
+| --- | --- | --- |
+| ID de la cita (`appointmentId`) | Texto | Solo si el flujo empieza con un **Webhook entrante** |
+| Contenido de la nota (`body`) | Texto, máximo 5.000 caracteres | Siempre |
+
+## Cómo funciona
+
+- **Con un disparador de citas** (por ejemplo, **Estado de la cita** o **Cliente agendó una cita**): no necesitas el ID de la cita. La nota se agrega a la cita que activó el flujo.
+- **Con un disparador de Webhook entrante:** debes enviar el ID de la cita para que la nota se agregue a la cita correcta.
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Crear flujo de trabajo → Empezar desde cero**.
+  </Step>
+  <Step title="Agrega un disparador">
+    Elige un disparador como **Webhook entrante**, **Estado de la cita** o **Cliente agendó una cita**.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **Agregar acción → Crear nota de cita** y escribe un nombre para la acción.
+  </Step>
+  <Step title="Completa los campos">
+    Llena el ID de la cita (si hace falta) y el contenido de la nota, según tu disparador. Guarda la acción.
+  </Step>
+</Steps>
+
+### Si usas un Webhook entrante
+
+- **ID de la cita:** usa el valor personalizado `{{inboundWebhookRequest.appointmentId}}`.
+- **Contenido de la nota:** usa el valor personalizado `{{inboundWebhookRequest.body}}`.
+
+El webhook que envías debe incluir los campos `appointmentId` y `body`. Por ejemplo:
+
+```json
+{
+  "appointmentId": "ID_DE_LA_CITA",
+  "body": "El cliente pidió traer sus resultados de laboratorio."
+}
+```
+
+### Si usas un disparador de citas
+
+- **ID de la cita:** no es necesario.
+- **Contenido de la nota:** escribe el texto que quieras. Puedes combinar texto fijo con valores personalizados del contacto o de la cita.
+
+## Dónde se ve la nota
+
+Las notas creadas con esta acción son notas internas de la cita. Aparecen también en el contacto, la oportunidad y la conversación relacionados, para que todo tu equipo vea el mismo contexto. Si alguien la edita o la borra después, el cambio se refleja en todos esos lugares.
+
+## Tenlo en cuenta
+
+- Si usas webhooks, confirma que el contenido que envías incluye tanto `appointmentId` como `body`.
+- El contenido de la nota tiene un máximo de **5.000 caracteres**.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Notas de las citas" icon="note-sticky" href="/calendarios/notas-de-citas">
+    Cómo se crean, organizan y sincronizan las notas.
+  </Card>
+  <Card title="Acción de flujo: agendar cita" icon="calendar-plus" href="/calendarios/accion-agendar-cita-en-flujos">
+    Crea citas automáticamente desde un flujo.
+  </Card>
+</CardGroup>

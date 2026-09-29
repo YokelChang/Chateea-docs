@@ -1,0 +1,183 @@
+---
+title: "Importar empresas de forma masiva con un archivo CSV"
+description: "Crea o actualiza cientos de empresas a la vez con un CSV: modos de importación, relación de campos, duplicados y seguimiento del resultado."
+icon: "file-import"
+---
+
+Si tienes tus empresas en una hoja de cálculo o en otro CRM, no hace falta crearlas una por una. Con la importación masiva subes un archivo CSV y Chateea crea empresas nuevas, actualiza las que ya existen o hace ambas cosas en una sola operación. Un asistente guiado te acompaña para subir el archivo, relacionar columnas con campos, detectar duplicados y revisar todo antes de procesar.
+
+## Para qué te sirve
+
+- **Migrar desde otro CRM** sin volver a capturar datos a mano.
+- **Actualizar en bloque** teléfonos, direcciones o campos personalizados de cientos de empresas.
+- **Sincronizar** periódicamente la información que recibes de otro sistema (por ejemplo, una exportación mensual con clientes nuevos y cambios en los existentes).
+- **Controlar la calidad**: el asistente valida el archivo, detecta duplicados y al final te entrega informes de éxito y de errores.
+
+## Antes de empezar
+
+Revisa que se cumplan estos requisitos:
+
+- Tu usuario tiene permiso para acceder a **Empresas**.
+- El archivo está guardado en formato `.csv`, idealmente con codificación UTF-8 para que los acentos y la ñ se vean bien.
+- La primera fila contiene los encabezados de columna.
+- Incluyes los campos obligatorios de la empresa (como mínimo, el nombre).
+- Los campos personalizados de empresa a los que quieres importar datos **ya están creados**. Chateea no crea campos personalizados automáticamente durante la importación.
+- Si vas a actualizar empresas existentes, tu archivo incluye el **ID de la empresa** (Record ID) de cada fila.
+
+<Note>
+Si no ves el botón **Importar** en **Contactos → Empresas**, entra en **Configuración → Labs** y activa la opción de importación de empresas y objetos personalizados (Company and Custom Object Import). Si tampoco aparece ahí, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+<Tip>
+¿No tienes a mano los ID de tus empresas? Exporta primero tus empresas desde Chateea: el archivo descargado incluye el ID de cada una y puedes usarlo como plantilla para la actualización.
+</Tip>
+
+### Errores comunes al preparar el CSV
+
+Casi todos los fallos de importación vienen del archivo. Antes de subirlo, evita:
+
+- Encabezados en blanco o columnas con el mismo nombre.
+- Campos obligatorios vacíos.
+- Fechas con formatos distintos dentro de la misma columna.
+- Espacios de más al inicio o al final de valores importantes.
+- Correos o teléfonos mal escritos.
+- Caracteres especiales no compatibles.
+- Filas duplicadas y columnas vacías que no vas a usar.
+- Texto en campos numéricos o valores que superan la longitud permitida del campo.
+
+## Modos de importación
+
+Elige el modo según lo que quieras hacer con cada fila del archivo:
+
+| Modo | Qué hace | Cuándo usarlo |
+| --- | --- | --- |
+| **Crear empresas** | Solo crea registros nuevos. | Migras empresas a Chateea por primera vez. |
+| **Actualizar empresas** | Solo modifica empresas que ya existen. Necesita un identificador fiable, como el ID de la empresa. | Quieres corregir teléfonos o direcciones sin crear registros nuevos. |
+| **Crear y actualizar empresas** | Actualiza las que ya existen y crea las que no. | Recibes un archivo mixto con clientes nuevos y cambios en los actuales. |
+
+<Warning>
+Con el modo **Crear empresas** no se buscan coincidencias para actualizar, así que si el archivo trae empresas que ya existen en tu cuenta podrías generar duplicados.
+</Warning>
+
+## Cómo importar empresas
+
+<Steps>
+<Step title="Inicia la importación">
+Ve a **Contactos → Empresas** y haz clic en **Importar**. Si se te pide elegir el tipo de objeto, selecciona **Empresas**.
+</Step>
+<Step title="Elige el modo de importación">
+Selecciona **Crear empresas**, **Actualizar empresas** o **Crear y actualizar empresas** y haz clic en **Siguiente**.
+</Step>
+<Step title="Sube tu archivo CSV">
+Arrastra el archivo al área de carga o haz clic para seleccionarlo. Chateea valida el archivo antes de pasar al siguiente paso. Si vas a actualizar registros, elige el **ID de la empresa** como criterio para detectar duplicados.
+</Step>
+<Step title="Relaciona las columnas con los campos">
+Chateea intenta relacionar cada columna del CSV con un campo de empresa y te muestra datos de vista previa de tu archivo. Revisa cada columna: confirma el campo detectado, corrígelo si hace falta, ignora las columnas que no necesitas y comprueba que los campos personalizados queden bien relacionados.
+</Step>
+<Step title="Verifica la configuración">
+Antes de procesar, revisa el resumen: modo de importación, número de registros, relación de campos, criterio de duplicados y la opción para valores vacíos (explicada más abajo). Si todo está correcto, haz clic en **Iniciar importación masiva** (Start Bulk Import).
+</Step>
+</Steps>
+
+<Note>
+Revisa con calma la relación de campos. Si una columna queda en el campo equivocado, los datos aparecerán en el lugar incorrecto y tendrás que corregirlos a mano o volver a importar.
+</Note>
+
+## ID de la empresa y detección de duplicados
+
+El ID de la empresa (Record ID) identifica cada registro de forma única en Chateea. Usarlo en las importaciones de actualización garantiza que se modifique la empresa correcta aunque haya varias con nombres parecidos.
+
+| Empresa | ID de la empresa |
+| --- | --- |
+| Manufacturas ABC | 672918 |
+| Logística XYZ | 918234 |
+
+Según el modo que elijas, Chateea compara cada fila con tus empresas usando el ID de la empresa o los campos únicos configurados. El resultado de cada fila puede ser:
+
+- Se creó una empresa nueva.
+- Se actualizó una empresa existente.
+- Se detectó un duplicado.
+- Se generó un error de validación.
+
+Si no tienes los ID, configura un campo único de empresa para que sirva de criterio de coincidencia siempre que sea posible.
+
+## Qué pasa con las celdas vacías
+
+En el paso de verificación decides cómo tratan las celdas en blanco del CSV a los datos que ya existen:
+
+| Opción | Resultado |
+| --- | --- |
+| **Actualizar con valores vacíos** activada | Una celda vacía borra el valor existente. Ejemplo: la empresa tiene el teléfono (555) 123-4567 y la celda del CSV está en blanco, así que el teléfono queda vacío. |
+| **No actualizar con valores vacíos** (Don't update to empty value) | Las celdas vacías se ignoran y el valor existente se conserva. |
+
+<Warning>
+En actualizaciones de rutina, usa la opción que **no** actualiza con valores vacíos. Así evitas borrar información por accidente si tu archivo tiene celdas en blanco.
+</Warning>
+
+## Seguir el progreso en Acciones masivas
+
+La importación se procesa en segundo plano. Para ver cómo va, entra en **Acciones masivas** (Bulk Actions) y busca la importación de empresas. Para cada importación verás:
+
+- Estado y registros procesados.
+- **Éxitos**: empresas creadas o actualizadas correctamente.
+- **Errores**: filas que no se importaron por problemas de validación o del sistema.
+- **Advertencias**: filas importadas con algún detalle que conviene revisar (por ejemplo, un campo opcional vacío).
+- Hora de finalización.
+
+Según el estado, puedes ver los detalles, pausar, reanudar o cancelar la importación, y descargar el **informe de errores** o el **informe de éxitos**. El informe detalla fila por fila qué pasó y por qué.
+
+## Buenas prácticas
+
+- **Haz una copia de seguridad**: exporta tus empresas antes de una actualización grande.
+- **Prueba con una muestra**: importa primero un archivo de 5 a 20 filas y revisa el resultado.
+- **Divide los archivos muy grandes**: si tienes miles de registros, importarlos por lotes facilita encontrar y corregir errores.
+- **Crea antes los campos personalizados** que vas a usar.
+- **Revisa la relación de campos** antes de iniciar.
+- **Descarga el informe de errores** en cuanto termine, corrige esas filas y vuelve a importar solo las afectadas.
+- **Abre algunas empresas importadas** para confirmar que los datos quedaron donde esperabas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo importar empresas nuevas y existentes a la vez?">
+Sí. Usa el modo **Crear y actualizar empresas**.
+</Accordion>
+<Accordion title="¿Hay un límite de registros por importación?">
+No hay un límite fijo documentado, pero es recomendable dividir los archivos muy grandes en lotes para que el procesamiento sea más ágil y los errores sean más fáciles de revisar.
+</Accordion>
+<Accordion title="¿Necesito incluir el ID de la empresa en el archivo?">
+Solo si vas a actualizar empresas existentes o quieres detectar duplicados con precisión. Al crear empresas nuevas, Chateea genera el ID automáticamente.
+</Accordion>
+<Accordion title="¿Puedo importar campos personalizados de empresa?">
+Sí. En el paso de relación de campos aparecen todos los campos disponibles, incluidos los personalizados. Deben existir antes de iniciar la importación.
+</Accordion>
+<Accordion title="¿Puedo detener una importación que ya empezó?">
+Según su estado, desde **Acciones masivas** puedes pausarla o cancelarla.
+</Accordion>
+<Accordion title="¿Puedo deshacer una importación?">
+No. Las importaciones no se pueden revertir automáticamente. Si algo sale mal, tendrás que corregir los registros, volver a importar datos corregidos o eliminar las empresas en bloque. Por eso conviene probar primero con una muestra.
+</Accordion>
+<Accordion title="¿La importación asocia las empresas con contactos u oportunidades?">
+No. La importación de empresas solo crea o actualiza registros de empresa. Las asociaciones se gestionan por separado.
+</Accordion>
+<Accordion title="¿Dónde descargo el informe de la importación?">
+En **Acciones masivas**, busca la importación terminada y usa la opción de descarga para obtener el informe con el resultado de cada fila.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Exportar empresas a CSV" icon="file-export" href="/crm/exportar-empresas-csv">
+Descarga tus empresas para respaldarlas o usarlas como plantilla.
+</Card>
+<Card title="Crear empresas al importar contactos" icon="users" href="/crm/crear-empresas-al-importar-contactos">
+Genera y asocia empresas a partir del nombre del negocio de tus contactos.
+</Card>
+<Card title="Importar registros de objetos personalizados" icon="file-import" href="/crm/importar-registros-de-objetos-personalizados">
+Usa el mismo asistente con tus objetos personalizados.
+</Card>
+<Card title="Eliminar empresas en bloque" icon="trash" href="/crm/eliminar-empresas-en-bloque">
+Limpia registros de prueba o importados por error.
+</Card>
+</CardGroup>

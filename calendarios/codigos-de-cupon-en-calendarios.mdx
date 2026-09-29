@@ -1,0 +1,134 @@
+---
+title: "Códigos de cupón en calendarios"
+description: "Ofrece descuentos con cupones en el widget de reservas y revisa su uso en la pestaña Pagos de la cita."
+icon: "ticket"
+---
+
+Con los códigos de cupón puedes ofrecer descuentos en las citas que tus clientes reservan desde el widget de reservas. El cliente escribe el código al pagar, el precio se recalcula al instante y el descuento queda registrado en la pestaña **Pagos** de la cita. Tú decides si el descuento es un porcentaje o un monto fijo, cuánto tiempo es válido, cuántas veces se puede usar y en qué calendarios aplica.
+
+## Para qué te sirve
+
+- **Más reservas:** un descuento oportuno reduce el abandono en el pago.
+- **Promociones flexibles:** usa porcentajes o montos fijos para campañas de temporada o por tiempo limitado.
+- **Control total:** limita cuántas veces se usa un cupón en total o por cliente.
+- **Mejor experiencia:** el cliente aplica o quita el código en el widget y ve el nuevo precio de inmediato.
+
+## Dónde funcionan los cupones
+
+| Caso | ¿Admite cupones? |
+| --- | --- |
+| Todos los calendarios, con el widget de reservas nuevo o el clásico | Sí |
+| Servicios (versión 2) | Sí |
+| Menú de servicios antiguo (versión 1) | No. Te recomendamos pasarte a Servicios (versión 2) |
+| Citas creadas manualmente desde la ventana de nueva cita | No. Los cupones solo se aplican desde el widget de reservas |
+
+## Cómo usar cupones en tus calendarios
+
+<Steps>
+  <Step title="Activa los pagos y los cupones en el calendario">
+    Abre los ajustes del calendario y ve a **Formularios y pagos**. Activa **Aceptar pagos** y, más abajo, activa **Habilitar código de cupón**. Esto agrega un campo de cupón a tu widget de reservas.
+  </Step>
+  <Step title="Crea el cupón">
+    Ve a **Pagos → Cupones** y haz clic en **Nuevo cupón**. Configura las opciones que se explican más abajo y guarda.
+  </Step>
+  <Step title="Comparte el código">
+    Envía el código a tus clientes por tus campañas, WhatsApp, correo o redes sociales.
+  </Step>
+  <Step title="Revisa su uso">
+    Abre cualquier cita reservada con cupón y consulta la pestaña **Pagos** para ver el descuento aplicado.
+  </Step>
+</Steps>
+
+<Note>
+  Al activar **Aceptar pagos**, Chateea crea automáticamente un producto con la etiqueta *Calendario* en tu lista de productos. Ese producto no se puede borrar. Además, los cupones se activan calendario por calendario: hazlo en cada uno donde quieras usarlos.
+</Note>
+
+<Info>
+  En **Servicios**, la visibilidad del cupón se controla de forma global desde **Calendarios → Servicios → Configuración global → Configuración de pagos**. Si desactivas los cupones ahí, el campo se oculta de la página de reservas de servicios.
+</Info>
+
+### Opciones del cupón
+
+| Opción | Qué hace |
+| --- | --- |
+| Código del cupón | El texto que escribirá el cliente, por ejemplo `10OFF`. También puedes hacer clic en **Generar** para crear uno automático. |
+| Tipo de cupón | **Porcentaje** (por ejemplo, 10 % de descuento) o **Monto fijo**. |
+| Descuento | El porcentaje o el monto que se descuenta. |
+| Fecha y hora de inicio y fin | El periodo en que el cupón es válido. |
+| Limitar canjes | Opcional. Máximo de veces que se puede usar en total. |
+| Limitar a productos u ofertas | Los calendarios o productos donde aplica el cupón. |
+| Un uso por cliente | Evita que el mismo cliente lo use más de una vez. |
+
+## Qué ve tu cliente
+
+Al reservar desde el widget, el cliente ve un campo para escribir el código:
+
+- **Si el código es válido:** el descuento se aplica al instante y ve el total ajustado antes de pagar.
+- **Si no es válido:** aparece un mensaje de error.
+
+Cuando el calendario cobra por adelantado, el monto final después del cupón define si se cobra:
+
+- Si queda un monto mayor a cero, el cliente ingresa sus datos de pago y paga el precio con descuento.
+- Si el cupón deja el total en cero, la reserva continúa sin pedir tarjeta ni procesar ningún pago.
+
+## Dónde ver los descuentos aplicados
+
+En la pestaña **Pagos** de la cita encuentras:
+
+- El cupón aplicado.
+- El monto del descuento.
+- El total ajustado.
+- El desglose de pagos por asistente.
+
+## Órdenes, facturas y reservas gratuitas
+
+Estas reglas explican cómo se registran los pagos de los calendarios cuando hay cupones de por medio:
+
+- **Se crean órdenes, no facturas parciales.** Cuando una reserva tiene un pago parcial, ya no se crea una factura parcialmente pagada: se crea una **orden**, y puedes cobrar el saldo contra esa orden.
+- **Siempre hay orden si el calendario cobra.** Si el calendario tiene pagos activados, se crea una orden en cada reserva, aunque no se cobre nada en ese momento. Si el calendario no tiene pagos, no se crea orden.
+- **Las reservas de cero no piden tarjeta.** Si el precio configurado es cero, o un cupón lo deja en cero, el cliente no tiene que ingresar tarjeta y no se registra ningún pago de cero.
+
+<Tip>
+  Si quieres guardar la tarjeta del cliente sin cobrarle al reservar, usa la opción **Guardar tarjeta en archivo** (Collect Card on File) en lugar de configurar un cobro por adelantado de cero.
+</Tip>
+
+<Warning>
+  Si tienes flujos de trabajo con el disparador **Factura creada** para reservas de calendario, cámbialo por **Orden creada** para que sigan funcionando.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cómo veo el descuento después de la reserva?">
+    Abre la cita y entra a la pestaña **Pagos**. Verás el descuento del cupón, el monto pagado y el saldo pendiente.
+  </Accordion>
+  <Accordion title="¿Puedo editar o desactivar un cupón que ya está activo?">
+    Sí. Ábrelo en **Pagos → Cupones** para cambiar límites o fechas, o para desactivarlo. Los cambios aplican a las reservas futuras.
+  </Accordion>
+  <Accordion title="¿Cómo pruebo un cupón sin cobrar una tarjeta real?">
+    Pon el **modo de pago** del calendario en **Prueba**, haz una reserva con las tarjetas de prueba de tu pasarela (por ejemplo, las tarjetas de prueba de Stripe) y vuelve a **En vivo** al terminar.
+  </Accordion>
+  <Accordion title="¿Un cliente puede usar varios cupones en la misma reserva?">
+    No. Solo se admite un código por pago. El cliente puede quitar un código y aplicar otro antes de pagar.
+  </Accordion>
+  <Accordion title="¿Los códigos distinguen mayúsculas y minúsculas?">
+    No. Si el cupón es `SUMMER25` y el cliente escribe `Summer25`, el descuento se aplica igual.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Pestaña de pagos en las citas" icon="credit-card" href="/calendarios/pestana-de-pagos-en-citas">
+    Revisa y cobra los pagos de cada cita.
+  </Card>
+  <Card title="Cobrar un anticipo en reservas" icon="money-bill" href="/calendarios/cobrar-anticipo-en-reservas">
+    Pide solo una parte del pago al reservar.
+  </Card>
+  <Card title="Agregar invitados en reservas" icon="user-plus" href="/calendarios/agregar-invitados-en-reservas">
+    Permite que tus clientes reserven para más personas.
+  </Card>
+  <Card title="Pagar en cuotas con Klarna y Affirm" icon="wallet" href="/calendarios/pagar-en-cuotas-con-klarna-y-affirm">
+    Ofrece pagos en cuotas al reservar.
+  </Card>
+</CardGroup>

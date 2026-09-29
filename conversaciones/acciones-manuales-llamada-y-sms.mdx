@@ -1,0 +1,89 @@
+---
+title: "Crea acciones manuales de llamada y SMS"
+description: "Haz que tus flujos creen tareas de llamada o SMS para que una persona de tu equipo contacte al cliente en el momento justo."
+icon: "phone-volume"
+---
+
+Las acciones manuales combinan lo mejor de la automatización con el trato humano. En lugar de que el flujo de trabajo envíe un mensaje o haga algo por su cuenta, crea una **tarea** para que una persona de tu equipo llame o escriba al contacto. El flujo decide a quién y cuándo; tu equipo pone la conversación.
+
+Hay dos tipos:
+
+| Acción | Qué genera |
+| --- | --- |
+| **Acción manual de llamada** | Una tarea para llamar al contacto |
+| **Acción manual de SMS** | Una tarea para enviarle un mensaje de texto personalizado |
+
+Las tareas aparecen en **Conversaciones → Acciones manuales**, donde el equipo las trabaja una por una.
+
+## Cuándo conviene usarlas
+
+- **Seguimiento de ventas:** llamar a cada prospecto que pidió una cotización, en lugar de mandarle solo un correo automático.
+- **Atención personalizada:** que alguien responda en persona a clientes importantes o a consultas delicadas.
+- **Aprobaciones y verificaciones:** revisar respuestas o datos antes de seguir con el proceso.
+- **Flujos complejos:** poner un punto de control humano para atender casos que requieren criterio.
+- **Información urgente:** asegurarte de que alguien contacte al cliente de inmediato cuando algo es sensible al tiempo.
+
+## Agrega una acción manual a un flujo
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo** y pulsa **Crear flujo de trabajo**, o abre uno existente.
+  </Step>
+  <Step title="Elige el disparador">
+    Pulsa **Agregar disparador** (Add Trigger) y elige el evento que debe generar la tarea: una etiqueta agregada, un formulario enviado, una cita agendada, un cambio de etapa en el pipeline, entre otros.
+  </Step>
+  <Step title="Agrega la acción">
+    Pulsa el ícono **+** debajo del disparador y elige **Acción manual de llamada** (Manual Action To Call) o **Acción manual de SMS**.
+  </Step>
+  <Step title="Configúrala">
+    Ponle un nombre claro a la acción, por ejemplo "Llamar a prospecto de cotización". Si lo necesitas, asígnala a un usuario específico o reparte las tareas de forma rotativa entre el equipo.
+  </Step>
+  <Step title="Guarda y publica">
+    Pulsa **Guardar** y luego **Publicar**. A partir de ahí, cada contacto que entre al flujo generará una tarea.
+  </Step>
+</Steps>
+
+<Tip>
+  Coloca una acción de espera antes de la acción manual si no quieres que la tarea aparezca en el mismo segundo. Por ejemplo, espera 10 minutos después de un formulario para darle tiempo a tu respuesta automática.
+</Tip>
+
+## Dónde se completan las tareas
+
+### En la computadora
+
+Ve a **Conversaciones → Acciones manuales**. Verás la lista de tareas generadas por tus flujos con su estado (**Por llamar**, **Completada** u **Omitida**). Pulsa **Comencemos** (Let's Start) para empezar a trabajarlas en orden. Todos los detalles están en [La cola de acciones manuales](/conversaciones/cola-de-acciones-manuales).
+
+### En la aplicación móvil
+
+1. Abre el menú principal de la aplicación móvil de Chateea.
+2. Toca **Acciones manuales**.
+3. Toca el botón azul de **reproducir** para abrir las tareas pendientes.
+4. Si es una llamada, al terminar aparece una ventana para elegir cómo fue la llamada. Ese resultado se refleja en tus informes de llamadas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo asignar las tareas a un usuario específico?">
+    Sí. En la acción manual puedes asignar la tarea a un usuario o repartirla de forma rotativa.
+  </Accordion>
+  <Accordion title="¿Dónde anoto el resultado de la llamada?">
+    Al trabajar la tarea puedes registrar el resultado, y las notas quedan en la ficha del contacto.
+  </Accordion>
+  <Accordion title="¿Cómo empiezo una tarea?">
+    En **Conversaciones → Acciones manuales**, pulsa **Comencemos**.
+  </Accordion>
+  <Accordion title="¿Puedo usar acciones manuales en campañas?">
+    Las campañas y los disparadores antiguos están en desuso. Usa flujos de trabajo, que ofrecen más opciones.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="La cola de acciones manuales" icon="list-check" href="/conversaciones/cola-de-acciones-manuales">
+    Filtra, trabaja y comparte las tareas de tu equipo.
+  </Card>
+  <Card title="La bandeja de conversaciones" icon="inbox" href="/conversaciones/bandeja-unificada">
+    Responde a tus clientes desde un solo lugar.
+  </Card>
+</CardGroup>

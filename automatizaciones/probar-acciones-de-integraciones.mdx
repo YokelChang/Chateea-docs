@@ -1,0 +1,87 @@
+---
+title: "Probar acciones de integraciones"
+description: "Ejecuta una acción de una aplicación externa desde el constructor, revisa la respuesta y fíjala como muestra."
+icon: "flask"
+---
+
+**Probar acción** te permite ejecutar una acción de una aplicación externa directamente desde el constructor de flujos, antes de publicar. La prueba hace una llamada real a la aplicación conectada, con tus datos de entrada y tu cuenta conectada, por el mismo camino que usará el flujo en producción. Así ya no tienes que publicar, inscribir un contacto de prueba y revisar registros para saber si algo funciona.
+
+## Dónde está disponible
+
+- **En cada acción de aplicaciones externas:** buscar un contacto, crear una tarjeta, enviar un mensaje, actualizar un registro y cualquier otra acción de las integraciones instaladas.
+- **Ejecución real:** la llamada se hace contra la aplicación con la misma cuenta conectada que usará el flujo.
+- **Resultado visible:** un panel lateral muestra lo que se envió, lo que respondió la aplicación y, si salió bien, te deja fijar esa respuesta como muestra.
+
+## Antes de probar
+
+La prueba solo se ejecuta si se cumple todo esto:
+
+- **Cuenta conectada:** la integración debe estar conectada (por OAuth o clave de API) en el selector **Cuenta conectada** de la acción.
+- **Campos obligatorios completos:** todos deben tener un valor fijo o una variable del flujo. El botón de prueba sigue desactivado hasta entonces.
+- **Datos de pasos anteriores disponibles:** si la acción usa el resultado de un paso anterior, ese paso debe tener una muestra guardada o haberse probado. El constructor te pedirá una si falta.
+- **Conexión con la aplicación:** si la aplicación está caída o limita tus peticiones, la prueba fallará y verás el código de error que devuelva.
+
+## Cómo hacer una prueba
+
+<Steps>
+  <Step title="Configura la acción">
+    Abre el flujo y haz clic en la acción que quieres probar (o agrega una). Elige la integración y la acción en la pestaña **Aplicaciones** y completa todos los campos obligatorios con valores fijos, variables del flujo o resultados de pasos anteriores.
+  </Step>
+  <Step title="Haz clic en Probar acción">
+    El botón **Probar acción** se activa cuando se cumplen los requisitos. Al hacer clic, se abre el panel de prueba a la derecha con un indicador de progreso.
+  </Step>
+  <Step title="Confirma si la acción modifica datos">
+    Si la acción crea o cambia información en la aplicación (crear un contacto, crear una tarjeta, actualizar un registro, enviar un mensaje), verás un aviso que indica que la prueba es real y puede crear o modificar datos. Haz clic en **Sí, ejecutar prueba** para continuar o en **Cancelar** para detenerla. Por seguridad, **Cancelar** es la opción seleccionada por defecto, así que pulsar Enter sin querer no ejecuta la prueba.
+  </Step>
+  <Step title="Revisa los datos enviados y recibidos">
+    Si la llamada sale bien, el panel muestra los **datos de entrada** y los **datos de salida**. Los campos clave aparecen destacados arriba y puedes desplegar el JSON completo debajo.
+  </Step>
+  <Step title="Fija la muestra">
+    Haz clic en **Usar como muestra** para fijar la estructura de la respuesta. Todos sus campos, incluidas listas y objetos anidados, quedan disponibles para los pasos siguientes y las condiciones.
+  </Step>
+  <Step title="Guarda y continúa">
+    Guarda la acción. Si la prueba falló, corrige el campo marcado en la configuración y vuelve a probar: puedes repetir la prueba todas las veces que necesites.
+  </Step>
+</Steps>
+
+<Warning>
+  Las pruebas son llamadas reales. Si pruebas acciones que crean registros o envían mensajes en tu cuenta de producción, usa datos claramente marcados como de prueba y bórralos después en la aplicación externa.
+</Warning>
+
+## Cómo leer el panel de prueba
+
+| Zona | Qué muestra |
+| --- | --- |
+| **Encabezado de estado** | El resultado (éxito, error o en curso), el código de estado HTTP y la duración de la llamada. |
+| **Datos de entrada** | Lo que realmente se envió a la aplicación, ya con las variables sustituidas. Úsalo para comprobar que cada variable tomó el valor esperado. |
+| **Datos de salida** | La respuesta tal como la devolvió la aplicación, con los campos clave destacados y el JSON completo desplegable. |
+
+Si la prueba sale bien, al final del panel aparece **Usar como muestra**. Si falla, verás una tarjeta con el detalle del error para que sepas qué corregir.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La prueba hace cambios reales en la aplicación externa?">
+    Sí. Es una llamada real, por eso las acciones que crean o modifican datos piden confirmación antes de ejecutarse.
+  </Accordion>
+  <Accordion title="¿Por qué el botón Probar acción está desactivado?">
+    Falta algún requisito: la cuenta no está conectada, hay campos obligatorios vacíos o un paso anterior del que dependes no tiene muestra guardada.
+  </Accordion>
+  <Accordion title="¿Para qué sirve Usar como muestra?">
+    Fija la estructura de la respuesta para que puedas usar cualquiera de sus campos en los pasos siguientes y en las condiciones del flujo.
+  </Accordion>
+  <Accordion title="¿Cuántas veces puedo repetir la prueba?">
+    Las que necesites. Corrige el campo con error y vuelve a probar.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="HubSpot en flujos de trabajo" icon="address-book" href="/automatizaciones/hubspot-en-flujos-de-trabajo">
+    Un ejemplo de integración con acciones que puedes probar.
+  </Card>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Qué revisar cuando un flujo no se comporta como esperas.
+  </Card>
+</CardGroup>

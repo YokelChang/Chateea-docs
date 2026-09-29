@@ -1,0 +1,150 @@
+---
+title: "Crear y actualizar varias filas en Google Sheets"
+description: "Escribe o modifica varias filas de una hoja de cálculo en una sola ejecución del flujo con la acción premium de Google Sheets."
+icon: "table"
+---
+
+La acción de Google Sheets de los flujos de trabajo puede crear o actualizar **varias filas** de una hoja de cálculo en una sola ejecución. Es útil cuando un flujo recibe datos agrupados (por ejemplo, los productos de un pedido o una lista de registros enviada por otro sistema) y quieres guardarlos todos de una vez, sin repetir la acción fila por fila.
+
+<Note>
+Es una acción premium: cada ejecución se descuenta de la **billetera** de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+</Note>
+
+## Qué ganas
+
+- **Registro más rápido:** varias filas en un solo paso en lugar de repetir la misma acción.
+- **Datos ordenados:** los registros relacionados quedan juntos en la hoja.
+- **Menos trabajo manual:** no tienes que agregar ni corregir filas a mano después.
+- **Menos errores:** cada columna se asigna directamente a un dato del flujo.
+- **Actualizaciones flexibles:** puedes cambiar valores en un rango de filas existentes.
+
+## Antes de empezar
+
+- Conecta tu cuenta de Google en Chateea.
+- Confirma en qué unidad de Google Drive está la hoja de cálculo.
+- Pon encabezados claros en la **primera fila** de la hoja: el flujo los usa como nombres de columna.
+- Revisa el nombre de la pestaña (hoja) que vas a usar.
+- Cada vez que agregues, renombres o reordenes columnas, usa **Actualizar encabezados** dentro de la acción.
+
+## Crear varias filas
+
+Usa **Crear varias filas** cuando el flujo debe agregar registros nuevos, no modificar los existentes.
+
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea o edita un flujo. Agrega el disparador que corresponda, por ejemplo **Webhook entrante**.
+  </Step>
+  <Step title="Agrega la acción de Google Sheets">
+    Haz clic en **+**, busca **Google Sheets** y conecta tu cuenta de Google si aún no lo has hecho.
+  </Step>
+  <Step title="Elige el tipo de acción">
+    En el desplegable de acciones selecciona **Crear varias filas** (Create Multiple Spreadsheet Rows).
+  </Step>
+  <Step title="Selecciona cuenta, unidad, hoja y pestaña">
+    Elige una de las cuentas de Google conectadas, la unidad de Drive, la hoja de cálculo y la pestaña donde se escribirán los datos.
+  </Step>
+  <Step title="Define las columnas">
+    Selecciona **Columna inicial** y **Columna final**. La primera fila se toma como encabezado y cada columna se identifica por su encabezado. Si cambiaste la hoja, haz clic en **Actualizar encabezados**.
+  </Step>
+  <Step title="Asigna los datos y guarda">
+    Asigna a cada columna el dato correspondiente del flujo y haz clic en **Guardar acción**.
+  </Step>
+</Steps>
+
+### Cómo se generan las filas
+
+La acción solo crea varias filas cuando la ejecución del flujo recibe los datos como una **lista (array) de objetos**:
+
+- Cada objeto de la lista se convierte en una fila.
+- Si la ejecución solo tiene los datos de un registro (por ejemplo, un contacto que entró al flujo), se crea una sola fila, igual que con la acción de fila única.
+- La acción **no espera ni agrupa** contactos que entran al flujo en momentos distintos. Escribe la lista que exista en esa ejecución concreta.
+
+Ejemplo de lista que crea tres filas:
+
+```json
+[
+  { "Nombre": "Sam", "Email": "sam@test.com", "Estado": "Nuevo" },
+  { "Nombre": "Arjun", "Email": "arjun@example.com", "Estado": "En proceso" },
+  { "Nombre": "Meera", "Email": "meera@example.com", "Estado": "Completado" }
+]
+```
+
+### Cómo hacer llegar una lista al flujo
+
+El flujo debe empezar con una lista de filas o construirla en algún paso anterior. Las formas más comunes:
+
+- Un disparador **Webhook entrante** que recibe un JSON con una lista de filas.
+- Una integración basada en webhook cuyo paso anterior devuelve una lista que asignas a esta acción.
+
+<Warning>
+Si quieres volcar miles de contactos que ya tienes en el CRM, inscribirlos en el flujo uno por uno genera una ejecución por contacto y no se agrupan automáticamente. Cada ejecución creará su propia fila.
+</Warning>
+
+**Casos de uso habituales:** registrar resultados repetidos de un flujo, guardar entradas agrupadas de una misma automatización y almacenar varios datos relacionados para seguimiento o informes.
+
+## Actualizar varias filas
+
+Usa **Actualizar varias filas** cuando las filas ya existen y el flujo debe cambiar sus valores dentro de un rango, sin crear duplicados.
+
+<Steps>
+  <Step title="Agrega la acción">
+    En el flujo, agrega **Google Sheets** y en el desplegable elige **Actualizar varias filas** (Update Multiple Spreadsheet Rows).
+  </Step>
+  <Step title="Selecciona cuenta, unidad, hoja y pestaña">
+    Elige la cuenta de Google, la unidad de Drive, la hoja de cálculo y la pestaña.
+  </Step>
+  <Step title="Indica desde qué fila actualizar">
+    Escribe el número de fila a partir del cual se actualizará la hoja.
+  </Step>
+  <Step title="Define las columnas">
+    Selecciona **Columna inicial** y **Columna final**. Usa **Actualizar encabezados** si la hoja cambió.
+  </Step>
+  <Step title="Guarda">
+    Asigna los datos y haz clic en **Guardar acción**.
+  </Step>
+</Steps>
+
+Úsala cuando la fila ya existe, cuando necesitas refrescar valores de registros actuales o cuando quieres evitar filas duplicadas del mismo conjunto de datos.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre crear y actualizar varias filas?">
+    **Crear varias filas** agrega registros nuevos. **Actualizar varias filas** cambia valores en filas que ya existen.
+  </Accordion>
+  <Accordion title="¿En qué se diferencia de la acción de crear una sola fila?">
+    Puede escribir muchas filas en una sola ejecución, pero solo si recibe una lista de objetos. Si la ejecución solo tiene un registro, crea una fila.
+  </Accordion>
+  <Accordion title="¿La acción agrupa a los contactos que entran al flujo?">
+    No. Los flujos no juntan contactos para enviarlos como un lote. Para escribir varias filas de una vez, la ejecución debe traer ya la lista, normalmente desde un webhook entrante.
+  </Accordion>
+  <Accordion title="¿Necesito encabezados en la hoja?">
+    Sí. Los encabezados de la primera fila son los nombres de columna que verás al asignar los datos.
+  </Accordion>
+  <Accordion title="No aparece una columna nueva en la acción">
+    La acción sigue usando la estructura anterior de la hoja. Haz clic en **Actualizar encabezados**.
+  </Accordion>
+  <Accordion title="¿Qué pasa si elijo la pestaña equivocada?">
+    Los datos pueden escribirse en el lugar incorrecto o las columnas no se asignarán bien. Revisa la pestaña antes de guardar.
+  </Accordion>
+  <Accordion title="¿Puedo limitar las columnas que se usan?">
+    Sí. **Columna inicial** y **Columna final** definen el rango disponible para asignar datos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Disparador Webhook entrante" icon="plug" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
+    Recibe datos de otros sistemas para iniciar un flujo.
+  </Card>
+  <Card title="Funciones de lista" icon="table-list" href="/flujo-de-trabajo/accion-premium-funciones-de-matriz">
+    Filtra, transforma y calcula valores de listas de datos.
+  </Card>
+  <Card title="Acciones premium" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las acciones premium.
+  </Card>
+  <Card title="Recorrido por el constructor" icon="diagram-project" href="/flujo-de-trabajo/generador-de-flujos-de-trabajo-descripcion-general">
+    Conoce las partes del constructor de flujos.
+  </Card>
+</CardGroup>

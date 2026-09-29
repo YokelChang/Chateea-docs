@@ -1,0 +1,155 @@
+---
+title: "Administrar y fusionar contactos duplicados"
+description: "Encuentra contactos repetidos por correo, teléfono o nombre y fusiónalos en una sola ficha sin perder información."
+icon: "code-merge"
+---
+
+Los contactos duplicados desordenan tu CRM: el historial de conversaciones queda repartido, el equipo actualiza fichas distintas de la misma persona y los informes cuentan de más. Chateea te ofrece dos formas de resolverlo: fusionar a mano los contactos que ya sabes que están repetidos, o usar la herramienta **Administrar duplicados** para encontrar coincidencias por correo, teléfono o nombre.
+
+## Cómo funciona una fusión
+
+Al fusionar eliges un **contacto principal** (master). Es la ficha que queda después de la fusión; los demás contactos seleccionados se integran en ella y desaparecen. Durante la revisión puedes elegir qué valor conservar en cada campo que tenga datos distintos.
+
+| Dato | Qué pasa al fusionar |
+| --- | --- |
+| Contacto principal | Es el que queda. Sus valores se conservan por defecto. |
+| Conversaciones, notas, tareas, oportunidades y etiquetas | Se combinan en el contacto principal. |
+| Campos personalizados | Un valor de otro contacto solo se copia si ese campo está vacío en el principal. Los valores existentes del principal no se sobrescriben. |
+| Citas, pagos, pedidos y facturas | Toman por defecto los valores del contacto principal. |
+| Cursos, grupos de comunidad y productos | Se combina la información de todos los contactos seleccionados. |
+| Flujos de trabajo activos | La ejecución pasa al contacto principal. Si el principal ya estaba en ese mismo flujo, se mantiene su ejecución y la adicional termina. |
+| Deshacer | No es posible. Una fusión es permanente. |
+
+<Warning>
+Las fusiones no se pueden deshacer. Antes de confirmar, verifica que elegiste el contacto principal correcto y revisa los campos personalizados, las citas, los pagos y los flujos activos de cada ficha.
+</Warning>
+
+## Fusionar contactos a mano
+
+Úsalo cuando ya sabes qué fichas son de la misma persona.
+
+<Steps>
+<Step title="Busca los duplicados">
+Ve a **Contactos** y usa el buscador para encontrar las fichas repetidas. Puedes buscar por nombre, correo, teléfono, empresa o etiquetas.
+</Step>
+<Step title="Selecciónalos">
+Marca las casillas de los contactos que quieres unir (entre 2 y 10).
+</Step>
+<Step title="Elige Fusionar">
+En la barra de acciones superior, haz clic en **Más** y luego en **Fusionar**.
+</Step>
+<Step title="Elige el contacto principal">
+En la ventana **Fusionar contactos**, marca cuál quedará como principal.
+</Step>
+<Step title="Revisa los campos con valores distintos">
+Para cada campo con diferencias, elige el valor que quieres conservar: correo principal, teléfono, empresa y el resto.
+</Step>
+<Step title="Confirma">
+Haz clic en **Fusionar contactos**.
+</Step>
+</Steps>
+
+## Usar la herramienta Administrar duplicados
+
+Esta herramienta revisa toda tu base y te propone grupos de posibles duplicados.
+
+<Info>
+Solo los **administradores** de la cuenta pueden usarla. Los usuarios con rol de miembro del equipo no tienen acceso.
+</Info>
+
+<Steps>
+<Step title="Abre la herramienta">
+En **Contactos**, haz clic en el menú de tres puntos y elige **Administrar duplicados**.
+</Step>
+<Step title="Elige el criterio de búsqueda">
+En **Buscar por**, selecciona **Correo** (recomendado), **Teléfono** o **Nombre**, y haz clic en **Buscar duplicados**. El sistema escanea tus contactos y muestra los grupos que coinciden.
+</Step>
+<Step title="Revisa cada grupo">
+Despliega un grupo con la flecha para ver todos los contactos detectados. Haz clic en **Revisar** para comparar lado a lado los campos en conflicto (teléfono, etiquetas, país, etc.).
+</Step>
+<Step title="Resuelve los conflictos">
+Elige qué valor conservar en cada campo, combina etiquetas y datos adicionales, y define el correo y el teléfono principales. Revisa también que no queden oportunidades duplicadas.
+</Step>
+<Step title="Selecciona los registros y el principal">
+Selecciona hasta **10 registros** por fusión (verás el aviso "Límite alcanzado 10/10") y marca uno como principal. Ese contacto conserva el nombre, el correo y el teléfono principales, y recibe tareas, oportunidades, notas y productos de los demás.
+</Step>
+<Step title="Confirma la fusión">
+Haz clic en **Fusionar**. En la ventana de confirmación marca la casilla indicando que entiendes que la acción no se puede deshacer y haz clic en **Fusionar duplicados**.
+</Step>
+</Steps>
+
+### Rechazar una sugerencia
+
+Si un grupo no es realmente un duplicado (por ejemplo, dos personas de la misma familia que comparten correo), haz clic en **Rechazar** y confirma. Ese correo, teléfono o nombre dejará de usarse para buscar duplicados con ese criterio.
+
+<Note>
+Rechazar tampoco se puede deshacer. Úsalo solo cuando estés seguro de que no se trata de la misma persona.
+</Note>
+
+## Evitar duplicados desde el origen
+
+Prevenir es más fácil que limpiar. En **Configuración → Perfil del negocio → Preferencias de contacto** puedes:
+
+1. Activar o desactivar **Permitir contactos duplicados**.
+2. Elegir el campo principal y el secundario para detectar duplicados (correo o teléfono).
+
+Con los duplicados desactivados, cuando llega un formulario, una reserva o una importación con un correo o teléfono que ya existe, Chateea actualiza la ficha existente en lugar de crear otra.
+
+## Buenas prácticas
+
+- Ejecuta la búsqueda de duplicados de forma periódica, por ejemplo una vez al mes.
+- Revisa siempre los campos en conflicto antes de fusionar.
+- Elige como principal la ficha con los datos más completos y actualizados.
+- Estandariza cómo tu equipo carga los datos (teléfonos con código de país, correos en minúsculas) para evitar nuevos duplicados.
+
+## Solución de problemas
+
+| Problema | Causa probable | Solución |
+| --- | --- | --- |
+| "No se encontraron duplicados" | El criterio elegido no detecta coincidencias | Prueba con otro criterio (teléfono o nombre). |
+| "Límite alcanzado 10/10" | Seleccionaste demasiados registros | Fusiona los primeros 10 y repite con el resto. |
+| El botón de fusionar está desactivado | Falta marcar la confirmación | Marca la casilla de "entiendo que no se puede deshacer". |
+| No aparece la opción de fusionar | Tu rol no es administrador, o seleccionaste menos de 2 contactos | Selecciona entre 2 y 10 contactos visibles en la lista y pide acceso al administrador si hace falta. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo deshacer una fusión?">
+No. Revisa bien el contacto principal y los valores antes de confirmar.
+</Accordion>
+<Accordion title="¿Cuántos contactos puedo fusionar a la vez?">
+Hasta 10 en cada fusión.
+</Accordion>
+<Accordion title="¿Qué diferencia hay entre fusionar a mano y Administrar duplicados?">
+La fusión manual sirve cuando ya sabes qué fichas son duplicadas. **Administrar duplicados** te ayuda a encontrarlas buscando coincidencias por correo, teléfono o nombre.
+</Accordion>
+<Accordion title="¿Por qué se crean duplicados?">
+Por cargas manuales, importaciones CSV, formularios, reservas de calendario o herramientas externas conectadas a tu cuenta.
+</Accordion>
+<Accordion title="¿Se sobrescriben los campos personalizados?">
+No. Un valor de otro contacto solo se copia si el mismo campo está vacío en el contacto principal.
+</Accordion>
+<Accordion title="¿Qué pasa con los flujos de trabajo del contacto?">
+La ejecución del flujo pasa al contacto principal para que la automatización continúe. Si el principal ya estaba en el mismo flujo, se conserva esa ejecución y se detiene la extra. Ten en cuenta que las esperas, metas y reglas de reingreso del flujo pueden influir en el comportamiento posterior.
+</Accordion>
+<Accordion title="¿Puedo fusionar duplicados de forma automática?">
+Sí. En los flujos de trabajo existe la acción **Fusionar contacto**, que une duplicados dentro de una automatización.
+</Accordion>
+<Accordion title="¿Cómo evito duplicados de formularios o calendarios?">
+Desactiva **Permitir contactos duplicados** en las preferencias de contacto de tu cuenta.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Varios correos por contacto" icon="envelopes-bulk" href="/contactos/varios-correos-por-contacto">
+Guarda correos adicionales sin crear fichas nuevas.
+</Card>
+<Card title="Listas inteligentes" icon="filter" href="/contactos/listas-inteligentes">
+Busca y filtra contactos rápidamente.
+</Card>
+<Card title="Acciones masivas en contactos" icon="layer-group" href="/contactos/acciones-masivas">
+Trabaja con muchos contactos a la vez.
+</Card>
+</CardGroup>

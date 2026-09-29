@@ -1,0 +1,177 @@
+---
+title: "Agentes gestionados: crea agentes describiéndolos"
+description: "Crea agentes de IA en minutos describiendo en lenguaje natural lo que deben hacer, sin conectar nodos."
+icon: "wand-magic-sparkles"
+---
+
+Los agentes gestionados te permiten crear agentes de IA listos para trabajar describiendo en lenguaje natural lo que quieres que hagan. No necesitas dibujar diagramas ni conectar nodos: explicas el objetivo, y Chateea arma un agente completo que responde preguntas con tu base de conocimiento y ejecuta acciones en tu CRM.
+
+Los agentes gestionados (Managed Agents, antes llamados Super Agents) son la forma recomendada de crear agentes nuevos. Por dentro usan el mismo motor de Agent Studio, así que siguen el mismo ciclo: borrador, prueba y publicación.
+
+<Info>
+Puedes controlar qué usuarios de tu equipo acceden a los agentes gestionados desde los permisos de usuario de tu cuenta. El uso de los agentes gestionados se descuenta de la billetera de tu cuenta; consulta [Cómo se cobra el uso de la IA](/ia/como-se-cobra-la-ia) y las tarifas vigentes en **Configuración → Facturación**.
+</Info>
+
+## Para qué sirve
+
+- **Creas un agente en minutos:** pasas de la idea a un agente listo describiendo qué debe hacer y cómo comportarse.
+- **Sin configuración técnica:** no hay que conectar nodos ni escribir condiciones.
+- **Automatización del CRM:** el agente puede etiquetar contactos, iniciar flujos de trabajo y actualizar registros.
+- **Respuestas con tu conocimiento:** se conecta a tus bases de conocimiento para responder con tu contenido aprobado.
+- **Se ejecuta con eventos:** arranca cuando cambia una etiqueta, se envía un formulario, llega un formulario de clientes potenciales de Facebook, se responde una encuesta o alguien escribe por chat.
+- **Pruebas seguras:** validas las respuestas en un chat de prueba antes de conectarlo a conversaciones reales.
+
+## Crear agentes describiendo lo que necesitas
+
+Al crear un agente gestionado verás un área donde explicas:
+
+- **El rol:** asistente de redes sociales, gestor de campañas de correo, moderador de comunidad.
+- **Los canales:** chat del sitio web, SMS, correo.
+- **El conocimiento:** qué bases de conocimiento o documentos puede usar.
+- **Las acciones permitidas:** etiquetar, actualizar campos, iniciar flujos de trabajo, enviar correos.
+
+Ejemplo de descripción:
+
+```text
+Crea un asistente de redes sociales que escriba y programe publicaciones para Facebook, Instagram y LinkedIn con el estilo de nuestra marca. Debe tomar los datos de los productos de la base de conocimiento "Marketing", seguir nuestra guía de tono y guardar las ideas de contenido en un campo personalizado del contacto cuando surjan en conversaciones de chat.
+```
+
+Con esa descripción, Chateea genera un borrador del agente con su objetivo y comportamiento, propone disparadores y canales, y configura la lógica y las acciones. Después puedes seguir afinándolo en la misma conversación, por ejemplo: "Haz el tono más formal" o "Limita a 3 publicaciones por semana en cada red".
+
+Si describes que el agente debe actuar tras un formulario de clientes potenciales de Facebook o una encuesta, solo tienes que elegir la página, el formulario o la encuesta de una lista. No necesitas buscar identificadores.
+
+## Qué pueden hacer
+
+### Responder con tu base de conocimiento
+
+Usan tus bases de conocimiento para responder con tus precios, políticas, procedimientos y productos reales. Admiten documentos, textos enriquecidos, tablas CSV y contenido web rastreado.
+
+### Ejecutar acciones en el CRM
+
+- Actualizar campos y etiquetas de contactos.
+- Iniciar flujos de trabajo de seguimiento, nutrición o traspaso a una persona.
+- Crear tareas, notas o citas, según tus instrucciones y lo que esté disponible.
+
+### Generar imágenes, audio y video
+
+- Crean imágenes, audio hablado y video durante una interacción, o en ejecuciones disparadas sin necesidad de un chat activo.
+- Controlas el audio con la voz elegida y con instrucciones de tono en texto libre, y se genera en el idioma del texto.
+- Todo lo generado se guarda en **Medios** para reutilizarlo.
+
+### Casos de uso listos para construir
+
+| Caso | Qué hace |
+| --- | --- |
+| Asistente de redes sociales | Crea y publica contenido con tu marca, con imágenes o videos generados. |
+| Asistente de base de conocimiento | Responde preguntas frecuentes y de soporte para reducir solicitudes. |
+| Moderador de comunidad | Da la bienvenida, responde dudas comunes y marca posibles infracciones para revisión. |
+| Gestor de campañas de correo | Redacta y envía campañas a segmentos definidos usando tus filtros y flujos. |
+| Automatización de tareas diarias | Se encarga de tareas repetitivas del CRM. |
+
+## Disparadores
+
+| Disparador | Cuándo arranca | Ejemplo |
+| --- | --- | --- |
+| **Etiqueta cambiada** | Cuando un contacto recibe o pierde una etiqueta. | Al etiquetar "Cliente nuevo", el agente envía una bienvenida personalizada y registra tareas de orientación. |
+| **Formulario enviado** | Cuando se envía un formulario concreto. | Tras "Solicitud de demo", califica al prospecto, agenda una cita si encaja y deja notas para ventas. |
+| **Interfaz de chat** | Cuando alguien escribe por un canal de chat compatible. | En el widget de chat, responde dudas previas a la compra y etiqueta para seguimiento comercial. |
+| **Formulario de clientes potenciales de Facebook** | Cuando un contacto envía un formulario de una página de Facebook conectada. | Recibe las respuestas del prospecto y lo califica o lo enruta. |
+| **Encuesta enviada** | Cuando se responde una de las encuestas elegidas. | Recibe el nombre de la encuesta y las respuestas para dar seguimiento. |
+
+Un mismo agente puede tener varios disparadores. Según tu cuenta, también puede haber disparadores de horarios, citas, contactos y oportunidades.
+
+## Cómo crear un agente gestionado
+
+<Steps>
+  <Step title="Abre los agentes gestionados">
+    Ve a **IA → Agent Studio** y haz clic en la pestaña **Agentes gestionados**.
+  </Step>
+  <Step title="Describe tu agente">
+    Haz clic en **Crear agente**. Describe el objetivo principal, los canales, las bases de conocimiento que usará y las acciones que puede realizar. También puedes partir de un caso de uso prediseñado. Envía la descripción y espera a que se genere el borrador.
+  </Step>
+  <Step title="Revisa y ajusta">
+    Revisa el resumen: qué hace el agente, cuándo se ejecuta y qué sistemas toca (base de conocimiento, flujos de trabajo, correo). Usa el panel de edición por chat para pedir cambios de tono, reglas o acciones. Define uno o varios disparadores y confirma que los flujos, calendarios y bases de conocimiento conectados estén configurados.
+  </Step>
+  <Step title="Configura la generación de contenido (opcional)">
+    En **Capacidades**, activa **Generación de imágenes**, **Generación de audio** o **Generación de video** según lo que necesites.
+  </Step>
+  <Step title="Prueba el agente">
+    Abre el panel de pruebas y ejecuta conversaciones. Confirma que las respuestas de la base de conocimiento sean correctas y que el agente respete tus límites. Si usa búsqueda web, revisa las **Fuentes** que aparecen bajo la respuesta. Si activaste la generación de contenido, pídele una pieza de ejemplo.
+  </Step>
+  <Step title="Publica">
+    Cambia el estado de **Borrador** a **Publicado** para que responda a eventos reales.
+  </Step>
+  <Step title="Supervisa y mejora">
+    Revisa su rendimiento en Agent Studio y vuelve al constructor por chat para ajustar reglas y tono según los resultados. Mantén tu base de conocimiento limpia y actualizada.
+  </Step>
+</Steps>
+
+### Configurar el disparador de formulario de Facebook
+
+<Note>
+La página de Facebook debe estar conectada para sincronizar clientes potenciales, y un administrador de la página debe haber aceptado los términos de servicio de anuncios de clientes potenciales de Meta.
+</Note>
+
+1. Abre el agente gestionado y ve a la sección **Disparadores**.
+2. Haz clic en **Agregar disparador** y, en **Comunicaciones**, elige **Formulario de clientes potenciales de Facebook**.
+3. Elige la página de Facebook. Si no seleccionas formularios concretos, el agente se ejecutará con todos los formularios de esa página.
+4. Para acotarlo, elige los formularios específicos. Puedes usar el buscador (la búsqueda de formularios se limita a la página elegida).
+5. Publica el agente.
+
+Al publicar, Chateea comprueba que la página y los formularios sigan existiendo y que la combinación sea válida. Si algo ya no es válido, te lo indica antes de publicar.
+
+### Configurar el disparador de encuesta enviada
+
+1. Abre el agente gestionado y ve a **Disparadores**.
+2. Haz clic en **Agregar disparador** y, en **Formularios y encuestas**, elige **Encuesta enviada**.
+3. Elige una o varias encuestas (puedes usar el buscador).
+4. Publica el agente.
+
+El agente recibe el nombre de la encuesta y todas las respuestas. Al publicar, Chateea verifica que las encuestas elegidas sigan existiendo.
+
+### Opciones de generación de contenido
+
+| Tipo | Opciones |
+| --- | --- |
+| **Imagen** | Calidad baja, media (predeterminada) o alta. Indica la forma en tu instrucción: 1:1, 4:5, 2:3, 3:2, 9:16, 3:4, 4:3, 5:4, 16:9 o 21:9, o términos como vertical, panorámica, cuadrada o banner. Si no la indicas, será cuadrada. Cada petición crea una imagen nueva, salvo que pidas editar una existente. |
+| **Audio** | Elige una voz, describe cómo debe sonar en el campo **Tono** y escribe el texto en el idioma en que quieres que hable. |
+| **Video** | Videos de 8 segundos en formato 16:9. |
+
+El audio y el video se generan por separado. Ejemplo de instrucción de imagen: `Genera una imagen vertical 9:16 de una cafetería para una historia de Instagram.`
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿En qué se diferencia un agente gestionado de un agente de flujo?">
+    El agente gestionado se crea conversando, a partir de tu descripción. El agente de flujo se construye a mano en el lienzo de nodos. Los nuevos agentes se crean como gestionados; los de flujo existentes siguen funcionando y se editan desde la página **Agentes de flujo**.
+  </Accordion>
+  <Accordion title="¿Qué pasa si cambio mi base de conocimiento después de publicar?">
+    El agente usará la información actualizada en su siguiente ejecución, siempre que el contenido ya esté indexado. Puedes validarlo antes con el [probador de recuperación](/ia/probador-de-recuperacion-base-conocimiento).
+  </Accordion>
+  <Accordion title="¿Cómo evito que haga cambios no deseados en el CRM?">
+    Define límites claros en el editor por chat, por ejemplo: "solo sugiere cambios en el CRM para aprobación humana" o "nunca apliques descuentos de más del 10%". Pruébalo bien antes de publicar.
+  </Accordion>
+  <Accordion title="¿Necesito saber programar?">
+    No. Describes lo que quieres en lenguaje natural y Chateea genera la configuración.
+  </Accordion>
+  <Accordion title="¿En qué canales funcionan?">
+    En los canales de chat compatibles y con eventos del CRM como cambios de etiqueta, formularios, formularios de Facebook, encuestas, citas, horarios, contactos y oportunidades. Lo disponible depende de los disparadores e integraciones de tu cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agentes de flujo en Agent Studio" icon="diagram-project" href="/ia/agentes-de-flujo-agent-studio">
+    Mantén y edita tus agentes de flujo existentes.
+  </Card>
+  <Card title="Cómo se cobra el uso de la IA" icon="wallet" href="/ia/como-se-cobra-la-ia">
+    Entiende el consumo de tus agentes.
+  </Card>
+  <Card title="Probador de recuperación" icon="magnifying-glass" href="/ia/probador-de-recuperacion-base-conocimiento">
+    Comprueba qué información encuentra la IA.
+  </Card>
+  <Card title="Registros de agentes" icon="list" href="/ia/registros-de-agentes">
+    Revisa qué hicieron tus agentes.
+  </Card>
+</CardGroup>

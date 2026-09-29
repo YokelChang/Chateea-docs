@@ -1,0 +1,180 @@
+---
+title: "Klaviyo en flujos de trabajo"
+description: "Sincroniza perfiles, listas, segmentos y suscripciones de Klaviyo y envía campañas en borrador desde tus flujos."
+icon: "envelope"
+---
+
+Klaviyo es una plataforma de marketing por correo y SMS organizada alrededor de **perfiles** (fichas de cliente con su estado de suscripción), **listas**, **segmentos** (grupos dinámicos según condiciones) y **métricas** (eventos como "Placed Order" o "Viewed Product"). La integración lleva todo eso a tus flujos de trabajo de Chateea: una suscripción nueva en Klaviyo puede convertirse al instante en un contacto, la entrada en un segmento VIP puede avisar a tu equipo, y un flujo puede crear perfiles, gestionar suscripciones o enviar una campaña preparada en Klaviyo.
+
+## Cómo funciona la integración
+
+- **Disparadores (de Klaviyo a Chateea):** cuatro disparadores que consultan Klaviyo cada 5 minutos y procesan en orden los registros nuevos desde la última consulta.
+- **Acciones (de Chateea a Klaviyo):** diecisiete acciones para el ciclo de vida del perfil, listas, segmentos, etiquetas y campañas.
+
+<Note>
+  Todos los disparadores y acciones de Klaviyo son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). El uso de tu plan de Klaviyo (perfiles activos, créditos de SMS) lo cobra Klaviyo directamente.
+</Note>
+
+## Para qué te sirve
+
+- **Casi en tiempo real:** los disparadores revisan Klaviyo cada 5 minutos, sin configurar webhooks.
+- **Ciclo completo del perfil:** crear, actualizar, buscar, suscribir y cancelar suscripción como acciones separadas.
+- **Consentimiento respetado:** la suscripción trata el correo y el SMS por separado, tal como lo exigen Klaviyo y normas como TCPA, GDPR o CASL.
+- **Búsquedas en tiempo de ejecución:** encuentras listas, segmentos y campañas por nombre sin escribir IDs fijos.
+- **Etiquetas ordenadas:** gestionas las etiquetas de listas y segmentos desde tus flujos.
+- **Campañas disparadas por tu flujo:** envías una campaña en borrador en el momento justo.
+
+## Conectar Klaviyo
+
+La conexión se hace por OAuth.
+
+<Steps>
+  <Step title="Agrega un paso de Klaviyo">
+    Ve a **Automatización → Flujos de trabajo**, abre o crea un flujo y busca **Klaviyo** en la pestaña **Aplicaciones**. Elige cualquier disparador o acción.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Haz clic en **Conectar tu cuenta**. En la pantalla de autorización de Klaviyo, revisa los permisos (cuentas, campañas, eventos, listas, métricas, perfiles, segmentos, suscripciones y etiquetas) y haz clic en **Allow**.
+  </Step>
+  <Step title="Vuelve al flujo">
+    Regresarás al constructor y el panel mostrará **Conectado**.
+  </Step>
+</Steps>
+
+También puedes conectarlo desde **Configuración → Integraciones**: busca **Klaviyo**, haz clic en **Conectar** y completa la autorización.
+
+## Disparadores
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Nuevo evento** | Cuando se registra un evento de cualquier métrica en un perfil. Puedes filtrar por métrica (por ejemplo Placed Order, Viewed Product o un evento personalizado). |
+| **Nuevo perfil** | Cuando se crea un perfil en Klaviyo. Devuelve el perfil completo, con su estado de suscripción a correo y SMS. |
+| **Perfil agregado a una lista** | Cuando un perfil entra en una lista. Puedes filtrar por lista. |
+| **Perfil agregado a un segmento** | Cuando un perfil cumple por primera vez las condiciones de un segmento. Puedes filtrar por segmento. |
+
+## Acciones
+
+### Perfiles
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear perfil** | Crea un perfil con datos del flujo. No lo suscribe: usa **Suscribir perfil** si tienes el consentimiento explícito. |
+| **Actualizar perfil** | Actualiza un perfil por ID o correo. No cambia el consentimiento. |
+| **Buscar perfil** | Busca un perfil por correo o teléfono y lo devuelve si existe. |
+| **Suscribir perfil** | Suscribe el perfil a correo, SMS o ambos con consentimiento explícito. Cada canal se trata por separado. |
+| **Cancelar suscripción del perfil** | Da de baja el perfil del correo, del SMS o de ambos. |
+
+### Listas
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear lista** | Crea una lista con el nombre indicado y devuelve su ID. |
+| **Buscar lista** | Busca una lista por nombre. |
+| **Agregar perfil a una lista** | Agrega un perfil existente a una lista (solo membresía, no cambia el consentimiento). |
+| **Quitar perfil de una lista** | Saca un perfil de una lista (solo membresía). |
+
+### Segmentos y etiquetas
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Buscar segmento** | Busca un segmento por nombre y devuelve su ID. |
+| **Buscar etiquetas** | Lista las etiquetas de la cuenta, con filtro opcional por nombre. |
+| **Agregar etiqueta a una lista** | Asigna una o varias etiquetas a una lista. |
+| **Quitar etiqueta de una lista** | Quita una o varias etiquetas de una lista. |
+| **Agregar etiqueta a un segmento** | Asigna una o varias etiquetas a un segmento. |
+| **Quitar etiqueta de un segmento** | Quita una o varias etiquetas de un segmento. |
+
+### Campañas
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Buscar campañas** | Lista las campañas de la cuenta, útil para encontrar el borrador que quieres enviar. |
+| **Enviar campaña** | Envía de inmediato una campaña en borrador. Los destinatarios, el asunto y el contenido se configuran en Klaviyo. |
+
+## Ejemplo: disparador Perfil agregado a una lista
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En el flujo, haz clic en **Agregar disparador**, entra en **Aplicaciones**, busca **Klaviyo** y elige **Perfil agregado a una lista**.
+  </Step>
+  <Step title="Configúralo">
+    Elige la cuenta conectada (se selecciona sola si solo tienes una), ponle un nombre claro como "Nuevo miembro de la lista VIP" y, en **Filtros → Lista**, elige la lista que quieres vigilar. Agrega más filtros si hace falta.
+  </Step>
+  <Step title="Pruébalo">
+    Haz clic en **Buscar registros nuevos**, elige uno en **Registros: seleccionar referencia de asignación** para fijar los campos del perfil y haz clic en **Guardar disparador**.
+  </Step>
+</Steps>
+
+Si no aparecen registros, agrega a mano un perfil a la lista en Klaviyo y vuelve a buscar.
+
+## Ejemplo: acción Enviar campaña
+
+<Steps>
+  <Step title="Prepara el borrador en Klaviyo">
+    **Enviar campaña** solo dispara el envío, no redacta la campaña. Crea la campaña en Klaviyo con sus destinatarios, asunto y contenido, y déjala en borrador sin enviarla.
+  </Step>
+  <Step title="Agrega la acción">
+    En el flujo, haz clic en **Agregar**, entra en **Aplicaciones**, elige **Klaviyo** y luego **Enviar campaña**.
+  </Step>
+  <Step title="Configúrala">
+    Elige la cuenta donde está el borrador, ponle un nombre (por ejemplo "Envío del día de lanzamiento") y selecciona la campaña. Solo aparecen las campañas en borrador.
+  </Step>
+  <Step title="Prueba con cuidado">
+    Al hacer clic en **Probar acción**, la campaña se envía de verdad a su audiencia. Usa una lista de prueba pequeña en el borrador antes de hacerlo en producción. Luego guarda la acción y prueba el flujo completo antes de publicarlo.
+  </Step>
+</Steps>
+
+<Warning>
+  Probar **Enviar campaña** envía la campaña real. Nunca la pruebes con la audiencia completa.
+</Warning>
+
+## Ejemplos de uso
+
+### Llevar a Chateea cada suscripción nueva de Klaviyo
+
+- **Disparador:** Nuevo perfil.
+- **Acción:** Buscar contacto por correo.
+- **Si no existe:** Crear contacto con el correo, teléfono, nombre, ubicación y propiedades del perfil.
+- **Si existe:** Actualizar contacto y marcar el origen como Klaviyo.
+
+En menos de cinco minutos, quien se suscribió en una ventana emergente de tu web ya es un contacto con su responsable asignado.
+
+### Alerta cuando un cliente entra en el segmento VIP
+
+- **Disparador:** Perfil agregado a un segmento (filtrado al segmento VIP, por ejemplo clientes que gastaron más de cierto monto en 90 días).
+- **Acciones:** Buscar contacto por correo, aplicar la etiqueta "VIP" y enviar una notificación interna al responsable.
+
+### Suscripción que respeta el consentimiento
+
+- **Disparador:** Formulario enviado con correo, teléfono y dos casillas separadas de consentimiento (correo y SMS).
+- **Acciones:** Buscar perfil por correo; si no existe, Crear perfil; luego **Suscribir perfil** pasando cada consentimiento por separado. Opcionalmente, **Agregar perfil a una lista** de bienvenida.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los disparadores son instantáneos?">
+    No. Consultan Klaviyo cada 5 minutos y devuelven en orden los registros nuevos desde la última consulta.
+  </Accordion>
+  <Accordion title="¿El correo y el SMS se suscriben juntos?">
+    No. Klaviyo registra cada consentimiento por separado. **Suscribir perfil** te deja suscribir solo a correo, solo a SMS o a ambos. Refleja siempre lo que la persona aceptó.
+  </Accordion>
+  <Accordion title="¿Puedo actualizar propiedades y suscribir en un solo paso?">
+    No. Klaviyo exige operaciones separadas. Usa primero **Suscribir perfil** y después **Actualizar perfil**.
+  </Accordion>
+  <Accordion title="¿Qué devuelve el disparador Nuevo evento?">
+    El nombre de la métrica, la fecha del evento, sus propiedades y el perfil asociado (correo, teléfono, ID y propiedades personalizadas). Usa el filtro de métrica para quedarte solo con el evento que te interesa.
+  </Accordion>
+  <Accordion title="¿En qué se diferencian las etiquetas de las listas y segmentos?">
+    Las etiquetas son metadatos para organizar listas y segmentos, no contienen perfiles. Úsalas para clasificar, por ejemplo, "bienvenida", "reactivación" o "black-friday".
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="HubSpot en flujos de trabajo" icon="address-book" href="/automatizaciones/hubspot-en-flujos-de-trabajo">
+    Crea, busca y asocia contactos de HubSpot.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+</CardGroup>

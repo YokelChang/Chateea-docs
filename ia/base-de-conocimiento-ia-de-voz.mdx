@@ -1,0 +1,109 @@
+---
+title: "Conectar una base de conocimiento a un agente de IA de voz"
+description: "Haz que tu agente de voz responda con la información de tu negocio conectándole una base de conocimiento."
+icon: "book"
+---
+
+Un agente de IA de voz responde mucho mejor cuando tiene a mano la información real de tu negocio: servicios, precios, horarios, políticas o preguntas frecuentes. Para eso puedes conectar cada agente a una base de conocimiento. Cuando lo que dice quien llama coincide con la instrucción que definiste, el agente busca en esa base y responde con el dato más relevante.
+
+## Para qué te sirve
+
+- **Respuestas propias de cada agente:** asigna a cada agente la base que corresponde a su función (ventas, soporte, información de productos).
+- **Control sobre cuándo consultar:** tú decides, con una instrucción, en qué momento el agente debe buscar en la base.
+- **Respuestas al instante:** el agente analiza la pregunta y busca la respuesta durante la llamada.
+- **Actualización sin esfuerzo:** cualquier cambio en la base de conocimiento se refleja de inmediato en las respuestas, sin configurar nada más.
+- **Fácil de mantener:** puedes gestionar varios agentes y varias bases sin lógica complicada.
+
+## Cómo conectar una base de conocimiento
+
+<Steps>
+  <Step title="Abre la IA de voz">
+    Ve a **IA → IA de voz**.
+  </Step>
+  <Step title="Crea o edita un agente">
+    Crea un agente nuevo o haz clic en los tres puntos junto a uno existente y elige **Editar**.
+  </Step>
+  <Step title="Elige la base de conocimiento">
+    En la sección de objetivos del agente (Agent Goals), busca **Seleccionar base de conocimiento** y elige una de tus bases, o haz clic en **Crear nueva** para crear una.
+  </Step>
+  <Step title="Define cuándo usarla">
+    En el campo **Cuándo usar esta base de conocimiento**, escribe una instrucción clara y detallada que le diga al agente en qué casos debe consultarla.
+  </Step>
+  <Step title="Guarda y prueba">
+    Haz clic en **Guardar** y haz una llamada de prueba con preguntas que deberían activar la base.
+  </Step>
+</Steps>
+
+Un ejemplo de instrucción para el campo **Cuándo usar esta base de conocimiento**:
+
+```text
+Usa esta base de conocimiento cuando la persona pregunte por el negocio, sus servicios, productos, precios, horarios, ubicación, datos de contacto o cualquier información que requiera consultar la información oficial del negocio para responder con exactitud.
+```
+
+<Tip>
+  Cuanto más precisa sea la instrucción, mejor detecta el agente cuándo debe buscar en la base. Asigna a cada agente una base alineada con su función o su público.
+</Tip>
+
+## Buenas prácticas
+
+### Usa varias bases para distintas áreas
+
+Crea bases especializadas (ventas, soporte, catálogo de productos) y conecta a cada agente la que le corresponde. Así cada uno responde con información enfocada y no mezcla temas.
+
+### Afina la instrucción de activación
+
+- Usa un lenguaje claro y específico, parecido a cómo preguntan tus clientes.
+- Prueba varias versiones y quédate con la que mejor funcione.
+
+### Mantén el contenido al día
+
+- Revisa y actualiza con regularidad tus artículos y preguntas frecuentes.
+- Los cambios se aplican al instante en todas las llamadas.
+
+### Mide y ajusta
+
+- Revisa los registros de llamadas para ver cuándo se consultó la base y qué tan buenas fueron las respuestas.
+- Si detectas preguntas sin respuesta, agrega ese contenido a la base o ajusta la instrucción.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo conectar más de una base de conocimiento a un mismo agente?">
+    Por ahora, cada agente de IA de voz se conecta a una sola base de conocimiento a la vez.
+  </Accordion>
+  <Accordion title="¿Qué pasa si lo que dice la persona no coincide con la instrucción?">
+    El agente no consulta la base y sigue su comportamiento por defecto.
+  </Accordion>
+  <Accordion title="¿Funciona en los modos básico y avanzado del agente?">
+    Sí. La base de conocimiento está disponible en ambos modos, dentro de los objetivos del agente.
+  </Accordion>
+  <Accordion title="¿Cuánto tardan en reflejarse los cambios de la base?">
+    Nada. Los cambios están disponibles para el agente de inmediato.
+  </Accordion>
+  <Accordion title="¿Hay un límite de tamaño para la base de conocimiento?">
+    No hay un límite publicado, pero con bases muy grandes el rendimiento puede variar.
+  </Accordion>
+  <Accordion title="¿Puedo usar una base de conocimiento externa?">
+    Por ahora, la función está pensada para las bases de conocimiento creadas dentro de Chateea.
+  </Accordion>
+  <Accordion title="¿Cómo compruebo que funciona?">
+    Usa la prueba del agente o llama y haz preguntas que deberían activar la base. Luego revisa la transcripción en los registros.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Google Sheets en la base de conocimiento" icon="table" href="/ia/google-sheets-base-de-conocimiento">
+    Conecta una hoja de cálculo como fuente de información.
+  </Card>
+  <Card title="Reserva de citas con IA de voz" icon="calendar" href="/ia/reserva-de-citas-ia-de-voz">
+    Deja que el agente agende durante la llamada.
+  </Card>
+  <Card title="Introducción a las indicaciones" icon="wand-magic-sparkles" href="/bot-ia/introduccion-indicaciones">
+    Aprende a escribir buenas instrucciones para la IA.
+  </Card>
+  <Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+    Qué es la IA de voz y qué puede hacer.
+  </Card>
+</CardGroup>

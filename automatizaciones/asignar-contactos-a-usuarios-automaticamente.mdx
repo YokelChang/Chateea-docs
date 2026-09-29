@@ -1,0 +1,56 @@
+---
+title: "Asignar contactos nuevos a tu equipo automáticamente"
+description: "Reparte los contactos nuevos entre tus usuarios de forma rotativa y avisa a cada uno con un flujo de trabajo."
+icon: "users"
+---
+
+Cuando entran muchos contactos nuevos, repartirlos a mano entre tu equipo es lento y poco justo. Con un flujo de trabajo puedes asignar cada contacto nuevo a un usuario de forma rotativa (round robin) y avisarle al instante para que lo atienda.
+
+## Qué vas a construir
+
+Un flujo con tres piezas:
+
+1. Un **disparador** que detecta el contacto nuevo.
+2. La acción **Asignar a usuario**, que reparte los contactos entre los usuarios que elijas.
+3. La acción **Enviar notificación interna**, que avisa solo al usuario asignado.
+
+## Pasos
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo**, haz clic en **Crear flujo de trabajo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Elige el disparador según el origen de tus contactos. Lo más simple es **Contacto creado**: el flujo se activa cada vez que se crea un contacto. Si solo quieres repartir los que llegan por un formulario o un anuncio, usa el disparador de ese origen (por ejemplo, **Formulario enviado**).
+  </Step>
+  <Step title="Agrega la acción Asignar a usuario">
+    Haz clic en **+**, busca **Asignar a usuario** y selecciona los usuarios de tu cuenta que entrarán en la rotación. Para un reparto parejo, deja **Dividir tráfico** en **Por igual**.
+  </Step>
+  <Step title="Agrega la notificación interna">
+    Debajo de la asignación, agrega **Enviar notificación interna**. Elige el canal (notificación en la aplicación, SMS o correo); puedes usar varios. En **Tipo de usuario**, selecciona **Usuario asignado** para que el aviso le llegue solo a quien recibió el contacto.
+  </Step>
+  <Step title="Publica y guarda">
+    Activa **Publicar** en la esquina superior derecha y haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+<Warning>
+La notificación interna debe ir **después** de la acción **Asignar a usuario**. Si va antes, el contacto todavía no tiene usuario asignado y el aviso no llegará a la persona correcta.
+</Warning>
+
+## Consejos
+
+- En el mensaje de la notificación incluye el nombre y el teléfono del contacto con variables como `{{contact.name}}` y `{{contact.phone}}`, para que tu vendedor pueda llamar sin abrir la ficha.
+- Si quieres repartir solo a ciertos contactos, agrega filtros al disparador (por ejemplo, una etiqueta o una fuente concreta).
+- Revisa periódicamente la lista de usuarios de la rotación cuando alguien entre o salga del equipo.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Primeros pasos con los flujos" icon="play" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Conceptos básicos para crear tu primera automatización.
+  </Card>
+  <Card title="Lista de acciones" icon="list" href="/automatizaciones/lista-de-acciones">
+    Todas las acciones disponibles en los flujos.
+  </Card>
+</CardGroup>

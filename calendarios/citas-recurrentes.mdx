@@ -1,0 +1,129 @@
+---
+title: "Citas recurrentes"
+description: "Configura citas que se repiten desde el calendario o crea series personalizadas desde la ventana de cita."
+icon: "repeat"
+---
+
+Las citas recurrentes se repiten automáticamente según una regla: todos los días, cada semana, cada mes o con un patrón personalizado. Son ideales para sesiones de terapia, entrenamientos, clases particulares o seguimientos periódicos con el mismo cliente, porque evitas crear cada cita a mano.
+
+Hay dos formas de crearlas:
+
+| Método | Dónde se configura | Cuándo se aplica | Respeta tu disponibilidad |
+| --- | --- | --- | --- |
+| Recurrencia del calendario | En la configuración del calendario | Reservas desde el widget o el enlace de reserva, y citas creadas con la pestaña **Predeterminado** en la ventana de cita | Sí |
+| Recurrencia personalizada | En la ventana de cita dentro de Chateea | Solo en la serie que estás creando, con la pestaña **Personalizado** | No |
+
+<Warning>
+Las citas con recurrencia personalizada no tienen en cuenta tu disponibilidad. Chateea reserva los horarios exactamente según la regla que definas, aunque ya tengas otra cita en ese momento.
+</Warning>
+
+## Configurar la recurrencia en un calendario
+
+<Steps>
+  <Step title="Abre el calendario">
+    Ve a **Calendarios → Configuración de calendarios** y abre el calendario que quieres configurar.
+  </Step>
+  <Step title="Revisa los requisitos">
+    El calendario no debe tener horas por fecha específica y debe tener asignado un solo miembro del equipo.
+  </Step>
+  <Step title="Activa las reuniones recurrentes">
+    En la pestaña **Disponibilidad**, activa **Reunión recurrente**.
+  </Step>
+  <Step title="Define la recurrencia">
+    Elige la frecuencia, el número de repeticiones y qué hacer con los horarios no disponibles. Luego haz clic en **Guardar**.
+  </Step>
+</Steps>
+
+### Opciones de recurrencia
+
+- **Repetir:** frecuencia de la serie (diaria, semanal, mensual o personalizada).
+- **Veces que se repite:** cuántas citas tendrá la serie.
+  - Diaria: se repite cada día.
+  - Semanal: se repite cada semana el mismo día.
+  - Mensual: se repite cada mes en la misma fecha.
+  - Personalizada: te permite definir otro patrón.
+
+<Note>
+El máximo son **24 repeticiones**. Esta configuración se aplica a las reservas del widget y a las citas creadas con la pestaña **Predeterminado** de la ventana de cita.
+</Note>
+
+### Qué pasa con los horarios no disponibles
+
+| Opción | Qué hace | Ejemplo con 10 citas y 3 horarios ocupados |
+| --- | --- | --- |
+| **Omitir horarios no disponibles** | Salta los horarios ocupados y solo reserva los libres. | Se reservan 7 citas. |
+| **Continuar reservando** | Reserva todas las citas aunque el horario esté ocupado. Tú eliges si esas citas superpuestas quedan como **Confirmadas** o **Sin confirmar**. | Se reservan 10 citas, 3 de ellas superpuestas. |
+| **Reservar el siguiente horario disponible** | Salta los horarios ocupados y busca los siguientes libres hasta completar la serie. | Se reservan 10 citas, 3 de ellas en fechas posteriores. |
+
+<Note>
+Con **Reservar el siguiente horario disponible**, si hay **tres horarios consecutivos** no disponibles, Chateea deja de buscar más horarios.
+</Note>
+
+## Crear citas recurrentes desde la ventana de cita
+
+Al crear una cita dentro de Chateea tienes dos pestañas en **Fecha y hora**:
+
+- **Predeterminado:** sigue la recurrencia configurada en el calendario. Si el calendario tiene recurrencia, verás los horarios de toda la serie. Si es un calendario normal, solo verás un horario.
+- **Personalizado:** te deja definir una regla solo para esta serie. No afecta otras citas ni la configuración del calendario, y funciona aunque el calendario no tenga recurrencia activada. No está disponible en calendarios de clases ni de servicios.
+
+<Steps>
+  <Step title="Crea una cita nueva">
+    Haz clic en **Crear nueva cita** y elige el calendario, el miembro del equipo y el contacto.
+  </Step>
+  <Step title="Configura la recurrencia">
+    En **Fecha y hora**, elige **Personalizado**, marca **Evento recurrente** y selecciona el patrón en la lista, o haz clic en **Personalizado** para definir tu propia regla.
+  </Step>
+  <Step title="Define cuándo termina">
+    Elige **Nunca**, **En una fecha específica** o **Después de un número de repeticiones**.
+  </Step>
+  <Step title="Crea la cita">
+    Revisa los datos y haz clic en **Crear cita**.
+  </Step>
+</Steps>
+
+### Editar o eliminar una serie
+
+Todas las citas de una serie personalizada quedan vinculadas. Al editar o eliminar puedes elegir:
+
+- **Todas las repeticiones.**
+- **Solo esta repetición.**
+- **Esta y las siguientes**, dejando intactas las citas pasadas.
+
+<Info>
+Las mejoras de recurrencia personalizada y la edición o eliminación en bloque solo aplican a series creadas desde la ventana de cita con la pestaña **Personalizado**.
+</Info>
+
+## Limitaciones de la recurrencia personalizada
+
+- En la vista de lista de citas, la pestaña de contactos y la de conversaciones solo aparece la primera cita de la serie.
+- Los flujos de trabajo solo se disparan con la primera cita de la serie.
+- Por ahora no se envían notificaciones de calendario para estas series.
+- Los calendarios de servicios y de clases no admiten recurrencia personalizada.
+- Cancelar o reprogramar desde el enlace de cancelación o reprogramación, o desde las pestañas de contactos o conversaciones, afecta a toda la serie.
+- Se genera un solo enlace de reunión (Zoom, Google Meet o Microsoft Teams) para toda la serie.
+- Con Outlook: los cambios hechos en Outlook no se sincronizan de vuelta a Chateea, y eliminar citas con mucha frecuencia puede afectar la sincronización.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo cobrar las citas recurrentes al momento de reservar?">
+    Sí, en el widget de reservas puedes cobrar solo la primera cita o todas las citas de la serie. Revisa [Cobrar citas recurrentes](/calendarios/cobrar-citas-recurrentes).
+  </Accordion>
+  <Accordion title="¿Por qué no puedo activar la reunión recurrente?">
+    Revisa que el calendario tenga un solo miembro del equipo asignado y que no tenga horas por fecha específica.
+  </Accordion>
+  <Accordion title="¿Puedo crear citas recurrentes desde el celular?">
+    Sí. Consulta [Citas recurrentes en la app móvil](/calendarios/citas-recurrentes-en-la-app-movil).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cobrar citas recurrentes" icon="credit-card" href="/calendarios/cobrar-citas-recurrentes">
+    Elige si cobras la primera cita o toda la serie.
+  </Card>
+  <Card title="Citas recurrentes en la app móvil" icon="mobile" href="/calendarios/citas-recurrentes-en-la-app-movil">
+    Agenda series completas desde tu teléfono.
+  </Card>
+</CardGroup>

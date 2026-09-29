@@ -1,0 +1,142 @@
+---
+title: "Plantillas y configuración guiada en flujos de IA de voz"
+description: "Crea agentes de voz desde plantillas listas, completa las acciones pendientes y usa la acción Actualizar etiqueta."
+icon: "layer-group"
+---
+
+El **constructor de flujos** de IA de voz incluye plantillas listas para los tipos de llamada más comunes, así no tienes que armar cada agente desde cero. Eliges una plantilla, revisas las instrucciones y acciones que se agregan automáticamente y completas solo lo que falta. Además, la configuración guiada te avisa qué acciones siguen pendientes antes de probar o publicar el agente.
+
+## Beneficios
+
+- **Configuración más rápida:** instrucciones y acciones ya agregadas para un caso común.
+- **Punto de partida fácil:** eliges un objetivo de negocio en lugar de decidir cada acción.
+- **Todo editable:** puedes cambiar instrucciones, acciones y ajustes.
+- **Guía clara:** ves qué acciones necesitan tu información.
+- **Acceso directo a lo pendiente:** haces clic en un aviso y se abre el ajuste que falta.
+- **Guardas cuando quieras:** puedes dejar un agente a medias y volver después.
+- **Resultados de llamada en etiquetas:** con la acción **Actualizar etiqueta**.
+
+<Note>
+Tus agentes de IA de voz existentes no cambian. Conservan sus instrucciones y acciones actuales.
+</Note>
+
+## Formas de crear un agente
+
+Al crear un agente de IA de voz puedes ver opciones como:
+
+- **Explorar Marketplace:** empezar con un agente disponible en el Marketplace de aplicaciones.
+- **Crear agente personalizado:** usar la configuración estándar.
+- **Constructor de flujos:** diseñar la llamada de forma visual y usar las plantillas de este artículo.
+
+## Plantillas disponibles
+
+| Plantilla | Para qué sirve |
+| --- | --- |
+| **Asistente de preguntas frecuentes** | Responde dudas comunes: horarios, precios, servicios, políticas de cancelación. |
+| **Recepcionista** | Saluda, entiende qué necesita la persona y la transfiere a quien corresponde. |
+| **Calificación de clientes potenciales** | Hace preguntas de calificación, guarda y actualiza los datos del contacto y etiqueta el resultado. |
+| **Automatización después de la llamada** | Ejecuta tareas al terminar: agregar etiquetas, actualizar el contacto o iniciar un flujo de trabajo. |
+| **Seguimiento por SMS** | Envía un SMS tras la llamada con una confirmación, un enlace, una cotización o más información. |
+| **Crear tu agente personalizado** | Un agente básico sin acciones predefinidas, para construirlo a tu manera. |
+
+## Acciones de voz
+
+Las acciones son tareas que el agente ejecuta durante o después de la llamada. Según tu configuración, puedes usar:
+
+- **Etiquetar contacto.**
+- **Enviar SMS.**
+- **Enviar correo.**
+- **API personalizada:** enviar información a un sistema externo.
+- **Activar un flujo de trabajo.**
+- **Transferir llamada** a otro número.
+- **Actualizar campo del contacto** con datos de la conversación.
+
+Las plantillas agregan las acciones relevantes, pero puedes editarlas, quitarlas o sumar otras.
+
+## La acción Actualizar etiqueta
+
+Con **Actualizar etiqueta** el agente guarda el resultado de la conversación como una etiqueta del contacto, por ejemplo **Cliente calificado**, **No interesado**, **Requiere seguimiento** o **Cita agendada**. Luego puedes usar esa etiqueta para organizar contactos, crear listas inteligentes, iniciar flujos de trabajo o lanzar campañas de seguimiento.
+
+Por ejemplo, si la persona cumple tus requisitos, el agente agrega **Cliente calificado** y un flujo de trabajo con ese disparador inicia el siguiente paso de tu proceso de ventas. Al configurar la acción, escribe una condición clara que indique cuándo aplicar la etiqueta.
+
+## Avisos de configuración guiada
+
+Si alguna acción obligatoria está incompleta, verás el aviso **Termina de configurar tu agente** con la lista de pendientes (por ejemplo, Transferir llamada, Enviar correo, API personalizada, Activar un flujo de trabajo o Actualizar campo del contacto). Haz clic en cada uno y Chateea te lleva directo a esa acción para completarla.
+
+## Guardar, probar y publicar
+
+- **Guardar:** puedes guardar aunque haya acciones pendientes y continuar después.
+- **Probar:** necesitas completar la configuración obligatoria antes de hacer una llamada de prueba.
+- **Publicar:** la opción de publicar (Deploy) no se habilita hasta que todo lo obligatorio esté completo. Así evitas lanzar un agente a medias.
+
+<Warning>
+Para probar una transferencia de llamada real, usa la prueba con llamada telefónica. La transferencia no está disponible en la llamada web.
+</Warning>
+
+## Plantillas o Construir con IA
+
+- **Plantillas:** una configuración predefinida para un caso común. Úsalas cuando una de ellas encaja con tu objetivo.
+- **Construir con IA:** describes con tus palabras lo que quieres y el asistente crea o modifica el flujo. Úsalo para flujos más a la medida.
+
+## Cómo crear un agente con una plantilla
+
+<Steps>
+<Step title="Abre el constructor de flujos">
+Ve a **IA → IA de voz**, haz clic en **Crear agente**, elige **Constructor de flujos** y haz clic en **Continuar**.
+</Step>
+<Step title="Elige una plantilla">
+Revisa los casos de uso, selecciona el que mejor encaja (o **Crear tu agente personalizado**) y haz clic en **Crear agente**.
+</Step>
+<Step title="Revisa lo generado">
+Revisa las instrucciones y las acciones agregadas. Quita lo que no necesites, agrega otras acciones y adapta las instrucciones a tu negocio.
+</Step>
+<Step title="Completa las acciones pendientes">
+Busca los íconos de advertencia o abre **Termina de configurar tu agente**. Completa en cada acción lo que falte: número de transferencia, flujo de trabajo, campo del contacto, texto del SMS, datos del correo o condiciones de activación. Guarda cada acción.
+</Step>
+<Step title="Configura Actualizar etiqueta (opcional)">
+Agrega o abre la acción, escribe la condición, elige la etiqueta, agrega un nombre de variable si lo necesitas y haz clic en **Guardar**.
+</Step>
+<Step title="Guarda y prueba">
+Haz clic en **Guardar**, confirma que no quedan advertencias y haz clic en **Probar**. Comprueba que el agente responde y ejecuta sus acciones correctamente.
+</Step>
+<Step title="Publica el agente">
+Abre **Publicar**, elige el destino disponible (por ejemplo, un número de teléfono), completa los ajustes y guarda.
+</Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Estoy obligado a usar una plantilla?">
+No. Elige **Crear tu agente personalizado** para empezar con una configuración básica.
+</Accordion>
+<Accordion title="¿Puedo editar el agente después de elegir una plantilla?">
+Sí. Instrucciones, acciones y flujo siguen siendo editables. Puedes agregar o quitar acciones.
+</Accordion>
+<Accordion title="¿Por qué no puedo probar o publicar?">
+Falta completar alguna acción obligatoria. Revisa los íconos de advertencia y el aviso **Termina de configurar tu agente**.
+</Accordion>
+<Accordion title="¿Puedo guardar un agente sin terminar?">
+Sí. Puedes guardar aunque queden acciones pendientes.
+</Accordion>
+<Accordion title="¿Una etiqueta agregada por la IA de voz puede iniciar un flujo de trabajo?">
+Sí. Crea un flujo de trabajo con el disparador de etiqueta agregada y elige esa etiqueta.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Construir flujos de IA de voz con IA" icon="wand-magic-sparkles" href="/ia/construir-flujos-ia-de-voz-con-ia">
+Crea flujos describiéndolos en un chat.
+</Card>
+<Card title="Crear un agente de IA de voz" icon="robot" href="/ia/crear-agente-de-voz-ia">
+Configura tu agente paso a paso.
+</Card>
+<Card title="Acciones durante y después de la llamada" icon="bolt" href="/ia/acciones-durante-y-despues-de-la-llamada">
+Todas las acciones que puede ejecutar tu agente.
+</Card>
+<Card title="Transferencia entre agentes de IA de voz" icon="shuffle" href="/ia/transferencia-entre-agentes-ia-de-voz">
+Pasa la llamada a otro agente especializado.
+</Card>
+</CardGroup>

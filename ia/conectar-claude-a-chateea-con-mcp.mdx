@@ -1,0 +1,150 @@
+---
+title: "Conectar Claude a Chateea con MCP"
+description: "Conecta Claude.ai, Claude Code o Claude Cowork a tu cuenta con OAuth y acceso a todo el catálogo de operaciones."
+icon: "plug"
+---
+
+Chateea tiene una conexión MCP pensada específicamente para Claude, el asistente de IA de Anthropic. Con ella, Claude puede consultar, automatizar y coordinar casi cualquier tarea de tu cuenta mediante instrucciones en lenguaje natural, sin que tú ni el modelo tengan que conocer los detalles de la API. Funciona con **Claude.ai**, **Claude Code** y **Claude Cowork**, y se autoriza con un inicio de sesión (OAuth) en el que tú eliges qué permisos concedes.
+
+## Qué la diferencia del servidor MCP general
+
+| | Conexión para Claude | Servidor MCP general |
+| --- | --- | --- |
+| **Clientes** | Claude.ai, Claude Code y Claude Cowork | Cualquier cliente MCP por HTTP |
+| **Autenticación** | OAuth (recomendado) o token de integración privada | Token de integración privada |
+| **Operaciones** | Catálogo completo: unas 625 operaciones en 40 áreas del producto | Un conjunto más reducido de herramientas principales |
+| **Herramientas que ve el modelo** | Seis herramientas unificadas | Una herramienta por operación |
+
+El servidor MCP general sigue funcionando y es la opción para otros clientes como Cursor, Windsurf o n8n. Si usas Claude, la conexión específica te da acceso a mucho más.
+
+## Para qué te sirve
+
+- **Automatización en lenguaje natural:** das instrucciones complejas en español sin conocer la API.
+- **Cobertura amplia:** contactos, conversaciones, oportunidades, calendarios, pagos, productos, facturas, planificador social, blogs, correos, formularios y encuestas.
+- **Control de permisos:** apruebas exactamente qué permisos recibe Claude en la pantalla de consentimiento.
+- **Permisos aislados por cliente:** lo que autorizas a Claude queda separado de lo que autorices a otros asistentes de IA.
+- **Sin tokens que guardar:** con OAuth no tienes que almacenar ni rotar tokens a mano.
+
+## Antes de empezar
+
+- Pide a soporte en **help@chateea.com** la **URL del servidor MCP de Chateea para Claude**.
+- Ten a mano tu usuario de Chateea con acceso a la cuenta que quieres conectar.
+
+## Conectar Claude
+
+<Tabs>
+  <Tab title="Claude.ai">
+    1. En Claude.ai, ve a **Settings → Connectors → Add custom connector**.
+    2. Pega la URL del servidor MCP de Chateea para Claude.
+    3. Haz clic en **Connect** y completa el inicio de sesión: entra con tu usuario de Chateea, elige la cuenta y aprueba los permisos.
+    4. Abre un chat nuevo. Las herramientas de Chateea ya estarán disponibles.
+    5. Prueba la conexión con algo como: "Muéstrame los últimos 5 contactos que agregué en Chateea".
+  </Tab>
+  <Tab title="Claude Code">
+    Ejecuta en tu terminal:
+
+    ```text
+    claude mcp add --transport http chateea <URL-del-servidor-MCP-para-Claude>
+    ```
+
+    O agrégalo al archivo `.mcp.json` en la raíz de tu proyecto:
+
+    ```json
+    {
+      "mcpServers": {
+        "chateea": {
+          "type": "http",
+          "url": "<URL-del-servidor-MCP-para-Claude>"
+        }
+      }
+    }
+    ```
+
+    La primera vez que lo uses, Claude Code abrirá el navegador para que autorices el acceso. Comprueba la conexión con `claude mcp list`.
+  </Tab>
+  <Tab title="Claude Cowork">
+    1. En Claude Cowork, abre la configuración de conectores o integraciones.
+    2. Elige **Add custom connector**.
+    3. Pega la URL del servidor MCP de Chateea para Claude.
+    4. Completa el inicio de sesión: entra, elige la cuenta y aprueba los permisos.
+
+    Tus agentes de Cowork ya podrán usar las herramientas de Chateea.
+  </Tab>
+</Tabs>
+
+<Note>
+  Si prefieres no usar OAuth, puedes crear un token en **Configuración → Integraciones privadas** con los permisos que quieras y enviarlo en la cabecera `Authorization` como `Bearer <tu-token>`. Ten en cuenta que un token de integración privada ofrece menos permisos que OAuth, así que Claude podrá hacer menos operaciones.
+</Note>
+
+## Cómo trabaja Claude con tu cuenta
+
+En lugar de mostrar cientos de herramientas al modelo, la conexión expone seis herramientas unificadas. Así Claude mantiene su contexto ligero y aun así puede usar todo el catálogo:
+
+| Herramienta | Qué hace |
+| --- | --- |
+| `search` | Busca registros por nombre, correo, teléfono, etiqueta u otros criterios. Suele ser lo primero que usa Claude |
+| `fetch` | Obtiene el detalle completo de los registros encontrados |
+| `search_operations` | Descubre qué operaciones existen según la intención (listar, crear, actualizar, eliminar) |
+| `describe_operation` | Revisa qué datos necesita una operación antes de ejecutarla |
+| `execute_operation` | Ejecuta la operación, siempre dentro de tus permisos y con controles de seguridad |
+| `list_locations` | Muestra la cuenta a la que tiene acceso la conexión |
+
+Ejemplo: si le pides "Busca el contacto con correo ana@ejemplo.com, agrégale la etiqueta cliente-vip y crea una oportunidad de 5.000", Claude usa `search` para encontrar a Ana, `search_operations` y `describe_operation` para preparar las acciones y `execute_operation` para hacerlas. Tú recibes una sola confirmación.
+
+## Qué puede hacer
+
+Las operaciones disponibles se filtran según los permisos que concediste. El catálogo incluye:
+
+- **Contactos:** consultar, buscar, crear, actualizar, eliminar, detectar duplicados, etiquetas, notas, tareas, seguidores y citas.
+- **Conversaciones y mensajes:** crear, buscar y actualizar conversaciones, leer y enviar mensajes, estado de los mensajes.
+- **Oportunidades y pipelines:** pipelines, motivos de pérdida, búsqueda, creación, actualización y cambios de estado.
+- **Calendarios y citas:** calendarios, grupos, citas, eventos, notas, horarios libres y bloqueados, recursos, servicios y reservas.
+- **Pagos:** cupones, órdenes, cumplimiento de pedidos, suscripciones y transacciones.
+- **Productos y tienda:** productos, precios, colecciones, inventario, reseñas y envíos.
+- **Facturas y presupuestos:** facturas, presupuestos, plantillas, programaciones, envío y anulación.
+- **Planificador social:** cuentas, publicaciones, categorías, etiquetas y estadísticas.
+- **Blogs:** sitios, autores, categorías, publicaciones y revisión de slugs.
+- **Correos:** plantillas, carpetas, campañas, programación y estadísticas.
+- **Formularios y encuestas:** formularios, encuestas y sus envíos.
+
+Puedes pedirle a Claude en cualquier momento que use `search_operations` para ver exactamente qué operaciones tienes disponibles.
+
+## Seguridad y permisos
+
+- **Una cuenta por conexión:** cada conexión trabaja sobre la cuenta que elegiste al autorizar. Si manejas varias cuentas de Chateea, crea una conexión para cada una.
+- **Permisos que tú eliges:** Claude solo puede hacer lo que permiten los permisos concedidos y el rol de tu usuario.
+- **Tokens temporales:** cada solicitud se ejecuta con un token de corta duración.
+- **Confirmaciones en acciones delicadas:** las operaciones irreversibles o destructivas tienen controles y confirmaciones adicionales.
+- **Inicio de sesión seguro:** la autorización usa OAuth con PKCE y admite tokens de actualización, para que no tengas que volver a autorizar constantemente.
+- **Acceso revocable:** puedes revisar, cambiar o revocar el acceso en cualquier momento desde la configuración de tu cuenta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Uso OAuth o un token de integración privada?">
+    OAuth. Se autoriza con un clic, da acceso a más permisos y no requiere guardar ni rotar tokens. El token de integración privada es útil si prefieres autenticación por cabecera, pero ofrece menos operaciones.
+  </Accordion>
+  <Accordion title="¿Puedo conectar varias cuentas de Chateea a Claude?">
+    Sí, pero cada conexión trabaja con una sola cuenta. Crea una conexión por cada cuenta que quieras usar.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los permisos que doy a otros asistentes de IA?">
+    Quedan separados. Lo que autorizas a Claude no se comparte con otros clientes de IA, y viceversa.
+  </Accordion>
+  <Accordion title="¿El servidor MCP general dejará de funcionar?">
+    No. Sigue disponible para cualquier cliente MCP, aunque con un conjunto de herramientas más reducido.
+  </Accordion>
+  <Accordion title="¿Claude puede borrar datos de mi cuenta?">
+    Solo si los permisos concedidos lo permiten, y las operaciones destructivas pasan por controles de seguridad y confirmaciones adicionales. Si quieres evitarlo, no concedas permisos de eliminación.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Servidor MCP de Chateea" icon="server" href="/ia/servidor-mcp-de-chateea">
+    Conecta cualquier cliente MCP, como Cursor o n8n.
+  </Card>
+  <Card title="Apps MCP para agentes gestionados" icon="puzzle-piece" href="/ia/apps-mcp-para-agentes-gestionados">
+    Conecta tus agentes con HubSpot, Notion, Google y más.
+  </Card>
+</CardGroup>

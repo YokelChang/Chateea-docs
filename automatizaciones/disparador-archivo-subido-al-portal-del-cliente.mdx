@@ -1,0 +1,130 @@
+---
+title: "Disparador: Archivo subido al portal del cliente"
+description: "Inicia un flujo cuando un cliente sube un documento desde su portal para confirmar, revisar y avanzar."
+icon: "file-arrow-up"
+---
+
+El disparador **Archivo subido al portal del cliente** (Client Portal File Uploaded) inicia un flujo de trabajo cuando un contacto sube un documento desde la sección de documentos compartidos de su portal del cliente. Úsalo para confirmar la recepción, avisar a tu equipo, crear tareas de revisión o pasar a la siguiente etapa de un proceso de alta o aprobación, sin tener que revisar las fichas de contacto a mano.
+
+El archivo subido queda vinculado a la ficha del contacto y lo encuentras en **Contactos → Documentos → Recibidos → Portal del cliente**.
+
+## Beneficios
+
+- **Sin vigilancia manual:** el flujo arranca en cuanto llega el archivo.
+- **Menos retrasos:** avisa a quien debe revisar o crea la tarea al instante.
+- **Mejor comunicación:** el cliente recibe una confirmación automática y los siguientes pasos.
+- **Altas más rápidas:** avanza al siguiente paso del onboarding o de la aprobación sin esperar a que alguien vea el documento.
+- **Ningún envío olvidado:** los documentos quedan visibles para las personas adecuadas.
+- **Procesos consistentes:** todos los archivos pasan por la misma revisión y seguimiento.
+
+## Formatos admitidos
+
+| Tipo | Extensiones |
+| --- | --- |
+| PDF | `.pdf` |
+| Word | `.doc`, `.docx` |
+| Excel | `.xls`, `.xlsx` |
+| PowerPoint | `.ppt`, `.pptx` |
+| Texto | `.txt`, `.rtf` |
+| Imágenes | `.jpg`, `.jpeg`, `.png`, `.gif` |
+
+<Warning>
+  Los videos (MP4, MOV, AVI, MKV, WMV y similares) no se admiten en las subidas de documentos del portal del cliente.
+</Warning>
+
+## Compartir un archivo con tu cliente
+
+Antes de pedir documentos, puedes compartir con el cliente instrucciones, una lista de requisitos o un archivo de referencia. Así todo el intercambio queda centralizado, sin depender de adjuntos de correo.
+
+**Para compartir un archivo nuevo:**
+
+1. Ve a **Contactos** y abre el contacto.
+2. Entra en su sección **Documentos**.
+3. Haz clic en la opción para agregar o subir un archivo y selecciónalo desde tu equipo.
+4. Activa la opción para compartirlo en el portal del cliente y guarda.
+
+**Para compartir un archivo que ya existe:**
+
+1. Busca el archivo en la sección **Documentos** del contacto.
+2. Haz clic en el menú de tres puntos y elige **Compartir en el portal del cliente**.
+3. Confirma.
+
+El archivo aparecerá en la sección de documentos compartidos del portal del cliente.
+
+## Cómo sube el cliente sus archivos
+
+1. El cliente inicia sesión en el portal del cliente.
+2. En **Archivos compartidos**, hace clic en **Agregar archivos**.
+3. Selecciona uno o varios archivos admitidos y hace clic en **Subir**.
+
+<Note>
+  El cliente puede seleccionar hasta **10 archivos** en una misma subida. Cuando termina, los archivos aparecen en los documentos recibidos del contacto y el disparador se activa automáticamente.
+</Note>
+
+## Cómo configurar el disparador
+
+<Steps>
+  <Step title="Comprueba el acceso del contacto">
+    Asegúrate de que el contacto de prueba tiene acceso al portal del cliente y puede abrir la sección de documentos.
+  </Step>
+  <Step title="Crea o abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y haz clic en **Crear flujo de trabajo**, o abre uno existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador**, busca **Archivo subido al portal del cliente** y selecciónalo. Completa los ajustes o filtros que necesites.
+  </Step>
+  <Step title="Agrega las acciones">
+    Haz clic en el botón **+** debajo del disparador y añade lo que debe pasar después. Por ejemplo:
+    - Enviar un correo o SMS confirmando que recibiste el archivo.
+    - Enviar una notificación interna a la persona responsable.
+    - Crear una tarea de revisión del documento.
+    - Agregar una etiqueta como `documentos-recibidos`.
+    - Actualizar un campo del contacto que indique el estado de la documentación.
+    - Mover la oportunidad a la etapa correspondiente del pipeline.
+    - Enviar la información a otro sistema mediante un webhook.
+  </Step>
+  <Step title="Completa la lógica">
+    Añade esperas, condiciones u otras acciones según tu proceso.
+  </Step>
+  <Step title="Guarda, publica y prueba">
+    Guarda y publica el flujo. Luego haz una subida real desde el portal con un contacto de prueba: es la forma más fiable de validar el disparador, el almacenamiento del documento y las acciones a la vez.
+  </Step>
+</Steps>
+
+### Ideas de uso
+
+- Avisar a tu especialista de onboarding cuando lleguen los documentos de alta.
+- Crear una tarea de revisión para una solicitud o proceso de aprobación.
+- Actualizar un proyecto u oportunidad cuando el cliente envía los materiales solicitados.
+- Iniciar una renovación cuando el cliente sube documentos actualizados.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿En qué se diferencia del disparador de Documentos y contratos?">
+    Este disparador responde a un archivo que el contacto sube desde el portal del cliente. El de Documentos y contratos responde a eventos de los documentos y contratos de Chateea, como enviado, visto, firmado, completado o rechazado.
+  </Accordion>
+  <Accordion title="¿Compartir un archivo desde el CRM activa este flujo?">
+    No. El disparador está pensado para archivos que sube el contacto desde el portal. Compartir un archivo desde el CRM lo pone a disposición del cliente, pero es una acción distinta.
+  </Accordion>
+  <Accordion title="¿Uso la prueba del flujo o una subida real?">
+    Te recomendamos una subida real con un contacto de prueba, porque valida el evento del portal, el almacenamiento del documento y las acciones del flujo al mismo tiempo.
+  </Accordion>
+  <Accordion title="El flujo no se ejecutó. ¿Qué reviso?">
+    Revisa los **Registros de ejecución** y el **Historial de inscripción** del flujo. Confirma también que el flujo está publicado, que el contacto tiene acceso al portal, que el formato es compatible y que la subida terminó correctamente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Compartir documentos con el portal del cliente" icon="folder-open" href="/contactos/compartir-documentos-con-el-portal-del-cliente">
+    Comparte y gestiona archivos entre el CRM y el portal.
+  </Card>
+  <Card title="Disparador de Documentos y contratos" icon="file-signature" href="/documentos/disparador-documentos-y-contratos">
+    Automatiza según el estado de tus documentos y contratos.
+  </Card>
+  <Card title="Registros de ejecución e historial de inscripción" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+    Diagnostica por qué un flujo se ejecutó o no.
+  </Card>
+</CardGroup>

@@ -1,0 +1,150 @@
+---
+title: "Linear en flujos de trabajo"
+description: "Conecta Linear con tus flujos para convertir reportes de clientes en incidencias y avisarles cuando se resuelvan."
+icon: "list-check"
+---
+
+La integración con **Linear** conecta tus flujos de trabajo de Chateea con Linear, la herramienta que usan muchos equipos de producto y desarrollo para gestionar incidencias, proyectos y solicitudes de clientes. Con ella puedes crear, actualizar, buscar y reaccionar a registros de Linear desde tus automatizaciones, sin configurar webhooks a mano.
+
+Por ejemplo: cuando un cliente reporta un error en un formulario, el flujo crea la incidencia en Linear con todo el contexto; y cuando el equipo la marca como resuelta, otro flujo avisa automáticamente al cliente.
+
+## Para qué sirve
+
+- **Ciclo de retroalimentación cerrado:** los errores y solicitudes de clientes se convierten en incidencias o necesidades de cliente en Linear, y el cliente recibe un aviso cuando se resuelven.
+- **Priorización por valor del cliente:** vincular necesidades a clientes de Linear ayuda a tu equipo de producto a ver qué piden los clientes más importantes.
+- **Visibilidad en tiempo real:** los cambios en incidencias, proyectos, necesidades e iniciativas pueden disparar avisos internos o mensajes a clientes.
+- **Contexto en ambos sentidos:** adjunta a la incidencia el enlace al contacto, la empresa, la conversación o la oportunidad en Chateea.
+- **Conexión segura:** se conecta con OAuth, sin claves de larga duración.
+
+## Disparadores de Linear
+
+Todos los disparadores son instantáneos: se activan en cuanto ocurre el evento en Linear.
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Nueva incidencia** (New Issue) | Se crea una incidencia. Se puede filtrar por equipo. |
+| **Incidencia actualizada** (Updated Issue) | Cambia el estado, la prioridad, el responsable, las etiquetas u otros campos. |
+| **Nuevo comentario en incidencia** | Se añade un comentario a una incidencia. |
+| **Nuevo proyecto** | Se crea un proyecto. |
+| **Nueva actualización de proyecto** | Se publica una actualización de proyecto. |
+| **Actualización de proyecto editada** | Se edita una actualización de proyecto existente. |
+| **Nuevo cliente** | Se crea un registro de cliente en Linear. |
+| **Cliente actualizado** | Se edita un registro de cliente. |
+| **Nueva necesidad de cliente** | Se registra una nueva necesidad o solicitud de función. |
+| **Necesidad de cliente actualizada** | Cambia el estado, la prioridad o el trabajo vinculado de una necesidad. |
+| **Nuevo comentario en documento** | Se comenta un documento de Linear (una especificación o una propuesta, por ejemplo). |
+| **Nueva actualización de iniciativa** | Se publica una actualización en una iniciativa. |
+
+## Acciones de Linear
+
+| Acción | Qué hace |
+| --- | --- |
+| **Crear incidencia** | Crea una incidencia con título, descripción, equipo, proyecto, prioridad, responsable, etiquetas y fecha límite. |
+| **Actualizar incidencia** | Cambia solo los campos que configures. El resto queda igual. |
+| **Obtener incidencia** | Trae el estado más reciente de una incidencia por su ID. |
+| **Buscar incidencias** | Busca por equipo, proyecto, etiqueta, estado, responsable o texto. |
+| **Crear comentario** | Añade un comentario a una incidencia. Admite Markdown. |
+| **Crear adjunto en incidencia** | Adjunta una URL que enlaza al registro de origen. |
+| **Agregar etiqueta a incidencia** | Añade una etiqueta. |
+| **Quitar etiqueta de incidencia** | Quita una etiqueta. |
+| **Crear proyecto** | Crea un proyecto con nombre, descripción, responsable y fecha objetivo. |
+| **Buscar proyecto** | Localiza un proyecto por nombre o filtro. |
+| **Crear cliente** | Crea un cliente con nombre, dominio, nivel e ingresos. |
+| **Buscar cliente** | Localiza un cliente por nombre o dominio. |
+| **Crear necesidad de cliente** | Crea una necesidad vinculada a un cliente, una incidencia o un proyecto. |
+
+## Cómo conectar Linear
+
+Puedes hacerlo desde el constructor de flujos o desde la configuración.
+
+### Opción 1: desde el constructor de flujos
+
+<Steps>
+  <Step title="Abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y abre o crea un flujo.
+  </Step>
+  <Step title="Añade un paso de Linear">
+    Agrega un disparador o una acción de Linear y elige el que quieras usar.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Haz clic en **Conectar ahora** e inicia sesión en Linear.
+  </Step>
+  <Step title="Autoriza el acceso">
+    Autoriza el espacio de trabajo y los equipos a los que tendrá acceso la integración. Haz clic en **Guardar** y continúa configurando el paso.
+  </Step>
+</Steps>
+
+### Opción 2: desde la configuración
+
+<Steps>
+  <Step title="Abre las integraciones">
+    Ve a **Configuración → Integraciones**, busca **Linear** y haz clic en **Conectar**.
+  </Step>
+  <Step title="Inicia sesión y autoriza">
+    Inicia sesión en Linear, autoriza el espacio de trabajo y guarda la conexión.
+  </Step>
+  <Step title="Vuelve al flujo">
+    Regresa al constructor de flujos para configurar los disparadores o acciones de Linear.
+  </Step>
+</Steps>
+
+Después de conectar, cada disparador o acción se configura eligiendo el equipo, el proyecto, la incidencia, la etiqueta, el cliente o los campos que correspondan.
+
+## Ejemplos de flujos
+
+### Error reportado por un cliente a incidencia en Linear
+
+1. El flujo se inicia cuando un cliente envía un formulario de reporte de error o de solicitud de función.
+2. **Buscar cliente** localiza al cliente en Linear por nombre o dominio.
+3. **Crear incidencia** registra el reporte con el contexto del contacto, la prioridad y las etiquetas.
+4. **Crear adjunto en incidencia** añade el enlace al registro del contacto en Chateea.
+5. **Crear necesidad de cliente** la vincula al cliente y a la incidencia.
+
+### Incidencia resuelta a aviso al cliente
+
+1. Usa el disparador **Incidencia actualizada**.
+2. Filtra las incidencias cuyo estado sea **Done**.
+3. Añade un filtro de etiqueta, por ejemplo la etiqueta que usas para reportes de clientes.
+4. **Obtener incidencia** trae los detalles más recientes.
+5. Envía un correo o SMS personalizado a quien reportó el problema.
+
+<Tip>
+  Si el cliente todavía no existe en Linear, usa **Buscar cliente** y, si no hay resultado, crea una rama con **Crear cliente** antes de **Crear necesidad de cliente**.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los disparadores de Linear son instantáneos?">
+    Sí. Funcionan con webhooks de Linear, así que el flujo se activa en cuanto ocurre el evento.
+  </Accordion>
+  <Accordion title="¿Son disparadores y acciones premium?">
+    Sí. Los disparadores y acciones de Linear son premium y cada ejecución se descuenta de la billetera de tu cuenta.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece mi equipo de Linear en el desplegable?">
+    Probablemente no autorizaste ese equipo al conectar. Vuelve a conectar o revisa la conexión y confirma que autorizaste el espacio de trabajo y los equipos correctos.
+  </Accordion>
+  <Accordion title="¿Puedo usar la misma conexión en varios flujos?">
+    Sí. Una vez conectada, puedes usarla en todos tus flujos, siempre que el espacio de trabajo y los equipos autorizados permitan lo que configuras.
+  </Accordion>
+  <Accordion title="¿Por qué no se activa mi disparador?">
+    Revisa el equipo, los filtros, las etiquetas, el proyecto y el estado seleccionados, y confirma que el flujo esté publicado. Prueba con un registro reciente de Linear que cumpla los filtros y revisa los registros de ejecución.
+  </Accordion>
+  <Accordion title="¿Actualizar incidencia borra los campos que no configuro?">
+    No. Solo envía los campos que definas en la acción. Los demás campos de la incidencia no cambian.
+  </Accordion>
+  <Accordion title="¿Qué plan de Linear necesito para las necesidades de cliente?">
+    La mayoría de disparadores y acciones funcionan con los planes estándar de Linear, pero las funciones de clientes y necesidades de cliente dependen de la función de solicitudes de clientes de Linear y pueden requerir ciertos planes.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Verifica tus acciones de integraciones antes de publicar.
+  </Card>
+  <Card title="Acciones premium" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las acciones premium de los flujos.
+  </Card>
+</CardGroup>

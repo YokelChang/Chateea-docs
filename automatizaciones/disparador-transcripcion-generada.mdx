@@ -1,0 +1,93 @@
+---
+title: "Disparador: Transcripción generada"
+description: "Inicia flujos en cuanto se transcribe una llamada de la IA de voz, del IVR o de tu teléfono de Chateea."
+icon: "file-lines"
+---
+
+El disparador **Transcripción generada** (Transcript Generated) inicia un flujo de trabajo en cuanto la transcripción de una llamada está disponible. Funciona con llamadas de la **IA de voz**, del **IVR** y del **sistema telefónico de Chateea**, y te permite automatizar seguimientos, actualizar el CRM, crear tareas o aprovechar lo que se dijo en la conversación sin trabajo manual.
+
+## Cómo funciona
+
+Cuando Chateea termina de transcribir una llamada grabada, el disparador se activa y envía al flujo un conjunto de datos de la llamada: la transcripción completa, la duración, la dirección (entrante o saliente), la ubicación de quien llama, las horas de la llamada y el usuario, entre otros. Con esos datos puedes lanzar acciones justo después de colgar.
+
+| Tipo de llamada | Requisito de transcripción |
+| --- | --- |
+| IA de voz | Activada por defecto. |
+| Llamadas del sistema telefónico de Chateea | Debes activar la transcripción en la configuración de teléfono. |
+| IVR | Debes activar la transcripción en la configuración del IVR. |
+
+### Transcripción y resumen traducidos
+
+Si tu agente de IA de voz tiene activada la traducción, los flujos que se inician después de la llamada reciben también la **transcripción traducida** y el **resumen traducido**. Úsalos para enviar notificaciones internas en tu idioma, generar seguimientos localizados o guardar resultados estandarizados en el CRM. Si la traducción no está activada, el flujo usa la transcripción y el resumen originales.
+
+## Beneficios
+
+- **Seguimiento inmediato:** lanza acciones segundos después de terminar la llamada.
+- **Personalización con IA:** pasa la transcripción a acciones de IA (por ejemplo, el tomador de decisiones con IA) para decidir el siguiente paso según la intención, el sentimiento o frases clave.
+- **Datos útiles en el CRM:** guarda intención de compra, objeciones o palabras clave en la ficha del contacto.
+- **Lógica precisa:** usa la duración, la dirección, la ubicación y el usuario de la llamada como condiciones.
+- **Menos trabajo administrativo:** tu equipo se centra en conversar, no en tomar notas.
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y haz clic en **Crear flujo de trabajo**. Empieza desde cero o abre un flujo existente.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador** y elige **Transcripción generada**.
+  </Step>
+  <Step title="Activa la transcripción">
+    Para la IA de voz ya está activa. Para llamadas normales o del IVR, usa el enlace que aparece dentro de la configuración del disparador para ir a la configuración de teléfono o del IVR y activarla. Si la transcripción no está activa, el disparador te mostrará un aviso para hacerlo.
+  </Step>
+  <Step title="Aplica filtros">
+    Define cuándo debe activarse el flujo:
+    - **Tipo de llamada:** IA de voz, IVR o llamadas normales.
+    - **Dirección de la llamada** (opcional): entrante o saliente.
+    - **Duración de la llamada** (opcional): por ejemplo, más de 30 segundos para descartar llamadas cortas o incompletas.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar disparador**, añade las acciones que necesites y cambia el flujo de **Borrador** a **Publicado**.
+  </Step>
+</Steps>
+
+## Ideas de uso
+
+- Enviar un resumen de la llamada por correo al vendedor asignado.
+- Crear una tarea de seguimiento si la transcripción menciona "presupuesto" o "cotización".
+- Guardar objeciones frecuentes en un campo personalizado para analizarlas después.
+- Mover la oportunidad de etapa cuando el cliente confirma interés.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si la transcripción falla o el audio está incompleto?">
+    Si la llamada no se puede transcribir (por ejemplo, por mala calidad de audio o un fragmento de grabación faltante), el disparador no se activa: solo lo hace cuando se confirma una transcripción generada. Si la transcripción es parcial, el flujo se ejecuta con normalidad, pero los fragmentos faltantes aparecen en blanco en el valor personalizado de la transcripción completa.
+  </Accordion>
+  <Accordion title="¿Varios flujos pueden usar la misma transcripción?">
+    Sí. El mismo evento puede iniciar varios flujos si cada uno tiene sus propias condiciones. Evita filtros que se solapen sin necesidad para no enviar, por ejemplo, correos duplicados.
+  </Accordion>
+  <Accordion title="¿Cómo se guardan y protegen las transcripciones?">
+    Se almacenan de forma segura en Chateea y se asocian solo a la ficha del contacto correspondiente. El acceso depende de los permisos de cada usuario. La transcripción no se comparte fuera de Chateea salvo que tú la envíes con una acción del flujo, como un correo o un webhook.
+  </Accordion>
+  <Accordion title="¿Funciona con llamadas importadas o de sistemas externos?">
+    No. Solo funciona con llamadas grabadas y transcritas dentro de Chateea. Los registros de llamadas importados o las transcripciones de sistemas externos no activan este disparador.
+  </Accordion>
+  <Accordion title="¿Qué pasa si un contacto tiene varias transcripciones seguidas?">
+    Cada llamada genera su propio evento y se procesan en orden cronológico, una tras otra. Así las acciones (como etiquetar o actualizar campos) se ejecutan de forma consistente.
+  </Accordion>
+  <Accordion title="¿Hay un límite de tamaño para la transcripción?">
+    Sí. Si guardas la transcripción en un campo personalizado, el límite es de **16 KB**. Para conversaciones largas, guárdala en una nota o envíala como archivo mediante un webhook para evitar que se corte. El flujo puede usar la transcripción completa aunque no la guardes en un campo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Traducción de transcripciones en la IA de voz" icon="language" href="/ia/traduccion-transcripcion-ia-de-voz">
+    Recibe transcripciones y resúmenes traducidos.
+  </Card>
+  <Card title="Acciones durante y después de la llamada" icon="phone" href="/ia/acciones-durante-y-despues-de-la-llamada">
+    Automatiza lo que ocurre en cada llamada de la IA de voz.
+  </Card>
+</CardGroup>

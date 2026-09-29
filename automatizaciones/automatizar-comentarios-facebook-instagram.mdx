@@ -1,0 +1,155 @@
+---
+title: "Automatizar comentarios de Facebook e Instagram con IA"
+description: "Responde comentarios al instante, envía mensajes directos con botones y personaliza las respuestas con IA desde tus flujos."
+icon: "comments"
+---
+
+Con los flujos de trabajo de Chateea puedes responder al instante los comentarios que dejan en tus publicaciones de Facebook e Instagram: contestar en público, enviar un mensaje directo con un archivo o un enlace, e incluso personalizar la respuesta con IA. La conversación ocurre en Facebook o Instagram, pero la gestionas desde Chateea y cada persona queda guardada como contacto.
+
+Es la base de campañas del tipo "comenta INFO y te enviamos el catálogo".
+
+## Antes de empezar
+
+- Conecta tu página de Facebook y tu cuenta de Instagram en **Configuración → Integraciones → Facebook e Instagram**.
+- Tu cuenta de Instagram debe estar vinculada a tu página de Facebook como cuenta empresarial. Para comprobarlo, abre tu página de Facebook y verifica que aparezcan ambos íconos.
+
+## Piezas que vas a usar
+
+**Disparadores** (categoría **Eventos de Facebook/Instagram**):
+
+- **Facebook: comentario en una publicación.** Inicia el flujo cuando alguien comenta en una publicación de tu página.
+- **Instagram: comentario en una publicación.** Lo mismo para Instagram.
+- **Cliente respondió.** Útil para continuar la conversación cuando la persona contesta por Messenger o por mensaje directo de Instagram.
+
+**Acciones** (categoría **Comunicación**):
+
+- **Responder en comentarios.** Publica una respuesta debajo del comentario.
+- **Messenger interactivo de Facebook** e **Instagram interactivo.** Envían un mensaje directo con texto, archivos y botones.
+- **GPT con OpenAI.** Genera una respuesta con IA que puedes usar en los pasos siguientes.
+
+**Recetas:** al crear un flujo, busca en las plantillas las recetas de automatización de comentarios de Facebook e Instagram ("comenta para recibir el archivo") y la de comentarios con IA. Te dan un flujo de ejemplo completo para adaptar.
+
+## Configurar el disparador de comentarios
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En el flujo, haz clic en **Agregar disparador** y busca **Facebook: comentario en una publicación** o **Instagram: comentario en una publicación**.
+  </Step>
+  <Step title="Elige la página">
+    Selecciona primero la página. Todos los demás filtros dependen de ella: si eliminas el filtro de página, se eliminan también los demás.
+  </Step>
+  <Step title="Elige la publicación">
+    En **Tipo de publicación** elige:
+    - **Publicadas:** muestra las publicaciones de tu página (texto, foto, video o en vivo). Puedes abrir cada una con **Ver en Facebook**.
+    - **Personalizada:** agrega el filtro **La publicación es** y pega la URL o el ID de la publicación.
+  </Step>
+  <Step title="Define qué debe decir el comentario">
+    Elige **Contiene la frase** o **Coincidencia exacta** y escribe la palabra o frase clave.
+  </Step>
+  <Step title="Limita a comentarios principales (opcional)">
+    Activa la opción de solo comentarios de primer nivel si no quieres que las respuestas dentro de un hilo activen el flujo.
+  </Step>
+</Steps>
+
+### Coincidencia exacta frente a Contiene la frase
+
+| Tipo | Palabra clave | Comentario recibido | Resultado |
+| --- | --- | --- | --- |
+| Coincidencia exacta | Precio | Precio | Se activa |
+| Coincidencia exacta | Envíame el precio | Envíame el precio | Se activa |
+| Coincidencia exacta | Envíame el precio | Por favor envíame el precio | No se activa |
+| Contiene la frase | te compré | te compré | Se activa |
+| Contiene la frase | te compré | te compré ayer | Se activa |
+| Contiene la frase | te compré | te compré uno | No se activa |
+
+Cuando alguien activa el disparador, se guarda como contacto con su nombre y apellido.
+
+## Configurar el mensaje directo interactivo
+
+<Steps>
+  <Step title="Agrega la acción">
+    Agrega **Messenger interactivo de Facebook** o **Instagram interactivo**.
+  </Step>
+  <Step title="Elige el tipo de respuesta">
+    - **Responder al comentario por mensaje directo:** úsalo en el primer mensaje, cuando la conversación nace de un comentario.
+    - **Responder al mensaje directo:** úsalo para los mensajes siguientes, o cuando la persona te escribió primero por mensaje directo.
+  </Step>
+  <Step title="Escribe el mensaje">
+    Elige una plantilla o escribe tu propio texto. Con **Agregar adjunto** puedes subir un archivo o pegar su URL.
+  </Step>
+  <Step title="Agrega botones (opcional)">
+    Con **Agregar botón** puedes añadir hasta 3 botones. Cada uno lleva un nombre y un tipo:
+    - **Abrir sitio web:** lleva a la URL que indiques.
+    - **Llamar a un número:** permite llamarte con un toque.
+    - **Realizar acciones:** crea una rama en el flujo para continuar la conversación según el botón que elija la persona.
+  </Step>
+  <Step title="Revisa la espera y la rama predeterminada">
+    La acción incluye una espera obligatoria (1 minuto por defecto, editable). Si en ese tiempo la persona no pulsa ningún botón, o si pulsa **Llamar a un número**, el contacto sigue por la **rama predeterminada**.
+  </Step>
+</Steps>
+
+## Responder en el comentario
+
+La acción **Responder en comentarios** publica una respuesta debajo del comentario. Puedes escribir varias respuestas y el sistema elige una al azar cada vez, para que no parezcan todas iguales. Activa la opción de **Me gusta** si además quieres dar me gusta al comentario.
+
+## Respuestas personalizadas con IA
+
+En lugar de respuestas fijas, puedes pedirle a la IA que escriba una respuesta a medida de cada comentario.
+
+<Steps>
+  <Step title="Agrega la acción GPT antes de responder">
+    Con el disparador de comentarios de Facebook o Instagram ya configurado, agrega la acción **GPT con OpenAI** antes de **Responder en comentarios**.
+  </Step>
+  <Step title="Escribe la instrucción">
+    En **Tipo de acción** elige **Personalizada** y escribe cómo quieres que responda. Por ejemplo: "Responde de forma breve y amable a este comentario de un cliente de nuestra pastelería. Si pregunta precios, invítalo a revisar su mensaje directo".
+  </Step>
+  <Step title="Inserta el comentario">
+    Con el selector de valores personalizados, inserta el cuerpo del comentario de Facebook o Instagram en la instrucción y guarda la acción.
+  </Step>
+  <Step title="Usa la respuesta de la IA">
+    Agrega **Responder en comentarios** y, en el campo de respuesta, selecciona con el selector de valores la respuesta generada por la acción GPT.
+  </Step>
+</Steps>
+
+<Tip>
+Puedes ir más lejos: pide a la IA que analice el sentimiento del comentario y usa una condición **Si/Si no** para enviar el mensaje directo solo cuando el comentario sea positivo.
+</Tip>
+
+## Reglas importantes
+
+- **Responder al comentario por mensaje directo** tiene una ventana de 7 días: si no envías el mensaje en ese plazo desde el comentario, la entrega falla.
+- **Responder al mensaje directo** solo funciona si hubo conversación con la persona en las últimas 24 horas; si no, el envío falla.
+- Si usas varias acciones interactivas en el mismo flujo, la primera debe ser **Responder al comentario por mensaje directo** y las siguientes **Responder al mensaje directo**.
+- Si la persona no respondió al primer mensaje interactivo, otra acción interactiva en la rama de tiempo agotado no funcionará.
+- Máximo 3 botones por mensaje. Después del botón **Llamar a un número** no puedes agregar más acciones: el contacto pasa directamente a la rama predeterminada.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si alguien comenta varias veces?">
+    Depende de la configuración del flujo. Si permites el reingreso, el flujo se ejecuta con cada comentario; si no, solo con el primero.
+  </Accordion>
+  <Accordion title="¿Puedo retrasar la respuesta para que parezca más natural?">
+    Sí. Agrega una acción **Espera** antes de responder el comentario o enviar el mensaje directo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la persona borra su comentario?">
+    El disparador se activa en el momento en que se publica el comentario, así que las acciones del flujo siguen ejecutándose aunque después lo borre.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conecta Facebook e Instagram" icon="link" href="/primeros-pasos/conecta-facebook-e-instagram">
+    Vincula tus páginas y cuentas antes de automatizar.
+  </Card>
+  <Card title="Mensaje directo de Instagram en flujos" icon="instagram" href="/conversaciones/accion-mensaje-directo-instagram">
+    Envía mensajes directos de Instagram desde tus automatizaciones.
+  </Card>
+  <Card title="Modelos GPT en flujos" icon="robot" href="/automatizaciones/modelos-gpt-en-flujos">
+    Elige el modelo de IA adecuado para cada paso.
+  </Card>
+  <Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+    Todos los eventos que pueden iniciar un flujo.
+  </Card>
+</CardGroup>

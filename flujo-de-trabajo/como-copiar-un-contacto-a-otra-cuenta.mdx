@@ -1,72 +1,98 @@
 ---
-title: "¿Cómo copiar un contacto a otra cuenta?"
-sidebarTitle: "¿Cómo copiar un contacto a otra cuenta?"
-description: "La acción Copiar contacto duplica un contacto en otra cuenta a la que tenga acceso el usuario con sesión iniciada, con la opción de copiar también sus etiquetas y sus campos personalizados."
+title: "Copiar contactos a otra cuenta con un flujo"
+description: "Usa la acción Copiar contacto para duplicar contactos, etiquetas y campos personalizados en otra cuenta de Chateea a la que tengas acceso."
 icon: "copy"
 ---
 
-<Info>
-  **Documentado el 16 de agosto de 2026.** Este artículo explica la acción de flujo de trabajo **Copiar contacto** (Copy Contact) y cada uno de sus campos de configuración.
-</Info>
-
-## Copiar contacto
-
-La función **Copiar contacto** permite copiar un contacto a otra cuenta.
-
-Es una acción pensada para escenarios en los que un mismo contacto debe existir en más de una cuenta: derivaciones entre sucursales, traspasos de un cliente entre unidades de negocio o consolidación de leads en una cuenta central.
+La acción **Copiar contacto** de los flujos de trabajo duplica un contacto en otra cuenta de Chateea a la que tengas acceso, con sus datos, etiquetas y campos personalizados. Es útil si tu negocio trabaja con varias cuentas (por ejemplo, una por sucursal o por marca) y quieres que un cliente captado en una llegue automáticamente a la otra.
 
 <Note>
-  **Imagen próximamente** — Captura del panel **Copy Contact** con el campo **ACTION NAME**, el desplegable **SELECT AN ACCOUNT** y los dos interruptores **COPY TAGS** y **COPY CUSTOM FIELDS**.
+**Copiar contacto** es una acción premium. Cada ejecución se descuenta de la **billetera** de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
 </Note>
 
-## Campos de la acción
+## Antes de empezar
 
-**Qué muestra la siguiente tabla:** cada campo del panel de la acción, qué controla y qué debes tener en cuenta antes de guardarla.
+- Necesitas acceso a la cuenta de destino con tu usuario. En la acción solo aparecen las cuentas a las que tienes acceso.
+- Si quieres copiar campos personalizados, créalos antes en la cuenta de destino con el **mismo tipo de campo** que en la cuenta de origen.
+- Si las acciones premium no están disponibles en tu cuenta, escribe a soporte de Chateea en **help@chateea.com**.
 
-<div style={{overflowX:'auto',border:'1px solid rgba(58,221,143,0.35)',borderRadius:'12px',margin:'1rem 0'}}>
-  <table style={{width:'100%',borderCollapse:'collapse',fontSize:'0.92rem'}}>
-    <thead>
-      <tr style={{background:'linear-gradient(90deg,#13322c,#3add8f)',color:'#ffffff'}}>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Campo</th>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>Qué hace</th>
-        <th style={{padding:'12px 14px',textAlign:'left'}}>A tener en cuenta</th>
-      </tr>
-    </thead>
+## Cómo configurar la acción
 
-    <tbody>
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Action Name (nombre de la acción)</td>
-        <td style={{padding:'12px 14px'}}>Nombre con el que la acción aparece dentro del lienzo del flujo de trabajo.</td>
-        <td style={{padding:'12px 14px'}}>Usa un nombre descriptivo si tienes varias copias hacia cuentas distintas.</td>
-      </tr>
+<Steps>
+  <Step title="Abre el flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o edita uno existente. Elige el disparador que debe iniciar la copia, por ejemplo **Contacto creado** o **Etiqueta del contacto**.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+**, busca **Copiar contacto** y selecciónala.
+  </Step>
+  <Step title="Elige la cuenta de destino">
+    Selecciona la cuenta de Chateea a la que se copiará el contacto.
+  </Step>
+  <Step title="Activa las opciones que necesites">
+    Configura las opciones que se explican en la siguiente sección.
+  </Step>
+  <Step title="Guarda y publica">
+    Haz clic en **Guardar acción**, activa **Publicar** y guarda el flujo.
+  </Step>
+</Steps>
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Seleccione una cuenta</td>
-        <td style={{padding:'12px 14px'}}>El contacto se copiará a la cuenta seleccionada.</td>
-        <td style={{padding:'12px 14px'}}>Solo se mostrarán aquí las cuentas a las que el usuario que ha iniciado sesión tenga acceso.</td>
-      </tr>
+## Opciones de la acción
 
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Copiar etiquetas</td>
-        <td style={{padding:'12px 14px'}}>Si está habilitada, las etiquetas del contacto se copiarán a la cuenta seleccionada.</td>
-        <td style={{padding:'12px 14px'}}>Útil cuando la cuenta de destino usa las mismas etiquetas para segmentar.</td>
-      </tr>
-
-      <tr style={{borderTop:'1px solid rgba(58,221,143,0.25)',background:'rgba(58,221,143,0.06)'}}>
-        <td style={{padding:'12px 14px',fontWeight:'600'}}>Copiar campos personalizados</td>
-        <td style={{padding:'12px 14px'}}>Si está habilitada, los campos personalizados del contacto se copiarán a la cuenta seleccionada.</td>
-        <td style={{padding:'12px 14px'}}>El valor del campo personalizado se copiará <strong>solo si dicho campo existe</strong> en la cuenta seleccionada.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-**Ejemplo de lectura:** si el contacto tiene el campo personalizado `sucursal_asignada` y la cuenta de destino no lo tiene creado, el contacto se copia igualmente, pero ese valor no viaja. Crea primero el campo en la cuenta de destino con el mismo nombre y luego vuelve a ejecutar el flujo.
-
-<Warning>
-  Antes de activar **Copiar campos personalizados**, revisa que los campos existan en la cuenta de destino. De lo contrario, la copia se completará con datos incompletos sin mostrar ningún error.
-</Warning>
+| Opción | Qué hace |
+| --- | --- |
+| **Copiar etiquetas** | Copia las etiquetas del contacto original. También puedes agregar etiquetas nuevas, elegidas de las del contacto o escritas a mano, para identificar en la cuenta de destino a los contactos que llegaron por copia. |
+| **Copiar campos personalizados** | Copia los valores de los campos personalizados, siempre que el mismo campo exista en la cuenta de destino y sea del mismo tipo. Si el campo no existe, ese valor no se copia. |
+| **Actualizar el contacto si ya existe** | Si el contacto ya existe en la cuenta de destino, se actualiza con los datos nuevos. Si no existe, se crea. |
+| **Omitir si no tiene correo ni nombre** | Si el contacto no tiene correo o nombre, no se copia. Evita llenar la otra cuenta de registros incompletos. |
 
 <Tip>
-  Combina esta acción con un filtro previo (por etiqueta, por origen o por una condición **Si/Entonces**) para copiar únicamente los contactos que realmente deben existir en la otra cuenta y evitar duplicados innecesarios.
+Agrega una etiqueta como `copiado-desde-sucursal-centro` al contacto copiado. Así podrás filtrarlo o usarla como disparador de otro flujo en la cuenta de destino.
 </Tip>
+
+## Qué se copia y qué no
+
+**Se copia:**
+
+- Información de contacto (nombre, correo, teléfono).
+- Información general de la ficha.
+- Etiquetas, si activas **Copiar etiquetas**.
+- Campos personalizados, si activas **Copiar campos personalizados** y el campo existe con el mismo tipo en la cuenta de destino.
+
+**No se copia:**
+
+- Conversaciones.
+- Actividad.
+- Notas.
+- Tareas.
+- Citas.
+- Pagos.
+- Documentos y archivos.
+
+<Warning>
+Los archivos no se trasladan a la cuenta de destino como archivos independientes. En algunos casos, las referencias a archivos del contacto copiado siguen dependiendo del contacto original. Si eliminas el contacto original, esos archivos pueden dejar de estar disponibles. Si necesitas conservarlos, no borres el contacto en la cuenta de origen.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué no aparece la cuenta a la que quiero copiar?">
+    Solo se muestran las cuentas a las que tu usuario tiene acceso. Pide a un administrador que te dé acceso a esa cuenta o escribe a soporte en help@chateea.com.
+  </Accordion>
+  <Accordion title="Activé Copiar campos personalizados, pero un campo llegó vacío">
+    Revisa que el campo exista en la cuenta de destino y que sea del mismo tipo (por ejemplo, texto con texto, fecha con fecha). Si no coincide, ese valor no se copia.
+  </Accordion>
+  <Accordion title="¿Se duplica el contacto si ya existe en la otra cuenta?">
+    Si activas **Actualizar el contacto si ya existe**, se actualiza el contacto existente en lugar de crear uno nuevo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Acciones premium" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las acciones y disparadores premium.
+  </Card>
+  <Card title="Lista de acciones de flujos" icon="list" href="/automatizaciones/lista-de-acciones">
+    Todas las acciones que puedes usar en tus flujos.
+  </Card>
+</CardGroup>

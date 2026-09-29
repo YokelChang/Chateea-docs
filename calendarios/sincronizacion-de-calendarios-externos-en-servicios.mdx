@@ -1,0 +1,81 @@
+---
+title: "Sincronización con calendarios externos en servicios"
+description: "Qué se sincroniza con Google, Outlook e iCal en reservas de uno o varios servicios y cómo hacer cambios."
+icon: "arrows-rotate"
+---
+
+Si tu equipo tiene conectado Google Calendar, Outlook o iCal, sus citas de servicios pueden aparecer también en esos calendarios. Este artículo explica qué se sincroniza en cada tipo de reserva, qué pasa si alguien edita un evento directamente en el calendario externo y cómo cambiar o cancelar un solo servicio dentro de una reserva con varios.
+
+## Reservas y citas: cómo se organizan
+
+Cuando un cliente reserva uno o varios servicios en un mismo pago, Chateea crea una **reserva de servicio**. Si incluye varios servicios (por ejemplo, un corte y después un tratamiento capilar con otra persona), cada servicio se agenda uno detrás de otro y tiene su propia **cita** dentro de esa reserva: una cita por servicio y miembro del equipo.
+
+La reserva de servicio guarda lo que comparten todas las citas de la visita: los datos del cliente, los valores personalizados, el estado general y el pago único de todos los servicios.
+
+## Cómo funciona la sincronización
+
+| Tipo de reserva | Qué se sincroniza |
+| --- | --- |
+| **Un solo servicio** | Sincronización completa en ambos sentidos. Los cambios hechos en Chateea llegan al calendario externo, y los cambios compatibles hechos en el calendario externo vuelven a Chateea. |
+| **Varios servicios** | Cada servicio se envía como un evento separado al calendario del miembro del equipo asignado. No hay sincronización de vuelta: los cambios deben hacerse siempre en Chateea. |
+
+## Cambios en el calendario externo en reservas con varios servicios
+
+En las reservas con más de un servicio, lo que cambies directamente en el calendario externo **no se refleja en Chateea**. Por ejemplo:
+
+- Si mueves el evento de un servicio a otra hora en Google Calendar, el servicio no se reprograma en Chateea.
+- Si borras o editas el evento de un servicio en el calendario externo, la reserva no cambia en Chateea.
+- Como cada servicio aparece como un evento separado, cambiar uno desde fuera puede hacer que el calendario externo muestre datos distintos a los de la reserva.
+
+Chateea sigue usando los datos guardados en la reserva, incluida la hora programada, para las confirmaciones y recordatorios del cliente.
+
+<Warning>
+  En las reservas con varios servicios, haz todas las reprogramaciones, cancelaciones y cambios directamente en Chateea. Así la reserva, el calendario externo y los mensajes al cliente coinciden.
+</Warning>
+
+## El estado se aplica a toda la reserva
+
+Una reserva de servicio tiene un único estado. Si cambias el estado de una de sus citas (por ejemplo, desde la vista de lista de citas), verás un aviso de que el cambio se aplicará a **todos los servicios de la reserva**. Por ahora no se puede poner un estado distinto a un solo servicio sin cambiar los demás.
+
+## Cancelar o mover un solo servicio de una reserva
+
+Hazlo siempre desde Chateea:
+
+- **Para cancelar un servicio**: abre la reserva, quita ese servicio y guarda. Los demás servicios siguen en la reserva.
+- **Para mover un servicio a otra hora**: quítalo de la reserva y crea una cita nueva para ese servicio en el horario que quieras.
+
+Consulta cómo editar una reserva en [Gestionar citas de servicios desde el panel de la cita](/calendarios/gestionar-citas-de-servicios).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="Moví una cita en Google Calendar. ¿Se actualiza en Chateea?">
+    Si es una reserva de un solo servicio, los cambios compatibles se sincronizan de vuelta. Si es una reserva con varios servicios, no. En ese caso haz el cambio en Chateea.
+  </Accordion>
+  <Accordion title="¿Por qué al cambiar el estado de un servicio cambió toda la reserva?">
+    Porque el estado se gestiona a nivel de reserva, no por servicio. Todas las citas de una reserva con varios servicios comparten el mismo estado.
+  </Accordion>
+  <Accordion title="¿Puedo cancelar solo un servicio sin cancelar toda la reserva?">
+    Sí. Abre la reserva, quita ese servicio y guarda. El resto se mantiene.
+  </Accordion>
+  <Accordion title="¿El cliente aparece en los eventos de cada servicio?">
+    Puede aparecer como invitado en los eventos creados en el calendario de los miembros del equipo asignados.
+  </Accordion>
+  <Accordion title="¿Por qué Google Calendar muestra horas distintas a Chateea?">
+    En reservas con varios servicios ocurre si alguien editó un evento directamente en el calendario externo. Ese cambio no vuelve a Chateea, así que la reserva y los mensajes al cliente siguen usando los datos guardados en Chateea. Corrige el cambio desde Chateea para que ambos calendarios coincidan.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Gestionar citas de servicios" icon="pen-to-square" href="/calendarios/gestionar-citas-de-servicios">
+    Edita, duplica y reprograma reservas de servicios.
+  </Card>
+  <Card title="Configuración global de servicios" icon="gear" href="/calendarios/configuracion-global-de-servicios">
+    Invitaciones y notas para calendarios externos.
+  </Card>
+  <Card title="Vista de calendario para servicios" icon="calendar-days" href="/calendarios/vista-de-calendario-de-servicios">
+    Revisa y filtra tus reservas de servicios.
+  </Card>
+</CardGroup>

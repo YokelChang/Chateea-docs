@@ -1,0 +1,103 @@
+---
+title: "API de documentos y contratos"
+description: "Lista, envía y genera documentos desde plantillas por API cuando el proceso empieza fuera de la plataforma."
+icon: "code"
+---
+
+La API de Chateea incluye endpoints para Documentos y contratos que permiten a tu equipo técnico listar documentos y plantillas, enviar documentos existentes y generar y enviar documentos a partir de plantillas, todo sin entrar manualmente a la plataforma. Es útil cuando el proceso empieza fuera de Chateea (tu sitio web, un portal propio, un ERP o una app interna) pero quieres seguir usando tus plantillas y el sistema de firma de Chateea.
+
+<Info>
+Este artículo está pensado para desarrolladores o para el responsable técnico de tu negocio. Si solo necesitas enviar documentos de forma automática sin programar, usa la acción **Enviar documentos y contratos** en un flujo de trabajo.
+</Info>
+
+## Para qué sirve
+
+- **Automatizar envíos:** manda documentos desde herramientas externas o apps propias sin abrir Chateea.
+- **Aprovechar tus plantillas:** crea un documento nuevo desde una plantilla y envíalo en una sola llamada.
+- **Mantener los datos sincronizados:** consulta la lista de documentos y plantillas para reportes o para sincronizar con otros sistemas.
+- **Escalar tus procesos:** combina los envíos por API con disparadores de flujos para recordatorios y seguimientos.
+- **Reducir errores:** estandariza qué plantilla se usa y cómo se envía en todos tus sistemas.
+
+## Endpoints disponibles
+
+Todos los endpoints trabajan con los datos de tu cuenta de Chateea: los documentos y plantillas que devuelven son los de esa cuenta.
+
+| Endpoint | Qué hace | Casos de uso |
+| --- | --- | --- |
+| **Listar documentos** | Devuelve los documentos de tu cuenta. | Sincronizar tu inventario de documentos con otro sistema, mostrar documentos en una herramienta interna, comprobar qué existe antes de crear algo nuevo. |
+| **Enviar documento** | Envía un documento que ya existe a uno o varios contactos. | Disparar el envío desde un formulario externo, un portal o una app. Quitar pasos manuales a tu equipo de ventas o de alta de clientes. |
+| **Listar plantillas** | Devuelve las plantillas de tu cuenta. | Llenar un selector de plantillas en una app externa, verificar que una plantilla existe antes de usarla. |
+| **Enviar plantilla** | Crea un documento nuevo a partir de una plantilla y lo envía en la misma llamada. | Automatizar propuestas, acuerdos y contratos repetitivos, generando un documento nuevo por cada contacto. |
+
+### Enviar documento o enviar plantilla
+
+- **Enviar documento** manda un documento que **ya existe** en Chateea. El documento debe estar creado antes de la llamada.
+- **Enviar plantilla** **crea** un documento nuevo desde una plantilla y lo envía de inmediato. Es la mejor opción cuando necesitas un documento fresco para cada contacto y ya trabajas con plantillas estandarizadas.
+
+## Cómo empezar
+
+<Steps>
+  <Step title="Prepara tus documentos y plantillas">
+    Confirma que los documentos o plantillas que vas a usar ya existen en tu cuenta de Chateea y que tienen los campos de combinación correctos.
+  </Step>
+  <Step title="Obtén tus credenciales">
+    Crea un token de integración privada desde **Configuración → Integraciones privadas**. Es el método recomendado frente a las claves de API porque ofrece más seguridad y control de permisos.
+  </Step>
+  <Step title="Consulta la documentación de la API">
+    Para conocer la URL base, el formato de cada petición y los parámetros de cada endpoint, escribe a soporte de Chateea en **help@chateea.com**.
+  </Step>
+  <Step title="Prueba las llamadas">
+    Usa una herramienta como Postman para hacer peticiones de prueba. Envía el token en el encabezado de autenticación y completa los parámetros que se piden (ID del documento, ID de la plantilla, ID de los contactos).
+  </Step>
+  <Step title="Valida las respuestas">
+    Revisa el JSON que devuelve cada llamada y confirma que los documentos o plantillas se listan y se envían correctamente.
+  </Step>
+  <Step title="Integra y automatiza">
+    Incorpora las llamadas en tu CRM, tus scripts o tu backend. Si quieres acciones posteriores, crea flujos de trabajo con el disparador de documentos y contratos (enviado, visto, firmado o completado).
+  </Step>
+  <Step title="Despliega de forma segura">
+    Guarda tus tokens en un lugar seguro, renuévalos periódicamente y vigila el uso de la API para no superar los límites de peticiones.
+  </Step>
+</Steps>
+
+```text
+Authorization: Bearer TU_TOKEN_DE_INTEGRACION_PRIVADA
+```
+
+<Warning>
+Los permisos (scopes) definen qué puede leer o hacer el token dentro de tu cuenta. Concede solo los permisos estrictamente necesarios para los endpoints que vas a usar.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué endpoints incluye?">
+    Listar documentos, enviar documento, listar plantillas y enviar plantilla.
+  </Accordion>
+  <Accordion title="¿Necesito permisos especiales?">
+    Sí. Necesitas credenciales válidas, preferiblemente un token de integración privada con los permisos correspondientes a documentos y contratos.
+  </Accordion>
+  <Accordion title="¿Puedo usar la API en lugar de flujos de trabajo?">
+    Sí, cuando tu proceso empieza fuera de Chateea o necesita lógica personalizada. Para automatizaciones sin código dentro de Chateea, los flujos de trabajo suelen ser la mejor opción.
+  </Accordion>
+  <Accordion title="¿Puedo automatizar seguimientos después de un envío por API?">
+    Sí. Combina los envíos por API con el disparador de documentos y contratos en un flujo para enviar recordatorios, notificar a tu equipo o mover oportunidades según el estado del documento.
+  </Accordion>
+  <Accordion title="¿Cómo pruebo la API sin riesgos?">
+    Usa Postman u otro cliente de API con datos de prueba (por ejemplo, un contacto interno) antes de pasar a producción.
+  </Accordion>
+  <Accordion title="¿Puedo gestionar cualquier acción de documentos con la API?">
+    Los endpoints documentados cubren listar y enviar documentos y plantillas. Para confirmar la cobertura más reciente, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integraciones privadas" icon="key" href="/integraciones/integraciones-privadas">
+    Crea tokens para conectar tus propias herramientas.
+  </Card>
+  <Card title="Cómo funcionan los flujos" icon="bolt" href="/automatizaciones/introduccion">
+    Automatiza acciones tras el envío o la firma.
+  </Card>
+</CardGroup>

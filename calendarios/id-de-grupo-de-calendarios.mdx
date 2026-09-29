@@ -1,0 +1,83 @@
+---
+title: "Encontrar el ID de un grupo de calendarios"
+description: "Ubica el identificador de un grupo de calendarios cuando una integración o la API te lo pidan."
+icon: "fingerprint"
+---
+
+Cada grupo de calendarios tiene un identificador único, el **ID del grupo**. Normalmente no lo necesitas, pero algunas integraciones, configuraciones de la API de Chateea o desarrollos a medida te lo pedirán. Aquí verás cómo encontrarlo en segundos.
+
+<Warning>
+El ID del grupo es distinto del ID de cada calendario que está dentro del grupo. Si una integración te pide un "ID de calendario", confirma primero si necesita el de un calendario individual o el de un grupo.
+</Warning>
+
+## Cuándo lo necesitas
+
+- Una integración externa te pide el ID de un grupo de calendarios.
+- Una configuración con la API de Chateea o un desarrollo a medida lo requiere.
+- Unas instrucciones técnicas te piden el identificador de un grupo.
+
+<Note>
+Para filtrar un flujo de trabajo por grupo de calendarios no necesitas el ID: los filtros de los disparadores de citas te dejan elegir el grupo directamente de una lista.
+</Note>
+
+## Encontrar el ID con el enlace permanente
+
+Es el método más sencillo, porque el ID aparece al final del enlace.
+
+<Steps>
+  <Step title="Abre los grupos">
+    Ve a **Calendarios → Configuración de calendarios** y abre la pestaña **Grupos**.
+  </Step>
+  <Step title="Abre las opciones para compartir">
+    Localiza el grupo y abre sus opciones para compartir (tres puntos). Elige **Enlace de reserva**.
+  </Step>
+  <Step title="Ubica el enlace permanente">
+    Busca el **Enlace permanente** del grupo.
+  </Step>
+  <Step title="Copia solo el ID">
+    El ID es el último valor del enlace, lo que aparece después de la última barra `/`. Cópialo y pégalo donde te lo pidan.
+  </Step>
+</Steps>
+
+<Tip>
+Copia solo el identificador, no el enlace completo, cuando el campo pida el ID del grupo.
+</Tip>
+
+## Alternativa: encontrar el ID en el código para insertar
+
+Si prefieres no usar el enlace permanente, también puedes ubicar el ID en el código para insertar del grupo.
+
+1. Ve a **Calendarios → Configuración de calendarios → Grupos**.
+2. Abre las opciones para compartir del grupo.
+3. Elige **Código para insertar** y ubica el identificador del grupo dentro del código. Copia solo esa parte, porque el código incluye otros caracteres.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El ID del grupo es igual al ID de un calendario?">
+    No. El grupo tiene su propio ID y cada calendario del grupo tiene otro. No son intercambiables.
+  </Accordion>
+  <Accordion title="¿Necesito el ID del grupo para un flujo de trabajo?">
+    No para filtrar por grupo, porque puedes elegirlo de la lista. Solo lo necesitarás si una configuración técnica o personalizada lo pide expresamente.
+  </Accordion>
+  <Accordion title="¿Puedo usar el mismo ID en varias integraciones?">
+    El ID siempre identifica al mismo grupo. Que sirva en cada integración depende de lo que espere su campo: confirma en cada caso que te piden el ID de un grupo.
+  </Accordion>
+  <Accordion title="¿Cambia el ID si renombro el grupo?">
+    No. Cambiar el nombre no modifica el ID, así que las configuraciones externas que lo usan siguen funcionando.
+  </Accordion>
+  <Accordion title="¿Qué método conviene usar?">
+    El del enlace permanente, porque el ID es simplemente lo que aparece después de la última barra.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Grupos de calendarios" icon="layer-group" href="/calendarios/grupos-de-calendarios">
+    Reúne varios calendarios en un solo enlace de reserva.
+  </Card>
+  <Card title="Insertar el calendario en otro sitio web" icon="code" href="/calendarios/insertar-calendario-en-otro-sitio-web">
+    Muestra tu calendario dentro de cualquier página.
+  </Card>
+</CardGroup>

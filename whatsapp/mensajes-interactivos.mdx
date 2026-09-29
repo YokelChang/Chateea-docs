@@ -1,0 +1,202 @@
+---
+title: "Mensajes interactivos de WhatsApp en flujos de trabajo"
+description: "Envía botones, listas, ubicaciones, tarjetas de contacto y botones de sitio web por WhatsApp desde tus automatizaciones."
+icon: "hand-pointer"
+---
+
+Los mensajes interactivos de WhatsApp te permiten enviar, desde tus flujos de trabajo, mensajes con **botones de respuesta rápida, listas de opciones, ubicaciones, tarjetas de contacto y botones para visitar un sitio web**. Tu cliente responde con un toque en lugar de escribir, y cada opción puede llevar la automatización por un camino distinto. Es ideal para menús de atención, confirmaciones, encuestas rápidas o para llevar al cliente a reservar o pagar.
+
+## Qué puedes enviar
+
+| Tipo | Para qué sirve |
+| --- | --- |
+| **Botones de respuesta rápida** | Hasta 3 botones que el cliente toca para responder. |
+| **Ubicación** | Una tarjeta con mapa a partir de latitud y longitud. |
+| **Contacto** | Una tarjeta de contacto con nombre, teléfono y correo que el cliente puede guardar. |
+| **Lista** | Un menú organizado en secciones y filas. |
+| **Botón para visitar sitio web** | Un botón limpio que abre una URL, en lugar de pegar un enlace largo. |
+
+## Beneficios
+
+- **Más respuestas:** responder es un solo toque.
+- **Datos más limpios:** las opciones están predefinidas, así que evitas errores de escritura y tus informes son más exactos.
+- **Menos costo:** al enviarlos dentro de la ventana de atención, no pagas conversaciones adicionales.
+- **Más conversiones:** llevas al cliente directo a reservar, comprar o pagar.
+
+## Requisito: la ventana de atención de 24 horas
+
+Los mensajes interactivos son mensajes libres, así que solo se pueden enviar mientras la **ventana de atención de 24 horas** está abierta. Esa ventana se abre cuando el cliente te escribe por WhatsApp. Mientras está abierta, puedes enviar mensajes interactivos sin costo y sin restricciones de formato.
+
+Tienes dos formas de asegurarte de que la ventana está abierta:
+
+- **Disparador Cliente respondió:** configura el flujo con el disparador **Cliente respondió** y el filtro **Canal de respuesta = WhatsApp**. Así el flujo solo arranca cuando el cliente escribe, lo que abre la ventana.
+- **Acción WhatsApp: verificar ventana de atención:** antes del mensaje interactivo, agrega esta acción, elige el número de WhatsApp desde el que envías y crea dos ramas: **Abierta** y **Cerrada**.
+
+<Warning>
+Si la ventana está cerrada, primero debes enviar una plantilla aprobada (de marketing o de utilidad) para reabrir la conversación.
+</Warning>
+
+## Agregar la acción de mensajes interactivos
+
+<Steps>
+  <Step title="Abre tu flujo de trabajo">
+    Ve a **Automatización** y abre el flujo donde quieres enviar el mensaje.
+  </Step>
+  <Step title="Agrega la acción">
+    Haz clic en **+** y elige **Mensajes interactivos de WhatsApp** (WhatsApp Interactive Messages).
+  </Step>
+  <Step title="Ponle nombre">
+    Opcionalmente, cambia el nombre de la acción para identificarla fácilmente.
+  </Step>
+  <Step title="Elige número y tipo">
+    En la configuración del mensaje, selecciona el **número de origen** y el **tipo de mensaje interactivo**. Luego completa los campos del tipo elegido, como se explica abajo.
+  </Step>
+</Steps>
+
+## Botones de respuesta rápida
+
+Muestran hasta 3 respuestas predefinidas. La opción que toque el cliente puede crear ramas, poner etiquetas o disparar otras acciones.
+
+| Campo | Detalle |
+| --- | --- |
+| Cantidad de botones | Hasta 3. Cada uno con texto único de máximo 20 caracteres. |
+| Tipo de encabezado | Texto, imagen, video o documento. |
+| Encabezado | El texto o la URL del archivo. |
+| Cuerpo | Obligatorio. Es el mensaje principal. |
+| Pie | Opcional. Texto breve de apoyo (máximo 60 caracteres). |
+| Tiempo de espera | Unidad (minutos, horas o días) y valor. |
+| Títulos de los botones | El texto de cada botón. |
+
+<Tip>
+Mantén el cuerpo breve para que los botones se vean sin tener que desplazarse.
+</Tip>
+
+## Ubicación
+
+Envía una tarjeta con vista previa del mapa. Completa:
+
+- **Nombre del lugar**, por ejemplo `Sucursal Centro`.
+- **Dirección**, por ejemplo `Av. Reforma 100, Ciudad de México`.
+- **Latitud**, por ejemplo `19.432608`.
+- **Longitud**, por ejemplo `-99.133209`.
+
+Revisa que las coordenadas coincidan con la dirección real de tu negocio. Si están mal, el pin aparecerá en otro lugar.
+
+## Contacto
+
+Envía una tarjeta de contacto que el cliente puede guardar en su teléfono:
+
+- **Nombre y apellido** (obligatorios).
+- **Teléfono** (obligatorio, con código de país, por ejemplo `+525512345678`) y tipo: trabajo, móvil o casa.
+- **Correo** (opcional) y tipo: trabajo o casa.
+
+Cada mensaje admite una sola tarjeta. Para enviar varias, usa varias acciones.
+
+## Lista
+
+Presenta un menú con secciones y filas. Cada fila puede llevar el flujo por una rama distinta.
+
+| Campo | Detalle |
+| --- | --- |
+| Cantidad de secciones | Cuántos grupos tendrá el menú. |
+| Encabezado | Opcional. |
+| Cuerpo | El mensaje principal. |
+| Pie | Opcional. |
+| Texto del botón de la lista | La etiqueta que abre el menú, por ejemplo "Ver opciones". |
+| Tiempo de espera | Entre 5 minutos y 2 días. |
+
+En cada sección define el **título** (por ejemplo "Planes" o "Servicios"), la **cantidad de filas** y, en cada fila, un **título** obligatorio y una **descripción** opcional.
+
+El flujo crea una rama por cada fila (por ejemplo, *Sección 1 Fila 1*), más las ramas **No entregado** y **Tiempo agotado**.
+
+<Tip>
+Agrupa opciones relacionadas en la misma sección, por ejemplo "Planes" y "Complementos", para que el menú sea más claro.
+</Tip>
+
+## Botón para visitar sitio web
+
+Muchas personas desconfían de los enlaces largos. Este tipo convierte la URL en un botón limpio que abre el navegador del cliente.
+
+| Campo | Detalle |
+| --- | --- |
+| Tipo de encabezado | Texto, imagen, video o documento. |
+| Cuerpo | Máximo 1.024 caracteres. |
+| Pie | Opcional, máximo 60 caracteres. |
+| URL | El destino del botón. |
+| Texto del botón | Máximo 20 caracteres. |
+| Tiempo de espera | Entre 5 minutos y 2 días. |
+
+### Personaliza la URL con variables
+
+Puedes incluir campos del contacto y valores personalizados dentro de la URL para crear enlaces únicos de reserva, pago o campaña:
+
+```text
+https://tunegocio.com/reservar?nombre={{contact.name}}&calendario={{custom_values.agent_calendar}}
+```
+
+Ejemplo de configuración:
+
+- **Encabezado:** Detalles del taller
+- **Cuerpo:** Toca abajo para reservar tu lugar.
+- **Pie:** Cupos limitados.
+- **URL:** `https://tunegocio.com/reservar?nombre={{contact.name}}`
+- **Texto del botón:** Reservar
+- **Tiempo de espera:** 30 minutos
+
+Cada cliente verá un botón que lo lleva a su página personalizada.
+
+## Ramas y comportamiento en el flujo
+
+Según lo que pase con el mensaje, el flujo puede seguir por distintas ramas:
+
+- **Enlace abierto:** el cliente tocó el botón del sitio web.
+- **No entregado:** el mensaje no llegó.
+- **Tiempo agotado:** pasó el tiempo de espera sin interacción. Después de ese tiempo, el elemento interactivo deja de estar activo.
+
+Guarda y prueba siempre el flujo con un contacto de prueba para confirmar que el mensaje se ve bien y que cada opción sigue la rama correcta.
+
+## Buenas prácticas
+
+- Usa URL de tu propio dominio o de confianza para mejorar los clics.
+- Aprovecha las variables para ahorrarle pasos al cliente (formularios prellenados, calendario asignado).
+- Combina siempre el mensaje interactivo con la verificación de la ventana de atención.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los mensajes interactivos tienen costo adicional?">
+    No, siempre que la ventana de atención de 24 horas esté abierta. Meta no cobra las conversaciones de servicio.
+  </Accordion>
+  <Accordion title="¿Qué pasa si intento enviarlos con la ventana cerrada?">
+    No se pueden enviar. Primero envía una plantilla aprobada de marketing o de utilidad para reabrir la conversación.
+  </Accordion>
+  <Accordion title="¿Cuántos botones puede tener un mensaje de respuesta rápida?">
+    Hasta 3, cada uno con texto único de máximo 20 caracteres.
+  </Accordion>
+  <Accordion title="¿Puedo usar encabezado y pie a la vez?">
+    Sí. El encabezado admite texto, imagen, video o documento. El pie solo admite texto corto, de máximo 60 caracteres.
+  </Accordion>
+  <Accordion title="¿Puedo combinar una lista y un botón de sitio web en el mismo mensaje?">
+    No. WhatsApp solo permite un tipo interactivo por mensaje. Puedes enviar varias acciones seguidas en el flujo.
+  </Accordion>
+  <Accordion title="¿Cuáles son los tiempos de espera permitidos?">
+    El mínimo es 5 minutos y el máximo, 2 días. Al vencer, el elemento se desactiva y puedes usar la rama **Tiempo agotado** para hacer seguimiento.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Verificar la ventana de atención" icon="clock" href="/whatsapp/verificar-ventana-de-atencion">
+    Comprueba si puedes enviar mensajes libres.
+  </Card>
+  <Card title="WhatsApp en flujos de trabajo" icon="diagram-project" href="/whatsapp/whatsapp-en-flujos-de-trabajo">
+    Todas las acciones de WhatsApp en tus automatizaciones.
+  </Card>
+  <Card title="WhatsApp Flows para reservar citas" icon="calendar" href="/whatsapp/whatsapp-flows-reserva-de-citas">
+    Reservas dentro del chat de WhatsApp.
+  </Card>
+  <Card title="Enlaces de disparo en plantillas" icon="link" href="/whatsapp/enlaces-de-disparo-en-plantillas">
+    Mide los clics en los botones de tus plantillas.
+  </Card>
+</CardGroup>

@@ -1,0 +1,145 @@
+---
+title: "Asignar números de teléfono a un agente de IA de voz"
+description: "Asigna un número o un grupo de números a tu agente de voz, define el enrutamiento y el horario, y prueba que conteste bien."
+icon: "phone"
+---
+
+Para que un agente de IA de voz conteste llamadas, necesita un número de teléfono. En Chateea asignas a cada agente un número individual o un grupo de números (number pool) desde su pestaña **Implementar** (Deploy), y ahí mismo defines si el agente contesta directamente o solo como respaldo, y en qué horario está disponible.
+
+Esta guía te explica cómo asignar el número, cómo elegir entre un número y un grupo de números, y cómo probar que las llamadas llegan al agente correcto.
+
+## Antes de empezar
+
+- Tu cuenta debe tener activo el Empleado IA o la IA de voz.
+- Ya debes haber creado el agente de IA de voz.
+- Necesitas al menos un número del sistema telefónico de Chateea (o un grupo de números) disponible en tu cuenta. Si no tienes uno, puedes comprarlo desde la misma pestaña **Implementar**.
+- Tu usuario debe tener permiso para editar agentes de IA de voz y su configuración de implementación.
+- Ten claro qué número o grupo de números debe llevar las llamadas a este agente.
+
+## Número individual o grupo de números
+
+| Opción | Cuándo usarla |
+| --- | --- |
+| **Número individual** | Un número concreto debe llevar las llamadas a este agente. Por ejemplo, la línea principal de tu negocio. |
+| **Grupo de números** (number pool) | Recibes llamadas en varios números (por ejemplo, uno por campaña, sucursal o anuncio) y quieres que un solo agente las atienda todas con la misma disponibilidad y el mismo enrutamiento. |
+
+Con un grupo de números, una llamada a cualquiera de los números del grupo llega al agente según su configuración. Así evitas crear y mantener un agente distinto para cada número y centralizas el enrutamiento en un solo lugar.
+
+<Note>
+  Solo puedes asignar grupos de números que ya existan. Si todavía no tienes uno, créalo primero en la configuración de teléfono de tu cuenta y luego vuelve al agente.
+</Note>
+
+## Cómo asignar un número a tu agente
+
+<Steps>
+  <Step title="Abre la IA de voz">
+    Ve a **IA → IA de voz** y entra en la lista de **Agentes**.
+  </Step>
+  <Step title="Elige el agente">
+    Haz clic en el nombre del agente o en el menú de tres puntos y luego en **Editar**. También puedes crear uno nuevo con **Crear agente**. La asignación de números es por agente: lo que cambies aquí solo afecta a este agente.
+  </Step>
+  <Step title="Abre la pestaña Implementar">
+    Entra en la pestaña **Implementar** (Deploy). Aquí se controla cómo queda disponible el agente para recibir llamadas.
+  </Step>
+  <Step title="Selecciona el número o el grupo de números">
+    En la sección **Teléfono**, abre el desplegable **Números y grupo de números** (Numbers & number pool) y elige el número o el grupo que debe llevar las llamadas a este agente. Revisa que sea el correcto antes de seguir.
+  </Step>
+  <Step title="Revisa el enrutamiento de llamadas">
+    Elige cómo debe tratar el agente las llamadas entrantes: **Contestar directamente** o **Usar como respaldo**. Más abajo te explicamos la diferencia.
+  </Step>
+  <Step title="Configura el horario de atención, si lo necesitas">
+    En **Horario de atención** (Working Hours) elige **Todas las horas** para disponibilidad sin restricción, o **Horario personalizado** para definir días y franjas horarias concretas.
+  </Step>
+  <Step title="Guarda los cambios">
+    Haz clic en **Guardar**. Si no guardas, los cambios no se aplican a las llamadas reales.
+  </Step>
+  <Step title="Prueba el número">
+    Llama al número asignado y confirma que contesta el agente que esperas.
+  </Step>
+</Steps>
+
+### Comprar un número nuevo sin salir del agente
+
+Si necesitas un número nuevo, puedes comprarlo desde la misma pestaña **Implementar**:
+
+1. En la sección **Teléfono**, haz clic en **Comprar número nuevo** (Buy new number), debajo de **Números y grupo de números**.
+2. Completa la compra del número.
+3. Al terminar, elige si quieres asignar el número nuevo a este agente.
+4. Confirma que el número aparece en **Números y grupo de números** antes de seguir con el enrutamiento y el horario.
+
+Para administrar los números que ya tienes, usa el enlace **Administrar números** (Manage numbers) de la sección **Teléfono**. El costo del número se descuenta de la billetera de tu cuenta; las tarifas vigentes están en **Configuración → Facturación**.
+
+## Modos de enrutamiento de llamadas
+
+| Modo | Qué hace | Cuándo usarlo |
+| --- | --- | --- |
+| **Contestar directamente** (Answer Calls Directly) | El agente contesta todas las llamadas entrantes. | Quieres que la IA sea la primera en atender, por ejemplo en una línea de reservas. |
+| **Usar como respaldo** (Use as Backup) | El agente solo contesta cuando la ruta principal de la llamada no responde. | Tu equipo atiende primero y la IA recoge las llamadas que nadie contesta. |
+
+<Warning>
+  Asignar un número no garantiza por sí solo que todas las llamadas lleguen a la IA. El modo de enrutamiento, el horario de atención y el flujo de llamadas configurado para ese número también influyen en quién contesta.
+</Warning>
+
+## Horario de atención
+
+El horario de atención define cuándo está disponible el agente. Úsalo cuando:
+
+- El agente solo debe contestar en horario comercial.
+- Tienes varios agentes que cubren horarios distintos.
+- Las llamadas fuera de horario deben seguir otra ruta.
+
+Revisa cada día y cada franja con cuidado. Si el agente no contesta cuando esperabas, el horario es lo primero que debes revisar.
+
+## Llamadas entrantes y salientes
+
+La pestaña **Implementar** controla cómo el agente recibe llamadas a través del número o grupo asignado, es decir, las llamadas **entrantes**. Las llamadas **salientes** que lanzas desde flujos de trabajo tienen su propia configuración. Si vas a usar el agente para llamar a tus contactos, revisa [Llamadas salientes con IA de voz](/ia/llamadas-salientes-ia-de-voz).
+
+## Cómo probar la asignación
+
+Prueba siempre después de cambiar el número, el enrutamiento, el modo de respaldo o el horario:
+
+- Llama al número asignado y confirma que contesta el agente correcto (y no otro).
+- Llama dentro del horario de atención.
+- Si configuraste un horario, llama también fuera de él.
+- Comprueba que el modo de enrutamiento se comporta como esperas.
+- Si la llamada no llega al agente, revisa los [registros de llamadas de la IA de voz](/ia/registros-de-llamadas-ia-de-voz).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Dónde asigno un número a un agente de IA de voz?">
+    En **IA → IA de voz → Agentes**, elige el agente y abre **Implementar → Teléfono**.
+  </Accordion>
+  <Accordion title="¿Puedo asignar un grupo de números en lugar de un solo número?">
+    Sí. Si ya tienes un grupo de números creado en tu cuenta, aparece en el desplegable **Números y grupo de números** y puedes asignarlo al agente.
+  </Accordion>
+  <Accordion title="¿Por qué no aparece mi número en la lista?">
+    Confirma que el número está activo en tu cuenta y visible en la configuración de números de teléfono. Si acabas de comprarlo, recarga la página del agente.
+  </Accordion>
+  <Accordion title="¿Qué hace la opción Usar como respaldo?">
+    Hace que el agente solo conteste cuando la ruta principal de la llamada (por ejemplo, tu equipo) no responde.
+  </Accordion>
+  <Accordion title="¿Varios agentes pueden usar el mismo número?">
+    Depende del enrutamiento y de la disponibilidad que configures. Revisa con cuidado el número o grupo antes de asignarlo a más de un agente para evitar que conteste el agente equivocado.
+  </Accordion>
+  <Accordion title="¿Las llamadas salientes se configuran aquí?">
+    No del todo. La pestaña **Implementar** gestiona los números asignados para recibir llamadas. Las llamadas salientes que se lanzan desde flujos de trabajo usan su propia configuración.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+    Qué es la IA de voz y qué puede hacer por tu negocio.
+  </Card>
+  <Card title="Registros de llamadas" icon="list" href="/ia/registros-de-llamadas-ia-de-voz">
+    Revisa grabaciones, transcripciones y resultados de cada llamada.
+  </Card>
+  <Card title="Llamadas de prueba" icon="flask" href="/ia/llamadas-de-prueba-ia-de-voz">
+    Revisa tus pruebas sin afectar las métricas.
+  </Card>
+  <Card title="Permisos de la IA de voz" icon="user-lock" href="/ia/permisos-ia-de-voz">
+    Controla quién puede editar y desplegar agentes.
+  </Card>
+</CardGroup>

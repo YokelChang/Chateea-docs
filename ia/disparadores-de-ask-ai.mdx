@@ -1,0 +1,121 @@
+---
+title: "Disparadores de Ask AI: automatiza habilidades con eventos del CRM"
+description: "Ejecuta tus habilidades de Ask AI automáticamente cuando se crea un contacto, se envía un formulario o cambia una oportunidad."
+icon: "bolt"
+---
+
+Los disparadores de Ask AI hacen que tus habilidades personalizadas se ejecuten solas cuando pasa algo en tu CRM. En lugar de abrir Ask AI y pedirle una tarea cada vez, conectas una habilidad a un evento (un contacto nuevo, un formulario enviado, una etiqueta aplicada, una cita reservada o un cambio en una oportunidad) y Ask AI la ejecuta automáticamente con los datos de ese evento.
+
+Los disparadores complementan a las tareas programadas: las programadas corren en una fecha u hora determinada y los disparadores reaccionan en tiempo real a lo que hacen tus clientes y tu equipo.
+
+## Para qué te sirven
+
+- **Eliminar tareas repetitivas:** la habilidad trabaja sola cada vez que ocurre el evento y tu equipo se enfoca en lo importante.
+- **Responder al instante:** das seguimiento en el momento en que llega un lead, se envía un formulario o se mueve una oportunidad.
+- **Trabajar con contexto:** la habilidad recibe los datos relevantes del evento (campos del contacto, respuestas del formulario, datos de la oportunidad).
+- **Supervisar todo en un lugar:** el historial de disparadores muestra cada ejecución, su estado y la sesión de Ask AI que generó.
+- **Configurar hablando:** puedes crear la habilidad y su disparador describiéndolos en el chat de Ask AI.
+
+## Eventos disponibles
+
+| Evento | Cuándo se activa | Ideas de uso |
+| --- | --- | --- |
+| **Contacto creado** | Se agrega un contacto nuevo al CRM | Mensaje de bienvenida, inicio de onboarding, completar datos del contacto |
+| **Formulario enviado** | Se envía un formulario específico | Procesar leads, programar seguimientos, asignar al equipo correcto |
+| **Encuesta enviada** | Se completa una encuesta | Analizar respuestas, calcular satisfacción, reaccionar según la opinión |
+| **Etiqueta agregada o eliminada** | Se añade o quita una etiqueta concreta | Segmentar según atributos o etapa del cliente |
+| **Cita reservada o cambio de estado** | Se reserva una cita o cambia su estado (confirmada, cancelada, reprogramada) | Recordatorios, actualizar oportunidades, avisar al equipo |
+| **Oportunidad creada o cambio de estado** | Se crea una oportunidad o cambia su estado o etapa | Automatizar el proceso de ventas y las notificaciones |
+| **Lead de Facebook recibido** | Entra un lead de un formulario de anuncios de Facebook | Completar datos, responder de inmediato, asignar al vendedor |
+| **Ejecución programada** | Fecha y hora, intervalo o expresión cron | Tareas periódicas junto a las basadas en eventos |
+
+## Configurar un disparador
+
+<Steps>
+  <Step title="Abre las habilidades de Ask AI">
+    Ve a **Ask AI → Personalizar → Habilidades** (Customize → Skills). Verás todas las habilidades personalizadas de tu cuenta.
+  </Step>
+  <Step title="Elige la habilidad que quieres automatizar">
+    Haz clic en la habilidad. Si todavía no tienes una, créala con **Agregar habilidad** y define su propósito, instrucciones y comportamiento.
+  </Step>
+  <Step title="Agrega el disparador">
+    En la sección **Disparadores**, haz clic en **Agregar disparador** y elige el evento que debe iniciar la habilidad.
+  </Step>
+  <Step title="Define las condiciones">
+    Según el evento, completa los detalles. Por ejemplo, con **Formulario enviado** eliges qué formulario lo activa; con **Etiqueta agregada** indicas el nombre de la etiqueta.
+  </Step>
+  <Step title="Activa el disparador">
+    Cambia el interruptor a **Activado**. Desde ese momento, Ask AI ejecutará la habilidad con el contexto del CRM cada vez que ocurra el evento.
+  </Step>
+</Steps>
+
+## Crear la habilidad y el disparador desde el chat
+
+También puedes crear ambos sin entrar a **Personalizar**, solo conversando con Ask AI.
+
+<Steps>
+  <Step title="Describe la automatización">
+    Abre el chat de Ask AI y explica lo que quieres, por ejemplo: "Crea una habilidad que envíe un correo de bienvenida cuando se agregue un contacto nuevo".
+  </Step>
+  <Step title="Revisa la propuesta">
+    Ask AI genera la habilidad junto con su disparador y te sugiere el evento, las condiciones y las instrucciones. Ajusta lo que necesites.
+  </Step>
+  <Step title="Confirma">
+    Cuando estés conforme, confirma. Ask AI guarda la habilidad y activa el disparador al momento.
+  </Step>
+</Steps>
+
+<Tip>
+  El chat es la forma más rápida de empezar. Siempre puedes afinar la habilidad y sus disparadores después en **Ask AI → Personalizar → Habilidades**.
+</Tip>
+
+## Revisar el historial de disparadores
+
+Ve a **Ask AI → Historial de disparadores** (Trigger History) para ver cada ejecución automática. En cada registro encontrarás:
+
+| Dato | Qué muestra |
+| --- | --- |
+| **Evento** | El evento del CRM que inició la ejecución |
+| **Estado** | Si la habilidad terminó bien, falló o sigue en proceso |
+| **Detalles de ejecución** | Qué habilidad corrió, con qué contexto y qué acciones hizo |
+| **Sesión de Ask AI** | Enlace a la conversación que generó la ejecución |
+
+Usa el historial para confirmar que los disparadores se activan como esperas y para investigar las ejecuciones fallidas: cada error queda registrado con su detalle.
+
+## Buenas prácticas
+
+- **Prueba antes de confiar:** crea un contacto de prueba, envía un formulario de prueba o provoca el evento tú mismo y revisa el resultado en el historial.
+- **Escribe instrucciones concretas:** la habilidad recibe los datos del evento, así que indícale qué campos usar y qué hacer con ellos.
+- **Pausa en lugar de borrar:** si necesitas detener una automatización un tiempo, desactiva el disparador. La configuración queda guardada.
+- **Vigila el volumen:** no hay un límite estricto de disparadores, pero revisa el historial de vez en cuando para confirmar que tus automatizaciones siguen siendo útiles.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo poner varios disparadores en una misma habilidad?">
+    Sí. Por ejemplo, una habilidad puede ejecutarse cuando se crea un contacto o cuando se le agrega una etiqueta concreta. Cada disparador funciona por separado.
+  </Accordion>
+  <Accordion title="¿Qué datos recibe la habilidad cuando se activa?">
+    Los del evento que la disparó. Un contacto creado aporta los campos del contacto; un formulario enviado aporta sus respuestas; una oportunidad aporta sus datos.
+  </Accordion>
+  <Accordion title="¿Funcionan con las habilidades predeterminadas de Ask AI?">
+    No. Por ahora los disparadores solo están disponibles para habilidades personalizadas.
+  </Accordion>
+  <Accordion title="¿Cómo sé si un disparador falló?">
+    En **Ask AI → Historial de disparadores**. Las ejecuciones fallidas aparecen con su estado y el detalle del error.
+  </Accordion>
+  <Accordion title="Si tengo varias cuentas de Chateea, ¿se comparten los disparadores?">
+    No. Las habilidades y los disparadores se configuran en cada cuenta y funcionan de forma independiente. Si quieres la misma automatización en otra cuenta, configúrala también allí.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Ask AI, tu asistente dentro de Chateea" icon="wand-magic-sparkles" href="/ia/asistente-ask-ai">
+    Qué es Ask AI y todo lo que puede hacer por ti.
+  </Card>
+  <Card title="Crear flujos de trabajo desde Ask AI" icon="diagram-project" href="/ia/crear-flujos-desde-ask-ai">
+    Genera automatizaciones completas describiéndolas.
+  </Card>
+</CardGroup>

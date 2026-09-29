@@ -1,0 +1,196 @@
+---
+title: "Cómo se cobra el uso de la IA"
+description: "Entiende qué herramientas de IA son gratuitas, cuáles cubre un plan y cuáles se cobran por consumo desde tu billetera."
+icon: "coins"
+---
+
+Las herramientas de IA de Chateea no se cobran todas igual. Algunas son gratuitas con un límite de uso justo, otras se cubren con un plan mensual de IA y otras se cobran por consumo desde la **billetera** de tu cuenta. Entender cómo se mide cada una te ayuda a estimar costos, elegir el plan correcto y explicar cualquier cargo que veas.
+
+<Info>
+  Las tarifas vigentes, en tu moneda y actualizadas, están en **Configuración → Facturación** y en [chateea.com/precios](https://chateea.com/precios). Los precios de los modelos de terceros pueden cambiar según el proveedor, la versión del modelo o el nivel de servicio.
+</Info>
+
+## Las tres formas de pago
+
+| Modalidad | Cómo funciona | Para quién |
+| --- | --- | --- |
+| **Pago por uso** | Sin cuota mensual de IA. Pagas solo cuando una herramienta genera actividad facturable, descontada de tu billetera | Negocios que usan la IA de forma ocasional |
+| **Plan de IA con cupo mensual** | Cuota mensual con una cantidad de uso incluida para cada herramienta. Lo que pase del cupo se cobra por uso | Negocios que quieren un costo base predecible |
+| **Plan de IA ilimitado** | Cuota mensual con uso ilimitado de las principales herramientas, sujeto a la política de uso justo | Negocios que usan la IA a diario y a gran escala |
+
+Si tu cuenta no tiene un plan de IA activo, todo se cobra por uso.
+
+<Warning>
+  **Ningún plan de IA cubre los cargos del sistema telefónico.** Una llamada atendida por la IA de voz genera dos tipos de cargo: el de la IA (cubierto según tu plan) y el de la llamada en sí (minutos del sistema telefónico de Chateea, siempre aparte). Lo mismo aplica a los SMS y otros mensajes.
+</Warning>
+
+## Qué cubre cada modalidad
+
+| Herramienta | Pago por uso | Plan con cupo | Plan ilimitado |
+| --- | --- | --- | --- |
+| **IA conversacional** | Por tokens | Cantidad mensual de respuestas del agente | Ilimitada (uso justo) |
+| **IA de voz** (entrante, saliente y widget) | Motor de voz + voz sintetizada + tokens | Cantidad mensual de minutos, compartida entre llamadas entrantes, salientes y widget | Ilimitada (uso justo) |
+| **Optimizadores de indicaciones** | Mensajes diarios gratis, luego por uso | Mensajes o minutos incluidos | Ilimitados (uso justo) |
+| **IA de reseñas** | Por reseña respondida con IA | Ilimitada (uso justo) | Ilimitada (uso justo) |
+| **IA de contenido** | Por imagen y por cada mil palabras | Ilimitada (uso justo) | Ilimitada (uso justo) |
+| **Ask AI y AI Studio** | Por tokens | Uso incluido por ventana de 5 horas | Tres veces más uso por ventana |
+| **Agentes gestionados** | Por tokens | Cantidad mensual de ejecuciones | Cantidad mensual mayor de ejecuciones |
+| **Agent Studio** | Por uso | Por uso | Por uso |
+| **IA de flujos, IA de embudos, IA de correo y base de conocimiento** | Gratis (uso justo) | Gratis (uso justo) | Gratis (uso justo) |
+
+<Note>
+  **Agent Studio no está incluido en ningún plan.** Siempre se cobra por uso, según los tokens del modelo, las búsquedas web o el contenido que genere.
+</Note>
+
+### Qué pasa cuando se acaba el cupo del plan
+
+Cuando agotas el uso incluido de un mes, lo que pasa después depende de los límites de gasto de tu cuenta:
+
+- **Sin límite de gasto** o con la opción **Seguir usando la IA y solo notificar**: la IA sigue funcionando y el uso extra se cobra a la tarifa de pago por uso.
+- Con la opción **Bloquear la IA al llegar al límite**: la IA se detiene cuando alcanzas el límite configurado.
+
+Más detalle en [Límites de uso de IA](/ia/limites-de-uso-de-ia).
+
+## Cómo se calcula el costo por tokens
+
+Un **token** es un pedacito de texto. La IA cuenta tokens de dos tipos:
+
+| Tipo | Qué incluye |
+| --- | --- |
+| **Tokens de entrada** | Todo lo que la IA lee: el mensaje del cliente, el historial de la conversación, las instrucciones del bot, los datos del contacto y el contenido de la base de conocimiento |
+| **Tokens de salida** | Todo lo que la IA escribe: respuestas, sugerencias y mensajes generados |
+
+Cada modelo tiene un precio por millón de tokens de entrada y otro por millón de tokens de salida. El cálculo es:
+
+```text
+Costo de entrada = tokens de entrada / 1.000.000 x precio de entrada del modelo
+Costo de salida  = tokens de salida  / 1.000.000 x precio de salida del modelo
+Costo total      = costo de entrada + costo de salida
+```
+
+Por ejemplo, una conversación que procesa 100.000 tokens de entrada y genera 25.000 de salida se cobra sumando ambas partes con la tarifa del modelo que use tu bot.
+
+### Por qué dos conversaciones cuestan distinto
+
+Aunque usen el mismo modelo, una conversación con mensajes cortos gasta menos que otra con mucho ida y vuelta, respuestas largas, un historial extenso o mucho contenido de la base de conocimiento. Más texto procesado o generado significa más tokens.
+
+<Tip>
+  Para bajar el consumo: mantén las instrucciones del bot concisas, evita cargar documentos enormes en la base de conocimiento si solo necesitas una parte, y define un máximo de mensajes por conversación.
+</Tip>
+
+## Cómo se calcula el costo de la IA de voz
+
+En pago por uso, o cuando superas el cupo de tu plan, una llamada con la IA de voz suma tres componentes más el cargo telefónico:
+
+| Componente | Cómo se cobra |
+| --- | --- |
+| **Motor de voz** | Por minuto de llamada |
+| **Voz sintetizada (TTS)** | Por minuto, según el proveedor y modelo de voz que elijas |
+| **Modelo de lenguaje** | Por tokens procesados durante la llamada |
+| **Sistema telefónico** | Cargo aparte por los minutos de la llamada |
+
+```text
+Costo estimado = minutos x (tarifa del motor de voz + tarifa de la voz elegida)
+               + costo de tokens del modelo
+               + cargos del sistema telefónico
+```
+
+Dos llamadas de la misma duración pueden costar distinto: influye la voz elegida (las voces premium cuestan más por minuto), el modelo de lenguaje, cuánto se habló y cuánto contexto de la base de conocimiento se usó.
+
+### Modelos de voz a voz
+
+Los modelos de voz a voz escuchan y responden en audio con un solo modelo en tiempo real, sin convertir a texto y de vuelta. El resultado es menor latencia, mejor lectura del tono del cliente y cambios de idioma a mitad de llamada más naturales.
+
+Se cobran con una **tarifa única por minuto** que ya incluye audio, texto, transcripción e infraestructura, así que el costo es más predecible. Las instrucciones del agente en estos modelos tienen un máximo de 15.000 tokens (el límite aplica a las instrucciones, no a la duración de la llamada).
+
+## Cómo se cobran las demás herramientas
+
+<AccordionGroup>
+  <Accordion title="Ask AI y AI Studio">
+    El uso se mide en **ventanas móviles de 5 horas**. Cada plan tiene un límite dentro de esa ventana y el plan ilimitado ofrece tres veces el límite del plan con cupo. Si llegas al tope, el acceso se recupera a medida que la actividad antigua sale de la ventana. En pago por uso se cobra por tokens.
+
+    El costo de una sesión de Ask AI varía según la complejidad de la tarea, la cantidad de mensajes, las acciones que prepara o ejecuta, si genera imágenes, si consulta datos externos y si crea o actualiza elementos en tu cuenta.
+  </Accordion>
+  <Accordion title="IA conversacional: optimizador de indicaciones">
+    En pago por uso incluye una cantidad diaria de mensajes de prueba sin costo. Después se cobra a la tarifa de la IA conversacional. Los planes incluyen más mensajes o uso ilimitado.
+  </Accordion>
+  <Accordion title="IA de reseñas">
+    Generar sugerencias no cuesta nada: puedes pedir hasta cuatro sugerencias por reseña. El cargo se aplica cuando **envías** una respuesta basada en una sugerencia de la IA. Si reescribes la sugerencia casi por completo, cuenta como respuesta manual y no se cobra. Cada respuesta se cobra una sola vez, aunque la reenvíes. En piloto automático y en modo goteo se cobra una vez por cada respuesta enviada.
+  </Accordion>
+  <Accordion title="IA de contenido">
+    En los planes de IA es ilimitada con uso justo. En pago por uso se cobra por imagen generada y por cada mil palabras de texto.
+  </Accordion>
+  <Accordion title="IA de flujos">
+    El asistente que crea flujos a partir de una descripción y la opción **Generar con IA** para textos de SMS, correos o código son gratis, con un límite diario que se reinicia en 24 horas.
+
+    Las **acciones premium de IA** dentro de un flujo (tomador de decisiones, detección de intención, resumir texto y traducir) se cobran por ejecución. Si usas un modelo externo en una acción del flujo, se cobra según la tarifa de ese modelo.
+  </Accordion>
+  <Accordion title="IA de embudos y sitios web">
+    Gratis, con un límite de 1.000 instrucciones por día en tu cuenta.
+  </Accordion>
+  <Accordion title="IA de correo y base de conocimiento">
+    Incluidas sin costo adicional, sujetas a uso justo.
+  </Accordion>
+  <Accordion title="Agent Studio">
+    Siempre por uso. Se cobra según los tokens del modelo que genera las respuestas, las búsquedas web (por búsqueda) y el contenido multimedia que produzca: video por segundo, imágenes por unidad según calidad y tamaño, y voz por tokens de audio.
+  </Accordion>
+</AccordionGroup>
+
+## Agentes gestionados: cómo se cuentan las ejecuciones
+
+En los planes de IA, los agentes gestionados se miden en **ejecuciones**. En pago por uso se cobran por tokens, sin cupo de ejecuciones. Una ejecución se cuenta así:
+
+| Cómo se activa el agente | Una ejecución equivale a | Ejemplo |
+| --- | --- | --- |
+| Chat o conversación | Una sesión | 2 sesiones = 2 ejecuciones |
+| Disparador por evento | Un evento recibido y ejecutado | Se agrega una etiqueta y el agente actúa = 1 ejecución |
+| Disparador programado | Cada ejecución programada | Una vez al día durante 30 días = 30 ejecuciones |
+
+Además tienes **30 ejecuciones de prueba gratis al mes** desde la sección de pruebas. Cada prueba de chat admite hasta 400.000 tokens por sesión: una sesión de 520.000 tokens cuenta como 2 ejecuciones de prueba.
+
+## Política de uso justo
+
+"Ilimitado" y "gratis" siempre están sujetos a la política de uso justo. Si el uso es excesivo, abusivo o afecta el rendimiento de la plataforma, el acceso puede limitarse, pausarse o requerir un cambio de plan.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El plan ilimitado incluye minutos ilimitados de IA de voz?">
+    Sí, para llamadas entrantes, salientes y el widget de voz, sujeto a uso justo. Los cargos del sistema telefónico por esas llamadas se cobran aparte.
+  </Accordion>
+  <Accordion title="¿Por qué veo cargos de llamadas si tengo el plan ilimitado?">
+    Revisa la categoría del cargo. El plan cubre la parte de IA de la llamada, pero los minutos del sistema telefónico siempre se cobran aparte.
+  </Accordion>
+  <Accordion title="¿Los minutos de IA de voz del plan con cupo cubren llamadas entrantes, salientes y widget?">
+    Sí. Los tres tipos de uso descuentan del mismo cupo mensual. Cuando se agota, el uso adicional se cobra a la tarifa de pago por uso, según tus límites de gasto.
+  </Accordion>
+  <Accordion title="¿Qué significa pagar a costo de tokens?">
+    Que pagas según tu uso real, sin cuota mensual. Cada acción consume una cantidad de tokens y se cobra según el volumen procesado y el modelo usado.
+  </Accordion>
+  <Accordion title="¿Qué significa que una herramienta esté incluida en un plan?">
+    Que la herramienta viene con el plan sin costo adicional, dentro de los límites de uso justo. Si superas esos límites, el acceso puede restringirse hasta el siguiente periodo.
+  </Accordion>
+  <Accordion title="¿El creador de flujos con IA consume saldo?">
+    No. El asistente de IA de flujos y **Generar con IA** son gratis con límite diario. Solo las acciones premium de IA y los modelos externos generan cargos.
+  </Accordion>
+  <Accordion title="¿Cómo contrato o cambio mi plan de IA?">
+    Revisa las opciones en **Configuración → Facturación**. Si no ves la opción que buscas, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Límites de uso de IA" icon="gauge" href="/ia/limites-de-uso-de-ia">
+    Controla cuánto puede gastar la IA en tu cuenta.
+  </Card>
+  <Card title="Glosario de IA" icon="book" href="/ia/glosario-y-preguntas-frecuentes-ia">
+    Tokens, sesiones, ventanas de uso y más.
+  </Card>
+  <Card title="Recarga automática de la billetera" icon="wallet" href="/cuenta/recarga-automatica">
+    Evita que la IA se detenga por falta de saldo.
+  </Card>
+  <Card title="Tu Empleado IA" icon="robot" href="/ia/introduccion">
+    Qué hace cada herramienta de IA.
+  </Card>
+</CardGroup>

@@ -1,0 +1,124 @@
+---
+title: "Browse AI en flujos de trabajo"
+description: "Ejecuta robots de Browse AI, recupera los datos extraídos e inicia flujos cuando termina una tarea."
+icon: "globe"
+---
+
+Browse AI es una plataforma sin código para extraer y vigilar datos de sitios web. Funciona con **robots** (extractores entrenados para una página), cada ejecución de un robot es una **tarea** y una **ejecución masiva** lanza muchas tareas del mismo robot a la vez. Al conectarla con tus flujos de trabajo de Chateea, puedes reaccionar cuando termina una extracción y también lanzar robots desde un flujo y traer los datos capturados.
+
+## Cómo funciona la integración
+
+- **Disparador (de Browse AI a Chateea):** **Nueva tarea completada**, instantáneo, se activa cuando un robot termina una tarea.
+- **Acciones (de Chateea a Browse AI):** cuatro acciones para ejecutar tareas individuales o masivas y recuperar sus resultados.
+
+<Note>
+  El disparador y las acciones de Browse AI son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). El uso de Browse AI (créditos de robots y tareas) lo cobra Browse AI en tu cuenta.
+</Note>
+
+## Conectar Browse AI
+
+La conexión se hace con una clave de API. Para generarla, entra en Browse AI, ve a **Settings → API Keys**, haz clic en **Create new API key**, ponle un nombre (por ejemplo "Flujos de Chateea") y copia el valor.
+
+<Steps>
+  <Step title="Agrega un paso de Browse AI">
+    Ve a **Automatización → Flujos de trabajo**, abre o crea un flujo y busca **Browse AI** en la pestaña **Aplicaciones**. Elige cualquier disparador o acción.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Haz clic en **Conectar tu cuenta**, pega la clave de API y haz clic en **Guardar**. El panel mostrará **Conectado**.
+  </Step>
+</Steps>
+
+También puedes conectarla desde **Configuración → Integraciones**: busca **Browse AI**, haz clic en **Conectar**, pega la clave y guarda.
+
+Si conectas más de una cuenta de Browse AI, cada paso muestra un selector de **Cuenta conectada** para elegir con cuál trabajar. Si solo tienes una, se selecciona sola.
+
+## Disparador
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Nueva tarea completada** | Cuando un robot termina una tarea (por defecto, las completadas con éxito). Se puede filtrar por robot y con condiciones adicionales. Es instantáneo, se activa segundos después de terminar la tarea. |
+
+## Acciones
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Ejecutar tarea** | Lanza un robot una vez, con parámetros de entrada opcionales. |
+| **Ejecución masiva de tareas** | Pone en cola muchas ejecuciones del mismo robot, una por cada fila de datos de entrada. |
+| **Obtener tarea** | Recupera una tarea por su ID, con los datos capturados cuando están listos. |
+| **Obtener ejecución masiva** | Recupera una ejecución masiva por su ID, con los resultados de todas sus tareas. |
+
+## Ejemplo: disparador Nueva tarea completada
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En el flujo, haz clic en **Agregar disparador**, entra en **Aplicaciones**, busca **Browse AI** y elige **Nueva tarea completada**.
+  </Step>
+  <Step title="Configúralo">
+    Elige la cuenta conectada, ponle un nombre claro (por ejemplo "Nueva extracción de página de la competencia") y, en **Filtros → Robot**, elige el robot que quieres vigilar. Si un robot corre con muchas entradas distintas, usa los filtros adicionales para quedarte solo con las que te interesan (por estado, valor capturado o entrada).
+  </Step>
+  <Step title="Pruébalo">
+    Haz clic en **Buscar registros nuevos**, elige uno en **Registros: seleccionar referencia de asignación** para fijar los campos capturados y haz clic en **Guardar disparador**.
+  </Step>
+</Steps>
+
+Si no aparecen tareas, ejecuta el robot a mano en Browse AI para generar una muestra y vuelve a buscar.
+
+## Ejemplo: acción Ejecutar tarea
+
+<Steps>
+  <Step title="Agrega la acción">
+    En el flujo, haz clic en **Agregar**, entra en **Aplicaciones**, elige **Browse AI** y luego **Ejecutar tarea**. Si es la primera vez, conecta tu cuenta con la clave de API.
+  </Step>
+  <Step title="Configúrala">
+    Ponle un nombre (por ejemplo "Extraer URL enviada por el cliente"), elige el **robot** y completa sus **parámetros de entrada**. Cada robot define los suyos (una URL, una búsqueda, etc.); puedes usar variables del flujo, como la URL que llegó en un formulario.
+  </Step>
+  <Step title="Continúa con el resultado">
+    **Ejecutar tarea** devuelve un ID de tarea. Tienes dos opciones:
+    - **Esperar con un disparador:** guarda el ID en el contacto y termina el flujo. Otro flujo con el disparador **Nueva tarea completada** retoma el proceso cuando la extracción termina.
+    - **Esperar con una pausa:** si la extracción suele ser rápida, agrega una **Espera** (por ejemplo, 30 segundos) y luego **Obtener tarea** con el ID devuelto.
+  </Step>
+  <Step title="Prueba">
+    Haz clic en **Probar acción**, confirma en Browse AI que la tarea aparece en el historial del robot, guarda la acción y prueba el flujo completo antes de publicarlo.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+### Vigilancia de la competencia con avisos
+
+- **Disparador:** Nueva tarea completada (robot de la página de precios de un competidor).
+- **Acciones:** condición sobre un campo capturado (precio, titular o estado) y notificación interna si cambió.
+
+### Extracción a pedido de una URL enviada por un cliente
+
+- **Flujo 1:** Formulario enviado con una URL, **Ejecutar tarea** con esa URL y guardar el ID de la tarea en el contacto.
+- **Flujo 2:** Nueva tarea completada, buscar el contacto por el ID de tarea, actualizar sus campos con los datos capturados y enviarle el seguimiento.
+
+### Enriquecimiento masivo de leads
+
+Con una lista de sitios web o empresas, usa **Ejecución masiva de tareas** (una tarea por fila), espera a que termine, recupera todo con **Obtener ejecución masiva** y actualiza los campos personalizados de cada contacto.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El disparador es instantáneo?">
+    Sí. Funciona con webhook y se activa segundos después de que el robot termina la tarea.
+  </Accordion>
+  <Accordion title="¿Cómo consigo la clave de API de Browse AI?">
+    En Browse AI, ve a **Settings → API Keys**, haz clic en **Create new API key**, ponle un nombre y copia el valor. Pégalo en la pantalla de conexión.
+  </Accordion>
+  <Accordion title="¿Puedo usar robots prediseñados?">
+    Sí. Browse AI ofrece cientos de robots listos para usar, además de los que entrenes tú.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Apify en flujos de trabajo" icon="spider" href="/automatizaciones/apify-en-flujos-de-trabajo">
+    Ejecuta actores y tareas de extracción de Apify.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+</CardGroup>

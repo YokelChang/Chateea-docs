@@ -1,0 +1,134 @@
+---
+title: "Acciones masivas en contactos"
+description: "Sigue el estado de importaciones, envíos, etiquetas y exportaciones, descarga errores y restaura contactos eliminados."
+icon: "layer-group"
+---
+
+Cada vez que haces algo con muchos contactos a la vez (importar, etiquetar, enviar SMS o correos, exportar o eliminar), Chateea lo registra como una **acción masiva**. La página **Acciones masivas** reúne todas esas operaciones en un solo lugar: ahí ves su estado en tiempo real, revisas cuántos registros salieron bien y cuántos fallaron, descargas los errores y, si hace falta, pausas un envío o restauras contactos eliminados.
+
+## Para qué te sirve
+
+- **Revisar resultados.** Compara éxitos y errores de cada acción y descarga el registro de errores para corregirlos.
+- **Corregir a tiempo.** Pausa, edita o cancela envíos masivos que aún no terminaron.
+- **Recuperar contactos.** Restaura contactos eliminados en una acción masiva dentro del plazo permitido.
+- **Saber quién hizo qué.** Filtra por usuario, tipo de acción, estado y fecha.
+- **Descargar exportaciones.** Los archivos CSV exportados se descargan desde aquí.
+
+## Abrir la página de acciones masivas
+
+Ve a **Contactos → Acciones masivas**. No hay nada que configurar: todas las acciones masivas de tu cuenta aparecen automáticamente.
+
+## Leer la tabla
+
+Cada acción es una fila con estas columnas:
+
+| Columna | Qué muestra |
+| --- | --- |
+| Nombre de la acción | El nombre que le diste al lanzarla. |
+| Tipo de acción | Importación, eliminar contactos, agregar etiqueta, quitar etiqueta, SMS masivo, correo masivo, exportación, etc. |
+| Creada por | El usuario que la lanzó. |
+| Fecha de creación | Cuándo se inició. |
+| Estado | En proceso, completada, pausada, en cola o cancelada, con colores para identificarlas rápido. |
+
+Al pasar el cursor por encima verás nombres largos o conteos completos. El menú de tres puntos de cada fila muestra las opciones disponibles para esa acción.
+
+## Filtrar acciones
+
+Usa los filtros para encontrar rápido lo que buscas, sobre todo si varias personas del equipo lanzan acciones cada día:
+
+- **Estado:** en proceso, completada, pausada, en cola o cancelada.
+- **Tipo de acción:** importación, eliminar contactos, agregar o quitar etiqueta, SMS masivo, correo masivo, etc.
+- **Usuario:** acciones lanzadas por una persona concreta.
+- **Rango de fechas:** fechas personalizadas.
+
+## Ver estadísticas y descargar errores
+
+<Steps>
+<Step title="Abre las estadísticas">
+Haz clic en **Ver estadísticas** (Show Stats) en la fila de la acción. Verás los totales, los éxitos, los errores y, en envíos de mensajes, los resultados de entrega.
+</Step>
+<Step title="Descarga el registro de errores">
+Usa **Descargar** para obtener un archivo con los registros que fallaron y el motivo de cada fallo.
+</Step>
+<Step title="Corrige y repite">
+Corrige los datos según el motivo indicado y vuelve a lanzar la acción solo con los registros afectados.
+</Step>
+</Steps>
+
+## Pausar, editar o cancelar una acción en curso
+
+Algunos envíos masivos, como los SMS programados o en modo goteo, se pueden gestionar después de lanzarlos. Abre el menú de tres puntos de la acción y elige:
+
+- **Pausar:** detiene temporalmente el procesamiento.
+- **Editar:** cambia la hora programada de la acción.
+- **Cancelar:** detiene lo que falta por procesar.
+
+Lo que ya se procesó antes del cambio queda como está. Actualiza la tabla y revisa **Ver estadísticas** para confirmar qué se completó.
+
+## Restaurar contactos eliminados en bloque
+
+Si eliminaste contactos por error con una acción masiva, puedes recuperarlos:
+
+<Steps>
+<Step title="Busca la acción de eliminación">
+Filtra por el tipo **Eliminar contactos** y localiza la acción.
+</Step>
+<Step title="Elige Restaurar">
+En el menú de tres puntos, haz clic en **Restaurar**. Una ventana te explica qué se va a recuperar.
+</Step>
+<Step title="Confirma">
+Al confirmar se crea una nueva acción de restauración, que aparece en la tabla y se ejecuta hasta completarse.
+</Step>
+</Steps>
+
+<Warning>
+La restauración solo está disponible durante unos **60 días** desde la eliminación y recupera la ficha del contacto, no sus conversaciones, notas ni tareas. Tampoco sirve para deshacer otros tipos de acciones.
+</Warning>
+
+Estas acciones masivas **no** se pueden revertir:
+
+- Correo masivo.
+- Verificación masiva de correos.
+- Asignación masiva de contactos a empresas.
+- Agregar etiquetas en masa (para revertirlo, usa **Quitar etiquetas**).
+- SMS masivo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Qué acciones aparecen en esta página?">
+Casi todas las operaciones masivas que lanzas desde **Contactos**: importaciones, exportaciones, eliminaciones, SMS y correos masivos, y agregar o quitar etiquetas.
+</Accordion>
+<Accordion title="¿Cuánto tiempo tengo para restaurar contactos eliminados?">
+Unos 60 días desde la eliminación. Después se borran de forma permanente.
+</Accordion>
+<Accordion title="¿Puedo cancelar una acción que ya empezó?">
+En las acciones compatibles (como los SMS masivos en cola), sí: usa el menú de tres puntos para pausar, editar o cancelar. Lo que ya se procesó no se revierte.
+</Accordion>
+<Accordion title="¿Dónde descargo los resultados detallados?">
+En **Ver estadísticas**, con la opción **Descargar**, que exporta el registro de errores con el motivo de cada fallo.
+</Accordion>
+<Accordion title="¿Por qué se me pide confirmar el consentimiento al importar contactos?">
+Porque importar contactos sin permiso para escribirles aumenta los rebotes y las quejas de spam, lo que daña tu reputación de envío. Las listas compradas o alquiladas suelen generar rebotes, bajas y reportes de spam, y pueden hacer que tu dominio o número acaben en listas de bloqueo.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Agregar o quitar etiquetas en masa" icon="tags" href="/contactos/agregar-o-quitar-etiquetas-en-masa">
+Organiza muchos contactos en un paso.
+</Card>
+<Card title="Modo goteo en acciones masivas" icon="droplet" href="/contactos/modo-goteo-en-acciones-masivas">
+Envía por lotes espaciados en el tiempo.
+</Card>
+<Card title="Importar contactos y oportunidades" icon="file-import" href="/contactos/importar-contactos-y-oportunidades-csv">
+Carga tus datos desde un CSV.
+</Card>
+<Card title="Eliminar contactos y sus datos" icon="trash" href="/contactos/eliminar-contactos">
+Borra contactos de forma segura.
+</Card>
+<Card title="Restaurar contactos eliminados" icon="rotate-left" href="/contactos/restaurar-contactos-eliminados">
+Recupera contactos borrados por error.
+</Card>
+</CardGroup>

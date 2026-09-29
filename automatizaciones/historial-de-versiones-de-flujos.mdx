@@ -1,0 +1,104 @@
+---
+title: "Historial de versiones y restauración de flujos"
+description: "Revisa quién cambió tu flujo y cuándo, y restaura una versión anterior como borrador o como un flujo nuevo."
+icon: "clock-rotate-left"
+---
+
+El **historial de versiones** es la línea de tiempo de los estados guardados de tu flujo de trabajo. Cada versión registra quién la editó, cuándo y si era un borrador o una versión publicada. Con él puedes revisar cambios, recuperar una versión anterior como nuevo borrador o incluso crear un flujo nuevo a partir de ella, sin tocar lo que está funcionando hasta que decidas publicar.
+
+## Ventajas
+
+- **Tranquilidad:** vuelve a cualquiera de las últimas versiones con un clic.
+- **Responsabilidad del equipo:** ve quién guardó cada versión y cuándo.
+- **Recuperación flexible:** convierte una versión anterior en un borrador nuevo o en un flujo independiente.
+- **Fácil de usar:** un panel lateral con etiquetas cronológicas (v12, v13, v14...).
+- **Complementa otras herramientas:** funciona junto con el guardado automático y con Deshacer y Rehacer.
+
+## Cuándo se crea una versión
+
+El historial registra una versión automáticamente cuando:
+
+- Haces clic en **Guardar** manualmente.
+- Confirmas los cambios en la ventana de **Cambios sin guardar**.
+- Usas **Guardar versión** en el flujo.
+- Cambia el estado del flujo (de **Borrador** a **Publicado** o al revés).
+
+<Note>
+Los guardados automáticos de rutina **no crean versiones** por sí solos. Para convertir tu estado actual en una versión, haz clic en **Guardar versión**.
+</Note>
+
+## Cómo revisar las versiones
+
+Abre **Historial de versiones** desde el constructor. Verás las entradas ordenadas por fecha y editor. Cada una muestra:
+
+- Nombre del flujo
+- Número de versión (por ejemplo, v12, v13, v14)
+- Fecha y hora
+- Persona que editó
+- Estado (**Borrador** o **Publicado**)
+
+Puedes **filtrar por editor**. El historial conserva **hasta 10 versiones o 30 días**, lo que ocurra primero.
+
+## Cómo restaurar una versión
+
+<Steps>
+<Step title="Prepara el flujo">
+Para restaurar, el flujo debe estar en **Borrador** y **no tener contactos inscritos** en ese momento.
+</Step>
+<Step title="Elige la versión">
+En el historial de versiones, busca la versión que quieres recuperar.
+</Step>
+<Step title="Haz clic en Restaurar">
+La versión se abre como un **nuevo borrador**. Todas las versiones anteriores siguen disponibles.
+</Step>
+<Step title="Revisa y publica">
+Comprueba que todo esté bien y haz clic en **Publicar**. Hasta entonces, la versión publicada no cambia.
+</Step>
+</Steps>
+
+### Crear un flujo nuevo a partir de una versión
+
+Si quieres explorar una idea sin tocar el flujo original, elige **Crear nuevo flujo a partir de esta versión**. Se crea un flujo separado con el contenido de esa versión.
+
+## Qué pasa con los contactos que ya están en el flujo
+
+Los contactos que ya avanzan por un flujo usan los cambios que hagas en las acciones **que todavía no han alcanzado**.
+
+- Si un contacto está en una acción **Esperar** y editas una acción posterior, usará la versión actualizada al llegar a ella.
+- Si agregas una acción nueva después de ese **Esperar**, el contacto también la ejecutará.
+- Si cambias la propia acción **Esperar**, los contactos que ya están en ella terminan su espera original antes de continuar con el flujo actualizado.
+
+## Buenas prácticas
+
+- **Nombra las versiones en momentos clave**, por ejemplo "Rama para clientes corporativos" o "Nueva secuencia de bienvenida".
+- **Coordina al equipo:** usa **Guardar versión** antes de cambios grandes.
+- **Compara antes de restaurar:** revisa la versión para confirmar que es la que buscas.
+- **Experimenta en un flujo aparte** con **Crear nuevo flujo a partir de esta versión** cuando la idea sea arriesgada.
+
+## Notas y limitaciones
+
+| Tema | Detalle |
+| --- | --- |
+| Restaurar | Crea un **nuevo borrador**. Debes publicarlo para que se aplique. |
+| Deshacer y Rehacer | Se reinician después de restaurar una versión. |
+| Guardado automático | Cubre los cambios del lienzo. Algunos cambios en ventanas de configuración requieren su propio guardar o aplicar. |
+| Retención | Hasta 10 versiones o 30 días. |
+| Requisitos para restaurar | Flujo en **Borrador** y sin contactos inscritos. |
+
+<Info>
+Si no ves el historial de versiones en tu flujo, revisa si está disponible en **Configuración → Labs** y actívalo.
+</Info>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Guardado automático de flujos" icon="floppy-disk" href="/automatizaciones/guardado-automatico-de-flujos">
+Guarda tus cambios en borrador mientras trabajas.
+</Card>
+<Card title="Deshacer, rehacer y cambios recientes" icon="rotate-left" href="/automatizaciones/deshacer-rehacer-y-cambios-recientes">
+Corrige errores durante tu sesión.
+</Card>
+<Card title="Historial de versiones en el constructor con IA" icon="wand-magic-sparkles" href="/automatizaciones/historial-de-versiones-constructor-con-ia">
+Restaura cada versión generada por la IA.
+</Card>
+</CardGroup>

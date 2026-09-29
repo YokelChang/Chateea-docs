@@ -1,0 +1,133 @@
+---
+title: "Columnas del CSV para publicaciones masivas"
+description: "Referencia de columnas, encabezados y valores del CSV básico y avanzado para programar publicaciones en bloque."
+icon: "table"
+---
+
+Programar publicaciones en bloque con un archivo CSV te permite dejar listo el contenido de semanas o meses en unos minutos. El Planificador social acepta archivos **.csv** y **.xlsx**, y ofrece dos formatos de carga. Esta página explica cada columna, cómo debe llamarse y qué valores admite.
+
+## Formato básico y formato avanzado
+
+| Formato | Qué incluye |
+| --- | --- |
+| **Básico** | Fecha y hora, contenido, enlace de vista previa, imágenes, GIF, videos y miniatura |
+| **Avanzado** | Todo lo del básico más tipos de publicación por red (publicación, historia, reel, short), marca de agua, etiquetas, categorías, primer comentario, opciones del Perfil de Empresa de Google, YouTube, TikTok, PDF de LinkedIn, Comunidades y Pinterest |
+
+En cada columna de abajo se indica si aplica a **ambos** formatos o solo al **avanzado**.
+
+<Warning>
+Los nombres de las columnas deben escribirse exactamente como se indican. Si un encabezado no coincide, el sistema no reconocerá esa columna.
+</Warning>
+
+## Columnas comunes (ambos formatos)
+
+### Fecha y hora
+
+Encabezado: `postAtSpecificTime (YYYY-MM-DD HH:mm)`
+
+- Usa formato de **24 horas**. Ejemplo: `2025-08-25 21:30`.
+- Si dejas la fecha vacía, la publicación se guarda como **borrador**.
+- Formatos aceptados: `YYYY-MM-DD HH:mm`, `YYYY-MM-DD HH:mm:ss`, `YYYY/MM/DD HH:mm:ss`, `YYYY/MM/DD HH:mm`, `M/D/YYYY H:mm:ss` y `M/D/YYYY H:mm`.
+- Programa cada publicación al menos **10 minutos** después del momento en que subes el archivo. Por ejemplo, para una publicación a las 15:00, sube el CSV como muy tarde a las 14:50.
+
+### Contenido
+
+Encabezado: `content`
+
+El texto de la publicación. Puedes incluir hashtags. Debe respetar el límite de caracteres de cada red en la que publiques.
+
+### Enlace de vista previa
+
+Encabezado: `link (OGmetaUrl)`
+
+La URL que quieres mostrar como tarjeta de vista previa. Si también rellenas columnas de imágenes, GIF o videos, estas tienen prioridad y el enlace se añade al texto como un enlace normal.
+
+### Imágenes
+
+Encabezado: `imageUrls`
+
+URL de las imágenes, separadas por comas. Deben ser PNG o JPEG/JPG y cumplir los requisitos de cada red. Máximo 10 imágenes por publicación.
+
+### GIF
+
+Encabezado: `gifUrl`
+
+URL del GIF. Si usas esta columna, no rellenes ninguna otra columna de medios (`link`, `imageUrls`, `videoUrls`).
+
+### Videos
+
+Encabezado: `videoUrls`
+
+URL de los videos, separadas por comas. Máximo 10 videos por publicación. Si usas esta columna, no rellenes otras columnas de medios.
+
+### Miniatura
+
+Encabezado: `thumbnailUrl`
+
+Miniatura personalizada para publicaciones con video. Se aplica automáticamente al primer video de la publicación. No se admiten miniaturas para varios videos y el resultado puede variar según la red.
+
+<Tip>
+Sube tus imágenes y videos a la biblioteca de Medios de Chateea y usa esos enlaces en el archivo. Los enlaces de Google Drive ya no se pueden procesar en las importaciones.
+</Tip>
+
+## Columnas del formato avanzado
+
+| Columna | Encabezado | Valores y uso |
+| --- | --- | --- |
+| Optimización de medios | `mediaOptimization (true/false)` | `true` corrige automáticamente errores de formato o medidas. Por ejemplo, convierte un MP4 al formato que exige una historia de Instagram |
+| Marca de agua | `applyWatermark (true/false)` | `true` aplica tu marca de agua a imágenes y videos |
+| Etiquetas | `tags (comma-separated)` | Varias etiquetas separadas por comas. Si no existen, se crean |
+| Categoría | `Category` | Una categoría. Si no existe, se crea |
+| Primer comentario | `followUpComment` | Comentario que se publica justo después del post. Disponible para páginas de Facebook, Instagram de empresa, perfiles y páginas de LinkedIn, videos y shorts de YouTube y Comunidades |
+| Tipo en Facebook | `type (post/story/reel)` | Publicación, historia o reel |
+| Tipo en Instagram | `type (post/story/reel)` | Publicación, historia o reel |
+| PDF en LinkedIn | `pdfTitle` y `postAsPdf (true/false)` | Título del documento y si se publica como PDF en lugar de imágenes |
+
+### Perfil de Empresa de Google
+
+Encabezados: `eventType (call_to_action/event/offer)`, `actionType (none/order/book/shop/learn_more/call/sign_up)`, `title`, `offerTitle`, `startDate (YYYY-MM-DD HH:mm:ss)`, `endDate (YYYY-MM-DD HH:mm:ss)`, `termsConditions`, `couponCode`, `redeemOnlineUrl`, `actionUrl`.
+
+Según el tipo de publicación, debes completar unas columnas u otras:
+
+| Campo | Llamada a la acción | Evento | Oferta |
+| --- | --- | --- | --- |
+| `actionType` (botón) | Sí | Sí | No |
+| `actionUrl` | Sí | Sí | No |
+| `title` | No | Sí | No |
+| `offerTitle` | No | No | Sí |
+| `startDate` | No | Sí | Sí |
+| `endDate` | No | Sí | Sí |
+| `termsConditions` | No | No | Sí |
+| `couponCode` | No | No | Sí |
+| `redeemOnlineUrl` | No | No | Sí |
+
+### YouTube
+
+Encabezados: `title`, `privacyLevel (private/public/unlisted)` y `type (video/short)`.
+
+### TikTok
+
+Encabezados: `privacyLevel(everyone/friends/only_me)`, `promoteOtherBrand(true/false)`, `enableComment(true/false)`, `enableDuet(true/false)`, `enableStitch(true/false)`, `videoDisclosure(true/false)` y `promoteYourBrand (true/false)`.
+
+### Comunidades
+
+Encabezados: `title` y `notifyAllGroupMembers (true/false)` para avisar a todos los miembros del grupo.
+
+### Pinterest
+
+Encabezados: `title` y `link`.
+
+<Note>
+El tablero de Pinterest no se indica en el archivo. Define un tablero predeterminado en la configuración del Planificador social.
+</Note>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Programación masiva con CSV avanzado" icon="file-csv" href="/marketing/programacion-masiva-con-csv-avanzado">
+Paso a paso para subir el archivo y programar.
+</Card>
+<Card title="Requisitos de imagen, video y texto" icon="photo-film" href="/planificador-social/limitaciones-de-imagen-video-contenido-y-api">
+Límites de archivos por red social.
+</Card>
+</CardGroup>

@@ -1,0 +1,97 @@
+---
+title: "Notificaciones de errores en flujos de trabajo"
+description: "Recibe avisos por correo cuando una acción falla y revisa los flujos con errores desde la pestaña Requiere revisión."
+icon: "triangle-exclamation"
+---
+
+Cuando una acción de un flujo de trabajo falla (por ejemplo, un webhook que no responde o una integración desconectada), lo ideal es enterarte de inmediato y no cuando un cliente se queja. Las notificaciones de errores te avisan por correo y reúnen en una pestaña todos los flujos que necesitan tu atención, para que puedas revisarlos y marcarlos como atendidos.
+
+## Qué incluye
+
+- **Configuración de flujos de trabajo:** una sección donde activas los avisos por correo y eliges quién los recibe.
+- **Pestaña Requiere revisión** (Needs Review): en la lista de flujos, muestra todos los flujos que tienen errores.
+- **Correos automáticos de error:** se envía un correo a los destinatarios configurados cuando ocurre un error en un flujo.
+- **Confirmación de errores:** un botón en los registros de ejecución para marcar que ya revisaste el error.
+
+## Acciones que generan notificaciones
+
+Las notificaciones cubren errores en estas acciones:
+
+| Tipo | Acciones |
+| --- | --- |
+| Webhooks | Webhook y Webhook personalizado |
+| Acciones premium | Slack, Funciones de matriz (Array), Código personalizado, ChatGPT, Google Sheets |
+| Facebook | Agregar a público personalizado, Quitar de público personalizado, API de conversiones, Messenger, Messenger interactivo |
+| Instagram | Mensaje directo de Instagram, Messenger interactivo |
+
+## Cómo activar las notificaciones
+
+<Steps>
+<Step title="Abre la configuración de flujos">
+Ve a **Automatización → Flujos de trabajo** y haz clic en **Configuración de flujos de trabajo** (Workflow Settings).
+</Step>
+<Step title="Activa los avisos por correo">
+Enciende el interruptor de notificaciones de errores. Por defecto está apagado.
+</Step>
+<Step title="Agrega los destinatarios">
+Escribe los correos de las personas que deben recibir los avisos. Puedes agregar o quitar destinatarios cuando lo necesites.
+</Step>
+<Step title="Guarda los cambios">
+Desde ese momento, recibirás un correo cuando ocurra un error en uno de tus flujos.
+</Step>
+</Steps>
+
+## Cómo revisar y confirmar los errores
+
+<Steps>
+<Step title="Entra a la pestaña Requiere revisión">
+En **Automatización → Flujos de trabajo**, abre la pestaña **Requiere revisión**. También puedes llegar con el botón **Revisar** (Review it) del correo de aviso.
+</Step>
+<Step title="Abre el flujo con error">
+Haz clic en cualquier elemento de la lista para ir directo a los registros de ejecución de ese flujo y ver qué acción falló y por qué.
+</Step>
+<Step title="Corrige la causa">
+Revisa la configuración de la acción: URL del webhook, conexión de la integración, permisos de la página de Facebook o Instagram, etc.
+</Step>
+<Step title="Marca el error como leído">
+En los registros de ejecución, usa el botón para confirmar que ya revisaste el error. Así la lista de **Requiere revisión** refleja solo lo pendiente.
+</Step>
+</Steps>
+
+## Frecuencia de los correos
+
+- Recibes el correo **en cuanto ocurre** un error.
+- Para no saturar tu bandeja, se envía **como máximo un correo cada 24 horas**. Si aparecen errores nuevos después de ese periodo, recibirás otro correo.
+
+<Tip>
+Envía las notificaciones a una persona que pueda actuar (quien administra tus integraciones o automatizaciones) y revisa la pestaña **Requiere revisión** como parte de tu rutina semanal.
+</Tip>
+
+## Cómo desactivar las notificaciones
+
+Ve a **Automatización → Flujos de trabajo → Configuración de flujos de trabajo** y apaga el interruptor de notificaciones. Dejarás de recibir los correos de error, aunque la pestaña **Requiere revisión** seguirá mostrando los flujos con errores.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Las notificaciones vienen activadas por defecto?">
+No. Tienes que activarlas y agregar los destinatarios desde la configuración de flujos de trabajo.
+</Accordion>
+<Accordion title="¿Recibiré un correo por cada contacto que falle?">
+No. Recibes un aviso cuando ocurre el primer error y, como máximo, un correo cada 24 horas mientras sigan apareciendo errores nuevos.
+</Accordion>
+<Accordion title="¿Todas las acciones generan notificación?">
+No. Solo las acciones listadas en la tabla de este artículo. Para el resto, revisa los registros de ejecución del flujo.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Registros de ejecución e historial de inscripción" icon="list-check" href="/automatizaciones/registros-de-ejecucion-e-historial-de-inscripcion">
+Investiga qué pasó con cada contacto en tu flujo.
+</Card>
+<Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+Resuelve los errores más comunes en tus automatizaciones.
+</Card>
+</CardGroup>

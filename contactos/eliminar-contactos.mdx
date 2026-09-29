@@ -1,0 +1,123 @@
+---
+title: "Eliminar contactos y sus datos"
+description: "Elimina contactos a mano o con un flujo de trabajo, entiende qué datos se pierden y restaura contactos en 60 días."
+icon: "trash"
+---
+
+Eliminar contactos te ayuda a mantener tu base limpia, quitar registros viejos o inválidos y atender solicitudes de borrado de datos personales. En esta guía verás cómo eliminar contactos a mano o con una automatización, qué pasa con su información y cómo restaurarlos si te equivocas.
+
+## Antes de eliminar
+
+- **Solo los administradores** pueden eliminar contactos. Es una protección contra borrados accidentales.
+- Los contactos eliminados se pueden **restaurar durante 60 días** (unos dos meses). Después se borran de forma definitiva.
+- **Los datos asociados se pierden.** Al eliminar un contacto se borran sus conversaciones, notas, tareas e historial de actividad. Aunque restaures el contacto, esos datos **no** vuelven.
+
+<Warning>
+Antes de eliminar, exporta a CSV los contactos que vas a borrar si crees que podrías necesitar su información más adelante. Restaurar un contacto solo recupera la ficha, no sus conversaciones, notas ni tareas.
+</Warning>
+
+## Eliminar contactos a mano
+
+<Steps>
+<Step title="Abre Contactos">
+Ve a **Contactos** en el menú lateral. Puedes trabajar desde la lista general o desde cualquier lista inteligente.
+</Step>
+<Step title="Selecciona los contactos">
+Marca la casilla junto a cada contacto que quieras eliminar. Para seleccionar toda la página, o todos los contactos de la lista, usa la casilla del encabezado de la tabla.
+</Step>
+<Step title="Haz clic en Eliminar">
+En la barra de acciones superior, haz clic en el ícono de papelera (**Eliminar**).
+</Step>
+<Step title="Confirma">
+Escribe **DELETE** en el cuadro de confirmación y confirma.
+</Step>
+<Step title="Revisa el progreso">
+Si eliminaste muchos contactos a la vez, puedes seguir el avance en la página de **Acciones masivas**.
+</Step>
+</Steps>
+
+<Note>
+Si no ves el ícono de papelera, primero selecciona al menos un contacto: el botón solo aparece cuando hay selección. Si aun así no aparece, probablemente tu usuario no tiene permiso para eliminar contactos. Pide al administrador de tu cuenta que lo revise.
+</Note>
+
+## Restaurar contactos eliminados
+
+Si borraste un contacto por error, puedes recuperarlo dentro de los 60 días siguientes.
+
+<Steps>
+<Step title="Abre la papelera de contactos">
+Ve a **Contactos → Restaurar**.
+</Step>
+<Step title="Selecciona y restaura">
+Marca los contactos que quieres recuperar, haz clic en **Restaurar** y confirma.
+</Step>
+</Steps>
+
+El contacto vuelve a tu lista activa, pero sin las conversaciones, notas ni tareas que tenía.
+
+## Eliminar contactos con un flujo de trabajo
+
+Si con frecuencia necesitas quitar contactos que se dieron de baja, están inactivos o tienen datos inválidos, puedes automatizarlo.
+
+<Steps>
+<Step title="Crea un flujo de trabajo">
+Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo.
+</Step>
+<Step title="Elige el disparador">
+Por ejemplo, **Etiqueta del contacto agregada** con una etiqueta como "eliminar" o "dado de baja".
+</Step>
+<Step title="Agrega la acción Eliminar contacto">
+Incluye la acción **Eliminar contacto** (Delete Contact) en el flujo.
+</Step>
+<Step title="Prueba y publica">
+Pruébalo con un contacto de prueba antes de activarlo.
+</Step>
+</Steps>
+
+<Tip>
+Usar una etiqueta como paso intermedio te da control: primero etiquetas, revisas la lista inteligente de contactos con esa etiqueta y, cuando estás seguro, dejas que el flujo los elimine.
+</Tip>
+
+## Buenas prácticas
+
+- **Revisa dos veces la selección** antes de confirmar.
+- **Exporta un respaldo** de los contactos que vas a eliminar.
+- **Haz limpieza periódica** de contactos inválidos o inactivos para mantener tu base sana.
+- **Limita el permiso de eliminar** a administradores o personas de confianza desde **Configuración → Mi equipo**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Eliminar un contacto lo saca de campañas y flujos?">
+Sí. Los contactos eliminados salen de todas las campañas, flujos de trabajo y listas.
+</Accordion>
+<Accordion title="¿Afecta mis informes?">
+Puede afectar métricas históricas de campañas y estadísticas de entregabilidad de correo, porque esos contactos dejan de contar.
+</Accordion>
+<Accordion title="¿Puedo eliminar varios contactos a la vez?">
+Sí. Selecciona varios contactos (o toda la lista) y usa la acción **Eliminar**. El proceso se registra en **Acciones masivas**.
+</Accordion>
+<Accordion title="¿Cómo me aseguro de que solo los administradores puedan eliminar?">
+Revisa los roles y permisos de cada usuario en **Configuración → Mi equipo**.
+</Accordion>
+<Accordion title="¿Por qué no puedo eliminar un contacto?">
+Lo más común es que tu usuario no tenga permisos de administrador. También puede ocurrir si el contacto está en una campaña o flujo activo: sácalo de ahí e inténtalo de nuevo.
+</Accordion>
+<Accordion title="¿Puedo recuperar un contacto eliminado?">
+Sí, durante 60 días desde **Contactos → Restaurar**. Pasado ese plazo se elimina de forma permanente. Recuerda que sus conversaciones, notas y tareas no se recuperan.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Exportar contactos a CSV" icon="file-export" href="/contactos/exportar-contactos-csv">
+Haz un respaldo antes de eliminar.
+</Card>
+<Card title="Acciones masivas en contactos" icon="layer-group" href="/contactos/acciones-masivas">
+Sigue el progreso de eliminaciones grandes.
+</Card>
+<Card title="Restaurar contactos eliminados" icon="rotate-left" href="/contactos/restaurar-contactos-eliminados">
+Recupera contactos borrados por error.
+</Card>
+</CardGroup>

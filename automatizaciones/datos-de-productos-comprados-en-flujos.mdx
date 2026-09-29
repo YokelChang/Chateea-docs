@@ -1,0 +1,142 @@
+---
+title: "Usar los productos comprados en tus flujos"
+description: "Extrae y formatea los productos de un pedido en tus flujos con el formateador de listas o con pluck y join."
+icon: "cart-shopping"
+---
+
+Cuando un cliente hace un pedido, la información de los productos llega al flujo de trabajo como una **lista** (un producto por cada artículo comprado). Para usar esos datos en un mensaje, en una hoja de Google Sheets o en otra plataforma, necesitas convertirlos en texto. Chateea te da dos formas de hacerlo: el formateador de listas del selector de valores personalizados y los ayudantes `pluck` y `join`.
+
+## Cuándo lo necesitas
+
+- Registrar en Google Sheets qué productos compró cada cliente.
+- Enviar al equipo un aviso interno con el detalle del pedido.
+- Mandar los productos a un sistema externo mediante un webhook.
+- Personalizar un correo de agradecimiento con los nombres de lo que se compró.
+
+Funciona con cualquier disparador que traiga una lista de datos, por ejemplo **Pedido enviado** (Order Submitted), **Pago recibido** o **Webhook entrante**.
+
+## Opción 1: formatear la lista desde el selector de valores personalizados
+
+Es la forma más sencilla y no requiere escribir expresiones.
+
+<Steps>
+<Step title="Abre el selector de valores personalizados">
+En un campo de texto compatible de tu acción (por ejemplo, el cuerpo de un correo o una columna de Google Sheets), abre el selector de **Valores personalizados**.
+</Step>
+<Step title="Elige la lista">
+Selecciona el valor de tipo lista, como los artículos del pedido.
+</Step>
+<Step title="Elige el campo que quieres extraer">
+Indica qué dato tomar de cada artículo, por ejemplo el título del producto.
+</Step>
+<Step title="Elige el formato">
+Selecciona cómo se mostrarán los valores: **separados por comas**, **lista con viñetas**, **lista numerada** o con un **separador personalizado**.
+</Step>
+<Step title="Configura un texto alternativo (opcional)">
+Define qué mostrar si la lista llega vacía.
+</Step>
+<Step title="Revisa e inserta">
+Comprueba el resultado en la vista previa y haz clic en **Insertar** para agregarlo en la posición del cursor.
+</Step>
+</Steps>
+
+## Opción 2: usar los ayudantes pluck y join
+
+Si necesitas más control, puedes escribir las expresiones a mano:
+
+- `pluck` extrae un campo específico de cada elemento de la lista (por ejemplo, el título de cada producto).
+- `join` une esos valores en un solo texto con el separador que elijas.
+
+Extraer los títulos de los productos del pedido:
+
+```text
+{{ pluck order.line_items "title" }}
+```
+
+Unir los títulos en un solo texto separado por comas:
+
+```text
+{{ join (pluck order.line_items "title") ", " }}
+```
+
+Si tu disparador es de pagos, la lista se llama `payment.line_items`:
+
+```text
+{{ pluck payment.line_items "title" }}
+{{ pluck payment.line_items "line_subtotal" }}
+{{ pluck payment.line_items "meta.product_id" }}
+```
+
+Para extraer otro dato, cambia el nombre del campo entre comillas.
+
+### Campos disponibles en cada artículo
+
+| Campo | Qué contiene |
+| --- | --- |
+| `title` | Nombre del producto |
+| `image` | Imagen del producto |
+| `price` | Precio unitario |
+| `quantity` | Cantidad comprada |
+| `line_subtotal` | Subtotal de la línea |
+| `line_discount` | Descuento aplicado a la línea |
+| `line_price` | Precio total de la línea |
+| `meta.product_id` | ID del producto |
+| `meta.price_id` | ID del precio |
+| `meta.order_id` o `meta.invoice_id` | ID del pedido o de la factura |
+
+## Ejemplo: registrar pedidos en Google Sheets
+
+Quieres guardar en una hoja el nombre, el correo y los productos de cada pedido.
+
+<Steps>
+<Step title="Agrega el disparador">
+Usa el disparador **Pedido enviado**.
+</Step>
+<Step title="Agrega la acción de Google Sheets">
+Elige **Crear fila en Google Sheets** y conecta tu hoja.
+</Step>
+<Step title="Mapea las columnas">
+- **Nombre:** `{{ contact.first_name }}`
+- **Correo:** `{{ contact.email }}`
+- **Productos:** `{{ join (pluck order.line_items "title") ", " }}`
+</Step>
+<Step title="Prueba y publica">
+Haz un pedido de prueba y confirma que la fila aparece correctamente antes de publicar el flujo.
+</Step>
+</Steps>
+
+Resultado en la hoja:
+
+| Nombre | Correo | Productos |
+| --- | --- | --- |
+| Ana | ana@ejemplo.com | Curso básico, Plantilla de ventas |
+| Luis | luis@ejemplo.com | Sesión de consultoría |
+
+<Tip>
+Antes de publicar, prueba siempre con un pedido real de prueba o con el envío de datos de muestra al webhook. Así confirmas que el nombre de la lista (`order` o `payment`) y los campos son los correctos para tu disparador.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Sigo pudiendo usar pluck y join si existe el formateador?">
+Sí. Las dos opciones conviven. El formateador es más rápido para mostrar la lista como texto, y `pluck` y `join` te dan control total sobre la expresión.
+</Accordion>
+<Accordion title="¿Funciona con datos de un webhook entrante?">
+Sí, siempre que el webhook envíe una lista. Usa el nombre de la lista y de los campos tal como llegan en los datos del webhook.
+</Accordion>
+<Accordion title="¿Qué pasa si el pedido tiene un solo producto?">
+El resultado será solo ese producto, sin separadores.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Varias filas en Google Sheets" icon="table" href="/automatizaciones/google-sheets-varias-filas">
+Crea o actualiza varias filas a la vez desde un flujo.
+</Card>
+<Card title="Lista de disparadores" icon="bolt" href="/automatizaciones/lista-de-disparadores">
+Encuentra los disparadores de pedidos y pagos.
+</Card>
+</CardGroup>

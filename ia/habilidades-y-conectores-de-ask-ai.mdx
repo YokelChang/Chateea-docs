@@ -1,0 +1,162 @@
+---
+title: "Habilidades y conectores de Ask AI"
+description: "Conecta Ask AI con tus aplicaciones mediante MCP y enséñale tus procesos con habilidades."
+icon: "plug"
+---
+
+Con los **conectores** y las **habilidades**, Ask AI trabaja con tus herramientas y a tu manera. Los conectores enlazan Ask AI con aplicaciones como Notion, Canva, GitHub o cualquier aplicación compatible con MCP (Model Context Protocol), para que pueda actuar dentro de ellas. Las habilidades le enseñan tus procesos: escribes o subes unas instrucciones una vez y Ask AI las aplica cada vez que tu solicitud encaja, o cuando las llamas con **/**.
+
+## Conectores
+
+Los conectores permiten que Ask AI lea, cree, actualice o busque información dentro de las aplicaciones que ya usas. Te autenticas con tu propio usuario en cada aplicación y decides qué puede hacer Ask AI en ella.
+
+- **Catálogo dentro de Ask AI:** en **Personalizar → Conectores → Gestionar conectores** puedes explorar y conectar aplicaciones MCP sin salir de Ask AI.
+- **Control por aplicación y por herramienta:** activa o desactiva un conector completo, o elige exactamente qué herramientas puede usar la IA (por ejemplo, "crear página" o "buscar en base de datos").
+- **Sincronizado con el resto de Chateea:** si conectas una aplicación desde otra parte de Chateea, aparece en Ask AI lista para usar. Los cambios de nombre e ícono se actualizan solos y tus ajustes se conservan.
+- **Conector de control del navegador:** permite que Ask AI abra páginas, haga clic, rellene formularios y complete tareas de varios pasos en Chrome, Edge, Brave o Arc. Requiere la extensión de Ask AI para el navegador.
+
+Cada conector queda asociado a tu usuario, así que tus credenciales y tus selecciones de herramientas no se comparten con otras personas ni con otras cuentas.
+
+### Cómo conectar una aplicación
+
+<Steps>
+  <Step title="Abre el panel de conectores">
+    Haz clic en el ícono **+** del menú lateral de Ask AI y selecciona **Conectores**.
+  </Step>
+  <Step title="Explora el catálogo">
+    Haz clic en **Gestionar conectores** y busca la aplicación que quieres, por ejemplo Notion, GitHub, Canva, HubSpot o Cal.com.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Selecciona la aplicación y haz clic en **Conectar**. Se abrirá la pantalla de autorización del servicio. Cuando autorices, la aplicación aparecerá en **Aplicaciones conectadas**.
+  </Step>
+  <Step title="Elige las herramientas (opcional)">
+    Haz clic en el nombre de la aplicación para ver sus herramientas. Desactiva **Todas las herramientas** y activa solo las acciones que quieras permitir.
+  </Step>
+  <Step title="Activa el conector">
+    Cambia el interruptor junto al nombre de la aplicación a **Activado**. A partir de ahí, Ask AI podrá usarla al atender tus solicitudes.
+  </Step>
+</Steps>
+
+<Tip>
+  También puedes activar o desactivar conectores desde el menú **+** de la parte inferior de cualquier chat de Ask AI.
+</Tip>
+
+## Habilidades
+
+Una habilidad es un conjunto de instrucciones con nombre que le dice a Ask AI cómo quieres que haga un trabajo. Ask AI la aplica automáticamente cuando tu solicitud coincide con ella, o puedes llamarla escribiendo **/nombre-de-la-habilidad**. Funcionan en chats de texto y de voz.
+
+- **Escríbela:** en **Personalizar → Habilidades**, indica un nombre, una línea que diga cuándo usarla y el proceso en formato Markdown.
+- **Súbela:** sube un archivo .md y Ask AI lo lee, le pone nombre y lo resume. Si subes el mismo archivo dos veces se crea una copia con versión (por ejemplo, "Informe PDF 2") en lugar de sobrescribirlo.
+- **Pídesela a Ask AI:** di "Guarda esto como habilidad" durante una conversación y Ask AI la redacta.
+- **Llámala cuando quieras:** escribe **/** en el cuadro de mensaje para ver tu biblioteca y fijar una habilidad a ese mensaje, sin depender de la selección automática.
+- **Actívala, desactívala o elimínala:** una habilidad desactivada sigue en tu biblioteca pero Ask AI no la usa hasta que la actives.
+- **Mejórala sobre la marcha:** si una habilidad da un resultado incorrecto, dile a Ask AI qué falló y actualizará sus instrucciones.
+
+### Cómo crear una habilidad
+
+**Opción 1: con Ask AI**
+
+<Steps>
+  <Step title="Describe tu proceso">
+    En cualquier conversación, escribe algo como: "Guarda esto como habilidad: cuando te pida un informe en PDF, sigue estos pasos...". Ask AI redactará la habilidad.
+  </Step>
+  <Step title="Revisa y confirma">
+    Revisa la habilidad propuesta y confírmala para añadirla a tu biblioteca, o pide ajustes.
+  </Step>
+</Steps>
+
+**Opción 2: subir un archivo**
+
+<Steps>
+  <Step title="Ve a Habilidades">
+    Haz clic en **Personalizar → Habilidades** en el menú lateral de Ask AI.
+  </Step>
+  <Step title="Sube el archivo">
+    Haz clic en **Subir una habilidad** y elige un archivo Markdown (.md). Ask AI propondrá un nombre y un resumen de una línea, y la añadirá a tu biblioteca.
+  </Step>
+</Steps>
+
+**Opción 3: escribirla a mano**
+
+<Steps>
+  <Step title="Abre el formulario">
+    En **Personalizar → Habilidades**, haz clic en **Escribir instrucciones de habilidad**.
+  </Step>
+  <Step title="Completa los campos">
+    Escribe el **Nombre**, la descripción de **Cuándo usarla** (una línea) y el **cuerpo en Markdown** con el proceso completo.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**. La habilidad aparece en tu biblioteca y queda activada.
+  </Step>
+</Steps>
+
+Ejemplo de habilidad escrita a mano:
+
+```text
+Nombre: Resumen semanal de ventas
+Cuándo usarla: cuando pida un resumen de ventas de la semana.
+
+1. Consulta las oportunidades ganadas y perdidas de los últimos 7 días.
+2. Muéstralas en una tabla con cliente, valor y etapa.
+3. Añade un gráfico de barras con el total por día.
+4. Termina con tres recomendaciones concretas para la próxima semana.
+```
+
+### Gestionar tus habilidades
+
+- **Usar una habilidad concreta:** escribe **/** en el cuadro de mensaje y elígela en la lista.
+- **Desactivar:** en **Personalizar → Habilidades**, apaga el interruptor para ocultarla a Ask AI sin borrarla.
+- **Eliminar:** haz clic en el ícono de la papelera para borrarla de forma permanente.
+
+## Seguridad y fiabilidad
+
+- **Tu biblioteca es solo tuya:** las habilidades y los ajustes de los conectores están asociados a tu usuario y no se comparten con otras personas ni cuentas.
+- **Sin credenciales en Ask AI:** Ask AI solo guarda una referencia a tu cuenta conectada. Los tokens de acceso se generan en cada uso, no se almacenan, no se muestran a la IA y no se registran.
+- **Conectores aislados:** si una integración falla, se omite en ese turno y el resto de la conversación sigue funcionando.
+- **Reparación automática:** si reconectas una cuenta desde otra parte de Chateea, Ask AI encuentra la conexión válida y actualiza su ajuste solo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los conectores y las habilidades están disponibles para todos?">
+    Forman parte de Ask AI. Algunas aplicaciones del catálogo MCP pueden tener sus propios requisitos de acceso o suscripción.
+  </Accordion>
+  <Accordion title="¿Puedo conectar la misma aplicación en varias cuentas de Chateea?">
+    Sí. Los conectores son por usuario, así que puedes usar cuentas distintas de la aplicación en cada cuenta de Chateea. Cada conexión es independiente.
+  </Accordion>
+  <Accordion title="¿Cómo quito el acceso a un conector?">
+    Desactívalo en **Personalizar → Conectores** o desconéctalo desde **Gestionar conectores**. También puedes revocar el acceso desde la configuración de la aplicación externa.
+  </Accordion>
+  <Accordion title="¿Qué pasa si subo dos veces el mismo archivo de habilidad?">
+    Se crea una copia con un número al final (por ejemplo, "Informe 2") en lugar de sobrescribir la original.
+  </Accordion>
+  <Accordion title="¿Puedo compartir una habilidad con mi equipo?">
+    Por ahora las habilidades son personales. Para compartirla, copia su contenido en un archivo .md y pide a tu compañero que lo suba a su biblioteca.
+  </Accordion>
+  <Accordion title="¿Ask AI usa las credenciales de mis conectores para entrenar la IA?">
+    No. Las credenciales y los tokens nunca se registran, no se muestran al modelo ni se usan para entrenar. Ask AI solo ve los datos que devuelve la herramienta para resolver tu solicitud.
+  </Accordion>
+  <Accordion title="¿Qué es el conector de control del navegador?">
+    Permite que Ask AI abra páginas, haga clic, rellene formularios y complete tareas en un navegador basado en Chromium (Chrome, Edge, Brave o Arc). Necesitas instalar la extensión de Ask AI para el navegador.
+  </Accordion>
+  <Accordion title="¿Cómo decide Ask AI qué habilidad usar?">
+    Compara tu solicitud con la descripción de "Cuándo usarla" de todas tus habilidades activadas y elige la que mejor encaja. Puedes forzar una concreta con **/nombre-de-la-habilidad**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Extensión de control del navegador" icon="window-maximize" href="/ia/extension-de-navegador-ask-ai">
+    Deja que Ask AI complete tareas en tu navegador.
+  </Card>
+  <Card title="Ejecutar acciones en tu cuenta con Ask AI" icon="bolt" href="/ia/acciones-en-tu-cuenta-con-ask-ai">
+    Crea, actualiza y consulta registros del CRM desde el chat.
+  </Card>
+  <Card title="Memoria de Ask AI" icon="brain" href="/ia/memoria-de-ask-ai">
+    Guarda contexto para personalizar tus conversaciones.
+  </Card>
+  <Card title="Gestionar tus medios con Ask AI" icon="folder-open" href="/ia/medios-con-ask-ai">
+    Organiza archivos, Google Drive y Canva desde el chat.
+  </Card>
+</CardGroup>

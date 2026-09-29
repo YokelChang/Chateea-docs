@@ -1,0 +1,162 @@
+---
+title: "Entrena tu base de conocimiento con páginas de tu sitio web"
+description: "Elige qué páginas de tu sitio entrenar en la base de conocimiento de la IA usando el mapa del sitio y controla tu cupo."
+icon: "robot"
+---
+
+La base de conocimiento es la información que usan los agentes de IA de Chateea para responder a tus clientes. Con el rastreador web puedes entrenarla con las páginas de tu sitio, y gracias a la selección por mapa del sitio (sitemap) eliges exactamente qué páginas incluir antes de entrenar. Así evitas contenido irrelevante, no gastas tu cupo de páginas en vano y sigues el progreso en todo momento.
+
+## Por qué elegir las páginas una por una
+
+Muchos sitios tienen cientos de páginas, pero solo algunas sirven para responder preguntas de clientes (servicios, precios, preguntas frecuentes, políticas). Seleccionarlas te da:
+
+- **Control preciso**: entrenas solo las direcciones que aportan a las respuestas de la IA.
+- **Configuración rápida**: buscas, filtras y paginas los resultados del mapa del sitio en una sola ventana.
+- **Cupo visible**: ves cuántas páginas llevas seleccionadas y cuántas te quedan antes de entrenar.
+- **Plan B de descubrimiento**: si faltan páginas en el mapa del sitio, puedes rastrear los enlaces del sitio.
+- **Seguimiento claro**: una tarjeta de progreso muestra el rastreo y el entrenamiento en tiempo real.
+- **Reintentos manuales**: vuelves a intentar solo las páginas que fallaron, sin repetir todo el rastreo.
+
+## Dónde está el rastreador web
+
+1. Ve a **IA → Base de conocimiento**.
+2. Abre la base de conocimiento que quieres actualizar (o crea una nueva).
+3. Haz clic en la pestaña **Rastreador web**.
+
+En esta pestaña ves los sitios agregados, el estado de cada página entrenada, la fecha de su última actualización y las acciones disponibles por página.
+
+## Modos de selección de direcciones
+
+Al agregar un sitio eliges cómo buscar las páginas relacionadas con la dirección que escribes:
+
+| Modo | Qué hace | Úsalo cuando |
+| --- | --- | --- |
+| **URL exacta** | Entrena una sola página | Solo necesitas una página concreta |
+| **Todas las URL con esta ruta** | Busca las páginas dentro de una ruta, por ejemplo `/ayuda` o `/servicios` | Solo una sección del sitio es relevante |
+| **Todas las URL de este dominio** | Busca páginas en todo el dominio | Casi todo tu sitio es útil (sitios pequeños o de documentación). Luego puedes desmarcar lo que sobre |
+
+## La ventana "Seleccionar páginas para entrenar"
+
+Es el corazón de este proceso. Muestra en una tabla todas las direcciones encontradas para que las revises y elijas antes de entrenar. Incluye:
+
+- El total de páginas encontradas en el mapa del sitio (por ejemplo, "Sitemap encontró 426 páginas").
+- Un contador de seleccionadas frente a disponibles.
+- Un buscador para filtrar direcciones por palabra o ruta.
+- Casillas para seleccionar páginas una a una y una casilla para seleccionar todas.
+- Selector de filas por página (10, 25, 50) y controles de paginación.
+- El botón **Descubrir rastreando**.
+- El botón **Entrenar seleccionadas**.
+
+Al cambiar de página, de número de filas o de búsqueda, solo se actualiza la lista: la ventana sigue abierta y responde rápido incluso con miles de direcciones.
+
+## El contador de cupo
+
+Cada base de conocimiento tiene un límite de direcciones web que puede entrenar (por ejemplo, hasta 4.000). El contador muestra algo como "120 de 3.995 disponibles" y se actualiza al instante cuando seleccionas o deseleccionas páginas. Además, descuenta automáticamente las direcciones que ya están entrenadas, así sabes cuánto espacio te queda para páginas nuevas.
+
+<Tip>
+No entrenes todo el dominio por defecto. Reserva parte del cupo para páginas futuras, como nuevos productos o nuevas preguntas frecuentes.
+</Tip>
+
+## Descubrir rastreando
+
+Si una página que necesitas no aparece en el mapa del sitio, usa **Descubrir rastreando**. En lugar de leer el mapa del sitio, el rastreador sigue los enlaces internos para encontrar más páginas.
+
+Úsalo cuando:
+
+- Falta alguna página importante en la lista.
+- Tu sitio no tiene mapa del sitio o está incompleto.
+- Hay páginas a las que solo se llega desde menús, acordeones u otros elementos interactivos.
+- Agregaste secciones nuevas que aún no están en el mapa del sitio.
+
+Cómo funciona:
+
+- Parte de tu dominio o ruta y sigue los enlaces internos dentro de ese alcance, sin salirse del dominio.
+- Agrega a la lista las páginas nuevas a medida que las encuentra.
+- La tarjeta de progreso muestra mensajes como "Rastreando: 42 páginas encontradas".
+- Puede tardar más que la selección por mapa del sitio, porque explora los enlaces uno a uno. También admite mapas del sitio anidados y comprimidos.
+
+## Entrena las páginas de tu sitio paso a paso
+
+<Steps>
+  <Step title="Abre tu base de conocimiento">
+    Ve a **IA → Base de conocimiento**, abre o crea una base de conocimiento y entra a la pestaña **Rastreador web**.
+  </Step>
+  <Step title="Agrega el sitio">
+    Haz clic en **Agregar sitio web**, elige el modo (URL exacta, por ruta o por dominio), escribe la dirección inicial con `https://` y haz clic en **Seleccionar páginas para entrenar**.
+  </Step>
+  <Step title="Revisa la vista previa del mapa del sitio">
+    Chateea lee el mapa del sitio y muestra las direcciones encontradas con su total. Revisa qué páginas están disponibles.
+  </Step>
+  <Step title="Busca y selecciona">
+    Usa el buscador, ajusta las filas por página y navega por la lista. Marca las páginas que quieres entrenar, usa **Seleccionar todo** si te conviene y desmarca las que no aportan. Vigila el contador de cupo.
+  </Step>
+  <Step title="Descubre más páginas (opcional)">
+    Si faltan páginas, haz clic en **Descubrir rastreando**, espera a que aparezcan las nuevas direcciones y ajusta tu selección.
+  </Step>
+  <Step title="Entrena">
+    Confirma la selección y haz clic en **Entrenar seleccionadas**. Aparecerá una tarjeta con el progreso (por ejemplo, "Entrenando 5 de 5"). Puedes cambiar de pestaña o salir de la página: el proceso sigue en segundo plano.
+  </Step>
+  <Step title="Revisa el resultado">
+    Al terminar, revisa la lista de páginas entrenadas y busca las que fallaron. Luego prueba la base de conocimiento con el probador de recuperación para confirmar que la IA encuentra el contenido.
+  </Step>
+</Steps>
+
+## Sigue el progreso
+
+La tarjeta de operación muestra en tiempo real:
+
+- El avance del rastreo y del entrenamiento, con mensajes de estado.
+- Cuántas páginas se encontraron y cuántas se entrenaron con éxito.
+- El estado actual: en curso, completado o con error.
+- Un indicador visual del porcentaje completado.
+
+La información se mantiene aunque recargues la página o cambies de pestaña, y te ayuda a saber si un problema ocurrió al descubrir páginas, al entrenarlas o en ambos pasos.
+
+## Reintenta las páginas que fallaron
+
+Algunas páginas pueden fallar por tiempo de espera, lentitud o problemas temporales del sitio. No hace falta repetir todo el rastreo:
+
+1. Abre la base de conocimiento y ve a la pestaña **Rastreador web**.
+2. Busca las direcciones con error en la lista de páginas.
+3. Usa la acción de reintentar o actualizar de esa página, cuando esté disponible.
+4. Sigue la tarjeta de progreso hasta que termine.
+
+Buenas prácticas:
+
+- **Revisa primero la página**: ábrela en el navegador y confirma que carga sin errores 404, sin redirecciones en bucle y sin pedir inicio de sesión.
+- **Reintenta en grupos pequeños** para detectar patrones si fallaron muchas.
+- **Activa la actualización automática** de las páginas entrenadas para que la IA siempre use la versión más reciente de tu sitio.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿La selección por mapa del sitio cambia mi límite de páginas?">
+    No. El límite por base de conocimiento sigue siendo el mismo (por ejemplo, hasta 4.000 direcciones web). Lo que cambia es que ahora ves cuánto te queda y evitas pasarte al seleccionar.
+  </Accordion>
+  <Accordion title="¿Cuándo uso el mapa del sitio y cuándo Descubrir rastreando?">
+    Usa el mapa del sitio cuando está completo y cubre las secciones que te interesan: es más rápido y ligero. Usa **Descubrir rastreando** si sospechas que faltan secciones, tu sitio es muy dinámico o hay contenido al que solo se llega desde menús o elementos interactivos.
+  </Accordion>
+  <Accordion title="¿Puedo buscar páginas antes de entrenar?">
+    Sí. Usa el buscador de la ventana **Seleccionar páginas para entrenar** para encontrar páginas o rutas concretas.
+  </Accordion>
+  <Accordion title="¿Puedo seleccionar todas las páginas a la vez?">
+    Sí, con la casilla **Seleccionar todo**. Revisa antes tu cupo disponible.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Glosario de IA y preguntas frecuentes" icon="book" href="/ia/glosario-y-preguntas-frecuentes-ia">
+    Conceptos clave de la IA de Chateea.
+  </Card>
+  <Card title="Límites de uso de IA" icon="gauge" href="/ia/limites-de-uso-de-ia">
+    Conoce los límites de las funciones de IA.
+  </Card>
+  <Card title="Cómo se cobra la IA" icon="wallet" href="/ia/como-se-cobra-la-ia">
+    Consumo de IA y billetera.
+  </Card>
+  <Card title="Crea tu sitio web desde cero" icon="globe" href="/primeros-pasos/crea-tu-sitio-web-desde-cero">
+    Construye el sitio que luego entrenarás en la IA.
+  </Card>
+</CardGroup>

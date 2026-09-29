@@ -1,0 +1,95 @@
+---
+title: "Conecta Google Sheets a tu base de conocimiento"
+description: "Conecta una hoja de Google Sheets a tu base de conocimiento para que tu IA responda siempre con datos actualizados."
+icon: "table"
+---
+
+Si ya tienes tus precios, horarios o servicios en una hoja de Google Sheets, puedes conectarla directamente a tu base de conocimiento. Así tus agentes de IA responden con los datos más recientes sin que tengas que exportar y volver a subir un archivo cada vez que cambia algo.
+
+Es ideal para información que cambia con frecuencia: listas de precios, disponibilidad, horarios de atención o datos de referencia que mantiene todo tu equipo.
+
+## Por qué conectarla en vez de subir un archivo
+
+- **Sincronización casi en tiempo real:** los cambios de la hoja se traen a la base de conocimiento aproximadamente cada 15 minutos.
+- **Actualización manual:** si acabas de hacer un cambio importante, puedes forzar la actualización al momento.
+- **Admite cambios de estructura:** filas nuevas o eliminadas, celdas editadas y columnas agregadas o quitadas se reflejan sin volver a importar.
+- **Menos mantenimiento:** tu equipo sigue trabajando en la misma hoja de siempre.
+- **Respuestas más actuales:** la IA deja de dar precios u horarios viejos.
+
+## Qué opción de sincronización elegir
+
+| Opción | Cómo funciona | Cuándo usarla |
+| --- | --- | --- |
+| **Sincronización automática** | Trae los cambios de la hoja cada 15 minutos aproximadamente | Precios que cambian seguido, disponibilidad o agendas, detalles de servicios que varían durante la semana, hojas compartidas que edita todo el equipo |
+| **Actualización manual** | Solo trae los cambios cuando tú lo indicas | Actualizaciones por lotes, cambios que deben revisarse o aprobarse antes de que la IA los use, datos que casi no cambian |
+
+<Tip>
+  Si tu hoja la editan varias personas, revisa los cambios antes de actualizar manualmente. Un precio mal escrito en la hoja es un precio mal dicho por tu IA a un cliente.
+</Tip>
+
+## Qué tipo de información funciona mejor
+
+Datos estructurados en forma de tabla, por ejemplo:
+
+- Precios de productos o servicios.
+- Horarios de oficina o de soporte.
+- Datos por sucursal.
+- Información de referencia interna que cambia seguido.
+- Notas de ventas, incorporación de clientes o servicio organizadas en columnas.
+
+## Cómo conectar tu hoja
+
+<Steps>
+  <Step title="Abre la base de conocimiento">
+    Ve a **Agentes de IA → Base de conocimiento**. Abre una base existente o crea una nueva.
+  </Step>
+  <Step title="Elige importar desde Google Sheets">
+    Entra en **Tablas** y selecciona **Importar desde Google Sheets**.
+  </Step>
+  <Step title="Conecta tu cuenta de Google">
+    Si todavía no tienes una cuenta de Google conectada, crea la conexión. Usa los mismos permisos de Google Drive que Chateea ya utiliza, sin permisos adicionales.
+  </Step>
+  <Step title="Busca la hoja">
+    Elige la cuenta de Google conectada y navega por sus unidades y hojas de cálculo.
+  </Step>
+  <Step title="Selecciona la hoja que quieres importar">
+    Elige el archivo de Google Sheets correcto.
+  </Step>
+  <Step title="Revisa los tipos de datos">
+    Revisa la hoja y define el tipo de dato de cada columna, igual que al subir un archivo CSV.
+  </Step>
+  <Step title="Importa">
+    Inicia la importación y espera a que termine el procesamiento.
+  </Step>
+  <Step title="Deja que se sincronice">
+    A partir de ahí, la sincronización automática mantiene la base al día cuando cambias la hoja. Los cambios suelen verse en unos 15 a 20 minutos. Usa la actualización manual si necesitas que se reflejen antes.
+  </Step>
+</Steps>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué hace exactamente esta integración?">
+    Conecta una hoja de Google Sheets como fuente viva de tu base de conocimiento, para que la IA use sus datos sin depender de archivos subidos que se quedan desactualizados.
+  </Accordion>
+  <Accordion title="¿Cada cuánto se actualizan los datos?">
+    La sincronización automática trae los cambios aproximadamente cada 15 minutos. Puede tardar hasta 20 minutos en verse.
+  </Accordion>
+  <Accordion title="¿Qué cambios detecta?">
+    Cambios en filas, ediciones de celdas y cambios de estructura como columnas nuevas o eliminadas.
+  </Accordion>
+  <Accordion title="¿Necesito dar permisos extra a Google?">
+    No. Se usan los mismos permisos de Google Drive de la conexión estándar de Chateea.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Bases de conocimiento múltiples" icon="book" href="/bot-ia/bases-conocimiento-multiples">
+    Organiza la información de tu IA en varias bases.
+  </Card>
+  <Card title="El agente conversacional" icon="comments" href="/ia/agente-conversacional">
+    Entrena a tu agente con la información de tu negocio.
+  </Card>
+</CardGroup>

@@ -1,0 +1,92 @@
+---
+title: "Cancelación de ruido y señales de escucha en la IA de voz"
+description: "Mejora la claridad de las llamadas filtrando el ruido de fondo y haz que tu agente suene más humano con señales de escucha."
+icon: "volume-high"
+---
+
+Dos ajustes de audio hacen que las llamadas de tu agente de IA de voz se escuchen más claras y más humanas. La **cancelación de ruido** filtra los sonidos de fondo para que se entienda bien a quien habla, y las **señales de escucha** (backchanneling) hacen que el agente diga breves "ajá", "sí" o "claro" en las pausas, como haría una persona que está prestando atención. Ninguno de los dos cambia tus flujos de llamada.
+
+## Para qué te sirve
+
+- **Claridad:** menos repeticiones y menos datos mal entendidos, incluso en lugares ruidosos.
+- **Profesionalismo:** un sonido limpio y constante que refleja la calidad de tu negocio.
+- **Cercanía:** las señales de escucha le muestran a la persona que la están entendiendo.
+- **Fluidez:** menos interrupciones del tipo "perdón, ¿me lo repites?".
+- **Personalización:** ajustas la frecuencia y las palabras según tu tono.
+
+## Modos de cancelación de ruido
+
+| Modo | Qué filtra | Cuándo usarlo |
+| --- | --- | --- |
+| **Eliminar ruido** | Sonidos ambientales comunes: aire acondicionado, teclados, tráfico. | Para la mayoría de las llamadas. Es el punto de partida recomendado. |
+| **Eliminar ruido y voces de fondo** | Lo anterior más las conversaciones de otras personas cercanas. | Cuando quienes llaman suelen estar en lugares con mucha gente hablando. |
+
+## Ajustes de las señales de escucha
+
+- **Frecuencia:** define cada cuánto dice el agente una señal breve, de poco frecuente a muy frecuente.
+- **Palabras:** edita la lista de expresiones cortas que usa el agente (por ejemplo, "ajá", "sí", "claro", "entiendo") para que encajen con tu marca, tu idioma y tu cultura.
+
+## Cómo activarlo
+
+<Steps>
+  <Step title="Activa la función en Labs">
+    Ve a **Configuración → Labs**, busca **IA de voz: cancelación de ruido y señales de escucha** (Voice AI: Noise Cancellation & Backchanneling) y actívala.
+  </Step>
+  <Step title="Abre el agente">
+    Ve a **IA → IA de voz → Agentes** y haz clic en **Editar** en el agente que quieres ajustar.
+  </Step>
+  <Step title="Configura el audio">
+    Abre el panel **Configuración avanzada**, elige el modo de **Cancelación de ruido**, activa las **Señales de escucha**, define la **Frecuencia** y, si quieres, edita las **Palabras**.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+  <Step title="Prueba antes de activarlo con clientes">
+    Usa las opciones de prueba del agente (**Llámame** o **Llamada web**). Pide a alguien de tu equipo que llame desde un entorno típico (oficina abierta, auto, cafetería) y luego revisa la llamada en **IA → IA de voz → Panel y registros**.
+  </Step>
+</Steps>
+
+## Buenas prácticas
+
+- **Empieza simple:** usa **Eliminar ruido** y pasa a **Eliminar ruido y voces de fondo** solo si las conversaciones cercanas siguen molestando.
+- **Frecuencia moderada:** un valor intermedio suena más natural que uno muy alto.
+- **Palabras cortas y neutras:** expresiones breves y adecuadas a tu público. En español funcionan bien "ajá", "sí", "claro" y "entiendo".
+- **Cuida la combinación con otros ajustes:** si usas el recordatorio por inactividad, evita señales de escucha demasiado frecuentes y considera un umbral de inactividad más alto.
+- **Prueba en escenarios reales:** donde realmente llaman tus clientes.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Mejora lo que escucha la persona y lo que escucha el agente?">
+    Sí. La cancelación de ruido enfoca el audio en quien habla y mejora la claridad en ambos lados de la llamada.
+  </Accordion>
+  <Accordion title="¿Las señales de escucha interrumpen a la persona?">
+    No. Solo se insertan en pausas breves, para no cortar lo que está diciendo.
+  </Accordion>
+  <Accordion title="¿Puedo usar palabras en español u otro idioma?">
+    Sí. Edita la lista de palabras, mantenlas cortas y asegúrate de que la voz del agente hable ese idioma.
+  </Accordion>
+  <Accordion title="¿Puedo tener ajustes distintos en cada agente?">
+    Sí. Edita cada agente y configura su propio modo de ruido y sus señales de escucha.
+  </Accordion>
+  <Accordion title="¿Por qué no veo estas opciones en mi agente?">
+    Primero tienes que activar la función en **Configuración → Labs**. Después aparecen en la **Configuración avanzada** del agente.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cambiar la voz del agente" icon="microphone" href="/ia/cambiar-voz-del-agente">
+    Elige cómo suena tu agente.
+  </Card>
+  <Card title="Llamadas de prueba" icon="flask" href="/ia/llamadas-de-prueba-ia-de-voz">
+    Prueba los ajustes sin afectar las métricas.
+  </Card>
+  <Card title="Registros de llamadas" icon="list" href="/ia/registros-de-llamadas-ia-de-voz">
+    Escucha las grabaciones para validar el audio.
+  </Card>
+  <Card title="IA de voz" icon="phone" href="/ia/voz-ia">
+    Qué es la IA de voz y qué puede hacer.
+  </Card>
+</CardGroup>

@@ -1,0 +1,183 @@
+---
+title: "Jotform en flujos de trabajo: disparadores y acciones"
+description: "Inicia flujos con envíos y documentos firmados de Jotform y crea envíos desde tus automatizaciones."
+icon: "clipboard-list"
+---
+
+Si recoges solicitudes, registros o documentos firmados con Jotform, puedes conectarlo a tus flujos de trabajo de Chateea para no copiar datos a mano. Cada nueva respuesta o documento firmado en Jotform puede iniciar una automatización, y tus flujos también pueden crear envíos en un formulario de Jotform con datos de tus contactos.
+
+## Para qué te sirve
+
+- **Responder al instante a nuevos envíos:** inicia un flujo en cuanto alguien completa tu formulario de Jotform.
+- **Automatizar lo que pasa después de una firma:** arranca el seguimiento cuando se completa y firma un documento con campo de firma electrónica.
+- **Registrar datos en Jotform desde Chateea:** escribe valores del flujo en un formulario con la acción **Crear envío**.
+- **Menos captura manual:** mapeas campos una vez y los datos viajan solos.
+- **Registros internos o fuera de línea:** crea envíos en Jotform con información que obtuviste por otro medio.
+- **Usar los datos más adelante:** al probar el disparador, las respuestas quedan disponibles para los siguientes pasos del flujo.
+
+## Antes de empezar
+
+- Necesitas conectar tu cuenta de Jotform a tu cuenta de Chateea. La conexión se hace con una **clave de API de Jotform**.
+- **Nuevo envío** es instantáneo: Jotform avisa a Chateea en cuanto llega una respuesta.
+- **Nuevo documento firmado** revisa Jotform aproximadamente cada 5 minutos, así que es normal un pequeño retraso.
+- Usa siempre **Probar disparador** durante la configuración para que Chateea obtenga los campos y puedas usarlos después.
+- **Crear envío** admite 15 tipos de campo estándar de Jotform. Los no compatibles no aparecen para mapear y se guardan vacíos.
+- **Crear envío** no genera pagos, importes, productos, firmas ni reservas de citas.
+- Por ahora no están disponibles las acciones para asignar formularios ni formularios prellenados.
+
+## Conectar Jotform
+
+### Desde el constructor de flujos
+
+<Steps>
+  <Step title="Abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea o abre un flujo.
+  </Step>
+  <Step title="Agrega el paso de Jotform">
+    Para un disparador, haz clic en **Agregar disparador**. Para una acción, haz clic en **+** en el punto donde debe ejecutarse. Busca **Jotform** y elige el disparador o la acción.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Si Jotform aún no está conectado, haz clic en **Conectar tu cuenta**, pega tu clave de API de Jotform y completa la conexión.
+  </Step>
+  <Step title="Configura el paso">
+    Vuelve al disparador o la acción y completa los campos obligatorios.
+  </Step>
+</Steps>
+
+### Desde Configuración
+
+Si prefieres dejarlo listo antes de construir el flujo, ve a **Configuración → Integraciones**, busca **Jotform**, inicia la conexión, introduce tu clave de API y termina el proceso. Después ve a **Automatización → Flujos de trabajo** y agrega el disparador o la acción.
+
+## Disparadores de Jotform
+
+### Nuevo envío
+
+Se activa cuando alguien envía una nueva respuesta al formulario que elijas. Es instantáneo.
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En tu flujo, haz clic en **Agregar disparador**, busca **Jotform** y elige **Nuevo envío** (New Submission). Conecta la cuenta si hace falta.
+  </Step>
+  <Step title="Configúralo">
+    Ponle un nombre y selecciona el formulario de Jotform.
+  </Step>
+  <Step title="Pruébalo y guarda">
+    Haz clic en **Probar disparador** y revisa los datos de prueba que devuelve Jotform. Después haz clic en **Guardar disparador**, agrega las acciones siguientes y publica el flujo cuando esté listo.
+  </Step>
+</Steps>
+
+<Tip>
+  La prueba es importante: es lo que permite que los campos del formulario aparezcan como valores disponibles en los pasos posteriores del flujo.
+</Tip>
+
+### Nuevo documento firmado
+
+Se activa cuando se completa y firma un documento de Jotform que tiene un campo de firma electrónica. En lugar de un aviso instantáneo, Chateea revisa Jotform aproximadamente cada 5 minutos.
+
+<Steps>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador**, busca **Jotform** y elige **Nuevo documento firmado** (New Signed Document). Conecta la cuenta si hace falta.
+  </Step>
+  <Step title="Configúralo">
+    Ponle un nombre y selecciona el formulario o documento que te muestra el disparador.
+  </Step>
+  <Step title="Pruébalo y guarda">
+    Haz clic en **Probar disparador** para obtener los datos disponibles, luego en **Guardar disparador**. Agrega las acciones y publica el flujo.
+  </Step>
+</Steps>
+
+## Acción Crear envío
+
+**Crear envío** (Create Submission) escribe una respuesta nueva directamente en un formulario de Jotform. Es útil cuando la información nace en Chateea pero también quieres tenerla registrada en Jotform.
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo, haz clic en **+** donde deba ejecutarse, busca **Jotform** y elige **Crear envío**. Conecta la cuenta si todavía no lo hiciste.
+  </Step>
+  <Step title="Elige el formulario">
+    Selecciona el formulario que recibirá el envío y espera a que se carguen sus campos compatibles.
+  </Step>
+  <Step title="Mapea los campos">
+    Completa cada campo con texto fijo o con un valor del flujo (datos del contacto, campos personalizados, etc.). Para fechas usa el formato `YYYY-MM-DD` y para horas `HH:MM`.
+  </Step>
+  <Step title="Guarda y publica">
+    Revisa el mapeo, guarda la acción y publica el flujo cuando la automatización completa esté lista.
+  </Step>
+</Steps>
+
+## Campos compatibles con Crear envío
+
+| Campo de Jotform | Cómo se mapea |
+| --- | --- |
+| Nombre completo | Nombre y apellido por separado |
+| Correo electrónico | Compatible |
+| Dirección | Línea de dirección, ciudad, estado, código postal y país por separado |
+| Teléfono | Compatible |
+| Texto corto | Compatible |
+| Texto largo | Compatible |
+| Número | Compatible |
+| Lista desplegable | Compatible |
+| Opción única | Compatible |
+| Opción múltiple | Compatible |
+| Sí / No | Aparece como lista desplegable en la acción |
+| Calificación con estrellas | Aparece como lista desplegable en la acción |
+| Escala de calificación | Aparece como lista desplegable en la acción |
+| Selector de fecha | Formato `YYYY-MM-DD` |
+| Hora | Formato `HH:MM` |
+
+### Campos no compatibles
+
+Estos tipos no aparecen en la lista de mapeo y quedan vacíos en el envío creado:
+
+- Carga de archivos
+- Firma
+- Cita
+- Pago
+- Lista de productos
+- Tabla de entrada
+- Rellenar espacios en blanco
+- Selector numérico (Spinner)
+- Deslizador de emojis
+- Opción con imagen
+- Captcha
+- Widgets, como Términos y condiciones, Lista de verificación, Lista configurable, Lista de texto múltiple, Cuadro de texto dinámico y Cálculo
+
+Si uno de estos campos está marcado como obligatorio en Jotform, el envío se crea igualmente y queda activo con ese campo vacío. El flujo no marca error por ello.
+
+<Warning>
+  **Crear envío** no procesa pagos, no adjunta importes ni productos, no genera firmas y no reserva horarios. Si lo usas con un formulario que normalmente cobra, no tomes el envío como prueba de pago a menos que hayas confirmado el pago por otra vía.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Por qué hay un retraso después de que se firma un documento?">
+    El disparador **Nuevo documento firmado** revisa Jotform aproximadamente cada 5 minutos, así que es normal que el flujo tarde un poco en arrancar.
+  </Accordion>
+  <Accordion title="¿Por qué debo usar Probar disparador?">
+    Porque así Chateea obtiene la estructura de los datos de Jotform y puedes usar esas respuestas en los pasos posteriores del flujo.
+  </Accordion>
+  <Accordion title="¿Por qué falta un campo de mi formulario en Crear envío?">
+    Porque es un tipo de campo no compatible. Esos campos no aparecen para mapear y no se pueden rellenar desde el flujo.
+  </Accordion>
+  <Accordion title="Si el disparador detecta firmas, ¿por qué Crear envío no puede llenar una firma?">
+    El disparador detecta un documento que una persona ya firmó en Jotform. **Crear envío** solo escribe datos en el formulario y no puede generar la firma de nadie.
+  </Accordion>
+  <Accordion title="¿Crear envío le manda el formulario a alguien para que lo complete?">
+    No. Escribe la respuesta directamente en Jotform; no envía el formulario a otra persona.
+  </Accordion>
+  <Accordion title="¿Qué formato uso para fechas y horas?">
+    `YYYY-MM-DD` para el selector de fecha y `HH:MM` para la hora.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Cómo funcionan los flujos" icon="diagram-project" href="/automatizaciones/introduccion">
+    Conceptos básicos de disparadores y acciones.
+  </Card>
+  <Card title="Solución de problemas de flujos" icon="circle-question" href="/automatizaciones/solucion-de-problemas">
+    Qué revisar cuando un flujo no se comporta como esperas.
+  </Card>
+</CardGroup>

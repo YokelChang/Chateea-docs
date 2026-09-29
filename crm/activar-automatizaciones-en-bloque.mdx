@@ -1,0 +1,76 @@
+---
+title: "Activar automatizaciones en bloque para empresas y objetos"
+description: "Envía varias empresas o registros de objetos personalizados a un flujo de trabajo en una sola acción."
+icon: "bolt"
+---
+
+Con la acción masiva **Activar automatización** (Trigger Automation) puedes seleccionar varios registros de empresas o de un objeto personalizado y enviarlos a un flujo de trabajo de una sola vez, directamente desde la vista de lista.
+
+Es útil cuando quieres ejecutar una automatización sobre un grupo de registros que ya existen, sin esperar a que cada uno cumpla el disparador del flujo por su cuenta y sin procesarlos uno por uno. Si la combinas con filtros o listas inteligentes, puedes crear un segmento y activar el flujo para todo el segmento en segundos.
+
+## Requisitos y limitaciones
+
+- El flujo de trabajo ya debe existir y estar dirigido al objeto que seleccionaste.
+- El flujo debe estar **publicado**.
+- La acción está disponible para **Empresas** y **objetos personalizados**.
+- Solo verás los flujos aplicables al objeto seleccionado. Por ejemplo, desde Empresas no aparecen flujos pensados para un objeto personalizado.
+
+## Activar un flujo para varios registros
+
+<Steps>
+  <Step title="Selecciona los registros">
+    Abre **Empresas** o el objeto personalizado que necesitas y marca los registros que quieres procesar. Si te sirve, aplica filtros o abre una lista inteligente antes para quedarte solo con el segmento que te interesa.
+  </Step>
+  <Step title="Elige Activar automatización">
+    En el menú de acciones masivas, haz clic en **Activar automatización**.
+  </Step>
+  <Step title="Selecciona el flujo de trabajo">
+    Elige el flujo al que deben entrar los registros seleccionados.
+  </Step>
+  <Step title="Confirma la acción">
+    Revisa la selección y confirma. Los registros se envían al flujo elegido para que los procese.
+  </Step>
+  <Step title="Sigue el progreso">
+    Ve a **Contactos → Acciones masivas** para ver el avance y el estado de cada registro.
+  </Step>
+</Steps>
+
+## Casos de uso
+
+| Caso | Cómo aplicarlo |
+| --- | --- |
+| Segmento de una lista inteligente | Filtra por sector, estado, fecha de renovación, propietario u otro campo, selecciona el resultado y activa el flujo para todos a la vez. |
+| Renovaciones | Filtra pólizas, suscripciones, contratos o membresías próximas a renovarse y envíalas a un flujo de renovación. |
+| Registros recién importados | Después de importar empresas o registros de un objeto, actívales un flujo de bienvenida, asociación, enriquecimiento de datos o seguimiento. |
+| Reactivación | Identifica empresas u otros registros inactivos con filtros y envíalos a un flujo de reactivación. |
+| Reprocesar registros | Selecciona los registros que se saltaron una automatización anterior o que necesitan otro procesamiento y vuelve a activarla en bloque. |
+| Tareas operativas puntuales | Actualiza campos, crea asociaciones, asigna propietarios o avisa a tu equipo sin tocar los disparadores habituales del flujo. |
+
+<Tip>
+Para operaciones puntuales, crea un flujo específico sin disparador automático y actívalo solo desde la acción masiva. Así no interfieres con los flujos que ya funcionan de forma continua.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Esta acción reemplaza los disparadores normales del flujo?">
+    No. Es una forma manual de inscribir registros existentes en un flujo. Los disparadores configurados en el flujo siguen funcionando de forma independiente.
+  </Accordion>
+  <Accordion title="¿Por qué no veo el flujo que quiero usar?">
+    Solo aparecen los flujos aplicables al objeto seleccionado. Además, el flujo debe existir y estar publicado. Revisa que esté publicado y que trabaje con ese objeto.
+  </Accordion>
+  <Accordion title="¿Dónde veo si cada registro se procesó bien?">
+    Abre **Contactos → Acciones masivas** y revisa las estadísticas de esa acción masiva. Ahí verás el estado de cada registro.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Correo masivo a contactos asociados" icon="envelope" href="/crm/correo-masivo-a-contactos-asociados">
+    Envía correos a los contactos vinculados a empresas u objetos.
+  </Card>
+  <Card title="Eliminar registros en bloque" icon="trash" href="/crm/eliminar-registros-de-objetos-en-bloque">
+    Borra y restaura registros de objetos personalizados.
+  </Card>
+</CardGroup>

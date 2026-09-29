@@ -1,0 +1,142 @@
+---
+title: "Importar datos desde HubSpot"
+description: "Conecta HubSpot y trae contactos, negocios, empresas, campos, pipelines, notas y tareas a Chateea, y revisa los errores de la importación."
+icon: "cloud-arrow-down"
+---
+
+Si vienes de HubSpot, el importador de HubSpot te ahorra reconstruir tu CRM a mano. Conectas tu cuenta de HubSpot, eliges qué traer y Chateea importa en segundo plano tus contactos, negocios (como oportunidades), empresas, campos personalizados, pipelines con sus etapas, carpetas, correos, notas y tareas. Al terminar, te muestra un informe con lo que se importó bien, lo que falló y lo que conviene revisar.
+
+## Qué ventajas tiene
+
+- **Migración más rápida**: traes tus datos directamente, sin depender solo de exportar e importar archivos CSV.
+- **Tu proceso de ventas se conserva**: los negocios (Deals) llegan como oportunidades, con sus pipelines y etapas.
+- **Tus datos personalizados continúan**: las propiedades de contactos y negocios se convierten en campos personalizados de Chateea.
+- **Informe transparente**: ves totales, éxitos, errores y advertencias por objeto y por registro.
+
+## Qué datos puedes importar
+
+| Migración | Qué hace |
+| --- | --- |
+| Contactos | Trae los registros de contacto de HubSpot. |
+| Oportunidades | Importa los negocios (Deals) de HubSpot como oportunidades. |
+| Empresas | Importa las empresas de HubSpot como registros nuevos. |
+| Campos personalizados | Convierte las propiedades de contactos y negocios en campos personalizados. |
+| Pipelines y etapas | Conserva la estructura completa de tus pipelines, incluidas las etapas. |
+| Carpetas personalizadas | Mantiene la organización en carpetas de los datos compatibles. |
+| Correos | Trae tus correos de HubSpot. Llegan en modo solo lectura. |
+| Notas | Trae las notas asociadas a tus registros. |
+| Tareas | Trae tus recordatorios y pendientes. |
+
+Lo que el importador no cubre tendrás que migrarlo por otros medios, por ejemplo con archivos CSV.
+
+## Antes de empezar
+
+- **Usa una cuenta limpia si puedes.** Importar en una cuenta sin datos creados a mano hace que los errores y duplicados sean mucho más fáciles de revisar.
+- **Activa Permitir duplicados** (Allow duplicates) para contactos y oportunidades antes de empezar. Dejar activo el bloqueo de duplicados provoca muchos errores evitables durante la importación. Puedes volver a activarlo al terminar.
+- **Idioma de la cuenta**: se recomienda tener la cuenta en inglés mientras dura la importación.
+- **Limpia HubSpot primero**: elimina duplicados y haz una copia de seguridad de tus datos.
+- **No hace falta esperar frente a la pantalla**: la importación corre en segundo plano y puedes volver más tarde.
+
+## Límites y consideraciones
+
+- **Oportunidades**: una oportunidad puede asociarse con hasta 10 contactos adicionales. Una oportunidad sin ningún contacto asociado no se puede importar.
+- **Campos personalizados**: se relacionan por su clave interna. Si ya existe en tu cuenta un campo con la misma clave, ese campo dará error. Los campos calculados de HubSpot se importan como texto de una línea.
+- **Archivos adjuntos**: se admiten para contactos y oportunidades, pero un archivo guardado dentro de un campo puede hacer que ese registro falle (ver solución de problemas).
+- **Contactos eliminados**: si borras en Chateea un contacto importado y vuelves a ejecutar el importador, el contacto se importará de nuevo. Si después restauras el contacto borrado, podrías tener duplicados.
+- **Notas**: una nota se asocia con un solo registro de cada tipo (por ejemplo, un contacto y una oportunidad). Por ahora las notas no se pueden asociar con empresas.
+- **Tareas**: las tareas recurrentes no se admiten. Una tarea puede asociarse con hasta 10 registros de cada tipo (10 contactos, 10 oportunidades o 10 empresas).
+- **Asociaciones**: algunas pueden no importarse por límites de la plataforma. Revisa las asociaciones críticas después de migrar.
+- **Correos**: los correos importados son de solo lectura.
+
+## Cómo usar el importador de HubSpot
+
+<Steps>
+<Step title="Abre la importación de datos">
+Desde **Contactos** (o desde **Empresas** u **Oportunidades**), abre el menú **Importar** arriba a la derecha y elige **Importar datos**.
+</Step>
+<Step title="Conecta HubSpot">
+Haz clic en **Conectar HubSpot** (Connect HubSpot) en la tarjeta de HubSpot, inicia sesión en tu cuenta de HubSpot y autoriza el acceso.
+</Step>
+<Step title="Revisa los consejos iniciales">
+El asistente se abre en **Comenzar** con un breve recorrido y recomendaciones: limpia duplicados en HubSpot, respalda tus datos y revisa la relación de campos. Haz clic en **Continuar**.
+</Step>
+<Step title="Elige qué importar">
+Marca los objetos que quieres traer: **Contactos**, **Tareas**, **Negocios** (se importan como oportunidades) y **Empresas**. Si eliges Negocios, Contactos se selecciona automáticamente porque es obligatorio. Haz clic en **Continuar**.
+</Step>
+<Step title="Revisa lo que se incluye">
+El asistente añade automáticamente los datos relacionados para que tus registros queden completos y conectados:
+
+- **Contactos**: todas las propiedades (estándar y personalizadas), notas y correos.
+- **Tareas**: sus asociaciones.
+- **Negocios**: todas las propiedades, pipelines, notas y asociaciones. Las etapas se importan junto con los pipelines, no tienes que recrearlas.
+- **Empresas**: propiedades y asociaciones.
+
+Haz clic en **Continuar**.
+</Step>
+<Step title="Confirma el número de registros">
+Verás una tabla con los datos de HubSpot, en qué se convierten en Chateea y cuántos registros se encontraron. Si quieres traer solo algunas propiedades de contactos o negocios, haz clic en el ícono de lápiz junto a ellas y selecciona las que necesitas. Luego haz clic en **Confirmar e iniciar la importación** y confirma de nuevo en el cuadro de diálogo.
+</Step>
+<Step title="Deja que la importación corra">
+Aparece un aviso de que la importación de HubSpot empezó y se ejecuta en segundo plano. En la tabla **Historial de importaciones** ves el avance con un porcentaje de procesamiento. Puedes cerrar la ventana y volver cuando quieras.
+</Step>
+</Steps>
+
+<Note>
+El número de registros encontrados para campos personalizados puede ser algo menor que el que ves en HubSpot. El asistente solo cuenta los campos que puede relacionar e importar, así que una pequeña diferencia es normal.
+</Note>
+
+## Revisar los resultados
+
+<Steps>
+<Step title="Abre los detalles de la importación">
+En el **Historial de importaciones**, haz clic en el ícono de estadísticas de la columna **Acciones**. Arriba verás cuatro indicadores: **Total de registros**, **Éxitos** (con el porcentaje), **Errores** e **Importados con advertencias**. La pestaña **Vista por objeto** resume los resultados de cada objeto.
+</Step>
+<Step title="Revisa registro por registro">
+Cambia a la pestaña **Vista por registro**. Filtra por **Objeto** (Contactos, campos personalizados de contacto, Oportunidades, etc.) y por **Estado** (Éxito, Error o Importado con advertencias).
+</Step>
+<Step title="Corrige los errores">
+Filtra por **Error** para ver cada registro que falló. Cada fila indica qué objeto falló, por qué y el ID del registro en HubSpot para que lo encuentres allí. Haz clic en **Descargar** abajo a la izquierda para exportar la lista completa en CSV, corrige los datos en HubSpot y vuelve a ejecutar la importación.
+</Step>
+</Steps>
+
+## Solución de problemas
+
+### El número de registros encontrados es menor que en HubSpot
+
+El conteo solo incluye lo que el importador puede relacionar y traer. Algunos campos de HubSpot se excluyen (por ejemplo, los de tipos no compatibles). Lo que no aparece en el conteo es justamente lo que se omitiría de todos modos.
+
+### Veo errores del tipo "No se pudo importar el contacto con ID de HubSpot…"
+
+El mensaje te dice exactamente qué contacto falló. Las causas más comunes son:
+
+- **El contacto tiene un archivo guardado en un campo.** Descarga el archivo desde HubSpot, quítalo de ese campo y vuelve a ejecutar la importación. Después puedes adjuntarlo manualmente en Chateea.
+- **Choque de claves de campos personalizados.** Ya existe en tu cuenta un campo con la misma clave interna. Renombra o elimina el campo existente antes de importar.
+- **El nombre interno y la etiqueta del campo no coinciden en HubSpot.** Alinéalos en HubSpot antes de importar para evitar confusiones.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Puedo volver a importar o continuar donde me quedé?">
+Sí. Inicia una nueva importación desde **Importar datos**. Cada ejecución queda registrada por separado en el historial, así que puedes comparar ejecuciones y revisar el CSV de errores anterior antes de repetir.
+</Accordion>
+<Accordion title="¿La importación sobrescribe registros existentes?">
+No. Los registros importados se añaden junto a lo que ya tengas en tu cuenta. Por eso se recomienda importar en una cuenta limpia y tener activado **Permitir duplicados** durante la importación.
+</Accordion>
+<Accordion title="¿Dónde veo la lista completa de errores?">
+Abre los detalles de cualquier importación, cambia a **Vista por registro**, filtra por **Error** y haz clic en **Descargar** para exportarla en CSV.
+</Accordion>
+<Accordion title="¿Se importan las tareas recurrentes?">
+No. Las tareas recurrentes no son compatibles con el importador. Tendrás que recrearlas en Chateea.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Importar contactos desde CSV" icon="file-import" href="/contactos/importar-contactos-desde-csv">
+Trae contactos desde cualquier otra herramienta con un archivo CSV.
+</Card>
+<Card title="Importar empresas con un archivo CSV" icon="building" href="/crm/importar-empresas-csv">
+Crea o actualiza empresas en bloque.
+</Card>
+</CardGroup>

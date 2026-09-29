@@ -1,0 +1,110 @@
+---
+title: "Conectar Outlook Calendar"
+description: "Sincroniza tu calendario de Outlook o Microsoft 365 para mostrar disponibilidad real y evitar reservas dobles."
+icon: "microsoft"
+---
+
+Si organizas tu agenda en Outlook o Microsoft 365, conéctalo a Chateea para que tu disponibilidad sea real y evites reservas dobles. Las citas que se agendan en Chateea aparecen en tu calendario de Outlook, y tus eventos de Outlook bloquean esos horarios en tus calendarios de Chateea.
+
+## Para qué te sirve
+
+- **Conexión en pocos clics:** usas tu cuenta de Microsoft de siempre.
+- **Disponibilidad inteligente:** tu agenda de Outlook se refleja en los horarios que ofreces.
+- **Sin reservas dobles:** los eventos de Outlook aparecen como horarios ocupados en Chateea.
+- **Todo centralizado:** administras tus citas en Chateea sin dejar de usar Outlook.
+- **Recuperación automática:** las citas creadas mientras la conexión estaba caída se sincronizan al reconectar. Si conectas un calendario nuevo o cambias el calendario elegido, las próximas citas se vuelven a sincronizar solas.
+
+## Antes de empezar
+
+- Necesitas una cuenta de Microsoft activa: **Microsoft 365 (Office 365)**, **Outlook.com**, **live.com** o **Hotmail**.
+- Debes haber iniciado sesión en Chateea con tu propio usuario. Cada usuario conecta su propio calendario.
+- Necesitas permiso de **escritura** sobre el calendario para que Chateea pueda enviar citas a Outlook.
+
+<Warning>
+  No son compatibles los servidores de Exchange locales (on-premise) ni los eventos que solo existen en Outlook de escritorio sin sincronizarse con la nube. Para comprobarlo, entra a [Outlook en la web](https://outlook.office.com/calendar/): si ves ahí tus eventos, se sincronizarán con Chateea.
+</Warning>
+
+## Cómo conectar Outlook
+
+<Steps>
+  <Step title="Abre las conexiones de calendario">
+    Ve a **Configuración → Calendarios** y abre la pestaña **Conexiones**. Haz clic en **+ Agregar nueva**.
+  </Step>
+  <Step title="Elige Outlook Calendar">
+    Haz clic en **Conectar** junto a **Outlook Calendar**.
+  </Step>
+  <Step title="Inicia sesión en Microsoft">
+    Entra con tu cuenta de Outlook o Microsoft 365.
+  </Step>
+  <Step title="Acepta los permisos">
+    Acepta los permisos que se piden para completar la conexión.
+  </Step>
+</Steps>
+
+### Si aparece "Se necesita aprobación del administrador"
+
+Algunas empresas exigen que un administrador de Microsoft apruebe las aplicaciones externas. Si ves la pantalla **Se necesita aprobación del administrador** (Need admin approval), pídele al administrador de Microsoft de tu empresa, o a quien tenga el rol de revisor, que entre al centro de administración de Microsoft Entra y apruebe la solicitud. Microsoft explica el proceso en su guía para [revisar solicitudes de consentimiento de administrador](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/review-admin-consent-requests).
+
+## Configura el calendario vinculado y los de conflicto
+
+Después de conectar, ve a **Configuración → Mi perfil → Configuración de calendario**. Ahí tienes dos ajustes:
+
+| Ajuste | Qué hace |
+| --- | --- |
+| Calendario vinculado (principal) | Lee tus eventos de Outlook y escribe en él todas las citas que se agendan en Chateea |
+| Calendarios de conflicto | Solo lee eventos para bloquear horarios y evitar reservas dobles |
+
+1. Haz clic en **Editar** junto al calendario vinculado y elige el calendario de Outlook donde quieres recibir tus citas.
+2. Haz clic en **Editar** junto a los calendarios de conflicto y elige los calendarios que Chateea debe revisar.
+
+Puedes combinar Google y Outlook: por ejemplo, usar Outlook como calendario vinculado y revisar conflictos en Google, o al revés. Lo que no puedes es escribir citas en los dos a la vez: el calendario vinculado es uno solo.
+
+## Solución de problemas
+
+- **Las citas no se sincronizan en ningún sentido:** edita el calendario vinculado, elige **No sincronizar eventos con el calendario principal**, guarda, y luego vuelve a elegir el mismo calendario. Esto suele resolver el problema.
+- **Aparece un aviso de calendario eliminado:** si borraste en Outlook un calendario que estaba conectado, haz clic en **Corregir** (Fix This) en el aviso para ver dónde estaba conectado y luego en **Quitar calendarios eliminados**.
+- **Faltan eventos:** confirma que se ven en Outlook en la web. Los eventos que solo están en Outlook de escritorio no se sincronizan.
+
+<Note>
+  Si desconectas Outlook, Chateea quita automáticamente esos calendarios del calendario vinculado y de los calendarios de conflicto. Dejarás de recibir tu disponibilidad desde Outlook, así que revisa tu configuración para no quedar con horarios libres que en realidad están ocupados.
+</Note>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Outlook funciona con calendarios de eventos?">
+    No. Los calendarios de eventos solo admiten la integración con Google. Outlook sí funciona con calendarios rotativos, colectivos y de servicios.
+  </Accordion>
+  <Accordion title="¿Puedo conectar más de una cuenta de Outlook?">
+    Sí. Puedes conectar varias cuentas de Outlook, y la misma cuenta puede usarse en varias cuentas de Chateea.
+  </Accordion>
+  <Accordion title="¿Puedo conectar la misma cuenta de Outlook a dos usuarios distintos?">
+    No. Una cuenta de Outlook se conecta a un solo usuario. Si otra persona necesita ver tu agenda, conecta su propia cuenta de Outlook y [comparte tu calendario de Outlook](https://support.microsoft.com/en-us/office/share-an-outlook-calendar-with-other-people-353ed2c1-3ec5-449d-8c73-6931a0adab88) con esa cuenta.
+  </Accordion>
+  <Accordion title="Soy administrador. ¿Puedo conectar Outlook por otro usuario?">
+    No. Cada usuario debe iniciar sesión con su propia cuenta y conectar Outlook. Después, un administrador puede ajustar su calendario vinculado y sus calendarios de conflicto desde la configuración del equipo.
+  </Accordion>
+  <Accordion title="¿Puedo usar Google Calendar y Outlook al mismo tiempo?">
+    Sí. Puedes usar uno como calendario vinculado y el otro para revisar conflictos. Solo puedes escribir citas en un calendario a la vez.
+  </Accordion>
+  <Accordion title="¿Qué pasa si desconecto Outlook?">
+    Chateea deja de recibir tu disponibilidad y tus eventos de Outlook, lo que puede afectar los horarios que ofreces.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectar Google Calendar" icon="google" href="/calendarios/conectar-google-calendar">
+    Sincroniza tu calendario de Google.
+  </Card>
+  <Card title="Ocultar detalles de calendarios externos" icon="eye-slash" href="/calendarios/ocultar-detalles-de-calendarios-externos">
+    Mantén en privado tus eventos sincronizados.
+  </Card>
+  <Card title="Avisos de desconexión de calendarios" icon="bell" href="/calendarios/avisos-de-desconexion-de-calendarios">
+    Entérate cuando una integración se desconecta.
+  </Card>
+  <Card title="Conectar iCloud Calendar" icon="apple" href="/calendarios/conectar-icloud-calendar">
+    Sincroniza tu calendario de Apple.
+  </Card>
+</CardGroup>

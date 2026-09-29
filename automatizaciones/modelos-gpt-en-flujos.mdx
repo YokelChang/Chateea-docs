@@ -1,0 +1,111 @@
+---
+title: "Modelos GPT en flujos de trabajo"
+description: "Elige entre GPT-3.5 Turbo, GPT-4 Turbo, GPT-4o y GPT-4o Mini en tus flujos y entiende cómo se cobra su uso por tokens."
+icon: "robot"
+---
+
+La acción **GPT con OpenAI** lleva la IA a tus flujos de trabajo: redacta seguimientos personalizados, resume conversaciones, traduce textos o analiza el tono de un mensaje, y deja el resultado listo para usarlo en los pasos siguientes. En cada acción puedes elegir el modelo de GPT que mejor equilibre calidad, velocidad y costo para esa tarea.
+
+## Qué puedes configurar
+
+- **Selector de modelo:** elige el modelo en cada paso de IA, de forma independiente. Puedes combinar modelos distintos en un mismo flujo.
+- **Instrucciones con variables:** inserta campos del contacto o del evento para personalizar cada respuesta.
+- **Instrucción de sistema (opcional):** define el tono o el comportamiento de la IA, por ejemplo "Responde como un asesor amable y breve de una clínica dental".
+
+## Modelos disponibles
+
+| Modelo | Calidad | Velocidad | Cuándo usarlo |
+| --- | --- | --- | --- |
+| GPT-3.5 Turbo | Buenas respuestas, pero menos consistentes; le cuesta relacionar ideas. | Rápido. | Tareas simples cuando no necesitas mucha precisión. |
+| GPT-4 Turbo | El más avanzado: respuestas consistentes y precisas, gran comprensión del contexto. | Algo más lento que GPT-4o Mini. | Instrucciones complejas y textos donde la calidad importa. |
+| GPT-4o | Consistente, con pequeñas concesiones; buena comprensión del contexto. | Equilibrio entre velocidad y rendimiento. | La mayoría de las tareas del día a día. |
+| GPT-4o Mini | Eficiente, pero menos completo. | El más rápido. | Tareas sencillas y de alto volumen. |
+
+## Cómo se cobra
+
+El uso de GPT en flujos se cobra según los **tokens** procesados, no con una tarifa fija por ejecución. El costo depende de tres cosas:
+
+1. Los tokens de entrada (tus instrucciones y los datos que insertas).
+2. Los tokens de salida (la respuesta que genera la IA).
+3. El modelo que elijas: los modelos más potentes cuestan más por token que los ligeros.
+
+El consumo se descuenta de la **billetera** de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios).
+
+<Info>
+Como referencia aproximada, 1.000.000 de tokens equivalen a unas 750.000 palabras (1.000.000 × 0,75). Es una estimación: el número real varía según el idioma y el texto.
+</Info>
+
+<Tip>
+Usa GPT-4o Mini para tareas repetitivas y sencillas (clasificar, resumir mensajes cortos) y reserva los modelos más potentes para textos largos o instrucciones complejas. Así controlas el gasto sin perder calidad donde importa.
+</Tip>
+
+## Configurar la acción
+
+<Steps>
+  <Step title="Agrega la acción">
+    En tu flujo, haz clic en **+** y agrega **GPT con OpenAI**.
+  </Step>
+  <Step title="Elige el tipo de acción">
+    Selecciona una opción prediseñada o escribe tu propia instrucción:
+    - **Analizar sentimiento del texto**
+    - **Resumir texto**
+    - **Traducir**
+    - **Personalizada**
+  </Step>
+  <Step title="Escribe la instrucción">
+    Si elegiste **Personalizada**, escribe lo que quieres que haga la IA. Inserta variables con el selector de valores, como `{{contact.first_name}}`, para personalizar el resultado.
+  </Step>
+  <Step title="Elige el modelo y guarda">
+    Selecciona el modelo y guarda la acción. Luego prueba el flujo con un contacto para ver la respuesta generada.
+  </Step>
+</Steps>
+
+## Qué hacer con la respuesta
+
+La respuesta de la IA queda disponible para las acciones siguientes. Puedes:
+
+- Guardarla en un **campo personalizado** del contacto.
+- Usarla directamente en una acción **Enviar correo** o **Enviar SMS**.
+- Registrarla internamente o enviarla a tu equipo por Slack o por webhook.
+
+## Ejemplos de instrucciones
+
+| Caso | Instrucción de ejemplo |
+| --- | --- |
+| Seguimiento a un cliente potencial | "Escribe un mensaje amable para `{{contact.first_name}}` agradeciendo su interés en nuestro servicio de limpieza." |
+| Resumen de conversación | "Resume esta conversación en 2 o 3 viñetas." |
+| Borrador de correo | "Escribe un correo persuasivo para presentar nuestra promoción de temporada a un cliente potencial." |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿En qué se diferencia GPT-4 Turbo de GPT-3.5?">
+    GPT-4 Turbo entiende mejor el contexto, genera contenido más preciso y admite instrucciones más largas. Es una variante más rápida y eficiente de GPT-4.
+  </Accordion>
+  <Accordion title="¿Usar GPT en flujos tiene costo?">
+    Sí. Es una acción premium que se cobra según los tokens procesados en cada ejecución y el modelo elegido. El consumo se descuenta de tu billetera.
+  </Accordion>
+  <Accordion title="¿Puedo usar modelos distintos en el mismo flujo?">
+    Sí. Cada paso de IA tiene su propio selector de modelo, así que puedes elegir según la complejidad o el presupuesto de cada tarea.
+  </Accordion>
+  <Accordion title="¿Todos los modelos están disponibles en mi cuenta?">
+    La disponibilidad puede variar según tu plan. Si no ves un modelo, escribe a soporte de Chateea en help@chateea.com.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Automatizar comentarios de Facebook e Instagram" icon="comments" href="/automatizaciones/automatizar-comentarios-facebook-instagram">
+    Responde comentarios con respuestas generadas por IA.
+  </Card>
+  <Card title="Acciones premium" icon="bolt" href="/automatizaciones/acciones-premium-y-planes-de-ejecuciones">
+    Cómo se cobran las acciones premium.
+  </Card>
+  <Card title="Lista de acciones" icon="list" href="/automatizaciones/lista-de-acciones">
+    Todas las acciones disponibles en los flujos.
+  </Card>
+  <Card title="Asistente de IA de flujos" icon="wand-magic-sparkles" href="/ia/asistente-ia-de-flujos-de-trabajo">
+    Pide ayuda a la IA para entender y construir tus flujos.
+  </Card>
+</CardGroup>

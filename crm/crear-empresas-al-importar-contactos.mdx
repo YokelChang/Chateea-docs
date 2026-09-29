@@ -1,0 +1,127 @@
+---
+title: "Crear y asociar empresas al importar contactos"
+description: "Activa la automatización por nombre de empresa para crear empresas y vincularlas a tus contactos al importarlos o actualizarlos."
+icon: "users"
+---
+
+Los contactos y las empresas se importan por separado, pero no tienes que crear y vincular las empresas a mano. Si activas la automatización por nombre de empresa, Chateea usa el campo **Nombre de la empresa** (Business Name) de cada contacto para crear la empresa si no existe y asociarla al contacto automáticamente. Funciona al importar contactos, al crearlos o editarlos, y también con los contactos que ya tienes.
+
+## Qué resuelve
+
+Esta automatización cubre los escenarios más comunes:
+
+- Tienes contactos y empresas, pero no están asociados.
+- Tienes contactos, pero todavía no tienes empresas.
+- No tienes ni contactos ni empresas y vas a importar todo desde cero.
+- Tienes empresas, pero aún no has cargado los contactos.
+
+En todos los casos, basta con que cada contacto tenga el nombre de su empresa.
+
+## Ventajas
+
+- **Empresas creadas automáticamente** a partir del nombre de empresa de tus contactos.
+- **Asociación incluida**: cada contacto queda vinculado a su empresa en el momento de crearse o actualizarse.
+- **Sirve para cargas masivas y para el día a día**: funciona en importaciones y en cada actualización de contactos.
+- **Datos consistentes**: al usar un solo campo como origen, reduces duplicados y nombres mal escritos.
+- **Menos trabajo manual**: no tienes que crear empresas ni vincular contactos uno por uno.
+
+## Paso 1: activa la automatización
+
+<Steps>
+<Step title="Abre el objeto Empresas">
+Ve a **Configuración → Objetos** y, en la lista de objetos estándar, abre **Empresas**.
+</Step>
+<Step title="Activa la opción">
+Marca la casilla para crear y asociar empresas automáticamente a partir del nombre de empresa de los contactos.
+</Step>
+<Step title="Guarda">
+Guarda los cambios. La automatización solo empieza a funcionar después de guardar.
+</Step>
+</Steps>
+
+<Info>
+Al activarla, también se aplica de forma retroactiva: los contactos que ya tienen un nombre de empresa quedan asociados a su empresa, que se crea si no existía. No hace falta volver a importarlos.
+</Info>
+
+## Paso 2: prepara tu archivo CSV de contactos
+
+Tu archivo debe incluir una columna llamada exactamente **Business Name**. Ese es el dato que dispara la creación y asociación de la empresa. El resto de columnas son los datos habituales de tus contactos; no necesitas columnas específicas de empresa.
+
+```text
+First Name,Last Name,Email,Phone,Business Name
+Ana,López,ana@ejemplo.com,+5215512345678,Comercial del Norte
+Luis,Pérez,luis@ejemplo.com,+5215587654321,Comercial del Norte
+Marta,Ruiz,marta@ejemplo.com,+5215511112222,Grupo Andino
+```
+
+En este ejemplo se crearían dos empresas, "Comercial del Norte" (con Ana y Luis asociados) y "Grupo Andino" (con Marta).
+
+<Warning>
+El nombre de la columna debe coincidir exactamente. Otras variantes del nombre no activan la automatización. Revisa también que el mismo cliente esté escrito siempre igual en todas las filas, o se crearán empresas distintas.
+</Warning>
+
+## Paso 3: importa los contactos
+
+<Steps>
+<Step title="Inicia la importación">
+Ve a **Contactos** y haz clic en **Importar**.
+</Step>
+<Step title="Elige Contactos como objeto">
+En la pantalla inicial, selecciona **Contactos**. La automatización solo se ejecuta cuando se crean o actualizan contactos, así que este paso es importante.
+</Step>
+<Step title="Sube el archivo">
+Selecciona tu CSV o arrástralo al área de carga. Asegúrate de que incluye la columna **Business Name**.
+</Step>
+<Step title="Elige cómo importar">
+Selecciona **Crear y actualizar contactos**. Así la automatización se aplica tanto a los contactos nuevos como a los existentes que traigan un nombre de empresa.
+</Step>
+<Step title="Relaciona los campos">
+Confirma que la columna **Business Name** del CSV queda relacionada con el campo **Nombre de la empresa** del contacto. Si se relaciona con otro campo, la automatización no funcionará.
+</Step>
+<Step title="Termina la importación">
+Revisa el resumen e inicia la importación.
+</Step>
+</Steps>
+
+## Paso 4: verifica el resultado
+
+- **En la ficha del contacto**: abre un contacto importado y revisa la sección **Empresas** dentro de las asociaciones. Si ves una empresa marcada como principal, la automatización funcionó.
+- **En Empresas**: abre **Contactos → Empresas** y comprueba que aparecen las empresas con los nombres de tu archivo.
+
+## Completar los datos de las empresas
+
+La automatización crea las empresas solo con su nombre. Si quieres añadir más información (sector, sitio web, campos personalizados), exporta las empresas creadas, completa las columnas que faltan en el archivo y vuelve a importarlo en modo de actualización. El archivo exportado incluye el ID de cada empresa, así que las filas se relacionarán con las empresas correctas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+<Accordion title="¿Esto sirve para importar empresas directamente?">
+No. Las empresas se crean o actualizan solo cuando se crean o actualizan contactos con un nombre de empresa. Para importar empresas con todos sus datos, usa la importación de empresas desde CSV.
+</Accordion>
+<Accordion title="¿Qué campo activa la creación y asociación?">
+El campo **Nombre de la empresa** del contacto. En el CSV, la columna debe llamarse exactamente **Business Name**.
+</Accordion>
+<Accordion title="¿Funciona con los contactos que ya tengo?">
+Sí. Al activarla, se crean y asocian empresas para los contactos existentes que ya tienen un nombre de empresa, sin necesidad de volver a importarlos.
+</Accordion>
+<Accordion title="¿Cómo confirmo que funcionó?">
+Abre un contacto y revisa la sección **Empresas** en sus asociaciones, o entra en **Contactos → Empresas** y busca los nombres de tu archivo.
+</Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+<Card title="Importar contactos desde CSV" icon="file-import" href="/contactos/importar-contactos-desde-csv">
+Todo sobre la importación de contactos.
+</Card>
+<Card title="Importar empresas con un archivo CSV" icon="building" href="/crm/importar-empresas-csv">
+Crea o actualiza empresas con todos sus datos.
+</Card>
+<Card title="Exportar empresas a CSV" icon="file-export" href="/crm/exportar-empresas-csv">
+Descarga tus empresas para completarlas y volver a importarlas.
+</Card>
+<Card title="Flujos de trabajo de empresas" icon="bolt" href="/crm/flujos-de-trabajo-de-empresas">
+Crea empresas asociadas también desde automatizaciones.
+</Card>
+</CardGroup>

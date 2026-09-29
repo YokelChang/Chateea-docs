@@ -1,0 +1,46 @@
+---
+title: "Conexiones externas de las apps del Marketplace"
+description: "Cómo se conectan las aplicaciones del Marketplace con servicios de terceros y qué métodos de autenticación usan."
+icon: "link"
+---
+
+Muchas aplicaciones del **Marketplace de aplicaciones** integran Chateea con servicios de terceros, como tu herramienta de proyectos, tu hoja de cálculo o tu software de facturación. Para que esa integración funcione, la aplicación necesita una **conexión externa**: una autorización que le permite hablar con tu cuenta en el otro servicio.
+
+Este artículo explica cómo funcionan esas conexiones y qué métodos de autenticación puedes encontrar.
+
+## Cómo funcionan las conexiones
+
+- **Cada conexión pertenece a tu cuenta.** La conexión que haces con un servicio externo es propia de tu cuenta de Chateea y no se comparte con otras cuentas.
+- **Se pide al instalar.** Si instalas una aplicación que necesita conectarse a un servicio externo, la solicitud de conexión se abre en cuanto termina la instalación.
+- **Puedes conectarla después.** Si la instalación se hizo sin completar la conexión, entra en el **Marketplace de aplicaciones** de tu cuenta, abre la aplicación y conéctala desde ahí.
+
+## Métodos de autenticación
+
+Según el servicio, la aplicación te pedirá uno de estos métodos:
+
+| Método | Cómo funciona |
+| --- | --- |
+| **OAuth** | Inicias sesión en el servicio externo y autorizas la integración. No tienes que copiar claves. |
+| **Clave de API** | Copias una clave de API desde el servicio externo y la pegas en Chateea. |
+| **Autenticación básica** | Introduces el usuario y la contraseña de tu cuenta en el servicio externo. |
+
+<Tip>
+  Cuando el servicio lo permita, prefiere OAuth: no tienes que manejar claves y puedes revocar el acceso desde el propio servicio en cualquier momento. Si usas una clave de API, crea una específica para Chateea para poder desactivarla sin afectar otras integraciones.
+</Tip>
+
+## Buenas prácticas
+
+- Conecta la aplicación con un usuario del servicio externo que tenga los permisos necesarios, pero no más de los que la integración requiere.
+- Si cambias la contraseña o regeneras la clave en el servicio externo, vuelve a conectar la aplicación en Chateea.
+- Antes de usar la aplicación en tus flujos, prueba sus acciones para confirmar que la conexión funciona.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Instalar apps del Marketplace desde flujos" icon="store" href="/automatizaciones/instalar-apps-del-marketplace-desde-flujos">
+    Instala aplicaciones sin salir del constructor de flujos.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Verifica que tus integraciones funcionen antes de publicar.
+  </Card>
+</CardGroup>

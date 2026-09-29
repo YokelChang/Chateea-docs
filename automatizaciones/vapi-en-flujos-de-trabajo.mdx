@@ -1,0 +1,148 @@
+---
+title: "Vapi en flujos de trabajo"
+description: "Lanza llamadas y chats con IA de Vapi, sube archivos de conocimiento e inicia flujos con eventos de Vapi."
+icon: "phone"
+---
+
+Vapi es una plataforma de asistentes de voz y chat con IA. Al conectarla con tus flujos de trabajo de Chateea puedes lanzar llamadas y chats con IA, subir archivos de conocimiento a tus asistentes y limpiar datos de llamadas, todo desde una automatización y sin webhooks ni conectores externos. También puedes iniciar flujos cuando ocurre algo en Vapi, como una llamada nueva.
+
+La integración funciona en dos sentidos:
+
+- **De Vapi a Chateea (disparadores):** un evento en Vapi, como una llamada nueva, inicia un flujo.
+- **De Chateea a Vapi (acciones):** un evento de tu CRM, como un formulario enviado, lanza una llamada, un chat o la carga de un archivo en Vapi.
+
+## Para qué te sirve
+
+- **Calificar leads al instante:** llamas automáticamente a quien acaba de llenar un formulario.
+- **CRM e IA sincronizados:** mueves oportunidades según el resultado de la conversación con la IA.
+- **Menos inasistencias:** confirmas citas con llamadas de recordatorio.
+- **Asistentes mejor informados:** subes documentos para mejorar sus respuestas.
+- **Menos trabajo manual:** sin webhooks ni Zapier de por medio.
+
+## Antes de empezar
+
+- Acceso a **Automatización → Flujos de trabajo**.
+- Una cuenta de Vapi activa y su **clave de API privada**.
+
+Para obtener la clave, entra en [dashboard.vapi.ai](https://dashboard.vapi.ai), abre el menú **Account**, haz clic en **API Keys**, genera una clave si hace falta y copia tu **Private API Key**.
+
+<Note>
+  Los disparadores y las acciones de Vapi son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). El uso de Vapi (minutos, asistentes, etc.) lo cobra Vapi en tu cuenta de Vapi.
+</Note>
+
+## Conectar tu cuenta de Vapi
+
+- **Desde el flujo:** en **Automatización → Flujos de trabajo**, agrega cualquier disparador o acción de Vapi, haz clic en **Conectar ahora** y autoriza tu cuenta con la clave de API.
+- **Desde la configuración:** ve a **Configuración → Integraciones**, selecciona **Vapi**, haz clic en **Conectar** y completa la autenticación.
+
+Una vez conectada, los pasos de Vapi se cargan automáticamente en el constructor.
+
+## Disparadores (de Vapi a Chateea)
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Nuevo asistente** | Cuando se crea un asistente de IA en Vapi. |
+| **Nueva llamada** | Cuando se inicia una llamada en Vapi. |
+| **Nuevo archivo** | Cuando se sube un archivo de conocimiento a Vapi. |
+
+Estos disparadores revisan Vapi cada **5 minutos**. Usa filtros si quieres limitar qué eventos inscriben contactos en el flujo.
+
+## Acciones (de Chateea a Vapi)
+
+| Acción | Qué hace |
+| --- | --- |
+| **Crear llamada** | Inicia una llamada de voz con IA. |
+| **Crear chat** | Abre una sesión de chat con IA. |
+| **Subir archivo** | Sube un archivo de conocimiento para tus asistentes. |
+| **Eliminar datos de llamada** | Borra los datos guardados de una llamada. |
+| **Eliminar datos de chat** | Borra los datos de una sesión de chat. |
+| **Eliminar archivo** | Borra un archivo de conocimiento. |
+| **Actualizar nombre de llamada** | Cambia los metadatos de una llamada. |
+| **Buscar llamada** | Recupera los detalles de una llamada por su ID. |
+
+### Archivos compatibles con Subir archivo
+
+Cada paso **Subir archivo** carga **un solo archivo**. Si necesitas varios, agrega varios pasos seguidos. Formatos admitidos:
+
+| Tipo | Extensiones |
+| --- | --- |
+| Texto y registros | .md, .txt, .log |
+| Documentos | .pdf, .doc, .docx |
+| Datos | .csv, .tsv, .json, .xml, .yaml, .yml |
+| Web y código | .html, .css, .js, .ts |
+
+## Límites de llamadas simultáneas
+
+Cada cuenta de Vapi incluye por defecto **10 llamadas simultáneas**. Si se disparan más, las que sobran quedan en cola y se reintentan cuando se libera un espacio. Por ejemplo, si 25 llamadas se lanzan a la vez, 10 empiezan de inmediato y 15 esperan.
+
+Puedes ampliar este límite en tu panel de Vapi, en **Settings → Billing → Reserved Concurrency** (Vapi puede cobrarlo aparte). Además, Vapi aplica límites de peticiones a su API según tu plan.
+
+<Tip>
+  En campañas de alto volumen, no lances cientos de llamadas a la vez. Agrega pasos de **Espera**, escalona los envíos y revisa el historial de ejecución para detectar errores de la API.
+</Tip>
+
+## Números de teléfono compatibles
+
+Por ahora, solo funcionan los **números comprados directamente en Vapi**. No son compatibles los números de Chateea, los números de otros proveedores de telefonía ni los números importados. Si intentas llamar con un número no compatible, la llamada fallará.
+
+## Configurar Vapi en un flujo
+
+<Steps>
+  <Step title="Crea o abre un flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo o abre uno existente.
+  </Step>
+  <Step title="Elige el disparador">
+    Por ejemplo **Formulario enviado**, **Cita creada** o **Etapa del pipeline cambiada**.
+  </Step>
+  <Step title="Agrega la acción de Vapi">
+    Por ejemplo **Crear llamada**.
+  </Step>
+  <Step title="Asigna los datos dinámicos">
+    Usa valores como `{{contact.first_name}}`, `{{contact.phone}}`, `{{opportunity.name}}` o tus valores personalizados.
+  </Step>
+  <Step title="Agrega condiciones o esperas">
+    Suma las condiciones o pasos de **Espera** que necesite tu proceso.
+  </Step>
+  <Step title="Prueba y publica">
+    Prueba el flujo en borrador y, cuando todo funcione, haz clic en **Publicar**.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+- **Calificación inmediata:** Formulario enviado, luego **Crear llamada**. Si la IA lo califica, mueve la oportunidad a la etapa de ventas; si no, agrégalo a una campaña de nutrición.
+- **Recordatorio de cita con IA:** Cita creada, **Espera** hasta antes de la cita y **Crear llamada**. Si no contesta, envía un SMS de recordatorio.
+- **Asistente de bienvenida:** Trato ganado, **Subir archivo** (el PDF de bienvenida), **Crear chat** y una notificación interna.
+- **Limpieza de datos:** Trato perdido, **Buscar llamada**, **Eliminar datos de llamada** y **Eliminar datos de chat**.
+
+## Dónde ver los detalles de la llamada
+
+Chateea confirma que la llamada se inició. El detalle completo se guarda en tu **panel de Vapi**: transcripción, duración, latencia, registros de la interacción con la IA, grabación (si está activada), resultado y estado de la llamada, y analítica del asistente.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuántas llamadas simultáneas puedo hacer?">
+    10 por cuenta de Vapi de forma predeterminada. Puedes ampliarlo con **Reserved Concurrency** en la facturación de Vapi o con su plan empresarial.
+  </Accordion>
+  <Accordion title="¿Puedo subir varios archivos en un paso?">
+    No. Cada paso **Subir archivo** admite un archivo. Agrega varios pasos si necesitas más.
+  </Accordion>
+  <Accordion title="¿Puedo usar mis propios números de teléfono?">
+    No por ahora. Solo funcionan los números comprados dentro de Vapi.
+  </Accordion>
+  <Accordion title="¿Cuáles son los errores más comunes?">
+    Límite de llamadas simultáneas alcanzado, número no compatible, integración desconectada, asistente mal configurado, formato de teléfono inválido o límite de peticiones de la API superado.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Manus en flujos de trabajo" icon="robot" href="/automatizaciones/manus-en-flujos-de-trabajo">
+    Crea y continúa tareas de IA desde tus flujos.
+  </Card>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+</CardGroup>

@@ -1,0 +1,72 @@
+---
+title: "Error de acceso de escritura en Google Calendar"
+description: "Soluciona el error que impide sincronizar citas con un Google Calendar compartido dando permiso de edición."
+icon: "lock"
+---
+
+Al elegir un Google Calendar para sincronizar tus citas, puede aparecer este mensaje:
+
+```text
+You need to have writer access to sync appointments to the selected Google Calendar. Please check with the Google Calendar owner in case syncing is required.
+```
+
+Significa que la cuenta de Google que conectaste en Chateea puede **ver** ese calendario, pero no tiene permiso para **crear ni modificar eventos** en él. Pasa casi siempre con calendarios compartidos desde otra cuenta de Google, por ejemplo el calendario del negocio que administra otra persona. La solución es que el dueño del calendario te dé permiso de edición.
+
+## Por qué ocurre
+
+Para escribir tus citas en Google Calendar, Chateea necesita que la cuenta de Google conectada tenga, como mínimo, el permiso **Hacer cambios en eventos** sobre el calendario elegido. Si el calendario se compartió solo con permiso para ver detalles o ver disponibilidad, Chateea no puede escribir en él y muestra el error.
+
+## Cómo solucionarlo
+
+Estos pasos los hace **el dueño del Google Calendar**, no la persona que usa Chateea.
+
+<Steps>
+  <Step title="Entra a Google Calendar">
+    El dueño del calendario inicia sesión en su cuenta de Google y abre [calendar.google.com](https://calendar.google.com).
+  </Step>
+  <Step title="Abre la configuración del calendario">
+    En la lista de calendarios de la izquierda, pasa el cursor sobre el calendario que quieres sincronizar, haz clic en los tres puntos y elige **Configuración y uso compartido**.
+  </Step>
+  <Step title="Comparte con la cuenta conectada a Chateea">
+    Baja hasta **Compartir con determinadas personas o grupos** y haz clic en **Añadir personas y grupos**. Escribe el correo de la cuenta de Google que está conectada en Chateea.
+  </Step>
+  <Step title="Da permiso de edición">
+    En permisos, elige **Hacer cambios en eventos** y haz clic en **Enviar**.
+  </Step>
+  <Step title="Vuelve a elegir el calendario en Chateea">
+    En Chateea, vuelve a seleccionar ese Google Calendar en la configuración de sincronización. El error ya no debería aparecer y las citas empezarán a sincronizarse.
+  </Step>
+</Steps>
+
+<Tip>
+  Si después de dar el permiso el calendario sigue mostrando el error, vuelve a conectar tu cuenta de Google para que Chateea lea los permisos actualizados.
+</Tip>
+
+## Calendarios de equipo y calendarios sin asignar
+
+El permiso siempre se revisa sobre la cuenta de Google que se usa para sincronizar:
+
+- **Calendarios de equipo (round robin, colectivos, grupos):** cada miembro del equipo sincroniza con su propia cuenta de Google. Si un miembro eligió un calendario compartido, esa cuenta es la que necesita el permiso **Hacer cambios en eventos**.
+- **Calendarios sin usuario asignado:** revisa qué cuenta de Google se usó para vincular el calendario y comparte el Google Calendar con esa misma cuenta.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo darme el permiso yo mismo?">
+    No, si el calendario no es tuyo. Solo el dueño del Google Calendar (o alguien con permiso para gestionar el uso compartido) puede cambiar los permisos.
+  </Accordion>
+  <Accordion title="¿Basta con el permiso para ver todos los detalles?">
+    No. Para escribir citas se necesita **Hacer cambios en eventos** o **Hacer cambios y gestionar el uso compartido**. Con permisos de solo lectura, Chateea no puede crear eventos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Tu cuenta de Google no aparece" icon="circle-question" href="/calendarios/cuenta-de-google-no-aparece">
+    Revisa la conexión y los permisos de tu cuenta de Google.
+  </Card>
+  <Card title="Reconectar Google Calendar" icon="rotate" href="/calendarios/reconectar-google-calendar">
+    Vuelve a integrar tu calendario cuando deja de sincronizar.
+  </Card>
+</CardGroup>

@@ -1,0 +1,107 @@
+---
+title: "Configura los SLA de tiempo de respuesta"
+description: "Define metas de tiempo de respuesta con temporizadores visibles para que tu equipo sepa qué responder primero."
+icon: "stopwatch"
+---
+
+Un SLA de conversación (acuerdo de nivel de servicio) es una meta de tiempo de respuesta. Cuando llega un mensaje nuevo de un cliente, Chateea arranca un temporizador en esa conversación que cambia de color a medida que se acerca el límite. Así tu equipo sabe de un vistazo qué responder primero y ningún mensaje queda olvidado.
+
+<Note>
+  Los SLA funcionan en la versión actual de la bandeja de Conversaciones. Si no ves la opción en tu cuenta, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Para qué te sirve
+
+- **Respuestas más rápidas:** el equipo siempre sabe cuánto tiempo le queda.
+- **Mejor priorización:** los colores destacan las conversaciones más urgentes.
+- **Metas por canal:** una meta única o una distinta para correo, SMS, Facebook, WhatsApp, TikTok y otros.
+- **Control para gerentes:** puedes filtrar y ordenar por SLA y medir el cumplimiento en un panel de rendimiento.
+
+## Configura tus SLA
+
+<Steps>
+  <Step title="Activa los SLA">
+    Entra a **Conversaciones**, abre la pestaña **Configuración** en el panel superior y activa **Configuración de SLA**.
+  </Step>
+  <Step title="Elige cómo se aplican a los canales">
+    En **¿Cómo deben aplicarse los SLA en los canales?** elige una opción:
+
+    - **SLA común:** la misma regla para todos los canales. Por ejemplo, responder todo en menos de 1 hora, llegue por correo, SMS, Facebook o TikTok.
+    - **SLA por canal:** una meta distinta para cada canal. Por ejemplo, SMS en 15 minutos y correo en 2 horas.
+  </Step>
+  <Step title="Define los tiempos">
+    - **Por vencer:** cuánto antes del límite se da la alerta. Cuando la conversación entra en esta ventana, el temporizador se pone **naranja**.
+    - **Vencido:** el tiempo máximo para responder. Si se supera, el temporizador se pone **rojo**.
+  </Step>
+  <Step title="Decide si cuentan los mensajes de flujos de trabajo">
+    Elige si los mensajes automáticos detienen el temporizador:
+
+    - **Contar todos los mensajes automáticos como respuesta válida:** el temporizador se detiene cuando un flujo envía un mensaje.
+    - **No contar los mensajes automáticos:** el temporizador sigue hasta que responde una persona.
+    - **Contar solo mensajes de flujos específicos:** eliges qué flujos detienen el temporizador.
+  </Step>
+  <Step title="Decide si cuentan las respuestas de la IA">
+    - **Contar las respuestas de la IA como válidas** (opción por defecto): el temporizador se detiene cuando responde tu agente de IA.
+    - **No contar las respuestas de la IA:** el temporizador sigue hasta que responde una persona.
+  </Step>
+  <Step title="Guarda">
+    Pulsa **Guardar**. Desde ese momento, todos los mensajes nuevos de clientes tendrán su temporizador según esta configuración.
+  </Step>
+</Steps>
+
+<Tip>
+  Si tu IA atiende las preguntas frecuentes pero quieres asegurarte de que una persona revise cada caso, elige no contar las respuestas de la IA. El temporizador seguirá corriendo hasta que alguien del equipo intervenga.
+</Tip>
+
+## Cómo leer los temporizadores
+
+El temporizador aparece en la lista de conversaciones cuando llega un mensaje nuevo del cliente. Desaparece cuando alguien responde o marca la conversación como leída.
+
+| Estado | Color | Significado |
+| --- | --- | --- |
+| **Activo** | Gris | Vas a tiempo |
+| **Por vencer** | Naranja | Se acerca el límite de respuesta |
+| **Vencido** | Rojo | Se superó el tiempo de respuesta |
+
+Si el contacto envía varios mensajes seguidos, el temporizador se calcula desde el **mensaje más antiguo** sin responder. Así refleja cuánto tiempo lleva realmente esperando.
+
+## Filtra y ordena por SLA
+
+- **Filtrar por estado del SLA:** muestra solo conversaciones activas, por vencer o vencidas.
+- **Ordenar por SLA:** pon primero las que llevan más tiempo vencidas o las que tienen el próximo vencimiento.
+
+Puedes guardar estos filtros como una vista para que cada persona abra su lista de urgencias con un clic. Ver [Vistas de conversaciones](/conversaciones/vistas-de-conversaciones).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Los SLA se aplican a las conversaciones que ya existían?">
+    No. Solo a los mensajes nuevos que lleguen después de activarlos.
+  </Accordion>
+  <Accordion title="¿Qué pasa si desactivo los SLA?">
+    Las conversaciones que ya tenían temporizador lo mantienen, pero los mensajes nuevos dejan de tenerlo. Puedes volver a activarlos cuando quieras.
+  </Accordion>
+  <Accordion title="Si cambio la configuración, ¿se aplica a todo?">
+    No. Los cambios valen para los mensajes nuevos. Las conversaciones en curso siguen con la regla que estaba activa cuando empezaron.
+  </Accordion>
+  <Accordion title="¿Los SLA tienen en cuenta el horario de atención?">
+    Por ahora no. Se calculan en horas corridas del calendario, incluidas noches y fines de semana. Tenlo en cuenta al definir tus tiempos.
+  </Accordion>
+  <Accordion title="¿Se aplican a los chats internos o comentarios internos?">
+    No. Solo a conversaciones con clientes.
+  </Accordion>
+  <Accordion title="¿Puedo usar los SLA como disparador de un flujo?">
+    Todavía no. Para medir el cumplimiento usa el [panel de rendimiento de SLA](/conversaciones/rendimiento-de-sla).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Rendimiento de SLA" icon="chart-line" href="/conversaciones/rendimiento-de-sla">
+    Mide qué tan bien cumple tu equipo sus metas de respuesta.
+  </Card>
+  <Card title="Vistas de conversaciones" icon="filter" href="/conversaciones/vistas-de-conversaciones">
+    Guarda un filtro de conversaciones vencidas.
+  </Card>
+</CardGroup>

@@ -1,0 +1,129 @@
+---
+title: "Conectar formularios y calendarios en AI Studio"
+description: "Conecta los formularios y las páginas de reserva de AI Studio a tu CRM y tus calendarios."
+icon: "calendar"
+---
+
+Los formularios y calendarios convierten una página creada con AI Studio en algo que trabaja para tu negocio: capta datos de tus visitantes o les permite reservar una cita contigo. En AI Studio primero se construye la parte visual y, cuando estés listo, conectas el formulario o el calendario a tu cuenta de Chateea.
+
+Así puedes diseñar la página con libertad y activar la captura de leads o la agenda solo cuando todo esté como quieres.
+
+## Qué puede crear AI Studio
+
+- Formularios de contacto.
+- Formularios de registro.
+- Secciones de captura de leads.
+- Páginas de reserva de citas.
+- Páginas de solicitud de consulta.
+
+Puedes pedir un formulario dentro de la página, en una sección o en una ventana emergente. Si tu pedido es muy general, AI Studio puede preguntarte qué tipo de formulario necesitas. Como los genera a la medida, cada formulario o experiencia de reserva puede coincidir con tu marca y el estilo de la página.
+
+<Warning>
+  Los formularios y calendarios **no se conectan automáticamente**. AI Studio crea el diseño, pero debes pedirle que conecte el componente para que empiece a enviar datos a tu cuenta.
+</Warning>
+
+## Ventajas
+
+- **Configuración más rápida:** la página y la sección de acción se construyen juntas.
+- **Tú decides cuándo conectar** a tu cuenta.
+- **Captura lista para el CRM:** los envíos llegan a tu cuenta como contactos.
+- **Agenda en vivo:** una página de reservas conectada usa tu calendario real.
+
+## Formularios
+
+Que veas un formulario en la página no significa que ya esté guardando envíos: al principio es solo diseño.
+
+### Conectar un formulario
+
+<Steps>
+  <Step title="Crea el formulario">
+    Pídele a AI Studio el formulario que necesitas, por ejemplo: "Agrega un formulario de contacto con nombre, correo y mensaje".
+  </Step>
+  <Step title="Pide la conexión">
+    Escribe en el chat algo como "Conecta los formularios a mi CRM", o haz clic en **Conectar** cuando AI Studio te lo sugiera. Esto inicia el flujo **Conectar al CRM**.
+  </Step>
+  <Step title="Prueba">
+    Envía un formulario de prueba y confirma que el contacto aparece en tu cuenta.
+  </Step>
+</Steps>
+
+Al conectarlo, la página usa el seguimiento de formularios externos de Chateea para enviar la actividad a tu cuenta.
+
+### Dónde ver los envíos
+
+Los envíos se guardan en tu CRM, no dentro del proyecto de AI Studio:
+
+1. En **Contactos**.
+2. En **Sitios → Formularios → Envíos → Formularios externos**.
+
+### Usar los envíos en flujos de trabajo
+
+La forma más directa es el disparador [Formulario de AI Studio enviado](/ia/disparador-formulario-ai-studio), que permite filtrar por proyecto, formulario, ruta de página y dominio.
+
+También puedes usar el seguimiento externo:
+
+1. En un flujo de trabajo, agrega el disparador **Evento de seguimiento externo**.
+2. Elige el evento **Envío de formulario**.
+3. Agrega el filtro **Dominio** o **Formulario externo** para que solo se active con el formulario que quieres.
+4. Continúa con acciones como **Enviar SMS** o **Enviar correo**.
+
+Para usar las respuestas del formulario dentro de una acción, inserta el valor desde **Valores personalizados → Contacto → Campos personalizados** o búscalo en la barra de búsqueda.
+
+## Calendarios
+
+AI Studio no se limita a incrustar el widget estándar del calendario: puede crear una experiencia de reserva a la medida que, una vez conectada, usa por detrás uno de tus calendarios existentes.
+
+### Conectar un calendario
+
+<Steps>
+  <Step title="Pide la página de reservas">
+    Por ejemplo: "Crea una página para agendar una consulta de 30 minutos".
+  </Step>
+  <Step title="Elige el calendario">
+    Cuando AI Studio te lo pida en el chat, selecciona uno de los calendarios de tu cuenta.
+  </Step>
+  <Step title="Conecta y prueba">
+    Conecta el calendario al componente de la página, abre la vista previa y haz una reserva de prueba.
+  </Step>
+</Steps>
+
+### Qué pasa después de conectarlo
+
+La página vive en AI Studio, pero la agenda sigue siendo la de tu calendario:
+
+- Los visitantes reservan en los horarios disponibles desde la página.
+- Las citas se agregan al calendario seleccionado en tu cuenta.
+- Se respeta la disponibilidad y la configuración de ese calendario.
+- Las confirmaciones, recordatorios y automatizaciones ligadas a ese calendario siguen funcionando.
+
+<Tip>
+  Antes de conectar, revisa en tu calendario la duración de las citas, la disponibilidad y la zona horaria. La página usará exactamente esa configuración.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo editar la página después de conectar un formulario o calendario?">
+    Sí. Puedes seguir refinando la página en AI Studio después de conectarlo.
+  </Accordion>
+  <Accordion title="¿Tengo que crear el formulario antes en Chateea?">
+    No. AI Studio genera el formulario a partir de tu instrucción y te guía en la conexión cuando estés listo.
+  </Accordion>
+  <Accordion title="¿Las confirmaciones y recordatorios salen del calendario conectado?">
+    Sí. Las reservas hechas desde la página usan el calendario elegido, así que se ejecutan sus confirmaciones, recordatorios y automatizaciones.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="AI Studio" icon="wand-magic-sparkles" href="/ia/ai-studio">
+    Guía completa del constructor con IA.
+  </Card>
+  <Card title="Disparador Formulario de AI Studio enviado" icon="bolt" href="/ia/disparador-formulario-ai-studio">
+    Automatiza lo que pasa después de cada envío.
+  </Card>
+  <Card title="Configura tu calendario de reservas" icon="calendar" href="/primeros-pasos/configura-tu-calendario-de-reservas">
+    Prepara el calendario que conectarás.
+  </Card>
+</CardGroup>

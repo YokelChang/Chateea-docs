@@ -1,0 +1,85 @@
+---
+title: "Límites y compatibilidad de objetos personalizados"
+description: "Cuántos objetos y registros puedes crear y en qué partes de Chateea se pueden usar los objetos personalizados."
+icon: "circle-info"
+---
+
+Antes de diseñar tu modelo de datos con objetos personalizados conviene saber cuántos puedes crear, cuántos registros admiten y en qué partes de Chateea puedes usarlos. Aquí tienes los límites y la compatibilidad actual en un solo lugar.
+
+Los objetos personalizados están disponibles en todos los planes de Chateea.
+
+## Límites
+
+| Elemento | Límite |
+| --- | --- |
+| Objetos personalizados por cuenta | 10 |
+| Registros por objeto | 300.000 |
+| Etiquetas de asociación entre dos objetos | 10 |
+| Campos únicos por objeto | 10 |
+
+Cada registro y cada archivo guardado en un objeto personalizado cuenta para el almacenamiento total de tu cuenta.
+
+## Qué incluye cada objeto
+
+**Asociaciones.** Definen cómo se relacionan los registros (por ejemplo, Vehículo con Dueño). Pueden ser de uno a uno, de uno a muchos o de muchos a muchos, y se reutilizan en filtros, listas inteligentes y flujos de trabajo.
+
+**Campos personalizados.** Cada objeto tiene sus propios campos: texto, número, fecha, listas desplegables y más. Todos los tipos de campo están disponibles.
+
+**Automatización.** Los flujos de trabajo pueden dispararse cuando se crea o actualiza un registro y ejecutar acciones como actualizar registros relacionados, enviar webhooks o agregar filas a Google Sheets.
+
+**Listas inteligentes y vista de lista.** Guarda y comparte vistas, ajusta columnas y ordena registros para que el objeto funcione como una base de datos hecha a tu medida.
+
+**Filtros avanzados e informes.** Aplica lógica Y / O sobre cualquier campo para encontrar conjuntos exactos de registros, ideal para informes o exportaciones puntuales.
+
+**Registro de auditoría.** Queda registro de cada creación, actualización, eliminación o cambio de asociación, para que sepas quién cambió qué.
+
+## Dónde puedes usar objetos personalizados
+
+| Estado | Funciones |
+| --- | --- |
+| **Compatible** | Contactos y oportunidades (mediante asociaciones), flujos de trabajo (disparadores y acciones), formularios, encuestas y cuestionarios, listas inteligentes, vista de lista, filtros avanzados, paneles e informes, API y webhooks, tareas, notas |
+| **No compatible** | Campañas de correo, correo masivo y SMS masivo, la bandeja de Conversaciones, datos dinámicos en embudos y sitios web, calendarios y reservas, reputación y reseñas, pagos y facturación, el objeto Empresas |
+
+<Info>
+Si necesitas enviar comunicaciones masivas, recuerda que esas herramientas trabajan con contactos. Una buena práctica es asociar tus registros a contactos y comunicarte con esos contactos.
+</Info>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Necesito un plan específico para usar objetos personalizados?">
+    No. Están disponibles en todos los planes, con un máximo de 10 objetos por cuenta.
+  </Accordion>
+  <Accordion title="¿Puedo crear más de 10 objetos?">
+    Hoy el límite es fijo en 10. Si tu caso necesita más, escríbenos a **help@chateea.com** para contarnos tu necesidad.
+  </Accordion>
+  <Accordion title="¿Mis flujos existentes se rompen si agrego más objetos?">
+    No. Los flujos reconocen los objetos nuevos automáticamente. Solo agrega los disparadores o acciones que necesites.
+  </Accordion>
+  <Accordion title="¿Hay API para objetos personalizados?">
+    Sí. La API de Chateea permite crear, leer, actualizar y eliminar objetos y registros. Escribe a **help@chateea.com** para obtener las credenciales y la documentación.
+  </Accordion>
+  <Accordion title="¿Quién puede editar o eliminar un objeto personalizado?">
+    Solo los administradores de la cuenta. Los demás usuarios tienen acceso de solo lectura a la definición del objeto.
+  </Accordion>
+  <Accordion title="¿Los datos de los objetos cuentan para el almacenamiento?">
+    Sí. Cada registro y archivo guardado en un objeto personalizado suma al almacenamiento total de tu cuenta.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Introducción a los objetos personalizados" icon="cubes" href="/crm/introduccion-a-objetos-personalizados">
+    Qué son y cuándo conviene usarlos.
+  </Card>
+  <Card title="Crear y editar objetos personalizados" icon="pen-to-square" href="/crm/crear-y-editar-objetos-personalizados">
+    Crea tu primer objeto.
+  </Card>
+  <Card title="Objetos en formularios, encuestas y cuestionarios" icon="clipboard-list" href="/crm/objetos-en-formularios-encuestas-y-cuestionarios">
+    Captura datos de objetos desde tus formularios.
+  </Card>
+  <Card title="Registro de auditoría" icon="clock-rotate-left" href="/crm/registro-de-auditoria-de-objetos">
+    Revisa los cambios en objetos y registros.
+  </Card>
+</CardGroup>

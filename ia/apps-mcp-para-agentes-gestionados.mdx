@@ -1,0 +1,120 @@
+---
+title: "Apps MCP para agentes gestionados"
+description: "Conecta tus agentes gestionados con HubSpot, Notion, Google, Stripe, Zapier y más apps mediante MCP."
+icon: "puzzle-piece"
+---
+
+Las apps MCP amplían lo que pueden hacer tus agentes gestionados conectándolos con aplicaciones externas como HubSpot, Notion, Google Drive, Calendly, Stripe o Zapier. Una vez conectada una app, el agente puede autenticarse, usar sus herramientas y ejecutar acciones en ella (crear registros, actualizar estados o consultar información) cada vez que se activa con un disparador.
+
+Por ejemplo, un agente con Notion conectado puede crear páginas, buscar contenido o actualizar bases de datos; con HubSpot puede crear contactos, actualizar negocios o registrar actividades.
+
+## Para qué te sirve
+
+- **Todo desde Agent Studio:** agregas las apps desde la configuración del agente, sin salir de Chateea.
+- **Autenticación segura:** te conectas con OAuth o con un inicio de sesión seguro. El agente recibe solo los permisos que autorizas.
+- **Control de herramientas:** eliges qué funciones concretas de cada app puede usar el agente.
+- **Acciones automáticas:** el agente actúa en las apps conectadas cuando se activa su disparador.
+- **Catálogo en crecimiento:** se añaden apps nuevas con regularidad.
+
+## Apps disponibles
+
+| App | Qué puede hacer el agente |
+| --- | --- |
+| **HubSpot** | Gestionar contactos, negocios y actividades del CRM |
+| **Notion** | Crear páginas, buscar contenido y organizar información |
+| **Apify** | Ejecutar tareas de extracción web y automatización |
+| **Make** | Lanzar escenarios y automatizaciones entre apps |
+| **Fathom** | Consultar analítica y datos de visitantes |
+| **Calendly** | Agendar reuniones y gestionar disponibilidad |
+| **Cal.com** | Reservar, reprogramar y gestionar reuniones |
+| **Canva** | Generar y gestionar diseños |
+| **OpenArt** | Crear arte e imágenes con IA |
+| **Higgsfield** | Generar videos e imágenes cinematográficas con IA |
+| **Kling** | Convertir texto o imágenes de referencia en videos cortos |
+| **Fal** | Generar imágenes, videos y audio con modelos de IA |
+| **Magnific** | Mejorar y ampliar imágenes de baja resolución |
+| **Monday.com** | Gestionar tableros, crear y mover elementos entre estados |
+| **Trello** | Gestionar tableros, tarjetas y listas |
+| **Asana** | Gestionar proyectos y tareas |
+| **ClickUp** | Crear y actualizar tareas, documentos y listas |
+| **Atlassian** | Gestionar incidencias de Jira y páginas de Confluence |
+| **GitHub** | Leer código, gestionar incidencias y pull requests |
+| **Google Drive** | Buscar, organizar y gestionar archivos y carpetas |
+| **Google Docs** | Crear, leer y editar documentos |
+| **Google Sheets** | Leer y actualizar hojas de cálculo, escribir filas |
+| **Google Slides** | Crear y actualizar presentaciones |
+| **Google Calendar** | Crear, actualizar y consultar eventos |
+| **Stripe** | Crear enlaces de pago y facturas, consultar clientes y transacciones |
+| **Shippo** | Comparar tarifas de envío, comprar etiquetas y rastrear envíos |
+| **Apollo** | Buscar contactos B2B, obtener correos verificados y gestionar secuencias |
+| **Windsor.ai** | Reunir datos de marketing y publicidad de más de 350 fuentes y actuar sobre campañas |
+| **DataForSEO** | Consultar resultados de búsqueda, palabras clave y backlinks |
+| **Firecrawl** | Rastrear sitios web y convertirlos en datos listos para la IA |
+| **Fireflies** | Consultar transcripciones, resúmenes y tareas de reuniones |
+| **Vapi** | Lanzar y gestionar llamadas con asistentes de voz |
+| **Zapier** | Ejecutar acciones en más de 8.000 apps con un solo conector |
+| **Nekt** | Unificar datos de más de 200 fuentes para tus agentes |
+
+## Conectar una app MCP a tu agente
+
+<Steps>
+  <Step title="Abre Agent Studio">
+    Ve a **IA → Agent Studio**.
+  </Step>
+  <Step title="Crea o abre un agente gestionado">
+    Abre un agente existente o crea uno nuevo. También puedes pedirle al constructor del agente que agregue una app MCP mientras lo creas.
+  </Step>
+  <Step title="Agrega la app">
+    En la sección **Apps** de la configuración del agente, haz clic en **Agregar app** y elige la app que quieres conectar.
+  </Step>
+  <Step title="Autentica tu cuenta">
+    Haz clic en **Conectar** junto a la app e inicia sesión con OAuth o con el acceso seguro que te indique. Concede los permisos necesarios.
+  </Step>
+  <Step title="Elige las herramientas">
+    Verás la lista de herramientas de la app. Marca solo las que el agente debe usar, por ejemplo `notion-create-pages` y `notion-search` en Notion, o `get_board_items_page` en Monday.com.
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar** para aplicar la conexión y las herramientas seleccionadas.
+  </Step>
+  <Step title="Activa el agente">
+    Cuando se cumpla el disparador configurado (por ejemplo, un formulario enviado), el agente ejecutará las acciones en la app conectada como parte de su trabajo.
+  </Step>
+</Steps>
+
+<Tip>
+  Puedes conectar varias apps al mismo agente. El agente usará las herramientas adecuadas según el contexto y las instrucciones que le des, así que explica con claridad qué debe hacer en cada app.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué es MCP?">
+    Model Context Protocol, un estándar que permite a los agentes de IA conectarse de forma segura a aplicaciones externas: define cómo se autentican, qué herramientas usan y cómo ejecutan acciones.
+  </Accordion>
+  <Accordion title="¿Mis credenciales están seguras?">
+    Sí. La conexión usa OAuth o un inicio de sesión seguro, Chateea no guarda tus credenciales y el agente solo recibe los permisos que autorizas.
+  </Accordion>
+  <Accordion title="¿Dónde puedo usar las apps MCP?">
+    En los agentes gestionados de Agent Studio y en Ask AI.
+  </Accordion>
+  <Accordion title="¿Puedo conectar una app que no está en la lista?">
+    Sí, si esa app o tu sistema interno tiene un servidor MCP. Usa un conector MCP personalizado con la URL del servidor.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar las herramientas que usa un agente?">
+    Sí. Edita la configuración del agente y marca o desmarca las herramientas cuando quieras.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la conexión con la app falla?">
+    Si la autenticación falla o se revocan los permisos, el agente no podrá actuar en esa app. Vuelve a conectarla desde la sección **Apps** del agente en Agent Studio.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conectores MCP personalizados" icon="plug" href="/ia/conectores-mcp-agentes-gestionados">
+    Conecta cualquier servidor MCP a tus agentes gestionados.
+  </Card>
+  <Card title="Agentes gestionados, IA conversacional y Ask AI" icon="scale-balanced" href="/ia/diferencias-agentes-gestionados-ia-conversacional-ask-ai">
+    Descubre qué producto de IA usar según tu objetivo.
+  </Card>
+</CardGroup>

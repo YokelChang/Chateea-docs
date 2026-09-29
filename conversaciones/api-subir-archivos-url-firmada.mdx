@@ -1,0 +1,111 @@
+---
+title: "API: subir archivos adjuntos con URL firmada"
+description: "Sube archivos adjuntos por API con una URL firmada para enviar mensajes más rápido y con archivos más grandes."
+icon: "cloud-arrow-up"
+---
+
+Si tu equipo técnico usa la API de Chateea para enviar mensajes con archivos adjuntos, esta guía explica cómo subir esos archivos con una **URL firmada**. En lugar de pasar el archivo por los servidores de la aplicación, tu sistema lo envía directo al almacenamiento en la nube mediante una URL segura y temporal. El resultado: subidas más rápidas y estables, y soporte para archivos más grandes, **hasta 100 MB en WhatsApp**.
+
+<Note>
+  Esta guía es para desarrolladores que integran sistemas externos con Chateea. Para obtener tus credenciales de la API y la URL base, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Ventajas
+
+| Ventaja | Detalle |
+| --- | --- |
+| Estabilidad | El archivo nunca se guarda en la memoria del servidor, lo que elimina fallas por falta de memoria. |
+| Archivos más grandes | Hasta 100 MB en WhatsApp y hasta 5 MB en los demás canales. |
+| Rendimiento | La transferencia va directo del cliente al almacenamiento, con menos saltos y menos latencia. |
+| Confiabilidad | Las URL firmadas vencen a los 15 minutos, con errores claros si expiran. |
+| Seguridad | Validación de ruta, control de acceso y verificación del tipo de contenido en varias etapas. |
+
+## El flujo en tres pasos
+
+<Steps>
+  <Step title="Iniciar">
+    Envía los metadatos del archivo (nombre, tamaño y tipo de contenido) para solicitar una URL firmada y la ruta del objeto.
+
+    ```text
+    POST /conversations/messages/upload/initiate
+    ```
+  </Step>
+  <Step title="Subir">
+    Tu cliente sube el archivo directamente a la URL firmada con una petición `PUT`, antes de que venza.
+
+    ```text
+    PUT <url-firmada-recibida-en-el-paso-1>
+    Content-Type: <tipo-de-contenido-del-archivo>
+    ```
+  </Step>
+  <Step title="Completar">
+    Confirma la subida. Chateea verifica el archivo guardado y te devuelve la **URL pública** que usarás en el mensaje.
+
+    ```text
+    POST /conversations/messages/upload/complete
+    ```
+  </Step>
+</Steps>
+
+## Límites de tamaño por canal
+
+| Canal | Tamaño máximo |
+| --- | --- |
+| WhatsApp | 100 MB |
+| Todos los demás canales | 5 MB |
+
+Los archivos que superan el límite se rechazan **antes** de empezar la subida, para no gastar tiempo ni datos.
+
+## Validación del tipo de contenido
+
+El tipo de contenido (MIME) se valida dos veces para bloquear archivos disfrazados o con extensión incorrecta:
+
+- **Al iniciar:** se comprueba que el tipo declarado coincida con la extensión del archivo.
+- **Al completar:** se comprueba que el tipo guardado coincida con el nombre del archivo.
+
+## Seguridad y control de acceso
+
+- Se confirma que la conversación existe y pertenece a tu cuenta.
+- Se verifica que el usuario tenga acceso a esa cuenta.
+- Se valida que la ruta del archivo tenga el formato esperado para la cuenta y la conversación.
+- Las URL firmadas duran 15 minutos para reducir el riesgo de mal uso.
+
+## Errores comunes y cómo resolverlos
+
+| Error | Qué hacer |
+| --- | --- |
+| La URL venció | Repite el paso **Iniciar** para obtener una URL nueva. |
+| Archivo demasiado grande | Reduce el archivo o envíalo por un canal con más capacidad, como WhatsApp. |
+| Tipo de contenido no coincide | Asegúrate de que la extensión y el encabezado `Content-Type` correspondan al archivo real. |
+| Error de permisos o de ruta | Revisa el acceso a la cuenta y los identificadores de la conversación. |
+
+## Recomendaciones de implementación
+
+- Llama a **Iniciar** justo antes de subir, para aprovechar los 15 minutos completos.
+- Envía siempre un encabezado `Content-Type` explícito en el `PUT`, que coincida con el archivo.
+- Guarda en tus registros la ruta del objeto que devuelve **Iniciar**. Te ayudará a diagnosticar problemas.
+- Con archivos grandes, como videos para WhatsApp, evita reintentos innecesarios. Si la subida se estanca cerca del vencimiento, vuelve a iniciar.
+- Valida tamaño y tipo en tu propio sistema antes de iniciar, para mostrar errores más rápido a tus usuarios.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Es obligatorio el paso Completar?">
+    Sí. Es el que verifica el archivo guardado y te devuelve la URL final para usar en el mensaje.
+  </Accordion>
+  <Accordion title="¿Qué pasa si la URL vence a mitad de la subida?">
+    Reinicia el flujo: vuelve a llamar a Iniciar, sube el archivo y completa.
+  </Accordion>
+  <Accordion title="¿El archivo queda público al completar?">
+    El paso Completar devuelve una URL pública para usar en mensajes. Sigue las políticas de manejo de datos de tu negocio al compartirla.
+  </Accordion>
+  <Accordion title="¿Puedo subir cualquier tipo de archivo si cumple el tamaño?">
+    No. Si la extensión y el tipo de contenido no coinciden, la validación lo bloquea.
+  </Accordion>
+  <Accordion title="¿Otros canales además de WhatsApp aceptan 100 MB?">
+    No. Los demás canales tienen un límite de 5 MB.
+  </Accordion>
+  <Accordion title="¿Puedo reutilizar una URL firmada para varios archivos?">
+    No. Cada llamada a Iniciar genera una URL para un archivo, una ruta y un período específicos.
+  </Accordion>
+</AccordionGroup>

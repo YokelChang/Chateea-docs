@@ -1,0 +1,165 @@
+---
+title: "API pública de Agent Studio"
+description: "Lista, administra y ejecuta tus agentes de IA desde tu propio software mediante solicitudes HTTP seguras."
+icon: "code"
+---
+
+La API pública de Agent Studio te permite listar, consultar, administrar y ejecutar tus agentes de IA desde tu propio software, sin entrar a Chateea. Tu aplicación envía solicitudes HTTP seguras, Chateea ejecuta el agente elegido y devuelve la respuesta en JSON estructurado.
+
+Es útil si quieres llevar un agente a tu aplicación móvil, a tu sistema interno o a una automatización externa (Zapier, Make o similares).
+
+<Note>
+  Esta es una función para desarrolladores. Para obtener la URL base de la API de Chateea y confirmar tus credenciales, escribe a soporte de Chateea en **help@chateea.com**.
+</Note>
+
+## Para qué sirve
+
+- **Integrar agentes** en apps móviles, plataformas propias, asistentes de voz o herramientas internas.
+- **Disparar agentes** desde automatizaciones externas.
+- **Centralizar la seguridad** con OAuth 2.0 y tokens con permisos limitados.
+- **Recibir JSON estructurado**, fácil de procesar por otros sistemas sin trabajo extra.
+
+## Requisitos
+
+- Cada solicitud está ligada a **tu cuenta** mediante el parámetro `locationId` (el identificador de tu cuenta).
+- La solicitud debe autenticarse con un token OAuth 2.0 o con un **token de integración privada**.
+- Solo se puede acceder a agentes que estén **activos** en la etapa de **producción**.
+
+## Acciones disponibles
+
+La API cubre el ciclo de vida completo del agente:
+
+| Acción | Tipo de acceso |
+| --- | --- |
+| Crear agente | Escritura |
+| Listar agentes | Lectura |
+| Consultar agente | Lectura |
+| Actualizar agente | Escritura |
+| Actualizar metadatos del agente | Escritura |
+| Eliminar agente | Escritura |
+| Pasar a producción y publicar | Escritura |
+| Ejecutar agente | Escritura |
+
+Los requisitos de permisos, contexto de cuenta y parámetros pueden variar según el endpoint. Algunos endpoints antiguos siguen disponibles pero están marcados como **obsoletos**: para desarrollos nuevos usa siempre los actuales, porque los obsoletos pueden eliminarse en versiones futuras.
+
+## Endpoints principales
+
+### Listar agentes
+
+Devuelve todos los agentes activos de tu cuenta. Útil, por ejemplo, para mostrar un desplegable de agentes en tu app.
+
+```text
+GET /agent-studio/public-api/agents
+Parámetro obligatorio: locationId
+Paginación opcional: limit, offset
+```
+
+### Consultar un agente
+
+Devuelve los metadatos completos de un agente: nombre, estado, nodos de herramientas, variables, etapa del ciclo de vida y más. Útil para revisar sus variables antes de ejecutarlo.
+
+```text
+GET /agent-studio/public-api/agents/{agentId}
+Parámetro obligatorio: locationId
+```
+
+### Ejecutar un agente
+
+Ejecuta el agente y devuelve el resultado completo en un solo JSON.
+
+```text
+POST /agent-studio/public-api/agents/{agentId}/execute
+Cuerpo: { locationId, input, executionId (opcional) }
+```
+
+En la primera llamada no envíes `executionId`. La respuesta te devuelve uno: guárdalo y envíalo en las siguientes llamadas para continuar la misma conversación.
+
+## Autenticación
+
+Tienes dos opciones:
+
+| Método | Cuándo usarlo |
+| --- | --- |
+| **OAuth 2.0** | Aplicaciones que se conectan a varias cuentas o que necesitan el flujo estándar de autorización. Los tokens de acceso son JWT y se renuevan con el flujo estándar de `refresh_token` |
+| **Token de integración privada** | Llamadas de servidor a servidor para tu propia cuenta. Es más simple que OAuth y queda limitado a la cuenta donde lo generaste |
+
+En ambos casos, el token va en el encabezado de autorización:
+
+```text
+Authorization: Bearer {access_token}
+```
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Ten un agente en producción">
+    En **Agentes de IA → Agent Studio**, confirma que el agente que quieres usar está activo y en la etapa de producción.
+  </Step>
+  <Step title="Crea tu credencial">
+    Ve a **Configuración → Integraciones privadas** y crea una integración privada con los permisos de Agent Studio que necesites. Copia el token generado y guárdalo en un lugar seguro. Si vas a usar OAuth, pide a soporte los datos de tu aplicación.
+  </Step>
+  <Step title="Si usas OAuth, obtén el token de acceso">
+    Intercambia el código de autorización por un token de acceso con `grant_type=authorization_code`. Guarda el token de forma segura y renuévalo cuando expire.
+  </Step>
+  <Step title="Prueba la conexión listando tus agentes">
+    ```text
+    curl -H "Authorization: Bearer {token}" \
+      "https://{URL_BASE_API}/agent-studio/public-api/agents?locationId={locationId}"
+    ```
+
+    Revisa la respuesta y guarda el `agentId` de los agentes que vas a ejecutar.
+  </Step>
+  <Step title="Ejecuta el agente">
+    ```text
+    curl -X POST \
+      -H "Authorization: Bearer {token}" \
+      -H "Content-Type: application/json" \
+      -d '{ "locationId": "abc123", "input": { "prompt": "Escribe un anuncio de Facebook para plomeros" } }' \
+      "https://{URL_BASE_API}/agent-studio/public-api/agents/{agentId}/execute"
+    ```
+
+    Guarda el `executionId` que recibes si necesitas una conversación de varios turnos.
+  </Step>
+</Steps>
+
+<Warning>
+  No llames a la API desde JavaScript del navegador. Haz las solicitudes siempre desde tu servidor para no exponer el token.
+</Warning>
+
+## Límites y comportamiento
+
+| Aspecto | Detalle |
+| --- | --- |
+| Límite de solicitudes | 300 solicitudes por minuto por cuenta, sumando todos los endpoints de Agent Studio |
+| Respuestas parciales (streaming) | No disponibles: la ejecución devuelve un solo JSON al terminar |
+| Vigencia de `executionId` | Expira tras 30 minutos de inactividad. Después inicia una sesión nueva |
+| Falta `locationId` | La API responde con error HTTP 400 |
+| Alcance del token de integración privada | Solo la cuenta donde se generó |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿El agente tiene que estar en producción?">
+    Sí. Solo los agentes activos en la etapa de producción son accesibles por la API pública.
+  </Accordion>
+  <Accordion title="¿Puedo recibir la respuesta mientras se genera?">
+    Todavía no. El endpoint de ejecución devuelve un único objeto JSON cuando el agente termina.
+  </Accordion>
+  <Accordion title="¿OAuth admite tokens de renovación?">
+    Sí. Usa el flujo estándar de OAuth 2.0 con `refresh_token` para renovar el acceso sin intervención del usuario.
+  </Accordion>
+  <Accordion title="¿Cuánto cuesta ejecutar un agente por API?">
+    Lo mismo que ejecutarlo desde Chateea: Agent Studio se cobra por uso desde la billetera de tu cuenta. Revisa [cómo se cobra el uso de la IA](/ia/como-se-cobra-la-ia).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Agentes personalizados" icon="wand-magic-sparkles" href="/ia/agentes-personalizados">
+    Crea agentes con tus instrucciones y tu base de conocimiento.
+  </Card>
+  <Card title="Integraciones privadas" icon="key" href="/integraciones/integraciones-privadas">
+    Genera tokens para conectar tu software con Chateea.
+  </Card>
+</CardGroup>

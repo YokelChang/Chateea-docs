@@ -1,0 +1,113 @@
+---
+title: "Acción Generar informe de auditoría de marketing"
+description: "Crea automáticamente una auditoría de marketing para cada prospecto y envíale el enlace por correo o SMS desde un flujo."
+icon: "chart-line"
+---
+
+La acción **Generar informe de auditoría de marketing** (Generate Marketing Audit Report) crea automáticamente un informe de auditoría para cada prospecto que entra en un flujo de trabajo. Después, puedes enviarle el enlace del informe por correo o SMS con un mensaje personalizado, sin preparar nada a mano.
+
+Es útil si tu negocio ofrece servicios a otras empresas: captas un lead, generas su auditoría al instante y le entregas valor desde el primer contacto, lo que suele mejorar la respuesta y la conversión.
+
+## Para qué sirve
+
+- **Proceso completo sin pasos manuales:** de la captura del lead a la auditoría y al mensaje de seguimiento.
+- **Mensajes personalizados:** incluyes el nombre del negocio del prospecto y el enlace a su propio informe.
+- **Respuesta inmediata:** el prospecto recibe algo útil a los pocos minutos de dejar sus datos.
+- **Escala:** funciona igual con diez prospectos que con mil.
+- **Más confianza:** entregar un diagnóstico concreto antes de vender genera credibilidad.
+
+## Cómo funciona
+
+Cuando un contacto llega a la acción, Chateea genera un informe único para ese prospecto y crea dos valores personalizados que puedes usar en los pasos siguientes del mismo flujo:
+
+| Valor personalizado | Qué contiene |
+| --- | --- |
+| **Enlace del informe web del prospecto** (Prospect Web Report Link) | El enlace directo al informe de auditoría generado. |
+| **Nombre del negocio del prospecto** (Prospect Business Name) | El nombre del negocio del prospecto, para personalizar el mensaje. |
+
+La acción funciona con leads de cualquier origen: formularios, anuncios, importaciones u otros disparadores.
+
+## Cómo configurarla
+
+<Steps>
+  <Step title="Abre tu flujo">
+    Ve a **Automatización → Flujos de trabajo** y crea un flujo nuevo o abre uno existente.
+  </Step>
+  <Step title="Elige el disparador">
+    Añade el disparador que inicia el proceso, por ejemplo **Formulario enviado** o **Contacto creado**.
+  </Step>
+  <Step title="Agrega la acción de auditoría">
+    Haz clic en **+ Agregar acción** y selecciona **Generar informe de auditoría de marketing**.
+  </Step>
+  <Step title="Agrega el mensaje de seguimiento">
+    Debajo, añade una acción **Enviar correo** o **Enviar SMS**.
+  </Step>
+  <Step title="Inserta los valores del informe">
+    En el editor del mensaje, inserta **Enlace del informe web del prospecto** y **Nombre del negocio del prospecto** desde el selector de valores personalizados.
+  </Step>
+  <Step title="Personaliza el texto">
+    Ajusta el mensaje a tu estilo y a tu oferta.
+  </Step>
+  <Step title="Guarda y publica">
+    Guarda el flujo y publícalo.
+  </Step>
+</Steps>
+
+<Warning>
+  La acción de auditoría debe ir **antes** de cualquier mensaje que use sus valores. Si el correo o el SMS se envía antes, los valores estarán vacíos.
+</Warning>
+
+## Ejemplos de mensajes
+
+Correo:
+
+```text
+Hola, equipo de {{prospect_business_name}}:
+
+Preparamos una auditoría de marketing gratuita para su negocio.
+Pueden verla aquí: {{prospect_web_report_link}}
+```
+
+SMS:
+
+```text
+Hola, {{prospect_business_name}}. Revisa tu auditoría gratuita: {{prospect_web_report_link}}
+```
+
+<Tip>
+  Acompaña el enlace con una invitación concreta, por ejemplo agendar una llamada de 15 minutos para revisar los resultados. Así conviertes el informe en una conversación de ventas.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Cuándo se llenan los valores personalizados?">
+    Justo después de que se ejecuta la acción Generar informe de auditoría de marketing dentro del flujo.
+  </Accordion>
+  <Accordion title="¿Puedo usar estos valores fuera del flujo?">
+    Se generan dentro del flujo, así que están pensados para usarse en los pasos posteriores de ese mismo flujo.
+  </Accordion>
+  <Accordion title="¿Qué pasa si pongo el correo antes de la acción de auditoría?">
+    Los valores no estarán disponibles y el mensaje saldrá sin el enlace ni el nombre del negocio. Coloca siempre la auditoría primero.
+  </Accordion>
+  <Accordion title="¿Funciona con leads de cualquier origen?">
+    Sí. Puedes usarla con leads de formularios, anuncios, importaciones y cualquier otro disparador.
+  </Accordion>
+  <Accordion title="¿El enlace es distinto para cada prospecto?">
+    Sí. Cada informe tiene un enlace único para ese prospecto.
+  </Accordion>
+  <Accordion title="¿Puedo personalizar el contenido del informe?">
+    Las opciones de personalización dependen de la configuración de la función de auditoría de marketing. Si no ves la acción o necesitas ayuda para configurarla, escribe a soporte de Chateea en **help@chateea.com**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lista de acciones" icon="list" href="/automatizaciones/lista-de-acciones">
+    Todas las acciones disponibles en los flujos de trabajo.
+  </Card>
+  <Card title="Primeros pasos con flujos" icon="bolt" href="/automatizaciones/primeros-pasos-con-flujos-de-trabajo">
+    Crea tu primera automatización paso a paso.
+  </Card>
+</CardGroup>

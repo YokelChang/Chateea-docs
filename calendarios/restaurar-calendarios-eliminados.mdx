@@ -1,0 +1,59 @@
+---
+title: "Restaurar calendarios eliminados"
+description: "Recupera un calendario borrado y sus citas desde el registro de auditoría."
+icon: "rotate-left"
+---
+
+Si eliminaste un calendario por error, puedes recuperarlo junto con sus citas desde el registro de auditoría. Al borrar un calendario también se borran todas sus citas, así que esta función te permite deshacer la acción y recuperar tanto el calendario como las citas que se eliminaron con él.
+
+## Restaurar un calendario
+
+<Steps>
+  <Step title="Abre el registro de auditoría">
+    Ve a **Configuración → Registros de auditoría**.
+  </Step>
+  <Step title="Busca la eliminación">
+    Localiza la entrada que corresponde al calendario eliminado.
+  </Step>
+  <Step title="Restaura">
+    Haz clic en los tres puntos junto a la entrada y selecciona **Restaurar**.
+  </Step>
+</Steps>
+
+El calendario vuelve a estar disponible con todas las citas que se borraron al eliminarlo.
+
+## Qué citas se recuperan
+
+- Al eliminar un calendario, se eliminan también todas sus citas.
+- Se restauran las citas eliminadas dentro de un margen de 30 minutos antes o después de la eliminación del calendario.
+- Las citas eliminadas fuera de ese margen no se recuperan.
+
+Así se restauran solo las citas que se borraron como consecuencia de eliminar el calendario, y no las que alguien borró a propósito en otro momento.
+
+**Ejemplo**: eliminas un calendario el 15 de mayo a las 10:00. Sus citas se borran en ese mismo momento, así que al restaurarlo vuelven todas. Pero si habías borrado manualmente una cita de ese calendario el 15 de mayo a las 9:00, esa cita no se restaura.
+
+<Warning>
+  Los registros de auditoría se guardan durante un máximo de 60 días. Pasado ese plazo ya no podrás restaurar el calendario, así que hazlo cuanto antes.
+</Warning>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo restaurar un calendario eliminado hace más de 60 días?">
+    No. Después de 60 días el registro de auditoría ya no está disponible y no se puede restaurar.
+  </Accordion>
+  <Accordion title="¿Se recupera una cita que borré antes de eliminar el calendario?">
+    Solo si la borraste dentro de los 30 minutos anteriores a la eliminación del calendario. Si fue antes, no se recupera.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Crea tu calendario" icon="calendar" href="/calendarios/introduccion">
+    Primeros pasos con los calendarios.
+  </Card>
+  <Card title="Permisos de usuario en calendarios" icon="user-lock" href="/calendarios/permisos-de-usuario-en-calendarios">
+    Controla quién puede eliminar calendarios y citas.
+  </Card>
+</CardGroup>

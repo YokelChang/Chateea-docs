@@ -1,0 +1,90 @@
+---
+title: "Disparador: Checkout abandonado en tiendas de comercio electrónico"
+description: "Recupera ventas con un único disparador para carritos abandonados en tu tienda de Chateea o en Shopify."
+icon: "cart-shopping"
+---
+
+El disparador **Checkout abandonado** (Abandoned Checkout) detecta cuando un comprador agrega productos al carrito, escribe un correo válido y no termina de pagar dentro del tiempo que tú definas. Funciona tanto con tu tienda de Chateea como con tiendas externas conectadas (por ejemplo, Shopify), así que tienes un único punto de entrada para todas tus campañas de recuperación de ventas.
+
+## Beneficios
+
+- **Un solo disparador para todas tus tiendas:** no necesitas disparadores separados para la tienda de Chateea y para Shopify.
+- **Segmentación precisa:** filtra por valor del carrito, país, productos y origen del pedido.
+- **Tiempo a tu medida:** decides cuántos minutos deben pasar para considerar un carrito abandonado, y así evitas recordatorios demasiado pronto o demasiado tarde.
+- **Preparado para crecer:** admitirá más plataformas externas a medida que se integren.
+
+<Note>
+  El antiguo disparador de Shopify para carritos abandonados aparece ahora como **Carrito abandonado de Shopify (se retirará pronto)**. Tus flujos actuales siguen funcionando, pero para automatizaciones nuevas usa **Tiendas de comercio electrónico → Checkout abandonado**.
+</Note>
+
+## Cómo configurarlo
+
+<Steps>
+  <Step title="Crea el flujo">
+    Ve a **Automatización → Flujos de trabajo**, haz clic en **Crear flujo de trabajo** y elige **Empezar desde cero**.
+  </Step>
+  <Step title="Agrega el disparador">
+    Haz clic en **Agregar disparador**. En la sección **Tiendas de comercio electrónico**, selecciona **Checkout abandonado**.
+  </Step>
+  <Step title="Ponle un nombre">
+    Deja el nombre por defecto o escribe uno más claro si vas a tener varios disparadores, por ejemplo "Checkout abandonado: carritos grandes".
+  </Step>
+  <Step title="Define el tiempo de abandono">
+    En **Duración (en minutos)**, indica cuánto debe esperar el sistema antes de marcar el checkout como abandonado.
+  </Step>
+  <Step title="Agrega filtros (opcional)">
+    Usa el desplegable **Seleccionar** para afinar el disparador con los filtros de la tabla de abajo.
+  </Step>
+  <Step title="Agrega las acciones de recuperación">
+    Guarda el disparador y añade tus mensajes de seguimiento: correo, SMS, WhatsApp, llamada, tarea, etc.
+  </Step>
+</Steps>
+
+### Filtros disponibles
+
+| Filtro | Para qué sirve |
+| --- | --- |
+| Duración (minutos) | Tiempo exacto de espera antes de considerar el carrito abandonado. |
+| Valor del carrito | Mínimo, máximo o rango, para actuar solo con carritos de cierto importe. |
+| País | Limita la automatización a compradores de ciertos países (útil por envíos o impuestos). |
+| Productos globales | Selección múltiple: el disparador solo se activa si esos productos están en el carrito. |
+| Origen del pedido | **Tienda** (tu tienda de Chateea) o **Externo**. |
+| Suborigen | Aparece si el origen es Externo. Hoy puedes elegir Shopify. |
+| Nombre de la tienda | Limita el disparador a una tienda concreta. |
+
+### Segmentar con una condición (opcional)
+
+Después del disparador puedes añadir una acción **Si/Si no** con condiciones como **Valor del carrito**, **Origen del pedido** o **Suborigen**. Así envías mensajes distintos según el tipo de carrito o la tienda de origen, en lugar de mandar el mismo mensaje a todos.
+
+## Consejos para recuperar más ventas
+
+- En tiendas de productos económicos y compra rápida, suelen funcionar ventanas de 15 a 30 minutos. En productos caros o hechos a pedido, prueba con varias horas.
+- Ofrece un incentivo distinto según el valor del carrito, por ejemplo envío gratis para carritos grandes.
+- Usa el elemento **Carrito de compras** del editor de correos para mostrar automáticamente los productos abandonados.
+- Combina con una acción de espera y un segundo recordatorio para quienes no reaccionan al primero.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Funciona si el comprador nunca escribe su correo?">
+    No. Se necesita un correo electrónico para marcar el checkout como abandonado e iniciar el flujo.
+  </Accordion>
+  <Accordion title="¿Cuál es el mejor tiempo de abandono?">
+    Depende de tu negocio. Empieza con 15 a 30 minutos para compras rápidas y con varias horas para productos de alto valor, y prueba qué ventana convierte mejor.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el mensaje según el valor del carrito?">
+    Sí. Usa el filtro **Valor del carrito** o una acción Si/Si no después del disparador.
+  </Accordion>
+  <Accordion title="¿Mis flujos antiguos de Shopify dejarán de funcionar?">
+    No. Siguen funcionando, pero te recomendamos migrarlos al nuevo disparador.
+  </Accordion>
+  <Accordion title="¿Puedo activarlo solo para ciertos productos?">
+    Sí. Usa el filtro **Productos globales** y elige uno o varios productos.
+  </Accordion>
+  <Accordion title="¿Puedo enviar SMS a clientes de una tienda de Shopify?">
+    Sí. Una vez que el disparador se activa, puedes usar cualquier acción del flujo, sin importar el tipo de tienda.
+  </Accordion>
+  <Accordion title="¿Dónde veo los resultados de la recuperación?">
+    Revisa las estadísticas del flujo para ver envíos, aperturas y clics, y la sección **Pagos → Pedidos** para ver los pedidos recuperados.
+  </Accordion>
+</AccordionGroup>

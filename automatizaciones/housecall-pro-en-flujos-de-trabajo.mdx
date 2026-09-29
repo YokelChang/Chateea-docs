@@ -1,0 +1,166 @@
+---
+title: "Housecall Pro en flujos de trabajo"
+description: "Automatiza confirmaciones, reseñas y clientes con los trabajos, presupuestos y leads de Housecall Pro."
+icon: "screwdriver-wrench"
+---
+
+Housecall Pro es una plataforma de gestión de servicios de campo que usan los negocios de servicios para el hogar (climatización, plomería, electricidad, limpieza, jardinería, control de plagas, etc.) para organizar trabajos, clientes, agenda, presupuestos, facturas y pagos. Al conectarla con tus flujos de trabajo de Chateea, cada trabajo agendado puede enviar una confirmación, cada trabajo terminado puede pedir una reseña, cada cambio de horario puede avisar al cliente y al equipo, y los leads de tu web pueden llegar a Housecall Pro como clientes listos para cotizar.
+
+## Cómo funciona la integración
+
+- **Disparadores (de Housecall Pro a Chateea):** nueve disparadores para el ciclo de vida de trabajos, presupuestos, leads y clientes.
+- **Acciones (de Chateea a Housecall Pro):** catorce acciones para clientes, direcciones, trabajos, citas, presupuestos y leads.
+
+<Note>
+  Los disparadores y las acciones de Housecall Pro son **premium**: cada ejecución se descuenta de la billetera de tu cuenta. Consulta las tarifas vigentes en **Configuración → Facturación** o en [chateea.com/precios](https://chateea.com/precios). El uso de tu plan de Housecall Pro lo cobra Housecall Pro directamente.
+</Note>
+
+## Conectar Housecall Pro
+
+La conexión se hace con una clave de API. Para generarla, entra en Housecall Pro, haz clic en el ícono **My Apps** arriba a la derecha, elige **Go to App Store**, abre la aplicación **API Key Management**, haz clic en **Generate API Key**, ponle un nombre (por ejemplo "Flujos de Chateea") y asigna permisos de **Full Access**. Copia el valor.
+
+<Steps>
+  <Step title="Agrega un paso de Housecall Pro">
+    Ve a **Automatización → Flujos de trabajo**, abre o crea un flujo y busca **Housecall Pro** en la pestaña **Aplicaciones**. Elige un disparador o una acción.
+  </Step>
+  <Step title="Conecta tu cuenta">
+    Haz clic en **Conectar tu cuenta**, pega la clave de API en la ventana de conexión y haz clic en **Guardar**. El panel mostrará **Conectado**.
+  </Step>
+</Steps>
+
+También puedes conectarla desde **Configuración → Integraciones**: busca **Housecall Pro**, haz clic en **Conectar**, pega la clave y guarda.
+
+## Disparadores
+
+Los disparadores consultan Housecall Pro de forma periódica y procesan en orden los registros nuevos desde la última consulta. Los de creación revisan cada **5 minutos**; los de agenda, finalización y cancelación, cada **10 minutos**.
+
+### Trabajos
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Trabajo creado** (5 min) | Cuando se crea un trabajo. Devuelve el trabajo con los datos del cliente. |
+| **Trabajo agendado** (10 min) | Cuando se agenda un trabajo o cambia su horario. |
+| **Trabajo terminado** (10 min) | Cuando se marca un trabajo como completado. Ideal para reseñas, recibos, encuestas y ventas adicionales. |
+| **Trabajo cancelado** (10 min) | Cuando se cancela un trabajo. Combínalo con mensajes para reagendar y avisos al equipo. |
+
+### Presupuestos
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Presupuesto creado** (5 min) | Cuando se crea un presupuesto. |
+| **Presupuesto agendado** (10 min) | Cuando se agenda o reagenda la visita del presupuesto. |
+| **Presupuesto terminado** (10 min) | Cuando se completa la visita del presupuesto, útil para enviar la cotización final al cliente. |
+
+### Leads y clientes
+
+| Disparador | Cuándo se activa |
+| --- | --- |
+| **Lead creado** (5 min) | Cuando se registra un lead nuevo. Ideal para calificarlo o asignarlo. |
+| **Cliente creado** (5 min) | Cuando se crea un cliente, ya sea a mano, por importación o desde otra integración. |
+
+## Acciones
+
+### Clientes
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear cliente** | Crea un cliente. Obligatorios: nombre y apellido. Opcionales: correo, empresa, celular y teléfono fijo. Devuelve el ID del cliente. |
+| **Obtener detalles del cliente** | Trae el registro completo de un cliente por su ID. |
+| **Actualizar cliente** | Actualiza los datos de un cliente existente. |
+| **Buscar clientes** | Busca clientes por correo, teléfono, nombre u otros datos. Úsala antes de crear para evitar duplicados. |
+| **Obtener dirección del cliente** | Trae una dirección guardada de un cliente. |
+| **Crear dirección del cliente** | Agrega una dirección a un cliente existente. |
+
+### Trabajos
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear trabajo** | Crea un trabajo para un cliente existente. |
+| **Obtener detalles del trabajo** | Trae el registro completo de un trabajo por su ID. |
+| **Crear cita del trabajo** | Agenda una cita en un trabajo existente. |
+| **Actualizar cita del trabajo** | Cambia el horario, la asignación o los detalles de una cita. |
+
+### Presupuestos y leads
+
+| Acción | Para qué sirve |
+| --- | --- |
+| **Crear presupuesto** | Crea un presupuesto para un cliente existente. |
+| **Obtener presupuesto** | Trae un presupuesto por su ID. |
+| **Crear lead** | Crea un lead con datos del flujo. |
+| **Obtener lead** | Trae un lead por su ID. |
+
+## Ejemplo: disparador Trabajo agendado
+
+<Steps>
+  <Step title="Agrega el disparador">
+    En el flujo, haz clic en **Agregar disparador**, entra en **Aplicaciones**, busca **Housecall Pro** y elige **Trabajo agendado**.
+  </Step>
+  <Step title="Configúralo">
+    Elige la cuenta conectada (se selecciona sola si solo tienes una), ponle un nombre como "Trabajo agendado o reagendado" y agrega filtros si hace falta, por ejemplo por tipo de trabajo, etiqueta o técnico asignado.
+  </Step>
+  <Step title="Pruébalo">
+    Haz clic en **Buscar registros nuevos**, elige uno en **Registros: seleccionar referencia de asignación** y confirma que ves los campos del trabajo y del cliente (ID del trabajo, número de factura, descripción, nombre, correo y teléfonos del cliente). Haz clic en **Guardar disparador**.
+  </Step>
+</Steps>
+
+Si no aparecen registros, agenda un trabajo (o márcalo como terminado, según el disparador) con un cliente de prueba en Housecall Pro y vuelve a buscar.
+
+## Ejemplo: acción Crear cliente
+
+<Steps>
+  <Step title="Agrega la acción">
+    En el flujo, haz clic en **Agregar**, entra en **Aplicaciones**, elige **Housecall Pro** y luego **Crear cliente**.
+  </Step>
+  <Step title="Completa los campos">
+    - **Nombre** y **Apellido** (obligatorios): por ejemplo `{{contact.first_name}}` y `{{contact.last_name}}`.
+    - **Correo** y **Empresa** (opcionales).
+    - **Celular** y **Teléfono fijo** (opcionales): exactamente 10 dígitos, solo números (por ejemplo `5125551234`). Los valores con otro formato se rechazan antes de enviar la llamada.
+  </Step>
+  <Step title="Prueba">
+    Haz clic en **Probar acción**. Es una llamada real que crea un cliente en Housecall Pro, así que usa un nombre claramente de prueba y bórralo después. El ID del nuevo cliente aparece en la respuesta. Guarda la acción y prueba el flujo completo antes de publicar.
+  </Step>
+</Steps>
+
+## Ejemplos de uso
+
+### Confirmación de trabajo agendado
+
+- **Disparador:** Trabajo agendado.
+- **Acciones:** enviar la confirmación por SMS o correo con el horario, buscar o crear el contacto (por correo), etiquetarlo con el tipo de trabajo y guardar el ID del trabajo en un campo personalizado.
+
+### Aviso de cambio de horario
+
+**Trabajo agendado** también se activa cuando se reagenda. Agrega una condición que compruebe si el ID del trabajo ya estaba guardado en el contacto: si es así, es un cambio de horario y avisas al cliente y al equipo del nuevo horario; si no, sigues el flujo de confirmación de trabajo nuevo.
+
+### Reseña y recibo al terminar
+
+- **Disparador:** Trabajo terminado.
+- **Acciones:** enviar un mensaje de agradecimiento con un enlace para dejar una reseña y ramificar según el pago: si está pagado, enviar el recibo; si no, un recordatorio amable con enlace de pago. Opcionalmente, actualiza la etapa del contacto para campañas posteriores.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Trabajo agendado se activa con reservas nuevas y con cambios de horario?">
+    Sí. Se activa siempre que se fija o cambia la fecha u hora de un trabajo. Usa filtros o una condición para distinguir ambos casos.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre Trabajo agendado y Trabajo terminado?">
+    **Trabajo agendado** marca el inicio del ciclo (reserva o cambio de horario) y **Trabajo terminado** el final (cuando el técnico lo marca como completado). Ambos devuelven los mismos datos del trabajo y del cliente.
+  </Accordion>
+  <Accordion title="¿Necesito el plan MAX de Housecall Pro?">
+    No. Los webhooks nativos de Housecall Pro son del plan MAX, pero esta integración usa una clave de API y funciona en los planes de pago que permiten claves con acceso completo. Si tienes dudas, confírmalo con el soporte de Housecall Pro.
+  </Accordion>
+  <Accordion title="¿Por qué falla Crear cliente con el teléfono?">
+    El celular y el teléfono fijo deben tener exactamente 10 dígitos, solo números. Revisa el formato del campo que asignaste.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Probar acciones de integraciones" icon="flask" href="/automatizaciones/probar-acciones-de-integraciones">
+    Valida cada acción con datos reales antes de publicar.
+  </Card>
+  <Card title="Cal.com en flujos de trabajo" icon="calendar-check" href="/automatizaciones/cal-com-en-flujos-de-trabajo">
+    Automatiza reservas, cancelaciones y reprogramaciones.
+  </Card>
+</CardGroup>

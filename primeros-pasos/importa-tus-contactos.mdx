@@ -1,10 +1,10 @@
 ---
 title: "Importa tus contactos"
-description: "Trae tu base de clientes a Chateea sin perder datos ni ensuciar tus reportes."
-icon: "users"
+description: "Trae tu base de clientes completa y evita los errores de importación que después son caros de corregir."
+icon: "file-import"
 ---
 
-Tu base de clientes actual es probablemente el activo más valioso que tienes. Esta guía te explica cómo traerla completa y, sobre todo, cómo evitar los errores que después son muy caros de deshacer.
+Tu base de clientes actual es probablemente el activo más valioso que tienes. Importarla a Chateea te permite escribirles, segmentarlos y automatizar el seguimiento desde el primer día. Esta guía te explica cómo traerla completa y, sobre todo, cómo evitar los errores que después son muy caros de deshacer.
 
 <Warning>
   **Lee la sección de origen antes de importar.** Es el único paso de esta guía que no se arregla fácilmente después. Si importas miles de contactos sin marcar de dónde vienen, pierdes la capacidad de medir qué canal genera tus ventas, y recuperarla implica revisar contacto por contacto.
@@ -12,7 +12,7 @@ Tu base de clientes actual es probablemente el activo más valioso que tienes. E
 
 ## Prepara tu archivo
 
-Chateea importa archivos en formato **CSV**. Si tienes los datos en Excel o Google Sheets, expórtalos como CSV antes de empezar.
+Chateea importa archivos en formato **CSV** de hasta **50 MB**. Si tienes los datos en Excel o Google Sheets, expórtalos como CSV antes de empezar. Dentro del importador puedes pulsar **Descargar archivo de ejemplo** para ver la estructura con los campos estándar.
 
 ### Estructura recomendada
 
@@ -28,6 +28,21 @@ Chateea importa archivos en formato **CSV**. Si tienes los datos en Excel o Goog
 | Ciudad y País | Opcional | Para segmentar por zona |
 
 \*Necesitas al menos teléfono **o** correo. Un contacto sin ninguno de los dos no se puede contactar y solo ocupa espacio.
+
+### Campos estándar que puedes importar
+
+Además de nombre, teléfono y correo, el importador reconoce estos campos estándar. Todo lo que no esté aquí lo puedes guardar en un campo personalizado.
+
+| Datos de la persona | Datos de contacto | Ubicación y otros |
+| --- | --- | --- |
+| ID del contacto | Teléfono | Dirección |
+| Nombre completo | Teléfonos adicionales | Ciudad |
+| Nombre | Correo | Estado o provincia |
+| Apellido | Correos adicionales | Código postal |
+| Fecha de nacimiento | Sitio web | País |
+| Propietario del contacto | No molestar (DND) | Zona horaria |
+| Origen del contacto | Nombre de la empresa | Notas |
+| Tipo de contacto | | |
 
 ### Formato de teléfonos
 
@@ -55,11 +70,11 @@ Este detalle rompe más importaciones que cualquier otro. Los teléfonos deben i
 
 ### Limpia antes de importar
 
-- Elimina filas duplicadas
-- Borra contactos sin teléfono ni correo
-- Quita espacios al inicio y al final de las celdas
-- Unifica mayúsculas en nombres
-- Revisa correos evidentemente inválidos
+- Elimina filas duplicadas.
+- Borra contactos sin teléfono ni correo.
+- Quita espacios al inicio y al final de las celdas.
+- Unifica mayúsculas en nombres.
+- Revisa correos evidentemente inválidos.
 
 ## Marca el origen de cada contacto
 
@@ -81,7 +96,10 @@ importacion-2026-08-base-instagram
 
 <Steps>
   <Step title="Abre el importador">
-    Ve a **Contactos** y pulsa **Importar**.
+    Ve a **Contactos** y pulsa **Importar** (el ícono de una flecha que apunta hacia una caja).
+  </Step>
+  <Step title="Elige qué vas a importar">
+    Selecciona **Contactos** y pulsa **Siguiente**. Confirma el formato del archivo.
   </Step>
   <Step title="Sube el archivo CSV">
     Arrastra el archivo o selecciónalo desde tu computadora.
@@ -89,17 +107,18 @@ importacion-2026-08-base-instagram
   <Step title="Empareja las columnas">
     Chateea te muestra cada columna de tu archivo junto a un menú para indicar a qué campo corresponde.
 
-    Si una columna no tiene un campo equivalente, puedes crear un **campo personalizado** en ese momento en vez de descartar el dato.
+    Si una columna no tiene un campo equivalente, tienes dos opciones:
+
+    - Crear un **campo personalizado** en ese momento, para no perder el dato.
+    - Marcar **No importar los datos de las columnas sin emparejar**, si esa información no te sirve.
   </Step>
   <Step title="Define cómo tratar los duplicados">
-    - **Actualizar**: completa los datos que faltan y conserva lo que ya tenías
-    - **Omitir**: deja el contacto existente intacto
-    - **Crear de todos modos**: rara vez es lo que quieres, genera duplicados
+    Decide si la importación debe crear contactos nuevos, actualizar los que ya existen o ambas cosas. En la mayoría de los casos conviene **crear y actualizar**: completas los datos que faltan sin generar registros repetidos.
 
-    En la mayoría de los casos, **Actualizar** es la opción correcta.
+    La forma en que Chateea detecta duplicados (por correo, por teléfono o ambos) depende de las preferencias de duplicados de tu cuenta.
   </Step>
-  <Step title="Aplica etiquetas a toda la importación">
-    Agrega aquí la etiqueta de origen que definiste.
+  <Step title="Completa los detalles de la importación">
+    Ponle un nombre a la importación, agrega la **etiqueta de origen** que definiste, crea o elige una lista si quieres agruparlos y revisa las preferencias de consentimiento para mensajes.
   </Step>
   <Step title="Haz una prueba con 10 contactos primero">
     Antes de importar miles de registros, crea un archivo con 10 y procésalo.
@@ -107,23 +126,40 @@ importacion-2026-08-base-instagram
     Si algo quedó mal, corregir diez contactos toma un minuto. Corregir cinco mil, no.
   </Step>
   <Step title="Importa el archivo completo">
-    Con la prueba validada, sube el archivo definitivo.
+    Con la prueba validada, sube el archivo definitivo y pulsa **Importación masiva** (Bulk Import). Espera a que termine el proceso antes de trabajar con esos contactos.
+  </Step>
+</Steps>
+
+## Crear campos personalizados antes de importar
+
+Si ya sabes que tu archivo trae datos propios de tu negocio (tipo de cliente, presupuesto, fecha de última compra), puedes dejar los campos listos antes de importar.
+
+<Steps>
+  <Step title="Abre la configuración de campos">
+    Ve a **Configuración → Campos personalizados**.
+  </Step>
+  <Step title="Agrega el campo">
+    Pulsa **Agregar campo** y elige el tipo que necesitas (texto, número, fecha, lista desplegable, etc.).
+  </Step>
+  <Step title="Completa los detalles">
+    Define el nombre, el grupo al que pertenece y, si quieres, un texto de ejemplo. Pulsa **Guardar**.
   </Step>
 </Steps>
 
 ## Después de importar
 
 <AccordionGroup>
-  <Accordion title="Revisa el reporte de la importación">
+  <Accordion title="Revisa el resultado de la importación">
     Chateea te indica cuántos contactos se crearon, cuántos se actualizaron y cuántos fallaron. Descarga el archivo de errores, corrígelo y vuelve a subir solo esas filas.
   </Accordion>
-
   <Accordion title="Verifica una muestra al azar">
     Abre cinco o seis contactos de distintas partes del archivo y confirma que quedaron como esperabas.
   </Accordion>
-
   <Accordion title="Crea una lista inteligente con la etiqueta de importación">
-    Así puedes trabajar ese grupo por separado y compararlo con otros orígenes.
+    Así puedes trabajar ese grupo por separado y compararlo con otros orígenes. Consulta [Listas inteligentes](/contactos/listas-inteligentes).
+  </Accordion>
+  <Accordion title="Usa las acciones masivas">
+    Desde **Contactos**, filtra por la etiqueta de importación, marca las casillas de los contactos y usa los botones de acción masiva para agregarlos a una automatización, enviarles un SMS o un correo, o agregar y quitar etiquetas.
   </Accordion>
 </AccordionGroup>
 
@@ -145,6 +181,11 @@ Si prefieres no recibir estos mensajes, responde BAJA y no volvemos a escribirte
 
 ## Siguiente paso
 
-<Card title="Invita a tu equipo" icon="user-plus" href="/primeros-pasos/invita-a-tu-equipo">
-  Define quién entra, qué puede ver y qué puede hacer.
-</Card>
+<CardGroup cols={2}>
+  <Card title="Crear y gestionar contactos" icon="address-book" href="/primeros-pasos/crear-y-gestionar-contactos">
+    Agrega, edita y elimina contactos uno por uno.
+  </Card>
+  <Card title="Invita a tu equipo" icon="user-plus" href="/primeros-pasos/invita-a-tu-equipo">
+    Define quién entra, qué puede ver y qué puede hacer.
+  </Card>
+</CardGroup>
