@@ -1,0 +1,87 @@
+---
+title: "Permisos al instalar apps del Marketplace"
+description: "Entiende la pantalla de consentimiento OAuth: qué permisos pide cada app, cuáles son delicados y cómo autorizar con seguridad."
+icon: "shield-check"
+---
+
+Cuando instalas una app del **Marketplace de aplicaciones** o autorizas una integración externa, Chateea te muestra una pantalla de consentimiento antes de dar acceso. En ella ves qué app es, qué permisos pide y si alguno es delicado. Así decides con información y evitas que una aplicación acceda a más datos de los que necesita.
+
+## Qué es OAuth y por qué importa
+
+OAuth es el sistema de autorización seguro que usan las apps para pedir acceso a partes concretas de tu cuenta de Chateea, como contactos, calendarios, conversaciones o flujos de trabajo. En lugar de compartir contraseñas, apruebas una lista de permisos que puedes revocar cuando quieras.
+
+La pantalla de consentimiento te muestra exactamente qué estás autorizando, de forma parecida a cuando una aplicación te pide permiso para usar tu cuenta de Google.
+
+## Qué muestra la pantalla de consentimiento
+
+Al hacer clic en el enlace de instalación de una app, verás:
+
+1. El nombre y el logotipo de la app.
+2. La lista completa de permisos (scopes) que solicita.
+3. Una explicación de para qué sirve cada permiso.
+4. Advertencias destacadas si pide permisos delicados o de alto riesgo.
+
+Esto aplica tanto a las apps públicas del Marketplace como a las apps privadas que usan OAuth.
+
+## Entender los permisos
+
+Cada permiso indica a qué tiene acceso la app y si solo puede ver datos o también cambiarlos. Algunos ejemplos:
+
+| Permiso | Qué permite |
+| --- | --- |
+| **Contactos: solo lectura** | Ver tu lista de contactos |
+| **Conversaciones: escritura** | Enviar mensajes en tu nombre |
+| **Cuenta: solo lectura** | Ver los datos de tu cuenta |
+| **Usuarios: escritura** | Crear usuarios o cambiar los permisos de tu equipo |
+
+<Warning>
+  Si una app pide permisos delicados, como crear o editar usuarios (**Usuarios: escritura**) o modificar los datos de tu cuenta, verás una advertencia en negrita antes de continuar. Detente y confirma que confías en la app y que realmente necesita ese nivel de acceso.
+</Warning>
+
+## Buenas prácticas antes de autorizar
+
+- **Lee los permisos** con calma. No autorices a ciegas.
+- **Instala solo apps de desarrolladores de confianza.** Revisa sus reseñas y la información del desarrollador en el Marketplace.
+- **Desconfía de las apps que piden más de lo que necesitan.** Una app de reseñas, por ejemplo, no debería necesitar crear usuarios.
+- **Revisa periódicamente tus apps conectadas** en **Marketplace de aplicaciones → Apps instaladas** y desinstala las que ya no uses o te parezcan sospechosas.
+
+<Tip>
+  Designa a una persona del equipo como responsable de aprobar nuevas apps. Así evitas que se instalen integraciones sin revisión y mantienes el control de quién accede a los datos de tus clientes.
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si rechazo el acceso en la pantalla de consentimiento?">
+    La app no se instala ni se conecta, y no se comparte ningún dato hasta que la autorices.
+  </Accordion>
+  <Accordion title="¿Qué son los permisos o scopes?">
+    Definen qué datos o funciones puede usar una app. Sirven para limitar lo que una aplicación de terceros puede hacer con tu cuenta.
+  </Accordion>
+  <Accordion title="¿Cómo sé si un permiso es delicado?">
+    Los permisos de escritura sobre usuarios o sobre los datos de la cuenta muestran una advertencia especial en la pantalla de consentimiento.
+  </Accordion>
+  <Accordion title="¿Esto afecta a las apps que ya tengo instaladas?">
+    No. La pantalla aparece en las instalaciones nuevas o cuando vuelves a autorizar una app existente.
+  </Accordion>
+  <Accordion title="¿Las apps privadas también muestran esta pantalla?">
+    Sí. Las apps privadas que usan OAuth pasan por la misma pantalla y muestran el mismo detalle de permisos.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Instalar y desinstalar apps del Marketplace" icon="store" href="/integraciones/instalar-y-desinstalar-apps-del-marketplace">
+    Encuentra, evalúa, instala y elimina apps.
+  </Card>
+  <Card title="Varias cuentas externas en una app" icon="users" href="/integraciones/varias-cuentas-externas-en-una-app">
+    Conecta y administra más de una cuenta externa por app.
+  </Card>
+  <Card title="Conexiones externas de las apps del Marketplace" icon="link" href="/automatizaciones/conexiones-externas-de-apps-del-marketplace">
+    Métodos de autenticación que usan las apps con servicios de terceros.
+  </Card>
+  <Card title="Integraciones privadas" icon="key" href="/integraciones/integraciones-privadas">
+    Conecta tus propios sistemas con permisos controlados.
+  </Card>
+</CardGroup>

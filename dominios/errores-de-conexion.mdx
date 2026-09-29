@@ -1,10 +1,10 @@
 ---
 title: "Solucionar errores de conexión de dominio"
-description: "Qué significa cada error de verificación DNS y cómo resolverlo paso a paso."
+description: "Qué significa cada error al conectar un dominio, incluidos los conflictos entre productos y DNS, y cómo resolverlo."
 icon: "triangle-exclamation"
 ---
 
-Conectar un dominio suele tomar unos minutos. Cuando no funciona, casi siempre es por una de estas tres razones: hay **registros DNS que se contradicen**, los **valores no coinciden** con los que pide la plataforma, o el dominio **ya está conectado** en otro lugar.
+Conectar un dominio suele tomar unos minutos. Cuando no funciona, casi siempre es por una de estas razones: el dominio **ya está en uso** en otro producto o en otra cuenta, hay **registros DNS que se contradicen**, o los **valores no coinciden** con los que pide Chateea.
 
 Esta guía recorre cada error, qué significa y cómo resolverlo.
 
@@ -16,11 +16,60 @@ Esta guía recorre cada error, qué significa y cómo resolverlo.
 
 | Mensaje que ves | Qué significa | Dónde resolverlo |
 | --- | --- | --- |
+| El dominio ya está conectado a otro producto | Lo usa un embudo, sitio web, tienda u otro producto, y conectarlo aquí rompería esa configuración | [Conflictos entre productos](#conflictos-entre-productos) |
 | Conflicto de registro A. Se encontraron varios registros A | Tu dominio apunta a más de una dirección IPv4 | [Varios registros A](#varios-registros-a) |
 | Conflicto de registro AAAA. Elimina todos los registros AAAA | Existe un registro IPv6 donde solo se esperan IPv4 | [Registros AAAA](#registros-aaaa) |
 | Los registros CAA bloquean la emisión | Tu dominio no autoriza a la entidad que emite el certificado SSL | [Registros CAA](#registros-caa) |
 | No se encontró un registro CNAME o A apuntando a… | Falta el registro, o el valor no coincide | [Los registros no coinciden](#los-registros-no-coinciden) |
-| El dominio ya está en uso | Está conectado a otra cuenta o espacio de trabajo | [Dominio conectado en otro lugar](#dominio-conectado-en-otro-lugar) |
+| El dominio ya está en uso | Está conectado a otra cuenta | [Dominio conectado en otra cuenta](#dominio-conectado-en-otra-cuenta) |
+
+---
+
+## Conflictos entre productos
+
+Antes de conectar un dominio a un producto, Chateea revisa si ese dominio ya lo usa otro producto. Si conectarlo rompería una configuración que está funcionando, **bloquea la conexión** y te muestra un mensaje que explica el conflicto. Así evitas tumbar por accidente un embudo o un sitio que está en vivo.
+
+Esta revisión ocurre **antes** de verificar los registros DNS, y cuando detecta un conflicto:
+
+- Bloquea el intento de conexión.
+- Te dice qué producto está usando el dominio.
+- Te muestra indicaciones para resolverlo.
+- Cuando se puede, incluye un enlace directo a la configuración de ese dominio.
+
+Por ejemplo, si un dominio ya está conectado a un embudo, es posible que no puedas conectarlo al portal del cliente si eso rompiera el embudo.
+
+### Productos que se revisan
+
+| Productos incluidos en la revisión | Productos excluidos |
+| --- | --- |
+| Embudos, sitios web, tiendas, blogs, seminarios web, WordPress, portal del cliente y dominio de marca | Productos de correo (por ejemplo, dominios de envío) |
+
+### Cómo resolverlo
+
+<Steps>
+  <Step title="Lee el mensaje de error">
+    Indica qué producto usa el dominio. Si el producto está en tu misma cuenta, el mensaje incluye un enlace (por ejemplo, "aquí") que te lleva directo a esa conexión.
+  </Step>
+  <Step title="Revisa la configuración actual">
+    Desde el enlace o desde **Configuración → Dominios**, confirma qué está usando el dominio y si sigue en uso.
+  </Step>
+  <Step title="Decide qué hacer">
+    Desconecta el dominio del producto anterior si ya no lo necesitas, o usa otro dominio o subdominio para el producto nuevo (por ejemplo, `portal.tudominio.com`).
+  </Step>
+  <Step title="Vuelve a intentar la conexión">
+    Una vez liberado el dominio, conéctalo de nuevo al producto que quieres.
+  </Step>
+</Steps>
+
+<Tip>
+  Los subdominios son tus aliados: con un mismo dominio puedes tener `www.tudominio.com` para tu sitio, `pagar.tudominio.com` para un embudo y `clientes.tudominio.com` para el portal, sin conflictos.
+</Tip>
+
+Si el conflicto está en **otra cuenta de Chateea**, la conexión también se bloquea, pero el mensaje no trae enlace directo. Revisa en esa cuenta o sigue los pasos de [Dominio conectado en otra cuenta](#dominio-conectado-en-otra-cuenta).
+
+<Note>
+  Esta revisión no modifica las conexiones que ya tienes. Tus dominios actuales siguen funcionando igual hasta que tú los cambies. Tampoco se puede omitir: tienes que resolver el conflicto para continuar.
+</Note>
 
 ---
 
@@ -63,12 +112,13 @@ Si existe un registro AAAA cuando el sistema solo espera IPv4, la conexión fall
 
 <Steps>
   <Step title="Abre tu panel DNS">
-    Y localiza los registros etiquetados como `AAAA` o `IPv6`.
+    Localiza los registros etiquetados como `AAAA` o `IPv6`.
   </Step>
   <Step title="Elimina el registro AAAA conflictivo">
     Si tu configuración solo usa IPv4, no lo necesitas.
   </Step>
-  <Step title="Guarda y reintenta a los pocos minutos">
+  <Step title="Guarda y reintenta">
+    Espera unos minutos y vuelve a verificar el dominio.
   </Step>
 </Steps>
 
@@ -90,13 +140,16 @@ El problema aparece cuando tu registro CAA existente **no autoriza** a la entida
 
 <Steps>
   <Step title="Abre tu configuración DNS">
+    Entra al panel de tu proveedor de dominio.
   </Step>
   <Step title="Localiza el registro CAA">
+    Suele aparecer con el tipo `CAA` en la lista de registros.
   </Step>
   <Step title="Elimina el registro CAA conflictivo">
     Al no haber restricción, cualquier autoridad puede emitir el certificado y la verificación avanza.
   </Step>
   <Step title="Guarda y reintenta la verificación">
+    Espera unos minutos antes de volver a intentarlo.
   </Step>
 </Steps>
 
@@ -118,7 +171,7 @@ Así se emite el certificado SSL sin renunciar al resto de tus restricciones de 
 
 ## Los registros no coinciden
 
-Este error aparece cuando la plataforma no encuentra los registros que espera, o los encuentra con valores distintos.
+Este error aparece cuando Chateea no encuentra los registros que espera, o los encuentra con valores distintos.
 
 Las causas habituales:
 
@@ -144,6 +197,7 @@ Las causas habituales:
     - Entradas CNAME que choquen entre sí
   </Step>
   <Step title="Guarda, espera unos minutos y reintenta">
+    Si acabas de hacer cambios, dale tiempo a la propagación antes de tocar otra cosa.
   </Step>
 </Steps>
 
@@ -154,22 +208,21 @@ Las causas habituales:
 </Warning>
 
 <Tip>
-  El error más común de todos es el más tonto: copiar un valor con un espacio de más al inicio o al final. Es invisible en pantalla. Borra el campo por completo y vuelve a pegarlo.
+  El error más común de todos es el más simple: copiar un valor con un espacio de más al inicio o al final. Es invisible en pantalla. Borra el campo por completo y vuelve a pegarlo.
 </Tip>
 
 ---
 
-## Dominio conectado en otro lugar
+## Dominio conectado en otra cuenta
 
-A veces el dominio ya está conectado a otra cuenta o a otro espacio de trabajo, y no puede estar en dos sitios a la vez.
+A veces el dominio ya está conectado a otra cuenta de Chateea, y no puede estar en dos sitios a la vez. En este caso el mensaje de error no incluye un enlace directo.
 
 Tienes dos caminos:
 
 <CardGroup cols={2}>
-  <Card title="Desconéctalo tú" icon="unlink">
-    Entra a la cuenta anterior y libera el dominio desde ahí. Es lo más rápido si tienes acceso.
+  <Card title="Desconéctalo tú" icon="link-slash">
+    Entra a la cuenta anterior y libera el dominio desde **Configuración → Dominios**. Es lo más rápido si tienes acceso.
   </Card>
-
   <Card title="Escríbenos" icon="headset">
     Si no tienes acceso a esa cuenta, nuestro equipo te ayuda a liberar la conexión.
   </Card>
@@ -198,26 +251,36 @@ Los cambios de DNS no son instantáneos, y esto genera mucha confusión innecesa
 ## Preguntas frecuentes
 
 <AccordionGroup>
+  <Accordion title="¿Qué pasa si intento conectar un dominio que ya está en uso?">
+    Chateea bloquea la conexión y te muestra un mensaje que explica qué producto usa el dominio y cómo resolverlo.
+  </Accordion>
+  <Accordion title="¿Puedo saltarme la advertencia de conflicto?">
+    No. Tienes que resolver el conflicto (liberar el dominio o usar otro) antes de continuar.
+  </Accordion>
+  <Accordion title="¿La revisión de conflictos cambia mis dominios actuales?">
+    No. Las conexiones existentes se quedan como están hasta que tú las modifiques.
+  </Accordion>
+  <Accordion title="¿Por qué algunos errores traen un enlace y otros no?">
+    El enlace aparece cuando el producto que usa el dominio está en tu misma cuenta. Si está en otra cuenta, el mensaje solo describe el conflicto.
+  </Accordion>
+  <Accordion title="¿Los dominios de correo entran en esta revisión?">
+    No. Los productos de correo no activan la revisión de conflictos entre productos.
+  </Accordion>
   <Accordion title="Actualicé el DNS y mi dominio sigue sin verificarse">
     Lo más probable es que la propagación siga en curso. Espera unos minutos y reintenta.
   </Accordion>
-
   <Accordion title="¿Qué es un registro A?">
     Conecta tu dominio con una dirección de servidor IPv4.
   </Accordion>
-
   <Accordion title="¿Qué es un registro AAAA?">
     Hace lo mismo que un registro A, pero con una dirección IPv6.
   </Accordion>
-
   <Accordion title="¿Puedo conservar mis registros CAA?">
-    Sí. En vez de eliminarlos, puedes modificarlos para autorizar la entidad necesaria. Ver la opción avanzada más arriba.
+    Sí. En vez de eliminarlos, puedes modificarlos para autorizar la entidad necesaria. Consulta la opción avanzada más arriba.
   </Accordion>
-
   <Accordion title="¿Por qué Cloudflare me sigue mostrando IPv6?">
     Por el comportamiento de su proxy, que puede mostrar enrutamiento IPv6 aunque no exista un registro AAAA visible. Verifica directamente en tu lista de registros.
   </Accordion>
-
   <Accordion title="¿Cuánto tardan los cambios de DNS?">
     Normalmente minutos. La propagación global completa puede llegar a 48 horas.
   </Accordion>
@@ -227,7 +290,7 @@ Los cambios de DNS no son instantáneos, y esto genera mucha confusión innecesa
 
 ## ¿Sigue sin conectar?
 
-Si corregiste los registros, esperaste la propagación y el dominio sigue sin verificar, escríbenos por WhatsApp al **\+1 829-580-7071** con esta información:
+Si corregiste los registros, esperaste la propagación y el dominio sigue sin verificar, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071** con esta información:
 
 - El dominio exacto
 - Qué mensaje de error aparece
@@ -237,6 +300,13 @@ Si corregiste los registros, esperaste la propagación y el dominio sigue sin ve
 
 De lunes a viernes de 9:00am a 9:00pm y sábados de 9:00am a 1:00pm (hora de República Dominicana).
 
-<Card title="Volver a Dominios y correo" icon="globe" href="/dominios/introduccion">
-  Configuración de dominio, correo y entregabilidad.
-</Card>
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Dominios y correo" icon="globe" href="/dominios/introduccion">
+    Configuración de dominio, correo y entregabilidad.
+  </Card>
+  <Card title="Tipos de dominios" icon="sitemap" href="/sitios/tipos-de-dominios">
+    Dominio raíz, subdominios y cuándo usar cada uno.
+  </Card>
+</CardGroup>

@@ -1,0 +1,92 @@
+---
+title: "Verificación en dos pasos con app de autenticación"
+description: "Protege tu inicio de sesión con Google Authenticator, Authy u otra app TOTP y guarda tus códigos de respaldo."
+icon: "shield-check"
+---
+
+La verificación en dos pasos (2FA) pide un segundo código además de tu contraseña cada vez que inicias sesión en Chateea. Si usas una aplicación de autenticación como Google Authenticator, Microsoft Authenticator o Authy, ese código se genera en tu teléfono y cambia cada pocos segundos, así que nadie puede entrar a tu cuenta solo con tu contraseña.
+
+Es la opción más segura para proteger tus contactos, conversaciones y pagos: a diferencia de los códigos por SMS o correo, no se puede interceptar con un cambio de SIM ni con un correo de phishing.
+
+## Por qué conviene usar una app de autenticación
+
+- **Más protección:** los códigos basados en tiempo (TOTP) caducan en segundos y no viajan por SMS ni por correo.
+- **Libertad para elegir:** funciona con cualquier app compatible con TOTP (Google Authenticator, Microsoft Authenticator, Authy y otras).
+- **Configuración rápida:** escaneas un código QR o escribes una clave de configuración y listo.
+- **Acceso de respaldo:** recibes códigos de recuperación por si pierdes el teléfono.
+- **Sin depender de la señal:** la app genera códigos aunque no tengas cobertura ni internet en el teléfono.
+
+## Antes de empezar
+
+- Instala en tu teléfono una app de autenticación compatible con TOTP.
+- Ten a mano un lugar seguro para guardar tus códigos de respaldo (un gestor de contraseñas es ideal).
+- Inicia sesión con tu propio usuario. La app de autenticación solo la puede configurar la persona dueña del usuario.
+
+## Cómo activar la app de autenticación
+
+<Steps>
+  <Step title="Abre tu perfil">
+    Ve a **Configuración → Mi perfil** y busca la sección de verificación en dos pasos. Haz clic en **Configurar** (Setup) junto a la opción de app de autenticación.
+  </Step>
+  <Step title="Escanea el código QR">
+    Abre tu app de autenticación y escanea el código QR que aparece en pantalla. Si no puedes escanearlo, escribe manualmente la clave de configuración que te muestra Chateea.
+  </Step>
+  <Step title="Confirma con el primer código">
+    La app empezará a generar códigos de 6 dígitos. Haz clic en **Siguiente**, escribe el código que ves en la app y completa la configuración.
+  </Step>
+  <Step title="Guarda tus códigos de respaldo">
+    Chateea genera **10 códigos de respaldo**. Cópialos o descárgalos y guárdalos en un lugar seguro, separado de tu contraseña. Cada código sirve **una sola vez**.
+  </Step>
+</Steps>
+
+La próxima vez que inicies sesión, elige la opción de app de autenticación en la verificación en dos pasos y escribe el código que muestra la app en ese momento.
+
+<Warning>
+  Guarda los códigos de respaldo fuera del teléfono donde tienes la app. Si pierdes el teléfono y también los códigos, recuperar el acceso será mucho más lento.
+</Warning>
+
+## Detalles importantes
+
+| Tema | Cómo funciona |
+| --- | --- |
+| Quién puede configurarla | Solo el usuario que inició sesión con su propia cuenta. Un administrador no puede configurarla por otra persona usando la opción de iniciar sesión como otro usuario. |
+| Códigos de respaldo | Se generan 10 a la vez y cada uno se usa una sola vez. |
+| Regenerar códigos | Si pierdes tus códigos o crees que alguien los vio, genera unos nuevos desde **Configuración → Mi perfil**. Los anteriores dejan de funcionar. |
+| Otros métodos | La app se suma a la verificación por teléfono y correo; puedes elegir el método al iniciar sesión. |
+
+## Buenas prácticas
+
+- Activa la verificación en dos pasos en todos los usuarios de tu equipo, sobre todo en los que tienen permisos de administrador o acceso a pagos.
+- Si cambias de teléfono, configura la app en el nuevo equipo antes de borrar la del anterior.
+- Nunca compartas un código de la app ni un código de respaldo, aunque te lo pida alguien que diga ser de soporte.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo usar cualquier app de autenticación?">
+    Sí. Funciona con cualquier app compatible con TOTP, como Google Authenticator, Microsoft Authenticator o Authy.
+  </Accordion>
+  <Accordion title="¿Qué hago si pierdo el teléfono con la app?">
+    Inicia sesión con uno de tus códigos de respaldo y vuelve a configurar la app en tu nuevo teléfono desde **Configuración → Mi perfil**. Aprovecha para generar códigos de respaldo nuevos.
+  </Accordion>
+  <Accordion title="¿Qué hago si perdí también los códigos de respaldo?">
+    Usa otro método de verificación disponible (teléfono o correo). Si no puedes entrar de ninguna forma, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+  </Accordion>
+  <Accordion title="¿Un administrador puede configurar la app por mí?">
+    No. Cada persona debe configurarla desde su propio usuario. Un administrador que entra como otro usuario no puede activarla por él.
+  </Accordion>
+  <Accordion title="¿Por qué es más segura que el SMS o el correo?">
+    Porque el código se genera en tu teléfono y cambia cada pocos segundos. No viaja por la red de tu operador ni por tu bandeja de entrada, así que no se puede robar con un cambio de SIM o un correo falso.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Contraseñas seguras y restablecimiento" icon="key" href="/configuracion/requisitos-y-restablecimiento-de-contrasena">
+    Requisitos de contraseña y cómo cambiarla o recuperarla.
+  </Card>
+  <Card title="Verificación al cambiar el teléfono de un usuario" icon="mobile" href="/telefonia/verificacion-2fa-al-cambiar-telefono-de-usuario">
+    Qué pasa con la verificación cuando se cambia el número de un usuario.
+  </Card>
+</CardGroup>

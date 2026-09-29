@@ -1,0 +1,208 @@
+---
+title: "Campos de combinación y valores de reemplazo"
+description: "Inserta campos de combinación desde el selector, agrega textos de reemplazo en correos y resuelve campos que salen vacíos."
+icon: "code"
+---
+
+Un campo de combinación es un hueco que se rellena solo con un dato guardado en Chateea. Lo usas en correos, SMS, documentos, flujos de trabajo, calendarios e indicaciones de IA. Cuando el contenido se genera, un código como `{{contact.first_name}}` se reemplaza por el dato del registro correspondiente.
+
+Esta guía te muestra cómo insertarlos, cómo poner un texto de reemplazo en los correos para que nunca salga un hueco, y qué revisar cuando un campo no se llena.
+
+## Cómo funciona
+
+**Plantilla:**
+
+```text
+Hola {{contact.first_name}}, tu cita empieza a las {{appointment.only_start_time}}.
+```
+
+**Mensaje que recibe el cliente:**
+
+```text
+Hola Sara, tu cita empieza a las 3:30 PM.
+```
+
+Así un solo mensaje sirve para cientos de clientes, cada uno con sus propios datos, sin editar nada a mano.
+
+## Campos de combinación, campos personalizados y valores personalizados
+
+Los tres trabajan juntos, pero cumplen funciones distintas:
+
+| Tipo | Para qué sirve | Ejemplo |
+| --- | --- | --- |
+| **Campo personalizado** | Guarda un dato que cambia de un registro a otro (contacto, oportunidad, empresa u otro objeto). | Servicio preferido |
+| **Valor personalizado** | Guarda un dato fijo que reutilizas en muchas plantillas. | Correo de soporte |
+| **Campo de combinación** | Inserta un campo estándar, un campo personalizado o un valor personalizado dentro del contenido. | `{{contact.first_name}}` |
+
+## De dónde sale cada dato
+
+Un campo solo se llena si el registro que necesita está disponible en ese momento. Un campo bien escrito puede salir vacío si falta el registro o el dato.
+
+- **Campos de contacto:** necesitan un contacto.
+- **Campos de cita:** necesitan una cita.
+- **Campos de factura:** necesitan una factura.
+- **Campos de empresa:** usan la empresa asociada al contacto. Si el contacto no tiene empresa, quedan vacíos.
+- **Campos de reserva de servicios:** necesitan una reserva de servicios.
+- **Campos en IA:** dependen de los registros disponibles durante la conversación o la llamada.
+
+Por ejemplo, un flujo que solo trabaja con contactos llena `{{contact.first_name}}`, pero deja vacío `{{appointment.start_time}}` porque ese flujo no tiene ninguna cita asociada.
+
+<Info>
+Los campos que terminan en `_raw` muestran el teléfono sin espacios, paréntesis ni guiones. Úsalos en enlaces, parámetros de seguimiento y cualquier lugar que necesite el número limpio.
+</Info>
+
+## Campos más usados
+
+| Categoría | Campos habituales |
+| --- | --- |
+| Contacto | `{{contact.first_name}}`, `{{contact.name}}`, `{{contact.email}}`, `{{contact.phone_raw}}` |
+| Usuario | `{{user.name}}`, `{{user.email}}`, `{{user.calendar_link}}` |
+| Cita | `{{appointment.start_time}}`, `{{appointment.reschedule_link}}`, `{{appointment.cancellation_link}}` |
+| Calendario | `{{calendar.name}}` |
+| Tu negocio | `{{location.name}}`, `{{location.email}}`, `{{location.phone}}` |
+| Fecha actual | `{{right_now.little_endian_date}}`, `{{right_now.year}}` |
+| Mensaje | `{{message.subject}}`, `{{message.body}}` |
+| Factura | `{{invoice.number}}`, `{{invoice.total_amount}}`, `{{invoice.url}}` |
+| Reserva de servicios | `{{servicebooking.title}}`, `{{servicebooking.start_time}}`, `{{servicebooking.total_price}}` |
+
+La lista completa está en [Lista de campos de combinación](/configuracion/lista-de-campos-de-combinacion).
+
+## Insertar un campo de combinación
+
+<Steps>
+  <Step title="Abre el contenido que vas a personalizar">
+    Puede ser un correo, un mensaje, una acción de flujo, un documento, un ajuste del calendario o una indicación de IA.
+  </Step>
+  <Step title="Coloca el cursor">
+    Ponlo justo donde debe aparecer el dato.
+  </Step>
+  <Step title="Abre el selector">
+    Haz clic en el ícono de **Campos de combinación**, **Valores personalizados** o `{ }`.
+  </Step>
+  <Step title="Busca y elige el campo">
+    Escribe el nombre o abre su categoría y selecciónalo. El código se inserta en el cursor.
+  </Step>
+  <Step title="Revisa la frase completa">
+    Lee la oración con el campo dentro y confirma que tiene sentido, con los espacios y la puntuación correctos.
+  </Step>
+  <Step title="Guarda y prueba">
+    Guarda los cambios y haz una prueba con un registro que tenga el dato. Confirma que aparece el valor correcto antes de publicar o activar la automatización.
+  </Step>
+</Steps>
+
+<Tip>
+Usa siempre el selector en lugar de escribir o copiar códigos a mano. Los campos disponibles cambian según la función, la configuración de tu cuenta y el tipo de registro, y el selector solo te muestra los que funcionan en ese lugar.
+</Tip>
+
+## Agregar un texto de reemplazo en correos
+
+El texto de reemplazo es lo que aparece cuando el campo está vacío. Evita el clásico "Hola , tu cita está confirmada". Funciona en plantillas de correo, correos de flujos, campañas y envíos masivos, tanto en el asunto como en el texto de vista previa y el cuerpo.
+
+<Steps>
+  <Step title="Abre el correo">
+    Crea o edita el correo.
+  </Step>
+  <Step title="Ubica la etiqueta del campo">
+    Inserta el campo o localiza el que ya tienes en el texto.
+  </Step>
+  <Step title="Haz clic en la etiqueta">
+    Se abre el editor de **Texto predeterminado** (Default Text).
+  </Step>
+  <Step title="Escribe el texto de reemplazo">
+    Por ejemplo, para el nombre puedes usar "cliente" o "amigo".
+  </Step>
+  <Step title="Guarda">
+    Haz clic en **Guardar**.
+  </Step>
+  <Step title="Prueba con un contacto sin el dato">
+    Envía una prueba a un contacto que tenga ese campo vacío para confirmar que aparece el texto de reemplazo.
+  </Step>
+</Steps>
+
+**Ejemplo:**
+
+```text
+Hola {{contact.first_name}}, tu cita está confirmada.
+```
+
+Con el texto de reemplazo "cliente", si falta el nombre el correo dice:
+
+```text
+Hola cliente, tu cita está confirmada.
+```
+
+<Note>
+El texto de reemplazo solo aplica a esa aparición del campo. No modifica la ficha del contacto, y el mismo campo puede tener un reemplazo distinto en otra parte del correo.
+</Note>
+
+En canales que no tienen texto de reemplazo (como SMS), revisa que el dato exista antes de enviar o redacta el mensaje para que se lea bien aunque el campo quede vacío.
+
+## Dar formato a listas en campos de texto de flujos
+
+Algunos datos llegan como listas con varios elementos, por ejemplo, las líneas de un pedido o los datos recibidos por un webhook entrante. Cuando el flujo tiene una lista disponible y la eliges en el selector de valores personalizados, en lugar de insertarse de inmediato se abre un formateador. Ahí configuras:
+
+- **Campo:** qué dato extraer de cada elemento de la lista.
+- **Formato:** texto separado por comas, lista con viñetas, lista numerada o un separador personalizado.
+- **Reemplazo para lista vacía:** texto opcional que aparece si la lista no tiene elementos.
+- **Vista previa:** cómo se verá el resultado antes de insertarlo.
+
+Haz clic en **Insertar** para agregarlo en el cursor. Chateea guarda las reglas de formato junto con el valor y, cada vez que el flujo se ejecuta, muestra los datos actuales de la lista. Los campos de un solo valor (texto, número, fecha) se siguen insertando de inmediato, como siempre.
+
+**Ejemplo:** un webhook entrante envía una lista `line_items` con el campo `sku`. Eliges `sku`, seleccionas el formato separado por comas y lo insertas en el texto de la acción del flujo.
+
+## Solución de problemas
+
+La mayoría de los problemas se deben a que falta el dato, falta el registro en ese contexto o el campo no se admite en ese lugar.
+
+| Problema | Qué revisar |
+| --- | --- |
+| El valor sale vacío | Que el registro tenga el dato y que la acción tenga acceso a ese registro (contacto, cita, factura). |
+| Se ve el código en crudo | Bórralo y vuelve a insertarlo desde el selector. Confirma que el editor admite ese campo. |
+| Aparece el usuario equivocado | El usuario asignado, el responsable de la cita o el remitente disponible para esa acción. |
+| Un campo de empresa sale vacío | Que el contacto esté asociado a la empresa correcta y que el campo tenga datos. |
+| No aparece el texto de reemplazo | Que lo hayas guardado en esa etiqueta concreta y en una parte del correo que lo admita. |
+| Un agente de IA usa el dato de forma extraña | Agrega en la indicación qué hacer cuando falta el dato y vuelve a probar. |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Todos los campos están disponibles en todos los editores?">
+    No. Dependen de la función, el editor, las funciones activas, los permisos y el registro disponible. El selector te muestra los que puedes usar en cada lugar.
+  </Accordion>
+  <Accordion title="¿Puedo escribir un campo a mano?">
+    Sí, pero es más fiable insertarlo desde el selector, porque pone el código exacto. Recuerda que los campos distinguen mayúsculas y minúsculas: `{{contact.name}}` funciona y `{{Contact.Name}}` no.
+  </Accordion>
+  <Accordion title="¿El texto de reemplazo actualiza los datos del CRM?">
+    No. Solo cambia lo que se muestra en ese correo cuando el dato está vacío.
+  </Accordion>
+  <Accordion title="¿Un mismo campo puede tener distintos textos de reemplazo?">
+    Sí. Cada aparición del campo en un correo puede tener su propio texto.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre los campos de empresa y los de tu cuenta?">
+    Los campos de empresa toman los datos de la empresa asociada al contacto. Los campos de tu cuenta, como `{{location.name}}`, toman los datos de tu propio negocio.
+  </Accordion>
+  <Accordion title="¿La IA de voz y la IA conversacional usan campos de combinación?">
+    Sí, en las indicaciones y en los campos de mensaje compatibles. Insértalos desde el selector de valores personalizados y prueba la conversación antes de activarla.
+  </Accordion>
+</AccordionGroup>
+
+## ¿Necesitas ayuda?
+
+Antes de escribir a soporte, confirma que el campo tiene un valor guardado, que la acción tiene acceso al registro necesario, que insertaste el campo desde el selector y que tu registro de prueba tiene los datos. Si el problema sigue, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071** con el código del campo, dónde lo usas, el registro de origen y el resultado que obtuviste.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lista de campos de combinación" icon="list" href="/configuracion/lista-de-campos-de-combinacion">
+    Todos los campos disponibles por categoría.
+  </Card>
+  <Card title="Variables y campos personalizados" icon="code" href="/variables/introduccion">
+    Tipos de variables y cuándo usar cada uno.
+  </Card>
+  <Card title="Usar valores personalizados" icon="tags" href="/configuracion/usar-valores-personalizados">
+    Datos fijos que cambias en un solo lugar.
+  </Card>
+  <Card title="Webhook entrante" icon="bolt" href="/flujo-de-trabajo/activador-premium-webhook-entrante">
+    Recibe datos externos en tus flujos.
+  </Card>
+</CardGroup>

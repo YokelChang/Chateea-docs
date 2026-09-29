@@ -1,0 +1,128 @@
+---
+title: "Registros de auditoría: quién cambió qué en tu cuenta"
+description: "Revisa el historial de cambios de tu cuenta con filtros por usuario, módulo, acción y fecha durante 60 días."
+icon: "clock-rotate-left"
+---
+
+Los registros de auditoría son el historial de **quién hizo qué y cuándo** dentro de tu cuenta de Chateea. Cada entrada guarda la fecha y hora, el usuario, el módulo afectado y el tipo de cambio, con los valores de antes y después.
+
+Te sirven para aclarar cambios inesperados ("¿quién movió esta oportunidad?", "¿quién borró ese contacto?"), mantener la responsabilidad dentro del equipo y tener evidencia cuando necesitas cumplir con políticas internas o normativas.
+
+## Para qué te sirve
+
+- **Visibilidad y responsabilidad:** ves los cambios que se hacen en usuarios, configuración y datos de la cuenta.
+- **Resolver problemas más rápido:** identificas en minutos qué cambió y quién lo hizo.
+- **Seguridad y cumplimiento:** detectas modificaciones no autorizadas y confirmas que el equipo sigue tus políticas.
+- **Control del equipo:** revisas la actividad de los usuarios, como altas, ediciones y eliminaciones.
+
+## Cómo abrir los registros de auditoría
+
+<Steps>
+  <Step title="Entra a los registros">
+    Ve a **Configuración → Registros de auditoría**. Verás una tabla con las entradas más recientes.
+  </Step>
+  <Step title="Abre el detalle de una entrada">
+    Haz clic en cualquier fila o en el ícono del ojo (vista previa). Se abre un panel lateral a la derecha con el usuario, la fecha y hora, y los valores de cada campo antes y después del cambio.
+  </Step>
+  <Step title="Recorre las entradas con el teclado">
+    Con el panel abierto, usa las flechas **←** y **→** del teclado para pasar a la entrada anterior o siguiente sin cerrar el panel.
+  </Step>
+  <Step title="Cierra el panel">
+    Haz clic en la **X** o pulsa **Esc**. Vuelves exactamente al mismo punto de la tabla.
+  </Step>
+</Steps>
+
+<Tip>
+  Para revisiones largas, deja el panel abierto y avanza con las flechas del teclado. Es la forma más rápida de revisar muchas entradas sin perder el hilo.
+</Tip>
+
+## Filtros disponibles
+
+Los filtros te ayudan a aislar justo los eventos que buscas.
+
+| Filtro | Para qué sirve |
+| --- | --- |
+| **Usuario** | Muestra solo las acciones de un miembro del equipo. Ideal para revisar el trabajo de alguien o investigar un cambio concreto. |
+| **Módulo** | Muestra los eventos de un área: usuarios, cuenta, contactos, oportunidades, sitios web, embudos y tiendas, objetos personalizados, listados, preferencias de notificación y más. |
+| **Tipo de acción** | Limita los resultados a **Crear**, **Actualizar** o **Eliminar**. Útil para encontrar rápido los cambios críticos. |
+| **Rango de fechas** | Acota el periodo: hoy, últimos 7 días o hasta 60 días atrás. |
+
+Las opciones de **Módulo** y **Acción** pueden variar según el módulo que revises.
+
+## Qué se registra
+
+Además de los cambios en contactos, oportunidades, usuarios y configuración, algunos casos tienen un comportamiento particular:
+
+### Preferencias de notificación
+
+Los cambios en las preferencias de notificación de los usuarios aparecen como acciones de tipo **Actualizado**. Al abrir la entrada, el panel muestra solo los campos que cambiaron, con su valor anterior y el nuevo:
+
+- **La primera vez que se guardan**, el registro captura todas las preferencias.
+- **En cambios posteriores**, solo registra las preferencias que se modificaron.
+
+Para verlos, filtra por el módulo **Preferencias de notificación**.
+
+### Recursos eliminados del constructor de páginas
+
+Cuando alguien elimina recursos guardados del constructor de embudos, sitios web, tiendas o seminarios web, se crea una entrada **Eliminado** con el nombre y el ID del recurso. Aplica a:
+
+- Plantillas de sección
+- Secciones globales
+- Secciones universales
+- Plantillas de elementos
+- Plantillas de elementos universales
+
+### Cambios en funciones de Labs
+
+Los registros también guardan cuando se activa o desactiva una función de **Configuración → Labs**. El detalle muestra el documento relacionado, la acción, la fecha y hora, quién hizo el cambio y qué se modificó. Si el cambio lo hizo el equipo de soporte, la entrada aparece atribuida al portal de soporte.
+
+## Cuánto tiempo se guardan
+
+Las entradas se conservan **60 días** y después se eliminan. Si necesitas conservar evidencia por más tiempo, [exporta los registros a CSV](/configuracion/exportar-registros-de-auditoria) antes de que se cumpla ese plazo.
+
+## Buenas prácticas para investigar un cambio
+
+1. Aplica primero el **rango de fechas** en el que crees que ocurrió el cambio.
+2. Luego filtra por **Módulo** y **Tipo de acción** para reducir la lista.
+3. Abre la primera fila y recorre las siguientes con **←** y **→**.
+4. Si buscas un elemento borrado, filtra por **Acción = Eliminado** y el módulo correspondiente. En algunos módulos, como oportunidades, puedes restaurar lo eliminado.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Quién puede ver los registros de auditoría?">
+    Normalmente los administradores de la cuenta, desde **Configuración → Registros de auditoría**. Si no ves la opción, pide acceso a un administrador en **Configuración → Mi equipo**.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo se conservan las entradas?">
+    60 días. Después se eliminan de forma definitiva, así que exporta lo que necesites antes.
+  </Accordion>
+  <Accordion title="¿Puedo exportar los registros?">
+    Sí, con el botón **Exportar** de la parte superior derecha. Se genera un archivo CSV con los filtros que tengas aplicados.
+  </Accordion>
+  <Accordion title="¿Cómo encuentro y restauro algo que se eliminó?">
+    Filtra por **Acción = Eliminado** y el módulo del elemento (por ejemplo, oportunidades). Abre la entrada para ver las opciones de restauración donde estén disponibles.
+  </Accordion>
+  <Accordion title="¿Por qué las horas no coinciden entre compañeros?">
+    Por diferencias de zona horaria. Revisa la zona horaria de tu dispositivo y la configurada en tu cuenta de Chateea.
+  </Accordion>
+  <Accordion title="¿Qué relación tienen con los registros de WordPress?">
+    Los registros de acceso y actividad de WordPress complementan los registros de auditoría con eventos propios de tus sitios (por ejemplo, creación o eliminación). Usa ambos para tener el historial completo.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Exportar registros de auditoría" icon="file-export" href="/configuracion/exportar-registros-de-auditoria">
+    Descarga el historial en CSV para auditorías y reportes.
+  </Card>
+  <Card title="Auditoría en embudos y sitios web" icon="globe" href="/sitios/registros-de-auditoria">
+    Cambios en embudos, sitios web, seminarios web y tiendas.
+  </Card>
+  <Card title="Registro de auditoría de objetos" icon="cubes" href="/crm/registro-de-auditoria-de-objetos">
+    Historial de cambios en objetos personalizados.
+  </Card>
+  <Card title="Eliminar y restaurar oportunidades" icon="rotate-left" href="/oportunidades/eliminar-y-restaurar-oportunidades-y-pipelines">
+    Recupera oportunidades y pipelines eliminados.
+  </Card>
+</CardGroup>

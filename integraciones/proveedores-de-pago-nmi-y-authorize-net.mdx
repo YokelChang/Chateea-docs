@@ -1,0 +1,71 @@
+---
+title: "Proveedores de pago del Marketplace basados en NMI y Authorize.net"
+description: "Instala desde Pagos → Integraciones proveedores de pago basados en NMI o Authorize.net y cobra con ellos en formularios, tienda y facturas."
+icon: "credit-card"
+---
+
+Además de las pasarelas nativas, en Chateea puedes instalar proveedores de pago del **Marketplace de aplicaciones** construidos sobre NMI o Authorize.net. Son apps de terceros que usan la tecnología de esas pasarelas, pero con la marca y las condiciones del proveedor que elijas. Una vez instalado, el proveedor se configura y funciona igual que NMI o Authorize.net nativos, así que puedes cobrar con él en tus formularios, tienda, facturas y enlaces de pago.
+
+## Encontrar e instalar un proveedor de pago
+
+No tienes que salir de la configuración de pagos para buscar estos proveedores: la página de integraciones de pago muestra directamente las apps de pago disponibles en el Marketplace.
+
+<Steps>
+  <Step title="Abre las integraciones de pago">
+    Ve a **Pagos → Integraciones**.
+  </Step>
+  <Step title="Busca el proveedor">
+    Usa el buscador para encontrar el proveedor que te ofreció tu banco o procesador, o recorre el listado de apps disponibles.
+  </Step>
+  <Step title="Instálalo">
+    Instala la app directamente desde el listado. Revisa los permisos y precios antes de confirmar.
+  </Step>
+  <Step title="Configura la conexión">
+    Al instalarse, la app crea automáticamente una configuración de proveedor para tu cuenta. Completa sus datos de conexión (claves o credenciales que te dio el proveedor), igual que harías con una pasarela nativa.
+  </Step>
+  <Step title="Márcalo como predeterminado">
+    Si quieres que sea tu pasarela principal, establécelo como proveedor de pago predeterminado.
+  </Step>
+</Steps>
+
+<Tip>
+  Antes de activar el proveedor en tus páginas de venta, haz un cobro de prueba con un importe bajo y confirma que el pago aparece tanto en Chateea como en el portal de tu proveedor.
+</Tip>
+
+## Dónde puedes cobrar con él
+
+Estos proveedores funcionan en todos los lugares donde funcionan NMI y Authorize.net nativos:
+
+| Dónde | Disponible |
+| --- | --- |
+| Formularios de pedido de un paso y de dos pasos | Sí |
+| Tienda en línea | Sí |
+| Facturas | Sí |
+| Enlaces de pago | Sí |
+
+## Para desarrolladores
+
+Si quieres crear tu propio proveedor de pago sobre NMI o Authorize.net:
+
+- Crea una app en el Marketplace de aplicaciones dentro de la categoría de proveedores de pago basados en NMI o Authorize.net.
+- Al instalarse, la app genera una configuración de proveedor específica para cada cuenta que la instala.
+- La API pública de Chateea incluye dos endpoints para este tipo de proveedor: uno para crearlo (POST) y otro para listarlos (GET).
+
+Para acceder al panel de desarrolladores y a la documentación de estos endpoints, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conecta NMI" icon="credit-card" href="/pagos/integracion-nmi">
+    Configura NMI nativo con tu Gateway ID y tus claves.
+  </Card>
+  <Card title="Integración con Authorize.net" icon="credit-card" href="/pagos/integracion-authorize-net">
+    Conecta Authorize.net para cobrar con tarjeta.
+  </Card>
+  <Card title="Crea una integración de pagos personalizada" icon="code" href="/pagos/integracion-de-pagos-personalizada">
+    Guía técnica para conectar una pasarela propia.
+  </Card>
+  <Card title="Instalar y desinstalar apps del Marketplace" icon="store" href="/integraciones/instalar-y-desinstalar-apps-del-marketplace">
+    Encuentra, evalúa, instala y elimina apps.
+  </Card>
+</CardGroup>

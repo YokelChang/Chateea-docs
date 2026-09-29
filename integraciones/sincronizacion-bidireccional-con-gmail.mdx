@@ -1,0 +1,137 @@
+---
+title: "Sincronización bidireccional con Gmail"
+description: "Conecta Gmail o Google Workspace para sincronizar tus correos con contactos en ambos sentidos, con sus límites y preguntas frecuentes."
+icon: "envelope"
+---
+
+La sincronización bidireccional con Gmail conecta tu cuenta de Gmail o Google Workspace con Chateea para que tus correos con clientes estén siempre al día en ambos lados. Lo que envías desde Chateea sale desde tu Gmail y queda en tu carpeta de enviados, y lo que tus contactos te responden aparece también en **Conversaciones**. Es la forma más cómoda de tener todo el historial de un cliente en un solo lugar si ya trabajas con Gmail.
+
+## Qué hace la sincronización
+
+- Sincroniza los correos entrantes y salientes con tus contactos existentes.
+- Te permite crear contactos y conversaciones en Chateea desde tu propio Gmail.
+- Mantiene los hilos al día en tiempo real, en ambos sentidos.
+
+## Antes de empezar
+
+- La conexión se hace por usuario, desde el perfil de cada persona del equipo.
+- Solo verás la pestaña **Mi perfil** si tu usuario pertenece a la cuenta de Chateea en la que estás trabajando.
+- Ten a mano la cuenta de Gmail o Google Workspace que quieres conectar. Si usas Google Workspace, confirma con tu administrador que se permite autorizar aplicaciones de terceros.
+
+## Cómo conectar Gmail
+
+<Steps>
+  <Step title="Abre la sección de sincronización">
+    Ve a **Configuración → Mi perfil** y baja hasta **Correo (sincronización bidireccional)**.
+  </Step>
+  <Step title="Elige Gmail">
+    Selecciona **Gmail** y haz clic en **Conectar**.
+  </Step>
+  <Step title="Elige la cuenta de Google">
+    Selecciona una cuenta de Gmail que ya tengas abierta en el navegador o inicia sesión con otra.
+  </Step>
+  <Step title="Acepta los permisos">
+    Revisa la solicitud de permisos, haz clic en **Continuar** y después en **Permitir**. Acepta todos los permisos: si desmarcas alguno, la sincronización no funcionará.
+  </Step>
+  <Step title="Confirma la conexión">
+    Tu cuenta de Gmail aparecerá en la sección **Correo (sincronización bidireccional)** como conectada.
+  </Step>
+</Steps>
+
+## Cómo empieza la sincronización
+
+Hay dos formas de que un hilo quede sincronizado:
+
+1. **Escribes al contacto desde Chateea.** El correo sale desde tu Gmail, aparece en tu carpeta de enviados y el hilo queda sincronizado.
+2. **Un contacto que ya existe en Chateea te escribe a tu Gmail.** El correo entra automáticamente a su conversación en Chateea.
+
+A partir de ahí, todos los mensajes siguientes del hilo se sincronizan: lo que respondes desde Gmail aparece en Chateea y lo que respondes desde Chateea aparece en Gmail.
+
+<Note>
+  Los correos de contactos que además son usuarios de tu cuenta de Chateea no se sincronizan, porque pueden contener información interna confidencial. Si la dirección no pertenece a un usuario, el correo se sincroniza con normalidad.
+</Note>
+
+## Límites importantes
+
+| Límite | Detalle |
+| --- | --- |
+| Envíos diarios | Google permite aproximadamente 500 correos al día desde Gmail. Los envíos que superen ese límite fallan |
+| Tamaño de adjuntos | Hasta 25 MB por correo |
+| Historial | Los correos anteriores a la conexión no se importan |
+
+<Tip>
+  El límite de Gmail solo afecta a los correos individuales. Tus campañas masivas y los correos de automatizaciones salen por el correo de Chateea o tu servicio SMTP, así que no consumen tu cupo diario de Gmail.
+</Tip>
+
+## La dirección CCO para registrar contactos nuevos
+
+Cuando escribes desde Gmail a alguien que todavía no es contacto en Chateea, agrega la **dirección CCO** de Chateea en el campo CC o CCO. Chateea crea el contacto y la conversación automáticamente, y desde ese momento todo lo que ese contacto te envíe a Gmail se sincroniza.
+
+<Warning>
+  Es posible que Gmail te muestre un aviso de "Entrega incompleta" al usar la dirección CCO. Ocurre porque esa dirección se usa solo para registrar el correo y no devuelve confirmación de entrega. Aun con el aviso, el mensaje normalmente queda registrado en Chateea.
+</Warning>
+
+## Cambiar o desconectar tu buzón
+
+- **Actualizar correo:** cambia la dirección conectada por otra sin desconectar la anterior. Los nuevos correos que envíes desde Chateea se sincronizan con la nueva dirección, y los mensajes que lleguen a la dirección anterior (aunque sean del mismo hilo) dejan de sincronizarse.
+- **Desconectar correo:** detiene la sincronización entre Gmail y Chateea. Los correos ya sincronizados se conservan.
+
+## Qué correos salen por tu Gmail
+
+| Tipo de correo | Cómo se envía |
+| --- | --- |
+| **Correos individuales** | Desde tu Gmail conectado, con tu dirección como remitente. Cuentan para el límite diario de Google |
+| **Correos masivos** | Desde el proveedor de correo de tu cuenta (el correo de Chateea o tu SMTP). La sincronización no los afecta |
+| **Flujos de trabajo y automatizaciones** | Desde el proveedor de correo de tu cuenta, no desde tu Gmail |
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa con los correos que me envían mis contactos existentes?">
+    Todos los correos entrantes de contactos existentes aparecen tanto en Chateea como en tu Gmail, así tienes el registro completo en ambos lados.
+  </Accordion>
+  <Accordion title="¿Si desconecto mi cuenta se borran los correos?">
+    No. Los correos ya sincronizados se conservan. Solo se detiene la sincronización de los correos nuevos que envíes o recibas después de desconectar.
+  </Accordion>
+  <Accordion title="¿Se sincronizan todos mis contactos de Gmail con Chateea?">
+    La sincronización identifica a los contactos que ya existen en Chateea y coloca sus correos entrantes en su conversación. Los correos anteriores a la conexión no se sincronizan.
+  </Accordion>
+  <Accordion title="¿Qué pasa con los correos enviados desde Chateea o desde Gmail?">
+    Lo que envías desde Chateea queda en la carpeta de enviados de tu Gmail. Lo que envías desde Gmail a un contacto aparece en su conversación en Chateea.
+  </Accordion>
+  <Accordion title="¿Cómo se manejan los destinatarios en CC y CCO?">
+    Si estás en copia, en copia oculta o eres uno de varios destinatarios, el correo se registra en la conversación del contacto correspondiente. No se crean contactos nuevos para las direcciones en CC o CCO.
+  </Accordion>
+  <Accordion title="¿Qué pasa si un contacto escribe a otra persona y me pone en copia?">
+    El correo se registra en Chateea asociado a ese contacto, así conservas el historial completo.
+  </Accordion>
+  <Accordion title="¿Cómo se organiza un hilo con varios destinatarios?">
+    Si el correo tiene varios destinatarios en el campo Para, la conversación se crea con el primer contacto, y los correos siguientes aparecen en ese mismo hilo.
+  </Accordion>
+  <Accordion title="Si dos contactos tienen el mismo correo, ¿a cuál se asocia?">
+    El correo se asocia al contacto que se creó primero en Chateea.
+  </Accordion>
+  <Accordion title="¿Qué pasa si reenvío un correo desde Gmail?">
+    Si lo reenvías a un contacto existente, se trata como un correo enviado y se registra en su conversación.
+  </Accordion>
+  <Accordion title="¿Qué pasa si cambio la contraseña de Google?">
+    Chateea te pedirá volver a autenticarte para mantener la conexión segura. Reconecta tu buzón y acepta todos los permisos. Si ves un error de permisos, sigue la guía de [permisos insuficientes](/integraciones/error-permisos-insuficientes-sincronizacion-correo).
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Sincronización bidireccional con Outlook" icon="envelope" href="/integraciones/sincronizacion-bidireccional-con-outlook">
+    Conecta tu Outlook o Microsoft 365 con Chateea.
+  </Card>
+  <Card title="Error de permisos insuficientes" icon="triangle-exclamation" href="/integraciones/error-permisos-insuficientes-sincronizacion-correo">
+    Recupera la sincronización cuando tu buzón pierde la autorización.
+  </Card>
+  <Card title="Conecta tu correo de Gmail u Outlook" icon="plug" href="/primeros-pasos/conecta-tu-correo-personal">
+    Guía rápida para empezar a usar tu buzón en Chateea.
+  </Card>
+  <Card title="Las respuestas no llegan a Conversaciones" icon="inbox" href="/correo/respuestas-no-llegan-a-conversaciones">
+    Qué revisar cuando las respuestas de tus contactos no aparecen.
+  </Card>
+</CardGroup>

@@ -1,0 +1,125 @@
+---
+title: "Conectar varias cuentas externas a una app del Marketplace"
+description: "Conecta y administra varias cuentas OAuth en una misma app, elige la predeterminada y desconecta las que no uses."
+icon: "users"
+---
+
+Algunas apps del **Marketplace de aplicaciones** te permiten conectar varias cuentas externas a una misma instalación. Por ejemplo, puedes vincular dos cuentas de Google, varias páginas de Facebook o más de una cuenta de tu herramienta de encuestas, sin instalar la app dos veces ni crear conexiones a mano. Cada cuenta queda separada e identificada, y la app puede usarla en sus disparadores, acciones y flujos de trabajo.
+
+## Qué ganas
+
+- **Varias cuentas en una sola app:** conecta más de una cuenta externa con OAuth a la misma instalación.
+- **Administración ordenada:** ve, busca, renueva, marca como predeterminada o desconecta cada cuenta desde un solo panel.
+- **Menos trabajo manual:** evitas instalar la misma app varias veces.
+- **Tokens seguros:** Chateea guarda y renueva automáticamente las autorizaciones de cada cuenta.
+- **Automatizaciones más completas:** usa distintas cuentas en tus flujos de trabajo, disparadores y acciones.
+
+## Cómo funciona
+
+1. Instalas una app del Marketplace que admite varias conexiones OAuth.
+2. Conectas una o varias cuentas externas.
+3. Cada cuenta conectada aparece en la pestaña **Conexión externa** (External Connection) de la app.
+4. Chateea guarda y renueva los tokens de cada cuenta de forma segura.
+5. La app usa esas conexiones en sus flujos de trabajo, disparadores y acciones compatibles.
+
+Cada cuenta se identifica por su nombre, su correo o su ID, así sabes siempre cuál estás usando.
+
+## Conectar otra cuenta externa
+
+<Steps>
+  <Step title="Abre la app instalada">
+    Ve a **Marketplace de aplicaciones** y selecciona la app instalada.
+  </Step>
+  <Step title="Ve a la pestaña de conexiones">
+    Abre la pestaña **Conexión externa**.
+  </Step>
+  <Step title="Agrega la cuenta">
+    Haz clic en **Agregar cuenta** y completa la autorización OAuth en el servicio externo.
+  </Step>
+  <Step title="Confirma">
+    Verifica que la nueva cuenta aparece en la lista de cuentas conectadas.
+  </Step>
+</Steps>
+
+Desde la misma pestaña también puedes buscar cuentas, renovar una conexión que dejó de funcionar, elegir la cuenta predeterminada o desconectar las que ya no uses. Las opciones disponibles pueden variar según cómo esté construida cada app.
+
+## Elegir la cuenta predeterminada
+
+La cuenta predeterminada es la que la app usa cuando necesita una por defecto. Definirla evita confusiones cuando hay varias conectadas.
+
+<Steps>
+  <Step title="Abre la pestaña de conexiones">
+    En **Marketplace de aplicaciones**, abre la app instalada y ve a **Conexión externa**.
+  </Step>
+  <Step title="Marca la cuenta">
+    Busca la cuenta que quieres usar y selecciona su botón en la columna **Predeterminada** (Default).
+  </Step>
+  <Step title="Confirma el cambio">
+    Verás un mensaje que confirma que la cuenta predeterminada se actualizó.
+  </Step>
+</Steps>
+
+## Desconectar una cuenta externa
+
+Desconectar una cuenta elimina su autorización de la app. Hazlo solo cuando ya no la necesites.
+
+<Steps>
+  <Step title="Abre la pestaña de conexiones">
+    En **Marketplace de aplicaciones**, abre la app instalada y ve a **Conexión externa**.
+  </Step>
+  <Step title="Elimina la cuenta">
+    Busca la cuenta y haz clic en su ícono de eliminar.
+  </Step>
+  <Step title="Confirma">
+    Lee el mensaje de confirmación y haz clic en **Eliminar**.
+  </Step>
+</Steps>
+
+<Warning>
+  Antes de desconectar una cuenta, revisa si algún flujo de trabajo la usa. Las acciones que dependían de ella dejarán de funcionar hasta que la vuelvas a conectar o elijas otra cuenta.
+</Warning>
+
+## Qué apps lo admiten
+
+Esta función está disponible en las apps nuevas o en las versiones nuevas de apps que admiten varias conexiones OAuth:
+
+- Las apps existentes no la obtienen automáticamente. El desarrollador debe publicar una versión compatible.
+- Si el desarrollador la agrega, es posible que tengas que actualizar la app o reinstalarla.
+- Las apps que no la admiten siguen permitiendo una sola conexión.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Puedo conectar más de una cuenta externa a la misma app?">
+    Sí, siempre que la app admita varias conexiones OAuth. Las agregas desde la pestaña **Conexión externa**.
+  </Accordion>
+  <Accordion title="¿Las apps que ya tengo instaladas lo admiten?">
+    No automáticamente. Depende de que el desarrollador publique una versión compatible.
+  </Accordion>
+  <Accordion title="¿Qué pasa cuando desconecto una cuenta?">
+    Se elimina de la lista de cuentas conectadas y la app ya no puede usarla hasta que la conectes de nuevo.
+  </Accordion>
+  <Accordion title="¿Los tokens se renuevan solos?">
+    Sí. Chateea guarda y renueva automáticamente las autorizaciones de cada cuenta conectada.
+  </Accordion>
+  <Accordion title="¿Puedo usar distintas cuentas en mis flujos de trabajo?">
+    Sí. Las apps pueden usar las cuentas conectadas en sus disparadores, acciones y flujos de trabajo, según cómo estén construidas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Conexiones externas de las apps del Marketplace" icon="link" href="/automatizaciones/conexiones-externas-de-apps-del-marketplace">
+    Métodos de autenticación que usan las apps con servicios de terceros.
+  </Card>
+  <Card title="Permisos al instalar apps del Marketplace" icon="shield-check" href="/integraciones/permisos-al-instalar-apps-del-marketplace">
+    Qué revisar en la pantalla de consentimiento antes de autorizar.
+  </Card>
+  <Card title="Instalar y desinstalar apps del Marketplace" icon="store" href="/integraciones/instalar-y-desinstalar-apps-del-marketplace">
+    Encuentra, evalúa, instala y elimina apps.
+  </Card>
+  <Card title="Instalar apps del Marketplace desde flujos" icon="diagram-project" href="/automatizaciones/instalar-apps-del-marketplace-desde-flujos">
+    Instala aplicaciones sin salir del constructor de flujos.
+  </Card>
+</CardGroup>

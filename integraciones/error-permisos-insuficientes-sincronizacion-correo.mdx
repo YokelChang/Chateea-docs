@@ -1,0 +1,101 @@
+---
+title: "Error de permisos insuficientes en la sincronización de correo"
+description: "Qué hacer cuando tu Gmail u Outlook conectado pierde la autorización y la sincronización bidireccional deja de funcionar."
+icon: "triangle-exclamation"
+---
+
+El error **"Email Failure: Insufficient Permission for 2-Way Sync"** (permisos insuficientes para la sincronización bidireccional) aparece cuando Chateea ya no tiene autorización para acceder a tu buzón conectado de Gmail u Outlook. Mientras no lo resuelvas, es posible que no puedas enviar correos desde tu buzón ni ver las respuestas en **Conversaciones**. La solución casi siempre es reconectar el buzón y aceptar todos los permisos.
+
+## Confirma que es este error
+
+Esta guía aplica si ves alguno de estos mensajes:
+
+- **Email Failure: Insufficient Permission for 2-Way Sync**
+- **Insufficient Permission**
+- Un error que indica que Chateea ya no tiene permiso para acceder a tu buzón conectado
+
+Si tu mensaje es otro, la causa es distinta y reconectar el buzón no lo resolverá:
+
+| Mensaje de error | Causa probable | Qué hacer |
+| --- | --- | --- |
+| Insufficient funds to send email (fondos insuficientes) | Saldo o créditos de correo insuficientes | Revisa el saldo de tu billetera en **Configuración → Facturación** |
+| Authentication Failed | Credenciales SMTP incorrectas | Revisa la configuración de tu servicio SMTP |
+| Email quota exceeded | Alcanzaste el límite de envío | Revisa los límites de envío de tu proveedor de correo |
+| Domain not verified | Problema de autenticación o de DNS del dominio | Verifica tu dominio de envío |
+
+## Por qué ocurre
+
+Chateea pierde la autorización sobre tu buzón por alguna de estas razones:
+
+- Se revocaron los permisos de tu cuenta de Google o Microsoft.
+- Cambiaste la contraseña de tu cuenta de correo.
+- Una política de seguridad de tu organización invalidó las autorizaciones existentes.
+- La cuenta de correo conectada se eliminó o se desconectó.
+- Tu proveedor de correo exige volver a otorgar permisos después de una actualización de seguridad.
+
+## Cómo resolverlo
+
+<Steps>
+  <Step title="Abre los servicios de correo">
+    Ve a **Configuración → Servicios de correo** y localiza la cuenta de correo conectada.
+  </Step>
+  <Step title="Reconecta el buzón">
+    Si la cuenta muestra un error o requiere atención, haz clic en **Reconectar**. Si no ves esa opción, elimina el buzón y vuelve a conectarlo desde **Configuración → Mi perfil → Correo (sincronización bidireccional)**.
+  </Step>
+  <Step title="Inicia sesión con la cuenta correcta">
+    Entra con la misma dirección de correo que tenías conectada.
+  </Step>
+  <Step title="Acepta todos los permisos">
+    Revisa los permisos solicitados y selecciona **Permitir**. La sincronización bidireccional necesita todos los permisos para funcionar.
+  </Step>
+  <Step title="Verifica la conexión">
+    Confirma que la cuenta aparece como **Conectada**, envía un correo de prueba a un contacto y comprueba que se envía bien y que la respuesta aparece en **Conversaciones**.
+  </Step>
+</Steps>
+
+## Si el problema continúa
+
+- Desconecta y vuelve a conectar el buzón una vez más.
+- Asegúrate de iniciar sesión con la cuenta de correo correcta.
+- Pide al administrador de Google Workspace o Microsoft 365 de tu empresa que confirme que no ha restringido los permisos para aplicaciones de terceros.
+- Confirma que ningún cambio reciente en las políticas de seguridad bloqueó el acceso de Chateea.
+- Intenta reconectar desde una ventana de incógnito o privada del navegador.
+
+Si nada de esto funciona, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071** e incluye:
+
+- El mensaje de error exacto y una captura de pantalla.
+- La dirección de correo afectada.
+- Tu proveedor (Gmail, Google Workspace, Outlook o Microsoft 365).
+- La hora aproximada en que apareció el error por primera vez.
+- Los pasos que ya probaste.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Reconectar el buzón borra mis correos?">
+    No. Reconectar solo restablece la autorización entre Chateea y tu proveedor de correo. Tus correos existentes se conservan.
+  </Accordion>
+  <Accordion title="¿Por qué pasó si antes funcionaba?">
+    Los proveedores de correo invalidan las autorizaciones periódicamente, por ejemplo después de un cambio de contraseña, una actualización de seguridad, un cambio en las políticas del administrador o una revocación de permisos.
+  </Accordion>
+  <Accordion title="¿Afecta al envío y la recepción de correos?">
+    Sí. Sin los permisos necesarios, Chateea puede no enviar correos desde tu buzón, no sincronizar los mensajes entrantes o no mostrar las respuestas en **Conversaciones**.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Sincronización bidireccional con Gmail" icon="envelope" href="/integraciones/sincronizacion-bidireccional-con-gmail">
+    Cómo funciona la conexión con Gmail y Google Workspace.
+  </Card>
+  <Card title="Sincronización bidireccional con Outlook" icon="envelope" href="/integraciones/sincronizacion-bidireccional-con-outlook">
+    Cómo funciona la conexión con Outlook y Microsoft 365.
+  </Card>
+  <Card title="Agrega tu propio servicio SMTP" icon="server" href="/correo/agregar-tu-propio-servicio-smtp">
+    Revisa la configuración si el error es de autenticación SMTP.
+  </Card>
+  <Card title="Agregar y verificar tu dominio de envío" icon="globe" href="/correo/agregar-y-verificar-dominio-de-envio">
+    Resuelve errores de dominio no verificado.
+  </Card>
+</CardGroup>

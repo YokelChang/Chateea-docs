@@ -1,16 +1,16 @@
 ---
 title: "Variables y campos personalizados"
-description: "Personaliza mensajes a escala sin que salgan errores delante del cliente."
+description: "Qué son las variables, los tipos que existen (campos, valores, objetos y enlaces) y cómo evitar mensajes con huecos o código en crudo."
 icon: "code"
 ---
 
-Una variable es un hueco que se rellena solo con el dato de cada contacto. Escribes el mensaje una vez y cada persona lo recibe con su nombre, su fecha de cita o su servicio.
+Una variable (o campo de combinación) es un hueco que se rellena solo con el dato de cada contacto. Escribes el mensaje una vez y cada persona lo recibe con su nombre, su fecha de cita o su servicio. Las variables sacan la información de tu CRM y de otros módulos de Chateea, y funcionan en correos, SMS, flujos de trabajo, documentos, sitios y embudos.
 
-Bien usadas, un envío masivo se siente personal. Mal usadas, tu cliente recibe un mensaje con código en crudo y tu negocio se ve descuidado.
+Bien usadas, un envío masivo se siente personal. Mal usadas, tu cliente recibe un mensaje con código en crudo o con un hueco, y tu negocio se ve descuidado. Esta página te explica qué tipos de variables existen, para qué sirve cada uno y cómo evitar los errores más comunes.
 
 ## Cómo se escriben
 
-Se insertan entre llaves dobles:
+Todas van entre llaves dobles, con la categoría y el dato separados por un punto:
 
 ```text
 Hola {{contact.first_name}}, tu cita en {{location.name}}
@@ -18,44 +18,99 @@ quedó confirmada.
 ```
 
 <Tip>
-  **Nunca las escribas a mano.** Usa el selector de variables del editor. Un espacio de más, una llave faltante o un nombre de campo mal escrito hace que salga el texto literal en vez del dato.
+**No las escribas a mano.** Insértalas con el selector de variables del editor (el ícono `{ }`, **Campos de combinación** o **Valores personalizados**). Las variables distinguen mayúsculas y minúsculas: `{{contact.name}}` funciona, `{{Contact.Name}}` no. Un espacio de más o una llave faltante hacen que salga el texto literal en vez del dato.
 </Tip>
 
-## Las más usadas
+## Para qué te sirven
 
-| Categoría | Para qué |
-| --- | --- |
-| Datos del contacto | Nombre, apellido, teléfono, correo |
-| Datos del negocio | Nombre, dirección, teléfono, sitio web |
-| Cita | Fecha, hora, servicio, responsable |
-| Factura | Monto, vencimiento, enlace de pago |
-| Usuario asignado | Nombre de quien atiende al contacto |
-| Campos personalizados | Cualquier dato propio de tu negocio |
+- **Personalizar la comunicación:** nombres, fechas y detalles de cada cliente en correos y SMS, sin editar nada a mano.
+- **Automatizar procesos:** los flujos de trabajo usan variables para decidir y para escribir mensajes por ti.
+- **Mantener los datos consistentes:** la información sale siempre del mismo lugar y está al día.
+- **Ahorrar tiempo en tareas repetitivas:** reutilizas valores y enlaces en todas tus plantillas.
 
-## El valor de reemplazo
+## Tipos de variables
 
-Esta es la parte que casi todo el mundo olvida y la que provoca los mensajes vergüenza.
+| Tipo | Qué es | Ejemplo de uso |
+| --- | --- | --- |
+| **Campos estándar** | Vienen incluidos en todas las cuentas y no se pueden editar ni borrar. | Nombre del contacto, fecha de la cita, nombre del usuario asignado |
+| **Campos personalizados** | Datos que tú creas y que cambian de un registro a otro. | Cumpleaños, nivel de membresía, fecha de renovación |
+| **Valores personalizados** | Datos fijos que reutilizas en muchas plantillas y actualizas en un solo lugar. | Teléfono de soporte, horario, aviso legal |
+| **Objetos personalizados** | Estructuras de datos propias, más allá de contactos y oportunidades. | Propiedades, vehículos, planes de suscripción |
+| **Enlaces de disparo** | Enlaces que, al hacer clic, activan acciones en tus flujos. | Confirmar asistencia a un evento |
+| **Enlaces de pago** | Enlaces para que el cliente pague un producto o servicio. | Entradas, depósitos, donaciones |
 
-Si un contacto no tiene nombre registrado y tu mensaje empieza con la variable de nombre, el cliente recibe:
+### Campos estándar
+
+Son los datos básicos que Chateea guarda siempre: nombre, correo y teléfono del contacto, fecha y hora de la cita, datos del usuario asignado y datos de tu negocio. No se pueden modificar ni eliminar, pero decides si los usas o no. Consulta la [lista completa de campos de combinación](/configuracion/lista-de-campos-de-combinacion).
+
+### Campos personalizados
+
+Cuando un dato no existe por defecto, lo creas en **Configuración → Campos personalizados**. Algunos usos habituales:
+
+- **Preferencias del cliente:** canal preferido para contactarlo (correo, SMS, llamada).
+- **Membresía:** nivel Oro, Plata o Platino para promociones por nivel.
+- **Interés en productos:** qué servicio le interesa, para hacer seguimientos dirigidos.
+- **Eventos:** registro o asistencia, para personalizar invitaciones.
+- **Responsable de la cuenta:** quién atiende a ese cliente.
+- **Renovaciones:** fecha de vencimiento de un contrato, para recordatorios a tiempo.
+- **Origen del lead:** Facebook, Google, referido, para medir tus campañas.
+
+Ejemplos por tipo de negocio:
+
+- **Taller:** marca, modelo, placa, último kilometraje.
+- **Clínica:** seguro médico, alergias, última visita.
+- **Inmobiliaria:** presupuesto, zona, habitaciones.
+- **Salón:** tipo de cabello, estilista preferido.
+- **Gimnasio:** plan, fecha de renovación, objetivo.
+
+<Tip>
+Prefiere un campo de **selección** en lugar de **texto libre** siempre que puedas. Un campo de texto termina con "Toyota", "toyota", "TOYOTA" y "toyot", y ninguna lista inteligente los agrupa. Un campo de selección mantiene los datos limpios solos.
+</Tip>
+
+Más detalles en [Crear y gestionar campos personalizados](/configuracion/crear-y-gestionar-campos-personalizados).
+
+### Valores personalizados
+
+Son datos que no dependen del contacto: el teléfono de tu negocio, la dirección, el enlace a tu página de soporte, una despedida estándar, un aviso legal, tu eslogan o un saludo de temporada. Si el dato cambia, lo actualizas una vez y se actualiza en todas las plantillas, flujos, sitios y embudos donde lo usas. Ver [Usar valores personalizados](/configuracion/usar-valores-personalizados).
+
+### Objetos personalizados
+
+Te permiten crear estructuras de datos propias, por ejemplo: planes de suscripción con tipo, fecha de renovación y frecuencia de cobro; inventario con SKU, cantidad y proveedor; propiedades con ubicación, precio y características; o proveedores con contratos y condiciones de pago. Ver [Introducción a los objetos personalizados](/crm/introduccion-a-objetos-personalizados).
+
+### Enlaces de disparo
+
+Son enlaces que, cuando el contacto hace clic, activan acciones en tus flujos y campañas. Te sirven para confirmar la inscripción a un webinar, agradecer a quien abrió una encuesta, medir descargas de un ebook, hacer seguimiento a quien se interesó en una mejora de servicio, registrar confirmaciones de asistencia o enviar un recordatorio a quien no abrió una oferta. Ver [Enlaces de disparo](/conversaciones/enlaces-de-disparo).
+
+### Enlaces de pago
+
+Te permiten cobrar productos o servicios con un enlace: entradas a talleres, suscripciones o membresías, productos físicos o digitales, depósitos para reservas o donaciones. Ver [Enlaces de pago](/comercio/enlaces-de-pago).
+
+## Variables en flujos de trabajo
+
+En un flujo basado en contactos, el selector de variables también muestra los campos de **empresa**. Si el contacto está asociado a una empresa, las acciones y condiciones del flujo pueden usar su nombre, teléfono, correo, sitio web y dirección. Si no tiene empresa asociada, esos campos quedan vacíos.
+
+El selector de los flujos incluye además algunos campos del sistema, útiles para variables y para condiciones **Si/Sino**:
+
+- **Puntuación de interacción del contacto:** disponible cuando tienes activada la [puntuación de interacción](/conversaciones/puntuacion-de-interaccion).
+- **Contacto → ID del medio de atribución.**
+- **Nota creada por (nombre):** aparece en flujos relacionados con notas.
+- **ID de la tarea:** aparece en flujos relacionados con tareas.
+
+## Cuando falta el dato: el valor de reemplazo
+
+Esta es la parte que casi todo el mundo olvida y la que provoca los mensajes que se ven mal. Si un contacto no tiene nombre registrado y tu mensaje empieza con la variable de nombre, el cliente recibe:
 
 ```text
 Hola , tu cita quedó confirmada.
 ```
 
-Por eso toda variable debe llevar un **valor de reemplazo**: lo que se muestra cuando el dato está vacío.
+Tienes dos formas de evitarlo:
 
-<CardGroup cols={2}>
-  <Card title="Sin valor de reemplazo" icon="circle-xmark">
-    `Hola {{nombre}}` → _"Hola ,"_
-  </Card>
-
-  <Card title="Con valor de reemplazo" icon="circle-check">
-    `Hola {{nombre | ""}}` → _"Hola,"_
-  </Card>
-</CardGroup>
+- **En correos, usa un texto de reemplazo.** Haz clic en la etiqueta de la variable dentro del editor de correo y escribe el texto que se mostrará cuando el dato esté vacío (por ejemplo, "cliente"). Ver [Campos de combinación y valores de reemplazo](/configuracion/campos-de-combinacion-y-valores-de-reemplazo).
+- **Muestra u oculta bloques de contenido.** En el editor de correo puedes usar el envío condicional: un bloque con "Hola `{{contact.first_name}}`," que se envía solo si el nombre no está vacío, y otro con "Hola," o "Hola, amigo," que se envía cuando el nombre está vacío.
 
 <Warning>
-  Configúralo en **todas** las variables de mensajes masivos. En una base de miles de contactos siempre hay datos incompletos, y esos son justo los mensajes que se ven mal.
+Revisa esto en **todas** las variables de tus envíos masivos. En una base de miles de contactos siempre hay datos incompletos, y esos son justo los mensajes que se ven mal.
 </Warning>
 
 ## Excepción importante: plantillas de WhatsApp
@@ -66,60 +121,67 @@ Las plantillas de WhatsApp **no** usan variables con nombre. Usan variables nume
 Hola {{1}}, tu cita en {{2}} es el {{3}} a las {{4}}.
 ```
 
-Si usas campos con nombre en una plantilla, Meta la rechaza o el mensaje sale ilegible. Ver [Plantillas de WhatsApp](/whatsapp/plantillas).
-
-## Campos personalizados
-
-Cuando un dato no existe por defecto, lo creas en **Configuración → Campos personalizados**.
-
-### Tipos disponibles
-
-| Tipo | Útil para |
-| --- | --- |
-| Texto | Datos libres cortos |
-| Número | Cantidades, presupuestos |
-| Fecha | Vencimientos, aniversarios |
-| Selección | Opciones cerradas |
-| Casilla | Sí o no |
-| Archivo | Documentos del cliente |
-
-<Tip>
-  Prefiere **selección** sobre **texto** siempre que puedas. Un campo de texto libre termina con "Toyota", "toyota", "TOYOTA" y "toyot" — y ninguna lista inteligente los agrupa. Un campo de selección mantiene los datos limpios solos.
-</Tip>
-
-### Ejemplos por negocio
-
-- **Taller:** marca, modelo, placa, último kilometraje
-- **Clínica:** seguro médico, alergias, última visita
-- **Inmobiliaria:** presupuesto, zona, habitaciones
-- **Salón:** tipo de cabello, estilista preferido
-- **Gimnasio:** plan, fecha de renovación, objetivo
-
-## Dónde se usan
-
-Además de mensajes, los campos personalizados alimentan:
-
-- **Listas inteligentes**, para segmentar por cualquier criterio
-- **Condiciones de flujos**, para bifurcar según el dato
-- **Formularios**, para capturarlos desde el inicio
-- **Reportes**, para analizar por segmento
+Si pones campos con nombre en una plantilla, Meta la rechaza o el mensaje sale ilegible. Ver [Plantillas de WhatsApp](/whatsapp/plantillas).
 
 ## Prueba siempre antes de enviar
 
 <Steps>
   <Step title="Envíate el mensaje a ti mismo">
-    Con un contacto de prueba **completo** y otro **incompleto**, para ver ambos casos.
+    Usa un contacto de prueba **completo** y otro **incompleto**, para ver ambos casos. También puedes usar la vista previa del editor de plantillas.
   </Step>
   <Step title="Revisa que no quede texto en crudo">
-    Si ves llaves en el mensaje recibido, la variable está mal escrita.
+    Si ves llaves en el mensaje recibido, la variable está mal escrita. Bórrala y vuelve a insertarla desde el selector.
   </Step>
   <Step title="Comprueba la puntuación">
     "Hola , ¿cómo estás?" delata que falta un valor de reemplazo.
   </Step>
 </Steps>
 
-## Siguiente paso
+## Preguntas frecuentes
 
-<Card title="Telefonía y SMS" icon="phone" href="/telefonia/introduccion">
-  Números, llamadas y rastreo de campañas.
-</Card>
+<AccordionGroup>
+  <Accordion title="¿Qué diferencia hay entre un campo personalizado y un valor personalizado?">
+    El campo personalizado guarda un dato propio de cada contacto u oportunidad, como su cumpleaños. El valor personalizado guarda un dato fijo que se repite en todas tus comunicaciones, como el teléfono de tu negocio.
+  </Accordion>
+  <Accordion title="¿Por qué mi variable no funciona o no se ve bien?">
+    Suele ser un formato incorrecto o que falta el dato. Confirma que usas la sintaxis correcta (por ejemplo, `{{contact.email}}`) y que el contacto o usuario tiene ese dato guardado.
+  </Accordion>
+  <Accordion title="¿Las variables distinguen mayúsculas y minúsculas?">
+    Sí. `{{contact.name}}` funciona y `{{Contact.Name}}` no.
+  </Accordion>
+  <Accordion title="Si cambio un valor personalizado, ¿se actualiza en todas partes?">
+    Sí. Todas las plantillas, flujos, sitios y embudos que lo usan muestran el nuevo valor automáticamente.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre campos estándar y personalizados?">
+    Los estándar vienen incluidos y no se pueden editar ni borrar. Los personalizados los creas tú para guardar datos propios de tu negocio.
+  </Accordion>
+  <Accordion title="¿En qué se diferencian los objetos personalizados de los campos y valores?">
+    Los objetos personalizados son estructuras completas, con sus propios campos y relaciones con otros registros. Sirven para gestionar datos más complejos que un simple campo.
+  </Accordion>
+  <Accordion title="¿Hay un límite de campos o valores personalizados?">
+    No hay un límite estricto, pero conviene mantenerlos ordenados en carpetas para que tu cuenta siga siendo fácil de usar.
+  </Accordion>
+  <Accordion title="¿Puedo usar valores personalizados en sitios y embudos?">
+    Sí. Así muestras datos consistentes, como tu teléfono o tu dirección, en todas tus páginas.
+  </Accordion>
+  <Accordion title="¿Puedo crear o importar campos o valores en bloque?">
+    No. Por ahora se crean uno por uno.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Lista de campos de combinación" icon="list" href="/configuracion/lista-de-campos-de-combinacion">
+    Todos los campos disponibles por categoría.
+  </Card>
+  <Card title="Campos de combinación y valores de reemplazo" icon="code" href="/configuracion/campos-de-combinacion-y-valores-de-reemplazo">
+    Cómo insertarlos y evitar huecos en tus correos.
+  </Card>
+  <Card title="Crear y gestionar campos personalizados" icon="list-check" href="/configuracion/crear-y-gestionar-campos-personalizados">
+    Guarda los datos propios de tu negocio.
+  </Card>
+  <Card title="Usar valores personalizados" icon="tags" href="/configuracion/usar-valores-personalizados">
+    Datos fijos que cambias en un solo lugar.
+  </Card>
+</CardGroup>

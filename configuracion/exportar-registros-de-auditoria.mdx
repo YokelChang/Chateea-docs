@@ -1,0 +1,96 @@
+---
+title: "Exportar registros de auditoría a CSV"
+description: "Descarga el historial de auditoría en CSV para cumplimiento o reportes, con sus límites, permisos y plazos."
+icon: "file-export"
+---
+
+Los registros de auditoría se conservan en Chateea solo 60 días. Si necesitas guardarlos por más tiempo, presentarlos en una revisión de cumplimiento o analizarlos en una hoja de cálculo, puedes exportarlos a un archivo **CSV** con los mismos filtros que usas en pantalla.
+
+La exportación se procesa en segundo plano, se sigue desde una pestaña propia y el archivo queda disponible para descargar durante 30 días.
+
+## Para qué te sirve
+
+- **Guardar evidencia:** conservas fuera de Chateea el historial que necesites para auditorías, investigaciones o reportes internos.
+- **Trabajar sin esperar:** la exportación corre en segundo plano y puedes seguir usando la cuenta mientras se prepara.
+- **Controlar quién descarga:** existe un permiso específico para exportar, separado del permiso para ver.
+- **Trazabilidad:** las solicitudes de exportación y las descargas también quedan registradas en los registros de auditoría.
+
+## Límites y disponibilidad
+
+| Concepto | Detalle |
+| --- | --- |
+| Registros por exportación | Hasta **500.000** |
+| Procesamiento | En segundo plano (asíncrono) |
+| Disponibilidad del archivo | **30 días** desde que se genera |
+| Archivos vencidos | Pasados los 30 días ya no se pueden descargar; tienes que pedir una exportación nueva |
+| Retención en Chateea | Los registros de auditoría se guardan **60 días** en la plataforma |
+
+<Tip>
+  Si tu negocio necesita conservar el historial por más de 60 días, crea una rutina: exporta los registros cada mes y guárdalos en una carpeta segura.
+</Tip>
+
+## Permisos
+
+Los archivos exportados pueden contener información sensible de tu operación, así que conviene darle este acceso solo a quien lo necesite.
+
+- Para exportar hace falta el permiso **Exportar registros de auditoría** (Export audit logs).
+- Un usuario puede tener permiso para **ver** los registros sin poder **exportarlos**.
+- Los administradores de la cuenta gestionan este permiso en **Configuración → Mi equipo**: abre el usuario y revisa sus roles y permisos.
+
+## Cómo exportar los registros
+
+<Steps>
+  <Step title="Abre los registros de auditoría">
+    Ve a **Configuración → Registros de auditoría** y quédate en la pestaña **Registros de auditoría**.
+  </Step>
+  <Step title="Aplica los filtros">
+    Elige usuario, módulo, tipo de acción y rango de fechas. La exportación incluye solo lo que coincide con los filtros aplicados en ese momento.
+  </Step>
+  <Step title="Haz clic en Exportar">
+    Encontrarás el botón **Exportar** en la parte superior derecha.
+  </Step>
+  <Step title="Sigue el progreso en la pestaña Exportaciones">
+    Abre la pestaña **Exportaciones** para ver el estado de cada solicitud.
+  </Step>
+  <Step title="Descarga el archivo">
+    Cuando la exportación termine, descarga el CSV desde la misma pestaña.
+  </Step>
+</Steps>
+
+## Revisar quién exportó o descargó registros
+
+Cada solicitud de exportación y cada descarga quedan registradas. Para verlas, en la pestaña **Registros de auditoría** filtra por **Módulo → Registros de auditoría**.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Quién puede exportar los registros de auditoría?">
+    Solo los usuarios con el permiso **Exportar registros de auditoría** pueden crear y descargar exportaciones.
+  </Accordion>
+  <Accordion title="¿La exportación incluye todos los registros?">
+    No. Incluye solo los que coinciden con los filtros aplicados cuando haces clic en **Exportar**.
+  </Accordion>
+  <Accordion title="¿Qué hago si mi exportación supera los 500.000 registros?">
+    Reduce el resultado con filtros más específicos (por ejemplo, un rango de fechas más corto o un solo módulo) y haz varias exportaciones.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo puedo descargar el archivo?">
+    30 días desde que se genera. Después tendrás que solicitar una exportación nueva.
+  </Accordion>
+  <Accordion title="¿Cuánto tiempo guarda Chateea los registros?">
+    60 días. Pasado ese plazo, solo conservarás lo que hayas exportado.
+  </Accordion>
+  <Accordion title="¿Puedo ver si alguien exportó o descargó registros?">
+    Sí. Filtra por **Módulo → Registros de auditoría** para ver las solicitudes y descargas.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Registros de auditoría" icon="clock-rotate-left" href="/configuracion/registros-de-auditoria">
+    Cómo revisar y filtrar el historial de cambios de tu cuenta.
+  </Card>
+  <Card title="Auditoría de preferencias de correo" icon="envelope-open-text" href="/configuracion/auditoria-de-preferencias-de-correo">
+    Historial de cambios en suscripciones y preferencias de tus contactos.
+  </Card>
+</CardGroup>

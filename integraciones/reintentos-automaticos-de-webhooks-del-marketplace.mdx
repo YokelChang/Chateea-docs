@@ -1,0 +1,110 @@
+---
+title: "Reintentos automáticos de webhooks del Marketplace"
+description: "Cómo Chateea reintenta la entrega de webhooks a las apps del Marketplace según la respuesta de tu servidor y cómo prepararte."
+icon: "rotate"
+---
+
+Si desarrollas una app para el **Marketplace de aplicaciones**, Chateea envía los eventos a tu servidor mediante webhooks. Cuando tu servidor no puede recibirlos en ese momento, Chateea reintenta la entrega automáticamente para que no pierdas eventos importantes. Este artículo explica cuándo se reintenta, con qué frecuencia y cómo preparar tu endpoint para aprovecharlo.
+
+<Note>
+  Esta guía es técnica y está pensada para desarrolladores de apps del Marketplace. Para obtener acceso al panel de desarrolladores y a la documentación de webhooks de la API de Chateea, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+</Note>
+
+## Por qué te conviene
+
+- **Confiabilidad:** los picos temporales de tráfico o las caídas breves de tu servidor ya no hacen que pierdas eventos.
+- **Previsibilidad:** los intervalos y el número de intentos son fijos, así que puedes calcular la latencia máxima.
+- **Protección de tu servidor:** los reintentos se reparten en el tiempo con una variación aleatoria (jitter), así no llegan todos a la vez.
+- **Control:** tu respuesta HTTP decide si Chateea sigue reintentando o no.
+
+## Cómo se reintenta según la respuesta
+
+El comportamiento depende del tipo de fallo que devuelva tu endpoint:
+
+| Respuesta de tu endpoint | Qué hace Chateea |
+| --- | --- |
+| **2xx** (200, 202, 204) | Da el evento por entregado. No hay reintentos |
+| **429** (demasiadas solicitudes) | Reintenta cada 10 minutos con jitter, hasta 6 veces (aproximadamente 1 hora y 10 minutos en total) |
+| **Otros fallos temporales** (servidor caído, errores de servidor, tiempos de espera agotados, problemas de red) | Reintenta con espera exponencial durante un máximo de 3 días |
+
+### Calendario para respuestas 429
+
+| Parámetro | Valor |
+| --- | --- |
+| Intervalo | 10 minutos entre intentos, con una pequeña variación aleatoria |
+| Máximo de reintentos | 6 |
+| Ventana total | Aproximadamente 1 hora y 10 minutos |
+
+El ciclo termina cuando se agotan los 6 reintentos o cuando tu endpoint devuelve una respuesta distinta de 429, lo que ocurra primero.
+
+### Qué es el jitter
+
+A cada intervalo de 10 minutos se le suma o resta una pequeña cantidad aleatoria de segundos. Si muchos eventos se frenaron al mismo tiempo, sus reintentos no llegan todos en el mismo instante, lo que evita que tu servidor vuelva a saturarse en cadena.
+
+## Qué códigos devolver
+
+| Código | Cuándo usarlo |
+| --- | --- |
+| **200 OK** | Siempre que recibas el evento. Si lo procesas después en una cola, igual responde 200 para confirmar la recepción |
+| **429 Too Many Requests** | Solo cuando realmente necesites que Chateea baje el ritmo. Activa el calendario de reintentos de 10 minutos |
+| **408 Request Timeout** | Opcional, para indicar que tu servidor no pudo procesar la llamada a tiempo |
+| **5xx** | Cuando tu servidor tiene una falla real |
+
+<Tip>
+  Responde 200 en cuanto recibas el evento y procésalo en segundo plano. Aunque el procesamiento interno falle después, confirmar la recepción evita reintentos innecesarios y duplicados. Reserva los códigos de error para cuando de verdad no puedas recibir el evento.
+</Tip>
+
+## Qué cambia para tu app
+
+No tienes que configurar nada. Si tu app ya recibe webhooks del Marketplace:
+
+- El comportamiento para las respuestas 429 sigue igual.
+- Los demás fallos temporales ahora también se reintentan con espera exponencial.
+- Esos reintentos pueden continuar hasta 3 días, lo que te da más margen para recuperarte si tu endpoint está inestable o caído.
+
+## Diseña tu endpoint para reintentos
+
+- **Hazlo idempotente.** Un mismo evento puede llegar más de una vez. Usa el encabezado `deliveryId`, que es el mismo en todos los intentos de un evento, para descartar duplicados.
+- **Calcula la carga extra.** Cada evento puede generar hasta 6 llamadas adicionales si respondes 429.
+- **Vigila el tamaño.** Los webhooks del Marketplace tienen un máximo de 256 KB. Si un evento es más grande, llega truncado con el indicador `payloadTooLarge`.
+- **Registra cada intento** en tus propios logs para poder auditar las entregas.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Chateea elimina los duplicados entre reintentos?">
+    Cada intento de un mismo evento lleva el mismo encabezado `deliveryId`, así que puedes identificar y descartar los duplicados de forma segura en tu servidor.
+  </Accordion>
+  <Accordion title="¿Puedo cambiar el intervalo o el número de intentos?">
+    No. El calendario es global para todas las apps.
+  </Accordion>
+  <Accordion title="¿Puedo desactivar los reintentos?">
+    No. Los reintentos vienen integrados y no se pueden desactivar por app. Diseña tu endpoint para que tolere eventos repetidos.
+  </Accordion>
+  <Accordion title="¿Cómo lo pruebo en un entorno de pruebas?">
+    Haz que tu endpoint de pruebas devuelva un 429 y comprueba que recibes el mismo evento 6 veces a lo largo de unos 70 minutos.
+  </Accordion>
+  <Accordion title="¿Afecta al disparador Webhook entrante de los flujos de trabajo?">
+    No. Los reintentos solo aplican a los webhooks que Chateea envía desde las apps del Marketplace a tu servidor externo.
+  </Accordion>
+  <Accordion title="¿Dónde veo el historial de entregas?">
+    Por ahora, usa los logs de tu propio servidor para revisar cada intento.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integraciones privadas" icon="key" href="/integraciones/integraciones-privadas">
+    Conecta tus sistemas con Chateea mediante tokens con permisos controlados.
+  </Card>
+  <Card title="SDK de Python y PHP para la API" icon="code" href="/integraciones/sdk-de-python-y-php-para-la-api">
+    Librerías oficiales que simplifican OAuth y los webhooks.
+  </Card>
+  <Card title="Crea una integración de pagos personalizada" icon="credit-card" href="/pagos/integracion-de-pagos-personalizada">
+    Guía técnica para conectar una pasarela propia como app del Marketplace.
+  </Card>
+  <Card title="Crear acciones personalizadas del Marketplace" icon="bolt" href="/automatizaciones/crear-acciones-personalizadas-del-marketplace">
+    Agrega acciones propias de tu app a los flujos de trabajo.
+  </Card>
+</CardGroup>

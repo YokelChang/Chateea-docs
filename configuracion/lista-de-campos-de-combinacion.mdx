@@ -1,0 +1,407 @@
+---
+title: "Lista de campos de combinación"
+description: "Referencia completa de los campos de combinación por categoría: contacto, usuario, citas, facturas, atribución, reservas e IA."
+icon: "list"
+---
+
+Los campos de combinación insertan datos guardados en tus mensajes y documentos: el nombre del contacto, el correo del usuario asignado, la hora de una cita o el total de una factura. Cuando el mensaje se envía o el documento se genera, cada campo se reemplaza por el valor que corresponde a ese destinatario o registro.
+
+Esta página es la referencia completa, organizada por categoría. Para aprender a insertarlos y a configurar textos de reemplazo, consulta [Campos de combinación y valores de reemplazo](/configuracion/campos-de-combinacion-y-valores-de-reemplazo).
+
+<Tip>
+Inserta los campos siempre desde el selector de campos del editor (el ícono de **Campos de combinación**, **Valores personalizados** o `{ }`). Así usas el nombre exacto que admite ese editor y evitas errores de escritura. Los campos distinguen mayúsculas y minúsculas.
+</Tip>
+
+## Formato de teléfono sin formato (raw)
+
+Los campos que terminan en `_raw` muestran el teléfono sin espacios, paréntesis ni guiones, con el código de país. Úsalos en enlaces (por ejemplo, `tel:` o `https://wa.me/`), en parámetros de seguimiento y en números internacionales.
+
+| Campo | Ejemplo |
+| --- | --- |
+| `{{contact.phone}}` | (809) 555-2345 |
+| `{{contact.phone_raw}}` | +18095552345 |
+
+## Contacto
+
+Toman los datos guardados en la ficha del contacto. Son los más usados en saludos, confirmaciones y seguimientos.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre completo | `{{contact.name}}` | Ana Pérez |
+| Nombre | `{{contact.first_name}}` | Ana |
+| Apellido | `{{contact.last_name}}` | Pérez |
+| Correo | `{{contact.email}}` | ana@ejemplo.com |
+| Teléfono | `{{contact.phone}}` | (809) 555-2345 |
+| Teléfono sin formato | `{{contact.phone_raw}}` | +18095552345 |
+| Empresa | `{{contact.company_name}}` | Pérez Plomería |
+| Dirección completa | `{{contact.full_address}}` | Av. Principal 123, Santo Domingo |
+| Dirección (línea 1) | `{{contact.address1}}` | Av. Principal 123 |
+| Ciudad | `{{contact.city}}` | Santo Domingo |
+| Estado o región | `{{contact.state}}` | Distrito Nacional |
+| Código postal | `{{contact.postal_code}}` | 10101 |
+| Zona horaria | `{{contact.timezone}}` | GMT-04:00 America/Santo_Domingo |
+| Fecha de nacimiento | `{{contact.date_of_birth}}` | 3 de enero de 1980 |
+| Origen | `{{contact.source}}` | Referido |
+| Sitio web | `{{contact.website}}` | www.ejemplo.com |
+| ID del contacto | `{{contact.id}}` | FZDn5mYlkZuCCQe5Bep8 |
+
+## Usuario
+
+Toman los datos del usuario asignado o del remitente vinculado a la actividad, la conversación o la cita.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre completo | `{{user.name}}` | Juan Gómez |
+| Nombre | `{{user.first_name}}` | Juan |
+| Apellido | `{{user.last_name}}` | Gómez |
+| Correo | `{{user.email}}` | juan@ejemplo.com |
+| Teléfono | `{{user.phone}}` | (809) 555-9876 |
+| Teléfono sin formato | `{{user.phone_raw}}` | +18095559876 |
+| Firma de correo | `{{user.email_signature}}` | Juan Gómez, juan@ejemplo.com |
+| Enlace de reserva | `{{user.calendar_link}}` | Enlace a la página de reservas del usuario |
+| Número de llamadas externo | `{{user.call_provider_phone_number}}` | (809) 555-4321 |
+| Número de llamadas externo sin formato | `{{user.call_provider_phone_number_raw}}` | +18095554321 |
+
+Los campos de usuario también funcionan después de una reserva: en el **mensaje de agradecimiento** de la página de confirmación del calendario y en el siguiente paso del embudo cuando el elemento de calendario redirige con **Ir al siguiente paso**.
+
+<Note>
+El nombre del campo del número de llamadas externo puede variar según la configuración de tu cuenta. Insértalo desde el selector para usar el nombre exacto disponible.
+</Note>
+
+## Cita
+
+Toman los datos de una cita. Se usan en confirmaciones, recordatorios y mensajes de reprogramación.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Título | `{{appointment.title}}` | Cita con Roberto |
+| Fecha y hora de inicio | `{{appointment.start_time}}` | Mié, 5 nov 2025 3:30 PM |
+| Solo fecha de inicio | `{{appointment.only_start_date}}` | 5 nov 2025 |
+| Solo hora de inicio | `{{appointment.only_start_time}}` | 3:30 PM |
+| Fecha y hora de fin | `{{appointment.end_time}}` | Mié, 5 nov 2025 4:00 PM |
+| Solo fecha de fin | `{{appointment.only_end_date}}` | 5 nov 2025 |
+| Solo hora de fin | `{{appointment.only_end_time}}` | 4:00 PM |
+| Día de la semana | `{{appointment.day_of_week}}` | Lunes |
+| Número de mes | `{{appointment.month}}` | 11 |
+| Zona horaria | `{{appointment.timezone}}` | AST |
+| Enlace para cancelar | `{{appointment.cancellation_link}}` | Enlace de cancelación de la cita |
+| Enlace para reprogramar | `{{appointment.reschedule_link}}` | Enlace de reprogramación de la cita |
+| Lugar de la reunión | `{{appointment.meeting_location}}` | Av. Principal 123, Santo Domingo |
+| Notas | `{{appointment.notes}}` | Es nuestra segunda reunión. |
+| Enlace para agregar al calendario | `{{appointment.add_to_calendar}}` | Enlace para agregar la cita |
+| Enlace para Google Calendar | `{{appointment.add_to_google_calendar}}` | Enlace para agregar la cita a Google Calendar |
+| Enlace iCal (ICS) | `{{appointment.add_to_ical}}` | Enlace para descargar el archivo ICS |
+| Repeticiones de cita recurrente | `{{appointment.recurring.repeats}}` | 0 |
+| Veces que se repite | `{{appointment.recurring.times_to_repeat}}` | 1 |
+| Nombre del usuario asignado | `{{appointment.user.name}}` | Juan Gómez |
+| Correo del usuario asignado | `{{appointment.user.email}}` | juan@ejemplo.com |
+| Teléfono del usuario asignado | `{{appointment.user.phone}}` | (809) 555-9876 |
+| Teléfono sin formato del usuario asignado | `{{appointment.user.phone_raw}}` | +18095559876 |
+| Firma del usuario asignado | `{{appointment.user.email_signature}}` | Juan Gómez, juan@ejemplo.com |
+
+## Calendario
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre del calendario | `{{calendar.name}}` | Calendario de jardinería |
+
+## Campaña
+
+Para eventos programados de campañas y variables de tiempo.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Fecha y hora del evento | `{{campaign.event_date_time}}` | 5 nov 2025 3:30 PM |
+| Fecha del evento | `{{campaign.event_date}}` | 5 nov 2025 |
+| Hora del evento | `{{campaign.event_time}}` | 3:30 PM |
+
+## Mensaje
+
+Útiles en automatizaciones que necesitan reutilizar el contenido de un mensaje.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Cuerpo del mensaje | `{{message.body}}` | Te recuerdo nuestra llamada de mañana. |
+| Asunto del mensaje | `{{message.subject}}` | Recordatorio de reunión |
+
+## Tu cuenta (datos del negocio)
+
+Toman los datos de tu negocio guardados en el perfil de tu cuenta. Sirven para pies de correo, recibos y la identidad de tu marca.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre del negocio | `{{location.name}}` | Estética Brillo |
+| Dirección completa | `{{location.full_address}}` | Calle 5 #20, Santiago |
+| Dirección (línea 1) | `{{location.address}}` | Calle 5 #20 |
+| Ciudad | `{{location.city}}` | Santiago |
+| Estado o región | `{{location.state}}` | Santiago |
+| País | `{{location.country}}` | DO |
+| Código postal | `{{location.postal_code}}` | 51000 |
+| Correo | `{{location.email}}` | hola@ejemplo.com |
+| Teléfono | `{{location.phone}}` | (809) 555-3344 |
+| Teléfono sin formato | `{{location.phone_raw}}` | +18095553344 |
+| Sitio web | `{{location.website}}` | www.ejemplo.com |
+| URL del logo | `{{location.logo_url}}` | Enlace a la imagen de tu logo |
+| Nombre del propietario | `{{location_owner.first_name}}` | Lucía |
+| Apellido del propietario | `{{location_owner.last_name}}` | Blanco |
+| Correo del propietario | `{{location_owner.email}}` | lucia@ejemplo.com |
+| ID de la cuenta | `{{location.id}}` | DP4mTqaz7L9XpweFvRjC |
+
+## Fecha y hora actual
+
+Insertan la fecha y la hora del momento en que se genera el mensaje.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Segundo | `{{right_now.second}}` | 9 |
+| Minuto | `{{right_now.minute}}` | 10 |
+| Hora (24 h) | `{{right_now.hour}}` | 14 |
+| Hora (12 h) | `{{right_now.hour_ampm}}` | 2 |
+| AM o PM | `{{right_now.ampm}}` | PM |
+| Día de la semana | `{{right_now.day_of_week}}` | Martes |
+| Nombre del mes | `{{right_now.month_name}}` | Noviembre |
+| Día | `{{right_now.day}}` | 4 |
+| Mes (número) | `{{right_now.month}}` | 11 |
+| Año | `{{right_now.year}}` | 2025 |
+| Fecha MM/DD/AAAA | `{{right_now.middle_endian_date}}` | 11/4/2025 |
+| Fecha DD/MM/AAAA | `{{right_now.little_endian_date}}` | 4/11/2025 |
+
+<Tip>
+En Latinoamérica la fecha se lee como día, mes y año. Usa `{{right_now.little_endian_date}}` para que tus clientes no confundan el 4 de noviembre con el 11 de abril.
+</Tip>
+
+## Atribución
+
+Guardan de dónde llegó el contacto. Los valores suelen venir de los parámetros de seguimiento (UTM) de los enlaces. Hay dos grupos: la **primera atribución** (cómo llegó la primera vez) y la **última atribución** (su interacción más reciente).
+
+### Primera atribución
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Origen de la sesión | `{{contact.attributionSource.sessionSource}}` | Referido |
+| URL de llegada | `{{contact.attributionSource.url}}` | https://ejemplo.com/formulario?utm_source=ads |
+| Campaña | `{{contact.attributionSource.campaign}}` | oferta_otono |
+| UTM source | `{{contact.attributionSource.utmSource}}` | ads |
+| UTM medium | `{{contact.attributionSource.utmMedium}}` | banner |
+| UTM content | `{{contact.attributionSource.utmContent}}` | anuncio12 |
+| Referente | `{{contact.attributionSource.referrer}}` | https://referente.ejemplo.com |
+| ID de campaña | `{{contact.attributionSource.campaignId}}` | 23849260571384729 |
+| ID de clic del anuncio | `{{contact.attributionSource.clickId}}` | ABC123XYZ |
+| UTM keyword | `{{contact.attributionSource.utmKeyword}}` | zapatos_deportivos |
+| UTM match type | `{{contact.attributionSource.utmMatchType}}` | exact |
+| ID del grupo de anuncios | `{{contact.attributionSource.adGroupId}}` | 123456 |
+| ID del anuncio | `{{contact.attributionSource.adId}}` | 78910 |
+
+### Última atribución
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Origen de la sesión | `{{contact.lastAttributionSource.sessionSource}}` | Referido |
+| URL de llegada | `{{contact.lastAttributionSource.url}}` | https://ejemplo.com/formulario?utm_source=ads |
+| Campaña | `{{contact.lastAttributionSource.campaign}}` | oferta_navidad |
+| UTM source | `{{contact.lastAttributionSource.utmSource}}` | ads |
+| UTM medium | `{{contact.lastAttributionSource.utmMedium}}` | banner |
+| UTM content | `{{contact.lastAttributionSource.utmContent}}` | anuncio18 |
+| Referente | `{{contact.lastAttributionSource.referrer}}` | https://referente.ejemplo.com |
+| ID de campaña | `{{contact.lastAttributionSource.campaignId}}` | 23850176293047583 |
+| ID de clic del anuncio | `{{contact.lastAttributionSource.clickId}}` | XYZ789ABC |
+| UTM campaign | `{{contact.lastAttributionSource.utmCampaign}}` | gran_liquidacion |
+| UTM keyword | `{{contact.lastAttributionSource.utmKeyword}}` | reparacion_aire |
+| UTM match type | `{{contact.lastAttributionSource.utmMatchType}}` | broad |
+| ID del grupo de anuncios | `{{contact.lastAttributionSource.adGroupId}}` | 654321 |
+| ID del anuncio | `{{contact.lastAttributionSource.adId}}` | 10987 |
+
+<Note>
+Algunas cuentas muestran campos de atribución específicos de cada plataforma de anuncios (por ejemplo, el ID de clic de Facebook o de Google). Insértalos desde el selector para usar el nombre exacto disponible en tu cuenta.
+</Note>
+
+## Factura
+
+Toman los valores de la factura. Se usan en facturas, recibos, confirmaciones de pago y recordatorios de cobro.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre de la factura | `{{invoice.name}}` | Contrato de consultoría |
+| Número | `{{invoice.number}}` | 43255 |
+| Fecha de emisión | `{{invoice.issue_date}}` | 2025-04-05 |
+| Fecha de vencimiento | `{{invoice.due_date}}` | 2025-10-05 |
+| Subtotal | `{{invoice.sub_total}}` | 500.00 |
+| Descuento | `{{invoice.discount_amount}}` | 50.00 |
+| Impuestos | `{{invoice.tax_amount}}` | 25.00 |
+| Total | `{{invoice.total_amount}}` | 475.00 |
+| Título | `{{invoice.title}}` | Factura de consultoría |
+| Enlace de la factura | `{{invoice.url}}` | Enlace para ver y pagar la factura |
+
+### Datos de tu empresa en la factura
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre | `{{invoice.company.name}}` | Soluciones Test |
+| Teléfono | `{{invoice.company.phone}}` | (809) 555-9876 |
+| Dirección | `{{invoice.company.address}}` | Calle Arce 1234 |
+| Ciudad | `{{invoice.company.city}}` | La Romana |
+| Estado o región | `{{invoice.company.state}}` | La Romana |
+| País | `{{invoice.company.country}}` | DO |
+| Sitio web | `{{invoice.company.website}}` | www.ejemplo.com |
+| URL del logo | `{{invoice.company.logo}}` | Enlace a la imagen de tu logo |
+
+### Datos del cliente en la factura
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre completo | `{{invoice.customer.name}}` | Tomás Toledo |
+| Nombre | `{{invoice.customer.first_name}}` | Tomás |
+| Apellido | `{{invoice.customer.last_name}}` | Toledo |
+| Teléfono | `{{invoice.customer.phone}}` | (809) 555-3456 |
+| Correo | `{{invoice.customer.email}}` | tomas@ejemplo.com |
+| Empresa | `{{invoice.customer.company}}` | Toledo Construcciones |
+| Dirección | `{{invoice.customer.address}}` | Calle Norte 3333 |
+| Ciudad | `{{invoice.customer.city}}` | Santiago |
+| Estado o región | `{{invoice.customer.state}}` | Santiago |
+| Código postal | `{{invoice.customer.postal_code}}` | 51000 |
+
+### Remitente y tarjeta
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre del remitente | `{{invoice.sender.name}}` | Bruno Brito |
+| Correo del remitente | `{{invoice.sender.email}}` | bruno@ejemplo.com |
+| Marca de la tarjeta | `{{invoice.card.brand}}` | Visa |
+| Últimos 4 dígitos | `{{invoice.card.last4}}` | 7654 |
+
+## Cursos
+
+Para mensajes de inscripción o de contenido de tus cursos.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Título de la categoría | `{{courses.categoryTitle}}` | Primeros pasos en tejido |
+| Título del producto | `{{courses.productTitle}}` | Tejido básico |
+| Título de la lección | `{{courses.postTitle}}` | Los mejores tipos de lana |
+
+## Reservas de servicios
+
+Toman los datos de una reserva de servicios: horario, precio y usuario asignado.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Título | `{{servicebooking.title}}` | Corte de caballero |
+| Hora de inicio | `{{servicebooking.start_time}}` | 3:30 PM |
+| Hora de fin | `{{servicebooking.end_time}}` | 4:30 PM |
+| Fecha de inicio | `{{servicebooking.start_date}}` | 6 de marzo de 2026 |
+| Fecha de fin | `{{servicebooking.only_end_date}}` | 7 de marzo de 2026 |
+| Solo hora de fin | `{{servicebooking.only_end_time}}` | 4:30 PM |
+| Día de la semana | `{{servicebooking.day_of_week}}` | Lunes |
+| Mes (número) | `{{servicebooking.month}}` | 3 |
+| Nombre del mes | `{{servicebooking.month_name}}` | Marzo |
+| Zona horaria | `{{servicebooking.timezone}}` | AST |
+| Precio total | `{{servicebooking.total_price}}` | 55 |
+| Lugar | `{{servicebooking.meeting_location}}` | Av. Principal 123, Santo Domingo |
+| Nombre del lugar | `{{servicebooking.meeting_location_name}}` | Silla 4 |
+| Enlace para reprogramar | `{{servicebooking.reschedule_link}}` | Enlace de reprogramación de la reserva |
+| Enlace para cancelar | `{{servicebooking.cancellation_link}}` | Enlace de cancelación de la reserva |
+
+### Servicios, adicionales y usuario asignado
+
+Estos campos describen cada servicio incluido en la reserva.
+
+| Dato | Campo | Ejemplo |
+| --- | --- | --- |
+| Nombre del servicio | `{{this.name}}` | Corte regular |
+| Precio del servicio | `{{this.price}}` | 125 |
+| Duración del servicio | `{{this.duration}}` | 45 min |
+| Fecha de inicio | `{{this.only_start_date}}` | 6 de marzo de 2026 |
+| Hora de inicio | `{{this.only_start_time}}` | 4:30 PM |
+| Zona horaria | `{{this.timezone}}` | GMT-04:00 America/Santo_Domingo |
+| Nombre del adicional | `{{this.addonName}}` | Tinte |
+| Precio del adicional | `{{this.addonPrice}}` | 25 |
+| Duración del adicional | `{{this.addonDuration}}` | 15 min |
+| Cantidad del adicional | `{{this.addonQuantity}}` | 1 |
+| Nombre del usuario asignado | `{{this.user.name}}` | Juana Soto |
+| Correo del usuario asignado | `{{this.user.email}}` | juana@ejemplo.com |
+| Teléfono del usuario asignado | `{{this.user.phone}}` | (809) 555-2345 |
+| Teléfono sin formato del usuario asignado | `{{this.user.phone_raw}}` | +18095552345 |
+| Firma del usuario asignado | `{{this.user.email_signature}}` | Juana Soto, juana@ejemplo.com |
+
+## IA de voz
+
+En las indicaciones (prompts) de tus agentes de IA de voz puedes usar campos de combinación para personalizar la llamada con datos del contacto, la empresa, la cita, el calendario o tu negocio, siempre que estén disponibles en el contexto de la llamada. Insértalos desde el selector de valores personalizados del constructor de IA de voz.
+
+| Dato | Campo | Ejemplo de uso |
+| --- | --- | --- |
+| Nombre del contacto | `{{contact.first_name}}` | "Hola, `{{contact.first_name}}`, gracias por llamar." |
+| Nombre completo | `{{contact.name}}` | "Veo que tu nombre es `{{contact.name}}`." |
+| Correo del contacto | `{{contact.email}}` | "Tenemos tu correo como `{{contact.email}}`." |
+| Teléfono del contacto | `{{contact.phone}}` | "¿Sigue siendo `{{contact.phone}}` el mejor número para ti?" |
+| Nombre de la empresa | `{{company.name}}` | "Veo que llamas de `{{company.name}}`." |
+| Nombre del negocio | `{{location.name}}` | "Gracias por llamar a `{{location.name}}`." |
+| Teléfono del negocio | `{{location.phone}}` | "También puedes llamarnos al `{{location.phone}}`." |
+| Correo del negocio | `{{location.email}}` | "Te escribiremos desde `{{location.email}}`." |
+| Inicio de la cita | `{{appointment.start_time}}` | "Tu cita es el `{{appointment.start_time}}`." |
+| Nombre del calendario | `{{calendar.name}}` | "La cita está en el calendario `{{calendar.name}}`." |
+
+Los campos disponibles dependen del campo de la indicación, de si la llamada es entrante o saliente, y de los datos que existan. Si un dato falta, el campo queda vacío durante la conversación. Más detalles en [Valores personalizados en IA de voz](/ia/valores-personalizados-en-voz-ia).
+
+## IA conversacional
+
+En la IA conversacional puedes usar campos de combinación en las indicaciones del bot, en sus objetivos, en las respuestas generadas y en las acciones compatibles. Insértalos desde el selector para asegurarte de que ese punto de la configuración los admite.
+
+| Dato | Campo | Ejemplo de uso |
+| --- | --- | --- |
+| Nombre del contacto | `{{contact.first_name}}` | "Hola, `{{contact.first_name}}`, ¿en qué te ayudo?" |
+| Nombre completo | `{{contact.name}}` | "Gracias, `{{contact.name}}`. Te ayudo con eso." |
+| Correo del contacto | `{{contact.email}}` | "Tengo tu correo como `{{contact.email}}`." |
+| Teléfono del contacto | `{{contact.phone}}` | "¿`{{contact.phone}}` es el mejor número para seguir?" |
+| Nombre de la empresa | `{{company.name}}` | "Veo que esto es sobre `{{company.name}}`." |
+| Correo de la empresa | `{{company.email}}` | "El correo de la empresa es `{{company.email}}`." |
+| Teléfono de la empresa | `{{company.phone}}` | "El teléfono de la empresa es `{{company.phone}}`." |
+| Nombre del negocio | `{{location.name}}` | "Estás hablando con `{{location.name}}`." |
+| Correo del negocio | `{{location.email}}` | "Te escribiremos desde `{{location.email}}`." |
+| Teléfono del negocio | `{{location.phone}}` | "También puedes llamarnos al `{{location.phone}}`." |
+
+La disponibilidad depende del área que edites, del canal, de la configuración del bot y de si existen los datos del contacto, la empresa o tu negocio. Después de agregar campos, prueba las respuestas del bot antes de activarlo con clientes reales.
+
+## Campos vacíos y valores de reemplazo
+
+Si un registro no tiene el dato, el campo se reemplaza por un espacio vacío y la frase puede quedar incompleta (por ejemplo, "Hola ,"). En los correos puedes evitarlo con un **texto de reemplazo**: haz clic en la etiqueta del campo dentro del editor de correo y escribe el texto que debe aparecer cuando falte el dato. Ver [Campos de combinación y valores de reemplazo](/configuracion/campos-de-combinacion-y-valores-de-reemplazo).
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué pasa si un campo no tiene valor?">
+    Se reemplaza por un espacio vacío, lo que puede dejar frases a medias como "Hola ,". En correos, configura un texto de reemplazo. En otros canales, usa bloques de contenido condicional o revisa que el dato exista antes de enviar.
+  </Accordion>
+  <Accordion title="¿Qué diferencia hay entre el teléfono normal y el teléfono sin formato?">
+    El formato sin formato (`_raw`) quita paréntesis, espacios y guiones e incluye el código de país. Es mejor para enlaces, parámetros de seguimiento y números internacionales.
+  </Accordion>
+  <Accordion title="¿Puedo usar campos en facturas y mensajes de pago?">
+    Sí. Puedes insertar número de factura, totales, fechas de vencimiento, datos del cliente y el enlace de pago.
+  </Accordion>
+  <Accordion title="¿Por qué veo campos distintos a los de otra cuenta o de otro editor?">
+    Los campos disponibles cambian según las funciones activas, la configuración de tu cuenta y el tipo de registro que estás editando. Por eso conviene insertarlos siempre desde el selector.
+  </Accordion>
+  <Accordion title="¿Cómo evito saludos vacíos cuando falta el nombre?">
+    En correos, agrega un texto de reemplazo al campo de nombre. También puedes usar bloques condicionales: uno con el nombre, que se muestra si el dato existe, y otro con un saludo genérico, que se muestra si está vacío.
+  </Accordion>
+</AccordionGroup>
+
+## Si un campo no se llena bien
+
+Confirma que el registro tiene el dato necesario (nombre, correo, hora de la cita), que insertaste el campo desde el selector y que el mensaje se envía desde el contexto correcto (contacto, cita, factura o reserva). Si el problema sigue, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071** e incluye el nombre del campo, dónde lo usas y un ejemplo del resultado que recibes.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Campos de combinación y valores de reemplazo" icon="code" href="/configuracion/campos-de-combinacion-y-valores-de-reemplazo">
+    Cómo insertarlos, probarlos y evitar huecos.
+  </Card>
+  <Card title="Variables y campos personalizados" icon="code" href="/variables/introduccion">
+    Todos los tipos de variables y cuándo usar cada uno.
+  </Card>
+  <Card title="Usar valores personalizados" icon="tags" href="/configuracion/usar-valores-personalizados">
+    Datos reutilizables que cambias en un solo lugar.
+  </Card>
+  <Card title="Crear y gestionar campos personalizados" icon="list-check" href="/configuracion/crear-y-gestionar-campos-personalizados">
+    Guarda datos propios de tu negocio en cada registro.
+  </Card>
+</CardGroup>

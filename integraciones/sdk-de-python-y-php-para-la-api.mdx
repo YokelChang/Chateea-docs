@@ -1,0 +1,87 @@
+---
+title: "SDK de Python y PHP para la API de Chateea"
+description: "Librerías oficiales que gestionan OAuth, tokens y webhooks para integrarte más rápido con la API pública v2 de Chateea."
+icon: "code"
+---
+
+Si vas a desarrollar una integración con la API de Chateea en Python o PHP, puedes usar los SDK oficiales en lugar de programar a mano el flujo de OAuth y la renovación de tokens. Los SDK cubren toda la API pública v2, gestionan los tokens automáticamente y ofrecen métodos tipados para cada endpoint, así te concentras en las funciones de tu integración y no en la autenticación.
+
+<Note>
+  Esta guía es técnica y está pensada para desarrolladores. Para obtener el nombre exacto de los paquetes, la documentación de los SDK, los proyectos de ejemplo y la URL base de la API de Chateea, escribe a soporte de Chateea en **help@chateea.com** o por WhatsApp al **+1 829-580-7071**.
+</Note>
+
+## Qué te resuelven los SDK
+
+- **OAuth 2.0 en una línea:** intercambian, guardan y renuevan los tokens por ti.
+- **Almacenamiento de tokens flexible:** adaptadores para memoria, MongoDB, Redis, MySQL y otros.
+- **Ayudas para webhooks:** validan firmas y procesan los eventos de instalación y desinstalación (`INSTALL` y `UNINSTALL`) automáticamente.
+- **Métodos tipados** para cada endpoint público, con menos código repetitivo y menos errores en tiempo de ejecución.
+- **Siempre al día:** se regeneran con cada versión de la API, así que tu cliente se mantiene actualizado sin cambios manuales.
+
+## Flujos de OAuth 2.0 que cubren
+
+El motor de tokens de los SDK contempla todos los caminos de instalación habituales:
+
+- Instalaciones en una cuenta desde el botón **Conectar** del Marketplace de aplicaciones.
+- Renovación silenciosa diaria antes de que el token caduque.
+- Limpieza ordenada de los tokens cuando se desinstala la app.
+
+## Dónde guardar los tokens
+
+Los SDK usan adaptadores de almacenamiento intercambiables, así guardas los tokens donde ya guardas tus datos:
+
+| Entorno | Opción recomendada |
+| --- | --- |
+| Desarrollo local | Caché en memoria |
+| Producción | MongoDB, Redis, MySQL o PostgreSQL |
+| Casos especiales | Tu propia clase que implemente la interfaz de almacenamiento |
+
+<Tip>
+  Nunca guardes tokens en el código fuente ni en archivos del repositorio. Usa un gestor de secretos o una base de datos protegida.
+</Tip>
+
+## Actualizaciones de los SDK
+
+Ambos SDK se generan automáticamente a partir de la especificación OpenAPI cada vez que se publican endpoints o campos nuevos. Para actualizar, basta con `composer update` en PHP o `pip install --upgrade` en Python.
+
+Las versiones siguen el versionado semántico: los cambios que rompen compatibilidad suben la versión mayor, así que puedes fijar una versión y actualizar cuando estés listo.
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Tengo que renovar los tokens manualmente?">
+    No. Una vez configurado el almacenamiento de sesiones, el SDK renueva los tokens en segundo plano antes de que caduquen.
+  </Accordion>
+  <Accordion title="¿Puedo guardar los tokens en MySQL en lugar de MongoDB?">
+    Sí. Extiende la clase base de almacenamiento con tu propia lógica para crear, leer y actualizar tokens.
+  </Accordion>
+  <Accordion title="¿Funcionan con los tokens de integración privada?">
+    Sí. Si no necesitas el flujo de OAuth, pasa tu token de integración privada con el parámetro `privateIntegrationToken`.
+  </Accordion>
+  <Accordion title="¿Cómo valido la firma de los webhooks?">
+    En Python usa `client.webhooks.subscribe()` y en PHP usa `getWebhookManager()->verifySignature()`.
+  </Accordion>
+  <Accordion title="¿Son compatibles con la API v1?">
+    No. Los SDK trabajan solo con la API pública v2.
+  </Accordion>
+  <Accordion title="¿Las actualizaciones pueden romper mi código?">
+    Los cambios incompatibles solo llegan en versiones mayores. Fija la versión en tu proyecto y actualiza de forma deliberada.
+  </Accordion>
+</AccordionGroup>
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Integraciones privadas" icon="key" href="/integraciones/integraciones-privadas">
+    Crea tokens con permisos controlados para tus sistemas.
+  </Card>
+  <Card title="Reintentos automáticos de webhooks" icon="rotate" href="/integraciones/reintentos-automaticos-de-webhooks-del-marketplace">
+    Cómo Chateea reintenta la entrega de eventos a tu servidor.
+  </Card>
+  <Card title="Permisos al instalar apps del Marketplace" icon="shield-check" href="/integraciones/permisos-al-instalar-apps-del-marketplace">
+    Qué ve el usuario en la pantalla de consentimiento de OAuth.
+  </Card>
+  <Card title="Crea una integración de pagos personalizada" icon="credit-card" href="/pagos/integracion-de-pagos-personalizada">
+    Conecta una pasarela propia como app del Marketplace.
+  </Card>
+</CardGroup>

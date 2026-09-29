@@ -1,0 +1,116 @@
+/* Estilo del centro de ayuda alineado con chateea.com */
+
+:root {
+  --chateea-verde: #003a27;
+  --chateea-acento: #3add8f;
+  --chateea-gris: #f7f7f5;
+  --chateea-borde: #edece8;
+  --chateea-texto: #1f1f1e;
+}
+
+/* Logo con la misma proporción que en la web (~100 px de ancho) */
+.nav-logo {
+  height: 32px !important;
+  width: auto !important;
+}
+
+/* Botón principal del encabezado en forma de píldora, como "Prueba gratis" */
+#topbar-cta-button a,
+#topbar-cta-button button {
+  border-radius: 9999px !important;
+  background-color: var(--chateea-verde) !important;
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+}
+
+/* Tarjetas como las de la web: fondo gris cálido y esquinas de 25 px */
+a.card,
+div.card {
+  border-radius: 25px !important;
+}
+html:not(.dark) a.card,
+html:not(.dark) div.card {
+  background-color: var(--chateea-gris) !important;
+  border-color: var(--chateea-borde) !important;
+}
+a.card:hover {
+  border-color: var(--chateea-acento) !important;
+}
+
+/* Títulos con el color de texto de la web */
+html:not(.dark) #content-area h1,
+html:not(.dark) #content-area h2,
+html:not(.dark) #content-area h3 {
+  color: var(--chateea-texto);
+}
+
+/* Bloques de aviso y código con esquinas suaves */
+#content-area .callout,
+#content-area pre {
+  border-radius: 16px !important;
+}
+
+/* Portada: héroe con la imagen de la web */
+.chateea-hero {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  padding: clamp(36px, 7vw, 72px) clamp(20px, 5vw, 56px);
+  margin-bottom: 36px;
+  text-align: center;
+  background-image: linear-gradient(180deg, rgba(0, 32, 22, 0.35) 0%, rgba(0, 32, 22, 0.55) 100%), url("/images/hero.jpg");
+  background-size: cover;
+  background-position: center 35%;
+}
+.chateea-hero .chateea-pill {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--chateea-texto);
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.chateea-hero h1.chateea-hero-title {
+  color: #ffffff !important;
+  font-size: clamp(30px, 5vw, 52px) !important;
+  font-weight: 500 !important;
+  line-height: 1.1 !important;
+  margin: 16px 0 12px 0 !important;
+  letter-spacing: -0.02em;
+}
+.chateea-hero p.chateea-hero-sub {
+  color: #f1f7f4 !important;
+  font-size: clamp(15px, 2vw, 18px) !important;
+  max-width: 620px;
+  margin: 0 auto !important;
+}
+.chateea-hero .chateea-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.chateea-hero .chateea-btn {
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none !important;
+  border: none !important;
+}
+.chateea-hero .chateea-btn-dark {
+  background: var(--chateea-verde);
+  color: #ffffff !important;
+}
+.chateea-hero .chateea-btn-light {
+  background: #ffffff;
+  color: var(--chateea-verde) !important;
+}
+
+@media (max-width: 640px) {
+  .chateea-hero { border-radius: 24px; }
+  .chateea-hero .chateea-btn { width: 100%; text-align: center; }
+}
