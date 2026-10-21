@@ -1,0 +1,137 @@
+---
+title: "Fin de los mensajes de marketing en la API de Cloud: 13 de octubre de 2027"
+description: "Meta cerrará los mensajes de marketing en la API de Cloud de WhatsApp el 13 de octubre de 2027. Qué cambia, qué no, qué ganas con MM Lite y cómo activarlo en Chateea."
+icon: "calendar-xmark"
+keywords: ["MM Lite", "Marketing Messages API", "API de mensajes de marketing", "Cloud API", "13 de octubre de 2027", "mensajes de marketing", "campañas de WhatsApp", "entrega optimizada"]
+---
+
+Meta confirmó en su documentación oficial que **la API de Cloud de WhatsApp dejará de admitir mensajes de marketing el 13 de octubre de 2027**. Desde esa fecha, toda campaña de marketing por WhatsApp tiene que salir por la API de mensajes de marketing de Meta (Marketing Messages API, que en Chateea conoces como **MM Lite**). Los mensajes de servicio, utilidad y autenticación no cambian: siguen en la API de Cloud como hasta hoy. Si ya activaste MM Lite en tu cuenta, no tienes que hacer nada más. Si todavía no, aquí tienes qué cambia, qué ganas y cómo activarlo en unos minutos.
+
+<Warning>
+  Tienes unos doce meses de plazo, pero cada campaña de marketing que envías hoy por la API de Cloud sale sin la optimización de entrega, sin las métricas de conversión y sin los formatos que solo existen en MM Lite. Conviene activarlo ahora, no en 2027.
+</Warning>
+
+## Las fechas exactas
+
+| Fecha | Qué pasa |
+| --- | --- |
+| 13 de octubre de 2026 | Meta anuncia a nivel global el fin de los mensajes de marketing en la API de Cloud. |
+| 13 de abril de 2027 | Las cuentas de mensajería de WhatsApp creadas a partir de ese día ya no pueden enviar mensajes de marketing por la API de Cloud. Las creadas antes conservan el acceso hasta el cierre. |
+| 13 de octubre de 2027 | La API de Cloud deja de admitir mensajes de marketing. Enviar uno devuelve un error. Todo el marketing pasa a la API de mensajes de marketing (MM Lite). |
+| Sin fecha de cambio | Los mensajes de servicio, utilidad y autenticación siguen en la API de Cloud exactamente igual. |
+
+Fuente: [Marketing Messages API for WhatsApp, documentación de Meta para desarrolladores](https://developers.facebook.com/documentation/business-messaging/whatsapp/marketing-messages/).
+
+<Info>
+  La API de mensajes de marketing no es nueva. Entró en beta abierta el 1 de abril de 2025 y Meta la declaró disponible de forma general el 19 de noviembre de 2025 con el nombre anterior de MM Lite API. Lo que cambia ahora es que deja de ser opcional para el marketing.
+</Info>
+
+## Qué cambia y qué no
+
+| | Antes (API de Cloud) | Después (MM Lite) |
+| --- | --- | --- |
+| Campañas y promociones por WhatsApp | Salen por la API de Cloud | Salen por la API de mensajes de marketing. Obligatorio desde el 13 de octubre de 2027 |
+| Recordatorios, confirmaciones y avisos (utilidad) | API de Cloud | API de Cloud, sin cambios |
+| Respuestas libres en la ventana de 24 horas (servicio) | API de Cloud | API de Cloud, sin cambios |
+| Códigos de verificación (autenticación) | API de Cloud | API de Cloud, sin cambios |
+| Tus plantillas de marketing aprobadas | Funcionan | Siguen funcionando tal cual, sin volver a crearlas ni a aprobarlas |
+| Tu número de WhatsApp | Funciona | Sigue siendo el mismo |
+| Cómo se cobra | Por mensaje, según la tarifa de Meta por país | Igual: mismo modelo de facturación. Meta añade la opción de fijar un precio máximo por entrega (beta abierta desde el 1 de octubre de 2026) |
+
+Las tarifas por país y el modelo de cobro están en [Precios y cobro de WhatsApp](/whatsapp/precios-y-cobro-de-whatsapp) y en [Nuevos precios de WhatsApp desde el 1 de octubre de 2026](/whatsapp/nuevos-precios-de-whatsapp-octubre-2026). Para saber si un mensaje es de marketing o de utilidad, revisa [Categorías de plantillas](/whatsapp/categorias-de-plantillas).
+
+## Qué ganas con MM Lite (y la API de Cloud no tendrá)
+
+Meta publica una comparativa oficial entre las dos API. Esto es lo que solo existe en la API de mensajes de marketing:
+
+| Función | MM Lite | API de Cloud |
+| --- | --- | --- |
+| Entrega basada en la calidad: Meta prioriza los mensajes que la gente espera, lee y responde | Sí. Según la prueba de Meta, hasta un 9 % más de mensajes entregados | No |
+| Optimizaciones creativas automáticas (animar y mejorar imágenes y textos de la plantilla) | Sí, en fase piloto | No |
+| Encabezados con GIF animado | Sí | No |
+| Enlaces profundos a apps de Android | Sí | No |
+| Caducidad del mensaje (de 12 horas a 30 días): si no se entrega a tiempo, no se envía | Sí | Solo en utilidad y autenticación |
+| Comparativas con negocios parecidos de tu región (tasa de lectura y de clic) | Sí | No |
+| Recomendaciones basadas en datos para mejorar cada plantilla | Sí | No |
+| Métricas de conversión: del mensaje al carrito, al pago y a la compra | Sí | No |
+| Métricas de costo: gasto por plantilla, costo por clic y por entrega | Sí | Sí |
+| Formatos básicos: multimedia, carrusel, catálogo, flujos, listas y botones | Sí | Sí |
+
+El dato del 9 % sale de una prueba A/B de Meta con unos 12 millones de mensajes de marketing entregados por anunciantes de la India entre el 1 y el 31 de enero de 2025, comparando la entrega optimizada con la entrega estándar de la API de Cloud solo en mensajes de alta interacción, con un nivel de confianza del 95 %. La mejora viene de elegir mejor a quién entregar el mismo envío, no de enviar más mensajes.
+
+## Cómo activar MM Lite en Chateea
+
+No hay nada que reconstruir. Tus números y tus plantillas de marketing aprobadas siguen funcionando, y las campañas y automatizaciones en curso no se interrumpen durante la activación. Si tu número usa la app WhatsApp Business en coexistencia, también se puede incorporar sin cortes.
+
+<Steps>
+  <Step title="Abre la configuración de WhatsApp">
+    En tu cuenta de Chateea ve a **Configuración → WhatsApp**. Verás un aviso para activar MM Lite.
+  </Step>
+  <Step title="Pulsa Habilitar MM Lite">
+    Chateea te lleva a la interfaz de tu cuenta de WhatsApp en Meta.
+  </Step>
+  <Step title="Responde la solicitud">
+    Abre la pestaña **Solicitudes** (Requests) y pulsa **Responder**.
+  </Step>
+  <Step title="Continúa en el aviso de Meta">
+    Cuando Meta te muestre el mensaje para mejorar el retorno con la API de mensajes de marketing, pulsa **Continuar** (o **Activar en Meta**).
+  </Step>
+  <Step title="Confirma los permisos">
+    En la pantalla de revisión de la solicitud de acceso, confirma los permisos y pulsa **Finalizar**.
+  </Step>
+</Steps>
+
+Empieza por la cuenta que más campañas de marketing envía: es la que nota antes la mejora de entrega y las métricas de conversión. El paso a paso con requisitos, qué pasa después y preguntas frecuentes está en [Mensajes de marketing optimizados con MM Lite](/whatsapp/mensajes-de-marketing-optimizados-mm-lite).
+
+<Tip>
+  MM Lite no sustituye una buena práctica de envío. Escribe solo a contactos que aceptaron recibir tus mensajes y revisa la [calidad de tu número](/whatsapp/calidad-y-limites-de-mensajes). Las campañas se envían desde [Envío masivo de WhatsApp](/whatsapp/envio-masivo-de-whatsapp).
+</Tip>
+
+## Preguntas frecuentes
+
+<AccordionGroup>
+  <Accordion title="¿Qué es la API de mensajes de marketing o MM Lite?">
+    Es la API de Meta para enviar mensajes de marketing por WhatsApp con entrega optimizada, formatos adicionales (GIF animados, enlaces a apps), métricas de conversión y recomendaciones. Chateea ya la admite; se activa desde Configuración → WhatsApp.
+  </Accordion>
+  <Accordion title="¿Cuándo deja la API de Cloud de enviar mensajes de marketing?">
+    El 13 de octubre de 2027, según la documentación oficial de Meta. Desde el 13 de abril de 2027 las cuentas de mensajería nuevas ya no pueden enviar marketing por la API de Cloud. Los mensajes de servicio, utilidad y autenticación siguen en la API de Cloud sin cambios.
+  </Accordion>
+  <Accordion title="¿Tengo que volver a crear mis plantillas o cambiar de número?">
+    No. Los números y las plantillas de marketing aprobadas se reutilizan tal cual, sin nueva aprobación, y las campañas y automatizaciones en curso siguen funcionando durante la activación.
+  </Accordion>
+  <Accordion title="¿Cuesta más enviar por MM Lite?">
+    No. Meta mantiene el mismo modelo de facturación por mensaje según el país del cliente, y Chateea te traslada la tarifa de Meta sin recargo. Además, desde el 1 de octubre de 2026 Meta ofrece en beta abierta un precio máximo por entrega para controlar el gasto de las campañas.
+  </Accordion>
+  <Accordion title="¿Qué pasa si no activo MM Lite antes del 13 de octubre de 2027?">
+    Tus campañas de marketing por WhatsApp dejarán de enviarse: la API de Cloud devolverá un error en cada mensaje de marketing. Los mensajes de utilidad, servicio y autenticación seguirán saliendo con normalidad. Activar MM Lite tarda unos minutos y evita ese corte.
+  </Accordion>
+  <Accordion title="¿Ya tengo MM Lite activo? ¿Dónde lo compruebo?">
+    En **Configuración → WhatsApp**. Si el aviso para habilitar MM Lite ya no aparece, está activo. Si tienes dudas, escribe a help@chateea.com o por WhatsApp al +1 829-580-7071.
+  </Accordion>
+</AccordionGroup>
+
+## Fuentes oficiales de Meta
+
+- [Marketing Messages API for WhatsApp](https://developers.facebook.com/documentation/business-messaging/whatsapp/marketing-messages/): descripción general, fechas del fin de los mensajes de marketing en la API de Cloud y prueba A/B.
+- [Comparativa de funciones: Marketing Messages API frente a Cloud API](https://developers.facebook.com/documentation/business-messaging/whatsapp/marketing-messages/features).
+- [Precios y precio máximo por entrega de la Marketing Messages API](https://developers.facebook.com/documentation/business-messaging/whatsapp/marketing-messages/pricing/).
+- [Registro de cambios de la Marketing Messages API](https://developers.facebook.com/documentation/business-messaging/whatsapp/marketing-messages/changelog).
+
+Consultadas el 21 de octubre de 2026. Las fechas y funciones pueden cambiar; revisa siempre la documentación de Meta.
+
+## Artículos relacionados
+
+<CardGroup cols={2}>
+  <Card title="Mensajes de marketing optimizados con MM Lite" icon="bullhorn" href="/whatsapp/mensajes-de-marketing-optimizados-mm-lite">
+    Requisitos, activación paso a paso y qué pasa después.
+  </Card>
+  <Card title="Nuevos precios de WhatsApp desde el 1 de octubre de 2026" icon="money-bill-trend-up" href="/whatsapp/nuevos-precios-de-whatsapp-octubre-2026">
+    Tarifas por país y qué sigue siendo gratis.
+  </Card>
+  <Card title="Categorías de plantillas" icon="tags" href="/whatsapp/categorias-de-plantillas">
+    Marketing, utilidad y autenticación: cuál usar en cada caso.
+  </Card>
+  <Card title="Envío masivo de WhatsApp" icon="paper-plane" href="/whatsapp/envio-masivo-de-whatsapp">
+    Envía campañas a listas de contactos.
+  </Card>
+</CardGroup>

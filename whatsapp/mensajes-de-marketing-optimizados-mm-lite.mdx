@@ -6,13 +6,19 @@ icon: "bullhorn"
 
 MM Lite (Marketing Messages Lite) es el sistema de Meta para entregar mensajes de marketing de WhatsApp de forma más inteligente. En lugar de repartir tu campaña por igual entre todos los contactos, prioriza a quienes tienen más probabilidad de abrir y responder, y elige mejor el momento de entrega. Si envías promociones, ofertas o campañas de reactivación desde Chateea, activarlo te ayuda a conseguir mejores resultados sin cambiar tus plantillas ni tus automatizaciones.
 
+<Warning>
+  **Fecha límite de Meta.** La API de Cloud de WhatsApp dejará de admitir mensajes de marketing el **13 de octubre de 2027** (las cuentas nuevas pierden ese acceso desde el 13 de abril de 2027). Desde entonces todo el marketing tiene que salir por la API de mensajes de marketing, es decir, MM Lite. Los mensajes de servicio, utilidad y autenticación no cambian. Detalles y fuentes en [Fin de los mensajes de marketing en la API de Cloud](/whatsapp/fin-de-mensajes-de-marketing-en-la-api-de-cloud-2027).
+</Warning>
+
 <Info>
   Meta endureció los límites de envío para frenar el spam. Hoy la entrega de los mensajes de marketing depende de la calidad y del interés que generan. MM Lite está pensado justamente para ese escenario.
 </Info>
 
 ## Qué te aporta MM Lite
 
-- **Entrega optimizada:** tus mensajes de marketing llegan primero a los contactos con más probabilidad de interactuar.
+- **Entrega optimizada:** tus mensajes de marketing llegan primero a los contactos con más probabilidad de interactuar. En la prueba A/B de Meta (unos 12 millones de mensajes, India, enero de 2025) la entrega mejoró hasta un 9 % en mensajes de alta interacción.
+- **Formatos que la API de Cloud no tiene:** encabezados con GIF animado y enlaces profundos a apps de Android.
+- **Métricas de conversión y recomendaciones:** seguimiento del mensaje al carrito, al pago y a la compra, comparativas con negocios parecidos de tu región y sugerencias para mejorar cada plantilla.
 - **Campañas más eficientes:** la entrega se decide con señales de interés, no solo por volumen.
 - **Mensajes con fecha de caducidad:** con el tiempo de vida del mensaje (TTL, Time to Live) evitas que una oferta vencida llegue tarde.
 - **Sin rehacer plantillas:** tus plantillas aprobadas siguen funcionando igual.
@@ -50,13 +56,13 @@ Asegúrate de tener:
     En tu cuenta de Chateea ve a **Configuración → WhatsApp**.
   </Step>
   <Step title="Pulsa el aviso de MM Lite">
-    En el panel verás un aviso para activar MM Lite. Pulsa **Activar MM Lite** (Enable MM Lite).
+    En el panel verás un aviso para activar MM Lite. Pulsa **Habilitar MM Lite** (Enable MM Lite).
   </Step>
   <Step title="Ve a la pestaña de solicitudes">
-    Se abrirá tu cuenta de WhatsApp en Meta. Entra a la pestaña **Solicitudes** (Request).
+    Se abrirá tu cuenta de WhatsApp en Meta. Entra a la pestaña **Solicitudes** (Requests) y pulsa **Responder**.
   </Step>
   <Step title="Revisa la solicitud">
-    Pulsa **Revisar solicitud** (Review Request). Verás un mensaje sobre mejorar el retorno con la API de mensajes de marketing. Pulsa **Continuar**.
+    Verás un mensaje sobre mejorar el retorno con la API de mensajes de marketing. Pulsa **Continuar** (o **Activar en Meta**).
   </Step>
   <Step title="Aprueba el acceso">
     En la pantalla de revisión de la solicitud de acceso, pulsa **Finalizar** para aprobarla.
@@ -91,7 +97,10 @@ Al terminar, MM Lite queda activo en tu cuenta. Tus plantillas, automatizaciones
     Sí. MM Lite solo aplica a mensajes de marketing. Las conversaciones de soporte, los mensajes de utilidad, de servicio y de autenticación siguen como siempre.
   </Accordion>
   <Accordion title="¿Mejora la tasa de entrega?">
-    Está diseñado para mejorar la entrega de los mensajes de marketing elegibles, pero los resultados dependen de tu audiencia, la calidad del mensaje, el historial de interacción y el tipo de campaña.
+    Está diseñado para mejorar la entrega de los mensajes de marketing elegibles. Meta reporta hasta un 9 % más de mensajes entregados en su prueba A/B con unos 12 millones de mensajes de alta interacción. Los resultados dependen de tu audiencia, la calidad del mensaje, el historial de interacción y el tipo de campaña.
+  </Accordion>
+  <Accordion title="¿Es obligatorio activarlo?">
+    Sí, con plazo. Meta cerrará los mensajes de marketing en la API de Cloud el 13 de octubre de 2027; a partir de ese día solo salen por la API de mensajes de marketing. Las fechas y lo que cambia están en [Fin de los mensajes de marketing en la API de Cloud](/whatsapp/fin-de-mensajes-de-marketing-en-la-api-de-cloud-2027).
   </Accordion>
   <Accordion title="¿Qué es el tiempo de vida del mensaje (TTL)?">
     Es el plazo durante el cual un mensaje puede entregarse. Si el mensaje deja de ser relevante (por ejemplo, una oferta que ya venció), no se entrega pasado ese plazo. Así evitas molestar con información desactualizada.
@@ -116,6 +125,9 @@ Al terminar, MM Lite queda activo en tu cuenta. Tus plantillas, automatizaciones
 ## Artículos relacionados
 
 <CardGroup cols={2}>
+  <Card title="Fin de los mensajes de marketing en la API de Cloud" icon="calendar-xmark" href="/whatsapp/fin-de-mensajes-de-marketing-en-la-api-de-cloud-2027">
+    Fechas de Meta, qué cambia y qué no.
+  </Card>
   <Card title="Envío masivo de WhatsApp" icon="paper-plane" href="/whatsapp/envio-masivo-de-whatsapp">
     Envía campañas a listas de contactos.
   </Card>
